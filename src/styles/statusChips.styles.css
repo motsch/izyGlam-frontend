@@ -1,0 +1,50 @@
+
+mat-button-toggle-group {
+    border-radius: 0px;
+    border-color: transparent !important;
+  }
+  .green-chip {
+    background-color: #69e4a749 !important;
+  }
+  .red-chip {
+    background-color: #e4696949 !important;
+  }
+  .yellow-chip {
+    background-color: #e2e46949 !important;
+  }
+  .black-chip {
+    background-color: #11251b49 !important;
+  }
+  
+  .color-green {
+    color: rgb(0, 138, 0) !important;
+  }
+  .green-chip-logo {
+    color: rgb(0, 138, 0) !important;
+  }
+  .red-chip-logo {
+    color: rgb(138, 5, 0) !important;
+  }
+  .yellow-chip-logo {
+    color: rgb(191, 182, 2) !important;
+  }
+  .black-chip-logo {
+    color: rgb(0, 36, 0) !important;
+  }
+  
+  .squared-image {
+    border: #11251b49 2px solid;
+  }
+  
+  .aParent div {
+    float: left;
+    clear: none;
+  }
+  
+  .right-icon {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    right: 0px;
+    padding-left: 10vw;
+  }
+  

@@ -1,0 +1,278 @@
+.svg_white {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(3000%)
+    contrast(3000%) !important;
+}
+
+.svg_grey {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%)
+    contrast(0%) !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bold-100 {
+  font-weight: 100 !important;
+}
+
+.bold-200 {
+  font-weight: 200 !important;
+}
+
+.bold-300 {
+  font-weight: 300 !important;
+}
+
+.bold-400 {
+  font-weight: 400 !important;
+}
+
+.bold-500 {
+  font-weight: 500 !important;
+}
+
+.bold-600 {
+  font-weight: 600 !important;
+}
+
+.bold-700 {
+  font-weight: 700 !important;
+}
+
+.bold-800 {
+  font-weight: 800 !important;
+}
+
+.bold-900 {
+  font-weight: 900 !important;
+}
+
+.bold-1000 {
+  font-weight: 1000 !important;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.color_primary {
+  color: #b23a48;
+}
+
+.color_black {
+  color: black !important;
+}
+
+.color_blue {
+  color: blue;
+}
+
+.color_orange {
+  color: #793141;
+}
+
+.color_purple {
+  color: #8500f2;
+}
+
+.color_red {
+  color: red;
+}
+
+.color_green {
+  color: green;
+}
+
+.color_grey {
+  color: rgb(204, 204, 204);
+}
+
+.color_yellow {
+  color: #00d9ff;
+}
+
+.is-invalid {
+  border-color: red;
+}
+
+.clear {
+  clear: both;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+input,
+textarea,
+select {
+  background: white;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.font-1 {
+  font-size: 1px;
+}
+
+.font-2 {
+  font-size: 2px;
+}
+
+.font-3 {
+  font-size: 3px;
+}
+
+.font-4 {
+  font-size: 4px;
+}
+
+.font-5 {
+  font-size: 5px;
+}
+
+.font-6 {
+  font-size: 6px;
+}
+
+.font-7 {
+  font-size: 7px;
+}
+
+.font-8 {
+  font-size: 8px;
+}
+
+.font-9 {
+  font-size: 9px;
+}
+
+.font-10 {
+  font-size: 10px;
+}
+
+.font-11 {
+  font-size: 11px;
+}
+
+.font-12 {
+  font-size: 12px;
+}
+
+.font-13 {
+  font-size: 13px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-15 {
+  font-size: 15px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-17 {
+  font-size: 17px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-19 {
+  font-size: 19px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-21 {
+  font-size: 21px;
+}
+
+.font-22 {
+  font-size: 22px;
+}
+
+.font-23 {
+  font-size: 23px;
+}
+
+.font-24 {
+  font-size: 24px;
+}
+
+.font-25 {
+  font-size: 25px;
+}
+
+.font-26 {
+  font-size: 27px;
+}
+
+.font-27 {
+  font-size: 27px;
+}
+
+.font-28 {
+  font-size: 28px;
+}
+
+.font-29 {
+  font-size: 29px;
+}
+
+.font-30 {
+  font-size: 30px;
+}
+
+.center {
+  text-align: center;
+}
+
+.right-pagination {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  right: 0px;
+  width: 300px;
+  padding: 10px;
+}
+
+.form-width-100 {
+  width: 100% !important;
+}
+
+.form-width-150 {
+  width: 150% !important;
+}
+
+.form-width-200 {
+  width: 200% !important;
+}
+
+::ng-deep .form-error {
+  border: 2px solid red !important;
+  border-radius: 7px;
+}
+
+.select-disabled {
+  color: rgb(177, 177, 177) !important;
+}

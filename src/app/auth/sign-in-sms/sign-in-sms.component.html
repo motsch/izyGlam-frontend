@@ -1,0 +1,41 @@
+<section class="auth-page">
+    <div class="animation-circle-inverse">
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+    <div class="animation-circle">
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+    <app-header [connected]="false" [page]="'connected'"></app-header>
+    <div class="auth-card">
+        <div class="text-left">
+            <!--<img src="assets/images/title-line.png" alt="ligne de titre" class="img-fluid line">-->
+            <p class="welcome-text">Quel est votre numéro de téléphone ou votre adresse courriel?</p>
+        </div>
+        <form class="auth-form">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="inputValue" name="inputValue"
+                    placeholder="Adresse email ou téléphone">
+            </div>
+            <button type="submit" class="btn submit" (click)="onSubmitLogin()">Continuer</button>
+            <div class="or-separator"><span>ou</span></div>
+            <button type="submit" class="btn google grey-btn" (click)="onMoreOptions()">Se connecter autrement</button>
+            <div class="or-separator"><span>ou</span></div>
+            <button type="button" class="btn google grey-btn"><img class="btn-icon" src="assets/images/google-icon.png">
+                Continuer avec
+                Google</button>
+            <button type="button" class="btn google grey-btn"><img class="btn-icon" src="assets/images/apple-icon.png">
+                Continuer avec
+                Apple</button>
+            <div class="or-separator"><span>ou</span></div>
+            <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> Connectez-vous avec le QR
+                code</button>
+        </form>
+        <p class="small">En continuant, vous acceptez de recevoir des appels, des messages WhatsApp ou des textos
+            (notamment par des méthodes automatiques) de la part d'Uber et de ses sociétés affiliées au numéro indiqué.
+        </p>
+    </div>
+</section>

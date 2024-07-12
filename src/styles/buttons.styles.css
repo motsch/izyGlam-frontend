@@ -1,0 +1,107 @@
+button,
+.button {
+  background: #793141;
+  font-size: 16px;
+  color: white;
+  padding: 10px 20px;
+  border: transparent;
+  border-radius: 4px;
+  text-overflow: ellipsis;
+}
+
+button:disabled {
+  background-color: #9B9B9B;
+}
+
+button.cancel,
+.button.cancel {
+  background: #ddd;
+  color: #555;
+  margin-left: 10px;
+}
+
+.button:hover:not(.cancel, .grey-button, .red-button, .transparent-button, .input-icon){
+  background-color: #c46075;
+}
+
+.table-buttons {
+  padding-right: 2% !important;
+}
+
+.table-buttons > .btn-outline-warning{
+  border-radius: 50px;
+  /* width: 37px; */
+  --bs-btn-border-color: none;
+  border-color: none;
+  color: #9B9B9B ;
+}
+
+.table-buttons > .btn-outline-warning:hover{
+  background-color: #E9ECEF;
+}
+
+.table-buttons > .btn-outline-warning:active{
+  background-color: #793141;
+  color: white;
+}
+
+.grey-button {
+  background-color: #414141;
+}
+
+.transparent-button {
+  background-color: transparent;
+  border: 1px solid #9B9B9B !important;
+  color: #9B9B9B;
+}
+
+.transparent-button:hover {
+  background-color: #9B9B9B;
+  color: #ffffff;
+}
+
+.transparent-orange {
+  background-color: transparent;
+  border: 1px solid #793141 !important;
+  color: #793141;
+}
+
+.transparent-orange:hover {
+  background-color: #793141;
+  color: #ffffff;
+}
+
+.red-button {
+    background-color: #C92A2A;
+}
+
+.black-button {
+    background-color: #000000;
+}
+.btn-custom {
+  height: 3rem;
+}
+
+.btn-custom:hover {
+  background-color: #68061b;
+}
+
+.btn-table {
+  border: 0 !important;
+  border-radius: 50px;
+  color: #9B9B9B ;
+}
+
+.btn-table:hover {
+  background-color: #E9ECEF !important;
+  color: #9B9B9B ;
+}
+
+.btn-table:focus {
+  background-color: #E9ECEF !important;
+  color: #9B9B9B;
+}
+
+.info-point {
+  color: #CED4DA;
+}

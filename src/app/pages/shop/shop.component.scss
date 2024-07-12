@@ -1,0 +1,144 @@
+.category-filter {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
+
+  .category-item {
+    display: flex;
+    flex-direction: column; /* Organise les enfants verticalement */
+    align-items: center; /* Centre les enfants verticalement dans chaque élément */
+    margin: 10px; /* Espacement autour de chaque élément */
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 5px;
+    }
+
+    span {
+      font-size: 12px;
+      color: #333;
+    }
+
+    &:hover {
+      color: #007bff;
+    }
+  }
+}
+.categories {
+  padding-right: 15px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Assure une répartition équilibrée */
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .category-list {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Pour Firefox */
+    -ms-overflow-style: none; /* Pour Internet Explorer 10+ */
+
+    .category-item {
+      background-color: #fff;
+      padding: 10px 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      text-align: center;
+      flex: 1;
+      margin: 0 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .category-list::-webkit-scrollbar {
+    display: none; /* Pour Chrome, Safari et Opera */
+  }
+}
+
+.card {
+  flex: 0 0 auto; /* Empêche les cartes de se compresser */
+  margin-right: 20px; /* Espace entre les cartes */
+}
+.card-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0;
+  }
+
+  .filter {
+    display: flex;
+    align-items: center;
+
+    label {
+      margin-right: 10px;
+    }
+
+    select {
+      padding: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  }
+}
+
+.fa {
+  pointer-events: none; /* Empêche les interactions directes avec l'icône */
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between; /* Alignement horizontal des éléments enfants */
+  align-items: center; /* Centrage vertical des éléments */
+  // margin-top: 10px; /* Espacement autour du contenu de la barre */
+}
+
+.scroll-buttons {
+  display: flex;
+}
+
+.scroll-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background-color: #007bff; /* Bleu Bootstrap par exemple */
+  color: white;
+  font-size: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  margin-left: 10px; /* Espacement entre les boutons */
+}
+
+.scroll-btn:hover {
+  background-color: #0056b3; /* Un bleu plus foncé pour l'effet hover */
+}
+.starLogo {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  margin-top: -4px;
+}
+.moneyLogo {
+  height: 11px;
+  width: auto;
+  margin-top: 20px;
+}
+.rogn-image {
+  width: 100%;
+  height: 265px;
+  object-fit: cover;
+  border-radius: 40px;
+}

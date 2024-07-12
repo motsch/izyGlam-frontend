@@ -1,0 +1,49 @@
+.card {
+  width: 300px; /* Width of the card */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  position: relative;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.card-header img {
+  width: 100%; /* Ensure the image covers the header */
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+.rating {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: white;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 50%;
+  font-size: 0.9em;
+}
+
+.card-body {
+  padding: 10px;
+  text-align: center;
+}
+
+.card-body h1 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+}
+
+.delivery-info {
+  color: #666;
+  font-size: 0.8em;
+  margin-top: 5px;
+}

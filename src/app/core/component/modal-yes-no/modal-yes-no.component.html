@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <div class="btn-close" style="visibility: hidden;"></div>
+  <h4 class="modal-title bold-1000" *ngIf="user && user.modal && user.modal.titre">{{user.modal.titre | translate }}: "<span *ngIf="user.modal.titleName">{{user.modal.titleName | translate }}</span>"</h4>
+  <!--in function dismiss return a string-->
+  <button (click)="activeModal.close(name)" type="button" class="btn-close" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+  <div style="white-space: pre-line" *ngIf="user && user.modal && user.modal.phrase">{{user.modal.phrase | translate }} <span *ngIf="user.modal.titlePhrase">{{user.modal.titlePhrase}}</span></div>
+  <div *ngIf="user.modal && user.modal.phrase2" class="margin-top-20" style="white-space: pre-line">{{user && user.modal && user.modal.phrase2 | translate }}</div>
+  <div class="margin-top-20" *ngIf="!buttonType">{{ 'COMPONENT.CONFIRMATION' | translate }}</div>
+</div>
+<div class="modal-footer">
+  <!--but, in function close we return the "name" variable-->
+  <button type="button" *ngIf="!buttonType || buttonType === 'delete'" class="font-16 transparent-button" (click)="activeModal.close('KO')">{{ 'COMPONENT.CANCEL' | translate }}</button>
+  <!--but, in function close we return the "name" variable-->
+  <button id="confirm-delete" type="button" *ngIf="!buttonType" (click)="activeModal.close('OK')" class="font-16" [class]="red ? 'red-button':''">{{ 'COMPONENT.OK' | translate }}</button>
+  <button type="button" *ngIf="buttonType && buttonType !== 'delete'" (click)="activeModal.close('OK')" class="font-16" [class]="red ? 'red-button':''">{{ 'COMPONENT.TERMINATE' | translate }}</button>
+  <button type="button" *ngIf="buttonType && buttonType === 'delete'" (click)="activeModal.close('OK')" class="font-16" [class]="red ? 'red-button':''">{{ 'COMPONENT.DELETE' | translate }}</button>
+</div>

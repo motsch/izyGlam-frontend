@@ -1,0 +1,92 @@
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #fff;
+}
+
+.auth-card {
+  width: 350px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.034);
+}
+
+.text-left {
+  text-align: left;
+}
+
+.welcome-text,
+.small {
+  margin: 10px 0;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  color: #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background-color: #1b1b1b;
+}
+
+.btn.google {
+  background-color: #e8e8e8; /* Google's blue */
+  color: #000;
+}
+
+.btn.google:hover {
+  background-color: #b0b0b0; /* Google's blue */
+  color: #000;
+}
+
+.or-separator {
+  text-align: center;
+  border-top: 1px solid #ccc;
+  line-height: 0.1em;
+  margin: 20px 0;
+}
+
+.or-separator span {
+  background: #fff;
+  padding: 0 10px;
+}
+
+.small {
+  font-size: 0.8em;
+  color: #666;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.qr {
+  background: none;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.btn.qr:hover {
+  background-color: #e8e8e8; /* Google's blue */
+  color: #000;
+}
+.btn-icon {
+  width: 15px;
+  height: 15px;
+  margin-top: -2px;
+  margin-right: 5px;
+}

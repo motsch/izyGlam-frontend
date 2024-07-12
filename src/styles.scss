@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import "src/styles/margin.styles.css";
+@import "src/styles/padding.styles.css";
+@import "src/styles/text.styles.css";
+@import "src/styles/z-index.styles.css";
+@import "src/styles/height.styles.css";
+@import "src/styles/sizing.styles.css";
+@import "src/styles/component-custom-switch.css";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.btn-pink {
+  background-color: #b23a48;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+.btn-pink:hover {
+  background-color: #a32b3a;
+  opacity: 0.8;
+}
+
+.auth-page {
+  height: auto !important;
+}

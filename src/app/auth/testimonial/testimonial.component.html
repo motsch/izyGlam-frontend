@@ -1,0 +1,35 @@
+<!--testimonail page -->
+<section class="testimonial" id="testimonial">
+  <div class="animation-circle-inverse">
+    <i></i>
+    <i></i>
+    <i></i>
+  </div>
+  <div class="container custom-container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="testimonil-box">
+          <!-- If images array is dynamically changing pass this array to [items] input -->
+          <owl-carousel-o class="testimonial-slider" [options]="testimonialCarousel">
+            <ng-container *ngFor="let testimonials of testimonial">
+              <ng-template carouselSlide>
+                <div class="item testi-profile">
+                  <div class="d-flex">
+                    <div class="animated-circle">
+                      <img [src]="testimonials.image" alt="1" class="img-fluid align-self-center" />
+                    </div>
+                    <div class="flex-grow-1">
+                      <h3 class="mt-0 sub-title">{{ testimonials.name }} <img src="assets/images/star5.png"></h3>
+                      <p>{{ testimonials.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end testimonial section -->

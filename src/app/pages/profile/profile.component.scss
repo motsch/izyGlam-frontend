@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar ul li.active {
+  background-color: #ddd;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.info {
+  margin-top: 20px;
+}
+
+.info p {
+  margin: 10px 0;
+}

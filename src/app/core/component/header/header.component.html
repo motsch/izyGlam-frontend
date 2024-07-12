@@ -1,0 +1,63 @@
+<!--Nav start-->
+<nav class="navbar navbar-expand-lg theme-nav fixed-top" [class.darkHeader]="darkHeader">
+  <div class="container custom-container" *ngIf="!sessionService.getCurrentUser()">
+    <a class="navbar-brand" [routerLink]="'/home'"><img src="assets/images/logo.png" alt="logo" /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><i class="fa fa-align-justify" aria-hidden="true"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainmenu">
+      <ul class="navbar-nav ms-auto" id="mymenu">
+        <li class="nav-item">
+          <!--<a class="nav-link" href="home#home" [class.active]="scroll! >= 0 && scroll! < 60">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="home#about" [class.active]="scroll! >= 60 && scroll! < 200">A propos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="home#feature" [class.active]="scroll! >= 200 && scroll! < 400">Fonctionalités</a>-->
+        </li>
+        <li class="nav-item">
+          <a>
+            <button type="button" [routerLink]="'/sign-in-sms'" class="btn btn-transparent color_black"
+              *ngIf="page !== 'connected'">Connexion</button></a>
+        </li>
+        <li class="nav-item">
+          <a>
+            <button type="button" [routerLink]="'/sign-in-sms'" class="btn btn-transparent color_primary"
+              *ngIf="page !== 'connected'">Inscription</button></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Connected Menu -->
+  <div class="container-fluid" *ngIf="sessionService.getCurrentUser()">
+    <div class="row align-items-center w-100">
+      <div class="col-auto">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fa fa-align-justify" aria-hidden="true"></i></span>
+        </button>
+        <a (click)="openDrawer()"><img class="menuBurger" src="assets/images/menuBurger.png" alt="logo" /></a>
+      </div>
+      <div class="col-auto">
+        <a [routerLink]="'/main'"><img src="assets/images/logo.png" alt="logo" class="ms-3 logo-connected" /></a>
+      </div>
+      <div class="col">
+        <button type="button" (click)="openAddressModal()" class="btn color_white ms-4 margin-top-5">
+          <img src="assets/images/location.png" class="location_icon_left">64 avenue de la République • Maintenant
+          <img src="assets/images/down-chevron.png" class="location_icon_right">
+        </button>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control search-bar" placeholder="Rechercher" aria-label="Rechercher"
+          aria-describedby="button-addon2">
+      </div>
+      <div class="col-auto">
+        <a (click)="openCart()"><img class="cart" src="assets/images/cart.png" alt="logo" /></a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--Nav end -->

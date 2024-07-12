@@ -1,0 +1,91 @@
+<div *ngIf="!sessionService.isLoggedIn()">
+  <router-outlet></router-outlet>
+</div>
+<mat-drawer-container class="example-container" *ngIf="sessionService.isLoggedIn()">
+  <!-- Left Drawer for Profile and Menu -->
+  <mat-drawer (closedStart)="closeDrawer()" mode="over" [opened]="drawerOpen" class="drawer-content">
+    <div class="drawer-inner">
+      <div class="profile-section">
+        <img src="assets/images/default.jpeg" class="profile-pic" alt="Profile Picture">
+        <div>
+          <p class="profile-name">Francis</p>
+          <a class="manage-account" (click)="goToProfil()">Gérer le compte</a>
+        </div>
+      </div>
+      <ul class="drawer-menu">
+        <li class="menu-hover fa fa-list">
+          <span class="padding-left-10">Commandes</span>
+        </li>
+        <li class="menu-hover fa fa-heart">
+          <span class="padding-left-10">Favoris</span>
+        </li>
+        <li class="menu-hover fa fa-question-circle">
+          <span class="padding-left-10">Aide</span>
+        </li>
+        <li class="menu-hover fa fa-tag">
+          <span class="padding-left-10">Promotions</span>
+        </li>
+        <li class="menu-hover fa fa-users">
+          <span class="padding-left-10">Invitez des amis</span>
+        </li>
+        <li><i class=""></i> </li>
+        <li><i class=""></i> </li>
+        <li><i class=""></i> </li>
+        <li><i class=""></i> </li>
+      </ul>
+      <div class="drawer-footer">
+        <ul class="drawer-menu secondary">
+          <li (click)="logout()" class="menu-hover">
+            <span class="padding-left-10">Déconnexion</span>
+          </li>
+          <li class="menu-hover">
+            <span class="padding-left-10">Créez un compte professionnel</span>
+          </li>
+          <li class="menu-hover">
+            <span class="padding-left-10">Ajoutez votre restaurant</span>
+          </li>
+          <li class="menu-hover">
+            <span class="padding-left-10">Devenez coursier-partenaire</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </mat-drawer>
+
+  <!-- Right Drawer for Cart -->
+  <mat-drawer position="end" mode="over" [(opened)]="cartOpen" class="drawer-content2">
+    <div class="cart-inner">
+      <!-- Cart content -->
+      <div class="cart-header">
+        <h3>STREET POINT MONTROUGE</h3>
+        <p>43 Avenue Aristide Briand</p>
+      </div>
+      <div class="cart-item">
+        <img src="assets/images/menu-10-wings.jpg" alt="Menu 10 Wings" class="cart-item-image">
+        <div class="cart-item-details">
+          <p>Menu 10 Wings</p>
+          <p>Side: Frites Classiques</p>
+          <p>Sauce: Mayonnaise</p>
+          <p>Boisson: Fanta orange</p>
+          <p>Un dessert?: Tarte au Daim (3,90 €)</p>
+        </div>
+        <p class="cart-item-price">14,80 €</p>
+      </div>
+      <div class="cart-message">
+        <input type="text" placeholder="Ajouter un message à la commande" />
+      </div>
+      <div class="cart-total">
+        <p>Sous-total</p>
+        <p>14,80 €</p>
+      </div>
+      <button mat-button (click)="checkout()" class="cart-button">Commander</button>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <span>
+      <app-header [connected]="sessionService.isLoggedIn()"></app-header>
+    </span>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

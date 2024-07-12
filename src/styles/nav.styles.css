@@ -1,0 +1,10 @@
+
+
+.mat-drawer-inner-container {
+    overflow: hidden !important;
+  }
+
+
+  :host,:root {
+    overflow-x: hidden;
+}

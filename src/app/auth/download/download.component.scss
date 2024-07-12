@@ -1,0 +1,49 @@
+.main-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px; /* Ajustement pour l'espacement */
+  margin-bottom: 150px !important; /* Ajout d'espacement en bas */
+}
+
+.container {
+  width: 100%;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000 !important;
+  margin-bottom: 40px;
+}
+
+.qr-card {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.qr-card img {
+  width: 150px; /* Taille ajustée pour le QR code */
+}
+
+.hero-image p,
+.hero-text {
+  font-size: 20px; /* Uniformisez les tailles de texte si nécessaire */
+  color: #333;
+  font-weight: bold;
+  margin: 4px 0;
+}
+
+.fa-arrow-right {
+  margin-left: 10px; /* Ajout d'espacement autour de l'icône */
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

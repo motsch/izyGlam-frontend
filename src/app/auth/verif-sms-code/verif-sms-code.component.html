@@ -1,0 +1,32 @@
+<section class="auth-page">
+    <div class="animation-circle-inverse">
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+    <div class="animation-circle">
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+    <app-header [connected]="false" [page]="'connected'"></app-header>
+    <div class="auth-card">
+        <div class="text-left">
+            <!--<img src="assets/images/title-line.png" alt="ligne de titre" class="img-fluid line">-->
+            <p class="welcome-text">Entrer le code à 6 chiffres reçu au : <br> xx xx xx 25 64.</p>
+            <p>Vous avez modifié votre numéro de téléphone portable?</p>
+        </div>
+        <form class="auth-form">
+            <div class="form-group">
+                <input [required]="true" class="form-control" name="login[connectedKey]" [(ngModel)]="connectKey"
+                    type="text" placeholder="------" maxlength="6">
+            </div>
+            <button type="submit" class="btn submit" (click)="onLogin()">Continuer</button>
+            <br>
+            <button type="submit" class="btn google grey-btn" (click)="onMoreOptions()">Se connecter autrement</button>
+        </form>
+        <p class="small">En continuant, vous acceptez de recevoir des appels, des messages WhatsApp ou des textos
+            (notamment par des méthodes automatiques) de la part d'Uber et de ses sociétés affiliées au numéro indiqué.
+        </p>
+    </div>
+</section>

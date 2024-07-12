@@ -1,0 +1,96 @@
+<!-- fin section FAQ -->
+<!--<app-contact-us></app-contact-us>-->
+<div class="container">
+    <div class="banner" style="margin-top: 80px">
+        <div class="category-filter">
+            <div *ngFor="let category of categoriesFilter" class="margin-right-5"
+                (click)="filterByCategory(category.filter)">
+                <span class="category-item" [class.selected]="selectedCategory === category.filter">
+                    <img class="icon" [src]="category.icon">
+                </span>
+                <span class="padding-left-10">{{ category.name | truncate : 10}}</span>
+            </div>
+            <!--<img *ngIf="filterClicked" src="assets/images/cancel.png" class="cancelFilter" (click)="cancelFilter()">-->
+        </div>
+    </div>
+    <span *ngIf="!filterClicked">
+        <div class="top-bar">
+            <h3>À découvrir sur izyGlam</h3>
+            <div class="scroll-buttons">
+                <button class="scroll-btn left-btn" (click)="scrollLeft('category')">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="scroll-btn right-btn" (click)="scrollRight('category')">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="category-list" #scrollContainerCategory>
+                <app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"
+                    (click)="toShopPage()"></app-shop-card>
+            </div>
+        </div>
+
+        <div class="top-bar">
+            <h3>Soins aux alentours</h3>
+            <div class="scroll-buttons">
+                <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="scroll-btn right-btn" (click)="scrollRight('around')">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="category-list" #scrollContainerAround>
+                <app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>
+            </div>
+        </div>
+
+        <div class="top-bar">
+            <h3>Promotions</h3>
+            <div class="scroll-buttons">
+                <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="scroll-btn right-btn" (click)="scrollRight('promo')">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="category-list" #scrollContainerPromo>
+                <app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>
+            </div>
+        </div>
+        <div class="top-bar">
+            <h3>Top 10 de la semaine</h3>
+            <div class="scroll-buttons">
+                <button class="scroll-btn left-btn" (click)="scrollLeft('top10')">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="scroll-btn right-btn" (click)="scrollRight('top10')">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="category-list" #scrollContainerTop10>
+                <app-shop-card *ngFor="let item of shops" [item]="item" class="card"></app-shop-card>
+            </div>
+        </div>
+    </span>
+    <span *ngIf="filterClicked">
+        <div class="padding-top-10">
+            <h3>Résultats de la recherche</h3>
+            <div class="row test66"> <!-- Utilisation de 'row' pour démarrer une grille -->
+                <app-shop-card *ngFor="let item of filteredItems" [item]="item"
+                    class="card-filter col-12 col-sm-6 col-md-4 col-lg-3 margin-bottom-20"></app-shop-card>
+                <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
+            </div>
+        </div>
+    </span>
+</div>
+<app-footer></app-footer>

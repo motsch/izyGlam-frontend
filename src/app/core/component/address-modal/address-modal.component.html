@@ -1,0 +1,33 @@
+<h2 mat-dialog-title class="modal-title">Adresses
+    <button mat-icon-button mat-dialog-close class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
+</h2>
+<mat-dialog-content class="modal-content">
+    <div class="search-container">
+        <div class="custom-form-field">
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Rechercher une adresse" class="custom-input" #searchInput>
+        </div>
+    </div>
+    <h3 class="section-title">Adresses récentes</h3>
+    <div class="address-list">
+        <div class="address-item" *ngFor="let address of recentAddresses">
+            <mat-icon class="location-icon">location_on</mat-icon>
+            <div class="address-info">
+                <p class="address">{{ address.street }}</p>
+                <p class="city">{{ address.city }}</p>
+            </div>
+            <mat-icon class="edit-icon">edit</mat-icon>
+        </div>
+    </div>
+    <h3 class="section-title">Préférence horaire</h3>
+    <div class="preference-time">
+        <mat-icon>access_time</mat-icon>
+        <p>Liver maintenant</p>
+        <button mat-button class="schedule-button">Planifier</button>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions class="modal-actions">
+    <button mat-button mat-dialog-close>Fermer</button>
+</mat-dialog-actions>

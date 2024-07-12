@@ -1,0 +1,57 @@
+.custom-switch .mat-slide-toggle-bar {
+  background-color: #e0e0e0; /* couleur de fond lorsque le switch est désactivé */
+}
+
+.custom-switch .mat-slide-toggle-thumb {
+  background-color: white; /* couleur du bouton du switch */
+}
+
+.custom-switch.mat-checked .mat-slide-toggle-bar {
+  background-color: blue; /* couleur de fond lorsque le switch est activé */
+}
+
+::ng-deep .mdc-switch .mdc-switch__track {
+  height: 27px !important;
+  width: 300px !important;
+  border-radius: 36px !important;
+  background-color: #efefef !important;
+}
+
+.location_icon_left {
+  height: 15px;
+  width: auto;
+  margin-right: 5px;
+}
+
+.location_icon_right {
+  height: auto;
+  width: 7px;
+  margin-left: 8px;
+}
+
+.search-bar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.menuBurger {
+  width: 20px;
+  height: 15px;
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.cart {
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+.logo-connected {
+  width: 90px;
+  height: auto;
+  margin-top: 10px;
+  margin-left: -5px !important;
+}

@@ -1,0 +1,9 @@
+<div class="card">
+    <div class="card-header" [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}">
+        <span class="rating">{{item.note}}</span>
+    </div>
+    <div class="card-body">
+        <h1>{{item.name}}</h1>
+        <p class="delivery-info">Tarif moyen : {{item.averagePrice}} · {{item.minimumDelay}} {{item.delayScale}}</p>
+    </div>
+</div>
