@@ -5,6 +5,7 @@ import { SessionService } from './core/services/session.service';
 import { UserService } from './core/services/user.service';
 import { Router } from '@angular/router';
 import { CartService } from './core/services/cart.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-root',
@@ -14,6 +15,7 @@ import { CartService } from './core/services/cart.service';
 export class AppComponent implements OnInit {
     drawerOpen = false;
     cartOpen = false;
+    imgStorageUrl: string = environment.imgStorageUrl;
     constructor(
         public translate: TranslateService,
         public sessionService: SessionService,
@@ -64,6 +66,7 @@ export class AppComponent implements OnInit {
     logout() {
         this.drawerService.closeDrawer();
         this.sessionService.destroy();
+        localStorage.removeItem('unknownUser');
         this.router.navigate(['home']);
     }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { SessionService } from 'src/app/core/services/session.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-verif-sms-code',
@@ -9,6 +10,7 @@ import { SessionService } from 'src/app/core/services/session.service';
     styleUrls: ['./verif-sms-code.component.scss'],
 })
 export class VerifSmsCodeComponent implements OnInit {
+    imgStorageUrl: string = environment.imgStorageUrl;
     connectKey: string | null = null;
     sid: string | null = null;
     identifiant: string | null = null;

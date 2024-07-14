@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-shop-card',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ShopCardComponent implements OnInit {
     @Input() item: any;
-    imageUrl: string = '/assets/images/ubertest2.webp';
+    imgStorageUrl: string = environment.imgStorageUrl;
+    imageUrl: string = '';
 
     ngOnInit() {
         this.imageUrl = this.item.image;

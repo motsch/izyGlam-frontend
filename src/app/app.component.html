@@ -6,7 +6,7 @@
   <mat-drawer (closedStart)="closeDrawer()" mode="over" [opened]="drawerOpen" class="drawer-content">
     <div class="drawer-inner">
       <div class="profile-section">
-        <img src="assets/images/default.jpeg" class="profile-pic" alt="Profile Picture">
+        <img [src]="imgStorageUrl+'default.jpeg'" class="profile-pic" alt="Profile Picture">
         <div>
           <p class="profile-name">Francis</p>
           <a class="manage-account" (click)="goToProfil()">Gérer le compte</a>
@@ -61,7 +61,7 @@
         <p>43 Avenue Aristide Briand</p>
       </div>
       <div class="cart-item">
-        <img src="assets/images/menu-10-wings.jpg" alt="Menu 10 Wings" class="cart-item-image">
+        <img [src]="imgStorageUrl+'menu-10-wings.jpg'" alt="Menu 10 Wings" class="cart-item-image">
         <div class="cart-item-details">
           <p>Menu 10 Wings</p>
           <p>Side: Frites Classiques</p>

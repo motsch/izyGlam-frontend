@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-intro',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./intro.component.scss'],
 })
 export class IntroComponent implements OnInit {
+    imgStorageUrl: string = environment.imgStorageUrl;
     active = 'search';
     searchQuery: string = '';
     propositions: string[] = [

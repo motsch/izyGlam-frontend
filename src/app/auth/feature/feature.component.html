@@ -2,16 +2,12 @@
    <div class="container custom-container">
       <div class="row">
          <div class="col-md-6 hero-image">
-            <img src="assets/images/uber-test4.png" alt="Services de beauté pour entreprises">
+            <img [src]="imgStorageUrl+'uber-test4.png'" alt="Services de beauté pour entreprises">
          </div>
          <div class="col-md-6 content">
-            <h1>Un service beauté, repensé pour les entreprises</h1>
-            <p>Glam for Business est une plateforme dédiée aux entreprises de toutes tailles, conçue pour gérer les
-               besoins esthétiques de vos clients et de vos employés. Offrez des soins de beauté personnalisés
-               directement sur le lieu
-               de travail, lors d'événements d'entreprise ou pour des occasions spéciales. Nos professionnels qualifiés
-               se déplacent pour fournir des services adaptés à vos besoins.</p>
-            <button type="submit" class="btn submit">En savoir plus</button>
+            <h1>{{'HOMEPAGE.PART3TITLE' | translate}}</h1>
+            <p>{{'HOMEPAGE.PART3TEXT' | translate}}</p>
+            <button type="submit" class="btn submit">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
          </div>
       </div>
    </div>

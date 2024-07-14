@@ -1,54 +1,46 @@
 <footer class="footer">
 
   <div class="footer-top-right">
-    <a href="#" class="footer-link">Fonctionnement des applications et des sites izyGlam</a>
+    <a href="#" class="footer-link">{{ "FOOTER.HOWITWORKS" | translate }}</a>
   </div>
   <div class="footer-content">
+
+    <div class="footer-section">
+    </div>
     <div class="footer-section">
       <h4>izyGlam</h4>
       <ul>
-        <li><a href="#">Accédez au centre d'aide</a></li>
+        <li><a href="#">{{ "FOOTER.HELPCENTER" | translate }}</a></li>
       </ul>
     </div>
     <div class="footer-section">
-      <h4>Entreprise</h4>
+      <h4>{{ "FOOTER.BUSINESS" | translate }}</h4>
       <ul>
-        <li><a href="#">À propos</a></li>
-        <li><a href="#">Nos services</a></li>
-        <li><a href="#">Espace presse</a></li>
-        <li><a href="#">Investisseurs</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Offres d'emploi</a></li>
-        <li><a href="#">AI</a></li>
-        <li><a href="#">Cartes-cadeaux</a></li>
+        <li><a href="#">{{ "FOOTER.ABOUT" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.OURSERVICES" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.PRESSAREA" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.INVESTORS" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.CAREERS" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.AI" | translate }}</a></li>
       </ul>
     </div>
     <div class="footer-section">
-      <h4>Produits</h4>
+      <h4>{{ "FOOTER.PRODUCTS" | translate }}</h4>
       <ul>
-        <li><a href="#">Déplacez-vous avec Uber</a></li>
-        <li><a href="#">Conduire</a></li>
-        <li><a href="#">Livrez</a></li>
-        <li><a href="#">Commandez un repas</a></li>
-        <li><a href="#">Uber for Business</a></li>
-        <li><a href="#">Uber Freight</a></li>
+        <li><a href="#">{{ "FOOTER.GLAM" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.RESERVED" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.GIFTCARDS" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.WORKWITHUS" | translate }}</a></li>
+        <li><a href="#">{{ "FOOTER.GLAMFORBUSINESS" | translate }}</a></li>
       </ul>
     </div>
     <div class="footer-section">
-      <h4>Citoyens du monde</h4>
-      <ul>
-        <li><a href="#">Sécurité</a></li>
-        <li><a href="#">Diversité et intégration</a></li>
-        <li><a href="#">Développement durable</a></li>
-      </ul>
     </div>
+
     <div class="footer-section">
-      <h4>Déplacements</h4>
-      <ul>
-        <li><a href="#">Réservez</a></li>
-        <li><a href="#">Aéroports</a></li>
-        <li><a href="#">Villes</a></li>
-      </ul>
+    </div>
+
+    <div class="footer-section">
     </div>
   </div>
   <div class="footer-bottom">
@@ -63,8 +55,12 @@
       </div>
     </div>
     <p>© {{today | date:'y'}} izyTechnologies</p>
-    <p><a href="#" class="pink">Confidentialité</a> · <a href="#" class="pink">Accessibilité</a> · <a href="#"
-        class="pink">Conditions</a></p>
-    <p>Langue : Français (France) · Localisation : Paris</p>
+    <p><a href="#" class="pink">{{ "FOOTER.CONFIDENTIAL" | translate }}</a> · <a href="#" class="pink">{{
+        "FOOTER.ACCESS" | translate }}</a> · <a href="#" class="pink">{{ "FOOTER.CONDITIONS" | translate }}</a></p>
+    <p>{{ "FOOTER.LANGUAGE" | translate }} : {{visitorLocationData.language}} ({{visitorLocationData.country_name}}) ·
+      {{ "FOOTER.LOCALISATION"
+      |
+      translate }} :
+      {{visitorLocationData.city}}</p>
   </div>
 </footer>

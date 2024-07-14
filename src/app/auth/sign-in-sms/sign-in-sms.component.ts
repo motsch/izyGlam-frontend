@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { ToolsService } from 'src/app/core/services/tools.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-sign-in-sms',
@@ -12,6 +13,7 @@ import { ToolsService } from 'src/app/core/services/tools.service';
     styleUrls: ['./sign-in-sms.component.scss'],
 })
 export class SignInSmsComponent {
+    imgStorageUrl: string = environment.imgStorageUrl;
     //  user à logger;
     user: any = {};
     // Erreur lors du login

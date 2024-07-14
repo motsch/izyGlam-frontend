@@ -11,8 +11,8 @@
             <div class="d-flex-1">
                <div class="slide-text">
                   <div>
-                     <h1>Le glamour,
-                        <span class="main-title"> livré chez vous !</span>
+                     <h1>{{ 'HOMEPAGE.TITLERED' | translate }}
+                        <span class="main-title"> {{ 'HOMEPAGE.TITLEWHITE' | translate }}</span>
                      </h1>
                      <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
                         <div class="search-container">
@@ -45,7 +45,7 @@
          <div class="col-md-6">
             <div class="home-right">
                <div class="mobile-slid">
-                  <img src="assets/images/uber-test5.webp" alt="top1" class="img-fluid">
+                  <img [src]="imgStorageUrl+'uber-test5.webp'" alt="top1" class="img-fluid">
                </div>
                <!--
                <div class="profile-msg">

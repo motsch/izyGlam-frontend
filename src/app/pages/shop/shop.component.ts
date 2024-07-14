@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-shop',
@@ -7,6 +8,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent {
+    imgStorageUrl: string = environment.imgStorageUrl;
     @ViewChild('scrollContainerCategory')
     private scrollContainerCategory: ElementRef | undefined;
     @ViewChild('scrollContainerAround')

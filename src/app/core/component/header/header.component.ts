@@ -14,6 +14,7 @@ import { DrawerService } from '../../services/drawer.service';
 import { WINDOW } from '../../services/windows.service';
 import { SessionService } from '../../services/session.service';
 import { CartService } from '../../services/cart.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-header',
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
     public scroll: number | undefined;
     public sections = 8;
     isDelivery: boolean = false;
+    imgStorageUrl: string = environment.imgStorageUrl;
     // Inject Document object
     categories = [
         {

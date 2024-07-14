@@ -1,7 +1,7 @@
 <!--Nav start-->
 <nav class="navbar navbar-expand-lg theme-nav fixed-top" [class.darkHeader]="darkHeader">
   <div class="container custom-container" *ngIf="!sessionService.getCurrentUser()">
-    <a class="navbar-brand" [routerLink]="'/home'"><img src="assets/images/logo.png" alt="logo" /></a>
+    <a class="navbar-brand" [routerLink]="'/home'"><img [src]="imgStorageUrl+'logo.png'" alt="logo" /></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainmenu"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"><i class="fa fa-align-justify" aria-hidden="true"></i></span>
@@ -39,15 +39,15 @@
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"><i class="fa fa-align-justify" aria-hidden="true"></i></span>
         </button>
-        <a (click)="openDrawer()"><img class="menuBurger" src="assets/images/menuBurger.png" alt="logo" /></a>
+        <a (click)="openDrawer()"><img class="menuBurger" [src]="imgStorageUrl+'menuBurger.png'" alt="logo" /></a>
       </div>
       <div class="col-auto">
-        <a [routerLink]="'/main'"><img src="assets/images/logo.png" alt="logo" class="ms-3 logo-connected" /></a>
+        <a [routerLink]="'/main'"><img [src]="imgStorageUrl+'logo.png'" alt="logo" class="ms-3 logo-connected" /></a>
       </div>
       <div class="col">
         <button type="button" (click)="openAddressModal()" class="btn color_white ms-4 margin-top-5">
-          <img src="assets/images/location.png" class="location_icon_left">64 avenue de la République • Maintenant
-          <img src="assets/images/down-chevron.png" class="location_icon_right">
+          <img [src]="imgStorageUrl+'location.png'" class="location_icon_left">64 avenue de la République • Maintenant
+          <img [src]="imgStorageUrl+'down-chevron.png'" class="location_icon_right">
         </button>
       </div>
       <div class="col">
@@ -55,7 +55,7 @@
           aria-describedby="button-addon2">
       </div>
       <div class="col-auto">
-        <a (click)="openCart()"><img class="cart" src="assets/images/cart.png" alt="logo" /></a>
+        <a (click)="openCart()"><img class="cart" [src]="imgStorageUrl+'cart.png'" alt="logo" /></a>
       </div>
     </div>
   </div>

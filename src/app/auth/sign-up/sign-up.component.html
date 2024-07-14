@@ -12,7 +12,6 @@
    <app-header [connected]="false" [page]="'connected'"></app-header>
    <div class="auth-card">
       <div class="text-left">
-         <!--<img src="assets/images/title-line.png" alt="ligne de titre" class="img-fluid line">-->
          <p class="welcome-text">Entrer vos informations personnelles.</p>
       </div>
       <form class="auth-form">
@@ -43,10 +42,11 @@
          </div>
          <button type="submit" class="btn submit" (click)="validAjouterModifier()">Continuer</button>
          <div class="or-separator"><span>ou</span></div>
-         <button type="button" class="btn google grey-btn"><img class="btn-icon" src="assets/images/google-icon.png">
+         <button type="button" class="btn google grey-btn"><img class="btn-icon"
+               [src]="imgStorageUrl+'google-icon.png'">
             Continuer avec
             Google</button>
-         <button type="button" class="btn google grey-btn"><img class="btn-icon" src="assets/images/apple-icon.png">
+         <button type="button" class="btn google grey-btn"><img class="btn-icon" [src]="imgStorageUrl+'apple-icon.png'">
             Continuer avec
             Apple</button>
          <div class="or-separator"><span>ou</span></div>

@@ -9,7 +9,11 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { GuestGuard } from '../core/services/guest-guard.service';
 
 const routes: Routes = [
-    { path: 'main', component: MainComponent, canActivate: [AuthGuard] },
+    {
+        path: 'main',
+        component: MainComponent,
+        canActivate: [AuthGuard, GuestGuard],
+    },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
     { path: 'terms', component: TermsComponent, canActivate: [AuthGuard] },

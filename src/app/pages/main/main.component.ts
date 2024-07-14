@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DrawerService } from 'src/app/core/services/drawer.service';
 import { ShopService } from 'src/app/core/services/shop.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-main',
@@ -9,6 +10,7 @@ import { ShopService } from 'src/app/core/services/shop.service';
     styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+    imgStorageUrl: string = environment.imgStorageUrl;
     filteredItems: any[] = [];
     selectedCategory: string | undefined;
     filterClicked = false;

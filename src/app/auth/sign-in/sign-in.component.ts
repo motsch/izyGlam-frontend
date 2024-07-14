@@ -4,6 +4,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { SessionService } from 'src/app/core/services/session.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-sign-in',
@@ -11,6 +12,7 @@ import { SessionService } from 'src/app/core/services/session.service';
     styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
+    imgStorageUrl: string = environment.imgStorageUrl;
     //  user à logger;
     user: any = {};
     // Erreur lors du login

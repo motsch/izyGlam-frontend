@@ -4,7 +4,7 @@
         <div id="carouselExampleSlidesOnly" class="margin-top-n40" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100 rogn-image" src="assets/images/banner.jpg" alt="First slide">
+                    <img class="d-block w-100 rogn-image" [src]="imgStorageUrl+'banner.jpg'" alt="First slide">
                 </div>
             </div>
         </div>
@@ -18,13 +18,13 @@
                     </div>
                     <div>
                         <span>
-                            3 <img src="assets/images/star.png" alt="starLogo" class="starLogo">
+                            3 <img [src]="imgStorageUrl+'star.png'" alt="starLogo" class="starLogo">
                         </span>
                         <span>
                             (2,000+) • Frais de livraison: 0,00€ • Uber One • 0km • Informations
                         </span>
                         <div>
-                            <img src="assets/images/money.png" alt="starLogo" class="moneyLogo">
+                            <img [src]="imgStorageUrl+'money.png'" alt="starLogo" class="moneyLogo">
                         </div>
                         <div>
                             Paiement par Swile, Pluxee, UpDéjeuner, Ticket Restaurant®, et Bimpli (ex Apetiz) accepté

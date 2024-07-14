@@ -2,7 +2,7 @@
 import { Observable } from 'rxjs';
 import { MqttCallback, MqttCallbackFunc } from '../interfaces/mqttCallback.interface';
 
-import { environment } from 'src/environnements/environment';
+import { environment } from 'src/environments/environment';
 import { Client, connect as MqttConnect, IClientOptions } from 'mqtt/dist/mqtt';
 import { v4 as uuid } from 'uuid';
 
