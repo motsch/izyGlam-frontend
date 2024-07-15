@@ -1,0 +1,50 @@
+<!--Page start-->
+<section class="auth-page">
+    <div class="animation-circle-inverse">
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+    <div class="animation-circle">
+        <i></i>
+        <i></i>
+        <i></i>
+    </div>
+
+    <div class="container cooming-soon">
+        <div class="row mb-50">
+            <div class="col-md-6 left">
+                <div class="clock-box">
+                    <div>
+                        <div class="mb-4">
+                            <h2>{{'COMING_SOON.TITLE'|translate}}</h2>
+                        </div>
+                        <div id="clockdiv">
+                            <div>
+                                <span class="days">{{ timeLeft.days }}</span>
+                                <div class="smalltext">{{'COMING_SOON.DAYS'|translate}}</div>
+                            </div>
+                            <div>
+                                <span class="hours">{{ timeLeft.hours }}</span>
+                                <div class="smalltext">{{'COMING_SOON.HOURS'|translate}}</div>
+                            </div>
+                            <div>
+                                <span class="minutes">{{ timeLeft.minutes }}</span>
+                                <div class="smalltext">{{'COMING_SOON.MINUTES'|translate}}</div>
+                            </div>
+                            <div>
+                                <span class="seconds">{{ timeLeft.seconds }}</span>
+                                <div class="smalltext">{{'COMING_SOON.SECONDS'|translate}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 hero-image">
+                <img [src]="imgStorageUrl+'coming-soon.png'" alt="coming-soon illustration">
+            </div>
+        </div>
+    </div>
+</section>
+<!--Page Ends-->

@@ -35,5 +35,13 @@
     "CONDITIONS": "Villkor",
     "LANGUAGE": "Språk",
     "LOCALISATION": "Lokalisering"
+  },
+  "COMING_SOON": {
+    "TITLE": "Kommer snart!",
+    "DAYS": "Dagar",
+    "HOURS": "Timmar",
+    "MINUTES": "Minuter",
+    "SECONDS": "Sekunder",
+    "TEXT": "Vi arbetar hårt för att erbjuda dig en unik skönhetsupplevelse hemma. Håll dig uppkopplad för att få information om vår lansering."
   }
 }

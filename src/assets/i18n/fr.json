@@ -35,5 +35,13 @@
     "CONDITIONS": "Conditions",
     "LANGUAGE": "Langue",
     "LOCALISATION": "Localisation"
+  },
+  "COMING_SOON": {
+    "TITLE": "Nous arrivons bientôt !",
+    "DAYS": "Jours",
+    "HOURS": "Heures",
+    "MINUTES": "Minutes",
+    "SECONDS": "Secondes",
+    "TEXT": "Nous travaillons dur pour vous offrir une expérience de beauté à domicile unique. Restez connecté pour être informé de notre lancement."
   }
 }

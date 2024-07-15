@@ -35,5 +35,13 @@
     "CONDITIONS": "Condiciones",
     "LANGUAGE": "Idioma",
     "LOCALISATION": "Localización"
+  },
+  "COMING_SOON": {
+    "TITLE": "¡Próximamente!",
+    "DAYS": "Días",
+    "HOURS": "Horas",
+    "MINUTES": "Minutos",
+    "SECONDS": "Segundos",
+    "TEXT": "Estamos trabajando duro para ofrecerte una experiencia de belleza única en casa. Mantente conectado para estar informado de nuestro lanzamiento."
   }
 }

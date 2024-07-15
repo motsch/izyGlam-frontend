@@ -7,6 +7,7 @@ import { ShopComponent } from './shop/shop.component';
 import { TermsComponent } from './terms/terms.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { GuestGuard } from '../core/services/guest-guard.service';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 const routes: Routes = [
     {
@@ -17,6 +18,11 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
     { path: 'terms', component: TermsComponent, canActivate: [AuthGuard] },
+    {
+        path: 'coming-soon/:country',
+        component: ComingSoonComponent,
+        canActivate: [GuestGuard],
+    },
     {
         path: 'thank-you',
         component: ThankYouComponent,

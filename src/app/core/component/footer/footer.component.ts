@@ -7,13 +7,13 @@ import { GeoLocationService } from '../../services/geolocation.service';
     styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
-    country: string = '';
     visitorLocationData: any = {};
     today: number = Date.now();
 
     constructor(private geoLocationService: GeoLocationService) {}
 
     ngOnInit() {
+        this.geoLocationService.checkAndRedirect();
         this.geoLocationService.getLocation().subscribe(
             (data) => {
                 console.log(data);
@@ -64,9 +64,7 @@ export class FooterComponent implements OnInit {
                     this.visitorLocationData.language = 'Français';
                     localStorage.setItem('langue', 'fr');
                 }
-                // localStorage.setItem('langue', 'de');
                 this.visitorLocationData = data;
-                this.country = data.country;
             },
             (error) => {
                 console.error(

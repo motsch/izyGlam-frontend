@@ -35,5 +35,13 @@
     "CONDITIONS": "Ehdot",
     "LANGUAGE": "Kieli",
     "LOCALISATION": "Paikannus"
+  },
+  "COMING_SOON": {
+    "TITLE": "Tulossa pian!",
+    "DAYS": "Päivää",
+    "HOURS": "Tuntia",
+    "MINUTES": "Minuuttia",
+    "SECONDS": "Sekuntia",
+    "TEXT": "Työskentelemme kovasti tarjotaksemme sinulle ainutlaatuisen kauneuskokemuksen kotona. Pysy yhteydessä saadaksesi tietoa lanseerauksestamme."
   }
 }

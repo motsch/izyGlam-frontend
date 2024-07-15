@@ -36,6 +36,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ShopComponent } from './shop/shop.component';
 import { TermsComponent } from './terms/terms.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -82,6 +83,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
         ShopComponent,
         TermsComponent,
         ThankYouComponent,
+        ComingSoonComponent,
     ],
     exports: [],
 })

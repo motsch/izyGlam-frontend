@@ -35,5 +35,13 @@
     "CONDITIONS": "Voorwaarden",
     "LANGUAGE": "Taal",
     "LOCALISATION": "Lokalisatie"
+  },
+  "COMING_SOON": {
+    "TITLE": "Binnenkort beschikbaar!",
+    "DAYS": "Dagen",
+    "HOURS": "Uren",
+    "MINUTES": "Minuten",
+    "SECONDS": "Seconden",
+    "TEXT": "We werken hard om je een unieke thuisbeauty-ervaring te bieden. Blijf verbonden om op de hoogte te zijn van onze lancering."
   }
 }
