@@ -16,10 +16,13 @@
             <div class="col-md-6 left">
                 <div class="clock-box">
                     <div>
-                        <div class="mb-4">
+                        <div class="mb-4" *ngIf="countryAccepted">
                             <h2>{{'COMING_SOON.TITLE'|translate}}</h2>
                         </div>
-                        <div id="clockdiv">
+                        <div class="mb-4" *ngIf="!countryAccepted">
+                            <h2>{{'COMING_SOON.TITLE-NOT-COMING'|translate}}</h2>
+                        </div>
+                        <div id="clockdiv" *ngIf="countryAccepted">
                             <div>
                                 <span class="days">{{ timeLeft.days }}</span>
                                 <div class="smalltext">{{'COMING_SOON.DAYS'|translate}}</div>
@@ -37,11 +40,15 @@
                                 <div class="smalltext">{{'COMING_SOON.SECONDS'|translate}}</div>
                             </div>
                         </div>
-
+                        <div id="clockdiv" *ngIf="!countryAccepted">
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 hero-image">
+            <div class="col-md-6 hero-image" *ngIf="countryAccepted">
+                <img [src]="imgStorageUrl+'coming-soon.png'" alt="coming-soon illustration">
+            </div>
+            <div class="col-md-6 hero-image" *ngIf="!countryAccepted">
                 <img [src]="imgStorageUrl+'coming-soon.png'" alt="coming-soon illustration">
             </div>
         </div>

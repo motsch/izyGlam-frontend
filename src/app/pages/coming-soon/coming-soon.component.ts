@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { interval, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { map, startWith } from 'rxjs/operators';
     styleUrls: ['./coming-soon.component.scss'],
 })
 export class ComingSoonComponent implements OnInit, OnDestroy {
+    countryAccepted: boolean = true;
     imgStorageUrl: string = environment.imgStorageUrl;
     private countdownSubscription!: Subscription;
     timeLeft: any = { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -19,18 +20,21 @@ export class ComingSoonComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private title: Title,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private router: Router
     ) {}
 
     ngOnInit() {
         const country = this.activatedRoute.snapshot.params['country'];
-
-        if (!environment.comingSoonCountries.includes(country)) {
-            this.targetDate = new Date('2026-01-01');
+        if (environment.allowedCountries.includes(country)) {
+            this.router.navigate(['/home']);
+        } else if (environment.comingSoonCountries.includes(country)) {
+            this.targetDate = new Date(environment.comingSoonCountriesDate);
         } else if (environment.comingSoonCountries2.includes(country)) {
-            this.targetDate = new Date('2027-02-01');
+            this.targetDate = new Date(environment.comingSoonCountries2Date);
         } else {
             console.log('Pays non pris en charge: ', country);
+            this.countryAccepted = false;
         }
         console.log('Pays: ', country);
         this.title.setTitle(this.route.snapshot.data['title']);

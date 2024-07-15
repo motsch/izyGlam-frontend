@@ -38,6 +38,7 @@
   },
   "COMING_SOON": {
     "TITLE": "Nous arrivons bientôt !",
+    "TITLE-NOT-COMING": "Nous n'avons pas encore prévu de venir !",
     "DAYS": "Jours",
     "HOURS": "Heures",
     "MINUTES": "Minutes",
