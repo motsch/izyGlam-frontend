@@ -1,0 +1,39 @@
+{
+  "HOMEPAGE": {
+    "TITLERED": "Glamouria,",
+    "TITLEWHITE": "toimitettuna suoraan kotiovellesi!",
+    "KNOWMORE": "Lue lisää",
+    "PART1TITLE": "Nauti parhaista esteettisistä palveluista kotona",
+    "PART1TEXT": "Pätevät ammattilaisemme tulevat kotiisi tarjoamaan laadukasta kauneudenhoitoa, joka on räätälöity tarpeidesi ja toiveidesi mukaan. Koe ainutlaatuinen hyvinvointielämys, olipa kyseessä lounastaukosi, työpäivän jälkeen, illalla tai iltapäivä ystävien kanssa.",
+    "PART2TITLE": "Tee töitä milloin haluat, ansaitse räätälöityä tuloa",
+    "PART2TEXT": "Ansaitse tuloa omien aikataulujesi mukaan hyväksymällä pyyntöjä alustalla, omassa tahdissasi. Voit käyttää omaa varustettasi tai valita vuokrata ammattimaisia välineitä izyGlamin kautta.",
+    "PART3TITLE": "Kauneuspalvelu, uudelleen suunniteltu yrityksille",
+    "PART3TEXT": "Glam for Business on alusta, joka on suunnattu kaikenkokoisille yrityksille ja on suunniteltu hallitsemaan asiakkaidesi ja työntekijöidesi esteettisiä tarpeita. Tarjoa personoitua kauneudenhoitoa suoraan työpaikalla, yritystapahtumissa tai erityistilaisuuksissa. Pätevät ammattilaisemme matkustavat tarjoamaan palveluita, jotka on räätälöity tarpeidesi mukaan.",
+    "APPTITLE": "Helpompaa sovellusten avulla",
+    "DOWNLOADAPP1": "Lataa izyGlam-sovellus",
+    "DOWNLOADAPP2": "Lataa sovellus kauneudenhoitoalan ammattilaisille",
+    "SCANTODOWNLOAD": "Skannaa ladataksesi"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Miten izyGlam-sovellukset ja -sivustot toimivat",
+    "HELPCENTER": "Siirry ohjekeskukseen",
+    "BUSINESS": "Liiketoiminta",
+    "ABOUT": "Tietoa meistä",
+    "OURSERVICES": "Palvelumme",
+    "PRESSAREA": "Lehdistöalue",
+    "INVESTORS": "Sijoittajat",
+    "CAREERS": "Ura",
+    "AI": "Tekoäly",
+    "PRODUCTS": "Tuotteet",
+    "GLAM": "Aina huipulla izyGlamilla",
+    "RESERVED": "Varaa etukäteen",
+    "GIFTCARDS": "Lahjakortit",
+    "WORKWITHUS": "Työskentele izyGlamilla",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Luottamuksellisuus",
+    "ACCESS": "Esteettömyys",
+    "CONDITIONS": "Ehdot",
+    "LANGUAGE": "Kieli",
+    "LOCALISATION": "Paikannus"
+  }
+}

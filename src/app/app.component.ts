@@ -24,13 +24,28 @@ export class AppComponent implements OnInit {
         private cartService: CartService,
         private router: Router
     ) {
-        translate.addLangs(['fr', 'en']);
+        translate.addLangs([
+            'de',
+            'en',
+            'es',
+            'nl',
+            'it',
+            'fr',
+            'nl',
+            'sv',
+            'pl',
+            'da',
+            'fi',
+        ]);
         const sessionLangue = this.sessionService.getLang();
+
+        translate.setDefaultLang('fr');
+        /*
         if (sessionLangue) {
             translate.setDefaultLang(sessionLangue);
         } else {
             translate.setDefaultLang('fr');
-        }
+        }*/
         translate.getBrowserLang();
     }
 

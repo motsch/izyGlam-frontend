@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 /**
  * Session service pour la gestion de l'utilisateur loggue
@@ -10,9 +9,6 @@ export class SessionService {
     user: any;
     remeberMe: boolean | undefined;
     langue: string | undefined;
-    navCategoryTrad: string | undefined;
-    lastRoute: string | undefined;
-    routeTrad: string | undefined;
 
     // private userConnected = new BehaviorSubject<boolean>(false);
     constructor() {
@@ -20,9 +16,6 @@ export class SessionService {
         const sessionStorageUser = sessionStorage.getItem('user');
         const localStorageRememberMe = localStorage.getItem('remeberMe');
         const localStorageLangue = localStorage.getItem('langue');
-        const localStorageNavCategory = localStorage.getItem('navCategory');
-        const localStorageLastRoute = localStorage.getItem('lastRoute');
-        const localStorageRouteTrad = localStorage.getItem('routeTrad');
         try {
             if (localStorageUser) {
                 this.user = JSON.parse(localStorageUser);
@@ -36,22 +29,10 @@ export class SessionService {
             if (localStorageLangue) {
                 this.langue = JSON.parse(localStorageLangue);
             }
-            if (localStorageNavCategory) {
-                this.navCategoryTrad = JSON.parse(localStorageNavCategory);
-            }
-            if (localStorageLastRoute) {
-                this.lastRoute = JSON.parse(localStorageLastRoute);
-            }
-            if (localStorageRouteTrad) {
-                this.routeTrad = JSON.parse(localStorageRouteTrad);
-            }
         } catch (e) {
             this.user = null;
             this.remeberMe = false;
             this.langue = 'fr';
-            this.navCategoryTrad = 'Robots';
-            this.routeTrad = 'Robots' + ' / ' + 'Flotte de robot';
-            this.lastRoute = 'Flotte de robot';
         }
     }
 
@@ -124,61 +105,10 @@ export class SessionService {
     }
 
     /**
-     * Récupération de la derniére route
-     */
-    getRoute() {
-        return this.lastRoute;
-    }
-
-    /**
-     * Mise à jour de la derniére route dans le local storage
-     * @param user
-     */
-    setRoute(lastRoute: string) {
-        this.lastRoute = lastRoute;
-        localStorage.setItem('lastRoute', JSON.stringify(lastRoute));
-    }
-
-    /**
-     * Récupération de la derniére route
-     */
-    getRouteTrad() {
-        return this.routeTrad;
-    }
-
-    /**
-     * Mise à jour de la derniére route dans le local storage
-     * @param user
-     */
-    setRouteTrad(routeTrad: string) {
-        this.routeTrad = routeTrad;
-        localStorage.setItem('routeTrad', JSON.stringify(routeTrad));
-    }
-
-    /**
-     * Récupération de la nav cétagorie route
-     */
-    getNavCategoryTrad() {
-        return this.navCategoryTrad;
-    }
-
-    /**
-     * Mise à jour de la nav catégorie dans le local storage
-     * @param user
-     */
-    setNavCategoryTrad(navCategoryTrad: string) {
-        this.navCategoryTrad = navCategoryTrad;
-        localStorage.setItem('navCategory', JSON.stringify(navCategoryTrad));
-    }
-
-    /**
      * Suppression du user dans le local storage
      */
     destroy() {
         this.setCurrentUser(null, false);
-        this.setNavCategoryTrad('');
-        this.setRoute('');
-        this.setRouteTrad('');
         localStorage.removeItem('me');
     }
 
