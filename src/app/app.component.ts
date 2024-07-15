@@ -37,15 +37,17 @@ export class AppComponent implements OnInit {
             'da',
             'fi',
         ]);
+        let userLang = navigator.language;
         const sessionLangue = this.sessionService.getLang();
 
-        translate.setDefaultLang('fr');
-        /*
+        translate.setDefaultLang(userLang);
         if (sessionLangue) {
             translate.setDefaultLang(sessionLangue);
+        } else if (userLang) {
+            translate.setDefaultLang(userLang);
         } else {
-            translate.setDefaultLang('fr');
-        }*/
+            translate.setDefaultLang('en');
+        }
         translate.getBrowserLang();
     }
 
@@ -72,9 +74,7 @@ export class AppComponent implements OnInit {
     }
 
     closeDrawer() {
-        console.log('close drawer 1');
         if (this.drawerOpen) {
-            console.log('close drawer 2');
             this.drawerOpen = false;
         }
     }
