@@ -32,6 +32,7 @@ import { ShopCardComponent } from './component/shop-card/shop-card.component';
 import { ShopItemCardComponent } from './component/shop-item-card/shop-item-card.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddressModalComponent } from './component/address-modal/address-modal.component';
+import { RoundShopCardComponent } from './component/round-shop-card/round-shop-card.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -93,6 +94,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopCardComponent,
         ShopItemCardComponent,
         AddressModalComponent,
+        RoundShopCardComponent,
     ],
     exports: [
         PageNotFoundComponent,
@@ -104,6 +106,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         FooterComponent,
         ShopCardComponent,
         ShopItemCardComponent,
+        RoundShopCardComponent,
     ],
     providers: [SessionService, ModalYesNoComponent],
 })

@@ -2185,13 +2185,14 @@ li.nav-item.dropdown {
     margin-top: -17px;
   }
   .card {
-    border-radius: 7px !important;
-    border: 1px solid #eeeef7;
+    border: none;
+    // border-radius: 7px !important;
+    // border: 1px solid #eeeef7;
     .card-body {
       font-size: 16px;
       padding: 20px 30px;
       color: $theme-gray;
-      border-top: 1px solid rgba(88, 96, 130, 0.2);
+      // border-top: 1px solid rgba(88, 96, 130, 0.2);
       letter-spacing: 0.05rem;
     }
     h5 {
@@ -2200,7 +2201,8 @@ li.nav-item.dropdown {
   }
   .accordion {
     .card {
-      border-bottom: 1px solid #eeeef7 !important;
+      border: none;
+      // border-bottom: 1px solid #eeeef7 !important;
     }
     button {
       text-decoration: none;
@@ -2229,7 +2231,7 @@ li.nav-item.dropdown {
     }
   }
   .card-header {
-    border: 0;
+    border: none;
     background-color: transparent;
     border-radius: 5px;
     cursor: pointer;

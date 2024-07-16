@@ -37,7 +37,7 @@
 }
 .categories {
   padding-right: 15px;
-  background-color: #fff;
+  // background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between; /* Assure une répartition équilibrée */
@@ -54,14 +54,14 @@
     -ms-overflow-style: none; /* Pour Internet Explorer 10+ */
 
     .category-item {
-      background-color: #fff;
+      background-color: transparent;
       padding: 10px 20px;
-      border: 1px solid #ddd;
+      // border: 1px solid #ddd;
       border-radius: 4px;
       text-align: center;
       flex: 1;
       margin: 0 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
   }
 
@@ -71,6 +71,7 @@
 }
 
 .card {
+  border: none;
   flex: 0 0 auto; /* Empêche les cartes de se compresser */
   margin-right: 20px; /* Espace entre les cartes */
 }
@@ -95,7 +96,7 @@
 
     select {
       padding: 5px;
-      border: 1px solid #ddd;
+      // border: 1px solid #ddd;
       border-radius: 4px;
     }
   }

@@ -1,80 +1,143 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { DrawerService } from 'src/app/core/services/drawer.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { environment } from 'src/environments/environment';
 
+// Définition du composant avec son sélecteur, son template HTML et ses styles CSS associés
 @Component({
     selector: 'app-main',
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-    imgStorageUrl: string = environment.imgStorageUrl;
-    filteredItems: any[] = [];
-    selectedCategory: string | undefined;
-    filterClicked = false;
+    imgStorageUrl: string = environment.imgStorageUrl; // URL de stockage des images, récupérée depuis les variables d'environnement
+    filteredItems: any[] = []; // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
+    selectedCategory: string | undefined; // Catégorie sélectionnée actuellement par l'utilisateur
+    filterClicked = false; // Booléen pour gérer l'état du filtre (activé ou non)
     categoriesFilter = [
+        // Tableau des catégories disponibles pour le filtrage
+        // Chaque catégorie est représentée par un objet contenant son nom, une icône et un identifiant de filtre
+        // ... liste des catégories ...
         {
             name: 'Coiffure',
-            icon: 'assets/images/svg/hairdresser.svg',
-            filter: 'hairdresser',
+            icon: 'assets/images/icon_category_hairdresser.png',
+            filter: 'coiffure',
         },
         {
             name: 'Manucure',
-            icon: 'assets/images/svg/manicure.svg',
+            icon: 'assets/images/icon_category_manucure.png',
             filter: 'manucure',
         },
         {
-            name: 'Maquillage',
-            icon: 'assets/images/svg/makeup.svg',
-            filter: 'maquillage',
-        },
-        {
-            name: 'Russian Lips',
-            icon: 'assets/images/svg/lips.svg',
-            filter: 'russianlips',
-        },
-        {
-            name: 'Soins du Visage',
-            icon: 'assets/images/svg/head-massage.svg',
+            name: 'Visage',
+            icon: 'assets/images/icon_category_head.png',
             filter: 'visage',
         },
         {
-            name: 'Épilation',
-            icon: 'assets/images/svg/hairRemove.svg',
-            filter: 'epilation',
-        },
-        {
-            name: 'Massages',
-            icon: 'assets/images/svg/massage.svg',
+            name: 'Massage',
+            icon: 'assets/images/icon_category_massage2.png',
             filter: 'massage',
         },
         {
-            name: 'Soins corporel',
-            icon: 'assets/images/svg/body.svg',
-            filter: 'bodycare',
+            name: 'Maquillage',
+            icon: 'assets/images/icon_category_eye.png',
+            filter: 'maquillage',
         },
         {
-            name: 'Esthétique',
-            icon: 'assets/images/svg/medical.svg',
-            filter: 'esthetique',
+            name: 'Épilation',
+            icon: 'assets/images/icon_category_epilation.png',
+            filter: 'epilation',
         },
         {
-            name: 'Bien-être',
-            icon: 'assets/images/svg/fitness.svg',
-            filter: 'wellcare',
+            name: 'Bronzage',
+            icon: 'assets/images/icon_category_sun.png',
+            filter: 'bronzage',
+        },
+        {
+            name: 'post-partum',
+            icon: 'assets/images/icon_category_baby.png',
+            filter: 'partum',
+        },
+        {
+            name: 'Nutrition',
+            icon: 'assets/images/icon_category_nutrition.png',
+            filter: 'nutrition',
+        },
+        {
+            name: 'Fitness',
+            icon: 'assets/images/icon_category_fitness2.png',
+            filter: 'fitness',
+        },
+        {
+            name: 'Acupuncture',
+            icon: 'assets/images/icon_category_accuponcture.png',
+            filter: 'acupuncture',
         },
         {
             name: 'Stylisme',
-            icon: 'assets/images/svg/clothes.svg',
+            icon: 'assets/images/icon_category_style.png',
             filter: 'style',
         },
+        {
+            name: 'Tatouage',
+            icon: 'assets/images/icon_category_tatoo.png',
+            filter: 'tatouage',
+        },
+        {
+            name: 'décoration',
+            icon: 'assets/images/icon_category_decor.png',
+            filter: 'decoration',
+        },
+        /*
+        {
+            name: 'Pédicure',
+            icon: 'assets/images/icon_category_hairdresser.png',
+            filter: 'pedicure',
+        },
+        {
+            name: 'Luminothérapie',
+            icon: 'assets/images/svg/clothes.svg',
+            filter: 'lumiere',
+        },
+        {
+            name: 'Aromathérapie',
+            icon: 'assets/images/svg/fitness.svg',
+            filter: 'arome',
+        },
+        {
+            name: 'Reiki',
+            icon: 'assets/images/svg/clothes.svg',
+            filter: 'reiki',
+        },
+        {
+            name: 'Yoga',
+            icon: 'assets/images/svg/icon_category_yoga.png',
+            filter: 'yoga',
+        },
+        {
+            name: 'Pilates',
+            icon: 'assets/images/svg/clothes.svg',
+            filter: 'pilates',
+        },
+        {
+            name: 'Chiropractie',
+            icon: 'assets/images/svg/clothes.svg',
+            filter: 'chiropractie',
+        },
+        {
+            name: 'Sophrologie',
+            icon: 'assets/images/svg/clothes.svg',
+            filter: 'sophrologie',
+        },
+        */
     ];
-    shops = [];
+    shops: any[] = []; // Tableau pour stocker les informations des boutiques récupérées de l'API
 
-    @ViewChild('scrollContainerCategory')
-    private scrollContainerCategory: ElementRef | undefined;
+    // Références aux éléments du DOM pour gérer le défilement des conteneurs de contenu
+    @ViewChild('scrollContainerCategory') private scrollContainerCategory:
+        | ElementRef
+        | undefined;
     @ViewChild('scrollContainerAround') private scrollContainerAround:
         | ElementRef
         | undefined;
@@ -90,32 +153,46 @@ export class MainComponent implements OnInit {
         private drawerService: DrawerService,
         private shopService: ShopService
     ) {}
+
+    // Fonction appelée à l'initialisation du composant
     ngOnInit() {
-        this.drawerService.closeDrawer();
-        this.shopService.getAll().subscribe((shops: any) => {
-            console.log(JSON.stringify(shops));
-            this.shops = shops;
-            this.filteredItems = this.shops;
+        this.getLocationAndLoadShops(); // Charge les shops basés sur la localisation du client
+    }
+
+    // Récupère la localisation de l'utilisateur et charge les shops correspondants
+    private getLocationAndLoadShops() {
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log('Latitude: ' + position.coords.latitude); // Log de la latitude pour le débogage
+            console.log('Longitude: ' + position.coords.longitude); // Log de la longitude pour le débogage
+            this.shopService
+                .getShopsNearby(
+                    position.coords.latitude,
+                    position.coords.longitude
+                )
+                .subscribe((shops: any[]) => {
+                    console.log(JSON.stringify(shops)); // Log des données pour le débogage
+                    this.shops = shops;
+                    this.filteredItems = this.shops; // Initialise les éléments filtrés avec tous les shops récupérés
+                });
         });
     }
 
+    // Applique ou retire un filtre basé sur la catégorie
     filterByCategory(type: string) {
-        console.log(type);
+        console.log(type); // Log du type pour débogage
         if (!this.filterClicked) {
             this.selectedCategory = type;
             this.filterClicked = true;
-            this.filteredItems = this.shops.filter((x: any) => x.type === type);
+            this.filteredItems = this.shops.filter((x: any) => x.type === type); // Applique le filtre
         } else if (this.selectedCategory === type) {
-            this.cancelFilter();
-            this.selectedCategory = undefined;
-            this.filterClicked = false;
-            this.filteredItems = this.shops;
+            this.cancelFilter(); // Retire le filtre si la même catégorie est sélectionnée de nouveau
         } else {
             this.selectedCategory = type;
-            this.filteredItems = this.shops.filter((x: any) => x.type === type);
+            this.filteredItems = this.shops.filter((x: any) => x.type === type); // Change le filtre à une nouvelle catégorie
         }
     }
 
+    // Fonctions pour gérer le défilement horizontal des différents conteneurs
     scrollLeft(type: string) {
         switch (type) {
             case 'category':
@@ -174,15 +251,17 @@ export class MainComponent implements OnInit {
         }
     }
 
+    // Calcule la quantité de défilement basée sur une estimation de la taille d'un 'app-card' et sa marge
     private calculateScrollAmount(): number {
-        // Taille hypothétique d'un 'app-card' plus la marge
-        return (300 + 20) * 4;
+        return (300 + 20) * 4; // 300px par carte plus 20px de marge, multiplié par 4 cartes
     }
 
-    toShopPage() {
-        this.router.navigate(['shop']);
+    // Redirige vers la page d'une boutique spécifique
+    toShopPage(id: string) {
+        this.router.navigate(['shop/' + id]); // Navigation programmée vers la page du shop
     }
 
+    // Annule le filtre appliqué et réinitialise l'affichage de tous les shops
     cancelFilter() {
         this.selectedCategory = '';
         this.filterClicked = false;

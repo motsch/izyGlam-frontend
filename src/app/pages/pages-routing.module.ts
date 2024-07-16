@@ -16,7 +16,11 @@ const routes: Routes = [
         canActivate: [AuthGuard],
     },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-    { path: 'shop', component: ShopComponent, canActivate: [AuthGuard] },
+    {
+        path: 'shop/:shopid',
+        component: ShopComponent,
+        canActivate: [AuthGuard],
+    },
     { path: 'terms', component: TermsComponent, canActivate: [AuthGuard] },
     {
         path: 'coming-soon/:country',

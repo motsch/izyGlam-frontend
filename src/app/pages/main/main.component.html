@@ -28,12 +28,12 @@
         <div class="categories">
             <div class="category-list" #scrollContainerCategory>
                 <app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"
-                    (click)="toShopPage()"></app-shop-card>
+                    (click)="toShopPage(item._id)"></app-shop-card>
             </div>
         </div>
 
         <div class="top-bar">
-            <h3>Soins aux alentours</h3>
+            <h3>Les services aux alentours</h3>
             <div class="scroll-buttons">
                 <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
                     <i class="fa fa-chevron-left"></i>
@@ -45,7 +45,8 @@
         </div>
         <div class="categories">
             <div class="category-list" #scrollContainerAround>
-                <app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>
+                <!--<app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>-->
+                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"></app-round-shop-card>
             </div>
         </div>
 

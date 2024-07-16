@@ -13,7 +13,7 @@
 
     <div class="container cooming-soon">
         <div class="row mb-50">
-            <div class="col-md-6 left">
+            <div class="col-xl-6 left">
                 <div class="clock-box">
                     <div>
                         <div class="mb-4" *ngIf="countryAccepted">
@@ -45,11 +45,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 hero-image" *ngIf="countryAccepted">
+            <div class="col-xl-6 hero-image" *ngIf="countryAccepted">
                 <img [src]="imgStorageUrl+'coming-soon.png'" alt="coming-soon illustration">
             </div>
-            <div class="col-md-6 hero-image" *ngIf="!countryAccepted">
-                <img [src]="imgStorageUrl+'coming-soon.png'" alt="coming-soon illustration">
+            <div class="col-xl-6 hero-image" *ngIf="!countryAccepted">
+                <img [src]="imgStorageUrl+'coming-soon-not.png'" alt="coming-soon illustration">
             </div>
         </div>
     </div>
