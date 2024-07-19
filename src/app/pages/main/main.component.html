@@ -63,7 +63,7 @@
         </div>
         <div class="categories">
             <div class="category-list" #scrollContainerPromo>
-                <app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>
+                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"></app-round-shop-card>
             </div>
         </div>
         <div class="top-bar">
@@ -79,7 +79,7 @@
         </div>
         <div class="categories">
             <div class="category-list" #scrollContainerTop10>
-                <app-shop-card *ngFor="let item of shops" [item]="item" class="card"></app-shop-card>
+                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"></app-round-shop-card>
             </div>
         </div>
     </span>
@@ -87,11 +87,9 @@
         <div class="padding-top-10">
             <h3>Résultats de la recherche</h3>
             <div class="row test66"> <!-- Utilisation de 'row' pour démarrer une grille -->
-                <app-shop-card *ngFor="let item of filteredItems" [item]="item"
-                    class="card-filter col-12 col-sm-6 col-md-4 col-lg-3 margin-bottom-20"></app-shop-card>
+                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"></app-round-shop-card>
                 <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
             </div>
         </div>
     </span>
 </div>
-<app-footer></app-footer>

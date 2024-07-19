@@ -1,4 +1,16 @@
 {
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Coiffure",
+    "NAILTECHNICIAN": "Manucure",
+    "MAKEUP": "Maquillage",
+    "WAXING": "Épilation",
+    "FACIAL": "Soin du visage",
+    "MASSAGE": "Massage",
+    "EYELASH": "Extension de cils",
+    "EYEBROW": "Sourcils",
+    "TANNING": "Bronzage",
+    "OTHER": "Autre"
+  },
   "HOMEPAGE": {
     "TITLERED": "Le glamour,",
     "TITLEWHITE": "livré chez vous !",

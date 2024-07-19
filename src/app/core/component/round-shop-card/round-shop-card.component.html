@@ -1,8 +1,8 @@
 <div class="profile-card">
-    <img [src]="'assets/images/'+profile.image" alt="profile image">
+    <img [src]="env+profile.image" alt="profile image">
     <div class="profile-info">
         <h3>{{ profile.name }}</h3>
-        <p>Coiffeur, Evry</p>
-        <p><i class="star-icon"></i>{{ profile.note }} ({{ profile.reviews }} avis)</p>
+        <p>Coiffeur, {{ profile.ville }}</p>
+        <p><i class="star-icon"></i>{{ profile.note }} ({{ profile.reviews.length }} avis)</p>
     </div>
 </div>
