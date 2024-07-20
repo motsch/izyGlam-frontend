@@ -81,8 +81,8 @@ export class AppComponent implements OnInit {
     logout() {
         this.drawerService.closeDrawer();
         this.sessionService.destroy();
-        localStorage.removeItem('unknownUser');
-        this.router.navigate(['home']);
+        // localStorage.removeItem('unknownUser');
+        // this.router.navigate(['home']);
     }
 
     goToProfil() {

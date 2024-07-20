@@ -37,12 +37,14 @@ import { ShopComponent } from './shop/shop.component';
 import { TermsComponent } from './terms/terms.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { AuthModule } from '../auth/auth.module';
 @NgModule({
     imports: [
         CommonModule,
         BrowserModule,
         CoreModule,
         FormsModule,
+        AuthModule,
         NgbModule,
         MatMenuModule,
         MatSnackBarModule,

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-round-shop-card',
@@ -7,7 +8,10 @@ import { Component, Input } from '@angular/core';
 })
 export class RoundShopCardComponent {
     @Input() profile: any;
-    env = 'assets/images/';
+    @Input() promoVisible: boolean = false;
+    @Input() promoType: any;
+    // env = 'assets/images/';
+    imgStorageUrl: string = environment.imgStorageUrl;
     /*profile = {
         imgSrc: 'path_to_image.jpg',
         name: 'Olivier',

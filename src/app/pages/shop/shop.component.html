@@ -1,90 +1,89 @@
+<app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
 <!-- sidebar + content -->
-<section class="">
-    <div class="container">
-        <div id="carouselExampleSlidesOnly" class="margin-top-n40" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100 rogn-image" [src]="imgStorageUrl+'banner.jpg'" alt="First slide">
+<section class="container">
+    <div id="carouselExampleSlidesOnly" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100 rogn-image" [src]="imgStorageUrl+'shopIllustration/coiffeur29.png'"
+                    alt="First slide">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- sidebar -->
+        <div class="col-lg-3">
+            <!-- Collapsible wrapper -->
+            <div class="mb-5" id="navbarSupportedContent">
+                <div>
+                    <h3>Mélanie Hair Shop</h3>
+                </div>
+                <div>
+                    <span>
+                        3 <img [src]="imgStorageUrl+'star.png'" alt="starLogo" class="starLogo">
+                    </span>
+                    <span>
+                        (2,000+) • Frais de livraison: 0,00€ • Uber One • 0km • Informations
+                    </span>
+                    <div>
+                        <img [src]="imgStorageUrl+'money.png'" alt="starLogo" class="moneyLogo">
+                    </div>
+                    <div>
+                        Paiement par Swile, Pluxee, UpDéjeuner, Ticket Restaurant®, et Bimpli (ex Apetiz) accepté
+
+                        Appuyez pour consulter les horaires, les informations, etc
+                    </div>
+                    <div class="margin-top-20">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Ut
+                        vitae est lacus. Nullam
+                        blandit, eros eget viverra pretium, lectus purus hendrerit erat, ac accumsan risus
+                        ligula semper lorem.
+                    </div>
+                </div>
+                <div class="nav flex-column nav-pills margin-top-40" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true">Menu 1</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">Menu 2</a>
+                    <a class="nav-link active" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+                        role="tab" aria-controls="v-pills-messages" aria-selected="false">Menu 3</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+                        aria-controls="v-pills-settings" aria-selected="false">Menu 4</a>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <!-- sidebar -->
-            <div class="col-lg-3">
-                <!-- Collapsible wrapper -->
-                <div class="mb-5" id="navbarSupportedContent">
-                    <div>
-                        <h3>Mélanie Hair Shop</h3>
-                    </div>
-                    <div>
-                        <span>
-                            3 <img [src]="imgStorageUrl+'star.png'" alt="starLogo" class="starLogo">
-                        </span>
-                        <span>
-                            (2,000+) • Frais de livraison: 0,00€ • Uber One • 0km • Informations
-                        </span>
-                        <div>
-                            <img [src]="imgStorageUrl+'money.png'" alt="starLogo" class="moneyLogo">
-                        </div>
-                        <div>
-                            Paiement par Swile, Pluxee, UpDéjeuner, Ticket Restaurant®, et Bimpli (ex Apetiz) accepté
-
-                            Appuyez pour consulter les horaires, les informations, etc
-                        </div>
-                        <div class="margin-top-20">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Ut
-                            vitae est lacus. Nullam
-                            blandit, eros eget viverra pretium, lectus purus hendrerit erat, ac accumsan risus
-                            ligula semper lorem.
-                        </div>
-                    </div>
-                    <div class="nav flex-column nav-pills margin-top-40" id="v-pills-tab" role="tablist"
-                        aria-orientation="vertical">
-                        <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-                            aria-controls="v-pills-home" aria-selected="true">Menu 1</a>
-                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
-                            role="tab" aria-controls="v-pills-profile" aria-selected="false">Menu 2</a>
-                        <a class="nav-link active" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
-                            role="tab" aria-controls="v-pills-messages" aria-selected="false">Menu 3</a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings"
-                            role="tab" aria-controls="v-pills-settings" aria-selected="false">Menu 4</a>
-                    </div>
+        <!-- sidebar -->
+        <!-- content -->
+        <div class="col-lg-9">
+            <div class="top-bar">
+                <h3>Articles en vedette</h3>
+                <div class="scroll-buttons">
+                    <button class="scroll-btn left-btn" (click)="scrollLeft('top10')">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button class="scroll-btn right-btn" (click)="scrollRight('top10')">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
-            <!-- sidebar -->
-            <!-- content -->
-            <div class="col-lg-9">
-                <div class="top-bar">
-                    <h3>Articles en vedette</h3>
-                    <div class="scroll-buttons">
-                        <button class="scroll-btn left-btn" (click)="scrollLeft('top10')">
-                            <i class="fa fa-chevron-left"></i>
-                        </button>
-                        <button class="scroll-btn right-btn" (click)="scrollRight('top10')">
-                            <i class="fa fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
 
-                <div class="categories">
-                    <div class="category-list" #scrollContainerTop10>
-                        <app-shop-card *ngFor="let item of shopItems" [item]="item" class="card"></app-shop-card>
-                    </div>
+            <div class="categories">
+                <div class="category-list" #scrollContainerTop10>
+                    <app-shop-card *ngFor="let item of shopItems" [item]="item" class="card"></app-shop-card>
                 </div>
-                <div class="top-bar">
-                    <h3>Menu 1</h3>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
-                        <app-shop-item-card [item]="item"></app-shop-item-card>
-                    </div>
-                </div>
-
             </div>
+            <div class="top-bar">
+                <h3>Menu 1</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
+                    <app-shop-item-card [item]="item"></app-shop-item-card>
+                </div>
+            </div>
+
         </div>
-        <app-footer></app-footer>
     </div>
 </section>
 <!-- sidebar + content -->

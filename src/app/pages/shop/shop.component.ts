@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionService } from 'src/app/core/services/session.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -86,7 +87,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'hairdresser',
@@ -100,7 +101,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'hairdresser',
@@ -114,7 +115,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'hairdresser',
@@ -128,7 +129,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'hairdresser',
@@ -142,7 +143,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'hairdresser',
@@ -156,7 +157,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'hairdresser',
@@ -170,7 +171,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'hairdresser',
@@ -184,7 +185,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'hairdresser',
@@ -198,7 +199,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '1',
             delayScale: 'jours',
             type: 'manucure',
@@ -212,7 +213,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'maquillage',
@@ -226,7 +227,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'visage',
@@ -240,7 +241,7 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '30',
             delayScale: 'minutes',
             type: 'epilation',
@@ -254,14 +255,17 @@ export class ShopComponent {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             monayType: '€',
             nbAvis: '2,000',
-            picture: 'assets/images/shop-item.jpg',
+            picture: 'shopIllustration/coiffeur10.png',
             minimumDelay: '2',
             delayScale: 'jours',
             type: 'massage',
         },
     ];
 
-    constructor(private router: Router) {}
+    constructor(
+        private router: Router,
+        public sessionService: SessionService
+    ) {}
 
     scrollLeft(type: any) {
         switch (type) {

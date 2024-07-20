@@ -1,5 +1,9 @@
 <div class="profile-card">
-    <img [src]="env+profile.image" alt="profile image">
+    <div class="image-container">
+        <img class="main-image" [src]="imgStorageUrl+profile.image" alt="profile image">
+        <img *ngIf="promoVisible" class="overlay-image" [src]="imgStorageUrl+'profile/promo'+profile.promo.type+'.png'"
+            alt="overlay image">
+    </div>
     <div class="profile-info">
         <h3>{{ profile.name }}</h3>
         <p>Coiffeur, {{ profile.ville }}</p>

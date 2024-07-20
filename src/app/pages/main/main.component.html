@@ -1,5 +1,7 @@
 <!-- fin section FAQ -->
 <!--<app-contact-us></app-contact-us>-->
+
+<app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
 <div class="container">
     <div class="banner" style="margin-top: 80px">
         <div class="category-filter">
@@ -15,6 +17,23 @@
     </div>
     <span *ngIf="!filterClicked">
         <div class="top-bar">
+            <h3>Offres du moment</h3>
+            <div class="scroll-buttons" *ngIf="promotedShops.length > 4">
+                <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="scroll-btn right-btn" (click)="scrollRight('promo')">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="categories">
+            <div class="category-list" #scrollContainerPromo>
+                <app-round-shop-card *ngFor="let item of promotedShops" [profile]="item"
+                    [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
+            </div>
+        </div>
+        <div class="top-bar">
             <h3>À découvrir sur izyGlam</h3>
             <div class="scroll-buttons">
                 <button class="scroll-btn left-btn" (click)="scrollLeft('category')">
@@ -27,13 +46,13 @@
         </div>
         <div class="categories">
             <div class="category-list" #scrollContainerCategory>
-                <app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"
-                    (click)="toShopPage(item._id)"></app-shop-card>
+                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"
+                    [promoVisible]="item.promo.active" (click)="toShopPage(item._id)"></app-round-shop-card>
             </div>
         </div>
 
         <div class="top-bar">
-            <h3>Les services aux alentours</h3>
+            <h3>Les plus appréciés aux alentours</h3>
             <div class="scroll-buttons">
                 <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
                     <i class="fa fa-chevron-left"></i>
@@ -46,24 +65,27 @@
         <div class="categories">
             <div class="category-list" #scrollContainerAround>
                 <!--<app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>-->
-                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"></app-round-shop-card>
+                <app-round-shop-card *ngFor="let item of shops" [profile]="item" [promoVisible]="item.promo.active"
+                    class="card"></app-round-shop-card>
             </div>
         </div>
 
         <div class="top-bar">
-            <h3>Promotions</h3>
+            <h3>Les plans malins</h3>
             <div class="scroll-buttons">
-                <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
+                <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
                     <i class="fa fa-chevron-left"></i>
                 </button>
-                <button class="scroll-btn right-btn" (click)="scrollRight('promo')">
+                <button class="scroll-btn right-btn" (click)="scrollRight('around')">
                     <i class="fa fa-chevron-right"></i>
                 </button>
             </div>
         </div>
         <div class="categories">
-            <div class="category-list" #scrollContainerPromo>
-                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"></app-round-shop-card>
+            <div class="category-list" #scrollContainerAround>
+                <!--<app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>-->
+                <app-round-shop-card *ngFor="let item of shops" [profile]="item" [promoVisible]="item.promo.active"
+                    class="card"></app-round-shop-card>
             </div>
         </div>
         <div class="top-bar">
@@ -79,7 +101,8 @@
         </div>
         <div class="categories">
             <div class="category-list" #scrollContainerTop10>
-                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"></app-round-shop-card>
+                <app-round-shop-card *ngFor="let item of shops" [profile]="item" [promoVisible]="item.promo.active"
+                    class="card"></app-round-shop-card>
             </div>
         </div>
     </span>
@@ -87,7 +110,8 @@
         <div class="padding-top-10">
             <h3>Résultats de la recherche</h3>
             <div class="row test66"> <!-- Utilisation de 'row' pour démarrer une grille -->
-                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"></app-round-shop-card>
+                <app-round-shop-card *ngFor="let item of filteredItems" [profile]="item"
+                    [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
                 <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
             </div>
         </div>

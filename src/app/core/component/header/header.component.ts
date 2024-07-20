@@ -129,7 +129,9 @@ export class HeaderComponent implements OnInit {
             width: '400px',
         });
     }
-
+    routerNavigate(route: string) {
+        this.router.navigate([route]);
+    }
     // @HostListener Decorator
     @HostListener('window:scroll', [])
     onWindowScroll() {

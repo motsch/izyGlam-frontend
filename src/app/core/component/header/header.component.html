@@ -19,12 +19,12 @@
         </li>
         <li class="nav-item">
           <a>
-            <button type="button" [routerLink]="'/sign-in-sms'" class="btn btn-transparent color_black"
+            <button type="button" (click)="routerNavigate('/sign-in-sms')" class="btn btn-transparent color_black"
               *ngIf="page !== 'connected'">Connexion</button></a>
         </li>
         <li class="nav-item">
           <a>
-            <button type="button" [routerLink]="'/sign-in-sms'" class="btn btn-transparent color_primary"
+            <button type="button" (click)="routerNavigate('/sign-in-sms')" class="btn btn-transparent color_primary"
               *ngIf="page !== 'connected'">Inscription</button></a>
         </li>
       </ul>

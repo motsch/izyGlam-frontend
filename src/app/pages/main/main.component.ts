@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DrawerService } from 'src/app/core/services/drawer.service';
+import { SessionService } from 'src/app/core/services/session.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { environment } from 'src/environments/environment';
 
@@ -15,6 +16,7 @@ export class MainComponent implements OnInit {
     filteredItems: any[] = []; // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
     selectedCategory: string | undefined; // Catégorie sélectionnée actuellement par l'utilisateur
     filterClicked = false; // Booléen pour gérer l'état du filtre (activé ou non)
+    promotedShops: any[] = []; // Tableau pour stocker les boutiques promues
     categoriesFilter = [
         // Tableau des catégories disponibles pour le filtrage
         // Chaque catégorie est représentée par un objet contenant son nom, une icône et un identifiant de filtre
@@ -151,7 +153,8 @@ export class MainComponent implements OnInit {
     constructor(
         private router: Router,
         private drawerService: DrawerService,
-        private shopService: ShopService
+        private shopService: ShopService,
+        public sessionService: SessionService
     ) {}
 
     // Fonction appelée à l'initialisation du composant
@@ -172,7 +175,10 @@ export class MainComponent implements OnInit {
                 .subscribe((shops: any[]) => {
                     console.log(JSON.stringify(shops)); // Log des données pour le débogage
                     this.shops = shops;
-                    this.filteredItems = this.shops; // Initialise les éléments filtrés avec tous les shops récupérés
+                    this.filteredItems = shops; // Initialise les éléments filtrés avec tous les shops récupérés
+                    this.promotedShops = shops.filter(
+                        (x: any) => x.promo.active === true
+                    ); // Filtre les shops promus
                 });
         });
     }

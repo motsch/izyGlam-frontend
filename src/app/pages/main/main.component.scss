@@ -54,7 +54,6 @@
     -ms-overflow-style: none; /* Pour Internet Explorer 10+ */
 
     .category-item {
-      background-color: transparent;
       padding: 10px 20px;
       // border: 1px solid #ddd;
       border-radius: 4px;
@@ -71,9 +70,12 @@
 }
 
 .card {
+  background-color: transparent;
   border: none;
-  flex: 0 0 auto; /* Empêche les cartes de se compresser */
-  margin-right: 20px; /* Espace entre les cartes */
+  flex: 0 0 21%; /* Largeur de chaque carte - ajustez selon le besoin */
+  margin: 10px; /* Espacement entre les cartes */
+  margin-right: 40px; /* Espace entre les cartes */
+  box-sizing: border-box;
 }
 .card-filter {
   display: flex;
