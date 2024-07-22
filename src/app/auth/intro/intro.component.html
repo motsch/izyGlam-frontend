@@ -1,4 +1,3 @@
-<!-- section slider -->
 <section class="slide-bg" id="home">
    <div class="animation-circle">
       <i></i>
@@ -12,7 +11,11 @@
                <div class="slide-text">
                   <div>
                      <h1>{{ 'HOMEPAGE.TITLERED' | translate }}
-                        <span class="main-title"> {{ 'HOMEPAGE.TITLEWHITE' | translate }}</span>
+                        <span class="main-title">
+                           <br>
+                           <span class="animated-text new-proposition">{{ currentProposition }}</span>
+                           <span class="animated-text old-proposition">{{ previousProposition }}</span>
+                        </span>
                      </h1>
                      <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
                         <div class="search-container">
@@ -34,9 +37,6 @@
                      </div>
                      <div style="display: flex; align-items: center; justify-content: center;">
                         <button type="submit" class="btn">Rechercher</button>
-                        <button type="submit" class="btn lucky" (click)="onButtonClick()">
-                           {{ currentProposition }}
-                        </button>
                      </div>
                   </div>
                </div>
@@ -47,32 +47,8 @@
                <div class="mobile-slid">
                   <img [src]="imgStorageUrl+'uber-test5.webp'" alt="top1" class="img-fluid">
                </div>
-               <!--
-               <div class="profile-msg">
-                  <img src="assets/images/mascara.png" alt="top2" class="img-fluid">
-               </div>
-               <div class="profile-msg-2">
-                  <img src="assets/images/vernis.png" alt="top2" class="img-fluid">
-               </div>
-               <div class="emoji2">
-                  <img src="assets/images/hairdryier.png" alt="top5" class="img-fluid">
-               </div>
-               <div class="awesome">
-                  <img src="assets/images/top3.png" alt="top3" class="img-fluid">
-               </div>
-               <div class="profile-1">
-                  <img src="assets/images/top4.png" alt="top4" class="img-fluid">
-               </div>
-               <div class="emoji">
-                  <img src="assets/images/top5.png" alt="top5" class="img-fluid">
-               </div>
-               <div class="profile-2">
-                  <img src="assets/images/top1.png" alt="top1" class="img-fluid">
-               </div>
-               -->
             </div>
          </div>
       </div>
    </div>
 </section>
-<!-- fin section slider -->

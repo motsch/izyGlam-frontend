@@ -82,7 +82,7 @@ export class AppComponent implements OnInit {
         this.drawerService.closeDrawer();
         this.sessionService.destroy();
         // localStorage.removeItem('unknownUser');
-        // this.router.navigate(['home']);
+        this.router.navigate(['main']);
     }
 
     goToProfil() {

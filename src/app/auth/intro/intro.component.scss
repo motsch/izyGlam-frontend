@@ -42,6 +42,7 @@ button[mat-icon-button] {
   width: 100%;
   max-width: 600px;
   margin: auto;
+  margin-top: 100px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre portée pour l'effet de profondeur */
 }
 
@@ -76,4 +77,41 @@ button[mat-icon-button] {
 img {
   border-radius: 20px; /* Vous pouvez ajuster cette valeur pour obtenir l'arrondi souhaité */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre portée pour l'effet de profondeur */
+}
+
+/* Style pour les éléments de la liste (animation) */
+.animated-text {
+  display: inline-block;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.new-proposition {
+  animation: slideDown 1s ease-in-out forwards;
+}
+
+.old-proposition {
+  animation: fadeOut 1s ease-in-out forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
 }
