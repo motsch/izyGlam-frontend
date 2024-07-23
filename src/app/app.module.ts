@@ -33,6 +33,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MainComponent } from './pages/main/main.component';
 import { WINDOW, windowFactory } from './core/services/windows.service';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -53,6 +54,7 @@ registerLocaleData(localeFr, 'fr');
         NgxSpinnerModule,
         MatSidenavModule,
         MatListModule,
+        MatAutocompleteModule,
         MatIconModule,
         MatFormFieldModule,
         MatSelectModule,

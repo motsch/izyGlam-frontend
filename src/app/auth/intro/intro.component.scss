@@ -1,47 +1,7 @@
 .mat-form-field {
   width: 100%;
 }
-
-button[mat-icon-button] {
-  color: rgba(0, 0, 0, 0.54);
-}
-.lucky {
-  background-color: rgb(37, 37, 37) !important; /* Couleur de fond */
-  color: #ffffff; /* Couleur du texte */
-  margin-left: 10px;
-}
-.btn {
-  margin-top: 20px;
-  background-color: #ab372e; /* Couleur de fond */
-  color: white; /* Couleur du texte */
-  padding: 10px 15px; /* Espacement autour du texte */
-  border: none; /* Suppression de la bordure */
-  cursor: pointer; /* Curseur de souris */
-}
-.disable {
-  color: #bbbbbb !important;
-}
-.btn:hover {
-  background-color: #8a0e06; /* Couleur de fond */
-}
-
-.lucky:hover {
-  background-color: rgb(70, 70, 70) !important; /* Couleur de fond */
-}
-
-.search-image {
-  width: 20px;
-  height: 20px;
-}
 .search-container {
-  display: flex;
-  align-items: center;
-  background-color: #ffdddc;
-  border-radius: 24px;
-  padding: 5px;
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
   margin-top: 100px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre portée pour l'effet de profondeur */
 }
@@ -114,4 +74,69 @@ img {
     opacity: 0;
     transform: translateY(100%);
   }
+}
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100% !important;
+  height: 60px;
+}
+
+.search-input,
+.location-input {
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  outline: none;
+}
+
+.search-input {
+  flex: 1;
+}
+
+.location-input {
+  width: 150px;
+  border-left: 1px solid #e0e0e0;
+}
+
+.search-button {
+  height: 60px;
+  background-color: #ab372e;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.search-button:hover {
+  background-color: #8a0e06;
+}
+
+.search-input::placeholder,
+.location-input::placeholder {
+  color: #999;
+}
+
+mat-autocomplete {
+  border-radius: 25px !important;
+}
+@media (max-width: 1199.98px) {
+  .home-right {
+    display: none;
+  }
+}
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+  margin-left: 10px;
 }

@@ -6,7 +6,7 @@
    </div>
    <div class="container custom-container">
       <div class="row">
-         <div class="col-xl-6">
+         <div class="col-xl-7 col-12">
             <div class="d-flex-1">
                <div class="slide-text">
                   <div>
@@ -17,38 +17,48 @@
                            <span class="animated-text old-proposition">{{ previousProposition }}</span>
                         </span>
                      </h1>
-                     <div style="display: flex; align-items: center; gap: 10px; justify-content: center;">
-                        <div class="search-container">
-                           <input [(ngModel)]="searchQuery" type="text"
-                              [placeholder]="active === 'location' ? 'Recherche par localisation' : 'Recherche générique'"
-                              class="search-input">
-                           <button [ngClass]="searchQuery.length === 0 ? 'disable' : ''" matTooltip="Supprimer"
-                              matTooltipPosition="below" class="search-clear"><i (click)="cancelSearch()"
-                                 class="search-image fa fa-times"></i></button>
-                           <button (click)="activateSearch('location')" matTooltip="Recherche par localisation"
-                              matTooltipPosition="below" class="search-lens"><i
-                                 [ngStyle]="{'color': active === 'location' ? '#ab372e' : '#000'}"
-                                 class="search-image fa fa-map-marker"></i></button>
-                           <button (click)="activateSearch('search')" matTooltip="Recherche générique"
-                              matTooltipPosition="below" class="search-button"><i
-                                 [ngStyle]="{'color': active === 'search' ? '#ab372e' : '#000'}"
-                                 class="search-image fa fa-search"></i></button>
-                        </div>
-                     </div>
-                     <div style="display: flex; align-items: center; justify-content: center;">
-                        <button type="submit" class="btn">Rechercher</button>
+                     <div class="search-container">
+                        <form>
+                           <input [(ngModel)]="search.category" type="text" placeholder="Prénom, spécialité..." class="search-input" 
+                           [formControl]="control"
+                           [matAutocomplete]="auto"/>
+                           <mat-autocomplete #auto="matAutocomplete">
+                              <mat-option *ngFor="let option of filteredStreets | async; trackBy: trackByFn" [value]="option">
+                                 {{ option }}
+                              </mat-option>
+                           </mat-autocomplete>
+                           <div *ngIf="streetError && search.category" class="error-message">
+                             Aucun résultat trouvé
+                           </div>
+                        </form>
+                        <form>
+                           <input [(ngModel)]="search.city" type="text" placeholder="Où ?" class="location-input" 
+                           [formControl]="control2"
+                           [matAutocomplete]="auto2"/>
+                           <mat-autocomplete #auto2="matAutocomplete">
+                              <mat-option *ngFor="let option of filteredLocations | async; trackBy: trackByFn" [value]="option">
+                                 {{ option }}
+                              </mat-option>
+                           </mat-autocomplete>
+                           <div *ngIf="locationError && search.city" class="error-message">
+                             Aucun résultat trouvé
+                           </div>
+                        </form>
+                        <button class="search-button" (click)="onButtonClick()">
+                          Rechercher
+                        </button>
                      </div>
                   </div>
                </div>
             </div>
          </div>
-         <div class="col-xl-6">
+         <div class="col-xl-5 d-none d-xl-block">
             <div class="home-right">
                <div class="mobile-slid">
                   <img [src]="imgStorageUrl+'uber-test5.webp'" alt="top1" class="img-fluid">
                </div>
             </div>
          </div>
-      </div>
+      </div>      
    </div>
 </section>

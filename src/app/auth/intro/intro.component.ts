@@ -1,70 +1,144 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Component({
-    selector: 'app-intro',
-    templateUrl: './intro.component.html',
-    styleUrls: ['./intro.component.scss'],
+  selector: 'app-intro',
+  templateUrl: './intro.component.html',
+  styleUrls: ['./intro.component.scss'],
 })
 export class IntroComponent implements OnInit {
-    imgStorageUrl: string = environment.imgStorageUrl;
-    active = 'search';
-    searchQuery: string = '';
-    propositions: string[] = [
-        'Une esthéticienne',
-        'Une masseuse',
-        'Une manucure',
-        'Une pédicure',
-        'Une maquilleuse',
-        'Une coiffeuse',
-    ];
-    currentProposition: string = this.propositions[0];
-    previousProposition: string = this.propositions[0];
-    propositionIndex: number = 0;
-    constructor() {}
+    search:any = {};
+  control = new FormControl();
+  control2 = new FormControl();  // Ajout d'un autre FormControl pour le deuxième champ
+  options: string[] = [
+    'Esthéticienne',
+    'Masseuse',
+    'Manucure',
+    'Pédicure',
+    'Maquilleuse',
+    'Coiffeuse',
+  ];
+  optionsCities: string[] = [
+    'Paris 1',
+    'Paris 2',
+    'Paris 3',
+    'Paris 4',
+    'Paris 5',
+    'Paris 6',
+    'Paris 7',
+    'Paris 8',
+    'Paris 9',
+    'Paris 10',
+    'Paris 11',
+    'Paris 12',
+    'Paris 13',
+    'Paris 14',
+    'Paris 15',
+    'Paris 16',
+    'Paris 17',
+    'Paris 18',
+    'Paris 19',
+    'Paris 20',
+  ];
+  filteredStreets: Observable<string[]> | undefined;
+  filteredLocations: Observable<string[]> | undefined;  // Observable pour le deuxième champ
+  imgStorageUrl: string = environment.imgStorageUrl;
+  active = 'search';
+  searchQuery: string = '';
+  propositions: string[] = [
+    'Une esthéticienne',
+    'Une masseuse',
+    'Une manucure',
+    'Une pédicure',
+    'Une maquilleuse',
+    'Une coiffeuse',
+  ];
+  currentProposition: string = this.propositions[0];
+  previousProposition: string = this.propositions[0];
+  propositionIndex: number = 0;
+  streetError: boolean = false;  // Erreur pour le premier champ
+  locationError: boolean = false;  // Erreur pour le deuxième champ
 
-    ngOnInit(): void {
-        this.startRotatingPropositions();
+  constructor() {}
+
+  ngOnInit(): void {
+    this.startRotatingPropositions();
+    this.filteredStreets = this.control.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value, 'street'))
+    );
+    this.filteredLocations = this.control2.valueChanges.pipe(  // Initialiser l'Observable pour le deuxième champ
+      startWith(''),
+      map(value => this._filterCities(value, 'location'))
+    );
+  }
+
+  private _filter(value: string, type: string): string[] {
+    const filterValue = value.toLowerCase();
+    const filteredOptions = filterValue.length > 0 ? this.options.filter(option => option.toLowerCase().includes(filterValue)) : [];
+    if (type === 'street') {
+      this.streetError = filteredOptions.length === 0;
+    } else if (type === 'location') {
+      this.locationError = filteredOptions.length === 0;
     }
-    activateSearch(type: string) {
-        this.active = type;
+    return filteredOptions;
+  }
+
+  private _filterCities(value: string, type: string): string[] {
+    const filterValue = value.toLowerCase();
+    const filteredOptions = filterValue.length > 0 ? this.optionsCities.filter(option => option.toLowerCase().includes(filterValue)) : [];
+    if (type === 'street') {
+      this.streetError = filteredOptions.length === 0;
+    } else if (type === 'location') {
+      this.locationError = filteredOptions.length === 0;
     }
-    cancelSearch() {
-        this.searchQuery = '';
-    }
-    startRotatingPropositions(): void {
-        setInterval(() => {
-            this.propositionIndex =
-                (this.propositionIndex + 1) % this.propositions.length;
-            const newProposition = this.propositions[this.propositionIndex];
-            const oldProposition = this.currentProposition;
+    return filteredOptions;
+  }
 
-            // Mettre à jour l'ancienne proposition
-            this.previousProposition = oldProposition;
+  trackByFn(index: number, item: string): string {
+    return item;
+  }
 
-            // Mettre à jour la nouvelle proposition après un léger délai
-            setTimeout(() => {
-                this.currentProposition = newProposition;
+  activateSearch(type: string) {
+    this.active = type;
+  }
 
-                // Temporary removal of class to restart the animation
-                const newText = document.querySelector('.new-proposition');
-                const oldText = document.querySelector('.old-proposition');
-                if (newText && oldText) {
-                    const newElement = newText as HTMLElement;
-                    const oldElement = oldText as HTMLElement;
+  cancelSearch() {
+    this.searchQuery = '';
+  }
 
-                    newElement.classList.remove('new-proposition');
-                    oldElement.classList.remove('old-proposition');
-                    void newElement.offsetWidth; // trigger reflow
-                    void oldElement.offsetWidth; // trigger reflow
-                    newElement.classList.add('new-proposition');
-                    oldElement.classList.add('old-proposition');
-                }
-            }, 1000); // Attendre 1 seconde avant de changer l'ancienne proposition
-        }, 2000); // Changer de proposition toutes les 2 secondes
-    }
+  startRotatingPropositions(): void {
+    setInterval(() => {
+      this.propositionIndex = (this.propositionIndex + 1) % this.propositions.length;
+      const newProposition = this.propositions[this.propositionIndex];
+      const oldProposition = this.currentProposition;
 
-    onButtonClick(): void {
-        console.log("Vous avez cliqué sur 'J'ai de la chance'!");
-    }
+      this.previousProposition = oldProposition;
+
+      setTimeout(() => {
+        this.currentProposition = newProposition;
+
+        const newText = document.querySelector('.new-proposition');
+        const oldText = document.querySelector('.old-proposition');
+        if (newText && oldText) {
+          const newElement = newText as HTMLElement;
+          const oldElement = oldText as HTMLElement;
+
+          newElement.classList.remove('new-proposition');
+          oldElement.classList.remove('old-proposition');
+          void newElement.offsetWidth; // trigger reflow
+          void oldElement.offsetWidth; // trigger reflow
+          newElement.classList.add('new-proposition');
+          oldElement.classList.add('old-proposition');
+        }
+      }, 1000);
+    }, 2000);
+  }
+
+  onButtonClick(): void {
+    console.log("Vous avez cliqué sur 'Rechercher'!");
+  }
 }

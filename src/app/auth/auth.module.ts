@@ -2,7 +2,7 @@ import { CoreModule, HttpLoaderFactory } from '../core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -32,6 +32,7 @@ import { HomeComponent } from './home/home.component';
 import { SignInSmsComponent } from './sign-in-sms/sign-in-sms.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
     imports: [
@@ -46,6 +47,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatButtonModule,
         MatMenuModule,
         MatIconModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
         MatFormFieldModule,
         MatInputModule,
         CarouselModule,
