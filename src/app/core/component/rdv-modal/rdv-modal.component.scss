@@ -1,4 +1,36 @@
 .demo-app-calendar {
-    width: 100%;
-  }
-  
+  width: 100%;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.demo-app-calendar .btn-group {
+  margin-bottom: 15px;
+}
+
+.demo-app-calendar .btn {
+  margin: 5px;
+}
+
+.mwl-calendar-week-view {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mwl-calendar-week-view mwl-calendar-week-view-hour-segment {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.mwl-calendar-week-view mwl-calendar-week-view-event {
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  margin: 2px;
+}
+
+.mwl-calendar-week-view mwl-calendar-week-view-header {
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #e6e6e6;
+}
