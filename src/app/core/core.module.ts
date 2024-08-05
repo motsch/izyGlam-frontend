@@ -33,7 +33,9 @@ import { ShopItemCardComponent } from './component/shop-item-card/shop-item-card
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddressModalComponent } from './component/address-modal/address-modal.component';
 import { RoundShopCardComponent } from './component/round-shop-card/round-shop-card.component';
-
+import { RdvModalComponent } from './component/rdv-modal/rdv-modal.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -76,6 +78,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatSidenavModule,
         MatButtonModule,
         ReactiveFormsModule,
+        CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -95,6 +98,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopItemCardComponent,
         AddressModalComponent,
         RoundShopCardComponent,
+        RdvModalComponent,
     ],
     exports: [
         PageNotFoundComponent,

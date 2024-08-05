@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { RdvModalComponent } from 'src/app/core/component/rdv-modal/rdv-modal.component';
 import { SessionService } from 'src/app/core/services/session.service';
 import { environment } from 'src/environments/environment';
 
@@ -10,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ShopComponent {
     imgStorageUrl: string = environment.imgStorageUrl;
+    activeTab = 'home';
     @ViewChild('scrollContainerCategory')
     private scrollContainerCategory: ElementRef | undefined;
     @ViewChild('scrollContainerAround')
@@ -264,9 +267,13 @@ export class ShopComponent {
 
     constructor(
         private router: Router,
-        public sessionService: SessionService
+        public sessionService: SessionService,
+        public dialog: MatDialog
     ) {}
 
+    openDialog() {
+        this.dialog.open(RdvModalComponent);
+    }
     scrollLeft(type: any) {
         switch (type) {
             case 'category':
@@ -296,6 +303,9 @@ export class ShopComponent {
         }
     }
 
+    setActiveTab(tab: string): void {
+        this.activeTab = tab;
+    }
     scrollRight(type: any) {
         switch (type) {
             case 'category':

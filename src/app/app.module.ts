@@ -34,7 +34,10 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { MainComponent } from './pages/main/main.component';
 import { WINDOW, windowFactory } from './core/services/windows.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDialogModule } from '@angular/material/dialog';
 registerLocaleData(localeFr, 'fr');
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
     declarations: [AppComponent],
@@ -49,6 +52,7 @@ registerLocaleData(localeFr, 'fr');
         AppRoutingModule,
         CoreModule,
         AuthModule,
+        MatDialogModule,
         PagesModule,
         BrowserAnimationsModule,
         NgxSpinnerModule,
@@ -57,6 +61,7 @@ registerLocaleData(localeFr, 'fr');
         MatAutocompleteModule,
         MatIconModule,
         MatFormFieldModule,
+        CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
         MatSelectModule,
         TranslateModule.forRoot({
             loader: {

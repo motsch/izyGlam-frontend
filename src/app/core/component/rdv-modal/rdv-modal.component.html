@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Titre de la fenêtre modale</h2>
+<mat-dialog-content>
+  <div class="demo-app-calendar">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <div class="btn-group">
+          <div
+            class="btn btn-primary"
+            mwlCalendarPreviousView
+            [(viewDate)]="viewDate"
+            [view]="view"
+          >
+            Précédent
+          </div>
+          <div
+            class="btn btn-outline-secondary"
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+          >
+            Aujourd'hui
+          </div>
+          <div
+            class="btn btn-primary"
+            mwlCalendarNextView
+            [(viewDate)]="viewDate"
+            [view]="view"
+          >
+            Suivant
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <mwl-calendar-week-view
+      [viewDate]="viewDate"
+      [events]="events"
+    >
+    </mwl-calendar-week-view>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Fermer</button>
+</mat-dialog-actions>

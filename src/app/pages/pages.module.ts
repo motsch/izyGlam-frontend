@@ -38,6 +38,7 @@ import { TermsComponent } from './terms/terms.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { AuthModule } from '../auth/auth.module';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
     imports: [
         CommonModule,
@@ -57,6 +58,7 @@ import { AuthModule } from '../auth/auth.module';
         MatNativeDateModule,
         MatButtonModule,
         MatSelectModule,
+        MatDialogModule,
         MatCardModule,
         MatExpansionModule,
         DragDropModule,
