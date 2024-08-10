@@ -1,43 +1,24 @@
-<h2 mat-dialog-title>Titre de la fenêtre modale</h2>
-<mat-dialog-content>
-  <div class="demo-app-calendar">
-    <div class="row text-center">
-      <div class="col-md-12">
-        <div class="btn-group">
-          <button
-            class="btn btn-primary"
-            mwlCalendarPreviousView
-            [(viewDate)]="viewDate"
-            [view]="view"
-          >
-            Précédent
-          </button>
-          <button
-            class="btn btn-outline-secondary"
-            mwlCalendarToday
-            [(viewDate)]="viewDate"
-          >
-            Aujourd'hui
-          </button>
-          <button
-            class="btn btn-primary"
-            mwlCalendarNextView
-            [(viewDate)]="viewDate"
-            [view]="view"
-          >
-            Suivant
-          </button>
-        </div>
+<!-- rdv-modal.component.html -->
+<h1 mat-dialog-title class="modal-title">Choisissez la date de consultation</h1>
+<div mat-dialog-content class="modal-content">
+  <div class="date-selector">
+    <div *ngFor="let date of dates; let i = index" class="date-group">
+      <div class="date-header" (click)="toggleDate(i)">
+        <span>{{ date.label }}</span>
+        <button class="toggle-button">
+          {{ openedIndex === i ? '&#9650;' : '&#9660;' }}
+        </button> <!-- Flèche haut/bas -->
       </div>
+      <div class="time-slots" *ngIf="openedIndex === i">
+        <button class="time-slot" *ngFor="let slot of timeSlots">{{ slot }}</button>
+      </div>
+      <div class="consultation-note" *ngIf="openedIndex === i">
+        <span>• Indique une consultation assurée par un collaborateur : Dr. Kamil Abtroun</span>
+      </div>
+      <button class="see-more" *ngIf="openedIndex === i">VOIR PLUS</button>
     </div>
-    <br />
-    <mwl-calendar-week-view
-      [viewDate]="viewDate"
-      [events]="events"
-    >
-    </mwl-calendar-week-view>
   </div>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Fermer</button>
-</mat-dialog-actions>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="btn qr" (click)="onNoClick()">Annuler</button>
+</div>

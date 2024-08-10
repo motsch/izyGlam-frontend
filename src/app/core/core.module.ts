@@ -36,6 +36,8 @@ import { RoundShopCardComponent } from './component/round-shop-card/round-shop-c
 import { RdvModalComponent } from './component/rdv-modal/rdv-modal.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -65,6 +67,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatChipsModule,
         MatDialogModule,
         MatToolbarModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -78,7 +82,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatSidenavModule,
         MatButtonModule,
         ReactiveFormsModule,
-        CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory,
+        }),
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
