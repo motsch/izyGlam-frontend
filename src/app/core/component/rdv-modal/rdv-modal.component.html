@@ -1,5 +1,5 @@
 <!-- rdv-modal.component.html -->
-<h1 mat-dialog-title class="modal-title">Choisissez la date de consultation</h1>
+<h1 mat-dialog-title class="modal-title">Choisissez la date de la prestation</h1>
 <div mat-dialog-content class="modal-content">
   <div class="date-selector">
     <div *ngFor="let date of dates; let i = index" class="date-group">
@@ -11,9 +11,6 @@
       </div>
       <div class="time-slots" *ngIf="openedIndex === i">
         <button class="time-slot" *ngFor="let slot of timeSlots">{{ slot }}</button>
-      </div>
-      <div class="consultation-note" *ngIf="openedIndex === i">
-        <span>• Indique une consultation assurée par un collaborateur : Dr. Kamil Abtroun</span>
       </div>
       <button class="see-more" *ngIf="openedIndex === i">VOIR PLUS</button>
     </div>

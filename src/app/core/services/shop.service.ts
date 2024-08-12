@@ -29,12 +29,8 @@ export class ShopService {
      * Créer un nouveau shop
      * @param task (données du shop à créer)
      */
-    create(shop: any, shopId: string) {
-        // Ajoutez l' comme paramètre
-        return this.http.post<any>(
-            `${environment.apiUrl}shop?columnId=${shopId}`,
-            shop
-        );
+    create(shop: any) {
+        return this.http.post<any>(environment.apiUrl + 'shops', shop);
     }
 
     /**
