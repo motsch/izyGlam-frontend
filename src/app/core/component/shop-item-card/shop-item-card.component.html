@@ -2,12 +2,12 @@
     <div class="pizza-info">
         <h3>{{item.name}}</h3>
         <p class="price">{{item.price}} €</p>
-        <p class="rating">👍 {{item.note}}% ({{item.nbAvis}})</p>
+        <!--<p class="rating">👍 {{item.note}}% ({{item.nbAvis}})</p>-->
         <p class="description">{{item.description | truncate:20 }}</p>
-        <p class="offer"><span>{{item.offre}}</span></p>
+        <!--<p class="offer"><span>{{item.offre}}</span></p>-->
     </div>
     <div class="pizza-image">
-        <img [src]="imgStorageUrl+item.picture" alt="item illustration">
+        <img [src]="imgStorageUrl+item.image" alt="item illustration">
         <button class="add-button">+</button>
     </div>
 </div>

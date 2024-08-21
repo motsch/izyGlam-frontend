@@ -23,7 +23,7 @@ export class BookingService {
      * Récupérer toutes les products
      */
     getAll(): Observable<any> {
-        return this.http.get<any[]>(`${environment.apiUrl}service`);
+        return this.http.get<any[]>(`${environment.apiUrl}booking`);
     }
 
     /**
@@ -31,7 +31,7 @@ export class BookingService {
      * @param id (ID du product)
      */
     getById(id: number): Observable<any> {
-        return this.http.get<any>(`${environment.apiUrl}service/${id}`);
+        return this.http.get<any>(`${environment.apiUrl}booking/${id}`);
     }
 
     /**
@@ -41,7 +41,7 @@ export class BookingService {
     create(product: any): Observable<any> {
         // Ajoutez l' comme paramètre
         return this.http.post<any>(
-            `${environment.apiUrl + 'service', product}`,
+            `${environment.apiUrl + 'booking', product}`,
             product
         );
     }
@@ -52,7 +52,7 @@ export class BookingService {
      */
     update(product: any): Observable<any> {
         return this.http.put<any>(
-            `${environment.apiUrl}service/${product._id}`,
+            `${environment.apiUrl}booking/${product._id}`,
             product
         );
     }
@@ -62,6 +62,6 @@ export class BookingService {
      * @param id (ID du product à supprimer)
      */
     delete(id: number): Observable<any> {
-        return this.http.delete<any>(`${environment.apiUrl}service/${id}`);
+        return this.http.delete<any>(`${environment.apiUrl}booking/${id}`);
     }
 }

@@ -1,7 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RdvModalComponent } from 'src/app/core/component/rdv-modal/rdv-modal.component';
+import { ProductService } from 'src/app/core/services/product.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { environment } from 'src/environments/environment';
 
@@ -80,196 +81,26 @@ export class ShopComponent {
             filter: 'style',
         },
     ];
-    shopItems = [
-        {
-            name: 'Mama coiff 0',
-            image: 'assets/images/ubertest.webp',
-            note: '4.3',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'hairdresser',
-        },
-        {
-            name: 'Mama coiff 1',
-            image: 'assets/images/ubertest.webp',
-            note: '4.3',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'hairdresser',
-        },
-        {
-            name: 'Mama coiff 2',
-            image: 'assets/images/ubertest.webp',
-            note: '4.3',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'hairdresser',
-        },
-        {
-            name: 'Mama coiff 3',
-            image: 'assets/images/ubertest.webp',
-            note: '4.3',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'hairdresser',
-        },
-        {
-            name: 'Mama coiff 4',
-            image: 'assets/images/ubertest.webp',
-            note: '4.3',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'hairdresser',
-        },
-        {
-            name: 'Mama coiff 5',
-            image: 'assets/images/ubertest.webp',
-            note: '4.3',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'hairdresser',
-        },
-        {
-            name: 'Mama coiff 6',
-            image: 'assets/images/ubertest.webp',
-            note: '4.3',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'hairdresser',
-        },
-        {
-            name: 'Mama coiff 7',
-            image: 'assets/images/ubertest.webp',
-            note: '4.3',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'hairdresser',
-        },
-        {
-            name: 'Ophé touff',
-            image: 'assets/images/ubertest.webp',
-            note: '4.5',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '1',
-            delayScale: 'jours',
-            type: 'manucure',
-        },
-        {
-            name: 'Manu coupe',
-            image: 'assets/images/ubertest.webp',
-            note: '4.0',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'maquillage',
-        },
-        {
-            name: 'Obélix',
-            image: 'assets/images/ubertest.webp',
-            note: '3.8',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'visage',
-        },
-        {
-            name: 'Tintin',
-            image: 'assets/images/ubertest.webp',
-            note: '2.9',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '30',
-            delayScale: 'minutes',
-            type: 'epilation',
-        },
-        {
-            name: 'Toto',
-            image: 'assets/images/ubertest.webp',
-            note: '5.0',
-            price: '50',
-            description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            monayType: '€',
-            nbAvis: '2,000',
-            picture: 'shopIllustration/coiffeur10.png',
-            minimumDelay: '2',
-            delayScale: 'jours',
-            type: 'massage',
-        },
-    ];
+    shopItems = [];
 
     constructor(
         private router: Router,
         public sessionService: SessionService,
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        private productService: ProductService,
+        private activatedRoute: ActivatedRoute,
     ) {}
+
+    ngOnInit(): void {
+        //récupérer l'id du shop sur la route
+        let shopId = this.activatedRoute.snapshot.params['id'];
+        console.log("shop id : "+shopId)
+        this.shopItems = [];
+        this.productService.getProductsByShop(shopId).subscribe((data:any) => {
+            console.log(data);
+            this.shopItems = data;
+        });
+    }
 
     openDialog() {
         this.dialog.open(RdvModalComponent);

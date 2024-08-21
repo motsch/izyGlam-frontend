@@ -1,69 +1,61 @@
-<app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
+<app-header
+  *ngIf="!sessionService.isLoggedIn()"
+  [connected]="false"
+></app-header>
 <!-- sidebar + content -->
 <section class="container">
-    <div class="row">
-        <!-- sidebar -->
-        <div class="col-lg-3">
-            <!-- Collapsible wrapper -->
-            <div class="mb-5" id="navbarSupportedContent">
-                <div>
-                    <h3>Mélanie Hair Shop</h3>
-                </div>
-                <div>
-                    <span>
-                        3 <img [src]="imgStorageUrl+'star.png'" alt="starLogo" class="starLogo">
-                    </span>
-                    <span>
-                        (2,000+) <br> Frais de déplacement: 4,90€ <br> Frais de déplacement (izyVIP): 0,00€ <br> 20km
-                    </span>
-                    <div>
-                        <img [src]="imgStorageUrl+'money.png'" alt="starLogo" class="moneyLogo">
-                    </div>
-                    <div>
-                        Paiement par CB et PayPal accepté<br>
-
-                        Appuyez pour consulter les horaires, les informations, etc
-                    </div>
-                    <div class="margin-top-20">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Ut
-                        vitae est lacus. Nullam
-                        blandit, eros eget viverra pretium, lectus purus hendrerit erat, ac accumsan risus
-                        ligula semper lorem.
-                    </div>
-                </div>
-                <div class="nav flex-column nav-pills margin-top-40" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link glam-nav" [class.active]="activeTab === 'home'" 
-                       (click)="setActiveTab('home')" role="tab" 
-                       aria-controls="v-pills-home">Menu 1</a>
-                    
-                    <a class="nav-link glam-nav" [class.active]="activeTab === 'profile'" 
-                       (click)="setActiveTab('profile')" role="tab" 
-                       aria-controls="v-pills-profile">Menu 2</a>
-                    
-                    <a class="nav-link glam-nav" [class.active]="activeTab === 'messages'" 
-                       (click)="setActiveTab('messages')" role="tab" 
-                       aria-controls="v-pills-messages">Menu 3</a>
-                    
-                    <a class="nav-link glam-nav" [class.active]="activeTab === 'settings'" 
-                       (click)="setActiveTab('settings')" role="tab" 
-                       aria-controls="v-pills-settings">Menu 4</a>
-                  </div>
-                  
-            </div>
+  <div class="row">
+    <!-- sidebar -->
+    <div class="col-lg-3">
+      <!-- Collapsible wrapper -->
+      <div class="mb-5" id="navbarSupportedContent">
+        <div>
+          <h3>Mélanie Hair Shop</h3>
         </div>
-        <div class="col-lg-9">
-            <div class="top-bar">
-                <h3>Menu 1</h3>
-                <button mat-button (click)="openDialog()">Ouvrir la fenêtre modale</button>
-            </div>
+        <div>
+          <span>
+            3
+            <img
+              [src]="imgStorageUrl + 'star.png'"
+              alt="starLogo"
+              class="starLogo"
+            />
+          </span>
+          <span>
+            (2,000+) <br />
+            Frais de déplacement: 4,90€ <br />
+            Frais de déplacement (izyVIP): 0,00€ <br />
+            20km
+          </span>
+          <div>
+            <img
+              [src]="imgStorageUrl + 'money.png'"
+              alt="starLogo"
+              class="moneyLogo"
+            />
+          </div>
+          <div>
+            Paiement par CB et PayPal accepté<br />
 
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
-                    <app-shop-item-card [item]="item"></app-shop-item-card>
-                </div>
-            </div>
-
+            Appuyez pour consulter les horaires, les informations, etc
+          </div>
+          <div class="margin-top-20">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae
+            est lacus. Nullam blandit, eros eget viverra pretium, lectus purus
+            hendrerit erat, ac accumsan risus ligula semper lorem.
+          </div>
         </div>
+      </div>
     </div>
+    <div class="col-lg-9">
+      <div class="row">
+        <div
+          class="col-12 col-sm-12 col-md-6 col-lg-6"
+          *ngFor="let item of shopItems"
+        >
+          <app-shop-item-card [item]="item"></app-shop-item-card>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

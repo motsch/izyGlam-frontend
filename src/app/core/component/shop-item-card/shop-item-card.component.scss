@@ -9,6 +9,7 @@
   height: 150px;
   width: 85%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-top: 15px !important;
 }
 
 .pizza-info {
@@ -20,6 +21,7 @@
   align-items: center;
   margin: 0;
   font-size: 18px;
+  color: #B23A48;
 }
 
 .pizza-info .icon-cheese,
@@ -28,7 +30,8 @@
 }
 
 .pizza-info .price {
-  font-weight: bold;
+  font-weight: normal;
+  margin-top: 10px;
 }
 
 .pizza-info .rating {
