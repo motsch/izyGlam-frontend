@@ -25,8 +25,8 @@
               <label>
                 <input [(ngModel)]="bill.client" type="radio" name="address" [value]="proche._id" />
                 <span class="avatar"
-                  >{{ proche.firstname.charAt(0)
-                  }}{{ proche.lastname.charAt(0) }}</span
+                  >{{ proche.firstname?.charAt(0)
+                  }}{{ proche.lastname?.charAt(0) }}</span
                 >
                 <span class="name"
                   >{{ proche.firstname }} <span class="uppercase">{{ proche.lastname }}</span></span

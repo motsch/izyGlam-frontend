@@ -1,111 +1,88 @@
-<form [formGroup]="shopForm" (ngSubmit)="saveShop()">
+<div class="form">
   <div>
     <label for="name">Nom de la boutique</label>
     <input
+      [(ngModel)]="shopCopyData.name"
       class="input-style"
       type="text"
       id="name"
-      formControlName="name"
-      required
     />
   </div>
   <div>
     <label for="description">Description</label>
     <textarea
+      [(ngModel)]="shopCopyData.description"
       class="input-style"
       type="text"
       id="description"
-      formControlName="description"
-      required
     ></textarea>
   </div>
   <div>
     <label for="image">Image</label>
     <input
+      [(ngModel)]="shopCopyData.image"
       class="input-style"
       type="text"
       id="image"
-      formControlName="image"
-      required
     />
   </div>
   <div>
     <label for="averagePrice">Prix moyen</label>
     <input
+      [(ngModel)]="shopCopyData.averagePrice"
       class="input-style"
       type="text"
       id="averagePrice"
-      formControlName="averagePrice"
-      required
     />
   </div>
   <div>
     <label for="ville">Ville</label>
     <input
+      [(ngModel)]="shopCopyData.ville"
       class="input-style"
       type="text"
       id="ville"
-      formControlName="ville"
-      required
     />
   </div>
   <div>
     <label for="latitude">Latitude</label>
     <input
+      [(ngModel)]="shopCopyData.location.latitude"
       class="input-style"
       type="number"
       id="latitude"
-      formControlName="latitude"
     />
   </div>
   <div>
     <label for="longitude">Longitude</label>
     <input
+      [(ngModel)]="shopCopyData.location.longitude"
       class="input-style"
       type="number"
       id="longitude"
-      formControlName="longitude"
     />
   </div>
 
   <div class="form-group">
     <div>
       <label for="morningStart">Heures d'ouverture (matin)</label>
-      <input
-        class="input-style"
-        type="time"
-        id="morningStart"
-        formControlName="morningStart"
-      />
+      <input class="input-style" type="time" id="morningStart" />
     </div>
     <div>
       <label for="morningEnd">Heures de fermeture (matin)</label>
-      <input
-        type="time"
-        id="morningEnd"
-        formControlName="morningEnd"
-        class="input-style"
-      />
+      <input type="time" id="morningEnd" class="input-style" />
     </div>
   </div>
   <div class="form-group">
     <label for="afternoonStart">Heures d'ouverture (après-midi)</label>
-    <input
-      type="time"
-      id="afternoonStart"
-      formControlName="afternoonStart"
-      class="input-style"
-    />
-    <label for="afternoonEnd" class="margin-top-10">Heures de fermeture (après-midi)</label>
-    <input
-      type="time"
-      id="afternoonEnd"
-      formControlName="afternoonEnd"
-      class="input-style"
-    />
+    <input type="time" id="afternoonStart" class="input-style" />
+    <label for="afternoonEnd" class="margin-top-10"
+      >Heures de fermeture (après-midi)</label
+    >
+    <input type="time" id="afternoonEnd" class="input-style" />
   </div>
   <button type="submit" class="btn btn-primary">Enregistrer la boutique</button>
-</form>
+</div>
 
 <h2 class="mt-4">Gestion des Services</h2>
 <table class="table table-striped">
@@ -119,7 +96,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let service of services">
+    <tr *ngFor="let service of articlesCopyData">
       <td>{{ service.name }}</td>
       <td>{{ service.description }}</td>
       <td>{{ service.price | currency : "EUR" }}</td>

@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "66b93d7a336274221e558bda"
+  },
+  "user": "669ee9a38db173e538d0659c",
+  "service": "66c5a1b209327c7d9cde9de6",
+  "shop": "66983bd3ab6bb2a89fe86470",
+  "date": "2024-09-11T10:00:00",
+  "status": "confirmed",
+  "price": "20"
+},
+{
+  "_id": {
+    "$oid": "66b93d7a336274221e558bdb"
+  },
+  "user": "669ee9a38db173e538d0659c",
+  "service": "66c5a1b209327c7d9cde9de7",
+  "shop": "66983bd3ab6bb2a89fe86471",
+  "date": "2024-09-12T14:00:00",
+  "status": "pending",
+  "price": "50"
+},
+{
+  "_id": {
+    "$oid": "66b93d7a336274221e558bdc"
+  },
+  "user": "669ee9a38db173e538d0659c",
+  "service": "66c5a1b209327c7d9cde9de9",
+  "shop": "66983bd3ab6bb2a89fe86472",
+  "date": "2024-09-13T09:00:00",
+  "status": "completed",
+  "price": "44"
+}]

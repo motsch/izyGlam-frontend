@@ -16,7 +16,7 @@ export class ProductService {
     }
 
     getProductsByShop(shopId: string) {
-        return this.http.get(`${environment.apiUrl}shop/${shopId}/services`);
+        return this.http.get<any[]>(`${environment.apiUrl}shop/${shopId}/services`);
     }
 
     /**

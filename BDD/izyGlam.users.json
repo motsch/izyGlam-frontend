@@ -1,0 +1,126 @@
+[{
+  "_id": {
+    "$oid": "669ee9a38db173e538d0659b"
+  },
+  "lastname": "Motsch",
+  "firstname": "Francis",
+  "email": "francis.motsch@gmail.com",
+  "password": "$2a$10$KPWrg53TOXl86FSqM/vJqOKYq4H6AgBiN1ChagVsaMfu11z096VWC",
+  "phone": "0619742564",
+  "companyId": "66d0809657f583c38ff11c4a",
+  "role": "entreprise",
+  "address": [
+    {
+      "street": "123 Main St",
+      "city": "Paris",
+      "code_postal": "75001",
+      "country": "France",
+      "main": true
+    },
+    {
+      "street": "456 Secondary Rd",
+      "city": "Lyon",
+      "code_postal": "69001",
+      "country": "France",
+      "main": false
+    }
+  ],
+  "proches": [
+    {
+      "lastname": "Dupont",
+      "firstname": "Marie",
+      "email": "marie.dupont@example.com",
+      "phone": "0612345678"
+    },
+    {
+      "lastname": "Lemoine",
+      "firstname": "Jean",
+      "email": "jean.lemoine@example.com",
+      "phone": "0698765432"
+    },
+    {
+      "lastname": "Martin",
+      "firstname": "Lucie",
+      "email": "lucie.martin@example.com",
+      "phone": "0623456789"
+    },
+    {
+      "lastname": "Bernard",
+      "firstname": "Paul",
+      "email": "paul.bernard@example.com",
+      "phone": "0645678901"
+    },
+    {
+      "lastname": "Roux",
+      "firstname": "Sophie",
+      "email": "sophie.roux@example.com",
+      "phone": "0678901234"
+    }
+  ],
+  "__v": 0,
+  "credit": "50",
+  "shopId": "66d0eccfac2fe1ec4ebd9767"
+},
+{
+  "_id": {
+    "$oid": "669ee9a38db173e538d0659c"
+  },
+  "lastname": "Bob",
+  "firstname": "Martin",
+  "email": "martin.bob@gmail.com",
+  "password": "$2a$10$czIvB97aDYyZQHb.TO9HDOL0fQuTt0WC8LmbPoPgmkTHaPbFEo5ZO",
+  "phone": "0619742564",
+  "companyId": "66d0809657f583c38ff11c4a",
+  "role": "user",
+  "address": [
+    {
+      "street": "123 Main St",
+      "city": "Paris",
+      "code_postal": "75001",
+      "country": "France",
+      "main": true
+    },
+    {
+      "street": "456 Secondary Rd",
+      "city": "Lyon",
+      "code_postal": "69001",
+      "country": "France",
+      "main": false
+    }
+  ],
+  "proches": [
+    {
+      "lastname": "Dupont",
+      "firstname": "Marie",
+      "email": "marie.dupont@example.com",
+      "phone": "0612345678"
+    },
+    {
+      "lastname": "Lemoine",
+      "firstname": "Jean",
+      "email": "jean.lemoine@example.com",
+      "phone": "0698765432"
+    },
+    {
+      "lastname": "Martin",
+      "firstname": "Lucie",
+      "email": "lucie.martin@example.com",
+      "phone": "0623456789"
+    },
+    {
+      "lastname": "Bernard",
+      "firstname": "Paul",
+      "email": "paul.bernard@example.com",
+      "phone": "0645678901"
+    },
+    {
+      "lastname": "Roux",
+      "firstname": "Sophie",
+      "email": "sophie.roux@example.com",
+      "phone": "0678901234"
+    }
+  ],
+  "__v": 0,
+  "credit": "0",
+  "shopId": "66d0ddf7ac2fe1ec4ebd9763"
+}]
