@@ -1,0 +1,55 @@
+<form>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-6 mb-4">
+        <div class="dashboard-card">
+          <h3>Total des réservations</h3>
+          <p class="dashboard-number">{{ totalReservations }}</p>
+          <p class="dashboard-description">Réservations ce mois-ci</p>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6 mb-4">
+        <div class="dashboard-card">
+          <h3>Revenus générés</h3>
+          <p class="dashboard-number">{{ totalRevenue | currency : "EUR" }}</p>
+          <p class="dashboard-description">Revenus ce mois-ci</p>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6 mb-4">
+        <div class="dashboard-card">
+          <h3>Notes moyennes</h3>
+          <p class="dashboard-number">{{ averageRating }} / 5</p>
+          <p class="dashboard-description">Basé sur {{ totalReviews }} avis</p>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6 mb-4">
+        <div class="dashboard-card">
+          <h3>Notes moyennes</h3>
+          <p class="dashboard-number">{{ averageRating }} / 5</p>
+          <p class="dashboard-description">Basé sur {{ totalReviews }} avis</p>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6 mb-4">
+        <div class="dashboard-card">
+          <h3>Prochains rendez-vous</h3>
+          <ul>
+            <li *ngFor="let appointment of upcomingAppointments">
+              {{ appointment.date | date : "short" }} -
+              {{ appointment.clientName }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6 mb-4">
+        <div class="dashboard-card">
+          <h3>Services les plus populaires</h3>
+          <ul>
+            <li *ngFor="let service of popularServices">
+              {{ service.name }} - {{ service.reservations }} réservations
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -2,15 +2,20 @@
 <h1 mat-dialog-title class="modal-title">Choisissez la date de la prestation</h1>
 <div mat-dialog-content class="modal-content">
   <div class="date-selector">
-    <div *ngFor="let date of dates; let i = index" class="date-group">
+    <div *ngFor="let date of schedules; let i = index" class="date-group">
       <div class="date-header" (click)="toggleDate(i)">
-        <span>{{ date.label }}</span>
+        <span>{{ date.dateToShow }}</span>
         <button class="toggle-button">
           {{ openedIndex === i ? '&#9650;' : '&#9660;' }}
         </button> <!-- Flèche haut/bas -->
       </div>
       <div class="time-slots" *ngIf="openedIndex === i">
-        <button class="time-slot" *ngFor="let slot of timeSlots">{{ slot }}</button>
+        <span *ngFor="let slot of date.schedule.morningSlots">
+          <button *ngIf="slot.available" (click)="slotClick(slot, date._id, 'morning')" class="time-slot">{{ slot.startTime }}</button>
+        </span>
+        <span *ngFor="let slot of date.schedule.afternoonSlots">
+          <button *ngIf="slot.available" (click)="slotClick(slot, date._id, 'afternoon')" class="time-slot">{{ slot.startTime }}</button>
+        </span>
       </div>
       <button class="see-more" *ngIf="openedIndex === i">VOIR PLUS</button>
     </div>

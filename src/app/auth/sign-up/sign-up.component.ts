@@ -90,36 +90,7 @@ export class SignUpComponent implements OnInit {
                     this.openSnackBar(uploadTranslation);
                 }
             );
-        } /** else { //update du user
-      this.notDeleted = true;
-      // une fois l'erreur : on desactive le loader
-      this.emitterService.change(true);
-      this.userService.update(this.user).subscribe(
-        () => {
-          const uploadTranslation = this.translate.instant(
-            "SUCCESS.USERUPDATED"
-          );
-          this.openSnackBar(uploadTranslation);
-          // this.modalService.dismissAll();
-          localStorage.setItem("me", JSON.stringify(this.user));
-          this.user = {};
-          // une fois l'erreur : on desactive le loader
-          this.emitterService.change(false);
-          // this.modalRMSService.updateData();
-          this.notDeleted = false;
-        },
-        (err) => {
-          // une fois l'erreur : on desactive le loader
-          this.emitterService.change(false);
-          console.log(err);
-          const uploadTranslation = this.translate.instant(
-            "ERROR.USERNOTUPDATED"
-          );
-          this.openSnackBar(uploadTranslation);
         }
-      );
-    } */
-        // this.modalService.dismissAll();
     }
     cancelCreation() {
         this.user = this.tempOject;

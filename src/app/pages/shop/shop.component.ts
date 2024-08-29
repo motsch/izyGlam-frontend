@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RdvModalComponent } from 'src/app/core/component/rdv-modal/rdv-modal.component';
 import { ProductService } from 'src/app/core/services/product.service';
+import { ScheduleService } from 'src/app/core/services/schedule.service';
 import { SessionService } from 'src/app/core/services/session.service';
+import { ShopService } from 'src/app/core/services/shop.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -14,6 +16,7 @@ import { environment } from 'src/environments/environment';
 export class ShopComponent {
     imgStorageUrl: string = environment.imgStorageUrl;
     activeTab = 'home';
+    shopInfo: any = {};
     @ViewChild('scrollContainerCategory')
     private scrollContainerCategory: ElementRef | undefined;
     @ViewChild('scrollContainerAround')
@@ -89,17 +92,29 @@ export class ShopComponent {
         public dialog: MatDialog,
         private productService: ProductService,
         private activatedRoute: ActivatedRoute,
+        private shopService: ShopService
     ) {}
 
     ngOnInit(): void {
         //récupérer l'id du shop sur la route
         let shopId = this.activatedRoute.snapshot.params['id'];
-        console.log("shop id : "+shopId)
+        console.log("shop id : "+shopId);
+        localStorage.setItem("shopSelected", shopId);
         this.shopItems = [];
         this.productService.getProductsByShop(shopId).subscribe((data:any) => {
             console.log(data);
             this.shopItems = data;
         });
+        this.shopService.getById(shopId).subscribe((data:any)=>{
+            console.log("here: "+JSON.stringify(data));
+            this.shopInfo = data;
+            this.shopInfo.note = 0;
+            this.shopInfo.noteCount = data.reviews.length
+            for(let elem of data.reviews) {
+                this.shopInfo.note = this.shopInfo.note + elem.rating
+            }
+            this.shopInfo.note = this.shopInfo.note/data.reviews.length
+        })
     }
 
     openDialog() {

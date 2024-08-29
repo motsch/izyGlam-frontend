@@ -1,0 +1,85 @@
+<h2 mat-dialog-title class="modal-title">
+    <span *ngIf="step===1">Mes proches</span>
+    <span *ngIf="step===2">Modification d'un proche</span>
+  
+  <button mat-icon-button mat-dialog-close class="close-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+<mat-dialog-content class="modal-content">
+  <div class="address-list">
+    <span *ngIf="step === 1">
+      <div class="address-item" *ngFor="let proche of data.user.proches">
+        <mat-icon class="location-icon">location_on</mat-icon>
+        <div class="address-info">
+          <p class="address">{{ proche.firstname }} {{ proche.lastname }}</p>
+          <p class="city">{{ proche.city }}</p>
+        </div>
+        <mat-icon (click)="editProche(proche)" class="edit-icon">edit</mat-icon>
+      </div>
+    </span>
+    <span *ngIf="step === 2">
+        <div class="payment-selection">
+          <!--<p>Veuillez entrer les détails de votre carte bancaire :</p>-->
+          <form class="payment-form">
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input
+              [(ngModel)]="elem.firstname"
+              (ngModelChange)="showValidate()"
+                type="text"
+                id="prenom"
+                name="prenom"
+                placeholder="Jean"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom de famille</label>
+              <input
+              [(ngModel)]="elem.lastname"
+              (ngModelChange)="showValidate()"
+                type="text"
+                id="nom"
+                name="nom"
+                placeholder="Dupont"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+              [(ngModel)]="elem.email"
+              (ngModelChange)="showValidate()"
+                type="text"
+                id="email"
+                name="email"
+                placeholder="jean.dupont@gmail.com"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="phone">Téléphone</label>
+              <input
+              [(ngModel)]="elem.phone"
+              (ngModelChange)="showValidate()"
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="0102030405"
+                required
+              />
+            </div>
+          </form>
+        </div>
+    </span>
+  </div>
+  <div class="preference-time">
+    <button *ngIf="step === 1" (click)="newProche()" mat-button class="schedule-button">Créer</button>
+    <button *ngIf="step === 2" (click)="stepMinus()" mat-button class="schedule-button">Retour</button>
+    <button *ngIf="step === 2 && validate" mat-button class="schedule-button margin-left-10">Modifier</button>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="modal-actions">
+  <button mat-button mat-dialog-close>Fermer</button>
+</mat-dialog-actions>

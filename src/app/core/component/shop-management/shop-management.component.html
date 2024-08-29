@@ -1,0 +1,184 @@
+<form [formGroup]="shopForm" (ngSubmit)="saveShop()">
+  <div>
+    <label for="name">Nom de la boutique</label>
+    <input
+      class="input-style"
+      type="text"
+      id="name"
+      formControlName="name"
+      required
+    />
+  </div>
+  <div>
+    <label for="description">Description</label>
+    <textarea
+      class="input-style"
+      type="text"
+      id="description"
+      formControlName="description"
+      required
+    ></textarea>
+  </div>
+  <div>
+    <label for="image">Image</label>
+    <input
+      class="input-style"
+      type="text"
+      id="image"
+      formControlName="image"
+      required
+    />
+  </div>
+  <div>
+    <label for="averagePrice">Prix moyen</label>
+    <input
+      class="input-style"
+      type="text"
+      id="averagePrice"
+      formControlName="averagePrice"
+      required
+    />
+  </div>
+  <div>
+    <label for="ville">Ville</label>
+    <input
+      class="input-style"
+      type="text"
+      id="ville"
+      formControlName="ville"
+      required
+    />
+  </div>
+  <div>
+    <label for="latitude">Latitude</label>
+    <input
+      class="input-style"
+      type="number"
+      id="latitude"
+      formControlName="latitude"
+    />
+  </div>
+  <div>
+    <label for="longitude">Longitude</label>
+    <input
+      class="input-style"
+      type="number"
+      id="longitude"
+      formControlName="longitude"
+    />
+  </div>
+
+  <div class="form-group">
+    <div>
+      <label for="morningStart">Heures d'ouverture (matin)</label>
+      <input
+        class="input-style"
+        type="time"
+        id="morningStart"
+        formControlName="morningStart"
+      />
+    </div>
+    <div>
+      <label for="morningEnd">Heures de fermeture (matin)</label>
+      <input
+        type="time"
+        id="morningEnd"
+        formControlName="morningEnd"
+        class="input-style"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="afternoonStart">Heures d'ouverture (après-midi)</label>
+    <input
+      type="time"
+      id="afternoonStart"
+      formControlName="afternoonStart"
+      class="input-style"
+    />
+    <label for="afternoonEnd" class="margin-top-10">Heures de fermeture (après-midi)</label>
+    <input
+      type="time"
+      id="afternoonEnd"
+      formControlName="afternoonEnd"
+      class="input-style"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Enregistrer la boutique</button>
+</form>
+
+<h2 class="mt-4">Gestion des Services</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Prix</th>
+      <th>Durée</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let service of services">
+      <td>{{ service.name }}</td>
+      <td>{{ service.description }}</td>
+      <td>{{ service.price | currency : "EUR" }}</td>
+      <td>{{ service.duration }} minutes</td>
+      <td>
+        <button class="btn btn-sm btn-warning" (click)="editService(service)">
+          Modifier
+        </button>
+        <button
+          class="btn btn-sm btn-danger"
+          (click)="deleteService(service._id)"
+        >
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Ajouter/Modifier un Service</h3>
+<form [formGroup]="serviceForm" (ngSubmit)="saveService()">
+  <div class="form-group">
+    <label for="serviceName">Nom du service</label>
+    <input
+      type="text"
+      id="serviceName"
+      formControlName="name"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="serviceDescription">Description</label>
+    <textarea
+      id="serviceDescription"
+      formControlName="description"
+      class="form-control"
+      required
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="servicePrice">Prix</label>
+    <input
+      type="number"
+      id="servicePrice"
+      formControlName="price"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="serviceDuration">Durée (en minutes)</label>
+    <input
+      type="number"
+      id="serviceDuration"
+      formControlName="duration"
+      class="form-control"
+      required
+    />
+  </div>
+  <button type="submit" class="btn btn-primary">Enregistrer le service</button>
+</form>

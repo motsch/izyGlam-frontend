@@ -20,6 +20,14 @@ export class BookingService {
     }
 
     /**
+     * Permet de récupérer un user par son id
+     * @param id (id du user)
+     */
+    getBookingByUser(_id: number) {
+        return this.http.get<any>(environment.apiUrl + 'booking/user/' + _id);
+    }
+
+    /**
      * Récupérer toutes les products
      */
     getAll(): Observable<any> {

@@ -156,3 +156,31 @@ button {
   background-color: #ededed;
   width: 100px;
 }
+  
+.payment-selection {
+  margin-top: 15px;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+  
+.form-group {
+  margin-bottom: 5px;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}

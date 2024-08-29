@@ -8,14 +8,11 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-    imgStorageUrl: string = environment.imgStorageUrl;
     profileForm: FormGroup | undefined;
     imagePreview: string | undefined;
-    user = {
-        name: 'Francis Motsch',
-        phone: '+33619742564',
-        email: 'francis.motsch@gmail.com',
-    };
+    activeSection: string = 'account-info';  // Par défaut, la section active est "account-info"
+    userChangeSuccess: boolean = false;
+    userChangeError: string = '';
     constructor(private formBuilder: FormBuilder) {}
 
     ngOnInit() {
@@ -25,7 +22,14 @@ export class ProfileComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             password: ['', Validators.minLength(6)],
         });
+        
+      let currentMenu = localStorage.getItem('activeMenu');
+      if(currentMenu) {
+        this.setActiveSection(currentMenu);
+      }
     }
+
+    isUserChanged(){}
     onSubmit() {
         if (this.profileForm!.valid) {
             // Process form data (e.g., send to backend)
@@ -43,6 +47,15 @@ export class ProfileComponent implements OnInit {
             });
             this.previewImage(file); // Preview the selected image
         }
+    }
+
+    setActiveSection(section: string): void {
+      this.activeSection = section;
+      localStorage.setItem('activeMenu', section);
+    }
+  
+    isSectionActive(section: string): boolean {
+      return this.activeSection === section;
     }
 
     previewImage(file: File) {

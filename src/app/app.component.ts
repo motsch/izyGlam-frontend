@@ -37,17 +37,14 @@ export class AppComponent implements OnInit {
             'da',
             'fi',
         ]);
-        let userLang = navigator.language;
-        const sessionLangue = this.sessionService.getLang();
 
-        translate.setDefaultLang(userLang);
+        const sessionLangue = this.sessionService.getLang();
         if (sessionLangue) {
             translate.setDefaultLang(sessionLangue);
-        } else if (userLang) {
-            translate.setDefaultLang(userLang);
         } else {
-            translate.setDefaultLang('en');
+            translate.setDefaultLang('fr');
         }
+
         translate.getBrowserLang();
     }
 

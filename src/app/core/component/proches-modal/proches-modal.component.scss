@@ -1,0 +1,186 @@
+.example-full-width {
+    width: 100%;
+  }
+  
+  .modal-content {
+    padding: 0; /* Remove padding to match Uber Eats style */
+    width: 400px; /* Set fixed width to match Uber Eats modal */
+    border-radius: 8px; /* Add border-radius to match Uber Eats modal */
+  }
+  
+  .modal-title {
+    font-weight: bold;
+    color: #3a3a3a;
+    padding: 16px 24px 8px 24px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between; /* Align title and close button */
+    align-items: center;
+  }
+  
+  .close-button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #000;
+  }
+  
+  .close-button mat-icon {
+    font-size: 24px;
+  }
+  
+  .section-title {
+    font-weight: bold;
+    color: #3a3a3a;
+    padding: 16px 24px 8px 24px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .search-container {
+    padding: 16px 24px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .custom-form-field {
+    width: 100%;
+    border-radius: 24px; /* Adjust the border-radius */
+    background: #f5f5f5; /* Light gray background */
+    padding: 8px 16px; /* Add padding to match the input field style */
+    display: flex;
+    align-items: center;
+    box-sizing: border-box; /* Ensure padding is inside the element */
+  }
+  
+  .custom-form-field mat-icon {
+    color: #000;
+    margin-right: 8px; /* Adjust icon margin */
+  }
+  
+  .custom-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-left: 8px;
+    font-size: 16px;
+    color: #2e2e2e;
+    box-sizing: border-box; /* Ensure padding is inside the element */
+  }
+  
+  .address-list {
+    padding: 0 24px;
+    margin: 0;
+    max-height: 300px; /* Adjust the height as necessary */
+    overflow-y: scroll; /* Allow scrolling if content exceeds max height */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .address-list::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+  
+  .address-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .address-item:last-child {
+    border-bottom: none;
+  }
+  
+  .location-icon {
+    margin-right: 16px;
+    color: #b23a48;
+  }
+  
+  .address-info {
+    flex-grow: 1;
+    width: 90%;
+  }
+  
+  .address {
+    margin: 0;
+    font-weight: bold;
+    color: #2e2e2e;
+  }
+  
+  .city {
+    margin: 0;
+    color: #6e6e6e;
+  }
+  
+  .edit-icon {
+    cursor: pointer;
+    color: #b23a48;
+  }
+  
+  .preference-time {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-top: 1px solid #eee;
+  }
+  
+  .preference-time mat-icon {
+    margin-right: 16px;
+    color: #b23a48;
+  }
+  
+  .preference-time p {
+    margin: 0;
+    flex-grow: 1;
+    color: #2e2e2e;
+  }
+  
+  .schedule-button {
+    color: #b23a48;
+  }
+  
+  .modal-actions {
+    justify-content: flex-end;
+    padding: 16px 24px;
+    border-top: 1px solid #eee;
+  }
+  
+  .mat-dialog-container {
+    padding: 0; /* Remove padding to match the Uber Eats modal */
+    border-radius: 50px; /* Add border-radius */
+  }
+  
+  button {
+    border-radius: 20px;
+    background-color: #ededed;
+    width: 100px;
+  }
+  
+  .payment-selection {
+    margin-top: 15px;
+  }
+  
+  .payment-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 5px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  

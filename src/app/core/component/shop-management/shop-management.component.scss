@@ -1,0 +1,92 @@
+form {
+  max-width: 900px;
+  margin-top: 20px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: #ff6b6b;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-right: 5px;
+}
+
+input {
+  width: 60%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+textarea {
+  width: 60%;
+  height: 150px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+button {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}

@@ -8,6 +8,10 @@
     contrast(0%) !important;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .bold {
   font-weight: bold;
 }

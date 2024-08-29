@@ -19,12 +19,12 @@
         </li>
         <li class="nav-item">
           <a>
-            <button type="button" (click)="routerNavigate('/sign-in-sms')" class="btn btn-transparent color_black"
+            <button type="button" (click)="routerNavigate('/sign-in')" class="btn btn-transparent color_black"
               *ngIf="page !== 'connected'">Connexion</button></a>
         </li>
         <li class="nav-item">
           <a>
-            <button type="button" (click)="routerNavigate('/sign-in-sms')" class="btn btn-transparent color_primary"
+            <button type="button" (click)="routerNavigate('/sign-up')" class="btn btn-transparent color_primary"
               *ngIf="page !== 'connected'">Inscription</button></a>
         </li>
       </ul>
@@ -45,18 +45,19 @@
         <a [routerLink]="'/main'"><img [src]="imgStorageUrl+'logo.png'" alt="logo" class="ms-3 logo-connected" /></a>
       </div>
       <div class="col">
-        <button type="button" (click)="openAddressModal()" class="btn color_white ms-4 margin-top-5">
+        <!--<button type="button" (click)="openAddressModal()" class="btn color_white ms-4 margin-top-5">
           <img [src]="imgStorageUrl+'location.png'" class="location_icon_left">64 avenue de la République • Maintenant
           <img [src]="imgStorageUrl+'down-chevron.png'" class="location_icon_right">
-        </button>
+        </button>-->
       </div>
       <div class="col">
         <input type="text" class="form-control search-bar" placeholder="Rechercher" aria-label="Rechercher"
           aria-describedby="button-addon2">
       </div>
-      <div class="col-auto">
+      <!-- CART -->
+      <!--<div class="col-auto">
         <a (click)="openCart()"><img class="cart" [src]="imgStorageUrl+'cart.png'" alt="logo" /></a>
-      </div>
+      </div>-->
     </div>
   </div>
 </nav>

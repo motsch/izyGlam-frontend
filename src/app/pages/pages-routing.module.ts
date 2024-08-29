@@ -8,6 +8,7 @@ import { TermsComponent } from './terms/terms.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { GuestGuard } from '../core/services/guest-guard.service';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { PayementComponent } from './payement/payement.component';
 
 const routes: Routes = [
     {
@@ -30,6 +31,11 @@ const routes: Routes = [
     {
         path: 'thank-you',
         component: ThankYouComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'billing',
+        component: PayementComponent,
         canActivate: [AuthGuard],
     },
 ];

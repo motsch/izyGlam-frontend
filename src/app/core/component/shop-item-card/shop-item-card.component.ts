@@ -11,13 +11,13 @@ import { RdvModalComponent } from '../rdv-modal/rdv-modal.component';
 export class ShopItemCardComponent {
     @Input() item: any;
     imgStorageUrl: string = environment.imgStorageUrl;
-    // /assets/images/ubertest2.webp
    
     constructor(
         public dialog: MatDialog
     ) {}
 
     openDialog() {
+        localStorage.setItem('productToBuy',JSON.stringify(this.item))
         this.dialog.open(RdvModalComponent);
     }
 }

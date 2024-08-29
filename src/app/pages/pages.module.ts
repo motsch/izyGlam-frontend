@@ -39,6 +39,7 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { AuthModule } from '../auth/auth.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PayementComponent } from './payement/payement.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -88,6 +89,7 @@ import { MatDialogModule } from '@angular/material/dialog';
         TermsComponent,
         ThankYouComponent,
         ComingSoonComponent,
+        PayementComponent,
     ],
     exports: [],
 })

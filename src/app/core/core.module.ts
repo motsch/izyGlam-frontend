@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { HttpClient } from '@angular/common/http';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
@@ -38,6 +38,16 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ProchesModalComponent } from './component/proches-modal/proches-modal.component';
+import { ChangePasswordComponent } from './component/change-password/change-password.component';
+import { ConfidentialPolicyComponent } from './component/confidential-policy/confidential-policy.component';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { ProfileInformationsComponent } from './component/profile-informations/profile-informations.component';
+import { FinanceComponent } from './component/finance/finance.component';
+import { AdminComponent } from './component/admin/admin.component';
+import { ShopManagementComponent } from './component/shop-management/shop-management.component';
+import { CompanyManagementComponent } from './component/company-management/company-management.component';
+import { CreditEmployeeModalComponent } from './component/credit-employee-modal/credit-employee-modal.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -55,6 +65,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatSidenavModule,
         MatSelectModule,
         MatButtonModule,
+        MatSelectModule,
         MatMenuModule,
         MatTooltipModule,
         MatIconModule,
@@ -100,17 +111,42 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         TruncatePipe,
         ModalYesNoComponent,
         HeaderComponent,
+        ShopManagementComponent,
+        AdminComponent,
+        FinanceComponent,
+        ProfileInformationsComponent,
+        ChangePasswordComponent,
+        ConfidentialPolicyComponent,
         FooterComponent,
+        CompanyManagementComponent,
         ShopCardComponent,
         ShopItemCardComponent,
         AddressModalComponent,
         RoundShopCardComponent,
         RdvModalComponent,
+        ProchesModalComponent,
+        ChangePasswordComponent,
+        ConfidentialPolicyComponent,
+        DashboardComponent,
+        ProfileInformationsComponent,
+        FinanceComponent,
+        AdminComponent,
+        ShopManagementComponent,
+        CompanyManagementComponent,
+        CreditEmployeeModalComponent,
     ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
         PageNotFoundComponent,
         HeaderComponent,
+        ShopManagementComponent,
+        AdminComponent,
+        FinanceComponent,
+        ProfileInformationsComponent,
+        ChangePasswordComponent,
+        ConfidentialPolicyComponent,
         ModalYesNoComponent,
+        CompanyManagementComponent,
         TruncatePipe,
         FilterByString,
         HeaderComponent,
@@ -118,7 +154,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopCardComponent,
         ShopItemCardComponent,
         RoundShopCardComponent,
+        DashboardComponent,
     ],
-    providers: [SessionService, ModalYesNoComponent],
+    providers: [SessionService, ModalYesNoComponent, DatePipe],
 })
 export class CoreModule {}

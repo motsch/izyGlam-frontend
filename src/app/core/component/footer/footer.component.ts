@@ -13,6 +13,7 @@ export class FooterComponent implements OnInit {
     constructor(private geoLocationService: GeoLocationService) {}
 
     ngOnInit() {
+        let storedLangue = localStorage.getItem('langue');
         this.geoLocationService.checkAndRedirect();
         this.geoLocationService.getLocation().subscribe(
             (data) => {
@@ -22,47 +23,40 @@ export class FooterComponent implements OnInit {
                 if (userLang === 'fr') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Français';
-                    localStorage.setItem('langue', 'fr');
                 } else if (userLang === 'en') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'English';
-                    localStorage.setItem('langue', 'en');
                 } else if (userLang === 'es') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Español';
-                    localStorage.setItem('langue', 'es');
                 } else if (userLang === 'de') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Deutsch';
-                    localStorage.setItem('langue', 'de');
                 } else if (userLang === 'it') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Italiano';
-                    localStorage.setItem('langue', 'it');
                 } else if (userLang === 'nl') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Nederlands';
-                    localStorage.setItem('langue', 'nl');
                 } else if (userLang === 'sv') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Svenska';
-                    localStorage.setItem('langue', 'sv');
                 } else if (userLang === 'pl') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Polski';
-                    localStorage.setItem('langue', 'pl');
                 } /* else if (userLang === 'da') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Dansk';
-                    localStorage.setItem('langue', 'da');
-                } */ else if (userLang === 'fi') {
+                        this.visitorLocationData = data;
+                        this.visitorLocationData.language = 'Dansk';
+                        localStorage.setItem('langue', 'da');
+                    } */ else if (userLang === 'fi') {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Suomi';
-                    localStorage.setItem('langue', 'fi');
                 } else {
                     this.visitorLocationData = data;
                     this.visitorLocationData.language = 'Français';
-                    localStorage.setItem('langue', 'fr');
+                }
+                if (!storedLangue) {
+                    localStorage.setItem('langue', userLang);
                 }
                 this.visitorLocationData = data;
             },

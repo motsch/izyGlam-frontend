@@ -1,0 +1,60 @@
+form {
+  max-width: 900px;
+  margin-top: 20px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: #ff6b6b;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.finance-card {
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.finance-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #ff6b6b;
+}
+
+.finance-number {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.finance-description {
+  font-size: 14px;
+  color: #666;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table {
+  margin-top: 20px;
+}

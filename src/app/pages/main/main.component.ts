@@ -13,7 +13,11 @@ import { environment } from 'src/environments/environment';
 })
 export class MainComponent implements OnInit {
     imgStorageUrl: string = environment.imgStorageUrl; // URL de stockage des images, récupérée depuis les variables d'environnement
-    filteredItems: any[] = []; // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
+    filteredItems: any[] = [];
+    filteredItemsAdecouvrir: any[] = []; // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
+    filteredItemsApprecier: any[] = []; // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
+    filteredItemsMalin: any[] = []; // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
+    filteredItemsTop10: any[] = []; // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
     selectedCategory: string | undefined; // Catégorie sélectionnée actuellement par l'utilisateur
     filterClicked = false; // Booléen pour gérer l'état du filtre (activé ou non)
     promotedShops: any[] = []; // Tableau pour stocker les boutiques promues
@@ -25,71 +29,85 @@ export class MainComponent implements OnInit {
             name: 'Coiffure',
             icon: 'assets/images/icon_category_hairdresser.png',
             filter: 'coiffure',
+            trad: 'MAIN_CATEGORY.COIFFURE',
         },
         {
             name: 'Manucure',
             icon: 'assets/images/icon_category_manucure.png',
             filter: 'manucure',
+            trad: 'MAIN_CATEGORY.MANUCURE',
         },
         {
             name: 'Visage',
             icon: 'assets/images/icon_category_head.png',
             filter: 'visage',
+            trad: 'MAIN_CATEGORY.VISAGE',
         },
         {
             name: 'Massage',
             icon: 'assets/images/icon_category_massage2.png',
             filter: 'massage',
+            trad: 'MAIN_CATEGORY.MASSAGE',
         },
         {
             name: 'Maquillage',
             icon: 'assets/images/icon_category_eye.png',
             filter: 'maquillage',
+            trad: 'MAIN_CATEGORY.MAQUILLAGE',
         },
         {
             name: 'Épilation',
             icon: 'assets/images/icon_category_epilation.png',
             filter: 'epilation',
+            trad: 'MAIN_CATEGORY.EPILATION',
         },
         {
             name: 'Bronzage',
             icon: 'assets/images/icon_category_sun.png',
             filter: 'bronzage',
+            trad: 'MAIN_CATEGORY.BRONZAGE',
         },
         {
-            name: 'post-partum',
+            name: 'Post-partum',
             icon: 'assets/images/icon_category_baby.png',
             filter: 'partum',
+            trad: 'MAIN_CATEGORY.PARTUM',
         },
         {
             name: 'Nutrition',
             icon: 'assets/images/icon_category_nutrition.png',
             filter: 'nutrition',
+            trad: 'MAIN_CATEGORY.NUTRITION',
         },
         {
             name: 'Fitness',
             icon: 'assets/images/icon_category_fitness2.png',
             filter: 'fitness',
+            trad: 'MAIN_CATEGORY.FITNESS',
         },
         {
             name: 'Acupuncture',
             icon: 'assets/images/icon_category_accuponcture.png',
             filter: 'acupuncture',
+            trad: 'MAIN_CATEGORY.ACUPUNCTURE',
         },
         {
             name: 'Stylisme',
             icon: 'assets/images/icon_category_style.png',
             filter: 'style',
+            trad: 'MAIN_CATEGORY.STYLISME',
         },
         {
             name: 'Tatouage',
             icon: 'assets/images/icon_category_tatoo.png',
             filter: 'tatouage',
+            trad: 'MAIN_CATEGORY.TATOUAGE',
         },
         {
-            name: 'décoration',
+            name: 'Décoration',
             icon: 'assets/images/icon_category_decor.png',
             filter: 'decoration',
+            trad: 'MAIN_CATEGORY.DECO',
         },
         /*
         {
@@ -159,6 +177,10 @@ export class MainComponent implements OnInit {
 
     // Fonction appelée à l'initialisation du composant
     ngOnInit() {
+        localStorage.removeItem('shopSelected');
+        localStorage.removeItem('productToBuy');
+        localStorage.removeItem('selectItemFromShop');
+        localStorage.removeItem('activeMenu');
         this.getLocationAndLoadShops(); // Charge les shops basés sur la localisation du client
     }
 
@@ -175,7 +197,12 @@ export class MainComponent implements OnInit {
                 .subscribe((shops: any[]) => {
                     console.log(JSON.stringify(shops)); // Log des données pour le débogage
                     this.shops = shops;
-                    this.filteredItems = shops; // Initialise les éléments filtrés avec tous les shops récupérés
+                    // this.filteredItems =  this.shuffleArray(shops); // Initialise les éléments filtrés avec tous les shops récupérés
+                    // URL de stockage des images, récupérée depuis les variables d'environnement
+                    this.filteredItemsAdecouvrir = this.shuffleArray(shops); // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
+                    this.filteredItemsApprecier = this.shuffleArray(shops); // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
+                    this.filteredItemsMalin = this.shuffleArray(shops); // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
+                    this.filteredItemsTop10 = this.shuffleArray(shops);
                     this.promotedShops = shops.filter(
                         (x: any) => x.promo.active === true
                     ); // Filtre les shops promus
@@ -196,6 +223,22 @@ export class MainComponent implements OnInit {
             this.selectedCategory = type;
             this.filteredItems = this.shops.filter((x: any) => x.type === type); // Change le filtre à une nouvelle catégorie
         }
+    }
+
+    shuffleArray<T>(array: T[]): T[] {
+        // Création d'une copie du tableau pour ne pas modifier l'original
+        let shuffledArray = array.slice();
+
+        // Algorithme de Fisher-Yates
+        for (let i = shuffledArray.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledArray[i], shuffledArray[j]] = [
+                shuffledArray[j],
+                shuffledArray[i],
+            ];
+        }
+
+        return shuffledArray;
     }
 
     // Fonctions pour gérer le défilement horizontal des différents conteneurs

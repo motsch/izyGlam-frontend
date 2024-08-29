@@ -8,8 +8,8 @@ import { Observable, Subject } from 'rxjs';
 export class CommunicationService {
   private myVariable: any = [];
   private myVariableSubject = new Subject<any[]>();
-  private myTemplate: any = {};
-  private myTemplateSubject = new Subject<any>();
+  private myItemToBuy: any = {};
+  private myItemToBuySubject = new Subject<any>();
   private myRole: any = {};
   private myRoleSubject = new Subject<any>();
 
@@ -17,7 +17,7 @@ export class CommunicationService {
     return this.myVariableSubject.asObservable();
   }
   get myTemplate$(): Observable<any> {
-    return this.myTemplateSubject.asObservable();
+    return this.myItemToBuySubject.asObservable();
   }
   get myRole$(): Observable<any> {
     return this.myRoleSubject.asObservable();
@@ -32,13 +32,13 @@ export class CommunicationService {
     this.myVariableSubject.next(value);
   }
 
-  get getTemplate(): any {
-    return this.myTemplate;
+  get getItemToBuy(): any {
+    return this.myItemToBuy;
   }
 
-  set setTemplate(value: any) {
-    this.myTemplate = value;
-    this.myTemplateSubject.next(value);
+  set setItemToBuy(value: any) {
+    this.myItemToBuy = value;
+    this.myItemToBuySubject.next(value);
   }
 
   get getRole(): any {

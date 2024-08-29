@@ -1,0 +1,80 @@
+<form>
+    <div class="row">
+      <!-- Section Gestion des employés -->
+      <div class="col-12">
+        <h2>Gestion des employés</h2>
+        <button class="btn btn-primary mb-3" (click)="createEmployee()">Ajouter un nouvel employé</button>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Solde du compte</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees">
+              <td>{{ employee.firstname }} {{ employee.lastname }}</td>
+              <td>{{ employee.email }}</td>
+              <td>{{ employee.credit | currency:'EUR' }}</td>
+              <td class="action-buttons">
+                <button class="btn btn-secondary action-btn" (click)="creditEmployee(employee)" 
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Créditer le compte">
+                  <i class="fa fa-plus"></i>
+                </button>
+                <button class="btn btn-warning action-btn" (click)="resetPassword(employee)" 
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Réinitialiser le mot de passe">
+                  <i class="fa fa-key"></i>
+                </button>
+                <button class="btn btn-danger action-btn" (click)="deleteEmployee(employee)" 
+                        data-bs-toggle="tooltip" data-bs-placement="top" title="Supprimer le compte">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Section Crédit du compte entreprise -->
+      <div class="col-12 mt-4">
+        <h2>Créditer le compte de l'entreprise</h2>
+        <form (ngSubmit)="creditCompanyAccount()">
+          <div class="form-group">
+            <label for="companyBalance">Solde actuel :</label>
+            <input type="text" id="companyBalance" class="form-control" [value]="companyBalance | currency:'EUR'" disabled>
+          </div>
+          <div class="form-group">
+            <label for="amount">Montant à créditer :</label>
+            <input type="number" id="amount" class="form-control" [(ngModel)]="creditAmount" name="amount">
+          </div>
+          <button type="submit" class="btn btn-success">Créditer le compte de l'entreprise</button>
+        </form>
+      </div>
+  
+      <!-- Section Facturation -->
+      <div class="col-12 mt-4">
+        <h2>Suivi des dépenses</h2>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Montant</th>
+              <th>Employé</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let invoice of invoices">
+              <td>{{ invoice.date | date:'short' }}</td>
+              <td>{{ invoice.amount | currency:'EUR' }}</td>
+              <td>{{ invoice.employee.firstname }} {{ invoice.employee.lastname }}</td>
+              <td>{{ invoice.description }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+  

@@ -10,14 +10,14 @@
                 <span class="category-item" [class.selected]="selectedCategory === category.filter">
                     <img class="icon" [src]="category.icon">
                 </span>
-                <span class="padding-left-10">{{ category.name | truncate : 10}}</span>
+                <span class="padding-left-10">{{ category.trad | translate | truncate : 10}}</span>
             </div>
             <!--<img *ngIf="filterClicked" src="assets/images/cancel.png" class="cancelFilter" (click)="cancelFilter()">-->
         </div>
     </div>
     <span *ngIf="!filterClicked">
         <div class="top-bar">
-            <h3>Offres du moment</h3>
+            <h3>{{ 'MAIN_PAGE.MOMENT' | translate }}</h3>
             <div class="scroll-buttons" *ngIf="promotedShops.length > 4">
                 <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
                     <i class="fa fa-chevron-left"></i>
@@ -30,11 +30,11 @@
         <div class="categories">
             <div class="category-list" #scrollContainerPromo>
                 <app-round-shop-card *ngFor="let item of promotedShops" [profile]="item"
-                    [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
+                    [promoVisible]="item.promo.active" (click)="toShopPage(item._id)" class="card pointer"></app-round-shop-card>
             </div>
         </div>
         <div class="top-bar">
-            <h3>À découvrir sur izyGlam</h3>
+            <h3>{{ 'MAIN_PAGE.DISCOVER' | translate }}</h3>
             <div class="scroll-buttons">
                 <button class="scroll-btn left-btn" (click)="scrollLeft('category')">
                     <i class="fa fa-chevron-left"></i>
@@ -46,13 +46,13 @@
         </div>
         <div class="categories">
             <div class="category-list" #scrollContainerCategory>
-                <app-round-shop-card *ngFor="let item of shops" [profile]="item" class="card"
+                <app-round-shop-card *ngFor="let item of filteredItemsAdecouvrir" [profile]="item" class="card pointer"
                     [promoVisible]="item.promo.active" (click)="toShopPage(item._id)"></app-round-shop-card>
             </div>
         </div>
 
         <div class="top-bar">
-            <h3>Les plus appréciés aux alentours</h3>
+            <h3>{{ 'MAIN_PAGE.LIKED' | translate }}</h3>
             <div class="scroll-buttons">
                 <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
                     <i class="fa fa-chevron-left"></i>
@@ -65,13 +65,13 @@
         <div class="categories">
             <div class="category-list" #scrollContainerAround>
                 <!--<app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>-->
-                <app-round-shop-card *ngFor="let item of shops" [profile]="item" [promoVisible]="item.promo.active"
-                    class="card"></app-round-shop-card>
+                <app-round-shop-card *ngFor="let item of filteredItemsApprecier" [profile]="item" [promoVisible]="item.promo.active"
+                    class="card pointer" (click)="toShopPage(item._id)"></app-round-shop-card>
             </div>
         </div>
 
         <div class="top-bar">
-            <h3>Les plans malins</h3>
+            <h3>{{ 'MAIN_PAGE.SMART' | translate }}</h3>
             <div class="scroll-buttons">
                 <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
                     <i class="fa fa-chevron-left"></i>
@@ -84,12 +84,12 @@
         <div class="categories">
             <div class="category-list" #scrollContainerAround>
                 <!--<app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>-->
-                <app-round-shop-card *ngFor="let item of shops" [profile]="item" [promoVisible]="item.promo.active"
-                    class="card"></app-round-shop-card>
+                <app-round-shop-card *ngFor="let item of filteredItemsMalin" [profile]="item" [promoVisible]="item.promo.active"
+                    class="card pointer" (click)="toShopPage(item._id)"></app-round-shop-card>
             </div>
         </div>
         <div class="top-bar">
-            <h3>Top 10 de la semaine</h3>
+            <h3>{{ 'MAIN_PAGE.TOP10' | translate }}</h3>
             <div class="scroll-buttons">
                 <button class="scroll-btn left-btn" (click)="scrollLeft('top10')">
                     <i class="fa fa-chevron-left"></i>
@@ -101,17 +101,17 @@
         </div>
         <div class="categories">
             <div class="category-list" #scrollContainerTop10>
-                <app-round-shop-card *ngFor="let item of shops" [profile]="item" [promoVisible]="item.promo.active"
-                    class="card"></app-round-shop-card>
+                <app-round-shop-card *ngFor="let item of filteredItemsTop10" [profile]="item" [promoVisible]="item.promo.active"
+                    class="card pointer" (click)="toShopPage(item._id)"></app-round-shop-card>
             </div>
         </div>
     </span>
     <span *ngIf="filterClicked">
         <div class="padding-top-10">
-            <h3>Résultats de la recherche</h3>
+            <h3>{{ 'MAIN_PAGE.SEARCHRESULT' | translate }}</h3>
             <div class="row test66"> <!-- Utilisation de 'row' pour démarrer une grille -->
                 <app-round-shop-card *ngFor="let item of filteredItems" [profile]="item"
-                    [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
+                    [promoVisible]="item.promo.active" class="card pointer"></app-round-shop-card>
                 <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
             </div>
         </div>

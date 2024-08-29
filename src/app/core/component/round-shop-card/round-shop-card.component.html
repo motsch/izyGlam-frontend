@@ -6,7 +6,7 @@
     </div>
     <div class="profile-info">
         <h3>{{ profile.name }}</h3>
-        <p>Coiffeur, {{ profile.ville }}</p>
-        <p><i class="star-icon"></i>{{ profile.note }} ({{ profile.reviews.length }} avis)</p>
+        <p>{{ profile.trad | translate }}, {{ profile.ville }}</p>
+        <p><i class="star-icon"></i>{{ profile.note }} ({{ profile.reviews.length }} {{ "MAIN_PAGE.AVIS" | translate }})</p>
     </div>
 </div>

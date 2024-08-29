@@ -36,6 +36,7 @@
     "moment": "^2.29.4",
     "mqtt": "^4.3.7",
     "ngx-owl-carousel-o": "^16.0.0",
+    "ngx-select-dropdown": "^3.3.2",
     "ngx-spinner": "^16.0.2",
     "ngx-swiper-wrapper": "^10.0.0",
     "ngx-useful-swiper": "^10.0.1",

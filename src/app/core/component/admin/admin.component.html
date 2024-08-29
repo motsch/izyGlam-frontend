@@ -1,0 +1,64 @@
+<div class="container">
+    <!-- Section: Vue d'ensemble de l'activité -->
+    <div class="row">
+      <div class="col-md-4 col-sm-12 mb-4">
+        <div class="admin-card">
+          <h3>Total des boutiques</h3>
+          <p class="admin-number">{{ totalShops }}</p>
+          <p class="admin-description">Nombre de boutiques actives</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 mb-4">
+        <div class="admin-card">
+          <h3>Total des utilisateurs</h3>
+          <p class="admin-number">{{ totalUsers }}</p>
+          <p class="admin-description">Nombre d'utilisateurs inscrits</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12 mb-4">
+        <div class="admin-card">
+          <h3>Chiffre d'affaires total</h3>
+          <p class="admin-number">{{ totalRevenue | currency:'EUR' }}</p>
+          <p class="admin-description">Chiffre d'affaires généré</p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Section: Performances des boutiques -->
+    <h2>Performances des boutiques</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom de la boutique</th>
+          <th>Ville</th>
+          <th>Revenus</th>
+          <th>Nombre de réservations</th>
+          <th>Note moyenne</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shop of shops">
+          <td>{{ shop.name }}</td>
+          <td>{{ shop.ville }}</td>
+          <td>{{ shop.revenue | currency:'EUR' }}</td>
+          <td>{{ shop.reservations }}</td>
+          <td>{{ shop.averageRating }} / 5</td>
+          <td>
+            <button class="btn btn-sm btn-info" (click)="viewShopDetails(shop)">Détails</button>
+            <button class="btn btn-sm btn-warning" (click)="adjustShop(shop)">Ajuster</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal pour ajuster une boutique (fictif pour l'instant) -->
+    <div *ngIf="selectedShop" class="modal">
+      <div class="modal-content">
+        <h3>Ajuster la boutique : {{ selectedShop.name }}</h3>
+        <p>Cette fonctionnalité est encore en développement.</p>
+        <button class="btn btn-primary" (click)="closeModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+  

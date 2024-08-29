@@ -1,0 +1,64 @@
+<div class="form">
+  <div class="profile">
+    <img [src]="imgStorageUrl + 'default.jpeg'" alt="Profile Picture" />
+  </div>
+  <div class="info">
+    <h2>{{ "PROFILE.TITLE" | translate }}</h2>
+    <div>
+      <label for="name">{{ "PROFILE.FIRSTNAME" | translate }}</label>
+      <input
+        (ngModelChange)="changedDetected()"
+        [(ngModel)]="user.firstname"
+        class="input-style"
+        type="text"
+        id="name"
+      />
+    </div>
+    <div>
+      <label for="name">{{ "PROFILE.LASTNAME" | translate }}</label>
+      <input
+        (ngModelChange)="changedDetected()"
+        [(ngModel)]="user.lastname"
+        class="input-style"
+        type="text"
+        id="name"
+        required
+      />
+    </div>
+    <div>
+      <label for="name">{{ "PROFILE.PHONE" | translate }}</label>
+      <input
+        (ngModelChange)="changedDetected()"
+        [(ngModel)]="user.phone"
+        class="input-style"
+        type="text"
+        id="name"
+        required
+      />
+    </div>
+    <div>
+      <label for="name">{{ "PROFILE.ADDRESS" | translate }}</label>
+      <input
+        (ngModelChange)="changedDetected()"
+        [(ngModel)]="user.email"
+        disabled="true"
+        class="input-style"
+        type="text"
+        id="name"
+        required
+      />
+    </div>
+    <div class="margin-top-15">
+      <button class="button-red" (click)="validateChangeUser()" type="submit" [disabled]="disabledButton">
+        Modifier l'utilisateur
+      </button>
+      <button (click)="cancel()" class="margin-left-10 button-grey" *ngIf="!disabledButton">
+        Annuler
+      </button>
+      <div *ngIf="userChangeError" class="error">{{ userChangeError }}</div>
+      <div *ngIf="userChangeSuccess" class="success">
+        Profil modifié avec succès.
+      </div>
+    </div>
+  </div>
+</div>

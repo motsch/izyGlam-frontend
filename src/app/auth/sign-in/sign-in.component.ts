@@ -41,6 +41,11 @@ export class SignInComponent implements OnInit {
         this.title.setTitle(this.route.snapshot.data['title']);
     }
 
+    onMoreOptions() {
+        console.log('Showing more options...');
+        this.router.navigate(['sign-in-sms']);
+    }
+
     onSubmit() {
         this.error.email = null;
         this.error.password = null;
@@ -74,7 +79,15 @@ export class SignInComponent implements OnInit {
                         user.token,
                         this.rememberMe
                     );
-                    this.router.navigate(['main']);
+                    let shopId;
+                    if (localStorage.getItem('shopSelected')) {
+                        shopId = localStorage.getItem('shopSelected');
+                    }
+                    if (shopId) {
+                        this.router.navigate(['shop', shopId]);
+                    } else {
+                        this.router.navigate(['main']);
+                    }
                 },
                 (error) => {
                     console.log(error);

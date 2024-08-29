@@ -28,6 +28,14 @@ export class UserService {
     }
 
     /**
+     * Permet de récupérer un user par son id
+     * @param id (id du user)
+     */
+    getByCompanyId(_id: number) {
+        return this.http.get<any>(environment.apiUrl + 'users-by-companyId/' + _id);
+    }
+
+    /**
      * Permet de récupérer le user connecté
      * @param id (id du user)
      */

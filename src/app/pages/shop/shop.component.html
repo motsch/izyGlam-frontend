@@ -10,11 +10,11 @@
       <!-- Collapsible wrapper -->
       <div class="mb-5" id="navbarSupportedContent">
         <div>
-          <h3>Mélanie Hair Shop</h3>
+          <h3>{{shopInfo.name}}</h3>
         </div>
         <div>
           <span>
-            3
+            {{shopInfo.note}}
             <img
               [src]="imgStorageUrl + 'star.png'"
               alt="starLogo"
@@ -22,11 +22,13 @@
             />
           </span>
           <span>
-            (2,000+) <br />
+            ({{shopInfo.noteCount}}+) <br />
             Frais de déplacement: 4,90€ <br />
-            Frais de déplacement (izyVIP): 0,00€ <br />
-            20km
+            Distance max: {{shopInfo.maxDistance}}km
           </span>
+          <div class="margin-top-20">
+            {{shopInfo.description}}
+          </div>
           <div>
             <img
               [src]="imgStorageUrl + 'money.png'"
@@ -38,11 +40,6 @@
             Paiement par CB et PayPal accepté<br />
 
             Appuyez pour consulter les horaires, les informations, etc
-          </div>
-          <div class="margin-top-20">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae
-            est lacus. Nullam blandit, eros eget viverra pretium, lectus purus
-            hendrerit erat, ac accumsan risus ligula semper lorem.
           </div>
         </div>
       </div>
