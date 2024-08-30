@@ -1,0 +1,75 @@
+<div class="form">
+  <h2 class="mt-4">Gestion des Services</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Prix</th>
+        <th>Durée</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let service of articlesCopyData">
+        <td>{{ service.name }}</td>
+        <td>{{ service.description }}</td>
+        <td>{{ service.price | currency : "EUR" }}</td>
+        <td>{{ service.duration }} minutes</td>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="editService(service)">
+            Modifier
+          </button>
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="deleteService(service._id)"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Ajouter/Modifier un Service</h3>
+  <div class="form">
+    <div class="form-group">
+      <label for="serviceName">Nom du service</label>
+      <input
+        type="text"
+        id="serviceName"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="serviceDescription">Description</label>
+      <textarea
+        id="serviceDescription"
+        class="form-control"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="servicePrice">Prix</label>
+      <input
+        type="number"
+        id="servicePrice"
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="serviceDuration">Durée (en minutes)</label>
+      <input
+        type="number"
+        id="serviceDuration"
+        class="form-control"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">
+      Enregistrer le service
+    </button>
+  </div>
+</div>

@@ -1,22 +1,7 @@
-<form>
+<div class="form">
   <div class="row">
     <!-- Section Gestion des employés -->
     <div class="col-12">
-      <h2>Mot de passe par défaut</h2>
-      <div>
-        <label for="confirmPassword">Mot de passe par défaut pour réinitialisation</label>
-        <input
-          [(ngModel)]="defaultPassword"
-          class="input-style"
-          type="text"
-          id="confirmPassword"
-          name="confirmPassword"
-          required
-        />
-      </div>
-      <button type="submit" class="red-button" (click)="setDefaultPassword()">
-        Modifier le mot de passe
-      </button>
       <div class="margin-top-50">
         <h2>Gestion des employés</h2>
         <button
@@ -76,61 +61,5 @@
         </table>
       </div>
     </div>
-
-    <!-- Section Crédit du compte entreprise -->
-    <div class="col-12 margin-top-30">
-      <h2>Créditer le compte de l'entreprise</h2>
-      <form (ngSubmit)="creditCompanyAccount()">
-        <div class="form-group">
-          <label for="companyBalance">Solde actuel :</label>
-          <input
-            type="text"
-            id="companyBalance"
-            class="form-control"
-            [value]="myCompany.credit | currency : 'EUR'"
-            disabled
-          />
-        </div>
-        <div class="form-group">
-          <label for="amount">Montant à créditer :</label>
-          <input
-            [(ngModel)]="creditAmount"
-            class="input-style"
-            type="number"
-            id="confirmPassword"
-            name="confirmPassword"
-            required
-          />
-        </div>
-        <button type="submit" class="btn btn-success">
-          Créditer le compte de l'entreprise
-        </button>
-      </form>
-    </div>
-
-    <!-- Section Facturation -->
-    <div class="col-12 margin-top-50">
-      <h2>Suivi des dépenses</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Montant</th>
-            <th>Employé</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let invoice of invoices">
-            <td>{{ invoice.date | date : "short" }}</td>
-            <td>{{ invoice.amount | currency : "EUR" }}</td>
-            <td>
-              {{ invoice.employee.firstname }} {{ invoice.employee.lastname }}
-            </td>
-            <td>{{ invoice.description }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
-</form>
+</div>

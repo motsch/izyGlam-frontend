@@ -48,6 +48,9 @@ import { AdminComponent } from './component/admin/admin.component';
 import { ShopManagementComponent } from './component/shop-management/shop-management.component';
 import { CompanyManagementComponent } from './component/company-management/company-management.component';
 import { CreditEmployeeModalComponent } from './component/credit-employee-modal/credit-employee-modal.component';
+import { CompanySetDefaultPasswordComponent } from './component/company-set-default-password/company-set-default-password.component';
+import { CompanyFinanceManagementComponent } from './component/company-finance-management/company-finance-management.component';
+import { ShopArticlesManagementComponent } from './component/shop-articles-management/shop-articles-management.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -125,15 +128,21 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         RoundShopCardComponent,
         RdvModalComponent,
         ProchesModalComponent,
+        CompanyFinanceManagementComponent,
         ChangePasswordComponent,
         ConfidentialPolicyComponent,
         DashboardComponent,
         ProfileInformationsComponent,
         FinanceComponent,
         AdminComponent,
+        ShopArticlesManagementComponent,
+        CompanySetDefaultPasswordComponent,
         ShopManagementComponent,
         CompanyManagementComponent,
         CreditEmployeeModalComponent,
+        CompanySetDefaultPasswordComponent,
+        CompanyFinanceManagementComponent,
+        ShopArticlesManagementComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -148,9 +157,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ModalYesNoComponent,
         CompanyManagementComponent,
         TruncatePipe,
+        CompanyFinanceManagementComponent,
         FilterByString,
+        ShopArticlesManagementComponent,
         HeaderComponent,
         FooterComponent,
+        CompanySetDefaultPasswordComponent,
         ShopCardComponent,
         ShopItemCardComponent,
         RoundShopCardComponent,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreditEmployeeModalComponent } from '../credit-employee-modal/credit-employee-modal.component';
@@ -17,65 +17,18 @@ interface Invoice {
     styleUrls: ['./company-management.component.scss'],
 })
 export class CompanyManagementComponent implements OnInit {
-    // companyBalance: number = 10000; // Exemple de solde initial
-    creditAmount: number = 0;
-    myCompany: any = {};
+    @Input() myCompany: any = {};
+    @Input() employees: any[] = [];
     myCompanyCopy: any = {};
-    employees: any[] = [];
-    defaultPassword: string = '';
-
     invoices: Invoice[] = [];
 
     constructor(
         private userService: UserService,
-        private companyService: CompanyService,
         private modalService: NgbModal
     ) {}
 
     ngOnInit(): void {
-        this.userService.getMe().subscribe({
-            next: (data: any) => {
-                console.log(data);
-                let companyId = data.companyId;
-                this.companyService.getById(companyId).subscribe({
-                    next: (company: any) => {
-                        console.log(company.defaultPassword);
-                        this.myCompany = company;
-                        this.myCompanyCopy = { ...company };
-                        this.defaultPassword = { ...company }.defaultPassword;
-                        this.userService.getByCompanyId(companyId).subscribe({
-                            next: (companyUsers: any[]) => {
-                                console.log(companyUsers);
-                                this.employees = companyUsers;
-                                this.invoices = [
-                                    {
-                                        date: new Date(),
-                                        amount: 100,
-                                        employee: companyUsers[0],
-                                        description: 'Achat produit X',
-                                    },
-                                    {
-                                        date: new Date(),
-                                        amount: 200,
-                                        employee: companyUsers[1],
-                                        description: 'Achat service Y',
-                                    },
-                                ];
-                            },
-                            error: (error: any) => {
-                                console.log(error);
-                            },
-                        });
-                    },
-                    error: (error: any) => {
-                        console.log(error);
-                    },
-                });
-            },
-            error: (error: any) => {
-                console.log(error);
-            },
-        });
+
     }
 
     createEmployee(): void {
@@ -107,10 +60,10 @@ export class CompanyManagementComponent implements OnInit {
         employee.password = this.myCompany.defaultPassword;
         this.userService.updatePassword(employee).subscribe({
             next: (data: any) => {
-                console.log(data)
+                console.log(data);
             },
             error: (error: any) => {
-                console.log(error)
+                console.log(error);
             },
         });
     }
@@ -129,17 +82,5 @@ export class CompanyManagementComponent implements OnInit {
                 console.log(error);
             },
         });
-    }
-
-    creditCompanyAccount(): void {
-        // Logique pour créditer le compte de l'entreprise
-        if (this.creditAmount > 0) {
-            this.myCompany.credit += this.creditAmount;
-            this.creditAmount = 0;
-        }
-    }
-
-    setDefaultPassword() {
-        console.log();
     }
 }

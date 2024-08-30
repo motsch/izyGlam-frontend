@@ -1,87 +1,116 @@
 <div class="container margin-top-50">
-    <div class="sidebar">
-        <ul>
-            <li 
-              [ngClass]="{'active': isSectionActive('account-info')}" 
-              (click)="setActiveSection('account-info')">
-              {{ 'PROFILE_MENU.INFORMATION' | translate }}
-            </li>
-            <li 
-              [ngClass]="{'active': isSectionActive('security')}" 
-              (click)="setActiveSection('security')">
-              {{ 'PROFILE_MENU.SECURITY' | translate }}
-            </li>
-            <li 
-              [ngClass]="{'active': isSectionActive('privacy')}" 
-              (click)="setActiveSection('privacy')">
-              {{ 'PROFILE_MENU.CONFIDENTIAL' | translate }}
-            </li>
-            <li 
-              [ngClass]="{'active': isSectionActive('dashboard')}" 
-              (click)="setActiveSection('dashboard')">
-              {{ 'PROFILE_MENU.DASHBOARD' | translate }}
-            </li>
-            <li 
-              [ngClass]="{'active': isSectionActive('company')}" 
-              (click)="setActiveSection('company')">
-              {{ 'PROFILE_MENU.COMPANY' | translate }}
-            </li>
-            <li 
-              [ngClass]="{'active': isSectionActive('management')}" 
-              (click)="setActiveSection('management')">
-              {{ 'PROFILE_MENU.SHOP' | translate }}
-            </li>
-            <li 
-              [ngClass]="{'active': isSectionActive('finance')}" 
-              (click)="setActiveSection('finance')">
-              {{ 'PROFILE_MENU.FINANCIAL' | translate }}
-            </li>
-            <li 
-              [ngClass]="{'active': isSectionActive('admin')}" 
-              (click)="setActiveSection('admin')">
-              {{ 'PROFILE_MENU.ADMIN' | translate }}
-            </li>
-        </ul>
+  <div class="sidebar">
+    <ul>
+      <li
+        [ngClass]="{ active: isSectionActive('account-info') }"
+        (click)="setActiveSection('account-info')"
+      >
+        {{ "PROFILE_MENU.INFORMATION" | translate }}
+      </li>
+      <li
+        [ngClass]="{ active: isSectionActive('security') }"
+        (click)="setActiveSection('security')"
+      >
+        {{ "PROFILE_MENU.SECURITY" | translate }}
+      </li>
+      <li
+        [ngClass]="{ active: isSectionActive('privacy') }"
+        (click)="setActiveSection('privacy')"
+      >
+        {{ "PROFILE_MENU.CONFIDENTIAL" | translate }}
+      </li>
+      <li
+        [ngClass]="{ active: isSectionActive('dashboard') }"
+        (click)="setActiveSection('dashboard')"
+      >
+        {{ "PROFILE_MENU.DASHBOARD" | translate }}
+      </li>
+      <li
+        [ngClass]="{ active: isSectionActive('company') }"
+        (click)="setActiveSection('company')"
+      >
+        {{ "PROFILE_MENU.COMPANY" | translate }}
+      </li>
+      <li
+        [ngClass]="{ active: isSectionActive('management') }"
+        (click)="setActiveSection('management')"
+      >
+        {{ "PROFILE_MENU.SHOP" | translate }}
+      </li>
+      <li
+        [ngClass]="{ active: isSectionActive('finance') }"
+        (click)="setActiveSection('finance')"
+      >
+        {{ "PROFILE_MENU.FINANCIAL" | translate }}
+      </li>
+      <li
+        [ngClass]="{ active: isSectionActive('admin') }"
+        (click)="setActiveSection('admin')"
+      >
+        {{ "PROFILE_MENU.ADMIN" | translate }}
+      </li>
+    </ul>
+  </div>
+  <div class="content">
+    <div *ngIf="isSectionActive('account-info')" id="account-info-content">
+      <h1>{{ "PROFILE_MENU.INFORMATION" | translate }}</h1>
+      <app-profile-informations></app-profile-informations>
     </div>
-    <div class="content">
-        <div *ngIf="isSectionActive('account-info')" id="account-info-content">
-            <h1>{{ 'PROFILE_MENU.INFORMATION' | translate }}</h1>
-            <app-profile-informations></app-profile-informations>
-        </div>
-        <div *ngIf="isSectionActive('security')" id="security-content">
-            <h1>{{ 'PROFILE_MENU.SECURITY' | translate }}</h1>
-            <!-- Ajouter le contenu lié à la sécurité ici -->
-             <app-change-password></app-change-password>
-        </div>
-        <div *ngIf="isSectionActive('privacy')" id="privacy-content">
-            <h1>{{ 'PROFILE_MENU.CONFIDENTIAL' | translate }}</h1>
-            <!-- Ajouter le contenu lié à la confidentialité ici -->
-             <app-confidential-policy></app-confidential-policy>
-        </div>
-        <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
-            <h1>{{ 'PROFILE_MENU.DASHBOARD' | translate }}</h1>
-            <!-- Ajouter le contenu lié à la confidentialité ici -->
-             <app-dashboard></app-dashboard>
-        </div>
-        <div *ngIf="isSectionActive('company')" id="company-content">
-            <h1>{{ 'PROFILE_MENU.COMPANY' | translate }}</h1>
-            <!-- Ajouter le contenu lié à la confidentialité ici -->
-             <app-company-management></app-company-management>
-        </div>
-        <div *ngIf="isSectionActive('management')" id="management-content">
-            <h1>{{ 'PROFILE_MENU.SHOP' | translate }}</h1>
-            <!-- Ajouter le contenu lié à la confidentialité ici -->
-             <app-shop-management></app-shop-management>
-        </div>
-        <div *ngIf="isSectionActive('finance')" id="finance-content">
-            <h1>{{ 'PROFILE_MENU.FINANCIAL' | translate }}</h1>
-            <!-- Ajouter le contenu lié à la confidentialité ici -->
-             <app-finance></app-finance>
-        </div>
-        <div *ngIf="isSectionActive('admin')" id="admin-content">
-            <h1>{{ 'PROFILE_MENU.ADMIN' | translate }}</h1>
-            <!-- Ajouter le contenu lié à la confidentialité ici -->
-             <app-admin></app-admin>
-        </div>
+    <div *ngIf="isSectionActive('security')" id="security-content">
+      <h1>{{ "PROFILE_MENU.SECURITY" | translate }}</h1>
+      <!-- Ajouter le contenu lié à la sécurité ici -->
+      <app-change-password></app-change-password>
     </div>
+    <div *ngIf="isSectionActive('privacy')" id="privacy-content">
+      <h1>{{ "PROFILE_MENU.CONFIDENTIAL" | translate }}</h1>
+      <!-- Ajouter le contenu lié à la confidentialité ici -->
+      <app-confidential-policy></app-confidential-policy>
+    </div>
+    <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
+      <h1>{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
+      <!-- Ajouter le contenu lié à la confidentialité ici -->
+      <app-dashboard></app-dashboard>
+    </div>
+    <div *ngIf="isSectionActive('company')" id="company-content">
+      <h1>{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
+      <mat-tab-group>
+        <mat-tab label="Employés affiliés">
+          <!-- Ajouter le contenu lié à la confidentialité ici -->
+          <app-company-management [myCompany]="myCompany" [employees]="employees"></app-company-management>
+        </mat-tab>
+        <mat-tab label="Sécurité">
+          <app-company-set-default-password [myCompany]="myCompany"></app-company-set-default-password>
+        </mat-tab>
+        <mat-tab label="Finances">
+          <app-company-finance-management [myCompany]="myCompany" [employees]="employees"></app-company-finance-management>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div *ngIf="isSectionActive('management')" id="management-content">
+      <h1>{{ "PROFILE_MENU.SHOP" | translate }}</h1>
+      <mat-tab-group>
+        <mat-tab label="Informations générales">
+          <!-- Ajouter le contenu lié à la confidentialité ici -->
+          <app-shop-management></app-shop-management>
+        </mat-tab>
+        <mat-tab label="Gestion des articles">
+          <!-- Ajouter le contenu lié à la confidentialité ici -->
+          <app-shop-articles-management [myArticlesData]="myArticlesData"></app-shop-articles-management>
+        </mat-tab>
+        <mat-tab label="Suivi financier">
+          <app-finance></app-finance>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div *ngIf="isSectionActive('finance')" id="finance-content">
+      <h1>{{ "PROFILE_MENU.FINANCIAL" | translate }}</h1>
+      <!-- Ajouter le contenu lié à la confidentialité ici -->
+      <app-finance></app-finance>
+    </div>
+    <div *ngIf="isSectionActive('admin')" id="admin-content">
+      <h1>{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
+      <!-- Ajouter le contenu lié à la confidentialité ici -->
+      <app-admin></app-admin>
+    </div>
+  </div>
 </div>
