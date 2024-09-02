@@ -1,0 +1,93 @@
+
+.order-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  max-width: 80vw;
+  margin: auto;
+  margin-top: 20px;
+
+  .order-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .order-image {
+      width: 80px;
+      height: auto;
+      border-radius: 50%;
+    }
+
+    .order-info {
+      flex: 1;
+      margin-left: 16px;
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      p {
+        margin: 4px 0;
+        color: #757575;
+      }
+    }
+
+    .order-actions {
+      align-self: flex-start;
+
+      .reorder-btn {
+        background-color: #000;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #333;
+        }
+      }
+    }
+  }
+
+  .order-body {
+    margin-top: 26px;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+
+        .quantity-box {
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #000;
+          margin-right: 8px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .invoice-link {
+      display: block;
+      text-align: right;
+      color: #007bff;
+      text-decoration: none;
+      margin-top: 10px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

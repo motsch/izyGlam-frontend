@@ -1,0 +1,44 @@
+/* Pour que le fond bleu couvre toute la page */
+.page-container {
+    margin-top: 80px !important;
+    width: 98vW !important;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+  }
+  .orders-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+  
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+  
+    app-order-item {
+      margin-bottom: 24px;
+    }
+  }
+  form {
+    max-width: 900px;
+    margin-top: 20px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  h1 {
+    color: #ff6b6b;
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-left: 9vw;
+  }
+  
+  h2 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }

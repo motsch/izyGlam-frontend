@@ -1,0 +1,24 @@
+<div class="order-card">
+    <div class="order-header">
+      <img src="assets/images/profile/profile2.png" alt="Franprix Logo" class="order-image">
+      <div class="order-info">
+        <h2>{{ order.establishmentName }}</h2>
+        <p>{{ order.totalItems }} prestation pour {{ order.totalPrice }}</p>
+        <p>{{ order.orderDate }} à {{ order.orderTime }}</p>
+      </div>
+      <div class="order-actions">
+        <button class="reorder-btn" (click)="reorder()">Commander à nouveau</button>
+      </div>
+    </div>
+    
+    <div class="order-body">
+      <ul>
+        <li *ngFor="let item of order.items">
+          <span class="quantity-box">{{ item.quantity }}</span>
+          {{ item.name }} ({{ item.size }})
+        </li>
+      </ul>
+      <a href="#" class="invoice-link" (click)="requestInvoice()">Demander une facture</a>
+    </div>
+  </div>
+  

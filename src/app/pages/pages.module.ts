@@ -40,6 +40,11 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { AuthModule } from '../auth/auth.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PayementComponent } from './payement/payement.component';
+import { OrdersComponent } from './orders/orders.component';
+import { HelpComponent } from './help/help.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { GiftCardComponent } from './gift-card/gift-card.component';
+import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -90,6 +95,11 @@ import { PayementComponent } from './payement/payement.component';
         ThankYouComponent,
         ComingSoonComponent,
         PayementComponent,
+        OrdersComponent,
+        HelpComponent,
+        FavoritesComponent,
+        GiftCardComponent,
+        InviteFriendsComponent,
     ],
     exports: [],
 })

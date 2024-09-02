@@ -1,196 +1,196 @@
 /* Pour que le fond bleu couvre toute la page */
 .page-container {
-    width: 98vW !important;
-    min-height: 100vh; /* Pour s'assurer que le fond bleu couvre toute la hauteur de la page */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
-  }
-  
-  /* Container qui contient la carte */
-  .appointment-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* La carte blanche centrée */
-  .appointment-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    max-width: 800px;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Le reste des styles reste similaire */
-  .appointment-header h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .appointment-header p {
-    margin-top: 5px;
-    font-size: 16px;
-    color: #666;
-  }
-  
-  .appointment-content {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  
-  .appointment-left, .appointment-right {
-    width: 48%;
-  }
-  
-  .appointment-left h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .patient-selection {
-    background-color: #f0f7ff;
-    border-radius: 5px;
-    padding: 15px;
-  }
-  
-  .patient-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .avatar {
-    background-color: #a32b3a;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-  
-  .name {
-    font-size: 16px;
-    color: #333;
-  }
-  
-  .you {
-    color: #a32b3a;
-    margin-left: 10px;
-  }
-  
-  .add-relative {
-    margin-top: 15px;
-    font-weight: bold;
-  }
-  
-  .add-relative a {
-    color: #a32b3a;
-    font-size: 14px;
-    text-decoration: none;
-  }
-  
-  .appointment-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .doctor-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .doctor-avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-  
-  .doctor-details p {
-    margin: 0;
-  }
-  
-  .doctor-specialty {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .appointment-details {
-    margin-top: 10px;
-  }
-  
-  .appointment-date {
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .appointment-time {
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .appointment-footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .btn-continue {
-    background-color: #a32b3a;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  .btn-retour {
-    background-color: #a5a5a5;
-    color: rgb(255, 255, 255);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-right: 5px !important;
-  }
-  
-  
-  .btn-continue:hover {
-    background-color: #a32b3a;
-  }
-  .btn-retour:hover {
-    background-color: #8b8b8b;
-  }
-  .address-selection {
-    margin-top: 15px;
+  width: 98vw !important;
+  min-height: 100vh; /* Pour s'assurer que le fond bleu couvre toute la hauteur de la page */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+/* Container qui contient la carte */
+.appointment-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* La carte blanche centrée */
+.appointment-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Le reste des styles reste similaire */
+.appointment-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.appointment-header p {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #666;
+}
+
+.appointment-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.appointment-left,
+.appointment-right {
+  width: 48%;
+}
+
+.appointment-left h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.patient-selection {
+  background-color: #f0f7ff;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.patient-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  background-color: #a32b3a;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.name {
+  font-size: 16px;
+  color: #333;
+}
+
+.you {
+  color: #a32b3a;
+  margin-left: 10px;
+}
+
+.add-relative {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.add-relative a {
+  color: #a32b3a;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.appointment-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.doctor-info {
+  display: flex;
+  align-items: center;
+}
+
+.doctor-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.doctor-details p {
+  margin: 0;
+}
+
+.doctor-specialty {
+  font-size: 14px;
+  color: #666;
+}
+
+.appointment-details {
+  margin-top: 10px;
+}
+
+.appointment-date {
+  font-weight: bold;
+  color: #333;
+}
+
+.appointment-time {
+  font-size: 14px;
+  color: #666;
+}
+
+.appointment-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-continue {
+  background-color: #a32b3a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-retour {
+  background-color: #a5a5a5;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 5px !important;
+}
+
+.btn-continue:hover {
+  background-color: #a32b3a;
+}
+.btn-retour:hover {
+  background-color: #8b8b8b;
+}
+.address-selection {
+  margin-top: 15px;
 }
 
 .address {
-    margin-left: 8px;
-    font-size: 14px;
-    color: #333;
+  margin-left: 8px;
+  font-size: 14px;
+  color: #333;
 }
 
 .address-selection label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 .payment-selection {
   margin-top: 15px;

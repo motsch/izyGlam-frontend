@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     drawerOpen = false;
     cartOpen = false;
     imgStorageUrl: string = environment.imgStorageUrl;
+    me:any = {};
     constructor(
         public translate: TranslateService,
         public sessionService: SessionService,
@@ -58,6 +59,15 @@ export class AppComponent implements OnInit {
             console.log('Drawer state changed:', isOpen);
             this.drawerOpen = isOpen;
         });
+        this.userService.getMe().subscribe({
+            next:(data:any) => {
+                console.log(data)
+                this.me = data;
+            },
+            error:(error:any) => {
+                console.log(error);
+            }
+        })
     }
 
     onDrawerStateChange(isOpen: boolean) {
@@ -85,6 +95,26 @@ export class AppComponent implements OnInit {
     goToProfil() {
         this.drawerService.closeDrawer();
         this.router.navigate(['profile']);
+    }
+    goToOrders() {
+        this.drawerService.closeDrawer();
+        this.router.navigate(['orders']);
+    }
+    goToFavorites() {
+        this.drawerService.closeDrawer();
+        this.router.navigate(['favorites']);
+    }
+    goToHelp() {
+        this.drawerService.closeDrawer();
+        this.router.navigate(['help']);
+    }
+    goToGiftCards() {
+        this.drawerService.closeDrawer();
+        this.router.navigate(['gift-card']);
+    }
+    goToInviteFriends() {
+        this.drawerService.closeDrawer();
+        this.router.navigate(['invite-friends']);
     }
     checkout() {
         // Implement checkout logic here

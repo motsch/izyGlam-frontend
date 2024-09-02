@@ -1,0 +1,15 @@
+<div class="form">
+    <div class="page-container">
+        <h1 class="bold">Les questions les plus souvent posées</h1>
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let panel of panels">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ panel.question }}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>{{ panel.answer }}</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+      </div>
+  </div>

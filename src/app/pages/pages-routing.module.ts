@@ -9,6 +9,11 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { GuestGuard } from '../core/services/guest-guard.service';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { PayementComponent } from './payement/payement.component';
+import { OrdersComponent } from './orders/orders.component';
+import { HelpComponent } from './help/help.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { GiftCardComponent } from './gift-card/gift-card.component';
+import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
 
 const routes: Routes = [
     {
@@ -36,6 +41,31 @@ const routes: Routes = [
     {
         path: 'billing',
         component: PayementComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'orders',
+        component: OrdersComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'help',
+        component: HelpComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'favorites',
+        component: FavoritesComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'gift-card',
+        component: GiftCardComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'invite-friends',
+        component: InviteFriendsComponent,
         canActivate: [AuthGuard],
     },
 ];

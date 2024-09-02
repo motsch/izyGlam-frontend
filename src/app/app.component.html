@@ -8,24 +8,24 @@
       <div class="profile-section">
         <img [src]="imgStorageUrl+'default.jpeg'" class="profile-pic" alt="Profile Picture">
         <div>
-          <p class="profile-name">Francis</p>
+          <p class="profile-name">{{this.me.firstname}}</p>
           <a class="manage-account" (click)="goToProfil()">Gérer le compte</a>
         </div>
       </div>
       <ul class="drawer-menu">
-        <li class="menu-hover fa fa-list">
+        <li class="menu-hover fa fa-list" (click)="goToOrders()">
           <span class="padding-left-10">Commandes</span>
         </li>
-        <li class="menu-hover fa fa-heart">
+        <li class="menu-hover fa fa-heart" (click)="goToFavorites()">
           <span class="padding-left-10">Favoris</span>
         </li>
-        <li class="menu-hover fa fa-question-circle">
+        <li class="menu-hover fa fa-question-circle" (click)="goToHelp()">
           <span class="padding-left-10">Aide</span>
         </li>
-        <li class="menu-hover fa fa-tag">
-          <span class="padding-left-10">Promotions</span>
+        <li class="menu-hover fa fa-gift" (click)="goToGiftCards()">
+          <span class="padding-left-10">Cartes cadeaux</span>
         </li>
-        <li class="menu-hover fa fa-users">
+        <li class="menu-hover fa fa-users" (click)="goToInviteFriends()">
           <span class="padding-left-10">Invitez des amis</span>
         </li>
         <li><i class=""></i> </li>
@@ -39,14 +39,14 @@
             <span class="padding-left-10">Déconnexion</span>
           </li>
           <li class="menu-hover">
-            <span class="padding-left-10">Créez un compte professionnel</span>
+            <span class="padding-left-10">Créez un compte entreprise</span>
           </li>
           <li class="menu-hover">
-            <span class="padding-left-10">Ajoutez votre restaurant</span>
+            <span class="padding-left-10">Ajoutez votre boutique</span>
           </li>
-          <li class="menu-hover">
+          <!--<li class="menu-hover">
             <span class="padding-left-10">Devenez coursier-partenaire</span>
-          </li>
+          </li>-->
         </ul>
       </div>
     </div>

@@ -51,6 +51,7 @@ import { CreditEmployeeModalComponent } from './component/credit-employee-modal/
 import { CompanySetDefaultPasswordComponent } from './component/company-set-default-password/company-set-default-password.component';
 import { CompanyFinanceManagementComponent } from './component/company-finance-management/company-finance-management.component';
 import { ShopArticlesManagementComponent } from './component/shop-articles-management/shop-articles-management.component';
+import { OrderItemComponent } from './component/order-item/order-item.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -139,10 +140,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CompanySetDefaultPasswordComponent,
         ShopManagementComponent,
         CompanyManagementComponent,
+        OrderItemComponent,
         CreditEmployeeModalComponent,
         CompanySetDefaultPasswordComponent,
         CompanyFinanceManagementComponent,
         ShopArticlesManagementComponent,
+        OrderItemComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -155,6 +158,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ChangePasswordComponent,
         ConfidentialPolicyComponent,
         ModalYesNoComponent,
+        OrderItemComponent,
         CompanyManagementComponent,
         TruncatePipe,
         CompanyFinanceManagementComponent,
