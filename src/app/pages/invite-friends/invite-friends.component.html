@@ -1,1 +1,25 @@
-<p>invite-friends works!</p>
+<div class="invite-friends-container">
+  <h1>Invitez vos amis à rejoindre la plateforme</h1>
+
+  <div class="form-group">
+    <label for="friendEmail">Adresse Email :</label>
+    <input
+      type="email"
+      id="friendEmail"
+      [(ngModel)]="email"
+      placeholder="Entrez l'email de votre ami"
+    />
+    <button (click)="addFriend()">Ajouter à la liste</button>
+  </div>
+
+  <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <ul class="friends-list">
+    <li *ngFor="let friend of friendsList">{{ friend }}</li>
+  </ul>
+
+  <button (click)="sendInvitations()" [disabled]="friendsList.length === 0">
+    Envoyer les invitations
+  </button>
+</div>

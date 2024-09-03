@@ -1,94 +1,129 @@
-.form {
-    max-width: 900px;
-    margin-top: 20px;
-    height: 85vh;
-  }
-  
-  .form div {
-    margin-bottom: 15px;
-  }
-  
-  h1 {
-    color: #ff6b6b;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    color: #333;
-    font-size: 20px;
-    margin-bottom: 15px;
-    margin-top: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  .container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .form-group {
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .table th,
-  .table td {
-    text-align: center;
-    vertical-align: middle;
-  }
-  
-  .table {
-    margin-top: 20px;
-  }
-  
-  .btn {
-    margin-right: 5px;
-  }
-  
-  input {
-    width: 60%;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  textarea {
-    width: 60%;
-    height: 150px;
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  button {
-    background-color: #ff6b6b;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
-  }
-  
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
-  
-  .success {
-    color: green;
-    margin-top: 10px;
-  }
-  
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.table th,
+.table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-right: 5px;
+  border-radius: 50%; /* Rendre les boutons ronds */
+  width: 35px; /* Réduction de la taille des boutons */
+  height: 35px; /* Réduction de la taille des boutons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 16px; /* Réduction de la taille de la police */
+  line-height: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Ajout d'une ombre subtile */
+  transition: transform 0.1s, box-shadow 0.1s; /* Animation au survol */
+}
+
+.btn-primary {
+  background-color: #ff6b6b; /* Harmoniser avec le reste de l'appli */
+  border: none;
+}
+
+.btn-warning {
+  background-color: #ffc107; /* Teinte plus douce pour le bouton de modification */
+  border: none;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #ff4d4d; /* Harmoniser avec le reste de l'appli */
+  border: none;
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px); /* Légère élévation au survol */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.action-btn {
+  border-radius: 50%;
+  width: 35px; /* Taille ajustée */
+  height: 35px; /* Taille ajustée */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 16px; /* Taille ajustée */
+  line-height: 1;
+}
+
+.margin-top-5 {
+  margin-top: 5px; /* Ajout d'un léger espacement entre les boutons */
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-dialog {
+  margin-top: 10vh;
+}
+.modal-footer .btn {
+  border-radius: 5px; /* Coins légèrement arrondis */
+  padding: 10px 20px; /* Taille du bouton ajustée */
+  font-size: 16px; /* Taille du texte */
+  width: auto; /* Assurer que les boutons ne soient pas ronds */
+  height: auto; /* Assurer que les boutons ne soient pas ronds */
+  box-shadow: none; /* Retirer l'ombre subtile */
+  transition: background-color 0.3s ease; /* Transition pour l'effet de survol */
+}
+
+.modal-footer .btn-secondary {
+  background-color: #6c757d; /* Couleur du bouton "Annuler" */
+  border: none;
+  color: white;
+}
+
+.modal-footer .btn-primary {
+  background-color: #007bff; /* Couleur du bouton "Enregistrer" */
+  border: none;
+  color: white;
+}
+
+.modal-footer .btn:hover {
+  background-color: #0056b3; /* Couleur de survol pour les boutons */
+  transform: none; /* Retirer l'effet de transformation au survol */
+  box-shadow: none; /* Retirer l'effet d'ombre au survol */
+}

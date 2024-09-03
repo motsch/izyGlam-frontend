@@ -27,15 +27,15 @@ export class ShopService {
 
     /**
      * Créer un nouveau shop
-     * @param task (données du shop à créer)
+     * @param shop (données du shop à créer)
      */
     create(shop: any) {
-        return this.http.post<any>(environment.apiUrl + 'shops', shop);
+        return this.http.post<any>(environment.apiUrl + 'shop', shop);
     }
 
     /**
      * Mettre à jour un shop par son ID
-     * @param task (données du shop à mettre à jour)
+     * @param shop (données du shop à mettre à jour)
      */
     update(shop: any) {
         return this.http.put<any>(
@@ -50,6 +50,14 @@ export class ShopService {
      */
     delete(id: number) {
         return this.http.delete<any>(`${environment.apiUrl}shop/${id}`);
+    }
+
+    /**
+     * Récupérer les boutiques associées à un utilisateur par userId
+     * @param userId (ID de l'utilisateur)
+     */
+    getShopsByUserId(userId: string): Observable<any[]> {
+        return this.http.get<any[]>(`${environment.apiUrl}shops/user/${userId}`);
     }
 
     getShopsNearby(

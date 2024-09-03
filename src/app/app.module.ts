@@ -31,13 +31,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { MainComponent } from './pages/main/main.component';
 import { WINDOW, windowFactory } from './core/services/windows.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDialogModule } from '@angular/material/dialog';
 registerLocaleData(localeFr, 'fr');
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 
 @NgModule({
     declarations: [AppComponent],
@@ -47,6 +47,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
         BrowserModule,
         HttpClientModule,
         FormsModule,
+        NgxQrcodeStylingModule,
         RouterModule,
         ReactiveFormsModule,
         AppRoutingModule,

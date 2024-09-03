@@ -39,7 +39,7 @@ export class ShopManagementComponent implements OnInit {
         this.userService.getMe().subscribe({
             next: (me: any) => {
                 console.log(me);
-                this.shopService.getById(me.shopId).subscribe({
+                this.shopService.getById(me.shopIds[0]).subscribe({
                     next: (shop: any) => {
                         console.log(shop);
                         this.shopCopyData = { ...shop };

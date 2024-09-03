@@ -76,18 +76,41 @@
       <mat-tab-group>
         <mat-tab label="Employés affiliés">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
-          <app-company-management [myCompany]="myCompany" [employees]="employees"></app-company-management>
+          <app-company-management
+            [myCompany]="myCompany"
+            [employees]="employees"
+          ></app-company-management>
         </mat-tab>
         <mat-tab label="Sécurité">
-          <app-company-set-default-password [myCompany]="myCompany"></app-company-set-default-password>
+          <app-company-set-default-password
+            [myCompany]="myCompany"
+          ></app-company-set-default-password>
         </mat-tab>
         <mat-tab label="Finances">
-          <app-company-finance-management [myCompany]="myCompany" [employees]="employees"></app-company-finance-management>
+          <app-company-finance-management
+            [myCompany]="myCompany"
+            [employees]="employees"
+          ></app-company-finance-management>
         </mat-tab>
       </mat-tab-group>
     </div>
     <div *ngIf="isSectionActive('management')" id="management-content">
       <h1>{{ "PROFILE_MENU.SHOP" | translate }}</h1>
+
+      <div class="custom-language-selector">
+        <label for="languageSelect">Sélectionnez votre boutique :</label>
+        <div class="select-box">
+          <div class="selected" (click)="toggleDropdown()">
+            {{ selected?.name }}
+            <i class="arrow down"></i>
+          </div>
+          <ul class="options" *ngIf="dropdownOpen">
+            <li *ngFor="let shop of shops" (click)="selectShop(shop)">
+              {{ shop.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
       <mat-tab-group>
         <mat-tab label="Informations générales" color="primary">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
@@ -95,7 +118,10 @@
         </mat-tab>
         <mat-tab label="Gestion des articles">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
-          <app-shop-articles-management [myArticlesData]="myArticlesData"></app-shop-articles-management>
+          <app-shop-articles-management
+            [myArticlesData]="myArticlesData"
+            [me]="me"
+          ></app-shop-articles-management>
         </mat-tab>
         <mat-tab label="Suivi financier">
           <app-finance></app-finance>

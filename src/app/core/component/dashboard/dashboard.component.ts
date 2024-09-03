@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit {
                 this.shopService.getAll().subscribe({
                     next: (shops: any[]) => {
                         let myShops = shops.filter((x: any) => {
-                            return (x.professionnel = this.currentUser._id);
+                            return (x.idUser = this.currentUser._id);
                         });
                         let totalRating = 0;
                         myShops.forEach((item: any) => {

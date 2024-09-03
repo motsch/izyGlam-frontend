@@ -1,5 +1,14 @@
-<div class="form">
-  <h2 class="mt-4">Gestion des Services</h2>
+<div class="container">
+  <button
+    class="btn btn-primary action-btn float-end"
+    (click)="openModal()"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+    title="Créer un service"
+  >
+    <i class="fa fa-plus"></i>
+  </button>
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -11,65 +20,88 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let service of articlesCopyData">
+      <tr *ngFor="let service of articlesCopyData; let i = index">
         <td>{{ service.name }}</td>
         <td>{{ service.description }}</td>
-        <td>{{ service.price | currency : "EUR" }}</td>
+        <td>{{ service.price | currency : 'EUR' }}</td>
         <td>{{ service.duration }} minutes</td>
         <td>
-          <button class="btn btn-sm btn-warning" (click)="editService(service)">
-            Modifier
+          <button
+            class="btn btn-warning action-btn"
+            (click)="openModal(service)"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Modifier"
+          >
+            <i class="fa fa-edit"></i>
           </button>
           <button
-            class="btn btn-sm btn-danger"
-            (click)="deleteService(service._id)"
+            class="btn btn-danger action-btn margin-top-5"
+            (click)="deleteService(i)"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Supprimer"
           >
-            Supprimer
+            <i class="fa fa-trash"></i>
           </button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <h3>Ajouter/Modifier un Service</h3>
-  <div class="form">
-    <div class="form-group">
-      <label for="serviceName">Nom du service</label>
-      <input
-        type="text"
-        id="serviceName"
-        class="form-control"
-        required
-      />
+<!-- Modal -->
+<div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'" [ngClass]="{'show': modalOpen}" style="background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">{{ editingServiceIndex !== null ? 'Modifier un service' : 'Créer un service' }}</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="serviceName">Nom du service</label>
+          <input
+            type="text"
+            id="serviceName"
+            [(ngModel)]="modalService.name"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="serviceDescription">Description</label>
+          <textarea
+            id="serviceDescription"
+            [(ngModel)]="modalService.description"
+            class="form-control"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="servicePrice">Prix</label>
+          <input
+            type="number"
+            id="servicePrice"
+            [(ngModel)]="modalService.price"
+            class="form-control"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="serviceDuration">Durée (en minutes)</label>
+          <input
+            type="number"
+            id="serviceDuration"
+            [(ngModel)]="modalService.duration"
+            class="form-control"
+            required
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Annuler</button>
+        <button type="button" class="btn btn-primary" (click)="saveService()">Enregistrer</button>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="serviceDescription">Description</label>
-      <textarea
-        id="serviceDescription"
-        class="form-control"
-        required
-      ></textarea>
-    </div>
-    <div class="form-group">
-      <label for="servicePrice">Prix</label>
-      <input
-        type="number"
-        id="servicePrice"
-        class="form-control"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="serviceDuration">Durée (en minutes)</label>
-      <input
-        type="number"
-        id="serviceDuration"
-        class="form-control"
-        required
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">
-      Enregistrer le service
-    </button>
   </div>
 </div>

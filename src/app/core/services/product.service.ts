@@ -33,12 +33,8 @@ export class ProductService {
      */
     create(product: any) {
         // Ajoutez l' comme paramètre
-        return this.http.post<any>(
-            `${environment.apiUrl + 'service', product}`,
-            product
-        );
+        return this.http.post<any>(environment.apiUrl + 'service', product);
     }
-
     /**
      * Mettre à jour un product par son ID
      * @param task (données du product à mettre à jour)

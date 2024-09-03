@@ -1,1 +1,23 @@
-<p>gift-card works!</p>
+<div class="gift-card-container">
+    <h1>Générateur de Carte Cadeau</h1>
+  
+    <div class="value-selection">
+      <label for="cardValue">Sélectionnez la valeur de la carte :</label>
+      <select id="cardValue" [(ngModel)]="cardValue">
+        <option value="20">20 €</option>
+        <option value="50">50 €</option>
+        <option value="100">100 €</option>
+        <option value="200">200 €</option>
+      </select>
+    </div>
+  
+    <button (click)="generateQRCode()">Générer la Carte Cadeau</button>
+  
+    <ngx-qrcode-styling
+      #qrcode
+      [config]="config">
+    </ngx-qrcode-styling>
+  
+    <button (click)="onDownload()">Télécharger le QR Code</button>
+  </div>
+  

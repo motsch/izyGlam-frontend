@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeoLocationService } from '../../services/geolocation.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-footer',
@@ -10,7 +11,10 @@ export class FooterComponent implements OnInit {
     visitorLocationData: any = {};
     today: number = Date.now();
 
-    constructor(private geoLocationService: GeoLocationService) {}
+    constructor(
+        private geoLocationService: GeoLocationService,
+        private router: Router
+    ) {}
 
     ngOnInit() {
         let storedLangue = localStorage.getItem('langue');
@@ -67,5 +71,8 @@ export class FooterComponent implements OnInit {
                 );
             }
         );
+    }
+    goToHelp() {
+        this.router.navigate(['help']);
     }
 }

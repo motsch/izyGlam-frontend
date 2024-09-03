@@ -50,8 +50,7 @@ const routes: Routes = [
     },
     {
         path: 'help',
-        component: HelpComponent,
-        canActivate: [AuthGuard],
+        component: HelpComponent
     },
     {
         path: 'favorites',

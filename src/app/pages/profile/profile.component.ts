@@ -12,6 +12,11 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+    
+    selected: any = {};
+    dropdownOpen = false;
+    shops: any[] = [];
+    me: any = {};
     myCompany: any = {};
     myArticlesData: any[] = [];
     employees: any[] = [];
@@ -29,6 +34,7 @@ export class ProfileComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        // this.selected = this.shops[0];
         let currentMenu = localStorage.getItem('activeMenu');
         if (currentMenu) {
             this.setActiveSection(currentMenu);
@@ -36,8 +42,19 @@ export class ProfileComponent implements OnInit {
 
         this.userService.getMe().subscribe({
             next: (me: any) => {
+                this.me = me;
                 console.log(me);
                 let companyId = me.companyId;
+                this.shopService.getShopsByUserId(me._id).subscribe({
+                    next:(data:any) => {
+                        console.log(data)
+                        this.shops = data;
+                        this.selected = data[0]
+                    },
+                    error:(error:any) => {
+                        console.log(error)
+                    }
+                })
                 this.companyService.getById(companyId).subscribe({
                     next: (company: any) => {
                         console.log(company.defaultPassword);
@@ -57,8 +74,7 @@ export class ProfileComponent implements OnInit {
                         console.log(error);
                     },
                 });
-
-                this.shopService.getById(me.shopId).subscribe({
+                this.shopService.getById(this.me.shopIds[0]).subscribe({
                     next: (shop: any) => {
                         this.productService
                             .getProductsByShop(shop._id)
@@ -120,5 +136,36 @@ export class ProfileComponent implements OnInit {
         reader.onload = () => {
             this.imagePreview = reader.result as string;
         };
+    }
+
+    selectShop(type:any) {
+        console.log(type);
+        this.selected = type;
+        
+        this.shopService.getById(type._id).subscribe({
+            next: (shop: any) => {
+                this.productService
+                    .getProductsByShop(shop._id)
+                    .subscribe({
+                        next: (data: any[]) => {
+                            console.log('totototo');
+                            console.log(data);
+                            this.myArticlesData = data;
+                            // this.articlesCopyData = [...data];
+                        },
+                        error: (error: any) => {
+                            console.log(error);
+                        },
+                    });
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        });
+        this.dropdownOpen = false;
+    }
+
+    toggleDropdown() {
+        this.dropdownOpen = !this.dropdownOpen;
     }
 }

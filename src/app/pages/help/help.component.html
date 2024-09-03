@@ -1,6 +1,9 @@
-<div class="form">
+<div class="form"><app-header
+    *ngIf="!sessionService.isLoggedIn()"
+    [connected]="false"
+  ></app-header>
+    <h1>Les questions les plus souvent posées</h1>
     <div class="page-container">
-        <h1 class="bold">Les questions les plus souvent posées</h1>
         <mat-accordion>
             <mat-expansion-panel *ngFor="let panel of panels">
               <mat-expansion-panel-header>

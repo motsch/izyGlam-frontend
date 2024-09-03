@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SessionService } from 'src/app/core/services/session.service';
 
 @Component({
   selector: 'app-help',
@@ -48,4 +49,5 @@ export class HelpComponent {
       answer: "Pour retourner un produit, rendez-vous dans la section 'Mes commandes', sélectionnez la commande concernée et suivez les instructions pour retourner le produit."
     }
   ];
+  constructor(public sessionService: SessionService) {}
 }

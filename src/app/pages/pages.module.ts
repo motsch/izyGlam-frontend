@@ -45,6 +45,7 @@ import { HelpComponent } from './help/help.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { GiftCardComponent } from './gift-card/gift-card.component';
 import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
+import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 @NgModule({
     imports: [
         CommonModule,
@@ -53,6 +54,7 @@ import { InviteFriendsComponent } from './invite-friends/invite-friends.componen
         FormsModule,
         AuthModule,
         NgbModule,
+        NgxQrcodeStylingModule,
         MatMenuModule,
         MatSnackBarModule,
         MatIconModule,
