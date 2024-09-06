@@ -12,13 +12,13 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-    
     selected: any = {};
     dropdownOpen = false;
     shops: any[] = [];
     me: any = {};
     myCompany: any = {};
     myArticlesData: any[] = [];
+    myShopData: any = {};
     employees: any[] = [];
     profileForm: FormGroup | undefined;
     imagePreview: string | undefined;
@@ -76,6 +76,7 @@ export class ProfileComponent implements OnInit {
                 });
                 this.shopService.getById(this.me.shopIds[0]).subscribe({
                     next: (shop: any) => {
+                        this.myShopData = shop;
                         this.productService
                             .getProductsByShop(shop._id)
                             .subscribe({
@@ -144,6 +145,7 @@ export class ProfileComponent implements OnInit {
         
         this.shopService.getById(type._id).subscribe({
             next: (shop: any) => {
+                this.myShopData = shop;
                 this.productService
                     .getProductsByShop(shop._id)
                     .subscribe({

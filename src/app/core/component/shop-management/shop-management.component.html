@@ -1,84 +1,109 @@
-<div class="form">
-  <div>
-    <label for="name">Nom de la boutique</label>
-    <input
-      [(ngModel)]="shopCopyData.name"
-      class="input-style"
-      type="text"
-      id="name"
-    />
-  </div>
-  <div>
-    <label for="description">Description</label>
-    <textarea
-      [(ngModel)]="shopCopyData.description"
-      class="input-style"
-      type="text"
-      id="description"
-    ></textarea>
-  </div>
-  <div>
-    <label for="image">Image</label>
-    <input
-      [(ngModel)]="shopCopyData.image"
-      class="input-style"
-      type="text"
-      id="image"
-    />
-  </div>
-  <div>
-    <label for="averagePrice">Prix moyen</label>
-    <input
-      [(ngModel)]="shopCopyData.averagePrice"
-      class="input-style"
-      type="text"
-      id="averagePrice"
-    />
-  </div>
-  <div>
-    <label for="ville">Ville</label>
-    <input
-      [(ngModel)]="shopCopyData.ville"
-      class="input-style"
-      type="text"
-      id="ville"
-    />
-  </div>
-  <div>
-    <label for="latitude">Latitude</label>
-    <input
-      [(ngModel)]="shopCopyData.location.latitude"
-      class="input-style"
-      type="number"
-      id="latitude"
-    />
-  </div>
-  <div>
-    <label for="longitude">Longitude</label>
-    <input
-      [(ngModel)]="shopCopyData.location.longitude"
-      class="input-style"
-      type="number"
-      id="longitude"
-    />
-  </div>
-  <div class="form-group">
-    <div>
-      <label for="morningStart">Heures d'ouverture (matin)</label>
-      <input class="input-style" type="time" id="morningStart" />
+<div class="container">
+  <div class="form">
+    <div class="form-section">
+      <div class="column">
+        <label for="name">Nom de la boutique</label>
+        <input
+          [(ngModel)]="shopCopyData.name"
+          class="input-style"
+          type="text"
+          id="name"
+        />
+      </div>
+      <div class="column">
+        <label for="averagePrice">Prix moyen</label>
+        <input
+          [(ngModel)]="shopCopyData.averagePrice"
+          class="input-style"
+          type="text"
+          id="averagePrice"
+        />
+      </div>
     </div>
+
+  
     <div>
-      <label for="morningEnd">Heures de fermeture (matin)</label>
-      <input type="time" id="morningEnd" class="input-style" />
+      <label for="description">Description</label>
+      <textarea
+        [(ngModel)]="shopCopyData.description"
+        class="input-style"
+        type="text"
+        id="description"
+      ></textarea>
+    </div>
+
+    <div class="form-section">
+      <div class="column">
+        <label for="ville">Ville</label>
+        <input
+          [(ngModel)]="shopCopyData.ville"
+          class="input-style"
+          type="text"
+          id="ville"
+        />
+      </div>
+      <div class="column">
+        <label for="image">Image (URL)</label>
+        <input
+          [(ngModel)]="shopCopyData.image"
+          class="input-style"
+          type="text"
+          id="image"
+        />
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="column">
+        <label for="latitude">Latitude</label>
+        <input
+          [(ngModel)]="shopCopyData?.location.latitude"
+          class="input-style"
+          type="number"
+          id="latitude"
+        />
+      </div>
+      <div class="column">
+        <label for="longitude">Longitude</label>
+        <input
+          [(ngModel)]="shopCopyData?.location.longitude"
+          class="input-style"
+          type="number"
+          id="longitude"
+        />
+      </div>
+    </div>
+    <h2>Horaires d'ouverture</h2>
+    <div class="form-section">
+      <div class="column">
+        <label for="morningStart">Matin - Ouverture</label>
+        <input type="time" id="morningStart" class="input-style"
+        [(ngModel)]="shopCopyData.hours.morning.start" />
+      </div>
+      <div class="column">
+        <label for="morningEnd">Matin - Fermeture</label>
+        <input type="time" id="morningEnd" class="input-style"
+        [(ngModel)]="shopCopyData.hours.morning.end"/>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="column">
+        <label for="afternoonStart">Après-midi - Ouverture</label>
+        <input type="time" id="afternoonStart" class="input-style"
+        [(ngModel)]="shopCopyData.hours.afternoon.start"/>
+      </div>
+      <div class="column">
+        <label for="afternoonEnd">Après-midi - Fermeture</label>
+        <input type="time" id="afternoonEnd" class="input-style"
+        [(ngModel)]="shopCopyData.hours.afternoon.end"/>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button (click)="saveShop()" type="submit" class="btn btn-primary">
+        Enregistrer la boutique
+      </button>
     </div>
   </div>
-  <div class="form-group">
-    <label for="afternoonStart">Heures d'ouverture (après-midi)</label>
-    <input type="time" id="afternoonStart" class="input-style" />
-    <label for="afternoonEnd" class="margin-top-10"
-      >Heures de fermeture (après-midi)</label
-    >
-    <input type="time" id="afternoonEnd" class="input-style" />
-  </div>
-  <button type="submit" class="btn btn-primary">Enregistrer la boutique</button>
 </div>

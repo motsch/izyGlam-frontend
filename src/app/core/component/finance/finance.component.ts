@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BookingService } from '../../services/booking.service';
 
 @Component({
     selector: 'app-finance',
@@ -7,33 +8,54 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./finance.component.scss'],
 })
 export class FinanceComponent implements OnInit {
-    totalGenerated: number = 5000; // Exemple de chiffre d'affaires total généré
-    commission: number = 500; // Exemple de commission prélevée
-    netToPay: number = 4500; // Montant restant après déduction de la commission
-
+    @Input() myShopData: any = {};
+    shopCopyData: any = {};
+    @Input() me: any = {};
+    transactions: any[] = [];
+    totalGenerated: number = 0; // Exemple de chiffre d'affaires total généré
+    commission: number = 0; // Exemple de commission prélevée
+    netToPay: number = 0; // Montant restant après déduction de la commission
     withdrawalForm: FormGroup;
-    transactions = [
-        { date: new Date(), amount: 1000, status: 'En attente' },
-        {
-            date: new Date(new Date().setDate(new Date().getDate() - 10)),
-            amount: 2000,
-            status: 'Traité',
-        },
-        {
-            date: new Date(new Date().setDate(new Date().getDate() - 30)),
-            amount: 1500,
-            status: 'Traité',
-        },
-    ];
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private bookingService: BookingService) {
         this.withdrawalForm = this.fb.group({
             amount: ['', [Validators.required, Validators.min(1)]],
             accountDetails: ['', Validators.required],
         });
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        console.log('myShopData :', this.myShopData);
+        // Tu peux initialiser tes données ici si nécessaire
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['myShopData'] && changes['myShopData'].currentValue) {
+            this.shopCopyData = { ...this.myShopData }; // Met à jour la boutique affichée
+            console.log('myShopData a été mis à jour :', this.shopCopyData);
+            this.bookingService.getBookingsByShop(this.shopCopyData._id).subscribe({
+                next: (data: any) => {
+                    console.log("Bookings by shop :" + JSON.stringify(data));
+                    this.commission = 0;
+                    this.totalGenerated = 0;
+                    this.netToPay = 0;
+                    for(let elem of data) {
+                        elem.date = new Date(elem.date);
+                        this.totalGenerated += parseFloat(elem.price);
+                        this.commission += parseFloat(elem.commission);
+                    }
+                    this.netToPay = this.totalGenerated - this.commission;
+                    this.transactions = data;
+                },
+                error: (error: any) => {
+                    console.log(error);
+                    this.commission = 0;
+                    this.totalGenerated = 0;
+                    this.netToPay = 0;
+                },
+            });
+        }
+    }
 
     requestWithdrawal(): void {
         if (this.withdrawalForm.valid) {

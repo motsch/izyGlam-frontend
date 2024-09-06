@@ -23,7 +23,7 @@
       <tr *ngFor="let service of articlesCopyData; let i = index">
         <td>{{ service.name }}</td>
         <td>{{ service.description }}</td>
-        <td>{{ service.price | currency : 'EUR' }}</td>
+        <td>{{ service.price | currency : "EUR" }}</td>
         <td>{{ service.duration }} minutes</td>
         <td>
           <button
@@ -49,58 +49,84 @@
     </tbody>
   </table>
 
-<!-- Modal -->
-<div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'" [ngClass]="{'show': modalOpen}" style="background: rgba(0, 0, 0, 0.5);">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">{{ editingServiceIndex !== null ? 'Modifier un service' : 'Créer un service' }}</h3>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="serviceName">Nom du service</label>
-          <input
-            type="text"
-            id="serviceName"
-            [(ngModel)]="modalService.name"
-            class="form-control"
-            required
-          />
+  <!-- Modal -->
+  <div
+    class="modal fade show"
+    tabindex="-1"
+    [style.display]="modalOpen ? 'block' : 'none'"
+    [ngClass]="{ show: modalOpen }"
+    style="background: rgba(0, 0, 0, 0.5)"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            {{
+              editingServiceIndex !== null
+                ? "Modifier un service"
+                : "Créer un service"
+            }}
+          </h3>
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="closeModal()"
+          ></button>
         </div>
-        <div class="form-group">
-          <label for="serviceDescription">Description</label>
-          <textarea
-            id="serviceDescription"
-            [(ngModel)]="modalService.description"
-            class="form-control"
-            required
-          ></textarea>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="serviceName">Nom du service</label>
+            <input
+              type="text"
+              id="serviceName"
+              [(ngModel)]="modalService.name"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="serviceDescription">Description</label>
+            <textarea
+              id="serviceDescription"
+              [(ngModel)]="modalService.description"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="servicePrice">Prix</label>
+            <input
+              type="number"
+              id="servicePrice"
+              [(ngModel)]="modalService.price"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="serviceDuration">Durée (en minutes)</label>
+            <input
+              type="number"
+              id="serviceDuration"
+              [(ngModel)]="modalService.duration"
+              class="form-control"
+              required
+            />
+          </div>
         </div>
-        <div class="form-group">
-          <label for="servicePrice">Prix</label>
-          <input
-            type="number"
-            id="servicePrice"
-            [(ngModel)]="modalService.price"
-            class="form-control"
-            required
-          />
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeModal()"
+          >
+            Annuler
+          </button>
+          <button type="button" class="btn btn-primary" (click)="saveService()">
+            Enregistrer
+          </button>
         </div>
-        <div class="form-group">
-          <label for="serviceDuration">Durée (en minutes)</label>
-          <input
-            type="number"
-            id="serviceDuration"
-            [(ngModel)]="modalService.duration"
-            class="form-control"
-            required
-          />
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">Annuler</button>
-        <button type="button" class="btn btn-primary" (click)="saveService()">Enregistrer</button>
       </div>
     </div>
   </div>

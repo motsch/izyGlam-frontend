@@ -173,3 +173,57 @@ h2 {
     margin-right: 8px;
   }
 }
+
+.action-btn {
+  border-radius: 50%;
+  width: 35px; /* Taille ajustée */
+  height: 35px; /* Taille ajustée */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 16px; /* Taille ajustée */
+  line-height: 1;
+}
+
+.btn {
+  margin-right: 5px;
+  border-radius: 50%; /* Rendre les boutons ronds */
+  width: 35px; /* Réduction de la taille des boutons */
+  height: 35px; /* Réduction de la taille des boutons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 16px; /* Réduction de la taille de la police */
+  line-height: 1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Ajout d'une ombre subtile */
+  transition: transform 0.1s, box-shadow 0.1s; /* Animation au survol */
+}
+
+.btn-primary {
+  background-color: #ff6b6b; /* Harmoniser avec le reste de l'appli */
+  border: none;
+}
+
+.btn-warning {
+  background-color: #ffc107; /* Teinte plus douce pour le bouton de modification */
+  border: none;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #ff4d4d; /* Harmoniser avec le reste de l'appli */
+  border: none;
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px); /* Légère élévation au survol */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}

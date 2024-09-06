@@ -11,12 +11,12 @@ export class BookingService {
 
     // Récupérer les réservations d'une boutique
     getBookingsByShop(shopId: string): Observable<any> {
-      return this.http.get(`${environment.apiUrl}/shop/${shopId}`);
+      return this.http.get(`${environment.apiUrl}booking-by-shop/${shopId}`);
     }
   
     // Récupérer les créneaux disponibles pour un service dans une boutique
     getAvailableTimeSlots(shopId: string, serviceId: string, date: string): Observable<any> {
-      return this.http.get(`${environment.apiUrl}/shops/${shopId}/services/${serviceId}/available-slots/${date}`);
+      return this.http.get(`${environment.apiUrl}shops/${shopId}/services/${serviceId}/available-slots/${date}`);
     }
 
     /**

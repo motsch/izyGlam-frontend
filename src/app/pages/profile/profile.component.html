@@ -38,12 +38,6 @@
         {{ "PROFILE_MENU.SHOP" | translate }}
       </li>
       <li
-        [ngClass]="{ active: isSectionActive('finance') }"
-        (click)="setActiveSection('finance')"
-      >
-        {{ "PROFILE_MENU.FINANCIAL" | translate }}
-      </li>
-      <li
         [ngClass]="{ active: isSectionActive('admin') }"
         (click)="setActiveSection('admin')"
       >
@@ -86,35 +80,44 @@
             [myCompany]="myCompany"
           ></app-company-set-default-password>
         </mat-tab>
-        <mat-tab label="Finances">
-          <app-company-finance-management
-            [myCompany]="myCompany"
-            [employees]="employees"
-          ></app-company-finance-management>
-        </mat-tab>
       </mat-tab-group>
     </div>
     <div *ngIf="isSectionActive('management')" id="management-content">
       <h1>{{ "PROFILE_MENU.SHOP" | translate }}</h1>
-
-      <div class="custom-language-selector">
-        <label for="languageSelect">Sélectionnez votre boutique :</label>
-        <div class="select-box">
-          <div class="selected" (click)="toggleDropdown()">
-            {{ selected?.name }}
-            <i class="arrow down"></i>
+      <div class="row">
+        <div class="col-11 custom-language-selector">
+          <label for="languageSelect">Sélectionnez votre boutique :</label>
+          <div class="select-box">
+            <div class="selected" (click)="toggleDropdown()">
+              {{ selected?.name }}
+              <i class="arrow down"></i>
+            </div>
+            <ul class="options" *ngIf="dropdownOpen">
+              <li *ngFor="let shop of shops" (click)="selectShop(shop)">
+                {{ shop.name }}
+              </li>
+            </ul>
           </div>
-          <ul class="options" *ngIf="dropdownOpen">
-            <li *ngFor="let shop of shops" (click)="selectShop(shop)">
-              {{ shop.name }}
-            </li>
-          </ul>
+        </div>
+        <div class="col-1 margin-top-50">
+          <button
+            class="btn btn-primary action-btn"
+            (click)="selectShop('')"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            title="Créer une boutique"
+          >
+            <i class="fa fa-plus"></i>
+          </button>
         </div>
       </div>
       <mat-tab-group>
         <mat-tab label="Informations générales" color="primary">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
-          <app-shop-management></app-shop-management>
+          <app-shop-management
+            [myShopData]="myShopData"
+            [me]="me"
+          ></app-shop-management>
         </mat-tab>
         <mat-tab label="Gestion des articles">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
@@ -124,14 +127,11 @@
           ></app-shop-articles-management>
         </mat-tab>
         <mat-tab label="Suivi financier">
-          <app-finance></app-finance>
+          <app-finance
+          [myShopData]="myShopData"
+          [me]="me"></app-finance>
         </mat-tab>
       </mat-tab-group>
-    </div>
-    <div *ngIf="isSectionActive('finance')" id="finance-content">
-      <h1>{{ "PROFILE_MENU.FINANCIAL" | translate }}</h1>
-      <!-- Ajouter le contenu lié à la confidentialité ici -->
-      <app-finance></app-finance>
     </div>
     <div *ngIf="isSectionActive('admin')" id="admin-content">
       <h1>{{ "PROFILE_MENU.ADMIN" | translate }}</h1>

@@ -3,9 +3,9 @@
     <!-- Section: Total généré -->
     <div class="col-md-4 col-sm-12 mb-4">
       <div class="finance-card">
-        <h3>Total généré</h3>
+        <h3>Total de chiffre généré</h3>
         <p class="finance-number">{{ totalGenerated | currency : "EUR" }}</p>
-        <p class="finance-description">Chiffre d'affaires total généré</p>
+        <p class="finance-description">Chiffre d'affaires</p>
       </div>
     </div>
 
@@ -14,7 +14,7 @@
       <div class="finance-card">
         <h3>Commission prélevée</h3>
         <p class="finance-number">{{ commission | currency : "EUR" }}</p>
-        <p class="finance-description">Montant des commissions</p>
+        <p class="finance-description">Commissions</p>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
       <div class="finance-card">
         <h3>Montant net à verser</h3>
         <p class="finance-number">{{ netToPay | currency : "EUR" }}</p>
-        <p class="finance-description">Montant disponible pour virement</p>
+        <p class="finance-description">Montant disponible</p>
       </div>
     </div>
   </div>
@@ -70,13 +70,15 @@
           <tr>
             <th>Date</th>
             <th>Montant</th>
+            <th>Commission</th>
             <th>Statut</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let transaction of transactions">
             <td>{{ transaction.date | date : "short" }}</td>
-            <td>{{ transaction.amount | currency : "EUR" }}</td>
+            <td>{{ transaction.price | currency : "EUR" }}</td>
+            <td>{{ transaction.commission | currency : "EUR" }}</td>
             <td>{{ transaction.status }}</td>
           </tr>
         </tbody>
