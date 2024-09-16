@@ -14,6 +14,7 @@ import { HelpComponent } from './help/help.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { GiftCardComponent } from './gift-card/gift-card.component';
 import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
+import { CreationShopComponent } from './creation-shop/creation-shop.component';
 
 const routes: Routes = [
     {
@@ -66,6 +67,11 @@ const routes: Routes = [
         path: 'invite-friends',
         component: InviteFriendsComponent,
         canActivate: [AuthGuard],
+    },
+    {
+        path: 'creation-shop',
+        component: CreationShopComponent,
+        canActivate: [],
     },
 ];
 

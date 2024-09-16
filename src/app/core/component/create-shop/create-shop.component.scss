@@ -1,0 +1,119 @@
+.main-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+  }
+  
+  .hero-image img {
+    margin-top: 40%;
+    margin-left: 8%;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+  }
+  
+  .content h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 20px;
+  }
+  
+  .content p {
+    color: #000;
+    line-height: 1.5;
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  button {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  img {
+    border-radius: 20px; /* Vous pouvez ajuster cette valeur pour obtenir l'arrondi souhaité */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre portée pour l'effet de profondeur */
+  }
+  
+.right-side {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+input,
+select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.name-fields {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-fields div {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.phone-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.phone-group select {
+    width: 20%;
+}
+
+button {
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.whatsapp {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.whatsapp input {
+    margin-right: 10px;
+}
+  
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #B23A48;
+  }

@@ -9,25 +9,27 @@
         <img [src]="imgStorageUrl+'default.jpeg'" class="profile-pic" alt="Profile Picture">
         <div>
           <p class="profile-name">{{this.me.firstname}}</p>
-          <a class="manage-account" (click)="goToProfil()">Gérer le compte</a>
+          <a class="manage-account" (click)="goTo('profile')">Gérer le compte</a>
         </div>
       </div>
       <ul class="drawer-menu">
-        <li class="menu-hover fa fa-list" (click)="goToOrders()">
+        <li class="menu-hover fa fa-list" (click)="goTo('orders')">
           <span class="padding-left-10">Commandes</span>
         </li>
-        <li class="menu-hover fa fa-heart" (click)="goToFavorites()">
+        <li class="menu-hover fa fa-heart" (click)="goTo('favorites')">
           <span class="padding-left-10">Favoris</span>
         </li>
-        <li class="menu-hover fa fa-question-circle" (click)="goToHelp()">
+        <li class="menu-hover fa fa-question-circle" (click)="goTo('help')">
           <span class="padding-left-10">Aide</span>
         </li>
-        <li class="menu-hover fa fa-gift" (click)="goToGiftCards()">
+        <!--
+        <li class="menu-hover fa fa-gift" (click)="goTo('gift-card')">
           <span class="padding-left-10">Cartes cadeaux</span>
         </li>
-        <li class="menu-hover fa fa-users" (click)="goToInviteFriends()">
+        <li class="menu-hover fa fa-users" (click)="goTo('invite-friends')">
           <span class="padding-left-10">Invitez des amies</span>
         </li>
+        -->
         <li><i class=""></i> </li>
         <li><i class=""></i> </li>
         <li><i class=""></i> </li>
@@ -35,14 +37,14 @@
       </ul>
       <div class="drawer-footer">
         <ul class="drawer-menu secondary">
-          <li (click)="logout()" class="menu-hover">
+          <li (click)="goTo('main')" class="menu-hover">
             <span class="padding-left-10">Déconnexion</span>
           </li>
-          <li class="menu-hover">
+          <!--<li class="menu-hover">
             <span class="padding-left-10">Devenez client professionnel</span>
-          </li>
-          <li class="menu-hover">
-            <span class="padding-left-10">Ajoutez votre boutique</span>
+          </li>-->
+          <li class="menu-hover" (click)="goTo('creation-shop')">
+            <span class="padding-left-10">Proposez vos services beauté</span>
           </li>
           <!--<li class="menu-hover">
             <span class="padding-left-10">Devenez coursier-partenaire</span>

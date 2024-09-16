@@ -85,37 +85,15 @@ export class AppComponent implements OnInit {
             this.drawerOpen = false;
         }
     }
-    logout() {
-        this.drawerService.closeDrawer();
-        this.sessionService.destroy();
-        // localStorage.removeItem('unknownUser');
-        this.router.navigate(['main']);
-    }
 
-    goToProfil() {
+    goTo(name: string) {
         this.drawerService.closeDrawer();
-        this.router.navigate(['profile']);
+        this.router.navigate([name]);
+        if(name === 'main') {
+            this.sessionService.destroy();
+        }
     }
-    goToOrders() {
-        this.drawerService.closeDrawer();
-        this.router.navigate(['orders']);
-    }
-    goToFavorites() {
-        this.drawerService.closeDrawer();
-        this.router.navigate(['favorites']);
-    }
-    goToHelp() {
-        this.drawerService.closeDrawer();
-        this.router.navigate(['help']);
-    }
-    goToGiftCards() {
-        this.drawerService.closeDrawer();
-        this.router.navigate(['gift-card']);
-    }
-    goToInviteFriends() {
-        this.drawerService.closeDrawer();
-        this.router.navigate(['invite-friends']);
-    }
+    
     checkout() {
         // Implement checkout logic here
     }

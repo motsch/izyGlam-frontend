@@ -4,7 +4,7 @@
          <div class="col-md-6 content">
             <h1>{{'HOMEPAGE.PART2TITLE' | translate}}</h1>
             <p>{{'HOMEPAGE.PART2TEXT' | translate}}</p>
-            <button type="submit" class="btn submit margin-bottom-50">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
+            <button type="submit" class="btn submit margin-bottom-50" (click)="goTo('creation-shop')">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
          </div>
          <div class="col-md-6 hero-image">
             <img [src]="imgStorageUrl+'uber-test.png'" alt="Conduisez quand vous voulez">

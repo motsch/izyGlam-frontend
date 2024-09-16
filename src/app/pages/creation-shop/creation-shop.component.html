@@ -1,0 +1,7 @@
+<div *ngIf="!sessionService.isLoggedIn()">
+  <app-header [connected]="false"></app-header>
+</div>
+
+<app-create-shop-steps></app-create-shop-steps>
+<app-create-shop></app-create-shop>
+<app-create-shop-info></app-create-shop-info>

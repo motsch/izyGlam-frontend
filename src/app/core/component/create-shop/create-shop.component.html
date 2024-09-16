@@ -1,0 +1,71 @@
+<div class="main-section">
+    <div class="container custom-container">
+      <div class="row">
+        <div class="col-md-6 hero-image">
+          <img
+            [src]="'/assets/images/conseil.png'"
+            alt="Travaillez pour des particuliers"
+          />
+        </div>
+        <div class="col-md-6 content right-side margin-top-50">
+          <form>
+            <h2>Lancez-vous</h2>
+  
+            <label for="establishment-name">Nom de votre entreprise</label>
+            <input
+              type="text"
+              id="establishment-name"
+              name="establishment-name"
+              placeholder="Pizzeria chez Sam - 123, rue Principale"
+            />
+            <label for="address">Adresse de votre entreprise</label>
+            <select id="address" name="address">
+              <option value="">Select...</option>
+              <!-- Add more options here -->
+            </select>
+  
+            <label for="floor">Étage/Suite (facultatif)</label>
+            <input type="text" id="floor" name="floor" placeholder="123" />
+  
+            <label for="business-type">Type d'entreprise</label>
+            <select id="business-type" name="business-type">
+              <option value="">Select...</option>
+              <!-- Add more options here -->
+            </select>
+  
+            <div class="name-fields">
+              <div>
+                <label for="first-name">Prénom</label>
+                <input type="text" id="first-name" name="first-name" />
+              </div>
+              <div>
+                <label for="last-name">Nom de famille</label>
+                <input type="text" id="last-name" name="last-name" />
+              </div>
+            </div>
+  
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" />
+  
+            <label for="phone">Numéro de téléphone portable</label>
+            <div class="phone-group">
+              <select id="country-code">
+                <option value="FR">FR +33</option>
+                <!-- Add more country codes here -->
+              </select>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+  
+            <div class="whatsapp">
+              <input type="checkbox" id="whatsapp" />
+              <label for="whatsapp">
+                J’accepte de recevoir des messages sur WhatsApp
+              </label>
+            </div>
+  
+            <button type="submit">Envoyer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -38,6 +38,12 @@
   border: none;
 }
 
+
+.btn-primary:active {
+  background-color: #df5151; /* Harmoniser avec le reste de l'appli */
+  border: none;
+}
+
 .btn-warning {
   background-color: #ffc107; /* Teinte plus douce pour le bouton de modification */
   border: none;

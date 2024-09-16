@@ -46,6 +46,8 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { GiftCardComponent } from './gift-card/gift-card.component';
 import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
 import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
+import { CreationShopComponent } from './creation-shop/creation-shop.component';
+import { CreateShopInfoComponent } from '../core/component/create-shop-info/create-shop-info.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -102,7 +104,9 @@ import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
         FavoritesComponent,
         GiftCardComponent,
         InviteFriendsComponent,
+        CreationShopComponent,
+        CreateShopInfoComponent,
     ],
-    exports: [],
+    exports: [CreateShopInfoComponent, CreationShopComponent],
 })
 export class PagesModule {}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CompanyService } from 'src/app/core/services/company.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ShopService } from 'src/app/core/services/shop.service';
@@ -30,7 +31,8 @@ export class ProfileComponent implements OnInit {
         private userService: UserService,
         private companyService: CompanyService,
         private shopService: ShopService,
-        private productService: ProductService
+        private productService: ProductService,
+        private router: Router
     ) {}
 
     ngOnInit() {
@@ -137,6 +139,10 @@ export class ProfileComponent implements OnInit {
         reader.onload = () => {
             this.imagePreview = reader.result as string;
         };
+    }
+
+    goToCreationShop() {
+        this.router.navigate(['/creation-shop']);
     }
 
     selectShop(type:any) {

@@ -105,3 +105,16 @@ button.cancel,
 .info-point {
   color: #CED4DA;
 }
+
+
+
+.btn-primary {
+  background-color: #ff6b6b; /* Harmoniser avec le reste de l'appli */
+  border: none;
+}
+
+
+.btn-primary:active {
+  background-color: #df5151; /* Harmoniser avec le reste de l'appli */
+  border: none;
+}

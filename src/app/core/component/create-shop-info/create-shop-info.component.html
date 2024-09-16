@@ -1,0 +1,45 @@
+<div class="uber-eats-container">
+  <div class="section-header">
+    <h2>Pourquoi izyGlam ?</h2>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-item">
+      <h3>Livre vos commandes à votre façon</h3>
+      <p>
+        Nos offres sont flexibles : vous pouvez ainsi les adapter à vos besoins.
+        Rejoignez izyGlam et faites livrer vos commandes par vos coursiers ou
+        ceux de notre plateforme.
+      </p>
+    </div>
+
+    <div class="feature-item">
+      <h3>Augmentez votre visibilité</h3>
+      <p>
+        Démarquez-vous grâce au marketing intégré à l'application pour atteindre
+        davantage de clients et accroître vos ventes.
+      </p>
+    </div>
+
+    <div class="feature-item">
+      <h3>Établissez un lien avec vos clients</h3>
+      <p>
+        Conservez vos clients sur le long terme en utilisant des données
+        exploitables, en répondant aux commentaires ou en offrant un programme
+        de fidélité.
+      </p>
+    </div>
+  </div>
+
+  <div class="growth-section">
+    <h3>{{ currentStep.title }}</h3>
+    <p>
+      {{ currentStep.text }}
+    </p>
+  </div>
+  
+  <div class="chevrons-container">
+    <button [disabled]="currentIndex === 0" class="chevron left" (click)="prevStep()"><i class="fa fa-chevron-left"></i></button>
+    <button [disabled]="currentIndex === steps.length - 1" class="chevron right" (click)="nextStep()"><i class="fa fa-chevron-right"></i></button>
+  </div>
+</div>

@@ -52,6 +52,8 @@ import { CompanySetDefaultPasswordComponent } from './component/company-set-defa
 import { CompanyFinanceManagementComponent } from './component/company-finance-management/company-finance-management.component';
 import { ShopArticlesManagementComponent } from './component/shop-articles-management/shop-articles-management.component';
 import { OrderItemComponent } from './component/order-item/order-item.component';
+import { CreateShopComponent } from './component/create-shop/create-shop.component';
+import { CreateShopStepsComponent } from './component/create-shop-steps/create-shop-steps.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -146,6 +148,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CompanyFinanceManagementComponent,
         ShopArticlesManagementComponent,
         OrderItemComponent,
+        CreateShopComponent,
+        CreateShopStepsComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -171,6 +175,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopItemCardComponent,
         RoundShopCardComponent,
         DashboardComponent,
+        CreateShopComponent,
+        CreateShopStepsComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })

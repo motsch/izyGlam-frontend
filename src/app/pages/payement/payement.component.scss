@@ -1,10 +1,10 @@
 /* Pour que le fond bleu couvre toute la page */
 .page-container {
-  width: 98vw !important;
+  width: 80vw !important;
   min-height: 100vh; /* Pour s'assurer que le fond bleu couvre toute la hauteur de la page */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   overflow: auto;
 }
 

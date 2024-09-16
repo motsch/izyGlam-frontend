@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,7 +10,12 @@ import { environment } from 'src/environments/environment';
 export class AboutComponent implements OnInit {
     imgStorageUrl: string = environment.imgStorageUrl;
 
-    constructor() {}
+    constructor(private router: Router) {}
 
     ngOnInit() {}
+    goTo(name: string) {
+        console.log(name);
+        this.router.navigate(['/' + name]);
+
+    }
 }
