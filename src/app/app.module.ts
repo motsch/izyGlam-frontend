@@ -4,11 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { CommonModule, registerLocaleData } from '@angular/common';
-import {
-    HttpClientModule,
-    HttpClient,
-    HTTP_INTERCEPTORS,
-} from '@angular/common/http';
+import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -39,13 +35,11 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 
-@NgModule({
-    declarations: [AppComponent],
-    imports: [
-        CommonModule,
+@NgModule({ declarations: [AppComponent],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [CommonModule,
         NgbModule,
         BrowserModule,
-        HttpClientModule,
         FormsModule,
         NgxQrcodeStylingModule,
         RouterModule,
@@ -70,9 +64,7 @@ import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
                 useFactory: HttpLoaderFactory,
                 deps: [HttpClient],
             },
-        }),
-    ],
-    providers: [
+        })], providers: [
         { provide: WINDOW, useFactory: windowFactory },
         {
             provide: HTTP_INTERCEPTORS,
@@ -89,8 +81,6 @@ import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
         SessionService,
         AlertService,
         WebsocketService,
-    ],
-    bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
