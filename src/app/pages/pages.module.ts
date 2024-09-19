@@ -48,8 +48,11 @@ import { InviteFriendsComponent } from './invite-friends/invite-friends.componen
 import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 import { CreationShopComponent } from './creation-shop/creation-shop.component';
 import { CreateShopInfoComponent } from '../core/component/create-shop-info/create-shop-info.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 @NgModule({
     imports: [
+
+        NgxSkeletonLoaderModule,
         CommonModule,
         BrowserModule,
         CoreModule,
