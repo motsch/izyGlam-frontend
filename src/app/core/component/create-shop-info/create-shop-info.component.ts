@@ -11,29 +11,19 @@ export class CreateShopInfoComponent {
 
   steps = [
     {
-      title: 'Développez votre activité',
-      text: 'Des milliers d\'utilisateurs de l\'application izyGlam sont susceptibles de rechercher un restaurant dans votre secteur...',
-      image: 'assets/step1-image.png'
+      title: "Simplifiez la gestion de votre activité",
+      text: "Gérez votre activité en toute sérénité grâce à izyGlam, la solution complète pour les professionnels du bien-être. Profitez d'outils flexibles et d'un accompagnement personnalisé pour répondre à tous vos besoins.",
+      image: "assets/images/step-image-1.png"
     },
     {
-      title: 'Augmentez votre visibilité',
-      text: 'Utilisez les outils marketing d\'izyGlam pour toucher plus de clients dans votre secteur...',
-      image: 'assets/step2-image.png'
+      title: 'Boostez vos ventes',
+      text: 'Chaque jour, des milliers de personnes utilisent izyGlam pour trouver des experts en beauté près de chez eux. Profitez de cette opportunité pour toucher de nouveaux clients dans votre domaine.',
+      image: 'assets/images/step-image-2.png'
     },
     {
-      title: 'Optimisez vos opérations',
-      text: 'Gérez efficacement les commandes avec l\'interface intuitive fournie par izyGlam...',
-      image: 'assets/step3-image.png'
-    },
-    {
-      title: 'Nouveau Step 1',
-      text: 'Voici le contenu de votre premier step supplémentaire...',
-      image: 'assets/step4-image.png'
-    },
-    {
-      title: 'Nouveau Step 2',
-      text: 'Voici le contenu de votre deuxième step supplémentaire...',
-      image: 'assets/step5-image.png'
+      title: 'Satisfaction clientéle garantie',
+      text: 'Avec izyGlam, proposez une expérience personnalisée à vos clients. Gérez facilement vos rendez-vous, communiquez rapidement et offrez des services adaptés. Vos clients bénéficient de soins où et quand ils le souhaitent, assurant leur satisfaction et fidélité.',
+      image: 'assets/images/step-image-3.png'
     }
   ];
 

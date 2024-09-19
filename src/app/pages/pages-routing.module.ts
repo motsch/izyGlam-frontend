@@ -19,8 +19,7 @@ import { CreationShopComponent } from './creation-shop/creation-shop.component';
 const routes: Routes = [
     {
         path: 'main',
-        component: MainComponent,
-        canActivate: [],
+        component: MainComponent
     },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     {
@@ -73,6 +72,8 @@ const routes: Routes = [
         component: CreationShopComponent,
         canActivate: [],
     },
+    { path: '', redirectTo: 'main', pathMatch: 'full' },
+    { path: '**', redirectTo: 'main' }, // pour capturer les chemins invalides
 ];
 
 @NgModule({

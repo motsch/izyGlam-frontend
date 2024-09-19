@@ -61,9 +61,9 @@ export class SignUpComponent implements OnInit {
      */
     validAjouterModifier() {
         //crétion d'un user
-        this.user.role = 'user';
+        this.user.role = 'particulier';
         // TODO User à mettre en dynamique asap
-        this.user.roleId = 1;
+        // this.user.roleId = 1;
         if (!this.newUserOrEditUser) {
             // une fois l'erreur : on desactive le loader
             this.emitterService.change(true);
@@ -79,6 +79,7 @@ export class SignUpComponent implements OnInit {
                     this.user = {};
                     // une fois l'erreur : on desactive le loader
                     this.emitterService.change(false);
+                    this.router.navigate(['sign-in']);
                 },
                 (err) => {
                     // une fois l'erreur : on desactive le loader

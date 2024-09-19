@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-shop.component.scss']
 })
 export class CreateShopComponent {
+user: any = {};
 
+onSubmit() {
+    console.log(this.user);
+}
 }

@@ -2,44 +2,58 @@
   <div class="section-header">
     <h2>Pourquoi izyGlam ?</h2>
   </div>
-
   <div class="features-grid">
     <div class="feature-item">
-      <h3>Livre vos commandes à votre façon</h3>
+      <h3>Travaillez selon vos propres conditions</h3>
       <p>
-        Nos offres sont flexibles : vous pouvez ainsi les adapter à vos besoins.
-        Rejoignez izyGlam et faites livrer vos commandes par vos coursiers ou
-        ceux de notre plateforme.
+        Organisez votre emploi du temps et gérez vos prestations en toute
+        liberté. Profitez d'une plateforme flexible qui s'adapte à vos besoins
+        pour maximiser votre activité.
       </p>
     </div>
 
     <div class="feature-item">
-      <h3>Augmentez votre visibilité</h3>
+      <h3>Renforcez votre présence en ligne</h3>
       <p>
-        Démarquez-vous grâce au marketing intégré à l'application pour atteindre
-        davantage de clients et accroître vos ventes.
+        Attirez plus de clients grâce aux outils marketing inclus dans
+        l'application et boostez vos résultats avec une visibilité accrue.
       </p>
     </div>
 
     <div class="feature-item">
-      <h3>Établissez un lien avec vos clients</h3>
+      <h3>Fidélisez vos clients</h3>
       <p>
-        Conservez vos clients sur le long terme en utilisant des données
-        exploitables, en répondant aux commentaires ou en offrant un programme
-        de fidélité.
+        Développez des relations durables en analysant les préférences de vos
+        clients, en répondant à leurs avis, et en leur offrant des avantages
+        fidélité.
       </p>
     </div>
   </div>
-
-  <div class="growth-section">
-    <h3>{{ currentStep.title }}</h3>
-    <p>
-      {{ currentStep.text }}
-    </p>
+  <div class="row margin-top-80">
+    <div class="col-6 image-section">
+      <img [src]="currentStep.image" alt="image section" />
+    </div>
+    <div class="col-6 growth-section">
+      <h3>{{ currentStep.title }}</h3>
+      <p>
+        {{ currentStep.text }}
+      </p>
+    </div>
   </div>
-  
   <div class="chevrons-container">
-    <button [disabled]="currentIndex === 0" class="chevron left" (click)="prevStep()"><i class="fa fa-chevron-left"></i></button>
-    <button [disabled]="currentIndex === steps.length - 1" class="chevron right" (click)="nextStep()"><i class="fa fa-chevron-right"></i></button>
+    <button
+      [disabled]="currentIndex === 0"
+      class="chevron left"
+      (click)="prevStep()"
+    >
+      <i class="fa fa-chevron-left"></i>
+    </button>
+    <button
+      [disabled]="currentIndex === steps.length - 1"
+      class="chevron right"
+      (click)="nextStep()"
+    >
+      <i class="fa fa-chevron-right"></i>
+    </button>
   </div>
 </div>

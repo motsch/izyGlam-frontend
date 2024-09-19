@@ -2,12 +2,12 @@
    <div class="container custom-container">
       <div class="row">
          <div class="col-md-6 hero-image">
-            <img [src]="imgStorageUrl+'illustration.png'" alt="Travaillez pour des particuliers">
+            <img [src]="imgStorageUrl+'uber-test5.webp'" alt="Travaillez pour des particuliers">
          </div>
          <div class="col-md-6 content">
             <h1>{{ 'HOMEPAGE.PART1TITLE' | translate }}</h1>
             <p>{{ 'HOMEPAGE.PART1TEXT' | translate }}</p>
-            <button type="submit" class="btn submit">{{ 'HOMEPAGE.KNOWMORE' | translate }}</button>
+            <button type="submit" class="btn submit" (click)="goTo('main')">{{ 'HOMEPAGE.KNOWMORE' | translate }}</button>
          </div>
       </div>
 

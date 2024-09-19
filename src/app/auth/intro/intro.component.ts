@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -62,7 +63,7 @@ export class IntroComponent implements OnInit {
   streetError: boolean = false;  // Erreur pour le premier champ
   locationError: boolean = false;  // Erreur pour le deuxième champ
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.startRotatingPropositions();
@@ -140,5 +141,6 @@ export class IntroComponent implements OnInit {
 
   onButtonClick(): void {
     console.log("Vous avez cliqué sur 'Rechercher'!");
+    this.router.navigate(['/main']);
   }
 }

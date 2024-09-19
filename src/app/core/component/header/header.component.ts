@@ -24,6 +24,7 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
     @Input() page: string | undefined;
     @Input() connected: boolean | undefined;
+    logoLangue: string | null = null;
     public darkHeader: boolean = false;
     public menuItems: any[] | undefined;
     public showClass: boolean = false;
@@ -110,6 +111,14 @@ export class HeaderComponent implements OnInit {
         });
         console.log('connected', this.connected);
         this.darkHeader = this.connected ? true : false;
+        if(localStorage.getItem('langue') === null) {
+            this.logoLangue = 'en';
+        } else {
+            this.logoLangue = localStorage.getItem('langue');
+            if(this.logoLangue) {
+                this.logoLangue = this.logoLangue.replace(/"/g, '');
+            }
+        }
     }
 
     toggleDelivery(isChecked: boolean) {
