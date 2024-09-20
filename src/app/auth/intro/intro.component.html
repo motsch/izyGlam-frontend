@@ -1,64 +1,98 @@
 <section class="slide-bg" id="home">
-   <div class="animation-circle">
-      <i></i>
-      <i></i>
-      <i></i>
-   </div>
-   <div class="container custom-container">
-      <div class="row">
-         <div class="col-xl-7 col-12">
-            <div class="d-flex-1">
-               <div class="slide-text">
-                  <div>
-                     <h1>{{ 'HOMEPAGE.TITLERED' | translate }}
-                        <span class="main-title">
-                           <br>
-                           <span class="animated-text new-proposition">{{ currentProposition | translate }}</span>
-                           <span class="animated-text old-proposition">{{ previousProposition | translate }}</span>
-                        </span>
-                     </h1>
-                     <div class="search-container">
-                        <form>
-                           <input [(ngModel)]="search.category" type="text" [placeholder]="specialityTranslation" class="search-input" 
-                           [formControl]="control"
-                           [matAutocomplete]="auto"/>
-                           <mat-autocomplete #auto="matAutocomplete">
-                              <mat-option *ngFor="let option of filteredStreets | async; trackBy: trackByFn" [value]="option">
-                                 {{ option }}
-                              </mat-option>
-                           </mat-autocomplete>
-                           <div *ngIf="streetError && search.category" class="error-message">
-                             {{ "INTRO.NORESULTS" | translate }}
-                           </div>
-                        </form>
-                        <form>
-                           <input [(ngModel)]="search.city" type="text" [placeholder]="whereTranslation" class="location-input" 
-                           [formControl]="control2"
-                           [matAutocomplete]="auto2"/>
-                           <mat-autocomplete #auto2="matAutocomplete">
-                              <mat-option *ngFor="let option of filteredLocations | async; trackBy: trackByFn" [value]="option">
-                                 {{ option }}
-                              </mat-option>
-                           </mat-autocomplete>
-                           <div *ngIf="locationError && search.city" class="error-message">
-                             {{ "INTRO.NORESULTS" | translate }}
-                           </div>
-                        </form>
-                        <button class="search-button" (click)="onButtonClick()">
-                          {{ "INTRO.SEARCH" | translate }}
-                        </button>
-                     </div>
+  <div class="animation-circle">
+    <i></i>
+    <i></i>
+    <i></i>
+  </div>
+  <div class="container custom-container">
+    <div class="row">
+      <div class="col-xl-7 col-12">
+        <div class="d-flex-1">
+          <div class="slide-text">
+            <div>
+              <h1>
+                {{ "HOMEPAGE.TITLERED" | translate }}
+                <div class="main-title">
+                  <!-- Utilisation de *ngIf pour déclencher l'animation -->
+                  <span class="animated-text" *ngIf="animationTrigger" [@slideDown]>{{ currentProposition | translate }}</span>
+                  <span class="animated-text" *ngIf="!animationTrigger" [@fadeOut] (@fadeOut.done)="onAnimationDone()">{{ previousProposition | translate }}</span>
+                </div>
+                
+              </h1>
+              <div class="search-container">
+                <form>
+                  <input
+                    [(ngModel)]="search.category"
+                    type="text"
+                    [placeholder]="specialityTranslation"
+                    class="search-input"
+                    [formControl]="control"
+                    [matAutocomplete]="auto"
+                  />
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option
+                      *ngFor="
+                        let option of filteredStreets | async;
+                        trackBy: trackByFn
+                      "
+                      [value]="option"
+                    >
+                      {{ option }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <div
+                    *ngIf="streetError && search.category"
+                    class="error-message"
+                  >
+                    {{ "INTRO.NORESULTS" | translate }}
                   </div>
-               </div>
+                </form>
+                <form>
+                  <input
+                    [(ngModel)]="search.city"
+                    type="text"
+                    [placeholder]="whereTranslation"
+                    class="location-input"
+                    [formControl]="control2"
+                    [matAutocomplete]="auto2"
+                  />
+                  <mat-autocomplete #auto2="matAutocomplete">
+                    <mat-option
+                      *ngFor="
+                        let option of filteredLocations | async;
+                        trackBy: trackByFn
+                      "
+                      [value]="option"
+                    >
+                      {{ option }}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <div
+                    *ngIf="locationError && search.city"
+                    class="error-message"
+                  >
+                    {{ "INTRO.NORESULTS" | translate }}
+                  </div>
+                </form>
+                <button class="search-button" (click)="onButtonClick()">
+                  {{ "INTRO.SEARCH" | translate }}
+                </button>
+              </div>
             </div>
-         </div>
-         <div class="col-xl-5 d-none d-xl-block">
-            <div class="home-right">
-               <div class="mobile-slid">
-                  <img [src]="imgStorageUrl+'illustration.png'" alt="top1" class="img-fluid">
-               </div>
-            </div>
-         </div>
-      </div>      
-   </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-5 d-none d-xl-block">
+        <div class="home-right">
+          <div class="mobile-slid">
+            <img
+              [src]="imgStorageUrl + 'illustration.png'"
+              alt="top1"
+              class="img-fluid"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

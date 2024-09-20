@@ -33,9 +33,11 @@ import { SignInSmsComponent } from './sign-in-sms/sign-in-sms.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
+        BrowserAnimationsModule,
         CommonModule,
         AuthRoutingModule,
         PagesRoutingModule,

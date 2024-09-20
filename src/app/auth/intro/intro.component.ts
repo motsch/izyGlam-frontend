@@ -5,153 +5,123 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { trigger, style, animate, transition, state } from '@angular/animations';
 
 @Component({
   selector: 'app-intro',
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.scss'],
+  animations: [
+    trigger('slideDown', [
+      transition(':enter', [
+        style({ transform: 'translateY(-100%)', opacity: 0 }),
+        animate('1s ease-in-out', style({ transform: 'translateY(0)', opacity: 1 }))
+      ])
+    ]),
+    trigger('fadeOut', [
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate('1s ease-in-out', style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class IntroComponent implements OnInit {
-    search:any = {};
+  search: any = {};
   control = new FormControl();
-  control2 = new FormControl();  // Ajout d'un autre FormControl pour le deuxième champ
+  control2 = new FormControl();
+
+  animationTrigger: boolean = true;
   options: string[] = [
-    'Esthéticienne',
-    'Masseuse',
-    'Manucure',
-    'Pédicure',
-    'Maquilleuse',
-    'Coiffeuse',
+    'Esthéticienne', 'Masseuse', 'Manucure', 'Pédicure', 'Maquilleuse', 'Coiffeuse',
   ];
+
   optionsCities: string[] = [
-    'Paris 1',
-    'Paris 2',
-    'Paris 3',
-    'Paris 4',
-    'Paris 5',
-    'Paris 6',
-    'Paris 7',
-    'Paris 8',
-    'Paris 9',
-    'Paris 10',
-    'Paris 11',
-    'Paris 12',
-    'Paris 13',
-    'Paris 14',
-    'Paris 15',
-    'Paris 16',
-    'Paris 17',
-    'Paris 18',
-    'Paris 19',
-    'Paris 20',
+    'Paris 1', 'Paris 2', 'Paris 3', 'Paris 4', 'Paris 5', 'Paris 6', 'Paris 7', 'Paris 8',
+    'Paris 9', 'Paris 10', 'Paris 11', 'Paris 12', 'Paris 13', 'Paris 14', 'Paris 15', 
+    'Paris 16', 'Paris 17', 'Paris 18', 'Paris 19', 'Paris 20',
   ];
-  filteredStreets: Observable<string[]> | undefined;
-  filteredLocations: Observable<string[]> | undefined;  // Observable pour le deuxième champ
+
+  filteredStreets!: Observable<string[]>;
+  filteredLocations!: Observable<string[]>;
+
   imgStorageUrl: string = environment.imgStorageUrl;
   active = 'search';
   searchQuery: string = '';
+
   propositions: string[] = [
-    'MAIN_CATEGORY_INTRO.COIFFURE',
-    'MAIN_CATEGORY_INTRO.MANUCURE',
-    'MAIN_CATEGORY_INTRO.ESTETICIAN',
-    'MAIN_CATEGORY_INTRO.MASSAGE',
-    'MAIN_CATEGORY_INTRO.MAQUILLAGE',
-    'MAIN_CATEGORY_INTRO.PEDICURE',
-    'MAIN_CATEGORY_INTRO.NUTRITION',
-    'MAIN_CATEGORY_INTRO.FITNESS',
+    'MAIN_CATEGORY_INTRO.COIFFURE', 'MAIN_CATEGORY_INTRO.MANUCURE', 'MAIN_CATEGORY_INTRO.ESTETICIAN',
+    'MAIN_CATEGORY_INTRO.MASSAGE', 'MAIN_CATEGORY_INTRO.MAQUILLAGE', 'MAIN_CATEGORY_INTRO.PEDICURE',
+    'MAIN_CATEGORY_INTRO.NUTRITION', 'MAIN_CATEGORY_INTRO.FITNESS',
   ];
-  currentProposition: string = this.propositions[0];
-  previousProposition: string = this.propositions[0];
+
+  currentProposition: string;
+  previousProposition: string;
   propositionIndex: number = 0;
-  streetError: boolean = false;  // Erreur pour le premier champ
-  locationError: boolean = false;  // Erreur pour le deuxième champ
-specialityTranslation: string = 'INTRO.SPECIALITY';
-whereTranslation: string = 'INTRO.WHERE';
-  constructor(private translate: TranslateService, private router: Router) {}
+
+  streetError: boolean = false;
+  locationError: boolean = false;
+
+  specialityTranslation: string = 'INTRO.SPECIALITY';
+  whereTranslation: string = 'INTRO.WHERE';
+
+  constructor(private translate: TranslateService, private router: Router) {
+    this.currentProposition = this.propositions[0];
+    this.previousProposition = this.propositions[0];
+  }
 
   ngOnInit(): void {
+    // Traduction des labels
+    this.translate.get([this.specialityTranslation, this.whereTranslation]).subscribe(translations => {
+      this.specialityTranslation = translations[this.specialityTranslation];
+      this.whereTranslation = translations[this.whereTranslation];
+    });
 
-this.translate.get(this.specialityTranslation).subscribe((res: string) => {
-  this.specialityTranslation = res;
-});
-this.translate.get(this.whereTranslation).subscribe((res: string) => {
-  this.whereTranslation = res;
-});
     this.startRotatingPropositions();
+
     this.filteredStreets = this.control.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value, 'street'))
+      map(value => this._filter(value, this.options))
     );
-    this.filteredLocations = this.control2.valueChanges.pipe(  // Initialiser l'Observable pour le deuxième champ
+
+    this.filteredLocations = this.control2.valueChanges.pipe(
       startWith(''),
-      map(value => this._filterCities(value, 'location'))
+      map(value => this._filter(value, this.optionsCities))
     );
   }
 
-  private _filter(value: string, type: string): string[] {
+  private _filter(value: string, options: string[]): string[] {
     const filterValue = value.toLowerCase();
-    const filteredOptions = filterValue.length > 0 ? this.options.filter(option => option.toLowerCase().includes(filterValue)) : [];
-    if (type === 'street') {
+    const filteredOptions = options.filter(option => option.toLowerCase().includes(filterValue));
+    if (options === this.options) {
       this.streetError = filteredOptions.length === 0;
-    } else if (type === 'location') {
+    } else {
       this.locationError = filteredOptions.length === 0;
     }
     return filteredOptions;
-  }
-
-  private _filterCities(value: string, type: string): string[] {
-    const filterValue = value.toLowerCase();
-    const filteredOptions = filterValue.length > 0 ? this.optionsCities.filter(option => option.toLowerCase().includes(filterValue)) : [];
-    if (type === 'street') {
-      this.streetError = filteredOptions.length === 0;
-    } else if (type === 'location') {
-      this.locationError = filteredOptions.length === 0;
-    }
-    return filteredOptions;
-  }
-
-  trackByFn(index: number, item: string): string {
-    return item;
-  }
-
-  activateSearch(type: string) {
-    this.active = type;
-  }
-
-  cancelSearch() {
-    this.searchQuery = '';
   }
 
   startRotatingPropositions(): void {
     setInterval(() => {
+      // Met à jour le texte à afficher
+      this.previousProposition = this.currentProposition;
       this.propositionIndex = (this.propositionIndex + 1) % this.propositions.length;
-      const newProposition = this.propositions[this.propositionIndex];
-      const oldProposition = this.currentProposition;
+      this.animationTrigger = false; // Force le changement pour l'animation fadeOut
+    }, 3000);
+  }
 
-      this.previousProposition = oldProposition;
-
-      setTimeout(() => {
-        this.currentProposition = newProposition;
-
-        const newText = document.querySelector('.new-proposition');
-        const oldText = document.querySelector('.old-proposition');
-        if (newText && oldText) {
-          const newElement = newText as HTMLElement;
-          const oldElement = oldText as HTMLElement;
-
-          newElement.classList.remove('new-proposition');
-          oldElement.classList.remove('old-proposition');
-          void newElement.offsetWidth; // trigger reflow
-          void oldElement.offsetWidth; // trigger reflow
-          newElement.classList.add('new-proposition');
-          oldElement.classList.add('old-proposition');
-        }
-      }, 1000);
-    }, 2000);
+  onAnimationDone(): void {
+    // Quand l'animation fadeOut est terminée, met à jour le texte et réactive slideDown
+    this.currentProposition = this.propositions[this.propositionIndex];
+    this.animationTrigger = true;  // Relance l'animation
   }
 
   onButtonClick(): void {
     console.log("Vous avez cliqué sur 'Rechercher'!");
     this.router.navigate(['/main']);
+  }
+
+  trackByFn(index: number, item: string): string {
+    return item;
   }
 }
