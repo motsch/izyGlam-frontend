@@ -13,13 +13,13 @@
                      <h1>{{ 'HOMEPAGE.TITLERED' | translate }}
                         <span class="main-title">
                            <br>
-                           <span class="animated-text new-proposition">{{ currentProposition }}</span>
-                           <span class="animated-text old-proposition">{{ previousProposition }}</span>
+                           <span class="animated-text new-proposition">{{ currentProposition | translate }}</span>
+                           <span class="animated-text old-proposition">{{ previousProposition | translate }}</span>
                         </span>
                      </h1>
                      <div class="search-container">
                         <form>
-                           <input [(ngModel)]="search.category" type="text" placeholder="Spécialité ?" class="search-input" 
+                           <input [(ngModel)]="search.category" type="text" [placeholder]="specialityTranslation" class="search-input" 
                            [formControl]="control"
                            [matAutocomplete]="auto"/>
                            <mat-autocomplete #auto="matAutocomplete">
@@ -28,11 +28,11 @@
                               </mat-option>
                            </mat-autocomplete>
                            <div *ngIf="streetError && search.category" class="error-message">
-                             Aucun résultat trouvé
+                             {{ "INTRO.NORESULTS" | translate }}
                            </div>
                         </form>
                         <form>
-                           <input [(ngModel)]="search.city" type="text" placeholder="Où ?" class="location-input" 
+                           <input [(ngModel)]="search.city" type="text" [placeholder]="whereTranslation" class="location-input" 
                            [formControl]="control2"
                            [matAutocomplete]="auto2"/>
                            <mat-autocomplete #auto2="matAutocomplete">
@@ -41,11 +41,11 @@
                               </mat-option>
                            </mat-autocomplete>
                            <div *ngIf="locationError && search.city" class="error-message">
-                             Aucun résultat trouvé
+                             {{ "INTRO.NORESULTS" | translate }}
                            </div>
                         </form>
                         <button class="search-button" (click)="onButtonClick()">
-                          Rechercher
+                          {{ "INTRO.SEARCH" | translate }}
                         </button>
                      </div>
                   </div>

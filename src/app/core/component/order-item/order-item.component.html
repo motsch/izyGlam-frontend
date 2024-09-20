@@ -3,11 +3,11 @@
       <img src="assets/images/profile/profile2.png" alt="Franprix Logo" class="order-image">
       <div class="order-info">
         <h2>{{ order.establishmentName }}</h2>
-        <p>{{ order.totalItems }} prestation pour {{ order.totalPrice }}</p>
-        <p>{{ order.orderDate }} à {{ order.orderTime }}</p>
+        <p>{{ order.totalItems }} {{ "ORDERS.PRESTA_FOR" | translate }} {{ order.totalPrice }} €</p>
+        <p>{{ order.orderDate }} {{ "ORDERS.AT" | translate }} {{ order.orderTime }}</p>
       </div>
       <div class="order-actions">
-        <button class="reorder-btn" (click)="reorder()">Commander à nouveau</button>
+        <button class="reorder-btn" (click)="reorder()">{{ "ORDERS.ORDER_AGAIN" | translate }}</button>   
       </div>
     </div>
     
@@ -18,7 +18,7 @@
           {{ item.name }} ({{ item.size }})
         </li>
       </ul>
-      <a href="#" class="invoice-link" (click)="requestInvoice()">Demander une facture</a>
+      <a href="#" class="invoice-link" (click)="requestInvoice()">{{ "ORDERS.INVOICE" | translate }}</a>
     </div>
   </div>
   

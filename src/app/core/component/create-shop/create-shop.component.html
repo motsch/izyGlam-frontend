@@ -9,9 +9,11 @@
       </div>
       <div class="col-md-6 content right-side margin-top-50">
         <div class="form">
-          <h2>Lancez-vous</h2>
+          <h2>{{ "CREATION_SHOP.TITLE" | translate }}</h2>
 
-          <label for="establishment-name">Nom de votre entreprise</label>
+          <label for="establishment-name">{{
+            "CREATION_SHOP.NAME" | translate
+          }}</label>
           <input
             type="text"
             id="establishment-name"
@@ -19,54 +21,98 @@
             [(ngModel)]="user.name"
             placeholder="Sab Beauty"
           />
-          <label for="address">Adresse de votre entreprise</label>
-          <input id="address" name="address" [(ngModel)]="user.adresse" 
-          placeholder="123, rue Principale"/>
+          <label for="address">{{ "CREATION_SHOP.ADDRESS" | translate }}</label>
+          <input
+            id="address"
+            name="address"
+            [(ngModel)]="user.adresse"
+            placeholder="123, Main Street, NWT 9505"
+          />
 
-          <label for="floor">Étage/Suite (facultatif)</label>
-          <input type="text" id="floor" name="floor" placeholder="123" [(ngModel)]="user.etage" />
+          <label for="floor">{{ "CREATION_SHOP.FLOOR" | translate }}</label>
+          <input
+            type="text"
+            id="floor"
+            name="floor"
+            placeholder="123"
+            [(ngModel)]="user.etage"
+          />
 
-          <label for="business-type">Type d'entreprise</label>
-          <select id="business-type" name="business-type" [(ngModel)]="user.companyType">
+          <label for="business-type">{{
+            "CREATION_SHOP.BUSINESSTYPE" | translate
+          }}</label>
+          <select
+            id="business-type"
+            name="business-type"
+            [(ngModel)]="user.companyType"
+          >
             <option value="coiffure">Coiffure</option>
             <option value="manucure">Manucure</option>
             <option value="massage">Massage</option>
             <!-- Add more options here -->
           </select>
 
-          <div class="name-fields">
-            <div>
-              <label for="first-name">Prénom</label>
-              <input type="text" id="first-name" name="first-name"  [(ngModel)]="user.firstname"/>
-            </div>
-            <div>
-              <label for="last-name">Nom de famille</label>
-              <input type="text" id="last-name" name="last-name" [(ngModel)]="user.lastname"/>
-            </div>
-          </div>
+          <label for="first-name">{{
+            "CREATION_SHOP.FIRSTNAME" | translate
+          }}</label>
+          <input
+            type="text"
+            id="first-name"
+            name="first-name"
+            placeholder="Jeanne"
+            [(ngModel)]="user.firstname"
+          />
+          <label for="last-name">{{
+            "CREATION_SHOP.LASTNAME" | translate
+          }}</label>
+          <input
+            type="text"
+            id="last-name"
+            name="last-name"
+            placeholder="Moulin"
+            [(ngModel)]="user.lastname"
+          />
 
-          <label for="email">E-mail</label>
-          <input type="email" id="email" name="email" [(ngModel)]="user.email" />
+          <label for="email">{{ "CREATION_SHOP.EMAIL" | translate }}</label>
+          <input
+            placeholder="jeanne.moulin@gmail.com"
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="user.email"
+          />
 
-          <label for="phone">Numéro de téléphone portable</label>
+          <label for="phone">{{ "CREATION_SHOP.PHONE" | translate }}</label>
           <div class="phone-group">
             <select id="country-code" [(ngModel)]="user.countryIndication">
               <option value="FR">FR +33</option>
               <!-- Add more country codes here -->
             </select>
-            <input type="tel" id="phone" name="phone"  [(ngModel)]="user.phone"/>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="0612345678"
+              [(ngModel)]="user.phone"
+            />
           </div>
 
           <div class="whatsapp">
-            <input type="checkbox" id="whatsapp"  [(ngModel)]="user.ccvaccepted"/>
-            <label for="whatsapp">
-              J’accepte de recevoir des messages sur WhatsApp
-            </label>
+            <input
+              type="checkbox"
+              id="whatsapp"
+              [(ngModel)]="user.ccvaccepted"
+            />
+            <label for="whatsapp">{{
+              "CREATION_SHOP.WHATSAPP" | translate
+            }}</label>
           </div>
-
-          <button (click)="onSubmit()" type="submit">Envoyer</button>
+          <button (click)="onSubmit()" type="submit">
+            {{ "CREATION_SHOP.BUTTON" | translate }}
+          </button>
         </div>
       </div>
     </div>
   </div>
+  <div *ngIf="error" class="error">{{ error }}</div>
 </div>

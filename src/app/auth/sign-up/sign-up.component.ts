@@ -15,7 +15,12 @@ import { environment } from 'src/environments/environment';
 })
 export class SignUpComponent implements OnInit {
     passwordConfirmed!: ElementRef;
-
+    placeholerFirstName: string = 'SIGNUP.PLACEHOLDER_FIRSTNAME';
+    placeholerLastName: string = 'SIGNUP.PLACEHOLDER_LASTNAME';
+    placeholerEmail: string = 'SIGNUP.PLACEHOLDER_EMAIL';
+    placeholerPhone: string = 'SIGNUP.PLACEHOLDER_PHONE';
+    placeholderPassword: string = 'SIGNUP.PLACEHOLDER_PASSWORD';
+    placeholderConfirmPassword: string = 'SIGNUP.PLACEHOLDER_PASSWORDCONFIRMED';
     imgStorageUrl: string = environment.imgStorageUrl;
     // list of all users
     users: any = [];
@@ -54,6 +59,25 @@ export class SignUpComponent implements OnInit {
 
     ngOnInit() {
         this.title.setTitle(this.route.snapshot.data['title']);
+        
+        this.translate.get(this.placeholerFirstName).subscribe((res: string) => {
+            this.placeholerFirstName = res;
+        });
+        this.translate.get(this.placeholerLastName).subscribe((res: string) => {
+            this.placeholerLastName = res;
+        });
+        this.translate.get(this.placeholerEmail).subscribe((res: string) => {
+            this.placeholerEmail = res;
+        });
+        this.translate.get(this.placeholerPhone).subscribe((res: string) => {
+            this.placeholerPhone = res;
+        });
+        this.translate.get(this.placeholderPassword).subscribe((res: string) => {
+            this.placeholderPassword = res;
+        });
+        this.translate.get(this.placeholderConfirmPassword).subscribe((res: string) => {
+            this.placeholderConfirmPassword = res;
+        });
     }
 
     /*

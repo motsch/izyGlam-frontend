@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { environment } from 'src/environments/environment';
@@ -12,6 +13,8 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit {
+    placeholderEmail: string = 'LOGIN.PLACEHOLDER_EMAIL';
+    placeholderPassword: string = 'LOGIN.PLACEHOLDER_PASSWORD';
     imgStorageUrl: string = environment.imgStorageUrl;
     //  user à logger;
     user: any = {};
@@ -34,11 +37,19 @@ export class SignInComponent implements OnInit {
         private meta: Meta,
         private authenticationService: AuthenticationService,
         private sessionService: SessionService,
-        private router: Router
+        private router: Router,
+        private translate: TranslateService
     ) {}
 
     ngOnInit() {
         this.title.setTitle(this.route.snapshot.data['title']);
+        this.translate.get('LOGIN.PLACEHOLDER_EMAIL').subscribe((res: string) => {
+            this.placeholderEmail = res;
+        });
+        this.translate.get('LOGIN.PLACEHOLDER_PASSWORD').subscribe((res: string) => {
+            this.placeholderPassword = res;
+        });
+
     }
 
     onMoreOptions() {

@@ -13,19 +13,19 @@
    <div class="auth-card">
       <div class="text-left">
          <!--<img src="assets/images/title-line.png" alt="ligne de titre" class="img-fluid line">-->
-         <p class="welcome-text">Entrer vos identifiants de connexion.</p>
+         <p class="welcome-text">{{ 'LOGIN.TITLE' | translate }}</p>
       </div>
       <form class="auth-form">
          <div class="form-group">
             <input [required]="true" class="form-control" name="login[username]" [(ngModel)]="user.login" type="email"
-               placeholder="Adresse email">
+               [placeholder]="placeholderEmail">
          </div>
          <div class="form-group">
             <input id="inputPassword" type="password" class="form-control" [required]="true" [(ngModel)]="user.password"
-               name="login[password]" placeholder="Mot de passe">
-            <a routerLink="/forget-password" class="forgot-pass">Oublié?</a>
+               name="login[password]" [placeholder]="placeholderPassword">
+            <a routerLink="/forget-password" class="forgot-pass">{{ 'LOGIN.FORGET_PASSWORD' | translate }}</a>
          </div>
-         <button type="submit" class="btn submit" (click)="onSubmit()">Continuer</button>
+         <button type="submit" class="btn submit" (click)="onSubmit()">{{ 'LOGIN.CONTINUER' | translate }}</button>
          <!--
          <div class="or-separator"><span>ou</span></div>
          <button type="submit" class="btn google grey-btn" (click)="onMoreOptions()">Se connecter autrement</button>
@@ -38,12 +38,9 @@
             Continuer avec
             Apple</button>
          -->
-         <div class="or-separator"><span>ou</span></div>
-         <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> Connectez-vous avec le QR
-            code</button>
+         <div class="or-separator"><span>{{ 'LOGIN.OR' | translate }}</span></div>
+         <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> {{ 'LOGIN.QRCODE' | translate }}</button>
       </form>
-      <p class="small">En continuant, vous acceptez de recevoir des appels, des messages WhatsApp ou des textos
-         (notamment par des méthodes automatiques) de la part d'izyGlam et de ses sociétés affiliées au numéro indiqué.
-      </p>
+      <p class="small">{{ 'LOGIN.CGU' | translate }}</p>
    </div>
 </section>

@@ -1,31 +1,26 @@
 <div class="uber-eats-container">
   <div class="section-header">
-    <h2>Pourquoi izyGlam ?</h2>
+    <h2>{{ "CREATE_SHOP_STEPS.TITLE" | translate }}</h2>
   </div>
   <div class="features-grid">
     <div class="feature-item">
-      <h3>Travaillez selon vos propres conditions</h3>
+      <h3>{{ "CREATE_SHOP_STEPS.STEP1.TITLE" | translate }}</h3>
       <p>
-        Organisez votre emploi du temps et gérez vos prestations en toute
-        liberté. Profitez d'une plateforme flexible qui s'adapte à vos besoins
-        pour maximiser votre activité.
+        {{ "CREATE_SHOP_STEPS.STEP1.TEXT" | translate }}
       </p>
     </div>
 
     <div class="feature-item">
-      <h3>Renforcez votre présence en ligne</h3>
+      <h3>{{ "CREATE_SHOP_STEPS.STEP2.TITLE" | translate }}</h3>
       <p>
-        Attirez plus de clients grâce aux outils marketing inclus dans
-        l'application et boostez vos résultats avec une visibilité accrue.
+        {{ "CREATE_SHOP_STEPS.STEP2.TEXT" | translate }}
       </p>
     </div>
 
     <div class="feature-item">
-      <h3>Fidélisez vos clients</h3>
+      <h3>{{ "CREATE_SHOP_STEPS.STEP3.TITLE" | translate }}</h3>
       <p>
-        Développez des relations durables en analysant les préférences de vos
-        clients, en répondant à leurs avis, et en leur offrant des avantages
-        fidélité.
+        {{ "CREATE_SHOP_STEPS.STEP3.TEXT" | translate }}
       </p>
     </div>
   </div>
@@ -34,9 +29,9 @@
       <img [src]="currentStep.image" alt="image section" />
     </div>
     <div class="col-6 growth-section">
-      <h3>{{ currentStep.title }}</h3>
+      <h3>{{ currentStep.titleTranslate | translate }}</h3>
       <p>
-        {{ currentStep.text }}
+        {{ currentStep.textTranslate }}
       </p>
     </div>
   </div>

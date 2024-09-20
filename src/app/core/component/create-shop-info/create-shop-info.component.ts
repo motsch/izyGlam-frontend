@@ -11,18 +11,18 @@ export class CreateShopInfoComponent {
 
   steps = [
     {
-      title: "Simplifiez la gestion de votre activité",
-      text: "Gérez votre activité en toute sérénité grâce à izyGlam, la solution complète pour les professionnels du bien-être. Profitez d'outils flexibles et d'un accompagnement personnalisé pour répondre à tous vos besoins.",
+      titleTranslate: "INFO_SHOP_STEPS.STEP1.TITLE",
+      textTranslate: "INFO_SHOP_STEPS.STEP1.TEXT",
       image: "assets/images/step-image-1.png"
     },
     {
-      title: 'Boostez vos ventes',
-      text: 'Chaque jour, des milliers de personnes utilisent izyGlam pour trouver des experts en beauté près de chez eux. Profitez de cette opportunité pour toucher de nouveaux clients dans votre domaine.',
+      titleTranslate: "INFO_SHOP_STEPS.STEP2.TITLE",
+      textTranslate: "INFO_SHOP_STEPS.STEP2.TEXT",
       image: 'assets/images/step-image-2.png'
     },
     {
-      title: 'Satisfaction clientéle garantie',
-      text: 'Avec izyGlam, proposez une expérience personnalisée à vos clients. Gérez facilement vos rendez-vous, communiquez rapidement et offrez des services adaptés. Vos clients bénéficient de soins où et quand ils le souhaitent, assurant leur satisfaction et fidélité.',
+      titleTranslate: "INFO_SHOP_STEPS.STEP3.TITLE",
+      textTranslate: "INFO_SHOP_STEPS.STEP3.TEXT",
       image: 'assets/images/step-image-3.png'
     }
   ];

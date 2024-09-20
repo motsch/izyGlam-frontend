@@ -12,35 +12,35 @@
    <app-header [connected]="false" [page]="'connected'"></app-header>
    <div class="auth-card">
       <div class="text-left">
-         <p class="welcome-text">Entrer vos informations personnelles.</p>
+         <p class="welcome-text">{{ 'SIGNUP.TITLE' | translate }}</p>
       </div>
       <form class="auth-form">
          <div class="form-group">
             <input required="" name="loginlastname" type="text" class="form-control" [(ngModel)]="user.lastname"
-               id="inputlastname" placeholder="Nom">
+               id="inputlastname" [placeholder]="placeholerFirstName">
          </div>
          <div class="form-group">
             <input required="" name="loginfirstname" type="text" class="form-control" [(ngModel)]="user.firstname"
-               id="inputfirstname" placeholder="Prénom">
+               id="inputfirstname" [placeholder]="placeholerLastName">
          </div>
          <div class="form-group">
             <input required="" name="loginphone" type="text" class="form-control" [(ngModel)]="user.phone"
-               id="inputphone" placeholder="Téléphone">
+               id="inputphone" [placeholder]="placeholerPhone">
          </div>
          <div class="form-group">
             <input required="" name="loginemail" type="text" class="form-control" [(ngModel)]="user.email"
-               id="inputemail" placeholder="Email">
+               id="inputemail" [placeholder]="placeholerEmail">
          </div>
          <div class="form-group">
             <input required="" name="loginpassword" type="text" class="form-control" [(ngModel)]="user.password"
-               id="inputpassword" placeholder="Mot de passe">
+               id="inputpassword" [placeholder]="placeholderPassword">
          </div>
          <div class="form-group">
             <input required="" name="loginpasswordConfirmed" type="text" class="form-control"
                [(ngModel)]="user.passwordConfirmed" id="inputpasswordConfirmed"
-               placeholder="Confirmation de mot de passe">
+               [placeholder]="placeholderConfirmPassword">
          </div>
-         <button type="submit" class="btn submit" (click)="validAjouterModifier()">Continuer</button>
+         <button type="submit" class="btn submit" (click)="validAjouterModifier()">{{ 'SIGNUP.CONTINUER' | translate }}</button>
          <!--
          <div class="or-separator"><span>ou</span></div>
          <button type="button" class="btn google grey-btn"><img class="btn-icon"
@@ -50,12 +50,9 @@
          <button type="button" class="btn google grey-btn"><img class="btn-icon" [src]="imgStorageUrl+'apple-icon.png'">
             Continuer avec
             Apple</button>-->
-         <div class="or-separator"><span>ou</span></div>
-         <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> Connectez-vous avec le QR
-            code</button>
+         <div class="or-separator"><span>{{ 'SIGNUP.OR' | translate }}</span></div>
+         <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> {{ 'SIGNUP.QRCODE' | translate }}</button>
       </form>
-      <p class="small">En continuant, vous acceptez de recevoir des appels, des messages WhatsApp ou des textos
-         (notamment par des méthodes automatiques) de la part d'izyGlam et de ses sociétés affiliées au numéro indiqué.
-      </p>
+      <p class="small">{{ 'SIGNUP.CGU' | translate }}</p>
    </div>
 </section>

@@ -194,7 +194,7 @@ export class MainComponent implements OnInit {
                     position.coords.latitude,
                     position.coords.longitude
                 )
-                .subscribe((shops: any[]) => {
+                .subscribe(async (shops: any[]) => {
                     console.log(JSON.stringify(shops)); // Log des données pour le débogage
                     this.shops = shops;
                     // this.filteredItems =  this.shuffleArray(shops); // Initialise les éléments filtrés avec tous les shops récupérés
@@ -203,7 +203,7 @@ export class MainComponent implements OnInit {
                     this.filteredItemsApprecier = this.shuffleArray(shops); // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
                     this.filteredItemsMalin = this.shuffleArray(shops); // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
                     this.filteredItemsTop10 = this.shuffleArray(shops);
-                    this.promotedShops = shops.filter(
+                    this.promotedShops = await shops.filter(
                         (x: any) => x.promo.active === true
                     ); // Filtre les shops promus
                 });

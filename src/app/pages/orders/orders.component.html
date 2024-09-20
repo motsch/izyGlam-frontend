@@ -1,6 +1,6 @@
 <div class="form">
   <div class="page-container">
-    <h1>Commandes passées</h1>
+    <h1>{{ "ORDERS.TITLE" | translate }}</h1>
     <div *ngFor="let order of orders">
       <app-order-item [order]="order"></app-order-item>
     </div>

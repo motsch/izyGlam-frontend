@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -50,22 +51,32 @@ export class IntroComponent implements OnInit {
   active = 'search';
   searchQuery: string = '';
   propositions: string[] = [
-    'Une esthéticienne',
-    'Une masseuse',
-    'Une manucure',
-    'Une pédicure',
-    'Une maquilleuse',
-    'Une coiffeuse',
+    'MAIN_CATEGORY_INTRO.COIFFURE',
+    'MAIN_CATEGORY_INTRO.MANUCURE',
+    'MAIN_CATEGORY_INTRO.ESTETICIAN',
+    'MAIN_CATEGORY_INTRO.MASSAGE',
+    'MAIN_CATEGORY_INTRO.MAQUILLAGE',
+    'MAIN_CATEGORY_INTRO.PEDICURE',
+    'MAIN_CATEGORY_INTRO.NUTRITION',
+    'MAIN_CATEGORY_INTRO.FITNESS',
   ];
   currentProposition: string = this.propositions[0];
   previousProposition: string = this.propositions[0];
   propositionIndex: number = 0;
   streetError: boolean = false;  // Erreur pour le premier champ
   locationError: boolean = false;  // Erreur pour le deuxième champ
-
-  constructor(private router: Router) {}
+specialityTranslation: string = 'INTRO.SPECIALITY';
+whereTranslation: string = 'INTRO.WHERE';
+  constructor(private translate: TranslateService, private router: Router) {}
 
   ngOnInit(): void {
+
+this.translate.get(this.specialityTranslation).subscribe((res: string) => {
+  this.specialityTranslation = res;
+});
+this.translate.get(this.whereTranslation).subscribe((res: string) => {
+  this.whereTranslation = res;
+});
     this.startRotatingPropositions();
     this.filteredStreets = this.control.valueChanges.pipe(
       startWith(''),

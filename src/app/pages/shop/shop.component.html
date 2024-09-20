@@ -23,8 +23,8 @@
           </span>
           <span>
             ({{shopInfo.noteCount}}+) <br />
-            Frais de déplacement: 4,90€ <br />
-            Distance max: {{shopInfo.maxDistance}}km
+            {{ "SHOP.MOVING_FEE" | translate }} 4,90€ <br />
+            {{ "SHOP.DISTANCE" | translate }} {{shopInfo.maxDistance}}km
           </span>
           <div class="margin-top-20">
             {{shopInfo.description}}
@@ -37,9 +37,9 @@
             />
           </div>
           <div>
-            Paiement par CB et PayPal accepté<br />
+            {{ "SHOP.PAYEMENT" | translate }}<br />
 
-            Appuyez pour consulter les horaires, les informations, etc
+            {{ "SHOP.PRESS_FOR_INFO" | translate }}
           </div>
         </div>
       </div>

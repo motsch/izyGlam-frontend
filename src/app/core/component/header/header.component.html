@@ -1,28 +1,17 @@
 <!--Nav start-->
-<nav class="navbar navbar-expand-lg theme-nav fixed-top" [class.darkHeader]="darkHeader">
-  <div class="container custom-container" *ngIf="!sessionService.getCurrentUser()">
+<nav class="navbar fixed-top" [class.darkHeader]="darkHeader">
+  <div class="container" *ngIf="!sessionService.getCurrentUser()">
     <a class="navbar-brand" [routerLink]="'/main'"><img [src]="imgStorageUrl+'logo/'+logoLangue+'.png'" class="logo" alt="logo" /></a>
-    <div class="collapse navbar-collapse" id="mainmenu">
-      <ul class="navbar-nav ms-auto" id="mymenu">
-        <li class="nav-item">
-          <!--<a class="nav-link" href="home#home" [class.active]="scroll! >= 0 && scroll! < 60">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="home#about" [class.active]="scroll! >= 60 && scroll! < 200">A propos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="home#feature" [class.active]="scroll! >= 200 && scroll! < 400">Fonctionalités</a>-->
-        </li>
-        <li class="nav-item">
-          <a>
+    <div class="" id="">
+      <ul class="" id="">
+        <li class=""></li>
+        <div class="flex">
             <button type="button" (click)="routerNavigate('/sign-in')" class="btn btn-transparent color_black"
-              *ngIf="page !== 'connected'">Connexion</button></a>
-        </li>
-        <li class="nav-item">
-          <a>
+              *ngIf="page !== 'connected'">{{'INTRO.CONNEXION' | translate}}</button>
+        
             <button type="button" (click)="routerNavigate('/sign-up')" class="btn btn-transparent color_primary"
-              *ngIf="page !== 'connected'">Inscription</button></a>
-        </li>
+              *ngIf="page !== 'connected'">{{'INTRO.REGISTRATION' | translate}}</button>
+        </div>
       </ul>
     </div>
   </div>

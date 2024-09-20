@@ -8,19 +8,19 @@
       <div class="profile-section">
         <img [src]="imgStorageUrl+'default.jpeg'" class="profile-pic" alt="Profile Picture">
         <div>
-          <p class="profile-name">{{this.me.firstname}}</p>
-          <a class="manage-account" (click)="goTo('profile')">Gérer le compte</a>
+          <p class="profile-name">{{me.firstname}}</p>
+          <a class="manage-account" (click)="goTo('profile')">{{ "SIDEBAR.PROFILE" | translate }}</a>
         </div>
       </div>
       <ul class="drawer-menu">
         <li class="menu-hover fa fa-list" (click)="goTo('orders')">
-          <span class="padding-left-10">Commandes</span>
+          <span class="padding-left-10">{{ "SIDEBAR.ORDERS" | translate }}</span>
         </li>
         <li class="menu-hover fa fa-heart" (click)="goTo('favorites')">
-          <span class="padding-left-10">Favoris</span>
+          <span class="padding-left-10">{{ "SIDEBAR.FAVORITES" | translate }}</span>
         </li>
         <li class="menu-hover fa fa-question-circle" (click)="goTo('help')">
-          <span class="padding-left-10">Aide</span>
+          <span class="padding-left-10">{{ "SIDEBAR.HELP" | translate }}</span>
         </li>
         <!--
         <li class="menu-hover fa fa-gift" (click)="goTo('gift-card')">
@@ -38,13 +38,13 @@
       <div class="drawer-footer">
         <ul class="drawer-menu secondary">
           <li (click)="goTo('main')" class="menu-hover">
-            <span class="padding-left-10">Déconnexion</span>
+            <span class="padding-left-10">{{ "SIDEBAR.LOGOUT" | translate }}</span>
           </li>
           <!--<li class="menu-hover">
             <span class="padding-left-10">Devenez client professionnel</span>
           </li>-->
           <li class="menu-hover" (click)="goTo('creation-shop')">
-            <span class="padding-left-10">Proposez vos services beauté</span>
+            <span class="padding-left-10">{{ "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate }}</span>
           </li>
           <!--<li class="menu-hover">
             <span class="padding-left-10">Devenez coursier-partenaire</span>
