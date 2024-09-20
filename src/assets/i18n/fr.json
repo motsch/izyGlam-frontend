@@ -64,7 +64,7 @@
     "SMART": "Les plans malins",
     "TOP10": "Top 10 de la semaine",
     "SEARCHRESULT": "Résultats de la recherche",
-    "AVIS": "avis"
+    "AVIS": "Avis"
   },
   "MAIN_CATEGORY": {
     "COIFFURE": "Coiffure",
@@ -272,7 +272,7 @@
       "TEXT": "Chaque jour, des milliers de personnes utilisent izyGlam pour trouver des experts en beauté près de chez eux. Profitez de cette opportunité pour toucher de nouveaux clients dans votre domaine."
     },
     "STEP3": {
-      "TITLE": "Satisfaction clientéle garantie",
+      "TITLE": "Satisfaction clientèle garantie",
       "TEXT": "Avec izyGlam, proposez une expérience personnalisée à vos clients. Gérez facilement vos rendez-vous, communiquez rapidement et offrez des services adaptés. Vos clients bénéficient de soins où et quand ils le souhaitent, assurant leur satisfaction et fidélité."
     }
   },
@@ -286,7 +286,7 @@
   },
   "ORDERS": {
     "TITLE": "Commandes passées",
-    "PRESTA_FOR": "prestation pour",
+    "PRESTA_FOR": "Prestation pour",
     "AT": "à",
     "ORDER_AGAIN": "Commander à nouveau",
     "INVOICE": "Demander une facture"
@@ -295,25 +295,25 @@
     "TITLE": "Mes favoris"
   },
   "SHOP": {
-    "MOVING_FEE": "Frais de déplacement:",
-    "DISTANCE": "Distance max:",
+    "MOVING_FEE": "Frais de déplacement :",
+    "DISTANCE": "Distance max :",
     "PAYEMENT": "Paiement par CB et PayPal accepté",
     "PRESS_FOR_INFO": "Appuyez pour consulter les horaires, les informations, etc..."
   },
   "LOGIN": {
-    "TITLE": "Entrer vos identifiants de connexion.",
+    "TITLE": "Entrez vos identifiants de connexion.",
     "FORGET_PASSWORD": "Oublié ?",
     "CONTINUER": "Continuer",
-    "OR": "ou",
+    "OR": "Ou",
     "QRCODE": "Connectez-vous avec le QR code",
     "CGU": "En continuant, vous acceptez de recevoir des appels, des messages WhatsApp ou des textos (notamment par des méthodes automatiques) de la part d'izyGlam et de ses sociétés affiliées au numéro indiqué.",
     "PLACEHOLDER_EMAIL": "Adresse email",
     "PLACEHOLDER_PASSWORD": "Mot de passe"
   },
   "SIGNUP": {
-    "TITLE": "Entrer vos informations personnelles.",
+    "TITLE": "Entrez vos informations personnelles.",
     "CONTINUER": "Continuer",
-    "OR": "ou",
+    "OR": "Ou",
     "QRCODE": "Connectez-vous avec le QR code",
     "CGU": "En continuant, vous acceptez de recevoir des appels, des messages WhatsApp ou des textos (notamment par des méthodes automatiques) de la part d'izyGlam et de ses sociétés affiliées au numéro indiqué.",
     "PLACEHOLDER_FIRSTNAME": "Prénom",
@@ -322,6 +322,18 @@
     "PLACEHOLDER_PHONE": "Téléphone",
     "PLACEHOLDER_PASSWORD": "Mot de passe",
     "PLACEHOLDER_PASSWORDCONFIRMED": "Confirmation de mot de passe"
-
+  },
+  "LANGUE": {
+    "FRANCAIS": "Français",
+    "ANGLAIS": "Anglais",
+    "ESPAGNOL": "Espagnol",
+    "NEERLANDAIS": "Néerlandais",
+    "ITALIEN": "Italien",
+    "ALLEMAND": "Allemand",
+    "PORTUGAIS": "Portugais",
+    "POLONAIS": "Polonais",
+    "DANOIS": "Danois",
+    "FINLANDAIS": "Finlandais",
+    "SUEDOIS": "Suédois"
   }
 }

@@ -23,17 +23,17 @@ export class ChangePasswordComponent implements OnInit {
     selected: any = {};
 
     languagesInfos: any[] = [
-        { code: 'fr', name: 'Français', flag: 'assets/flags/fr.png' }, // Français
-        { code: 'de', name: 'Allemand', flag: 'assets/flags/de.png' }, // Allemand
-        { code: 'en', name: 'Anglais', flag: 'assets/flags/gb.png' }, // Anglais
-        { code: 'es', name: 'Espagnol', flag: 'assets/flags/es.png' }, // Espagnol
-        { code: 'fi', name: 'Finlandais', flag: 'assets/flags/fi.png' }, // Finlandais
-        { code: 'it', name: 'Italien', flag: 'assets/flags/it.png' }, // Italien
-        { code: 'nl', name: 'Néerlandais', flag: 'assets/flags/nl.png' }, // Néerlandais
-        { code: 'pl', name: 'Polonais', flag: 'assets/flags/pl.png' }, // Polonais
-        { code: 'pt', name: 'Portugais', flag: 'assets/flags/pt.png' }, // Portugais
-        { code: 'sv', name: 'Suédois', flag: 'assets/flags/sv.png' }, // Suédois
-        { code: 'da', name: 'Danois', flag: 'assets/flags/da.png' }, // Danois
+        { code: 'fr', name: 'Français', flag: 'assets/flags/fr.png', trad: "LANGUE.FRANCAIS" }, // Français
+        { code: 'de', name: 'Allemand', flag: 'assets/flags/de.png', trad: "LANGUE.ALLEMAND" }, // Allemand
+        { code: 'en', name: 'Anglais', flag: 'assets/flags/gb.png', trad: "LANGUE.ANGLAIS" }, // Anglais
+        { code: 'es', name: 'Espagnol', flag: 'assets/flags/es.png', trad: "LANGUE.ESPAGNOL" }, // Espagnol
+        { code: 'fi', name: 'Finlandais', flag: 'assets/flags/fi.png', trad: "LANGUE.FINLANDAIS" }, // Finlandais
+        { code: 'it', name: 'Italien', flag: 'assets/flags/it.png', trad: "LANGUE.ITALIEN" }, // Italien
+        { code: 'nl', name: 'Néerlandais', flag: 'assets/flags/nl.png', trad: "LANGUE.NEERLANDAIS" }, // Néerlandais
+        { code: 'pl', name: 'Polonais', flag: 'assets/flags/pl.png', trad: "LANGUE.POLONAIS" }, // Polonais
+        { code: 'pt', name: 'Portugais', flag: 'assets/flags/pt.png', trad: "LANGUE.PORTUGAIS" }, // Portugais
+        { code: 'sv', name: 'Suédois', flag: 'assets/flags/sv.png', trad: "LANGUE.SUEDOIS" }, // Suédois
+        { code: 'da', name: 'Danois', flag: 'assets/flags/da.png', trad: "LANGUE.DANOIS" }, // Danois
     ];
 
     constructor(
