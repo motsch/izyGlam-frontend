@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/core/services/category.service';
 import { DrawerService } from 'src/app/core/services/drawer.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { ShopService } from 'src/app/core/services/shop.service';
@@ -21,137 +22,10 @@ export class MainComponent implements OnInit {
     selectedCategory: string | undefined; // Catégorie sélectionnée actuellement par l'utilisateur
     filterClicked = false; // Booléen pour gérer l'état du filtre (activé ou non)
     promotedShops: any[] = []; // Tableau pour stocker les boutiques promues
-    categoriesFilter = [
-        // Tableau des catégories disponibles pour le filtrage
-        // Chaque catégorie est représentée par un objet contenant son nom, une icône et un identifiant de filtre
-        // ... liste des catégories ...
-        {
-            name: 'Coiffure',
-            icon: 'assets/images/icon_category_hairdresser.png',
-            filter: 'coiffure',
-            trad: 'MAIN_CATEGORY.COIFFURE',
-        },
-        {
-            name: 'Manucure',
-            icon: 'assets/images/icon_category_manucure.png',
-            filter: 'manucure',
-            trad: 'MAIN_CATEGORY.MANUCURE',
-        },
-        {
-            name: 'Visage',
-            icon: 'assets/images/icon_category_head.png',
-            filter: 'visage',
-            trad: 'MAIN_CATEGORY.VISAGE',
-        },
-        {
-            name: 'Massage',
-            icon: 'assets/images/icon_category_massage2.png',
-            filter: 'massage',
-            trad: 'MAIN_CATEGORY.MASSAGE',
-        },
-        {
-            name: 'Maquillage',
-            icon: 'assets/images/icon_category_eye.png',
-            filter: 'maquillage',
-            trad: 'MAIN_CATEGORY.MAQUILLAGE',
-        },
-        {
-            name: 'Épilation',
-            icon: 'assets/images/icon_category_epilation.png',
-            filter: 'epilation',
-            trad: 'MAIN_CATEGORY.EPILATION',
-        },
-        {
-            name: 'Bronzage',
-            icon: 'assets/images/icon_category_sun.png',
-            filter: 'bronzage',
-            trad: 'MAIN_CATEGORY.BRONZAGE',
-        },
-        {
-            name: 'Post-partum',
-            icon: 'assets/images/icon_category_baby.png',
-            filter: 'partum',
-            trad: 'MAIN_CATEGORY.PARTUM',
-        },
-        {
-            name: 'Nutrition',
-            icon: 'assets/images/icon_category_nutrition.png',
-            filter: 'nutrition',
-            trad: 'MAIN_CATEGORY.NUTRITION',
-        },
-        {
-            name: 'Fitness',
-            icon: 'assets/images/icon_category_fitness2.png',
-            filter: 'fitness',
-            trad: 'MAIN_CATEGORY.FITNESS',
-        },
-        {
-            name: 'Acupuncture',
-            icon: 'assets/images/icon_category_accuponcture.png',
-            filter: 'acupuncture',
-            trad: 'MAIN_CATEGORY.ACUPUNCTURE',
-        },
-        {
-            name: 'Stylisme',
-            icon: 'assets/images/icon_category_style.png',
-            filter: 'style',
-            trad: 'MAIN_CATEGORY.STYLISME',
-        },
-        {
-            name: 'Tatouage',
-            icon: 'assets/images/icon_category_tatoo.png',
-            filter: 'tatouage',
-            trad: 'MAIN_CATEGORY.TATOUAGE',
-        },
-        {
-            name: 'Décoration',
-            icon: 'assets/images/icon_category_decor.png',
-            filter: 'decoration',
-            trad: 'MAIN_CATEGORY.DECO',
-        },
-        /*
-        {
-            name: 'Pédicure',
-            icon: 'assets/images/icon_category_hairdresser.png',
-            filter: 'pedicure',
-        },
-        {
-            name: 'Luminothérapie',
-            icon: 'assets/images/svg/clothes.svg',
-            filter: 'lumiere',
-        },
-        {
-            name: 'Aromathérapie',
-            icon: 'assets/images/svg/fitness.svg',
-            filter: 'arome',
-        },
-        {
-            name: 'Reiki',
-            icon: 'assets/images/svg/clothes.svg',
-            filter: 'reiki',
-        },
-        {
-            name: 'Yoga',
-            icon: 'assets/images/svg/icon_category_yoga.png',
-            filter: 'yoga',
-        },
-        {
-            name: 'Pilates',
-            icon: 'assets/images/svg/clothes.svg',
-            filter: 'pilates',
-        },
-        {
-            name: 'Chiropractie',
-            icon: 'assets/images/svg/clothes.svg',
-            filter: 'chiropractie',
-        },
-        {
-            name: 'Sophrologie',
-            icon: 'assets/images/svg/clothes.svg',
-            filter: 'sophrologie',
-        },
-        */
-    ];
+    // Tableau des catégories disponibles pour le filtrage
+    // Chaque catégorie est représentée par un objet contenant son nom, une icône et un identifiant de filtre
+    // ... liste des catégories ...
+    categoriesFilter:any[] = [];
     shops: any[] = []; // Tableau pour stocker les informations des boutiques récupérées de l'API
 
     // Références aux éléments du DOM pour gérer le défilement des conteneurs de contenu
@@ -170,13 +44,22 @@ export class MainComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private drawerService: DrawerService,
+        // private drawerService: DrawerService,
         private shopService: ShopService,
-        public sessionService: SessionService
+        public sessionService: SessionService,
+        private categoryService: CategoryService
     ) {}
 
     // Fonction appelée à l'initialisation du composant
     ngOnInit() {
+        this.categoryService.getAll().subscribe({
+            next: (data: any) => {
+                this.categoriesFilter = data;
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        });
         localStorage.removeItem('shopSelected');
         localStorage.removeItem('productToBuy');
         localStorage.removeItem('selectItemFromShop');

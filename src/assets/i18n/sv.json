@@ -322,5 +322,18 @@
     "PLACEHOLDER_PHONE": "Telefonnummer",
     "PLACEHOLDER_PASSWORD": "Lösenord",
     "PLACEHOLDER_PASSWORDCONFIRMED": "Bekräfta lösenord"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Franska",
+    "ANGLAIS": "Engelska",
+    "ESPAGNOL": "Spanska",
+    "NEERLANDAIS": "Holländska",
+    "ITALIEN": "Italienska",
+    "ALLEMAND": "Tyska",
+    "PORTUGAIS": "Portugisiska",
+    "POLONAIS": "Polska",
+    "DANOIS": "Danska",
+    "FINLANDAIS": "Finska",
+    "SUEDOIS": "Svenska"
   }
 }

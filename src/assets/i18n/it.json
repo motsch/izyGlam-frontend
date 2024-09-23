@@ -322,5 +322,18 @@
     "PLACEHOLDER_PHONE": "Telefono",
     "PLACEHOLDER_PASSWORD": "Password",
     "PLACEHOLDER_PASSWORDCONFIRMED": "Conferma password"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Francese",
+    "ANGLAIS": "Inglese",
+    "ESPAGNOL": "Spagnolo",
+    "NEERLANDAIS": "Olandese",
+    "ITALIEN": "Italiano",
+    "ALLEMAND": "Tedesco",
+    "PORTUGAIS": "Portoghese",
+    "POLONAIS": "Polacco",
+    "DANOIS": "Danese",
+    "FINLANDAIS": "Finlandese",
+    "SUEDOIS": "Svedese"
   }
 }

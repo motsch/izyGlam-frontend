@@ -322,5 +322,18 @@
     "PLACEHOLDER_PHONE": "Telefon",
     "PLACEHOLDER_PASSWORD": "Adgangskode",
     "PLACEHOLDER_PASSWORDCONFIRMED": "Bekræft adgangskode"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Fransk",
+    "ANGLAIS": "Engelsk",
+    "ESPAGNOL": "Spansk",
+    "NEERLANDAIS": "Hollandsk",
+    "ITALIEN": "Italiensk",
+    "ALLEMAND": "Tysk",
+    "PORTUGAIS": "Portugisisk",
+    "POLONAIS": "Polsk",
+    "DANOIS": "Dansk",
+    "FINLANDAIS": "Finsk",
+    "SUEDOIS": "Svensk"
   }
 }

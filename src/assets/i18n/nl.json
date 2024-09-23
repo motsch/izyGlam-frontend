@@ -322,5 +322,18 @@
     "PLACEHOLDER_PHONE": "Telefoon",
     "PLACEHOLDER_PASSWORD": "Wachtwoord",
     "PLACEHOLDER_PASSWORDCONFIRMED": "Bevestig wachtwoord"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Frans",
+    "ANGLAIS": "Engels",
+    "ESPAGNOL": "Spaans",
+    "NEERLANDAIS": "Nederlands",
+    "ITALIEN": "Italiaans",
+    "ALLEMAND": "Duits",
+    "PORTUGAIS": "Portugees",
+    "POLONAIS": "Pools",
+    "DANOIS": "Deens",
+    "FINLANDAIS": "Fins",
+    "SUEDOIS": "Zweeds"
   }
 }

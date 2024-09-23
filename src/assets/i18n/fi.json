@@ -322,5 +322,18 @@
     "PLACEHOLDER_PHONE": "Puhelinnumero",
     "PLACEHOLDER_PASSWORD": "Salasana",
     "PLACEHOLDER_PASSWORDCONFIRMED": "Vahvista salasana"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Ranska",
+    "ANGLAIS": "Englanti",
+    "ESPAGNOL": "Espanja",
+    "NEERLANDAIS": "Hollanti",
+    "ITALIEN": "Italia",
+    "ALLEMAND": "Saksa",
+    "PORTUGAIS": "Portugali",
+    "POLONAIS": "Puola",
+    "DANOIS": "Tanska",
+    "FINLANDAIS": "Suomi",
+    "SUEDOIS": "Ruotsi"
   }
 }

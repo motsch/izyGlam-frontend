@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:3000/api/',
-    imgStorageUrl: 'https://developpeurfreelance.com/assets/izi/glam/images/',
+    imgStorageUrl: '/assets/images/',
     allowedCountries: ['FR'],
     comingSoonCountries: ['DE', 'ES', 'IT', 'NL', 'PT'],
     comingSoonCountriesDate: '2026-01-01',

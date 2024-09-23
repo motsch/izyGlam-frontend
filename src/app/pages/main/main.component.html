@@ -5,16 +5,20 @@
   *ngIf="!sessionService.isLoggedIn()"
   [connected]="false"
 ></app-header>
-<div class="container">
-  <div class="banner" style="margin-top: 80px">
-    <div class="category-filter">
+<!-- Category begin-->
+<div class="container margin-top-120">
+  <div class="banner">
+    <div class="category-filter" #scrollContainerCategory>
+      <button class="scroll-btn left-btn" (click)="scrollLeft('category')">
+        <i class="fa fa-chevron-left"></i>
+      </button>
       <div
         *ngFor="let category of categoriesFilter"
-        class="margin-right-5"
+        class="margin-right-5 pointer"
         (click)="filterByCategory(category.filter)"
       >
         <span
-          class="category-item"
+          class="category-item "
           [class.selected]="selectedCategory === category.filter"
         >
           <img class="icon" [src]="category.icon" />
@@ -23,10 +27,13 @@
           category.trad | translate | truncate : 10
         }}</span>
       </div>
-
-      <!--<img *ngIf="filterClicked" src="assets/images/cancel.png" class="cancelFilter" (click)="cancelFilter()">-->
+      <button class="scroll-btn right-btn" (click)="scrollRight('category')">
+        <i class="fa fa-chevron-right"></i>
+      </button>
     </div>
   </div>
+  <!-- Category end -->
+
   <span *ngIf="!filterClicked">
     <div class="top-bar">
       <h3>{{ "MAIN_PAGE.MOMENT" | translate }}</h3>

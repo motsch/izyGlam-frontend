@@ -101,6 +101,28 @@ button:hover {
     background-color: #333;
 }
 
+button:disabled {
+  background-color: #999;
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+input:disabled {
+  background-color: #d4d4d4;
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+select:disabled {
+  background-color: #d4d4d4;
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
 .whatsapp {
     display: flex;
     align-items: center;
@@ -114,6 +136,24 @@ button:hover {
 h2 {
     font-size: 28px;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     color: #B23A48;
   }
+  .input-group-row .col-md-6, .col-md-3, .col-md-9 {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .input-group-row input, .input-group-row select {
+    width: 100%;
+  }
+  
+  .input-group-row {
+    margin-bottom: 10px;
+  }
+  
+  .row .col-md-6, .col-md-3, .col-md-9 {
+    display: flex;
+    flex-direction: column;
+  }
+  

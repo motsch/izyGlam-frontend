@@ -80,7 +80,9 @@
     "ACUPUNCTURE": "Acupuncture",
     "STYLISME": "Stylisme",
     "TATOUAGE": "Tatouage",
-    "DECO": "Décoration"
+    "DECO": "Décoration",
+    "YOGA": "Relaxation",
+    "DEVELOPPEMENT": "Élévation"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Une coiffeuse",
@@ -219,14 +221,21 @@
     }
   },
   "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Vous avez déjà un compte partenaire ou d'entreprise !",
     "TITLE": "Lancez-vous",
     "NAME": "Nom de votre entreprise",
     "ADDRESS": "Adresse de votre entreprise",
+    "STREET": "Rue",
+    "CITY": "Ville",
+    "CODE_POSTAL": "Code Postal",
+    "COUNTRY": "Pays",
     "ADDRESSPLACEHOLDER": "123, rue Principale",
     "FLOOR": "Étage/Suite (facultatif)",
     "BUSINESSTYPE": "Type d'entreprise",
     "FIRSTNAME": "Prénom",
     "LASTNAME": "Nom de famille",
+    "PASSWORD": "Mot de passe",
+    "PASSWORDCONFIRMED": "Confirmation du mot de passe",
     "EMAIL": "E-mail",
     "PHONE": "Numéro de téléphone portable",
     "WHATSAPP": "J’accepte de recevoir des messages sur WhatsApp",

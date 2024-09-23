@@ -19,25 +19,24 @@
       >
         {{ "PROFILE_MENU.CONFIDENTIAL" | translate }}
       </li>
-      <li
-        [ngClass]="{ active: isSectionActive('dashboard') }"
+      <li *ngIf="me.role === 'professionnel'" [ngClass]="{ active: isSectionActive('dashboard') }"
         (click)="setActiveSection('dashboard')"
       >
         {{ "PROFILE_MENU.DASHBOARD" | translate }}
       </li>
-      <li
+      <li *ngIf="me.role === 'entreprise'"
         [ngClass]="{ active: isSectionActive('company') }"
         (click)="setActiveSection('company')"
       >
         {{ "PROFILE_MENU.COMPANY" | translate }}
       </li>
-      <li
+      <li *ngIf="me.role === 'professionnel'"
         [ngClass]="{ active: isSectionActive('management') }"
         (click)="setActiveSection('management')"
       >
         {{ "PROFILE_MENU.SHOP" | translate }}
       </li>
-      <li
+      <li *ngIf="me.role === 'admin'"
         [ngClass]="{ active: isSectionActive('admin') }"
         (click)="setActiveSection('admin')"
       >
