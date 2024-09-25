@@ -54,6 +54,9 @@ import { ShopArticlesManagementComponent } from './component/shop-articles-manag
 import { OrderItemComponent } from './component/order-item/order-item.component';
 import { CreateShopComponent } from './component/create-shop/create-shop.component';
 import { CreateShopStepsComponent } from './component/create-shop-steps/create-shop-steps.component';
+import { CreateCompanyComponent } from './component/create-company/create-company.component';
+import { CreateCompanyInfoComponent } from './component/create-company-info/create-company-info.component';
+import { CreateCompanyStepComponent } from './component/create-company-step/create-company-step.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -150,6 +153,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         OrderItemComponent,
         CreateShopComponent,
         CreateShopStepsComponent,
+        CreateCompanyComponent,
+        CreateCompanyStepComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -177,6 +182,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         DashboardComponent,
         CreateShopComponent,
         CreateShopStepsComponent,
+        CreateCompanyComponent,
+        CreateCompanyStepComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })

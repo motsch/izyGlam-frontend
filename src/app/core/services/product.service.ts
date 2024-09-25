@@ -29,21 +29,26 @@ export class ProductService {
 
     /**
      * Créer un nouveau product
-     * @param task (données du product à créer)
+     * @param product (données du product à créer)
      */
     create(product: any) {
-        // Ajoutez l' comme paramètre
         return this.http.post<any>(environment.apiUrl + 'service', product);
     }
+
+    /**
+     * Créer plusieurs products en une seule requête
+     * @param products (tableau de données des products à créer)
+     */
+    createMultiple(products: any[]) {
+        return this.http.post<any[]>(environment.apiUrl + 'services/multiple', products);
+    }
+
     /**
      * Mettre à jour un product par son ID
-     * @param task (données du product à mettre à jour)
+     * @param product (données du product à mettre à jour)
      */
     update(product: any) {
-        return this.http.put<any>(
-            `${environment.apiUrl}service/${product._id}`,
-            product
-        );
+        return this.http.put<any>(`${environment.apiUrl}service/${product._id}`, product);
     }
 
     /**

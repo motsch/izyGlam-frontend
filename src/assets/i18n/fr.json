@@ -79,8 +79,6 @@
     "FITNESS": "Fitness",
     "ACUPUNCTURE": "Acupuncture",
     "STYLISME": "Stylisme",
-    "TATOUAGE": "Tatouage",
-    "DECO": "Décoration",
     "YOGA": "Relaxation",
     "DEVELOPPEMENT": "Élévation"
   },
@@ -222,6 +220,7 @@
   },
   "CREATION_SHOP": {
     "ALREDAY_SHOP": "Vous avez déjà un compte partenaire ou d'entreprise !",
+    "NOT_CONNECTED": "Veuillez-vous connecter pour enregistrer une boutique !",
     "TITLE": "Lancez-vous",
     "NAME": "Nom de votre entreprise",
     "ADDRESS": "Adresse de votre entreprise",
@@ -283,6 +282,55 @@
     "STEP3": {
       "TITLE": "Satisfaction clientèle garantie",
       "TEXT": "Avec izyGlam, proposez une expérience personnalisée à vos clients. Gérez facilement vos rendez-vous, communiquez rapidement et offrez des services adaptés. Vos clients bénéficient de soins où et quand ils le souhaitent, assurant leur satisfaction et fidélité."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "Comment fonctionne izyGlam pour votre entreprise ?",
+    "STEP1": {
+      "TITLE": "Vos employés et clients réservent des services",
+      "TEXT": "Vos employés ou clients sélectionnent les prestations bien-être qui leur conviennent directement via l'application izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Vous validez les prestations",
+      "TEXT": "Une fois la demande faite, vous validez les services sélectionnés et nous nous occupons de la gestion des réservations."
+    },
+    "STEP3": {
+      "TITLE": "Les prestations sont réalisées",
+      "TEXT": "Nos experts beauté se déplacent chez vos employés ou dans vos locaux pour fournir les prestations réservées, garantissant une expérience de bien-être optimale."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Valorisez votre entreprise",
+    "TEXT": "Des milliers d'utilisateurs de l'application izyGlam sont à la recherche de services de bien-être. Offrez à vos employés et clients un accès privilégié aux meilleurs experts de la beauté près de chez eux.",
+    "IMAGE": "image"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Pourquoi izyGlam pour votre entreprise ?",
+    "STEP1": {
+      "TITLE": "Fidélisez et récompensez vos employés",
+      "TEXT": "Offrez un avantage unique à vos équipes en leur proposant un budget beauté mensuel. Coiffeuses, esthéticiennes et bien d'autres experts du bien-être à leur disposition, pour améliorer leur satisfaction et renforcer le sentiment d'appartenance à votre entreprise."
+    },
+    "STEP2": {
+      "TITLE": "Améliorez votre image de marque",
+      "TEXT": "Organisez des événements beauté pour vos clients ou partenaires, ou intégrez les services izyGlam dans vos programmes de fidélisation. Assurez-vous de marquer les esprits avec des soins haut de gamme, adaptés à chaque occasion."
+    },
+    "STEP3": {
+      "TITLE": "Optimisez le bien-être au travail",
+      "TEXT": "Facilitez l'accès de vos employés à des services de bien-être directement sur leur lieu de travail ou à proximité. En prenant soin de leur bien-être, vous boostez leur motivation et renforcez la cohésion de vos équipes."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Simplifiez l'accès au bien-être pour vos équipes",
+      "TEXT": "Avec izyGlam, offrez à vos collaborateurs une solution simple et flexible pour prendre soin d'eux. Que ce soit pour des soins esthétiques ou des séances de remise en forme, tout est à portée de main."
+    },
+    "STEP2": {
+      "TITLE": "Proposez des avantages innovants à vos clients",
+      "TEXT": "Renforcez vos relations avec vos clients en leur offrant des prestations de bien-être lors d'événements ou dans le cadre de vos programmes de fidélisation. Montrez-leur que vous prenez soin de leur expérience avec des attentions uniques."
+    },
+    "STEP3": {
+      "TITLE": "Un bien-être sur mesure, où et quand vous le souhaitez",
+      "TEXT": "Avec izyGlam, vos employés et vos clients peuvent bénéficier de services de qualité où qu'ils soient. Des experts sélectionnés pour répondre à leurs besoins spécifiques, et un accompagnement personnalisé pour garantir leur satisfaction."
     }
   },
   "SIDEBAR": {

@@ -15,6 +15,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { GiftCardComponent } from './gift-card/gift-card.component';
 import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
 import { CreationShopComponent } from './creation-shop/creation-shop.component';
+import { CreationCompanyComponent } from './creation-company/creation-company.component';
 
 const routes: Routes = [
     {
@@ -70,6 +71,11 @@ const routes: Routes = [
     {
         path: 'creation-shop',
         component: CreationShopComponent,
+        canActivate: [],
+    },
+    {
+        path: 'creation-company',
+        component: CreationCompanyComponent,
         canActivate: [],
     },
     { path: '', redirectTo: 'main', pathMatch: 'full' },

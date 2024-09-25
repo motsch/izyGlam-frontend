@@ -88,12 +88,12 @@
           <label for="languageSelect">Sélectionnez votre boutique :</label>
           <div class="select-box">
             <div class="selected" (click)="toggleDropdown()">
-              {{ selected?.name }}
+              {{ selected?.trad | translate }}
               <i class="arrow down"></i>
             </div>
             <ul class="options" *ngIf="dropdownOpen">
               <li *ngFor="let shop of shops" (click)="selectShop(shop)">
-                {{ shop.name }}
+                {{ shop.trad | translate }}
               </li>
             </ul>
           </div>

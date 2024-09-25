@@ -44,7 +44,6 @@ export class MainComponent implements OnInit {
 
     constructor(
         private router: Router,
-        // private drawerService: DrawerService,
         private shopService: ShopService,
         public sessionService: SessionService,
         private categoryService: CategoryService

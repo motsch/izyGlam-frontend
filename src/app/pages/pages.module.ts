@@ -49,6 +49,8 @@ import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 import { CreationShopComponent } from './creation-shop/creation-shop.component';
 import { CreateShopInfoComponent } from '../core/component/create-shop-info/create-shop-info.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { CreateCompanyInfoComponent } from '../core/component/create-company-info/create-company-info.component';
+import { CreationCompanyComponent } from './creation-company/creation-company.component';
 @NgModule({
     imports: [
 
@@ -109,7 +111,9 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
         InviteFriendsComponent,
         CreationShopComponent,
         CreateShopInfoComponent,
+        CreationCompanyComponent,
+        CreateCompanyInfoComponent,
     ],
-    exports: [CreateShopInfoComponent, CreationShopComponent],
+    exports: [CreateShopInfoComponent, CreationShopComponent, CreateCompanyInfoComponent, CreationCompanyComponent],
 })
 export class PagesModule {}

@@ -1,0 +1,136 @@
+<div class="main-section">
+    <div class="container custom-container">
+      <div class="row">
+        <div class="col-md-6 hero-image">
+          <img
+            [src]="'/assets/images/conseil.png'"
+            alt="Travaillez pour des particuliers"
+          />
+        </div>
+        <div class="col-md-6 content right-side margin-top-50">
+          <div class="form">
+            <h2>{{ "CREATION_SHOP.TITLE" | translate }}</h2>
+            
+            <div *ngIf="!alreadyProfessionnal" class="margin-bottom-20"></div>
+            <label for="establishment-name">{{
+              "CREATION_SHOP.NAME" | translate
+            }}</label>
+            <input
+            [disabled]="alreadyProfessionnal || !isUserConnected"
+              type="text"
+              id="establishment-name"
+              name="establishment-name"
+              [(ngModel)]="newShopUser.name"
+              onchange="formChecking('companyName')"
+              placeholder="Sab Beauty"
+            />
+  
+            <label for="street">{{ "CREATION_SHOP.STREET" | translate }}</label>
+            <input
+            [disabled]="alreadyProfessionnal || !isUserConnected"
+              id="street"
+              name="street"
+              [(ngModel)]="newShopUser.street"
+              placeholder="123, Main Street"
+            />
+  
+            <div class="row input-group-row">
+              <div class="col-md-6">
+                <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
+                <input
+                [disabled]="alreadyProfessionnal || !isUserConnected"
+                  id="city"
+                  name="city"
+                  [(ngModel)]="newShopUser.city"
+                  placeholder="Paris"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="cp">{{
+                  "CREATION_SHOP.CODE_POSTAL" | translate
+                }}</label>
+                <input
+                [disabled]="alreadyProfessionnal || !isUserConnected"
+                  id="cp"
+                  name="cp"
+                  [(ngModel)]="newShopUser.code_postal"
+                  placeholder="75001"
+                />
+              </div>
+            </div>
+  
+            <div class="row input-group-row">
+              <div class="col-md-6">
+                <label for="country">{{
+                  "CREATION_SHOP.COUNTRY" | translate
+                }}</label>
+                <input
+                [disabled]="alreadyProfessionnal || !isUserConnected"
+                  id="country"
+                  name="country"
+                  [(ngModel)]="newShopUser.country"
+                  placeholder="France"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="floor">{{ "CREATION_SHOP.FLOOR" | translate }}</label>
+                <input
+                [disabled]="alreadyProfessionnal || !isUserConnected"
+                  type="text"
+                  id="floor"
+                  name="floor"
+                  placeholder="123"
+                  [(ngModel)]="newShopUser.floor"
+                />
+              </div>
+            </div>
+  
+            <div class="row input-group-row">
+              <label for="business-type">{{
+                "CREATION_SHOP.BUSINESSTYPE" | translate
+              }}</label>
+              <select
+              [disabled]="alreadyProfessionnal || !isUserConnected"
+                id="business-type"
+                name="business-type"
+                [(ngModel)]="newShopUser.companyType"
+              >
+                <option value="coiffure">{{ "MAIN_CATEGORY.COIFFURE" | translate }}</option>
+                <option value="manucure">{{ "MAIN_CATEGORY.MANUCURE" | translate }}</option>
+                <option value="massage">{{ "MAIN_CATEGORY.MASSAGE" | translate }}</option>
+                <option value="maquillage">{{ "MAIN_CATEGORY.MAQUILLAGE" | translate }}</option>
+                <option value="epilation">{{ "MAIN_CATEGORY.EPILATION" | translate }}</option>
+                <option value="bronzage">{{ "MAIN_CATEGORY.BRONZAGE" | translate }}</option>
+                <option value="partum">{{ "MAIN_CATEGORY.PARTUM" | translate }}</option>
+                <option value="nutrition">{{ "MAIN_CATEGORY.NUTRITION"| translate }}</option>
+                <option value="fitness">{{ "MAIN_CATEGORY.FITNESS" | translate }}</option>
+                <option value="acupunture">{{ "MAIN_CATEGORY.ACUPUNCTURE" | translate }}</option>
+                <option value="stylisme">{{ "MAIN_CATEGORY.STYLISME" | translate }}</option>
+                <option value="relaxation">{{ "MAIN_CATEGORY.YOGA" | translate }}</option>
+                <option value="elevation">{{ "MAIN_CATEGORY.DEVELOPPEMENT" | translate }}</option>
+                <!-- Add more options here -->
+              </select>
+            </div>
+            <div class="whatsapp">
+              <input
+              [disabled]="alreadyProfessionnal || !isUserConnected"
+                type="checkbox"
+                id="whatsapp"
+                [(ngModel)]="newShopUser.ccvaccepted"
+              />
+              <label for="whatsapp">{{
+                "CREATION_SHOP.WHATSAPP" | translate
+              }}</label>
+            </div>
+  
+            <button 
+            [disabled]="alreadyProfessionnal || !isUserConnected" (click)="onSubmit()" type="submit">
+              {{ "CREATION_SHOP.BUTTON" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+  </div>
+  

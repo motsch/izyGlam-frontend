@@ -11,13 +11,14 @@
         <div class="form">
           <h2>{{ "CREATION_SHOP.TITLE" | translate }}</h2>
           <div *ngIf="alreadyProfessionnal" class="color_red margin-bottom-20">{{ "CREATION_SHOP.ALREDAY_SHOP" | translate }}</div>
+          <div *ngIf="!isUserConnected" class="color_red margin-bottom-20">{{ "CREATION_SHOP.NOT_CONNECTED" | translate }}</div>
           
           <div *ngIf="!alreadyProfessionnal" class="margin-bottom-20"></div>
           <label for="establishment-name">{{
             "CREATION_SHOP.NAME" | translate
           }}</label>
           <input
-          [disabled]="alreadyProfessionnal"
+          [disabled]="alreadyProfessionnal || !isUserConnected"
             type="text"
             id="establishment-name"
             name="establishment-name"
@@ -28,7 +29,7 @@
 
           <label for="street">{{ "CREATION_SHOP.STREET" | translate }}</label>
           <input
-          [disabled]="alreadyProfessionnal"
+          [disabled]="alreadyProfessionnal || !isUserConnected"
             id="street"
             name="street"
             [(ngModel)]="newShopUser.street"
@@ -39,7 +40,7 @@
             <div class="col-md-6">
               <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
               <input
-              [disabled]="alreadyProfessionnal"
+              [disabled]="alreadyProfessionnal || !isUserConnected"
                 id="city"
                 name="city"
                 [(ngModel)]="newShopUser.city"
@@ -51,7 +52,7 @@
                 "CREATION_SHOP.CODE_POSTAL" | translate
               }}</label>
               <input
-              [disabled]="alreadyProfessionnal"
+              [disabled]="alreadyProfessionnal || !isUserConnected"
                 id="cp"
                 name="cp"
                 [(ngModel)]="newShopUser.code_postal"
@@ -66,7 +67,7 @@
                 "CREATION_SHOP.COUNTRY" | translate
               }}</label>
               <input
-              [disabled]="alreadyProfessionnal"
+              [disabled]="alreadyProfessionnal || !isUserConnected"
                 id="country"
                 name="country"
                 [(ngModel)]="newShopUser.country"
@@ -76,7 +77,7 @@
             <div class="col-md-6">
               <label for="floor">{{ "CREATION_SHOP.FLOOR" | translate }}</label>
               <input
-              [disabled]="alreadyProfessionnal"
+              [disabled]="alreadyProfessionnal || !isUserConnected"
                 type="text"
                 id="floor"
                 name="floor"
@@ -91,112 +92,30 @@
               "CREATION_SHOP.BUSINESSTYPE" | translate
             }}</label>
             <select
-            [disabled]="alreadyProfessionnal"
+            [disabled]="alreadyProfessionnal || !isUserConnected"
               id="business-type"
               name="business-type"
               [(ngModel)]="newShopUser.companyType"
             >
-              <option value="coiffure">Coiffure</option>
-              <option value="manucure">Manucure</option>
-              <option value="massage">Massage</option>
+              <option value="coiffure">{{ "MAIN_CATEGORY.COIFFURE" | translate }}</option>
+              <option value="manucure">{{ "MAIN_CATEGORY.MANUCURE" | translate }}</option>
+              <option value="massage">{{ "MAIN_CATEGORY.MASSAGE" | translate }}</option>
+              <option value="maquillage">{{ "MAIN_CATEGORY.MAQUILLAGE" | translate }}</option>
+              <option value="epilation">{{ "MAIN_CATEGORY.EPILATION" | translate }}</option>
+              <option value="bronzage">{{ "MAIN_CATEGORY.BRONZAGE" | translate }}</option>
+              <option value="partum">{{ "MAIN_CATEGORY.PARTUM" | translate }}</option>
+              <option value="nutrition">{{ "MAIN_CATEGORY.NUTRITION"| translate }}</option>
+              <option value="fitness">{{ "MAIN_CATEGORY.FITNESS" | translate }}</option>
+              <option value="acupunture">{{ "MAIN_CATEGORY.ACUPUNCTURE" | translate }}</option>
+              <option value="stylisme">{{ "MAIN_CATEGORY.STYLISME" | translate }}</option>
+              <option value="relaxation">{{ "MAIN_CATEGORY.YOGA" | translate }}</option>
+              <option value="elevation">{{ "MAIN_CATEGORY.DEVELOPPEMENT" | translate }}</option>
               <!-- Add more options here -->
             </select>
           </div>
-          <div class="row input-group-row" *ngIf="!isUserConnected">
-            <div class="col-md-6">
-              <label for="first-name">{{
-                "CREATION_SHOP.FIRSTNAME" | translate
-              }}</label>
-              <input
-              [disabled]="alreadyProfessionnal"
-                type="text"
-                id="first-name"
-                name="first-name"
-                placeholder="Jeanne"
-                [(ngModel)]="newShopUser.firstname"
-              />
-            </div>
-            <div class="col-md-6">
-              <label for="last-name">{{
-                "CREATION_SHOP.LASTNAME" | translate
-              }}</label>
-              <input
-              [disabled]="alreadyProfessionnal"
-                type="text"
-                id="last-name"
-                name="last-name"
-                placeholder="Moulin"
-                [(ngModel)]="newShopUser.lastname"
-              />
-            </div>
-          </div>
-          <div class="row input-group-row" *ngIf="!isUserConnected">
-            <div class="col-md-6">
-              <label for="first-name">{{
-                "CREATION_SHOP.PASSWORD" | translate
-              }}</label>
-              <input
-              [disabled]="alreadyProfessionnal"
-                type="password"
-                id="password"
-                name="first-name"
-                [(ngModel)]="newShopUser.password"
-              />
-            </div>
-            <div class="col-md-6">
-              <label for="last-name">{{
-                "CREATION_SHOP.PASSWORDCONFIRMED" | translate
-              }}</label>
-              <input
-              [disabled]="alreadyProfessionnal"
-                type="password"
-                id="passwordConfirmed"
-                name="passwordConfirmed"
-                [(ngModel)]="newShopUser.confirmedPassword"
-              />
-            </div>
-          </div>
-
-          <div class="row input-group-row" *ngIf="!isUserConnected">
-            <label for="email">{{ "CREATION_SHOP.EMAIL" | translate }}</label>
-            <input
-            [disabled]="alreadyProfessionnal"
-              placeholder="jeanne.moulin@gmail.com"
-              type="email"
-              id="email"
-              name="email"
-              [(ngModel)]="newShopUser.email"
-            />
-          </div>
-
-          <div class="row input-group-row" *ngIf="!isUserConnected">
-            <label for="phone">{{ "CREATION_SHOP.PHONE" | translate }}</label>
-            <div class="row input-group-row">
-              <div class="col-md-3">
-                <select
-                [disabled]="alreadyProfessionnal"
-                  id="country-code"
-                  [(ngModel)]="newShopUser.countryIndication"
-                >
-                  <option value="FR">FR +33</option>
-                  <!-- Add more country codes here -->
-                </select>
-              </div>
-              <div class="col-md-9">
-                <input
-                [disabled]="alreadyProfessionnal"
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="0612345678"
-                  [(ngModel)]="newShopUser.phone"
-                />
-              </div>
-            </div>
-          </div>
           <div class="whatsapp">
             <input
-            [disabled]="alreadyProfessionnal"
+            [disabled]="alreadyProfessionnal || !isUserConnected"
               type="checkbox"
               id="whatsapp"
               [(ngModel)]="newShopUser.ccvaccepted"
@@ -207,7 +126,7 @@
           </div>
 
           <button 
-          [disabled]="alreadyProfessionnal" (click)="onSubmit()" type="submit">
+          [disabled]="alreadyProfessionnal || !isUserConnected" (click)="onSubmit()" type="submit">
             {{ "CREATION_SHOP.BUTTON" | translate }}
           </button>
         </div>

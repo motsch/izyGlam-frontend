@@ -8,11 +8,11 @@ import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 
 @Component({
-    selector: 'app-create-shop',
-    templateUrl: './create-shop.component.html',
-    styleUrls: ['./create-shop.component.scss'],
+    selector: 'app-create-company',
+    templateUrl: './create-company.component.html',
+    styleUrls: ['./create-company.component.scss'],
 })
-export class CreateShopComponent implements OnInit {
+export class CreateCompanyComponent implements OnInit {
     me: any = {};
     newShopUser: any = {};
     error: string | null = null;
