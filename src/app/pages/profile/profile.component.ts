@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ProchesModalComponent } from 'src/app/core/component/proches-modal/proches-modal.component';
 import { CompanyService } from 'src/app/core/services/company.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { UserService } from 'src/app/core/services/user.service';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment'; 
 
 @Component({
     selector: 'app-profile',
@@ -27,12 +29,12 @@ export class ProfileComponent implements OnInit {
     userChangeSuccess: boolean = false;
     userChangeError: string = '';
     constructor(
-        private formBuilder: FormBuilder,
         private userService: UserService,
         private companyService: CompanyService,
         private shopService: ShopService,
         private productService: ProductService,
-        private router: Router
+        private router: Router,
+        public dialog: MatDialog
     ) {}
 
     ngOnInit() {
@@ -76,11 +78,12 @@ export class ProfileComponent implements OnInit {
                         console.log(error);
                     },
                 });
-                this.shopService.getById(this.me.shopIds[0]).subscribe({
-                    next: (shop: any) => {
-                        this.myShopData = shop;
+                this.shopService.getShopsByUserId(this.me._id).subscribe({
+                    next: (shops: any[]) => {
+                        console.log(JSON.stringify(shops));
+                        this.myShopData = shops[0];
                         this.productService
-                            .getProductsByShop(shop._id)
+                            .getProductsByShop(shops[0]._id)
                             .subscribe({
                                 next: (data: any[]) => {
                                     console.log('totototo');
@@ -175,5 +178,14 @@ export class ProfileComponent implements OnInit {
 
     toggleDropdown() {
         this.dropdownOpen = !this.dropdownOpen;
+    }
+
+    openNewShopModal() {
+        this.dialog.open(NewShopModalComponent, {
+            width: '400px',
+            data: {
+                user: this.me,
+            },
+        });
     }
 }
