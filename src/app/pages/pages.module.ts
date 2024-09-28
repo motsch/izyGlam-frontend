@@ -51,9 +51,10 @@ import { CreateShopInfoComponent } from '../core/component/create-shop-info/crea
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CreateCompanyInfoComponent } from '../core/component/create-company-info/create-company-info.component';
 import { CreationCompanyComponent } from './creation-company/creation-company.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
     imports: [
-
+        BrowserAnimationsModule,
         NgxSkeletonLoaderModule,
         CommonModule,
         BrowserModule,

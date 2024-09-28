@@ -1,6 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-
 import { HttpClient } from '@angular/common/http';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { SessionService } from './services/session.service';
@@ -29,6 +28,7 @@ import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { TruncatePipe } from './pipe/truncate.pipe';
 import { ShopCardComponent } from './component/shop-card/shop-card.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // Import FullCalendar
 import { ShopItemCardComponent } from './component/shop-item-card/shop-item-card.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddressModalComponent } from './component/address-modal/address-modal.component';
@@ -55,9 +55,9 @@ import { OrderItemComponent } from './component/order-item/order-item.component'
 import { CreateShopComponent } from './component/create-shop/create-shop.component';
 import { CreateShopStepsComponent } from './component/create-shop-steps/create-shop-steps.component';
 import { CreateCompanyComponent } from './component/create-company/create-company.component';
-import { CreateCompanyInfoComponent } from './component/create-company-info/create-company-info.component';
 import { CreateCompanyStepComponent } from './component/create-company-step/create-company-step.component';
 import { NewShopModalComponent } from './component/new-shop-modal/new-shop-modal.component';
+import { AgendaComponent } from './component/agenda/agenda.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -68,6 +68,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
  */
 @NgModule({
     imports: [
+        NgbModule,
         CommonModule,
         BrowserModule,
         BrowserAnimationsModule,
@@ -85,6 +86,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatAutocompleteModule,
         MatSelectModule,
         RouterModule,
+        FullCalendarModule,
         MatChipsModule,
         MatDialogModule,
         MatToolbarModule,
@@ -97,7 +99,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
                 deps: [HttpClient],
             },
         }),
-        NgbModule,
         BrowserAnimationsModule,
         MatListModule,
         MatSidenavModule,
@@ -156,6 +157,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CreateShopStepsComponent,
         CreateCompanyComponent,
         CreateCompanyStepComponent,
+        AgendaComponent,
         NewShopModalComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -187,6 +189,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CreateCompanyComponent,
         CreateCompanyStepComponent,
         NewShopModalComponent,
+        AgendaComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })

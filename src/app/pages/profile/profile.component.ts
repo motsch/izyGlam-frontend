@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ProchesModalComponent } from 'src/app/core/component/proches-modal/proches-modal.component';
+import { CategoryService } from 'src/app/core/services/category.service';
 import { CompanyService } from 'src/app/core/services/company.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { UserService } from 'src/app/core/services/user.service';
-import { environment } from 'src/environments/environment'; 
+import { ServiceTemplateService } from 'src/app/core/services/productTemplate.service';
+import { environment } from 'src/environments/environment';
+import { ShopTemplateService } from 'src/app/core/services/shop-template.service';
 
 @Component({
     selector: 'app-profile',
@@ -15,10 +17,13 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+    modalOpen = false;
     selected: any = {};
     dropdownOpen = false;
+    dropdownOpenNewShop = false;
     shops: any[] = [];
     me: any = {};
+    meShops: any[] = [];
     myCompany: any = {};
     myArticlesData: any[] = [];
     myShopData: any = {};
@@ -28,13 +33,17 @@ export class ProfileComponent implements OnInit {
     activeSection: string = 'account-info'; // Par défaut, la section active est "account-info"
     userChangeSuccess: boolean = false;
     userChangeError: string = '';
+    categories: any[] = [];
+    selectedCategory: any = null;
     constructor(
         private userService: UserService,
         private companyService: CompanyService,
         private shopService: ShopService,
         private productService: ProductService,
         private router: Router,
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        private categoryService: CategoryService,
+        private shopTemplateService: ShopTemplateService
     ) {}
 
     ngOnInit() {
@@ -50,15 +59,15 @@ export class ProfileComponent implements OnInit {
                 console.log(me);
                 let companyId = me.companyId;
                 this.shopService.getShopsByUserId(me._id).subscribe({
-                    next:(data:any) => {
-                        console.log(data)
+                    next: (data: any) => {
+                        console.log(data);
                         this.shops = data;
-                        this.selected = data[0]
+                        this.selected = data[0];
                     },
-                    error:(error:any) => {
-                        console.log(error)
-                    }
-                })
+                    error: (error: any) => {
+                        console.log(error);
+                    },
+                });
                 this.companyService.getById(companyId).subscribe({
                     next: (company: any) => {
                         console.log(company.defaultPassword);
@@ -80,16 +89,34 @@ export class ProfileComponent implements OnInit {
                 });
                 this.shopService.getShopsByUserId(this.me._id).subscribe({
                     next: (shops: any[]) => {
+                        console.log(shops);
+                        // Récupérer les filtres de tous les shops
+                        const shopFilters = shops.map((shop) => shop.type);
+                        console.log(
+                            'shopFilters' + JSON.stringify(shopFilters)
+                        );
+                        this.categoryService.getAll().subscribe({
+                            next: (data: any[]) => {
+                                console.log(data);
+                                this.categories = data.filter(
+                                    (category) =>
+                                        !shopFilters.includes(category.filter)
+                                );
+                                this.selectedCategory = this.categories[0];
+                                console.log(this.categories); // Vérifier le résultat filtré
+                            },
+                            error: (error: any) => {
+                                console.log(error);
+                            },
+                        });
                         console.log(JSON.stringify(shops));
                         this.myShopData = shops[0];
                         this.productService
                             .getProductsByShop(shops[0]._id)
                             .subscribe({
                                 next: (data: any[]) => {
-                                    console.log('totototo');
                                     console.log(data);
                                     this.myArticlesData = data;
-                                    // this.articlesCopyData = [...data];
                                 },
                                 error: (error: any) => {
                                     console.log(error);
@@ -107,7 +134,6 @@ export class ProfileComponent implements OnInit {
         });
     }
 
-    isUserChanged() {}
     onSubmit() {
         if (this.profileForm!.valid) {
             // Process form data (e.g., send to backend)
@@ -148,26 +174,24 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/creation-shop']);
     }
 
-    selectShop(type:any) {
+    selectShop(type: any) {
         console.log(type);
         this.selected = type;
-        
+
         this.shopService.getById(type._id).subscribe({
             next: (shop: any) => {
                 this.myShopData = shop;
-                this.productService
-                    .getProductsByShop(shop._id)
-                    .subscribe({
-                        next: (data: any[]) => {
-                            console.log('totototo');
-                            console.log(data);
-                            this.myArticlesData = data;
-                            // this.articlesCopyData = [...data];
-                        },
-                        error: (error: any) => {
-                            console.log(error);
-                        },
-                    });
+                this.productService.getProductsByShop(shop._id).subscribe({
+                    next: (data: any[]) => {
+                        console.log('totototo');
+                        console.log(data);
+                        this.myArticlesData = data;
+                        // this.articlesCopyData = [...data];
+                    },
+                    error: (error: any) => {
+                        console.log(error);
+                    },
+                });
             },
             error: (error: any) => {
                 console.log(error);
@@ -176,15 +200,93 @@ export class ProfileComponent implements OnInit {
         this.dropdownOpen = false;
     }
 
+    selectShopToCreate(type: any) {
+        console.log(type);
+        this.selectedCategory = type;
+        this.dropdownOpenNewShop = false;
+    }
+
     toggleDropdown() {
         this.dropdownOpen = !this.dropdownOpen;
     }
+    toggleDropdown2() {
+        this.dropdownOpenNewShop = !this.dropdownOpenNewShop;
+    }
 
-    openNewShopModal() {
-        this.dialog.open(NewShopModalComponent, {
-            width: '400px',
-            data: {
-                user: this.me,
+    openModal(): void {
+        console.log('OPEN MODAL');
+        this.modalOpen = true;
+    }
+
+    closeModal(): void {
+        this.modalOpen = false;
+    }
+
+    createShop(): any {
+        console.log(JSON.stringify(this.selectedCategory));
+        let type = this.selectedCategory.filter;
+        this.shopTemplateService.getServiceTemplatesByCategory(type).subscribe({
+            next: (data: any[]) => {
+                let servicesToCreate = data;
+                let newShopToCreate: any = {};
+                newShopToCreate.name =
+                    this.me.firstname + ' ' + this.me.lastname.charAt(0) + '.';
+
+                let categoryToSelect = this.selectedCategory
+                let description = categoryToSelect.descriptionTrad;
+                console.log("description =>" + description);
+                newShopToCreate.description = description;
+                newShopToCreate.location = {
+                    latitude: 48.6298,
+                    longitude: 2.4407,
+                };
+                newShopToCreate.image = 'image';
+                newShopToCreate.note = '5';
+                newShopToCreate.type = type;
+                newShopToCreate.ville = 'Paris';
+                newShopToCreate.maxDistance = 15;
+                newShopToCreate.idUser = this.me._id;
+                newShopToCreate.promo = {};
+                newShopToCreate.promo.active = false;
+                newShopToCreate.promo.type = '1';
+                newShopToCreate.hours = {};
+                newShopToCreate.trad = categoryToSelect.trad;
+                newShopToCreate.hours.morning = {};
+                newShopToCreate.hours.morning.start = '09:00';
+                newShopToCreate.hours.morning.end = '12:00';
+                newShopToCreate.hours.afternoon = {};
+                newShopToCreate.hours.afternoon.start = '13:00';
+                newShopToCreate.hours.afternoon.end = '18:00';
+                this.shopService.create(newShopToCreate).subscribe({
+                    next: (data: any) => {
+                        console.log(data);
+                        for (let elem of servicesToCreate) {
+                            elem.shopId = data._id;
+                        }
+                        this.productService
+                            .createMultiple(servicesToCreate)
+                            .subscribe({
+                                next: (data: any) => {
+                                    console.log(data);
+                                    return data;
+                                },
+                                error: (error: any) => {
+                                    console.log(error);
+                                    return error;
+                                },
+                            });
+                        // return data;
+                    },
+                    error: (error: any) => {
+                        console.log('Error : ' + JSON.stringify(error));
+                        console.log(error);
+                        return error;
+                    },
+                });
+            },
+            error: (error: any) => {
+                console.log(error);
+                return error;
             },
         });
     }

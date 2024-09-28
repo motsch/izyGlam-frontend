@@ -13,17 +13,17 @@ export class CreateCompanyInfoComponent {
     {
       titleTranslate: "INFO_COMPANY_STEPS.STEP1.TITLE",
       textTranslate: "INFO_COMPANY_STEPS.STEP1.TEXT",
-      image: "assets/images/step-image-1.png"
+      image: "assets/images/step-image2-1.png"
     },
     {
       titleTranslate: "INFO_COMPANY_STEPS.STEP2.TITLE",
       textTranslate: "INFO_COMPANY_STEPS.STEP2.TEXT",
-      image: 'assets/images/step-image-2.png'
+      image: 'assets/images/step-image2-2.png'
     },
     {
       titleTranslate: "INFO_COMPANY_STEPS.STEP3.TITLE",
       textTranslate: "INFO_COMPANY_STEPS.STEP3.TEXT",
-      image: 'assets/images/step-image-3.png'
+      image: 'assets/images/step-image2-3.png'
     }
   ];
 

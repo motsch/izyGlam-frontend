@@ -41,3 +41,41 @@ body {
 .auth-page {
   height: auto !important;
 }
+
+/* Changer les numéros de jour */
+.fc .fc-daygrid-day-number {
+  color: #e57373 !important; /* Applique la couleur rose aux numéros de jour */
+}
+
+/* Changer la couleur des en-têtes des jours de la semaine (Sun, Mon, ...) */
+.fc .fc-col-header-cell-cushion {
+  color: #e57373 !important; /* Appliquer une couleur rose aux jours de la semaine */
+}
+
+/* Changer la couleur de l'événement */
+.fc .fc-daygrid-event {
+  background-color: #f28b82 !important; /* Fond rose pour les événements */
+  border-color: #f28b82 !important;
+  color: #ffffff !important; /* Texte en blanc */
+}
+
+/* Changer la couleur des bordures des cases */
+.fc .fc-daygrid-day {
+}
+
+/* Changer la couleur des boutons (today, next, prev) */
+.fc .fc-button {
+  background-color: #f28b82 !important;
+  border-color: #f28b82 !important;
+  color: white !important;
+}
+
+.fc .fc-button:hover {
+  background-color: #e57373 !important; /* Sombre au hover */
+  border-color: #e57373 !important;
+}
+
+/* Surligner le jour actuel */
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: #ffebee !important; /* Fond doux pour le jour actuel */
+}

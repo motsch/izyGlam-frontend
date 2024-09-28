@@ -19,24 +19,35 @@
       >
         {{ "PROFILE_MENU.CONFIDENTIAL" | translate }}
       </li>
-      <li *ngIf="me.role === 'professionnel'" [ngClass]="{ active: isSectionActive('dashboard') }"
+      <li
+        [ngClass]="{ active: isSectionActive('calendar') }"
+        (click)="setActiveSection('calendar')"
+      >
+        {{ "PROFILE_MENU.CALENDAR" | translate }}
+      </li>
+      <li
+        *ngIf="me.role === 'professionnel'"
+        [ngClass]="{ active: isSectionActive('dashboard') }"
         (click)="setActiveSection('dashboard')"
       >
         {{ "PROFILE_MENU.DASHBOARD" | translate }}
       </li>
-      <li *ngIf="me.role === 'entreprise'"
+      <li
+        *ngIf="me.role === 'entreprise'"
         [ngClass]="{ active: isSectionActive('company') }"
         (click)="setActiveSection('company')"
       >
         {{ "PROFILE_MENU.COMPANY" | translate }}
       </li>
-      <li *ngIf="me.role === 'professionnel'"
+      <li
+        *ngIf="me.role === 'professionnel'"
         [ngClass]="{ active: isSectionActive('management') }"
         (click)="setActiveSection('management')"
       >
         {{ "PROFILE_MENU.SHOP" | translate }}
       </li>
-      <li *ngIf="me.role === 'admin'"
+      <li
+        *ngIf="me.role === 'admin'"
         [ngClass]="{ active: isSectionActive('admin') }"
         (click)="setActiveSection('admin')"
       >
@@ -58,6 +69,11 @@
       <h1>{{ "PROFILE_MENU.CONFIDENTIAL" | translate }}</h1>
       <!-- Ajouter le contenu lié à la confidentialité ici -->
       <app-confidential-policy></app-confidential-policy>
+    </div>
+    <div *ngIf="isSectionActive('calendar')" id="calendar-content">
+      <h1>{{ "PROFILE_MENU.CALENDAR" | translate }}</h1>
+      <!-- Ajouter le contenu lié à la confidentialité ici -->
+      <app-agenda></app-agenda>
     </div>
     <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
       <h1>{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
@@ -102,7 +118,7 @@
           <button
             class="btn btn-primary action-btn"
             title="Créer une boutique"
-            (click)="openNewShopModal()"
+            (click)="openModal()"
             data-bs-toggle="tooltip"
             data-bs-placement="top"
           >
@@ -126,9 +142,7 @@
           ></app-shop-articles-management>
         </mat-tab>
         <mat-tab label="Suivi financier">
-          <app-finance
-          [myShopData]="myShopData"
-          [me]="me"></app-finance>
+          <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
         </mat-tab>
       </mat-tab-group>
     </div>
@@ -136,6 +150,55 @@
       <h1>{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
       <!-- Ajouter le contenu lié à la confidentialité ici -->
       <app-admin></app-admin>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade show"
+  tabindex="-1"
+  [style.display]="modalOpen ? 'block' : 'none'"
+  [ngClass]="{ show: modalOpen }"
+  style="background: rgba(0, 0, 0, 0.5)"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Type de boutique à créer</h3>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-11 custom-shop-selector">
+          <div class="select-box">
+            <div class="selected" (click)="toggleDropdown2()">
+              {{ selectedCategory?.trad | translate }}
+              <i class="arrow down"></i>
+            </div>
+            <ul class="options" *ngIf="dropdownOpenNewShop">
+              <li
+                *ngFor="let category of categories"
+                (click)="selectShopToCreate(category)"
+              >
+                {{ category.trad | translate }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Annuler
+        </button>
+        <button type="button" class="btn btn-primary" (click)="createShop()">
+          Créer ma boutique
+        </button>
+      </div>
     </div>
   </div>
 </div>

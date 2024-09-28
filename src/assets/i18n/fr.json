@@ -108,7 +108,8 @@
     "COMPANY": "Gestion de mon entreprise",
     "SHOP": "Gestion de mes boutiques",
     "FINANCIAL": "Suivi financier",
-    "ADMIN": "Administration générale"
+    "ADMIN": "Administration générale",
+    "CALENDAR": "Agenda"
   },
   "PROFILE": {
     "TITLE": "Informations de base",
@@ -291,8 +292,8 @@
       "TEXT": "Vos employés ou clients sélectionnent les prestations bien-être qui leur conviennent directement via l'application izyGlam."
     },
     "STEP2": {
-      "TITLE": "Vous validez les prestations",
-      "TEXT": "Une fois la demande faite, vous validez les services sélectionnés et nous nous occupons de la gestion des réservations."
+      "TITLE": "Vous décidez d'un montant à allouer",
+      "TEXT": "Vous avez la mains pour créditer les comptes de vos employés et de vos clients. Vous pouvez choisir de créditer ces comptes périodiquement ou de manière ponctuelle."
     },
     "STEP3": {
       "TITLE": "Les prestations sont réalisées",
