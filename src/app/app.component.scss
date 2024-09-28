@@ -2,14 +2,13 @@
   width: 100vw;
   height: 100%;
   margin: 0;
-}
-
-mat-drawer-content {
-  padding-left: 10vw !important;
+}mat-drawer-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;  // Centre uniquement horizontalement
+  width: 100%;  // Assure que le contenu occupe toute la largeur
 }
+
 
 .drawer-content {
   width: 300px;
