@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionService } from '../../services/session.service';
 import { UserService } from '../../services/user.service';
@@ -10,7 +10,7 @@ import { AuthenticationService } from '../../services/authentication.service';
     styleUrls: ['./change-password.component.scss'],
 })
 export class ChangePasswordComponent implements OnInit {
-    me: any = {};
+    @Input() me: any = {};
     elem: any = {
         currentPassword: '',
         newPassword: '',
@@ -64,9 +64,6 @@ export class ChangePasswordComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.userService.getMe().subscribe((data: any) => {
-            this.me = data;
-        });
     
         this.langues = this.translate.getLangs().map(langCode => {
             return this.languagesInfos.find((x: any) => x.code === langCode) || {};

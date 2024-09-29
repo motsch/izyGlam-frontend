@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../../services/user.service';
@@ -9,6 +9,7 @@ import { UserService } from '../../services/user.service';
     styleUrls: ['./profile-informations.component.scss'],
 })
 export class ProfileInformationsComponent implements OnInit {
+    @Input() me: any = {};
     disabledButton = true;
     imgStorageUrl: string = environment.imgStorageUrl;
     profileForm: FormGroup | undefined;
@@ -22,11 +23,9 @@ export class ProfileInformationsComponent implements OnInit {
     constructor(private userService: UserService) {}
 
     ngOnInit(): void {
-        this.userService.getMe().subscribe((data: any) => {
-          console.log(data)
-            this.user = {...data};
-            this.userCopy = {...data}
-        });
+          console.log(this.me)
+            this.user = {...this.me};
+            this.userCopy = {...this.me}
     }
     validateChangeUser(){
         console.log("valide");

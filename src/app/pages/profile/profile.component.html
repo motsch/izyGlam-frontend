@@ -58,12 +58,12 @@
   <div class="content">
     <div *ngIf="isSectionActive('account-info')" id="account-info-content">
       <h1>{{ "PROFILE_MENU.INFORMATION" | translate }}</h1>
-      <app-profile-informations></app-profile-informations>
+      <app-profile-informations [me]="me"></app-profile-informations>
     </div>
     <div *ngIf="isSectionActive('security')" id="security-content">
       <h1>{{ "PROFILE_MENU.SECURITY" | translate }}</h1>
       <!-- Ajouter le contenu lié à la sécurité ici -->
-      <app-change-password></app-change-password>
+      <app-change-password [me]="me"></app-change-password>
     </div>
     <div *ngIf="isSectionActive('privacy')" id="privacy-content">
       <h1>{{ "PROFILE_MENU.CONFIDENTIAL" | translate }}</h1>
@@ -78,7 +78,7 @@
     <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
       <h1>{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
       <!-- Ajouter le contenu lié à la confidentialité ici -->
-      <app-dashboard></app-dashboard>
+      <app-dashboard [me]="me"></app-dashboard>
     </div>
     <div *ngIf="isSectionActive('company')" id="company-content">
       <h1>{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
