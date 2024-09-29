@@ -8,23 +8,31 @@ import { Observable } from 'rxjs';
 })
 export class BookingService {
     constructor(private http: HttpClient) {}
-
-    // Récupérer les réservations d'une boutique
-    getBookingsByShop(shopId: string): Observable<any> {
-      return this.http.get(`${environment.apiUrl}booking-by-shop/${shopId}`);
-    }
   
     // Récupérer les créneaux disponibles pour un service dans une boutique
     getAvailableTimeSlots(shopId: string, serviceId: string, date: string): Observable<any> {
       return this.http.get(`${environment.apiUrl}shops/${shopId}/services/${serviceId}/available-slots/${date}`);
     }
 
+    // Récupérer les réservations d'une boutique
+    getBookingsByShop(shopId: string): Observable<any> {
+      return this.http.get(`${environment.apiUrl}booking-by-shop/${shopId}`);
+    }
+
     /**
      * Permet de récupérer un user par son id
      * @param id (id du user)
      */
-    getBookingByUser(_id: number) {
-        return this.http.get<any>(environment.apiUrl + 'booking/user/' + _id);
+    getBookingByUserPro(_id: number) {
+        return this.http.get<any>(environment.apiUrl + 'booking-by-userPro/' + _id);
+    }
+
+    /**
+     * Permet de récupérer un user par son id
+     * @param id (id du user)
+     */
+    getBookingByClient(_id: number) {
+        return this.http.get<any>(environment.apiUrl + 'booking-by-client/' + _id);
     }
 
     /**

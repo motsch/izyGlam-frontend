@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input, input, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -11,39 +11,76 @@ import {
     MatDialog,
     MatDialogRef,
 } from '@angular/material/dialog';
+import { BookingService } from '../../services/booking.service';
 
 @Component({
     selector: 'app-agenda',
     templateUrl: './agenda.component.html',
     styleUrl: './agenda.component.scss',
 })
-export class AgendaComponent {
+export class AgendaComponent implements OnInit {
+    @Input() me: any = {};
     calendarOptions: CalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin],
         initialView: 'timeGridWeek', // Can be changed to 'dayGridMonth', 'timeGridDay', etc.
         weekends: true, // Control weekend visibility
+        // allDaySlot: false, // Désactive la ligne "Toute la journée"
+        slotMinTime: '05:00:00', // Heure de début
+        slotMaxTime: '23:00:00', // Heure de fin
+        allDayText: 'Events', // Texte pour les événements de toute la journée
+        eventOrder: 'status,-start',
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek', // Ajout des boutons pour basculer entre mois et semaine
+            right: 'dayGridMonth,timeGridWeek,timeGridDay', // Ajout des boutons pour basculer entre mois et semaine
         },
         locale: frLocale,
         events: [
             {
-                title: 'Coifure Durant',
-                start: '2024-09-28',
-                backgroundColor: '#f28b82', // Soft pink color
-                borderColor: '#f28b82', // Match the event's border
-                textColor: '#ffffff',
-            }, // Replace with dynamic data
-
+                title: "Vacances d'été",
+                start: '2024-07-01',
+                end: '2024-09-01',
+                rendering: 'background',
+                backgroundColor: 'green',
+                allDay: true, // S'assure que c'est un événement sur toute la journée
+            },
+            {
+                title: 'Vacances de Noël',
+                start: '2024-12-20',
+                end: '2025-01-03',
+                rendering: 'background',
+                backgroundColor: '#ffeb3b', // Couleur de fond pour les vacances de Noël
+                textColor: '#000000',
+                borderColor: 'transparent',
+            },
             {
                 title: 'Coiffure zigo',
                 start: '2024-09-27T10:00:00', // Heure de début: 10h00
                 end: '2024-09-27T11:00:00', // Heure de fin: 11h00
                 backgroundColor: '#f28b82', // Couleur de fond
                 borderColor: '#f28b82', // Couleur de la bordure
+                textColor: '#000000', // Couleur du texte
+                classNames: ['event-cancelled'],
+                status: '',
+            },
+            {
+                title: 'Coiffure zigo 3',
+                start: '2024-09-27T10:00:00', // Heure de début: 10h00
+                end: '2024-09-27T11:00:00', // Heure de fin: 11h00
+                backgroundColor: '#f28b82', // Couleur de fond
+                borderColor: '#f28b82', // Couleur de la bordure
+                textColor: '#000000', // Couleur du texte
+                classNames: ['event-cancelled'],
+                status: '',
+            },
+            {
+                title: 'Coiffure zigo 2',
+                start: '2024-09-27T10:00:00', // Heure de début: 10h00
+                end: '2024-09-27T11:00:00', // Heure de fin: 11h00
+                backgroundColor: '#f28b82', // Couleur de fond
+                borderColor: '#f28b82', // Couleur de la bordure
                 textColor: '#ffffff', // Couleur du texte
+                status: 'active',
             },
 
             {
@@ -54,21 +91,32 @@ export class AgendaComponent {
                 borderColor: '#f28b82', // Couleur de la bordure
                 textColor: '#ffffff', // Couleur du texte
             },
-
-            {
-                title: 'Maquillage Toto',
-                start: '2024-09-30',
-                backgroundColor: '#f28b82', // Soft pink color
-                borderColor: '#f28b82', // Match the event's border
-                textColor: '#ffffff',
-            },
         ],
         eventClick: this.handleEventClick.bind(this), // Lier la fonction de gestion de clic
     };
 
     // Injecter le service de dialogue
-    constructor(public dialog: MatDialog) {}
+    constructor(public dialog: MatDialog, private bookingService: BookingService) {}
 
+    ngOnInit(): void {
+        this.bookingService.getBookingByUserPro(this.me._id).subscribe({
+            next: (data: any) => {
+                console.log(data);
+                
+                if (this.calendarOptions && this.calendarOptions.events) {
+                    for (let elem of data) {
+                        elem.date = new Date(elem.date);
+                    }
+                    this.calendarOptions.events = data;
+                } else {
+                    console.error('calendarOptions or calendarOptions.events is undefined');
+                }
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        });
+    }
     // Fonction appelée lors du clic sur un événement
     handleEventClick(info: any) {
         // Ouvrir la modal avec les données de l'événement
@@ -92,9 +140,9 @@ export class AgendaComponent {
     }
 }
 @Component({
-  selector: 'content-calendar-item-dialog',
-  templateUrl: './dialog/content-calendar-item-dialog.component.html', // Utilise le fichier HTML externe
-  styleUrl: './dialog/content-calendar-item-dialog.component.scss' // Tu peux aussi ajouter des styles spécifiques ici
+    selector: 'content-calendar-item-dialog',
+    templateUrl: './dialog/content-calendar-item-dialog.component.html', // Utilise le fichier HTML externe
+    styleUrl: './dialog/content-calendar-item-dialog.component.scss', // Tu peux aussi ajouter des styles spécifiques ici
 })
 export class ContentCalendarItemDialog {
     constructor(

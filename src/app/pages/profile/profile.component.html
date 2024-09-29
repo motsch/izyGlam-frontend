@@ -73,7 +73,7 @@
     <div *ngIf="isSectionActive('calendar')" id="calendar-content">
       <h1>{{ "PROFILE_MENU.CALENDAR" | translate }}</h1>
       <!-- Ajouter le contenu lié à la confidentialité ici -->
-      <app-agenda></app-agenda>
+      <app-agenda [me]="me"></app-agenda>
     </div>
     <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
       <h1>{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
