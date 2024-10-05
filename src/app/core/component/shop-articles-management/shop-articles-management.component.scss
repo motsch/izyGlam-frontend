@@ -18,6 +18,48 @@
   margin-top: 20px;
 }
 
+.color-dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+  border: rgb(163, 163, 163) solid 1px;
+}
+
+.color-dot-selection {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+  border: rgb(163, 163, 163) solid 1px;
+}
+
+.color-dot-selection.selected {
+  transform: scale(1.2);  /* Augmente légèrement la taille */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  /* Effet d'ombre */
+  border: 1px solid rgba(0, 0, 0, 0.5); /* Bordure subtile */
+}
+
+.color-dot-selection:hover {
+  transform: scale(1.2); /* Ajoute un léger effet d'agrandissement au survol */
+}
+
+.color-preview {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  margin-top: 10px;
+}
+
+select {
+  margin-left: 10px;
+}
+
 .btn {
   margin-right: 5px;
   border-radius: 50%; /* Rendre les boutons ronds */

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionService } from '../../services/session.service';
 import { UserService } from '../../services/user.service';
@@ -9,7 +9,7 @@ import { AuthenticationService } from '../../services/authentication.service';
     templateUrl: './change-password.component.html',
     styleUrls: ['./change-password.component.scss'],
 })
-export class ChangePasswordComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit, OnChanges {
     @Input() me: any = {};
     elem: any = {
         currentPassword: '',
@@ -63,8 +63,21 @@ export class ChangePasswordComponent implements OnInit {
         }
     }
 
+    ngOnChanges(changes: SimpleChanges) {
+        // Si 'me' est fourni après l'initialisation
+        if (changes['me'] && changes['me'].currentValue) {
+            this.updateUser();
+        }
+    }
+
+    private updateUser(): void {
+        console.log(this.me);
+    }
+
     ngOnInit(): void {
     
+        // Si 'me' est déjà disponible
+        this.updateUser();
         this.langues = this.translate.getLangs().map(langCode => {
             return this.languagesInfos.find((x: any) => x.code === langCode) || {};
         });

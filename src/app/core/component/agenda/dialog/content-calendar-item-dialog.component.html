@@ -1,13 +1,24 @@
-<h1 mat-dialog-title>Modifier l'événement</h1>
+<h1 mat-dialog-title>Détails de l'événement</h1>
 <div mat-dialog-content>
+  <label>Client</label>
   <mat-form-field>
-    <input matInput placeholder="Titre" [(ngModel)]="data.title">
+    <input matInput placeholder="Titre" [(ngModel)]="data.title" disabled>
   </mat-form-field>
+  <label>Début</label>
   <mat-form-field>
-    <input matInput type="datetime-local" placeholder="Début" [(ngModel)]="data.start">
+    <input matInput type="text" placeholder="Début" [ngModel]="data.start | date:'fullDate':'':'fr-FR'" disabled>
   </mat-form-field>
+  <label>Fin</label>
   <mat-form-field>
-    <input matInput type="datetime-local" placeholder="Fin" [(ngModel)]="data.end">
+    <input matInput type="text" placeholder="Fin" [ngModel]="data.end | date:'fullDate':'':'fr-FR'" disabled>
+  </mat-form-field>
+  <label>Adresse</label><img (click)="openGoogleMaps(data.address)" class="margin-left-10 pointer" src="assets/images/googl_maps.png" alt="Carte" style="width: 20px; height: 20px;">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Fin" [ngModel]="data.address" disabled>
+  </mat-form-field>
+  <label>Téléphone</label>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Fin" [ngModel]="data.phoneNumber" disabled>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>

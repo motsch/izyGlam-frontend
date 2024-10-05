@@ -10,8 +10,8 @@ export class BookingService {
     constructor(private http: HttpClient) {}
   
     // Récupérer les créneaux disponibles pour un service dans une boutique
-    getAvailableTimeSlots(shopId: string, serviceId: string, date: string): Observable<any> {
-      return this.http.get(`${environment.apiUrl}shops/${shopId}/services/${serviceId}/available-slots/${date}`);
+    getAvailableTimeSlots(shopId: string, serviceId: string): Observable<any> {
+      return this.http.get(`${environment.apiUrl}available-slots/${shopId}/services/${serviceId}`);
     }
 
     // Récupérer les réservations d'une boutique
@@ -54,12 +54,9 @@ export class BookingService {
      * Créer un nouveau product
      * @param task (données du product à créer)
      */
-    create(product: any): Observable<any> {
+    create(booking: any): Observable<any> {
         // Ajoutez l' comme paramètre
-        return this.http.post<any>(
-            `${environment.apiUrl + 'booking', product}`,
-            product
-        );
+        return this.http.post<any>(environment.apiUrl + 'booking', booking);
     }
 
     /**

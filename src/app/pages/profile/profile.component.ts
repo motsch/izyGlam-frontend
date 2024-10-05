@@ -10,7 +10,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { ServiceTemplateService } from 'src/app/core/services/productTemplate.service';
 import { environment } from 'src/environments/environment';
 import { ShopTemplateService } from 'src/app/core/services/shop-template.service';
-
+import { forkJoin } from 'rxjs';
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -47,90 +47,67 @@ export class ProfileComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        // this.selected = this.shops[0];
-        let currentMenu = localStorage.getItem('activeMenu');
+        // Charger la section active depuis le localStorage
+        let currentMenu = 'account-info';
         if (currentMenu) {
             this.setActiveSection(currentMenu);
         }
-
+    
+        // Récupérer l'utilisateur et ses shops
         this.userService.getMe().subscribe({
             next: (me: any) => {
                 this.me = me;
-                console.log(me);
                 let companyId = me.companyId;
-                this.shopService.getShopsByUserId(me._id).subscribe({
-                    next: (data: any) => {
-                        console.log(data);
-                        this.shops = data;
-                        this.selected = data[0];
-                    },
-                    error: (error: any) => {
-                        console.log(error);
-                    },
-                });
-                this.companyService.getById(companyId).subscribe({
-                    next: (company: any) => {
-                        console.log(company.defaultPassword);
-                        this.myCompany = company;
-                        // this.myCompanyCopy = { ...company };
-                        this.userService.getByCompanyId(companyId).subscribe({
-                            next: (companyUsers: any[]) => {
-                                console.log(companyUsers);
-                                this.employees = companyUsers;
-                            },
-                            error: (error: any) => {
-                                console.log(error);
-                            },
-                        });
-                    },
-                    error: (error: any) => {
-                        console.log(error);
-                    },
-                });
-                this.shopService.getShopsByUserId(this.me._id).subscribe({
-                    next: (shops: any[]) => {
-                        console.log(shops);
-                        // Récupérer les filtres de tous les shops
-                        const shopFilters = shops.map((shop) => shop.type);
-                        console.log(
-                            'shopFilters' + JSON.stringify(shopFilters)
-                        );
-                        this.categoryService.getAll().subscribe({
-                            next: (data: any[]) => {
-                                console.log(data);
-                                this.categories = data.filter(
-                                    (category) =>
-                                        !shopFilters.includes(category.filter)
-                                );
-                                this.selectedCategory = this.categories[0];
-                                console.log(this.categories); // Vérifier le résultat filtré
-                            },
-                            error: (error: any) => {
-                                console.log(error);
-                            },
-                        });
-                        console.log(JSON.stringify(shops));
-                        this.myShopData = shops[0];
-                        this.productService
-                            .getProductsByShop(shops[0]._id)
-                            .subscribe({
-                                next: (data: any[]) => {
-                                    console.log(data);
-                                    this.myArticlesData = data;
+    
+                // Utiliser forkJoin pour récupérer plusieurs données en parallèle
+                forkJoin({
+                    shops: this.shopService.getShopsByUserId(me._id),
+                    company: this.companyService.getById(companyId),
+                    companyUsers: this.userService.getByCompanyId(companyId)
+                }).subscribe({
+                    next: (results: any) => {
+                        this.shops = results.shops;
+                        this.myCompany = results.company;
+                        this.employees = results.companyUsers;
+    
+                        // Sélectionner le premier shop
+                        if (this.shops && this.shops.length > 0) {
+                            this.selected = this.shops[0];
+                            this.myShopData = this.shops[0];
+    
+                            // Charger les catégories après avoir filtré les shops
+                            const shopFilters = this.shops.map((shop) => shop.type);
+                            this.categoryService.getAll().subscribe({
+                                next: (categories: any[]) => {
+                                    this.categories = categories.filter(
+                                        (category) => !shopFilters.includes(category.filter)
+                                    );
+                                    this.selectedCategory = this.categories[0];
                                 },
                                 error: (error: any) => {
                                     console.log(error);
-                                },
+                                }
                             });
+    
+                            // Charger les produits du shop sélectionné
+                            this.productService.getProductsByShop(this.shops[0]._id).subscribe({
+                                next: (products: any[]) => {
+                                    this.myArticlesData = products;
+                                },
+                                error: (error: any) => {
+                                    console.log(error);
+                                }
+                            });
+                        }
                     },
                     error: (error: any) => {
                         console.log(error);
-                    },
+                    }
                 });
             },
             error: (error: any) => {
                 console.log(error);
-            },
+            }
         });
     }
 

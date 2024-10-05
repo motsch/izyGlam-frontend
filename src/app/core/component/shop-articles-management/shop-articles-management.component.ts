@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ShopService } from '../../services/shop.service';
 import { ProductService } from '../../services/product.service';
+import { ColorService } from '../../services/color.service';
 
 @Component({
     selector: 'app-shop-articles-management',
@@ -15,11 +16,36 @@ export class ShopArticlesManagementComponent implements OnInit {
     editingServiceIndex: number | null = null;
     articlesCopyData: any[] = [];
     modalService: any = {};
+    colors: any[] = [];
+    selectedColor: string = '';  
 
-    constructor(private productService: ProductService) {}
+    constructor(private productService: ProductService, private colorService: ColorService) {}
 
     ngOnInit(): void {
         // Initialize articlesCopyData if needed
+        this.colorService.getAll().subscribe({
+            next: (data: any) => {
+                console.log(data);
+                this.colors = data;
+                for(let elem of this.colors) {
+                    elem.selected = false;
+                }
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        });
+    }
+
+    selectColor(color: string) {
+        this.colors.forEach((elem: any) => {
+            if(elem.hex === color) {
+                elem.selected = true;
+            } else {
+                elem.selected = false;
+            }
+        });
+        this.selectedColor = color;
     }
 
     ngOnChanges(changes: SimpleChanges): void {
@@ -34,10 +60,23 @@ export class ShopArticlesManagementComponent implements OnInit {
             );
         }
     }
-
+    truncateDescription() {
+        if (this.modalService.description.length > 50) {
+          this.modalService.description = this.modalService.description.substring(0, 50) + '...';
+        }
+      }
     openModal(service?: any): void {
         console.log('OPEN MODAL');
         this.modalOpen = true;
+        let coloSelected =this.colors.find((x: any) => x.selected === true);
+        coloSelected = false;
+            for (let elem of this.colors) {
+                if(elem.hex === service.color) {
+                    elem.selected = true;
+                } else {
+                    elem.selected = false;
+                }
+            }
         if (service) {
             this.modalService = { ...service };
             this.editingServiceIndex = this.articlesCopyData.indexOf(service);

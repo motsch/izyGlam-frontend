@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreditEmployeeModalComponent } from '../credit-employee-modal/credit-employee-modal.component';
@@ -16,7 +16,7 @@ interface Invoice {
     templateUrl: './company-management.component.html',
     styleUrls: ['./company-management.component.scss'],
 })
-export class CompanyManagementComponent implements OnInit {
+export class CompanyManagementComponent implements OnInit, OnChanges {
     @Input() myCompany: any = {};
     @Input() employees: any[] = [];
     myCompanyCopy: any = {};
@@ -28,7 +28,30 @@ export class CompanyManagementComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        // Si 'me' est déjà disponible
+        this.updateCompany();
+        this.updateEmployees();
+    }
 
+    ngOnChanges(changes: SimpleChanges) {
+        // Si 'me' est fourni après l'initialisation
+        if (changes['myCompany'] && changes['myCompany'].currentValue) {
+            this.updateCompany();
+        }
+        // Si 'me' est fourni après l'initialisation
+        if (changes['employees'] && changes['employees'].currentValue) {
+            this.updateEmployees();
+        }
+    }
+
+    private updateCompany(): void {
+        console.log(this.myCompany);
+        this.myCompanyCopy = {...this.myCompany};
+    }
+
+    private updateEmployees(): void {
+        console.log(this.employees);
+        this.myCompanyCopy = {...this.employees};
     }
 
     createEmployee(): void {

@@ -48,6 +48,10 @@ input {
   box-sizing: border-box; /* Important pour que padding et border soient inclus dans la taille */
 }
 
+input:disabled {
+  background-color: #cecece !important;
+}
+
 textarea {
   height: 150px; /* Spécifique à la description pour donner plus de place */
 }
@@ -87,4 +91,11 @@ h2 {
   font-size: 20px;
   margin-bottom: 15px;
   margin-top: 15px;
+}
+
+.small-preview {
+  width: 150px; /* Largeur de l'image */
+  height: auto; /* Ajuste automatiquement la hauteur en fonction de la largeur */
+  border: 1px solid #ccc; /* Optionnel : ajoute une bordure pour rendre l'aperçu plus joli */
+  margin-top: 10px; /* Un peu d'espace au-dessus de l'image */
 }

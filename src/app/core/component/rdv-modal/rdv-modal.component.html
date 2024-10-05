@@ -4,20 +4,16 @@
   <div class="date-selector">
     <div *ngFor="let date of schedules; let i = index" class="date-group">
       <div class="date-header" (click)="toggleDate(i)">
-        <span>{{ date.dateToShow }}</span>
+        <span>{{ date.date }}</span>
         <button class="toggle-button">
           {{ openedIndex === i ? '&#9650;' : '&#9660;' }}
         </button> <!-- Flèche haut/bas -->
       </div>
       <div class="time-slots" *ngIf="openedIndex === i">
-        <span *ngFor="let slot of date.schedule.morningSlots">
-          <button *ngIf="slot.available" (click)="slotClick(slot, date._id, 'morning')" class="time-slot">{{ slot.startTime }}</button>
-        </span>
-        <span *ngFor="let slot of date.schedule.afternoonSlots">
-          <button *ngIf="slot.available" (click)="slotClick(slot, date._id, 'afternoon')" class="time-slot">{{ slot.startTime }}</button>
+        <span *ngFor="let time of date.times">
+          <button *ngIf="time" (click)="slotClick(time, date)" class="time-slot">{{ time.start }}</button>
         </span>
       </div>
-      <button class="see-more" *ngIf="openedIndex === i">VOIR PLUS</button>
     </div>
   </div>
 </div>

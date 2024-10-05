@@ -7,7 +7,7 @@
 
       <div class="appointment-content">
         <div class="appointment-left" *ngIf="step === 1">
-          <p>{{ 'PAYEMENT.FOR_WHO' | translate }} ?</p>
+          <p>{{ 'PAYEMENT.FOR_WHO' | translate }}</p>
           <div class="patient-selection">
             <div class="patient-info">
               <input [(ngModel)]="bill.client" type="radio" name="address" [value]="me._id" />
@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="appointment-left" *ngIf="step === 2">
-          <p>{{ 'PAYEMENT.WHERE' | translate }} ?</p>
+          <p>{{ 'PAYEMENT.WHERE' | translate }}</p>
           <div class="patient-selection">
             <p>{{ 'PAYEMENT.SELECT_ADDRESS' | translate }} :</p>
             <div class="address-selection">
@@ -118,14 +118,14 @@
               <p class="doctor-specialty">{{ shop?.trad | translate }}</p>
               <div class="appointment-details">
                 <p class="appointment-date">{{ 'PAYEMENT.RDV' | translate }}</p>
-                <p class="appointment-time">{{ date }} • {{ startSlot }}</p>
+                <p class="appointment-time">{{ dateSlot }} • {{ startSlot }}</p>
               </div>
             </div>
           </div>
 
           <div class="summary-info">
             <h3>{{ 'PAYEMENT.RESUME' | translate }}</h3>
-            <p><strong>{{ 'PAYEMENT.DATE' | translate }}:</strong> {{ date }}</p>
+            <p><strong>{{ 'PAYEMENT.DATE' | translate }}:</strong> {{ dateSlot }}</p>
             <p><strong>{{ 'PAYEMENT.HOUR' | translate }}:</strong> {{ startSlot }}</p>
             <p><strong>{{ 'PAYEMENT.PRESTA' | translate }}:</strong> {{ itemToBuy2.name }}</p>
             <p><strong>{{ 'PAYEMENT.WITH' | translate }}:</strong> {{ shop?.name }}, {{ shop?.trad | translate }}</p>

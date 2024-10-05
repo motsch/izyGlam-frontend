@@ -4,6 +4,7 @@
       <div class="column">
         <label for="name">Nom de la boutique</label>
         <input
+          disabled
           [(ngModel)]="shopCopyData.name"
           class="input-style"
           type="text"
@@ -11,17 +12,36 @@
         />
       </div>
       <div class="column">
-        <label for="averagePrice">Prix moyen</label>
+        <label for="imageUpload">Télécharger une image</label>
         <input
-          [(ngModel)]="shopCopyData.averagePrice"
+          type="file"
+          id="imageUpload"
+          (change)="onFileSelected($event)"
+          accept="image/*"
           class="input-style"
-          type="text"
-          id="averagePrice"
         />
+
+        <!-- Affichage de l'image sélectionnée -->
+        <div *ngIf="imagePreview">
+          <p>Aperçu de l'image :</p>
+          <img
+            [src]="imagePreview"
+            alt="Aperçu de l'image"
+            class="image-preview small-preview"
+          />
+        </div>
+
+        <!-- Bouton pour uploader l'image -->
+        <button
+          class="btn btn-primary"
+          (click)="uploadImage()"
+          [disabled]="!selectedFile"
+        >
+          Upload Image
+        </button>
       </div>
     </div>
 
-  
     <div>
       <label for="description">Description</label>
       <textarea
@@ -43,13 +63,33 @@
         />
       </div>
       <div class="column">
-        <label for="image">Image (URL)</label>
+        <label for="imageUpload">Télécharger une image</label>
         <input
-          [(ngModel)]="shopCopyData.image"
+          type="file"
+          id="imageUpload"
+          (change)="onFileSelected($event)"
+          accept="image/*"
           class="input-style"
-          type="text"
-          id="image"
         />
+
+        <!-- Affichage de l'image sélectionnée -->
+        <div *ngIf="imagePreview">
+          <p>Aperçu de l'image :</p>
+          <img
+            [src]="imagePreview"
+            alt="Aperçu de l'image"
+            class="image-preview small-preview"
+          />
+        </div>
+
+        <!-- Bouton pour uploader l'image -->
+        <button
+          class="btn btn-primary"
+          (click)="uploadImage()"
+          [disabled]="!selectedFile"
+        >
+          Upload Image
+        </button>
       </div>
     </div>
 
@@ -77,26 +117,42 @@
     <div class="form-section">
       <div class="column">
         <label for="morningStart">Matin - Ouverture</label>
-        <input type="time" id="morningStart" class="input-style"
-        [(ngModel)]="shopCopyData.hours.morning.start" />
+        <input
+          type="time"
+          id="morningStart"
+          class="input-style"
+          [(ngModel)]="shopCopyData.hours.morning.start"
+        />
       </div>
       <div class="column">
         <label for="morningEnd">Matin - Fermeture</label>
-        <input type="time" id="morningEnd" class="input-style"
-        [(ngModel)]="shopCopyData.hours.morning.end"/>
+        <input
+          type="time"
+          id="morningEnd"
+          class="input-style"
+          [(ngModel)]="shopCopyData.hours.morning.end"
+        />
       </div>
     </div>
 
     <div class="form-section">
       <div class="column">
         <label for="afternoonStart">Après-midi - Ouverture</label>
-        <input type="time" id="afternoonStart" class="input-style"
-        [(ngModel)]="shopCopyData.hours.afternoon.start"/>
+        <input
+          type="time"
+          id="afternoonStart"
+          class="input-style"
+          [(ngModel)]="shopCopyData.hours.afternoon.start"
+        />
       </div>
       <div class="column">
         <label for="afternoonEnd">Après-midi - Fermeture</label>
-        <input type="time" id="afternoonEnd" class="input-style"
-        [(ngModel)]="shopCopyData.hours.afternoon.end"/>
+        <input
+          type="time"
+          id="afternoonEnd"
+          class="input-style"
+          [(ngModel)]="shopCopyData.hours.afternoon.end"
+        />
       </div>
     </div>
 

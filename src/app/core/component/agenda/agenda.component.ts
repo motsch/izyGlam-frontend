@@ -25,10 +25,11 @@ export class AgendaComponent implements OnInit {
         initialView: 'timeGridWeek', // Can be changed to 'dayGridMonth', 'timeGridDay', etc.
         weekends: true, // Control weekend visibility
         // allDaySlot: false, // Désactive la ligne "Toute la journée"
-        slotMinTime: '05:00:00', // Heure de début
-        slotMaxTime: '23:00:00', // Heure de fin
+        slotMinTime: '04:00:00', // Heure de début
+        slotMaxTime: '23:59:59', // Heure de fin
         allDayText: 'Events', // Texte pour les événements de toute la journée
         eventOrder: 'status,-start',
+        // eventMinHeight: 40,
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
@@ -96,20 +97,57 @@ export class AgendaComponent implements OnInit {
     };
 
     // Injecter le service de dialogue
-    constructor(public dialog: MatDialog, private bookingService: BookingService) {}
+    constructor(
+        public dialog: MatDialog,
+        private bookingService: BookingService
+    ) {}
 
     ngOnInit(): void {
         this.bookingService.getBookingByUserPro(this.me._id).subscribe({
-            next: (data: any) => {
+            next: async (data: any) => {
                 console.log(data);
-                
+
                 if (this.calendarOptions && this.calendarOptions.events) {
                     for (let elem of data) {
-                        elem.date = new Date(elem.date);
+                        elem.start = new Date(elem.start); // Pas besoin d'utiliser await ici
+                        elem.end = new Date(elem.end); // Idem, les dates ne nécessitent pas async/await
+
+                        elem.backgroundColor = elem.color;
+                        // Vérifie si `extendedProps` existe déjà, sinon le crée
+                        if (!elem.extendedProps) {
+                            elem.extendedProps = {}; // Initialise extendedProps si nécessaire
+                        }
+
+                        // Ajoute les informations supplémentaires dans `extendedProps`
+                        elem.extendedProps.address =
+                            elem.address || 'Adresse inconnue';
+                        elem.extendedProps.phoneNumber =
+                            elem.phoneNumber || 'Numéro inconnu';
                     }
+                    data.push(
+                        {
+                            title: "Vacances d'été",
+                            start: '2024-07-01',
+                            end: '2024-09-01',
+                            rendering: 'background',
+                            backgroundColor: 'green',
+                            allDay: true, // S'assure que c'est un événement sur toute la journée
+                        },
+                        {
+                            title: 'Vacances de Noël',
+                            start: '2024-12-20',
+                            end: '2025-01-03',
+                            rendering: 'background',
+                            backgroundColor: '#ffeb3b', // Couleur de fond pour les vacances de Noël
+                            textColor: '#000000',
+                            borderColor: 'transparent',
+                        }
+                    );
                     this.calendarOptions.events = data;
                 } else {
-                    console.error('calendarOptions or calendarOptions.events is undefined');
+                    console.error(
+                        'calendarOptions or calendarOptions.events is undefined'
+                    );
                 }
             },
             error: (error: any) => {
@@ -119,6 +157,8 @@ export class AgendaComponent implements OnInit {
     }
     // Fonction appelée lors du clic sur un événement
     handleEventClick(info: any) {
+        console.log('info');
+        console.log(info);
         // Ouvrir la modal avec les données de l'événement
         const dialogRef = this.dialog.open(ContentCalendarItemDialog, {
             width: '400px',
@@ -126,6 +166,8 @@ export class AgendaComponent implements OnInit {
                 title: info.event.title,
                 start: info.event.startStr,
                 end: info.event.endStr,
+                address: info.event.extendedProps.address,
+                phoneNumber: info.event.extendedProps.phoneNumber,
             },
         });
 
@@ -134,7 +176,7 @@ export class AgendaComponent implements OnInit {
             if (result) {
                 // Mettre à jour l'événement avec les nouvelles données
                 info.event.setProp('title', result.title);
-                info.event.setDates(result.start, result.end);
+                info.event.setDates(result.startStr, result.endStr);
             }
         });
     }
@@ -152,5 +194,16 @@ export class ContentCalendarItemDialog {
 
     onNoClick(): void {
         this.dialogRef.close();
+    }
+
+    openGoogleMaps(address: string) {
+        // Encoder l'adresse pour être compatible avec Google Maps
+        const encodedAddress = encodeURIComponent(address);
+
+        // Construire l'URL Google Maps
+        const googleMapsUrl = `https://www.google.com/maps/place/${encodedAddress}`;
+
+        // Ouvrir Google Maps dans un nouvel onglet
+        window.open(googleMapsUrl, '_blank');
     }
 }

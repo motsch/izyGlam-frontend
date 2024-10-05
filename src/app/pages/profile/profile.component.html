@@ -129,12 +129,12 @@
       <mat-tab-group>
         <mat-tab label="Informations générales" color="primary">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
-          <app-shop-management
+          <app-shop-management *ngIf="myShopData && me"
             [myShopData]="myShopData"
             [me]="me"
           ></app-shop-management>
         </mat-tab>
-        <mat-tab label="Gestion des articles">
+        <mat-tab label="Gestion des prestations">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
           <app-shop-articles-management
             [myArticlesData]="myArticlesData"

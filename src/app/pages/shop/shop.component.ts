@@ -116,10 +116,6 @@ export class ShopComponent {
             this.shopInfo.note = this.shopInfo.note/data.reviews.length
         })
     }
-
-    openDialog() {
-        this.dialog.open(RdvModalComponent);
-    }
     scrollLeft(type: any) {
         switch (type) {
             case 'category':
