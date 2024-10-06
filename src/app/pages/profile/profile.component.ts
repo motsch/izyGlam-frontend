@@ -52,61 +52,88 @@ export class ProfileComponent implements OnInit {
         if (currentMenu) {
             this.setActiveSection(currentMenu);
         }
-    
+
         // Récupérer l'utilisateur et ses shops
         this.userService.getMe().subscribe({
             next: (me: any) => {
                 this.me = me;
                 let companyId = me.companyId;
-    
+
                 // Utiliser forkJoin pour récupérer plusieurs données en parallèle
                 forkJoin({
                     shops: this.shopService.getShopsByUserId(me._id),
                     company: this.companyService.getById(companyId),
-                    companyUsers: this.userService.getByCompanyId(companyId)
+                    companyUsers: this.userService.getByCompanyId(companyId),
                 }).subscribe({
                     next: (results: any) => {
                         this.shops = results.shops;
                         this.myCompany = results.company;
                         this.employees = results.companyUsers;
-    
+
                         // Sélectionner le premier shop
                         if (this.shops && this.shops.length > 0) {
                             this.selected = this.shops[0];
                             this.myShopData = this.shops[0];
-    
+
                             // Charger les catégories après avoir filtré les shops
-                            const shopFilters = this.shops.map((shop) => shop.type);
+                            const shopFilters = this.shops.map(
+                                (shop) => shop.type
+                            );
                             this.categoryService.getAll().subscribe({
                                 next: (categories: any[]) => {
                                     this.categories = categories.filter(
-                                        (category) => !shopFilters.includes(category.filter)
+                                        (category) =>
+                                            !shopFilters.includes(
+                                                category.filter
+                                            )
                                     );
                                     this.selectedCategory = this.categories[0];
                                 },
                                 error: (error: any) => {
                                     console.log(error);
-                                }
-                            });
-    
-                            // Charger les produits du shop sélectionné
-                            this.productService.getProductsByShop(this.shops[0]._id).subscribe({
-                                next: (products: any[]) => {
-                                    this.myArticlesData = products;
                                 },
-                                error: (error: any) => {
-                                    console.log(error);
-                                }
                             });
+
+                            // Charger les produits du shop sélectionné
+                            this.productService
+                                .getProductsByShop(this.shops[0]._id)
+                                .subscribe({
+                                    next: (products: any[]) => {
+                                        this.myArticlesData = products;
+                                    },
+                                    error: (error: any) => {
+                                        console.log(error);
+                                    },
+                                });
+
+                            // Charger les données du shop après la sélection
+                            this.shopService.loadShopData(this.shops[0]._id);
                         }
                     },
                     error: (error: any) => {
                         console.log(error);
-                    }
+                    },
                 });
             },
             error: (error: any) => {
                 console.log(error);
+            },
+        });
+    }
+
+    onShopUpdated(shopId: string): void {
+        // Recharger les données du shop mis à jour
+        this.shopService.loadShopData(shopId);
+    
+        console.log('Shop mis à jour :', shopId);
+        // Optionnel : mettre à jour `myShopData` si nécessaire
+        this.shopService.getById(shopId).subscribe({
+            next: (shopData: any) => {
+                this.myShopData = shopData;
+                console.log('Shop mis à jour et rechargé :', this.myShopData);
+            },
+            error: (error: any) => {
+                console.log('Erreur lors du rechargement du shop :', error);
             }
         });
     }
@@ -120,6 +147,7 @@ export class ProfileComponent implements OnInit {
             console.log('Form is invalid');
         }
     }
+
     onFileChange(event: any) {
         const file = event.target.files[0];
         if (file) {
@@ -209,9 +237,9 @@ export class ProfileComponent implements OnInit {
                 newShopToCreate.name =
                     this.me.firstname + ' ' + this.me.lastname.charAt(0) + '.';
 
-                let categoryToSelect = this.selectedCategory
+                let categoryToSelect = this.selectedCategory;
                 let description = categoryToSelect.descriptionTrad;
-                console.log("description =>" + description);
+                console.log('description =>' + description);
                 newShopToCreate.description = description;
                 newShopToCreate.location = {
                     latitude: 48.6298,

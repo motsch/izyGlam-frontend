@@ -1,8 +1,8 @@
 export const environment = {
     production: true,
     apiUrl: 'https://izyglam-backend-production.up.railway.app/api/',
-    imgStorageUrl: '/assets/images/',
-    // imgStorageUrl: 'https://developpeurfreelance.com/assets/izi/glam/images/',
+    imgStorageUrl: 'assets/images/',
+    APIimgStorageUrl: 'http://localhost:3000/uploads/images/',
     allowedCountries: ['FR'],
     comingSoonCountries: ['EN', 'ES', 'IT', 'NL', 'PT'],
     comingSoonCountriesDate: '2025-01-01',

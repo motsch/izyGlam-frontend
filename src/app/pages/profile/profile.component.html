@@ -132,6 +132,7 @@
           <app-shop-management *ngIf="myShopData && me"
             [myShopData]="myShopData"
             [me]="me"
+            (shopUpdated)="onShopUpdated($event)"
           ></app-shop-management>
         </mat-tab>
         <mat-tab label="Gestion des prestations">

@@ -11,7 +11,7 @@ export class RoundShopCardComponent {
     @Input() promoVisible: boolean = false;
     @Input() promoType: any;
     // env = 'assets/images/';
-    imgStorageUrl: string = environment.imgStorageUrl;
+    imgStorageUrl: string = environment.APIimgStorageUrl;
     /*profile = {
         imgSrc: 'path_to_image.jpg',
         name: 'Olivier',

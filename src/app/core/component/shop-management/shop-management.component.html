@@ -2,7 +2,47 @@
   <div class="form">
     <div class="form-section">
       <div class="column">
-        <label for="name">Nom de la boutique</label>
+        <!-- Affichage de l'image sélectionnée -->
+        <div *ngIf="imageUsed">
+          <label for="imageUpload" class="margin-top-20"
+            >Image de la boutique</label
+          >
+          <img
+            [src]="imageUsed"
+            alt="Aperçu de l'image"
+            class="image-preview small-preview"
+          />
+        </div>
+        <label for="imageUpload" class="margin-top-20"
+          >Télécharger une image</label
+        >
+        <input
+          type="file"
+          id="imageUpload"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          class="input-style"
+        />
+        <div *ngIf="imagePreview">
+          <p class="margin-top-20">Aperçu de l'image :</p>
+          <img
+            [src]="imagePreview"
+            alt="Aperçu de l'image"
+            class="image-preview small-preview"
+          />
+        </div>
+
+        <!-- Bouton pour uploader l'image
+        <button
+          class="btn btn-primary"
+          (click)="uploadImage()"
+          [disabled]="!selectedFile"
+        >
+          Upload Image
+        </button> -->
+      </div>
+      <div class="column">
+        <label for="name" class="margin-top-20">Nom de la boutique</label>
         <input
           disabled
           [(ngModel)]="shopCopyData.name"
@@ -11,92 +51,63 @@
           id="name"
         />
       </div>
-      <div class="column">
-        <label for="imageUpload">Télécharger une image</label>
-        <input
-          type="file"
-          id="imageUpload"
-          (change)="onFileSelected($event)"
-          accept="image/*"
-          class="input-style"
-        />
-
-        <!-- Affichage de l'image sélectionnée -->
-        <div *ngIf="imagePreview">
-          <p>Aperçu de l'image :</p>
-          <img
-            [src]="imagePreview"
-            alt="Aperçu de l'image"
-            class="image-preview small-preview"
-          />
-        </div>
-
-        <!-- Bouton pour uploader l'image -->
-        <button
-          class="btn btn-primary"
-          (click)="uploadImage()"
-          [disabled]="!selectedFile"
-        >
-          Upload Image
-        </button>
-      </div>
     </div>
 
     <div>
-      <label for="description">Description</label>
+      <label for="description"
+        >Description
+        <span *ngIf="shopCopyData.description?.length < 25" class="error-text">
+          (min. 25 caractères)</span
+        ></label
+      >
       <textarea
         [(ngModel)]="shopCopyData.description"
         class="input-style"
         type="text"
         id="description"
+        (ngModelChange)="markFormModified()"
       ></textarea>
     </div>
 
     <div class="form-section">
       <div class="column">
         <label for="ville">Ville</label>
-        <input
+        <select
           [(ngModel)]="shopCopyData.ville"
+          (change)="onCityChange()"
           class="input-style"
-          type="text"
           id="ville"
-        />
-      </div>
-      <div class="column">
-        <label for="imageUpload">Télécharger une image</label>
-        <input
-          type="file"
-          id="imageUpload"
-          (change)="onFileSelected($event)"
-          accept="image/*"
-          class="input-style"
-        />
-
-        <!-- Affichage de l'image sélectionnée -->
-        <div *ngIf="imagePreview">
-          <p>Aperçu de l'image :</p>
-          <img
-            [src]="imagePreview"
-            alt="Aperçu de l'image"
-            class="image-preview small-preview"
-          />
-        </div>
-
-        <!-- Bouton pour uploader l'image -->
-        <button
-          class="btn btn-primary"
-          (click)="uploadImage()"
-          [disabled]="!selectedFile"
         >
-          Upload Image
-        </button>
+          <option *ngFor="let ville of villes" [value]="ville">
+            {{ ville }}
+          </option>
+        </select>
+      </div>
+
+      <div class="column">
+        <label for="arrondissements">Arrondissements</label>
+        <select
+          [(ngModel)]="shopCopyData.district"
+          (change)="onDistrictChange()"
+          class="input-style"
+          id="arrondissements"
+        >
+          <option
+            *ngFor="let arr of filteredArrondissements"
+            [value]="arr.name"
+          >
+            {{ arr.name }}
+          </option>
+        </select>
       </div>
     </div>
 
+    <!-- Coordonnées -->
     <div class="form-section">
       <div class="column">
         <label for="latitude">Latitude</label>
         <input
+          disabled
           [(ngModel)]="shopCopyData?.location.latitude"
           class="input-style"
           type="number"
@@ -106,13 +117,26 @@
       <div class="column">
         <label for="longitude">Longitude</label>
         <input
+          disabled
           [(ngModel)]="shopCopyData?.location.longitude"
           class="input-style"
           type="number"
           id="longitude"
         />
       </div>
+      <div class="column">
+        <label for="longitude">Zone de déplacement (km)</label>
+        <input
+          [(ngModel)]="shopCopyData.maxDistance"
+          class="input-style"
+          type="number"
+          id="maxDistance"
+          (ngModelChange)="markFormModified()"
+        />
+      </div>
     </div>
+
+    <!-- Horaires -->
     <h2>Horaires d'ouverture</h2>
     <div class="form-section">
       <div class="column">
@@ -122,6 +146,7 @@
           id="morningStart"
           class="input-style"
           [(ngModel)]="shopCopyData.hours.morning.start"
+          (ngModelChange)="markFormModified()"
         />
       </div>
       <div class="column">
@@ -131,10 +156,12 @@
           id="morningEnd"
           class="input-style"
           [(ngModel)]="shopCopyData.hours.morning.end"
+          (ngModelChange)="markFormModified()"
         />
       </div>
     </div>
 
+    <!-- Après-midi -->
     <div class="form-section">
       <div class="column">
         <label for="afternoonStart">Après-midi - Ouverture</label>
@@ -143,6 +170,7 @@
           id="afternoonStart"
           class="input-style"
           [(ngModel)]="shopCopyData.hours.afternoon.start"
+          (ngModelChange)="markFormModified()"
         />
       </div>
       <div class="column">
@@ -152,12 +180,18 @@
           id="afternoonEnd"
           class="input-style"
           [(ngModel)]="shopCopyData.hours.afternoon.end"
+          (ngModelChange)="markFormModified()"
         />
       </div>
     </div>
 
+    <!-- Bouton de validation -->
     <div class="form-actions">
-      <button (click)="saveShop()" type="submit" class="btn btn-primary">
+      <button
+        [disabled]="!formValid || !formModified"
+        (click)="saveShop()"
+        class="btn btn-primary"
+      >
         Enregistrer la boutique
       </button>
     </div>

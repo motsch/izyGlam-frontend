@@ -1,7 +1,7 @@
 <div class="profile-card">
     <div class="image-container">
         <img class="main-image" [src]="imgStorageUrl+profile.image" alt="profile image">
-        <img *ngIf="promoVisible" class="overlay-image" [src]="imgStorageUrl+'profile/promo'+profile.promo.type+'.png'"
+        <img *ngIf="promoVisible" class="overlay-image" [src]="imgStorageUrl+'promo'+profile.promo.type+'.png'"
             alt="overlay image">
     </div>
     <div class="profile-info">

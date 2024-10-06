@@ -1,15 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
 })
 export class ShopService {
+    private shopDataSubject = new BehaviorSubject<any>(null);
     constructor(private http: HttpClient) {}
 
+  // Appel à l'API pour récupérer les données du shop
+  loadShopData(id: string): void {
+    this.http.get(`/api/shop/${id}`).subscribe(
+      (data: any) => {
+        this.shopDataSubject.next(data);
+      },
+      (error) => {
+        console.error('Erreur lors du chargement des données du shop:', error);
+      }
+    );
+  }
+
+  // Retourne un observable pour que le parent ou l'enfant puisse s'abonner aux données du shop
+  getShopData(): Observable<any> {
+    return this.shopDataSubject.asObservable();
+  }
     /**
      * Récupérer toutes les shops
      */
@@ -21,7 +38,7 @@ export class ShopService {
      * Récupérer un shops par son ID
      * @param id (ID du shop)
      */
-    getById(id: number) {
+    getById(id: string) {
         return this.http.get<any>(`${environment.apiUrl}shop/${id}`);
     }
 
