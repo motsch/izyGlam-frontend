@@ -1,0 +1,15 @@
+<div>
+  <h2>Galerie de la boutique</h2>
+
+  <!-- Affichage des images de la galerie -->
+  <div *ngIf="galleryImages.length > 0">
+    <div *ngFor="let image of galleryImages" class="gallery-item">
+      <img [src]="image" alt="Image de la galerie" class="gallery-image" />
+    </div>
+  </div>
+
+  <!-- Formulaire pour uploader des images -->
+  <input type="file" multiple (change)="onFilesSelected($event)" />
+
+  <p *ngIf="galleryImages.length === 0">Aucune image dans la galerie.</p>
+</div>

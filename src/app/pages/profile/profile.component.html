@@ -129,7 +129,8 @@
       <mat-tab-group>
         <mat-tab label="Informations générales" color="primary">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
-          <app-shop-management *ngIf="myShopData && me"
+          <app-shop-management
+            *ngIf="myShopData && me"
             [myShopData]="myShopData"
             [me]="me"
             (shopUpdated)="onShopUpdated($event)"
@@ -141,6 +142,14 @@
             [myArticlesData]="myArticlesData"
             [me]="me"
           ></app-shop-articles-management>
+        </mat-tab>
+        <mat-tab label="Galerie photos">
+          <!-- Ajouter le contenu lié à la confidentialité ici -->
+          <app-shop-photo-gallery
+            *ngIf="myShopData && me"
+            [myShopData]="myShopData"
+            [me]="me"
+          ></app-shop-photo-gallery>
         </mat-tab>
         <mat-tab label="Suivi financier">
           <app-finance [myShopData]="myShopData" [me]="me"></app-finance>

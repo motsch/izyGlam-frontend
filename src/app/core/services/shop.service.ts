@@ -77,6 +77,26 @@ export class ShopService {
         return this.http.get<any[]>(`${environment.apiUrl}shops/user/${userId}`);
     }
 
+    /**
+     * Uploader des images pour la galerie d'un shop
+     * @param shopId (ID du shop)
+     * @param files (images à uploader)
+     */
+    uploadGalleryImages(shopId: string, files: File[]): Observable<any> {
+        const formData: FormData = new FormData();
+        files.forEach(file => formData.append('gallery', file));  // Ajoute chaque fichier à la FormData
+
+        return this.http.post<any>(`${environment.apiUrl}shop/${shopId}/gallery/upload`, formData);
+    }
+
+    /**
+     * Récupérer les images de la galerie d'un shop
+     * @param shopId (ID du shop)
+     */
+    getGalleryImages(shopId: string): Observable<any[]> {
+        return this.http.get<any[]>(`${environment.apiUrl}shop/${shopId}/gallery`);
+    }
+
     getShopsNearby(
         clientLatitude: number,
         clientLongitude: number
