@@ -98,4 +98,6 @@ h2 {
   width: 150px; /* Largeur de l'image */
   height: auto; /* Ajuste automatiquement la hauteur en fonction de la largeur */
   border: 1px solid #ccc; /* Optionnel : ajoute une bordure pour rendre l'aperçu plus joli */
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

@@ -58,6 +58,7 @@ import { CreateCompanyComponent } from './component/create-company/create-compan
 import { CreateCompanyStepComponent } from './component/create-company-step/create-company-step.component';
 import { NewShopModalComponent } from './component/new-shop-modal/new-shop-modal.component';
 import { AgendaComponent, ContentCalendarItemDialog } from './component/agenda/agenda.component';
+import { ShopPhotoGalleryComponent } from './component/shop-photo-gallery/shop-photo-gallery.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -160,6 +161,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AgendaComponent,
         ContentCalendarItemDialog,
         NewShopModalComponent,
+        ShopPhotoGalleryComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -191,6 +193,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CreateCompanyStepComponent,
         NewShopModalComponent,
         AgendaComponent,
+        ShopPhotoGalleryComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })

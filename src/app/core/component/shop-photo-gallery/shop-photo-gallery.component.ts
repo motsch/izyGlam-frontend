@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ShopService } from '../../services/shop.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-shop-photo-gallery',
@@ -11,33 +12,47 @@ export class ShopPhotoGalleryComponent {
     @Input() me: any = {};
     galleryImages: string[] = []; // Stocke les images de la galerie
 
-  constructor(private shopService: ShopService) {}
-  ngOnInit() {
-    // Récupère les images de la galerie au chargement du composant
-    this.shopService.getGalleryImages(this.myShopData._id).subscribe(
-      (images) => {
-        this.galleryImages = images;
-      },
-      (error) => {
-        console.error('Erreur lors du chargement des images de la galerie:', error);
-      }
-    );
-  }
+    constructor(private shopService: ShopService) {}
+    ngOnInit() {
+      // Rafraîchir la galerie
+      this.setGalleryImages();
+    }
 
-  // Méthode pour uploader des images
-  onFilesSelected(event: any): void {
-    const files: File[] = Array.from(event.target.files); // Sélectionne les fichiers
-    this.shopService.uploadGalleryImages(this.myShopData._id, files).subscribe(
-      (response) => {
-        console.log('Images uploadées avec succès:', response);
-        // Rafraîchir la galerie après l'upload
-        this.shopService.getGalleryImages(this.myShopData._id).subscribe((images) => {
-          this.galleryImages = images;
-        });
-      },
-      (error) => {
-        console.error('Erreur lors de l\'upload des images:', error);
-      }
-    );
-  }
+    // Méthode pour uploader des images
+    onFilesSelected(event: any): void {
+        const files: File[] = Array.from(event.target.files); // Récupérer les fichiers sélectionnés
+        this.shopService.uploadGalleryImages(this.myShopData._id, files).subscribe(
+            (response) => {
+                console.log('Images uploadées avec succès:', response);
+                // Rafraîchir la galerie après l'upload
+                this.setGalleryImages();
+            },
+            (error) => {
+                console.error("Erreur lors de l'upload des images:", error);
+            }
+        );
+    }
+
+    setGalleryImages(): void {
+        // Récupère les images de la galerie au chargement du composant
+        this.shopService.getGalleryImages(this.myShopData._id).subscribe(
+          (images:any) => {
+            for (let elem of images.galleryImages) {
+              // Générer l'URL complète pour chaque image
+              elem = environment.APIimgStorageUrl + elem.replace(/^\/+/, '');
+              console.log('elem:', elem); // Ici, les URLs sont correctes dans la console
+            }
+            
+            // Ensuite, mettre à jour le tableau des images avec les URLs complètes
+            this.galleryImages = images.galleryImages.map((img:any) => environment.APIimgStorageUrl + img.replace(/^\/+/, ''));
+            console.log('Images de la galerie:', this.galleryImages);
+          },
+          (error) => {
+              console.error(
+                  'Erreur lors du chargement des images de la galerie:',
+                  error
+              );
+          }
+      );
+    }
 }

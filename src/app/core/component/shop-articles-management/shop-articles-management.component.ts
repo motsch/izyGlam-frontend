@@ -2,6 +2,7 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ShopService } from '../../services/shop.service';
 import { ProductService } from '../../services/product.service';
 import { ColorService } from '../../services/color.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-shop-articles-management',
@@ -17,7 +18,11 @@ export class ShopArticlesManagementComponent implements OnInit {
     articlesCopyData: any[] = [];
     modalService: any = {};
     colors: any[] = [];
-    selectedColor: string = '';  
+    selectedColor: string = '';
+    imgStorageUrl: string = environment.imgStorageUrl;
+    imageUsed: string | null = null;
+    selectedFile: File | null = null;
+    imagePreview: string | null = null;
 
     constructor(private productService: ProductService, private colorService: ColorService) {}
 
@@ -35,6 +40,19 @@ export class ShopArticlesManagementComponent implements OnInit {
                 console.log(error);
             },
         });
+    }
+
+    onFileSelected(event: any): void {
+        const file: File = event.target.files[0];
+        if (file) {
+            this.selectedFile = file;
+
+            const reader = new FileReader();
+            reader.onload = () => {
+                this.imagePreview = reader.result as string;
+            };
+            reader.readAsDataURL(file);
+        }
     }
 
     selectColor(color: string) {
@@ -68,6 +86,7 @@ export class ShopArticlesManagementComponent implements OnInit {
     openModal(service?: any): void {
         console.log('OPEN MODAL');
         this.modalOpen = true;
+        this.imageUsed = environment.APIimgStorageUrl + service.image;
         let coloSelected =this.colors.find((x: any) => x.selected === true);
         coloSelected = false;
             for (let elem of this.colors) {

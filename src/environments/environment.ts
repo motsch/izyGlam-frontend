@@ -6,7 +6,7 @@ export const environment = {
     production: false,
     apiUrl: 'http://localhost:3000/api/',
     imgStorageUrl: 'assets/images/',
-    APIimgStorageUrl: 'http://localhost:3000/uploads/images/',
+    APIimgStorageUrl: 'http://localhost:3000/',
     allowedCountries: ['FR'],
     comingSoonCountries: ['DE', 'ES', 'IT', 'NL', 'PT'],
     comingSoonCountriesDate: '2026-01-01',

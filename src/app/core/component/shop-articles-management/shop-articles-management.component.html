@@ -17,6 +17,7 @@
         <th>Couleur</th>
         <th>Prix</th>
         <th>Durée</th>
+        <th>Image</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -29,6 +30,7 @@
         </td>
         <td>{{ service.price | currency : "EUR" }}</td>
         <td>{{ service.duration }} minutes</td>
+        <td><img class="image_table" [src]="imgStorageUrl + service.image" alt="image de service" /></td>
         <td>
           <button
             class="btn btn-warning action-btn"
@@ -118,6 +120,49 @@
               required
             />
           </div>
+          
+    <div class="form-group">
+      <div class="column">
+        <!-- Affichage de l'image sélectionnée -->
+        <div *ngIf="imageUsed">
+          <label for="imageUpload" class="margin-top-20"
+            >Image de la boutique</label
+          >
+          <img
+            [src]="imageUsed"
+            alt="Aperçu de l'image"
+            class="image-preview small-preview"
+          />
+        </div>
+        <label for="imageUpload" class="margin-top-20"
+          >Télécharger une image</label
+        >
+        <input
+          type="file"
+          id="imageUpload"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          class="input-style"
+        />
+        <div *ngIf="imagePreview">
+          <p class="margin-top-20">Aperçu de l'image :</p>
+          <img
+            [src]="imagePreview"
+            alt="Aperçu de l'image"
+            class="image-preview small-preview"
+          />
+        </div>
+
+        <!-- Bouton pour uploader l'image
+        <button
+          class="btn btn-primary"
+          (click)="uploadImage()"
+          [disabled]="!selectedFile"
+        >
+          Upload Image
+        </button> -->
+      </div>
+    </div>
           <label for="serviceDuration">Couleur de la prestation :</label>
           <div class="color-dots">
             <div 

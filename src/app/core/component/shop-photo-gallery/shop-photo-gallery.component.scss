@@ -1,0 +1,11 @@
+.gallery-item {
+    display: inline-block;
+    margin: 10px;
+}
+
+.gallery-image {
+    width: 200px;
+    height: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}

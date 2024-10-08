@@ -95,10 +95,10 @@
     <div class="top-bar">
       <h3>{{ "MAIN_PAGE.DISCOVER" | translate }}</h3>
       <div class="scroll-buttons">
-        <button class="scroll-btn left-btn" (click)="scrollLeft('category')">
+        <button class="scroll-btn left-btn" (click)="scrollLeft('discover')">
           <i class="fa fa-chevron-left"></i>
         </button>
-        <button class="scroll-btn right-btn" (click)="scrollRight('category')">
+        <button class="scroll-btn right-btn" (click)="scrollRight('discover')">
           <i class="fa fa-chevron-right"></i>
         </button>
       </div>
@@ -107,7 +107,7 @@
       <div
         *ngIf="filteredItemsAdecouvrir.length > 0"
         class="category-list"
-        #scrollContainerCategory
+        #scrollContainerDiscover
       >
         <app-round-shop-card
           *ngFor="let item of filteredItemsAdecouvrir"
@@ -212,10 +212,10 @@
     <div class="top-bar">
       <h3>{{ "MAIN_PAGE.SMART" | translate }}</h3>
       <div class="scroll-buttons">
-        <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
+        <button class="scroll-btn left-btn" (click)="scrollLeft('smart')">
           <i class="fa fa-chevron-left"></i>
         </button>
-        <button class="scroll-btn right-btn" (click)="scrollRight('around')">
+        <button class="scroll-btn right-btn" (click)="scrollRight('smart')">
           <i class="fa fa-chevron-right"></i>
         </button>
       </div>
@@ -224,7 +224,7 @@
       <div
         *ngIf="filteredItemsMalin.length > 0"
         class="category-list"
-        #scrollContainerAround
+        #scrollContainerSmart
       >
         <!--<app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>-->
         <app-round-shop-card

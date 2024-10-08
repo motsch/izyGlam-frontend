@@ -107,11 +107,14 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
     ngOnInit(): void {
         if (this.myShopData && Object.keys(this.myShopData).length > 0) {
+            console.log(this.myShopData.image);
             console.log(this.myShopData);
             this.shopCopyData = { ...this.myShopData };
             this.imageUsed =
-                environment.APIimgStorageUrl + this.shopCopyData.image;
-            console.log('shopCopyData initialisé :', this.shopCopyData);
+                environment.APIimgStorageUrl +
+                'uploads/images/' +
+                this.shopCopyData.image;
+            console.log('shopCopyData initialisé :', this.shopCopyData.image);
 
             // this.onCityChange();
         }
@@ -120,8 +123,13 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['myShopData'] && changes['myShopData'].currentValue) {
             this.shopCopyData = { ...this.myShopData };
+
             this.imageUsed =
-                environment.APIimgStorageUrl + this.shopCopyData.image;
+                environment.APIimgStorageUrl +
+                'uploads/images/' +
+                this.shopCopyData.image;
+
+                console.log('imageUsed :', this.imageUsed);
             this.onCityChange();
         }
     }
@@ -268,6 +276,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
                             console.log(data);
                             this.shopCopyData = { ...data };
                             this.myShopData = { ...data };
+
                             this.imageUsed =
                                 environment.APIimgStorageUrl +
                                 this.shopCopyData.image;

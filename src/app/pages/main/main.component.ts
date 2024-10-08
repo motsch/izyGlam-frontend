@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/core/services/category.service';
-import { DrawerService } from 'src/app/core/services/drawer.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { environment } from 'src/environments/environment';
@@ -25,11 +24,14 @@ export class MainComponent implements OnInit {
     // Tableau des catégories disponibles pour le filtrage
     // Chaque catégorie est représentée par un objet contenant son nom, une icône et un identifiant de filtre
     // ... liste des catégories ...
-    categoriesFilter:any[] = [];
+    categoriesFilter: any[] = [];
     shops: any[] = []; // Tableau pour stocker les informations des boutiques récupérées de l'API
 
     // Références aux éléments du DOM pour gérer le défilement des conteneurs de contenu
     @ViewChild('scrollContainerCategory') private scrollContainerCategory:
+        | ElementRef
+        | undefined;
+    @ViewChild('scrollContainerDiscover') private scrollContainerDiscover:
         | ElementRef
         | undefined;
     @ViewChild('scrollContainerAround') private scrollContainerAround:
@@ -39,6 +41,9 @@ export class MainComponent implements OnInit {
         | ElementRef
         | undefined;
     @ViewChild('scrollContainerTop10') private scrollContainerTop10:
+        | ElementRef
+        | undefined;
+    @ViewChild('scrollContainerSmart') private scrollContainerSmart:
         | ElementRef
         | undefined;
 
@@ -132,6 +137,12 @@ export class MainComponent implements OnInit {
                     behavior: 'smooth',
                 });
                 break;
+            case 'discover':
+                this.scrollContainerDiscover!.nativeElement.scrollBy({
+                    left: -this.calculateScrollAmount(),
+                    behavior: 'smooth',
+                });
+                break;
             case 'around':
                 this.scrollContainerAround!.nativeElement.scrollBy({
                     left: -this.calculateScrollAmount(),
@@ -150,6 +161,12 @@ export class MainComponent implements OnInit {
                     behavior: 'smooth',
                 });
                 break;
+            case 'smart':
+                this.scrollContainerSmart!.nativeElement.scrollBy({
+                    left: -this.calculateScrollAmount(),
+                    behavior: 'smooth',
+                });
+                break;
         }
     }
 
@@ -157,6 +174,12 @@ export class MainComponent implements OnInit {
         switch (type) {
             case 'category':
                 this.scrollContainerCategory!.nativeElement.scrollBy({
+                    left: this.calculateScrollAmount(),
+                    behavior: 'smooth',
+                });
+                break;
+            case 'discover':
+                this.scrollContainerDiscover!.nativeElement.scrollBy({
                     left: this.calculateScrollAmount(),
                     behavior: 'smooth',
                 });
@@ -169,6 +192,12 @@ export class MainComponent implements OnInit {
                 break;
             case 'promo':
                 this.scrollContainerPromo!.nativeElement.scrollBy({
+                    left: this.calculateScrollAmount(),
+                    behavior: 'smooth',
+                });
+                break;
+            case 'smart':
+                this.scrollContainerSmart!.nativeElement.scrollBy({
                     left: this.calculateScrollAmount(),
                     behavior: 'smooth',
                 });
