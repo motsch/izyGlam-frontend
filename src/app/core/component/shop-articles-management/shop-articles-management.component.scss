@@ -53,6 +53,7 @@
   height: 50px;
   border-radius: 14px;
   margin-right: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .color-preview {
@@ -69,7 +70,7 @@ select {
 
 .btn {
   margin-right: 5px;
-  border-radius: 50%; /* Rendre les boutons ronds */
+  // border-radius: 50%; /* Rendre les boutons ronds */
   width: 35px; /* Réduction de la taille des boutons */
   height: 35px; /* Réduction de la taille des boutons */
   display: flex;
@@ -94,9 +95,13 @@ select {
 }
 
 .btn-warning {
-  background-color: #ffc107; /* Teinte plus douce pour le bouton de modification */
+  background-color: #ffffff; /* Teinte plus douce pour le bouton de modification */
   border: none;
-  color: white;
+  color: #ff6b6b;
+}
+
+.btn-warning:hover {
+  background-color: #ffffff; /* Teinte plus douce pour le bouton de modification */
 }
 
 .btn-danger {
@@ -115,15 +120,51 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.action-btn {
+.no_photo {
+  font-size: 14px;
+  color: red;
+}
+.delete-button {
+  color: white;
+  background-color: #ff6b6b;
   border-radius: 50%;
-  width: 35px; /* Taille ajustée */
+  height: 26px;
+  width: 26px;
+}
+.align-center {
+  display: flex;
+  flex-direction: column; /* Pour empiler les boutons verticalement */
+  justify-content: center; /* Centre verticalement */
+  align-items: center; /* Centre horizontalement */
+  height: 100%; /* Assure que le contenu occupe toute la hauteur */
+}
+
+.fa-trash {
+  font-size: 14px;
+}
+.create-btn {
+  background-color: #B23A48;
+  color: white;
+  // border-radius: 50%;
+  width: 120px; /* Taille ajustée */
   height: 35px; /* Taille ajustée */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  font-size: 16px; /* Taille ajustée */
+  font-size: 13px; /* Taille ajustée */
+  line-height: 1;
+}
+
+.action-btn {
+  // border-radius: 50%;
+  width: 70px; /* Taille ajustée */
+  height: 35px; /* Taille ajustée */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 13px; /* Taille ajustée */
   line-height: 1;
 }
 
@@ -144,16 +185,21 @@ button:disabled {
   z-index: 1050;
 }
 
+.modal-header {
+  border-bottom: none;
+  height: 30px;
+}
+
 .modal-content {
   background: white;
   padding: 20px;
   border-radius: 5px;
-  width: 90%;
+  width: 100%;
   max-width: 500px;
 }
 
 .modal-dialog {
-  margin-top: 10vh;
+  margin-top: 15vh;
 }
 .modal-footer .btn {
   border-radius: 5px; /* Coins légèrement arrondis */
@@ -181,4 +227,11 @@ button:disabled {
   background-color: #0056b3; /* Couleur de survol pour les boutons */
   transform: none; /* Retirer l'effet de transformation au survol */
   box-shadow: none; /* Retirer l'effet d'ombre au survol */
+}
+
+.image-preview {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 14px;
 }

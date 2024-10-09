@@ -1,13 +1,15 @@
 <div>
-  <!-- Affichage des images de la galerie -->
-  <div *ngIf="galleryImages.length > 0">
-    <div *ngFor="let image of galleryImages" class="gallery-item">
-      <img [src]="image" alt="Image de la galerie" class="gallery-image" />
-    </div>
-  </div>
 
   <!-- Formulaire pour uploader des images -->
   <input type="file" multiple (change)="onFilesSelected($event)" />
+  <!-- Affichage des images de la galerie --><div *ngIf="galleryImages.length > 0">
+  <div *ngFor="let image of galleryImages" class="gallery-item">
+    <img [src]="imgStorageUrl + image" alt="Image de la galerie" class="gallery-image" />
+    <button (click)="deleteImage(image)" class="delete-button">
+      <i class="fa fa-trash"></i> <!-- Icône de la poubelle -->
+    </button>
+  </div>
+</div>
 
   <p *ngIf="galleryImages.length === 0">Aucune image dans la galerie.</p>
 </div>

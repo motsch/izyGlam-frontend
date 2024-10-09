@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { ServiceTemplateService } from 'src/app/core/services/productTemplate.se
 import { environment } from 'src/environments/environment';
 import { ShopTemplateService } from 'src/app/core/services/shop-template.service';
 import { forkJoin } from 'rxjs';
+import { ChatModalComponent } from 'src/app/core/component/chat-modal/chat-modal.component';
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -36,6 +37,7 @@ export class ProfileComponent implements OnInit {
     categories: any[] = [];
     selectedCategory: any = null;
     constructor(
+        private eRef: ElementRef,
         private userService: UserService,
         private companyService: CompanyService,
         private shopService: ShopService,
@@ -121,10 +123,32 @@ export class ProfileComponent implements OnInit {
         });
     }
 
+    openChat(): void {
+        const dialogRef = this.dialog.open(ChatModalComponent, {
+            width: '400px',
+            height: '600px',
+            position: { bottom: '20px', right: '20px' },
+            panelClass: 'custom-modalbox',
+        });
+    }
+
+    onArticleUpdated() {
+        this.productService.getProductsByShop(this.myShopData._id).subscribe({
+            next: (data: any[]) => {
+                console.log('totototo');
+                console.log(data);
+                this.myArticlesData = data;
+                // this.articlesCopyData = [...data];
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        });
+    }
     onShopUpdated(shopId: string): void {
         // Recharger les données du shop mis à jour
         this.shopService.loadShopData(shopId);
-    
+
         console.log('Shop mis à jour :', shopId);
         // Optionnel : mettre à jour `myShopData` si nécessaire
         this.shopService.getById(shopId).subscribe({
@@ -134,7 +158,7 @@ export class ProfileComponent implements OnInit {
             },
             error: (error: any) => {
                 console.log('Erreur lors du rechargement du shop :', error);
-            }
+            },
         });
     }
 

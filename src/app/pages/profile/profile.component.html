@@ -82,7 +82,7 @@
     </div>
     <div *ngIf="isSectionActive('company')" id="company-content">
       <h1>{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
-      <mat-tab-group>
+      <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
         <mat-tab label="Employés affiliés">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
           <app-company-management
@@ -100,8 +100,9 @@
     <div *ngIf="isSectionActive('management')" id="management-content">
       <h1>{{ "PROFILE_MENU.SHOP" | translate }}</h1>
       <div class="row">
-        <div class="col-11 custom-language-selector">
-          <label for="languageSelect">Sélectionnez votre boutique :</label>
+        <div class="col-4"></div>
+        <div class="col-3 custom-language-selector">
+          <label for="languageSelect">Sélectionnez votre salon :</label>
           <div class="select-box">
             <div class="selected" (click)="toggleDropdown()">
               {{ selected?.trad | translate }}
@@ -114,7 +115,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-1 margin-top-50">
+        <div class="col-2 margin-top-40">
           <button
             class="btn btn-primary action-btn"
             title="Créer une boutique"
@@ -122,13 +123,23 @@
             data-bs-toggle="tooltip"
             data-bs-placement="top"
           >
-            <i class="fa fa-plus"></i>
+            Créer un salon
+          </button>
+        </div>
+        <div class="col-3 margin-top-40">
+          <button
+            class="btn btn-secondary"
+            title="Créer une boutique"
+            (click)="openModal()"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+          >
+            Supprimer ce salon
           </button>
         </div>
       </div>
-      <mat-tab-group>
+      <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
         <mat-tab label="Informations générales" color="primary">
-          <!-- Ajouter le contenu lié à la confidentialité ici -->
           <app-shop-management
             *ngIf="myShopData && me"
             [myShopData]="myShopData"
@@ -137,24 +148,25 @@
           ></app-shop-management>
         </mat-tab>
         <mat-tab label="Gestion des prestations">
-          <!-- Ajouter le contenu lié à la confidentialité ici -->
           <app-shop-articles-management
             [myArticlesData]="myArticlesData"
             [me]="me"
+            (articleUpdated)="onArticleUpdated()"
           ></app-shop-articles-management>
         </mat-tab>
         <mat-tab label="Galerie photos">
-          <!-- Ajouter le contenu lié à la confidentialité ici -->
           <app-shop-photo-gallery
             *ngIf="myShopData && me"
             [myShopData]="myShopData"
             [me]="me"
+            (shopUpdated)="onShopUpdated($event)"
           ></app-shop-photo-gallery>
         </mat-tab>
         <mat-tab label="Suivi financier">
           <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
         </mat-tab>
       </mat-tab-group>
+      
     </div>
     <div *ngIf="isSectionActive('admin')" id="admin-content">
       <h1>{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
@@ -163,6 +175,10 @@
     </div>
   </div>
 </div>
+
+<!-- Chat button -->
+<button class="chat-button" (click)="openChat()">Chat</button>
+
 
 <!-- Modal -->
 <div

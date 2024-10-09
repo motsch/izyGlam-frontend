@@ -1,0 +1,11 @@
+<div class="chat-modal">
+    <h2>Chat avec nous</h2>
+    <div class="chat-box">
+      <div *ngFor="let message of messages">
+        <div *ngIf="message.role === 'user'" class="user-message">{{ message.content }}</div>
+        <div *ngIf="message.role === 'assistant'" class="bot-message">{{ message.content }}</div>
+      </div>
+    </div>
+    <input [(ngModel)]="userMessage" type="text" placeholder="Écris ton message ici..." />
+    <button (click)="sendMessage()">Envoyer</button>
+  </div>

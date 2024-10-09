@@ -1,12 +1,11 @@
 <div class="container">
   <button
-    class="btn btn-primary action-btn float-end"
+    class="btn create-btn float-end"
     (click)="openModal()"
     data-bs-toggle="tooltip"
     data-bs-placement="top"
-    matTooltip="Créer un service"
   >
-    <i class="fa fa-plus"></i>
+    Créer un service
   </button>
 
   <table class="table table-striped">
@@ -26,29 +25,37 @@
         <td>{{ service.name }}</td>
         <td>{{ service.description | truncate : 50 }}</td>
         <td>
-          <span class="color-dot" [ngStyle]="{'background-color': service.color}"></span>
+          <span
+            class="color-dot"
+            [ngStyle]="{ 'background-color': service.color }"
+          ></span>
         </td>
         <td>{{ service.price | currency : "EUR" }}</td>
         <td>{{ service.duration }} minutes</td>
-        <td><img class="image_table" [src]="imgStorageUrl + service.image" alt="image de service" /></td>
         <td>
+          <img
+            class="image_table"
+            [src]="imgStorageUrl + service.image"
+            alt="image de service"
+          />
+        </td>
+        <td class="align-center">
           <button
-            class="btn btn-warning action-btn"
+            class="btn create-btn  action-btn"
             (click)="openModal(service)"
             data-bs-toggle="tooltip"
             data-bs-placement="top"
-            matTooltip="Modifier"
           >
-            <i class="fa fa-edit"></i>
+            Mofifier
           </button>
           <button
-            class="btn btn-danger action-btn margin-top-5"
+            class="btn delete-button margin-top-5"
             (click)="deleteService(i)"
             data-bs-toggle="tooltip"
             data-bs-placement="top"
-            matTooltip="Supprimer"
+            [disabled]="articlesCopyData.length <= 1"
           >
-            <i class="fa fa-trash"></i>
+          <i class="fa fa-trash"></i>
           </button>
         </td>
       </tr>
@@ -69,8 +76,8 @@
           <h3 class="modal-title">
             {{
               editingServiceIndex !== null
-                ? "Modifier un service"
-                : "Créer un service"
+                ? "Modifier la prestation " + modalService.type
+                : "Créer une prestation " + creationType
             }}
           </h3>
           <button
@@ -120,40 +127,37 @@
               required
             />
           </div>
-          
-    <div class="form-group">
-      <div class="column">
-        <!-- Affichage de l'image sélectionnée -->
-        <div *ngIf="imageUsed">
-          <label for="imageUpload" class="margin-top-20"
-            >Image de la boutique</label
-          >
-          <img
-            [src]="imageUsed"
-            alt="Aperçu de l'image"
-            class="image-preview small-preview"
-          />
-        </div>
-        <label for="imageUpload" class="margin-top-20"
-          >Télécharger une image</label
-        >
-        <input
-          type="file"
-          id="imageUpload"
-          (change)="onFileSelected($event)"
-          accept="image/*"
-          class="input-style"
-        />
-        <div *ngIf="imagePreview">
-          <p class="margin-top-20">Aperçu de l'image :</p>
-          <img
-            [src]="imagePreview"
-            alt="Aperçu de l'image"
-            class="image-preview small-preview"
-          />
-        </div>
 
-        <!-- Bouton pour uploader l'image
+          <div class="form-group">
+            <div class="form-group">
+              <label for="serviceDescription">Image de la prestation</label>
+              <div *ngIf="imageUsed">
+                <img
+                  [src]="imgStorageUrl + imageUsed"
+                  alt="Aperçu de l'image"
+                  class="image-preview small-preview"
+                />
+              </div>
+              <div *ngIf="!imageUsed" class="no_photo">Pas encore de photo</div>
+            </div>
+            <p class="margin-top-20">Télécharger une image :</p>
+            <input
+              type="file"
+              id="imageUpload"
+              (change)="onFileSelected($event)"
+              accept="image/*"
+              class="input-style"
+            />
+            <div *ngIf="imagePreview">
+              <p class="margin-top-20">Aperçu de la nouvelle image :</p>
+              <img
+                [src]="imagePreview"
+                alt="Aperçu de l'image"
+                class="image-preview small-preview"
+              />
+            </div>
+
+            <!-- Bouton pour uploader l'image
         <button
           class="btn btn-primary"
           (click)="uploadImage()"
@@ -161,17 +165,16 @@
         >
           Upload Image
         </button> -->
-      </div>
-    </div>
+          </div>
           <label for="serviceDuration">Couleur de la prestation :</label>
           <div class="color-dots">
-            <div 
+            <div
               *ngFor="let color of colors"
               class="color-dot-selection pointer"
               [ngClass]="color.selected ? 'selected' : ''"
-              [ngStyle]="{'background-color': color.hex}"
-              (click)="selectColor(color.hex)">
-            </div>
+              [ngStyle]="{ 'background-color': color.hex }"
+              (click)="selectColor(color.hex)"
+            ></div>
           </div>
         </div>
         <div class="modal-footer">

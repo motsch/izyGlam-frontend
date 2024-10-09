@@ -10,6 +10,10 @@ export class ShopTemplateService {
 
   constructor(private http: HttpClient) {}
 
+  getUniqueServiceTemplatesByType() {
+    return this.http.get<any[]>(`${environment.apiUrl}serviceTemplateUniqueByType`);
+  }
+
   // Créer un nouveau serviceTemplate
   createServiceTemplate(serviceTemplate: any) {
     return this.http.get<any[]>(`${environment.apiUrl}serviceTemplate`, serviceTemplate);

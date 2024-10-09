@@ -10,7 +10,7 @@ import { RdvModalComponent } from '../rdv-modal/rdv-modal.component';
 })
 export class ShopItemCardComponent {
     @Input() item: any;
-    imgStorageUrl: string = environment.imgStorageUrl;
+    imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
    
     constructor(
         public dialog: MatDialog

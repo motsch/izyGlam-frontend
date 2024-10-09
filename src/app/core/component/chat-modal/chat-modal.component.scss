@@ -1,0 +1,30 @@
+.chat-box {
+    height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .user-message {
+    text-align: right;
+    background-color: #007bff;
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    max-width: 80%;
+  }
+  
+  .bot-message {
+    text-align: left;
+    background-color: #e0e0e0;
+    color: black;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    max-width: 80%;
+  }
+  

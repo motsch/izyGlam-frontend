@@ -1,5 +1,6 @@
 .gallery-item {
     display: inline-block;
+    position: relative; /* Pour positionner le bouton au-dessus de l'image */
     margin: 10px;
 }
 
@@ -9,3 +10,29 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
 }
+
+
+  .delete-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #ff6b6b;
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .delete-button i {
+    font-size: 16px; /* Taille de l'icône */
+  }
+  
+  .delete-button:hover {
+    background-color: #9f4444; /* Couleur plus foncée au survol */
+  }
+  

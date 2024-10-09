@@ -1,4 +1,4 @@
-.pizza-card {
+.article-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,12 +12,12 @@
   padding-top: 15px !important;
 }
 
-.pizza-info {
+.article-info {
   flex: 1;
   padding-top: 10px;
 }
 
-.pizza-info h3 {
+.article-info h3 {
   display: flex;
   align-items: center;
   margin: 0;
@@ -25,36 +25,36 @@
   color: #B23A48;
 }
 
-.pizza-info .icon-cheese,
-.pizza-info .icon-flag {
+.article-info .icon-cheese,
+.article-info .icon-flag {
   margin-left: 5px;
 }
 
-.pizza-info .price {
+.article-info .price {
   font-weight: normal;
   margin-top: 10px;
 }
 
-.pizza-info .rating {
+.article-info .rating {
   color: #888;
 }
 
-.pizza-info .description {
+.article-info .description {
   color: #666;
 }
 
-.pizza-info .offer {
+.article-info .offer {
   color: green;
   font-weight: bold;
 }
 
-.pizza-image {
+.article-image {
   position: relative;
 }
 
-.pizza-image img {
-  width: 150px;
-  height: 150px;
+.article-image img {
+  width: 120px;
+  height: auto;
   border-radius: 8px;
 }
 

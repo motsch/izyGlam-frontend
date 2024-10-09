@@ -9,6 +9,34 @@ export class ProductService {
     constructor(private http: HttpClient) {}
 
     /**
+     * Uploader une image pour la galerie d'un shop
+     * @param shopId (ID du shop)
+     * @param file (image à uploader)
+     */
+    uploadGalleryImages(shopId: string, file: File) {
+        const formData: FormData = new FormData();
+
+        // Ajouter le fichier au FormData
+        formData.append('gallery', file); // On n'a plus besoin de boucle, juste un seul fichier
+
+        // Envoyer la requête HTTP POST avec l'image
+        return this.http.post<any>(
+            `${environment.apiUrl}service-gallery/${shopId}/gallery/upload`,
+            formData
+        );
+    }
+
+    /**
+     * Récupérer les images de la galerie d'un shop
+     * @param shopId (ID du shop)
+     */
+    getGalleryImages(shopId: string) {
+        return this.http.get<any>(
+            `${environment.apiUrl}service-gallery/${shopId}/gallery`
+        );
+    }
+
+    /**
      * Récupérer toutes les products
      */
     getAll() {
@@ -16,7 +44,9 @@ export class ProductService {
     }
 
     getProductsByShop(shopId: string) {
-        return this.http.get<any[]>(`${environment.apiUrl}shop/${shopId}/services`);
+        return this.http.get<any[]>(
+            `${environment.apiUrl}shop/${shopId}/services`
+        );
     }
 
     /**
@@ -40,15 +70,21 @@ export class ProductService {
      * @param products (tableau de données des products à créer)
      */
     createMultiple(products: any[]) {
-        return this.http.post<any[]>(environment.apiUrl + 'services/multiple', products);
+        return this.http.post<any[]>(
+            environment.apiUrl + 'services/multiple',
+            products
+        );
     }
 
     /**
      * Mettre à jour un product par son ID
      * @param product (données du product à mettre à jour)
      */
-    update(product: any) {
-        return this.http.put<any>(`${environment.apiUrl}service/${product._id}`, product);
+    update(serviceId: string, product: any) {
+        return this.http.put<any>(
+            `${environment.apiUrl}service/${serviceId}`,
+            product
+        );
     }
 
     /**

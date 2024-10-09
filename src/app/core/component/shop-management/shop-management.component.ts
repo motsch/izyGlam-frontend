@@ -233,24 +233,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         this.markFormModified();
     }
 
-    uploadImage(): void {
-        if (this.selectedFile) {
-            this.imageService.uploadImage(this.selectedFile).subscribe(
-                (response) => {
-                    console.log(
-                        'Image uploadée avec succès : ',
-                        response.imageUrl
-                    );
-                },
-                (error) => {
-                    console.error(
-                        "Erreur lors de l'upload de l'image : ",
-                        error
-                    );
-                }
-            );
-        }
-    }
 
     saveShop(): void {
         this.myShopData = this.shopCopyData;
