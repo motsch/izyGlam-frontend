@@ -91,6 +91,15 @@
     <span>
       <app-header [connected]="sessionService.isLoggedIn()"></app-header>
     </span>
+    
+
+<!-- Chat button -->
+<img 
+src="assets/images/chat/lizy.png" 
+alt="Lizy Chat Icon" 
+class="chat-button" 
+(click)="openChat()"
+/>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

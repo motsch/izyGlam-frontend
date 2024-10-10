@@ -60,6 +60,7 @@ import { NewShopModalComponent } from './component/new-shop-modal/new-shop-modal
 import { AgendaComponent, ContentCalendarItemDialog } from './component/agenda/agenda.component';
 import { ShopPhotoGalleryComponent } from './component/shop-photo-gallery/shop-photo-gallery.component';
 import { ChatModalComponent } from './component/chat-modal/chat-modal.component';
+import { AiMarkdownPipe } from './pipe/aiMarkDown.pipe';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -70,6 +71,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
  */
 @NgModule({
     imports: [
+        // AiMarkdownPipe,
         NgbModule,
         CommonModule,
         BrowserModule,
@@ -119,6 +121,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         }),
     ],
     declarations: [
+        AiMarkdownPipe,
         PageNotFoundComponent,
         FilterByString,
         TruncatePipe,

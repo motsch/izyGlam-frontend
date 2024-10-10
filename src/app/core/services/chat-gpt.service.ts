@@ -13,14 +13,10 @@ export class ChatGptService {
 
   constructor(private http: HttpClient) {}
 
-  sendMessage(prompt: string): Observable<any> {
-    // Préparer les en-têtes si nécessaire (par exemple pour l'authentification)
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      // 'Authorization': `Bearer ${token}` // Ajouter un token si nécessaire
-    });
 
-    // Appel POST vers ton backend avec le prompt
-    return this.http.post<any>(this.apiUrl, { prompt }, { headers });
+  // Ajout de l'historique dans la requête
+  sendMessage(prompt: string, history: any[]): Observable<any> {
+    const body = { prompt, history };  // Envoie du message et de l'historique
+    return this.http.post<any>(this.apiUrl, body);
   }
 }

@@ -6,6 +6,9 @@ import { UserService } from './core/services/user.service';
 import { Router } from '@angular/router';
 import { CartService } from './core/services/cart.service';
 import { environment } from 'src/environments/environment';
+import { ShopTemplateService } from './core/services/shop-template.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ChatModalComponent } from './core/component/chat-modal/chat-modal.component';
 
 @Component({
     selector: 'app-root',
@@ -23,7 +26,8 @@ export class AppComponent implements OnInit {
         public userService: UserService,
         private drawerService: DrawerService,
         private cartService: CartService,
-        private router: Router
+        private router: Router,
+        public dialog: MatDialog,
     ) {
         translate.addLangs([
             'de',
@@ -68,6 +72,15 @@ export class AppComponent implements OnInit {
                 console.log(error);
             }
         })
+    }
+    
+    openChat(): void {
+        const dialogRef = this.dialog.open(ChatModalComponent, {
+            width: '400px',
+            height: '600px',
+            position: { bottom: '20px', right: '20px' },
+            panelClass: 'custom-modalbox',
+        });
     }
 
     onDrawerStateChange(isOpen: boolean) {

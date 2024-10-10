@@ -165,3 +165,22 @@
 .menu-hover {
   padding-left: 2vw !important;
 }
+
+/* Chat button (now an image) */
+.chat-button {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  width: 100px;  /* Largeur de l'image */
+  height: auto;  /* Hauteur de l'image */
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  object-fit: contain; /* Important : Cela permet d'ajuster l'image à l'intérieur du conteneur sans la couper */
+  background-color: transparent; /* Assure un fond transparent */
+  background: none; /* Supprime tout fond ajouté par défaut */
+}
+
+.chat-button:hover {
+  transform: scale(1.1); /* Agrandissement léger au survol */
+}

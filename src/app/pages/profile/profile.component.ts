@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
         private shopService: ShopService,
         private productService: ProductService,
         private router: Router,
-        public dialog: MatDialog,
         private categoryService: CategoryService,
         private shopTemplateService: ShopTemplateService
     ) {}
@@ -123,14 +122,6 @@ export class ProfileComponent implements OnInit {
         });
     }
 
-    openChat(): void {
-        const dialogRef = this.dialog.open(ChatModalComponent, {
-            width: '400px',
-            height: '600px',
-            position: { bottom: '20px', right: '20px' },
-            panelClass: 'custom-modalbox',
-        });
-    }
 
     onArticleUpdated() {
         this.productService.getProductsByShop(this.myShopData._id).subscribe({

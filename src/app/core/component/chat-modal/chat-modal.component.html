@@ -1,11 +1,35 @@
-<div class="chat-modal">
-    <h2>Chat avec nous</h2>
+<div class="chat-container">
+    <h2>Assistance en ligne</h2>
     <div class="chat-box">
       <div *ngFor="let message of messages">
-        <div *ngIf="message.role === 'user'" class="user-message">{{ message.content }}</div>
-        <div *ngIf="message.role === 'assistant'" class="bot-message">{{ message.content }}</div>
+        <!-- Message de l'utilisateur (à droite) -->
+        <div *ngIf="message.role === 'user'" class="message user-message">
+          {{ message.content }}
+        </div>
+  
+        <!-- Message d'OpenAI (à gauche), en utilisant innerHTML pour interpréter les balises HTML -->
+        <div *ngIf="message.role === 'assistant'" class="message bot-message" [innerHTML]="message.content | markdown"></div>
+      </div>
+  
+      <!-- Animation de points de suspension quand OpenAI commence à taper -->
+      <div *ngIf="isTyping" class="message bot-message typing">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
     </div>
-    <input [(ngModel)]="userMessage" type="text" placeholder="Écris ton message ici..." />
-    <button (click)="sendMessage()">Envoyer</button>
+  
+    <!-- Zone de saisie dynamique -->
+    <div class="input-container">
+      <textarea
+        [(ngModel)]="userMessage"
+        [disabled]="!canSendMessage"
+        (keydown.enter)="onEnter($event)"
+        placeholder="Écris ton message ici..."
+        class="chat-input"
+        rows="1"
+        (input)="adjustTextArea($event)"
+      ></textarea>
+    </div>
   </div>
+  
