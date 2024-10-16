@@ -86,6 +86,34 @@ h2 {
   resize: none;
   overflow: hidden;
   font-family: 'Roboto', sans-serif;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  background-color: #ffffff; /* Style épuré, léger, avec une teinte grise douce */
+  color: #b80059;
+  outline: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  &::placeholder {
+    // background-color: #f5f5f7;
+    
+    color: #b80059b0; /* Couleur du placeholder plus douce */
+    opacity: 1;
+  }
+
+  &:disabled {
+    background-color: transparent; /* Teinte gris clair pour un effet "disabled" épuré */
+    color: #ffffff !important; /* Texte atténué lorsqu'il est désactivé */
+    cursor: not-allowed;
+    
+  transform: translateY(0px) !important;
+  box-shadow: none !important;
+
+    &::placeholder {
+      color: #b80059; /* Placeholder plus doux pour l'état désactivé */
+    }
+  }
 }
 
 .chat-input:hover, .chat-input:focus {

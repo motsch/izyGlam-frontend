@@ -1,23 +1,41 @@
 <div *ngIf="!sessionService.isLoggedIn()">
   <router-outlet></router-outlet>
 </div>
-<mat-drawer-container class="example-container" *ngIf="sessionService.isLoggedIn()">
+<mat-drawer-container
+  class="example-container"
+  *ngIf="sessionService.isLoggedIn()"
+>
   <!-- Left Drawer for Profile and Menu -->
-  <mat-drawer (closedStart)="closeDrawer()" mode="over" [opened]="drawerOpen" class="drawer-content">
+  <mat-drawer
+    (closedStart)="closeDrawer()"
+    mode="over"
+    [opened]="drawerOpen"
+    class="drawer-content"
+  >
     <div class="drawer-inner">
       <div class="profile-section">
-        <img [src]="imgStorageUrl+'default.jpeg'" class="profile-pic" alt="Profile Picture">
+        <img
+          [src]="imgStorageUrl + 'default.jpeg'"
+          class="profile-pic"
+          alt="Profile Picture"
+        />
         <div>
-          <p class="profile-name">{{me.firstname}}</p>
-          <a class="manage-account" (click)="goTo('profile')">{{ "SIDEBAR.PROFILE" | translate }}</a>
+          <p class="profile-name">{{ me.firstname }}</p>
+          <a class="manage-account" (click)="goTo('profile')">{{
+            "SIDEBAR.PROFILE" | translate
+          }}</a>
         </div>
       </div>
       <ul class="drawer-menu">
         <li class="menu-hover fa fa-list" (click)="goTo('orders')">
-          <span class="padding-left-10">{{ "SIDEBAR.ORDERS" | translate }}</span>
+          <span class="padding-left-10">{{
+            "SIDEBAR.ORDERS" | translate
+          }}</span>
         </li>
         <li class="menu-hover fa fa-heart" (click)="goTo('favorites')">
-          <span class="padding-left-10">{{ "SIDEBAR.FAVORITES" | translate }}</span>
+          <span class="padding-left-10">{{
+            "SIDEBAR.FAVORITES" | translate
+          }}</span>
         </li>
         <li class="menu-hover fa fa-question-circle" (click)="goTo('help')">
           <span class="padding-left-10">{{ "SIDEBAR.HELP" | translate }}</span>
@@ -30,24 +48,30 @@
           <span class="padding-left-10">Invitez des amies</span>
         </li>
         -->
-        <li><i class=""></i> </li>
-        <li><i class=""></i> </li>
-        <li><i class=""></i> </li>
-        <li><i class=""></i> </li>
+        <li><i class=""></i></li>
+        <li><i class=""></i></li>
+        <li><i class=""></i></li>
+        <li><i class=""></i></li>
       </ul>
       <div class="drawer-footer">
         <ul class="drawer-menu secondary">
           <li (click)="goTo('main')" class="menu-hover">
-            <span class="padding-left-10">{{ "SIDEBAR.LOGOUT" | translate }}</span>
+            <span class="padding-left-10">{{
+              "SIDEBAR.LOGOUT" | translate
+            }}</span>
           </li>
           <!--<li class="menu-hover">
             <span class="padding-left-10">Devenez client professionnel</span>
           </li>-->
           <li class="menu-hover" (click)="goTo('creation-shop')">
-            <span class="padding-left-10">{{ "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate }}</span>
+            <span class="padding-left-10">{{
+              "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate
+            }}</span>
           </li>
           <li class="menu-hover" (click)="goTo('creation-company')">
-            <span class="padding-left-10">{{ "SIDEBAR.YOUR_COMPANY" | translate }}</span>
+            <span class="padding-left-10">{{
+              "SIDEBAR.YOUR_COMPANY" | translate
+            }}</span>
           </li>
           <!--<li class="menu-hover">
             <span class="padding-left-10">Devenez coursier-partenaire</span>
@@ -58,7 +82,12 @@
   </mat-drawer>
 
   <!-- Right Drawer for Cart -->
-  <mat-drawer position="end" mode="over" [(opened)]="cartOpen" class="drawer-content2">
+  <mat-drawer
+    position="end"
+    mode="over"
+    [(opened)]="cartOpen"
+    class="drawer-content2"
+  >
     <div class="cart-inner">
       <!-- Cart content -->
       <div class="cart-header">
@@ -66,7 +95,11 @@
         <p>43 Avenue Aristide Briand</p>
       </div>
       <div class="cart-item">
-        <img [src]="imgStorageUrl+'menu-10-wings.jpg'" alt="Menu 10 Wings" class="cart-item-image">
+        <img
+          [src]="imgStorageUrl + 'menu-10-wings.jpg'"
+          alt="Menu 10 Wings"
+          class="cart-item-image"
+        />
         <div class="cart-item-details">
           <p>Menu 10 Wings</p>
           <p>Side: Frites Classiques</p>
@@ -83,7 +116,9 @@
         <p>Sous-total</p>
         <p>14,80 €</p>
       </div>
-      <button mat-button (click)="checkout()" class="cart-button">Commander</button>
+      <button mat-button (click)="checkout()" class="cart-button">
+        Commander
+      </button>
     </div>
   </mat-drawer>
 
@@ -91,15 +126,26 @@
     <span>
       <app-header [connected]="sessionService.isLoggedIn()"></app-header>
     </span>
-    
 
-<!-- Chat button -->
-<img 
-src="assets/images/chat/lizy.png" 
-alt="Lizy Chat Icon" 
-class="chat-button" 
-(click)="openChat()"
-/>
+    <!-- Chat button -->
+    <div *ngFor="let i of imageNumbers" class="chat-container" (click)="openChat()">
+      <div *ngIf="i === 1" class="star star1" [ngStyle]="getBackgroundStyle()" ></div>
+      <div *ngIf="i === 1" class="star star2" [ngStyle]="getBackgroundStyle()" ></div>
+      <div *ngIf="i === 1" class="star star3" [ngStyle]="getBackgroundStyle()" ></div>
+      <div *ngIf="i === 1" class="star star4" [ngStyle]="getBackgroundStyle()" ></div>
+      <img
+        [src]="aPIimgStorageUrl+ 'uploads/images/creation/' + i + '/1.png'"
+        alt="Lizy Chat Icon"
+        class="chat-button"
+      />
+    </div>
+    <!--<div class="chat-container" (click)="openChat()">
+      <img
+        [src]="aPIimgStorageUrl+ 'uploads/images/creation/2/1.png'"
+        alt="Lizy Chat Icon"
+        class="chat-button"
+      />
+    </div>-->
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

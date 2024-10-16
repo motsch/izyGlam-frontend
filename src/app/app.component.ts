@@ -19,7 +19,10 @@ export class AppComponent implements OnInit {
     drawerOpen = false;
     cartOpen = false;
     imgStorageUrl: string = environment.imgStorageUrl;
+    aPIimgStorageUrl : string = environment.APIimgStorageUrl;
+    backgroundImages = "";
     me:any = {};
+  imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     constructor(
         public translate: TranslateService,
         public sessionService: SessionService,
@@ -54,6 +57,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.backgroundImages = this.aPIimgStorageUrl + 'uploads/images/creation/15/24.png';
         this.cartService.getCartState().subscribe((isOpen) => {
             console.log('Cart state changed:', isOpen);
             this.cartOpen = isOpen;
@@ -72,6 +76,12 @@ export class AppComponent implements OnInit {
                 console.log(error);
             }
         })
+    }
+
+    getBackgroundStyle() {
+        return {
+          'background-image': `url(${this.backgroundImages})`
+        };
     }
     
     openChat(): void {

@@ -125,8 +125,8 @@ button:disabled {
   color: red;
 }
 .delete-button {
-  color: white;
-  background-color: #ff6b6b;
+  color: #ff6b6b;
+  background-color: white;
   border-radius: 50%;
   height: 26px;
   width: 26px;
@@ -143,8 +143,8 @@ button:disabled {
   font-size: 14px;
 }
 .create-btn {
-  background-color: #B23A48;
-  color: white;
+  background-color: white;
+  color: #B23A48;
   // border-radius: 50%;
   width: 120px; /* Taille ajustée */
   height: 35px; /* Taille ajustée */

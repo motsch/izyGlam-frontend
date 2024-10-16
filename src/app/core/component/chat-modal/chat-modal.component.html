@@ -21,15 +21,15 @@
   
     <!-- Zone de saisie dynamique -->
     <div class="input-container">
-      <textarea
-        [(ngModel)]="userMessage"
-        [disabled]="!canSendMessage"
-        (keydown.enter)="onEnter($event)"
-        placeholder="Écris ton message ici..."
-        class="chat-input"
-        rows="1"
-        (input)="adjustTextArea($event)"
-      ></textarea>
-    </div>
+        <textarea
+          [(ngModel)]="userMessage"
+          [disabled]="!canSendMessage"
+          (keydown.enter)="onEnter($event)"
+          [placeholder]="canSendMessage ? 'Écris ton message ici...' : 'En attente...'"
+          class="chat-input"
+          rows="1"
+          (input)="adjustTextArea($event)"
+        ></textarea>
+      </div>
   </div>
   

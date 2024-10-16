@@ -195,6 +195,17 @@ h2 {
   }
 }
 
+.btn.rounded {
+  border-radius: 50% !important;
+}
+
+.btn-delete {
+  background-color: white;
+  color: #ff6b6b;
+  width: 40px;
+  height: 40px;
+}
+
 .action-btn {
   // border-radius: 50%;
   width: 140px; /* Taille ajustée */
@@ -223,7 +234,8 @@ h2 {
 }
 
 .btn-primary {
-  background-color: #ff6b6b; /* Harmoniser avec le reste de l'appli */
+  background-color: white; /* Harmoniser avec le reste de l'appli */
+  color: #ff5a5a;
   border: none;
 }
 

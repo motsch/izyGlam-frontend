@@ -1,0 +1,30 @@
+<!-- Chat button -->
+<div class="container">
+  <div *ngFor="let i of imageNumbers" class="chat-container">
+    <div
+      *ngIf="i === 1"
+      class="star star1"
+      [ngStyle]="getBackgroundStyle()"
+    ></div>
+    <div
+      *ngIf="i === 1"
+      class="star star2"
+      [ngStyle]="getBackgroundStyle()"
+    ></div>
+    <div
+      *ngIf="i === 1"
+      class="star star3"
+      [ngStyle]="getBackgroundStyle()"
+    ></div>
+    <div
+      *ngIf="i === 1"
+      class="star star4"
+      [ngStyle]="getBackgroundStyle()"
+    ></div>
+    <img
+      [src]="aPIimgStorageUrl + '/uploads/images/creation/' + i + '/1.png'"
+      alt="Lizy Chat Icon"
+      class="chat-button"
+    />
+  </div>
+</div>

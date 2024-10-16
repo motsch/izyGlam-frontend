@@ -61,6 +61,9 @@ import { AgendaComponent, ContentCalendarItemDialog } from './component/agenda/a
 import { ShopPhotoGalleryComponent } from './component/shop-photo-gallery/shop-photo-gallery.component';
 import { ChatModalComponent } from './component/chat-modal/chat-modal.component';
 import { AiMarkdownPipe } from './pipe/aiMarkDown.pipe';
+import { AvatarComponent } from './component/avatar/avatar.component';
+import { ZombieComponent } from './component/monstres/zombie/zombie.component';
+import { SurvivorComponent } from './component/monstres/surviror/survivor.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -167,6 +170,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         NewShopModalComponent,
         ShopPhotoGalleryComponent,
         ChatModalComponent,
+        AvatarComponent,
+        ZombieComponent,
+        SurvivorComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -200,6 +206,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AgendaComponent,
         ShopPhotoGalleryComponent,
         ChatModalComponent,
+        AvatarComponent,
+        ZombieComponent,
+        SurvivorComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChatGptService } from '../../services/chat-gpt.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     templateUrl: './chat-modal.component.html',
     styleUrl: './chat-modal.component.scss',
 })
-export class ChatModalComponent {
+export class ChatModalComponent implements OnInit {
     userMessage: string = '';
     messages: { role: string; content: string }[] = [];
     isThinking: boolean = false;
@@ -16,6 +16,37 @@ export class ChatModalComponent {
     canSendMessage: boolean = true; // Variable pour contrôler si l'utilisateur peut envoyer un message
     variableCopyMessage: string = '';
     constructor(private chatService: ChatGptService, private router: Router) {}
+
+    ngOnInit(): void {
+        // Définir la taille de la zone de texte en fonction de la hauteur de la fenêtre
+        this.showWelcomeMessage();
+    }
+
+    // Afficher le message de bienvenue avec une simulation de réflexion et de frappe
+    showWelcomeMessage() {
+        this.canSendMessage = false; // Désactiver l'envoi de message pendant le message de bienvenue
+
+        // Temps de réflexion avant que Lizy commence à taper (entre 1 et 3 secondes, modifiable)
+        const thinkingTime = Math.random() * (3 - 1) + 1;
+
+        this.isThinking = true; // Lizy commence à réfléchir
+
+        setTimeout(() => {
+            this.isThinking = false; // Arrêter la réflexion
+            this.isTyping = true; // Lizy commence à taper
+
+            // Temps de frappe simulé avant l'affichage du message de bienvenue
+            setTimeout(() => {
+                this.isTyping = false; // Arrêter la frappe
+
+                // Ajouter le message de Lizy dans l'historique
+                const welcomeMessage = "Je suis Lizy, votre conseillére sur izyGlam. Comment puis-je vous aider aujourd'hui ? 😊";
+                this.messages.push({ role: 'assistant', content: welcomeMessage });
+
+                this.canSendMessage = true; // Réactiver l'envoi de messages après le message de bienvenue
+            }, 2000); // Simule un temps de frappe de 2 secondes (modifiable)
+        }, thinkingTime * 1000); // Temps de réflexion proportionnel avant de taper (min 1s, max 3s)
+    }
 
     sendMessage() {
         if (!this.userMessage.trim()) return; // Ne pas envoyer de message vide
@@ -31,6 +62,12 @@ export class ChatModalComponent {
         // Commencer la phase de réflexion
         this.isThinking = true;
 
+
+        // Nettoyer l'historique pour éviter qu'il ne devienne trop long
+        // Ajouter une condition pour ne faire le clean-up que si l'historique dépasse 20 messages
+        if (this.messages.length > 20) {
+          this.messages = this.cleanUpHistory(this.messages);
+        }
         // Ajouter un délai avant que Lizy commence à "réfléchir" (aléatoire entre 5 et 10 secondes)
         const thinkingTime = Math.random() * (10 - 5) + 5; // Min 5s, max 10s
 
@@ -83,20 +120,38 @@ export class ChatModalComponent {
         }, thinkingTime * 1000); // Temps de réflexion proportionnel avant de taper
     }
 
-    adjustTextArea(event: any): void {
-        const textarea = event.target;
-        textarea.style.height = 'auto'; // Réinitialise la hauteur pour calculer correctement
-        textarea.style.height = `${textarea.scrollHeight}px`; // Ajuste la hauteur en fonction du contenu
-    }
+
+
+cleanUpHistory(messages: { role: string, content: string }[]): { role: string, content: string }[] {
+  if (messages.length < 10) return messages;
+  const numberToDelete = Math.floor(messages.length * 0.53);
+  const cleanedMessages = messages.slice(numberToDelete);
+  return cleanedMessages;
+}
 
     onEnter(event: any): void {
-        // Utilisation de 'any' pour contourner le problème de typage
-        const keyboardEvent = event as KeyboardEvent; // Cast explicite en tant que KeyboardEvent
-        keyboardEvent.preventDefault(); // Empêche le saut de ligne
-
-        if (this.canSendMessage) {
-            this.sendMessage(); // Envoie le message
-        }
+      // Utilisation de 'any' pour contourner le problème de typage
+      const keyboardEvent = event as KeyboardEvent; // Cast explicite en tant que KeyboardEvent
+      keyboardEvent.preventDefault(); // Empêche le saut de ligne
+    
+      if (this.canSendMessage && this.userMessage.trim()) {
+        this.sendMessage(); // Envoie le message
+        this.resetTextArea(); // Réinitialise la taille du textarea
+        this.userMessage = ''; // Efface le champ de texte après l'envoi
+      }
+    }
+    
+    resetTextArea(): void {
+      const textArea = document.querySelector('.chat-input') as HTMLTextAreaElement;
+      if (textArea) {
+        textArea.style.height = '40px'; // Retour à la taille initiale (ou ajuste la valeur selon la taille souhaitée)
+      }
+    }
+    
+    adjustTextArea(event: Event): void {
+      const target = event.target as HTMLTextAreaElement;
+      target.style.height = 'auto'; // Réinitialise la hauteur pour permettre le redimensionnement
+      target.style.height = `${target.scrollHeight}px`; // Ajuste la taille en fonction du contenu
     }
 
     // Fonction pour extraire le paramètre 'navigateTo' du message
