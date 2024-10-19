@@ -112,7 +112,7 @@ export class AgendaComponent implements OnInit {
                     for (let elem of data) {
                         elem.start = new Date(elem.start); // Pas besoin d'utiliser await ici
                         elem.end = new Date(elem.end); // Idem, les dates ne nécessitent pas async/await
-
+                        elem.textColor = "#000000";
                         elem.backgroundColor = elem.color;
                         // Vérifie si `extendedProps` existe déjà, sinon le crée
                         if (!elem.extendedProps) {

@@ -1,16 +1,18 @@
 <div class="profile-card">
-    <div class="image-container">
-        
-        <!--
-      <app-avatar></app-avatar>
-            -->
+    <div class="image-container" (click)="toShopPage(profile._id)">
         <img class="main-image" [src]="imgStorageUrl+'uploads/images/'+profile.image" alt="profile image">
         <img *ngIf="promoVisible" class="overlay-image" [src]="imgStorageUrl+'uploads/images/'+'promo'+profile.promo.type+'.png'"
             alt="overlay image">
     </div>
-    <div class="profile-info">
+    <div class="profile-info" (click)="toShopPage(profile._id)">
         <h3>{{ profile.name }}</h3>
         <p>{{ profile.trad | translate }}, {{ profile.ville }}</p>
         <p><i class="star-icon"></i>{{ profile.note }} ({{ profile.reviews.length }} {{ "MAIN_PAGE.AVIS" | translate }})</p>
     </div>
+    <!-- Coeur déplacé ici après les infos du profil -->
+    <i 
+      class="fa fa-heart heart-icon"
+      [ngClass]="{ 'favorite': isFavorite }"
+      (click)="toggleFavorite()">
+    </i>
 </div>

@@ -1,12 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { BookingService } from '../../services/booking.service';
+import { ShopService } from '../../services/shop.service';
 
 @Component({
   selector: 'app-order-item',
   templateUrl: './order-item.component.html',
   styleUrls: ['./order-item.component.scss']
 })
-export class OrderItemComponent {
+export class OrderItemComponent implements OnInit {
   @Input() order: any;
+
+  constructor(
+    private bookingService: BookingService,
+    private shopService: ShopService
+  ){}
+
+  ngOnInit(): void {}
 
   reorder() {
     // Logic to handle reordering

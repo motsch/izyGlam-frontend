@@ -1,15 +1,22 @@
+h3 {
+  font-size: 18px;
+}
+
 .profile-card {
-  // background-color: #fafafa !important;
-  width: 300px;
+  width: 200px;
   border: none;
   border-radius: 5px;
   padding: 10px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;  /* Assure que le contenu est centré */
 }
 
 .image-container {
   position: relative;
-  width: 100%;
-  height: 200px; /* ajustez selon vos besoins */
+  width: 160px;   /* Ajustez selon vos besoins */
+  height: 160px;  /* Rendre la hauteur et la largeur égales pour garder une forme ronde */
+  margin: 0 auto; /* Centrer l'image dans la carte */
 }
 
 .main-image,
@@ -17,28 +24,38 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%; /* Conserve le border-radius */
+  border-radius: 50%;  /* Assure que l'image est toujours ronde */
 }
 
 .overlay-image {
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 5px; /* Conserve le border-radius */
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;  /* Assure que l'image de superposition reste ronde */
 }
 
 .profile-card img {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
+  border-radius: 50%;  /* Applique une bordure arrondie */
 }
 
 .profile-info {
-  text-align: center;
-  margin-top: 100px;
+  margin-top: 15px;
 }
 
-.star-icon {
-  color: gold;
+.heart-icon {
+  z-index: 3;
+  position: absolute;
+  bottom: 30px;
+  right: 27px;
+  font-size: 14px;
+  color: rgb(85, 85, 85);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.heart-icon.favorite {
+  color: red;
 }

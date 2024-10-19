@@ -55,8 +55,8 @@
         <app-round-shop-card
           *ngFor="let item of promotedShops"
           [profile]="item"
+          [me]="me"
           [promoVisible]="item.promo.active"
-          (click)="toShopPage(item._id)"
           class="card pointer"
         ></app-round-shop-card>
       </div>
@@ -70,25 +70,25 @@
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
       </div>
     </div>
@@ -112,9 +112,9 @@
         <app-round-shop-card
           *ngFor="let item of filteredItemsAdecouvrir"
           [profile]="item"
+          [me]="me"
           class="card pointer"
           [promoVisible]="item.promo.active"
-          (click)="toShopPage(item._id)"
         ></app-round-shop-card>
       </div>
 
@@ -127,25 +127,25 @@
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
       </div>
     </div>
@@ -171,9 +171,9 @@
         <app-round-shop-card
           *ngFor="let item of filteredItemsApprecier"
           [profile]="item"
+          [me]="me"
           [promoVisible]="item.promo.active"
           class="card pointer"
-          (click)="toShopPage(item._id)"
         ></app-round-shop-card>
       </div>
 
@@ -186,25 +186,25 @@
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
       </div>
     </div>
@@ -230,9 +230,9 @@
         <app-round-shop-card
           *ngFor="let item of filteredItemsMalin"
           [profile]="item"
+          [me]="me"
           [promoVisible]="item.promo.active"
           class="card pointer"
-          (click)="toShopPage(item._id)"
         ></app-round-shop-card>
       </div>
 
@@ -245,25 +245,25 @@
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
       </div>
     </div>
@@ -287,9 +287,9 @@
         <app-round-shop-card
           *ngFor="let item of filteredItemsTop10"
           [profile]="item"
+          [me]="me"
           [promoVisible]="item.promo.active"
           class="card pointer"
-          (click)="toShopPage(item._id)"
         ></app-round-shop-card>
       </div>
 
@@ -302,25 +302,25 @@
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
         <ngx-skeleton-loader
           class="margin-right-15"
           count="1"
           appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
+          [theme]="{ width: '200px', height: '200px' }"
         ></ngx-skeleton-loader>
       </div>
     </div>
@@ -333,113 +333,10 @@
         <app-round-shop-card
           *ngFor="let item of filteredItems"
           [profile]="item"
+          [me]="me"
           [promoVisible]="item.promo.active"
-          class="card pointer"
+          class="card"
         ></app-round-shop-card>
-        <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
-      </div>
-      <div class="row test66">
-        <!-- Utilisation de 'row' pour démarrer une grille -->
-
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '300px', height: '300px' }"
-        ></ngx-skeleton-loader>
         <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
       </div>
     </div>

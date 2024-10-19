@@ -94,4 +94,9 @@ export class UserService {
     delete(_id: number) {
         return this.http.delete<any>(environment.apiUrl + 'users/' + _id);
     }
+
+    // Méthode pour mettre à jour les favoris d'un utilisateur
+    updateUserFavorites(userId: string, favoriteShops: Array<string>) {
+        return this.http.put<any>(environment.apiUrl + 'update-user-favs/' + userId, { favoriteShops });
+    }
 }

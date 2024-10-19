@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'app-round-shop-card',
@@ -7,19 +9,41 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./round-shop-card.component.scss'],
 })
 export class RoundShopCardComponent {
+    @Input() me: any;
     @Input() profile: any;
     @Input() promoVisible: boolean = false;
     @Input() promoType: any;
-    // env = 'assets/images/';
     imgStorageUrl: string = environment.APIimgStorageUrl;
-    /*profile = {
-        imgSrc: 'path_to_image.jpg',
-        name: 'Olivier',
-        location: 'Paris 16e (face à face & webcam)',
-        rating: 5,
-        reviews: 221,
-        title: "Maître international (élo>2400) et entraîneur depuis 21 ans en îdf (-50% crédit d'impôt)",
-        rate: '80€/h',
-        offer: '1er cours offert',
-    };*/
+    // Nouvelle propriété pour gérer l'état favori
+    isFavorite: boolean = false;
+
+    constructor(private router: Router, private userService: UserService) {}
+    // Méthode pour gérer le clic sur le coeur
+    toggleFavorite(): void {
+        this.isFavorite = !this.isFavorite;
+        if (this.isFavorite) {
+            // Ajouter le shop aux favoris
+            this.me.favoriteShops.push(this.profile.id);
+        } else {
+            // Retirer le shop des favoris
+            this.me.favoriteShops = this.me.favoriteShops.filter(
+                (shopId: string) => shopId !== this.profile.id
+            );
+        }
+        // Mise à jour de l'utilisateur dans la base de données
+        this.userService.updateUserFavorites(this.me._id, this.me.favoriteShops)
+            .subscribe({
+                next: (response: any) => {
+                    console.log(`${this.profile.name} est favori : ${this.isFavorite}`);
+                },
+                error: (err :any) => {
+                    console.error('Erreur lors de la mise à jour des favoris', err);
+                }
+            });
+    }
+
+    // Redirige vers la page d'une boutique spécifique
+    toShopPage(id: string) {
+        this.router.navigate(['shop/' + id]); // Navigation programmée vers la page du shop
+    }
 }

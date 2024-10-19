@@ -1,6 +1,11 @@
 .custom-container {
 }
 
+h3 {
+  font-size: 18px;
+  color: #B23A48 !important;
+}
+
 .category-filter {
   display: flex;
   justify-content: center; /* Centre la liste des catégories */
@@ -15,7 +20,7 @@
     flex-direction: column; /* Organise les éléments en colonne */
     align-items: center; /* Centre les éléments horizontalement */
     flex-shrink: 0;
-    margin-right: 10px;
+    margin-right: 0px;
     padding: 10px;
     text-align: center;
 
@@ -42,13 +47,14 @@
 }
 
 .categories {
-  padding-right: 15px;
+  padding-right: 5px;
   display: flex;
   align-items: center;
   justify-content: center; /* Assure une répartition équilibrée */
+  width: 100% !important;
 
   h2 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .category-list {
@@ -59,11 +65,11 @@
     -ms-overflow-style: none; /* Pour Internet Explorer 10+ */
 
     .category-item {
-      padding: 10px 20px;
+      padding: 10px 10px;
       border-radius: 4px;
       text-align: center;
       flex: 1;
-      margin: 0 10px;
+      margin: 0 0px;
     }
   }
 
@@ -76,8 +82,8 @@
   background-color: transparent;
   border: none;
   flex: 0 0 21%; /* Largeur de chaque carte */
-  margin: 10px; /* Espacement entre les cartes */
-  margin-right: 40px; /* Espace entre les cartes */
+  margin: 0px; /* Espacement entre les cartes */
+  margin-right: 0px; /* Espace entre les cartes */
   box-sizing: border-box;
 }
 
@@ -97,7 +103,7 @@
     align-items: center;
 
     label {
-      margin-right: 10px;
+      margin-right: 0px;
     }
 
     select {
@@ -115,7 +121,7 @@
   display: flex;
   justify-content: space-between; /* Alignement horizontal des éléments enfants */
   align-items: center; /* Centrage vertical des éléments */
-  padding: 10px; /* Espacement autour du contenu de la barre */
+  padding: 5px; /* Espacement autour du contenu de la barre */
 }
 
 .scroll-buttons {

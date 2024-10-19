@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { ShopService } from 'src/app/core/services/shop.service';
+import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 
 // Définition du composant avec son sélecteur, son template HTML et ses styles CSS associés
@@ -12,6 +13,7 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+    me: any = {};
     imgStorageUrl: string = environment.imgStorageUrl; // URL de stockage des images, récupérée depuis les variables d'environnement
     filteredItems: any[] = [];
     filteredItemsAdecouvrir: any[] = []; // Tableau pour stocker les éléments filtrés affichés à l'utilisateur
@@ -48,14 +50,23 @@ export class MainComponent implements OnInit {
         | undefined;
 
     constructor(
-        private router: Router,
         private shopService: ShopService,
         public sessionService: SessionService,
-        private categoryService: CategoryService
+        private categoryService: CategoryService,
+        private userService: UserService
     ) {}
 
     // Fonction appelée à l'initialisation du composant
     ngOnInit() {
+        this.userService.getMe().subscribe({
+            next: (data: any) => {
+                this.me = data;
+                console.log(this.me);
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        });
         this.categoryService.getAll().subscribe({
             next: (data: any) => {
                 this.categoriesFilter = data;
@@ -214,11 +225,6 @@ export class MainComponent implements OnInit {
     // Calcule la quantité de défilement basée sur une estimation de la taille d'un 'app-card' et sa marge
     private calculateScrollAmount(): number {
         return (300 + 20) * 4; // 300px par carte plus 20px de marge, multiplié par 4 cartes
-    }
-
-    // Redirige vers la page d'une boutique spécifique
-    toShopPage(id: string) {
-        this.router.navigate(['shop/' + id]); // Navigation programmée vers la page du shop
     }
 
     // Annule le filtre appliqué et réinitialise l'affichage de tous les shops
