@@ -211,7 +211,6 @@ mat-drawer-content {
   // background-image: url(#{$backgroundImages}); /* Chemin de l'image star.png */
   background-size: contain;
   background-repeat: no-repeat;
-  z-index: 1002;  /* Les étoiles sont en dessous du bouton */
   opacity: 1;
   animation: rotateAround 5s infinite linear;  /* Animation orbitale */
   /* Ajout de l'ombre */
@@ -228,7 +227,7 @@ mat-drawer-content {
   cursor: pointer;
   object-fit: contain;
   background-color: transparent;
-  z-index: 1001;  /* Le bouton est au-dessous des étoiles */
+  z-index: 9 !important;  /* Le bouton est au-dessous des étoiles */
   transition: transform 0.3s ease;
 }
 
@@ -239,12 +238,14 @@ mat-drawer-content {
   left: 50%;
   transform: translateX(-50%);
   animation-delay: 0s;
+  z-index: 1002!important;  /* Les étoiles sont en dessous du bouton */
 }
 
 .star2 {
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1002!important;  /* Les étoiles sont en dessous du bouton */
   animation-delay: 1s;
 }
 

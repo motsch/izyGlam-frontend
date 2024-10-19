@@ -1,12 +1,12 @@
 <div class="profile-card">
     <div class="image-container">
         
-      <app-avatar></app-avatar>
         <!--
+      <app-avatar></app-avatar>
+            -->
         <img class="main-image" [src]="imgStorageUrl+'uploads/images/'+profile.image" alt="profile image">
         <img *ngIf="promoVisible" class="overlay-image" [src]="imgStorageUrl+'uploads/images/'+'promo'+profile.promo.type+'.png'"
             alt="overlay image">
-            -->
     </div>
     <div class="profile-info">
         <h3>{{ profile.name }}</h3>

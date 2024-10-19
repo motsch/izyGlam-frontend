@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.backgroundImages = this.aPIimgStorageUrl + 'uploads/images/creation/15/24.png';
+        this.backgroundImages = this.aPIimgStorageUrl + 'uploads/images/creation/15/14.png';
         this.cartService.getCartState().subscribe((isOpen) => {
             console.log('Cart state changed:', isOpen);
             this.cartOpen = isOpen;

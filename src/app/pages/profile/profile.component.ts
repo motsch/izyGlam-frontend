@@ -242,6 +242,30 @@ export class ProfileComponent implements OnInit {
         this.dropdownOpenNewShop = !this.dropdownOpenNewShop;
     }
 
+    deletShop() {
+        /** D'abord faire un delete sur les products du shop
+        this.productService.deleteByShopId(this.myShopData._id).subscribe({
+            next: (data: any) => {
+                console.log(data);
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        }); */
+
+        /** Puis faire un delete sur le shop */
+        this.shopService.delete(this.myShopData._id).subscribe({
+            next: (data: any) => {
+                console.log(data);
+                this.shops = this.shops.filter((x: any) => x._id !== this.myShopData._id);
+                this.ngOnInit();
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        });
+    }
+
     openModal(): void {
         console.log('OPEN MODAL');
         this.modalOpen = true;

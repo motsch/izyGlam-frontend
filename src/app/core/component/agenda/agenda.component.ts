@@ -105,6 +105,7 @@ export class AgendaComponent implements OnInit {
     ngOnInit(): void {
         this.bookingService.getBookingByUserPro(this.me._id).subscribe({
             next: async (data: any) => {
+                console.log("FRANCIS ===> ");
                 console.log(data);
 
                 if (this.calendarOptions && this.calendarOptions.events) {
@@ -123,6 +124,8 @@ export class AgendaComponent implements OnInit {
                             elem.address || 'Adresse inconnue';
                         elem.extendedProps.phoneNumber =
                             elem.phoneNumber || 'Numéro inconnu';
+
+                            console.log("elem ===> " + JSON.stringify(elem));
                     }
                     data.push(
                         {

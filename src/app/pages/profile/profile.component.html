@@ -118,7 +118,7 @@
         <div class="col-1 margin-top-40">          
           <button
             class="btn rounded btn-delete"
-            (click)="openModal()"
+            (click)="deletShop()"
             [disabled]="shops.length <= 1"
           >
           <i class="fa fa-trash"></i>
@@ -126,6 +126,7 @@
         </div>
         <div class="col-2 margin-top-40">
           <button
+          [disabled]="shops.length >= 5"
             class="btn btn-primary action-btn"
             (click)="openModal()"
           >
