@@ -3,11 +3,12 @@
       <img src="assets/images/profile/profile2.png" alt="Franprix Logo" class="order-image">
       <div class="order-info">
         <h2>{{ order.establishmentName }}</h2>
-        <p>{{ order.totalItems }} {{ "ORDERS.PRESTA_FOR" | translate }} {{ order.totalPrice }} €</p>
+        <p>{{ order.totalItems }} {{ "ORDERS.PRESTA_FOR" | translate }} {{ order.price }} €</p>
         <p>{{ order.orderDate }} {{ "ORDERS.AT" | translate }} {{ order.orderTime }}</p>
       </div>
       <div class="order-actions">
         <button class="reorder-btn" (click)="reorder()">{{ "ORDERS.ORDER_AGAIN" | translate }}</button>   
+        <button class="cancel-btn" *ngIf="order.status === 'pending' || order.status === 'confirmed'" (click)="reorder()">{{ "Annuler" | translate }}</button>   
       </div>
     </div>
     
@@ -15,10 +16,11 @@
       <ul>
         <li *ngFor="let item of order.items">
           <span class="quantity-box">{{ item.quantity }}</span>
-          {{ item.name }} ({{ item.size }})
+          {{ item.name }}
         </li>
       </ul>
-      <a href="#" class="invoice-link" (click)="requestInvoice()">{{ "ORDERS.INVOICE" | translate }}</a>
+      <a class="invoice-link" (click)="openRatingDialog()">Donner votre avis</a>
+      <a class="invoice-link" (click)="requestInvoice()">{{ "ORDERS.INVOICE" | translate }}</a>
     </div>
   </div>
   

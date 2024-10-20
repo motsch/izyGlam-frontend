@@ -28,7 +28,7 @@ export class OrdersComponent implements OnInit {
         {
             establishmentName: 'Franprix',
             totalItems: 1,
-            totalPrice: '45,00 €',
+            price: '45,00 €',
             orderDate: '10 mars',
             orderTime: '19:05',
             items: [
@@ -53,11 +53,20 @@ export class OrdersComponent implements OnInit {
             next: (data: any) => {
                 this.me = data;
                 this.bookingService.getBookingByClient(data._id).subscribe({
-                    next: async (data: any) => {
-                        console.log(data);
-                        for (let elem of data) {
-                          this.orders.push(...data);
+                    next: async (bookings: any[]) => {
+                        console.log('bookings: ' + JSON.stringify(bookings));
+                        for (let elem of bookings) {
+                            elem.items = [];
+                            elem.items[0] = {};
+                            elem.items[0].quantity = 1;
+                            elem.items[0].name = elem.productName;
+                            elem.totalItems = 1;// new Date(elem.start).toLocaleDateString();
+                            elem.orderDate = new Date(elem.start).toLocaleDateString();
+                            elem.orderTime = new Date(elem.start).toLocaleTimeString();
+                            this.orders.push(elem);
                         }
+
+                        console.log(this.orders);
                     },
                     error: (error: any) => {
                         console.log(error);

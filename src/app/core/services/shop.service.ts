@@ -119,6 +119,13 @@ export class ShopService {
             );
     }
 
+// Récupérer les shops par leurs IDs
+getShopsByIds(shopIds: string[]): Observable<any[]> {
+    return this.http.post<any[]>(`${environment.apiUrl}shops-by-ids`, { shopIds });
+  }
+
+
+
     private calculateDistance(
         lat1: number,
         lon1: number,

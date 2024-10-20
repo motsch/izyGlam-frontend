@@ -64,6 +64,7 @@ import { AiMarkdownPipe } from './pipe/aiMarkDown.pipe';
 import { AvatarComponent } from './component/avatar/avatar.component';
 import { ZombieComponent } from './component/monstres/zombie/zombie.component';
 import { SurvivorComponent } from './component/monstres/surviror/survivor.component';
+import { RatingModalComponent } from './component/rating-modal/rating-modal.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -173,6 +174,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AvatarComponent,
         ZombieComponent,
         SurvivorComponent,
+        RatingModalComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [

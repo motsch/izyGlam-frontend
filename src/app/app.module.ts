@@ -4,7 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { CommonModule, registerLocaleData } from '@angular/common';
-import { HttpClient, HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+    HttpClient,
+    HTTP_INTERCEPTORS,
+    provideHttpClient,
+    withInterceptorsFromDi,
+} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -34,10 +39,15 @@ registerLocaleData(localeFr, 'fr');
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
-@NgModule({ declarations: [AppComponent],
+@NgModule({
+    declarations: [AppComponent],
     bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [CommonModule,
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    imports: [
+        CommonModule,
         NgbModule,
         BrowserModule,
         FormsModule,
@@ -56,7 +66,12 @@ import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
         MatAutocompleteModule,
         MatIconModule,
         MatFormFieldModule,
-        CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+        MatInputModule,
+        MatButtonModule,
+        CalendarModule.forRoot({
+            provide: DateAdapter,
+            useFactory: adapterFactory,
+        }),
         MatSelectModule,
         TranslateModule.forRoot({
             loader: {
@@ -64,7 +79,9 @@ import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
                 useFactory: HttpLoaderFactory,
                 deps: [HttpClient],
             },
-        })], providers: [
+        }),
+    ],
+    providers: [
         { provide: WINDOW, useFactory: windowFactory },
         {
             provide: HTTP_INTERCEPTORS,
@@ -82,5 +99,6 @@ import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
         AlertService,
         WebsocketService,
         provideHttpClient(withInterceptorsFromDi()),
-    ] })
+    ],
+})
 export class AppModule {}

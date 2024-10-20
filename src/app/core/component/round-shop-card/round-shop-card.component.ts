@@ -20,14 +20,17 @@ export class RoundShopCardComponent {
     constructor(private router: Router, private userService: UserService) {}
     // Méthode pour gérer le clic sur le coeur
     toggleFavorite(): void {
-        this.isFavorite = !this.isFavorite;
-        if (this.isFavorite) {
+        if(!this.me.favoriteShops) {
+            this.me.favoriteShops = [];
+        }
+        this.profile.isFavorite = !this.profile.isFavorite;
+        if (this.profile.isFavorite) {
             // Ajouter le shop aux favoris
-            this.me.favoriteShops.push(this.profile.id);
+            this.me.favoriteShops.push(this.profile._id);
         } else {
             // Retirer le shop des favoris
             this.me.favoriteShops = this.me.favoriteShops.filter(
-                (shopId: string) => shopId !== this.profile.id
+                (shopId: string) => shopId !== this.profile._id
             );
         }
         // Mise à jour de l'utilisateur dans la base de données

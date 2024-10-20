@@ -16,6 +16,7 @@ export class FavoritesComponent implements OnInit {
   imgStorageUrl: string = environment.imgStorageUrl; // URL de stockage des images, récupérée depuis les variables d'environnement
   filteredItems: any[] = [];
   shops: any[] = []; // Tableau pour stocker les informations des boutiques récupérées de l'API
+  currentUser: any = {};
 
   // Références aux éléments du DOM pour gérer le défilement des conteneurs de contenu
   @ViewChild('scrollContainerCategory') private scrollContainerCategory:
@@ -54,6 +55,28 @@ export class FavoritesComponent implements OnInit {
               console.log(error);
           },
       });
+
+    this.loadFavoriteShops();
+  }
+
+
+
+  // Charge les shops favoris de l'utilisateur
+  private loadFavoriteShops() {
+    
+    this.userService.getMe().subscribe((user) => {
+      this.currentUser = user;
+    console.log(this.currentUser);
+      // Récupérer les shops par leurs IDs stockés dans les favoris
+      if (this.currentUser.favoriteShops && this.currentUser.favoriteShops.length > 0) {
+        this.shopService.getShopsByIds(this.currentUser.favoriteShops).subscribe((shops:any) => {
+            for(let elem of shops) {
+                elem.isFavorite = true;
+            }
+          this.shops = shops;
+        });
+      }
+    });
   }
 
   // Redirige vers la page d'une boutique spécifique

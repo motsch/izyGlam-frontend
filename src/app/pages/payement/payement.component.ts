@@ -180,7 +180,9 @@ export class PayementComponent implements OnInit {
         this.bill.status = 'pending';
         this.bill.color = this.itemToBuy2.color;
         this.bill.shopId = this.shop._id;
+        this.bill.establishmentName = this.shop.name;
         this.bill.serviceId = this.itemToBuy2._id;
+        this.bill.productName = this.itemToBuy2.name;
         this.bill.userProId = this.shop.idUser;
         this.bill.commission =
             parseInt(this.price) * this.adminSettings.commissionRate;

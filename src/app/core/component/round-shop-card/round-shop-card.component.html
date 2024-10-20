@@ -12,7 +12,7 @@
     <!-- Coeur déplacé ici après les infos du profil -->
     <i 
       class="fa fa-heart heart-icon"
-      [ngClass]="{ 'favorite': isFavorite }"
+      [ngClass]="{ 'favorite': profile.isFavorite }"
       (click)="toggleFavorite()">
     </i>
 </div>

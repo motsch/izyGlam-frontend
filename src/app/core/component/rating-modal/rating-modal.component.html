@@ -1,0 +1,39 @@
+<h2 mat-dialog-title class="modal-title">
+  <span>Donner votre avis</span>
+  <button mat-icon-button mat-dialog-close class="close-button">
+    <mat-icon>close</mat-icon>
+  </button>
+</h2>
+<mat-dialog-content class="modal-content">
+  <div class="address-list">
+    <div class="payment-selection">
+      <!--<p>Veuillez entrer les détails de votre carte bancaire :</p>-->
+      <form class="payment-form">
+        <mat-form-field appearance="outline" class="rating-field">
+          <mat-label>Note</mat-label>
+          <mat-select [(value)]="rating">
+            <mat-option *ngFor="let star of stars" [value]="star">
+              {{ star }} ★
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="comment-field">
+          <mat-label>Commentaire</mat-label>
+          <textarea matInput [(ngModel)]="comment"></textarea>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="modal-actions">
+  <button mat-button mat-dialog-close>Fermer</button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="submit-button"
+    (click)="submitReview()"
+  >
+    Soumettre
+  </button>
+</mat-dialog-actions>
