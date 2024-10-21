@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { RatingModalComponent } from '../rating-modal/rating-modal.component';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-item',
@@ -16,8 +17,8 @@ export class OrderItemComponent implements OnInit {
 
   constructor(
     private bookingService: BookingService,
-    private shopService: ShopService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ){}
 
   ngOnInit(): void {}
@@ -25,6 +26,7 @@ export class OrderItemComponent implements OnInit {
   reorder() {
     // Logic to handle reordering
     console.log('Reorder clicked');
+    this.router.navigate(['shop/' + this.order.shopId]);
   }
 
   requestInvoice() {
@@ -107,6 +109,17 @@ export class OrderItemComponent implements OnInit {
       if (result) {
         // Logique pour gérer la soumission de l'avis
         console.log('Review submitted', result);
+        this.order.reviewAdded = true;
+        this.bookingService.update(this.order).subscribe({
+          next: (data: any) => {
+              console.log(data);
+              console.log('Order updated successfully');
+              console.log(this.order);
+          },
+          error: (error: any) => {
+              console.log(error);
+          },
+      });
       }
     });
   }  

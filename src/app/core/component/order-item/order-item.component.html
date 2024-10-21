@@ -19,8 +19,8 @@
           {{ item.name }}
         </li>
       </ul>
-      <a class="invoice-link" (click)="openRatingDialog()">Donner votre avis</a>
-      <a class="invoice-link" (click)="requestInvoice()">{{ "ORDERS.INVOICE" | translate }}</a>
+      <a class="invoice-link" (click)="openRatingDialog()" *ngIf="order.status === 'completed' && !order.reviewAdded">Donner votre avis</a>
+      <a class="invoice-link" (click)="requestInvoice()"  *ngIf="order.status === 'completed'">{{ "ORDERS.INVOICE" | translate }}</a>
     </div>
   </div>
   
