@@ -8,7 +8,7 @@
       </div>
       <div class="order-actions">
         <button class="reorder-btn" (click)="reorder()">{{ "ORDERS.ORDER_AGAIN" | translate }}</button>   
-        <button class="cancel-btn" *ngIf="order.status === 'pending' || order.status === 'confirmed'" (click)="reorder()">{{ "Annuler" | translate }}</button>   
+        <button class="cancel-btn" *ngIf="order.status === 'pending' || order.status === 'confirmed'" (click)="cancelOrder()">{{ "Annuler" | translate }}</button>   
       </div>
     </div>
     

@@ -11,22 +11,25 @@ export class ShopService {
     private shopDataSubject = new BehaviorSubject<any>(null);
     constructor(private http: HttpClient) {}
 
-  // Appel à l'API pour récupérer les données du shop
-  loadShopData(id: string): void {
-    this.http.get(`/api/shop/${id}`).subscribe(
-      (data: any) => {
-        this.shopDataSubject.next(data);
-      },
-      (error) => {
-        console.error('Erreur lors du chargement des données du shop:', error);
-      }
-    );
-  }
+    // Appel à l'API pour récupérer les données du shop
+    loadShopData(id: string): void {
+        this.http.get(`/api/shop/${id}`).subscribe(
+            (data: any) => {
+                this.shopDataSubject.next(data);
+            },
+            (error) => {
+                console.error(
+                    'Erreur lors du chargement des données du shop:',
+                    error
+                );
+            }
+        );
+    }
 
-  // Retourne un observable pour que le parent ou l'enfant puisse s'abonner aux données du shop
-  getShopData(): Observable<any> {
-    return this.shopDataSubject.asObservable();
-  }
+    // Retourne un observable pour que le parent ou l'enfant puisse s'abonner aux données du shop
+    getShopData(): Observable<any> {
+        return this.shopDataSubject.asObservable();
+    }
     /**
      * Récupérer toutes les shops
      */
@@ -74,7 +77,9 @@ export class ShopService {
      * @param userId (ID de l'utilisateur)
      */
     getShopsByUserId(userId: string): Observable<any[]> {
-        return this.http.get<any[]>(`${environment.apiUrl}shops/user/${userId}`);
+        return this.http.get<any[]>(
+            `${environment.apiUrl}shops/user/${userId}`
+        );
     }
 
     /**
@@ -84,18 +89,23 @@ export class ShopService {
      */
     uploadGalleryImages(shopId: string, files: File[]): Observable<any> {
         const formData: FormData = new FormData();
-      
-        files.forEach(file => formData.append('gallery', file));  // Ajouter chaque fichier sélectionné
-      
-        return this.http.post<any>(`${environment.apiUrl}shop-gallery/${shopId}/gallery/upload`, formData);
-      }
+
+        files.forEach((file) => formData.append('gallery', file)); // Ajouter chaque fichier sélectionné
+
+        return this.http.post<any>(
+            `${environment.apiUrl}shop-gallery/${shopId}/gallery/upload`,
+            formData
+        );
+    }
 
     /**
      * Récupérer les images de la galerie d'un shop
      * @param shopId (ID du shop)
      */
     getGalleryImages(shopId: string): Observable<any[]> {
-        return this.http.get<any[]>(`${environment.apiUrl}shop-gallery/${shopId}/gallery`);
+        return this.http.get<any[]>(
+            `${environment.apiUrl}shop-gallery/${shopId}/gallery`
+        );
     }
 
     getShopsNearby(
@@ -119,12 +129,19 @@ export class ShopService {
             );
     }
 
-// Récupérer les shops par leurs IDs
-getShopsByIds(shopIds: string[]): Observable<any[]> {
-    return this.http.post<any[]>(`${environment.apiUrl}shops-by-ids`, { shopIds });
-  }
+    // Récupérer les shops par leurs IDs
+    getShopsByIds(shopIds: string[]): Observable<any[]> {
+        return this.http.post<any[]>(`${environment.apiUrl}shops-by-ids`, {
+            shopIds,
+        });
+    }
 
-
+    addReview(shopId: string, review: any): Observable<any> {
+        return this.http.patch<any>(
+            `${environment.apiUrl}shop-add-review/${shopId}`,
+            review
+        );
+    }
 
     private calculateDistance(
         lat1: number,

@@ -8,7 +8,7 @@
   <div class="address-list">
     <div class="payment-selection">
       <!--<p>Veuillez entrer les détails de votre carte bancaire :</p>-->
-      <form class="payment-form">
+      <div class="payment-form">
         <mat-form-field appearance="outline" class="rating-field">
           <mat-label>Note</mat-label>
           <mat-select [(value)]="rating">
@@ -22,7 +22,7 @@
           <mat-label>Commentaire</mat-label>
           <textarea matInput [(ngModel)]="comment"></textarea>
         </mat-form-field>
-      </form>
+      </div>
     </div>
   </div>
 </mat-dialog-content>

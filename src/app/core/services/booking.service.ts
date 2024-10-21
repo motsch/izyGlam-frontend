@@ -77,4 +77,10 @@ export class BookingService {
     delete(id: number): Observable<any> {
         return this.http.delete<any>(`${environment.apiUrl}booking/${id}`);
     }
+
+
+  // Méthode pour mettre à jour le statut d'une commande
+  updateBookingStatus(bookingId: string, status: string): Observable<any> {
+    return this.http.patch<any>(`${environment.apiUrl}booking-update-status/${bookingId}`, { status });
+  }
 }
