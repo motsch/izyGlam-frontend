@@ -20,6 +20,8 @@ import { BookingService } from '../../services/booking.service';
 })
 export class AgendaComponent implements OnInit {
     @Input() me: any = {};
+    openNewEventModal = false;
+    newEventData: any = {};
     calendarOptions: CalendarOptions = {
         plugins: [dayGridPlugin, timeGridPlugin],
         initialView: 'timeGridWeek', // Can be changed to 'dayGridMonth', 'timeGridDay', etc.
@@ -105,14 +107,14 @@ export class AgendaComponent implements OnInit {
     ngOnInit(): void {
         this.bookingService.getBookingByUserPro(this.me._id).subscribe({
             next: async (data: any) => {
-                console.log("FRANCIS ===> ");
+                console.log('FRANCIS ===> ');
                 console.log(data);
 
                 if (this.calendarOptions && this.calendarOptions.events) {
                     for (let elem of data) {
                         elem.start = new Date(elem.start); // Pas besoin d'utiliser await ici
                         elem.end = new Date(elem.end); // Idem, les dates ne nécessitent pas async/await
-                        elem.textColor = "#000000";
+                        elem.textColor = '#000000';
                         elem.backgroundColor = elem.color;
                         // Vérifie si `extendedProps` existe déjà, sinon le crée
                         if (!elem.extendedProps) {
@@ -125,7 +127,7 @@ export class AgendaComponent implements OnInit {
                         elem.extendedProps.phoneNumber =
                             elem.phoneNumber || 'Numéro inconnu';
 
-                            console.log("elem ===> " + JSON.stringify(elem));
+                        console.log('elem ===> ' + JSON.stringify(elem));
                     }
                     data.push(
                         {
@@ -158,6 +160,36 @@ export class AgendaComponent implements OnInit {
             },
         });
     }
+
+    openAddEventModal() {
+        // Ouvrir la modal avec les données de l'événement
+        const dialogRef = this.dialog.open(ContentCalendarItemDialog, {
+            width: '400px',
+            data: {
+                title: 'M. Jean Dupont',
+                start: '',
+                end: '',
+                address: '',
+                phoneNumber: '',
+                new: true,
+            },
+        });
+
+        // Récupérer les données modifiées lors de la fermeture de la modal
+        dialogRef.afterClosed().subscribe((result: any) => {
+            if (result) {
+                // Mettre à jour l'événement avec les nouvelles données
+                console.log('result');
+                console.log(result);
+                //info.event.setProp('title', result.title);
+                // info.event.setDates(result.startStr, result.endStr);
+            }
+        });
+    }
+
+    onNoClick() {
+        this.dialog.closeAll();
+    }
     // Fonction appelée lors du clic sur un événement
     handleEventClick(info: any) {
         console.log('info');
@@ -171,6 +203,7 @@ export class AgendaComponent implements OnInit {
                 end: info.event.endStr,
                 address: info.event.extendedProps.address,
                 phoneNumber: info.event.extendedProps.phoneNumber,
+                new: false,
             },
         });
 

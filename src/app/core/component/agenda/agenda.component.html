@@ -1,1 +1,26 @@
+<button mat-raised-button (click)="openAddEventModal()">Add New Event</button>
+
+<!-- Existing calendar display -->
 <full-calendar [options]="calendarOptions"></full-calendar>
+
+<!-- Add Event Modal Template -->
+<ng-template *ngIf="openNewEventModal">
+    <h2>Add New Event</h2>
+    <mat-form-field>
+      <mat-label>Event Title</mat-label>
+      <input matInput [(ngModel)]="newEventData.title">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Start Date & Time</mat-label>
+      <input matInput [(ngModel)]="newEventData.start" type="datetime-local">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>End Date & Time</mat-label>
+      <input matInput [(ngModel)]="newEventData.end" type="datetime-local">
+    </mat-form-field>
+  
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancel</button>
+      <button mat-button [mat-dialog-close]="newEventData">Add Event</button>
+    </div>
+  </ng-template>

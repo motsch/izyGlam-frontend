@@ -1,24 +1,24 @@
 <h1 mat-dialog-title>Détails de l'événement</h1>
 <div mat-dialog-content>
   <label>Client</label>
-  <mat-form-field>
-    <input matInput placeholder="Titre" [(ngModel)]="data.title" disabled>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Titre" [(ngModel)]="data.title" [disabled]="!data.new">
   </mat-form-field>
   <label>Début</label>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Début" [ngModel]="data.start | date:'fullDate':'':'fr-FR'" disabled>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" placeholder="Début" [ngModel]="data.start | date:'fullDate':'':'fr-FR'" [disabled]="!data.new">
   </mat-form-field>
   <label>Fin</label>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Fin" [ngModel]="data.end | date:'fullDate':'':'fr-FR'" disabled>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" placeholder="Fin" [ngModel]="data.end | date:'fullDate':'':'fr-FR'" [disabled]="!data.new">
   </mat-form-field>
   <label>Adresse</label><img (click)="openGoogleMaps(data.address)" class="margin-left-10 pointer" src="assets/images/googl_maps.png" alt="Carte" style="width: 20px; height: 20px;">
-  <mat-form-field>
-    <input matInput type="text" placeholder="Fin" [ngModel]="data.address" disabled>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" placeholder="Adresse" [ngModel]="data.address" [disabled]="!data.new">
   </mat-form-field>
   <label>Téléphone</label>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Fin" [ngModel]="data.phoneNumber" disabled>
+  <mat-form-field appearance="outline">
+    <input matInput type="text" placeholder="Téléphone" [ngModel]="data.phoneNumber" [disabled]="!data.new">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
