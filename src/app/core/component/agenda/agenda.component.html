@@ -1,4 +1,9 @@
-<button mat-raised-button (click)="openAddEventModal()">{{ "CALENDAR.ADD_EVENT" | translate }}</button>
-
-<!-- Existing calendar display -->
-<full-calendar [options]="calendarOptions"></full-calendar>
+<div class="calendar-header">
+    <button mat-raised-button class="create-event-btn" (click)="openAddEventModal()">
+      {{ "CALENDAR.ADD_EVENT" | translate }}
+    </button>
+  </div>
+  
+  <!-- Existing calendar display -->
+  <full-calendar [options]="calendarOptions"></full-calendar>
+  

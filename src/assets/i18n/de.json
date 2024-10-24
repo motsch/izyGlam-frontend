@@ -486,6 +486,8 @@
     "RESERVATION": "Buchungen"
   },
   "FINANCE": {
+    "PROGRESS":"Entwicklung seit M-1",
+    "PROGRESSION":"Fortschritt",
     "TOTAL_GENERATED": "Gesamt generierter Umsatz",
     "CA": "Umsatz",
     "COMMISSION_TAKEN": "Einbehaltene Provision",

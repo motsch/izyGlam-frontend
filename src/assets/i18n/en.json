@@ -486,6 +486,8 @@
     "RESERVATION": "bookings"
   },
   "FINANCE": {
+    "PROGRESS":"Progress since M-1",
+    "PROGRESSION":"Progression",
     "TOTAL_GENERATED": "Total revenue generated",
     "CA": "Revenue",
     "COMMISSION_TAKEN": "Commission taken",

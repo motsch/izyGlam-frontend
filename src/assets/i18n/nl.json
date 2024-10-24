@@ -486,6 +486,8 @@
     "RESERVATION": "boekingen"
   },
   "FINANCE": {
+    "PROGRESS":"Evolutie sinds M-1",
+    "PROGRESSION":"Progressie",
     "TOTAL_GENERATED": "Totaal gegenereerde omzet",
     "CA": "Omzet",
     "COMMISSION_TAKEN": "Ingehouden commissie",

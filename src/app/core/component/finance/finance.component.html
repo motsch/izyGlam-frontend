@@ -21,13 +21,13 @@
     <!-- Section: Montant à verser -->
     <div class="col-md-4 col-sm-12 mb-4">
       <div class="finance-card">
-        <h3>{{ "FINANCE.NET_TO_PAY" | translate }}</h3>
-        <p class="finance-number">{{ netToPay | currency : "EUR" }}</p>
-        <p class="finance-description">{{ "FINANCE.DISPO_AMOUNT" | translate }}</p>
+        <h3>{{ "FINANCE.PROGRESS" | translate }}</h3>
+        <p class="finance-number">+ {{ netToPay }} %</p>
+        <p class="finance-description">{{ "FINANCE.PROGRESSION" | translate }}</p>
       </div>
     </div>
   </div>
-
+<!--
   <div class="row">
     <div class="col-12">
       <h2>{{ "FINANCE.REQUEST_WITHDRAWAL" | translate }}</h2>
@@ -85,4 +85,5 @@
       </table>
     </div>
   </div>
+  -->
 </form>

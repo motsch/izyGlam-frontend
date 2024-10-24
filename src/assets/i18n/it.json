@@ -486,6 +486,8 @@
     "RESERVATION": "prenotazioni"
   },
   "FINANCE": {
+    "PROGRESS":"Evoluzione da M-1",
+    "PROGRESSION":"Progressione",
     "TOTAL_GENERATED": "Totale fatturato generato",
     "CA": "Fatturato",
     "COMMISSION_TAKEN": "Commissione trattenuta",

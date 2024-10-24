@@ -1,0 +1,11 @@
+.calendar-header {
+    display: flex;
+    justify-content: flex-end; /* Place le bouton à droite */
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .create-event-btn {
+    margin-left: auto; /* Ajoute un espacement entre le bouton et le reste */
+  }
+  

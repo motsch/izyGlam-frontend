@@ -486,6 +486,8 @@
     "RESERVATION": "varaukset"
   },
   "FINANCE": {
+    "PROGRESS":"Kehitys M-1:stä lähtien",
+    "PROGRESSION":"Edistyminen",
     "TOTAL_GENERATED": "Kokonaisliikevaihto",
     "CA": "Liikevaihto",
     "COMMISSION_TAKEN": "Peritty komissio",

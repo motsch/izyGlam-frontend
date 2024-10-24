@@ -486,6 +486,8 @@
     "RESERVATION": "reservationer"
   },
   "FINANCE": {
+    "PROGRESS":"Udvikling siden M-1",
+    "PROGRESSION":"Udvikling",
     "TOTAL_GENERATED": "Samlet genereret omsætning",
     "CA": "Omsætning",
     "COMMISSION_TAKEN": "Trukket kommission",

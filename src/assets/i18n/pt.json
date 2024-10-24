@@ -486,6 +486,8 @@
     "RESERVATION": "reservas"
   },
   "FINANCE": {
+    "PROGRESS":"Evolução desde M-1",
+    "PROGRESSION":"Progressão",
     "TOTAL_GENERATED": "Receita total gerada",
     "CA": "Receita",
     "COMMISSION_TAKEN": "Comissão aplicada",

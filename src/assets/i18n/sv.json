@@ -486,6 +486,8 @@
     "RESERVATION": "bokningar"
   },
   "FINANCE": {
+    "PROGRESS":"Utveckling sedan M-1",
+    "PROGRESSION":"Progression",
     "TOTAL_GENERATED": "Totalt genererade intäkter",
     "CA": "Omsättning",
     "COMMISSION_TAKEN": "Tagen provision",
