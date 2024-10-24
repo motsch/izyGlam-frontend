@@ -56,20 +56,4 @@ export class FinanceComponent implements OnInit {
             });
         }
     }
-
-    requestWithdrawal(): void {
-        if (this.withdrawalForm.valid) {
-            const request = this.withdrawalForm.value;
-            console.log('Demande de virement soumise:', request);
-            // Logique pour traiter la demande de virement, comme un appel API
-            // Ajout de la demande à l'historique (exemple)
-            this.transactions.unshift({
-                date: new Date(),
-                amount: request.amount,
-                status: 'En attente',
-            });
-            this.netToPay -= request.amount;
-            this.withdrawalForm.reset();
-        }
-    }
 }
