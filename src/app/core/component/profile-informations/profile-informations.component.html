@@ -50,14 +50,14 @@
     </div>
     <div class="margin-top-15">
       <button class="button-red" (click)="validateChangeUser()" type="submit" [disabled]="disabledButton">
-        Modifier l'utilisateur
+        {{ "PROFILE.CHANGE_USER" | translate }}
       </button>
       <button (click)="cancel()" class="margin-left-10 button-grey" *ngIf="!disabledButton">
-        Annuler
+        {{ "PROFILE.CANCEL" | translate }}
       </button>
       <div *ngIf="userChangeError" class="error">{{ userChangeError }}</div>
       <div *ngIf="userChangeSuccess" class="success">
-        Profil modifié avec succès.
+        {{ "PROFILE.SUCCESS" | translate }}.
       </div>
     </div>
   </div>

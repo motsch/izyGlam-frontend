@@ -9,10 +9,6 @@ import { SessionService } from 'src/app/core/services/session.service';
 export class HelpComponent {
   panels = [
     {
-      question: "Comment puis-je créer un compte?",
-      answer: "Pour créer un compte, cliquez sur le bouton 'S'inscrire' en haut à droite de la page d'accueil, puis suivez les instructions."
-    },
-    {
       question: "Comment réinitialiser mon mot de passe?",
       answer: "Cliquez sur 'Mot de passe oublié?' sur la page de connexion et suivez les instructions pour réinitialiser votre mot de passe."
     },

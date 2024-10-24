@@ -1,7 +1,7 @@
 <div class="modal-backdrop"></div>
 <div class="modal-content">
   <div class="modal-header">
-    <h3 class="modal-title">Sélectionnez le type de boutique à créer</h3>
+    <h3 class="modal-title">{{ "NEW_SHOP_MODAL.TITLE" | translate }}</h3>
     <button type="button" class="btn-close" (click)="close()">&times;</button>
   </div>
   <div class="modal-body">
@@ -14,10 +14,10 @@
       class="btn btn-secondary grey-button"
       (click)="close()"
     >
-      Annuler
+    {{ "NEW_SHOP_MODAL.CANCEL" | translate }}
     </button>
     <button type="button" class="btn btn-primary red-button" (click)="credit()">
-      Valider
+      {{ "NEW_SHOP_MODAL.CREATE" | translate }}
     </button>
   </div>
 </div>

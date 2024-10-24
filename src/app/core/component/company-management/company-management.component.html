@@ -3,7 +3,7 @@
     <!-- Section Gestion des employés -->
     <div class="col-12">
       <div class="margin-top-50">
-        <h2>Gestion des employés</h2>
+        <h2>{{ "COMPANY_MANAGEMENT.TITLE" | translate }}</h2>
         <button
           class="btn btn-primary action-btn float-end"
           (click)="createEmployee()"
@@ -16,10 +16,10 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Nom</th>
-              <th>Email</th>
-              <th>Solde du compte</th>
-              <th>Actions</th>
+              <th>{{ "COMPANY_MANAGEMENT.NAME" | translate }}</th>
+              <th>{{ "COMPANY_MANAGEMENT.EMAIL" | translate }}</th>
+              <th>{{ "COMPANY_MANAGEMENT.SOLDE" | translate }}</th>
+              <th>{{ "COMPANY_MANAGEMENT.ACTIONS" | translate }}</th>
             </tr>
           </thead>
           <tbody>

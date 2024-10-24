@@ -8,7 +8,7 @@
       </div>
       <div class="order-actions">
         <button class="reorder-btn" (click)="reorder()">{{ "ORDERS.ORDER_AGAIN" | translate }}</button>   
-        <button class="cancel-btn" *ngIf="order.status === 'pending' || order.status === 'confirmed'" (click)="cancelOrder()">{{ "Annuler" | translate }}</button>   
+        <button class="cancel-btn" *ngIf="order.status === 'pending' || order.status === 'confirmed'" (click)="cancelOrder()">{{ "ORDERS.CANCEL" | translate }}</button>   
       </div>
     </div>
     
@@ -19,7 +19,7 @@
           {{ item.name }}
         </li>
       </ul>
-      <a class="invoice-link" (click)="openRatingDialog()" *ngIf="order.status === 'completed' && !order.reviewAdded">Donner votre avis</a>
+      <a class="invoice-link" (click)="openRatingDialog()" *ngIf="order.status === 'completed' && !order.reviewAdded">{{ "ORDERS.REVIEW" | translate }}</a>
       <a class="invoice-link" (click)="requestInvoice()"  *ngIf="order.status === 'completed'">{{ "ORDERS.INVOICE" | translate }}</a>
     </div>
   </div>

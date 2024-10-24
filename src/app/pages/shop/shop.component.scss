@@ -155,3 +155,95 @@
 .active {
   background-color: #EB9F9B !important;
 }
+
+/* Existing styles */
+.gallery-container {
+  display: flex;
+  justify-content: flex-start; /* Aligne les images à gauche */
+  overflow-x: auto; /* Active le défilement horizontal si nécessaire */
+  white-space: nowrap; /* Empêche le retour à la ligne des miniatures */
+  padding-bottom: 10px; /* Ajoute un espace pour le confort de l'utilisateur */
+}
+
+.gallery-thumbnails {
+  display: inline-flex; /* Aligne les miniatures sur une seule ligne */
+}
+
+.thumbnail {
+  margin-right: 10px; /* Espace entre les miniatures */
+  cursor: pointer;
+  flex: 0 0 auto; /* Empêche les miniatures de se rétrécir */
+}
+
+.thumbnail img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.thumbnail img:hover {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center; /* Centre l'image horizontalement */
+  align-items: center; /* Centre l'image verticalement */
+  z-index: 1000;
+  overflow: hidden; /* Empêche l'overflow si l'image est trop grande */
+}
+
+.lightbox-content {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Centre l'image entre les flèches */
+  align-items: center; /* Assure que l'image soit centrée verticalement */
+  max-width: 90%;
+  max-height: 90%; /* Assure que l'image ne dépasse pas la taille de l'écran */
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%; /* Contrainte pour ne pas que l'image dépasse la taille de l'écran */
+  object-fit: contain; /* Permet à l'image de garder son aspect ratio tout en tenant dans la zone disponible */
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%; /* Aligne verticalement les flèches avec l'image */
+  font-size: 40px;
+  color: white;
+  transition: 0.6s ease;
+  user-select: none;
+  transform: translateY(-50%); /* Assure que les flèches soient centrées par rapport à l'image */
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.prev:hover, .next:hover {
+  color: #ccc; /* Optionnel : léger effet hover sur les flèches */
+}

@@ -109,14 +109,26 @@
     "SHOP": "Gestion de mes boutiques",
     "FINANCIAL": "Suivi financier",
     "ADMIN": "Administration générale",
-    "CALENDAR": "Agenda"
+    "CALENDAR": "Agenda",
+    "SELECT_SALON": "Sélectionnez un salon",
+    "NEW_SALON": "Sélectionnez un salon",
+    "SHOP_TO_CREATE": "Type de boutique à créer",
+    "CANCEL": "Annuler",
+    "CREATE": "Créer ma boutique",
+    "INFO1":"Vous êtes sur le point de supprimer votre boutique de",
+    "INFO2":"Cette action est irréversible",
+    "SURE":"Êtes-vous sûr de vouloir continuer",
+    "DELETE":"Supprimer"
   },
   "PROFILE": {
     "TITLE": "Informations de base",
     "FIRSTNAME": "Prénom",
     "LASTNAME": "Nom de famille",
     "PHONE": "Numéro de téléphone",
-    "ADDRESS": "Adresse courriel"
+    "ADDRESS": "Adresse courriel",
+    "CHANGE_USER": "Modifier l'utilisateur",
+    "CANCEL": "Annuler",
+    "SUCCESS": "Profil modifié avec succès"
   },
   "SECURITY": {
     "CHANGE_PASSWORD_TITLE": "Changer de mot de passe",
@@ -348,7 +360,9 @@
     "PRESTA_FOR": "Prestation pour",
     "AT": "à",
     "ORDER_AGAIN": "Commander à nouveau",
-    "INVOICE": "Demander une facture"
+    "INVOICE": "Demander une facture",
+    "REVIEW": "Donner votre avis",
+    "CANCEL": "Annuler"
   },
   "FAVORITES": {
     "TITLE": "Mes favoris"
@@ -357,7 +371,8 @@
     "MOVING_FEE": "Frais de déplacement :",
     "DISTANCE": "Distance max :",
     "PAYEMENT": "Paiement par CB et PayPal accepté",
-    "PRESS_FOR_INFO": "Appuyez pour consulter les horaires, les informations, etc..."
+    "PRESS_FOR_INFO": "Appuyez pour consulter les horaires, les informations, etc...",
+    "GALLERY": "Gallerie d'images"
   },
   "LOGIN": {
     "TITLE": "Entrez vos identifiants de connexion.",
@@ -394,5 +409,166 @@
     "DANOIS": "Danois",
     "FINLANDAIS": "Finlandais",
     "SUEDOIS": "Suédois"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Mes adresses",
+    "ADDRESS_MODIFICATION": "Modification d'adresse",
+    "STREET": "Rue",
+    "CITY": "Ville",
+    "CP": "Code Postal",
+    "CREATE": "Créer",
+    "BACK": "Retour",
+    "CHANGE": "Modifier",
+    "CLOSE": "Fermer"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Total des boutiques",
+    "ACT_SHOPS": "Nombre de boutiques actives",
+    "USERS": "Total des utilisateurs",
+    "NBR_USERS": "Nombre d'utilisateurs inscrits",
+    "CA_TOTAL": "Chiffre d'affaires total",
+    "CA_GENERATED": "Chiffre d'affaires généré",
+    "SHOPS_PERFO": "Performances des boutiques",
+    "SHOP_NAME": "Nom de la boutique",
+    "CITY": "Ville",
+    "REVENUES": "Revenus",
+    "BOOKINGS": "Nombre de réservations",
+    "NOTE": "Note moyenne",
+    "ACTIONS": "Actions",
+    "DETAILS": "Détails",
+    "ADJUST": "Ajuster",
+    "SHOP_ADJUST": "Ajuster la boutique",
+    "STILL_DEVELOPPED": "Cette fonctionnalité est encore en développement",
+    "CLOSE": "Fermer"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Détails de l'événement",
+    "CLIENT": "Client",
+    "DEBUT": "Début",
+    "FIN": "Fin",
+    "ADDRESS": "Adresse",
+    "PHONE": "Téléphone",
+    "CANCEL": "Annuler",
+    "SAVE": "Sauvegarder"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Créer un événement"
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Assistance en ligne"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Gestion des employés",
+    "NAME": "Nom",
+    "EMAIL": "Email",
+    "SOLDE": "Solde du compte",
+    "ACTIONS": "Actions",
+    "DEFAULT_PASSWORD": "Mot de passe par défaut",
+    "REINITIALIZE_PASSWORD": "Mot de passe par défaut pour réinitialisation",
+    "CHANGE_PASSWORD": "Modifier le mot de passe"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Créditer le compte de l'employé",
+    "AMOUNT": "Montant à créditer ",
+    "CANCEL": "Annuler",
+    "SAVE": "Valider"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Total des réservations",
+    "TOTAL_MONTH": "Réservations ce mois-ci",
+    "GENERATED": "Revenus générés",
+    "MONTHLY": "Revenus ce mois-ci",
+    "AVG_NOTE": "Notes moyennes",
+    "BASED_ON": "Basé sur",
+    "REVIEWS": "avis",
+    "NEXT_APPOINTEMENT": "Prochains rendez-vous",
+    "POPULAR_SERVICES": "Services les plus populaires",
+    "RESERVATION": "réservations"
+  },
+  "FINANCE": {
+    "TOTAL_GENERATED": "Total de chiffre généré",
+    "CA": "Chiffre d'affaires",
+    "COMMISSION_TAKEN": "Commission prélevée",
+    "COMMISSIONS": "Commissions",
+    "NET_TO_PAY": "Montant net à verser",
+    "DISPO_AMOUNT": "Montant disponible",
+    "REQUEST_WITHDRAWAL": "Demander un virement",
+    "TAKE": "Montant à retirer",
+    "DETAILS": "Détails du compte bancaire",
+    "ASK": "Demander un virement",
+    "HISTORY": "Historique des transactions",
+    "DATE": "Date",
+    "AMOUNT": "Montant",
+    "COMMISSION": "Commission",
+    "STATUS": "Statut"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Sélectionnez le type de boutique à créer",
+    "CANCEL": "Annuler",
+    "CREATE": "Valider"
+  },
+  "PROCHES": {
+    "TITLE": "Mes proches",
+    "UPDATE": "Modification d'un proche",
+    "FIRSTNAME": "Prénom",
+    "NAME": "Nom de famille",
+    "EMAIL": "Email",
+    "PHONE": "Téléphone",
+    "CREATE": "Créer",
+    "BACK": "Retour",
+    "CHANGE": "Modifier",
+    "CLOSE": "Fermer"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Donner votre avis",
+    "RATING": "Note",
+    "COMMENT": "Commentaire",
+    "CLOSE": "Fermer",
+    "SUBMIT": "Soumettre"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Choisissez la date de la prestation",
+    "CANCEL": "Annuler"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Créer un service",
+    "NAME": "Nom",
+    "DESCRIPTION": "Description",
+    "COLOR": "Couleur",
+    "PRICE": "Prix",
+    "TIME": "Durée",
+    "IMAGE": "Image",
+    "ACTIONS": "Actions",
+    "MINUTES": "minutes",
+    "CHANGE": "Mofifier",
+    "SERVICE_NAME": "Nom du service",
+    "TIME_MINUTES": "Durée (en minutes)",
+    "PREST_IMAGE": "Image de la prestation",
+    "NO_PICS": "Pas encore de photo",
+    "UPLOAD": "Télécharger une image",
+    "NEW_PIC": "Aperçu de la nouvelle image",
+    "PRESTA_COLOR": "Couleur de la prestation",
+    "CANCEL": "Annuler",
+    "SAVE": "Enregistrer",
+    "AVG_PRICE": "Tarif moyen"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Image de la boutique",
+    "UPLOAD_IMAGE": "Télécharger une image",
+    "SNEEK_PIC": "Aperçu de l'image",
+    "SHOP_NAME": "Nom de la boutique",
+    "DESCRIPTION": "Description",
+    "DESC_INFO": "(min. 25 caractères)",
+    "CITY": "Ville",
+    "DISCRICT": "Arrondissements",
+    "LAT": "Latitude",
+    "LON": "Longitude",
+    "ZONE": "Zone de déplacement (km)",
+    "OPENNING": "Horaires d'ouverture",
+    "MORNING_OPEN": "Matin - Ouverture",
+    "MORNING_CLOSE": "Matin - Fermeture",
+    "AFTERNOON_OPEN": "Après-midi - Ouverture",
+    "AFTERNOON_CLOSE": "Après-midi - Fermeture",
+    "SAVE": "Enregistrer la boutique"
   }
 }

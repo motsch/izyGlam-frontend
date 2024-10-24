@@ -2,188 +2,201 @@
   "SHOPTYPE": {
     "HAIRDRESSER": "Frisør",
     "NAILTECHNICIAN": "Negletekniker",
-    "MAKEUP": "Makeup-artist",
+    "MAKEUP": "Makeupartist",
     "WAXING": "Kosmetolog",
     "FACIAL": "Ansigtsbehandling",
     "MASSAGE": "Massør",
     "EYELASH": "Vippeforlængelse",
     "EYEBROW": "Øjenbryn",
-    "TANNING": "Spraytan",
+    "TANNING": "Solfarvning",
     "ACUPUNCTURE": "Akupunktur",
     "OTHER": "Andet"
   },
   "HOMEPAGE": {
-    "TITLERED": "Få det leveret til dig",
-    "KNOWMORE": "Læs mere",
+    "TITLERED": "Lad dem komme til dig",
+    "KNOWMORE": "Få mere at vide",
     "PART1TITLE": "Nyd de bedste skønhedsbehandlinger derhjemme",
-    "PART1TEXT": "Vores kvalificerede fagfolk kommer til dit hjem og tilbyder dig skønhedsbehandlinger af høj kvalitet, tilpasset dine behov og ønsker. Oplev en unik wellness-oplevelse, hvad enten det er i din frokostpause, efter arbejde eller en eftermiddag med veninderne.",
-    "PART2TITLE": "Arbejd når du vil, og tjen fleksible indtægter",
-    "PART2TEXT": "Tjen penge efter din egen tidsplan ved at acceptere forespørgsler på platformen i dit eget tempo. Du kan bruge dit eget udstyr eller vælge at leje professionelt udstyr via izyGlam.",
-    "PART3TITLE": "En nyfortolket skønhedstjeneste til virksomheder",
-    "PART3TEXT": "Glam for Business er en platform dedikeret til virksomheder i alle størrelser, designet til at imødekomme skønhedsbehovene hos dine kunder og medarbejdere. Tilbyd skræddersyede skønhedsbehandlinger direkte på arbejdspladsen, ved firmaevents eller til særlige lejligheder. Vores kvalificerede fagfolk kommer til dig og leverer tjenester tilpasset dine behov.",
+    "PART1TEXT": "Vores kvalificerede fagfolk kommer hjem til dig for at tilbyde kvalitetsbehandlinger, der er tilpasset dine behov og ønsker. Oplev en unik velværeoplevelse, uanset om det er i frokostpausen, efter arbejde om aftenen eller på en eftermiddag med venner.",
+    "PART2TITLE": "Arbejd når du vil, og skab skræddersyede indtægter",
+    "PART2TEXT": "Skab indtægter i dit eget tempo ved at acceptere anmodninger på platformen, når det passer dig. Du kan bruge dit eget udstyr eller vælge at leje professionelt udstyr gennem izyGlam.",
+    "PART3TITLE": "En nytænkt skønhedstjeneste for virksomheder",
+    "PART3TEXT": "Glam for Business er en platform dedikeret til virksomheder i alle størrelser, designet til at imødekomme dine kunders og medarbejderes skønhedsbehov. Tilbyd skræddersyede skønhedsbehandlinger direkte på arbejdspladsen, ved virksomhedsarrangementer eller til særlige lejligheder. Vores kvalificerede fagfolk kommer for at levere tjenester, der passer til dine behov.",
     "APPTITLE": "Det er nemmere med apps",
     "DOWNLOADAPP1": "Download izyGlam-appen",
     "DOWNLOADAPP2": "Download appen for skønhedsprofessionelle",
     "SCANTODOWNLOAD": "Scan for at downloade"
   },
   "FOOTER": {
-    "HOWITWORKS": "Sådan fungerer izyGlams apps og websteder",
-    "HELPCENTER": "Adgang til hjælp",
+    "HOWITWORKS": "Sådan fungerer izyGlam-appen og -websiderne",
+    "HELPCENTER": "Gå til hjælpecenteret",
     "BUSINESS": "Virksomhed",
-    "ABOUT": "Om os",
+    "ABOUT": "Om",
     "OURSERVICES": "Vores tjenester",
     "PRESSAREA": "Presseområde",
     "INVESTORS": "Investorer",
-    "CAREERS": "Jobtilbud",
+    "CAREERS": "Karriere",
     "AI": "Kunstig intelligens",
     "PRODUCTS": "Produkter",
-    "GLAM": "Altid glamourøs med izyGlam",
-    "RESERVED": "Reserver i forvejen",
+    "GLAM": "Altid på toppen med izyGlam",
+    "RESERVED": "Book på forhånd",
     "GIFTCARDS": "Gavekort",
     "WORKWITHUS": "Arbejd med izyGlam",
     "GLAMFORBUSINESS": "Glam for Business",
     "CONFIDENTIAL": "Fortrolighed",
     "ACCESS": "Tilgængelighed",
-    "CONDITIONS": "Betingelser",
+    "CONDITIONS": "Vilkår",
     "LANGUAGE": "Sprog",
-    "LOCALISATION": "Placering"
+    "LOCALISATION": "Lokalisering"
   },
   "COMING_SOON": {
-    "TITLE": "Kommer snart",
-    "TITLE-NOT-COMING": "Vi har endnu ikke planlagt at komme her",
+    "TITLE": "Vi kommer snart",
+    "TITLE-NOT-COMING": "Vi har endnu ikke planlagt at komme",
     "DAYS": "Dage",
     "HOURS": "Timer",
     "MINUTES": "Minutter",
     "SECONDS": "Sekunder",
-    "TEXT": "Vi arbejder hårdt på at tilbyde dig en unik skønhedsoplevelse derhjemme. Hold forbindelsen for at blive opdateret om vores lancering."
+    "TEXT": "Vi arbejder hårdt for at give dig en unik skønhedsoplevelse derhjemme. Hold dig opdateret for at blive informeret om vores lancering."
   },
   "MAIN_PAGE": {
     "MOMENT": "Tilbud i øjeblikket",
-    "DISCOVER": "Opdag på izyGlam",
-    "LIKED": "Mest værdsat i nærheden",
-    "SMART": "Smarte tilbud",
+    "DISCOVER": "Oplev på izyGlam",
+    "LIKED": "Mest populære i nærheden",
+    "SMART": "Smarte planer",
     "TOP10": "Top 10 i ugen",
     "SEARCHRESULT": "Søgeresultater",
-    "AVIS": "anmeldelser"
+    "AVIS": "Anmeldelser"
   },
   "MAIN_CATEGORY": {
-    "COIFFURE": "Frisør",
+    "COIFFURE": "Hår",
     "MANUCURE": "Manicure",
-    "VISAGE": "Ansigtsbehandling",
+    "VISAGE": "Ansigt",
     "MASSAGE": "Massage",
     "MAQUILLAGE": "Makeup",
-    "EPILATION": "Hårfjerning",
-    "BRONZAGE": "Spraytan",
-    "PARTUM": "Efterfødsel",
+    "EPILATION": "Voksning",
+    "BRONZAGE": "Solfarvning",
+    "PARTUM": "Postpartum",
     "NUTRITION": "Ernæring",
     "FITNESS": "Fitness",
     "ACUPUNCTURE": "Akupunktur",
-    "STYLISME": "Stil",
-    "TATOUAGE": "Tatovering",
-    "DECO": "Dekoration"
+    "STYLISME": "Styling",
+    "YOGA": "Afslapning",
+    "DEVELOPPEMENT": "Udvikling"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "En frisør",
-    "MANUCURE": "En manicure",
+    "MANUCURE": "En manicurist",
     "ESTETICIAN": "En kosmetolog",
     "MASSAGE": "En massør",
     "MAQUILLAGE": "En makeupartist",
-    "PEDICURE": "En pedicure",
+    "PEDICURE": "En fodplejer",
     "NUTRITION": "En ernæringsekspert",
-    "FITNESS": "En træner"
+    "FITNESS": "En fitnesscoach"
   },
   "INTRO": {
     "NORESULTS": "Ingen resultater fundet",
     "SEARCH": "Søg",
-    "SPECIALITY": "Speciale?",
+    "SPECIALITY": "Specialitet?",
     "WHERE": "Hvor?",
     "CONNEXION": "Log ind",
-    "REGISTRATION": "Registrer"
+    "REGISTRATION": "Registrering"
   },
   "PROFILE_MENU": {
-    "INFORMATION": "Kontoinformation",
+    "INFORMATION": "Kontooplysninger",
     "SECURITY": "Sikkerhed og sprog",
     "CONFIDENTIAL": "Fortrolighed og data",
     "DASHBOARD": "Dashboard",
-    "COMPANY": "Styring af min virksomhed",
-    "SHOP": "Styring af mine butikker",
+    "COMPANY": "Virksomhedshåndtering",
+    "SHOP": "Håndtering af butikker",
     "FINANCIAL": "Finansiel overvågning",
-    "ADMIN": "Generel administration"
+    "ADMIN": "Generel administration",
+    "CALENDAR": "Kalender",
+    "SELECT_SALON": "Vælg en salon",
+    "NEW_SALON": "Vælg en ny salon",
+    "SHOP_TO_CREATE": "Butikstype at oprette",
+    "CANCEL": "Annuller",
+    "CREATE": "Opret min butik",
+    "INFO1": "Du er ved at slette din butik fra",
+    "INFO2": "Denne handling kan ikke fortrydes",
+    "SURE": "Er du sikker på, at du vil fortsætte",
+    "DELETE": "Slet"
   },
   "PROFILE": {
-    "TITLE": "Grundlæggende information",
+    "TITLE": "Grundlæggende oplysninger",
     "FIRSTNAME": "Fornavn",
     "LASTNAME": "Efternavn",
     "PHONE": "Telefonnummer",
-    "ADDRESS": "Emailadresse"
+    "ADDRESS": "Emailadresse",
+    "CHANGE_USER": "Skift bruger",
+    "CANCEL": "Annuller",
+    "SUCCESS": "Profilen blev opdateret med succes"
   },
   "SECURITY": {
     "CHANGE_PASSWORD_TITLE": "Skift adgangskode",
-    "ACTUAL_PASSWORD": "Nuværende adgangskode",
+    "ACTUAL_PASSWORD": "Aktuel adgangskode",
     "NEW_PASSWORD": "Ny adgangskode",
-    "CONFIRMED_PASSWORD": "Bekræft den nye adgangskode",
+    "CONFIRMED_PASSWORD": "Bekræft ny adgangskode",
     "CHANGE_PASSWORD": "Skift adgangskode",
-    "CHANGE_OK": "Adgangskode ændret med succes",
+    "CHANGE_OK": "Adgangskoden blev ændret med succes",
     "CHANGE_LANGUE": "Skift sprog",
     "LANGUE": "Sprog"
   },
   "CONFIDENTIAL": {
     "INTRO": "Introduktion",
-    "INTRO_BIS": "Når du bruger izyGlam, betror du os dine personlige data. Vi forpligter os til at værne om din tillid ved at beskytte dine oplysninger. Denne fortrolighedserklæring beskriver de personlige data ('data'), som vi indsamler, hvordan vi bruger og deler dem, samt dine valg i denne henseende. Vi anbefaler, at du læser dette dokument omhyggeligt.",
+    "INTRO_BIS": "Når du bruger izyGlam, betror du os dine personlige data. Vi forpligter os til at værne om din tillid ved at beskytte dine oplysninger. Denne fortrolighedserklæring beskriver de personoplysninger ('data'), vi indsamler, hvordan vi bruger og deler dem, samt dine valg i forhold til dette. Vi anbefaler, at du læser dette dokument grundigt.",
     "APPLICATION": "Anvendelsesområde",
-    "DECLARATION": "Denne erklæring gælder for brugere af izyGlam-platformen, som forbinder privatpersoner og virksomheder med uafhængige skønhedsprofessionelle som manicurister, pedicurister, makeupartister og frisører. Den dækker alle tjenester, der tilbydes af izyGlam verden over.",
+    "DECLARATION": "Denne erklæring gælder for brugere af izyGlam-platformen, der forbinder enkeltpersoner og virksomheder med uafhængige skønhedsprofessionelle som manicurister, fodplejere, makeupartister og frisører. Den dækker alle tjenester, der tilbydes af izyGlam verden over.",
     "COLLECTE": "Indsamling og brug af data",
     "DATA_GET": "Data indsamlet af izyGlam",
     "DATA_TAKEN": "izyGlam indsamler følgende data",
-    "DATA_USED": "Data leveret af brugerne",
-    "PERSONNAL": "Personlige oplysninger (navn, emailadresse, telefonnummer), kontoinformation (loginoplysninger, adgangskoder, præferencer for skønhedsbehandlinger), betalingsinformation (kreditkortoplysninger, bankoplysninger, transaktionshistorik)",
-    "CREATE_DATA": "Data oprettet under brug af vores tjenester",
-    "HISTORY": "Browserhistorik, cookies, IP-adresse, browsertype, operativsystem, tid brugt på platformen",
-    "RELATION": "Forbindelsesdata",
-    "DETAILS": "Detaljer om de kontaktede skønhedsprofessionelle, de ønskede tjenester, tidsplaner for aftaler, udvekslede beskeder",
+    "DATA_USED": "Data leveret af brugere",
+    "PERSONNAL": "Personoplysninger (navn, emailadresse, telefonnummer), kontooplysninger (loginoplysninger, adgangskoder, præferencer for skønhedstjenester), betalingsoplysninger (kreditkortoplysninger, bankoplysninger, transaktionshistorik)",
+    "CREATE_DATA": "Data oprettet under brugen af vores tjenester",
+    "HISTORY": "Browsinghistorik, cookies, IP-adresse, browsertype, operativsystem, tid brugt på platformen",
+    "RELATION": "Data om forbindelser",
+    "DETAILS": "Detaljer om kontaktede skønhedsprofessionelle, anmodede tjenester, tidsplaner for aftaler, udvekslede kommunikationer",
     "USED": "Brug af data",
-    "USED_FOR": "izyGlam bruger data til at",
-    "BEST_SERVICES": "Levere og forbedre vores tjenester, personalisere din oplevelse og behandle dine ordrer.",
-    "PARTICULIER": "Lettere forbindelsen mellem privatpersoner/virksomheder og uafhængige skønhedsprofessionelle.",
-    "SEND": "Sende dig oplysninger om vores produkter, tjenester, særlige tilbud og nye funktioner.",
-    "ASSURER": "Sikre vores systemers sikkerhed og forebygge svindel.",
-    "EFFECTUER": "Udføre analyser for at forstå platformens brugstendenser.",
-    "PERSONNALISER": "Tilpasse din oplevelse baseret på dine præferencer og din brugshistorik.",
+    "USED_FOR": "izyGlam bruger dataene til",
+    "BEST_SERVICES": "At levere og forbedre vores tjenester, tilpasse din oplevelse og behandle dine ordrer.",
+    "PARTICULIER": "At lette forbindelsen mellem enkeltpersoner/virksomheder og uafhængige skønhedsprofessionelle.",
+    "SEND": "At sende dig information om vores produkter, tjenester, særlige tilbud og nye funktioner.",
+    "ASSURER": "At sikre vores systemers sikkerhed og forhindre svindel.",
+    "EFFECTUER": "At udføre analyser for at forstå brugsmønstre på platformen.",
+    "PERSONNALISER": "At tilpasse din oplevelse baseret på dine præferencer og din brugshistorik.",
     "CHOICE": "Valg og gennemsigtighed",
     "RIGHT": "Dine rettigheder",
     "RGPD": "I henhold til GDPR har du ret til",
-    "PERSONNAL_DATA_ACCESS": "At få adgang til dine personlige data og anmode om en kopi.",
-    "ASK_CORRECTION": "At anmode om rettelse af fejlagtige eller ufuldstændige data.",
-    "ASK_DELETE": "At anmode om sletning af dine data ('ret til at blive glemt').",
+    "PERSONNAL_DATA_ACCESS": "At få adgang til dine personoplysninger og anmode om en kopi heraf.",
+    "ASK_CORRECTION": "At anmode om korrektion af forkerte eller ufuldstændige data.",
+    "ASK_DELETE": "At anmode om sletning af dine data ('retten til at blive glemt').",
     "RESTREINDRE": "At begrænse eller modsætte dig behandlingen af dine data.",
-    "ASK_PORTA": "At anmode om dataportabilitet til en anden tjeneste.",
-    "CONSENT": "At tilbagekalde dit samtykke til enhver tid, når behandlingen er baseret på samtykke.",
-    "RECLAMATION": "At indgive en klage til en kompetent tilsynsmyndighed, hvis du mener, at dine rettigheder ikke bliver respekteret.",
-    "COOKIES": "Privatlivs- og cookieindstillinger",
-    "MANAGE_COOKIES_PREF": "Du kan administrere dine cookieindstillinger via din browsers indstillinger eller et cookieadministrationsværktøj tilgængeligt på vores websted. I fremtiden kan izyGlam bruge andre teknologier til brugertracking.",
+    "ASK_PORTA": "At anmode om overførsel af dine data til en anden tjeneste.",
+    "CONSENT": "At tilbagekalde dit samtykke når som helst, hvis behandlingen er baseret på samtykke.",
+    "RECLAMATION": "At indgive en klage til en relevant tilsynsmyndighed, hvis du mener, at dine rettigheder ikke respekteres.",
+    "COOKIES": "Privatlivsindstillinger og cookies",
+    "MANAGE_COOKIES_PREF": "Du kan administrere dine cookie-præferencer via dine browserindstillinger eller et cookie-styringsværktøj, der er tilgængeligt på vores websted. I fremtiden kan izyGlam bruge andre teknologier til brugertracking.",
     "SHARE_DATA": "Deling af data",
-    "WE_SHARE": "Vi deler kun dine personlige data med pålidelige tredjeparter, der er nødvendige for at behandle dine ordrer og levere tjenester, såsom",
-    "FOURNISSEUR_SERV": "Betalingstjenesteudbydere til sikker behandling af transaktioner.",
-    "TRANSPORT": "Transportfirmaer eller kurerer til levering af produkter, hvis relevant.",
+    "WE_SHARE": "Vi deler kun dine personoplysninger med betroede tredjeparter, der er nødvendige for at behandle dine ordrer og levere tjenester som",
+    "FOURNISSEUR_SERV": "Betalingstjenesteudbydere til sikker transaktionsbehandling.",
+    "TRANSPORT": "Transportfirmaer eller kurerer til levering af produkter, hvis det er relevant.",
     "MARKETING": "Markedsførings- og reklameudbydere, kun med dit samtykke.",
-    "HEALTHCARE": "Uafhængige skønhedsprofessionelle, som du har lavet aftaler med via platformen.",
-    "CLOUD": "Cloud- og hostingudbydere for at sikre tilgængeligheden og sikkerheden af vores platform.",
+    "HEALTHCARE": "Uafhængige skønhedsprofessionelle, som du har aftalt en tid med via platformen.",
+    "CLOUD": "Cloud- og hostingtjenesteudbydere for at sikre tilgængeligheden og sikkerheden af vores platform.",
     "DATA_SAVED": "Opbevaring af data",
-    "WE_SAVE": "Vi opbevarer dine personlige data kun i den tid, der er nødvendig for at opfylde de formål, de blev indsamlet til, herunder for at overholde eventuelle lovgivningsmæssige, regnskabsmæssige eller rapporteringsmæssige krav. Data opbevares typisk i 3 til 6 måneder.",
+    "WE_SAVE": "Vi opbevarer dine personoplysninger kun i den periode, der er nødvendig for at nå de formål, som de blev indsamlet til, herunder for at overholde juridiske, regnskabsmæssige eller rapporteringsmæssige krav. Data opbevares normalt mellem 3 og 6 måneder.",
     "SECURITY": "Datasikkerhed",
-    "TECHNICAL": "Vi implementerer passende tekniske og organisatoriske foranstaltninger for at beskytte dine personlige data mod tab, misbrug, uautoriseret adgang, offentliggørelse, ændring eller ødelæggelse. Disse foranstaltninger omfatter datakryptering under overførsel og i hvile, stærk autentificering til adgang til interne systemer samt kontinuerlig overvågning af potentielle trusler og sikkerhedsproblemer. Vi har endnu ikke implementeret protokoller til reaktion på databrud, men dette er noget, vi overvejer til fremtiden.",
-    "INTERNATIONAL": "International dataoverførsel",
-    "PERSONNAL_DATA": "De personlige data, vi indsamler, kan blive overført til og opbevaret i lande uden for Det Europæiske Økonomiske Samarbejdsområde (EØS). Når sådanne overførsler finder sted, sikrer vi, at de sker i overensstemmelse med gældende regler ved at bruge mekanismer såsom de standardkontraktklausuler, der er godkendt af Europa-Kommissionen.",
+    "TECHNICAL": "Vi implementerer passende tekniske og organisatoriske foranstaltninger for at beskytte dine personoplysninger mod tab, misbrug, uautoriseret adgang, afsløring, ændring eller ødelæggelse. Blandt disse foranstaltninger bruger vi datakryptering under overførsel og i hvile, stærk godkendelse til adgang til interne systemer samt kontinuerlig overvågning af trusler og potentielle sikkerhedsbrud. Vi har endnu ikke implementeret protokoller til databrudsreaktion, men det er noget, vi overvejer til fremtiden.",
+    "INTERNATIONAL": "Internationale dataoverførsler",
+    "PERSONNAL_DATA": "De personoplysninger, vi indsamler, kan blive overført og opbevaret i lande uden for Det Europæiske Økonomiske Samarbejdsområde (EØS). Når disse overførsler finder sted, sikrer vi, at de sker i overensstemmelse med gældende regler ved hjælp af mekanismer som EU-Kommissionens standardkontraktbestemmelser.",
     "CONTACT": "Kontakt",
-    "QUESTION": "For spørgsmål om vores privatlivspolitik eller for at udøve dine rettigheder, kontakt os på: userprotection@izyglam.com.",
-    "CHANGE_POLITIQUE": "Ændringer af denne fortrolighedspolitik",
-    "RESERVES": "Vi forbeholder os retten til at ændre denne fortrolighedspolitik til enhver tid. I tilfælde af væsentlige ændringer vil vi informere dig via e-mail. Vi opfordrer dig til regelmæssigt at tjekke denne side for at holde dig opdateret."
+    "QUESTION": "For spørgsmål vedrørende vores fortrolighedspolitik eller for at udøve dine rettigheder, bedes du kontakte os på: userprotection@izyglam.com.",
+    "CHANGE_POLITIQUE": "Ændringer i denne fortrolighedspolitik",
+    "RESERVES": "Vi forbeholder os retten til at ændre denne fortrolighedspolitik når som helst. Ved væsentlige ændringer vil vi informere dig via email. Vi opfordrer dig til regelmæssigt at tjekke denne side for at være opdateret om eventuelle ændringer."
   },
   "PAYEMENT": {
-    "TITLE": "Book din aftale online",
-    "FOR_WHO": "Hvem er denne aftale til?",
+    "TITLE": "Bestil din tid online",
+    "FOR_WHO": "Hvem bestiller du denne tid for?",
     "ADD_PROCHE": "Tilføj en pårørende",
-    "WHERE": "Hvor skal aftalen afholdes?",
+    "WHERE": "Hvor vil du modtage behandlingen?",
     "SELECT_ADDRESS": "Vælg en adresse",
     "ADD_ADDRESS": "Tilføj en adresse",
     "CARD_PAY": "Betaling med kreditkort",
@@ -192,22 +205,22 @@
     "EXPIRATION": "Udløbsdato",
     "CVV": "CVV",
     "RDV": "Din aftale i detaljer",
-    "RESUME": "Aftaleresumé",
+    "RESUME": "Resumé af aftalen",
     "DATE": "Dato",
-    "HOUR": "Tid",
-    "PRESTA": "Tjeneste",
+    "HOUR": "Tidspunkt",
+    "PRESTA": "Ydelse",
     "WITH": "Med",
-    "TOTAL": "Samlet betaling",
+    "TOTAL": "Samlet beløb at betale",
     "ANNULER": "ANNULLER",
     "RETOUR": "TILBAGE",
     "CONTINUER": "FORTSÆT",
     "VALIDER": "BEKRÆFT"
   },
   "CREATION_SHOP_STEPS": {
-    "TITLE": "Sådan fungerer izyGlam for partnervirksomheder",
+    "TITLE": "Sådan fungerer izyGlam for partnerforretninger",
     "STEP1": {
-      "TITLE": "Kunderne bestiller",
-      "TEXT": "Kunden finder din virksomhed og bestiller via izyGlam-appen."
+      "TITLE": "Kunderne afgiver deres bestillinger",
+      "TEXT": "Kunden finder din forretning og afgiver en bestilling via izyGlam-appen."
     },
     "STEP2": {
       "TITLE": "Du accepterer reservationen",
@@ -215,110 +228,171 @@
     },
     "STEP3": {
       "TITLE": "På tidspunktet for aftalen",
-      "TEXT": "Du bliver advaret på forhånd om kommende reservationer og guidet til hver kunde."
+      "TEXT": "Du bliver advaret i god tid om kommende reservationer, og vi guider dig til hver kunde."
     }
   },
   "CREATION_SHOP": {
-    "TITLE": "Kom i gang nu",
-    "NAME": "Din virksomheds navn",
+    "ALREDAY_SHOP": "Du har allerede en partnerkonto eller en virksomhedsprofil!",
+    "NOT_CONNECTED": "Venligst log ind for at registrere en butik!",
+    "TITLE": "Kom i gang",
+    "NAME": "Dit virksomhedsnavn",
     "ADDRESS": "Din virksomheds adresse",
-    "ADDRESSPLACEHOLDER": "123, Hovedgade",
+    "STREET": "Gade",
+    "CITY": "By",
+    "CODE_POSTAL": "Postnummer",
+    "COUNTRY": "Land",
+    "ADDRESSPLACEHOLDER": "123, Hovedgaden",
     "FLOOR": "Etage/Suite (valgfrit)",
     "BUSINESSTYPE": "Virksomhedstype",
     "FIRSTNAME": "Fornavn",
     "LASTNAME": "Efternavn",
+    "PASSWORD": "Adgangskode",
+    "PASSWORDCONFIRMED": "Bekræft adgangskode",
     "EMAIL": "E-mail",
-    "PHONE": "Mobiltelefonnummer",
+    "PHONE": "Mobilnummer",
     "WHATSAPP": "Jeg accepterer at modtage beskeder på WhatsApp",
-    "BUTTON": "Registrer butik",
-    "SUCCESS": "Butikken blev oprettet med succes!",
+    "BUTTON": "Registrer butikken",
+    "SUCCESS": "Butikken er oprettet med succes!",
     "ERROR": "Der opstod en fejl under oprettelsen af butikken:",
-    "ERROR1": "Din virksomheds navn er påkrævet.",
+    "ERROR1": "Dit virksomhedsnavn er påkrævet.",
     "ERROR2": "Din virksomheds adresse er påkrævet.",
-    "ERROR3": "Virksomhedstype er påkrævet.",
+    "ERROR3": "Virksomhedstypen er påkrævet.",
     "ERROR4": "Fornavn er påkrævet.",
     "ERROR5": "Efternavn er påkrævet.",
     "ERROR6": "E-mail er påkrævet.",
-    "ERROR7": "Mobiltelefonnummer er påkrævet.",
+    "ERROR7": "Mobilnummer er påkrævet.",
     "ERROR8": "Du skal acceptere at modtage beskeder på WhatsApp."
   },
   "CREATE_SHOP_INFO": {
     "TITLE": "Udvid din virksomhed",
-    "TEXT": "Tusindvis af brugere af izyGlam-appen søger muligvis efter en restaurant i dit område...",
+    "TEXT": "Tusindvis af brugere af izyGlam-appen søger efter restauranter i dit område...",
     "IMAGE": "billede"
   },
   "CREATE_SHOP_STEPS": {
-    "TITLE": "Hvorfor izyGlam?",
+    "TITLE": "Hvorfor vælge izyGlam?",
     "STEP1": {
       "TITLE": "Arbejd på dine egne vilkår",
-      "TEXT": "Organiser din tidsplan og styr dine tjenester i fuld frihed. Drag fordel af en fleksibel platform, der tilpasser sig dine behov for at maksimere din virksomhed."
+      "TEXT": "Tilpas din tidsplan og håndter dine tjenester med fuld frihed. Nyd en fleksibel platform, der tilpasser sig dine behov for at maksimere din aktivitet."
     },
     "STEP2": {
       "TITLE": "Styrk din online tilstedeværelse",
-      "TEXT": "Tiltræk flere kunder med de indbyggede marketingværktøjer i appen og øg dine resultater med øget synlighed."
+      "TEXT": "Tiltræk flere kunder med de markedsføringsværktøjer, der er inkluderet i appen, og øg dine resultater med øget synlighed."
     },
     "STEP3": {
-      "TITLE": "Fasthold dine kunder",
-      "TEXT": "Skab varige relationer ved at analysere dine kunders præferencer, besvare deres anmeldelser og tilbyde dem loyalitetsfordele."
+      "TITLE": "Skab kundeloyalitet",
+      "TEXT": "Opbyg langvarige relationer ved at analysere dine kunders præferencer, svare på deres anmeldelser og tilbyde dem loyalitetsfordele."
     }
   },
   "INFO_SHOP_STEPS": {
     "STEP1": {
       "TITLE": "Forenkle styringen af din virksomhed",
-      "TEXT": "Styr din virksomhed med ro i sindet takket være izyGlam, den komplette løsning til wellness-professionelle. Udnyt fleksible værktøjer og personlig support til at imødekomme alle dine behov."
+      "TEXT": "Styr din virksomhed med ro i sindet takket være izyGlam, den komplette løsning for wellness-professionelle. Drag fordel af fleksible værktøjer og personlig support, der opfylder alle dine behov."
     },
     "STEP2": {
-      "TITLE": "Forøg dit salg",
-      "TEXT": "Hver dag bruger tusindvis af mennesker izyGlam til at finde skønhedseksperter i nærheden af dem. Udnyt denne mulighed for at nå nye kunder i din branche."
+      "TITLE": "Boost dine salg",
+      "TEXT": "Hver dag bruger tusindvis af mennesker izyGlam til at finde skønhedseksperter i nærheden. Udnyt denne mulighed for at nå nye kunder inden for dit felt."
     },
     "STEP3": {
-      "TITLE": "Garanti for kundetilfredshed",
-      "TEXT": "Med izyGlam tilbyder du dine kunder en personlig oplevelse. Administrer nemt dine aftaler, kommunikér hurtigt og tilbyd skræddersyede tjenester. Dine kunder modtager behandlinger, hvor og når de vil, hvilket sikrer deres tilfredshed og loyalitet."
+      "TITLE": "Garanteret kundetilfredshed",
+      "TEXT": "Med izyGlam kan du tilbyde dine kunder en personlig oplevelse. Håndter nemt dine aftaler, kommuniker hurtigt og tilbyd tilpassede tjenester. Dine kunder får behandlinger, hvor og hvornår de ønsker, hvilket sikrer deres tilfredshed og loyalitet."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "Hvordan fungerer izyGlam for din virksomhed?",
+    "STEP1": {
+      "TITLE": "Dine medarbejdere og kunder bestiller tjenester",
+      "TEXT": "Dine medarbejdere eller kunder vælger de wellness-behandlinger, der passer dem, direkte via izyGlam-appen."
+    },
+    "STEP2": {
+      "TITLE": "Du bestemmer det beløb, der skal tildeles",
+      "TEXT": "Du har kontrollen over at kreditere dine medarbejderes og kunders konti. Du kan vælge at kreditere disse konti regelmæssigt eller lejlighedsvis."
+    },
+    "STEP3": {
+      "TITLE": "Tjenesterne udføres",
+      "TEXT": "Vores skønhedseksperter kommer til dine medarbejdere eller til dine lokaler for at levere de reserverede tjenester, hvilket garanterer en optimal wellness-oplevelse."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Øg din virksomheds værdi",
+    "TEXT": "Tusindvis af brugere af izyGlam-appen søger efter wellness-tjenester. Giv dine medarbejdere og kunder privilegeret adgang til de bedste skønhedseksperter i nærheden.",
+    "IMAGE": "billede"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Hvorfor vælge izyGlam for din virksomhed?",
+    "STEP1": {
+      "TITLE": "Skab loyalitet og beløn dine medarbejdere",
+      "TEXT": "Giv dine teams en unik fordel ved at tilbyde dem et månedligt skønhedsbudget. Frisører, kosmetologer og mange andre wellness-eksperter står til deres rådighed for at forbedre deres tilfredshed og styrke følelsen af at høre til i virksomheden."
+    },
+    "STEP2": {
+      "TITLE": "Forbedr dit brand image",
+      "TEXT": "Arranger skønhedsbegivenheder for dine kunder eller partnere, eller integrer izyGlams tjenester i dine loyalitetsprogrammer. Sørg for at gøre et varigt indtryk med luksusbehandlinger, der er tilpasset enhver lejlighed."
+    },
+    "STEP3": {
+      "TITLE": "Optimer trivsel på arbejdspladsen",
+      "TEXT": "Gør det nemt for dine medarbejdere at få adgang til wellness-tjenester direkte på deres arbejdsplads eller i nærheden. Ved at tage sig af deres velvære styrker du deres motivation og fremmer teamsammenhold."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Gør det nemt for dine teams at få adgang til velvære",
+      "TEXT": "Med izyGlam kan du tilbyde dine medarbejdere en enkel og fleksibel løsning til at tage sig af sig selv. Uanset om det er skønhedsbehandlinger eller fitness-sessioner, er alt inden for rækkevidde."
+    },
+    "STEP2": {
+      "TITLE": "Tilbyd innovative fordele til dine kunder",
+      "TEXT": "Styrk dine relationer med dine kunder ved at tilbyde velværebehandlinger ved events eller som en del af dine loyalitetsprogrammer. Vis dem, at du værdsætter deres oplevelse med unikke tjenester."
+    },
+    "STEP3": {
+      "TITLE": "Skræddersyet velvære, når og hvor du vil",
+      "TEXT": "Med izyGlam kan dine medarbejdere og kunder nyde kvalitetsbehandlinger, uanset hvor de er. Udvalgte eksperter står klar til at opfylde deres specifikke behov, med personlig service, der sikrer deres tilfredshed."
     }
   },
   "SIDEBAR": {
     "PROFILE": "Administrer konto",
-    "ORDERS": "Tidligere ordrer",
+    "ORDERS": "Tidligere bestillinger",
     "FAVORITES": "Favoritter",
     "HELP": "Hjælp",
     "LOGOUT": "Log ud",
-    "YOUR_BEAUTY_SERVICES": "Tilbyd dine skønhedstjenester"
+    "YOUR_BEAUTY_SERVICES": "Tilbyd dine skønhedsservices",
+    "YOUR_COMPANY": "Registrer din virksomhed"
   },
   "ORDERS": {
-    "TITLE": "Tidligere ordrer",
-    "PRESTA_FOR": "tjeneste for",
-    "AT": "hos",
+    "TITLE": "Tidligere bestillinger",
+    "PRESTA_FOR": "Behandling til",
+    "AT": "ved",
     "ORDER_AGAIN": "Bestil igen",
-    "INVOICE": "Anmod om en faktura"
+    "INVOICE": "Anmod om faktura",
+    "REVIEW": "Giv din anmeldelse",
+    "CANCEL": "Annuller"
   },
   "FAVORITES": {
     "TITLE": "Mine favoritter"
   },
   "SHOP": {
-    "MOVING_FEE": "Rejsegebyr:",
-    "DISTANCE": "Maks. afstand:",
-    "PAYEMENT": "Betaling med kreditkort og PayPal accepteret",
-    "PRESS_FOR_INFO": "Tryk for at se åbningstider, information osv..."
+    "MOVING_FEE": "Transportgebyr:",
+    "DISTANCE": "Maksimal afstand:",
+    "PAYEMENT": "Betaling med kort og PayPal accepteres",
+    "PRESS_FOR_INFO": "Tryk for at se åbningstider, information osv.",
+    "GALLERY": "Billedgalleri"
   },
   "LOGIN": {
     "TITLE": "Indtast dine loginoplysninger.",
     "FORGET_PASSWORD": "Glemt?",
     "CONTINUER": "Fortsæt",
-    "OR": "eller",
+    "OR": "Eller",
     "QRCODE": "Log ind med QR-kode",
-    "CGU": "Ved at fortsætte accepterer du at modtage opkald, WhatsApp-beskeder eller SMS'er (herunder via automatiske metoder) fra izyGlam og dets tilknyttede selskaber på det angivne nummer.",
-    "PLACEHOLDER_EMAIL": "Emailadresse",
+    "CGU": "Ved at fortsætte accepterer du at modtage opkald, WhatsApp-beskeder eller sms'er (inklusive via automatiserede metoder) fra izyGlam og dets tilknyttede selskaber på det angivne nummer.",
+    "PLACEHOLDER_EMAIL": "E-mailadresse",
     "PLACEHOLDER_PASSWORD": "Adgangskode"
   },
   "SIGNUP": {
     "TITLE": "Indtast dine personlige oplysninger.",
     "CONTINUER": "Fortsæt",
-    "OR": "eller",
+    "OR": "Eller",
     "QRCODE": "Log ind med QR-kode",
-    "CGU": "Ved at fortsætte accepterer du at modtage opkald, WhatsApp-beskeder eller SMS'er (herunder via automatiske metoder) fra izyGlam og dets tilknyttede selskaber på det angivne nummer.",
+    "CGU": "Ved at fortsætte accepterer du at modtage opkald, WhatsApp-beskeder eller sms'er (inklusive via automatiserede metoder) fra izyGlam og dets tilknyttede selskaber på det angivne nummer.",
     "PLACEHOLDER_FIRSTNAME": "Fornavn",
     "PLACEHOLDER_LASTNAME": "Efternavn",
-    "PLACEHOLDER_EMAIL": "Email",
+    "PLACEHOLDER_EMAIL": "E-mail",
     "PLACEHOLDER_PHONE": "Telefon",
     "PLACEHOLDER_PASSWORD": "Adgangskode",
     "PLACEHOLDER_PASSWORDCONFIRMED": "Bekræft adgangskode"
@@ -335,5 +409,166 @@
     "DANOIS": "Dansk",
     "FINLANDAIS": "Finsk",
     "SUEDOIS": "Svensk"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Mine adresser",
+    "ADDRESS_MODIFICATION": "Ændring af adresse",
+    "STREET": "Gade",
+    "CITY": "By",
+    "CP": "Postnummer",
+    "CREATE": "Opret",
+    "BACK": "Tilbage",
+    "CHANGE": "Rediger",
+    "CLOSE": "Luk"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Samlede butikker",
+    "ACT_SHOPS": "Antal aktive butikker",
+    "USERS": "Samlede brugere",
+    "NBR_USERS": "Antal registrerede brugere",
+    "CA_TOTAL": "Samlet omsætning",
+    "CA_GENERATED": "Genereret omsætning",
+    "SHOPS_PERFO": "Butikkernes præstationer",
+    "SHOP_NAME": "Butiksnavn",
+    "CITY": "By",
+    "REVENUES": "Indtægter",
+    "BOOKINGS": "Antal reservationer",
+    "NOTE": "Gennemsnitlig vurdering",
+    "ACTIONS": "Handlinger",
+    "DETAILS": "Detaljer",
+    "ADJUST": "Juster",
+    "SHOP_ADJUST": "Juster butikken",
+    "STILL_DEVELOPPED": "Denne funktion er stadig under udvikling",
+    "CLOSE": "Luk"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Detaljer om begivenhed",
+    "CLIENT": "Kunde",
+    "DEBUT": "Start",
+    "FIN": "Slut",
+    "ADDRESS": "Adresse",
+    "PHONE": "Telefon",
+    "CANCEL": "Annuller",
+    "SAVE": "Gem"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Opret begivenhed"
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Online hjælp"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Medarbejderstyring",
+    "NAME": "Navn",
+    "EMAIL": "Email",
+    "SOLDE": "Kontosaldo",
+    "ACTIONS": "Handlinger",
+    "DEFAULT_PASSWORD": "Standardadgangskode",
+    "REINITIALIZE_PASSWORD": "Standardadgangskode til nulstilling",
+    "CHANGE_PASSWORD": "Skift adgangskode"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Kreditér medarbejderens konto",
+    "AMOUNT": "Beløb til kredit",
+    "CANCEL": "Annuller",
+    "SAVE": "Godkend"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Samlede reservationer",
+    "TOTAL_MONTH": "Reservationer denne måned",
+    "GENERATED": "Genererede indtægter",
+    "MONTHLY": "Indtægter denne måned",
+    "AVG_NOTE": "Gennemsnitlige vurderinger",
+    "BASED_ON": "Baseret på",
+    "REVIEWS": "anmeldelser",
+    "NEXT_APPOINTEMENT": "Næste aftaler",
+    "POPULAR_SERVICES": "Mest populære tjenester",
+    "RESERVATION": "reservationer"
+  },
+  "FINANCE": {
+    "TOTAL_GENERATED": "Samlet genereret omsætning",
+    "CA": "Omsætning",
+    "COMMISSION_TAKEN": "Trukket kommission",
+    "COMMISSIONS": "Kommissioner",
+    "NET_TO_PAY": "Nettobeløb til udbetaling",
+    "DISPO_AMOUNT": "Tilgængeligt beløb",
+    "REQUEST_WITHDRAWAL": "Anmod om overførsel",
+    "TAKE": "Beløb at trække",
+    "DETAILS": "Bankkontooplysninger",
+    "ASK": "Anmod om overførsel",
+    "HISTORY": "Transaktionshistorik",
+    "DATE": "Dato",
+    "AMOUNT": "Beløb",
+    "COMMISSION": "Kommission",
+    "STATUS": "Status"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Vælg butikstype at oprette",
+    "CANCEL": "Annuller",
+    "CREATE": "Godkend"
+  },
+  "PROCHES": {
+    "TITLE": "Mine nærmeste",
+    "UPDATE": "Opdatering af en nærstående",
+    "FIRSTNAME": "Fornavn",
+    "NAME": "Efternavn",
+    "EMAIL": "Email",
+    "PHONE": "Telefon",
+    "CREATE": "Opret",
+    "BACK": "Tilbage",
+    "CHANGE": "Ændr",
+    "CLOSE": "Luk"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Giv din anmeldelse",
+    "RATING": "Bedømmelse",
+    "COMMENT": "Kommentar",
+    "CLOSE": "Luk",
+    "SUBMIT": "Indsend"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Vælg dato for tjenesten",
+    "CANCEL": "Annuller"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Opret en tjeneste",
+    "NAME": "Navn",
+    "DESCRIPTION": "Beskrivelse",
+    "COLOR": "Farve",
+    "PRICE": "Pris",
+    "TIME": "Varighed",
+    "IMAGE": "Billede",
+    "ACTIONS": "Handlinger",
+    "MINUTES": "minutter",
+    "CHANGE": "Ændr",
+    "SERVICE_NAME": "Tjenestens navn",
+    "TIME_MINUTES": "Varighed (i minutter)",
+    "PREST_IMAGE": "Billede af tjenesten",
+    "NO_PICS": "Ingen billeder endnu",
+    "UPLOAD": "Upload et billede",
+    "NEW_PIC": "Eksempel på det nye billede",
+    "PRESTA_COLOR": "Tjenestens farve",
+    "CANCEL": "Annuller",
+    "SAVE": "Gem",
+    "AVG_PRICE": "Gennemsnitspris"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Butiksbillede",
+    "UPLOAD_IMAGE": "Upload et billede",
+    "SNEEK_PIC": "Eksempel på billedet",
+    "SHOP_NAME": "Butiksnavn",
+    "DESCRIPTION": "Beskrivelse",
+    "DESC_INFO": "(min. 25 tegn)",
+    "CITY": "By",
+    "DISCRICT": "Distrikt",
+    "LAT": "Breddegrad",
+    "LON": "Længdegrad",
+    "ZONE": "Leveringsområde (km)",
+    "OPENNING": "Åbningstider",
+    "MORNING_OPEN": "Morgen - Åbner",
+    "MORNING_CLOSE": "Morgen - Lukker",
+    "AFTERNOON_OPEN": "Eftermiddag - Åbner",
+    "AFTERNOON_CLOSE": "Eftermiddag - Lukker",
+    "SAVE": "Gem butikken"
   }
 }

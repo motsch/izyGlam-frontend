@@ -10,11 +10,11 @@
       <!-- Collapsible wrapper -->
       <div class="mb-5" id="navbarSupportedContent">
         <div>
-          <h3>{{shopInfo.name}}</h3>
+          <h4>{{ shopInfo.name }}</h4>
         </div>
         <div>
           <span>
-            {{shopInfo.note}}
+            {{ shopInfo.note }}
             <img
               [src]="imgStorageUrl + 'star.png'"
               alt="starLogo"
@@ -22,12 +22,42 @@
             />
           </span>
           <span>
-            ({{shopInfo.noteCount}}+) <br />
-            {{ "SHOP.MOVING_FEE" | translate }} 4,90€ <br />
-            {{ "SHOP.DISTANCE" | translate }} {{shopInfo.maxDistance}}km
+            ({{ shopInfo.noteCount }}+) <br />
+            {{ "SHOP.MOVING_FEE" | translate }}
+            {{ adminSettings.serviceFee | number : "1.2-2" }}€<br />
+            {{ "SHOP.DISTANCE" | translate }} {{ shopInfo.maxDistance }}km
           </span>
+          <div class="margin-top-10 bold">{{ "SHOP.GALLERY" | translate }}:</div>
+          <div class="margin-top-10">
+            <div class="gallery-container">
+              <div class="gallery-thumbnails">
+                <div
+                  *ngFor="let image of shopInfo.galleryImages"
+                  class="thumbnail"
+                  (click)="openLightbox(image)"
+                >
+                  <img [src]="APIimgStorageUrl + image" alt="Gallery Image" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Lightbox Modal -->
+            <div class="lightbox" *ngIf="isLightboxOpen">
+              <div class="lightbox-content">
+                <span class="close-lightbox" (click)="closeLightbox()"
+                  >&times;</span
+                >
+                <img
+                  [src]="APIimgStorageUrl + selectedImage"
+                  class="lightbox-image"
+                />
+                <a class="prev" (click)="prevImage()">&#10094;</a>
+                <a class="next" (click)="nextImage()">&#10095;</a>
+              </div>
+            </div>
+          </div>
           <div class="margin-top-20">
-            {{shopInfo.description}}
+            {{ shopInfo.description }}
           </div>
           <div>
             <img
@@ -38,12 +68,13 @@
           </div>
           <div>
             {{ "SHOP.PAYEMENT" | translate }}<br />
-
             {{ "SHOP.PRESS_FOR_INFO" | translate }}
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Gallery display section -->
     <div class="col-lg-9">
       <div class="row">
         <div

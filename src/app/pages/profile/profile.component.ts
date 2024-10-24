@@ -19,12 +19,12 @@ import { ChatModalComponent } from 'src/app/core/component/chat-modal/chat-modal
 })
 export class ProfileComponent implements OnInit {
     modalOpen = false;
+    modalDeleteShopOpen = false;
     selected: any = {};
     dropdownOpen = false;
     dropdownOpenNewShop = false;
     shops: any[] = [];
     me: any = {};
-    meShops: any[] = [];
     myCompany: any = {};
     myArticlesData: any[] = [];
     myShopData: any = {};
@@ -241,24 +241,30 @@ export class ProfileComponent implements OnInit {
     toggleDropdown2() {
         this.dropdownOpenNewShop = !this.dropdownOpenNewShop;
     }
-
+    closeModalDeleteShop() {
+        this.modalDeleteShopOpen = false;
+    }
     deletShop() {
-        /** D'abord faire un delete sur les products du shop
-        this.productService.deleteByShopId(this.myShopData._id).subscribe({
-            next: (data: any) => {
-                console.log(data);
-            },
-            error: (error: any) => {
-                console.log(error);
-            },
-        }); */
+        this.modalDeleteShopOpen = true;
+    }
 
-        /** Puis faire un delete sur le shop */
-        this.shopService.delete(this.myShopData._id).subscribe({
+    deleteConfirm() {
+        /** D'abord faire un delete sur les products du shop */
+        this.productService.deleteAllByShopId(this.myShopData._id).subscribe({
             next: (data: any) => {
                 console.log(data);
-                this.shops = this.shops.filter((x: any) => x._id !== this.myShopData._id);
-                this.ngOnInit();
+                
+                /** Puis faire un delete sur le shop */
+                this.shopService.delete(this.myShopData._id).subscribe({
+                    next: (data: any) => {
+                        console.log(data);
+                        this.shops = this.shops.filter((x: any) => x._id !== this.myShopData._id);
+                        this.ngOnInit();
+                    },
+                    error: (error: any) => {
+                        console.log(error);
+                    },
+                });
             },
             error: (error: any) => {
                 console.log(error);

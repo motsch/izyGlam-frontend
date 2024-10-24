@@ -1,6 +1,6 @@
 <h2 mat-dialog-title class="modal-title">
-  <span *ngIf="step === 1">Mes adresses</span>
-  <span *ngIf="step === 2">Modification d'adresse</span>
+  <span *ngIf="step === 1">{{ "ADDRESS_MODAL.ADDRESS" | translate }}</span>
+  <span *ngIf="step === 2">{{ "ADDRESS_MODAL.ADDRESS_MODIFICATION" | translate }}</span>
   <button mat-icon-button mat-dialog-close class="close-button">
     <mat-icon>close</mat-icon>
   </button>
@@ -24,7 +24,7 @@
         <!--<p>Veuillez entrer les détails de votre carte bancaire :</p>-->
         <form class="payment-form">
           <div class="form-group">
-            <label for="prenom">Rue</label>
+            <label for="prenom">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
             <input
               [(ngModel)]="elem.street"
               (ngModelChange)="showValidate()"
@@ -36,7 +36,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="nom">Ville</label>
+            <label for="nom">{{ "ADDRESS_MODAL.CITY" | translate }}</label>
             <input
               [(ngModel)]="elem.city"
               (ngModelChange)="showValidate()"
@@ -48,7 +48,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="email">Code Postal</label>
+            <label for="email">{{ "ADDRESS_MODAL.CP" | translate }}</label>
             <input
               [(ngModel)]="elem.code_postal"
               (ngModelChange)="showValidate()"
@@ -71,7 +71,7 @@
       mat-button
       class="schedule-button"
     >
-      Créer
+    {{ "ADDRESS_MODAL.CREATE" | translate }}
     </button>
     <button
       *ngIf="step === 2"
@@ -79,17 +79,17 @@
       mat-button
       class="schedule-button"
     >
-      Retour
+    {{ "ADDRESS_MODAL.BACK" | translate }}
     </button>
     <button
       *ngIf="step === 2 && validate"
       mat-button
       class="schedule-button margin-left-10"
     >
-      Modifier
+    {{ "ADDRESS_MODAL.CHANGE" | translate }}
     </button>
   </div>
 </mat-dialog-content>
 <mat-dialog-actions class="modal-actions">
-  <button mat-button mat-dialog-close>Fermer</button>
+  <button mat-button mat-dialog-close>{{ "ADDRESS_MODAL.CLOSE" | translate }}</button>
 </mat-dialog-actions>

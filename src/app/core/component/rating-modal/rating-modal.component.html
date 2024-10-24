@@ -1,5 +1,5 @@
 <h2 mat-dialog-title class="modal-title">
-  <span>Donner votre avis</span>
+  <span>{{ "RATING_MODAL.TITLE" | translate}}</span>
   <button mat-icon-button mat-dialog-close class="close-button">
     <mat-icon>close</mat-icon>
   </button>
@@ -10,7 +10,7 @@
       <!--<p>Veuillez entrer les détails de votre carte bancaire :</p>-->
       <div class="payment-form">
         <mat-form-field appearance="outline" class="rating-field">
-          <mat-label>Note</mat-label>
+          <mat-label>{{ "RATING_MODAL.RATING" | translate}}</mat-label>
           <mat-select [(value)]="rating">
             <mat-option *ngFor="let star of stars" [value]="star">
               {{ star }} ★
@@ -19,7 +19,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="comment-field">
-          <mat-label>Commentaire</mat-label>
+          <mat-label>{{ "RATING_MODAL.COMMENT" | translate}}</mat-label>
           <textarea matInput [(ngModel)]="comment"></textarea>
         </mat-form-field>
       </div>
@@ -27,13 +27,13 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions class="modal-actions">
-  <button mat-button mat-dialog-close>Fermer</button>
+  <button mat-button mat-dialog-close>{{ "RATING_MODAL.CLOSE" | translate}}</button>
   <button
     mat-raised-button
     color="primary"
     class="submit-button"
     (click)="submitReview()"
   >
-    Soumettre
+  {{ "RATING_MODAL.SUBMIT" | translate}}
   </button>
 </mat-dialog-actions>

@@ -1,5 +1,5 @@
 <!-- rdv-modal.component.html -->
-<h1 mat-dialog-title class="modal-title">Choisissez la date de la prestation</h1>
+<h1 mat-dialog-title class="modal-title">{{ "RDV_MODAL.TITLE" | translate }}</h1>
 <div mat-dialog-content class="modal-content">
   <div class="date-selector">
     <div *ngFor="let date of schedules; let i = index" class="date-group">
@@ -18,5 +18,5 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-button class="btn qr" (click)="onNoClick()">Annuler</button>
+  <button mat-button class="btn qr" (click)="onNoClick()">{{ "RDV_MODAL.CANCEL" | translate }}</button>
 </div>

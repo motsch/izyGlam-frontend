@@ -5,7 +5,7 @@
         <!-- Affichage de l'image sélectionnée -->
         <div *ngIf="imageUsed">
           <label for="imageUpload" class="margin-top-20"
-            >Image de la boutique</label
+            >{{ "SHOP_MANAGEMENT.SHOP_IMAGE" | translate}}</label
           >
           <img
             [src]="imageUsed"
@@ -14,7 +14,7 @@
           />
         </div>
         <label for="imageUpload" class="margin-top-20"
-          >Télécharger une image</label
+          >{{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate}}</label
         >
         <input
           type="file"
@@ -24,7 +24,7 @@
           class="input-style"
         />
         <div *ngIf="imagePreview">
-          <p class="margin-top-20">Aperçu de l'image :</p>
+          <p class="margin-top-20">{{ "SHOP_MANAGEMENT.SNEEK_PIC" | translate}}:</p>
           <img
             [src]="imagePreview"
             alt="Aperçu de l'image"
@@ -42,7 +42,7 @@
         </button> -->
       </div>
       <div class="column">
-        <label for="name" class="margin-top-20">Nom de la boutique</label>
+        <label for="name" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_NAME" | translate}}</label>
         <input
           disabled
           [(ngModel)]="shopCopyData.name"
@@ -55,9 +55,9 @@
 
     <div>
       <label for="description"
-        >Description
+        >{{ "SHOP_MANAGEMENT.DESCRIPTION" | translate}}
         <span *ngIf="shopCopyData.description?.length < 25" class="error-text">
-          (min. 25 caractères)</span
+          {{ "SHOP_MANAGEMENT.DESC_INFO" | translate}}</span
         ></label
       >
       <textarea
@@ -71,7 +71,7 @@
 
     <div class="form-section">
       <div class="column">
-        <label for="ville">Ville</label>
+        <label for="ville">{{ "SHOP_MANAGEMENT.CITY" | translate}}</label>
         <select
           [(ngModel)]="shopCopyData.ville"
           (change)="onCityChange()"
@@ -85,7 +85,7 @@
       </div>
 
       <div class="column">
-        <label for="arrondissements">Arrondissements</label>
+        <label for="arrondissements">{{ "SHOP_MANAGEMENT.DISCRICT" | translate}}</label>
         <select
           [(ngModel)]="shopCopyData.district"
           (change)="onDistrictChange()"
@@ -105,7 +105,7 @@
     <!-- Coordonnées -->
     <div class="form-section">
       <div class="column">
-        <label for="latitude">Latitude</label>
+        <label for="latitude">{{ "SHOP_MANAGEMENT.LAT" | translate}}</label>
         <input
           disabled
           [(ngModel)]="shopCopyData?.location.latitude"
@@ -115,7 +115,7 @@
         />
       </div>
       <div class="column">
-        <label for="longitude">Longitude</label>
+        <label for="longitude">{{ "SHOP_MANAGEMENT.LON" | translate}}</label>
         <input
           disabled
           [(ngModel)]="shopCopyData?.location.longitude"
@@ -125,7 +125,7 @@
         />
       </div>
       <div class="column">
-        <label for="longitude">Zone de déplacement (km)</label>
+        <label for="longitude">{{ "SHOP_MANAGEMENT.ZONE" | translate}}</label>
         <input
           [(ngModel)]="shopCopyData.maxDistance"
           class="input-style"
@@ -137,10 +137,10 @@
     </div>
 
     <!-- Horaires -->
-    <h2>Horaires d'ouverture</h2>
+    <h2>{{ "SHOP_MANAGEMENT.OPENNING" | translate}}</h2>
     <div class="form-section">
       <div class="column">
-        <label for="morningStart">Matin - Ouverture</label>
+        <label for="morningStart">{{ "SHOP_MANAGEMENT.MORNING_OPEN" | translate}}</label>
         <input
           type="time"
           id="morningStart"
@@ -150,7 +150,7 @@
         />
       </div>
       <div class="column">
-        <label for="morningEnd">Matin - Fermeture</label>
+        <label for="morningEnd">{{ "SHOP_MANAGEMENT.MORNING_CLOSE" | translate}}</label>
         <input
           type="time"
           id="morningEnd"
@@ -164,7 +164,7 @@
     <!-- Après-midi -->
     <div class="form-section">
       <div class="column">
-        <label for="afternoonStart">Après-midi - Ouverture</label>
+        <label for="afternoonStart">{{ "SHOP_MANAGEMENT.AFTERNOON_OPEN" | translate}}</label>
         <input
           type="time"
           id="afternoonStart"
@@ -174,7 +174,7 @@
         />
       </div>
       <div class="column">
-        <label for="afternoonEnd">Après-midi - Fermeture</label>
+        <label for="afternoonEnd">{{ "SHOP_MANAGEMENT.AFTERNOON_CLOSE" | translate}}</label>
         <input
           type="time"
           id="afternoonEnd"
@@ -191,7 +191,7 @@
         (click)="saveShop()"
         class="btn btn-primary"
       >
-        Enregistrer la boutique
+      {{ "SHOP_MANAGEMENT.SAVE" | translate}}
       </button>
     </div>
   </div>

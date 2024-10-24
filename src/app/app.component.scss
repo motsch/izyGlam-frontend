@@ -174,29 +174,29 @@ mat-drawer-content {
 
 /********          CHAT CONTAINER WITH STARS          ********/
 /* Chat container with stars */
+
 .chat-container {
   position: fixed;
-  bottom: 20px;
-  right: 40px;
-  width: 120px;  /* Ajusté pour inclure le mouvement orbital */
-  height: 120px; 
+  bottom: 50px;
+  right: 50px;
+  width: 20px;  /* Ajusté pour inclure le mouvement orbital */
+  height: 20px; 
   z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-.chat-container {
-  position: fixed;
-  bottom: 20px;
-  right: 40px;
-  width: 120px;  /* Ajusté pour inclure le mouvement orbital */
-  height: 120px; 
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* Chat button */
+.chat-button {
+  position: relative;
+  width: 60px;
+  height: auto;
+  cursor: pointer;
+  object-fit: contain;
+  background-color: transparent;
+  z-index: 9 !important;  /* Le bouton est au-dessous des étoiles */
+  transition: transform 0.3s ease;
 }
 
 .chat-button:hover {
@@ -217,18 +217,6 @@ mat-drawer-content {
   
   transform: translateY(-2px); /* Légère élévation au survol */
   // box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
-}
-
-/* Chat button */
-.chat-button {
-  position: relative;
-  width: 100px;
-  height: auto;
-  cursor: pointer;
-  object-fit: contain;
-  background-color: transparent;
-  z-index: 9 !important;  /* Le bouton est au-dessous des étoiles */
-  transition: transform 0.3s ease;
 }
 
 

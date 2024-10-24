@@ -1,27 +1,33 @@
-<h1 mat-dialog-title>Détails de l'événement</h1>
+<h1 mat-dialog-title>{{ "CALENDAR_MODAL.TITLE" | translate }}</h1>
 <div mat-dialog-content>
-  <label>Client</label>
+  <label>{{ "CALENDAR_MODAL.CLIENT" | translate }}</label>
   <mat-form-field appearance="outline">
     <input matInput placeholder="Titre" [(ngModel)]="data.title" [disabled]="!data.new">
   </mat-form-field>
-  <label>Début</label>
+
+  <label>{{ "CALENDAR_MODAL.DEBUT" | translate }}</label>
   <mat-form-field appearance="outline">
-    <input matInput type="text" placeholder="Début" [ngModel]="data.start | date:'fullDate':'':'fr-FR'" [disabled]="!data.new">
+    <input matInput type="datetime-local" [(ngModel)]="data.start" placeholder="Début" [disabled]="!data.new">
   </mat-form-field>
-  <label>Fin</label>
+
+  <label>{{ "CALENDAR_MODAL.FIN" | translate }}</label>
   <mat-form-field appearance="outline">
-    <input matInput type="text" placeholder="Fin" [ngModel]="data.end | date:'fullDate':'':'fr-FR'" [disabled]="!data.new">
+    <input matInput type="datetime-local" [(ngModel)]="data.end" placeholder="Fin" [disabled]="!data.new">
   </mat-form-field>
-  <label>Adresse</label><img (click)="openGoogleMaps(data.address)" class="margin-left-10 pointer" src="assets/images/googl_maps.png" alt="Carte" style="width: 20px; height: 20px;">
+
+  <label>{{ "CALENDAR_MODAL.ADDRESS" | translate }}</label>
+  <img (click)="openGoogleMaps(data.address)" class="margin-left-10 pointer" src="assets/images/googl_maps.png" alt="Carte" style="width: 20px; height: 20px;">
   <mat-form-field appearance="outline">
-    <input matInput type="text" placeholder="Adresse" [ngModel]="data.address" [disabled]="!data.new">
+    <input matInput type="text" placeholder="Adresse" [(ngModel)]="data.address" [disabled]="!data.new">
   </mat-form-field>
-  <label>Téléphone</label>
+
+  <label>{{ "CALENDAR_MODAL.PHONE" | translate }}</label>
   <mat-form-field appearance="outline">
-    <input matInput type="text" placeholder="Téléphone" [ngModel]="data.phoneNumber" [disabled]="!data.new">
+    <input matInput type="text" placeholder="Téléphone" [(ngModel)]="data.phoneNumber" [disabled]="!data.new">
   </mat-form-field>
 </div>
+
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Annuler</button>
-  <button mat-button [mat-dialog-close]="data">Sauvegarder</button>
+  <button mat-button (click)="onNoClick()">{{ "CALENDAR_MODAL.CANCEL" | translate }}</button>
+  <button mat-button [mat-dialog-close]="data">{{ "CALENDAR_MODAL.SAVE" | translate }}</button>
 </div>

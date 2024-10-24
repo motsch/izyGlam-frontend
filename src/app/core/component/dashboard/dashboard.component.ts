@@ -97,21 +97,24 @@ export class DashboardComponent implements OnInit {
                 this.popularServices = sortedServices.slice(0, 3);
                 this.productService.getAll().subscribe({
                     next: (products: any) => {
-                        console.log(products);
+                        console.log(products); // Vérifie si tu récupères bien les produits avec des noms
                         for (let elem of this.popularServices) {
-                            console.log(elem);
+                            // Trouver le service correspondant dans la liste des produits
                             let servicePopular = products.find((x: any) => {
-                                return x._id === elem.name;
+                                return x._id === elem.name; // Ici, `elem.name` contient l'id du service
                             });
-                            elem._id = servicePopular._id;
-                            elem.name = servicePopular.name;
+                            if (servicePopular) {
+                                elem._id = servicePopular._id;
+                                elem.name = servicePopular.name; // Met à jour avec le vrai nom du service
+                            }
                         }
-                        console.log(this.popularServices);
+                        console.log(this.popularServices); // Vérifie si les noms sont bien assignés
                     },
                     error: (error: any) => {
-                        console.log('toto');
+                        console.log('Erreur lors de la récupération des produits:', error);
                     },
                 });
+                
                 // Résultat pour Angular (à utiliser dans votre composant)
                 console.log(this.popularServices);
                 this.userService.getAll().subscribe({

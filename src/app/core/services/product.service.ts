@@ -94,4 +94,8 @@ export class ProductService {
     delete(id: number) {
         return this.http.delete<any>(`${environment.apiUrl}service/${id}`);
     }
+
+    deleteAllByShopId(shopId: string) {
+        return this.http.delete<any>(`${environment.apiUrl}service-delete-all-by-shop/${shopId}`);
+    }
 }

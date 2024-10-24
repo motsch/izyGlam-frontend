@@ -73,7 +73,7 @@
     <div *ngIf="isSectionActive('calendar')" id="calendar-content">
       <h1>{{ "PROFILE_MENU.CALENDAR" | translate }}</h1>
       <!-- Ajouter le contenu lié à la confidentialité ici -->
-      <app-agenda [me]="me"></app-agenda>
+      <app-agenda [me]="me" [shops]="shops"></app-agenda>
     </div>
     <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
       <h1>{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
@@ -102,7 +102,7 @@
       <div class="row">
         <div class="col-6"></div>
         <div class="col-3 custom-language-selector">
-          <label for="languageSelect">Sélectionnez votre salon :</label>
+          <label for="languageSelect">{{ "PROFILE_MENU.SELECT_SALON" | translate }}:</label>
           <div class="select-box">
             <div class="selected" (click)="toggleDropdown()">
               {{ selected?.trad | translate }}
@@ -130,7 +130,7 @@
             class="btn btn-primary action-btn"
             (click)="openModal()"
           >
-            Nouveau salon
+          {{ "PROFILE_MENU.NEW_SALON" | translate }}
           </button>
         </div>
       </div>
@@ -184,7 +184,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Type de boutique à créer</h3>
+        <h2 class="modal-title">{{ "PROFILE_MENU.SHOP_TO_CREATE" | translate }}</h2>
         <button
           type="button"
           class="btn-close"
@@ -212,10 +212,50 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">
-          Annuler
+          {{ "PROFILE_MENU.CANCEL" | translate }}
         </button>
         <button type="button" class="btn btn-primary" (click)="createShop()">
-          Créer ma boutique
+          {{ "PROFILE_MENU.CREATE" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div
+  class="modal fade show"
+  tabindex="-1"
+  [style.display]="modalDeleteShopOpen ? 'block' : 'none'"
+  [ngClass]="{ show: modalDeleteShopOpen }"
+  style="background: rgba(0, 0, 0, 0.5)"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">{{ "Suppression d'une boutique" | translate }}</h2>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeModalDeleteShop()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="col-11 custom-shop-selector">
+          <div>{{ "PROFILE_MENU.INFO1" | translate }} "{{myShopData.trad | translate}}".</div>
+          <div class="color_red">{{ "PROFILE_MENU.INFO2" | translate }}.</div>
+          <div class="margin-top-20">{{ "PROFILE_MENU.SURE" | translate }} ?</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModalDeleteShop()">
+          {{ "PROFILE_MENU.CANCEL" | translate }}
+        </button>
+        <button type="button" class="btn btn-primary" (click)="deleteConfirm()">
+          {{ "PROFILE_MENU.DELETE" | translate }}
         </button>
       </div>
     </div>

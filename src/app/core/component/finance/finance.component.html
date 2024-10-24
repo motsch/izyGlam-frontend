@@ -3,37 +3,37 @@
     <!-- Section: Total généré -->
     <div class="col-md-4 col-sm-12 mb-4">
       <div class="finance-card">
-        <h3>Total de chiffre généré</h3>
+        <h3>{{ "FINANCE.TOTAL_GENERATED" | translate }}</h3>
         <p class="finance-number">{{ totalGenerated | currency : "EUR" }}</p>
-        <p class="finance-description">Chiffre d'affaires</p>
+        <p class="finance-description">{{ "FINANCE.CA" | translate }}</p>
       </div>
     </div>
 
     <!-- Section: Commission prélevée -->
     <div class="col-md-4 col-sm-12 mb-4">
       <div class="finance-card">
-        <h3>Commission prélevée</h3>
+        <h3>{{ "FINANCE.COMMISSION_TAKEN" | translate }}</h3>
         <p class="finance-number">{{ commission | currency : "EUR" }}</p>
-        <p class="finance-description">Commissions</p>
+        <p class="finance-description">{{ "FINANCE.COMMISSIONS" | translate }}</p>
       </div>
     </div>
 
     <!-- Section: Montant à verser -->
     <div class="col-md-4 col-sm-12 mb-4">
       <div class="finance-card">
-        <h3>Montant net à verser</h3>
+        <h3>{{ "FINANCE.NET_TO_PAY" | translate }}</h3>
         <p class="finance-number">{{ netToPay | currency : "EUR" }}</p>
-        <p class="finance-description">Montant disponible</p>
+        <p class="finance-description">{{ "FINANCE.DISPO_AMOUNT" | translate }}</p>
       </div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-12">
-      <h2>Demande de virement</h2>
+      <h2>{{ "FINANCE.REQUEST_WITHDRAWAL" | translate }}</h2>
       <form [formGroup]="withdrawalForm" (ngSubmit)="requestWithdrawal()">
         <div class="form-group">
-          <label for="withdrawalAmount">Montant à retirer</label>
+          <label for="withdrawalAmount">{{ "FINANCE.TAKE" | translate }}</label>
           <input
             type="number"
             id="withdrawalAmount"
@@ -43,7 +43,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="accountDetails">Détails du compte bancaire</label>
+          <label for="accountDetails">{{ "FINANCE.DETAILS" | translate }}</label>
           <input
             type="text"
             id="accountDetails"
@@ -56,7 +56,7 @@
           class="btn btn-primary"
           [disabled]="withdrawalForm.invalid"
         >
-          Demander un virement
+        {{ "FINANCE.ASK" | translate }}
         </button>
       </form>
     </div>
@@ -64,14 +64,14 @@
 
   <div class="row mt-4">
     <div class="col-12">
-      <h2>Historique des transactions</h2>
+      <h2>{{ "FINANCE.HISTORY" | translate }}</h2>
       <table class="table">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Montant</th>
-            <th>Commission</th>
-            <th>Statut</th>
+            <th>{{ "FINANCE.DATE" | translate }}</th>
+            <th>{{ "FINANCE.AMOUNT" | translate }}</th>
+            <th>{{ "FINANCE.COMMISSION" | translate }}</th>
+            <th>{{ "FINANCE.STATUS" | translate }}</th>
           </tr>
         </thead>
         <tbody>

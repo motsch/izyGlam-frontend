@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RdvModalComponent } from 'src/app/core/component/rdv-modal/rdv-modal.component';
+import { AdminService } from 'src/app/core/services/admin.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 import { SessionService } from 'src/app/core/services/session.service';
@@ -14,7 +15,9 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent {
+    adminSettings: any = {};
     imgStorageUrl: string = environment.imgStorageUrl;
+    APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
     activeTab = 'home';
     shopInfo: any = {};
     @ViewChild('scrollContainerCategory')
@@ -27,64 +30,10 @@ export class ShopComponent {
     @ViewChild('scrollContainerTop10') private scrollContainerTop10:
         | ElementRef
         | undefined;
-    categoriesFilter = [
-        {
-            name: 'Coiffure',
-            icon: 'assets/images/svg/hairdresser.svg',
-            filter: 'hairdresser',
-        },
-        {
-            name: 'Manucure',
-            icon: 'assets/images/svg/manicure.svg',
-            filter: 'manucure',
-        },
-        {
-            name: 'Maquillage',
-            icon: 'assets/images/svg/makeup.svg',
-            filter: 'maquillage',
-        },
-        {
-            name: 'Russian Lips',
-            icon: 'assets/images/svg/lips.svg',
-            filter: 'hairdresser',
-        },
-        {
-            name: 'Soins du Visage',
-            icon: 'assets/images/svg/head-massage.svg',
-            filter: 'visage',
-        },
-        {
-            name: 'Épilation',
-            icon: 'assets/images/svg/hairRemove.svg',
-            filter: 'epilation',
-        },
-        {
-            name: 'Massages',
-            icon: 'assets/images/svg/massage.svg',
-            filter: 'massage',
-        },
-        {
-            name: 'Soins du Corps',
-            icon: 'assets/images/svg/body.svg',
-            filter: 'bodycare',
-        },
-        {
-            name: 'Esthétique',
-            icon: 'assets/images/svg/medical.svg',
-            filter: 'esthetique',
-        },
-        {
-            name: 'Bien-être',
-            icon: 'assets/images/svg/fitness.svg',
-            filter: 'wellcare',
-        },
-        {
-            name: 'Stylisme',
-            icon: 'assets/images/svg/clothes.svg',
-            filter: 'style',
-        },
-    ];
     shopItems = [];
+    isLightboxOpen = false;
+    selectedImage: string = '';
+    currentIndex: number = 0;
 
     constructor(
         private router: Router,
@@ -92,10 +41,21 @@ export class ShopComponent {
         public dialog: MatDialog,
         private productService: ProductService,
         private activatedRoute: ActivatedRoute,
-        private shopService: ShopService
+        private shopService: ShopService,
+        private adminService: AdminService
     ) {}
 
     ngOnInit(): void {
+        this.adminService.getAdminSettings().subscribe({
+            next: (data: any) => {
+                this.adminSettings = data;
+                this.adminSettings.serviceFee = this.adminSettings.serviceFee.toFixed(2); // Ensure two decimal places
+                console.log(this.adminSettings);
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        });
         //récupérer l'id du shop sur la route
         let shopId = this.activatedRoute.snapshot.params['id'];
         console.log("shop id : "+shopId);
@@ -116,73 +76,25 @@ export class ShopComponent {
             this.shopInfo.note = this.shopInfo.note/data.reviews.length
         })
     }
-    scrollLeft(type: any) {
-        switch (type) {
-            case 'category':
-                this.scrollContainerCategory!.nativeElement.scrollBy({
-                    left: -this.calculateScrollAmount(),
-                    behavior: 'smooth',
-                });
-                break;
-            case 'around':
-                this.scrollContainerAround!.nativeElement.scrollBy({
-                    left: -this.calculateScrollAmount(),
-                    behavior: 'smooth',
-                });
-                break;
-            case 'promo':
-                this.scrollContainerPromo!.nativeElement.scrollBy({
-                    left: -this.calculateScrollAmount(),
-                    behavior: 'smooth',
-                });
-                break;
-            case 'top10':
-                this.scrollContainerTop10!.nativeElement.scrollBy({
-                    left: -this.calculateScrollAmount(),
-                    behavior: 'smooth',
-                });
-                break;
-        }
+
+    // Methods for Lightbox functionality
+    openLightbox(image: string) {
+        this.isLightboxOpen = true;
+        this.selectedImage = image;
+        this.currentIndex = this.shopInfo.galleryImages.indexOf(image);
     }
 
-    setActiveTab(tab: string): void {
-        this.activeTab = tab;
-    }
-    scrollRight(type: any) {
-        switch (type) {
-            case 'category':
-                this.scrollContainerCategory!.nativeElement.scrollBy({
-                    left: this.calculateScrollAmount(),
-                    behavior: 'smooth',
-                });
-                break;
-            case 'around':
-                this.scrollContainerAround!.nativeElement.scrollBy({
-                    left: this.calculateScrollAmount(),
-                    behavior: 'smooth',
-                });
-                break;
-            case 'promo':
-                this.scrollContainerPromo!.nativeElement.scrollBy({
-                    left: this.calculateScrollAmount(),
-                    behavior: 'smooth',
-                });
-                break;
-            case 'top10':
-                this.scrollContainerTop10!.nativeElement.scrollBy({
-                    left: this.calculateScrollAmount(),
-                    behavior: 'smooth',
-                });
-                break;
-        }
+    closeLightbox() {
+        this.isLightboxOpen = false;
     }
 
-    private calculateScrollAmount(): number {
-        // Taille hypothétique d'un 'app-card' plus la marge
-        return (300 + 20) * 4;
+    prevImage() {
+        this.currentIndex = (this.currentIndex === 0) ? this.shopInfo.galleryImages.length - 1 : this.currentIndex - 1;
+        this.selectedImage = this.shopInfo.galleryImages[this.currentIndex];
     }
 
-    toProfilePage() {
-        this.router.navigate(['/profile']);
+    nextImage() {
+        this.currentIndex = (this.currentIndex === this.shopInfo.galleryImages.length - 1) ? 0 : this.currentIndex + 1;
+        this.selectedImage = this.shopInfo.galleryImages[this.currentIndex];
     }
 }

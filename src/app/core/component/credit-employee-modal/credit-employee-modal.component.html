@@ -1,10 +1,10 @@
 <div class="modal-header">
-    <h3 class="modal-title">Créditer le compte de l'employé</h3>
+    <h3 class="modal-title">{{ "EMPLOYEE_MANAGEMENT.TITLE" | translate }}</h3>
     <button type="button" class="btn-close" (click)="close()"></button>
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label for="creditAmount">Montant à créditer :</label>
+      <label for="creditAmount">{{ "EMPLOYEE_MANAGEMENT.AMOUNT" | translate }}:</label>
       <input
       [(ngModel)]="amount"
       class="input-style"
@@ -16,8 +16,8 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary grey-button" (click)="close()">Annuler</button>
-    <button type="button" class="btn btn-primary red-button" (click)="credit()">Valider</button>
+    <button type="button" class="btn btn-secondary grey-button" (click)="close()">{{ "EMPLOYEE_MANAGEMENT.CANCEL" | translate }}</button>
+    <button type="button" class="btn btn-primary red-button" (click)="credit()">{{ "EMPLOYEE_MANAGEMENT.SAVE" | translate }}</button>
     
   </div>
   
