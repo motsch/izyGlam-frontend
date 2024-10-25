@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-admin-clients-management',
@@ -10,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class AdminClientsManagementComponent implements OnInit {
   // Utilisateurs fictifs
   users: any[] = [
-    {
+    /*{
       lastname: 'Doe',
       firstname: 'John',
       email: 'john.doe@example.com',
@@ -33,18 +34,30 @@ export class AdminClientsManagementComponent implements OnInit {
       phone: '0654321987',
       role: 'professionnel',
       isBlocked: false
-    }
+    }*/
   ];
 
   displayedColumns: string[] = ['lastname', 'firstname', 'email', 'phone', 'role', 'actions'];
-  dataSource = new MatTableDataSource<any>(this.users);
   searchTerm: string = '';
   roles: string[] = ['user', 'entreprise', 'professionnel', 'admin'];
 
+  dataSource:any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  constructor(private userService: UserService) {}
+
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+    this.userService.getAll().subscribe({
+      next: (data: any[]) => {
+        console.log(data);
+        this.users = data;
+        this.dataSource = new MatTableDataSource<any>(this.users);
+        this.dataSource.paginator = this.paginator;
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
   }
 
   applyGlobalSearch() {

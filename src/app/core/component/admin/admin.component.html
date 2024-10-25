@@ -24,34 +24,6 @@
       </div>
     </div>
   
-    <!-- Section: Performances des boutiques -->
-    <h2>{{ "ADMIN_PAGE.SHOPS_PERFO" | translate }}</h2>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>{{ "ADMIN_PAGE.SHOP_NAME" | translate }}</th>
-          <th>{{ "ADMIN_PAGE.CITY" | translate }}</th>
-          <th>{{ "ADMIN_PAGE.REVENUES" | translate }}</th>
-          <th>{{ "ADMIN_PAGE.BOOKINGS" | translate }}</th>
-          <th>{{ "ADMIN_PAGE.NOTE" | translate }}</th>
-          <th>{{ "ADMIN_PAGE.ACTIONS" | translate }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let shop of shops">
-          <td>{{ shop.name }}</td>
-          <td>{{ shop.ville }}</td>
-          <td>{{ shop.revenue | currency:'EUR' }}</td>
-          <td>{{ shop.reservations }}</td>
-          <td>{{ shop.averageRating }} / 5</td>
-          <td>
-            <button class="btn btn-sm btn-info" (click)="viewShopDetails(shop)">{{ "ADMIN_PAGE.DETAILS" | translate }}</button>
-            <button class="btn btn-sm btn-warning" (click)="adjustShop(shop)">{{ "ADMIN_PAGE.ADJUST" | translate }}</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
     <!-- Modal pour ajuster une boutique (fictif pour l'instant) -->
     <div *ngIf="selectedShop" class="modal">
       <div class="modal-content">

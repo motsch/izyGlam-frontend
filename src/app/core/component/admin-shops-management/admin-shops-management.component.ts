@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ShopService } from '../../services/shop.service';
 
 @Component({
   selector: 'app-admin-shops-management',
@@ -8,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./admin-shops-management.component.scss']
 })
 export class AdminShopsManagementComponent implements OnInit {
-  shops: any[] = [
+  shops: any[] = [/*
     {
       name: 'Salon Glam',
       description: 'Un salon moderne à Paris.',
@@ -50,7 +51,7 @@ export class AdminShopsManagementComponent implements OnInit {
         morning: { start: '08:00', end: '12:00' },
         afternoon: { start: '13:00', end: '17:00' }
       }
-    }
+    }*/
   ];
 
   displayedColumns: string[] = ['name', 'ville', 'note', 'averagePrice', 'promo', 'actions'];
@@ -59,8 +60,20 @@ export class AdminShopsManagementComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  constructor(private shopService: ShopService) {}
+
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+    this.shopService.getAll().subscribe({
+      next: (data: any[]) => {
+        console.log(data);
+        this.shops = data;
+        this.dataSource = new MatTableDataSource<any>(this.shops);
+        this.dataSource.paginator = this.paginator;
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
   }
 
   applyGlobalSearch() {

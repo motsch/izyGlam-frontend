@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-admin-param',
@@ -7,31 +7,34 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./admin-param.component.scss']
 })
 export class AdminParamComponent implements OnInit {
-  settingsForm!: FormGroup;
+  settings:any = {};
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    // Initialisation du formulaire avec les paramètres de la plateforme
-    this.settingsForm = this.fb.group({
-      commissionRate: [15, [Validators.required, Validators.min(0), Validators.max(100)]],
-      serviceFee: [2.9, [Validators.required, Validators.min(0)]],
-      bookingWindowWeeks: [6, [Validators.required, Validators.min(1)]],
-      cancellationPolicy24h: [50, [Validators.required, Validators.min(0), Validators.max(100)]],
-      cancellationPolicy48h: [0, [Validators.required, Validators.min(0)]],
-      minimumBookingNotice: [24, [Validators.required, Validators.min(1)]],
-      taxRate: [20, [Validators.required, Validators.min(0), Validators.max(100)]],
-    });
+    this.adminService.getAdminSettings().subscribe(
+      (data :any) => {
+        console.log('Paramètres de la plateforme :', JSON.stringify(data));
+        this.settings = {
+          ...data,
+          commissionRate: data.commissionRate * 100, // Conversion en pourcentage
+          taxRate: data.taxRate * 100 // Conversion en pourcentage
+        };
+      },
+      (error:any) => {
+        console.error('Erreur lors de la récupération des paramètres', error);
+      }
+    );
   }
 
   saveSettings(): void {
-    if (this.settingsForm.valid) {
-      const updatedSettings = this.settingsForm.value;
-      // Logique pour sauvegarder les paramètres dans la base de données
-      console.log('Updated settings:', updatedSettings);
-      // Appeler un service pour enregistrer les modifications
-    } else {
-      console.log('Formulaire invalide');
-    }
+    const settingsToSave = {
+      ...this.settings,
+      commissionRate: this.settings.commissionRate / 100, // Conversion décimale pour sauvegarde
+      taxRate: this.settings.taxRate / 100 // Conversion décimale pour sauvegarde
+    };
+
+    console.log('Updated settings:', settingsToSave);
+    // Appeler le service pour sauvegarder les modifications
   }
 }

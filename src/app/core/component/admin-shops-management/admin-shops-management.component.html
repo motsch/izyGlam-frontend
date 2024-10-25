@@ -33,9 +33,6 @@
         <th mat-header-cell *matHeaderCellDef>Promotion</th>
         <td mat-cell *matCellDef="let shop">
           {{ shop.promo.active ? 'Active' : 'Inactive' }} ({{ shop.promo.type }})
-          <button mat-raised-button color="primary" (click)="togglePromo(shop)">
-            {{ shop.promo.active ? 'Désactiver' : 'Activer' }}
-          </button>
         </td>
       </ng-container>
   
@@ -43,7 +40,12 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let shop">
-          <button mat-raised-button color="primary" (click)="editShop(shop)">Éditer</button>
+          <!--<button mat-raised-button color="primary" (click)="editShop(shop)">Éditer</button>-->
+
+          
+          <button class="btn create-button" mat-raised-button color="primary" (click)="editShop(shop)">
+            <i class="fa fa-pencil"></i>
+            </button>
         </td>
       </ng-container>
   

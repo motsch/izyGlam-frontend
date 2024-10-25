@@ -1,64 +1,63 @@
 <div class="admin-param">
-    <h2>Gestion des paramètres de la plateforme</h2>
+  <h2>Gestion des paramètres de la plateforme</h2>
   
-    <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
-      <div class="form-group">
-        <label for="commissionRate">Taux de commission (%)</label>
-        <input id="commissionRate" formControlName="commissionRate" type="number" min="0" max="100" />
-        <div *ngIf="settingsForm.get('commissionRate')?.invalid && settingsForm.get('commissionRate')?.touched">
-          <small class="error">Valeur entre 0 et 100 obligatoire</small>
-        </div>
+  <form (ngSubmit)="saveSettings()">
+    <div class="form-group">
+      <label for="commissionRate">Taux de commission (%)</label>
+      <input id="commissionRate" [(ngModel)]="settings.commissionRate" name="commissionRate" type="number" min="0" max="100" />
+      <div *ngIf="settings.commissionRate < 0 || settings.commissionRate > 100">
+        <small class="error">Valeur entre 0 et 100 obligatoire</small>
       </div>
-  
-      <div class="form-group">
-        <label for="serviceFee">Frais de service (€)</label>
-        <input id="serviceFee" formControlName="serviceFee" type="number" min="0" />
-        <div *ngIf="settingsForm.get('serviceFee')?.invalid && settingsForm.get('serviceFee')?.touched">
-          <small class="error">Valeur positive obligatoire</small>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="serviceFee">Frais de service (€)</label>
+      <input id="serviceFee" [(ngModel)]="settings.serviceFee" name="serviceFee" type="number" min="0" />
+      <div *ngIf="settings.serviceFee < 0">
+        <small class="error">Valeur positive obligatoire</small>
       </div>
-  
-      <div class="form-group">
-        <label for="bookingWindowWeeks">Nombre de semaines affichées</label>
-        <input id="bookingWindowWeeks" formControlName="bookingWindowWeeks" type="number" min="1" />
-        <div *ngIf="settingsForm.get('bookingWindowWeeks')?.invalid && settingsForm.get('bookingWindowWeeks')?.touched">
-          <small class="error">Valeur supérieure à 0 obligatoire</small>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="bookingWindowWeeks">Nombre de semaines affichées</label>
+      <input id="bookingWindowWeeks" [(ngModel)]="settings.bookingWindowWeeks" name="bookingWindowWeeks" type="number" min="1" />
+      <div *ngIf="settings.bookingWindowWeeks < 1">
+        <small class="error">Valeur supérieure à 0 obligatoire</small>
       </div>
-  
-      <div class="form-group">
-        <label for="cancellationPolicy24h">Frais d'annulation à moins de 24h (%)</label>
-        <input id="cancellationPolicy24h" formControlName="cancellationPolicy24h" type="number" min="0" max="100" />
-        <div *ngIf="settingsForm.get('cancellationPolicy24h')?.invalid && settingsForm.get('cancellationPolicy24h')?.touched">
-          <small class="error">Valeur entre 0 et 100 obligatoire</small>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cancellationPolicy24h">Frais d'annulation à moins de 24h (%)</label>
+      <input id="cancellationPolicy24h" [(ngModel)]="settings.cancellationPolicy24h" name="cancellationPolicy24h" type="number" min="0" max="100" />
+      <div *ngIf="settings.cancellationPolicy24h < 0 || settings.cancellationPolicy24h > 100">
+        <small class="error">Valeur entre 0 et 100 obligatoire</small>
       </div>
-  
-      <div class="form-group">
-        <label for="cancellationPolicy48h">Frais d'annulation à moins de 48h (€)</label>
-        <input id="cancellationPolicy48h" formControlName="cancellationPolicy48h" type="number" min="0" />
-        <div *ngIf="settingsForm.get('cancellationPolicy48h')?.invalid && settingsForm.get('cancellationPolicy48h')?.touched">
-          <small class="error">Valeur positive obligatoire</small>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="cancellationPolicy48h">Frais d'annulation à moins de 48h (€)</label>
+      <input id="cancellationPolicy48h" [(ngModel)]="settings.cancellationPolicy48h" name="cancellationPolicy48h" type="number" min="0" />
+      <div *ngIf="settings.cancellationPolicy48h < 0">
+        <small class="error">Valeur positive obligatoire</small>
       </div>
-  
-      <div class="form-group">
-        <label for="minimumBookingNotice">Délai minimum de réservation (heures)</label>
-        <input id="minimumBookingNotice" formControlName="minimumBookingNotice" type="number" min="1" />
-        <div *ngIf="settingsForm.get('minimumBookingNotice')?.invalid && settingsForm.get('minimumBookingNotice')?.touched">
-          <small class="error">Valeur supérieure à 0 obligatoire</small>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="minimumBookingNotice">Délai minimum de réservation (heures)</label>
+      <input id="minimumBookingNotice" [(ngModel)]="settings.minimumBookingNotice" name="minimumBookingNotice" type="number" min="1" />
+      <div *ngIf="settings.minimumBookingNotice < 1">
+        <small class="error">Valeur supérieure à 0 obligatoire</small>
       </div>
-  
-      <div class="form-group">
-        <label for="taxRate">Taux de TVA (%)</label>
-        <input id="taxRate" formControlName="taxRate" type="number" min="0" max="100" />
-        <div *ngIf="settingsForm.get('taxRate')?.invalid && settingsForm.get('taxRate')?.touched">
-          <small class="error">Valeur entre 0 et 100 obligatoire</small>
-        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="taxRate">Taux de TVA (%)</label>
+      <input id="taxRate" [(ngModel)]="settings.taxRate" name="taxRate" type="number" min="0" max="100" />
+      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
+        <small class="error">Valeur entre 0 et 100 obligatoire</small>
       </div>
-  
-      <button type="submit" mat-raised-button color="primary" [disabled]="settingsForm.invalid">Sauvegarder</button>
-    </form>
-  </div>
-  
+    </div>
+
+    <button type="submit" mat-raised-button color="primary">Sauvegarder</button>
+  </form>
+</div>

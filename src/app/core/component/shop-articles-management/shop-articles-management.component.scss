@@ -68,6 +68,24 @@ select {
   margin-left: 10px;
 }
 
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.align-center {
+  display: flex;
+  flex-direction: column; /* Pour empiler les boutons verticalement */
+  justify-content: center; /* Centre verticalement */
+  align-items: center; /* Centre horizontalement */
+  height: 100%; /* Assure que le contenu occupe toute la hauteur */
+}
+
+.no_photo {
+  font-size: 14px;
+  color: red;
+}
+
 .btn {
   margin-right: 5px;
   // border-radius: 50%; /* Rendre les boutons ronds */
@@ -115,15 +133,6 @@ select {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
 }
 
-button:disabled {
-  background-color: #ddd;
-  cursor: not-allowed;
-}
-
-.no_photo {
-  font-size: 14px;
-  color: red;
-}
 .delete-button {
   color: #ff6b6b;
   background-color: white;
@@ -131,17 +140,11 @@ button:disabled {
   height: 26px;
   width: 26px;
 }
-.align-center {
-  display: flex;
-  flex-direction: column; /* Pour empiler les boutons verticalement */
-  justify-content: center; /* Centre verticalement */
-  align-items: center; /* Centre horizontalement */
-  height: 100%; /* Assure que le contenu occupe toute la hauteur */
-}
 
 .fa-trash {
   font-size: 14px;
 }
+
 .create-btn {
   background-color: white;
   color: #B23A48;
