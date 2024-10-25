@@ -1,0 +1,137 @@
+.messaging-app {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffe4e6;
+    overflow: hidden;
+  }
+  
+  /* Conteneur principal de la messagerie (contient la liste et la zone de chat) */
+  .messaging-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    width: calc(100% - 250px); /* Assure que le contenu prend la largeur totale moins le menu latéral */
+    width: 100%;
+    height: 100vh;
+    // margin-left: 250px; /* Assure que le contenu est aligné après le menu latéral */
+  }
+  
+  /* Liste des conversations */
+  .conversation-list {
+    width: 30%;
+    background-color: #f0f2f5;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
+    height: calc(100vh - 100px); /* Calcule la hauteur pour éviter l'écrasement */
+  }
+  
+  .conversation-item {
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .conversation-item.active {
+    background-color: #ffb3c6;
+  }
+  
+  .conversation-title {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .conversation-last-message {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  /* Zone de chat */
+  .chat-section {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+    height: calc(100vh - 100px); /* Calcule la hauteur pour éviter l'écrasement */
+  }
+  
+  .chat-header {
+    padding: 15px;
+    background-color: #ff4d6d;
+    border-bottom: 1px solid #ffb3c6;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* Messages dans la zone de chat */
+  .chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto; /* Permet le scroll dans la zone des messages */
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 70px; /* Espace pour la zone de saisie */
+  }
+  
+  /* Message de l'utilisateur à droite */
+  .user-message {
+    background-color: #ff4d6d;
+    color: white;
+    text-align: right;
+    padding: 10px 15px;
+    border-radius: 20px 20px 5px 20px;
+    margin: 10px 0;
+    max-width: 60%;
+    align-self: flex-end;
+    font-size: 14px;
+    word-wrap: break-word;
+    white-space: pre-line;
+  }
+  
+  /* Message du contact à gauche */
+  .contact-message {
+    background-color: #ffe4e6;
+    color: #b80059;
+    text-align: left;
+    padding: 10px 15px;
+    border-radius: 20px 20px 20px 5px;
+    margin: 10px 0;
+    max-width: 60%;
+    align-self: flex-start;
+    font-size: 14px;
+    word-wrap: break-word;
+    white-space: pre-line;
+  }
+  
+  /* Zone de saisie limitée à la largeur de la zone de conversation */
+  .chat-input-container {
+    position: fixed;
+    bottom: 0;
+    width: calc(90% - 290px); /* Assure que la zone de saisie prend la largeur de la zone verte */
+    padding: 10px;
+    background-color: #f0f2f5;
+    // border-top: 1px solid #ffb3c6;
+    box-sizing: border-box;
+    left: 290px; /* Aligne la zone de saisie après le menu latéral */
+  }
+  
+  /* Champ de saisie de message */
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    // border: 1px solid #ffb3c6;
+    resize: none;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+  }
+  h3 {
+    color: white;
+    font-size: 18px;
+  }

@@ -47,7 +47,6 @@
         {{ "PROFILE_MENU.SHOP" | translate }}
       </li>
       <li
-        *ngIf="me.role === 'admin'"
         [ngClass]="{ active: isSectionActive('admin') }"
         (click)="setActiveSection('admin')"
       >
@@ -166,8 +165,26 @@
     </div>
     <div *ngIf="isSectionActive('admin')" id="admin-content">
       <h1>{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
-      <!-- Ajouter le contenu lié à la confidentialité ici -->
-      <app-admin></app-admin>
+
+
+      <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Statistiques" color="primary">
+          <!-- Ajouter le contenu lié à la confidentialité ici -->
+          <app-admin></app-admin>
+        </mat-tab>
+        <mat-tab label="Paramétrage">
+          <app-admin-param></app-admin-param>
+        </mat-tab>
+        <mat-tab label="Les boutiques">
+          <app-admin-shops-management></app-admin-shops-management>
+        </mat-tab>
+        <mat-tab label="Les utilisateurs">
+          <app-admin-clients-management></app-admin-clients-management>
+        </mat-tab>
+        <mat-tab label="Messagerie">
+          <app-admin-messagerie></app-admin-messagerie>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>

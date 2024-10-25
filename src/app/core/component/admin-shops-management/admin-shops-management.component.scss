@@ -1,0 +1,73 @@
+.admin-shops-management {
+    background-color: #FFFFFF;
+    padding: 1.5em;
+    
+    .search-bar {
+      margin-bottom: 1em;
+      input {
+        width: 100%;
+        padding: 0.8em;
+        font-size: 1.1em;
+        border: 1px solid #E0E0E0;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+  
+        &:focus {
+          border-color: #F06292;
+        }
+      }
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      
+      th, td {
+        padding: 1em;
+        text-align: left;
+      }
+  
+      th {
+        background-color: #F5F5F5;
+        border-bottom: 2px solid #E0E0E0;
+        font-weight: bold;
+      }
+  
+      td {
+        border-bottom: 1px solid #E0E0E0;
+      }
+  
+      tr:nth-child(even) {
+        background-color: #FAFAFA;
+      }
+  
+      tr:hover {
+        background-color: #FCE4EC;
+      }
+    }
+  
+    button {
+      padding: 0.5em 1.5em;
+      font-size: 0.9em;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+  
+      &.mat-primary {
+        background-color: #F06292;
+        color: #FFFFFF;
+      }
+  
+      &:hover {
+        background-color: darken(#F06292, 10%);
+      }
+    }
+  
+    .mat-paginator {
+      background-color: #FFFFFF;
+      padding: 0.5em;
+      border-top: 1px solid #E0E0E0;
+    }
+  }
+  

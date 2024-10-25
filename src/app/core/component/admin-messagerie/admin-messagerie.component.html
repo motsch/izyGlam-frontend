@@ -1,0 +1,32 @@
+<div class="messaging-app">
+    <!-- Conteneur principal des conversations et du chat -->
+    <div class="messaging-content">
+        <!-- Liste des conversations à gauche -->
+        <div class="conversation-list">
+            <div *ngFor="let conversation of conversations" (click)="selectConversation(conversation)" 
+                 class="conversation-item" 
+                 [class.active]="conversation === selectedConversation">
+                <div class="conversation-title">{{ conversation.title }}</div>
+                <div class="conversation-last-message">{{ conversation.lastMessage }}</div>
+            </div>
+        </div>
+
+        <!-- Zone de chat à droite -->
+        <div class="chat-section">
+            <div *ngIf="selectedConversation" class="chat-header">
+                <h3>{{ selectedConversation.title }}</h3>
+            </div>
+            <div *ngIf="selectedConversation" class="chat-messages">
+                <div *ngFor="let message of selectedConversation.messages" 
+                     [ngClass]="{ 'user-message': message.role === 'user', 'contact-message': message.role !== 'user' }">
+                    {{ message.content }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zone de saisie toujours en bas, avec la même largeur que la zone de chat et la liste -->
+    <div *ngIf="selectedConversation" class="chat-input-container">
+        <textarea [(ngModel)]="userMessage" (keydown.enter)="sendMessage($event)" placeholder="Écris un message..."></textarea>
+    </div>
+</div>

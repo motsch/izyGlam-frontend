@@ -57,7 +57,10 @@ import { CreateShopStepsComponent } from './component/create-shop-steps/create-s
 import { CreateCompanyComponent } from './component/create-company/create-company.component';
 import { CreateCompanyStepComponent } from './component/create-company-step/create-company-step.component';
 import { NewShopModalComponent } from './component/new-shop-modal/new-shop-modal.component';
-import { AgendaComponent, ContentCalendarItemDialog } from './component/agenda/agenda.component';
+import {
+    AgendaComponent,
+    ContentCalendarItemDialog,
+} from './component/agenda/agenda.component';
 import { ShopPhotoGalleryComponent } from './component/shop-photo-gallery/shop-photo-gallery.component';
 import { ChatModalComponent } from './component/chat-modal/chat-modal.component';
 import { AiMarkdownPipe } from './pipe/aiMarkDown.pipe';
@@ -65,6 +68,13 @@ import { AvatarComponent } from './component/avatar/avatar.component';
 import { ZombieComponent } from './component/monstres/zombie/zombie.component';
 import { SurvivorComponent } from './component/monstres/surviror/survivor.component';
 import { RatingModalComponent } from './component/rating-modal/rating-modal.component';
+import { AdminParamComponent } from './component/admin-param/admin-param.component';
+import { AdminClientsManagementComponent } from './component/admin-clients-management/admin-clients-management.component';
+import { AdminShopsManagementComponent } from './component/admin-shops-management/admin-shops-management.component';
+import { AdminMessagerieComponent } from './component/admin-messagerie/admin-messagerie.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -99,6 +109,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatDialogModule,
         MatToolbarModule,
         MatDatepickerModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
         MatNativeDateModule,
         TranslateModule.forRoot({
             loader: {
@@ -175,6 +188,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ZombieComponent,
         SurvivorComponent,
         RatingModalComponent,
+        AdminParamComponent,
+        AdminClientsManagementComponent,
+        AdminShopsManagementComponent,
+        AdminMessagerieComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -211,6 +228,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AvatarComponent,
         ZombieComponent,
         SurvivorComponent,
+        AdminParamComponent,
+        AdminClientsManagementComponent,
+        AdminShopsManagementComponent,
+        AdminMessagerieComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })
