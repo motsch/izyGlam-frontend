@@ -11,6 +11,12 @@ export class ShopService {
     private shopDataSubject = new BehaviorSubject<any>(null);
     constructor(private http: HttpClient) {}
 
+    
+
+    getShopsCount() {
+        return this.http.get<number>(environment.apiUrl + 'shops-count-all');
+    }
+
     // Appel à l'API pour récupérer les données du shop
     loadShopData(id: string): void {
         this.http.get(`/api/shop/${id}`).subscribe(

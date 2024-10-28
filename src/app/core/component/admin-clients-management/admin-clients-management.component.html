@@ -42,11 +42,12 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let user">
-          <button class="btn create-button" mat-raised-button color="primary" (click)="resetPassword(user)">
+          <button class="btn create-button color_red" mat-raised-button color="primary" (click)="resetPassword(user)">
           <i class="fa fa-pencil"></i>
           </button>
-          <button class="btn delete-button margin-top-10" [ngClass]="user.isBlocked ? 'unlocked' : 'locked'" mat-raised-button color="warn" (click)="toggleBlockUser(user)">
-            {{ user.isBlocked ? 'fa fa-check' : 'fa fa-ban' }}
+          <button class="btn ban-button" [ngClass]="user.isBlocked ? 'unlocked' : 'locked'" mat-raised-button color="warn" (click)="toggleBlockUser(user)">
+              <i *ngIf="!user.isBlocked" class="fa fa-ban"></i>
+              <i *ngIf="user.isBlocked" class="fa fa-check"></i>
           </button>
         </td>
       </ng-container>

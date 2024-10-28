@@ -6,6 +6,9 @@ import { environment } from 'src/environments/environment';
 export class UserService {
     constructor(private http: HttpClient) {}
 
+    getUsersCount() {
+        return this.http.get<number>(environment.apiUrl + 'users-count-all');
+    }
     /**
      * permet de recupérer tous les users
      */

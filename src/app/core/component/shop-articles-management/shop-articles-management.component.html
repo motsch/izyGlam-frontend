@@ -5,7 +5,7 @@
     data-bs-toggle="tooltip"
     data-bs-placement="top"
   >
-  {{ "SHOP_ARTICLES_MANAGEMENT.CREATE_BUTTON" | translate }}
+    {{ "SHOP_ARTICLES_MANAGEMENT.CREATE_BUTTON" | translate }}
   </button>
 
   <table class="table table-striped">
@@ -31,7 +31,10 @@
           ></span>
         </td>
         <td>{{ service.price | currency : "EUR" }}</td>
-        <td>{{ service.duration }} {{ "SHOP_ARTICLES_MANAGEMENT.MINUTES" | translate }}</td>
+        <td>
+          {{ service.duration }}
+          {{ "SHOP_ARTICLES_MANAGEMENT.MINUTES" | translate }}
+        </td>
         <td>
           <img
             class="image_table"
@@ -41,12 +44,12 @@
         </td>
         <td class="align-center">
           <button
-            class="btn create-btn  action-btn"
+            class="btn create-btn action-btn"
             (click)="openModal(service)"
             data-bs-toggle="tooltip"
             data-bs-placement="top"
           >
-          {{ "SHOP_ARTICLES_MANAGEMENT.CHANGE" | translate }}
+            {{ "SHOP_ARTICLES_MANAGEMENT.CHANGE" | translate }}
           </button>
           <button
             class="btn delete-button margin-top-5"
@@ -55,7 +58,7 @@
             data-bs-placement="top"
             [disabled]="articlesCopyData.length <= 1"
           >
-          <i class="fa fa-trash"></i>
+            <i class="fa fa-trash"></i>
           </button>
         </td>
       </tr>
@@ -89,7 +92,9 @@
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="serviceName">{{ "SHOP_ARTICLES_MANAGEMENT.SERVICE_NAME" | translate }}</label>
+            <label for="serviceName">{{
+              "SHOP_ARTICLES_MANAGEMENT.SERVICE_NAME" | translate
+            }}</label>
             <input
               type="text"
               id="serviceName"
@@ -99,7 +104,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="serviceDescription">{{ "SHOP_ARTICLES_MANAGEMENT.DESCRIPTION" | translate }}</label>
+            <label for="serviceDescription">{{
+              "SHOP_ARTICLES_MANAGEMENT.DESCRIPTION" | translate
+            }}</label>
             <textarea
               id="serviceDescription"
               [(ngModel)]="modalService.description"
@@ -108,7 +115,9 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label for="servicePrice">{{ "SHOP_ARTICLES_MANAGEMENT.PRICE" | translate }}</label>
+            <label for="servicePrice">{{
+              "SHOP_ARTICLES_MANAGEMENT.PRICE" | translate
+            }}</label>
             <input
               type="number"
               id="servicePrice"
@@ -118,7 +127,9 @@
             />
           </div>
           <div class="form-group">
-            <label for="serviceDuration">{{ "SHOP_ARTICLES_MANAGEMENT.TIME_MINUTES" | translate }}</label>
+            <label for="serviceDuration">{{
+              "SHOP_ARTICLES_MANAGEMENT.TIME_MINUTES" | translate
+            }}</label>
             <input
               type="number"
               id="serviceDuration"
@@ -130,7 +141,9 @@
 
           <div class="form-group">
             <div class="form-group">
-              <label for="serviceDescription">{{ "SHOP_ARTICLES_MANAGEMENT.PREST_IMAGE" | translate }}</label>
+              <label for="serviceDescription">{{
+                "SHOP_ARTICLES_MANAGEMENT.PREST_IMAGE" | translate
+              }}</label>
               <div *ngIf="imageUsed">
                 <img
                   [src]="imgStorageUrl + imageUsed"
@@ -138,9 +151,13 @@
                   class="image-preview small-preview"
                 />
               </div>
-              <div *ngIf="!imageUsed" class="no_photo">{{ "SHOP_ARTICLES_MANAGEMENT.NO_PICS" | translate }}</div>
+              <div *ngIf="!imageUsed" class="no_photo">
+                {{ "SHOP_ARTICLES_MANAGEMENT.NO_PICS" | translate }}
+              </div>
             </div>
-            <p class="margin-top-20">{{ "SHOP_ARTICLES_MANAGEMENT.UPLOAD" | translate }}:</p>
+            <p class="margin-top-20">
+              {{ "SHOP_ARTICLES_MANAGEMENT.UPLOAD" | translate }}:
+            </p>
             <input
               type="file"
               id="imageUpload"
@@ -149,7 +166,9 @@
               class="input-style"
             />
             <div *ngIf="imagePreview">
-              <p class="margin-top-20">{{ "SHOP_ARTICLES_MANAGEMENT.NEW_PIC" | translate }}:</p>
+              <p class="margin-top-20">
+                {{ "SHOP_ARTICLES_MANAGEMENT.NEW_PIC" | translate }}:
+              </p>
               <img
                 [src]="imagePreview"
                 alt="Aperçu de l'image"
@@ -166,7 +185,9 @@
           Upload Image
         </button> -->
           </div>
-          <label for="serviceDuration">{{ "SHOP_ARTICLES_MANAGEMENT.PRESTA_COLOR" | translate }}:</label>
+          <label for="serviceDuration"
+            >{{ "SHOP_ARTICLES_MANAGEMENT.PRESTA_COLOR" | translate }}:</label
+          >
           <div class="color-dots">
             <div
               *ngFor="let color of colors"
@@ -183,7 +204,7 @@
             class="btn btn-secondary"
             (click)="closeModal()"
           >
-          {{ "SHOP_ARTICLES_MANAGEMENT.CANCEL" | translate }}
+            {{ "SHOP_ARTICLES_MANAGEMENT.CANCEL" | translate }}
           </button>
           <button type="button" class="btn btn-primary" (click)="saveService()">
             {{ "SHOP_ARTICLES_MANAGEMENT.SAVE" | translate }}

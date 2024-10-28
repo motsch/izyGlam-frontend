@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ShopService } from '../../services/shop.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin-shops-management',
@@ -9,55 +10,15 @@ import { ShopService } from '../../services/shop.service';
   styleUrls: ['./admin-shops-management.component.scss']
 })
 export class AdminShopsManagementComponent implements OnInit {
-  shops: any[] = [/*
-    {
-      name: 'Salon Glam',
-      description: 'Un salon moderne à Paris.',
-      ville: 'Paris',
-      note: '4.5',
-      averagePrice: '€50',
-      type: 'Coiffure',
-      services: ['Coupe', 'Brushing'],
-      promo: { active: true, type: 'Réduction' },
-      hours: {
-        morning: { start: '09:00', end: '12:00' },
-        afternoon: { start: '14:00', end: '18:00' }
-      }
-    },
-    {
-      name: 'Spa Zen',
-      description: 'Un spa relaxant à Lyon.',
-      ville: 'Lyon',
-      note: '4.7',
-      averagePrice: '€100',
-      type: 'Spa',
-      services: ['Massage', 'Soins du visage'],
-      promo: { active: false, type: '' },
-      hours: {
-        morning: { start: '10:00', end: '13:00' },
-        afternoon: { start: '15:00', end: '19:00' }
-      }
-    },
-    {
-      name: 'Nail Studio',
-      description: 'Un studio de manucure à Marseille.',
-      ville: 'Marseille',
-      note: '4.3',
-      averagePrice: '€30',
-      type: 'Manucure',
-      services: ['Pose de vernis', 'Nail art'],
-      promo: { active: true, type: 'Offre spéciale' },
-      hours: {
-        morning: { start: '08:00', end: '12:00' },
-        afternoon: { start: '13:00', end: '17:00' }
-      }
-    }*/
-  ];
-
+  shops: any[] = [];
+  modalOpen = false;
+  modalService: any = {};
   displayedColumns: string[] = ['name', 'ville', 'note', 'averagePrice', 'promo', 'actions'];
   dataSource = new MatTableDataSource<any>(this.shops);
   searchTerm: string = '';
-
+  imageUsed: string | null = null;
+  imagePreview: string | null = null;
+  imgStorageUrl =  environment.APIimgStorageUrl.replace(/\/$/, '');
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private shopService: ShopService) {}
@@ -88,5 +49,15 @@ export class AdminShopsManagementComponent implements OnInit {
   editShop(shop: any) {
     // Logique pour éditer les détails d'une boutique
     console.log(`Editing shop: ${shop.name}`);
+    this.modalService = shop;
+    this.modalOpen = true;
   }
+
+  closeModal(): void {
+    this.modalOpen = false;
+  }
+
+  saveService() {}
+  onFileSelected(event: any): void {}
+  
 }

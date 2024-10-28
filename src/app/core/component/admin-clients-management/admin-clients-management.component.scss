@@ -72,8 +72,17 @@
 .create-button {
   color: #ff6b6b;
   background-color: white;
-  min-height: 42px !important;
-  min-width: 40px !important;
+  height: 40px !important;
+  min-width: 30px !important;
+  border-radius: 50% !important;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.ban-button {
+  background-color: white;
+  height: 40px !important;
+  min-width: 30px !important;
   border-radius: 50% !important;
 }
 

@@ -9,6 +9,9 @@ import { Observable } from 'rxjs';
 export class BookingService {
     constructor(private http: HttpClient) {}
   
+    getCACount() {
+        return this.http.get<number>(environment.apiUrl + 'ca-count-all');
+    }
     // Récupérer les créneaux disponibles pour un service dans une boutique
     getAvailableTimeSlots(shopId: string, serviceId: string): Observable<any> {
       return this.http.get(`${environment.apiUrl}available-slots/${shopId}/services/${serviceId}`);

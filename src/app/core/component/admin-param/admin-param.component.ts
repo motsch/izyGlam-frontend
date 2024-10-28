@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-admin-param',
@@ -36,5 +37,18 @@ export class AdminParamComponent implements OnInit {
 
     console.log('Updated settings:', settingsToSave);
     // Appeler le service pour sauvegarder les modifications
+    this.adminService.updateAdminSettings(settingsToSave).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.settings = {
+          ...data,
+          commissionRate: data.commissionRate * 100, // Conversion en pourcentage
+          taxRate: data.taxRate * 100 // Conversion en pourcentage
+        };
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
   }
 }

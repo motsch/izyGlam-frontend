@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
+import { ShopService } from '../../services/shop.service';
+import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-admin',
@@ -20,22 +23,36 @@ export class AdminComponent implements OnInit {
 
   selectedShop: any = null;
 
-  constructor() {}
+  constructor(private userService: UserService, private shopService: ShopService, private bookingService: BookingService) {}
 
   ngOnInit(): void {
-    // Charger les données initiales si nécessaire
+    this.userService.getUsersCount().subscribe(
+      (count:number) => {
+        console.log('Nombre d\'utilisateurs :', count);
+        this.totalUsers = count;
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération du nombre d\'utilisateurs', error);
+      }
+    );
+    this.shopService.getShopsCount().subscribe(
+      (count:number) => {
+        this.totalShops = count;
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération du nombre de boutiques', error);
+      }
+    );
+    this.bookingService.getCACount().subscribe(
+      (count:number) => {
+        this.totalRevenue = count;
+      },
+      (error: any) => {
+        console.error('Erreur lors de la récupération du chiffre d\'affaires', error);
+      }
+    );
   }
-
-  viewShopDetails(shop: any): void {
-    // Fonctionnalité pour voir les détails d'une boutique (fictif pour le moment)
-    this.selectedShop = shop;
-  }
-
-  adjustShop(shop: any): void {
-    // Fonctionnalité pour ajuster une boutique (fictif pour le moment)
-    this.selectedShop = shop;
-  }
-
+  
   closeModal(): void {
     this.selectedShop = null;
   }
