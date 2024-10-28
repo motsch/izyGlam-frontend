@@ -22,11 +22,11 @@
                     {{ message.content }}
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Zone de saisie toujours en bas, avec la même largeur que la zone de chat et la liste -->
-    <div *ngIf="selectedConversation" class="chat-input-container">
-        <textarea [(ngModel)]="userMessage" (keydown.enter)="sendMessage($event)" placeholder="Écris un message..."></textarea>
+            <!-- Zone de saisie toujours en bas, avec la même largeur que la zone de chat et la liste -->
+            <div *ngIf="selectedConversation" class="chat-input-container">
+                <textarea [(ngModel)]="userMessage" (keydown.enter)="sendMessage($event)" placeholder="Écris un message..."></textarea>
+            </div>
+        </div>
     </div>
 </div>

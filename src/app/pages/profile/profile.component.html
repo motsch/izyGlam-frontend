@@ -14,12 +14,7 @@
         {{ "PROFILE_MENU.SECURITY" | translate }}
       </li>
       <li
-        [ngClass]="{ active: isSectionActive('privacy') }"
-        (click)="setActiveSection('privacy')"
-      >
-        {{ "PROFILE_MENU.CONFIDENTIAL" | translate }}
-      </li>
-      <li
+        *ngIf="me.role === 'professionnel'"
         [ngClass]="{ active: isSectionActive('calendar') }"
         (click)="setActiveSection('calendar')"
       >
@@ -52,6 +47,12 @@
       >
         {{ "PROFILE_MENU.ADMIN" | translate }}
       </li>
+      <li
+        [ngClass]="{ active: isSectionActive('privacy') }"
+        (click)="setActiveSection('privacy')"
+      >
+        {{ "PROFILE_MENU.CONFIDENTIAL" | translate }}
+      </li>
     </ul>
   </div>
   <div class="content">
@@ -81,7 +82,11 @@
     </div>
     <div *ngIf="isSectionActive('company')" id="company-content">
       <h1>{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
-      <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab-group
+        class="custom-tab-group"
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+      >
         <mat-tab label="Employés affiliés">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
           <app-company-management
@@ -101,7 +106,9 @@
       <div class="row">
         <div class="col-6"></div>
         <div class="col-3 custom-language-selector">
-          <label for="languageSelect">{{ "PROFILE_MENU.SELECT_SALON" | translate }}:</label>
+          <label for="languageSelect"
+            >{{ "PROFILE_MENU.SELECT_SALON" | translate }}:</label
+          >
           <div class="select-box">
             <div class="selected" (click)="toggleDropdown()">
               {{ selected?.trad | translate }}
@@ -114,26 +121,30 @@
             </ul>
           </div>
         </div>
-        <div class="col-1 margin-top-40">          
+        <div class="col-1 margin-top-40">
           <button
             class="btn rounded btn-delete"
             (click)="deletShop()"
             [disabled]="shops.length <= 1"
           >
-          <i class="fa fa-trash"></i>
+            <i class="fa fa-trash"></i>
           </button>
         </div>
         <div class="col-2 margin-top-40">
           <button
-          [disabled]="shops.length >= 5"
+            [disabled]="shops.length >= 5"
             class="btn btn-primary action-btn"
             (click)="openModal()"
           >
-          {{ "PROFILE_MENU.NEW_SALON" | translate }}
+            {{ "PROFILE_MENU.NEW_SALON" | translate }}
           </button>
         </div>
       </div>
-      <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab-group
+        class="custom-tab-group"
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+      >
         <mat-tab label="Informations générales" color="primary">
           <app-shop-management
             *ngIf="myShopData && me"
@@ -161,13 +172,15 @@
           <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
         </mat-tab>
       </mat-tab-group>
-      
     </div>
     <div *ngIf="isSectionActive('admin')" id="admin-content">
       <h1>{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
 
-
-      <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab-group
+        class="custom-tab-group"
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+      >
         <mat-tab label="Statistiques" color="primary">
           <!-- Ajouter le contenu lié à la confidentialité ici -->
           <app-admin></app-admin>
@@ -189,7 +202,6 @@
   </div>
 </div>
 
-
 <!-- Modal -->
 <div
   class="modal fade show"
@@ -201,7 +213,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">{{ "PROFILE_MENU.SHOP_TO_CREATE" | translate }}</h2>
+        <h2 class="modal-title">
+          {{ "PROFILE_MENU.SHOP_TO_CREATE" | translate }}
+        </h2>
         <button
           type="button"
           class="btn-close"
@@ -239,8 +253,6 @@
   </div>
 </div>
 
-
-
 <!-- Modal -->
 <div
   class="modal fade show"
@@ -252,7 +264,9 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="modal-title">{{ "Suppression d'une boutique" | translate }}</h2>
+        <h2 class="modal-title">
+          {{ "Suppression d'une boutique" | translate }}
+        </h2>
         <button
           type="button"
           class="btn-close"
@@ -262,13 +276,23 @@
       </div>
       <div class="modal-body">
         <div class="col-11 custom-shop-selector">
-          <div>{{ "PROFILE_MENU.INFO1" | translate }} "{{myShopData.trad | translate}}".</div>
+          <div>
+            {{ "PROFILE_MENU.INFO1" | translate }} "{{
+              myShopData.trad | translate
+            }}".
+          </div>
           <div class="color_red">{{ "PROFILE_MENU.INFO2" | translate }}.</div>
-          <div class="margin-top-20">{{ "PROFILE_MENU.SURE" | translate }} ?</div>
+          <div class="margin-top-20">
+            {{ "PROFILE_MENU.SURE" | translate }} ?
+          </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModalDeleteShop()">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="closeModalDeleteShop()"
+        >
           {{ "PROFILE_MENU.CANCEL" | translate }}
         </button>
         <button type="button" class="btn btn-primary" (click)="deleteConfirm()">

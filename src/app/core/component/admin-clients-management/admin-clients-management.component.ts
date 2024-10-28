@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../../services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-admin-clients-management',
@@ -36,7 +37,11 @@ export class AdminClientsManagementComponent implements OnInit {
       isBlocked: false
     }*/
   ];
-
+  selectedUser: any = {};
+  modalOpen = false;
+  imageUsed: string | null = null;
+  imagePreview: string | null = null;
+  imgStorageUrl =  environment.APIimgStorageUrl.replace(/\/$/, '');
   displayedColumns: string[] = ['lastname', 'firstname', 'email', 'phone', 'role', 'actions'];
   searchTerm: string = '';
   roles: string[] = ['user', 'entreprise', 'professionnel', 'admin'];
@@ -47,6 +52,8 @@ export class AdminClientsManagementComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+    this.selectedUser.address = [];
+    this.selectedUser.address[0] = {};
     this.userService.getAll().subscribe({
       next: (data: any[]) => {
         console.log(data);
@@ -69,11 +76,9 @@ export class AdminClientsManagementComponent implements OnInit {
     console.log(`Role updated for ${user.firstname} ${user.lastname} to ${user.role}`);
   }
 
-  resetPassword(user: any) {
-    if (confirm('Réinitialiser le mot de passe de cet utilisateur ?')) {
-      // Logic to reset password
-      console.log(`Password reset for ${user.firstname} ${user.lastname}`);
-    }
+  editUser(user: any) {
+    this.modalOpen = true;
+    this.selectedUser = user;
   }
 
   toggleBlockUser(user: any) {
@@ -84,4 +89,22 @@ export class AdminClientsManagementComponent implements OnInit {
       console.log(`User ${user.isBlocked ? 'blocked' : 'unblocked'}: ${user.firstname} ${user.lastname}`);
     }
   }
+
+  closeModal() {
+    this.modalOpen = false;
+  }
+  
+  saveService() {
+    this.userService.update(this.selectedUser).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.modalOpen = false;
+        // this.selectedUser = {};
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
+  }
+  onFileSelected(event: any): void {}
 }

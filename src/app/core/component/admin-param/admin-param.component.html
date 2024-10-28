@@ -1,8 +1,8 @@
 <div class="admin-param">
-  <h2>Gestion des paramètres de la plateforme</h2>
+  <h3>Paramètres de la plateforme</h3>
   
   <form (ngSubmit)="saveSettings()">
-    <div class="form-group">
+    <div class="form-group margin-top-40">
       <label for="commissionRate">Taux de commission (%)</label>
       <input id="commissionRate" [(ngModel)]="settings.commissionRate" name="commissionRate" type="number" min="0" max="100" />
       <div *ngIf="settings.commissionRate < 0 || settings.commissionRate > 100">

@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class AdminShopsManagementComponent implements OnInit {
   shops: any[] = [];
   modalOpen = false;
-  modalService: any = {};
+  shop: any = {};
   displayedColumns: string[] = ['name', 'ville', 'note', 'averagePrice', 'promo', 'actions'];
   dataSource = new MatTableDataSource<any>(this.shops);
   searchTerm: string = '';
@@ -24,6 +24,13 @@ export class AdminShopsManagementComponent implements OnInit {
   constructor(private shopService: ShopService) {}
 
   ngOnInit(): void {
+    this.shop.location = {};
+    this.shop.hours = {};
+    this.shop.hours.morning = {};
+    this.shop.hours.afternoon = {};
+    this.shop.location.latitude = 0;
+    this.shop.location.longitude = 0;
+    this.shop.promo = {};
     this.shopService.getAll().subscribe({
       next: (data: any[]) => {
         console.log(data);
@@ -46,10 +53,25 @@ export class AdminShopsManagementComponent implements OnInit {
     console.log(`Promotion toggled for ${shop.name}: ${shop.promo.active}`);
   }
 
+  saveShop() {
+    // Logique pour éditer les détails d'une boutique
+    console.log(`Editing shop: ${this.shop.name}`);
+    this.shopService.update(this.shop).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.modalOpen = false;
+      },
+      error: (error: any) => {
+        console.log(error);
+      },
+    });
+  }
+  
+
   editShop(shop: any) {
     // Logique pour éditer les détails d'une boutique
     console.log(`Editing shop: ${shop.name}`);
-    this.modalService = shop;
+    this.shop = shop;
     this.modalOpen = true;
   }
 
@@ -59,5 +81,5 @@ export class AdminShopsManagementComponent implements OnInit {
 
   saveService() {}
   onFileSelected(event: any): void {}
-  
+
 }
