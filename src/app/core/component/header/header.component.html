@@ -1,7 +1,8 @@
 <!--Nav start-->
 <nav class="navbar fixed-top" [class.darkHeader]="darkHeader">
   <div class="container" *ngIf="!sessionService.getCurrentUser()">
-    <a class="navbar-brand" [routerLink]="'/main'"><img [src]="imgStorageUrl+'logo/'+logoLangue+'.png'" class="logo" alt="logo" /></a>
+    <a *ngIf="darkHeader" class="navbar-brand" [routerLink]="'/main'"><img [src]="imgStorageUrl+'logo/'+logoLangue+'.png'" class="logo" alt="logo" /></a>
+    <a *ngIf="!darkHeader" class="navbar-brand" [routerLink]="'/main'"><img [src]="imgStorageUrl+'logo/alt/'+logoLangue+'.png'" class="logo" alt="logo" /></a>
     <div class="" id="">
       <ul class="" id="">
         <li class=""></li>
@@ -9,7 +10,7 @@
             <button type="button" (click)="routerNavigate('/sign-in')" class="btn btn-transparent color_black"
               *ngIf="page !== 'connected'">{{'INTRO.CONNEXION' | translate}}</button>
         
-            <button type="button" (click)="routerNavigate('/sign-up')" class="btn btn-transparent color_primary"
+            <button type="button" (click)="routerNavigate('/sign-up')" [ngClass]="!darkHeader ? 'color_izyglam' : 'color_white'" class="btn btn-transparent"
               *ngIf="page !== 'connected'">{{'INTRO.REGISTRATION' | translate}}</button>
         </div>
       </ul>

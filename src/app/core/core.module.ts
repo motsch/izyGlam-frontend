@@ -85,7 +85,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
  */
 @NgModule({
     imports: [
-        // AiMarkdownPipe,
         NgbModule,
         CommonModule,
         BrowserModule,
@@ -94,7 +93,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatSidenavModule,
         MatSelectModule,
         MatButtonModule,
-        MatSelectModule,
         MatMenuModule,
         MatTooltipModule,
         MatIconModule,
@@ -102,7 +100,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         MatFormFieldModule,
         MatInputModule,
         MatAutocompleteModule,
-        MatSelectModule,
         RouterModule,
         FullCalendarModule,
         MatChipsModule,
@@ -120,23 +117,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
                 deps: [HttpClient],
             },
         }),
-        BrowserAnimationsModule,
-        MatListModule,
-        MatSidenavModule,
-        MatButtonModule,
         ReactiveFormsModule,
         CalendarModule.forRoot({
             provide: DateAdapter,
             useFactory: adapterFactory,
         }),
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient],
-            },
-        }),
-    ],
+    ],    
     declarations: [
         AiMarkdownPipe,
         PageNotFoundComponent,
