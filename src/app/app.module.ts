@@ -38,7 +38,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 registerLocaleData(localeFr, 'fr');
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -51,7 +50,6 @@ import { MatButtonModule } from '@angular/material/button';
         NgbModule,
         BrowserModule,
         FormsModule,
-        NgxQrcodeStylingModule,
         RouterModule,
         ReactiveFormsModule,
         AppRoutingModule,

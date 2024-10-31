@@ -45,7 +45,6 @@ import { HelpComponent } from './help/help.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { GiftCardComponent } from './gift-card/gift-card.component';
 import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
-import { NgxQrcodeStylingModule } from 'ngx-qrcode-styling';
 import { CreationShopComponent } from './creation-shop/creation-shop.component';
 import { CreateShopInfoComponent } from '../core/component/create-shop-info/create-shop-info.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -62,7 +61,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         FormsModule,
         AuthModule,
         NgbModule,
-        NgxQrcodeStylingModule,
         MatMenuModule,
         MatSnackBarModule,
         MatIconModule,

@@ -3,9 +3,11 @@ import { BookingService } from '../../services/booking.service';
 import { ShopService } from '../../services/shop.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RatingModalComponent } from '../rating-modal/rating-modal.component';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { Router } from '@angular/router';
+
+(pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-order-item',
@@ -23,76 +25,88 @@ export class OrderItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  reorder() {
-    // Logic to handle reordering
-    console.log('Reorder clicked');
-    this.router.navigate(['shop/' + this.order.shopId]);
-  }
-
   requestInvoice() {
     this.generateProfessionalInvoice();
     this.generateIzyGlamCommissionInvoice();
   }
 
-  // Facture pour le professionnel (Prestation)
   generateProfessionalInvoice() {
-    const doc = new jsPDF();
     const startDate = new Date(this.order.start?.$date || this.order.start);
     const endDate = new Date(this.order.end?.$date || this.order.end);
-  
     const tvaAmount = parseFloat(this.order.price) * parseFloat(this.order.tva) / 100;
-    
-    // Ajouter le titre
-    doc.text(`Facture de prestation`, 10, 10);
-    doc.text(`Établissement: ${this.order.establishmentName}`, 10, 20);
-    doc.text(`Adresse: ${this.order.address}`, 10, 30);
-  
-    // Créer un tableau avec un liseré rose
-    (doc as any).autoTable({
-      head: [['Description', 'Quantité', 'Prix', 'TVA', 'Total']],
-      body: [
-        [this.order.productName, '1', `${parseFloat(this.order.price).toFixed(2)} €`, `${tvaAmount.toFixed(2)} €`, `${parseFloat(this.order.price).toFixed(2)} €`]
+
+    const docDefinition: any = {
+      content: [
+        { text: 'Facture de prestation', style: 'header' },
+        `Établissement: ${this.order.establishmentName}`,
+        `Adresse: ${this.order.address}`,
+        {
+          table: {
+            body: [
+              ['Description', 'Quantité', 'Prix', 'TVA', 'Total'],
+              [
+                this.order.productName, 
+                '1', 
+                `${parseFloat(this.order.price).toFixed(2)} €`, 
+                `${tvaAmount.toFixed(2)} €`, 
+                `${parseFloat(this.order.price).toFixed(2)} €`
+              ]
+            ]
+          },
+          layout: 'lightHorizontalLines'
+        },
+        `Total pour l'établissement: ${parseFloat(this.order.shopEarnings).toFixed(2)} €`,
+        `Date du service: ${startDate.toLocaleString()} à ${endDate.toLocaleString()}`
       ],
-      startY: 50,
-      theme: 'grid',
-      headStyles: { fillColor: [255, 192, 203] },  // Couleur rose
-    });
-  
-    // Ajouter les informations supplémentaires
-    doc.text(`Total pour l'établissement: ${parseFloat(this.order.shopEarnings).toFixed(2)} €`, 10, 90);
-    doc.text(`Date du service: ${startDate.toLocaleString()} à ${endDate.toLocaleString()}`, 10, 100);
-    
-    // Sauvegarder le fichier PDF
-    doc.save(`facture_prestation_${this.order.clientId}.pdf`);
+      styles: {
+        header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
+        tableHeader: { fillColor: '#FFC0CB' }
+      }
+    };
+
+    pdfMake.createPdf(docDefinition).download(`facture_prestation_${this.order.clientId}.pdf`);
   }
+
+  generateIzyGlamCommissionInvoice() {
+    const tvaAmount = parseFloat(this.order.commission) * parseFloat(this.order.tva) / 100;
+
+    const docDefinition: any = {
+      content: [
+        { text: 'Facture de commission', style: 'header' },
+        'Prestataire: izyGlam',
+        'Adresse: 123 Avenue de la République, 75011 Paris',
+        {
+          table: {
+            body: [
+              ['Description', 'Quantité', 'Commission', 'TVA', 'Total'],
+              [
+                'Commission izyGlam', 
+                '1', 
+                `${parseFloat(this.order.commission).toFixed(2)} €`, 
+                `${tvaAmount.toFixed(2)} €`, 
+                `${(parseFloat(this.order.commission) + tvaAmount).toFixed(2)} €`
+              ]
+            ]
+          },
+          layout: 'lightHorizontalLines'
+        },
+        `Total commission: ${parseFloat(this.order.commission).toFixed(2)} €`
+      ],
+      styles: {
+        header: { fontSize: 18, bold: true, margin: [0, 0, 0, 10] },
+        tableHeader: { fillColor: '#FFC0CB' }
+      }
+    };
+
+    pdfMake.createPdf(docDefinition).download(`facture_commission_${this.order.clientId}.pdf`);
+  }
+
   
 
-  // Facture pour la commission d'izyGlam
-  generateIzyGlamCommissionInvoice() {
-    const doc = new jsPDF();
-    
-    // Ajouter le titre
-    doc.text(`Facture de commission`, 10, 10);
-    doc.text(`Prestataire: izyGlam`, 10, 20);
-    doc.text(`Adresse: 123 Avenue de la République, 75011 Paris`, 10, 30);
-  
-    const tvaAmount = parseFloat(this.order.commission) * parseFloat(this.order.tva) / 100;
-  
-    // Créer un tableau avec un liseré rose
-    (doc as any).autoTable({
-      head: [['Description', 'Quantité', 'Commission', 'TVA', 'Total']],
-      body: [
-        ['Commission izyGlam', '1', `${parseFloat(this.order.commission).toFixed(2)} €`, `${tvaAmount.toFixed(2)} €`, `${(parseFloat(this.order.commission) + tvaAmount).toFixed(2)} €`]
-      ],
-      startY: 50,
-      theme: 'grid',
-      headStyles: { fillColor: [255, 192, 203] },  // Couleur rose
-    });
-  
-    doc.text(`Total commission: ${parseFloat(this.order.commission).toFixed(2)} €`, 10, 90);
-    
-    // Sauvegarder le fichier PDF
-    doc.save(`facture_commission_${this.order.clientId}.pdf`);
+  reorder() {
+    // Logic to handle reordering
+    console.log('Reorder clicked');
+    this.router.navigate(['shop/' + this.order.shopId]);
   }
 
   openRatingDialog() {

@@ -43,7 +43,9 @@
               "eventemitter3",
               "mqtt-browser",
               "blockly",
-              "lodash"
+              "lodash",
+              "pdfmake",
+              "pdfmake/build/vfs_fonts"
             ]
           },
           "configurations": {
