@@ -1,18 +1,79 @@
 <div class="profile-card">
-    <div class="image-container" (click)="toShopPage(profile._id)">
-        <img class="main-image" [src]="imgStorageUrl+'uploads/images/'+profile.image" alt="profile image">
-        <img *ngIf="promoVisible" class="overlay-image" [src]="imgStorageUrl+'uploads/images/'+'promo'+profile.promo.type+'.png'"
-            alt="overlay image">
+  <div class="image-container" (click)="toShopPage(profile._id)">
+    <img
+      class="main-image"
+      [src]="imgStorageUrl + 'uploads/images/' + profile.image"
+      alt="profile image"
+    />
+    <img
+      *ngIf="promoVisible"
+      class="overlay-image"
+      [src]="
+        imgStorageUrl +
+        'uploads/images/' +
+        'promo' +
+        profile.promo.type +
+        '.png'
+      "
+      alt="overlay image"
+    />
+  </div>
+  <div class="profile-info">
+    <h3 (click)="toShopPage(profile._id)">{{ profile.name }}</h3>
+    <p>{{ profile.trad | translate }}, {{ profile.ville }}</p>
+    <p (click)="openModal()">
+      <i class="star-icon"></i>{{ profile.note }} ({{ profile.reviews.length }}
+      {{ "MAIN_PAGE.AVIS" | translate }})
+    </p>
+  </div>
+  <!-- Coeur déplacé ici après les infos du profil -->
+  <i
+    *ngIf="sessionService.isLoggedIn()"
+    class="fa fa-heart heart-icon"
+    [ngClass]="{ favorite: profile.isFavorite }"
+    (click)="toggleFavorite()"
+  >
+  </i>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade show"
+  tabindex="-1"
+  [style.display]="modalOpen ? 'block' : 'none'"
+  [ngClass]="{ show: modalOpen }"
+>
+  <div class="modal-dialog custom-modal-width">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Avis sur la boutique: {{ profile.name }}</h3>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeModal()"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Nom de la boutique -->
+        <div class="form-group" *ngFor="let review of profile.reviews">
+          <label for="reviewText">Commentaire:</label>
+          <div>
+            {{ review.comment }}
+          </div>
+          <label for="reviewRating">Note:</label>
+          <div>
+            {{ review.rating }}
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Fermer
+        </button>
+      </div>
     </div>
-    <div class="profile-info" (click)="toShopPage(profile._id)">
-        <h3>{{ profile.name }}</h3>
-        <p>{{ profile.trad | translate }}, {{ profile.ville }}</p>
-        <p><i class="star-icon"></i>{{ profile.note }} ({{ profile.reviews.length }} {{ "MAIN_PAGE.AVIS" | translate }})</p>
-    </div>
-    <!-- Coeur déplacé ici après les infos du profil -->
-    <i 
-      class="fa fa-heart heart-icon"
-      [ngClass]="{ 'favorite': profile.isFavorite }"
-      (click)="toggleFavorite()">
-    </i>
+  </div>
 </div>

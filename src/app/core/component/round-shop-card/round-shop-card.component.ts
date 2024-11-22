@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../../services/user.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
     selector: 'app-round-shop-card',
@@ -16,8 +17,8 @@ export class RoundShopCardComponent {
     imgStorageUrl: string = environment.APIimgStorageUrl;
     // Nouvelle propriété pour gérer l'état favori
     isFavorite: boolean = false;
-
-    constructor(private router: Router, private userService: UserService) {}
+    modalOpen = false;
+    constructor(private router: Router, private userService: UserService, public sessionService: SessionService) {}
     // Méthode pour gérer le clic sur le coeur
     toggleFavorite(): void {
         if(!this.me.favoriteShops) {
@@ -48,5 +49,12 @@ export class RoundShopCardComponent {
     // Redirige vers la page d'une boutique spécifique
     toShopPage(id: string) {
         this.router.navigate(['shop/' + id]); // Navigation programmée vers la page du shop
+    }
+
+    closeModal() {
+        this.modalOpen = false;
+    }
+    openModal() {
+        this.modalOpen = true;
     }
 }
