@@ -24,6 +24,7 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
     @Input() page: string | undefined;
     @Input() connected: boolean | undefined;
+    isMobileMenuOpen: boolean = false;
     logoLangue: string | null = null;
     public darkHeader: boolean = false;
     public menuItems: any[] | undefined;
@@ -163,4 +164,8 @@ export class HeaderComponent implements OnInit {
         console.log('toLogin');
         this.router.navigate(['/sign-in']);
     }
+    
+    toggleMobileMenu(): void {
+        this.isMobileMenuOpen = !this.isMobileMenuOpen;
+      }
 }

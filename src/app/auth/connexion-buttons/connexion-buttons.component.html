@@ -1,0 +1,28 @@
+
+         <!--<div class="or-separator"><span>ou</span></div>
+         <button type="submit" class="btn google grey-btn" (click)="onMoreOptions()">Se connecter autrement</button>-->
+         <div class="or-separator"><span>{{ 'LOGIN.OR' | translate }}</span></div>
+         <button type="button" class="btn google grey-btn" (click)="metaConnect()"><img class="btn-icon"
+               [src]="imgStorageUrl+'facebook-icon.png'">
+            {{ 'LOGIN.CONTINUE_WITH' | translate }}
+            Facebook</button>
+         <div class="or-separator"><span>{{ 'LOGIN.OR' | translate }}</span></div>
+         <button routerLink="/sign-up" *ngIf="forConnection" type="button" class="btn apple qr"> S'enregistrer</button>
+         <button routerLink="/sign-in" *ngIf="!forConnection" type="button" class="btn apple qr"> Se connecter</button>
+         <!--<div class="or-separator"><span>{{ 'LOGIN.OR' | translate }}</span></div>
+         <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> {{ 'LOGIN.QRCODE' | translate }}</button>-->
+         
+         <!--
+         <div class="or-separator"><span>ou</span></div>
+         <button type="button" class="btn google grey-btn"><img class="btn-icon"
+               [src]="imgStorageUrl+'google-icon.png'">
+            Continuer avec
+            Google</button>
+         <button type="button" class="btn google grey-btn"><img class="btn-icon" [src]="imgStorageUrl+'apple-icon.png'">
+            Continuer avec
+            Apple</button>-->
+
+         <p class="small">{{ 'LOGIN.CGU' | translate }}</p>
+
+
+         

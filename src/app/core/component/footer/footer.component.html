@@ -1,14 +1,14 @@
 <footer class="footer">
 
+  <!--
   <div class="footer-top-right">
     <a href="#" class="footer-link">{{ "FOOTER.HOWITWORKS" | translate }}</a>
   </div>
   <div class="footer-content">
-
     <div class="footer-section">
     </div>
     <div class="footer-section">
-      <h4>izyGlam</h4>
+      <img src="assets/images/logo/alt/fr.png" alt="logo" class="footer-logo">
       <ul>
         <li><a (click)="goToHelp()">{{ "FOOTER.HELPCENTER" | translate }}</a></li>
       </ul>
@@ -23,8 +23,8 @@
         <li><a href="#">{{ "FOOTER.CAREERS" | translate }}</a></li>
         <li><a href="#">{{ "FOOTER.AI" | translate }}</a></li>
       </ul>
-    </div>
-    <div class="footer-section">
+    </div>-->
+    <!--<div class="footer-section">
       <h4>{{ "FOOTER.PRODUCTS" | translate }}</h4>
       <ul>
         <li><a href="#">{{ "FOOTER.GLAM" | translate }}</a></li>
@@ -42,21 +42,21 @@
 
     <div class="footer-section">
     </div>
-  </div>
+  </div>-->
   <div class="footer-bottom">
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="social-footer">
           <ul>
-            <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.instagram.com/"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
           </ul>
         </div>
       </div>
     </div>
     <p>© {{today | date:'y'}} izyTechnologies</p>
-    <p><a href="#" class="pink">{{ "FOOTER.CONFIDENTIAL" | translate }}</a> · <a href="#" class="pink">{{
-        "FOOTER.ACCESS" | translate }}</a> · <a href="#" class="pink">{{ "FOOTER.CONDITIONS" | translate }}</a></p>
+    <p><a href="/cgu" target="_blank" class="pink">{{ "FOOTER.CONFIDENTIAL" | translate }}</a> · <a href="/cgu" target="_blank" class="pink">{{
+        "FOOTER.ACCESS" | translate }}</a> · <a href="/cgu" target="_blank" class="pink">{{ "FOOTER.CONDITIONS" | translate }}</a></p>
     <p>{{ "FOOTER.LANGUAGE" | translate }} : {{visitorLocationData.language}} ({{visitorLocationData.country_name}}) ·
       {{ "FOOTER.LOCALISATION"
       |

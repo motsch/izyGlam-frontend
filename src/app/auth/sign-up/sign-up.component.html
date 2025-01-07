@@ -40,19 +40,9 @@
                [(ngModel)]="user.passwordConfirmed" id="inputpasswordConfirmed"
                [placeholder]="placeholderConfirmPassword">
          </div>
-         <button type="submit" class="btn submit" (click)="validAjouterModifier()">{{ 'SIGNUP.CONTINUER' | translate }}</button>
-         <!--
-         <div class="or-separator"><span>ou</span></div>
-         <button type="button" class="btn google grey-btn"><img class="btn-icon"
-               [src]="imgStorageUrl+'google-icon.png'">
-            Continuer avec
-            Google</button>
-         <button type="button" class="btn google grey-btn"><img class="btn-icon" [src]="imgStorageUrl+'apple-icon.png'">
-            Continuer avec
-            Apple</button>-->
-         <div class="or-separator"><span>{{ 'SIGNUP.OR' | translate }}</span></div>
-         <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> {{ 'SIGNUP.QRCODE' | translate }}</button>
+         <button type="submit" class="btn submit" (click)="validAjouterModifier()">{{ 'SIGNUP.CONTINUER' | translate
+            }}</button>
+         <app-connexion-buttons [forConnection]="false"></app-connexion-buttons>
       </form>
-      <p class="small">{{ 'SIGNUP.CGU' | translate }}</p>
    </div>
 </section>

@@ -4,6 +4,8 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+
+import { SeoService } from 'src/app/core/services/seo.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { environment } from 'src/environments/environment';
 
@@ -15,7 +17,6 @@ import { environment } from 'src/environments/environment';
 export class SignInComponent implements OnInit {
     placeholderEmail: string = 'LOGIN.PLACEHOLDER_EMAIL';
     placeholderPassword: string = 'LOGIN.PLACEHOLDER_PASSWORD';
-    imgStorageUrl: string = environment.imgStorageUrl;
     //  user à logger;
     user: any = {};
     // Erreur lors du login
@@ -30,28 +31,37 @@ export class SignInComponent implements OnInit {
     passwordRedBorder = true;
     imageDisplay: any;
     year: string = '';
+    isPasswordVisible: boolean = false;
+
     constructor(
         private route: ActivatedRoute,
         private title: Title,
         private _snackBar: MatSnackBar,
-        private meta: Meta,
         private authenticationService: AuthenticationService,
         private sessionService: SessionService,
         private router: Router,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private seoService: SeoService
     ) {}
 
     ngOnInit() {
         this.title.setTitle(this.route.snapshot.data['title']);
-        this.translate.get('LOGIN.PLACEHOLDER_EMAIL').subscribe((res: string) => {
-            this.placeholderEmail = res;
-        });
-        this.translate.get('LOGIN.PLACEHOLDER_PASSWORD').subscribe((res: string) => {
-            this.placeholderPassword = res;
-        });
-
+        this.translate
+            .get('LOGIN.PLACEHOLDER_EMAIL')
+            .subscribe((res: string) => {
+                this.placeholderEmail = res;
+            });
+        this.translate
+            .get('LOGIN.PLACEHOLDER_PASSWORD')
+            .subscribe((res: string) => {
+                this.placeholderPassword = res;
+            });
+            this.seoService.updateMeta('login');
     }
 
+    togglePasswordVisibility(): void {
+        this.isPasswordVisible = !this.isPasswordVisible;
+      }
     onMoreOptions() {
         console.log('Showing more options...');
         this.router.navigate(['sign-in-sms']);

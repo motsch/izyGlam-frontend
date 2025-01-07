@@ -1,0 +1,85 @@
+.avis-users-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: linear-gradient(135deg, #00274d, #0056a6); /* Arrière-plan bleu harmonisé */
+    text-align: center;
+  
+    h3 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #ffffff;
+    }
+  
+    .avis-slider {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+      height: 200px; /* Fixe une hauteur pour éviter les décalages */
+      overflow: hidden;
+  
+      .avis-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: translateY(100%);
+        transition: all 0.8s ease-in-out;
+  
+        &.active {
+          opacity: 1;
+          transform: translateY(0);
+        }
+  
+        &.exiting {
+          opacity: 0;
+          transform: translateY(-100%);
+        }
+  
+        .avis-text {
+          font-size: 1.2rem;
+          color: #333;
+          margin-bottom: 15px;
+        }
+  
+        .avis-author {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+  
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #0056a6; /* Accent */
+          }
+  
+          span {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #555;
+          }
+        }
+      }
+    }
+  }
+  
+  /* Animation fade-in/fade-out (alternative simple) */
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

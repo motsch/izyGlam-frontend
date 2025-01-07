@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 import { ShopTemplateService } from './core/services/shop-template.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ChatModalComponent } from './core/component/chat-modal/chat-modal.component';
+import { GeoLocationService } from './core/services/geolocation.service';
+import { SharedService } from './core/services/shared.service';
 
 @Component({
     selector: 'app-root',
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit {
     me:any = {};
   imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     constructor(
+        private sharedService: SharedService,
         public translate: TranslateService,
         public sessionService: SessionService,
         public userService: UserService,
@@ -31,6 +34,7 @@ export class AppComponent implements OnInit {
         private cartService: CartService,
         private router: Router,
         public dialog: MatDialog,
+        private geoLocationService: GeoLocationService
     ) {
         translate.addLangs([
             'de',
@@ -46,18 +50,21 @@ export class AppComponent implements OnInit {
             'fi',
         ]);
 
+        // Définit la langue par défaut
         const sessionLangue = this.sessionService.getLang();
-        if (sessionLangue) {
-            translate.setDefaultLang(sessionLangue);
-        } else {
-            translate.setDefaultLang('fr');
-        }
+        translate.setDefaultLang(sessionLangue ? sessionLangue : 'fr');
 
-        translate.getBrowserLang();
+        // Initialisation de `me` depuis SessionService
+        const user = this.sessionService.getCurrentUser();
+        if (user) {
+            this.me = user;
+        }
     }
 
     ngOnInit() {
+        this.geoLocationService.checkAndRedirect(['SY', 'KP', 'RU', 'IR', 'GB', 'CN']);
         this.backgroundImages = this.aPIimgStorageUrl + 'uploads/images/creation/15/14.png';
+
         this.cartService.getCartState().subscribe((isOpen) => {
             console.log('Cart state changed:', isOpen);
             this.cartOpen = isOpen;
@@ -67,15 +74,12 @@ export class AppComponent implements OnInit {
             console.log('Drawer state changed:', isOpen);
             this.drawerOpen = isOpen;
         });
-        this.userService.getMe().subscribe({
-            next:(data:any) => {
-                console.log(data)
-                this.me = data;
-            },
-            error:(error:any) => {
-                console.log(error);
-            }
-        })
+
+        // Écoute les mises à jour de `me`
+        this.sharedService.me$.subscribe((data) => {
+            this.me = data;
+            console.log('Updated me in AppComponent:', this.me);
+        });
     }
 
     getBackgroundStyle() {

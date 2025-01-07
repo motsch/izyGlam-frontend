@@ -68,6 +68,14 @@
   color: black !important;
 }
 
+.color_glow_primary {
+  color: #00d6d6;
+}
+
+.color_glow_secondary {
+  color: #ff4081;
+}
+
 .color_blue {
   color: blue;
 }

@@ -149,3 +149,23 @@ body {
   border-color: #ccc !important;  /* Couleur de la bordure grisée */
   color: #000000 !important;  /* Couleur du texte grisée */
 }
+
+
+
+.auth-page {
+  height: auto !important;
+}
+
+.hero-image video {
+  width: 500px;
+  height: 500px;
+  object-fit: cover; /* Crop la vidéo pour remplir le conteneur */
+  object-position: center; /* Centre la vidéo dans le conteneur */
+}
+
+label {
+  display: block;
+  font-size: 1.2rem;
+  color: #2aa4c6;
+  margin-top: 1rem;
+}

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 // import { TranslateService } from "@ngx-translate/core";
 import { EmitterService } from 'src/app/core/services/emitter.service';
+import { SeoService } from 'src/app/core/services/seo.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 
@@ -52,12 +53,12 @@ export class SignUpComponent implements OnInit {
         private userService: UserService,
         private emitterService: EmitterService,
         private _snackBar: MatSnackBar,
-        // private communicationService: CommunicationService,
         private router: Router,
-        private meta: Meta
+        private seoService: SeoService
     ) {}
 
     ngOnInit() {
+        this.seoService.updateMeta('signup');
         this.title.setTitle(this.route.snapshot.data['title']);
         
         this.translate.get(this.placeholerFirstName).subscribe((res: string) => {

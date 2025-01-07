@@ -6,12 +6,37 @@
     <div class="" id="">
       <ul class="" id="">
         <li class=""></li>
-        <div class="flex">
-            <button type="button" (click)="routerNavigate('/sign-in')" class="btn btn-transparent color_black"
-              *ngIf="page !== 'connected'">{{'INTRO.CONNEXION' | translate}}</button>
+        <div class="flex buttons-wrapper">
+          <!-- Boutons visibles en grand écran -->
+          <button type="button" (click)="routerNavigate('/sign-in')" 
+                  class="btn btn-transparent btn-sign-in desktop-only color_glow_secondary"
+                  *ngIf="page !== 'connected'">
+            {{'INTRO.CONNEXION' | translate}}
+          </button>
         
-            <button type="button" (click)="routerNavigate('/sign-up')" [ngClass]="!darkHeader ? 'color_izyglam' : 'color_white'" class="btn btn-transparent"
-              *ngIf="page !== 'connected'">{{'INTRO.REGISTRATION' | translate}}</button>
+          <button type="button" (click)="routerNavigate('/sign-up')" 
+                  class="btn btn-transparent btn-sign-up desktop-only" 
+                  [ngClass]="!darkHeader ? 'color_izyglam' : 'color_white'"
+                  *ngIf="page !== 'connected'">
+            {{'INTRO.REGISTRATION' | translate}}
+          </button>
+        
+          <!-- Bouton de menu hamburger visible sur mobile -->
+          <div class="mobile-only">
+            <button class="menu-btn" (click)="toggleMobileMenu()">
+              <i class="fa fa-bars"></i>
+            </button>
+        
+            <!-- Menu déroulant -->
+            <div class="mobile-menu" *ngIf="isMobileMenuOpen">
+              <button type="button" (click)="routerNavigate('/sign-in')" class="btn">
+                {{'INTRO.CONNEXION' | translate}}
+              </button>
+              <button type="button" (click)="routerNavigate('/sign-up')" class="btn">
+                {{'INTRO.REGISTRATION' | translate}}
+              </button>
+            </div>
+          </div>
         </div>
       </ul>
     </div>

@@ -21,26 +21,24 @@
                [placeholder]="placeholderEmail">
          </div>
          <div class="form-group">
-            <input id="inputPassword" type="password" class="form-control" [required]="true" [(ngModel)]="user.password"
-               name="login[password]" [placeholder]="placeholderPassword">
+            <input 
+              id="inputPassword" 
+              [type]="isPasswordVisible ? 'text' : 'password'" 
+              class="form-control" 
+              [required]="true" 
+              [(ngModel)]="user.password" 
+              name="login[password]" 
+              [placeholder]="placeholderPassword">
+            
+            <a (click)="togglePasswordVisibility()" class="show-pass">
+              <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </a>
+          </div>
+         <div class="form-group">
             <a routerLink="/forget-password" class="forgot-pass">{{ 'LOGIN.FORGET_PASSWORD' | translate }}</a>
          </div>
          <button type="submit" class="btn submit" (click)="onSubmit()">{{ 'LOGIN.CONTINUER' | translate }}</button>
-         <!--
-         <div class="or-separator"><span>ou</span></div>
-         <button type="submit" class="btn google grey-btn" (click)="onMoreOptions()">Se connecter autrement</button>
-         <div class="or-separator"><span>ou</span></div>
-         <button type="button" class="btn google grey-btn"><img class="btn-icon"
-               [src]="imgStorageUrl+'google-icon.png'">
-            Continuer avec
-            Google</button>
-         <button type="button" class="btn google grey-btn"><img class="btn-icon" [src]="imgStorageUrl+'apple-icon.png'">
-            Continuer avec
-            Apple</button>
-         -->
-         <div class="or-separator"><span>{{ 'LOGIN.OR' | translate }}</span></div>
-         <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> {{ 'LOGIN.QRCODE' | translate }}</button>
+         <app-connexion-buttons [forConnection]="true"></app-connexion-buttons>
       </form>
-      <p class="small">{{ 'LOGIN.CGU' | translate }}</p>
    </div>
 </section>

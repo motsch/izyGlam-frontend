@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GeoLocationService } from '../../services/geolocation.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-footer',
@@ -13,56 +14,67 @@ export class FooterComponent implements OnInit {
 
     constructor(
         private geoLocationService: GeoLocationService,
-        private router: Router
+        private router: Router,
+        private translate: TranslateService
     ) {}
 
     ngOnInit() {
-        let storedLangue = localStorage.getItem('langue');
-        this.geoLocationService.checkAndRedirect();
+        const browserLang = navigator.language.split('-')[0]; // Extrait la langue du navigateur ('fr', 'en', etc.)
+        console.log('Langue du navigateur détectée :', browserLang);
+    
+        // Récupère la langue stockée ou la langue du navigateur, en nettoyant les guillemets doubles
+        const storedLangue = (localStorage.getItem('langue') || browserLang || 'en').replace(/"/g, '');
+        console.log('Langue stockée dans localStorage :', localStorage.getItem('langue'));
+        console.log('Langue utilisée pour ngx-translate :', storedLangue);
+    
+        const supportedLanguages: { [key: string]: string } = {
+            da: 'Dansk', // Danois
+            de: 'Deutsch', // Allemand
+            en: 'English', // Anglais
+            es: 'Español', // Espagnol
+            fi: 'Suomi', // Finnois
+            fr: 'Français', // Français
+            hu: 'Magyar', // Hongrois
+            it: 'Italiano', // Italien
+            nl: 'Nederlands', // Néerlandais
+            pl: 'Polski', // Polonais
+            ru: 'Русский', // Russe
+            pt: 'Portugais',
+            sv: 'Svenska', // Suédois
+        };
+        const defaultLanguage = 'Français';
+    
+        // Définir la langue pour ngx-translate
+        this.translate.use(storedLangue);
+    
+        // Récupération de la géolocalisation
         this.geoLocationService.getLocation().subscribe(
-            (data) => {
-                console.log(data);
-                let userLang = navigator.language;
-                console.log('The language is: ' + userLang);
-                if (userLang === 'fr') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Français';
-                } else if (userLang === 'en') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'English';
-                } else if (userLang === 'es') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Español';
-                } else if (userLang === 'de') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Deutsch';
-                } else if (userLang === 'it') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Italiano';
-                } else if (userLang === 'nl') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Nederlands';
-                } else if (userLang === 'sv') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Svenska';
-                } else if (userLang === 'pl') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Polski';
-                } /* else if (userLang === 'da') {
-                        this.visitorLocationData = data;
-                        this.visitorLocationData.language = 'Dansk';
-                        localStorage.setItem('langue', 'da');
-                    } */ else if (userLang === 'fi') {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Suomi';
-                } else {
-                    this.visitorLocationData = data;
-                    this.visitorLocationData.language = 'Français';
+            (data: any) => {
+                console.log('Données complètes de géolocalisation :', data);
+        
+                // Vérifie si le champ country_code existe
+                if (!data || !data.country_code) {
+                    console.error('Code pays manquant dans les données de géolocalisation.');
+                    return;
                 }
-                if (!storedLangue) {
-                    localStorage.setItem('langue', userLang);
+        
+                const userCountry = data.country_code.toUpperCase(); // Utilise country_code au lieu de countryCode
+                console.log('Pays détecté :', userCountry);   
+        
+                // Récupération de la langue supportée ou utilisation de la langue par défaut
+                const userLang = navigator.language.split('-')[0]; // 'fr', 'en', etc.
+                const visitorLanguage = supportedLanguages[userLang] || defaultLanguage;
+        
+                if (!localStorage.getItem('langue')) {
+                    localStorage.setItem('langue', userLang.replace(/"/g, ''));
                 }
-                this.visitorLocationData = data;
+        
+                this.visitorLocationData = {
+                    ...data,
+                    language: visitorLanguage,
+                };
+        
+                console.log(`Langue détectée : ${userLang} (${visitorLanguage})`);
             },
             (error) => {
                 console.error(
@@ -71,7 +83,11 @@ export class FooterComponent implements OnInit {
                 );
             }
         );
+        
     }
+    
+    
+
     goToHelp() {
         this.router.navigate(['help']);
     }

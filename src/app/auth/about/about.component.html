@@ -1,13 +1,27 @@
 <div class="main-section">
    <div class="container custom-container">
       <div class="row">
-         <div class="col-md-6 content">
+         <div class="col-md-6 content" *ngIf="!isSmallScreen">
             <h1>{{'HOMEPAGE.PART2TITLE' | translate}}</h1>
             <p>{{'HOMEPAGE.PART2TEXT' | translate}}</p>
-            <button type="submit" class="btn submit margin-bottom-50" (click)="goTo('creation-shop')">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
+            <button type="submit" class="btn submit margin-bottom-50"
+               (click)="goTo('creation-shop')">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
          </div>
          <div class="col-md-6 hero-image">
-            <img [src]="imgStorageUrl+'uber-test.png'" alt="Conduisez quand vous voulez">
+            <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/pro.png'"
+               alt="Tavaillez quand vous voulez" class="" />
+
+            <video #videoElementAbout *ngIf="paramVideo" #videoElementIntro autoplay muted playsinline loop
+               style="border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)">
+               <source [src]="aPIimgStorageUrl + '/uploads/videos/cloud.mp4'" type="video/mp4" />
+               Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+         </div>
+         <div class="col-md-6 content" *ngIf="isSmallScreen">
+            <h1>{{'HOMEPAGE.PART2TITLE' | translate}}</h1>
+            <p>{{'HOMEPAGE.PART2TEXT' | translate}}</p>
+            <button type="submit" class="btn submit margin-bottom-50"
+               (click)="goTo('creation-shop')">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
          </div>
       </div>
    </div>

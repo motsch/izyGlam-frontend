@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 /**
- * Session service pour la gestion de l'utilisateur loggue
+ * Session service pour la gestion de l'utilisateur loggué
  */
 @Injectable()
 export class SessionService {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     user: any;
-    remeberMe: boolean | undefined;
+    rememberMe: boolean | undefined;
     langue: string | undefined;
 
-    // private userConnected = new BehaviorSubject<boolean>(false);
-    constructor() {
+    private readonly fbAccessTokenKey = 'fbAccessToken';
+    private readonly fbTokenExpiryKey = 'fbTokenExpiry';
+
+    constructor(private http: HttpClient) {
         const localStorageUser = localStorage.getItem('user');
         const sessionStorageUser = sessionStorage.getItem('user');
-        const localStorageRememberMe = localStorage.getItem('remeberMe');
+        const localStorageRememberMe = localStorage.getItem('rememberMe');
         const localStorageLangue = localStorage.getItem('langue');
         try {
             if (localStorageUser) {
@@ -23,15 +26,14 @@ export class SessionService {
                 this.user = JSON.parse(sessionStorageUser);
             }
             if (localStorageRememberMe) {
-                this.remeberMe = JSON.parse(localStorageRememberMe);
+                this.rememberMe = JSON.parse(localStorageRememberMe);
             }
-
             if (localStorageLangue) {
                 this.langue = JSON.parse(localStorageLangue);
             }
         } catch (e) {
             this.user = null;
-            this.remeberMe = false;
+            this.rememberMe = false;
             this.langue = 'fr';
         }
     }
@@ -55,10 +57,10 @@ export class SessionService {
      * @param user
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    setCurrentUser(user: any, remeberMe: boolean | null) {
+    setCurrentUser(user: any, rememberMe: boolean | null) {
         this.user = user;
-        if (remeberMe) {
-            this.setRememberMe(remeberMe);
+        if (rememberMe) {
+            this.setRememberMe(rememberMe);
             localStorage.setItem('user', JSON.stringify(user));
             if (sessionStorage.getItem('user')) {
                 sessionStorage.removeItem('user');
@@ -72,19 +74,75 @@ export class SessionService {
     }
 
     /**
+   * Gestion des tokens Facebook
+   */
+    setFacebookToken(accessToken: string, expiresIn: number): void {
+        if (!expiresIn || typeof expiresIn !== 'number' || expiresIn <= 0) {
+            console.error('Durée d\'expiration invalide :', expiresIn);
+            return;
+        }
+
+        const expiryDate = new Date(Date.now() + expiresIn * 1000).toISOString();
+        localStorage.setItem(this.fbAccessTokenKey, accessToken);
+        localStorage.setItem(this.fbTokenExpiryKey, expiryDate);
+    }
+
+
+    getFacebookToken(): string | null {
+        const expiryDate = localStorage.getItem(this.fbTokenExpiryKey);
+        if (expiryDate && new Date() > new Date(expiryDate)) {
+            console.warn('Le token Facebook a expiré.');
+            return null;
+        }
+        return localStorage.getItem(this.fbAccessTokenKey);
+    }
+
+    async validateAndRenewFacebookToken(): Promise<void> {
+        const accessToken = this.getFacebookToken();
+        if (!accessToken) {
+            console.warn('Pas de token Facebook valide pour le renouvellement.');
+            return;
+        }
+
+        try {
+            const response: any = await this.http
+                .get('http://localhost:3000/api/meta/validate-token', {
+                    headers: { Authorization: `Bearer ${accessToken}` },
+                })
+                .toPromise();
+
+            if (!response.data.is_valid) {
+                console.log('Le token Facebook n\'est plus valide, tentative de renouvellement...');
+                const renewedResponse: any = await this.http
+                    .get('http://localhost:3000/api/meta/extend-token', {
+                        headers: { Authorization: `Bearer ${accessToken}` },
+                    })
+                    .toPromise();
+
+                this.setFacebookToken(renewedResponse.access_token, renewedResponse.expires_in);
+                console.log('Token Facebook renouvelé avec succès.');
+            } else {
+                console.log('Le token Facebook est toujours valide.');
+            }
+        } catch (error) {
+            console.error('Erreur lors de la validation ou du renouvellement du token Facebook :', error);
+        }
+    }
+
+    /**
      * Récupération de la variable rememberMe
      */
     getRememberMe() {
-        return this.remeberMe;
+        return this.rememberMe;
     }
 
     /**
      * Mise à jour de la variable rememberMe user dans le local storage
-     * @param user
+     * @param rememberMe
      */
-    setRememberMe(remeberMe: boolean) {
-        this.remeberMe = remeberMe;
-        localStorage.setItem('remeberMe', JSON.stringify(remeberMe));
+    setRememberMe(rememberMe: boolean) {
+        this.rememberMe = rememberMe;
+        localStorage.setItem('rememberMe', JSON.stringify(rememberMe));
     }
 
     /**
@@ -96,7 +154,7 @@ export class SessionService {
 
     /**
      * Mise à jour de la langue dans le local storage
-     * @param user
+     * @param langue
      */
     setLang(langue: string) {
         this.langue = langue;
@@ -110,6 +168,8 @@ export class SessionService {
     destroy() {
         this.setCurrentUser(null, false);
         localStorage.removeItem('me');
+        localStorage.removeItem(this.fbAccessTokenKey);
+        localStorage.removeItem(this.fbTokenExpiryKey);
     }
 
     /**

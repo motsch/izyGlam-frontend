@@ -1,22 +1,35 @@
 <div class="main-section">
    <div class="container custom-container">
-      <h2>{{'HOMEPAGE.APPTITLE' | translate}}</h2>
-      <div class="row">
-         <div class="col-md-12">
-            <div class="qr-card">
-
-               <div class="row">
-                  <div class="col-md-8">
-                     <img [src]="imgStorageUrl+'qr1.webp'" alt="QR Code for izyGlam App">
-                     <!-- Assurez-vous que le chemin et alt text sont corrects -->
-                  </div>
-                  <div class="col-md-4">
-                     <div class="hero-text">{{'HOMEPAGE.DOWNLOADAPP1' | translate}}</div>
-                     <div>{{'HOMEPAGE.SCANTODOWNLOAD' | translate}}</div>
-                  </div>
-               </div>
-            </div>
+     <h2>{{ 'HOMEPAGE.APPTITLE' | translate }}</h2>
+     <div class="qr-card-wrapper">
+       <div class="qr-card">
+         <div class="qr-card-content">
+           <div class="qr-code">
+             <div class="qr-text">
+               <div class="bold">{{ 'HOMEPAGE.DOWNLOADAPP1' | translate }} <img src="assets/images/logo/alt/fr.png" alt="logo" class="glow-logo"></div>
+               
+             </div>
+             <img [src]="imgStorageUrl + 'qr1.webp'" alt="QR Code for izyGlow App" class="">
+             <div class="qr-text">
+               <div>{{ 'HOMEPAGE.SCANTODOWNLOAD' | translate }}</div>
+             </div>
+           </div>
+           <div class="download-buttons">
+             <a href="https://play.google.com/store/apps/details?id=com.izyglow" target="_blank" class="btn download-btn">
+               <img src="assets/images/google-play-badge.png" alt="Google Play">
+             </a>
+             <a href="https://apps.apple.com/app/id123456789" target="_blank" class="btn download-btn">
+               <img src="assets/images/app-store-badge.png" alt="App Store">
+             </a>
+           </div>
          </div>
-      </div>
+       </div>
+       <div class="app-info">
+         <p><strong><span class="color_glow_secondary">+10,000</span> {{ "DOWNLOAD.USERS" | translate }} 💡</strong></p>
+         <p><strong><span class="color_glow_secondary">+50</span> {{ "DOWNLOAD.SOCIAL" | translate }} 🌍</strong></p>
+         <p><strong><span class="color_glow_secondary">5★</span> {{ "DOWNLOAD.STORE" | translate }} 🌟</strong></p>
+       </div>
+     </div>
    </div>
-</div>
+ </div>
+ 

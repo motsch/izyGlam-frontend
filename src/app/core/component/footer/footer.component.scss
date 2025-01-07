@@ -13,7 +13,7 @@
 
 .footer-section h4 {
   margin-bottom: 20px;
-  color: #e8aba8 !important;
+  color: #00d6d6 !important;
 }
 
 .footer-section ul {
@@ -28,7 +28,7 @@
 }
 
 .footer-bottom {
-  border-top: 1px solid #333;
+  // border-top: 1px solid #333;
   padding-top: 20px;
   text-align: center;
 }
@@ -63,4 +63,9 @@
 
 .pink:hover {
   color: #9a6f6d !important;
+}
+
+.footer-logo {
+  width: 150px;
+  height: auto;
 }

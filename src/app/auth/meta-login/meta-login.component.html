@@ -1,0 +1,28 @@
+<!-- meta-login.component.html -->
+<div class="meta-login-container">
+  <div class="content-wrapper">
+    <!-- Logo ou Image illustrative -->
+    <div class="logo">
+      <img src="assets\images\logo\fr.png" alt="Logo" />
+    </div>
+
+    <!-- Message d'attente -->
+    <div class="status" *ngIf="!backendResponse">
+      <div class="loader"></div>
+      <p>Vérification de vos informations, veuillez patienter...</p>
+    </div>
+
+    <!-- Message en cas d'erreur -->
+    <div class="error" *ngIf="backendResponse && backendResponse.error">
+      <h2>Erreur</h2>
+      <p>Une erreur est survenue : {{ backendResponse.error.message || 'Erreur inconnue.' }}</p>
+      <button class="btn-primary" (click)="router.navigate(['/'])">Retour à l'accueil</button>
+    </div>
+
+    <!-- Message de succès -->
+    <div class="success" *ngIf="backendResponse && !backendResponse.error">
+      <h2>Connexion réussie !</h2>
+      <p>Redirection vers votre espace en cours...</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="avis-users-section">
+  <h3>{{"AVIS.TITLE" | translate}}</h3>
+  <div class="avis-slider">
+    <div
+      *ngFor="let avis of avisList; let i = index"
+      class="avis-card"
+      [class.active]="i === activeIndex"
+    >
+      <p class="avis-text">{{ avis.text | translate }}</p>
+      <div class="avis-author">
+        <img [src]="avis.image" [alt]="avis.name" />
+        <span>{{ avis.name }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SessionService } from '../../services/session.service';
 import { UserService } from '../../services/user.service';
 import { AuthenticationService } from '../../services/authentication.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
     selector: 'app-change-password',
@@ -40,7 +41,8 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
         public translate: TranslateService,
         public sessionService: SessionService,
         private userService: UserService,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private seoService: SeoService
     ) {
         translate.addLangs([
             'da',
@@ -200,5 +202,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
         this.sessionService.setLang(lang.code);
         this.selected = lang;
         this.dropdownOpen = false;
+
+        this.seoService.setLanguage(lang);
     }
 }

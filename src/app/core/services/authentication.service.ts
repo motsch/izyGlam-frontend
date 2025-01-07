@@ -14,6 +14,7 @@ export class AuthenticationService {
         private http: HttpClient,
         private sessionService: SessionService
     ) {}
+
     /**
      * Permet de logger l'utilisateur (selectionne l'utilisateur ayant le bon mdp et email)
      * @param email (l'email de l'utilisateur)
@@ -31,6 +32,7 @@ export class AuthenticationService {
             credentials
         );
     }
+
     loginVerifSms(sid: any, code: any, connectKey: any) {
         const credentials = { sid, code, connectKey };
         return this.http.post<any>(
@@ -47,9 +49,8 @@ export class AuthenticationService {
     }
 
     /**
-     * Permet de logger l'utilisateur (selectionne l'utilisateur ayant le bon mdp et email)
-     * @param email (l'email de l'utilisateur)
-     * @param password (le mot de passe de l'utilisateur)
+     * Permet de rafraîchir le token
+     * @param user
      */
     refreshToken(user: any) {
         return this.http.post<any>(environment.apiUrl + '/refresh-token', user);
@@ -75,5 +76,28 @@ export class AuthenticationService {
         } else {
             return true;
         }
+    }
+
+    /**
+     * Permet d'envoyer un email pour réinitialiser le mot de passe
+     * @param email (l'email de l'utilisateur)
+     */
+    forgotPassword(email: string): Observable<any> {
+        return this.http.post<any>(
+            environment.apiUrl + 'forgot-password',
+            { email }
+        );
+    }
+
+    /**
+     * Permet de réinitialiser le mot de passe avec un token et un nouveau mot de passe
+     * @param token (le token reçu par email)
+     * @param newPassword (le nouveau mot de passe choisi par l'utilisateur)
+     */
+    resetPassword(token: string, newPassword: string): Observable<any> {
+        return this.http.post<any>(
+            environment.apiUrl + 'reset-password',
+            { token, newPassword }
+        );
     }
 }

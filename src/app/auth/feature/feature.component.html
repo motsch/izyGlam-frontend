@@ -2,7 +2,14 @@
    <div class="container custom-container">
       <div class="row">
          <div class="col-md-6 hero-image">
-            <img [src]="imgStorageUrl+'uber-test4.png'" alt="Services de beauté pour entreprises">
+            <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/company.png'"  alt="Services de beauté pour entreprises"
+               class="" />
+
+            <video #videoElementFeature *ngIf="paramVideo" #videoElementIntro autoplay muted playsinline loop
+               style="border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)">
+               <source [src]="aPIimgStorageUrl + '/uploads/videos/company.mp4'" type="video/mp4" />
+               Votre navigateur ne supporte pas la balise vidéo.
+            </video>
          </div>
          <div class="col-md-6 content">
             <h1>{{'HOMEPAGE.PART3TITLE' | translate}}</h1>

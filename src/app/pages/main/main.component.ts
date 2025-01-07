@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { SessionService } from 'src/app/core/services/session.service';
+import { SharedService } from 'src/app/core/services/shared.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
@@ -50,17 +50,19 @@ export class MainComponent implements OnInit {
         | undefined;
 
     constructor(
+        private sharedService: SharedService,
         private shopService: ShopService,
         public sessionService: SessionService,
         private categoryService: CategoryService,
         private userService: UserService
-    ) {}
+    ) { }
 
     // Fonction appelée à l'initialisation du composant
     ngOnInit() {
         this.userService.getMe().subscribe({
             next: (data: any) => {
                 this.me = data;
+                this.sharedService.updateMe(data);
                 console.log(this.me);
             },
             error: (error: any) => {
@@ -81,42 +83,41 @@ export class MainComponent implements OnInit {
         localStorage.removeItem('activeMenu');
         this.getLocationAndLoadShops(); // Charge les shops basés sur la localisation du client
     }
-
+    
     // Récupère la localisation de l'utilisateur et charge les shops correspondants
-    // Récupère la localisation de l'utilisateur et charge les shops correspondants
-private getLocationAndLoadShops() {
-    navigator.geolocation.getCurrentPosition((position) => {
-        console.log('Latitude: ' + position.coords.latitude); // Log de la latitude pour le débogage
-        console.log('Longitude: ' + position.coords.longitude); // Log de la longitude pour le débogage
+    private getLocationAndLoadShops() {
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log('Latitude: ' + position.coords.latitude); // Log de la latitude pour le débogage
+            console.log('Longitude: ' + position.coords.longitude); // Log de la longitude pour le débogage
 
-        // Récupère les shops à proximité
-        this.shopService
-            .getShopsNearby(position.coords.latitude, position.coords.longitude)
-            .subscribe(async (shops: any[]) => {
-                console.log(JSON.stringify(shops)); // Log des données pour le débogage
+            // Récupère les shops à proximité
+            this.shopService
+                .getShopsNearby(position.coords.latitude, position.coords.longitude)
+                .subscribe(async (shops: any[]) => {
+                    console.log(JSON.stringify(shops)); // Log des données pour le débogage
 
-                // Récupérer les favoris de l'utilisateur depuis currentUser
-                const favoriteShops = this.me.favoriteShops || [];
+                    // Récupérer les favoris de l'utilisateur depuis currentUser
+                    const favoriteShops = this.me.favoriteShops || [];
 
-                // Marquer les shops favoris dans la liste récupérée
-                this.shops = shops.map((shop) => {
-                    return {
-                        ...shop,
-                        isFavorite: favoriteShops.includes(shop._id) // Ajoute une propriété isFavorite si le shop est dans les favoris
-                    };
+                    // Marquer les shops favoris dans la liste récupérée
+                    this.shops = shops.map((shop) => {
+                        return {
+                            ...shop,
+                            isFavorite: favoriteShops.includes(shop._id) // Ajoute une propriété isFavorite si le shop est dans les favoris
+                        };
+                    });
+
+                    // Filtrer et préparer les shops à afficher dans les différentes catégories
+                    this.filteredItemsAdecouvrir = this.shuffleArray(this.shops);
+                    this.filteredItemsApprecier = this.shuffleArray(this.shops);
+                    this.filteredItemsMalin = this.shuffleArray(this.shops);
+                    this.filteredItemsTop10 = this.shuffleArray(this.shops);
+
+                    // Filtre les shops promus
+                    this.promotedShops = await this.shops.filter((x: any) => x.promo.active === true);
                 });
-
-                // Filtrer et préparer les shops à afficher dans les différentes catégories
-                this.filteredItemsAdecouvrir = this.shuffleArray(this.shops); 
-                this.filteredItemsApprecier = this.shuffleArray(this.shops); 
-                this.filteredItemsMalin = this.shuffleArray(this.shops); 
-                this.filteredItemsTop10 = this.shuffleArray(this.shops);
-
-                // Filtre les shops promus
-                this.promotedShops = await this.shops.filter((x: any) => x.promo.active === true);
-            });
-    });
-}
+        });
+    }
 
 
     // Applique ou retire un filtre basé sur la catégorie
