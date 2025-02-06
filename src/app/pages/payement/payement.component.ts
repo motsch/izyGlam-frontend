@@ -33,6 +33,7 @@ export class PayementComponent implements OnInit {
     itemToBuy2: any | null;
     adminSettings: any = {};
     meSex: string = 'Mme.';
+    prestationDateForBill: string | undefined;
     constructor(
         private router: Router,
         private datePipe: DatePipe,
@@ -43,7 +44,7 @@ export class PayementComponent implements OnInit {
         public dialog: MatDialog,
         private adminService: AdminService,
         private bookingService: BookingService
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         this.adminService.getAdminSettings().subscribe({
@@ -99,6 +100,11 @@ export class PayementComponent implements OnInit {
                 });
             });
         // console.log((this.itemToBuy2));
+        let dateBrut: any = localStorage.getItem("selectItemFromShop");
+        if (dateBrut) {
+            dateBrut = JSON.parse(dateBrut);
+        }
+        this.prestationDateForBill = dateBrut.slot.dateBrut;
     }
     openProchesModal() {
         this.dialog.open(ProchesModalComponent, {
@@ -164,11 +170,11 @@ export class PayementComponent implements OnInit {
             }
         });
         // this.bill.userProId = this.
-        this.bill.start = this.convertToISO(this.dateSlot, this.startSlot);// : Date; // Date et heure de début du créneau réservé
+        this.bill.start = this.convertToISO(this.startSlot);// : Date; // Date et heure de début du créneau réservé
         // this.bill.end = this.date + this.startSlot + this.itemToBuy2.duration; // : Date; // Date et heure de fin du créneau réservé
         console.log(this.date);
         console.log(this.startSlot);
-        this.bill.end = this.convertToISO(this.dateSlot, this.endSlot);
+        this.bill.end = this.convertToISO(this.endSlot);
         this.bill.date = this.dateSlot;
 
         this.bill.shopEarnings = this.price;
@@ -226,13 +232,14 @@ export class PayementComponent implements OnInit {
     }
 
     // date en france
-    convertToISO(dateStr: string, timeStr: string): string {
+    convertToISO(timeStr: string): string {
         // Combine date and time into a single string
-        const combined = dateStr + ' ' + timeStr;
-        
+        // Étape 1 : Combiner la date et l'heure
+        const combined = this.prestationDateForBill + ' ' + timeStr;
+
         // Create a Date object from the combined string (local time)
         const date = new Date(combined);
-    
+
         // Format to 'YYYY-MM-DDTHH:mm:ss' without the timezone conversion
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth() is zero-indexed
@@ -240,7 +247,7 @@ export class PayementComponent implements OnInit {
         const hours = String(date.getHours()).padStart(2, '0');
         const minutes = String(date.getMinutes()).padStart(2, '0');
         const seconds = '00'; // You can adjust this to get actual seconds if needed
-    
+
         return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
     }
 

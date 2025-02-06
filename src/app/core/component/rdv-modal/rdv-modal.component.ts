@@ -62,6 +62,7 @@ export class RdvModalComponent implements OnInit {
                 date: this.formatDate(slot.date),  // Format the date for display
                 times: [
                     {
+                        dateBrut: slot.date,
                         start: slot.start,
                         end: slot.end
                     }

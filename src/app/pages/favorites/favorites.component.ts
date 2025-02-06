@@ -17,24 +17,8 @@ export class FavoritesComponent implements OnInit {
   filteredItems: any[] = [];
   shops: any[] = []; // Tableau pour stocker les informations des boutiques récupérées de l'API
   currentUser: any = {};
-
-  // Références aux éléments du DOM pour gérer le défilement des conteneurs de contenu
-  @ViewChild('scrollContainerCategory') private scrollContainerCategory:
-      | ElementRef
-      | undefined;
-  @ViewChild('scrollContainerAround') private scrollContainerAround:
-      | ElementRef
-      | undefined;
-  @ViewChild('scrollContainerPromo') private scrollContainerPromo:
-      | ElementRef
-      | undefined;
-  @ViewChild('scrollContainerTop10') private scrollContainerTop10:
-      | ElementRef
-      | undefined;
-
   constructor(
       private router: Router,
-      private drawerService: DrawerService,
       private shopService: ShopService,
       public sessionService: SessionService,
       private userService: UserService

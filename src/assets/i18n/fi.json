@@ -1,0 +1,576 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Kampaaja",
+    "NAILTECHNICIAN": "Kynsiteknikko",
+    "MAKEUP": "Meikkaaja",
+    "WAXING": "Kosmetologi",
+    "FACIAL": "Kasvohoito",
+    "MASSAGE": "Hieroja",
+    "EYELASH": "Ripsienpidennys",
+    "EYEBROW": "Kulmakarvat",
+    "TANNING": "Rusketus",
+    "ACUPUNCTURE": "Akupunktio",
+    "OTHER": "Muu"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Tuo heidät luoksesi",
+    "KNOWMORE": "Lue lisää",
+    "PART1TITLE": "Nauti parhaista kauneudenhoitopalveluista kotona",
+    "PART1TEXT": "Pätevä henkilöstömme tulee kotiisi tarjoten laadukkaita kauneudenhoitopalveluja, jotka on räätälöity tarpeidesi ja toiveidesi mukaan. Koe ainutlaatuinen hyvinvointikokemus, olipa kyseessä lounastauko, illan jälkeen työstä tai iltapäivä ystävien kanssa.",
+    "PART2TITLE": "Työskentele milloin haluat ja ansaitse joustavasti",
+    "PART2TEXT": "Ansaitse tuloja omalla aikataulullasi ottamalla vastaan pyyntöjä alustalla omassa tahdissasi. Voit käyttää omaa laitteistoasi tai valita vuokrata ammattimaista välineistöä izyGlamin kautta.",
+    "PART3TITLE": "Uudistettu kauneuspalvelu yrityksille",
+    "PART3TEXT": "Glam for Business on alusta, joka on suunnattu kaikenkokoisille yrityksille kauneudenhoitotarpeiden hallintaan asiakkaillesi ja työntekijöillesi. Tarjoa räätälöityjä kauneudenhoitopalveluja suoraan työpaikalla, yritystapahtumissa tai erityistilaisuuksissa. Pätevä henkilöstömme tulee tarjoamaan tarpeitasi vastaavat palvelut.",
+    "APPTITLE": "Se on helpompaa sovelluksilla",
+    "DOWNLOADAPP1": "Lataa izyGlam-sovellus",
+    "DOWNLOADAPP2": "Lataa sovellus kauneudenhoitoalan ammattilaisille",
+    "SCANTODOWNLOAD": "Skannaa ladataksesi"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Näin izyGlam-sovellukset ja -sivustot toimivat",
+    "HELPCENTER": "Siirry ohjekeskukseen",
+    "BUSINESS": "Yritys",
+    "ABOUT": "Tietoa meistä",
+    "OURSERVICES": "Palvelumme",
+    "PRESSAREA": "Lehdistöalue",
+    "INVESTORS": "Sijoittajat",
+    "CAREERS": "Työpaikat",
+    "AI": "Tekoäly",
+    "PRODUCTS": "Tuotteet",
+    "GLAM": "Aina huippukunnossa izyGlamilla",
+    "RESERVED": "Varaa etukäteen",
+    "GIFTCARDS": "Lahjakortit",
+    "WORKWITHUS": "Työskentele izyGlamin kanssa",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Luottamuksellisuus",
+    "ACCESS": "Esteettömyys",
+    "CONDITIONS": "Ehdot",
+    "LANGUAGE": "Kieli",
+    "LOCALISATION": "Sijainti"
+  },
+  "COMING_SOON": {
+    "TITLE": "Tulemme pian",
+    "TITLE-NOT-COMING": "Emme ole vielä suunnitelleet tulla",
+    "DAYS": "Päiviä",
+    "HOURS": "Tunteja",
+    "MINUTES": "Minuutteja",
+    "SECONDS": "Sekunteja",
+    "TEXT": "Teemme kovasti töitä tarjotaksemme sinulle ainutlaatuisen kauneudenhoitokokemuksen kotona. Pysy yhteydessä saadaksesi tiedon lanseerauksestamme."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Ajankohtaiset tarjoukset",
+    "DISCOVER": "Tutustu izyGlamiin",
+    "LIKED": "Suosituimmat lähialueella",
+    "SMART": "Fiksut tarjoukset",
+    "TOP10": "Viikon Top 10",
+    "SEARCHRESULT": "Hakutulokset",
+    "AVIS": "Arvostelut"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Hiukset",
+    "MANUCURE": "Manikyyri",
+    "VISAGE": "Kasvot",
+    "MASSAGE": "Hieronta",
+    "MAQUILLAGE": "Meikki",
+    "EPILATION": "Vahaus",
+    "BRONZAGE": "Rusketus",
+    "PARTUM": "Synnytyksen jälkeinen",
+    "NUTRITION": "Ravitsemus",
+    "FITNESS": "Kuntoilu",
+    "ACUPUNCTURE": "Akupunktio",
+    "STYLISME": "Stailaus",
+    "YOGA": "Rentoutus",
+    "DEVELOPPEMENT": "Kehittyminen"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Kampaaja",
+    "MANUCURE": "Manikyyri",
+    "ESTETICIAN": "Kosmetologi",
+    "MASSAGE": "Hieroja",
+    "MAQUILLAGE": "Meikkaaja",
+    "PEDICURE": "Jalkahoitaja",
+    "NUTRITION": "Ravitsemusterapeutti",
+    "FITNESS": "Kuntoiluvalmentaja"
+  },
+  "INTRO": {
+    "NORESULTS": "Ei tuloksia",
+    "SEARCH": "Hae",
+    "SPECIALITY": "Erikoisala?",
+    "WHERE": "Missä?",
+    "CONNEXION": "Kirjaudu sisään",
+    "REGISTRATION": "Rekisteröidy"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Tilin tiedot",
+    "SECURITY": "Turvallisuus ja kieli",
+    "CONFIDENTIAL": "Luottamuksellisuus ja tiedot",
+    "DASHBOARD": "Hallintapaneeli",
+    "COMPANY": "Yritykseni hallinta",
+    "SHOP": "Kauppojeni hallinta",
+    "FINANCIAL": "Talousseuranta",
+    "ADMIN": "Yleinen hallinto",
+    "CALENDAR": "Kalenteri",
+    "SELECT_SALON": "Valitse salonki",
+    "NEW_SALON": "Valitse uusi salonki",
+    "SHOP_TO_CREATE": "Luo kauppatyyppi",
+    "CANCEL": "Peruuta",
+    "CREATE": "Luo kauppa",
+    "INFO1": "Olet poistamassa kauppaasi",
+    "INFO2": "Tätä toimintoa ei voi peruuttaa",
+    "SURE": "Oletko varma, että haluat jatkaa",
+    "DELETE": "Poista"
+  },
+  "PROFILE": {
+    "TITLE": "Perustiedot",
+    "FIRSTNAME": "Etunimi",
+    "LASTNAME": "Sukunimi",
+    "PHONE": "Puhelinnumero",
+    "ADDRESS": "Sähköpostiosoite",
+    "CHANGE_USER": "Vaihda käyttäjää",
+    "CANCEL": "Peruuta",
+    "SUCCESS": "Profiili päivitetty onnistuneesti"
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Vaihda salasana",
+    "ACTUAL_PASSWORD": "Nykyinen salasana",
+    "NEW_PASSWORD": "Uusi salasana",
+    "CONFIRMED_PASSWORD": "Vahvista uusi salasana",
+    "CHANGE_PASSWORD": "Vaihda salasana",
+    "CHANGE_OK": "Salasana vaihdettu onnistuneesti",
+    "CHANGE_LANGUE": "Vaihda kieli",
+    "LANGUE": "Kieli"
+  },
+  "CONFIDENTIAL": {
+    "INTRO": "Johdanto",
+    "INTRO_BIS": "Kun käytät izyGlamia, annat meille henkilötietosi. Sitoudumme kunnioittamaan luottamustasi suojelemalla tietojasi. Tämä tietosuojaseloste kuvaa keräämiämme henkilötietoja (’tiedot’), kuinka käytämme ja jaamme niitä sekä valintasi niiden suhteen. Suosittelemme lukemaan tämän asiakirjan huolellisesti.",
+    "APPLICATION": "Soveltamisala",
+    "DECLARATION": "Tämä ilmoitus koskee izyGlam-alustan käyttäjiä, joka yhdistää yksityishenkilöt ja yritykset itsenäisiin kauneudenhoitoalan ammattilaisiin, kuten manikyyreihin, pedikyyreihin, meikkaajiin ja kampaajiin. Se kattaa kaikki izyGlamin maailmanlaajuisesti tarjoamat palvelut.",
+    "COLLECTE": "Tietojen keruu ja käyttö",
+    "DATA_GET": "izyGlamin keräämät tiedot",
+    "DATA_TAKEN": "izyGlam kerää seuraavat tiedot",
+    "DATA_USED": "Käyttäjien antamat tiedot",
+    "PERSONNAL": "Henkilökohtaiset tiedot (nimi, sähköpostiosoite, puhelinnumero), tilitiedot (kirjautumistiedot, salasanat, kauneudenhoitopalveluiden mieltymykset), maksutiedot (luottokorttitiedot, pankkitiedot, maksutapahtumien historia)",
+    "CREATE_DATA": "Tiedot, jotka syntyvät palveluidemme käytön aikana",
+    "HISTORY": "Selaushistoria, evästeet, IP-osoite, selaintyyppi, käyttöjärjestelmä, alustalla vietetty aika",
+    "RELATION": "Yhteystiedot",
+    "DETAILS": "Tiedot yhteydenotoista kauneudenhoidon ammattilaisiin, pyydetyt palvelut, aikataulut, vaihdettu viestintä",
+    "USED": "Tietojen käyttö",
+    "USED_FOR": "izyGlam käyttää tietoja",
+    "BEST_SERVICES": "Tarjoamaan ja parantamaan palveluitamme, personoimaan kokemuksesi ja käsittelemään tilauksesi.",
+    "PARTICULIER": "Helpottamaan yksityishenkilöiden/yritysten ja itsenäisten kauneudenhoitoalan ammattilaisten yhteydenpitoa.",
+    "SEND": "Lähettämään sinulle tietoa tuotteistamme, palveluistamme, erikoistarjouksistamme ja uusista ominaisuuksistamme.",
+    "ASSURER": "Varmistamaan järjestelmiemme turvallisuuden ja estämään petokset.",
+    "EFFECTUER": "Suorittamaan analyyseja alustamme käyttötapojen ymmärtämiseksi.",
+    "PERSONNALISER": "Personoimaan kokemuksesi mieltymystesi ja käyttöhistoriasi perusteella.",
+    "CHOICE": "Valinnat ja läpinäkyvyys",
+    "RIGHT": "Oikeutesi",
+    "RGPD": "GDPR:n mukaan sinulla on oikeus",
+    "PERSONNAL_DATA_ACCESS": "Saada pääsy henkilötietoihisi ja pyytää niistä kopio.",
+    "ASK_CORRECTION": "Pyytää virheellisten tai puutteellisten tietojen korjaamista.",
+    "ASK_DELETE": "Pyytää tietojesi poistamista (’oikeus tulla unohdetuksi’).",
+    "RESTREINDRE": "Rajoittaa tai vastustaa tietojesi käsittelyä.",
+    "ASK_PORTA": "Pyytää tietojesi siirtoa toiseen palveluun.",
+    "CONSENT": "Peruuttaa suostumuksesi milloin tahansa, jos käsittely perustuu suostumukseen.",
+    "RECLAMATION": "Tehdä valitus valvontaviranomaiselle, jos uskot, että oikeuksiasi ei kunnioiteta.",
+    "COOKIES": "Yksityisyysasetukset ja evästeet",
+    "MANAGE_COOKIES_PREF": "Voit hallita evästeasetuksiasi selaimen asetusten tai sivustollamme saatavilla olevan evästeiden hallintatyökalun kautta. Tulevaisuudessa izyGlam voi käyttää muita teknologioita käyttäjäseurantaan.",
+    "SHARE_DATA": "Tietojen jakaminen",
+    "WE_SHARE": "Jaamme henkilötietojasi vain luotettujen kolmansien osapuolten kanssa, jotka ovat välttämättömiä tilaustesi käsittelyyn ja palvelujen tarjoamiseen, kuten",
+    "FOURNISSEUR_SERV": "Maksupalveluntarjoajat turvallista maksutapahtumien käsittelyä varten.",
+    "TRANSPORT": "Kuljetuspalvelut tai kuriirit tuotteiden toimittamiseen, jos tarpeen.",
+    "MARKETING": "Markkinointi- ja mainospalveluntarjoajat, vain suostumuksellasi.",
+    "HEALTHCARE": "Itseään työllistävät kauneudenhoidon ammattilaiset, joiden kanssa olet varannut ajan alustan kautta.",
+    "CLOUD": "Pilvi- ja hosting-palveluntarjoajat varmistaaksemme alustamme saatavuuden ja turvallisuuden.",
+    "DATA_SAVED": "Tietojen säilyttäminen",
+    "WE_SAVE": "Säilytämme henkilötietojasi vain niin kauan kuin on tarpeen niiden kerättyjen tarkoitusten täyttämiseksi, mukaan lukien lakisääteisten, kirjanpidollisten tai raportointivelvoitteiden noudattaminen. Tiedot säilytetään yleensä 3-6 kuukautta.",
+    "SECURITY": "Tietoturva",
+    "TECHNICAL": "Toteutamme asianmukaisia teknisiä ja organisatorisia toimenpiteitä suojataksemme henkilötietosi katoamiselta, väärinkäytöltä, luvattomalta pääsyltä, paljastamiselta, muuttamiselta tai tuhoutumiselta. Näihin toimenpiteisiin kuuluu tietojen salaaminen siirron aikana ja levossa, vahva todennus sisäisiin järjestelmiin pääsyssä sekä jatkuva uhkien ja mahdollisten tietoturvaloukkausten seuranta. Emme ole vielä ottaneet käyttöön protokollia tietoturvaloukkaustilanteiden käsittelemiseksi, mutta harkitsemme sitä tulevaisuudessa.",
+    "INTERNATIONAL": "Kansainväliset tietosiirrot",
+    "PERSONNAL_DATA": "Keräämiämme henkilötietoja voidaan siirtää ja säilyttää maissa Euroopan talousalueen (ETA) ulkopuolella. Kun nämä siirrot tapahtuvat, varmistamme, että ne tehdään sovellettavien sääntöjen mukaisesti käyttämällä mekanismeja, kuten Euroopan komission hyväksymiä vakiolausekkeita.",
+    "CONTACT": "Ota yhteyttä",
+    "QUESTION": "Jos sinulla on kysyttävää tietosuojakäytännöstämme tai haluat käyttää oikeuksiasi, ota meihin yhteyttä osoitteessa: userprotection@izyglam.com.",
+    "CHANGE_POLITIQUE": "Muutokset tähän tietosuojakäytäntöön",
+    "RESERVES": "Pidätämme oikeuden muuttaa tätä tietosuojakäytäntöä milloin tahansa. Merkittävien muutosten tapauksessa ilmoitamme sinulle sähköpostitse. Suosittelemme, että tarkistat tämän sivun säännöllisesti pysyäksesi ajan tasalla päivityksistä."
+  },
+  "PAYEMENT": {
+    "TITLE": "Varaa aikasi verkossa",
+    "FOR_WHO": "Kenelle varaat tämän ajan?",
+    "ADD_PROCHE": "Lisää läheinen",
+    "WHERE": "Missä vastaanotat ajan?",
+    "SELECT_ADDRESS": "Valitse osoite",
+    "ADD_ADDRESS": "Lisää osoite",
+    "CARD_PAY": "Maksu luottokortilla",
+    "CARD_NUM": "Kortin numero",
+    "CARD_NAME": "Kortinhaltijan nimi",
+    "EXPIRATION": "Viimeinen voimassaolopäivä",
+    "CVV": "CVV",
+    "RDV": "Aikasi yksityiskohdat",
+    "RESUME": "Ajan yhteenveto",
+    "DATE": "Päivämäärä",
+    "HOUR": "Kellonaika",
+    "PRESTA": "Palvelu",
+    "WITH": "Kanssa",
+    "TOTAL": "Maksettava kokonaissumma",
+    "ANNULER": "PERUUTA",
+    "RETOUR": "TAKAISIN",
+    "CONTINUER": "JATKA",
+    "VALIDER": "VAHVISTA"
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "Miten izyGlam toimii kumppaniliikkeille",
+    "STEP1": {
+      "TITLE": "Asiakkaat tekevät tilauksia",
+      "TEXT": "Asiakas löytää liikkeesi ja tekee tilauksen izyGlam-sovelluksen kautta."
+    },
+    "STEP2": {
+      "TITLE": "Hyväksyt varauksen",
+      "TEXT": "Hyväksyt varauksen, ja aikataulusi päivittyy."
+    },
+    "STEP3": {
+      "TITLE": "Ajanvarauksen aikaan",
+      "TEXT": "Saat ilmoituksen tulevista varauksista etukäteen, ja opastamme sinua asiakkaiden luokse."
+    }
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Sinulla on jo kumppani- tai yritystili!",
+    "NOT_CONNECTED": "Kirjaudu sisään rekisteröidäksesi liikkeen!",
+    "TITLE": "Aloita nyt",
+    "NAME": "Yrityksesi nimi",
+    "ADDRESS": "Yrityksesi osoite",
+    "STREET": "Katu",
+    "CITY": "Kaupunki",
+    "CODE_POSTAL": "Postinumero",
+    "COUNTRY": "Maa",
+    "ADDRESSPLACEHOLDER": "123, Pääkatu",
+    "FLOOR": "Kerros/Sviitti (valinnainen)",
+    "BUSINESSTYPE": "Yrityksen tyyppi",
+    "FIRSTNAME": "Etunimi",
+    "LASTNAME": "Sukunimi",
+    "PASSWORD": "Salasana",
+    "PASSWORDCONFIRMED": "Vahvista salasana",
+    "EMAIL": "Sähköposti",
+    "PHONE": "Matkapuhelinnumero",
+    "WHATSAPP": "Hyväksyn viestien vastaanottamisen WhatsAppissa",
+    "BUTTON": "Rekisteröi liike",
+    "SUCCESS": "Liike luotiin onnistuneesti!",
+    "ERROR": "Virhe liikkeen luomisessa:",
+    "ERROR1": "Yrityksen nimi on pakollinen.",
+    "ERROR2": "Yrityksen osoite on pakollinen.",
+    "ERROR3": "Yrityksen tyyppi on pakollinen.",
+    "ERROR4": "Etunimi on pakollinen.",
+    "ERROR5": "Sukunimi on pakollinen.",
+    "ERROR6": "Sähköposti on pakollinen.",
+    "ERROR7": "Matkapuhelinnumero on pakollinen.",
+    "ERROR8": "Sinun on hyväksyttävä viestien vastaanottaminen WhatsAppissa."
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Laajenna liiketoimintaasi",
+    "TEXT": "Tuhannet izyGlam-sovelluksen käyttäjät saattavat etsiä ravintolaa alueeltasi...",
+    "IMAGE": "kuva"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Miksi valita izyGlam?",
+    "STEP1": {
+      "TITLE": "Työskentele omilla ehdoillasi",
+      "TEXT": "Hallitse aikatauluasi ja palveluitasi täydellä vapaudella. Hyödynnä joustavaa alustaa, joka mukautuu tarpeisiisi maksimoidaksesi toimintasi."
+    },
+    "STEP2": {
+      "TITLE": "Vahvista läsnäoloasi verkossa",
+      "TEXT": "Houkuttele lisää asiakkaita sovellukseen sisältyvillä markkinointityökaluilla ja paranna tuloksia lisäämällä näkyvyyttä."
+    },
+    "STEP3": {
+      "TITLE": "Vahvista asiakasuskollisuutta",
+      "TEXT": "Luo pitkäaikaisia suhteita analysoimalla asiakkaidesi mieltymyksiä, vastaamalla heidän arvosteluihinsa ja tarjoamalla heille uskollisuusetuja."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Yksinkertaista yrityksesi hallintaa",
+      "TEXT": "Hallinnoi yritystäsi vaivattomasti izyGlamin avulla, joka on kokonaisratkaisu hyvinvointialan ammattilaisille. Hyödynnä joustavia työkaluja ja henkilökohtaista tukea tarpeidesi täyttämiseksi."
+    },
+    "STEP2": {
+      "TITLE": "Lisää myyntiäsi",
+      "TEXT": "Joka päivä tuhannet ihmiset käyttävät izyGlamiä löytääkseen kauneusalan asiantuntijoita läheltä. Hyödynnä tämä mahdollisuus tavoittaaksesi uusia asiakkaita."
+    },
+    "STEP3": {
+      "TITLE": "Taatusti tyytyväiset asiakkaat",
+      "TEXT": "izyGlamin avulla voit tarjota asiakkaillesi henkilökohtaisen kokemuksen. Hallitse varauksiasi helposti, kommunikoi nopeasti ja tarjoa räätälöityjä palveluita. Asiakkaasi saavat hoitoja, missä ja milloin he haluavat, mikä varmistaa heidän tyytyväisyytensä ja uskollisuutensa."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "Miten izyGlam toimii yrityksellesi?",
+    "STEP1": {
+      "TITLE": "Työntekijäsi ja asiakkaasi varaavat palveluita",
+      "TEXT": "Työntekijäsi tai asiakkaasi valitsevat heille sopivat hyvinvointipalvelut suoraan izyGlam-sovelluksen kautta."
+    },
+    "STEP2": {
+      "TITLE": "Sinä päätät allokoitavasta summasta",
+      "TEXT": "Sinulla on hallinta työntekijöidesi ja asiakkaidesi tilien hyvityksistä. Voit valita tilien säännöllisen tai kertaluonteisen hyvityksen."
+    },
+    "STEP3": {
+      "TITLE": "Palvelut toteutetaan",
+      "TEXT": "Kauneudenhoidon asiantuntijamme vierailevat työntekijöidesi luona tai tulevat toimitiloihinne tarjoamaan varattuja palveluita, taaten optimaalisen hyvinvointikokemuksen."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Arvosta yritystäsi",
+    "TEXT": "Tuhannet izyGlam-sovelluksen käyttäjät etsivät hyvinvointipalveluita. Tarjoa työntekijöillesi ja asiakkaillesi pääsy parhaisiin kauneusasiantuntijoihin lähellä heitä.",
+    "IMAGE": "kuva"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Miksi valita izyGlam yrityksellesi?",
+    "STEP1": {
+      "TITLE": "Pidä työntekijät uskollisina ja palkitse heidät",
+      "TEXT": "Tarjoa tiimillesi ainutlaatuinen etu antamalla heille kuukausittainen kauneusbudjetti. Kampaajat, kosmetologit ja monet muut hyvinvoinnin asiantuntijat ovat heidän käytettävissään, mikä parantaa heidän tyytyväisyyttään ja vahvistaa heidän yhteenkuuluvuuden tunnettaan yrityksesi kanssa."
+    },
+    "STEP2": {
+      "TITLE": "Paranna brändisi imagoa",
+      "TEXT": "Järjestä kauneustapahtumia asiakkaille tai yhteistyökumppaneille, tai sisällytä izyGlamin palvelut uskollisuusohjelmiisi. Jätä pysyvä vaikutus korkeatasoisilla hoidoilla, jotka on räätälöity jokaiseen tilaisuuteen."
+    },
+    "STEP3": {
+      "TITLE": "Optimoi työhyvinvointi",
+      "TEXT": "Tarjoa työntekijöillesi helppo pääsy hyvinvointipalveluihin suoraan työpaikalla tai sen läheisyydessä. Huolehtimalla heidän hyvinvoinnistaan lisäät heidän motivaatiotaan ja vahvistat tiimihenkeä."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Yksinkertaista hyvinvoinnin saatavuus tiimeillesi",
+      "TEXT": "izyGlamin avulla tarjoat työntekijöillesi yksinkertaisen ja joustavan ratkaisun huolehtia itsestään. Olipa kyseessä kauneushoidot tai kuntoilutunnit, kaikki on helposti saatavilla."
+    },
+    "STEP2": {
+      "TITLE": "Tarjoa innovatiivisia etuja asiakkaillesi",
+      "TEXT": "Vahvista asiakassuhteitasi tarjoamalla hyvinvointipalveluja tapahtumissa tai osana uskollisuusohjelmiasi. Näytä heille, että välität heidän kokemuksestaan ainutlaatuisilla palveluilla."
+    },
+    "STEP3": {
+      "TITLE": "Räätälöityä hyvinvointia, missä ja milloin haluat",
+      "TEXT": "izyGlamin avulla työntekijäsi ja asiakkaasi voivat nauttia laadukkaista palveluista missä tahansa. Tarkoin valitut asiantuntijat vastaavat heidän erityistarpeisiinsa, ja henkilökohtainen palvelu takaa heidän tyytyväisyytensä."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Hallitse tiliä",
+    "ORDERS": "Aiemmat tilaukset",
+    "FAVORITES": "Suosikit",
+    "HELP": "Apua",
+    "LOGOUT": "Kirjaudu ulos",
+    "YOUR_BEAUTY_SERVICES": "Tarjoa kauneuspalveluitasi",
+    "YOUR_COMPANY": "Rekisteröi yrityksesi"
+  },
+  "ORDERS": {
+    "TITLE": "Aiemmat tilaukset",
+    "PRESTA_FOR": "Palvelu henkilölle",
+    "AT": "paikassa",
+    "ORDER_AGAIN": "Tilaa uudelleen",
+    "INVOICE": "Pyydä laskua",
+    "REVIEW": "Anna arvostelu",
+    "CANCEL": "Peruuta"
+  },
+  "FAVORITES": {
+    "TITLE": "Suosikkini"
+  },
+  "SHOP": {
+    "MOVING_FEE": "Matkakulut:",
+    "DISTANCE": "Maksimietäisyys:",
+    "PAYEMENT": "Maksu kortilla ja PayPal hyväksytään",
+    "PRESS_FOR_INFO": "Paina nähdäksesi aukioloajat, tiedot jne.",
+    "GALLERY": "Kuvagalleria"
+  },
+  "LOGIN": {
+    "TITLE": "Anna kirjautumistietosi.",
+    "FORGET_PASSWORD": "Unohtuiko?",
+    "CONTINUER": "Jatka",
+    "OR": "Tai",
+    "QRCODE": "Kirjaudu sisään QR-koodilla",
+    "CGU": "Jatkamalla hyväksyt, että izyGlam ja sen kumppaniyritykset voivat lähettää sinulle puheluja, WhatsApp-viestejä tai tekstiviestejä (myös automaattisilla menetelmillä) annettuun numeroon.",
+    "PLACEHOLDER_EMAIL": "Sähköpostiosoite",
+    "PLACEHOLDER_PASSWORD": "Salasana"
+  },
+  "SIGNUP": {
+    "TITLE": "Anna henkilökohtaiset tietosi.",
+    "CONTINUER": "Jatka",
+    "OR": "Tai",
+    "QRCODE": "Kirjaudu sisään QR-koodilla",
+    "CGU": "Jatkamalla hyväksyt, että izyGlam ja sen kumppaniyritykset voivat lähettää sinulle puheluja, WhatsApp-viestejä tai tekstiviestejä (myös automaattisilla menetelmillä) annettuun numeroon.",
+    "PLACEHOLDER_FIRSTNAME": "Etunimi",
+    "PLACEHOLDER_LASTNAME": "Sukunimi",
+    "PLACEHOLDER_EMAIL": "Sähköposti",
+    "PLACEHOLDER_PHONE": "Puhelin",
+    "PLACEHOLDER_PASSWORD": "Salasana",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Vahvista salasana"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Ranska",
+    "ANGLAIS": "Englanti",
+    "ESPAGNOL": "Espanja",
+    "NEERLANDAIS": "Hollanti",
+    "ITALIEN": "Italia",
+    "ALLEMAND": "Saksa",
+    "PORTUGAIS": "Portugali",
+    "POLONAIS": "Puola",
+    "DANOIS": "Tanska",
+    "FINLANDAIS": "Suomi",
+    "SUEDOIS": "Ruotsi"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Osoitteeni",
+    "ADDRESS_MODIFICATION": "Osoitteen muokkaus",
+    "STREET": "Katu",
+    "CITY": "Kaupunki",
+    "CP": "Postinumero",
+    "CREATE": "Luo",
+    "BACK": "Takaisin",
+    "CHANGE": "Muuta",
+    "CLOSE": "Sulje"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Kaikkien liikkeiden määrä",
+    "ACT_SHOPS": "Aktiivisten liikkeiden määrä",
+    "USERS": "Käyttäjien kokonaismäärä",
+    "NBR_USERS": "Rekisteröityjen käyttäjien määrä",
+    "CA_TOTAL": "Kokonaisliikevaihto",
+    "CA_GENERATED": "Tuotettu liikevaihto",
+    "SHOPS_PERFO": "Liikkeiden suorituskyky",
+    "SHOP_NAME": "Liikkeen nimi",
+    "CITY": "Kaupunki",
+    "REVENUES": "Tulokset",
+    "BOOKINGS": "Varausten määrä",
+    "NOTE": "Keskiarvoinen arviointi",
+    "ACTIONS": "Toiminnot",
+    "DETAILS": "Tiedot",
+    "ADJUST": "Säädä",
+    "SHOP_ADJUST": "Säädä liikettä",
+    "STILL_DEVELOPPED": "Tämä ominaisuus on vielä kehityksessä",
+    "CLOSE": "Sulje"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Tapahtuman tiedot",
+    "CLIENT": "Asiakas",
+    "DEBUT": "Aloitus",
+    "FIN": "Loppu",
+    "ADDRESS": "Osoite",
+    "PHONE": "Puhelin",
+    "CANCEL": "Peruuta",
+    "SAVE": "Tallenna"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Luo tapahtuma"
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Online-tuki"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Työntekijöiden hallinta",
+    "NAME": "Nimi",
+    "EMAIL": "Sähköposti",
+    "SOLDE": "Tilin saldo",
+    "ACTIONS": "Toiminnot",
+    "DEFAULT_PASSWORD": "Oletussalasana",
+    "REINITIALIZE_PASSWORD": "Oletussalasana palautukseen",
+    "CHANGE_PASSWORD": "Vaihda salasana"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Hyvitä työntekijän tiliä",
+    "AMOUNT": "Hyvitettävä määrä",
+    "CANCEL": "Peruuta",
+    "SAVE": "Hyväksy"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Varausten kokonaismäärä",
+    "TOTAL_MONTH": "Tämän kuun varaukset",
+    "GENERATED": "Tuotetut tulot",
+    "MONTHLY": "Tämän kuun tulot",
+    "AVG_NOTE": "Keskiarvoinen arviointi",
+    "BASED_ON": "Perustuu",
+    "REVIEWS": "arvioon",
+    "NEXT_APPOINTEMENT": "Seuraavat varaukset",
+    "POPULAR_SERVICES": "Suosituimmat palvelut",
+    "RESERVATION": "varaukset"
+  },
+  "FINANCE": {
+    "PROGRESS":"Kehitys M-1:stä lähtien",
+    "PROGRESSION":"Edistyminen",
+    "TOTAL_GENERATED": "Kokonaisliikevaihto",
+    "CA": "Liikevaihto",
+    "COMMISSION_TAKEN": "Peritty komissio",
+    "COMMISSIONS": "Komissiot",
+    "NET_TO_PAY": "Maksettava nettomäärä",
+    "DISPO_AMOUNT": "Käytettävissä oleva määrä",
+    "REQUEST_WITHDRAWAL": "Pyydä nostoa",
+    "TAKE": "Nostettava määrä",
+    "DETAILS": "Pankkitilin tiedot",
+    "ASK": "Pyydä nostoa",
+    "HISTORY": "Tapahtumahistoria",
+    "DATE": "Päivämäärä",
+    "AMOUNT": "Määrä",
+    "COMMISSION": "Komissio",
+    "STATUS": "Tila"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Valitse liikkeen tyyppi luotavaksi",
+    "CANCEL": "Peruuta",
+    "CREATE": "Vahvista"
+  },
+  "PROCHES": {
+    "TITLE": "Läheiseni",
+    "UPDATE": "Muokkaa läheistä",
+    "FIRSTNAME": "Etunimi",
+    "NAME": "Sukunimi",
+    "EMAIL": "Sähköposti",
+    "PHONE": "Puhelin",
+    "CREATE": "Luo",
+    "BACK": "Takaisin",
+    "CHANGE": "Muokkaa",
+    "CLOSE": "Sulje"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Anna arviosi",
+    "RATING": "Arviointi",
+    "COMMENT": "Kommentti",
+    "CLOSE": "Sulje",
+    "SUBMIT": "Lähetä"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Valitse palvelun päivämäärä",
+    "CANCEL": "Peruuta"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Luo palvelu",
+    "NAME": "Nimi",
+    "DESCRIPTION": "Kuvaus",
+    "COLOR": "Väri",
+    "PRICE": "Hinta",
+    "TIME": "Kesto",
+    "IMAGE": "Kuva",
+    "ACTIONS": "Toiminnot",
+    "MINUTES": "minuuttia",
+    "CHANGE": "Muokkaa",
+    "SERVICE_NAME": "Palvelun nimi",
+    "TIME_MINUTES": "Kesto (minuuteissa)",
+    "PREST_IMAGE": "Palvelun kuva",
+    "NO_PICS": "Ei vielä kuvaa",
+    "UPLOAD": "Lataa kuva",
+    "NEW_PIC": "Uuden kuvan esikatselu",
+    "PRESTA_COLOR": "Palvelun väri",
+    "CANCEL": "Peruuta",
+    "SAVE": "Tallenna",
+    "AVG_PRICE": "Keskihinta"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Liikkeen kuva",
+    "UPLOAD_IMAGE": "Lataa kuva",
+    "SNEEK_PIC": "Kuvan esikatselu",
+    "SHOP_NAME": "Liikkeen nimi",
+    "DESCRIPTION": "Kuvaus",
+    "DESC_INFO": "(väh. 25 merkkiä)",
+    "CITY": "Kaupunki",
+    "DISCRICT": "Alue",
+    "LAT": "Leveysaste",
+    "LON": "Pituusaste",
+    "ZONE": "Palvelualue (km)",
+    "OPENNING": "Aukioloajat",
+    "MORNING_OPEN": "Aamulla - Avautuu",
+    "MORNING_CLOSE": "Aamulla - Sulkeutuu",
+    "AFTERNOON_OPEN": "Iltapäivällä - Avautuu",
+    "AFTERNOON_CLOSE": "Iltapäivällä - Sulkeutuu",
+    "SAVE": "Tallenna liike"
+  }
+}
