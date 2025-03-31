@@ -48,7 +48,7 @@ export class FooterComponent implements OnInit {
         this.translate.use(storedLangue);
     
         // Récupération de la géolocalisation
-        this.geoLocationService.getLocation().subscribe(
+        /*this.geoLocationService.getLocation().subscribe(
             (data: any) => {
                 console.log('Données complètes de géolocalisation :', data);
         
@@ -82,7 +82,7 @@ export class FooterComponent implements OnInit {
                     error
                 );
             }
-        );
+        );*/
         
     }
     

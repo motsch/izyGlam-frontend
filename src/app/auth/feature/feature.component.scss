@@ -38,3 +38,37 @@ img {
   border-radius: 20px; /* Vous pouvez ajuster cette valeur pour obtenir l'arrondi souhaité */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre portée pour l'effet de profondeur */
 }
+@media (max-width: 768px) {
+  .main-section {
+    flex-direction: column;
+    padding: 20px 15px;
+  }
+
+  .hero-image {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .hero-image img,
+  .hero-image video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .content h1 {
+    font-size: 24px; /* Réduction de la taille du titre */
+    margin-bottom: 15px;
+  }
+
+  .content p {
+    font-size: 16px; /* Texte un peu plus petit */
+    margin-bottom: 20px; /* Moins d'espacement */
+    line-height: 1.4;
+  }
+
+  button {
+    width: 100%; /* Pour occuper tout l’espace, optionnel */
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}

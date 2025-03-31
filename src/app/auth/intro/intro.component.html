@@ -1,98 +1,85 @@
 <section class="slide-bg" id="home">
-  <div class="animation-circle">
-    <i></i>
-    <i></i>
-    <i></i>
-  </div>
   <div class="container custom-container">
     <div class="row">
-      <div class="col-xl-7 col-12">
-        <div class="d-flex-1">
-          <div class="slide-text">
-            <div>
-              <h1>
-                {{ "HOMEPAGE.TITLERED" | translate }}
-                <div class="main-title">
-                  <!-- Utilisation de *ngIf pour déclencher l'animation -->
-                  <span class="animated-text" *ngIf="animationTrigger" [@slideDown]>{{ currentProposition | translate }}</span>
-                  <span class="animated-text" *ngIf="!animationTrigger" [@fadeOut] (@fadeOut.done)="onAnimationDone()">{{ previousProposition | translate }}</span>
-                </div>
-                
-              </h1>
-              <div class="search-container">
-                <form>
-                  <input
-                    [(ngModel)]="search.category"
-                    type="text"
-                    [placeholder]="specialityTranslation"
-                    class="search-input"
-                    [formControl]="control"
-                    [matAutocomplete]="auto"
-                  />
-                  <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option
-                      *ngFor="
-                        let option of filteredStreets | async;
-                        trackBy: trackByFn
-                      "
-                      [value]="option"
-                    >
-                      {{ option }}
-                    </mat-option>
-                  </mat-autocomplete>
-                  <div
-                    *ngIf="streetError && search.category"
-                    class="error-message"
-                  >
-                    {{ "INTRO.NORESULTS" | translate }}
-                  </div>
-                </form>
-                <form>
-                  <input
-                    [(ngModel)]="search.city"
-                    type="text"
-                    [placeholder]="whereTranslation"
-                    class="location-input"
-                    [formControl]="control2"
-                    [matAutocomplete]="auto2"
-                  />
-                  <mat-autocomplete #auto2="matAutocomplete">
-                    <mat-option
-                      *ngFor="
-                        let option of filteredLocations | async;
-                        trackBy: trackByFn
-                      "
-                      [value]="option"
-                    >
-                      {{ option }}
-                    </mat-option>
-                  </mat-autocomplete>
-                  <div
-                    *ngIf="locationError && search.city"
-                    class="error-message"
-                  >
-                    {{ "INTRO.NORESULTS" | translate }}
-                  </div>
-                </form>
-                <button class="search-button" (click)="onButtonClick()">
-                  {{ "INTRO.SEARCH" | translate }}
-                </button>
-              </div>
+
+      <!-- IMAGE EN PREMIER (PC: à droite grâce à l’ordre visuel) -->
+      <div class="col-xl-5 col-12 home-right">
+        <div class="mobile-slid">
+          <img [src]="imgStorageUrl + 'illustration.png'" alt="illustration" class="img-fluid" />
+        </div>
+      </div>
+
+      <!-- TEXTE RESPONSIVE (DUPLIQUÉ POUR MOBILE) -->
+      <div class="col-xl-7 col-12 slide-content" *ngIf="!isSmallScreen">
+        <div class="slide-text-container">
+          <h1>
+            {{ "HOMEPAGE.TITLERED" | translate }}
+            <div class="main-title">
+              <span
+                class="animated-text"
+                *ngIf="currentProposition"
+                [@fadeInOut]
+                [attr.data-key]="currentKey"
+              >
+                {{ currentProposition | translate }}
+              </span>
+            </div>
+          </h1>
+
+          <div class="search-container">
+            <form>
+              <input [(ngModel)]="search.city" [placeholder]="whereTranslation"
+                     [formControl]="control2" [matAutocomplete]="auto2" class="location-input" />
+              <mat-autocomplete #auto2="matAutocomplete">
+                <mat-option *ngFor="let option of filteredLocations | async" [value]="option">
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>
+              <button class="search-button" (click)="onButtonClick()">
+                {{ "INTRO.SEARCH" | translate }}
+              </button>
+            </form>
+            <div *ngIf="locationError && search.city" class="error-message">
+              {{ "INTRO.NORESULTS" | translate }}
             </div>
           </div>
         </div>
       </div>
-      <div class="col-xl-5 d-none d-xl-block">
-        <div class="home-right">
-          <div class="mobile-slid">
-            <img
-              [src]="imgStorageUrl + 'illustration.png'"
-              alt="top1"
-              class="img-fluid"
-            />
+
+      <!-- TEXTE MOBILE UNIQUEMENT -->
+      <div class="col-12 slide-content" *ngIf="isSmallScreen">
+        <div class="slide-text-container">
+          <h1>
+            {{ "HOMEPAGE.TITLERED" | translate }}
+            <div class="main-title">
+              <span
+                class="animated-text"
+                *ngIf="currentProposition"
+                [@fadeInOut]
+                [attr.data-key]="currentKey"
+              >
+                {{ currentProposition | translate }}
+              </span>
+            </div>
+          </h1>
+
+          <div class="search-container">
+            <form>
+              <!--<input [(ngModel)]="search.city" [placeholder]="whereTranslation"
+                     [formControl]="control2" [matAutocomplete]="auto2" class="location-input" />
+              <mat-autocomplete #auto2="matAutocomplete">
+                <mat-option *ngFor="let option of filteredLocations | async" [value]="option">
+                  {{ option }}
+                </mat-option>
+              </mat-autocomplete>-->
+              <button class="search-button" (click)="onButtonClick()">
+                {{ "INTRO.START" | translate }}
+              </button>
+            </form>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>

@@ -34,4 +34,21 @@ export class CategoryService {
   deleteById(id: string): Observable<any> {
     return this.http.delete<any>(`${environment.apiUrl}/category/${id}`);
   }
+
+  // Récupérer les catégories disponibles en fonction des shops filtrés par géolocalisation ou codes postaux
+  getAvailableCategories(lat?: number, lon?: number, codes?: string[]): Observable<any[]> {
+    let url = `${environment.apiUrl}category/available?`;
+
+    // On ajoute lat/lon si fournis
+    if (lat && lon) {
+      url += `lat=${lat}&lon=${lon}`;
+    }
+
+    // On ajoute codes si fournis
+    if (codes && codes.length > 0) {
+      url += `codes=${codes.join(',')}`;
+    }
+
+    return this.http.get<any[]>(url);
+  }
 }

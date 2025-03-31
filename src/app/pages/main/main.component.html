@@ -1,57 +1,90 @@
-<!-- fin section FAQ -->
-<!--<app-contact-us></app-contact-us>-->
+<app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
 
-<app-header
-  *ngIf="!sessionService.isLoggedIn()"
-  [connected]="false"
-></app-header>
-<!-- Category begin-->
+<!-- Sélecteur d'adresse -->
+<div class="address-selector-wrapper margin-top-120">
+  <button class="address-button" (click)="openAddressModal()">
+    📍 {{ selectedPostalCode }} — Modifier l’adresse
+  </button>
+</div>
+
+<!-- Barre de recherche -->
+<div class="search-bar-wrapper">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="filterShops()"
+    placeholder="🔍 Rechercher une boutique"
+    class="search-bar"
+  />
+</div>
+
+<!-- Modal de sélection d'adresse -->
+<div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Choisis une adresse</h3>
+    <ul>
+      <li
+        *ngFor="let address of userAddresses"
+        (click)="selectPostalCode(address.code_postal)"
+        [class.active]="address.code_postal === selectedPostalCode"
+      >
+        📌 {{ address.street }}, {{ address.city }} ({{ address.code_postal }})
+      </li>
+    </ul>
+    <button class="close-btn" (click)="closeAddressModal()">Fermer</button>
+  </div>
+</div>
+
+<!-- Conteneur principal -->
 <div class="container margin-top-120">
-  <div class="banner">
-    <div class="category-filter" #scrollContainerCategory>
-      <button class="scroll-btn left-btn" (click)="scrollLeft('category')">
+
+  <!-- BANDEAU DES CATÉGORIES -->
+  <div class="banner categories-banner">
+    <div class="horizontal-category-container" #scrollContainerCategory>
+      <!-- Bouton flèche gauche (catégories) -->
+      <button class="scroll-btn-cat left-btn-cat" (click)="scrollLeft('category')">
         <i class="fa fa-chevron-left"></i>
       </button>
-      <div
-        *ngFor="let category of categoriesFilter"
-        class="margin-right-5 pointer"
-        (click)="filterByCategory(category.filter)"
-      >
-        <span
-          class="category-item "
-          [class.selected]="selectedCategory === category.filter"
+      <!-- Liste de catégories -->
+      <div class="category-filter">
+        <div
+          *ngFor="let category of categoriesFilter"
+          class="margin-right-5 pointer"
+          (click)="filterByCategory(category.filter)"
         >
-          <img class="icon" [src]="category.icon" />
-        </span>
-        <span class="padding-left-10">{{
-          category.trad | translate | truncate : 10
-        }}</span>
+          <span
+            class="category-item"
+            [class.selected]="selectedCategory === category.filter"
+          >
+            <img class="icon" [src]="category.icon" />
+          </span>
+          <span class="padding-left-10">
+            {{ category.trad | translate | truncate : 10 }}
+          </span>
+        </div>
       </div>
-      <button class="scroll-btn right-btn" (click)="scrollRight('category')">
+      <!-- Bouton flèche droite (catégories) -->
+      <button class="scroll-btn-cat right-btn-cat" (click)="scrollRight('category')">
         <i class="fa fa-chevron-right"></i>
       </button>
     </div>
   </div>
-  <!-- Category end -->
 
+  <!-- SECTION : OFFRES DU MOMENT -->
   <span *ngIf="!filterClicked">
     <div class="top-bar">
-      <h3>{{ "MAIN_PAGE.MOMENT" | translate }}</h3>
-      <div class="scroll-buttons" *ngIf="promotedShops.length > 4">
-        <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        <button class="scroll-btn right-btn" (click)="scrollRight('promo')">
-          <i class="fa fa-chevron-right"></i>
-        </button>
-      </div>
+      <h3>Offres du moment</h3>
     </div>
-    <div class="categories">
-      <div
-        *ngIf="promotedShops.length > 0"
-        class="category-list"
-        #scrollContainerPromo
-      >
+    <div class="horizontal-scroll-container">
+      <!-- Boutons flèches (shops) -->
+      <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="scroll-btn right-btn" (click)="scrollRight('promo')">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+      <!-- Liste des shops -->
+      <div class="category-list" #scrollContainerPromo>
         <app-round-shop-card
           *ngFor="let item of promotedShops"
           [profile]="item"
@@ -60,114 +93,42 @@
           class="card pointer"
         ></app-round-shop-card>
       </div>
+    </div>
 
-      <div
-        *ngIf="promotedShops.length === 0"
-        class="category-list"
-        #scrollContainerPromo
-      >
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-      </div>
-    </div>
+    <!-- SECTION : À DÉCOUVRIR -->
     <div class="top-bar">
-      <h3>{{ "MAIN_PAGE.DISCOVER" | translate }}</h3>
-      <div class="scroll-buttons">
-        <button class="scroll-btn left-btn" (click)="scrollLeft('discover')">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        <button class="scroll-btn right-btn" (click)="scrollRight('discover')">
-          <i class="fa fa-chevron-right"></i>
-        </button>
-      </div>
+      <h3>À découvrir</h3>
     </div>
-    <div class="categories">
-      <div
-        *ngIf="filteredItemsAdecouvrir.length > 0"
-        class="category-list"
-        #scrollContainerDiscover
-      >
+    <div class="horizontal-scroll-container">
+      <button class="scroll-btn left-btn" (click)="scrollLeft('discover')">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="scroll-btn right-btn" (click)="scrollRight('discover')">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+      <div class="category-list" #scrollContainerDiscover>
         <app-round-shop-card
           *ngFor="let item of filteredItemsAdecouvrir"
           [profile]="item"
           [me]="me"
-          class="card pointer"
           [promoVisible]="item.promo.active"
+          class="card pointer"
         ></app-round-shop-card>
       </div>
-
-      <div
-        *ngIf="filteredItemsAdecouvrir.length === 0"
-        class="category-list"
-        #scrollContainerPromo
-      >
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-      </div>
     </div>
 
+    <!-- SECTION : LES PLUS APPRÉCIÉS -->
     <div class="top-bar">
-      <h3>{{ "MAIN_PAGE.LIKED" | translate }}</h3>
-      <div class="scroll-buttons">
-        <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        <button class="scroll-btn right-btn" (click)="scrollRight('around')">
-          <i class="fa fa-chevron-right"></i>
-        </button>
-      </div>
+      <h3>Les plus appréciés</h3>
     </div>
-    <div class="categories">
-      <div
-        *ngIf="filteredItemsApprecier.length > 0"
-        class="category-list"
-        #scrollContainerAround
-      >
-        <!--<app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>-->
+    <div class="horizontal-scroll-container">
+      <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="scroll-btn right-btn" (click)="scrollRight('around')">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+      <div class="category-list" #scrollContainerAround>
         <app-round-shop-card
           *ngFor="let item of filteredItemsApprecier"
           [profile]="item"
@@ -176,57 +137,20 @@
           class="card pointer"
         ></app-round-shop-card>
       </div>
-
-      <div
-        *ngIf="filteredItemsApprecier.length === 0"
-        class="category-list"
-        #scrollContainerPromo
-      >
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-      </div>
     </div>
 
+    <!-- SECTION : LES PLANS MALINS -->
     <div class="top-bar">
-      <h3>{{ "MAIN_PAGE.SMART" | translate }}</h3>
-      <div class="scroll-buttons">
-        <button class="scroll-btn left-btn" (click)="scrollLeft('smart')">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        <button class="scroll-btn right-btn" (click)="scrollRight('smart')">
-          <i class="fa fa-chevron-right"></i>
-        </button>
-      </div>
+      <h3>Les plans malins</h3>
     </div>
-    <div class="categories">
-      <div
-        *ngIf="filteredItemsMalin.length > 0"
-        class="category-list"
-        #scrollContainerSmart
-      >
-        <!--<app-shop-card *ngFor="let item of filteredItems" [item]="item" class="card"></app-shop-card>-->
+    <div class="horizontal-scroll-container">
+      <button class="scroll-btn left-btn" (click)="scrollLeft('smart')">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="scroll-btn right-btn" (click)="scrollRight('smart')">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+      <div class="category-list" #scrollContainerSmart>
         <app-round-shop-card
           *ngFor="let item of filteredItemsMalin"
           [profile]="item"
@@ -235,55 +159,20 @@
           class="card pointer"
         ></app-round-shop-card>
       </div>
+    </div>
 
-      <div
-        *ngIf="filteredItemsMalin.length === 0"
-        class="category-list"
-        #scrollContainerPromo
-      >
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-      </div>
-    </div>
+    <!-- SECTION : TOP10 DE LA SEMAINE -->
     <div class="top-bar">
-      <h3>{{ "MAIN_PAGE.TOP10" | translate }}</h3>
-      <div class="scroll-buttons">
-        <button class="scroll-btn left-btn" (click)="scrollLeft('top10')">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        <button class="scroll-btn right-btn" (click)="scrollRight('top10')">
-          <i class="fa fa-chevron-right"></i>
-        </button>
-      </div>
+      <h3>Top10 de la semaine</h3>
     </div>
-    <div class="categories">
-      <div
-        *ngIf="filteredItemsTop10.length > 0"
-        class="category-list"
-        #scrollContainerTop10
-      >
+    <div class="horizontal-scroll-container">
+      <button class="scroll-btn left-btn" (click)="scrollLeft('top10')">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <button class="scroll-btn right-btn" (click)="scrollRight('top10')">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+      <div class="category-list" #scrollContainerTop10>
         <app-round-shop-card
           *ngFor="let item of filteredItemsTop10"
           [profile]="item"
@@ -292,44 +181,14 @@
           class="card pointer"
         ></app-round-shop-card>
       </div>
-
-      <div
-        *ngIf="filteredItemsTop10.length === 0"
-        class="category-list"
-        #scrollContainerPromo
-      >
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-        <ngx-skeleton-loader
-          class="margin-right-15"
-          count="1"
-          appearance="circle"
-          [theme]="{ width: '200px', height: '200px' }"
-        ></ngx-skeleton-loader>
-      </div>
     </div>
   </span>
+
+  <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
   <span *ngIf="filterClicked">
     <div class="padding-top-10">
-      <h3>{{ "MAIN_PAGE.SEARCHRESULT" | translate }}</h3>
+      <h3>Résultats de recherche filtrée</h3>
       <div class="row test66">
-        <!-- Utilisation de 'row' pour démarrer une grille -->
         <app-round-shop-card
           *ngFor="let item of filteredItems"
           [profile]="item"
@@ -337,8 +196,29 @@
           [promoVisible]="item.promo.active"
           class="card"
         ></app-round-shop-card>
-        <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
       </div>
     </div>
   </span>
+
+  <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
+  <div class="horizontal-scroll-container" *ngIf="searchQuery.length > 0">
+    <div class="top-bar">
+      <h3>Résultats de recherche</h3>
+    </div>
+    <button class="scroll-btn left-btn" (click)="scrollLeft('search')">
+      <i class="fa fa-chevron-left"></i>
+    </button>
+    <button class="scroll-btn right-btn" (click)="scrollRight('search')">
+      <i class="fa fa-chevron-right"></i>
+    </button>
+    <div class="category-list">
+      <app-round-shop-card
+        *ngFor="let item of filteredSearchResults"
+        [profile]="item"
+        [me]="me"
+        [promoVisible]="item.promo?.active"
+        class="card pointer"
+      ></app-round-shop-card>
+    </div>
+  </div>
 </div>

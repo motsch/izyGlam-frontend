@@ -17,9 +17,9 @@ h2 {
 
 .qr-card-wrapper {
   display: flex;
-  align-items: flex-start; /* Aligne les éléments en haut */
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 40px; /* Ajoute de l'espace entre les colonnes */
+  gap: 40px; /* Espace entre les colonnes */
   width: 100%;
 }
 
@@ -35,7 +35,7 @@ h2 {
 
 .qr-card-content {
   display: flex;
-  align-items: center; /* Aligne verticalement QR code et texte */
+  align-items: center; /* Aligne verticalement le QR code et le texte */
   gap: 20px;
 }
 
@@ -45,7 +45,7 @@ h2 {
 }
 
 .qr-text {
-  text-align: left; /* Texte aligné à gauche */
+  text-align: left; /* Par défaut, texte aligné à gauche */
 }
 
 .download-buttons {
@@ -83,13 +83,15 @@ h2 {
 /* Responsivité */
 @media (max-width: 768px) {
   .qr-card-wrapper {
-    flex-direction: column; /* Empile sur mobile */
+    flex-direction: column; /* Empile les éléments sur mobile */
     align-items: center;
+    justify-content: center; /* Centre le contenu horizontalement */
     gap: 20px;
   }
 
   .qr-card-content {
-    flex-direction: column; /* QR code au-dessus du texte */
+    flex-direction: column; /* Le QR code se place au-dessus du texte */
+    text-align: center; /* Centre le texte à l'intérieur */
   }
 
   .download-buttons {

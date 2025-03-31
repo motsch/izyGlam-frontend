@@ -1,85 +1,113 @@
 .avis-users-section {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    padding: 20px;
-    background: linear-gradient(135deg, #00274d, #0056a6); /* Arrière-plan bleu harmonisé */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px;
+  background: linear-gradient(135deg, #00274d, #0056a6);
+  text-align: center;
+
+  h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #ffffff;
+  }
+
+  .avis-slider {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    height: auto;
+    min-height: 220px;
+    overflow: hidden;
+  }
+
+  .avis-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     text-align: center;
-  
-    h3 {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 30px;
-      color: #ffffff;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.8s ease-in-out;
+    z-index: 1;
+
+    &.active {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 2;
     }
-  
+
+    .avis-text {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .avis-author {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #0056a6;
+      }
+
+      span {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #555;
+      }
+    }
+  }
+}
+
+// RESPONSIVE MOBILE
+@media (max-width: 768px) {
+  .avis-users-section {
+    padding: 15px;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
     .avis-slider {
-      position: relative;
-      max-width: 600px;
-      margin: 0 auto;
-      height: 200px; /* Fixe une hauteur pour éviter les décalages */
-      overflow: hidden;
-  
-      .avis-card {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        text-align: center;
-        padding: 20px;
-        background: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        opacity: 0;
-        transform: translateY(100%);
-        transition: all 0.8s ease-in-out;
-  
-        &.active {
-          opacity: 1;
-          transform: translateY(0);
+      max-width: 100%;
+      min-height: 260px;
+    }
+
+    .avis-card {
+      padding: 15px;
+      border-radius: 12px;
+
+      .avis-text {
+        font-size: 1rem;
+        margin-bottom: 12px;
+      }
+
+      .avis-author {
+        flex-direction: column;
+        gap: 5px;
+
+        img {
+          width: 40px;
+          height: 40px;
         }
-  
-        &.exiting {
-          opacity: 0;
-          transform: translateY(-100%);
-        }
-  
-        .avis-text {
-          font-size: 1.2rem;
-          color: #333;
-          margin-bottom: 15px;
-        }
-  
-        .avis-author {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 10px;
-  
-          img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #0056a6; /* Accent */
-          }
-  
-          span {
-            font-size: 1rem;
-            font-weight: bold;
-            color: #555;
-          }
+
+        span {
+          font-size: 0.9rem;
         }
       }
     }
   }
-  
-  /* Animation fade-in/fade-out (alternative simple) */
-  @keyframes fade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
+}
