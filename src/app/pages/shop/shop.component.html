@@ -3,10 +3,10 @@
   [connected]="false"
 ></app-header>
 <!-- sidebar + content -->
-<section class="container">
+<section class="container padding-top-20pourc">
   <div class="row">
     <!-- sidebar -->
-    <div class="col-lg-3">
+    <div class="col-lg-3 justify-content-center">
       <!-- Collapsible wrapper -->
       <div class="mb-5" id="navbarSupportedContent">
         <div>
@@ -74,9 +74,11 @@
       </div>
     </div>
 
+    <div class="col-lg-1">
+      </div>
     <!-- Gallery display section -->
     <div class="col-lg-9">
-      <div class="row">
+      <div class="row justify-content-center">
         <div
           class="col-12 col-sm-12 col-md-6 col-lg-6"
           *ngFor="let item of shopItems"

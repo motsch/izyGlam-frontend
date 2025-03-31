@@ -1,5 +1,5 @@
-<!-- rdv-modal.component.html -->
 <h1 mat-dialog-title class="modal-title">{{ "RDV_MODAL.TITLE" | translate }}</h1>
+
 <div mat-dialog-content class="modal-content">
   <div class="date-selector">
     <div *ngFor="let date of schedules; let i = index" class="date-group">
@@ -7,16 +7,22 @@
         <span>{{ date.date }}</span>
         <button class="toggle-button">
           {{ openedIndex === i ? '&#9650;' : '&#9660;' }}
-        </button> <!-- Flèche haut/bas -->
+        </button>
       </div>
+
       <div class="time-slots" *ngIf="openedIndex === i">
         <span *ngFor="let time of date.times">
-          <button *ngIf="time" (click)="slotClick(time, date)" class="time-slot">{{ time.start }}</button>
+          <button *ngIf="time" (click)="slotClick(time, date)" class="time-slot">
+            {{ time.start }}
+          </button>
         </span>
       </div>
     </div>
   </div>
 </div>
+
 <div mat-dialog-actions>
-  <button mat-button class="btn qr" (click)="onNoClick()">{{ "RDV_MODAL.CANCEL" | translate }}</button>
+  <button mat-button class="btn qr" (click)="onNoClick()">
+    {{ "RDV_MODAL.CANCEL" | translate }}
+  </button>
 </div>

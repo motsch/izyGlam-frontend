@@ -1,23 +1,24 @@
-/* rdv-modal.component.css */
 .modal-title {
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #333; /* Couleur sombre pour le texte */
+  color: #333;
 }
 
 .modal-content {
   padding: 20px;
-  width: 400px;
-  // max-width: 600px;
+  width: 100%;
+  max-width: 500px;
   margin: auto;
-  background-color: #fff; /* Fond blanc pour le contenu de la modal */
+  background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .date-selector {
-  background-color: #f5f5f5; /* Gris clair pour les sections */
+  background-color: #f5f5f5;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
@@ -31,37 +32,11 @@
 
 .date-header {
   display: flex;
-  cursor: pointer;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  color: #333; /* Couleur sombre pour le texte */
-}
-
-.time-slots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.time-slot {
-  background-color: #ffe6e6; /* Fond rose clair pour les créneaux */
-  border: 1px solid #ff9999; /* Bordure rose plus sombre */
-  border-radius: 4px;
-  padding: 10px 15px;
-  color: #d40000; /* Rouge foncé pour le texte */
+  color: #333;
   cursor: pointer;
-}
-
-.time-slot:hover {
-  background-color: #ffcccc; /* Fond plus foncé au survol */
-}
-
-.consultation-note {
-  font-size: 0.8em;
-  color: #d40000; /* Rouge foncé */
-  margin-top: 10px;
 }
 
 .toggle-button {
@@ -69,69 +44,7 @@
   border: none;
   font-size: 1.2em;
   cursor: pointer;
-  color: #d40000; /* Rouge foncé pour la flèche */
-}
-
-.see-more, .see-more-dates {
-  display: block;
-  width: 100%;
-  text-align: center;
-  background-color: #ffe6e6; /* Fond rose clair */
-  border: 1px solid #ff9999; /* Bordure rose */
-  border-radius: 4px;
-  padding: 10px;
-  color: #d40000; /* Rouge foncé */
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.see-more:hover, .see-more-dates:hover {
-  background-color: #ffcccc; /* Fond plus foncé au survol */
-}
-
-.mat-dialog-actions {
-  display: flex;
-  justify-content: flex-end; /* Aligne le bouton à droite */
-  padding: 20px;
-  margin: 0; /* Supprime les marges par défaut qui pourraient affecter l'alignement */
-  width: 100%; /* Assure que les actions occupent toute la largeur */
-  box-sizing: border-box; /* Inclut le padding dans la largeur totale */
-}
-
-.mat-dialog-container {
-  padding: 0;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
-  background-color: #fff; /* Fond blanc */
-}
-
-.btn.qr {
-  background-color: #fff;
-  color: #d40000; /* Rouge foncé pour le texte du bouton "Annuler" */
-  border: 1px solid #d40000;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 0; /* Assure qu'il n'y a pas de marge par défaut qui pourrait pousser le bouton vers la gauche */
-}
-
-.btn.qr:hover {
-  background-color: #ffe6e6; /* Fond rose clair au survol */
   color: #d40000;
-}
-.time-slot, .see-more, .see-more-dates, .btn.qr {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* rdv-modal.component.css */
-.toggle-button {
-  background: none;
-  border: none;
-  font-size: 1.2em;
-  cursor: pointer;
-  color: #d40000; /* Rouge foncé pour la flèche */
-  transform: rotate(0deg);
   transition: transform 0.3s ease;
 }
 
@@ -139,11 +52,94 @@
   transform: rotate(180deg);
 }
 
+.time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  overflow-x: hidden;
+}
+
 .time-slot {
-  background-color: #ffe6e6; /* Fond rose clair pour les créneaux */
-  border: 1px solid #ff9999; /* Bordure rose plus sombre */
+  flex: 1 1 30%;
+  max-width: 100px;
+  min-width: 70px;
+  background-color: #ffe6e6;
+  border: 1px solid #ff9999;
   border-radius: 4px;
   padding: 10px 15px;
-  color: #d40000; /* Rouge foncé pour le texte */
+  color: #d40000;
   cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.time-slot:hover {
+  background-color: #ffcccc;
+}
+
+.consultation-note {
+  font-size: 0.8em;
+  color: #d40000;
+  margin-top: 10px;
+}
+
+.btn.qr {
+  background-color: #fff;
+  color: #d40000;
+  border: 1px solid #d40000;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+}
+
+.btn.qr:hover {
+  background-color: #ffe6e6;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mat-dialog-container {
+  padding: 0;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.btn.qr {
+  background-color: #ffe6ea;
+  color: #d40055;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  align-self: flex-end;
+}
+
+.btn.qr:hover {
+  background-color: #ffd6e1;
+  color: #b00040;
+}
+
+/* Responsive full-width uniquement sur petit écran */
+@media (max-width: 600px) {
+  .btn.qr {
+    width: 100%;
+    align-self: stretch;
+    text-align: center;
+  }
 }

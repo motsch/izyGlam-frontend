@@ -116,7 +116,7 @@ export class AppComponent implements OnInit {
     goTo(name: string) {
         this.drawerService.closeDrawer();
         this.router.navigate([name]);
-        if(name === 'main') {
+        if(name === '') {
             this.sessionService.destroy();
         }
     }

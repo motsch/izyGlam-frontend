@@ -247,3 +247,212 @@
 .prev:hover, .next:hover {
   color: #ccc; /* Optionnel : léger effet hover sur les flèches */
 }
+
+
+@media screen and (max-width: 768px) {
+  /* Réorganiser la structure générale en colonne */
+  .container .row {
+    flex-direction: column;
+  }
+
+  .col-lg-3,
+  .col-lg-9 {
+    width: 100% !important;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  /* Réduction des paddings inutiles */
+  .gallery-thumbnails .thumbnail img {
+    width: 80px;
+    height: 60px;
+  }
+
+  /* Améliorer l’espacement dans la lightbox */
+  .lightbox-content {
+    max-width: 95%;
+    max-height: 80%;
+    padding: 10px;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+  }
+
+  /* Adapter la sidebar */
+  #navbarSupportedContent {
+    margin-bottom: 20px;
+  }
+
+  /* Espacer les items pour meilleure lisibilité */
+  .gallery-container {
+    padding: 10px 0;
+  }
+
+  /* Rendre les cartes adaptables */
+  .col-md-6, .col-lg-6 {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+
+  /* Adapter les logos */
+  .starLogo, .moneyLogo {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  /* Scroll horizontal plus naturel en mobile */
+  .category-list {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    .category-item {
+      scroll-snap-align: start;
+      min-width: 100px;
+    }
+  }
+
+  .scroll-buttons {
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .scroll-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  /* Améliorer les marges pour éviter le collé-serré */
+  .margin-top-10 {
+    margin-top: 10px !important;
+  }
+
+  .margin-top-20 {
+    margin-top: 20px !important;
+  }
+}
+/* RESET DE BASE POUR FORCER LE RESPONSIVE */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* VERSION MOBILE — ADAPTATION COMPLÈTE */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .category-list,
+  .category-filter {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 10px;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    gap: 16px;
+    margin-left: 0;
+  }
+
+  .category-filter .category-item {
+    min-width: 70px;
+    scroll-snap-align: start;
+    text-align: center;
+  }
+
+  .horizontal-scroll-container {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .card.pointer {
+    flex: 0 0 100%;
+    max-width: 100%;
+    scroll-snap-align: center;
+  }
+
+  .scroll-btn,
+  .scroll-btn-cat {
+    display: none;
+  }
+
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .address-selector-wrapper,
+  .search-bar-wrapper {
+    padding: 0 10px;
+  }
+
+  .modal-content {
+    width: 95%;
+    max-width: 95%;
+  }
+}
+
+/* CAROUSEL D'IMAGES RESPONSIVE POUR PAGE SHOP */
+.shop-gallery-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.shop-gallery-wrapper img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  scroll-snap-align: start;
+}
+
+/* CORRECTIONS DE LARGEUR GLOBALE */
+img,
+iframe,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* POUR TOUS LES COMPOSANTS BOUTIQUE EN MOBILE */
+app-round-shop-card, .card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card.pointer {
+  max-width: 100% !important;
+  min-width: 100% !important;
+  margin: auto;
+}
+
+.padding-top-20pourc {
+  padding-top: 80px;
+}
