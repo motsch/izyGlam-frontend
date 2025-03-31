@@ -77,10 +77,10 @@
     </div>
     <div class="horizontal-scroll-container">
       <!-- Boutons flèches (shops) -->
-      <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
+      <button class="scroll-btn left-btn" (click)="scrollLeft('category')">
         <i class="fa fa-chevron-left"></i>
       </button>
-      <button class="scroll-btn right-btn" (click)="scrollRight('promo')">
+      <button class="scroll-btn right-btn" (click)="scrollRight('category')">
         <i class="fa fa-chevron-right"></i>
       </button>
       <!-- Liste des shops -->
@@ -98,14 +98,16 @@
     <!-- SECTION : À DÉCOUVRIR -->
     <div class="top-bar">
       <h3>À découvrir</h3>
-    </div>
+    </div>    
     <div class="horizontal-scroll-container">
+      <!-- Boutons flèches (shops) -->
       <button class="scroll-btn left-btn" (click)="scrollLeft('discover')">
         <i class="fa fa-chevron-left"></i>
       </button>
       <button class="scroll-btn right-btn" (click)="scrollRight('discover')">
         <i class="fa fa-chevron-right"></i>
       </button>
+      <!-- Liste des shops -->
       <div class="category-list" #scrollContainerDiscover>
         <app-round-shop-card
           *ngFor="let item of filteredItemsAdecouvrir"
@@ -122,12 +124,14 @@
       <h3>Les plus appréciés</h3>
     </div>
     <div class="horizontal-scroll-container">
+      <!-- Boutons flèches (shops) -->
       <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
         <i class="fa fa-chevron-left"></i>
       </button>
       <button class="scroll-btn right-btn" (click)="scrollRight('around')">
         <i class="fa fa-chevron-right"></i>
       </button>
+      <!-- Liste des shops -->
       <div class="category-list" #scrollContainerAround>
         <app-round-shop-card
           *ngFor="let item of filteredItemsApprecier"
@@ -144,12 +148,14 @@
       <h3>Les plans malins</h3>
     </div>
     <div class="horizontal-scroll-container">
-      <button class="scroll-btn left-btn" (click)="scrollLeft('smart')">
+      <!-- Boutons flèches (shops) -->
+      <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
         <i class="fa fa-chevron-left"></i>
       </button>
-      <button class="scroll-btn right-btn" (click)="scrollRight('smart')">
+      <button class="scroll-btn right-btn" (click)="scrollRight('promo')">
         <i class="fa fa-chevron-right"></i>
       </button>
+      <!-- Liste des shops -->
       <div class="category-list" #scrollContainerSmart>
         <app-round-shop-card
           *ngFor="let item of filteredItemsMalin"
@@ -166,12 +172,14 @@
       <h3>Top10 de la semaine</h3>
     </div>
     <div class="horizontal-scroll-container">
+      <!-- Boutons flèches (shops) -->
       <button class="scroll-btn left-btn" (click)="scrollLeft('top10')">
         <i class="fa fa-chevron-left"></i>
       </button>
       <button class="scroll-btn right-btn" (click)="scrollRight('top10')">
         <i class="fa fa-chevron-right"></i>
       </button>
+      <!-- Liste des shops -->
       <div class="category-list" #scrollContainerTop10>
         <app-round-shop-card
           *ngFor="let item of filteredItemsTop10"

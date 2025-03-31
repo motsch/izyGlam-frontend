@@ -28,15 +28,8 @@
 
           <div class="search-container">
             <form>
-              <input [(ngModel)]="search.city" [placeholder]="whereTranslation"
-                     [formControl]="control2" [matAutocomplete]="auto2" class="location-input" />
-              <mat-autocomplete #auto2="matAutocomplete">
-                <mat-option *ngFor="let option of filteredLocations | async" [value]="option">
-                  {{ option }}
-                </mat-option>
-              </mat-autocomplete>
               <button class="search-button" (click)="onButtonClick()">
-                {{ "INTRO.SEARCH" | translate }}
+                {{ "INTRO.START" | translate }}
               </button>
             </form>
             <div *ngIf="locationError && search.city" class="error-message">
@@ -65,13 +58,6 @@
 
           <div class="search-container">
             <form>
-              <!--<input [(ngModel)]="search.city" [placeholder]="whereTranslation"
-                     [formControl]="control2" [matAutocomplete]="auto2" class="location-input" />
-              <mat-autocomplete #auto2="matAutocomplete">
-                <mat-option *ngFor="let option of filteredLocations | async" [value]="option">
-                  {{ option }}
-                </mat-option>
-              </mat-autocomplete>-->
               <button class="search-button" (click)="onButtonClick()">
                 {{ "INTRO.START" | translate }}
               </button>
