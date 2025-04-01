@@ -39,158 +39,57 @@
 <div class="container margin-top-120">
 
   <!-- BANDEAU DES CATÉGORIES -->
-  <div class="banner categories-banner">
-    <div class="horizontal-category-container" #scrollContainerCategory>
-      <!-- Bouton flèche gauche (catégories) -->
-      <button class="scroll-btn-cat left-btn-cat" (click)="scrollLeft('category')">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <!-- Liste de catégories -->
-      <div class="category-filter">
+  <div class="horizontal-section-wrapper">
+    <div class="section-header">
+      <h3>Catégories</h3>
+    </div>
+    <div class="horizontal-scroll-wrapper">
+      <div class="scrollable-category-list">
         <div
           *ngFor="let category of categoriesFilter"
-          class="margin-right-5 pointer"
+          class="category-card"
+          [class.selected]="selectedCategory === category.filter"
           (click)="filterByCategory(category.filter)"
         >
-          <span
-            class="category-item"
-            [class.selected]="selectedCategory === category.filter"
-          >
-            <img class="icon" [src]="category.icon" />
-          </span>
-          <span class="padding-left-10">
+          <img class="icon" [src]="category.icon" alt="{{ category.trad }}" />
+          <span class="category-label">
             {{ category.trad | translate | truncate : 10 }}
           </span>
         </div>
       </div>
-      <!-- Bouton flèche droite (catégories) -->
-      <button class="scroll-btn-cat right-btn-cat" (click)="scrollRight('category')">
-        <i class="fa fa-chevron-right"></i>
-      </button>
     </div>
   </div>
 
   <!-- SECTION : OFFRES DU MOMENT -->
-  <span *ngIf="!filterClicked">
-    <div class="top-bar">
-      <h3>Offres du moment</h3>
-    </div>
-    <div class="horizontal-scroll-container">
-      <!-- Boutons flèches (shops) -->
-      <button class="scroll-btn left-btn" (click)="scrollLeft('category')">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button class="scroll-btn right-btn" (click)="scrollRight('category')">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-      <!-- Liste des shops -->
-      <div class="category-list" #scrollContainerPromo>
-        <app-round-shop-card
-          *ngFor="let item of promotedShops"
-          [profile]="item"
-          [me]="me"
-          [promoVisible]="item.promo.active"
-          class="card pointer"
-        ></app-round-shop-card>
-      </div>
-    </div>
+  <app-horizontal-shop-list
+    [title]="'Offres du moment'"
+    [shops]="promotedShops"
+    [me]="me"
+  ></app-horizontal-shop-list>
 
-    <!-- SECTION : À DÉCOUVRIR -->
-    <div class="top-bar">
-      <h3>À découvrir</h3>
-    </div>    
-    <div class="horizontal-scroll-container">
-      <!-- Boutons flèches (shops) -->
-      <button class="scroll-btn left-btn" (click)="scrollLeft('discover')">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button class="scroll-btn right-btn" (click)="scrollRight('discover')">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-      <!-- Liste des shops -->
-      <div class="category-list" #scrollContainerDiscover>
-        <app-round-shop-card
-          *ngFor="let item of filteredItemsAdecouvrir"
-          [profile]="item"
-          [me]="me"
-          [promoVisible]="item.promo.active"
-          class="card pointer"
-        ></app-round-shop-card>
-      </div>
-    </div>
+  <app-horizontal-shop-list
+    [title]="'À découvrir'"
+    [shops]="filteredItemsAdecouvrir"
+    [me]="me"
+  ></app-horizontal-shop-list>
 
-    <!-- SECTION : LES PLUS APPRÉCIÉS -->
-    <div class="top-bar">
-      <h3>Les plus appréciés</h3>
-    </div>
-    <div class="horizontal-scroll-container">
-      <!-- Boutons flèches (shops) -->
-      <button class="scroll-btn left-btn" (click)="scrollLeft('around')">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button class="scroll-btn right-btn" (click)="scrollRight('around')">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-      <!-- Liste des shops -->
-      <div class="category-list" #scrollContainerAround>
-        <app-round-shop-card
-          *ngFor="let item of filteredItemsApprecier"
-          [profile]="item"
-          [me]="me"
-          [promoVisible]="item.promo.active"
-          class="card pointer"
-        ></app-round-shop-card>
-      </div>
-    </div>
+  <app-horizontal-shop-list
+    [title]="'Les plus appréciés'"
+    [shops]="filteredItemsApprecier"
+    [me]="me"
+  ></app-horizontal-shop-list>
 
-    <!-- SECTION : LES PLANS MALINS -->
-    <div class="top-bar">
-      <h3>Les plans malins</h3>
-    </div>
-    <div class="horizontal-scroll-container">
-      <!-- Boutons flèches (shops) -->
-      <button class="scroll-btn left-btn" (click)="scrollLeft('promo')">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button class="scroll-btn right-btn" (click)="scrollRight('promo')">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-      <!-- Liste des shops -->
-      <div class="category-list" #scrollContainerSmart>
-        <app-round-shop-card
-          *ngFor="let item of filteredItemsMalin"
-          [profile]="item"
-          [me]="me"
-          [promoVisible]="item.promo.active"
-          class="card pointer"
-        ></app-round-shop-card>
-      </div>
-    </div>
+  <app-horizontal-shop-list
+    [title]="'Les plans malins'"
+    [shops]="filteredItemsMalin"
+    [me]="me"
+  ></app-horizontal-shop-list>
 
-    <!-- SECTION : TOP10 DE LA SEMAINE -->
-    <div class="top-bar">
-      <h3>Top10 de la semaine</h3>
-    </div>
-    <div class="horizontal-scroll-container">
-      <!-- Boutons flèches (shops) -->
-      <button class="scroll-btn left-btn" (click)="scrollLeft('top10')">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button class="scroll-btn right-btn" (click)="scrollRight('top10')">
-        <i class="fa fa-chevron-right"></i>
-      </button>
-      <!-- Liste des shops -->
-      <div class="category-list" #scrollContainerTop10>
-        <app-round-shop-card
-          *ngFor="let item of filteredItemsTop10"
-          [profile]="item"
-          [me]="me"
-          [promoVisible]="item.promo.active"
-          class="card pointer"
-        ></app-round-shop-card>
-      </div>
-    </div>
-  </span>
+  <app-horizontal-shop-list
+    [title]="'Top10 de la semaine'"
+    [shops]="filteredItemsTop10"
+    [me]="me"
+  ></app-horizontal-shop-list>
 
   <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
   <span *ngIf="filterClicked">
@@ -209,24 +108,20 @@
   </span>
 
   <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
-  <div class="horizontal-scroll-container" *ngIf="searchQuery.length > 0">
-    <div class="top-bar">
+  <div class="horizontal-section-wrapper" *ngIf="searchQuery.length > 0">
+    <div class="section-header">
       <h3>Résultats de recherche</h3>
     </div>
-    <button class="scroll-btn left-btn" (click)="scrollLeft('search')">
-      <i class="fa fa-chevron-left"></i>
-    </button>
-    <button class="scroll-btn right-btn" (click)="scrollRight('search')">
-      <i class="fa fa-chevron-right"></i>
-    </button>
-    <div class="category-list">
-      <app-round-shop-card
-        *ngFor="let item of filteredSearchResults"
-        [profile]="item"
-        [me]="me"
-        [promoVisible]="item.promo?.active"
-        class="card pointer"
-      ></app-round-shop-card>
+    <div class="horizontal-scroll-wrapper">
+      <div class="scrollable-shop-list">
+        <app-round-shop-card
+          *ngFor="let item of filteredSearchResults"
+          [profile]="item"
+          [me]="me"
+          [promoVisible]="item.promo?.active"
+          class="shop-card"
+        ></app-round-shop-card>
+      </div>
     </div>
   </div>
 </div>

@@ -7,11 +7,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ChatGptService {
+  apiURL = environment.apiUrl;
 
   // Met à jour l'URL de ton backend
-  private apiUrl = 'http://localhost:3000/api/openai/chat'; 
+  private apiUrl = this.apiURL + 'openai/chat';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
 
   // Ajout de l'historique dans la requête

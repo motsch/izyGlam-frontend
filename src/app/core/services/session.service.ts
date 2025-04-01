@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 /**
  * Session service pour la gestion de l'utilisateur loggué
@@ -10,6 +11,7 @@ export class SessionService {
     user: any;
     rememberMe: boolean | undefined;
     langue: string | undefined;
+    apiURL = environment.apiUrl;
 
     private readonly fbAccessTokenKey = 'fbAccessToken';
     private readonly fbTokenExpiryKey = 'fbTokenExpiry';
@@ -106,7 +108,7 @@ export class SessionService {
 
         try {
             const response: any = await this.http
-                .get('http://localhost:3000/api/meta/validate-token', {
+                .get(this.apiURL + 'api/meta/validate-token', {
                     headers: { Authorization: `Bearer ${accessToken}` },
                 })
                 .toPromise();
@@ -114,7 +116,7 @@ export class SessionService {
             if (!response.data.is_valid) {
                 console.log('Le token Facebook n\'est plus valide, tentative de renouvellement...');
                 const renewedResponse: any = await this.http
-                    .get('http://localhost:3000/api/meta/extend-token', {
+                    .get(this.apiURL + 'meta/extend-token', {
                         headers: { Authorization: `Bearer ${accessToken}` },
                     })
                     .toPromise();

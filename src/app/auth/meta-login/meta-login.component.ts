@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { SessionService } from 'src/app/core/services/session.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-meta-login',
@@ -13,6 +14,7 @@ export class MetaLoginComponent implements OnInit {
   code: string | null = null;
   backendResponse: any = null;
   rememberMe: boolean | null = false;
+  apiURL = environment.apiUrl;
 
 
   constructor(private route: ActivatedRoute, private http: HttpClient,
@@ -34,7 +36,7 @@ export class MetaLoginComponent implements OnInit {
 
   // Fonction pour envoyer le code au backend
   private sendCodeToBackend(code: string): void {
-    this.http.post('http://localhost:3000/api/meta/exchangeCode', { code }).subscribe(
+    this.http.post(this.apiURL + 'meta/exchangeCode', { code }).subscribe(
       (response: any) => {
         console.log('Réponse backend :', response);
 
@@ -52,7 +54,7 @@ export class MetaLoginComponent implements OnInit {
         this.sessionService.setFacebookToken(accessToken, expiresIn);
 
         // Étape 2 : Utiliser l'accessToken pour créer ou récupérer l'utilisateur
-        this.http.post('http://localhost:3000/api/facebook-login', { accessToken }).subscribe(
+        this.http.post(this.apiURL + 'facebook-login', { accessToken }).subscribe(
           (user: any) => {
             console.log('Réponse serveur :', user);
 

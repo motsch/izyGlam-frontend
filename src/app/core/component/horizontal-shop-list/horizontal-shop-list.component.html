@@ -1,0 +1,20 @@
+<!-- app-horizontal-shop-list.component.html -->
+
+<div class="horizontal-section-wrapper">
+    <div class="section-header">
+      <h3>{{ title }}</h3>
+    </div>
+  
+    <div class="horizontal-scroll-wrapper">
+      <div class="scrollable-shop-list">
+        <app-round-shop-card
+          *ngFor="let shop of shops"
+          [profile]="shop"
+          [me]="me"
+          [promoVisible]="shop.promo?.active"
+          class="shop-card"
+        ></app-round-shop-card>
+      </div>
+    </div>
+  </div>
+  

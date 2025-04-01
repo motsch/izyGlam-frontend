@@ -1,0 +1,58 @@
+/* Wrapper général */
+.horizontal-section-wrapper {
+    margin-bottom: 30px;
+    padding: 0 16px;
+  }
+  
+  /* Titre de section */
+  .section-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff4081; /* Rose Apple-like */
+    margin-bottom: 10px;
+  }
+  
+  /* Wrapper du scroll horizontal */
+  .horizontal-scroll-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+  
+  /* Liste scrollable */
+  .scrollable-shop-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    min-width: max-content;
+    padding-bottom: 8px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  /* Cartes de boutique */
+  .shop-card {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    max-width: 280px;
+    transition: transform 0.3s ease;
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+  
+  /* Responsive (optionnel si ton composant s’adapte déjà) */
+  @media (max-width: 768px) {
+    .shop-card {
+      max-width: 80%;
+    }
+  }
+  @media (max-width: 480px) {
+    .shop-card {
+      max-width: 100%;
+    }
+  }
+  

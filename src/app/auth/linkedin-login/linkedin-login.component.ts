@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/core/services/user.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-linkedin-login',
@@ -12,6 +13,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class LinkedinLoginComponent implements OnInit {
   code: string | null = null;
   backendResponse: any = null;
+  apiURL = environment.apiUrl;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,28 +39,29 @@ export class LinkedinLoginComponent implements OnInit {
 
   // Fonction pour envoyer le code au backend
   private sendCodeToBackend(code: string): void {
-    
-      // Récupérer les informations utilisateur
-      this.userService.getMe().subscribe({
-        next: (user: any) => {      
-          const userId = user._id;
-          this.http.post('http://localhost:3000/api/connect/linkedin', { code, userId }).subscribe(
-            (response: any) => {
-              console.log('Réponse du backend :', response);
-      
-              // Rediriger l'utilisateur ou afficher un message
-              this.openSnackBar('Connexion LinkedIn réussie.');
-              this.router.navigate(['main']);
-            },
-            (error) => {
-              console.error('Erreur lors de la connexion LinkedIn :', error);
-              this.openSnackBar('Erreur lors de la connexion à LinkedIn.');
-            }
-          );
-        },
-        error: (error: any) => {
-          console.error('Erreur lors de la récupération des données utilisateur :', error);
-        }})
+
+    // Récupérer les informations utilisateur
+    this.userService.getMe().subscribe({
+      next: (user: any) => {
+        const userId = user._id;
+        this.http.post(this.apiURL + 'connect/linkedin', { code, userId }).subscribe(
+          (response: any) => {
+            console.log('Réponse du backend :', response);
+
+            // Rediriger l'utilisateur ou afficher un message
+            this.openSnackBar('Connexion LinkedIn réussie.');
+            this.router.navigate(['main']);
+          },
+          (error) => {
+            console.error('Erreur lors de la connexion LinkedIn :', error);
+            this.openSnackBar('Erreur lors de la connexion à LinkedIn.');
+          }
+        );
+      },
+      error: (error: any) => {
+        console.error('Erreur lors de la récupération des données utilisateur :', error);
+      }
+    })
   }
 
   openSnackBar(message: string) {

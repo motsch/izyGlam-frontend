@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ConnexionButtonsComponent {
   @Input() forConnection = false;
+  apiURL = environment.apiUrl;
   imgStorageUrl: string = environment.imgStorageUrl;
   //  user à logger;
   user: any = {};
@@ -26,7 +27,7 @@ export class ConnexionButtonsComponent {
   isPasswordVisible: boolean = false;
 
   private facebookOAuthUrl: string =
-      'https://www.facebook.com/v17.0/dialog/oauth';
+    'https://www.facebook.com/v17.0/dialog/oauth';
   private clientId: string = '1211724509934142'; // Remplace par ton App ID
   private redirectUri: string = 'http://localhost:4200/meta-login'; // Remplace par ton URI de redirection
   private scopes: string = 'public_profile,email'; //'pages_show_list,instagram_basic';
@@ -39,17 +40,17 @@ export class ConnexionButtonsComponent {
         console.log(res);
     });
     */
-}
-    /**
-     * Redirige l'utilisateur vers l'URL OAuth de Facebook pour obtenir un code d'autorisation.
-     */
-    redirectToFacebookOAuth(): void {
-      //  const oauthUrl = `https://www.facebook.com/v17.0/dialog/oauth?client_id=1211724509934142&redirect_uri=http://localhost:3000/api/meta/callback&scope=public_profile,email&response_type=code`;
-      // private facebookOAuthUrl: string = 'https://www.facebook.com/v17.0/dialog/oauth';
-      const oauthUrl = `${this.facebookOAuthUrl}?client_id=${environment.FACEBOOK_APP_ID}&redirect_uri=${encodeURIComponent(
-        environment.FACEBOOK_REDIRECT_URI
-      )}&scope=${encodeURIComponent(this.scopes)}&response_type=code`;
+  }
+  /**
+   * Redirige l'utilisateur vers l'URL OAuth de Facebook pour obtenir un code d'autorisation.
+   */
+  redirectToFacebookOAuth(): void {
+    //  const oauthUrl = `https://www.facebook.com/v17.0/dialog/oauth?client_id=1211724509934142&redirect_uri=http://localhost:3000/api/meta/callback&scope=public_profile,email&response_type=code`;
+    // private facebookOAuthUrl: string = 'https://www.facebook.com/v17.0/dialog/oauth';
+    const oauthUrl = `${this.facebookOAuthUrl}?client_id=${environment.FACEBOOK_APP_ID}&redirect_uri=${encodeURIComponent(
+      environment.FACEBOOK_REDIRECT_URI
+    )}&scope=${encodeURIComponent(this.scopes)}&response_type=code`;
 
-      window.location.href = oauthUrl; // Redirige le navigateur vers l'URL
+    window.location.href = oauthUrl; // Redirige le navigateur vers l'URL
   }
 }

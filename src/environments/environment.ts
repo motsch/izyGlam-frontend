@@ -4,9 +4,9 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'https://api.izyglam.com/api/',
+    apiUrl: 'http://api.izyglam.com/api/',
     imgStorageUrl: 'assets/images/',
-    APIimgStorageUrl: 'https://api.izyglam.com/',
+    APIimgStorageUrl: 'http://api.izyglam.com/',
     allowedCountries: ['FR'],
     comingSoonCountries: ['DE', 'ES', 'IT', 'NL', 'PT'],
     comingSoonCountriesDate: '2026-01-01',

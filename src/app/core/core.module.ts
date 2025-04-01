@@ -75,6 +75,7 @@ import { AdminMessagerieComponent } from './component/admin-messagerie/admin-mes
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { HorizontalShopListComponent } from './component/horizontal-shop-list/horizontal-shop-list.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -178,6 +179,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AdminClientsManagementComponent,
         AdminShopsManagementComponent,
         AdminMessagerieComponent,
+        HorizontalShopListComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -218,6 +220,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AdminClientsManagementComponent,
         AdminShopsManagementComponent,
         AdminMessagerieComponent,
+        HorizontalShopListComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })
