@@ -62,24 +62,11 @@
   </div>
 
   
-
-  <!-- BANDEAU DES SPONSORS -->
-  <div class="horizontal-section-wrapper">
-    <div class="section-header">
-      <h3>Nos Sponsors</h3>
-    </div>
-    <div class="horizontal-scroll-wrapper">
-      <div class="scrollable-category-list drag-scroll" appDragScroll>
-        <div
-          *ngFor="let pub of pubs"
-          class="pub-card"
-          (click)="goTo(pub.lien)"
-        >
-          <img class="pub-premium" [src]="pub.image" alt="{{ pub.trad }}" />
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- SECTION : OFFRES DU MOMENT -->
+  <app-horizontal-pub-list *ngIf="!filterClicked && searchQuery.length === 0"
+    [pubs]="pubs"
+    [me]="me"
+  ></app-horizontal-pub-list>
 
   <!-- SECTION : OFFRES DU MOMENT -->
   <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
