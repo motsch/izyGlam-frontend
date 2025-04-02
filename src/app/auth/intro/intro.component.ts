@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -25,6 +25,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   ]
 })
 export class IntroComponent implements OnInit {
+  @ViewChild('videoElementHow') videoElement!: ElementRef<HTMLVideoElement>;
+  paramVideo = true;
   search: any = {};
   control = new FormControl();
   control2 = new FormControl();
@@ -39,6 +41,7 @@ export class IntroComponent implements OnInit {
   filteredStreets!: Observable<string[]>;
   filteredLocations!: Observable<string[]>;
 
+  aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
   imgStorageUrl: string = environment.imgStorageUrl;
   propositions: string[] = [
     'MAIN_CATEGORY_INTRO.COIFFURE', 'MAIN_CATEGORY_INTRO.MANUCURE', 'MAIN_CATEGORY_INTRO.ESTETICIAN',
@@ -49,6 +52,7 @@ export class IntroComponent implements OnInit {
   previousProposition: string = this.propositions[0];
   propositionIndex: number = 0;
   currentKey = 0;
+  playbackRate: number = 0.9; // Vitesse de lecture
 
   streetError = false;
   locationError = false;
@@ -88,6 +92,28 @@ export class IntroComponent implements OnInit {
       map(value => this._filter(value, this.optionsCities))
     );
 
+  }
+
+  
+
+  ngAfterViewInit(): void {
+    if (this.paramVideo) {
+      const video = this.videoElement.nativeElement;
+  
+      // Configurer la vitesse de lecture
+      video.playbackRate = this.playbackRate;
+      // Assurez-vous que la vidéo est en mode muet
+      video.muted = true;
+  
+      // Tenter de lire la vidéo automatiquement
+      video.play()
+        .then(() => {
+          console.log('Vidéo lancée automatiquement.');
+        })
+        .catch((err) => {
+          console.error('Erreur lors de la lecture automatique :', err);
+        });
+    }
   }
 
   private _filter(value: string, options: string[]): string[] {

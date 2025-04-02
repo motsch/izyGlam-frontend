@@ -11,7 +11,7 @@ export class FeatureComponent implements AfterViewInit {
   @ViewChild('videoElementFeature') videoElement!: ElementRef<HTMLVideoElement>;
   imgStorageUrl: string = environment.imgStorageUrl;
   aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
-  paramVideo = false;
+  paramVideo = true;
   playbackRate: number = 1; // Vitesse de lecture
   intervalId!: any; // ID de setInterval pour le retour en arrière
 

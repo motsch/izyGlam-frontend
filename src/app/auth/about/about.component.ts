@@ -21,7 +21,7 @@ import {
     aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
     playbackRate: number = 0.4; // Vitesse de lecture
     intervalId!: any; // ID de setInterval pour le retour en arrière
-    paramVideo = false;
+    paramVideo = true;
     constructor(private router: Router,private breakpointObserver: BreakpointObserver,
         private cdr: ChangeDetectorRef) { }
   

@@ -130,3 +130,11 @@
     overflow: hidden;
   }
 }
+
+
+
+.hero-image img,
+.hero-image video {
+  max-width: 100%;
+  height: auto;
+}

@@ -12,7 +12,7 @@ export class HowItWorkComponent implements AfterViewInit {
   aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
   playbackRate: number = 0.9; // Vitesse de lecture
   intervalId!: any; // ID de setInterval pour le retour en 
-  paramVideo = false;
+  paramVideo = true;
 
   constructor(private router: Router) { }
 
