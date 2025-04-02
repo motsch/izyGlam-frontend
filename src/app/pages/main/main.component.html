@@ -1,7 +1,7 @@
 <app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
 
 <!-- Sélecteur d'adresse -->
-<div class="address-selector-wrapper margin-top-120">
+<div class="address-selector-wrapper margin-top-80">
   <button class="address-button" (click)="openAddressModal()">
     📍 {{ selectedPostalCode }} — Modifier l’adresse
   </button>
@@ -36,7 +36,7 @@
 </div>
 
 <!-- Conteneur principal -->
-<div class="container margin-top-120">
+<div class="container margin-top-20">
 
   <!-- BANDEAU DES CATÉGORIES -->
   <div class="horizontal-section-wrapper">
@@ -44,7 +44,7 @@
       <h3>Catégories</h3>
     </div>
     <div class="horizontal-scroll-wrapper">
-      <div class="scrollable-category-list">
+      <div class="scrollable-category-list drag-scroll" appDragScroll>
         <div
           *ngFor="let category of categoriesFilter"
           class="category-card"
@@ -60,32 +60,52 @@
     </div>
   </div>
 
+  
+
+  <!-- BANDEAU DES SPONSORS -->
+  <div class="horizontal-section-wrapper">
+    <div class="section-header">
+      <h3>Nos Sponsors</h3>
+    </div>
+    <div class="horizontal-scroll-wrapper">
+      <div class="scrollable-category-list drag-scroll" appDragScroll>
+        <div
+          *ngFor="let pub of pubs"
+          class="pub-card"
+          (click)="goTo(pub.lien)"
+        >
+          <img class="pub-premium" [src]="pub.image" alt="{{ pub.trad }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- SECTION : OFFRES DU MOMENT -->
-  <app-horizontal-shop-list
+  <app-horizontal-shop-list *ngIf="!filterClicked"
     [title]="'Offres du moment'"
     [shops]="promotedShops"
     [me]="me"
   ></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list
+  <app-horizontal-shop-list *ngIf="!filterClicked"
     [title]="'À découvrir'"
     [shops]="filteredItemsAdecouvrir"
     [me]="me"
   ></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list
+  <app-horizontal-shop-list *ngIf="!filterClicked"
     [title]="'Les plus appréciés'"
     [shops]="filteredItemsApprecier"
     [me]="me"
   ></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list
+  <app-horizontal-shop-list *ngIf="!filterClicked"
     [title]="'Les plans malins'"
     [shops]="filteredItemsMalin"
     [me]="me"
   ></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list
+  <app-horizontal-shop-list *ngIf="!filterClicked"
     [title]="'Top10 de la semaine'"
     [shops]="filteredItemsTop10"
     [me]="me"
@@ -95,7 +115,7 @@
   <span *ngIf="filterClicked">
     <div class="padding-top-10">
       <h3>Résultats de recherche filtrée</h3>
-      <div class="row test66">
+      <div class="shop-card-container">
         <app-round-shop-card
           *ngFor="let item of filteredItems"
           [profile]="item"
@@ -106,6 +126,7 @@
       </div>
     </div>
   </span>
+  
 
   <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
   <div class="horizontal-section-wrapper" *ngIf="searchQuery.length > 0">

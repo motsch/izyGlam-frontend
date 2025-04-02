@@ -173,6 +173,12 @@ h3 {
   transform: translateY(-3px);
 }
 
+.pub-premium {
+  height: 200px;
+  width: auto;
+  border-radius: 12px;
+}
+
 /* === CATÉGORIE CARD === */
 .category-card {
   flex: 0 0 auto;
@@ -216,5 +222,108 @@ h3 {
 @media (max-width: 480px) {
   .shop-card {
     max-width: 100%;
+  }
+}
+
+/* Scrollbar Apple-style (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+}
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+      display: none;
+  }
+
+  * {
+      scrollbar-width: none;
+      /* Firefox */
+  }
+}
+.drag-scroll {
+  cursor: grab;
+  &.active-drag {
+    cursor: grabbing;
+    user-select: none;
+  }
+}
+
+.drag-scroll.active-drag {
+  cursor: grabbing;
+}
+
+.shop-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* 👈 ALIGNE À GAUCHE */
+  gap: 20px;
+  padding: 10px;
+}
+
+
+app-round-shop-card.card {
+  flex: 0 1 calc(20% - 20px); /* 5 par ligne max sur grand écran */
+  max-width: 100%;
+  min-width: 160px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  background: none;
+
+  /* Centrage du contenu interne */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+
+app-round-shop-card.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1200px) {
+  app-round-shop-card.card {
+    flex: 0 1 calc(25% - 20px); /* 4 par ligne */
+  }
+}
+
+@media (max-width: 992px) {
+  app-round-shop-card.card {
+    flex: 0 1 calc(33.333% - 20px); /* 3 par ligne */
+  }
+}
+
+@media (max-width: 768px) {
+  app-round-shop-card.card {
+    flex: 0 1 calc(50% - 20px); /* 2 par ligne */
+  }
+}
+
+@media (max-width: 480px) {
+  app-round-shop-card.card {
+    flex: 0 1 100%; /* 1 par ligne */
   }
 }

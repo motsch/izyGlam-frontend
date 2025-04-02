@@ -40,9 +40,10 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { DragScrollDirective } from './core/directives/drag-scroll.directive';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, DragScrollDirective],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [

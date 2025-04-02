@@ -9,9 +9,9 @@ import { map } from 'rxjs/operators';
 })
 export class ShopService {
     private shopDataSubject = new BehaviorSubject<any>(null);
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
-    
+
 
     getShopsCount() {
         return this.http.get<number>(environment.apiUrl + 'shops-count-all');
@@ -156,6 +156,15 @@ export class ShopService {
             review
         );
     }
+    /**
+     * Recherche les shops et leurs services associés en fonction du code postal et d'une recherche texte
+     * @param postalCode (ex: '75001')
+     * @param query (ex: 'massage' ou 'coiffure')
+     */
+    searchShopsWithServices(postalCode: string, query: string): Observable<any[]> {
+        const url = `${environment.apiUrl}shops/search?postalCode=${encodeURIComponent(postalCode)}&query=${encodeURIComponent(query)}`;
+        return this.http.get<any[]>(url);
+    }
 
     private calculateDistance(
         lat1: number,
@@ -174,9 +183,9 @@ export class ShopService {
         const a =
             Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
             Math.cos(radLat1) *
-                Math.cos(radLat2) *
-                Math.sin(deltaLon / 2) *
-                Math.sin(deltaLon / 2);
+            Math.cos(radLat2) *
+            Math.sin(deltaLon / 2) *
+            Math.sin(deltaLon / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c;
     }

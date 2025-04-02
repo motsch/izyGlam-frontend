@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { SharedService } from 'src/app/core/services/shared.service';
@@ -6,13 +6,16 @@ import { ShopService } from 'src/app/core/services/shop.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { AdvertisementService } from 'src/app/core/services/advertisement.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-main',
     templateUrl: './main.component.html',
     styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
     me: any = {};
     imgStorageUrl: string = environment.imgStorageUrl;
     filteredItems: any[] = [];
@@ -33,7 +36,10 @@ export class MainComponent implements OnInit {
     selectedPostalCode: string = '75001';
     availablePostalCodes: string[] = ['75001'];
     userAddresses: any[] = [];
+    pubs: any[] = [];
 
+    searchControl = new FormControl('');
+    
     @ViewChild('scrollContainerCategory') private scrollContainerCategory?: ElementRef;
     @ViewChild('scrollContainerDiscover') private scrollContainerDiscover?: ElementRef;
     @ViewChild('scrollContainerAround') private scrollContainerAround?: ElementRef;
@@ -47,18 +53,85 @@ export class MainComponent implements OnInit {
         public sessionService: SessionService,
         private categoryService: CategoryService,
         private userService: UserService,
-        private router: Router
+        private router: Router,
+        private advertisementService: AdvertisementService
     ) { }
 
     ngOnInit() {
+        this.searchControl.valueChanges.pipe(
+          debounceTime(300),
+          distinctUntilChanged(),
+          switchMap((query) =>
+            this.shopService.searchShopsWithServices(this.selectedPostalCode, this.searchQuery)
+          )
+        ).subscribe((results) => {
+          this.shops = results;
+        });
         // 🔐 Redirection si non connecté
         if (!this.sessionService.isLoggedIn()) {
             this.router.navigate(['/login']);
             return;
         }
+        this.loadAds();
         this.loadUserAndShops();
     }
 
+    ngAfterViewInit(): void {
+        const elements = document.querySelectorAll('.drag-scroll');
+
+        elements.forEach((el) => {
+            let isDown = false;
+            let startX = 0;
+            let scrollLeft = 0;
+
+            (el as HTMLElement).addEventListener('mousedown', (event) => {
+                const e = event as MouseEvent;
+                isDown = true;
+                (el as HTMLElement).classList.add('active-drag');
+                startX = e.pageX - (el as HTMLElement).offsetLeft;
+                scrollLeft = (el as HTMLElement).scrollLeft;
+            });
+
+            (el as HTMLElement).addEventListener('mouseleave', () => {
+                isDown = false;
+                (el as HTMLElement).classList.remove('active-drag');
+            });
+
+            (el as HTMLElement).addEventListener('mouseup', () => {
+                isDown = false;
+                (el as HTMLElement).classList.remove('active-drag');
+            });
+
+            (el as HTMLElement).addEventListener('mousemove', (event) => {
+                const e = event as MouseEvent;
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - (el as HTMLElement).offsetLeft;
+                const walk = (x - startX) * 1.2; // ajustable
+                (el as HTMLElement).scrollLeft = scrollLeft - walk;
+            });
+        });
+    }
+
+    loadAds() {
+        this.advertisementService.getAdvertisements().subscribe((data: any) => {
+            //F6: Ads
+            this.pubs = data;
+        }, (error: any) => {
+            console.log(error);
+        })
+    }
+
+    goTo(link: string) {
+        console.log("click: " + link);
+    
+        if (link.startsWith('http://') || link.startsWith('https://')) {
+            window.open(link, '_blank'); // Ouvre le lien externe dans un nouvel onglet
+        } else {
+            this.router.navigateByUrl(link); // Navigation interne Angular
+        }
+    }
+    
     private loadUserAndShops() {
         this.userService.getMe().subscribe({
             next: (data: any) => {
@@ -90,14 +163,15 @@ export class MainComponent implements OnInit {
 
     private loadCategories() {
         this.categoryService.getAvailableCategories(undefined, undefined, [this.selectedPostalCode]).subscribe({
-            next: (data: any) => {
-                this.categoriesFilter = data;
+            next: (data: any[]) => {
+                this.categoriesFilter = data.sort((a, b) => a.position - b.position);
             },
             error: (error: any) => {
                 console.log(error);
             },
         });
     }
+
 
     filterShops() {
         const query = this.searchQuery.trim().toLowerCase();

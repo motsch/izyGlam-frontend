@@ -6,7 +6,7 @@
     </div>
   
     <div class="horizontal-scroll-wrapper">
-      <div class="scrollable-shop-list">
+      <div class="scrollable-shop-list drag-scroll" appDragScroll>
         <app-round-shop-card
           *ngFor="let shop of shops"
           [profile]="shop"
