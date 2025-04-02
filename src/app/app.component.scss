@@ -272,3 +272,23 @@ mat-drawer-content {
     transform: rotate(360deg) translateX(40px) rotate(-360deg) scale(0.5); /* Reprend petite taille à distance */
   }
 }
+
+
+
+
+.download-buttons {
+  display: flex;
+  gap: 1px;
+  margin-top: 15px; /* Séparation avec le QR code */
+  margin-bottom: 15px; // <-- On colle à 15px de la séparation
+}
+
+.download-btn img {
+  width: 105px;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.download-btn img:hover {
+  transform: scale(1.1);
+}

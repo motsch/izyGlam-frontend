@@ -1,10 +1,8 @@
 <div *ngIf="!sessionService.isLoggedIn()">
   <router-outlet></router-outlet>
 </div>
-<mat-drawer-container
-  class="example-container"
-  *ngIf="sessionService.isLoggedIn()"
->
+
+<mat-drawer-container class="example-container" *ngIf="sessionService.isLoggedIn()">
   <!-- Left Drawer for Profile and Menu -->
   <mat-drawer
     *ngIf="me"
@@ -22,70 +20,54 @@
         />
         <div>
           <p class="profile-name">{{ me.firstname }} {{ me.lastname }}</p>
-          <a class="manage-account" (click)="goTo('profile')">{{
-            "SIDEBAR.PROFILE" | translate
-          }}</a>
+          <a class="manage-account" (click)="goTo('profile')">
+            {{ "SIDEBAR.PROFILE" | translate }}
+          </a>
         </div>
       </div>
-      
+
       <ul class="drawer-menu">
         <li class="menu-hover" (click)="goTo('orders')">
           <img class="side-icon" src="assets/images/icon/order.png" alt="Commandes passées" width="20" height="20" />
           <span class="padding-left-10 side-item">{{ "SIDEBAR.ORDERS" | translate }}</span>
         </li>
-        
+
         <li class="menu-hover" (click)="goTo('favorites')">
           <img class="side-icon" src="assets/images/icon/favorite.png" alt="Favoris" width="20" height="20" />
           <span class="padding-left-10 side-item">{{ "SIDEBAR.FAVORITES" | translate }}</span>
         </li>
-        
+
         <li class="menu-hover" (click)="goTo('help')">
           <img class="side-icon" src="assets/images/icon/help.png" alt="Aide" width="20" height="20" />
           <span class="padding-left-10 side-item">{{ "SIDEBAR.HELP" | translate }}</span>
         </li>
-        
+
         <li class="menu-hover" (click)="goTo('fidelity')">
           <img class="side-icon" src="assets/images/icon/gift.png" alt="Programme de fidélité" width="20" height="20" />
           <span class="padding-left-10 side-item">{{ "SIDEBAR.FIDELITY" | translate }}</span>
         </li>
-        
-        <!--
-        <li class="menu-hover fa fa-gift" (click)="goTo('gift-card')">
-          <span class="padding-left-10">Cartes cadeaux</span>
-        </li>
-        <li class="menu-hover fa fa-users" (click)="goTo('invite-friends')">
-          <span class="padding-left-10">Invitez des amies</span>
-        </li>
-        -->
-        <li><i class=""></i></li>
-        <li><i class=""></i></li>
-        <li><i class=""></i></li>
-        <li><i class=""></i></li>
       </ul>
-      
+
       <div class="drawer-footer">
+        <div class="download-buttons">
+          <a href="https://play.google.com/store/apps/details?id=com.izyglow" target="_blank" class="btn download-btn">
+            <img src="assets/images/google-play-badge.png" alt="Google Play">
+          </a>
+          <a href="https://apps.apple.com/app/id123456789" target="_blank" class="btn download-btn">
+            <img src="assets/images/app-store-badge.png" alt="App Store">
+          </a>
+        </div>
+
         <ul class="drawer-menu secondary">
           <li (click)="goTo('')" class="menu-hover">
-            <span class="padding-left-10">{{
-              "SIDEBAR.LOGOUT" | translate
-            }}</span>
+            <span class="padding-left-10">{{ "SIDEBAR.LOGOUT" | translate }}</span>
           </li>
-          <!--<li class="menu-hover">
-            <span class="padding-left-10">Devenez client professionnel</span>
-          </li>-->
           <li class="menu-hover" (click)="goTo('creation-shop')">
-            <span class="padding-left-10">{{
-              "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate
-            }}</span>
+            <span class="padding-left-10">{{ "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate }}</span>
           </li>
           <li class="menu-hover" (click)="goTo('creation-company')">
-            <span class="padding-left-10">{{
-              "SIDEBAR.YOUR_COMPANY" | translate
-            }}</span>
+            <span class="padding-left-10">{{ "SIDEBAR.YOUR_COMPANY" | translate }}</span>
           </li>
-          <!--<li class="menu-hover">
-            <span class="padding-left-10">Devenez coursier-partenaire</span>
-          </li>-->
         </ul>
       </div>
     </div>
@@ -99,11 +81,12 @@
     <!-- Chat button -->
     <div class="chat-container" (click)="openChat()">
       <img
-        src="assets\images\chat\lizy.png"
+        src="assets/images/chat/lizy.png"
         alt="Lizy Chat Icon"
         class="chat-button"
       />
     </div>
+
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

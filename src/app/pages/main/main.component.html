@@ -18,7 +18,6 @@
   />
 </div>
 
-
 <!-- Modal de sélection d'adresse -->
 <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
@@ -38,7 +37,6 @@
 
 <!-- Conteneur principal -->
 <div class="container margin-top-20">
-
   <!-- BANDEAU DES CATÉGORIES -->
   <div class="horizontal-section-wrapper">
     <div class="section-header">
@@ -61,7 +59,6 @@
     </div>
   </div>
 
-  
   <!-- SECTION : OFFRES DU MOMENT -->
   <app-horizontal-pub-list *ngIf="!filterClicked && searchQuery.length === 0"
     [pubs]="pubs"
@@ -115,7 +112,6 @@
     </div>
   </span>
   
-
   <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
   <div class="horizontal-section-wrapper" *ngIf="searchQuery.length > 0">
     <div class="section-header">
