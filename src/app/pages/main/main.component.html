@@ -12,11 +12,12 @@
   <input
     type="text"
     [(ngModel)]="searchQuery"
-    (input)="filterShops()"
+    (ngModelChange)="onSearchChange($event)"
     placeholder="🔍 Rechercher une boutique"
     class="search-bar"
   />
 </div>
+
 
 <!-- Modal de sélection d'adresse -->
 <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
@@ -49,7 +50,7 @@
           *ngFor="let category of categoriesFilter"
           class="category-card"
           [class.selected]="selectedCategory === category.filter"
-          (click)="filterByCategory(category.filter)"
+          (click)="filterByCategory(category.filter, category.trad)"
         >
           <img class="icon" [src]="category.icon" alt="{{ category.trad }}" />
           <span class="category-label">
@@ -81,31 +82,31 @@
   </div>
 
   <!-- SECTION : OFFRES DU MOMENT -->
-  <app-horizontal-shop-list *ngIf="!filterClicked"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
     [title]="'Offres du moment'"
     [shops]="promotedShops"
     [me]="me"
   ></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
     [title]="'À découvrir'"
     [shops]="filteredItemsAdecouvrir"
     [me]="me"
   ></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
     [title]="'Les plus appréciés'"
     [shops]="filteredItemsApprecier"
     [me]="me"
   ></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
     [title]="'Les plans malins'"
     [shops]="filteredItemsMalin"
     [me]="me"
   ></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
     [title]="'Top10 de la semaine'"
     [shops]="filteredItemsTop10"
     [me]="me"
@@ -114,7 +115,7 @@
   <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
   <span *ngIf="filterClicked">
     <div class="padding-top-10">
-      <h3>Résultats de recherche filtrée</h3>
+      <h3>{{ categoryTrad | translate }}</h3>
       <div class="shop-card-container">
         <app-round-shop-card
           *ngFor="let item of filteredItems"

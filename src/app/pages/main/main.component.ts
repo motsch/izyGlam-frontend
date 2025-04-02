@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { AdvertisementService } from 'src/app/core/services/advertisement.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-main',
@@ -39,7 +40,11 @@ export class MainComponent implements OnInit, AfterViewInit {
     pubs: any[] = [];
 
     searchControl = new FormControl('');
-    
+    categoryTrad: string = '';
+
+
+    private searchSubject = new Subject<string>();
+    private subscription!: Subscription;
     @ViewChild('scrollContainerCategory') private scrollContainerCategory?: ElementRef;
     @ViewChild('scrollContainerDiscover') private scrollContainerDiscover?: ElementRef;
     @ViewChild('scrollContainerAround') private scrollContainerAround?: ElementRef;
@@ -58,22 +63,39 @@ export class MainComponent implements OnInit, AfterViewInit {
     ) { }
 
     ngOnInit() {
-        this.searchControl.valueChanges.pipe(
-          debounceTime(300),
-          distinctUntilChanged(),
-          switchMap((query) =>
-            this.shopService.searchShopsWithServices(this.selectedPostalCode, this.searchQuery)
-          )
-        ).subscribe((results) => {
-          this.shops = results;
-        });
         // 🔐 Redirection si non connecté
         if (!this.sessionService.isLoggedIn()) {
             this.router.navigate(['/login']);
             return;
         }
+        this.subscription = this.searchSubject
+            .pipe(debounceTime(300), distinctUntilChanged())
+            .subscribe((query) => {
+                this.performSearch(query);
+            });
         this.loadAds();
         this.loadUserAndShops();
+    }
+
+    onSearchChange(query: string) {
+        this.searchSubject.next(query);
+    }
+
+    performSearch(query: string) {
+        if (!query || query.trim().length < 2) {
+            this.filteredSearchResults = []; // Vide si pas assez de caractères
+            return;
+        }
+
+        this.shopService
+            .searchShopsWithServices(this.selectedPostalCode, query)
+            .subscribe((results) => {
+                this.filteredSearchResults = results;
+            });
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe(); // Nettoyage
     }
 
     ngAfterViewInit(): void {
@@ -124,14 +146,14 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     goTo(link: string) {
         console.log("click: " + link);
-    
+
         if (link.startsWith('http://') || link.startsWith('https://')) {
             window.open(link, '_blank'); // Ouvre le lien externe dans un nouvel onglet
         } else {
             this.router.navigateByUrl(link); // Navigation interne Angular
         }
     }
-    
+
     private loadUserAndShops() {
         this.userService.getMe().subscribe({
             next: (data: any) => {
@@ -209,13 +231,15 @@ export class MainComponent implements OnInit, AfterViewInit {
         });
     }
 
-    filterByCategory(type: string) {
+    filterByCategory(type: string, trad: string) {
         if (!this.filterClicked) {
             this.selectedCategory = type;
             this.filterClicked = true;
+            this.categoryTrad = trad;
             this.filteredItems = this.shops.filter((x: any) => x.type === type);
         } else if (this.selectedCategory === type) {
             this.cancelFilter();
+            this.categoryTrad = '';
         } else {
             this.selectedCategory = type;
             this.filteredItems = this.shops.filter((x: any) => x.type === type);

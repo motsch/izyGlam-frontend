@@ -162,7 +162,7 @@ export class ShopService {
      * @param query (ex: 'massage' ou 'coiffure')
      */
     searchShopsWithServices(postalCode: string, query: string): Observable<any[]> {
-        const url = `${environment.apiUrl}shops/search?postalCode=${encodeURIComponent(postalCode)}&query=${encodeURIComponent(query)}`;
+        const url = `${environment.apiUrl}shops-search?postalCode=${encodeURIComponent(postalCode)}&query=${encodeURIComponent(query)}`;
         return this.http.get<any[]>(url);
     }
 
