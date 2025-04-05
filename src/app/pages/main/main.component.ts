@@ -10,6 +10,7 @@ import { AdvertisementService } from 'src/app/core/services/advertisement.servic
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
+import { MqttService } from 'src/app/core/services/mqtt.service';
 
 @Component({
     selector: 'app-main',
@@ -37,7 +38,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     selectedPostalCode: string = '75001';
     availablePostalCodes: string[] = ['75001'];
     userAddresses: any[] = [];
-    pubs: any[] = [];
+    selectedAddress: any = null;
 
     searchControl = new FormControl('');
     categoryTrad: string = '';
@@ -59,7 +60,8 @@ export class MainComponent implements OnInit, AfterViewInit {
         private categoryService: CategoryService,
         private userService: UserService,
         private router: Router,
-        private advertisementService: AdvertisementService
+        private advertisementService: AdvertisementService,
+        private mqttService: MqttService,
     ) { }
 
     ngOnInit() {
@@ -73,7 +75,6 @@ export class MainComponent implements OnInit, AfterViewInit {
             .subscribe((query) => {
                 this.performSearch(query);
             });
-        this.loadAds();
         this.loadUserAndShops();
     }
 
@@ -135,15 +136,6 @@ export class MainComponent implements OnInit, AfterViewInit {
         });
     }
 
-    loadAds() {
-        this.advertisementService.getAdvertisements().subscribe((data: any) => {
-            //F6: Ads
-            this.pubs = data;
-        }, (error: any) => {
-            console.log(error);
-        })
-    }
-
     goTo(link: string) {
         console.log("click: " + link);
 
@@ -156,32 +148,39 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     private loadUserAndShops() {
         this.userService.getMe().subscribe({
-            next: (data: any) => {
-                this.me = data;
-                this.sharedService.updateMe(data);
-                localStorage.removeItem('shopSelected');
-                localStorage.removeItem('productToBuy');
-                localStorage.removeItem('selectItemFromShop');
-                localStorage.removeItem('activeMenu');
-
-                // 🔄 Si l'utilisateur a des adresses, on prend la première
-                if (data.address && data.address.length > 0) {
-                    const first = data.address[0];
-                    if (first.code_postal) {
-                        this.selectedPostalCode = first.code_postal;
-                    }
-                    this.availablePostalCodes = data.address.map((a: any) => a.code_postal);
-                    this.userAddresses = data.address;
-                }
-
-                this.loadCategories();
-                this.loadShops();
-            },
-            error: (error: any) => {
-                console.log(error);
-            },
+          next: (data: any) => {
+            this.me = data;
+            this.sharedService.updateMe(data);
+      
+            // Nettoyage localStorage
+            localStorage.removeItem('shopSelected');
+            localStorage.removeItem('productToBuy');
+            localStorage.removeItem('selectItemFromShop');
+            localStorage.removeItem('activeMenu');
+      
+            // ✅ Gestion des adresses
+            if (data.address && data.address.length > 0) {
+              this.userAddresses = data.address;
+      
+              // Prendre la première adresse si aucune n'est encore sélectionnée
+              if (!this.selectedAddress) {
+                this.selectedAddress = this.userAddresses[0];
+              }
+      
+              // Optionnel : liste des codes postaux dispos
+              this.availablePostalCodes = this.userAddresses.map((a: any) => a.code_postal);
+            }
+      
+            // Chargement des catégories & shops selon l'adresse sélectionnée
+            this.loadCategories();
+            this.loadShops();
+          },
+          error: (error: any) => {
+            console.log(error);
+          },
         });
-    }
+      }
+      
 
     private loadCategories() {
         this.categoryService.getAvailableCategories(undefined, undefined, [this.selectedPostalCode]).subscribe({
@@ -299,10 +298,14 @@ export class MainComponent implements OnInit, AfterViewInit {
         this.showAddressModal = false;
     }
 
-    selectPostalCode(postalCode: string) {
-        this.selectedPostalCode = postalCode;
+    selectPostalCode(address: any) {
+        this.selectedAddress = address;
+        this.selectedPostalCode = address.code_postal;
         this.loadCategories();
         this.loadShops();
         this.closeAddressModal();
+    }
+    isSameAddress(a: any, b: any): boolean {
+        return a?.street === b?.street && a?.city === b?.city && a?.code_postal === b?.code_postal;
     }
 }

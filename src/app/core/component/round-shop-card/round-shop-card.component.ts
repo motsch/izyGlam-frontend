@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../../services/user.service';
@@ -11,36 +11,38 @@ import { SessionService } from '../../services/session.service';
 })
 export class RoundShopCardComponent {
     @Input() me: any;
-    @Input() profile: any;
+    @Input() shop: any;
     @Input() promoVisible: boolean = false;
     @Input() promoType: any;
     imgStorageUrl: string = environment.APIimgStorageUrl;
+    skeleton = true;
+    loadedShops: { [key: string]: boolean } = {};
     // Nouvelle propriété pour gérer l'état favori
     isFavorite: boolean = false;
     modalOpen = false;
-    constructor(private router: Router, private userService: UserService, public sessionService: SessionService) {}
+    constructor(private router: Router, private userService: UserService, public sessionService: SessionService) { }
     // Méthode pour gérer le clic sur le coeur
     toggleFavorite(): void {
-        if(!this.me.favoriteShops) {
+        if (!this.me.favoriteShops) {
             this.me.favoriteShops = [];
         }
-        this.profile.isFavorite = !this.profile.isFavorite;
-        if (this.profile.isFavorite) {
+        this.shop.isFavorite = !this.shop.isFavorite;
+        if (this.shop.isFavorite) {
             // Ajouter le shop aux favoris
-            this.me.favoriteShops.push(this.profile._id);
+            this.me.favoriteShops.push(this.shop._id);
         } else {
             // Retirer le shop des favoris
             this.me.favoriteShops = this.me.favoriteShops.filter(
-                (shopId: string) => shopId !== this.profile._id
+                (shopId: string) => shopId !== this.shop._id
             );
         }
         // Mise à jour de l'utilisateur dans la base de données
         this.userService.updateUserFavorites(this.me._id, this.me.favoriteShops)
             .subscribe({
                 next: (response: any) => {
-                    console.log(`${this.profile.name} est favori : ${this.isFavorite}`);
+                    console.log(`${this.shop.name} est favori : ${this.isFavorite}`);
                 },
-                error: (err :any) => {
+                error: (err: any) => {
                     console.error('Erreur lors de la mise à jour des favoris', err);
                 }
             });
@@ -56,5 +58,18 @@ export class RoundShopCardComponent {
     }
     openModal() {
         this.modalOpen = true;
+    }
+    onImageLoad(shopId: string) {
+        console.log('✅ Image chargée pour shopId : ' + shopId);
+        this.loadedShops[shopId] = true;
+    }
+
+    onImageError(shopId: string) {
+        console.warn('⚠️ Erreur de chargement image pour shopId : ' + shopId);
+        this.loadedShops[shopId] = false; // ou tu peux gérer un fallback ici
+    }
+
+    onShopLoaded(shopId: string) {
+        this.loadedShops[shopId] = true;
     }
 }

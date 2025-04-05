@@ -9,31 +9,25 @@
 
 <!-- Barre de recherche -->
 <div class="search-bar-wrapper">
-  <input
-    type="text"
-    [(ngModel)]="searchQuery"
-    (ngModelChange)="onSearchChange($event)"
-    placeholder="🔍 Rechercher une boutique"
-    class="search-bar"
-  />
+  <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
+    placeholder="🔍 Rechercher une boutique" class="search-bar" />
 </div>
 
 <!-- Modal de sélection d'adresse -->
 <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
-    <h3>Choisis une adresse</h3>
-    <ul>
-      <li
-        *ngFor="let address of userAddresses"
-        (click)="selectPostalCode(address.code_postal)"
-        [class.active]="address.code_postal === selectedPostalCode"
-      >
-        📌 {{ address.street }}, {{ address.city }} ({{ address.code_postal }})
+  <div class="modal-content address-modal" (click)="$event.stopPropagation()">
+    <h3 class="modal-title">Choisis une adresse</h3>
+    <ul class="address-list">
+      <li *ngFor="let address of userAddresses" (click)="selectPostalCode(address)"
+        [class.active]="isSameAddress(address, selectedAddress)">
+        📍 <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
       </li>
+
     </ul>
-    <button class="close-btn" (click)="closeAddressModal()">Fermer</button>
+    <button class="close-btn">Fermer</button>
   </div>
 </div>
+
 
 <!-- Conteneur principal -->
 <div class="container margin-top-20">
@@ -44,12 +38,9 @@
     </div>
     <div class="horizontal-scroll-wrapper">
       <div class="scrollable-category-list drag-scroll" appDragScroll>
-        <div
-          *ngFor="let category of categoriesFilter"
-          class="category-card"
+        <div *ngFor="let category of categoriesFilter" class="category-card"
           [class.selected]="selectedCategory === category.filter"
-          (click)="filterByCategory(category.filter, category.trad)"
-        >
+          (click)="filterByCategory(category.filter, category.trad)">
           <img class="icon" [src]="category.icon" alt="{{ category.trad }}" />
           <span class="category-label">
             {{ category.trad | translate | truncate : 10 }}
@@ -60,58 +51,35 @@
   </div>
 
   <!-- SECTION : OFFRES DU MOMENT -->
-  <app-horizontal-pub-list *ngIf="!filterClicked && searchQuery.length === 0"
-    [pubs]="pubs"
-    [me]="me"
-  ></app-horizontal-pub-list>
+  <app-horizontal-pub-list [me]="me"></app-horizontal-pub-list>
 
   <!-- SECTION : OFFRES DU MOMENT -->
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
-    [title]="'Offres du moment'"
-    [shops]="promotedShops"
-    [me]="me"
-  ></app-horizontal-shop-list>
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Offres du moment'"
+    [shops]="promotedShops" [me]="me"></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
-    [title]="'À découvrir'"
-    [shops]="filteredItemsAdecouvrir"
-    [me]="me"
-  ></app-horizontal-shop-list>
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'À découvrir'"
+    [shops]="filteredItemsAdecouvrir" [me]="me"></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
-    [title]="'Les plus appréciés'"
-    [shops]="filteredItemsApprecier"
-    [me]="me"
-  ></app-horizontal-shop-list>
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Les plus appréciés'"
+    [shops]="filteredItemsApprecier" [me]="me"></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
-    [title]="'Les plans malins'"
-    [shops]="filteredItemsMalin"
-    [me]="me"
-  ></app-horizontal-shop-list>
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Les plans malins'"
+    [shops]="filteredItemsMalin" [me]="me"></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0"
-    [title]="'Top10 de la semaine'"
-    [shops]="filteredItemsTop10"
-    [me]="me"
-  ></app-horizontal-shop-list>
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Top10 de la semaine'"
+    [shops]="filteredItemsTop10" [me]="me"></app-horizontal-shop-list>
 
   <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
   <span *ngIf="filterClicked">
     <div class="padding-top-10">
       <h3>{{ categoryTrad | translate }}</h3>
       <div class="shop-card-container">
-        <app-round-shop-card
-          *ngFor="let item of filteredItems"
-          [profile]="item"
-          [me]="me"
-          [promoVisible]="item.promo.active"
-          class="card"
-        ></app-round-shop-card>
+        <app-round-shop-card *ngFor="let item of filteredItems" [shop]="item" [me]="me"
+          [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
       </div>
     </div>
   </span>
-  
+
   <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
   <div class="horizontal-section-wrapper" *ngIf="searchQuery.length > 0">
     <div class="section-header">
@@ -119,13 +87,8 @@
     </div>
     <div class="horizontal-scroll-wrapper">
       <div class="scrollable-shop-list">
-        <app-round-shop-card
-          *ngFor="let item of filteredSearchResults"
-          [profile]="item"
-          [me]="me"
-          [promoVisible]="item.promo?.active"
-          class="shop-card"
-        ></app-round-shop-card>
+        <app-round-shop-card *ngFor="let item of filteredSearchResults" [shop]="item" [me]="me"
+          [promoVisible]="item.promo?.active" class="shop-card"></app-round-shop-card>
       </div>
     </div>
   </div>

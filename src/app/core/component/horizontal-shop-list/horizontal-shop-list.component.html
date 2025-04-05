@@ -7,14 +7,19 @@
   
     <div class="horizontal-scroll-wrapper">
       <div class="scrollable-shop-list drag-scroll" appDragScroll>
-        <app-round-shop-card
-          *ngFor="let shop of shops"
-          [profile]="shop"
-          [me]="me"
-          [promoVisible]="shop.promo?.active"
-          class="shop-card"
-        ></app-round-shop-card>
+        <ng-container *ngFor="let shop of shops">
+          <div class="shop-card-wrapper">
+            <!-- Carte affichée tout le temps -->
+            <app-round-shop-card
+              [shop]="shop"
+              [me]="me"
+              [promoVisible]="shop.promo?.active"
+              (loaded)="onShopLoaded(shop._id)"
+            ></app-round-shop-card>
+          </div>
+        </ng-container>
       </div>
     </div>
+    
   </div>
   

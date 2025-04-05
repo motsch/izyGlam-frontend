@@ -1,21 +1,20 @@
 <!--Nav start-->
 <nav class="navbar fixed-top" [class.darkHeader]="darkHeader">
   <div class="container" *ngIf="!sessionService.getCurrentUser()">
-    <a *ngIf="darkHeader" class="navbar-brand" [routerLink]="'/'"><img [src]="imgStorageUrl+'logo/'+logoLangue+'.png'" class="logo" alt="logo" /></a>
-    <a *ngIf="!darkHeader" class="navbar-brand" [routerLink]="'/'"><img [src]="imgStorageUrl+'logo/alt/'+logoLangue+'.png'" class="logo" alt="logo" /></a>
+    <a class="navbar-brand" [routerLink]="'/'"><img *ngIf="darkHeader" [src]="imgStorageUrl+'logo/'+'glam_logo.png'" class="logo" alt="logo" /><img *ngIf="!darkHeader" [src]="imgStorageUrl+'logo/'+'glam_logo2.png'" class="logo" alt="logo" /></a>
     <div>
       <ul>
         <li class=""></li>
         <div class="flex buttons-wrapper">
           <!-- Boutons visibles en grand écran -->
-          <button type="button" (click)="routerNavigate('/sign-in')" 
-                  class="btn btn-transparent btn-sign-in desktop-only color_glow_secondary"
+          <button type="button" (click)="routerNavigate('/sign-in')"
+                  class="btn desktop-only color-iziglam"
                   *ngIf="page !== 'connected'">
             {{'INTRO.CONNEXION' | translate}}
           </button>
         
           <button type="button" (click)="routerNavigate('/sign-up')" 
-                  class="btn btn-transparent btn-sign-up desktop-only" 
+                  class="btn desktop-only" 
                   [ngClass]="!darkHeader ? 'color_izyglam' : 'color_white'"
                   *ngIf="page !== 'connected'">
             {{'INTRO.REGISTRATION' | translate}}

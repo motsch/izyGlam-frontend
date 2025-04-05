@@ -33,6 +33,12 @@ import "core-js/es6/regexp";
 import "core-js/es6/map";
 import "core-js/es6/weak-map";
 import "core-js/es6/set";
+import { Buffer } from 'buffer';
+import process from 'process';
+
+(window as any).process = process;
+(window as any).global = window;
+global.Buffer = global.Buffer || require('buffer').Buffer;
 
 /**
  * If the application will be indexed by Google Search, the following is required.

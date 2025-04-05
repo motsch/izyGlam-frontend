@@ -24,4 +24,13 @@ export const environment = {
     BLUESKY_REDIRECT_URI: 'none',
     X_APP_ID: 'VOTRE_APP_ID_TWITTER',
     X_REDIRECT_URI: 'http://localhost:4200/x-login',
+    mqtt: {
+      hostname: 'api.izyglam.com',
+      port: 443,
+      path: '/mqtt',
+      protocol: 'wss',
+      username: 'fmotsch',
+      password: 'Fr@ncis2018!'
+    }  
+    
 };

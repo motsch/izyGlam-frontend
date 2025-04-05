@@ -9,14 +9,18 @@ h3 {
   padding: 10px;
   position: relative;
   overflow: hidden;
-  text-align: center;  /* Assure que le contenu est centré */
+  text-align: center;
+  /* Assure que le contenu est centré */
 }
 
 .image-container {
   position: relative;
-  width: 160px;   /* Ajustez selon vos besoins */
-  height: 160px;  /* Rendre la hauteur et la largeur égales pour garder une forme ronde */
-  margin: 0 auto; /* Centrer l'image dans la carte */
+  width: 160px;
+  /* Ajustez selon vos besoins */
+  height: 160px;
+  /* Rendre la hauteur et la largeur égales pour garder une forme ronde */
+  margin: 0 auto;
+  /* Centrer l'image dans la carte */
 }
 
 .main-image,
@@ -24,7 +28,8 @@ h3 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;  /* Assure que l'image est toujours ronde */
+  border-radius: 50%;
+  /* Assure que l'image est toujours ronde */
 }
 
 .overlay-image {
@@ -33,12 +38,14 @@ h3 {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;  /* Assure que l'image de superposition reste ronde */
+  border-radius: 50%;
+  /* Assure que l'image de superposition reste ronde */
 }
 
 .profile-card img {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 50%;  /* Applique une bordure arrondie */
+  border-radius: 50%;
+  /* Applique une bordure arrondie */
 }
 
 .profile-info {
@@ -92,6 +99,7 @@ h3 {
     border: none;
     font-size: 1.5em;
     color: #999;
+
     &:hover {
       color: #333;
     }
@@ -133,8 +141,89 @@ h3 {
     border-radius: 5px;
     padding: 10px 20px;
     font-weight: bold;
+
     &:hover {
       background-color: #5a6268;
     }
   }
+}
+
+
+
+.shop-skeleton-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 165px;
+  height: 165px; // hauteur réelle de ta carte
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f8cfdc 25%, #ffe1ec 50%, #f8cfdc 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shop-card-wrapper {
+  position: relative;
+  width: 160px; // adapte à ta largeur réelle
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.hidden-until-loaded {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.shop-card-wrapper app-round-shop-card {
+  display: block;
+  z-index: 2;
+  position: relative;
+}
+
+.shop-card-wrapper app-round-shop-card:not(.hidden-until-loaded) {
+  opacity: 1;
+}.image-wrapper {
+  position: relative;
+  width: 165px;
+  height: 165px;
+}
+
+.shop-skeleton-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f8cfdc 25%, #ffe1ec 50%, #f8cfdc 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease-in-out infinite;
+  z-index: 1;
+}
+
+.hidden-until-loaded {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.main-image {
+  position: relative;
+  z-index: 2;
+  width: 165px;
+  height: 165px;
+  object-fit: cover;
+  border-radius: 50%;
 }

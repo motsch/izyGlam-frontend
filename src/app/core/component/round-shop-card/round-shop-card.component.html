@@ -1,63 +1,48 @@
 <div class="profile-card">
-  <div class="image-container" (click)="toShopPage(profile._id)">
-    <img
-      class="main-image"
-      [src]="imgStorageUrl + 'uploads/images/' + profile.image"
-      alt="profile image"
-    />
-    <img
-      *ngIf="promoVisible"
-      class="overlay-image"
-      [src]="
-        imgStorageUrl +
-        'uploads/images/' +
-        'promo' +
-        profile.promo.type +
-        '.png'
-      "
-      alt="overlay image"
-    />
+  <div class="image-container" (click)="toShopPage(shop._id)">
+    <div class="image-wrapper">
+      <!-- Skeleton -->
+      <div class="shop-skeleton-card" *ngIf="!loadedShops[shop._id]"></div>
+
+      <!-- Image principale -->
+      <img *ngIf="shop.image" class="main-image" [src]="imgStorageUrl + 'uploads/images/' + shop.image"
+        (load)="onImageLoad(shop._id)" (error)="onImageError(shop._id)" alt="profile image"
+        [ngClass]="{ 'hidden-until-loaded': !loadedShops[shop._id] }" />
+
+      <!-- Overlay promo -->
+      <img *ngIf="promoVisible && loadedShops[shop._id]" class="overlay-image"
+        [src]="imgStorageUrl + 'uploads/images/promo' + shop.promo.type + '.png'" alt="overlay image" />
+    </div>
   </div>
+
+
   <div class="profile-info">
-    <h3 (click)="toShopPage(profile._id)">{{ profile.name }}</h3>
-    <p>{{ profile.trad | translate }}, {{ profile.ville }}</p>
+    <h3 (click)="toShopPage(shop._id)">{{ shop.name }}</h3>
+    <p>{{ shop.trad | translate }}, {{ shop.ville }}</p>
     <p (click)="openModal()">
-      <i class="star-icon"></i>{{ profile.note }} ({{ profile.reviews.length }}
+      <i class="star-icon"></i>{{ shop.note }} ({{ shop.reviews.length }}
       {{ "MAIN_PAGE.AVIS" | translate }})
     </p>
   </div>
   <!-- Coeur déplacé ici après les infos du profil -->
-  <i
-    *ngIf="sessionService.isLoggedIn()"
-    class="fa fa-heart heart-icon"
-    [ngClass]="{ favorite: profile.isFavorite }"
-    (click)="toggleFavorite()"
-  >
+  <i *ngIf="sessionService.isLoggedIn()" class="fa fa-heart heart-icon" [ngClass]="{ favorite: shop.isFavorite }"
+    (click)="toggleFavorite()">
   </i>
 </div>
 
 <!-- Modal -->
-<div
-  class="modal fade show"
-  tabindex="-1"
-  [style.display]="modalOpen ? 'block' : 'none'"
-  [ngClass]="{ show: modalOpen }"
->
+<div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
+  [ngClass]="{ show: modalOpen }">
   <div class="modal-dialog custom-modal-width">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Avis sur la boutique: {{ profile.name }}</h3>
-        <button
-          type="button"
-          class="btn-close"
-          aria-label="Close"
-          (click)="closeModal()"
-        ></button>
+        <h3 class="modal-title">Avis sur la boutique: {{ shop.name }}</h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
       </div>
 
       <div class="modal-body">
         <!-- Nom de la boutique -->
-        <div class="form-group" *ngFor="let review of profile.reviews">
+        <div class="form-group" *ngFor="let review of shop.reviews">
           <label for="reviewText">Commentaire:</label>
           <div>
             {{ review.comment }}

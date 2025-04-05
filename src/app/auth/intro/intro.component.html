@@ -6,11 +6,11 @@
       <div class="col-xl-5 col-12 home-right">
         <div class="mobile-slid">
 
-          <img *ngIf="!paramVideo" [src]="imgStorageUrl + 'illustration.png'" alt="illustration" class="img-fluid" />
+          <img *ngIf="!paramVideo" [src]="imgStorageUrl + 'intro.png'" alt="illustration" class="img-fluid" />
           
           <video #videoElementHow *ngIf="paramVideo" #videoElementIntro autoplay muted playsinline loop class="img-fluid" 
              style="border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)">
-             <source  [src]="aPIimgStorageUrl + '/uploads/images/front/illustration.mp4'" type="video/mp4" />
+             <source  [src]="aPIimgStorageUrl + '/uploads/images/front/intro.mp4'" type="video/mp4" />
              Votre navigateur ne supporte pas la balise vidéo.
           </video>
         </div>
