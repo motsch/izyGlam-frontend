@@ -25,7 +25,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   ]
 })
 export class IntroComponent implements OnInit {
-  @ViewChild('videoElementHow') videoElement!: ElementRef<HTMLVideoElement>;
+  @ViewChild('videoElementIntro') videoElement!: ElementRef<HTMLVideoElement>;
   paramVideo = true;
   search: any = {};
   control = new FormControl();
