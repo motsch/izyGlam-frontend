@@ -1,4 +1,12 @@
-import { Component, ElementRef, Input, OnChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  ViewChild,
+  AfterViewInit,
+  OnDestroy
+} from '@angular/core';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { MqttService } from 'ngx-mqtt';
 
@@ -7,177 +15,176 @@ import { MqttService } from 'ngx-mqtt';
   templateUrl: './horizontal-shop-list.component.html',
   styleUrls: ['./horizontal-shop-list.component.scss']
 })
-export class HorizontalShopListComponent implements OnChanges {
+export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   @Input() title: string = '';
   @Input() shops: any[] = [];
   @Input() me: any;
   @Input() pubIndexe: string = "1";
-  displayTimes: { [key: string]: number } = {}; // Stocker le temps d'affichage par pub
-  displayIntervals: { [key: string]: any } = {}; // Stocker les intervalles de temps pour chaque pub
 
-  @ViewChild('scrollContainerAds') scrollContainerAds!: ElementRef;
-  loadedShops: { [key: string]: boolean } = {};
+  @ViewChild('scrollContainerAds') scrollContainer!: ElementRef;
+
   advertisements: any[] = [];
   displayItems: any[] = [];
+  loadedShops: { [key: string]: boolean } = {};
 
-  constructor(private adService: AdvertisementService,
-      private mqttService: MqttService,) {}
+  displayTimes: { [key: string]: number } = {};
+  displayIntervals: { [key: string]: any } = {};
+  alreadySeen: { [key: string]: boolean } = {};
+
+  constructor(
+    private adService: AdvertisementService,
+    private mqttService: MqttService
+  ) {}
 
   ngOnChanges(): void {
     if (this.shops) {
       this.loadedShops = {};
-      for (const shop of this.shops) {
-        this.loadedShops[shop._id] = false;
-      }
-
+      this.shops.forEach(shop => (this.loadedShops[shop._id] = false));
       this.getAds();
     }
+  }
+
+  ngOnDestroy(): void {
+    // 🛑 À la destruction du composant : on envoie les temps d’affichage restants
+    Object.keys(this.displayIntervals).forEach(pubId => {
+      const timeSpent = this.displayTimes[pubId] || 0;
+      if (timeSpent > 0) {
+        this.sendDisplayTimeToBackend(pubId, timeSpent);
+      }
+      clearInterval(this.displayIntervals[pubId]);
+      delete this.displayIntervals[pubId];
+      delete this.displayTimes[pubId];
+    });
+  }
+
+  getAds() {
+    this.adService.getAdvertisements().subscribe(ads => {
+      console.log("📢 Publicités récupérées :", ads);
+
+      this.advertisements = this.balanceAds(
+        ads.filter(ad => new Date(ad.date_expiration) > new Date())
+      );
+      this.injectAdsIntoShops();
+    });
+  }
+
+  injectAdsIntoShops() {
+    const startIndex = parseInt(this.pubIndexe || '0', 10);
+    const interval = 5;
+    this.displayItems = [];
+    let adIndex = 0;
+
+    for (let i = 0; i < this.shops.length; i++) {
+      if ((i - startIndex) % interval === 0 && (i - startIndex) >= 0 && this.advertisements.length > 0) {
+        const adToShowIndex = (adIndex + startIndex) % this.advertisements.length;
+        this.displayItems.push({ type: 'ad', data: this.advertisements[adToShowIndex] });
+        adIndex++;
+      }
+      this.displayItems.push({ type: 'shop', data: this.shops[i] });
+    }
+
+    console.log('🧪 displayItems après injection :', this.displayItems);
+    
+  
+    setTimeout(() => {
+      console.log("🚀 Activation du tracking après affichage des pubs/shops.");
+      this.trackImpressions();
+    }, 500);
+  }
+
+  balanceAds(ads: any[]): any[] {
+    return ads.sort((a, b) => {
+      if (a.nombre_affichages_valides !== b.nombre_affichages_valides)
+        return a.nombre_affichages_valides - b.nombre_affichages_valides;
+      if (a.temps_affichage_total !== b.temps_affichage_total)
+        return a.temps_affichage_total - b.temps_affichage_total;
+      return b.taux_conversion - a.taux_conversion;
+    });
   }
 
   onShopLoaded(shopId: string) {
     this.loadedShops[shopId] = true;
   }
 
-  private loadAdvertisements() {
-    this.adService.getAdvertisements().subscribe((ads:any[]) => {
-      this.advertisements = ads.filter(ad => new Date(ad.date_expiration) > new Date());
-      this.injectAdsIntoShops();
-    });
-  }
-
-
-  getAds() {
-    this.adService.getAdvertisements().subscribe(ads => {
-      console.log("📢 Publicités récupérées :", ads);
-  
-      this.advertisements = this.balanceAds(ads.filter(ad => new Date(ad.date_expiration) > new Date()));
-      this.injectAdsIntoShops();
-  
-      setTimeout(() => {
-        console.log("🚀 Activation du tracking après affichage des pubs.");
-        this.trackImpressions();
-      }, 500);
-    });
-  }
-
-  balanceAds(ads: any[]): any[] {
-    return ads.sort((a, b) => {
-      // ✅ 1ère priorité : Trier par nombre d'affichages valides (moins d'affichages valides en premier)
-      if (a.nombre_affichages_valides !== b.nombre_affichages_valides) {
-        return a.nombre_affichages_valides - b.nombre_affichages_valides;
-      }
-      // ✅ 2ème priorité : Trier par temps total d'affichage (moins affiché en premier)
-      if (a.temps_affichage_total !== b.temps_affichage_total) {
-        return a.temps_affichage_total - b.temps_affichage_total;
-      }
-      // ✅ 3ème priorité : Trier par taux de conversion (on garde ceux qui performent bien)
-      return b.taux_conversion - a.taux_conversion;
-    });
-  }
-
-  
-
-  // Suivi des impressions avec Intersection Observer API
   trackImpressions() {
     console.log("🔍 Initialisation de l'observateur d'impressions...");
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const pubId = entry.target.getAttribute('data-pub-id');
-        const visibilityRatio = entry.intersectionRatio;
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          const el = entry.target as HTMLElement;
+          const pubId = el.getAttribute('data-pub-id');
+          const type = el.getAttribute('data-type');
+          const visibilityRatio = entry.intersectionRatio;
 
-        console.log(`👀 Élément détecté : ${pubId} - Visible : ${entry.isIntersecting} - Ratio: ${visibilityRatio}`);
-
-        if (entry.isIntersecting && pubId && visibilityRatio >= 0.7) {
-          this.incrementImpression(pubId);
-          this.startTrackingDisplayTime(pubId);
-        } else if (!entry.isIntersecting && pubId) {
-          this.stopTrackingDisplayTime(pubId);
-        }
-      });
-    }, { threshold: 0.7 });
+          if (pubId && entry.isIntersecting && visibilityRatio >= 0.7) {
+            // if (!this.alreadySeen[itemId]) {
+              this.alreadySeen[pubId] = true;
+              this.incrementImpression(pubId, type);
+              this.startTrackingDisplayTime(pubId, type);
+            // }
+          } else if (pubId) {
+            this.stopTrackingDisplayTime(pubId, type);
+          }
+        });
+      }, { threshold: [0.7] }
+    );
 
     setTimeout(() => {
-      const ads = this.scrollContainerAds?.nativeElement?.querySelectorAll('.pub-card');
-      if (!ads || ads.length === 0) {
-        console.log("❌ Aucune publicité détectée dans le DOM !");
+      const items = this.scrollContainer?.nativeElement?.querySelectorAll('[data-pub-id]');
+      if (!items || items.length === 0) {
+        console.log("❌ Aucune pub/shop détectée dans le DOM !");
       } else {
-        console.log(`✅ ${ads.length} publicités détectées pour le tracking.`);
-        ads.forEach((ad: any) => observer.observe(ad));
+        console.log(`✅ ${items.length} éléments détectés pour le tracking.`);
+        items.forEach((el: any) => observer.observe(el));
       }
-    }, 1000);
+    }, 500);
   }
 
-  // Incrémentation des impressions en base de données
-  incrementImpression(pubId: any) {
-    console.log(`📢 Tentative d'incrémentation d'impression pour pub ${pubId}`);
-    const pub = this.displayItems.find(p => p._id == pubId);
-    if (pub) {
-      pub.impressions++;
-      pub.taux_conversion = pub.impressions > 0 ? (pub.clics / pub.impressions) * 100 : 0;
-
-      console.log(`✅ Impression détectée pour pub ${pub._id}, envoi de la mise à jour...`);
-      this.trackImpression(pub._id)
-
-    } else {
-      console.log(`⚠️ Impossible de trouver la publicité avec ID: ${pubId}`);
-    }
-  }
-
-  trackImpression(pubId: string) {
-    const payload:any = {
-      pubId,
+  incrementImpression(id: string, type: string | null) {
+    console.log(`📢 Impression détectée pour ${type} ${id}`);
+    const payload = JSON.stringify({
+      id,
       timestamp: new Date().toISOString(),
-    };
-    this.mqttService.publish('pub/impression', payload);
+    });
+
+    if (type === 'shop') {
+      this.mqttService.publish('shop/impression', payload).subscribe();
+    } else if (type === 'pub') {
+      this.mqttService.publish('pub/impression', payload).subscribe();
+    }
   }
 
-  // ✅ Démarrer le suivi du temps d'affichage
-  startTrackingDisplayTime(pubId: string) {
-    if (!this.displayTimes[pubId]) {
-      this.displayTimes[pubId] = 0;
+  startTrackingDisplayTime(id: string, type: string | null) {
+    // if (type !== 'pub') return;
+    if (!this.displayTimes[id]) {
+      this.displayTimes[id] = 0;
     }
-    this.displayIntervals[pubId] = setInterval(() => {
-      this.displayTimes[pubId]++;
+    this.displayIntervals[id] = setInterval(() => {
+      this.displayTimes[id]++;
     }, 1000);
   }
 
-  // ✅ Arrêter le suivi du temps et envoyer les données
-  stopTrackingDisplayTime(pubId: string) {
-    if (this.displayIntervals[pubId]) {
-      clearInterval(this.displayIntervals[pubId]);
-      delete this.displayIntervals[pubId];
-      const timeSpent = this.displayTimes[pubId] || 0;
+  stopTrackingDisplayTime(id: string, type: string | null) {
+    // if (type !== 'pub') return;
+    if (this.displayIntervals[id]) {
+      console.log(`🛑 Fin de visibilité détectée pour ${type} ${id}`);
+      clearInterval(this.displayIntervals[id]);
+      delete this.displayIntervals[id];
+
+      const timeSpent = this.displayTimes[id] || 0;
       if (timeSpent > 0) {
-        this.sendDisplayTimeToBackend(pubId, timeSpent);
+        this.sendDisplayTimeToBackend(id, timeSpent);
       }
-      delete this.displayTimes[pubId];
+      delete this.displayTimes[id];
     }
   }
 
-
-  private injectAdsIntoShops() {
-    const startIndex = parseInt(this.pubIndexe || '1', 10);
-    const interval = 5;
-    let adIndex = 0;
-
-    this.displayItems = [];
-
-    for (let i = 0; i < this.shops.length; i++) {
-      if ((i - startIndex) % interval === 0 && (i - startIndex) >= 0 && adIndex < this.advertisements.length) {
-        this.displayItems.push({ type: 'ad', data: this.advertisements[adIndex] });
-        adIndex++;
-      }
-      this.displayItems.push({ type: 'shop', data: this.shops[i] });
-    }
-  }
-
-  // ✅ Envoyer le temps d'affichage au backend
   sendDisplayTimeToBackend(pubId: string, timeSpent: number) {
-    this.adService.updateAdDisplayTime(pubId, timeSpent).subscribe(
-      () => console.log(`✅ Temps d'affichage (${timeSpent}s) enregistré pour pub ${pubId}`),
-      err => console.error(`❌ Erreur lors de l'enregistrement du temps d'affichage :`, err)
-    );
+      this.adService.updateAdDisplayTime(pubId, timeSpent).subscribe(
+        () => console.log(`✅ Temps d'affichage (${timeSpent}s) enregistré pour pub ${pubId}`),
+        err => console.error(`❌ Erreur lors de l'enregistrement du temps d'affichage :`, err)
+      );
   }
 
   onAdClick(ad: any) {

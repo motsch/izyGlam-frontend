@@ -6,7 +6,13 @@
   <div class="horizontal-scroll-wrapper">
     <div #scrollContainerAds class="scrollable-shop-list drag-scroll" appDragScroll>
       <ng-container *ngFor="let item of displayItems">
-        <div class="shop-card-wrapper" *ngIf="item.type === 'shop'">
+        <!-- Shop -->
+        <div
+          class="shop-card-wrapper track-card"
+          *ngIf="item.type === 'shop'"
+          [attr.data-pub-id]="item.data._id"
+          data-type="shop"
+        >
           <app-round-shop-card
             [shop]="item.data"
             [me]="me"
@@ -15,7 +21,13 @@
           ></app-round-shop-card>
         </div>
 
-        <div class="shop-card-wrapper margin-right-50 margin-left-10" *ngIf="item.type === 'ad'">
+        <!-- Pub -->
+        <div
+          class="shop-card-wrapper margin-right-50 margin-left-10 pub-card track-card"
+          *ngIf="item.type === 'ad'"
+          [attr.data-pub-id]="item.data._id"
+          data-type="ad"
+        >
           <a [href]="item.data.lien" target="_blank">
             <img
               [src]="item.data.image"
