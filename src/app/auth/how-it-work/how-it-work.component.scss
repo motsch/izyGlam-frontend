@@ -34,6 +34,11 @@ button {
   font-size: 16px;
   font-weight: bold;
 }
+
+button:hover {
+  transform: scale(1.06);
+}
+
 img {
   border-radius: 20px; /* Vous pouvez ajuster cette valeur pour obtenir l'arrondi souhaité */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre portée pour l'effet de profondeur */

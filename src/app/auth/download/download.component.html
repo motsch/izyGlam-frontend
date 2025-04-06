@@ -6,7 +6,8 @@
          <div class="qr-card-content">
            <div class="qr-code">
              <div class="qr-text">
-               <div class="bold">{{ 'HOMEPAGE.DOWNLOADAPP1' | translate }} <img src="assets/images/logo/alt/fr.png" alt="logo" class="glow-logo"></div>
+              
+               <div class="bold">{{ 'HOMEPAGE.DOWNLOADAPP1' | translate }} <img [src]="imgStorageUrl+'logo/'+'glam_logo2.png'" alt="logo" class="glow-logo"></div>
                
              </div>
              <img [src]="imgStorageUrl + 'qr1.webp'" alt="QR Code for izyGlow App" class="">
@@ -25,7 +26,7 @@
          </div>
        </div>
        <div class="app-info">
-         <p><strong><span class="color_glow_secondary">+10,000</span> {{ "DOWNLOAD.USERS" | translate }} 💡</strong></p>
+         <p><strong><span class="color_glow_secondary">+500</span> {{ "DOWNLOAD.USERS" | translate }} 💡</strong></p>
          <p><strong><span class="color_glow_secondary">+50</span> {{ "DOWNLOAD.SOCIAL" | translate }} 🌍</strong></p>
          <p><strong><span class="color_glow_secondary">5★</span> {{ "DOWNLOAD.STORE" | translate }} 🌟</strong></p>
        </div>

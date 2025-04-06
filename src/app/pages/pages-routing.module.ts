@@ -21,7 +21,7 @@ import { GameComponent } from './game/game.component';
 const routes: Routes = [
     {
         path: 'main',
-        component: MainComponent
+        component: MainComponent, canActivate: [AuthGuard] 
     },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     {

@@ -11,6 +11,9 @@ h3 {
   overflow: hidden;
   text-align: center;
   /* Assure que le contenu est centré */
+  &:hover {
+    transform: scale(1.03);
+  }
 }
 
 .image-container {
@@ -194,7 +197,9 @@ h3 {
 
 .shop-card-wrapper app-round-shop-card:not(.hidden-until-loaded) {
   opacity: 1;
-}.image-wrapper {
+}
+
+.image-wrapper {
   position: relative;
   width: 165px;
   height: 165px;

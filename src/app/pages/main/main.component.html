@@ -55,19 +55,19 @@
 
   <!-- SECTION : OFFRES DU MOMENT -->
   <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Offres du moment'"
-    [shops]="promotedShops" [me]="me"></app-horizontal-shop-list>
+    [shops]="promotedShops" [me]="me" [pubIndexe]="'0'"></app-horizontal-shop-list>
 
   <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'À découvrir'"
-    [shops]="filteredItemsAdecouvrir" [me]="me"></app-horizontal-shop-list>
+    [shops]="filteredItemsAdecouvrir" [me]="me" [pubIndexe]="'1'"></app-horizontal-shop-list>
 
   <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Les plus appréciés'"
-    [shops]="filteredItemsApprecier" [me]="me"></app-horizontal-shop-list>
+    [shops]="filteredItemsApprecier" [me]="me" [pubIndexe]="'2'"></app-horizontal-shop-list>
 
   <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Les plans malins'"
-    [shops]="filteredItemsMalin" [me]="me"></app-horizontal-shop-list>
+    [shops]="filteredItemsMalin" [me]="me" [pubIndexe]="'3'"></app-horizontal-shop-list>
 
   <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Top10 de la semaine'"
-    [shops]="filteredItemsTop10" [me]="me"></app-horizontal-shop-list>
+    [shops]="filteredItemsTop10" [me]="me" [pubIndexe]="'4'"></app-horizontal-shop-list>
 
   <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
   <span *ngIf="filterClicked">

@@ -1,25 +1,31 @@
-<!-- app-horizontal-shop-list.component.html -->
-
 <div class="horizontal-section-wrapper">
-    <div class="section-header">
-      <h3>{{ title }}</h3>
-    </div>
-  
-    <div class="horizontal-scroll-wrapper">
-      <div class="scrollable-shop-list drag-scroll" appDragScroll>
-        <ng-container *ngFor="let shop of shops">
-          <div class="shop-card-wrapper">
-            <!-- Carte affichée tout le temps -->
-            <app-round-shop-card
-              [shop]="shop"
-              [me]="me"
-              [promoVisible]="shop.promo?.active"
-              (loaded)="onShopLoaded(shop._id)"
-            ></app-round-shop-card>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-    
+  <div class="section-header">
+    <h3>{{ title }}</h3>
   </div>
-  
+
+  <div class="horizontal-scroll-wrapper">
+    <div #scrollContainerAds class="scrollable-shop-list drag-scroll" appDragScroll>
+      <ng-container *ngFor="let item of displayItems">
+        <div class="shop-card-wrapper" *ngIf="item.type === 'shop'">
+          <app-round-shop-card
+            [shop]="item.data"
+            [me]="me"
+            [promoVisible]="item.data.promo?.active"
+            (loaded)="onShopLoaded(item.data._id)"
+          ></app-round-shop-card>
+        </div>
+
+        <div class="shop-card-wrapper margin-right-50 margin-left-10" *ngIf="item.type === 'ad'">
+          <a [href]="item.data.lien" target="_blank">
+            <img
+              [src]="item.data.image"
+              alt="Publicité"
+              class="shop-ad-banner"
+              (click)="onAdClick(item.data)"
+            />
+          </a>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

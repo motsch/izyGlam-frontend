@@ -15,7 +15,7 @@ import { XLoginComponent } from './x-login/x-login.component';
 import { ThreadLoginComponent } from './thread-login/thread-login.component';
 
 const routes: Routes = [
-    { path: 'home', component: HomeComponent },
+    { path: 'home', component: HomeComponent, canActivate: [GuestGuard] },
     { path: 'sign-in', component: SignInComponent, canActivate: [GuestGuard] },
     { path: 'sign-up', component: SignUpComponent, canActivate: [GuestGuard] },
     { path: 'meta-login', component: MetaLoginComponent, canActivate: [GuestGuard] },

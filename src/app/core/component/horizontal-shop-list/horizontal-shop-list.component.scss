@@ -140,6 +140,20 @@
   display: block;
   animation: fadeIn 0.4s ease-in-out;
 }
+.shop-ad-banner {
+  width: 200px;
+  height: 250px;
+  border-radius: 20px;
+  margin: 15px;
+  margin-right: 30px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.03);
+  }
+}
 
 @keyframes fadeIn {
   from {

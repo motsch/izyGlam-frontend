@@ -5,15 +5,16 @@
       <!-- IMAGE EN PREMIER (PC: à droite grâce à l’ordre visuel) -->
       <div class="col-xl-5 col-12 home-right">
         <div class="mobile-slid">
-
           <img *ngIf="!paramVideo" [src]="imgStorageUrl + 'intro.png'" alt="illustration" class="img-fluid" />
-          
-          <video #videoElementHow *ngIf="paramVideo" #videoElementIntro autoplay muted playsinline loop class="img-fluid" 
-             style="border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)">
-             <source  [src]="aPIimgStorageUrl + '/uploads/images/front/intro.mp4'" type="video/mp4" />
-             Votre navigateur ne supporte pas la balise vidéo.
-          </video>
+        
+          <div *ngIf="paramVideo" class="video-wrapper">
+            <video autoplay muted playsinline loop>
+              <source [src]="aPIimgStorageUrl + '/uploads/images/front/intro.mp4'" type="video/mp4" />
+              Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+          </div>
         </div>
+        
       </div>
 
       <!-- TEXTE RESPONSIVE (DUPLIQUÉ POUR MOBILE) -->

@@ -2,7 +2,12 @@
   margin-top: 50px;
   margin-bottom: 50px;
   padding: 20px;
-  background: linear-gradient(135deg, #00274d, #0056a6);
+  background:  linear-gradient(
+    to right,
+    #ec9793 0%,
+    #e5c4c2 100%
+  );
+  // background: linear-gradient(135deg, #00274d, #0056a6);
   text-align: center;
 
   h3 {
@@ -59,7 +64,7 @@
         height: 50px;
         border-radius: 50%;
         object-fit: cover;
-        border: 2px solid #0056a6;
+        border: 2px solid #BE80FF;
       }
 
       span {

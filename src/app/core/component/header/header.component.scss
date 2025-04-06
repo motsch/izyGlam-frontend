@@ -48,13 +48,19 @@ nav {
   width: auto;
 }
 
+.logo:hover {
+  transform: scale(1.035);
+}
+
 .menuBurger {
   width: 20px;
   height: 15px;
   margin-top: 0px;
   margin-left: 15px;
 }
-
+.menuBurger:hover {
+  transform: scale(1.1);
+}
 .cart {
   width: 20px;
   height: 20px;
@@ -76,7 +82,7 @@ nav {
 
 .color_white {
   background-color: white;
-  color: #A43A4A;
+  color: #BE80FF;
 }
 
 
@@ -133,6 +139,10 @@ nav {
   cursor: pointer;
 }
 
+.btn:hover {
+  transform: scale(1.06);
+}
+
 .mobile-menu .btn:hover {
   background-color: #f2f2f2;
 }
@@ -149,6 +159,28 @@ nav {
 }
 
 
-.color-iziglam {
+.color-izyglam {
   color: #983A4C;
+}
+
+.color-izyglam2 {
+  color: #BE80FF;
+}
+
+.color-white {
+  color: #ffff;
+}
+
+.navbar-brand {
+  width: 250px; /* taille visible après rognage */
+  height: 60px;
+  overflow: hidden;
+  position: relative;
+}
+
+.navbar-brand video {
+  position: absolute;
+  top: -10px;   /* rogne le haut */
+  left: -15px;   /* rogne la gauche */
+  height: 80px;
 }

@@ -83,6 +83,7 @@
 
         .search-button:hover {
           background-color: #A43A4A;
+          transform: scale(1.028);
         }
       }
 
@@ -137,4 +138,54 @@
 .hero-image video {
   max-width: 100%;
   height: auto;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* carré parfait */
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+
+  // format par défaut : paysage
+  video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-wrapper {
+    aspect-ratio: 1 / 1; // carré sur mobile
+    height: auto;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .mobile-slid {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -24,7 +24,8 @@
     "APPTITLE": "C'est plus simple avec les applications",
     "DOWNLOADAPP1": "Téléchargez l'application",
     "DOWNLOADAPP2": "Téléchargez l'application pour les professionnels de l'esthétique",
-    "SCANTODOWNLOAD": "Scannez pour télécharger"
+    "SCANTODOWNLOAD": "Scannez pour télécharger",
+    "SIGNUP": "Inscrivez-vous !"
   },
   "FOOTER": {
     "HOWITWORKS": "Fonctionnement des applications et des sites izyGlam",
@@ -115,10 +116,10 @@
     "SHOP_TO_CREATE": "Type de boutique à créer",
     "CANCEL": "Annuler",
     "CREATE": "Créer ma boutique",
-    "INFO1":"Vous êtes sur le point de supprimer votre boutique de",
-    "INFO2":"Cette action est irréversible",
-    "SURE":"Êtes-vous sûr de vouloir continuer",
-    "DELETE":"Supprimer"
+    "INFO1": "Vous êtes sur le point de supprimer votre boutique de",
+    "INFO2": "Cette action est irréversible",
+    "SURE": "Êtes-vous sûr de vouloir continuer",
+    "DELETE": "Supprimer"
   },
   "PROFILE": {
     "TITLE": "Informations de base",
@@ -490,8 +491,8 @@
     "RESERVATION": "réservations"
   },
   "FINANCE": {
-    "PROGRESS":"Évolution depuis M-1",
-    "PROGRESSION":"Progression",
+    "PROGRESS": "Évolution depuis M-1",
+    "PROGRESSION": "Progression",
     "TOTAL_GENERATED": "Total de chiffre généré",
     "CA": "Chiffre d'affaires",
     "COMMISSION_TAKEN": "Commission prélevée",
@@ -578,17 +579,17 @@
     "SAVE": "Enregistrer la boutique"
   },
   "AVIS": {
-    "TITLE": "CE QUE NOS UTILISATEURS DISENT",
-    "AVIS1": "izyGlow m’aide à optimiser mes publications et à toucher une audience plus large. Indispensable pour un geek comme moi !",
-    "AVIS2": "Grâce à izyGlow, mes posts sont toujours au top. Je gagne du temps et mes followers adorent !",
-    "AVIS3": "izyGlow m'a permis de simplifier ma communication digitale. À 59 ans, je peux enfin gérer mes réseaux sans stress !",
-    "AVIS4": "izyGlow m'aide à partager mon art avec le monde tout en me concentrant sur ma créativité.",
-    "AVIS5": "En tant que développeur, j'apprécie la simplicité et l'efficacité d'izyGlow. Un vrai gain de productivité !",
-    "AVIS6": "izyGlow est devenu un allié incontournable pour gérer efficacement la communication de ma PME. Un outil clair et puissant !"
+    "TITLE": "CE QUE DISENT NOS UTILISATEURS",
+    "AVIS1": "izyGlam a transformé ma routine beauté. Avant, je galérais à trouver une esthéticienne dispo. Maintenant, en deux clics sur l’appli, c’est réglé !",
+    "AVIS2": "J’ai eu un souci de réservation au début, mais le service client a été super réactif. Depuis, tout roule. Les pros sont top, et les massages à domicile, un vrai bonheur.",
+    "AVIS3": "À 59 ans, je ne suis pas très à l’aise avec les applis… Mais izyGlam est super simple d’utilisation. Je réserve mes soins depuis ma tablette, tranquille chez moi.",
+    "AVIS4": "J’utilise izyGlam pour mes shootings : maquillage et coiffure directement à la maison. Franchement, c’est une révolution. Seul petit bémol : j’aimerais plus de dispos le dimanche.",
+    "AVIS5": "En tant que dev, je trouve l'appli bien pensée. Interface fluide, service rapide, et surtout : plus besoin de courir en salon. IzyGlam, c’est le Uber de la beauté !",
+    "AVIS6": "izyGlam m’a sauvé la vie avant mon mariage ! Coiffeuse et maquilleuse au top. Petit bug sur la géoloc au départ, mais l’équipe a réglé ça vite. Bravo pour votre sérieux."
   },
   "DOWNLOAD": {
     "USERS": "utilisateurs satisfaits",
-    "SOCIAL": "réseaux sociaux automatisés",
+    "SOCIAL": "professionnels disponibles",
     "STORE": "sur App Store et Google Play"
   }
 }
