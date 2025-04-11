@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { MqttService } from '../../services/mqtt.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-horizontal-pub-list',
@@ -12,6 +13,7 @@ import { MqttService } from '../../services/mqtt.service';
 export class HorizontalPubListComponent implements OnInit {
   @Input() title: string = '';
   pubs: any[] = [];
+  imgStorageUrl: string = environment.APIimgStorageUrl;
   displayTimes: { [key: string]: number } = {}; // Stocker le temps d'affichage par pub
   @Input() me: any;
   displayIntervals: { [key: string]: any } = {}; // Stocker les intervalles de temps pour chaque pub

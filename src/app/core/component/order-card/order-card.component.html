@@ -1,0 +1,88 @@
+<div class="refined-order-card">
+  <!-- En-tête -->
+  <div class="order-header">
+    <div class="order-title">
+      <!-- Tu peux mettre un titre ici si besoin, ou laisser vide -->
+    </div>
+    <div class="order-status" [ngClass]="{
+        'finished': order.status === 'finished' || order.status === 'accepted',
+        'pending': order.status === 'pending',
+        'cancelled': order.status === 'cancelled'
+          || order.status === 'deleted'
+          || order.status === 'refused'
+          || order.status === 'no-show-pro'
+          || order.status === 'no-show-client'
+      }">
+      <span *ngIf="order.status === 'finished'">
+        ✅ Terminée
+      </span>
+      <span *ngIf="order.status === 'accepted'">
+        ✅ Accepté
+      </span>
+      <span *ngIf="order.status === 'pending'">
+        ⏳ En attente
+      </span>
+      <span *ngIf="order.status === 'cancelled'">
+        ❌ Annulée
+      </span>
+      <span *ngIf="order.status === 'deleted'">
+        ❌ Supprimée
+      </span>
+      <span *ngIf="order.status === 'refused'">
+        ❌ Refusée
+      </span>
+      <span *ngIf="order.status === 'no-show-pro'">
+        ❌ Prestataire absent
+      </span>
+      <span *ngIf="order.status === 'no-show-client'">
+        ❌ Client absent
+      </span>
+    </div>
+  </div>
+  
+  <!-- Corps : image + infos -->
+  <div class="order-body" (click)="goToShop(order)">
+    <div class="order-image-wrapper">
+      <!--<div *ngIf="!imageLoaded" class="fallback-image"></div>-->
+      <img *ngIf="order.image" [src]="imgStorageUrl + order.image" alt="Image de la prestation"
+        [class.loaded]="imageLoaded" />
+    </div>
+
+    <div class="order-details">
+      <h3>{{ order.establishmentName }}</h3>
+      <p class="product-name">{{ order.productName }}</p>
+      <p><span class="label">📍 Adresse :</span> {{ order.address }}</p>
+      <p><span class="label">🗓️ Date :</span> {{ order.orderDate }} - {{ order.orderTime }}</p>
+      <p><span class="label">💰 Total :</span> {{ order.price }}€</p>
+    </div>
+  </div>
+
+  <div class="actions-container">
+    <button class="delete-button" (click)="downloadInvoice(order)">
+      Facture
+    </button>
+    <button class="delete-button" (click)="deleteBooking(order)">Supprimer
+    </button>
+  </div>
+  <!-- Actions si pro (non selectionUser) -->
+
+
+  <!-- Code à afficher (user) -->
+  <div class="code-card" *ngIf="isWithinDisplayTime">
+    <div *ngIf="!order.generatedCode">
+      <button class="btn-secondary" (click)="generateCode(order)">Code de confirmation</button>
+    </div>
+    <div *ngIf="order.generatedCode">
+      <label>Code à donner au prestataire :</label>
+      <h2>{{ order.generatedCode }}</h2>
+    </div>
+  </div>
+
+
+  <!-- Boutons "absent" -->
+  <div class="absent-card" *ngIf="isAfterGracePeriod">
+    <button class="btn-tertiary" (click)="markPrestataireAbsent(order)">
+      {{ 'Prestataire absent' }}
+    </button>
+  </div>
+</div>

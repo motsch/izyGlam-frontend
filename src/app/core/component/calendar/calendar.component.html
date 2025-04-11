@@ -1,0 +1,58 @@
+<div class="orders-content">
+  <!-- Sélecteur de type de commande -->
+  <div class="order-type-selector">
+    <button [class.active]="selectedOrderType === 'upcoming'" (click)="selectedOrderType = 'upcoming'">📅 À venir</button>
+    <button [class.active]="selectedOrderType === 'past'" (click)="selectedOrderType = 'past'">✅ Passées</button>
+    <button [class.active]="selectedOrderType === 'cancelled'" (click)="selectedOrderType = 'cancelled'">❌ Annulées</button>
+  </div>
+
+  <!-- SECTION À VENIR -->
+  <div class="orders-section" *ngIf="selectedOrderType === 'upcoming'">
+    <div *ngIf="upcomingOrders.length === 0" class="empty-state">
+      <p>{{ "ORDERS.NO_UPCOMING" | translate }}</p>
+    </div>
+
+    <ng-container *ngFor="let order of upcomingOrders">
+      <app-order-card
+        *ngIf="order.status !== 'deleted'"
+        [order]="order"
+        [selectionUser]="selectionUser"
+        [imageLoaded]="imageLoaded[order._id]"
+      ></app-order-card>
+    </ng-container>
+  </div>
+
+  <!-- SECTION PASSÉES -->
+  <div class="orders-section" *ngIf="selectedOrderType === 'past'">
+    <div *ngIf="pastOrders.length === 0" class="empty-state">
+      <p>{{ "ORDERS.NO_PAST" | translate }}</p>
+    </div>
+
+    <ng-container *ngFor="let order of pastOrders">
+      <app-order-card
+        *ngIf="order.status !== 'deleted'"
+        [order]="order"
+        [selectionUser]="selectionUser"
+        [imageLoaded]="imageLoaded[order._id]"
+        (onDownloadInvoice)="downloadInvoice(order)"
+      ></app-order-card>
+    </ng-container>
+  </div>
+
+  <!-- SECTION ANNULÉES -->
+  <div class="orders-section" *ngIf="selectedOrderType === 'cancelled'">
+    <div *ngIf="cancelledOrders.length === 0" class="empty-state">
+      <p>Aucune commande annulée.</p>
+    </div>
+
+    <ng-container *ngFor="let order of cancelledOrders">
+      <app-order-card
+        [order]="order"
+        [selectionUser]="selectionUser"
+        [imageLoaded]="imageLoaded[order._id]"
+      ></app-order-card>
+    </ng-container>
+  </div>
+
+  <div style="height: 80px;"></div>
+</div>

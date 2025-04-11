@@ -8,7 +8,7 @@
     <div #scrollContainerAds class="scrollable-shop-list">
       <div *ngFor="let pub of pubs" class="pub-card" (click)="goTo(pub.lien)" [attr.data-pub-id]="pub._id">
         <div class="pub-image-wrapper">
-          <img class="pub-premium" [src]="pub.image" alt="{{ pub.trad }}" (load)="onImageLoad(pub._id)"
+          <img class="pub-premium" [src]="imgStorageUrl + 'uploads/images/pub/' + pub.image" alt="{{ pub.trad }}" (load)="onImageLoad(pub._id)"
             (error)="onImageError(pub._id)" [class.loaded]="loadedImages[pub._id]" />
           <div class="skeleton-loader" *ngIf="!loadedImages[pub._id]"></div>
         </div>

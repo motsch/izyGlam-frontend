@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { AdvertisementService } from '../../services/advertisement.service';
 import { MqttService } from 'ngx-mqtt';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-horizontal-shop-list',
@@ -20,6 +21,7 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   @Input() shops: any[] = [];
   @Input() me: any;
   @Input() pubIndexe: string = "1";
+  imgStorageUrl: string = environment.APIimgStorageUrl;
 
   @ViewChild('scrollContainerAds') scrollContainer!: ElementRef;
 
@@ -34,7 +36,7 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   constructor(
     private adService: AdvertisementService,
     private mqttService: MqttService
-  ) {}
+  ) { }
 
   ngOnChanges(): void {
     if (this.shops) {
@@ -84,8 +86,8 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
     }
 
     console.log('🧪 displayItems après injection :', this.displayItems);
-    
-  
+
+
     setTimeout(() => {
       console.log("🚀 Activation du tracking après affichage des pubs/shops.");
       this.trackImpressions();
@@ -119,9 +121,9 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
 
           if (pubId && entry.isIntersecting && visibilityRatio >= 0.7) {
             // if (!this.alreadySeen[itemId]) {
-              this.alreadySeen[pubId] = true;
-              this.incrementImpression(pubId, type);
-              this.startTrackingDisplayTime(pubId, type);
+            this.alreadySeen[pubId] = true;
+            this.incrementImpression(pubId, type);
+            this.startTrackingDisplayTime(pubId, type);
             // }
           } else if (pubId) {
             this.stopTrackingDisplayTime(pubId, type);
@@ -181,10 +183,10 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   }
 
   sendDisplayTimeToBackend(pubId: string, timeSpent: number) {
-      this.adService.updateAdDisplayTime(pubId, timeSpent).subscribe(
-        () => console.log(`✅ Temps d'affichage (${timeSpent}s) enregistré pour pub ${pubId}`),
-        err => console.error(`❌ Erreur lors de l'enregistrement du temps d'affichage :`, err)
-      );
+    this.adService.updateAdDisplayTime(pubId, timeSpent).subscribe(
+      () => console.log(`✅ Temps d'affichage (${timeSpent}s) enregistré pour pub ${pubId}`),
+      err => console.error(`❌ Erreur lors de l'enregistrement du temps d'affichage :`, err)
+    );
   }
 
   onAdClick(ad: any) {

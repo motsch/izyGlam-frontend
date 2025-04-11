@@ -11,6 +11,7 @@ import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
 import { MqttService } from 'src/app/core/services/mqtt.service';
+import { VilleService } from 'src/app/core/services/ville.service';
 
 @Component({
     selector: 'app-main',
@@ -40,8 +41,20 @@ export class MainComponent implements OnInit, AfterViewInit {
     userAddresses: any[] = [];
     selectedAddress: any = null;
 
+    allCitiesData: any[] = [];        // on stocke ici toutes les villes brutes
     searchControl = new FormControl('');
     categoryTrad: string = '';
+
+    availableArrondissements: string[] = []; // liste filtrée d'arrondissements (name) pour une ville
+
+
+    isAddingAddress = false;
+    newAddress: any = {};
+    selectedCountry = '';
+    selectedCity = '';
+    selectedArrondissement = '';
+    availableCountries = [];
+    availableCities: string[] = [];
 
 
     private searchSubject = new Subject<string>();
@@ -57,6 +70,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         private sharedService: SharedService,
         private shopService: ShopService,
         public sessionService: SessionService,
+        private villeService: VilleService,
         private categoryService: CategoryService,
         private userService: UserService,
         private router: Router,
@@ -76,6 +90,7 @@ export class MainComponent implements OnInit, AfterViewInit {
                 this.performSearch(query);
             });
         this.loadUserAndShops();
+        this.getCities();
     }
 
     onSearchChange(query: string) {
@@ -148,39 +163,39 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     private loadUserAndShops() {
         this.userService.getMe().subscribe({
-          next: (data: any) => {
-            this.me = data;
-            this.sharedService.updateMe(data);
-      
-            // Nettoyage localStorage
-            localStorage.removeItem('shopSelected');
-            localStorage.removeItem('productToBuy');
-            localStorage.removeItem('selectItemFromShop');
-            localStorage.removeItem('activeMenu');
-      
-            // ✅ Gestion des adresses
-            if (data.address && data.address.length > 0) {
-              this.userAddresses = data.address;
-      
-              // Prendre la première adresse si aucune n'est encore sélectionnée
-              if (!this.selectedAddress) {
-                this.selectedAddress = this.userAddresses[0];
-              }
-      
-              // Optionnel : liste des codes postaux dispos
-              this.availablePostalCodes = this.userAddresses.map((a: any) => a.code_postal);
-            }
-      
-            // Chargement des catégories & shops selon l'adresse sélectionnée
-            this.loadCategories();
-            this.loadShops();
-          },
-          error: (error: any) => {
-            console.log(error);
-          },
+            next: (data: any) => {
+                this.me = data;
+                this.sharedService.updateMe(data);
+
+                // Nettoyage localStorage
+                localStorage.removeItem('shopSelected');
+                localStorage.removeItem('productToBuy');
+                localStorage.removeItem('selectItemFromShop');
+                localStorage.removeItem('activeMenu');
+
+                // ✅ Gestion des adresses
+                if (data.address && data.address.length > 0) {
+                    this.userAddresses = data.address;
+
+                    // Prendre la première adresse si aucune n'est encore sélectionnée
+                    if (!this.selectedAddress) {
+                        this.selectedAddress = this.userAddresses[0];
+                    }
+
+                    // Optionnel : liste des codes postaux dispos
+                    this.availablePostalCodes = this.userAddresses.map((a: any) => a.code_postal);
+                }
+
+                // Chargement des catégories & shops selon l'adresse sélectionnée
+                this.loadCategories();
+                this.loadShops();
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
         });
-      }
-      
+    }
+
 
     private loadCategories() {
         this.categoryService.getAvailableCategories(undefined, undefined, [this.selectedPostalCode]).subscribe({
@@ -296,6 +311,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     closeAddressModal() {
         this.showAddressModal = false;
+        this.isAddingAddress = false;
     }
 
     selectPostalCode(address: any) {
@@ -307,5 +323,136 @@ export class MainComponent implements OnInit, AfterViewInit {
     }
     isSameAddress(a: any, b: any): boolean {
         return a?.street === b?.street && a?.city === b?.city && a?.code_postal === b?.code_postal;
+    }
+
+
+    toggleAddAddress() {
+        this.isAddingAddress = !this.isAddingAddress;
+    }
+
+
+    // 📌 Enregistre la nouvelle adresse
+    saveAddress() {
+        // Assigne city et country aux nouvelles valeurs sélectionnées
+        this.newAddress.city = this.selectedCity;
+        this.newAddress.country = this.selectedCountry;
+
+        console.log(this.newAddress)
+
+        // Vérifie que tous les champs nécessaires sont remplis
+        if (
+            this.newAddress.street &&
+            this.newAddress.code_postal &&
+            this.newAddress.city &&
+            this.newAddress.country
+        ) {
+            // Conserve une copie de la nouvelle adresse à ajouter
+            const addressToAdd = { ...this.newAddress };
+
+            // Optionnel : si tu tiens à mettre à jour un tableau local
+            this.userAddresses.push(addressToAdd);
+
+            // Appelle la méthode du service pour ajouter l'adresse
+            this.userService.addAddress(this.me._id, addressToAdd).subscribe(
+                (result: any) => {
+                    this.loadUser(); // recharge les infos de l'utilisateur
+                    console.log("Adresse ajoutée, utilisateur mis à jour :", result);
+                },
+                (error: any) => {
+                    console.log(error);
+                }
+            );
+
+            // Réinitialise le formulaire d'adresse
+            this.newAddress = { street: '', code_postal: '', city: '', country: '' };
+            this.isAddingAddress = false;
+        }
+    }
+
+
+
+
+
+    loadUser() {
+        this.me = this.userService.getMe();
+        this.sharedService.updateMe(this.me);
+    }
+
+
+
+
+
+
+
+
+    getCities() {
+        this.villeService.getAllLimted().subscribe((result: any) => {
+            console.log(result);
+            this.allCitiesData = result.data;
+            this.availableCountries = result.pays;  // Liste unique de pays
+
+        }, (error: any) => {
+            console.log(error);
+        })
+    }
+
+    // ----------------------------------------
+    // 1) Quand l’utilisateur choisit un pays
+    // ----------------------------------------
+    onCountryChange() {
+        // Filtrer les villes qui appartiennent à ce pays
+        const filteredByCountry = this.allCitiesData.filter(v => v.pays === this.selectedCountry);
+        // Extraire la liste unique de city
+        this.availableCities = [...new Set(filteredByCountry.map(v => v.city))];
+        // On réinitialise la sélection de ville & arrondissements
+        this.selectedCity = '';
+        this.availableArrondissements = [];
+        // Mettre à jour l'objet newAddress
+        this.newAddress.country = this.selectedCountry;
+    }
+
+    // -----------------------------------------
+    // 2) Quand l’utilisateur choisit une ville
+    // -----------------------------------------
+    onCityChange() {
+        // Filtre les documents par pays + city
+        const filteredByCity = this.allCitiesData.filter(
+            v => v.pays === this.selectedCountry && v.city === this.selectedCity
+        );
+        if (filteredByCity.length > 1) {
+            // Plusieurs arrondissements => on récupère juste la liste des name
+            this.availableArrondissements = [...new Set(filteredByCity.map(v => v.name))];
+            // On ne définit pas encore le code postal, 
+            // car l’utilisateur doit choisir l’arrondissement précis.
+            this.newAddress.code_postal = '';
+        } else if (filteredByCity.length === 1) {
+            // Un seul document => on récupère directement le code postal
+            const doc = filteredByCity[0];
+            this.availableArrondissements = [doc.name]; // si tu veux un tableau à un seul élément
+            this.selectedArrondissement = doc.name;     // on sélectionne l'arrondissement par défaut
+            this.newAddress.code_postal = doc.code_postal; // On met à jour le CP
+        }
+        // On met à jour la ville
+        this.newAddress.city = this.selectedCity;
+    }
+
+
+    // ------------------------------------------------
+    // 3) Quand l’utilisateur choisit un arrondissement
+    // ------------------------------------------------
+    onArrondissementChange() {
+        // Refiltrer pour trouver l’unique document
+        const doc = this.allCitiesData.find(
+            v =>
+                v.pays === this.selectedCountry &&
+                v.city === this.selectedCity &&
+                v.name === this.selectedArrondissement
+        );
+        if (doc) {
+            this.newAddress.code_postal = doc.code_postal;
+            // on peut aussi récupérer d’autres infos si besoin
+        }
+        // Mettre à jour l'objet newAddress
+        this.newAddress.arrondissement = this.selectedArrondissement;
     }
 }

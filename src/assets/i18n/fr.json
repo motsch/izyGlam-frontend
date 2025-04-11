@@ -358,7 +358,17 @@
     "YOUR_COMPANY": "Enregistrez votre entreprise"
   },
   "ORDERS": {
-    "TITLE": "Commandes passées",
+    "TITLE": "Commandes",
+    "UPCOMING_SECTION": "📅 À venir",
+    "NO_UPCOMING": "Vous n'avez aucune prestation planifiée.",
+    "PAST_SECTION": "✅ Passées",
+    "NO_PAST": "Vous n'avez aucune prestation réalisée.",
+    "ADDRESS": "Adresse",
+    "DATE": "Date",
+    "TOTAL": "Total",
+    "ITEMS": "articles",
+    "DELETE": "Supprimer",
+    "VISIT": "Visiter",
     "PRESTA_FOR": "Prestation pour",
     "AT": "à",
     "ORDER_AGAIN": "Commander à nouveau",
@@ -472,6 +482,7 @@
     "REINITIALIZE_PASSWORD": "Mot de passe par défaut pour réinitialisation",
     "CHANGE_PASSWORD": "Modifier le mot de passe"
   },
+
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Créditer le compte de l'employé",
     "AMOUNT": "Montant à créditer ",

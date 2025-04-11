@@ -20,6 +20,7 @@ import { ShopTemplateService } from '../../services/shop-template.service';
 })
 export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     @Input() myArticlesData: any[] = [];
+    @Input() myShopData: any = {};
     @Input() me: any = {};
     @Output() articleUpdated: EventEmitter<string> = new EventEmitter<string>();
     services: any[] = [];
@@ -74,6 +75,11 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                 'myArticlesData has been updated:',
                 this.myArticlesData
             );
+        } else if (
+            changes['myShopData'] &&
+            changes['myShopData'].currentValue
+        ) {
+            this.articleUpdated.emit();
         }
     }
 
@@ -137,15 +143,16 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
         }
     }
     openModal(service?: any): void {
+        console.log("this.myShopData : "+ JSON.stringify(this.myShopData))
         if (!service) {
             this.shopTemplateService
-                .getServiceTemplatesByCategory(this.myArticlesData[0].type)
+                .getServiceTemplatesByCategory(this.myShopData.type)
                 .subscribe({
                     next: (data: any[]) => {
                         console.log(data);
                         this.templateByType = data;
                         console.log(
-                            "Type de l'article : " + this.myArticlesData[0].type
+                            "Type de l'article : " + this.myShopData.type
                         );
                         console.log(
                             'TtemplateByType : ' +
@@ -154,7 +161,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
 
                         // Sélectionner un élément de manière aléatoire :
                         const filteredTemplates = this.templateByType.filter(
-                            (x: any) => x.type === this.myArticlesData[0].type
+                            (x: any) => x.type === this.myShopData.type
                         );
 
                         if (filteredTemplates.length > 0) {
@@ -303,6 +310,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
             }
         } else {
             if (this.selectedFile) {
+                this.modalService.shopId = this.myShopData._id;
                 // Création du nouvel article
                 this.productService.create(this.modalService).subscribe({
                     next: (data: any) => {

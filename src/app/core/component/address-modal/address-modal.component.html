@@ -14,79 +14,73 @@
           <p class="address">{{ address.street }}</p>
           <p class="city">{{ address.city }}, {{ address.code_postal }}</p>
         </div>
-        <mat-icon (click)="editAddress(address)" class="edit-icon"
-          >edit</mat-icon
-        >
+        <!--<mat-icon (click)="editAddress(address)" class="edit-icon">edit</mat-icon>-->
       </div>
     </span>
     <span *ngIf="step === 2">
       <div class="payment-selection">
         <!--<p>Veuillez entrer les détails de votre carte bancaire :</p>-->
         <form class="payment-form">
+
+          <!-- Pays -->
           <div class="form-group">
-            <label for="prenom">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
-            <input
-              [(ngModel)]="elem.street"
-              (ngModelChange)="showValidate()"
-              type="text"
-              id="prenom"
-              name="prenom"
-              placeholder="Jean"
-              required
-            />
+            <label for="street">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
+            <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
+              <option value="">-- Choisir un pays --</option>
+              <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
+            </select>
+          </div>
+
+          <!-- Ville -->
+          <div class="form-group">
+            <label for="street">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
+            <select [(ngModel)]="selectedCity" name="city" (change)="onCityChange()" required>
+              <option value="">-- Choisir une ville --</option>
+              <option *ngFor="let city of availableCities" [value]="city">{{ city }}</option>
+            </select>
+          </div>
+
+          <!-- Arrondissement -->
+          <div class="form-group" *ngIf="availableArrondissements.length > 1">
+            <label for="street">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
+            <select [(ngModel)]="selectedArrondissement"
+              name="arrondissement" (change)="onArrondissementChange()">
+              <option value="">-- Choisir un arrondissement --</option>
+              <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="street">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
+            <input [(ngModel)]="newAddress.street" (ngModelChange)="showValidate()" type="text" id="street" name="street"
+              placeholder="2 rue Olivier Métra" required />
+          </div>
+          <!--
+          <div class="form-group">
+            <label for="city">{{ "ADDRESS_MODAL.CITY" | translate }}</label>
+            <input [(ngModel)]="elem.city" (ngModelChange)="showValidate()" type="text" id="city" name="city"
+              placeholder="Paris" required />
           </div>
           <div class="form-group">
-            <label for="nom">{{ "ADDRESS_MODAL.CITY" | translate }}</label>
-            <input
-              [(ngModel)]="elem.city"
-              (ngModelChange)="showValidate()"
-              type="text"
-              id="nom"
-              name="nom"
-              placeholder="Dupont"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="email">{{ "ADDRESS_MODAL.CP" | translate }}</label>
-            <input
-              [(ngModel)]="elem.code_postal"
-              (ngModelChange)="showValidate()"
-              type="text"
-              id="email"
-              name="email"
-              placeholder="jean.dupont@gmail.com"
-              required
-            />
-          </div>
+            <label for="code_postal">{{ "ADDRESS_MODAL.CP" | translate }}</label>
+            <input [(ngModel)]="elem.code_postal" (ngModelChange)="showValidate()" type="text" id="code_postal"
+              name="code_postal" placeholder="75020" required />
+          </div>-->
         </form>
       </div>
     </span>
   </div>
 
   <div class="preference-time">
-    <button
-      *ngIf="step === 1"
-      (click)="newAddress()"
-      mat-button
-      class="schedule-button"
-    >
-    {{ "ADDRESS_MODAL.CREATE" | translate }}
+    <button *ngIf="step === 1" (click)="newAddresss()" mat-button class="schedule-button">
+      {{ "ADDRESS_MODAL.CREATE" | translate }}
     </button>
-    <button
-      *ngIf="step === 2"
-      (click)="stepMinus()"
-      mat-button
-      class="schedule-button"
-    >
-    {{ "ADDRESS_MODAL.BACK" | translate }}
+    <button *ngIf="step === 2" (click)="stepMinus()" mat-button class="schedule-button">
+      {{ "ADDRESS_MODAL.BACK" | translate }}
     </button>
-    <button
-      *ngIf="step === 2 && validate"
-      mat-button
-      class="schedule-button margin-left-10"
-    >
-    {{ "ADDRESS_MODAL.CHANGE" | translate }}
+    <button *ngIf="step === 2 && validate" (click)="saveAddress()" mat-button class="schedule-button margin-left-10">
+      {{ "ADDRESS_MODAL.CHANGE" | translate }}
     </button>
   </div>
 </mat-dialog-content>

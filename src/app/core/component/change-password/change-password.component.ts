@@ -4,6 +4,7 @@ import { SessionService } from '../../services/session.service';
 import { UserService } from '../../services/user.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { SeoService } from '../../services/seo.service';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
     selector: 'app-change-password',
@@ -23,24 +24,14 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     langues: any[] = [];
     selected: any = {};
 
-    languagesInfos: any[] = [
-        { code: 'fr', name: 'Français', flag: 'assets/flags/fr.png', trad: "LANGUE.FRANCAIS" }, // Français
-        { code: 'de', name: 'Allemand', flag: 'assets/flags/de.png', trad: "LANGUE.ALLEMAND" }, // Allemand
-        { code: 'en', name: 'Anglais', flag: 'assets/flags/gb.png', trad: "LANGUE.ANGLAIS" }, // Anglais
-        { code: 'es', name: 'Espagnol', flag: 'assets/flags/es.png', trad: "LANGUE.ESPAGNOL" }, // Espagnol
-        { code: 'fi', name: 'Finlandais', flag: 'assets/flags/fi.png', trad: "LANGUE.FINLANDAIS" }, // Finlandais
-        { code: 'it', name: 'Italien', flag: 'assets/flags/it.png', trad: "LANGUE.ITALIEN" }, // Italien
-        { code: 'nl', name: 'Néerlandais', flag: 'assets/flags/nl.png', trad: "LANGUE.NEERLANDAIS" }, // Néerlandais
-        { code: 'pl', name: 'Polonais', flag: 'assets/flags/pl.png', trad: "LANGUE.POLONAIS" }, // Polonais
-        { code: 'pt', name: 'Portugais', flag: 'assets/flags/pt.png', trad: "LANGUE.PORTUGAIS" }, // Portugais
-        { code: 'sv', name: 'Suédois', flag: 'assets/flags/sv.png', trad: "LANGUE.SUEDOIS" }, // Suédois
-        { code: 'da', name: 'Danois', flag: 'assets/flags/da.png', trad: "LANGUE.DANOIS" }, // Danois
-    ];
+    storedLangue: string = '';
+    languagesInfos: any[] = [];
 
     constructor(
         public translate: TranslateService,
         public sessionService: SessionService,
         private userService: UserService,
+        private languageService: LanguageService,
         private authenticationService: AuthenticationService,
         private seoService: SeoService
     ) {
@@ -77,29 +68,78 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-    
         // Si 'me' est déjà disponible
         this.updateUser();
+        this.getLanguages();
         this.langues = this.translate.getLangs().map(langCode => {
             return this.languagesInfos.find((x: any) => x.code === langCode) || {};
         });
-    
+
         let storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
-        
+
         if (storedLangue.length !== 2) {
             console.error('Stored Langue has an unexpected length:', storedLangue.length);
             return;
         }
-    
+        console.log(storedLangue)
         this.selected = this.languagesInfos.find(x => x.code === storedLangue) || this.languagesInfos.find(x => x.code === 'fr');
-        
+
         if (!this.selected) {
             console.error('Language not found for code:', storedLangue);
         }
     }
+
+
+
+
+    loadLangues() {
+        this.languageService.getAll().subscribe(
+            (data: any[]) => {
+                this.langues = data.filter(lang => lang.active); // On garde uniquement les langues actives
+                if (this.langues.length === 1) {
+                    this.selected = this.langues[0]; // On sélectionne la seule langue disponible
+                }
+            },
+            (error: any) => {
+                console.error('❌ Erreur lors du chargement des langues', error);
+            }
+        );
+    }
+    getLanguages() {
+        this.languageService.getAllCleaned().subscribe((result: any[]) => {
+            this.languagesInfos = result.filter(lang => lang.active); // uniquement actives
     
+            // On récupère la langue stockée
+            const storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
     
+            // Filtrer les langues connues par ngx-translate ET actives dans la BDD
+            this.langues = this.translate.getLangs()
+                .map(code => this.languagesInfos.find(lang => lang.code === code))
+                .filter(lang => lang !== undefined);
     
+            // Déterminer la langue sélectionnée
+            if (this.langues.length === 1) {
+                this.selected = this.langues[0];
+            } else {
+                this.selected = this.langues.find(lang => lang.code === storedLangue)
+                    || this.languagesInfos.find(lang => lang.code === 'fr'); // fallback français
+            }
+    
+            // Appliquer la langue si retrouvée
+            if (this.selected) {
+                this.translate.use(this.selected.code);
+                this.sessionService.setLang(this.selected.code);
+                this.seoService.setLanguage(this.selected);
+            } else {
+                console.error('Language not found for code:', storedLangue);
+            }
+    
+        }, error => {
+            console.error('Erreur lors du chargement des langues', error);
+        });
+    }
+    
+
 
     isPasswordFormValid(): boolean {
         return (
@@ -138,7 +178,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
                                 if (
                                     dataUpdate.lastname === this.me.lastname &&
                                     dataUpdate.firstname ===
-                                        this.me.firstname &&
+                                    this.me.firstname &&
                                     dataUpdate.email === this.me.email &&
                                     dataUpdate.phone === this.me.phone
                                 ) {

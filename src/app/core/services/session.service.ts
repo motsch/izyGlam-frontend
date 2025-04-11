@@ -161,7 +161,7 @@ export class SessionService {
     setLang(langue: string) {
         this.langue = langue;
         localStorage.setItem('langue', JSON.stringify(langue));
-        location.reload();
+        // location.reload();
     }
 
     /**

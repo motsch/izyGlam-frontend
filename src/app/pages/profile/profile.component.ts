@@ -154,6 +154,7 @@ export class ProfileComponent implements OnInit {
         this.shopService.getById(shopId).subscribe({
             next: (shopData: any) => {
                 this.myShopData = shopData;
+                this.onArticleUpdated();
                 console.log('Shop mis à jour et rechargé :', this.myShopData);
             },
             error: (error: any) => {
@@ -204,6 +205,7 @@ export class ProfileComponent implements OnInit {
     }
 
     selectShop(type: any) {
+        this.myArticlesData = [];
         console.log(type);
         this.selected = type;
 

@@ -1,6 +1,7 @@
 <app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
 
 <!-- Sélecteur d'adresse -->
+<!-- Bouton principal d'adresse -->
 <div class="address-selector-wrapper margin-top-80">
   <button class="address-button" (click)="openAddressModal()">
     📍 {{ selectedPostalCode }} — Modifier l’adresse
@@ -13,20 +14,68 @@
     placeholder="🔍 Rechercher une boutique" class="search-bar" />
 </div>
 
-<!-- Modal de sélection d'adresse -->
+<!-- MODAL d'adresses -->
 <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
   <div class="modal-content address-modal" (click)="$event.stopPropagation()">
-    <h3 class="modal-title">Choisis une adresse</h3>
-    <ul class="address-list">
-      <li *ngFor="let address of userAddresses" (click)="selectPostalCode(address)"
-        [class.active]="isSameAddress(address, selectedAddress)">
-        📍 <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
-      </li>
 
+    <!-- Titre dynamique -->
+    <h3 class="modal-title">
+      {{ isAddingAddress ? 'Ajouter une nouvelle adresse' : 'Choisis une adresse' }}
+    </h3>
+
+    <!-- Liste des adresses si on n'ajoute pas -->
+    <ul class="address-list" *ngIf="!isAddingAddress">
+      <li *ngFor="let address of userAddresses" (click)="selectPostalCode(address)"
+          [class.active]="isSameAddress(address, selectedAddress)">
+        <span class="icon">{{ address.street === 'MAIN_PAGE.MA_POSITION' ? '📍' : '📌' }}</span>
+        <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
+      </li>
+      <li class="add-address-btn" (click)="toggleAddAddress()">
+        ➕ Ajouter une nouvelle adresse
+      </li>
     </ul>
-    <button class="close-btn">Fermer</button>
+
+    <!-- Formulaire d'ajout d'adresse -->
+    <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form">
+
+      <!-- Pays -->
+      <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
+        <option value="">-- Choisir un pays --</option>
+        <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
+      </select>
+    
+      <!-- Ville -->
+      <select [(ngModel)]="selectedCity" name="city" (change)="onCityChange()" required>
+        <option value="">-- Choisir une ville --</option>
+        <option *ngFor="let city of availableCities" [value]="city">{{ city }}</option>
+      </select>
+    
+      <!-- Arrondissement -->
+      <select *ngIf="availableArrondissements.length > 1"
+              [(ngModel)]="selectedArrondissement" name="arrondissement" (change)="onArrondissementChange()">
+        <option value="">-- Choisir un arrondissement --</option>
+        <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
+      </select>
+    
+      <!-- Code postal (readonly) -->
+      <input type="text" [(ngModel)]="newAddress.code_postal"
+             name="postalCode" placeholder="Code postal" readonly required />
+    
+      <!-- Rue -->
+      <input type="text" [(ngModel)]="newAddress.street"
+             name="street" placeholder="Rue" required />
+    
+      <!-- Boutons -->
+      <div class="form-buttons">
+        <button type="button" class="cancel-btn" (click)="toggleAddAddress()">Annuler</button>
+        <button type="submit" class="save-btn" (click)="saveAddress()">Enregistrer</button>
+      </div>
+    </form>
+    
+    <button (click)="closeAddressModal()" class="close-btn">Fermer</button>
   </div>
 </div>
+
 
 
 <!-- Conteneur principal -->

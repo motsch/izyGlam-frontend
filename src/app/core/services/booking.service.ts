@@ -86,4 +86,14 @@ export class BookingService {
   updateBookingStatus(bookingId: string, status: string): Observable<any> {
     return this.http.patch<any>(`${environment.apiUrl}booking-update-status/${bookingId}`, { status });
   }
+
+  /**
+   * Confirmer le code d'une booking
+   * @param bookingId (ID de la booking)
+   * @param code (code à vérifier)
+   * @returns Observable<{ confirmed: boolean }>
+   */
+  confirmBookingCode(bookingId: string, code: string): Observable<{ confirmed: boolean }> {
+      return this.http.post<{ confirmed: boolean }>(`${environment.apiUrl}bookings-confirm-code`, { bookingId, code });
+  }
 }

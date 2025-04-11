@@ -1,186 +1,145 @@
-.example-full-width {
-  width: 100%;
-}
-
 .modal-content {
-  padding: 0; /* Remove padding to match izyGlam style */
-  width: 400px; /* Set fixed width to match izyGlam modal */
-  border-radius: 8px; /* Add border-radius to match izyGlam modal */
+  padding: 0;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 24px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .modal-title {
   font-weight: bold;
-  color: #3a3a3a;
-  padding: 16px 24px 8px 24px;
+  color: #ff4081;
+  font-size: 20px;
+  text-align: center;
+  padding: 24px 16px 8px 16px;
   margin: 0;
-  border-bottom: 1px solid #eee;
-  display: flex;
-  justify-content: space-between; /* Align title and close button */
-  align-items: center;
 }
 
 .close-button {
-  border: none;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #aaa;
   background: transparent;
+  border: none;
   cursor: pointer;
-  color: #000;
 }
 
 .close-button mat-icon {
   font-size: 24px;
 }
 
-.section-title {
-  font-weight: bold;
-  color: #3a3a3a;
-  padding: 16px 24px 8px 24px;
-  margin: 0;
-  border-bottom: 1px solid #eee;
-}
-
-.search-container {
-  padding: 16px 24px;
-  border-bottom: 1px solid #eee;
-}
-
-.custom-form-field {
-  width: 100%;
-  border-radius: 24px; /* Adjust the border-radius */
-  background: #f5f5f5; /* Light gray background */
-  padding: 8px 16px; /* Add padding to match the input field style */
-  display: flex;
-  align-items: center;
-  box-sizing: border-box; /* Ensure padding is inside the element */
-}
-
-.custom-form-field mat-icon {
-  color: #000;
-  margin-right: 8px; /* Adjust icon margin */
-}
-
-.custom-input {
-  width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
-  padding-left: 8px;
-  font-size: 16px;
-  color: #2e2e2e;
-  box-sizing: border-box; /* Ensure padding is inside the element */
-}
-
 .address-list {
-  padding: 0 24px;
+  padding: 0;
   margin: 0;
-  max-height: 300px; /* Adjust the height as necessary */
-  overflow-y: scroll; /* Allow scrolling if content exceeds max height */
-  scrollbar-width: none; /* Firefox */
-}
-
-.address-list::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .address-item {
   display: flex;
   align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
+  padding: 16px;
+  margin: 8px 16px;
+  background-color: #f8f8f8;
+  border-radius: 16px;
+  transition: background-color 0.3s;
+  cursor: pointer;
 }
 
-.address-item:last-child {
-  border-bottom: none;
+.address-item:hover {
+  background-color: #f0f0f0;
 }
 
 .location-icon {
   margin-right: 16px;
-  color: #b23a48;
+  color: #ff4081;
 }
 
 .address-info {
   flex-grow: 1;
-  width: 90%;
 }
 
 .address {
   margin: 0;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 15px;
   color: #2e2e2e;
 }
 
 .city {
   margin: 0;
-  color: #6e6e6e;
+  font-size: 13px;
+  color: #888;
 }
 
 .edit-icon {
+  color: #c2185b;
   cursor: pointer;
-  color: #b23a48;
 }
 
 .preference-time {
   display: flex;
-  align-items: center;
-  padding: 16px 24px;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
   border-top: 1px solid #eee;
 }
 
-.preference-time mat-icon {
-  margin-right: 16px;
-  color: #b23a48;
+button.schedule-button {
+  padding: 10px 16px;
+  border-radius: 24px;
+  background-color: white;
+  border: 1px solid #ff4081;
+  color: #ff4081;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
 }
 
-.preference-time p {
-  margin: 0;
-  flex-grow: 1;
-  color: #2e2e2e;
-}
-
-.schedule-button {
-  color: #b23a48;
+button.schedule-button:hover {
+  background-color: #ff4081;
+  color: white;
 }
 
 .modal-actions {
-  justify-content: flex-end;
-  padding: 16px 24px;
-  border-top: 1px solid #eee;
+  justify-content: center;
+  padding: 16px;
 }
 
-.mat-dialog-container {
-  padding: 0; /* Remove padding to match the izyGlam modal */
-  border-radius: 50px; /* Add border-radius */
+button[mat-dialog-close] {
+  background-color: #e0e0e0;
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-weight: 500;
+  color: #333;
 }
 
-button {
-  border-radius: 20px;
-  background-color: #ededed;
-  width: 100px;
-}
-  
 .payment-selection {
-  margin-top: 15px;
+  padding: 16px;
 }
 
 .payment-form {
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
-  
 .form-group {
-  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-group label {
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-weight: 600;
   color: #333;
+  margin-bottom: 4px;
 }
 
 .form-group input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 10px 12px;
+  border-radius: 10px;
   border: 1px solid #ccc;
   font-size: 14px;
 }

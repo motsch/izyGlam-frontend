@@ -21,6 +21,7 @@ export class RoundShopCardComponent {
     isFavorite: boolean = false;
     modalOpen = false;
     constructor(private router: Router, private userService: UserService, public sessionService: SessionService) { }
+    
     // Méthode pour gérer le clic sur le coeur
     toggleFavorite(): void {
         if (!this.me.favoriteShops) {

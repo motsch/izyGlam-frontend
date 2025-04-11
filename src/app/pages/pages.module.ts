@@ -51,6 +51,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CreateCompanyInfoComponent } from '../core/component/create-company-info/create-company-info.component';
 import { CreationCompanyComponent } from './creation-company/creation-company.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Calendar } from '@fullcalendar/core';
 @NgModule({
     imports: [
         BrowserAnimationsModule,

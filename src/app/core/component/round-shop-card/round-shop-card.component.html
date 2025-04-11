@@ -10,8 +10,12 @@
         [ngClass]="{ 'hidden-until-loaded': !loadedShops[shop._id] }" />
 
       <!-- Overlay promo -->
-      <img *ngIf="promoVisible && loadedShops[shop._id]" class="overlay-image"
-        [src]="imgStorageUrl + 'uploads/images/promo' + shop.promo.type + '.png'" alt="overlay image" />
+      <img *ngIf="promoVisible && shop.promo?.active && shop.promo?.type"
+     class="overlay-image"
+     [src]="imgStorageUrl + 'uploads/images/promo' + shop.promo.type + '.png'"
+     alt="overlay image" />
+
+
     </div>
   </div>
 

@@ -14,27 +14,28 @@
               <p class="fw-bold text-secondary">{{ 'PAYEMENT.FOR_WHO' | translate }}</p>
               <div class="patient-selection bg-light rounded-4 p-3">
                 <div class="patient-info rounded-3 p-2 bg-white border">
-                  <input [(ngModel)]="bill.client" type="radio" name="address" [value]="me._id" />
+                  <input [(ngModel)]="bill.client" type="radio" name="client" [value]="me._id" />
                   <span class="avatar margin-left-10">{{ me.initials }}</span>
                   <span class="name">{{ me.firstname }} <span class="uppercase">{{ me.lastname }}</span></span>
                   <span class="you ms-2">(vous)</span>
                 </div>
+                <!--
                 <div class="add-relative mt-3">
                   <a (click)="openProchesModal()" class="text-primary"><i class="fa fa-user-plus"></i> {{ 'PAYEMENT.ADD_PROCHE' | translate }}</a>
                 </div>
-                <div class="address-selection mt-2">
-                  <label *ngFor="let proche of me.proches">
+                <div class="address-selection">
+                  <label *ngFor="let address of me.address; index as i">
                     <div class="d-flex align-items-center p-2 bg-white rounded-3 mb-2">
-                      <input [(ngModel)]="bill.client" type="radio" name="address" [value]="proche._id" />
-                      <span class="avatar margin-left-10">{{ proche.firstname?.charAt(0) }}{{ proche.lastname?.charAt(0) }}</span>
-                      <span class="name">{{ proche.firstname }} <span class="uppercase">{{ proche.lastname }}</span></span>
+                      <input [(ngModel)]="bill.address" type="radio" name="address" [value]="address._id" />
+                      <span class="address">Adresse {{ i + 1 }} : {{ address.street }}, {{ address.city }}</span>
                     </div>
                   </label>
                 </div>
+                -->
               </div>
             </div>
 
-            <div class="appointment-left" *ngIf="step === 2">
+            <div class="appointment-left" *ngIf="step === 1">
               <p class="fw-bold text-secondary">{{ 'PAYEMENT.WHERE' | translate }}</p>
               <p>{{ 'PAYEMENT.SELECT_ADDRESS' | translate }} :</p>
               <div class="address-selection">
@@ -50,7 +51,7 @@
               </div>
             </div>
 
-            <div class="appointment-left" *ngIf="step === 3">
+            <div class="appointment-left" *ngIf="step === 2">
               <h3 class="fw-bold text-secondary mb-3">{{ 'PAYEMENT.CARD_PAY' | translate }}</h3>
               <div class="payment-selection bg-light rounded-4 p-3">
                 <form class="payment-form">
@@ -109,10 +110,10 @@
           <button *ngIf="step > 1" class="btn btn-outline-secondary px-4 py-2" (click)="removeStep()">
             {{ 'PAYEMENT.RETOUR' | translate }}
           </button>
-          <button *ngIf="step < 3" (click)="addStep()" class="btn btn-primary px-4 py-2">
+          <button *ngIf="step < 2" (click)="addStep()" class="btn btn-primary px-4 py-2">
             {{ 'PAYEMENT.CONTINUER' | translate }}
           </button>
-          <button *ngIf="step === 3" (click)="validate()" class="btn btn-success px-4 py-2">
+          <button *ngIf="step === 2" (click)="validate()" class="btn btn-success px-4 py-2">
             {{ 'PAYEMENT.VALIDER' | translate }}
           </button>
         </div>

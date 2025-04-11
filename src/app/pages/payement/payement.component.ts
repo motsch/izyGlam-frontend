@@ -11,6 +11,9 @@ import { ProchesModalComponent } from 'src/app/core/component/proches-modal/proc
 import { environment } from 'src/environments/environment';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { BookingService } from 'src/app/core/services/booking.service';
+import { loadStripe } from '@stripe/stripe-js';
+import { FinancialService } from 'src/app/core/services/financial.service';
+import { StripeService } from 'src/app/core/services/stripe.service';
 
 @Component({
     selector: 'app-payement',
@@ -33,7 +36,13 @@ export class PayementComponent implements OnInit {
     itemToBuy2: any | null;
     adminSettings: any = {};
     meSex: string = 'Mme.';
+    adressePrincipale: any = {};
+    stripeCustomerID: string | undefined;
+    private stripePromise: Promise<any> | undefined;
+    userId: string | undefined;
+    defaultCard: any = null;
     prestationDateForBill: string | undefined;
+    cards: any[] = []; // Liste des cartes de l'utilisateur
     constructor(
         private router: Router,
         private datePipe: DatePipe,
@@ -43,7 +52,9 @@ export class PayementComponent implements OnInit {
         private userService: UserService,
         public dialog: MatDialog,
         private adminService: AdminService,
-        private bookingService: BookingService
+        private bookingService: BookingService,
+        private financialService: FinancialService,
+        private stripeService: StripeService,
     ) { }
 
     ngOnInit(): void {
@@ -75,21 +86,26 @@ export class PayementComponent implements OnInit {
         // this.shop._id = this.itemToBuy.shopId;
         this.shopService
             .getById(this.itemToBuy.shopId)
-            .subscribe((data: any) => {
-                console.log(data);
-                this.shop = data;
-                this.userService.getMe().subscribe((data3: any) => {
-                    console.log(data3);
-                    if (data3.sex === 'male') {
+            .subscribe((shop: any) => {
+                console.log(shop);
+                this.shop = shop;
+
+                this.userService.getMe().subscribe(async (user: any) => {
+                    console.log(user);
+
+                    if (user.sex === 'male') {
                         this.meSex = 'M.';
                     }
-                    this.me = data3;
+                    this.stripeCustomerID = user.customerId;
+                    this.userId = user._id;
+                    this.me = user;
                     this.me.initials =
-                        data3.firstname.charAt(0) + data3.lastname.charAt(0);
+                        user.firstname.charAt(0) + user.lastname.charAt(0);
                     if (!this.bill) {
                         this.bill = {};
                     }
-                    this.bill.client = this.me._id;
+                    this.bill.image = this.itemToBuy2.image,
+                        this.bill.client = this.me._id;
                     let addressTemp = this.me.address.find((x: any) => {
                         return x.main === true;
                     });
@@ -97,8 +113,37 @@ export class PayementComponent implements OnInit {
                     this.bill.address = addressTemp
                         ? addressTemp._id
                         : this.me.address[0]._id;
+
+
+                    this.adressePrincipale = addressTemp
+                        ? addressTemp
+                        : this.me.address[0];
+
+                    // Chargez Stripe dès le démarrage du composant
+                    this.stripePromise = loadStripe(environment.stripePublicKey);
+                    if (!this.stripePromise) {
+                        throw new Error('Clé publique Stripe manquante ou invalide.');
+                    }
+
+                    // Récupérez l'utilisateur courant depuis votre backend
+                    if (!this.userId) {
+                        throw new Error('Aucun userId trouvé. Veuillez vous connecter.');
+                    }
+
+                    if (!this.stripeCustomerID) {
+                        console.warn('Aucun customerId trouvé. Les cartes ne peuvent pas être chargées.');
+                    } else {
+                        // Chargez les cartes existantes avec le customerId
+                        await this.loadCards();
+                    }
                 });
             });
+
+
+
+
+        /** STRIPE **/
+
         // console.log((this.itemToBuy2));
         let dateBrut: any = localStorage.getItem("selectItemFromShop");
         if (dateBrut) {
@@ -113,6 +158,30 @@ export class PayementComponent implements OnInit {
                 user: this.me,
             },
         });
+    }
+    /**
+   * Charge la liste des cartes depuis le serveur.
+   */
+    async loadCards(): Promise<void> {
+        try {
+            console.log('Chargement des cartes...');
+            const response = await fetch(`${environment.apiUrl}stripe/get-cards?customerId=${this.stripeCustomerID}`);
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                throw new Error(`Échec du chargement des cartes : ${errorMessage}`);
+            }
+
+            const data = await response.json();
+            this.cards = data.cards || [];
+
+            // Filtrer la carte par défaut (isDefault: true)
+            this.defaultCard = this.cards.find((card: any) => card.isDefault === true) || null;
+
+            console.log('Carte par défaut chargée :', this.defaultCard);
+        } catch (error) {
+            console.error('Erreur lors du chargement des cartes :', error);
+            alert('Une erreur est survenue lors du chargement des cartes.');
+        }
     }
 
     openAddressModal() {
@@ -138,85 +207,150 @@ export class PayementComponent implements OnInit {
         console.log(this.step);
     }
 
+    // Charger Stripe.js dynamiquement
+    private loadStripe(publicKey: string): Promise<any> {
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://js.stripe.com/v3/';
+        script.onload = () => {
+          resolve((window as any).Stripe(publicKey));
+        };
+        script.onerror = () => {
+          reject('Erreur lors du chargement de Stripe.js');
+        };
+        document.body.appendChild(script);
+      });
+    }
+  
     validate() {
-        console.log('Validate !');
-        console.log(this.bill);
-        this.bill.clientId = this.bill.client;
-        if (this.bill.client === this.me._id) {
-            this.bill.title =
-                this.meSex + ' ' + this.me.firstname + ' ' + this.me.lastname;
-            this.bill.phoneNumber = this.me.phone;
-        } else {
-            this.me.proches.find((x: any) => {
-                if (x._id === this.bill.client) {
-                    this.bill.title =
-                        this.meSex + ' ' + x.firstname + ' ' + x.lastname;
-                    this.bill.clientId = this.me._id;
-                    this.bill.phoneNumber = x.phone;
-                }
-            });
+      // Calcul du montant total en tenant compte de la commission et des frais de service, en cents
+      const amount = (parseFloat(this.price) +
+        parseFloat(this.price) * this.adminSettings.commissionRate +
+        this.adminSettings.serviceFee) * 100;
+      const currency = 'eur'; // Devise
+  
+      // Étape 1 : Créer une intention de paiement
+      this.stripeService.createPaymentIntent(amount, currency, this.stripeCustomerID!).subscribe(
+        async (response: any) => {
+          const { clientSecret } = response;
+  
+          // Vérifier si une carte par défaut est disponible
+          if (!this.defaultCard) {
+            console.error('Aucune carte par défaut disponible.');
+            alert('Veuillez ajouter ou sélectionner une carte pour effectuer le paiement.');
+            return;
+          }
+  
+          // Étape 2 : Confirmer le paiement avec Stripe.js
+          const stripe = await loadStripe(environment.stripePublicKey);
+          const { error, paymentIntent } = await stripe!.confirmCardPayment(clientSecret, {
+            payment_method: this.defaultCard.id,
+          });
+  
+          if (error) {
+            console.error('Erreur de paiement :', error.message);
+            alert('Le paiement a échoué.');
+          } else if (paymentIntent.status === 'succeeded') {
+            console.log('Paiement réussi !');
+            // On stocke l'ID du paymentIntent dans le bill pour l'enregistrer avec le booking
+            this.bill.paymentIntentId = paymentIntent.id;
+            // Étape 3 : Enregistrer la commande (booking) et les transactions initiales
+            this.saveBill();
+          }
+        },
+        (error: any) => {
+          console.error("Erreur lors de la création de l'intention de paiement :", error);
         }
-
-        this.me.address.find((x: any) => {
-            if (x._id === this.bill.address) {
-                this.bill.address =
-                    x.street +
-                    ', ' +
-                    x.code_postal +
-                    ', ' +
-                    x.city +
-                    ', ' +
-                    x.country;
+      );
+    }
+  
+    saveBill() {
+      console.log('saveBill !');
+      console.log(this.bill);
+      this.bill.clientId = this.bill.client;
+  
+      if (this.bill.client === this.me._id) {
+        this.bill.title = this.meSex + ' ' + this.me.firstname + ' ' + this.me.lastname;
+        this.bill.phoneNumber = this.me.phone;
+      } else {
+        this.me.proches.find((x: any) => {
+          if (x._id === this.bill.client) {
+            this.bill.title = this.meSex + ' ' + x.firstname + ' ' + x.lastname;
+            this.bill.clientId = this.me._id;
+            this.bill.phoneNumber = x.phone;
+          }
+        });
+      }
+  
+      this.me.address.find((x: any) => {
+        if (x._id === this.bill.address) {
+          this.bill.address = `${x.street}, ${x.code_postal}, ${x.city}, ${x.country}`;
+        }
+      });
+  
+      console.log("this.dateSlot : " + this.dateSlot);
+      console.log("this.startSlot : " + this.startSlot);
+      this.bill.start = this.convertToISO(this.startSlot);
+      console.log("START date : " + this.bill.start);
+      console.log(this.date);
+      console.log(this.startSlot);
+      this.bill.end = this.convertToISO(this.endSlot);
+      console.log("END date : " + this.bill.end);
+      this.bill.date = this.dateSlot;
+  
+      // Calcul du montant de base et attribution des commissions, TVA, etc.
+      this.bill.shopEarnings = this.price;
+      this.bill.price =
+        parseFloat(this.price) +
+        parseFloat(this.price) * this.adminSettings.commissionRate +
+        this.adminSettings.serviceFee;
+      this.bill.orderDate = new Date();
+      this.bill.status = 'pending';
+      this.bill.color = this.itemToBuy2.color;
+      this.bill.shopId = this.shop._id;
+      this.bill.establishmentName = this.shop.name;
+      this.bill.serviceId = this.itemToBuy2._id;
+      if (!this.bill.image) {
+        this.bill.image = "Pas d'image";
+      }
+      this.bill.productName = this.itemToBuy2.name;
+      this.bill.userProId = this.shop.idUser;
+      this.bill.commission = parseFloat(this.price) * this.adminSettings.commissionRate;
+      this.bill.tva = this.bill.price * this.adminSettings.taxRate;
+      this.bill.price = this.bill.price + this.bill.tva;
+  
+      console.log(JSON.stringify(this.itemToBuy2));
+      console.log(JSON.stringify(this.bill));
+  
+      // Création de la réservation (booking)
+      this.bookingService.create(this.bill).subscribe({
+        next: (bookingResponse: any) => {
+          console.log("Booking created:", bookingResponse);
+          // Une fois le booking créé, enregistrer le paiement initial via le FinancialService
+          this.financialService.createInitialPayment(bookingResponse).subscribe({
+            next: (financialResponse: any) => {
+              console.log("Initial payment recorded:", financialResponse);
+              // Rediriger ou notifier l'utilisateur
+              this.router.navigate(['home']);
+            },
+            error: (financialError: any) => {
+              console.error("Erreur lors de l'enregistrement du paiement initial :", financialError);
+              // Optionnel : notifier l'utilisateur et/ou annuler la commande
             }
-        });
-        // this.bill.userProId = this.
-        this.bill.start = this.convertToISO(this.startSlot);// : Date; // Date et heure de début du créneau réservé
-        // this.bill.end = this.date + this.startSlot + this.itemToBuy2.duration; // : Date; // Date et heure de fin du créneau réservé
-        console.log(this.date);
-        console.log(this.startSlot);
-        this.bill.end = this.convertToISO(this.endSlot);
-        this.bill.date = this.dateSlot;
-
-        this.bill.shopEarnings = this.price;
-        this.bill.price =
-            parseInt(this.price) +
-            parseInt(this.price) * this.adminSettings.commissionRate +
-            this.adminSettings.serviceFee;
-        this.bill.orderDate = new Date();
-        this.bill.status = 'pending';
-        this.bill.color = this.itemToBuy2.color;
-        this.bill.shopId = this.shop._id;
-        this.bill.establishmentName = this.shop.name;
-        this.bill.serviceId = this.itemToBuy2._id;
-        this.bill.productName = this.itemToBuy2.name;
-        this.bill.userProId = this.shop.idUser;
-        this.bill.commission =
-            parseInt(this.price) * this.adminSettings.commissionRate;
-        this.bill.tva = this.bill.price * this.adminSettings.taxRate;
-        this.bill.price = this.bill.price + this.bill.tva;
-        console.log(JSON.stringify(this.itemToBuy)); // = localStorage.getItem('selectItemFromShop');
-        // this.itemToBuy = JSON.parse(this.itemToBuy);
-        console.log(JSON.stringify(this.itemToBuy2)); // = localStorage.getItem('productToBuy');
-        // console.log(this.itemToBuy2);
-        console.log(JSON.stringify(this.bill));
-
-        this.bookingService.create(this.bill).subscribe({
-            next: (data: any) => {
-                console.log(data);
-                this.router.navigate(['main']);
-            },
-            error: (error: any) => {
-                console.log(error);
-            },
-        });
-        /*
-        userProId: string; // Référence à l'utilisateur qui fait la réservation
-        serviceId: string; // Référence au service réservé
-        shopId: string; // Référence à la boutique où le service est réservé
-        status: "pending" | "confirmed" | "cancelled"; // Statut de la réservation
-        price: string;
-        commission: string;
-        */
+          });
+        },
+        error: (error: any) => {
+          console.error("Erreur lors de la création de la réservation", error);
+        }
+      });
+    }
+  
+  
+    // Méthode pour calculer le montant
+    calculateCommission(): number {
+      const price = parseFloat(this.price);
+      const commissionRate = parseFloat(this.adminSettings.commissionRate);
+      return price * commissionRate;
     }
 
     goBackToMain() {

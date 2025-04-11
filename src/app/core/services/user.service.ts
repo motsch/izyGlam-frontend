@@ -46,6 +46,14 @@ export class UserService {
         return this.http.get<any>(environment.apiUrl + 'me');
     }
 
+    
+    // Ajoute une adresse pour un utilisateur donné
+    addAddress(userId: string, address: any) {
+        const url = environment.apiUrl + 'users/' + userId + '/address';
+        // Utilise PATCH pour une mise à jour partielle
+        return this.http.patch<any>(url, { address });
+    }
+    
     /**
      * Verifie le mail du user
      * @param user (email et password)

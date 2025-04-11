@@ -30,7 +30,8 @@
         >
           <a [href]="item.data.lien" target="_blank">
             <img
-              [src]="item.data.image"
+            [src]="imgStorageUrl + 'uploads/images/pub/' + item.data.image"
+              
               alt="Publicité"
               class="shop-ad-banner"
               (click)="onAdClick(item.data)"

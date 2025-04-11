@@ -77,6 +77,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HorizontalShopListComponent } from './component/horizontal-shop-list/horizontal-shop-list.component';
 import { HorizontalPubListComponent } from './component/horizontal-pub-list/horizontal-pub-list.component';
+import { CalendarComponent } from './component/calendar/calendar.component';
+import { OrderCardComponent } from './component/order-card/order-card.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -150,6 +152,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ChangePasswordComponent,
         ConfidentialPolicyComponent,
         DashboardComponent,
+        CalendarComponent,
         ProfileInformationsComponent,
         FinanceComponent,
         AdminComponent,
@@ -182,9 +185,11 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AdminMessagerieComponent,
         HorizontalShopListComponent,
         HorizontalPubListComponent,
+        OrderCardComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
+        CalendarComponent,
         PageNotFoundComponent,
         HeaderComponent,
         ShopManagementComponent,
@@ -224,6 +229,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AdminMessagerieComponent,
         HorizontalShopListComponent,
         HorizontalPubListComponent,
+        OrderCardComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })
