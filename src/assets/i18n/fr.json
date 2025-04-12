@@ -112,7 +112,7 @@
     "ADMIN": "Administration générale",
     "CALENDAR": "Agenda",
     "SELECT_SALON": "Sélectionnez un salon",
-    "NEW_SALON": "Sélectionnez un salon",
+    "NEW_SALON": "Créer un salon",
     "SHOP_TO_CREATE": "Type de boutique à créer",
     "CANCEL": "Annuler",
     "CREATE": "Créer ma boutique",
@@ -235,7 +235,8 @@
   "CREATION_SHOP": {
     "ALREDAY_SHOP": "Vous avez déjà un compte partenaire ou d'entreprise !",
     "NOT_CONNECTED": "Veuillez-vous connecter pour enregistrer une boutique !",
-    "TITLE": "Lancez-vous",
+    "TITLE": "Lancez-vous !",
+    "TITLE2": "Crééons une nouvelle boutique !",
     "NAME": "Nom de votre entreprise",
     "ADDRESS": "Adresse de votre entreprise",
     "STREET": "Rue",

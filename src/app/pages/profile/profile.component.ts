@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 import { ShopTemplateService } from 'src/app/core/services/shop-template.service';
 import { forkJoin } from 'rxjs';
 import { ChatModalComponent } from 'src/app/core/component/chat-modal/chat-modal.component';
+import { CreateShopModalComponent } from 'src/app/core/component/create-shop-modal/create-shop-modal.component';
+import { CreateShopComponent } from 'src/app/core/component/create-shop/create-shop.component';
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -130,6 +132,19 @@ export class ProfileComponent implements OnInit {
             position: { bottom: '20px', right: '20px' },
             panelClass: 'custom-modalbox',
         });
+    }
+    
+    openCreateShopModal() {
+      const dialogRef = this.dialog.open(CreateShopComponent, {
+        width: '600px',
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          console.log('Résultat retourné :', result);
+          // Recharge tes shops ici si besoin
+        }
+      });
     }
 
     onArticleUpdated() {
@@ -273,12 +288,7 @@ export class ProfileComponent implements OnInit {
             },
         });
     }
-
-    openModal(): void {
-        console.log('OPEN MODAL');
-        this.modalOpen = true;
-    }
-
+    
     closeModal(): void {
         this.modalOpen = false;
     }

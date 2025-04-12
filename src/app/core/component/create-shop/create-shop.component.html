@@ -1,102 +1,78 @@
 <div class="main-section">
   <div class="container custom-container">
     <div class="row">
-      <div class="col-md-6 hero-image">
-        <img
-          [src]="'/assets/images/conseil.png'"
-          alt="Travaillez pour des particuliers"
-        />
-      </div>
-      <div class="col-md-6 content right-side margin-top-50">
+      <div class="col-md-12 content right-side">
         <div class="form">
-          <h2>{{ "CREATION_SHOP.TITLE" | translate }}</h2>
-          <div *ngIf="alreadyProfessionnal" class="color_red margin-bottom-20">{{ "CREATION_SHOP.ALREDAY_SHOP" | translate }}</div>
-          <div *ngIf="!isUserConnected" class="color_red margin-bottom-20">{{ "CREATION_SHOP.NOT_CONNECTED" | translate }}</div>
-          
+          <h2 *ngIf="!alreadyProfessionnal">{{ "CREATION_SHOP.TITLE" | translate }}</h2>
+          <h2 *ngIf="alreadyProfessionnal">{{ "CREATION_SHOP.TITLE2" | translate }}</h2>
+          <div *ngIf="alreadyProfessionnal" class="color_red margin-bottom-20">{{ "CREATION_SHOP.ALREDAY_SHOP" |
+            translate }}</div>
+          <div *ngIf="!isUserConnected" class="color_red margin-bottom-20">{{ "CREATION_SHOP.NOT_CONNECTED" | translate
+            }}</div>
+
           <div *ngIf="!alreadyProfessionnal" class="margin-bottom-20"></div>
           <label for="establishment-name">{{
             "CREATION_SHOP.NAME" | translate
-          }}</label>
-          <input
-          [disabled]="alreadyProfessionnal || !isUserConnected"
-            type="text"
-            id="establishment-name"
-            name="establishment-name"
-            [(ngModel)]="newShopUser.name"
-            onchange="formChecking('companyName')"
-            placeholder="Sab Beauty"
-          />
+            }}</label>
+          <input [disabled]="!isUserConnected" type="text" id="establishment-name" name="establishment-name"
+            [(ngModel)]="newShopUser.name" onchange="formChecking('companyName')" placeholder="Sab Beauty" />
 
           <label for="street">{{ "CREATION_SHOP.STREET" | translate }}</label>
-          <input
-          [disabled]="alreadyProfessionnal || !isUserConnected"
-            id="street"
-            name="street"
-            [(ngModel)]="newShopUser.street"
-            placeholder="123, Main Street"
-          />
+          <input [disabled]="!isUserConnected" id="street" name="street" [(ngModel)]="newShopUser.street"
+            placeholder="123, Main Street" />
 
           <div class="row input-group-row">
             <div class="col-md-6">
-              <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
-              <input
-              [disabled]="alreadyProfessionnal || !isUserConnected"
-                id="city"
-                name="city"
-                [(ngModel)]="newShopUser.city"
-                placeholder="Paris"
-              />
+              <label for="floor">{{ "CREATION_SHOP.FLOOR" | translate }}</label>
+              <input [disabled]="!isUserConnected" type="text" id="floor" name="floor" placeholder="123"
+                [(ngModel)]="newShopUser.floor" />
             </div>
             <div class="col-md-6">
-              <label for="cp">{{
-                "CREATION_SHOP.CODE_POSTAL" | translate
-              }}</label>
-              <input
-              [disabled]="alreadyProfessionnal || !isUserConnected"
-                id="cp"
-                name="cp"
-                [(ngModel)]="newShopUser.code_postal"
-                placeholder="75001"
-              />
+              <label for="country">{{
+                "CREATION_SHOP.COUNTRY" | translate
+                }}</label>
+              <!-- Sélecteur de pays -->
+              <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
+                <option value="">-- Choisir un pays --</option>
+                <option *ngFor="let country of availableCountries" [value]="country">
+                  {{ country }}
+                </option>
+              </select>
             </div>
           </div>
 
           <div class="row input-group-row">
             <div class="col-md-6">
-              <label for="country">{{
-                "CREATION_SHOP.COUNTRY" | translate
-              }}</label>
-              <input
-              [disabled]="alreadyProfessionnal || !isUserConnected"
-                id="country"
-                name="country"
-                [(ngModel)]="newShopUser.country"
-                placeholder="France"
-              />
+              <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
+
+              <!-- Sélecteur de ville -->
+              <select [(ngModel)]="selectedCity" name="city" (change)="onCityChange()" required>
+                <option value="">-- Choisir une ville --</option>
+                <option *ngFor="let city of availableCities" [value]="city">
+                  {{ city }}
+                </option>
+              </select>
             </div>
+
             <div class="col-md-6">
-              <label for="floor">{{ "CREATION_SHOP.FLOOR" | translate }}</label>
-              <input
-              [disabled]="alreadyProfessionnal || !isUserConnected"
-                type="text"
-                id="floor"
-                name="floor"
-                placeholder="123"
-                [(ngModel)]="newShopUser.floor"
-              />
+              <label for="shop-street">{{ "Arrondissement" | translate }}</label>
+              <!-- Sélecteur d'arrondissement (si plusieurs arrondissements) -->
+              <select *ngIf="availableArrondissements.length > 1" [(ngModel)]="selectedArrondissement"
+                name="arrondissement" (change)="onArrondissementChange()">
+                <option value="">-- Choisir un arrondissement --</option>
+                <option *ngFor="let arr of availableArrondissements" [value]="arr">
+                  {{ arr }}
+                </option>
+              </select>
             </div>
           </div>
 
           <div class="row input-group-row">
             <label for="business-type">{{
               "CREATION_SHOP.BUSINESSTYPE" | translate
-            }}</label>
-            <select
-            [disabled]="alreadyProfessionnal || !isUserConnected"
-              id="business-type"
-              name="business-type"
-              [(ngModel)]="newShopUser.companyType"
-            >
+              }}</label>
+            <select [disabled]="!isUserConnected" id="business-type" name="business-type"
+              [(ngModel)]="newShopUser.companyType">
               <option value="coiffure">{{ "MAIN_CATEGORY.COIFFURE" | translate }}</option>
               <option value="manucure">{{ "MAIN_CATEGORY.MANUCURE" | translate }}</option>
               <option value="massage">{{ "MAIN_CATEGORY.MASSAGE" | translate }}</option>
@@ -114,19 +90,13 @@
             </select>
           </div>
           <div class="whatsapp">
-            <input
-            [disabled]="alreadyProfessionnal || !isUserConnected"
-              type="checkbox"
-              id="whatsapp"
-              [(ngModel)]="newShopUser.ccvaccepted"
-            />
+            <input [disabled]="!isUserConnected" type="checkbox" id="whatsapp" [(ngModel)]="newShopUser.ccvaccepted" />
             <label for="whatsapp">{{
               "CREATION_SHOP.WHATSAPP" | translate
-            }}</label>
+              }}</label>
           </div>
 
-          <button 
-          [disabled]="alreadyProfessionnal || !isUserConnected" (click)="onSubmit()" type="submit">
+          <button [disabled]="!isUserConnected" (click)="onSubmit()" type="submit">
             {{ "CREATION_SHOP.BUTTON" | translate }}
           </button>
         </div>
