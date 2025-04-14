@@ -60,7 +60,7 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   }
 
   getAds() {
-    this.adService.getAdvertisements().subscribe(ads => {
+    this.adService.getAdvertisements('CLASSIC').subscribe(ads => {
       console.log("📢 Publicités récupérées :", ads);
 
       this.advertisements = this.balanceAds(

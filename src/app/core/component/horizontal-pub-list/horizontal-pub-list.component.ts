@@ -38,7 +38,7 @@ export class HorizontalPubListComponent implements OnInit {
   }
 
   getAds() {
-    this.adService.getAdvertisements().subscribe(ads => {
+    this.adService.getAdvertisements('PREMIUM').subscribe(ads => {
       console.log("📢 Publicités récupérées :", ads);
   
       this.pubs = this.balanceAds(ads);

@@ -10,8 +10,14 @@ export class AdvertisementService {
 
   constructor(private http: HttpClient) { }
 
-  getAdvertisements(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}ads`);
+  getAdvertisements(type?: 'PREMIUM' | 'CLASSIC'): Observable<any[]> {
+    let url = `${environment.apiUrl}ads`;
+  
+    if (type) {
+      url += `?type=${type}`;
+    }
+  
+    return this.http.get<any[]>(url);
   }
 
   updateAdvertisement(id: string, data: any): Observable<any> {
