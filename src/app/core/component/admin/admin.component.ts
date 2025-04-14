@@ -26,6 +26,7 @@ export class AdminComponent implements OnInit {
   constructor(private userService: UserService, private shopService: ShopService, private bookingService: BookingService) {}
 
   ngOnInit(): void {
+    localStorage.setItem("menu-param", 'admin');
     this.userService.getUsersCount().subscribe(
       (count:number) => {
         console.log('Nombre d\'utilisateurs :', count);

@@ -71,6 +71,7 @@ export class AgendaComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'calendar')
         this.bookingService.getBookingByUserPro(this.me._id).subscribe({
             next: (data: any) => {
                 if (this.calendarOptions.events) {

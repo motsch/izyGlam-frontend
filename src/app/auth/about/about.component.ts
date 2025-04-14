@@ -19,7 +19,7 @@ import {
     isSmallScreen: boolean = false;
     @ViewChild('videoElementAbout') videoElement!: ElementRef<HTMLVideoElement>;
     aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
-    playbackRate: number = 0.4; // Vitesse de lecture
+    playbackRate: number = 1; // Vitesse de lecture
     intervalId!: any; // ID de setInterval pour le retour en arrière
     paramVideo = true;
     constructor(private router: Router,private breakpointObserver: BreakpointObserver,

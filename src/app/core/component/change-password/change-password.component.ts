@@ -68,6 +68,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'security');
         // Si 'me' est déjà disponible
         this.updateUser();
         this.getLanguages();

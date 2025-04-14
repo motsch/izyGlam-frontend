@@ -11,8 +11,9 @@ export class AdminParamComponent implements OnInit {
   settings:any = {};
 
   constructor(private adminService: AdminService) {}
-
+  
   ngOnInit(): void {
+    localStorage.setItem("menu-param", 'admin');
     this.adminService.getAdminSettings().subscribe(
       (data :any) => {
         console.log('Paramètres de la plateforme :', JSON.stringify(data));

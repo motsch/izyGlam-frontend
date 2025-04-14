@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'dashboard');
         this.currentUser = this.me;
         this.shopService.getAll().subscribe({
             next: (shops: any[]) => {

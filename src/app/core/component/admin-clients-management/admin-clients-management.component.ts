@@ -52,6 +52,7 @@ export class AdminClientsManagementComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+    localStorage.setItem("menu-param", 'admin');
     this.selectedUser.address = [];
     this.selectedUser.address[0] = {};
     this.userService.getAll().subscribe({

@@ -51,10 +51,14 @@ export class ProfileComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        // Charger la section active depuis le localStorage
-        let currentMenu = 'account-info';
-        if (currentMenu) {
-            this.setActiveSection(currentMenu);
+        let section = localStorage.getItem('menu-param');
+        if(section && section !== undefined && section !== '') {
+            this.activeSection = section;
+            // localStorage.setItem('activeMenu', section);
+        } else {
+            // Charger la section active depuis le localStorage
+            let activeSection = 'account-info';
+            localStorage.setItem('menu-param', activeSection);
         }
 
         // Récupérer l'utilisateur et ses shops
@@ -200,7 +204,7 @@ export class ProfileComponent implements OnInit {
 
     setActiveSection(section: string): void {
         this.activeSection = section;
-        localStorage.setItem('activeMenu', section);
+        localStorage.setItem('menu-param', section);
     }
 
     isSectionActive(section: string): boolean {

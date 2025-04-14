@@ -171,7 +171,8 @@ export class MainComponent implements OnInit, AfterViewInit {
                 localStorage.removeItem('shopSelected');
                 localStorage.removeItem('productToBuy');
                 localStorage.removeItem('selectItemFromShop');
-                localStorage.removeItem('activeMenu');
+                localStorage.removeItem('menu-param');
+                localStorage.removeItem('menu-param');
 
                 // ✅ Gestion des adresses
                 if (data.address && data.address.length > 0) {

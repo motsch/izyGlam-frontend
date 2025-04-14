@@ -28,6 +28,7 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
     ) {}
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'company')
         // Si 'me' est déjà disponible
         this.updateCompany();
         this.updateEmployees();

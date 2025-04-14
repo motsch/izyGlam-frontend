@@ -47,7 +47,8 @@
     "ACCESS": "Accessibilité",
     "CONDITIONS": "Conditions",
     "LANGUAGE": "Langue",
-    "LOCALISATION": "Localisation"
+    "LOCALISATION": "Localisation",
+    "ALL_RIGHT": "Tous droits réservés"
   },
   "COMING_SOON": {
     "TITLE": "Nous arrivons bientôt",
@@ -394,7 +395,7 @@
     "CONTINUE_WITH": "Continuer avec",
     "OR": "Ou",
     "QRCODE": "Connectez-vous avec le QR code",
-    "CGU": "En continuant, vous acceptez de recevoir des appels, des messages WhatsApp ou des textos (notamment par des méthodes automatiques) de la part d'izyGlow et de ses sociétés affiliées au numéro indiqué.",
+    "CGU": "En continuant, vous acceptez de recevoir des appels, des messages WhatsApp ou des textos (notamment par des méthodes automatiques) de la part d'izyGlam et de ses sociétés affiliées au numéro indiqué.",
     "PLACEHOLDER_EMAIL": "Adresse email",
     "PLACEHOLDER_PASSWORD": "Mot de passe",
     "PLACEHOLDER_PASSWORD_NEW": "Nouveau mot de passe",
@@ -596,7 +597,7 @@
     "AVIS2": "J’ai eu un souci de réservation au début, mais le service client a été super réactif. Depuis, tout roule. Les pros sont top, et les massages à domicile, un vrai bonheur.",
     "AVIS3": "À 59 ans, je ne suis pas très à l’aise avec les applis… Mais izyGlam est super simple d’utilisation. Je réserve mes soins depuis ma tablette, tranquille chez moi.",
     "AVIS4": "J’utilise izyGlam pour mes shootings : maquillage et coiffure directement à la maison. Franchement, c’est une révolution. Seul petit bémol : j’aimerais plus de dispos le dimanche.",
-    "AVIS5": "En tant que dev, je trouve l'appli bien pensée. Interface fluide, service rapide, et surtout : plus besoin de courir en salon. IzyGlam, c’est le Uber de la beauté !",
+    "AVIS5": "En tant que dev, je trouve l'appli bien pensée. Interface fluide, service rapide, et surtout : plus besoin de courir en salon. IzyGlam, c’est votre partenaire beauté à domicile !",
     "AVIS6": "izyGlam m’a sauvé la vie avant mon mariage ! Coiffeuse et maquilleuse au top. Petit bug sur la géoloc au départ, mais l’équipe a réglé ça vite. Bravo pour votre sérieux."
   },
   "DOWNLOAD": {

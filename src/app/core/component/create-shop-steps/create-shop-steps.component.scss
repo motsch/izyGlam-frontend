@@ -1,41 +1,41 @@
-.uber-eats-steps-container {
-    font-family: 'Arial', sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: left;
-  }
-  
-  h2 {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: #B23A48;
-  }
-  
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  
-  .step-item {
-    text-align: center;
-  }
-  
-  .step-item img {
-    width: 300px;
-    height: auto;
-    margin-bottom: 20px;
-  }
-  
-  .step-item h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .step-item p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
+.izyGlam-steps-container {
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: left;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #B23A48;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.step-item {
+  text-align: center;
+}
+
+.step-item img {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.step-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.step-item p {
+  font-size: 16px;
+  line-height: 1.5;
+}

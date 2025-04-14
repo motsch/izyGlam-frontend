@@ -17,6 +17,7 @@ export class ShopPhotoGalleryComponent implements OnInit, OnChanges {
 
     constructor(private shopService: ShopService) {}
     ngOnInit() {
+      localStorage.setItem("menu-param", 'management');
       // Rafraîchir la galerie
       this.setGalleryImages();
     }

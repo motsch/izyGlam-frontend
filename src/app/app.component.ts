@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ChatModalComponent } from './core/component/chat-modal/chat-modal.component';
 import { GeoLocationService } from './core/services/geolocation.service';
 import { SharedService } from './core/services/shared.service';
+import { MqttService } from './core/services/mqtt.service';
 
 @Component({
     selector: 'app-root',
@@ -34,6 +35,7 @@ export class AppComponent implements OnInit {
         private cartService: CartService,
         private router: Router,
         public dialog: MatDialog,
+        private mqttService: MqttService,
         private geoLocationService: GeoLocationService
     ) {
         translate.addLangs([
@@ -116,10 +118,18 @@ export class AppComponent implements OnInit {
     goTo(name: string) {
         this.drawerService.closeDrawer();
         this.router.navigate([name]);
-        if(name === '') {
-            this.sessionService.destroy();
-        }
     }
+    
+    async logout() {
+        await this.drawerService.closeDrawer();
+        await this.sessionService.destroy();
+        await this.mqttService.unsubscribeAll();
+        await this.mqttService.logout();
+        await this.router.navigate(['/']);
+        window.location.reload(); // 🔄 Recharge la page après la déconnexion complète
+      }
+      
+    
     
     checkout() {
         // Implement checkout logic here

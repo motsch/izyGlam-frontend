@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-confidential-policy',
     templateUrl: './confidential-policy.component.html',
     styleUrls: ['./confidential-policy.component.scss'],
 })
-export class ConfidentialPolicyComponent {}
+export class ConfidentialPolicyComponent implements OnInit {
+    ngOnInit(): void {
+        localStorage.setItem("menu-param", 'privacy')
+    }
+}

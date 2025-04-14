@@ -29,6 +29,7 @@ export class AdminMessagerieComponent {
   ];
 
   ngOnInit(): void {
+    localStorage.setItem("menu-param", 'admin');
     this.selectedConversation = this.conversations[0];
   }
 

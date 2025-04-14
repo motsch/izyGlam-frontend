@@ -25,6 +25,7 @@ export class FinanceComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'management');
         console.log('myShopData :', this.myShopData);
         // Tu peux initialiser tes données ici si nécessaire
     }

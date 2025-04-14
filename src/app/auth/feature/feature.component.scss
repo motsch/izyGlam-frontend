@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 40px;
-  /* Ajusté pour correspondre à l'espacement de l'exemple Uber */
+  /* Ajusté pour correspondre à l'espacement de l'exemple izyGlam */
 }
 
 .hero-image img {
@@ -14,37 +14,37 @@
 
 .content h1 {
   font-size: 32px;
-  /* Augmenté pour correspondre à la taille de police de l'exemple Uber */
+  /* Augmenté pour correspondre à la taille de police de l'exemple izyGlam */
   font-weight: bold;
   /* Assurez-vous que le titre est en gras */
   color: #000;
-  /* Couleur noire pour correspondre au style Uber */
+  /* Couleur noire pour correspondre au style izyGlam */
   margin-bottom: 20px;
   /* Ajouté pour espacement */
 }
 
 .content p {
   color: #000;
-  /* Couleur noire pour correspondre au style Uber */
+  /* Couleur noire pour correspondre au style izyGlam */
   line-height: 1.5;
   font-size: 18px;
-  /* Augmenté pour correspondre à la taille de police de l'exemple Uber */
+  /* Augmenté pour correspondre à la taille de police de l'exemple izyGlam */
   margin-bottom: 30px;
   /* Ajouté pour espacement */
 }
 
 button {
   background-color: #000;
-  /* Couleur noire pour correspondre au style Uber */
+  /* Couleur noire pour correspondre au style izyGlam */
   color: white;
   border: none;
   padding: 15px 30px;
-  /* Augmenté pour correspondre au style Uber */
+  /* Augmenté pour correspondre au style izyGlam */
   cursor: pointer;
   font-size: 16px;
   /* Taille de police ajustée */
   font-weight: bold;
-  /* Ajouté pour correspondre au style Uber */
+  /* Ajouté pour correspondre au style izyGlam */
 }
 
 button:hover {
@@ -94,5 +94,21 @@ img {
     /* Pour occuper tout l’espace, optionnel */
     padding: 12px 20px;
     font-size: 15px;
+  }
+}
+
+
+
+h1 {
+  font-size: 2rem; /* taille raisonnable pour mobile */
+  line-height: 1.2; /* évite les sauts de ligne trop espacés */
+  word-break: break-word; /* casse les longs mots si besoin */
+  hyphens: auto; /* ajoute des tirets si nécessaire pour couper proprement */
+  text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem; /* plus petit sur mobile */
+    text-align: center; /* si tu veux centrer le texte sur mobile */
+    padding: 0 1rem; /* un peu de marge interne */
   }
 }

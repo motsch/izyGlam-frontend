@@ -28,12 +28,16 @@
 
             <!-- Menu déroulant -->
             <div class="mobile-menu" *ngIf="isMobileMenuOpen">
-              <button type="button" (click)="routerNavigate('/sign-in')" class="btn">
+              <button type="button" (click)="routerNavigate('/sign-in'); isMobileMenuOpen = false" class="btn"
+                [ngClass]="darkHeader ? 'color-izyglam2' : 'color-izyglam'">
                 {{'INTRO.CONNEXION' | translate}}
               </button>
-              <button type="button" (click)="routerNavigate('/sign-up')" class="btn">
+
+              <button type="button" (click)="routerNavigate('/sign-up'); isMobileMenuOpen = false" class="btn"
+                [ngClass]="darkHeader ? 'color-izyglam2' : 'color-izyglam'">
                 {{'INTRO.REGISTRATION' | translate}}
               </button>
+
             </div>
           </div>
         </div>
@@ -49,8 +53,8 @@
       </div>
       <div class="col-auto">
         <a class="navbar-brand" [routerLink]="'/main'"><img [src]="imgStorageUrl+'logo/'+'glam_logo.png'" class="logo"
-            alt="logo" />
-          </a>
+            alt="logo" (click)="removeSettingsProfil()" />
+        </a>
       </div>
     </div>
   </div>

@@ -45,6 +45,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     ) {}
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'management');
         // Initialize articlesCopyData if needed
         this.colorService.getAll().subscribe({
             next: (data: any) => {

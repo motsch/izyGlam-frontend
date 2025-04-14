@@ -29,7 +29,7 @@ export class FavoritesComponent implements OnInit {
       localStorage.removeItem('shopSelected');
       localStorage.removeItem('productToBuy');
       localStorage.removeItem('selectItemFromShop');
-      localStorage.removeItem('activeMenu');
+      localStorage.removeItem('menu-param');
       // this.getLocationAndLoadShops(); // Charge les shops basés sur la localisation du client
       this.userService.getMe().subscribe({
           next: (data: any) => {

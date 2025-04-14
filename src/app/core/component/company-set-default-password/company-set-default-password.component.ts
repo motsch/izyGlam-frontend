@@ -29,6 +29,7 @@ export class CompanySetDefaultPasswordComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'company')
         this.myCompanyCopy = {...this.myCompany}
         this.defaultPassword = {...this.myCompany}.defaultPassword
     }

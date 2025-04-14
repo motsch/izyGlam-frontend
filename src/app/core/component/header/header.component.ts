@@ -101,7 +101,7 @@ export class HeaderComponent implements OnInit {
         public dialog: MatDialog,
         private router: Router,
         public sessionService: SessionService
-    ) {}
+    ) { }
 
     ngOnInit() {
         // $.getScript('./assets/js/script.js');
@@ -112,14 +112,18 @@ export class HeaderComponent implements OnInit {
         });
         console.log('connected', this.connected);
         this.darkHeader = this.connected ? true : false;
-        if(localStorage.getItem('langue') === null) {
+        if (localStorage.getItem('langue') === null) {
             this.logoLangue = 'en';
         } else {
             this.logoLangue = localStorage.getItem('langue');
-            if(this.logoLangue) {
+            if (this.logoLangue) {
                 this.logoLangue = this.logoLangue.replace(/"/g, '');
             }
         }
+    }
+
+    removeSettingsProfil() {
+        localStorage.removeItem('menu-param');
     }
 
     toggleDelivery(isChecked: boolean) {
@@ -164,8 +168,8 @@ export class HeaderComponent implements OnInit {
         console.log('toLogin');
         this.router.navigate(['/sign-in']);
     }
-    
+
     toggleMobileMenu(): void {
         this.isMobileMenuOpen = !this.isMobileMenuOpen;
-      }
+    }
 }

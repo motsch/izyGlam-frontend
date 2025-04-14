@@ -24,6 +24,7 @@ export class AdminShopsManagementComponent implements OnInit {
   constructor(private shopService: ShopService) {}
 
   ngOnInit(): void {
+    localStorage.setItem("menu-param", 'admin');
     this.shop.location = {};
     this.shop.hours = {};
     this.shop.hours.morning = {};

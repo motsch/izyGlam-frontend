@@ -23,6 +23,7 @@ export class ProfileInformationsComponent implements OnInit, OnChanges {
     constructor(private userService: UserService) {}
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'account-info')
         // Si 'me' est déjà disponible
         this.updateUser();
     }

@@ -160,11 +160,11 @@ nav {
 
 
 .color-izyglam {
-  color: #983A4C;
+  color: #983A4C !important;
 }
 
 .color-izyglam2 {
-  color: #BE80FF;
+  color: #BE80FF !important;
 }
 
 .color-white {
@@ -183,4 +183,50 @@ nav {
   top: -10px;   /* rogne le haut */
   left: -15px;   /* rogne la gauche */
   height: 80px;
+}
+
+
+
+.mobile-menu {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.8); /* blanc translucide */
+  backdrop-filter: blur(10px); /* effet flou */
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.2s ease-in-out;
+  z-index: 9999;
+}
+
+.mobile-menu .btn {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 16px;
+  color: #983A4C;
+  border-radius: 8px;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-menu .btn:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -106,6 +106,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     ) {}
 
     ngOnInit(): void {
+        localStorage.setItem("menu-param", 'management');
         if (this.myShopData && Object.keys(this.myShopData).length > 0) {
             console.log(this.myShopData.image);
             console.log(this.myShopData);
