@@ -1,55 +1,52 @@
-<div class="izyGlam-container">
-    <div class="section-header">
-      <h2>{{ "CREATE_COMPANY_STEPS.TITLE" | translate }}</h2>
+<div class="izyGlam-container container">
+  <div class="section-header text-center">
+    <h2>{{ "CREATE_COMPANY_STEPS.TITLE" | translate }}</h2>
+  </div>
+
+  <!-- Étapes principales -->
+  <div class="row features-grid">
+    <div class="col-12 col-md-4 feature-item mb-4">
+      <h3>{{ "CREATE_COMPANY_STEPS.STEP1.TITLE" | translate }}</h3>
+      <p>{{ "CREATE_COMPANY_STEPS.STEP1.TEXT" | translate }}</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-item">
-        <h3>{{ "CREATE_COMPANY_STEPS.STEP1.TITLE" | translate }}</h3>
-        <p>
-          {{ "CREATE_COMPANY_STEPS.STEP1.TEXT" | translate }}
-        </p>
-      </div>
-  
-      <div class="feature-item">
-        <h3>{{ "CREATE_COMPANY_STEPS.STEP2.TITLE" | translate }}</h3>
-        <p>
-          {{ "CREATE_COMPANY_STEPS.STEP2.TEXT" | translate }}
-        </p>
-      </div>
-  
-      <div class="feature-item">
-        <h3>{{ "CREATE_COMPANY_STEPS.STEP3.TITLE" | translate }}</h3>
-        <p>
-          {{ "CREATE_COMPANY_STEPS.STEP3.TEXT" | translate }}
-        </p>
-      </div>
+
+    <div class="col-12 col-md-4 feature-item mb-4">
+      <h3>{{ "CREATE_COMPANY_STEPS.STEP2.TITLE" | translate }}</h3>
+      <p>{{ "CREATE_COMPANY_STEPS.STEP2.TEXT" | translate }}</p>
     </div>
-    <div class="row margin-top-80">
-      <div class="col-6 image-section">
-        <img [src]="currentStep.image" alt="image section" />
-      </div>
-      <div class="col-6 growth-section">
-        <h3>{{ currentStep.titleTranslate | translate }}</h3>
-        <p>
-          {{ currentStep.textTranslate | translate }}
-        </p>
-      </div>
-    </div>
-    <div class="chevrons-container">
-      <button
-        [disabled]="currentIndex === 0"
-        class="chevron left"
-        (click)="prevStep()"
-      >
-        <i class="fa fa-chevron-left"></i>
-      </button>
-      <button
-        [disabled]="currentIndex === steps.length - 1"
-        class="chevron right"
-        (click)="nextStep()"
-      >
-        <i class="fa fa-chevron-right"></i>
-      </button>
+
+    <div class="col-12 col-md-4 feature-item mb-4">
+      <h3>{{ "CREATE_COMPANY_STEPS.STEP3.TITLE" | translate }}</h3>
+      <p>{{ "CREATE_COMPANY_STEPS.STEP3.TEXT" | translate }}</p>
     </div>
   </div>
-  
+
+  <!-- Image et texte dynamique -->
+  <div class="row margin-top-80 align-items-center">
+    <div class="col-12 col-md-6 image-section text-center mb-4 mb-md-0">
+      <img [src]="currentStep.image" alt="image section" class="img-fluid" />
+    </div>
+    <div class="col-12 col-md-6 growth-section text-center text-md-start">
+      <h3>{{ currentStep.titleTranslate | translate }}</h3>
+      <p>{{ currentStep.textTranslate | translate }}</p>
+    </div>
+  </div>
+
+  <!-- Chevrons -->
+  <div class="chevrons-container d-flex justify-content-center mt-4">
+    <button
+      [disabled]="currentIndex === 0"
+      class="chevron left me-3"
+      (click)="prevStep()"
+    >
+      <i class="fa fa-chevron-left"></i>
+    </button>
+    <button
+      [disabled]="currentIndex === steps.length - 1"
+      class="chevron right"
+      (click)="nextStep()"
+    >
+      <i class="fa fa-chevron-right"></i>
+    </button>
+  </div>
+</div>

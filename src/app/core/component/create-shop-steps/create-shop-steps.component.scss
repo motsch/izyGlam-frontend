@@ -3,39 +3,52 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  text-align: left;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2.5rem;
+    color: #B23A48;
+    text-align: center;
+  }
+
+  .steps-grid {
+    .step-item {
+      text-align: center;
+      padding: 1rem;
+
+      img.step-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #444;
+      }
+    }
+  }
 }
 
-h2 {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  color: #B23A48;
-}
+/* Responsive spécifique si jamais tu veux plus de contrôles */
+@media screen and (max-width: 768px) {
+  .izyGlam-steps-container {
+    padding: 10px;
 
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.step-item {
-  text-align: center;
-}
-
-.step-item img {
-  width: 300px;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-.step-item h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.step-item p {
-  font-size: 16px;
-  line-height: 1.5;
+    .step-item {
+      padding: 1rem 0;
+    }
+  }
 }

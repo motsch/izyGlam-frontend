@@ -1,41 +1,59 @@
 .izyGlam-steps-container {
-    font-family: 'Arial', sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: left;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
   h2 {
-    font-size: 28px;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 2.5rem;
     color: #B23A48;
-  }
-  
-  .steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  
-  .step-item {
     text-align: center;
   }
-  
-  .step-item img {
-    width: 300px;
-    height: auto;
-    margin-bottom: 20px;
+
+  .steps-grid {
+    .step-item {
+      text-align: center;
+      padding: 1rem;
+
+      img.step-image {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      img.step-image:hover {
+        transform: scale(1.03);
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #444;
+      }
+    }
   }
-  
-  .step-item h3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .steps-grid {
+    flex-direction: column;
+
+    .step-item {
+      padding: 1rem 0;
+    }
   }
-  
-  .step-item p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
+}
