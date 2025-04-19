@@ -1,7 +1,15 @@
 <div class="article-card pointer" (click)="openDialog()">
     <div class="article-info">
         <h3>{{item.name | truncate:20 }}</h3>
-        <p class="price">{{item.price}} €</p>
+        <div class="price-duration">
+            <span class="price-tag">
+                💶 {{item.price}} €
+            </span>
+            <span class="duration-tag">
+                ⏱️ {{item.duration}} min
+            </span>
+          </div>
+          
         <!--<p class="rating">👍 {{item.note}}% ({{item.nbAvis}})</p>-->
         <p class="description">{{item.description | truncate:70 }}</p>
         <!--<p class="offer"><span>{{item.offre}}</span></p>-->

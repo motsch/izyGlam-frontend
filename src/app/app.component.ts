@@ -19,6 +19,7 @@ import { MqttService } from './core/services/mqtt.service';
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+    today: number = Date.now();
     drawerOpen = false;
     cartOpen = false;
     imgStorageUrl: string = environment.imgStorageUrl;

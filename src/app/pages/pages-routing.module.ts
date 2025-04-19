@@ -16,7 +16,8 @@ import { GiftCardComponent } from './gift-card/gift-card.component';
 import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
 import { CreationShopComponent } from './creation-shop/creation-shop.component';
 import { CreationCompanyComponent } from './creation-company/creation-company.component';
-import { GameComponent } from './game/game.component';
+import { SponsorComponent } from './sponsor/sponsor.component';
+import { FidelityComponent } from './fidelity/fidelity.component';
 
 const routes: Routes = [
     {
@@ -60,6 +61,11 @@ const routes: Routes = [
         canActivate: [AuthGuard],
     },
     {
+        path: 'sponsor/:id',
+        component: SponsorComponent,
+        canActivate: [AuthGuard],
+    },
+    {
         path: 'gift-card',
         component: GiftCardComponent,
         canActivate: [AuthGuard],
@@ -80,8 +86,8 @@ const routes: Routes = [
         canActivate: [],
     },
     {
-        path: 'game',
-        component: GameComponent,
+        path: 'fidelity',
+        component: FidelityComponent,
         canActivate: [],
     },
     { path: '', redirectTo: 'main', pathMatch: 'full' },

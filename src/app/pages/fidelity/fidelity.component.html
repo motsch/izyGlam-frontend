@@ -1,0 +1,34 @@
+<div class="fidelity-wrapper">
+    <h2 class="page-title">🌟 Ma carte de fidélité 🌟</h2>
+    <p class="sub-text">
+      Encore <strong>{{ 10 - stars }}</strong> <span class="highlight">izyGlam</span> pour débloquer ton cadeau 🎁
+    </p>
+    <p class="expiry-text">Valable jusqu’au <strong>{{ expiryDate }}</strong></p>
+  
+    <!-- Zone de progression -->
+    <div class="progress-stars">
+      <div *ngFor="let star of fullStars; let i = index" class="star full">
+        <img [src]="logoStar" alt="izyGlam star" />
+      </div>
+      <div *ngFor="let star of emptyStars; let i = index" class="star empty">
+        <img src="/assets/images/empty-star.png" alt="empty star" />
+      </div>
+    </div>
+  
+    <!-- Historique -->
+    <div class="history-section">
+      <h3>🎉 Historique de mes soins</h3>
+      <div class="history-item" *ngFor="let reward of starsArray">
+        <img
+          [src]="logoStar"
+          class="history-icon"
+          alt="reward"
+        />
+        <div class="history-content">
+          <span class="reward-name">{{ reward.reward_name }}</span>
+          <span class="reward-date">{{ reward.reward_date }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,59 @@
+<div class="sponsor-hub">
+    <!-- Section Hero -->
+    <section class="hero">
+        <iframe class="fullscreen-video" [src]="adPark.hero.background" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+        <div class="hero-overlay">
+            <h1>{{adPark.title}} <strong>{{adPark.name}}</strong></h1>
+            <blockquote>
+                "{{adPark.hero.quote}}"
+                <span>— {{adPark.hero.author}}</span>
+            </blockquote>
+        </div>
+    </section>
+
+
+    <!-- Section Concours -->
+    <section class="experience-block" *ngFor="let playground of adPark.playgrounds; let i = index">
+        <div class="container">
+            <div class="row g-3 align-items-center">
+
+                <!-- Colonne gauche : texte ou iframe -->
+                <div class="col-12 col-md-6" [class.order-md-2]="getDisplayedIndex(i) % 2 === 0">
+                    <ng-container *ngIf="playground.action === 'playlist'; else normalText">
+                        <iframe style="border-radius:12px; width:100%; min-height:352px;" [src]="adPark.playlist"
+                            frameborder="0"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            loading="lazy">
+                        </iframe>
+                    </ng-container>
+                    <ng-template #normalText>
+                        <div class="experience-text">
+                            <h2>{{playground.title}}</h2>
+                            <p>{{playground.description}}</p>
+                            <button class="cta">{{playground.button}}</button>
+                        </div>
+                    </ng-template>
+                </div>
+
+                <!-- Colonne droite : image ou texte playlist -->
+                <div class="col-12 col-md-6">
+                    <ng-container *ngIf="playground.action === 'playlist'; else imageBlock">
+                        <div class="experience-text">
+                            <h2>{{playground.title}}</h2>
+                            <p>{{playground.description}}</p>
+                            <p class="small">{{playground.button}}</p>
+                        </div>
+                    </ng-container>
+                    <ng-template #imageBlock>
+                        <img [src]="playground.image" alt="Jeu concours" class="img-fluid rounded-4 shadow">
+                    </ng-template>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+</div>

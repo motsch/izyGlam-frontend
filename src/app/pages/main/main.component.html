@@ -2,17 +2,22 @@
 
 <!-- Sélecteur d'adresse -->
 <!-- Bouton principal d'adresse -->
-<div class="address-selector-wrapper margin-top-80">
-  <button class="address-button" (click)="openAddressModal()">
-    📍 {{ selectedPostalCode }} — Modifier l’adresse
+<!-- Nouvelle section élégante -->
+<div class="address-search-container margin-top-60">
+  <button class="address-button-pretty" (click)="openAddressModal()">
+    <i class="icon-location">📍</i>
+    {{ selectedPostalCode }} <span class="light-text">— Modifier l’adresse</span>
   </button>
+
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (ngModelChange)="onSearchChange($event)"
+    placeholder="Rechercher une boutique"
+    class="pretty-search-bar"
+  />
 </div>
 
-<!-- Barre de recherche -->
-<div class="search-bar-wrapper">
-  <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
-    placeholder="🔍 Rechercher une boutique" class="search-bar" />
-</div>
 
 <!-- MODAL d'adresses -->
 <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
@@ -81,7 +86,7 @@
 <!-- Conteneur principal -->
 <div class="container margin-top-20">
   <!-- BANDEAU DES CATÉGORIES -->
-  <div class="horizontal-section-wrapper">
+  <div class="horizontal-section-wrapper" *ngIf="categoriesFilter.length > 0">
     <div class="section-header">
       <h3>Catégories</h3>
     </div>
@@ -103,19 +108,19 @@
   <app-horizontal-pub-list [me]="me"></app-horizontal-pub-list>
 
   <!-- SECTION : OFFRES DU MOMENT -->
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Offres du moment'"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && promotedShops.length > 0" [title]="'Offres du moment'"
     [shops]="promotedShops" [me]="me" [pubIndexe]="'0'"></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'À découvrir'"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsAdecouvrir.length > 0" [title]="'À découvrir'"
     [shops]="filteredItemsAdecouvrir" [me]="me" [pubIndexe]="'1'"></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Les plus appréciés'"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsApprecier.length > 0" [title]="'Les plus appréciés'"
     [shops]="filteredItemsApprecier" [me]="me" [pubIndexe]="'2'"></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Les plans malins'"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsMalin.length > 0" [title]="'Les plans malins'"
     [shops]="filteredItemsMalin" [me]="me" [pubIndexe]="'3'"></app-horizontal-shop-list>
 
-  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0" [title]="'Top10 de la semaine'"
+  <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsTop10.length > 0" [title]="'Top10 de la semaine'"
     [shops]="filteredItemsTop10" [me]="me" [pubIndexe]="'4'"></app-horizontal-shop-list>
 
   <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
@@ -139,6 +144,13 @@
         <app-round-shop-card *ngFor="let item of filteredSearchResults" [shop]="item" [me]="me"
           [promoVisible]="item.promo?.active" class="shop-card"></app-round-shop-card>
       </div>
+    </div>
+  </div>
+
+  <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
+  <div class="horizontal-section-wrapper" *ngIf="shops.length === 0">
+    <div class="section-header">
+      <div class="not-disponible">Pas encore disponible à cette adresse</div>
     </div>
   </div>
 </div>

@@ -7,29 +7,29 @@
 mat-drawer-content {
   display: flex;
   flex-direction: column;
-  align-items: center;  // Centre uniquement horizontalement
-  width: 100%;  // Assure que le contenu occupe toute la largeur
+  align-items: center;
+  width: 100%;
+  background-color: #fefefe;
 }
 
-
+/* === Drawer latéral === */
 .drawer-content {
   width: 300px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: #fff;
+  background-color: #fff4f8; // Rose poudré
+  color: #444; // Texte doux
 }
 
-.drawer-content2 {
-  width: 400px; /* Ajuster la largeur selon vos besoins */
-  padding: 20px;
+.drawer-inner {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  background-color: #fff;
+  height: 100%;
 }
 
+/* === Profil utilisateur === */
 .profile-section {
   display: flex;
   align-items: center;
@@ -41,28 +41,27 @@ mat-drawer-content {
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
+  border: 2px solid #ff4081;
 }
 
 .profile-name {
   font-weight: bold;
   margin: 0;
+  color: #444;
 }
 
 .manage-account {
-  color: #a32b3a;
+  color: #ff4081;
   text-decoration: none;
   font-size: 14px;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #cc3366;
+  }
 }
 
-.side-item {
-  font-size: 13px !important;
-}
-
-.side-icon {
-  width: 16px !important;
-  height: auto;
-}
-
+/* === Menu drawer === */
 .drawer-menu {
   list-style: none;
   padding: 0;
@@ -73,130 +72,76 @@ mat-drawer-content {
 .drawer-menu li {
   display: flex;
   align-items: center;
-  padding: 10px 0;
-  font-size: 16px;
+  padding: 10px 12px;
+  font-size: 15px;
   cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: #fde8f1; // Hover rose clair
+    color: #cc3366;
+  }
 }
 
-.drawer-menu i {
+.side-icon {
+  width: 18px !important;
+  height: auto;
   margin-right: 10px;
-  font-size: 18px;
+  filter: brightness(0) saturate(100%) sepia(15%) hue-rotate(-20deg) saturate(800%) brightness(90%);
 }
 
+.side-item {
+  font-size: 14px !important;
+}
+
+/* === Section secondaire === */
 .drawer-menu.secondary {
   margin-top: 20px;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #e0d0d7;
   padding-top: 10px;
 }
 
 .drawer-menu.secondary li {
-  padding: 5px 0;
+  padding: 6px 12px;
   font-size: 14px;
 }
 
-.drawer-inner {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
+/* === Footer drawer === */
 .drawer-footer {
   margin-top: auto;
 }
 
-.cart-drawer {
-  width: 300px;
-}
-
-.cart-inner {
-  padding: 20px;
-  width: 100%;
-}
-
-.cart-header {
-  margin-bottom: 20px;
-}
-
-.cart-item {
+/* === Boutons de téléchargement === */
+.download-buttons {
   display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ccc;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  gap: 6px;
+  margin: 20px 0 10px 0;
 }
 
-.cart-item-image {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+.download-btn img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
-.cart-item-details {
-  flex: 1;
-}
-
-.cart-item-details p {
-  margin: 5px 0;
-}
-
-.cart-item-price {
-  font-weight: bold;
-}
-
-.cart-message input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  box-sizing: border-box;
-}
-
-.cart-total {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.cart-button {
-  width: 100%;
-  background-color: #000;
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.menu-hover:hover {
-  background-color: #d8d8d8;
-  border-radius: 20px;
-  padding-left: 2vw !important;
-}
-
-.menu-hover {
-  padding-left: 2vw !important;
-}
-
-
-
-
-
-/********          CHAT CONTAINER WITH STARS          ********/
-/* Chat container with stars */
-
+/* === Chat Lizy === */
 .chat-container {
   position: fixed;
   bottom: 50px;
   right: 50px;
-  width: 80px;  /* Ajusté pour inclure le mouvement orbital */
-  height: 40px; 
+  width: 80px;
+  height: 40px;
   z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Chat button */
 .chat-button {
   position: relative;
   width: 60px;
@@ -204,91 +149,84 @@ mat-drawer-content {
   cursor: pointer;
   object-fit: contain;
   background-color: transparent;
-  z-index: 9 !important;  /* Le bouton est au-dessous des étoiles */
+  z-index: 9 !important;
   transition: transform 0.3s ease;
-}
 
-.chat-button:hover {
-  transform: scale(1.1);
-}
-
-/* Star elements */
-.star {
-  position: absolute;
-  width: 40px;  /* Taille des étoiles */
-  height: 40px;
-  // background-image: url(#{$backgroundImages}); /* Chemin de l'image star.png */
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 1;
-  animation: rotateAround 5s infinite linear;  /* Animation orbitale */
-  /* Ajout de l'ombre */
-  
-  transform: translateY(-2px); /* Légère élévation au survol */
-  // box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
-}
-
-
-/* Position initiale des étoiles (avant rotation) */
-.star1 { 
-  top: -10px; 
-  left: 50%;
-  transform: translateX(-50%);
-  animation-delay: 0s;
-  z-index: 1002!important;  /* Les étoiles sont en dessous du bouton */
-}
-
-.star2 {
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1002!important;  /* Les étoiles sont en dessous du bouton */
-  animation-delay: 1s;
-}
-
-.star3 {
-  left: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  animation-delay: 2s;
-}
-
-.star4 {
-  right: -10px;
-  top: 50%;
-  transform: translateY(-50%);
-  animation-delay: 3s;
-}
-
-/* Animation de rotation autour du bouton avec effet de profondeur */
-@keyframes rotateAround {
-  0% {
-    transform: rotate(0deg) translateX(40px) rotate(0deg) scale(0.5); /* Petite taille quand éloignée */
-  }
-  50% {
-    transform: rotate(180deg) translateX(20px) rotate(-180deg) scale(1.2); /* Taille augmente au plus près du centre */
-  }
-  100% {
-    transform: rotate(360deg) translateX(40px) rotate(-360deg) scale(0.5); /* Reprend petite taille à distance */
+  &:hover {
+    transform: scale(1.1);
   }
 }
 
 
-
-
-.download-buttons {
+.page-container {
   display: flex;
-  gap: 1px;
-  margin-top: 15px; /* Séparation avec le QR code */
-  margin-bottom: 15px; // <-- On colle à 15px de la séparation
+  flex-direction: column;
+  min-height: 100vh; /* prend toute la hauteur de l'écran */
 }
 
-.download-btn img {
-  width: 100px;
-  height: auto;
-  transition: transform 0.2s ease;
+.content {
+  flex: 1; /* prend tout l'espace disponible entre header et footer */
+  padding: 16px; /* optionnel, juste pour aérer */
 }
 
-.download-btn img:hover {
-  transform: scale(1.1);
+
+
+.footer-izyglam {
+  background-color: #0e0e0e;
+  color: #e6b7c8;
+  text-align: center;
+  padding: 30px 15px;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  font-family: 'Poppins', sans-serif;
+
+  .footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .footer-socials {
+    margin-bottom: 12px;
+    a {
+      margin: 0 10px;
+      display: inline-block;
+      background-color: #ff4081;
+      border-radius: 50%;
+      padding: 10px;
+      transition: background-color 0.3s;
+    }
+    img {
+      height: 20px;
+      width: 20px;
+      filter: brightness(0) invert(1);
+    }
+    a:hover {
+      background-color: #ff5c9e;
+    }
+  }
+
+  .footer-text {
+    font-size: 14px;
+    color: #dcdcdc;
+    margin-bottom: 8px;
+
+    .izy {
+      color: #ff4081;
+      font-weight: bold;
+    }
+  }
+
+  .footer-links {
+    font-size: 13px;
+    a {
+      color: #ffb3c9;
+      margin: 0 5px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover {
+      color: #fff;
+    }
+  }
 }
+

@@ -11,6 +11,7 @@
       <div class="mb-5" id="navbarSupportedContent">
         <div>
           <h4>{{ shopInfo.name }}</h4>
+          <div class="pink">{{ shopInfo.trad | translate }}</div>
         </div>
         <div>
           <span>
@@ -27,7 +28,7 @@
             {{ adminSettings.serviceFee | number : "1.2-2" }}€<br />
             {{ "SHOP.DISTANCE" | translate }} {{ shopInfo.maxDistance }}km
           </span>
-          <div class="margin-top-10 bold">{{ "SHOP.GALLERY" | translate }}:</div>
+          <div class="margin-top-40 bold">{{ "SHOP.GALLERY" | translate }}:</div>
           <div class="margin-top-10">
             <div class="gallery-container">
               <div class="gallery-thumbnails">
@@ -75,7 +76,7 @@
     </div>
     <!-- Gallery display section -->
     <div class="col-lg-9">
-      <div class="row justify-content-center">
+      <div class="row justify-content-left">
         <div
           class="col-12 col-sm-12 col-md-6 col-lg-6"
           *ngFor="let item of shopItems"

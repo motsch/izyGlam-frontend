@@ -28,33 +28,30 @@ export class HorizontalPubListComponent implements OnInit {
     this.getAds();
   }
 
-  goTo(link: string) {
-    console.log("click: " + link);
-    if (link.startsWith('http://') || link.startsWith('https://')) {
-      window.open(link, '_blank'); // Ouvre le lien externe dans un nouvel onglet
-    } else {
-      this.router.navigateByUrl(link); // Navigation interne Angular
-    }
+  goTo(pub: any) {
+    const sponsorId = pub._id || pub.slug || pub.link;
+    this.router.navigate(['sponsor', sponsorId]);
   }
+  
 
   getAds() {
     this.adService.getAdvertisements('PREMIUM').subscribe(ads => {
       console.log("📢 Publicités récupérées :", ads);
-  
+
       this.pubs = this.balanceAds(ads);
-  
+
       // 🔧 Initialisation des flags de chargement à false
       for (const pub of this.pubs) {
         this.loadedImages[pub._id] = false;
       }
-  
+
       setTimeout(() => {
         console.log("🚀 Activation du tracking après affichage des pubs.");
         this.trackImpressions();
       }, 500);
     });
   }
-  
+
 
   balanceAds(ads: any[]): any[] {
     return ads.sort((a, b) => {
@@ -160,7 +157,7 @@ export class HorizontalPubListComponent implements OnInit {
   onImageLoad(pubId: string) {
     this.loadedImages[pubId] = true;
   }
-  
+
   onImageError(pubId: string) {
     this.loadedImages[pubId] = false; // on peut forcer à rester sur le skeleton
   }

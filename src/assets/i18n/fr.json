@@ -6,7 +6,7 @@
     "WAXING": "Esthéticien(ne)",
     "FACIAL": "Soin du visage",
     "MASSAGE": "Masseur(euse)",
-    "EYELASH": "Extension de cils",
+    "EYELASH": "Extensions de cils",
     "EYEBROW": "Sourcils",
     "TANNING": "Bronzage",
     "ACUPUNCTURE": "Acupuncture",
@@ -82,7 +82,8 @@
     "ACUPUNCTURE": "Acupuncture",
     "STYLISME": "Stylisme",
     "YOGA": "Relaxation",
-    "DEVELOPPEMENT": "Élévation"
+    "DEVELOPPEMENT": "Élévation",
+    "EYELASH":"Extensions de cils"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Une coiffeuse",
@@ -219,7 +220,7 @@
     "VALIDER": "VALIDER"
   },
   "CREATION_SHOP_STEPS": {
-    "TITLE": "izyGlam pour les établissements partenaires",
+    "TITLE": "izyGlam pour les indépendants",
     "STEP1": {
       "TITLE": "Les clients passent commande",
       "TEXT": "Le client trouve votre établissement et passe commande sur l'application izyGlam."
@@ -301,7 +302,7 @@
     }
   },
   "CREATION_COMPANY_STEPS": {
-    "TITLE": "Comment fonctionne izyGlam pour votre entreprise ?",
+    "TITLE": "izyGlam pour votre entreprise ?",
     "STEP1": {
       "TITLE": "Vos employés et clients réservent des services",
       "TEXT": "Vos employés ou clients sélectionnent les prestations bien-être qui leur conviennent directement via l'application izyGlam."
@@ -321,7 +322,7 @@
     "IMAGE": "image"
   },
   "CREATE_COMPANY_STEPS": {
-    "TITLE": "Pourquoi izyGlam pour votre entreprise ?",
+    "TITLE": "Pourquoi izyGlam ?",
     "STEP1": {
       "TITLE": "Fidélisez et récompensez vos employés",
       "TEXT": "Offrez un avantage unique à vos équipes en leur proposant un budget beauté mensuel. Coiffeuses, esthéticiennes et bien d'autres experts du bien-être à leur disposition, pour améliorer leur satisfaction et renforcer le sentiment d'appartenance à votre entreprise."
@@ -382,7 +383,7 @@
     "TITLE": "Mes favoris"
   },
   "SHOP": {
-    "MOVING_FEE": "Frais de déplacement :",
+    "MOVING_FEE": "Frais de service :",
     "DISTANCE": "Distance max :",
     "PAYEMENT": "Paiement par CB et PayPal accepté",
     "PRESS_FOR_INFO": "Appuyez pour consulter les horaires, les informations, etc...",

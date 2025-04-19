@@ -1,9 +1,11 @@
+<!-- Si l'utilisateur n'est pas connecté -->
 <div *ngIf="!sessionService.isLoggedIn()">
   <router-outlet></router-outlet>
 </div>
 
+<!-- Si l'utilisateur est connecté -->
 <mat-drawer-container class="example-container" *ngIf="sessionService.isLoggedIn()">
-  <!-- Left Drawer for Profile and Menu -->
+  <!-- Drawer latéral gauche -->
   <mat-drawer
     *ngIf="me"
     (closedStart)="closeDrawer()"
@@ -12,6 +14,7 @@
     class="drawer-content"
   >
     <div class="drawer-inner">
+      <!-- Section profil -->
       <div class="profile-section">
         <img
           [src]="imgStorageUrl + 'default.jpeg'"
@@ -26,28 +29,30 @@
         </div>
       </div>
 
+      <!-- Menu principal -->
       <ul class="drawer-menu">
         <li class="menu-hover" (click)="goTo('orders')">
-          <img class="side-icon" src="assets/images/icon/order.png" alt="Commandes passées" width="20" height="20" />
-          <span class="padding-left-10 side-item">{{ "SIDEBAR.ORDERS" | translate }}</span>
+          <img class="side-icon" src="assets/images/icon/order.png" alt="Commandes passées" />
+          <span class="side-item">{{ "SIDEBAR.ORDERS" | translate }}</span>
         </li>
 
         <li class="menu-hover" (click)="goTo('favorites')">
-          <img class="side-icon" src="assets/images/icon/favorite.png" alt="Favoris" width="20" height="20" />
-          <span class="padding-left-10 side-item">{{ "SIDEBAR.FAVORITES" | translate }}</span>
+          <img class="side-icon" src="assets/images/icon/favorite.png" alt="Favoris" />
+          <span class="side-item">{{ "SIDEBAR.FAVORITES" | translate }}</span>
         </li>
 
         <li class="menu-hover" (click)="goTo('help')">
-          <img class="side-icon" src="assets/images/icon/help.png" alt="Aide" width="20" height="20" />
-          <span class="padding-left-10 side-item">{{ "SIDEBAR.HELP" | translate }}</span>
+          <img class="side-icon" src="assets/images/icon/help.png" alt="Aide" />
+          <span class="side-item">{{ "SIDEBAR.HELP" | translate }}</span>
         </li>
 
         <li class="menu-hover" (click)="goTo('fidelity')">
-          <img class="side-icon" src="assets/images/icon/gift.png" alt="Programme de fidélité" width="20" height="20" />
-          <span class="padding-left-10 side-item">{{ "SIDEBAR.FIDELITY" | translate }}</span>
+          <img class="side-icon" src="assets/images/icon/gift.png" alt="Programme de fidélité" />
+          <span class="side-item">{{ "SIDEBAR.FIDELITY" | translate }}</span>
         </li>
       </ul>
 
+      <!-- Footer du drawer -->
       <div class="drawer-footer">
         <div class="download-buttons">
           <a href="https://play.google.com/store/apps/details?id=com.izyglam" target="_blank" class="btn download-btn">
@@ -58,37 +63,57 @@
           </a>
         </div>
 
+        <!-- Menu secondaire -->
         <ul class="drawer-menu secondary">
-          <li (click)="logout()" class="menu-hover">
-            <span class="padding-left-10">{{ "SIDEBAR.LOGOUT" | translate }}</span>
+          <li class="menu-hover" (click)="logout()">
+            <span class="side-item">{{ "SIDEBAR.LOGOUT" | translate }}</span>
           </li>
           <li class="menu-hover" (click)="goTo('creation-shop')">
-            <span class="padding-left-10">{{ "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate }}</span>
+            <span class="side-item">{{ "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate }}</span>
           </li>
           <li class="menu-hover" (click)="goTo('creation-company')">
-            <span class="padding-left-10">{{ "SIDEBAR.YOUR_COMPANY" | translate }}</span>
+            <span class="side-item">{{ "SIDEBAR.YOUR_COMPANY" | translate }}</span>
           </li>
         </ul>
       </div>
     </div>
   </mat-drawer>
 
+  <!-- Contenu principal -->
   <mat-drawer-content>
-    <span>
+    <div class="page-container">
+      <!-- Header -->
       <app-header [connected]="sessionService.isLoggedIn()"></app-header>
-    </span>
-
-    <!-- Chat button -->
-    <div class="chat-container" (click)="openChat()">
-      <img
-        src="assets/images/chat/lizy.png"
-        alt="Lizy Chat Icon"
-        class="chat-button"
-      />
+  
+      <!-- Bouton de chat -->
+      <div class="chat-container" (click)="openChat()">
+        <img
+          src="assets/images/chat/lizy.png"
+          alt="Lizy Chat Icon"
+          class="chat-button"
+        />
+      </div>
+  
+      <!-- Contenu dynamique -->
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+  
+      <!-- Footer -->
+      <footer class="footer-izyglam">
+        <div class="footer-content">
+          <p class="footer-text">© 2025 <span class="izy">izyGlam</span> – {{ "FOOTER.ALL_RIGHT" | translate }}</p>
+          <div class="footer-links">
+            <a href="#">{{ "FOOTER.CONFIDENTIAL" | translate }}</a> ·
+            <a href="#">{{
+        "FOOTER.ACCESS" | translate }}</a> ·
+            <a href="#">{{ "FOOTER.CONDITIONS" | translate }}</a>
+          </div>
+        </div>
+      </footer>
+      
     </div>
-
-    <router-outlet></router-outlet>
   </mat-drawer-content>
-</mat-drawer-container>
 
+<!-- Loader global -->
 <app-loader></app-loader>

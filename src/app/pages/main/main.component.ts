@@ -247,12 +247,14 @@ export class MainComponent implements OnInit, AfterViewInit {
     }
 
     filterByCategory(type: string, trad: string) {
+        this.categoryTrad = trad;
         if (!this.filterClicked) {
             this.selectedCategory = type;
             this.filterClicked = true;
-            this.categoryTrad = trad;
             this.filteredItems = this.shops.filter((x: any) => x.type === type);
-        } else if (this.selectedCategory === type) {
+            return;
+        }
+        if (this.selectedCategory === type) {
             this.cancelFilter();
             this.categoryTrad = '';
         } else {

@@ -52,6 +52,8 @@ import { CreateCompanyInfoComponent } from '../core/component/create-company-inf
 import { CreationCompanyComponent } from './creation-company/creation-company.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Calendar } from '@fullcalendar/core';
+import { SponsorComponent } from './sponsor/sponsor.component';
+import { FidelityComponent } from './fidelity/fidelity.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -107,12 +109,14 @@ import { Calendar } from '@fullcalendar/core';
         OrdersComponent,
         HelpComponent,
         FavoritesComponent,
+        SponsorComponent,
         GiftCardComponent,
         InviteFriendsComponent,
         CreationShopComponent,
         CreateShopInfoComponent,
         CreationCompanyComponent,
         CreateCompanyInfoComponent,
+        FidelityComponent,
     ],
     exports: [CreateShopInfoComponent, CreationShopComponent, CreateCompanyInfoComponent, CreationCompanyComponent],
 })
