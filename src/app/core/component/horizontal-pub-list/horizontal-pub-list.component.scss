@@ -1,45 +1,39 @@
-/* Wrapper général */
 .horizontal-section-wrapper {
   margin-bottom: 30px;
   padding: 0 16px;
 }
 
-/* Titre de section */
 .section-header h3 {
   font-size: 20px;
   font-weight: 600;
-  color: #ff4081; // Couleur "Rose Apple-like"
+  color: #ff4081;
   margin-bottom: 10px;
 }
 
-/* Wrapper du scroll horizontal */
 .horizontal-scroll-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  /* Optionnel : retirer scroll-snap si besoin de tester le drag */
-  // scroll-snap-type: x mandatory;
 }
 
-/* Liste scrollable */
 .scrollable-shop-list {
   display: flex;
   flex-wrap: nowrap;
   gap: 16px;
   scroll-behavior: smooth;
-  min-width: max-content;
   padding-bottom: 8px;
-  user-select: none; // Empêche la sélection accidentelle pendant le drag
+  user-select: none;
+  overflow-x: auto;
 
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
-/* Cartes de pub */
 .pub-card {
   flex: 0 0 auto;
   scroll-snap-align: start;
-  max-width: 280px;
+  width: 280px;
+  max-width: 90vw;
   transition: transform 0.3s ease;
 
   &:hover {
@@ -47,126 +41,13 @@
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .pub-card {
-    max-width: 80%;
-  }
-}
-
-@media (max-width: 480px) {
-  .pub-card {
-    max-width: 100%;
-  }
-}
-
-/* Scrollbar Apple-style (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  transition: background-color 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-/* Style scrollbar pour Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
-}
-
-@media (max-width: 768px) {
-  ::-webkit-scrollbar {
-    display: none;
-  }
-  * {
-    scrollbar-width: none;
-  }
-}
-
-/* Styles pour le drag to scroll */
-.drag-scroll {
-  cursor: grab;
-
-  &.active-drag {
-    cursor: grabbing;
-    user-select: none;
-  }
-}
-
-/* Style de l'image de la pub */
-.pub-premium {
-  height: 150px;
-  width: 280px;
-  object-fit: cover;        /* recadre et centre l'image */
-  object-position: center;  /* centre sur le milieu de l’image */
-  border-radius: 12px;
-}
-
-
-@media (max-width: 768px) {
-  .pub-premium {
-    width: 100%;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .pub-image-wrapper {
   position: relative;
-  width: 280px;
+  width: 100%;
+  max-width: 280px;
   height: 150px;
   border-radius: 12px;
   overflow: hidden;
-
-  @media (max-width: 768px) {
-    // width: 100%;
-  }
-}
-
-.skeleton-loader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: linear-gradient(
-    90deg,
-    #f8cfdc 25%,
-    #ffe1ec 50%,
-    #f8cfdc 75%
-  );
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.2s ease-in-out infinite;
-  z-index: 1;
 }
 
 .pub-premium {
@@ -180,10 +61,24 @@
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   z-index: 2;
+  border-radius: 12px;
 
   &.loaded {
     opacity: 1;
   }
+}
+
+.skeleton-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #f8cfdc 25%, #ffe1ec 50%, #f8cfdc 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s ease-in-out infinite;
+  z-index: 1;
 }
 
 @keyframes skeleton-loading {
