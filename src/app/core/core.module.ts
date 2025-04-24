@@ -79,6 +79,7 @@ import { HorizontalShopListComponent } from './component/horizontal-shop-list/ho
 import { HorizontalPubListComponent } from './component/horizontal-pub-list/horizontal-pub-list.component';
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { OrderCardComponent } from './component/order-card/order-card.component';
+import { ReviewModalComponent } from './component/review-modal/review-modal.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -186,6 +187,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         HorizontalShopListComponent,
         HorizontalPubListComponent,
         OrderCardComponent,
+        ReviewModalComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -230,6 +232,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         HorizontalShopListComponent,
         HorizontalPubListComponent,
         OrderCardComponent,
+        ReviewModalComponent,
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })

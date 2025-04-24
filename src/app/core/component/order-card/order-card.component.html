@@ -1,51 +1,28 @@
 <div class="refined-order-card">
   <!-- En-tête -->
   <div class="order-header">
-    <div class="order-title">
-      <!-- Tu peux mettre un titre ici si besoin, ou laisser vide -->
-    </div>
+    <div class="order-title"></div>
+
     <div class="order-status" [ngClass]="{
-        'finished': order.status === 'finished' || order.status === 'accepted',
-        'pending': order.status === 'pending',
-        'cancelled': order.status === 'cancelled'
-          || order.status === 'deleted'
-          || order.status === 'refused'
-          || order.status === 'no-show-pro'
-          || order.status === 'no-show-client'
-      }">
-      <span *ngIf="order.status === 'finished'">
-        ✅ Terminée
-      </span>
-      <span *ngIf="order.status === 'accepted'">
-        ✅ Accepté
-      </span>
-      <span *ngIf="order.status === 'pending'">
-        ⏳ En attente
-      </span>
-      <span *ngIf="order.status === 'cancelled'">
-        ❌ Annulée
-      </span>
-      <span *ngIf="order.status === 'deleted'">
-        ❌ Supprimée
-      </span>
-      <span *ngIf="order.status === 'refused'">
-        ❌ Refusée
-      </span>
-      <span *ngIf="order.status === 'no-show-pro'">
-        ❌ Prestataire absent
-      </span>
-      <span *ngIf="order.status === 'no-show-client'">
-        ❌ Client absent
-      </span>
+      'finished': order.status === 'finished' || order.status === 'accepted',
+      'pending': order.status === 'pending',
+      'cancelled': ['cancelled', 'deleted', 'refused', 'no-show-pro', 'no-show-client'].includes(order.status)
+    }">
+      <span *ngIf="order.status === 'finished'">✅ Terminée</span>
+      <span *ngIf="order.status === 'accepted'">✅ Acceptée</span>
+      <span *ngIf="order.status === 'pending'">⏳ En attente</span>
+      <span *ngIf="order.status === 'cancelled'">❌ Annulée</span>
+      <span *ngIf="order.status === 'deleted'">❌ Supprimée</span>
+      <span *ngIf="order.status === 'refused'">❌ Refusée</span>
+      <span *ngIf="order.status === 'no-show-pro'">❌ Prestataire absent</span>
+      <span *ngIf="order.status === 'no-show-client'">❌ Client absent</span>
     </div>
   </div>
-  
+
   <!-- Corps : image + infos -->
   <div class="order-body" (click)="goToShop(order)">
     <div class="order-image-wrapper">
-      <!--<div *ngIf="!imageLoaded" class="fallback-image"></div>-->
-      <img *ngIf="order.image" [src]="imgStorageUrl + order.image" alt="Image de la prestation"
-        [class.loaded]="imageLoaded" />
+      <img *ngIf="order.image" [src]="imgStorageUrl + order.image" alt="Image de la prestation" [class.loaded]="imageLoaded" />
     </div>
 
     <div class="order-details">
@@ -57,17 +34,26 @@
     </div>
   </div>
 
+  <!-- Actions dynamiques -->
   <div class="actions-container">
-    <button class="delete-button" (click)="downloadInvoice(order)">
-      Facture
+    <button *ngIf="availableActions.includes('invoice')" class="action-button" (click)="onDownloadInvoice.emit(order)">
+      📄 Facture
     </button>
-    <button class="delete-button" (click)="deleteBooking(order)">Supprimer
+    <button *ngIf="availableActions.includes('cancel')" class="action-button" (click)="cancelBooking(order)">
+      ❌ Annuler
+    </button>
+    <button *ngIf="availableActions.includes('delete')" class="action-button" (click)="deleteBooking(order)">
+      🗑 Supprimer
+    </button>
+    <button *ngIf="availableActions.includes('review')" class="action-button" (click)="reviewBooking(order)">
+      ✍️ Avis
+    </button>
+    <button *ngIf="availableActions.includes('support')" class="action-button" (click)="contactSupport(order)">
+      💬 Support
     </button>
   </div>
-  <!-- Actions si pro (non selectionUser) -->
 
-
-  <!-- Code à afficher (user) -->
+  <!-- Code à afficher (client) -->
   <div class="code-card" *ngIf="isWithinDisplayTime">
     <div *ngIf="!order.generatedCode">
       <button class="btn-secondary" (click)="generateCode(order)">Code de confirmation</button>
@@ -78,11 +64,10 @@
     </div>
   </div>
 
-
-  <!-- Boutons "absent" -->
+  <!-- Bouton "absent" pour prestataire -->
   <div class="absent-card" *ngIf="isAfterGracePeriod">
     <button class="btn-tertiary" (click)="markPrestataireAbsent(order)">
-      {{ 'Prestataire absent' }}
+      Prestataire absent
     </button>
   </div>
 </div>

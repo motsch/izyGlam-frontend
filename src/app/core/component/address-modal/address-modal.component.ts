@@ -38,14 +38,16 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
     create = false;
     isAddingAddress = false;
     newAddress: any = {};
-    selectedCountry = '';
-    selectedCity = '';
-    selectedArrondissement = '';
-    availableCountries = [];
-    availableCities: string[] = [];
     availableArrondissements: string[] = []; // liste filtrée d'arrondissements (name) pour une ville
     allCitiesData: any[] = [];        // on stocke ici toutes les villes brutes
 
+
+    
+    selectedCountry = 'France';
+    selectedCity: any = {};
+    availableCountries = ['France'];
+    availableCities: any[] = [];
+    postalCode: string = '';
     constructor(@Inject(MAT_DIALOG_DATA) public data: any,
         private dialogRef: MatDialogRef<AddressModalComponent>,
         private villeService: VilleService,
@@ -54,7 +56,6 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
 
     ngOnInit() {
         console.log(this.data.user);  // Utilisez les données passées ici
-        this.getCities();
     }
     ngAfterViewChecked() {
         setTimeout(() => this.searchInputElement?.nativeElement.focus(), 0);
@@ -94,7 +95,7 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
     // 📌 Enregistre la nouvelle adresse
     saveAddress() {
         // Assigne city et country aux nouvelles valeurs sélectionnées
-        this.newAddress.city = this.selectedCity;
+        this.newAddress.city = this.selectedCity.nom;
         this.newAddress.country = this.selectedCountry;
 
         console.log(this.newAddress)
@@ -130,30 +131,30 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
         }
     }
 
-    getCities() {
-        this.villeService.getAllLimted().subscribe((result: any) => {
-            console.log(result);
-            this.allCitiesData = result.data;
-            this.availableCountries = result.pays;  // Liste unique de pays
-
-        }, (error: any) => {
-            console.log(error);
-        })
-    }
-
     // ----------------------------------------
     // 1) Quand l’utilisateur choisit un pays
     // ----------------------------------------
+    
+
     onCountryChange() {
-        // Filtrer les villes qui appartiennent à ce pays
-        const filteredByCountry = this.allCitiesData.filter(v => v.pays === this.selectedCountry);
-        // Extraire la liste unique de city
-        this.availableCities = [...new Set(filteredByCountry.map(v => v.city))];
-        // On réinitialise la sélection de ville & arrondissements
-        this.selectedCity = '';
-        this.availableArrondissements = [];
-        // Mettre à jour l'objet newAddress
-        this.newAddress.country = this.selectedCountry;
+        this.postalCode = '';
+        this.availableCities = [];
+        this.selectedCity = {};
+    }
+    
+
+    onPostalCodeEntered() {
+        if (!this.postalCode || this.postalCode.length < 4) return;
+
+        this.villeService.getByPostalCode(this.postalCode, this.selectedCountry).subscribe((cities: any[]) => {
+            console.log(cities)
+            this.availableCities = cities;
+            this.newAddress.code_postal = this.postalCode;
+
+            if (cities.length === 1) {
+                this.selectedCity = cities[0];
+            }
+        });
     }
 
     // -----------------------------------------
@@ -162,7 +163,7 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
     onCityChange() {
         // Filtre les documents par pays + city
         const filteredByCity = this.allCitiesData.filter(
-            v => v.pays === this.selectedCountry && v.city === this.selectedCity
+            v => v.pays === this.selectedCountry && v.city === this.selectedCity.nom
         );
         if (filteredByCity.length > 1) {
             // Plusieurs arrondissements => on récupère juste la liste des name
@@ -174,32 +175,12 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
             // Un seul document => on récupère directement le code postal
             const doc = filteredByCity[0];
             this.availableArrondissements = [doc.name]; // si tu veux un tableau à un seul élément
-            this.selectedArrondissement = doc.name;     // on sélectionne l'arrondissement par défaut
             this.newAddress.code_postal = doc.code_postal; // On met à jour le CP
         }
         // On met à jour la ville
-        this.newAddress.city = this.selectedCity;
+        this.newAddress.city = this.selectedCity.nom;
     }
 
-
-    // ------------------------------------------------
-    // 3) Quand l’utilisateur choisit un arrondissement
-    // ------------------------------------------------
-    onArrondissementChange() {
-        // Refiltrer pour trouver l’unique document
-        const doc = this.allCitiesData.find(
-            v =>
-                v.pays === this.selectedCountry &&
-                v.city === this.selectedCity &&
-                v.name === this.selectedArrondissement
-        );
-        if (doc) {
-            this.newAddress.code_postal = doc.code_postal;
-            // on peut aussi récupérer d’autres infos si besoin
-        }
-        // Mettre à jour l'objet newAddress
-        this.newAddress.arrondissement = this.selectedArrondissement;
-    }
 
     loadUser() {
         this.data.user = this.userService.getMe();

@@ -25,30 +25,36 @@
           <!-- Pays -->
           <div class="form-group">
             <label for="street">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
+            
+
             <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
               <option value="">-- Choisir un pays --</option>
               <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
             </select>
+            <input *ngIf="availableCountries.length === 1" type="hidden" name="country"
+              [(ngModel)]="selectedCountry" />
           </div>
+
+          <!-- 2. Code postal -->
+          <input type="text" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
+            (change)="onPostalCodeEntered()" required maxlength="10" />
 
           <!-- Ville -->
-          <div class="form-group">
-            <label for="street">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
-            <select [(ngModel)]="selectedCity" name="city" (change)="onCityChange()" required>
-              <option value="">-- Choisir une ville --</option>
-              <option *ngFor="let city of availableCities" [value]="city">{{ city }}</option>
-            </select>
+          
+          <!-- 3. Villes correspondant au code postal -->
+          <div class="row input-group-row">
+            <div class="col-md-6">
+              <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
+              <!-- Sélecteur de ville -->
+              <select *ngIf="availableCities.length > 0" [(ngModel)]="selectedCity" name="city" required>
+                <option value="">-- Choisir une ville --</option>
+                <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
+              </select>
+            </div>
           </div>
+          <!-- 5. Rue -->
+          <input type="text" [(ngModel)]="newAddress.street" name="street" placeholder="Rue" required />
 
-          <!-- Arrondissement -->
-          <div class="form-group" *ngIf="availableArrondissements.length > 1">
-            <label for="street">{{ "ADDRESS_MODAL.STREET" | translate }}</label>
-            <select [(ngModel)]="selectedArrondissement"
-              name="arrondissement" (change)="onArrondissementChange()">
-              <option value="">-- Choisir un arrondissement --</option>
-              <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
-            </select>
-          </div>
 
 
           <div class="form-group">
@@ -56,17 +62,6 @@
             <input [(ngModel)]="newAddress.street" (ngModelChange)="showValidate()" type="text" id="street" name="street"
               placeholder="2 rue Olivier Métra" required />
           </div>
-          <!--
-          <div class="form-group">
-            <label for="city">{{ "ADDRESS_MODAL.CITY" | translate }}</label>
-            <input [(ngModel)]="elem.city" (ngModelChange)="showValidate()" type="text" id="city" name="city"
-              placeholder="Paris" required />
-          </div>
-          <div class="form-group">
-            <label for="code_postal">{{ "ADDRESS_MODAL.CP" | translate }}</label>
-            <input [(ngModel)]="elem.code_postal" (ngModelChange)="showValidate()" type="text" id="code_postal"
-              name="code_postal" placeholder="75020" required />
-          </div>-->
         </form>
       </div>
     </span>

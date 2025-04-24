@@ -1,6 +1,10 @@
 <div class="form">
   <div class="page-container">
-    <h1>{{ "ORDERS.TITLE" | translate }}</h1>
+    <div class="page-title-wrapper">
+      <h1 class="page-title">Mes commandes</h1>
+      <p class="page-subtitle">Gère facilement tes rendez-vous passés, à venir ou annulés.</p>
+    </div>
+    <!--<h1>{{ "ORDERS.TITLE" | translate }}</h1>-->
 
     <app-calendar [selectionUser]="true"></app-calendar>
   </div>

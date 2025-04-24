@@ -1,15 +1,14 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { StripeService } from 'src/app/core/services/stripe.service';
 import { BookingService } from 'src/app/core/services/booking.service';
 import { environment } from 'src/environments/environment';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthenticationService } from '../../services/authentication.service';
 import { FinancialService } from '../../services/financial.service';
-import { SessionService } from '../../services/session.service';
 import { TransactionService } from '../../services/transaction.service';
 import { UserService } from '../../services/user.service';
+import { InvoiceService } from '../../services/invoice.service';
 
 @Component({
   selector: 'app-calendar',
@@ -26,18 +25,18 @@ export class CalendarComponent implements OnInit {
   selectedOrderType: 'upcoming' | 'past' | 'cancelled' = 'upcoming';
   imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
   imageLoaded: { [key: string]: boolean } = {}; // Suivi du chargement des images
+  availableActions: string[] = [];
+  showReviewModal = false;
+  selectedBooking = null;
 
   constructor(
     private bookingService: BookingService,
     private userService: UserService,
     private translate: TranslateService,
-    private sessionService: SessionService,
-    // private invoiceService: InvoiceService,
     private router: Router,
+    private invoiceService: InvoiceService,
     private stripeService: StripeService,
-    private authenticationService: AuthenticationService,
     private transactionService: TransactionService,
-    private cdr: ChangeDetectorRef, // Permet de forcer la détection des changements
     private financialService: FinancialService
   ) {
     // Définir la langue par défaut
@@ -45,6 +44,26 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initOrders();
+  }
+
+  openModal(order:any) {
+    if(order) {
+      this.selectedBooking = order;
+      this.showReviewModal = true;
+    } else {
+      this.closeReviewModal();
+    }
+  }
+
+  closeReviewModal() {
+    this.showReviewModal = false;
+    this.selectedBooking = null;
+  }
+  initOrders() {
+    this.cancelledOrders = [];
+    this.upcomingOrders = [];
+    this.pastOrders = [];
     this.userService.getMe().subscribe((data: any) => {
       console.log(data);
       this.me = data;
@@ -53,7 +72,6 @@ export class CalendarComponent implements OnInit {
       (error: any) => {
         console.log(error)
       })
-
   }
 
   getAllBooking(data: any) {
@@ -133,8 +151,6 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-
-
   processOrders(bookings: any[]) {
     const today = new Date().toLocaleDateString();
     // Mise à jour des propriétés de date et initialisation du chargement des images
@@ -147,11 +163,11 @@ export class CalendarComponent implements OnInit {
     });
     const upcomingStatuses = ['pending', 'accepted'];
     const pastStatuses = ['finished'];
-    const cancelStatuses = ['deleted','refused', 'no-show-client', 'no-show-pro'];
+    const cancelStatuses = ['deleted', 'refused', 'no-show-client', 'no-show-pro'];
     // this. = bookings.filter(order => order.status === 'deleted' || order.status === 'refused' || order.status === 'no-show-pro' || order.status === 'no-show-client');
-    
-    
-    
+
+
+
     // Filtrage des commandes annulées
     this.cancelledOrders = bookings.filter(order => {
       if (new Date(order.start).toLocaleDateString() === today) {
@@ -179,12 +195,17 @@ export class CalendarComponent implements OnInit {
   switchUserOrPro() {
     this.upcomingOrders = [];
     this.pastOrders = [];
-    // this.me = this.authenticationService.getUser();
     this.getAllBooking(this.me);
   }
 
   previewInvoice(order: any) {
-    // this.invoiceService.previewInvoice(order);
+    if (!order) {
+      console.error("❌ Erreur: Aucune commande fournie.");
+      return;
+    }
+
+    console.log("👀 Prévisualisation de la facture pour :", order);
+    this.invoiceService.previewInvoice(order);
   }
 
   downloadInvoice(order: any) {
@@ -193,13 +214,12 @@ export class CalendarComponent implements OnInit {
       return;
     }
 
-    console.log("📄 Génération de la facture pour :", order);
-
+    console.log("📄 Téléchargement de la facture pour :", order);
     try {
-      // this.invoiceService.generateInvoice(order);
-      console.log("✅ Facture en cours de génération...");
+      this.invoiceService.downloadInvoice(order);
+      console.log("✅ Facture téléchargée !");
     } catch (error) {
-      console.error("❌ Erreur lors de la génération de la facture :", error);
+      console.error("❌ Erreur lors du téléchargement de la facture :", error);
     }
   }
 
@@ -481,4 +501,44 @@ export class CalendarComponent implements OnInit {
         console.log("ACCEPTED FAILED");
       });
   }
+
+
+  getStatusLabel(status: string): string {
+    switch (status) {
+      case 'pending': return '⏳ En attente';
+      case 'accepted': return '✅ Confirmée';
+      case 'refused': return '❌ Refusée';
+      case 'cancelled': return '❌ Annulée';
+      case 'finished': return '✅ Terminée';
+      case 'no-show-client': return '🚫 Client absent';
+      case 'no-show-pro': return '🚫 Pro absent';
+      default: return status;
+    }
+  }
+
+  getAvailableActions(order: any): string[] {
+    const paid = order?.paid;
+    const status = order?.status;
+
+    const actionsPerStatus: { [key: string]: string[] } = {
+      pending: ['invoice', 'cancel'],
+      accepted: ['cancel', 'invoice'],
+      refused: ['delete', 'invoice'],
+      cancelled: ['delete', 'invoice'],
+      finished: ['invoice', 'review', 'delete'],
+      'no-show-client': ['invoice', 'delete', 'support'],
+      'no-show-pro': ['invoice', 'delete', 'support']
+    };
+
+    return actionsPerStatus[status] || [];
+  }
+
+  canShow(order: any, action: string): boolean {
+    return this.getAvailableActions(order).includes(action);
+  }
+
+  onUpdateAsked() {
+    this.initOrders();
+  }
+
 }

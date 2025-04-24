@@ -2,7 +2,10 @@
     *ngIf="!sessionService.isLoggedIn()"
     [connected]="false"
   ></app-header>
-    <h1>Les questions les plus souvent posées</h1>
+  <div class="page-title-wrapper">
+    <h1 class="page-title">{{ "FAVORITES.TITLE" | translate }}</h1>
+    <p class="page-subtitle">Les questions les plus souvent posées.</p>
+  </div>
     <div class="page-container">
         <mat-accordion>
             <mat-expansion-panel *ngFor="let panel of panels">

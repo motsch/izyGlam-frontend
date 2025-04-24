@@ -41,6 +41,7 @@
     "date-fns": "^3.6.0",
     "font-awesome": "^4.7.0",
     "jspdf": "^2.5.2",
+    "jspdf-autotable": "^5.0.2",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
     "mqtt": "^4.3.8",

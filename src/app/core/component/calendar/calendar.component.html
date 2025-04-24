@@ -18,6 +18,9 @@
         [order]="order"
         [selectionUser]="selectionUser"
         [imageLoaded]="imageLoaded[order._id]"
+        [availableActions]="getAvailableActions(order)"
+        (onDownloadInvoice)="downloadInvoice(order)"
+        (onUpdateNeeded)="onUpdateAsked()"
       ></app-order-card>
     </ng-container>
   </div>
@@ -34,7 +37,10 @@
         [order]="order"
         [selectionUser]="selectionUser"
         [imageLoaded]="imageLoaded[order._id]"
+        [availableActions]="getAvailableActions(order)"
         (onDownloadInvoice)="downloadInvoice(order)"
+        (onUpdateNeeded)="onUpdateAsked()"
+        (modalReview)="openModal(order)"
       ></app-order-card>
     </ng-container>
   </div>
@@ -47,12 +53,24 @@
 
     <ng-container *ngFor="let order of cancelledOrders">
       <app-order-card
+        *ngIf="order.status !== 'deleted'"
         [order]="order"
         [selectionUser]="selectionUser"
         [imageLoaded]="imageLoaded[order._id]"
+        [availableActions]="getAvailableActions(order)"
+        (onUpdateNeeded)="onUpdateAsked()"
       ></app-order-card>
     </ng-container>
   </div>
 
   <div style="height: 80px;"></div>
 </div>
+
+
+
+
+<app-review-modal
+  *ngIf="showReviewModal"
+  [booking]="selectedBooking"
+  (closeModal)="closeReviewModal()">
+</app-review-modal>

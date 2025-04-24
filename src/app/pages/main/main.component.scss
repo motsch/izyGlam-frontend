@@ -1,36 +1,28 @@
 /* === WRAPPER GLOBAL === */
 .izy-wrapper {
-  width: 100vw; // pour forcer à occuper toute la largeur de l'écran
+  width: 100vw;
   box-sizing: border-box;
   padding-left: 24px;
   padding-right: 24px;
-
-  // Supprimer tout recentrage !
   margin: 0;
   max-width: none;
 }
 
 /* === CONTENU === */
 .izy-content {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
-/* === SECTION WRAPPER (Titres) === */
-.horizontal-section-wrapper {
-  margin-bottom: 30px;
-  padding-left: 0;
-  padding-right: 0;
-}
-.section-header,
+/* === TITRES DE SECTION === */
 .horizontal-section-wrapper,
+.section-header,
 .horizontal-scroll-wrapper {
   padding-left: 0;
   padding-right: 0;
 }
-/* === TITRES DE SECTION === */
+
 .section-header {
   padding-left: 16px;
 
@@ -58,7 +50,7 @@
   }
 }
 
-/* === SCROLLABLES (catégories, shops, pubs) === */
+/* === LISTES SCROLLABLES === */
 .scrollable-category-list {
   display: flex;
   flex-wrap: nowrap;
@@ -115,16 +107,26 @@
   }
 }
 
-
-/* === BARRE D’ADRESSE & RECHERCHE === */
-.address-search-container {
+/* === WRAPPER ADRESSE + BARRE DE RECHERCHE CENTRÉ === */
+.address-search-wrapper {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  padding: 30px 16px 10px;
+  justify-content: center;
+  margin-top: 30px;
 }
 
+.address-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 16px;
+}
+
+/* === BOUTON ADRESSE === */
 .address-button-pretty {
   background: #f6f6f6;
   border: none;
@@ -133,12 +135,13 @@
   font-size: 16px;
   font-weight: 500;
   color: #333;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-shrink: 0;
 
   &:hover {
     background: #ececec;
@@ -154,16 +157,18 @@
   }
 }
 
+/* === BARRE DE RECHERCHE === */
 .pretty-search-bar {
-  width: 100%;
-  max-width: 420px;
+  flex-grow: 1;
+  min-width: 240px;
+  max-width: 100%;
   padding: 14px 18px;
   font-size: 16px;
   border-radius: 14px;
   border: 1px solid #e0e0e0;
   background-color: #fdfdfd;
   color: #333;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:focus {
@@ -173,7 +178,7 @@
   }
 }
 
-/* === MODALES & DIVERS === */
+/* === MODALES === */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -239,6 +244,7 @@
   }
 }
 
+/* === GÉNÉRAL === */
 html, body {
   overflow-x: hidden;
   width: 100%;
@@ -247,12 +253,25 @@ html, body {
   box-sizing: border-box;
 }
 
-
+/* === SHOPS === */
 .shop-card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* 👈 ALIGNE À GAUCHE */
+  justify-content: flex-start;
   gap: 20px;
   padding: 10px;
   border: none;
+}
+
+/* === RESPONSIVE POUR ADRESSE + RECHERCHE === */
+@media (max-width: 575px) {
+  .address-search-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .address-button-pretty,
+  .pretty-search-bar {
+    width: 100%;
+  }
 }

@@ -5,6 +5,7 @@ import { FinancialService } from '../../services/financial.service';
 import { environment } from 'src/environments/environment';
 import { TransactionService } from '../../services/transaction.service';
 import { StripeService } from '../../services/stripe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-card',
@@ -18,29 +19,27 @@ export class OrderCardComponent {
   @Input() imageLoaded: boolean = false;
   @Input() isWithinDisplayTime: boolean = false;
   @Input() isAfterGracePeriod: boolean = false;
-
+  @Input() availableActions: string[] = [];
+  @Output() onDownloadInvoice = new EventEmitter<any>();
+  @Output() onUpdateNeeded = new EventEmitter<any>();
+  @Output() modalReview = new EventEmitter<any>();
   apiImageUrl = environment.APIimgStorageUrl;
   confirmCodeInput: string = '';
   imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
 
-  constructor(private stripeService: StripeService, private transactionService: TransactionService, private bookingService: BookingService, private financialService: FinancialService) {}
+  constructor(private stripeService: StripeService, private router: Router, private transactionService: TransactionService, private bookingService: BookingService, private financialService: FinancialService) { }
 
-  downloadInvoice(order: any){}
-  
   deleteBooking(order: any) {
     console.log("Booking to delete:", JSON.stringify(order));
-  
     // Mise à jour du statut du booking
     this.bookingService.updateBookingStatus(order._id, 'deleted').subscribe({
       next: (response: any) => {
         console.log("Booking update response:", JSON.stringify(response));
         console.log("DELETE OK");
-  
         const bookingStart = moment(order.start);
         const now = moment();
         const diffHours = bookingStart.diff(now, 'hours');
         console.log(`Différence en heures entre maintenant et le début du booking : ${diffHours}`);
-  
         if (diffHours >= 24) {
           console.log("Suppression > 24h avant la prestation : remboursement complet du client.");
           this.financialService.processRefund(order._id, "customer-cancel-greater-than-24").subscribe({
@@ -73,7 +72,6 @@ export class OrderCardComponent {
       }
     });
   }
-  
 
   onImageLoad(orderId: string) {
     // this.imageLoaded[orderId] = true;
@@ -81,19 +79,12 @@ export class OrderCardComponent {
     console.log("Image Loaded UPDATED: ", JSON.stringify(this.imageLoaded));
   }
 
-
   goToShop(order: any) {
     console.log(order);
+    // go to shop/:order.shopId
+    this.router.navigate(['shop/' + order.shopId]); // Navigation programmée vers la page du shop
+    // this.router.navigate(['shop'], { state: { booking: order } });
   }
-
-
-
-  reviewBooking(order: any) {
-    console.log(order);
-    // this.router.navigate(['notation'], { state: { booking: order } });
-  }
-
-  
 
   /**
    * Génère un code aléatoire à 6 chiffres pour le booking.
@@ -112,7 +103,6 @@ export class OrderCardComponent {
       });
   }
 
-  
   markPrestataireAbsent(order: any) {
     console.log('Prestataire absent pour la commande', order);
     console.log("Booking to no-show-pro : " + JSON.stringify(order));
@@ -205,5 +195,80 @@ export class OrderCardComponent {
         console.error("Erreur lors de la mise à jour du booking :", JSON.stringify(error));
         console.log("no-show-pro FAILED");
       });
+  }
+
+  cancelBooking(order: any) {
+    console.log('Annulation de la commande :', order);
+    // Tu peux ici émettre un EventEmitter si besoin
+    console.log("Booking to delete:", JSON.stringify(order));
+
+    // Mise à jour du statut du booking
+    this.bookingService.updateBookingStatus(order._id, 'deleted').subscribe({
+      next: (response: any) => {
+        console.log("Booking update response:", JSON.stringify(response));
+        console.log("DELETE OK");
+
+        // Calcul de la différence en heures entre maintenant et le début du booking
+        const bookingStart = moment(order.start);
+        const now = moment();
+        const diffHours = bookingStart.diff(now, 'hours');
+        console.log(`Différence en heures entre maintenant et le début du booking : ${diffHours}`);
+
+        if (diffHours >= 24) {
+          console.log("Suppression > 24h avant la prestation : remboursement complet du client.");
+          // Appel du FinancialService pour un remboursement complet
+          this.financialService.processRefund(order._id, "customer-cancel-greater-than-24").subscribe({
+            next: (refundResponse: any) => {
+              console.log("Remboursement complet effectué via FinancialService:", refundResponse);
+              // this.switchUserOrPro();
+              // TODO F6 : Update invoice
+              this.onUpdateNeeded.emit(order);
+            },
+            error: (refundError: any) => {
+              console.error("Erreur lors du remboursement complet:", refundError);
+            }
+          });
+        } else {
+          console.log("Suppression < 24h avant la prestation : remboursement partiel (50%).");
+          if (window.confirm("Attention, si vous continuez, vous ne serez remboursé qu'à 50% du montant payé. Voulez-vous confirmer ?")) {
+            // Appel du FinancialService pour un remboursement partiel
+            this.financialService.processRefund(order._id, "customer-cancel-less-than-24").subscribe({
+              next: (refundResponse: any) => {
+                console.log("Remboursement partiel effectué via FinancialService:", refundResponse);
+                // this.switchUserOrPro();
+                // TODO F6 : Update invoice
+                this.onUpdateNeeded.emit(order);
+              },
+              error: (refundError: any) => {
+                console.error("Erreur lors du remboursement partiel:", refundError);
+              }
+            });
+          } else {
+            console.log("Annulation de l'opération par le client.");
+          }
+        }
+      },
+      error: (error: any) => {
+        console.error("Erreur lors de la mise à jour du booking :", JSON.stringify(error));
+        console.log("DELETE FAILED");
+      }
+    });
+  }
+
+  contactSupport(order: any) {
+    console.log('Contacter le support pour :', order);
+    // Rediriger ou ouvrir un système de ticket / chat
+  }
+
+  reviewBooking(order: any) {
+    this.modalReview.emit(order);
+    // this.selectedBooking = order;
+    // this.showReviewModal = true;
+  }
+
+  closeReviewModal() {
+    this.modalReview.emit();
+    // this.showReviewModal = false;
+    // this.selectedBooking = null;
   }
 }

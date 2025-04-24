@@ -1,15 +1,15 @@
 <div class="form">
-    <div class="page-container">
-        <h1>{{ "FAVORITES.TITLE" | translate }}</h1>
-        <div class="row test66">
-          <!-- Utilisation de 'row' pour démarrer une grille -->
-          <app-round-shop-card
-            *ngFor="let item of shops"
-            [shop]="item"
-            [promoVisible]="false"
-            class="card pointer"
-          ></app-round-shop-card>
-          <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
-        </div>
-      </div>
+  <div class="page-container">
+
+    <div class="page-title-wrapper">
+      <h1 class="page-title">{{ "FAVORITES.TITLE" | translate }}</h1>
+      <p class="page-subtitle">Gère facilement tes salons favoris.</p>
+    </div>
+    <div class="row test66">
+      <!-- Utilisation de 'row' pour démarrer une grille -->
+      <app-round-shop-card *ngFor="let item of shops" [shop]="item" [promoVisible]="false"
+        class="card pointer"></app-round-shop-card>
+      <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
+    </div>
   </div>
+</div>

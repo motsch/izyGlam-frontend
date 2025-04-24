@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VilleService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Récupérer toutes les villes
    */
   getAll(): Observable<any> {
-    return this.http.get<any[]>(`${environment.apiUrl}ville`);
+    return this.http.get<any[]>(`${environment.apiUrl}city`);
   }
 
   /**
@@ -28,7 +28,7 @@ export class VilleService {
    * @param id (ID de la ville)
    */
   getById(id: string): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}ville/${id}`);
+    return this.http.get<any>(`${environment.apiUrl}city/${id}`);
   }
 
   /**
@@ -36,7 +36,7 @@ export class VilleService {
    * @param ville (données de la ville à créer)
    */
   create(ville: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}ville`, ville);
+    return this.http.post<any>(`${environment.apiUrl}city`, ville);
   }
 
   /**
@@ -44,7 +44,7 @@ export class VilleService {
    * @param ville (données de la ville à mettre à jour, incluant son _id)
    */
   update(ville: any): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}ville/${ville._id}`, ville);
+    return this.http.put<any>(`${environment.apiUrl}city/${ville._id}`, ville);
   }
 
   /**
@@ -52,6 +52,16 @@ export class VilleService {
    * @param id (ID de la ville à supprimer)
    */
   delete(id: string): Observable<any> {
-    return this.http.delete<any>(`${environment.apiUrl}ville/${id}`);
+    return this.http.delete<any>(`${environment.apiUrl}city/${id}`);
+  }
+
+  /**
+ * Récupérer les villes par code postal et pays
+ * @param codePostal 
+ * @param pays (optionnel)
+ */
+  getByPostalCode(codePostal: string, pays?: string): Observable<any[]> {
+    const url = `${environment.apiUrl}city-by-postal/${codePostal}`;
+    return this.http.get<any[]>(pays ? `${url}?pays=${pays}` : url);
   }
 }

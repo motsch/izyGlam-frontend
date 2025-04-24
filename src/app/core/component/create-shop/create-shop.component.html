@@ -27,45 +27,41 @@
               <input [disabled]="!isUserConnected" type="text" id="floor" name="floor" placeholder="123"
                 [(ngModel)]="newShopUser.floor" />
             </div>
+
+
+            <!-- 1. Choix du pays -->
             <div class="col-md-6">
               <label for="country">{{
                 "CREATION_SHOP.COUNTRY" | translate
                 }}</label>
               <!-- Sélecteur de pays -->
+
               <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
                 <option value="">-- Choisir un pays --</option>
-                <option *ngFor="let country of availableCountries" [value]="country">
-                  {{ country }}
-                </option>
+                <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
               </select>
+              <input *ngIf="availableCountries.length === 1" type="hidden" name="country"
+                [(ngModel)]="selectedCountry" />
             </div>
           </div>
 
+          <!-- 2. Code postal -->
+          <input type="text" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
+            (change)="onPostalCodeEntered()" required maxlength="10" />
+
+          <!-- 3. Villes correspondant au code postal -->
           <div class="row input-group-row">
             <div class="col-md-6">
               <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
-
               <!-- Sélecteur de ville -->
-              <select [(ngModel)]="selectedCity" name="city" (change)="onCityChange()" required>
+              <select *ngIf="availableCities.length > 0" [(ngModel)]="selectedCity" name="city" required>
                 <option value="">-- Choisir une ville --</option>
-                <option *ngFor="let city of availableCities" [value]="city">
-                  {{ city }}
-                </option>
-              </select>
-            </div>
-
-            <div class="col-md-6">
-              <label for="shop-street">{{ "Arrondissement" | translate }}</label>
-              <!-- Sélecteur d'arrondissement (si plusieurs arrondissements) -->
-              <select *ngIf="availableArrondissements.length > 1" [(ngModel)]="selectedArrondissement"
-                name="arrondissement" (change)="onArrondissementChange()">
-                <option value="">-- Choisir un arrondissement --</option>
-                <option *ngFor="let arr of availableArrondissements" [value]="arr">
-                  {{ arr }}
-                </option>
+                <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
               </select>
             </div>
           </div>
+          <!-- 5. Rue -->
+          <input type="text" [(ngModel)]="newAddress.street" name="street" placeholder="Rue" required />
 
           <div class="row input-group-row">
             <label for="business-type">{{

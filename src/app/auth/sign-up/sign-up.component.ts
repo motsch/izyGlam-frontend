@@ -8,6 +8,7 @@ import { EmitterService } from 'src/app/core/services/emitter.service';
 import { SeoService } from 'src/app/core/services/seo.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
+import { v4 as uuidv4 } from 'uuid'; // Assure-toi d'avoir installé `uuid`
 
 @Component({
     selector: 'app-sign-up',
@@ -55,12 +56,12 @@ export class SignUpComponent implements OnInit {
         private _snackBar: MatSnackBar,
         private router: Router,
         private seoService: SeoService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.seoService.updateMeta('signup');
         this.title.setTitle(this.route.snapshot.data['title']);
-        
+
         this.translate.get(this.placeholerFirstName).subscribe((res: string) => {
             this.placeholerFirstName = res;
         });
@@ -79,6 +80,7 @@ export class SignUpComponent implements OnInit {
         this.translate.get(this.placeholderConfirmPassword).subscribe((res: string) => {
             this.placeholderConfirmPassword = res;
         });
+        this.user.sex = 'female';
     }
 
     /*
@@ -86,13 +88,24 @@ export class SignUpComponent implements OnInit {
      */
     validAjouterModifier() {
         //crétion d'un user
-        this.user.role = 'particulier';
+        this.user.role = 'user';
+
+        // 💬 conversationId obligatoire
+        this.user.conversationId = uuidv4();
+
+        // 🪄 Si fidelity est requis, on le remplit :
+        this.user.fidelity = {
+          stars: 0,
+          card_expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // +1 an
+          rewards_history: [],
+        };
+
         // TODO User à mettre en dynamique asap
         // this.user.roleId = 1;
         if (!this.newUserOrEditUser) {
             // une fois l'erreur : on desactive le loader
             this.emitterService.change(true);
-            this.userService.create(this.user).subscribe(
+            this.userService.createNoToken(this.user).subscribe(
                 () => {
                     // this.modalService.dismissAll();
                     // this.modalRMSService.updateData();

@@ -26,14 +26,17 @@ export class CreateShopComponent implements OnInit {
     longitude = 0.0;
     // Données récupérées de l'API
     allCitiesData: any[] = [];        // on stocke ici toutes les villes brutes
-    availableCountries: string[] = [];  // liste unique de pays
-    availableCities: string[] = [];     // liste filtrée de villes pour un pays
     availableArrondissements: string[] = []; // liste filtrée d'arrondissements (name) pour une ville
 
     // Valeurs sélectionnées par l'utilisateur
-    selectedCountry: string = '';
-    selectedCity: string = '';
-    selectedArrondissement: string = '';
+
+    
+    selectedCountry = 'France';
+    selectedCity: any = {};
+    selectedArrondissement = '';
+    availableCountries = ['France'];
+    availableCities: any[] = [];
+    postalCode: string = '';
     constructor(
         private userService: UserService,
         private shopService: ShopService,
@@ -45,7 +48,6 @@ export class CreateShopComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.getCities();
         this.categoryService.getAll().subscribe({
             next: (data: any) => {
                 this.categories = data;
@@ -74,31 +76,31 @@ export class CreateShopComponent implements OnInit {
         });
     }
 
-    getCities() {
-        this.villeService.getAllLimted().subscribe((result: any) => {
-            console.log(result);
-            this.allCitiesData = result.data;
-            this.availableCountries = result.pays;  // Liste unique de pays
-
-        }, (error: any) => {
-            console.log(error);
-        })
-    }
-
 
     // ----------------------------------------
     // 1) Quand l’utilisateur choisit un pays
     // ----------------------------------------
+    
+
     onCountryChange() {
-        // Filtrer les villes qui appartiennent à ce pays
-        const filteredByCountry = this.allCitiesData.filter(v => v.pays === this.selectedCountry);
-        // Extraire la liste unique de city
-        this.availableCities = [...new Set(filteredByCountry.map(v => v.city))];
-        // On réinitialise la sélection de ville & arrondissements
-        this.selectedCity = '';
-        this.availableArrondissements = [];
-        // Mettre à jour l'objet newAddress
-        this.newAddress.country = this.selectedCountry;
+        this.postalCode = '';
+        this.availableCities = [];
+        this.selectedCity = {};
+    }
+    
+
+    onPostalCodeEntered() {
+        if (!this.postalCode || this.postalCode.length < 4) return;
+
+        this.villeService.getByPostalCode(this.postalCode, this.selectedCountry).subscribe((cities: any[]) => {
+            console.log(cities)
+            this.availableCities = cities;
+            this.newAddress.code_postal = this.postalCode;
+
+            if (cities.length === 1) {
+                this.selectedCity = cities[0];
+            }
+        });
     }
     // ------------------------------------------------
     // 3) Quand l’utilisateur choisit un arrondissement
@@ -128,7 +130,7 @@ export class CreateShopComponent implements OnInit {
     onCityChange() {
         // Filtre les documents par pays + city
         const filteredByCity = this.allCitiesData.filter(
-            v => v.pays === this.selectedCountry && v.city === this.selectedCity
+            v => v.pays === this.selectedCountry && v.city === this.selectedCity.nom
         );
         if (filteredByCity.length > 1) {
             // Plusieurs arrondissements => on récupère juste la liste des name
@@ -147,7 +149,7 @@ export class CreateShopComponent implements OnInit {
 
         }
         // On met à jour la ville
-        this.newAddress.city = this.selectedCity;
+        this.newAddress.city = this.selectedCity.nom;
     }
 
     onSubmit() {

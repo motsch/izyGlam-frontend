@@ -1,80 +1,19 @@
 <!-- WRAPPER GLOBAL -->
 <div class="izy-wrapper">
-
   <!-- SECTION ADRESSE & RECHERCHE -->
-  <div class="address-search-container margin-top-60">
-    <button class="address-button-pretty" (click)="openAddressModal()">
-      <i class="icon-location">📍</i>
-      {{ selectedPostalCode }} <span class="light-text">— Modifier l’adresse</span>
-    </button>
-
-    <input
-      type="text"
-      [(ngModel)]="searchQuery"
-      (ngModelChange)="onSearchChange($event)"
-      placeholder="Rechercher une boutique"
-      class="pretty-search-bar"
-    />
-  </div>
-
-  <!-- MODAL d'adresses -->
-  <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
-    <div class="modal-content address-modal" (click)="$event.stopPropagation()">
-
-      <!-- Titre dynamique -->
-      <h3 class="modal-title">
-        {{ isAddingAddress ? 'Ajouter une nouvelle adresse' : 'Choisis une adresse' }}
-      </h3>
-
-      <!-- Liste des adresses si on n'ajoute pas -->
-      <ul class="address-list" *ngIf="!isAddingAddress">
-        <li *ngFor="let address of userAddresses" (click)="selectPostalCode(address)"
-            [class.active]="isSameAddress(address, selectedAddress)">
-          <span class="icon">{{ address.street === 'MAIN_PAGE.MA_POSITION' ? '📍' : '📌' }}</span>
-          <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
-        </li>
-        <li class="add-address-btn" (click)="toggleAddAddress()">
-          ➕ Ajouter une nouvelle adresse
-        </li>
-      </ul>
-
-      <!-- Formulaire d'ajout d'adresse -->
-      <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form">
-        <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
-          <option value="">-- Choisir un pays --</option>
-          <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
-        </select>
-
-        <select [(ngModel)]="selectedCity" name="city" (change)="onCityChange()" required>
-          <option value="">-- Choisir une ville --</option>
-          <option *ngFor="let city of availableCities" [value]="city">{{ city }}</option>
-        </select>
-
-        <select *ngIf="availableArrondissements.length > 1"
-                [(ngModel)]="selectedArrondissement" name="arrondissement" (change)="onArrondissementChange()">
-          <option value="">-- Choisir un arrondissement --</option>
-          <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
-        </select>
-
-        <input type="text" [(ngModel)]="newAddress.code_postal"
-               name="postalCode" placeholder="Code postal" readonly required />
-
-        <input type="text" [(ngModel)]="newAddress.street"
-               name="street" placeholder="Rue" required />
-
-        <div class="form-buttons">
-          <button type="button" class="cancel-btn" (click)="toggleAddAddress()">Annuler</button>
-          <button type="submit" class="save-btn" (click)="saveAddress()">Enregistrer</button>
-        </div>
-      </form>
-
-      <button (click)="closeAddressModal()" class="close-btn">Fermer</button>
+  <div class="address-search-wrapper margin-top-60">
+    <div class="address-search-row">
+      <button class="address-button-pretty" (click)="openAddressModal()">
+        <i class="icon-location">📍</i>
+        {{ selectedPostalCode }} <span class="light-text">— Modifier l’adresse</span>
+      </button>
+      <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
+        placeholder="Rechercher une boutique" class="pretty-search-bar" />
     </div>
   </div>
 
   <!-- CONTENU PRINCIPAL -->
   <div class="izy-content">
-
     <!-- BANDEAU DES CATÉGORIES -->
     <div class="horizontal-section-wrapper" *ngIf="categoriesFilter.length > 0">
       <div class="section-header">
@@ -93,7 +32,6 @@
         </div>
       </div>
     </div>
-
     <!-- SECTION : PUBS & OFFRES -->
     <app-horizontal-pub-list [me]="me"></app-horizontal-pub-list>
 
@@ -104,23 +42,24 @@
       [title]="'À découvrir'" [shops]="filteredItemsAdecouvrir" [me]="me" [pubIndexe]="'1'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsApprecier.length > 0"
-      [title]="'Les plus appréciés'" [shops]="filteredItemsApprecier" [me]="me" [pubIndexe]="'2'"></app-horizontal-shop-list>
+      [title]="'Les plus appréciés'" [shops]="filteredItemsApprecier" [me]="me"
+      [pubIndexe]="'2'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsMalin.length > 0"
       [title]="'Les plans malins'" [shops]="filteredItemsMalin" [me]="me" [pubIndexe]="'3'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsTop10.length > 0"
-      [title]="'Top10 de la semaine'" [shops]="filteredItemsTop10" [me]="me" [pubIndexe]="'4'"></app-horizontal-shop-list>
+      [title]="'Top10 de la semaine'" [shops]="filteredItemsTop10" [me]="me"
+      [pubIndexe]="'4'"></app-horizontal-shop-list>
 
     <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
     <div *ngIf="filterClicked" class="padding-top-10 section-header">
       <h3>{{ categoryTrad | translate }}</h3>
       <div class="shop-card-container">
-        <app-round-shop-card *ngFor="let item of filteredItems"
-          [shop]="item" [me]="me" [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
+        <app-round-shop-card *ngFor="let item of filteredItems" [shop]="item" [me]="me"
+          [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
       </div>
     </div>
-
     <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
     <div class="horizontal-section-wrapper" *ngIf="searchQuery.length > 0">
       <div class="section-header">
@@ -128,19 +67,66 @@
       </div>
       <div class="horizontal-scroll-wrapper">
         <div class="scrollable-shop-list">
-          <app-round-shop-card *ngFor="let item of filteredSearchResults"
-            [shop]="item" [me]="me" [promoVisible]="item.promo?.active" class="shop-card"></app-round-shop-card>
+          <app-round-shop-card *ngFor="let item of filteredSearchResults" [shop]="item" [me]="me"
+            [promoVisible]="item.promo?.active" class="shop-card"></app-round-shop-card>
         </div>
       </div>
     </div>
-
     <!-- SECTION : PAS DISPONIBLE -->
     <div class="horizontal-section-wrapper" *ngIf="shops.length === 0">
       <div class="section-header">
         <div class="not-disponible">Pas encore disponible à cette adresse</div>
       </div>
     </div>
-
   </div> <!-- /izy-content -->
-
+  <!-- MODAL d'adresses -->
+  <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
+    <div class="modal-content address-modal" (click)="$event.stopPropagation()">
+      <!-- Titre dynamique -->
+      <h3 class="modal-title">
+        {{ isAddingAddress ? 'Ajouter une nouvelle adresse' : 'Choisis une adresse' }}
+      </h3>
+      <!-- Liste des adresses si on n'ajoute pas -->
+      <ul class="address-list" *ngIf="!isAddingAddress">
+        <li *ngFor="let address of userAddresses" (click)="selectPostalCode(address)"
+          [class.active]="isSameAddress(address, selectedAddress)">
+          <span class="icon">{{ address.street === 'MAIN_PAGE.MA_POSITION' ? '📍' : '📌' }}</span>
+          <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
+        </li>
+        <li class="add-address-btn" (click)="toggleAddAddress()">
+          ➕ Ajouter une nouvelle adresse
+        </li>
+      </ul>
+      <!-- Formulaire d'ajout d'adresse -->
+      <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form margin-top-60">
+        <!-- 1. Choix du pays -->
+        <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
+          <option value="">-- Choisir un pays --</option>
+          <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
+        </select>
+        <input *ngIf="availableCountries.length === 1" type="hidden" name="country" [(ngModel)]="selectedCountry" />
+        <!-- 2. Code postal -->
+        <input type="text" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
+          (change)="onPostalCodeEntered()" required maxlength="10" />
+        <!-- 3. Villes correspondant au code postal -->
+        <select *ngIf="availableCities.length > 0" [(ngModel)]="selectedCity" name="city" required>
+          <option value="">-- Choisir une ville --</option>
+          <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
+        </select>
+        <!-- 4. Arrondissements -->
+        <select *ngIf="availableArrondissements.length > 1" [(ngModel)]="selectedArrondissement" name="arrondissement">
+          <option value="">-- Choisir un arrondissement --</option>
+          <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
+        </select>
+        <!-- 5. Rue -->
+        <input type="text" [(ngModel)]="newAddress.street" name="street" placeholder="Rue" required />
+        <!-- 6. Boutons -->
+        <div class="form-buttons">
+          <button type="button" class="cancel-btn" (click)="toggleAddAddress()">Annuler</button>
+          <button type="submit" class="save-btn">Enregistrer</button>
+        </div>
+      </form>
+      <button (click)="closeAddressModal()" class="close-btn">Fermer</button>
+    </div>
+  </div>
 </div> <!-- /izy-wrapper -->

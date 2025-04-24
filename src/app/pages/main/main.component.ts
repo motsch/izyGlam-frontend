@@ -50,12 +50,12 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     isAddingAddress = false;
     newAddress: any = {};
-    selectedCountry = '';
-    selectedCity = '';
+    selectedCountry = 'France';
+    selectedCity: any = {};
     selectedArrondissement = '';
-    availableCountries = [];
-    availableCities: string[] = [];
-
+    availableCountries = ['France'];
+    availableCities: any[] = [];
+    postalCode: string = '';
 
     private searchSubject = new Subject<string>();
     private subscription!: Subscription;
@@ -90,7 +90,7 @@ export class MainComponent implements OnInit, AfterViewInit {
                 this.performSearch(query);
             });
         this.loadUserAndShops();
-        this.getCities();
+        // this.getCities();
     }
 
     onSearchChange(query: string) {
@@ -197,6 +197,27 @@ export class MainComponent implements OnInit, AfterViewInit {
         });
     }
 
+
+
+    onCountryChange() {
+        this.postalCode = '';
+        this.availableCities = [];
+        this.selectedCity = {};
+    }
+
+    onPostalCodeEntered() {
+        if (!this.postalCode || this.postalCode.length < 4) return;
+
+        this.villeService.getByPostalCode(this.postalCode, this.selectedCountry).subscribe((cities: any[]) => {
+            console.log(cities)
+            this.availableCities = cities;
+            this.newAddress.code_postal = this.postalCode;
+
+            if (cities.length === 1) {
+                this.selectedCity = cities[0];
+            }
+        });
+    }
 
     private loadCategories() {
         this.categoryService.getAvailableCategories(undefined, undefined, [this.selectedPostalCode]).subscribe({
@@ -336,8 +357,9 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     // 📌 Enregistre la nouvelle adresse
     saveAddress() {
+        if (!this.selectedCity || !this.newAddress.street) return;
         // Assigne city et country aux nouvelles valeurs sélectionnées
-        this.newAddress.city = this.selectedCity;
+        this.newAddress.city = this.selectedCity.nom;
         this.newAddress.country = this.selectedCountry;
 
         console.log(this.newAddress)
@@ -387,21 +409,10 @@ export class MainComponent implements OnInit, AfterViewInit {
 
 
 
-
-    getCities() {
-        this.villeService.getAllLimted().subscribe((result: any) => {
-            console.log(result);
-            this.allCitiesData = result.data;
-            this.availableCountries = result.pays;  // Liste unique de pays
-
-        }, (error: any) => {
-            console.log(error);
-        })
-    }
-
     // ----------------------------------------
     // 1) Quand l’utilisateur choisit un pays
     // ----------------------------------------
+    /*
     onCountryChange() {
         // Filtrer les villes qui appartiennent à ce pays
         const filteredByCountry = this.allCitiesData.filter(v => v.pays === this.selectedCountry);
@@ -412,7 +423,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         this.availableArrondissements = [];
         // Mettre à jour l'objet newAddress
         this.newAddress.country = this.selectedCountry;
-    }
+    }*/
 
     // -----------------------------------------
     // 2) Quand l’utilisateur choisit une ville
@@ -420,7 +431,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     onCityChange() {
         // Filtre les documents par pays + city
         const filteredByCity = this.allCitiesData.filter(
-            v => v.pays === this.selectedCountry && v.city === this.selectedCity
+            v => v.pays === this.selectedCountry && v.city === this.selectedCity.nom
         );
         if (filteredByCity.length > 1) {
             // Plusieurs arrondissements => on récupère juste la liste des name
@@ -436,7 +447,7 @@ export class MainComponent implements OnInit, AfterViewInit {
             this.newAddress.code_postal = doc.code_postal; // On met à jour le CP
         }
         // On met à jour la ville
-        this.newAddress.city = this.selectedCity;
+        this.newAddress.city = this.selectedCity.nom;
     }
 
 
@@ -448,7 +459,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         const doc = this.allCitiesData.find(
             v =>
                 v.pays === this.selectedCountry &&
-                v.city === this.selectedCity &&
+                v.city === this.selectedCity.nom &&
                 v.name === this.selectedArrondissement
         );
         if (doc) {

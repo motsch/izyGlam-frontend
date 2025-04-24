@@ -3,56 +3,32 @@
     <!-- MENU LATÉRAL -->
     <div class="col-12 col-md-3 sidebar mb-3">
       <ul>
-        <li
-          [ngClass]="{ active: isSectionActive('account-info') }"
-          (click)="setActiveSection('account-info')"
-        >
+        <li [ngClass]="{ active: isSectionActive('account-info') }" (click)="setActiveSection('account-info')">
           {{ "PROFILE_MENU.INFORMATION" | translate }}
         </li>
-        <li
-          [ngClass]="{ active: isSectionActive('security') }"
-          (click)="setActiveSection('security')"
-        >
+        <li [ngClass]="{ active: isSectionActive('security') }" (click)="setActiveSection('security')">
           {{ "PROFILE_MENU.SECURITY" | translate }}
         </li>
-        <li
-          *ngIf="me.role === 'professionnel'"
-          [ngClass]="{ active: isSectionActive('calendar') }"
-          (click)="setActiveSection('calendar')"
-        >
+        <li *ngIf="me.role === 'professionnel'" [ngClass]="{ active: isSectionActive('calendar') }"
+          (click)="setActiveSection('calendar')">
           {{ "PROFILE_MENU.CALENDAR" | translate }}
         </li>
-        <li
-          *ngIf="me.role === 'professionnel'"
-          [ngClass]="{ active: isSectionActive('dashboard') }"
-          (click)="setActiveSection('dashboard')"
-        >
+        <li *ngIf="me.role === 'professionnel'" [ngClass]="{ active: isSectionActive('dashboard') }"
+          (click)="setActiveSection('dashboard')">
           {{ "PROFILE_MENU.DASHBOARD" | translate }}
         </li>
-        <li
-          *ngIf="me.role === 'entreprise'"
-          [ngClass]="{ active: isSectionActive('company') }"
-          (click)="setActiveSection('company')"
-        >
+        <li *ngIf="me.role === 'entreprise'" [ngClass]="{ active: isSectionActive('company') }"
+          (click)="setActiveSection('company')">
           {{ "PROFILE_MENU.COMPANY" | translate }}
         </li>
-        <li
-          *ngIf="me.role === 'professionnel'"
-          [ngClass]="{ active: isSectionActive('management') }"
-          (click)="setActiveSection('management')"
-        >
+        <li *ngIf="me.role === 'professionnel'" [ngClass]="{ active: isSectionActive('management') }"
+          (click)="setActiveSection('management')">
           {{ "PROFILE_MENU.SHOP" | translate }}
         </li>
-        <li
-          [ngClass]="{ active: isSectionActive('admin') }"
-          (click)="setActiveSection('admin')"
-        >
+        <li [ngClass]="{ active: isSectionActive('admin') }" (click)="setActiveSection('admin')">
           {{ "PROFILE_MENU.ADMIN" | translate }}
         </li>
-        <li
-          [ngClass]="{ active: isSectionActive('privacy') }"
-          (click)="setActiveSection('privacy')"
-        >
+        <li [ngClass]="{ active: isSectionActive('privacy') }" (click)="setActiveSection('privacy')">
           {{ "PROFILE_MENU.CONFIDENTIAL" | translate }}
         </li>
       </ul>
@@ -61,53 +37,65 @@
     <!-- CONTENU PRINCIPAL -->
     <div class="col-12 col-md-9 content">
       <div *ngIf="isSectionActive('account-info')" id="account-info-content">
-        <h1>{{ "PROFILE_MENU.INFORMATION" | translate }}</h1>
+        <div class="page-title-wrapper">
+          <h1 class="page-title">{{ "PROFILE_MENU.INFORMATION" | translate }}</h1>
+          <p class="page-subtitle">Gère facilement tes informations.</p>
+        </div>
         <app-profile-informations [me]="me"></app-profile-informations>
       </div>
 
       <div *ngIf="isSectionActive('security')" id="security-content">
-        <h1>{{ "PROFILE_MENU.SECURITY" | translate }}</h1>
+        <div class="page-title-wrapper">
+          <h1 class="page-title">{{ "PROFILE_MENU.SECURITY" | translate }}</h1>
+          <p class="page-subtitle">Gère facilement la sécurité de ton compte.</p>
+        </div>
         <app-change-password [me]="me"></app-change-password>
       </div>
 
       <div *ngIf="isSectionActive('privacy')" id="privacy-content">
-        <h1>{{ "PROFILE_MENU.CONFIDENTIAL" | translate }}</h1>
+        <div class="page-title-wrapper">
+          <h1 class="page-title">{{ "PROFILE_MENU.CONFIDENTIAL" | translate }}</h1>
+          <p class="page-subtitle">Gère facilement ta confidentialité.</p>
+        </div>
         <app-confidential-policy></app-confidential-policy>
       </div>
 
       <div *ngIf="isSectionActive('calendar')" id="calendar-content">
-        <h1>{{ "PROFILE_MENU.CALENDAR" | translate }}</h1>
+        <div class="page-title-wrapper">
+          <h1 class="page-title">{{ "PROFILE_MENU.CALENDAR" | translate }}</h1>
+          <p class="page-subtitle">Gère facilement tes rendez-vous passés ou à venir.</p>
+        </div>
         <app-agenda [me]="me" [shops]="shops"></app-agenda>
       </div>
 
       <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
-        <h1>{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
+        <div class="page-title-wrapper">
+          <h1 class="page-title">{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
+          <p class="page-subtitle">Gère facilement les données de ton activité.</p>
+        </div>
         <app-dashboard [me]="me"></app-dashboard>
       </div>
 
       <div *ngIf="isSectionActive('company')" id="company-content">
-        <h1>{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
-        <mat-tab-group
-          class="custom-tab-group"
-          mat-stretch-tabs="false"
-          mat-align-tabs="start"
-        >
+        <div class="page-title-wrapper">
+          <h1 class="page-title">{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
+          <p class="page-subtitle">Gère facilement tes rendez-vous passés, à venir ou annulés.</p>
+        </div>
+        <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab label="Employés affiliés">
-            <app-company-management
-              [myCompany]="myCompany"
-              [employees]="employees"
-            ></app-company-management>
+            <app-company-management [myCompany]="myCompany" [employees]="employees"></app-company-management>
           </mat-tab>
           <mat-tab label="Sécurité">
-            <app-company-set-default-password
-              [myCompany]="myCompany"
-            ></app-company-set-default-password>
+            <app-company-set-default-password [myCompany]="myCompany"></app-company-set-default-password>
           </mat-tab>
         </mat-tab-group>
       </div>
 
       <div *ngIf="isSectionActive('management')" id="management-content">
-        <h1>{{ "PROFILE_MENU.SHOP" | translate }}</h1>
+        <div class="page-title-wrapper">
+          <h1 class="page-title">{{ "PROFILE_MENU.SHOP" | translate }}</h1>
+          <p class="page-subtitle">Gère facilement tes rendez-vous passés, à venir ou annulés.</p>
+        </div>
 
         <!-- SECTION BOUTONS SHOP -->
         <div class="row g-2 align-items-center mb-4">
@@ -129,54 +117,31 @@
           </div>
 
           <div class="col-6 col-md-2 mt-3 mt-md-0">
-            <button
-              class="btn rounded btn-delete w-100"
-              (click)="deletShop()"
-              [disabled]="shops.length <= 1"
-            >
+            <button class="btn rounded btn-delete w-100" (click)="deletShop()" [disabled]="shops.length <= 1">
               <i class="fa fa-trash"></i>
             </button>
           </div>
 
           <div class="col-6 col-md-5 mt-3 mt-md-0">
-            <button
-              [disabled]="shops.length >= 5"
-              class="btn btn-primary action-btn w-100"
-              (click)="openCreateShopModal()"
-            >
+            <button [disabled]="shops.length >= 5" class="btn btn-primary action-btn w-100"
+              (click)="openCreateShopModal()">
               {{ "PROFILE_MENU.NEW_SALON" | translate }}
             </button>
           </div>
         </div>
 
-        <mat-tab-group
-          class="custom-tab-group"
-          mat-stretch-tabs="false"
-          mat-align-tabs="start"
-        >
+        <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab label="Informations générales" color="primary">
-            <app-shop-management
-              *ngIf="myShopData && me"
-              [myShopData]="myShopData"
-              [me]="me"
-              (shopUpdated)="onShopUpdated($event)"
-            ></app-shop-management>
+            <app-shop-management *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"
+              (shopUpdated)="onShopUpdated($event)"></app-shop-management>
           </mat-tab>
           <mat-tab label="Gestion des prestations">
-            <app-shop-articles-management
-              [myArticlesData]="myArticlesData"
-              [myShopData]="myShopData"
-              [me]="me"
-              (articleUpdated)="onArticleUpdated()"
-            ></app-shop-articles-management>
+            <app-shop-articles-management [myArticlesData]="myArticlesData" [myShopData]="myShopData" [me]="me"
+              (articleUpdated)="onArticleUpdated()"></app-shop-articles-management>
           </mat-tab>
           <mat-tab label="Galerie photos">
-            <app-shop-photo-gallery
-              *ngIf="myShopData && me"
-              [myShopData]="myShopData"
-              [me]="me"
-              (shopUpdated)="onShopUpdated($event)"
-            ></app-shop-photo-gallery>
+            <app-shop-photo-gallery *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"
+              (shopUpdated)="onShopUpdated($event)"></app-shop-photo-gallery>
           </mat-tab>
           <mat-tab label="Suivi financier">
             <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
@@ -185,13 +150,12 @@
       </div>
 
       <div *ngIf="isSectionActive('admin')" id="admin-content">
-        <h1>{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
+        <div class="page-title-wrapper">
+          <h1 class="page-title">{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
+          <p class="page-subtitle">Gère facilement tes rendez-vous passés, à venir ou annulés.</p>
+        </div>
 
-        <mat-tab-group
-          class="custom-tab-group"
-          mat-stretch-tabs="false"
-          mat-align-tabs="start"
-        >
+        <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab label="Statistiques" color="primary">
             <app-admin></app-admin>
           </mat-tab>
