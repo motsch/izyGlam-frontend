@@ -291,8 +291,7 @@ button {
 
 .page-title-wrapper {
   text-align: center;
-  margin: 32px 0 16px;
-  padding: 0 24px; // ✅ Padding horizontal
+  padding: 0 0px; // ✅ Padding horizontal
 
   .page-title {
     font-size: 2.4rem;

@@ -1,8 +1,8 @@
 .container-global {
   display: flex;
   justify-content: center;
-  padding: 40px 24px; // un peu plus de padding haut/bas pour l’espace visuel
-  min-height: 100vh;
+  padding: 0px 0px; // un peu plus de padding haut/bas pour l’espace visuel
+  // min-height: 100vh;
 
   @media (min-width: 768px) {
     padding: 60px 40px;
@@ -17,16 +17,15 @@
 
 .form {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
 }
-
 
 .row-profile {
   display: flex;
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
 
 .profile img {
@@ -54,12 +53,12 @@
   }
 
   .profile img {
-    margin-bottom: 10px;
+    margin-bottom: 1px;
   }
 }
 
 .info > div {
-  margin-bottom: 20px;
+  margin-bottom: 0px;
 }
 
 label {
