@@ -7,10 +7,53 @@
     "FACIAL": "Soin du visage",
     "MASSAGE": "Masseur(euse)",
     "EYELASH": "Extensions de cils",
-    "EYEBROW": "Sourcils",
+    "EYEBROW": "Nutritionniste",
     "TANNING": "Bronzage",
     "ACUPUNCTURE": "Acupuncture",
     "OTHER": "Autre"
+  },
+  "LOADER": {
+    "LOADING": "Loading"
+  },
+  "SPONSORS": {
+    "TITLE": "Nos Sponsors"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Terminée",
+    "ACCEPTEE": "Acceptée",
+    "WAITING": "En attente",
+    "CANCEL": "Annulée",
+    "DELETE": "Supprimée",
+    "REFUSED": "Refusée",
+    "NO_PRESTA": "Prestataire absent",
+    "CLIENT_ABSENT": "Client absent",
+    "ADRESSE": "Adresse",
+    "DATE": "Date",
+    "TOTAL": "Total",
+    "FACTURE": "Facture",
+    "CANCELLED": "Annulée",
+    "DELETED": "Supprimer",
+    "AVIS": "Avis",
+    "SUPPORT": "Support",
+    "CODE_A_DONNER": "Code à donner au prestataire",
+    "PRESTA_ABSENT": "Prestataire absent"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Avis sur la boutique",
+    "COMMENT": "Commentaire",
+    "NOTE": "Note",
+    "CLOSE": "Fermer"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Aucune image dans la galerie."
+  },
+  "REVIEW_MODAL": {
+    "NOTE":"Noter votre commande",
+    "DATE": "Date",
+    "SERVICE": "Service",
+    "AVIS": "Votre avis",
+    "SEND": "Envoyer",
+    "PLACEHOLDER": "Décrivez votre expérience..."
   },
   "HOMEPAGE": {
     "TITLERED": "Faites venir chez vous",
@@ -105,14 +148,22 @@
   },
   "PROFILE_MENU": {
     "INFORMATION": "Informations relatives au compte",
+    "INFORMATION_SUBTITLE": "Modifie tes infos perso en toute simplicité.",
     "SECURITY": "Sécurité et langue",
+    "SECURITY_SUBTITLE": "Mot de passe, langue… tout est sous contrôle ici.",
     "CONFIDENTIAL": "Confidentialité et données",
+    "CONFIDENTIAL_SUBTITLE": "Tes données sont précieuses. Voici comment on en prend soin.",
     "DASHBOARD": "Tableau de bord",
+    "DASHBOARD_SUBTITLE": "Gère facilement les données de ton activité.",
     "COMPANY": "Gestion de mon entreprise",
+    "COMPANY_SUBTITLE": "Gère facilement tes rendez-vous passés, à venir ou annulés.",
     "SHOP": "Gestion de mes boutiques",
+    "SHOP_SUBTITLE": "Gère facilement tes rendez-vous passés, à venir ou annulés.",
     "FINANCIAL": "Suivi financier",
     "ADMIN": "Administration générale",
+    "ADMIN_SUBTITLE": "Gère facilement tes rendez-vous passés, à venir ou annulés.",
     "CALENDAR": "Agenda",
+    "CALENDAR_SUBTITLE": "Gère facilement tes rendez-vous passés ou à venir.",
     "SELECT_SALON": "Sélectionnez un salon",
     "NEW_SALON": "Créer un salon",
     "SHOP_TO_CREATE": "Type de boutique à créer",
@@ -262,10 +313,34 @@
     "ERROR2": "L'adresse de votre entreprise est obligatoire.",
     "ERROR3": "Le type d'entreprise est obligatoire.",
     "ERROR4": "Le prénom est obligatoire.",
+    "CHOOSE_COUNTRY": "Choisir un pays",
+    "CHOOSE_CITY": "Choisir une ville",
     "ERROR5": "Le nom de famille est obligatoire.",
     "ERROR6": "L'e-mail est obligatoire.",
     "ERROR7": "Le numéro de téléphone portable est obligatoire.",
     "ERROR8": "Vous devez accepter de recevoir des messages sur WhatsApp."
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Nom",
+    "CITY": "Ville",
+    "NOTE": "Note",
+    "MIDDLE_PRICE": "Prix moyen",
+    "PROMOTION": "Promotion",
+    "ACTIONS": "Actions",
+    "MODIFIER": "Modifier les informations de la boutique",
+    "SHOP_NAME": "Nom de la boutique",
+    "DESCRIPTION": "Description",
+    "PRINCIPALE": "Image principale",
+    "SHOP": "Type de boutique",
+    "ARRONDISSEMENT": "Arrondissement",
+    "MINIMUM_DELAI": "Délai minimum",
+    "DISTANCE": "Distance maximale (km)",
+    "EMPLACEMENT": "Emplacement",
+    "HOURS_MORNING": "Heures d'ouverture - Matin",
+    "HOURS_AFTERNOON": "Heures d'ouverture - Après-midi",
+    "ACTIVE_PROMO": "Promo active",
+    "CANCEL": "Annuler",
+    "ENREGISTRER": "Enregistrer"
   },
   "CREATE_SHOP_INFO": {
     "TITLE": "Développez votre activité",
@@ -361,7 +436,8 @@
     "YOUR_COMPANY": "Enregistrez votre entreprise"
   },
   "ORDERS": {
-    "TITLE": "Commandes",
+    "TITLE": "Mes commandes",
+    "TITLE_SUBTITLE": "Gère facilement tes rendez-vous passés, à venir ou annulés.",
     "UPCOMING_SECTION": "📅 À venir",
     "NO_UPCOMING": "Vous n'avez aucune prestation planifiée.",
     "PAST_SECTION": "✅ Passées",
@@ -379,8 +455,16 @@
     "REVIEW": "Donner votre avis",
     "CANCEL": "Annuler"
   },
+  "FIDELITY": {
+    "TITLE": "Mes favoris",
+    "TITLE_SUBTITLE": "pour débloquer ton cadeau",
+    "DATE": "Valable jusqu’au",
+    "AGAIN": "Encore",
+    "HISTO": "Historique de mes soins"
+  },
   "FAVORITES": {
-    "TITLE": "Mes favoris"
+    "TITLE": "Mes favoris",
+    "TITLE_SUBTITLE": "Retrouve tes salons coup de cœur en un clin d’œil."
   },
   "SHOP": {
     "MOVING_FEE": "Frais de service :",
@@ -470,7 +554,11 @@
     "SAVE": "Sauvegarder"
   },
   "CALENDAR": {
-    "ADD_EVENT": "Créer un événement"
+    "ADD_EVENT": "Créer un événement",
+    "COMING": "À venir",
+    "PAST": "Passées",
+    "CANCELLED": "Annulées",
+    "NO_CANCELLED": "Aucune commande annulée."
   },
   "CHAT": {
     "ONLINE_ASSISTANCE": "Assistance en ligne"

@@ -40,18 +40,18 @@
   <div class="modal-dialog custom-modal-width">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">Avis sur la boutique: {{ shop.name }}</h3>
+        <h3 class="modal-title">{{"SHOP_CARD.AVIS" | translate}}: {{ shop.name }}</h3>
         <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
       </div>
 
       <div class="modal-body">
         <!-- Nom de la boutique -->
         <div class="form-group" *ngFor="let review of shop.reviews">
-          <label for="reviewText">Commentaire:</label>
+          <label for="reviewText">{{"SHOP_CARD.COMMENT" | translate}}:</label>
           <div>
             {{ review.comment }}
           </div>
-          <label for="reviewRating">Note:</label>
+          <label for="reviewRating">{{"SHOP_CARD.NOTE" | translate}}:</label>
           <div>
             {{ review.rating }}
           </div>
@@ -60,7 +60,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">
-          Fermer
+          {{"SHOP_CARD.CLOSE" | translate}}
         </button>
       </div>
     </div>

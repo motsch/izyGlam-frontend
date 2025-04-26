@@ -1,26 +1,38 @@
 import { Injectable } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class DrawerService {
+    private drawer!: MatDrawer;
     private drawerOpen = new BehaviorSubject<boolean>(false);
 
     getDrawerState(): Observable<boolean> {
         return this.drawerOpen.asObservable();
     }
 
+    setDrawer(drawer: MatDrawer) {
+        this.drawer = drawer;
+    }
+
     toggleDrawer() {
-        this.drawerOpen.next(!this.drawerOpen.value);
+        if (this.drawer) {
+            this.drawer.toggle();
+        }
     }
 
     openDrawer() {
-        this.drawerOpen.next(true);
-        console.log('open drawer => service');
+        if (this.drawer) {
+            this.drawer.open();
+            console.log('open drawer => service');
+        }
     }
 
     closeDrawer() {
-        this.drawerOpen.next(false);
+        if (this.drawer) {
+            this.drawer.close();
+        }
     }
 }

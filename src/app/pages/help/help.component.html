@@ -1,21 +1,18 @@
-<div class="form"><app-header
-    *ngIf="!sessionService.isLoggedIn()"
-    [connected]="false"
-  ></app-header>
+<div class="form"><app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
   <div class="page-title-wrapper">
-    <h1 class="page-title">{{ "FAVORITES.TITLE" | translate }}</h1>
-    <p class="page-subtitle">Les questions les plus souvent posées.</p>
+    <h1 class="page-title">{{ "SIDEBAR.HELP" | translate }}</h1>
+    <p class="page-subtitle">Besoin d’un coup de main ? Cette page est là pour toi.</p>
   </div>
-    <div class="page-container">
-        <mat-accordion>
-            <mat-expansion-panel *ngFor="let panel of panels">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{ panel.question }}
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <p>{{ panel.answer }}</p>
-            </mat-expansion-panel>
-          </mat-accordion>
-      </div>
+  <div class="page-container">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let panel of panels">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ panel.question }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ panel.answer }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
+</div>

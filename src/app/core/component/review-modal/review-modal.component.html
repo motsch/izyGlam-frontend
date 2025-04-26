@@ -2,7 +2,7 @@
 <div class="modal-overlay" (click)="close()"></div>
 <div class="modal-container">
   <div class="modal-header">
-    <h2>Noter votre commande</h2>
+    <h2>{{"REVIEW_MODAL.NOTE" | translate}}</h2>
     <button class="close-btn" (click)="close()">&times;</button>
   </div>
 
@@ -11,14 +11,15 @@
     <!-- Détails réservation -->
     <div class="card">
       <h3>{{ booking?.title }}</h3>
-      <p>Date : {{ booking?.start | date:'medium' }}</p>
-      <p>Service : {{ booking?.productName }}</p>
+      <p>{{"REVIEW_MODAL.DATE" | translate}} : {{ booking?.start | date:'medium' }}</p>
+      <p>{{"REVIEW_MODAL.SERVICE" | translate}} : {{ booking?.productName }}</p>
     </div>
 
     <!-- Sélecteur de note -->
     <div class="card">
       <h3>Note (sur 5)</h3>
-      <input type="range" min="1" max="5" step="1" [(ngModel)]="rating" name="rating" (input)="onRatingChange($event)" />
+      <input type="range" min="1" max="5" step="1" [(ngModel)]="rating" name="rating"
+        (input)="onRatingChange($event)" />
       <div class="range-values">
         <span *ngFor="let n of [1,2,3,4,5]" [class.active]="rating === n">{{ n }}</span>
       </div>
@@ -26,10 +27,11 @@
 
     <!-- Avis -->
     <div class="card">
-      <h3>Votre avis</h3>
-      <textarea [(ngModel)]="reviewText" name="reviewText" placeholder="Décrivez votre expérience..." required></textarea>
+      <h3>{{"REVIEW_MODAL.SERVICE" | translate}}</h3>
+      <textarea [(ngModel)]="reviewText" name="reviewText" [placeholder]="'REVIEW_MODAL.PLACEHOLDER' | translate"
+        required></textarea>
     </div>
 
-    <button type="submit" [disabled]="!rating">Envoyer</button>
+    <button type="submit" [disabled]="!rating">{{"REVIEW_MODAL.SEND" | translate}}</button>
   </form>
 </div>

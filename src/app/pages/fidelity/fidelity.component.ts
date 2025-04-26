@@ -25,6 +25,6 @@ export class FidelityComponent implements OnInit {
     this.stars = this.starsArray.length;
 
     this.fullStars = Array(this.stars).fill(0);
-    this.emptyStars = Array(10 - this.stars).fill(0);
+    this.emptyStars = Array(16 - this.stars).fill(0);
   }
 }

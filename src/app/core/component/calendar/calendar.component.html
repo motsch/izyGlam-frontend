@@ -1,9 +1,9 @@
 <div class="orders-content">
   <!-- Sélecteur de type de commande -->
   <div class="order-type-selector">
-    <button [class.active]="selectedOrderType === 'upcoming'" (click)="selectedOrderType = 'upcoming'">📅 À venir</button>
-    <button [class.active]="selectedOrderType === 'past'" (click)="selectedOrderType = 'past'">✅ Passées</button>
-    <button [class.active]="selectedOrderType === 'cancelled'" (click)="selectedOrderType = 'cancelled'">❌ Annulées</button>
+    <button [class.active]="selectedOrderType === 'upcoming'" (click)="selectedOrderType = 'upcoming'">📅 {{"CALENDAR.COMING" | translate }}</button>
+    <button [class.active]="selectedOrderType === 'past'" (click)="selectedOrderType = 'past'">✅ {{"CALENDAR.PAST" | translate }}</button>
+    <button [class.active]="selectedOrderType === 'cancelled'" (click)="selectedOrderType = 'cancelled'">❌ {{"CALENDAR.CANCELLED" | translate }}</button>
   </div>
 
   <!-- SECTION À VENIR -->
@@ -48,7 +48,7 @@
   <!-- SECTION ANNULÉES -->
   <div class="orders-section" *ngIf="selectedOrderType === 'cancelled'">
     <div *ngIf="cancelledOrders.length === 0" class="empty-state">
-      <p>Aucune commande annulée.</p>
+      <p>{{"CALENDAR.NO_CANCELLED" | translate }}</p>
     </div>
 
     <ng-container *ngFor="let order of cancelledOrders">

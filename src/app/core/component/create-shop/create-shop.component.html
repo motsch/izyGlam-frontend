@@ -37,7 +37,7 @@
               <!-- Sélecteur de pays -->
 
               <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
-                <option value="">-- Choisir un pays --</option>
+                <option value="">-- {{ "CREATION_SHOP.CHOOSE_COUNTRY" | translate }} --</option>
                 <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
               </select>
               <input *ngIf="availableCountries.length === 1" type="hidden" name="country"
@@ -55,7 +55,7 @@
               <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
               <!-- Sélecteur de ville -->
               <select *ngIf="availableCities.length > 0" [(ngModel)]="selectedCity" name="city" required>
-                <option value="">-- Choisir une ville --</option>
+                <option value="">-- {{ "CREATION_SHOP.CHOOSE_CITY" | translate }} --</option>
                 <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
               </select>
             </div>

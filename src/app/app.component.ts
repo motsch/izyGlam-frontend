@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { DrawerService } from './core/services/drawer.service';
 import { SessionService } from './core/services/session.service';
@@ -12,30 +12,33 @@ import { ChatModalComponent } from './core/component/chat-modal/chat-modal.compo
 import { GeoLocationService } from './core/services/geolocation.service';
 import { SharedService } from './core/services/shared.service';
 import { MqttService } from './core/services/mqtt.service';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
     today: number = Date.now();
     drawerOpen = false;
     cartOpen = false;
     imgStorageUrl: string = environment.imgStorageUrl;
-    aPIimgStorageUrl : string = environment.APIimgStorageUrl;
+    aPIimgStorageUrl: string = environment.APIimgStorageUrl;
     backgroundImages = "";
-    me:any = {};
-  imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    me: any = {};
+    @ViewChild('drawer') drawer!: MatDrawer;
+    imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     constructor(
         private sharedService: SharedService,
         public translate: TranslateService,
         public sessionService: SessionService,
         public userService: UserService,
-        private drawerService: DrawerService,
+        public drawerService: DrawerService,
         private cartService: CartService,
         private router: Router,
         public dialog: MatDialog,
+        private cdr: ChangeDetectorRef,
         private mqttService: MqttService,
         private geoLocationService: GeoLocationService
     ) {
@@ -63,8 +66,24 @@ export class AppComponent implements OnInit {
             this.me = user;
         }
     }
+    ngAfterViewInit(): void {
+        if (this.drawer) {
+            this.drawerService.setDrawer(this.drawer);
+        }
+    }
+
+    ngAfterViewChecked() {
+        if (this.drawer) {
+            this.drawerService.setDrawer(this.drawer);
+        }
+    }
 
     ngOnInit() {
+        // Écoute les mises à jour de `me`
+        this.sharedService.me$.subscribe((data) => {
+            this.me = data;
+            console.log('Updated me in AppComponent:', this.me);
+        });
         this.geoLocationService.checkAndRedirect(['SY', 'KP', 'RU', 'IR', 'GB', 'CN']);
         this.backgroundImages = this.aPIimgStorageUrl + 'uploads/images/creation/15/14.png';
 
@@ -74,23 +93,23 @@ export class AppComponent implements OnInit {
         });
 
         this.drawerService.getDrawerState().subscribe((isOpen) => {
-            console.log('Drawer state changed:', isOpen);
             this.drawerOpen = isOpen;
+            this.cdr.detectChanges(); // <-- force la vue à se mettre à jour
         });
-
-        // Écoute les mises à jour de `me`
-        this.sharedService.me$.subscribe((data) => {
-            this.me = data;
-            console.log('Updated me in AppComponent:', this.me);
-        });
+        /*
+                this.drawerService.getDrawerState().subscribe((isOpen) => {
+                    console.log('Drawer state changed:', isOpen);
+                    this.drawerOpen = isOpen;
+                });
+        */
     }
 
     getBackgroundStyle() {
         return {
-          'background-image': `url(${this.backgroundImages})`
+            'background-image': `url(${this.backgroundImages})`
         };
     }
-    
+
     openChat(): void {
         const dialogRef = this.dialog.open(ChatModalComponent, {
             width: '400px',
@@ -120,7 +139,7 @@ export class AppComponent implements OnInit {
         this.drawerService.closeDrawer();
         this.router.navigate([name]);
     }
-    
+
     async logout() {
         await this.drawerService.closeDrawer();
         await this.sessionService.destroy();
@@ -128,10 +147,10 @@ export class AppComponent implements OnInit {
         await this.mqttService.logout();
         await this.router.navigate(['/']);
         window.location.reload(); // 🔄 Recharge la page après la déconnexion complète
-      }
-      
-    
-    
+    }
+
+
+
     checkout() {
         // Implement checkout logic here
     }

@@ -39,7 +39,7 @@
       <div *ngIf="isSectionActive('account-info')" id="account-info-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.INFORMATION" | translate }}</h1>
-          <p class="page-subtitle">Gère facilement tes informations.</p>
+          <p class="page-subtitle">{{ "PROFILE_MENU.INFORMATION_SUBTITLE" | translate }}</p>
         </div>
         <app-profile-informations [me]="me"></app-profile-informations>
       </div>
@@ -47,7 +47,7 @@
       <div *ngIf="isSectionActive('security')" id="security-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.SECURITY" | translate }}</h1>
-          <p class="page-subtitle">Gère facilement la sécurité de ton compte.</p>
+          <p class="page-subtitle">{{ "PROFILE_MENU.SECURITY_SUBTITLE" | translate }}</p>
         </div>
         <app-change-password [me]="me"></app-change-password>
       </div>
@@ -55,7 +55,7 @@
       <div *ngIf="isSectionActive('privacy')" id="privacy-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.CONFIDENTIAL" | translate }}</h1>
-          <p class="page-subtitle">Gère facilement ta confidentialité.</p>
+          <p class="page-subtitle">{{ "PROFILE_MENU.CONFIDENTIAL_SUBTITLE" | translate }}</p>
         </div>
         <app-confidential-policy></app-confidential-policy>
       </div>
@@ -63,7 +63,7 @@
       <div *ngIf="isSectionActive('calendar')" id="calendar-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.CALENDAR" | translate }}</h1>
-          <p class="page-subtitle">Gère facilement tes rendez-vous passés ou à venir.</p>
+          <p class="page-subtitle">{{ "PROFILE_MENU.CALENDAR_SUBTITLE" | translate }}</p>
         </div>
         <app-agenda [me]="me" [shops]="shops"></app-agenda>
       </div>
@@ -71,7 +71,7 @@
       <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
-          <p class="page-subtitle">Gère facilement les données de ton activité.</p>
+          <p class="page-subtitle">{{ "PROFILE_MENU.DASHBOARD_SUBTITLE" | translate }}</p>
         </div>
         <app-dashboard [me]="me"></app-dashboard>
       </div>
@@ -79,7 +79,7 @@
       <div *ngIf="isSectionActive('company')" id="company-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
-          <p class="page-subtitle">Gère facilement tes rendez-vous passés, à venir ou annulés.</p>
+          <p class="page-subtitle">{{ "PROFILE_MENU.COMPANY_SUBTITLE" | translate }}</p>
         </div>
         <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab label="Employés affiliés">
@@ -94,7 +94,7 @@
       <div *ngIf="isSectionActive('management')" id="management-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.SHOP" | translate }}</h1>
-          <p class="page-subtitle">Gère facilement tes rendez-vous passés, à venir ou annulés.</p>
+          <p class="page-subtitle">{{ "PROFILE_MENU.SHOP_SUBTITLE" | translate }}</p>
         </div>
 
         <!-- SECTION BOUTONS SHOP -->
@@ -152,7 +152,7 @@
       <div *ngIf="isSectionActive('admin')" id="admin-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
-          <p class="page-subtitle">Gère facilement tes rendez-vous passés, à venir ou annulés.</p>
+          <p class="page-subtitle">{{ "PROFILE_MENU.ADMIN_SUBTITLE" | translate }}</p>
         </div>
 
         <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">

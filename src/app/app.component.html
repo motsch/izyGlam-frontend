@@ -6,21 +6,11 @@
 <!-- Si l'utilisateur est connecté -->
 <mat-drawer-container class="example-container" *ngIf="sessionService.isLoggedIn()">
   <!-- Drawer latéral gauche -->
-  <mat-drawer
-    *ngIf="me"
-    (closedStart)="closeDrawer()"
-    mode="over"
-    [opened]="drawerOpen"
-    class="drawer-content"
-  >
+  <mat-drawer #drawer *ngIf="me" mode="over" class="drawer-content" (closedStart)="closeDrawer()">
     <div class="drawer-inner">
       <!-- Section profil -->
       <div class="profile-section">
-        <img
-          [src]="imgStorageUrl + 'default.jpeg'"
-          class="profile-pic"
-          alt="Profile Picture"
-        />
+        <img [src]="imgStorageUrl + 'default.jpeg'" class="profile-pic" alt="Profile Picture" />
         <div>
           <p class="profile-name">{{ me.firstname }} {{ me.lastname }}</p>
           <a class="manage-account" (click)="goTo('profile')">
@@ -84,21 +74,17 @@
     <div class="page-container">
       <!-- Header -->
       <app-header [connected]="sessionService.isLoggedIn()"></app-header>
-  
+
       <!-- Bouton de chat -->
       <div class="chat-container" (click)="openChat()">
-        <img
-          src="assets/images/chat/lizy.png"
-          alt="Lizy Chat Icon"
-          class="chat-button"
-        />
+        <img src="assets/images/chat/lizy.png" alt="Lizy Chat Icon" class="chat-button" />
       </div>
-  
+
       <!-- Contenu dynamique -->
       <div class="content">
         <router-outlet></router-outlet>
       </div>
-  
+
       <!-- Footer -->
       <footer class="footer-izyglam">
         <div class="footer-content">
@@ -106,14 +92,14 @@
           <div class="footer-links">
             <a href="#">{{ "FOOTER.CONFIDENTIAL" | translate }}</a> ·
             <a href="#">{{
-        "FOOTER.ACCESS" | translate }}</a> ·
+              "FOOTER.ACCESS" | translate }}</a> ·
             <a href="#">{{ "FOOTER.CONDITIONS" | translate }}</a>
           </div>
         </div>
       </footer>
-      
+
     </div>
   </mat-drawer-content>
 
-<!-- Loader global -->
-<app-loader></app-loader>
+  <!-- Loader global -->
+  <app-loader></app-loader>

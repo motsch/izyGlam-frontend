@@ -8,14 +8,14 @@
       'pending': order.status === 'pending',
       'cancelled': ['cancelled', 'deleted', 'refused', 'no-show-pro', 'no-show-client'].includes(order.status)
     }">
-      <span *ngIf="order.status === 'finished'">✅ Terminée</span>
-      <span *ngIf="order.status === 'accepted'">✅ Acceptée</span>
-      <span *ngIf="order.status === 'pending'">⏳ En attente</span>
-      <span *ngIf="order.status === 'cancelled'">❌ Annulée</span>
-      <span *ngIf="order.status === 'deleted'">❌ Supprimée</span>
-      <span *ngIf="order.status === 'refused'">❌ Refusée</span>
-      <span *ngIf="order.status === 'no-show-pro'">❌ Prestataire absent</span>
-      <span *ngIf="order.status === 'no-show-client'">❌ Client absent</span>
+      <span *ngIf="order.status === 'finished'">✅ {{"ORDER_CARD.FINISHED"}}</span>
+      <span *ngIf="order.status === 'accepted'">✅ {{"ORDER_CARD.ACCEPTEE"}}</span>
+      <span *ngIf="order.status === 'pending'">⏳ {{"ORDER_CARD.WAITING"}}</span>
+      <span *ngIf="order.status === 'cancelled'">❌ {{"ORDER_CARD.CANCEL"}}</span>
+      <span *ngIf="order.status === 'deleted'">❌ {{"ORDER_CARD.DELETE"}}</span>
+      <span *ngIf="order.status === 'refused'">❌ {{"ORDER_CARD.REFUSED"}}</span>
+      <span *ngIf="order.status === 'no-show-pro'">❌ {{"ORDER_CARD.NO_PRESTA"}}</span>
+      <span *ngIf="order.status === 'no-show-client'">❌ {{"ORDER_CARD.CLIENT_ABSENT"}}</span>
     </div>
   </div>
 
@@ -28,28 +28,28 @@
     <div class="order-details">
       <h3>{{ order.establishmentName }}</h3>
       <p class="product-name">{{ order.productName }}</p>
-      <p><span class="label">📍 Adresse :</span> {{ order.address }}</p>
-      <p><span class="label">🗓️ Date :</span> {{ order.orderDate }} - {{ order.orderTime }}</p>
-      <p><span class="label">💰 Total :</span> {{ order.price }}€</p>
+      <p><span class="label">📍 {{"ORDER_CARD.ADRESSE" | translate}} :</span> {{ order.address }}</p>
+      <p><span class="label">🗓️ {{"ORDER_CARD.DATE" | translate}} :</span> {{ order.orderDate }} - {{ order.orderTime }}</p>
+      <p><span class="label">💰 {{"ORDER_CARD.TOTAL" | translate}} :</span> {{ order.price }}€</p>
     </div>
   </div>
 
   <!-- Actions dynamiques -->
   <div class="actions-container">
     <button *ngIf="availableActions.includes('invoice')" class="action-button" (click)="onDownloadInvoice.emit(order)">
-      📄 Facture
+      📄 {{"ORDER_CARD.FACTURE" | translate}}
     </button>
     <button *ngIf="availableActions.includes('cancel')" class="action-button" (click)="cancelBooking(order)">
-      ❌ Annuler
+      ❌ {{"ORDER_CARD.FACTURE" | translate}}
     </button>
     <button *ngIf="availableActions.includes('delete')" class="action-button" (click)="deleteBooking(order)">
-      🗑 Supprimer
+      🗑 {{"ORDER_CARD.DELETED" | translate}}
     </button>
     <button *ngIf="availableActions.includes('review')" class="action-button" (click)="reviewBooking(order)">
-      ✍️ Avis
+      ✍️ {{"ORDER_CARD.AVIS" | translate}}
     </button>
     <button *ngIf="availableActions.includes('support')" class="action-button" (click)="contactSupport(order)">
-      💬 Support
+      💬 {{"ORDER_CARD.SUPPORT" | translate}}
     </button>
   </div>
 
@@ -59,7 +59,7 @@
       <button class="btn-secondary" (click)="generateCode(order)">Code de confirmation</button>
     </div>
     <div *ngIf="order.generatedCode">
-      <label>Code à donner au prestataire :</label>
+      <label>{{"ORDER_CARD.CODE_A_DONNER" | translate}} :</label>
       <h2>{{ order.generatedCode }}</h2>
     </div>
   </div>
@@ -67,7 +67,7 @@
   <!-- Bouton "absent" pour prestataire -->
   <div class="absent-card" *ngIf="isAfterGracePeriod">
     <button class="btn-tertiary" (click)="markPrestataireAbsent(order)">
-      Prestataire absent
+      {{"ORDER_CARD.CODE_A_DONNER" | translate}}
     </button>
   </div>
 </div>
