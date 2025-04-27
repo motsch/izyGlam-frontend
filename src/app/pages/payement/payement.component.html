@@ -1,69 +1,63 @@
-<!-- payment.component.html - Refonte design moderne, style Apple -->
+<!-- payment.component.html - Refonte design moderne, style Apple Premium -->
 <div class="container-fluid page-container">
   <div class="row justify-content-center">
-    <div class="col-12 col-lg-10">
+    <div class="col-12">
       <div class="appointment-card shadow">
-        <div class="appointment-header text-center mb-4 mt-4">
-          <h2 class="fw-semibold text-dark">{{ 'PAYEMENT.TITLE' | translate }}</h2>
+
+        <!-- HEADER -->
+        <div class="appointment-header text-center mb-5">
+          <h2 class="page-title">{{ 'PAYEMENT.TITLE' | translate }}</h2>
         </div>
 
-        <div class="row appointment-content gy-4">
-          <!-- Partie gauche -->
+        <div class="row appointment-content gy-5">
+          <!-- PARTIE GAUCHE -->
           <div class="col-12 col-md-6">
-            <div class="appointment-left" *ngIf="step === 1">
-              <p class="fw-bold text-secondary">{{ 'PAYEMENT.FOR_WHO' | translate }}</p>
-              <div class="patient-selection bg-light rounded-4 p-3">
-                <div class="patient-info rounded-3 p-2 bg-white border">
+            <!-- Bloc POUR QUI -->
+            <div *ngIf="step === 1">
+              <h3 class="section-title">{{ 'PAYEMENT.FOR_WHO' | translate }}</h3>
+              <div class="patient-selection">
+                <label class="patient-info">
                   <input [(ngModel)]="bill.client" type="radio" name="client" [value]="me._id" />
-                  <span class="avatar margin-left-10">{{ me.initials }}</span>
-                  <span class="name">{{ me.firstname }} <span class="uppercase">{{ me.lastname }}</span></span>
-                  <span class="you ms-2">(vous)</span>
-                </div>
-                <!--
-                <div class="add-relative mt-3">
-                  <a (click)="openProchesModal()" class="text-primary"><i class="fa fa-user-plus"></i> {{ 'PAYEMENT.ADD_PROCHE' | translate }}</a>
-                </div>
-                <div class="address-selection">
-                  <label *ngFor="let address of me.address; index as i">
-                    <div class="d-flex align-items-center p-2 bg-white rounded-3 mb-2">
-                      <input [(ngModel)]="bill.address" type="radio" name="address" [value]="address._id" />
-                      <span class="address">Adresse {{ i + 1 }} : {{ address.street }}, {{ address.city }}</span>
-                    </div>
-                  </label>
-                </div>
-                -->
-              </div>
-            </div>
-
-            <div class="appointment-left" *ngIf="step === 1">
-              <p class="fw-bold text-secondary">{{ 'PAYEMENT.WHERE' | translate }}</p>
-              <p>{{ 'PAYEMENT.SELECT_ADDRESS' | translate }} :</p>
-              <div class="address-selection">
-                <label *ngFor="let address of me.address; index as i">
-                  <div class="d-flex align-items-center p-2 bg-white rounded-3 mb-2">
-                    <input [(ngModel)]="bill.address" type="radio" name="address" [value]="address._id" />
-                    <span class="address">Adresse {{ i + 1 }} : {{ address.street }}, {{ address.city }}</span>
+                  <span class="avatar">{{ me.initials }}</span>
+                  <div class="flex-grow-1">
+                    <span class="name">{{ me.firstname }} <span class="uppercase">{{ me.lastname }}</span></span>
                   </div>
+                  <span class="you">(vous)</span>
                 </label>
               </div>
-              <div class="add-relative mt-3">
-                <a (click)="openAddressModal()" class="text-primary"><i class="fa fa-map-marker"></i> {{ 'PAYEMENT.ADD_ADDRESS' | translate }}</a>
+            </div>
+
+            <!-- Bloc OU -->
+            <div *ngIf="step === 1" class="mt-4">
+              <h3 class="section-title">{{ 'PAYEMENT.WHERE' | translate }}</h3>
+              <p class="section-subtitle">{{ 'PAYEMENT.SELECT_ADDRESS' | translate }}</p>
+              <div class="address-selection">
+                <label *ngFor="let address of me.address; index as i" class="address-info">
+                  <input [(ngModel)]="bill.address" type="radio" name="address" [value]="address._id" />
+                  <span class="address-text">Adresse {{ i + 1 }} : {{ address.street }}, {{ address.city }}</span>
+                </label>
+              </div>
+              <div class="add-relative text-start mt-3">
+                <a (click)="openAddressModal()">
+                  <i class="fa fa-map-marker"></i> {{ 'PAYEMENT.ADD_ADDRESS' | translate }}
+                </a>
               </div>
             </div>
 
-            <div class="appointment-left" *ngIf="step === 2">
-              <h3 class="fw-bold text-secondary mb-3">{{ 'PAYEMENT.CARD_PAY' | translate }}</h3>
-              <div class="payment-selection bg-light rounded-4 p-3">
+            <!-- Bloc PAIEMENT -->
+            <div *ngIf="step === 2" class="mt-4">
+              <h3 class="section-title">{{ 'PAYEMENT.CARD_PAY' | translate }}</h3>
+              <div class="payment-selection">
                 <form class="payment-form">
-                  <div class="form-group mb-3">
+                  <div class="form-group">
                     <label for="cardNumber">{{ 'PAYEMENT.CARD_NUM' | translate }}</label>
                     <input class="form-control" type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required />
                   </div>
-                  <div class="form-group mb-3">
+                  <div class="form-group">
                     <label for="cardName">{{ 'PAYEMENT.CARD_NAME' | translate }}</label>
                     <input class="form-control" type="text" id="cardName" name="cardName" placeholder="Nom du titulaire" required />
                   </div>
-                  <div class="form-group mb-3">
+                  <div class="form-group">
                     <label for="expiryDate">{{ 'PAYEMENT.EXPIRATION' | translate }}</label>
                     <input class="form-control" type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA" required />
                   </div>
@@ -76,47 +70,53 @@
             </div>
           </div>
 
-          <!-- Partie droite -->
+          <!-- PARTIE DROITE -->
           <div class="col-12 col-md-6">
-            <div class="appointment-right bg-light rounded-4 p-3">
-              <div class="doctor-info d-flex align-items-center gap-3 mb-3">
-                <img [src]="imgStorageUrl + shop?.image" [alt]="shop?.name" class="doctor-avatar shadow" />
+            <div class="appointment-right">
+              <!-- Infos du shop -->
+              <div class="doctor-info">
+                <img [src]="imgStorageUrl + 'uploads/images/' + shop.image" [alt]="shop?.name" class="doctor-avatar" />
                 <div class="doctor-details">
-                  <p class="fw-semibold">{{ shop?.name }}</p>
-                  <p class="doctor-specialty text-muted">{{ shop?.trad | translate }}</p>
+                  <p class="shop-name">{{ shop?.name }}</p>
+                  <p class="shop-trad">{{ shop?.trad | translate }}</p>
                   <div class="appointment-details mt-2">
-                    <p class="appointment-date fw-bold text-dark">{{ 'PAYEMENT.RDV' | translate }}</p>
-                    <p class="appointment-time text-muted">{{ dateSlot }} • {{ startSlot }}</p>
+                    <p class="appointment-date">{{ 'PAYEMENT.RDV' | translate }}</p>
+                    <p class="appointment-time">{{ dateSlot }} • {{ startSlot }}</p>
                   </div>
                 </div>
               </div>
 
-              <div class="summary-info">
-                <h3 class="fw-bold text-secondary mb-2">{{ 'PAYEMENT.RESUME' | translate }}</h3>
-                <p><strong>{{ 'PAYEMENT.DATE' | translate }}:</strong> {{ dateSlot }}</p>
-                <p><strong>{{ 'PAYEMENT.HOUR' | translate }}:</strong> {{ startSlot }}</p>
-                <p><strong>{{ 'PAYEMENT.PRESTA' | translate }}:</strong> {{ itemToBuy2.name }}</p>
-                <p><strong>{{ 'PAYEMENT.WITH' | translate }}:</strong> {{ shop?.name }}, {{ shop?.trad | translate }}</p>
-                <p><strong>{{ 'PAYEMENT.TOTAL' | translate }}:</strong> {{ price }} €</p>
+              <!-- Résumé du rendez-vous -->
+              <div class="summary-info mt-4">
+                <h3 class="section-title">{{ 'PAYEMENT.RESUME' | translate }}</h3>
+                <ul class="summary-list">
+                  <li><strong>{{ 'PAYEMENT.DATE' | translate }} :</strong> {{ dateSlot }}</li>
+                  <li><strong>{{ 'PAYEMENT.HOUR' | translate }} :</strong> {{ startSlot }}</li>
+                  <li><strong>{{ 'PAYEMENT.PRESTA' | translate }} :</strong> {{ itemToBuy2.name }}</li>
+                  <li><strong>{{ 'PAYEMENT.WITH' | translate }} :</strong> {{ shop?.name }}, {{ shop?.trad | translate }}</li>
+                  <li><strong>{{ 'PAYEMENT.TOTAL' | translate }} :</strong> {{ price }} €</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="appointment-footer d-flex justify-content-center mt-4 flex-wrap gap-3">
-          <button *ngIf="step === 1" class="btn btn-secondary px-4 py-2" (click)="goBackToMain()">
+        <!-- FOOTER -->
+        <div class="appointment-footer">
+          <button *ngIf="step === 1" class="btn btn-secondary" (click)="goBackToMain()">
             {{ 'PAYEMENT.ANNULER' | translate }}
           </button>
-          <button *ngIf="step > 1" class="btn btn-outline-secondary px-4 py-2" (click)="removeStep()">
+          <button *ngIf="step > 1" class="btn btn-outline-secondary" (click)="removeStep()">
             {{ 'PAYEMENT.RETOUR' | translate }}
           </button>
-          <button *ngIf="step < 2" (click)="addStep()" class="btn btn-primary px-4 py-2">
+          <button *ngIf="step < 2" (click)="addStep()" class="btn btn-primary">
             {{ 'PAYEMENT.CONTINUER' | translate }}
           </button>
-          <button *ngIf="step === 2" (click)="validate()" class="btn btn-success px-4 py-2">
+          <button *ngIf="step === 2" (click)="validate()" class="btn btn-success">
             {{ 'PAYEMENT.VALIDER' | translate }}
           </button>
         </div>
+
       </div>
     </div>
   </div>

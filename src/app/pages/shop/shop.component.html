@@ -1,7 +1,4 @@
-<app-header
-  *ngIf="!sessionService.isLoggedIn()"
-  [connected]="false"
-></app-header>
+<app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
 <!-- sidebar + content -->
 <section class="container padding-top-20pourc">
   <div class="row">
@@ -10,33 +7,37 @@
       <!-- Collapsible wrapper -->
       <div class="mb-5" id="navbarSupportedContent">
         <div>
-          <h4>{{ shopInfo.name }}</h4>
-          <div class="pink">{{ shopInfo.trad | translate }}</div>
-        </div>
-        <div>
-          <span>
-            {{ shopInfo.note }}
-            <img
-              [src]="imgStorageUrl + 'star.png'"
-              alt="starLogo"
-              class="starLogo"
-            />
-          </span>
-          <span>
-            ({{ shopInfo.noteCount }}+) <br />
-            {{ "SHOP.MOVING_FEE" | translate }}
-            {{ adminSettings.serviceFee | number : "1.2-2" }}€<br />
-            {{ "SHOP.DISTANCE" | translate }} {{ shopInfo.maxDistance }}km
-          </span>
-          <div class="margin-top-40 bold">{{ "SHOP.GALLERY" | translate }}:</div>
-          <div class="margin-top-10">
+          <div class="shop-info-header">
+            <img [src]="APIimgStorageUrl + '/uploads/images/' + (shopInfo.image ? shopInfo.image : 'default.png')"
+              alt="shopLogo" class="shopInfoImage" />
+
+            <div class="shop-info-texts">
+              <div>
+                <h4>{{ shopInfo.name }}</h4>
+                <div class="pink">{{ shopInfo.trad | translate }}</div>
+              </div>
+              <span>
+                {{ shopInfo.note }}
+                <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
+                ({{ shopInfo.noteCount }}+) <br />
+              </span>
+              <span>
+                {{ "SHOP.MOVING_FEE" | translate }}
+                {{ adminSettings.serviceFee | number : "1.2-2" }}€<br />
+                {{ "SHOP.DISTANCE" | translate }} {{ shopInfo.maxDistance }}km
+              </span>
+            </div>
+          </div>
+          <div class="margin-top-20 pink2">
+            {{ shopInfo.description }}
+          </div>
+
+          <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-40 bold">{{ "SHOP.GALLERY" | translate }}:
+          </div>
+          <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-10">
             <div class="gallery-container">
               <div class="gallery-thumbnails">
-                <div
-                  *ngFor="let image of shopInfo.galleryImages"
-                  class="thumbnail"
-                  (click)="openLightbox(image)"
-                >
+                <div *ngFor="let image of shopInfo.galleryImages" class="thumbnail" (click)="openLightbox(image)">
                   <img [src]="APIimgStorageUrl + image" alt="Gallery Image" />
                 </div>
               </div>
@@ -45,27 +46,15 @@
             <!-- Lightbox Modal -->
             <div class="lightbox" *ngIf="isLightboxOpen">
               <div class="lightbox-content">
-                <span class="close-lightbox" (click)="closeLightbox()"
-                  >&times;</span
-                >
-                <img
-                  [src]="APIimgStorageUrl + selectedImage"
-                  class="lightbox-image"
-                />
+                <span class="close-lightbox" (click)="closeLightbox()">&times;</span>
+                <img [src]="APIimgStorageUrl + selectedImage" class="lightbox-image" />
                 <a class="prev" (click)="prevImage()">&#10094;</a>
                 <a class="next" (click)="nextImage()">&#10095;</a>
               </div>
             </div>
           </div>
-          <div class="margin-top-20">
-            {{ shopInfo.description }}
-          </div>
           <div>
-            <img
-              [src]="imgStorageUrl + 'money.png'"
-              alt="starLogo"
-              class="moneyLogo"
-            />
+            <img [src]="imgStorageUrl + 'money.png'" alt="starLogo" class="moneyLogo" />
           </div>
           <div>
             {{ "SHOP.PAYEMENT" | translate }}<br />
@@ -77,10 +66,7 @@
     <!-- Gallery display section -->
     <div class="col-lg-9">
       <div class="row justify-content-left">
-        <div
-          class="col-12 col-sm-12 col-md-6 col-lg-6"
-          *ngFor="let item of shopItems"
-        >
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
           <app-shop-item-card [item]="item"></app-shop-item-card>
         </div>
       </div>

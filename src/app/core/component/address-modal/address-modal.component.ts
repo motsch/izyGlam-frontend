@@ -44,7 +44,7 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
 
     
     selectedCountry = 'France';
-    selectedCity: any = {};
+    selectedCity: any | undefined = undefined;
     availableCountries = ['France'];
     availableCities: any[] = [];
     postalCode: string = '';
@@ -55,6 +55,7 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
         private sharedService: SharedService,) { }
 
     ngOnInit() {
+        this.selectedCity.name = '';
         console.log(this.data.user);  // Utilisez les données passées ici
     }
     ngAfterViewChecked() {

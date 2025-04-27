@@ -4,6 +4,11 @@
   <div class="section-header">
     <h3>{{ 'SPONSORS.TITLE' | translate}}</h3>
   </div>
+
+  <div class="horizontal-scroll-buttons">
+    <button class="scroll-button left" (click)="scrollLeft()">&#10094;</button>
+    <button class="scroll-button right" (click)="scrollRight()">&#10095;</button>
+  </div>
   <div class="horizontal-scroll-wrapper">
     <div #scrollContainerAds class="scrollable-shop-list">
       <div *ngFor="let pub of pubs" class="pub-card" (click)="goTo(pub)" [attr.data-pub-id]="pub._id">

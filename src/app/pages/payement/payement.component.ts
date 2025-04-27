@@ -30,7 +30,7 @@ export class PayementComponent implements OnInit {
     bill: any | null = {};
     orderDate: string | null = '';
     date: string | null = '';
-    imgStorageUrl: string = environment.imgStorageUrl;
+    imgStorageUrl: string = environment.APIimgStorageUrl;
     me: any = {};
     price: string = '';
     itemToBuy2: any | null;

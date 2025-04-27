@@ -158,29 +158,40 @@
 
 /* Existing styles */
 .gallery-container {
+  position: relative;
   display: flex;
-  justify-content: flex-start; /* Aligne les images à gauche */
-  overflow-x: auto; /* Active le défilement horizontal si nécessaire */
-  white-space: nowrap; /* Empêche le retour à la ligne des miniatures */
-  padding-bottom: 10px; /* Ajoute un espace pour le confort de l'utilisateur */
+  justify-content: flex-start;
+  overflow: hidden;
+  white-space: nowrap;
+  max-height: 80px; /* Limite basse au repos */
+  transition: max-height 0.5s ease; /* On anime max-height au lieu de height */
+  padding-bottom: 10px;
+}
+
+.gallery-container:hover {
+  max-height: 500px; /* À l'hover, on autorise jusqu'à 500px par exemple */
+  white-space: normal;
 }
 
 .gallery-thumbnails {
-  display: inline-flex; /* Aligne les miniatures sur une seule ligne */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .thumbnail {
-  margin-right: 10px; /* Espace entre les miniatures */
   cursor: pointer;
+  margin-right: 10px; /* Espace entre les miniatures */
   flex: 0 0 auto; /* Empêche les miniatures de se rétrécir */
 }
 
 .thumbnail img {
-  width: 100px;
-  height: 80px;
+  width: 80px;
+  height: 70px;
+  max-height: 70px; /* Taille des miniatures */
   object-fit: cover;
   border-radius: 10px;
-  transition: transform 0.3s;
+  transition: transform 1s;
 }
 
 .thumbnail img:hover {
@@ -459,4 +470,44 @@ app-round-shop-card, .card {
 
 .pink {
   color: #ff4081;
+}
+
+.pink2 {
+  color: #cc678c;font-weight: 600
+}
+
+.shop-info-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .shop-info-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .shop-info-texts {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+.shopInfoImage {
+  margin-top: 15px;
+  width: 100px; /* Taille de ton image */
+  height: 100px;
+  object-fit: cover; /* Que l'image reste jolie même si pas carrée */
+  border-radius: 50%; /* Arrondi si tu veux un style 'photo de profil' */
+  border: 2px solid #ff69b4; /* Une bordure rose pour matcher ton thème */
+}
+
+.shop-info-texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

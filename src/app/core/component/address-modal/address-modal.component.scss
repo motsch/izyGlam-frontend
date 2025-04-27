@@ -15,6 +15,7 @@
   text-align: center;
   padding: 24px 16px 8px 16px;
   margin: 0;
+  position: relative;
 }
 
 .close-button {
@@ -80,6 +81,55 @@
   cursor: pointer;
 }
 
+/* NOUVEAU : Styles pour le formulaire de modification */
+.payment-selection {
+  padding: 16px;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #ff4081;
+}
+
+select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,0 140,0 70,90' fill='%23ccc'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+
 .preference-time {
   display: flex;
   justify-content: center;
@@ -96,6 +146,7 @@ button.schedule-button {
   color: #ff4081;
   font-weight: 500;
   transition: 0.2s ease-in-out;
+  font-size: 14px;
 }
 
 button.schedule-button:hover {
@@ -114,32 +165,5 @@ button[mat-dialog-close] {
   padding: 10px 20px;
   font-weight: 500;
   color: #333;
-}
-
-.payment-selection {
-  padding: 16px;
-}
-
-.payment-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 4px;
-}
-
-.form-group input {
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
   font-size: 14px;
 }

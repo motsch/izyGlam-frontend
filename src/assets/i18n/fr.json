@@ -268,7 +268,8 @@
     "ANNULER": "ANNULER",
     "RETOUR": "RETOUR",
     "CONTINUER": "CONTINUER",
-    "VALIDER": "VALIDER"
+    "VALIDER": "VALIDER",
+    "ADRESSE": "Adresse"
   },
   "CREATION_SHOP_STEPS": {
     "TITLE": "izyGlam pour les indépendants",
@@ -457,9 +458,10 @@
   },
   "FIDELITY": {
     "TITLE": "Mes favoris",
+    "AGAIN": "Encore",
+    "AGAIN_SUBTITLE": "avant ta récompense",
     "TITLE_SUBTITLE": "pour débloquer ton cadeau",
     "DATE": "Valable jusqu’au",
-    "AGAIN": "Encore",
     "HISTO": "Historique de mes soins"
   },
   "FAVORITES": {

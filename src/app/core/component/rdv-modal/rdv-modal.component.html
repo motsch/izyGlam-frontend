@@ -1,4 +1,20 @@
 <h1 mat-dialog-title class="modal-title">{{ "RDV_MODAL.TITLE" | translate }}</h1>
+<button mat-icon-button class="close-button" (click)="onNoClick()">
+  <span aria-hidden="true">&times;</span>
+</button>
+
+
+<!-- Bloc flex avec image + infos -->
+<div class="service-container">
+  <div class="service-image-wrapper">
+    <img [src]="imgStorageUrl + service.image" alt="Illustration" class="service-image" />
+  </div>
+
+  <div class="service-info">
+    <div class="service-name">{{ service.name }}</div>
+    <div class="service-description">{{ service.description }}</div>
+  </div>
+</div>
 
 <div mat-dialog-content class="modal-content">
   <div class="date-selector">

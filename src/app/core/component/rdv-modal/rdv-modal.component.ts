@@ -6,6 +6,7 @@ import { SessionService } from '../../services/session.service';
 import { Router } from '@angular/router';
 import { CommunicationService } from '../../services/communication.service';
 import { BookingService } from '../../services/booking.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-rdv-modal',
@@ -13,9 +14,11 @@ import { BookingService } from '../../services/booking.service';
     styleUrls: ['./rdv-modal.component.scss'],
 })
 export class RdvModalComponent implements OnInit {
+    imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
     openedIndex: number | null = null;
     shopId: string | null = null;
     schedules: any[] = [];
+    service: any = {};
 
     constructor(
         public dialogRef: MatDialogRef<RdvModalComponent>,
@@ -26,7 +29,9 @@ export class RdvModalComponent implements OnInit {
         public dialog: MatDialog,
         private communicationService: CommunicationService,
         private bookingService: BookingService
-    ) {}ngOnInit() {
+    ) {}
+    
+    ngOnInit() {
         if (localStorage.getItem('shopSelected')) {
             this.shopId = localStorage.getItem('shopSelected');
             this.generateDates();
@@ -36,69 +41,66 @@ export class RdvModalComponent implements OnInit {
     
     generateDates() {
         if (this.shopId) {
-            let service = localStorage.getItem('productToBuy');
-            let serviceId = JSON.parse(service!)._id;
-            if (serviceId) {
-                this.bookingService
-                    .getAvailableTimeSlots(this.shopId, serviceId)
-                    .subscribe({
-                        next: (data: any[]) => {
-                            // Process the received data (list of available time slots)
-                            this.schedules = this.formatAvailableSlots(data);
-                            console.log(this.schedules);
-                        },
-                        error: (error: any) => {
-                            console.log(error);
-                        },
-                    });
+            const serviceString = localStorage.getItem('productToBuy');
+            if (serviceString) {
+                this.service = JSON.parse(serviceString);
+                console.log('Service récupéré :', this.service);
+                const serviceId = this.service._id;
+                if (serviceId) {
+                    this.bookingService
+                        .getAvailableTimeSlots(this.shopId, serviceId)
+                        .subscribe({
+                            next: (data: any[]) => {
+                                this.schedules = this.formatAvailableSlots(data);
+                                console.log('Créneaux formatés :', this.schedules);
+                            },
+                            error: (error: any) => {
+                                console.error('Erreur récupération créneaux:', error);
+                            },
+                        });
+                }
+            } else {
+                console.warn('Aucun produit sélectionné dans le localStorage');
             }
         }
     }
     
-    // Format the available slots returned by the API to fit your schedules structure
     formatAvailableSlots(data: any[]): any[] {
-        const formattedSchedules = data.map(slot => {
-            return {
-                date: this.formatDate(slot.date),  // Format the date for display
-                times: [
-                    {
-                        dateBrut: slot.date,
-                        start: slot.start,
-                        end: slot.end
-                    }
-                ]
-            };
-        });
-    
-        // Group slots by date if necessary
+        const formattedSchedules = data.map(slot => ({
+            date: this.formatDate(slot.date),
+            times: [{
+                dateBrut: slot.date,
+                start: slot.start,
+                end: slot.end
+            }]
+        }));
+
         const groupedSchedules = this.groupBy(formattedSchedules, 'date');
-        
+
         return Object.keys(groupedSchedules).map(date => ({
             date: date,
-            times: groupedSchedules[date].map((slot:any) => slot.times[0]) // If there are multiple times per day
+            times: groupedSchedules[date].map((slot: any) => slot.times[0])
         }));
     }
-    
-    // Helper function to group by date
+
     groupBy(array: any[], key: string) {
         return array.reduce((result, currentValue) => {
             (result[currentValue[key]] = result[currentValue[key]] || []).push(currentValue);
             return result;
         }, {});
     }
-    
+
     formatDate(dateString: string): string | null {
         const date = new Date(dateString);
         return this.datePipe.transform(date, 'EEEE d MMMM y', 'fr-FR');
     }
-    
 
     initializeOpenDate() {
         const now = new Date();
         const today = now.getDate();
 
         this.openedIndex = this.schedules.findIndex(
-            (d) => d.date.getDate() === today
+            (d) => new Date(d.date).getDate() === today
         );
     }
 
@@ -110,27 +112,25 @@ export class RdvModalComponent implements OnInit {
     }
 
     onNoClick(): void {
-        this.dialogRef.close(); // Ferme la modal
+        this.dialogRef.close(); 
     }
 
     slotClick(slot: any, date: any) {
-        console.log(slot);
-        console.log(date);
-        let objetToSave: any = {};
-        // objetToSave.slot = {};
-        objetToSave.slot = slot;
-        objetToSave.shopId = this.shopId;
-        objetToSave.date = date.date;
+        console.log('Créneau sélectionné :', slot);
+        console.log('Date sélectionnée :', date);
+
+        const objetToSave: any = {
+            slot: slot,
+            shopId: this.shopId,
+            date: date.date
+        };
+
         if (!this.sessionService.isLoggedIn()) {
             this.dialog.closeAll();
             this.router.navigate(['sign-in']);
         } else {
-            console.log('logged');
-            localStorage.setItem(
-                'selectItemFromShop',
-                JSON.stringify(objetToSave)
-            );
-            // this.communicationService.setItemToBuy = objetToSave;
+            console.log('Utilisateur connecté');
+            localStorage.setItem('selectItemFromShop', JSON.stringify(objetToSave));
             this.dialog.closeAll();
             this.router.navigate(['billing']);
         }

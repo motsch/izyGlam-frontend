@@ -8,14 +8,14 @@
       'pending': order.status === 'pending',
       'cancelled': ['cancelled', 'deleted', 'refused', 'no-show-pro', 'no-show-client'].includes(order.status)
     }">
-      <span *ngIf="order.status === 'finished'">✅ {{"ORDER_CARD.FINISHED"}}</span>
-      <span *ngIf="order.status === 'accepted'">✅ {{"ORDER_CARD.ACCEPTEE"}}</span>
-      <span *ngIf="order.status === 'pending'">⏳ {{"ORDER_CARD.WAITING"}}</span>
-      <span *ngIf="order.status === 'cancelled'">❌ {{"ORDER_CARD.CANCEL"}}</span>
-      <span *ngIf="order.status === 'deleted'">❌ {{"ORDER_CARD.DELETE"}}</span>
-      <span *ngIf="order.status === 'refused'">❌ {{"ORDER_CARD.REFUSED"}}</span>
-      <span *ngIf="order.status === 'no-show-pro'">❌ {{"ORDER_CARD.NO_PRESTA"}}</span>
-      <span *ngIf="order.status === 'no-show-client'">❌ {{"ORDER_CARD.CLIENT_ABSENT"}}</span>
+      <span *ngIf="order.status === 'finished'">✅ {{"ORDER_CARD.FINISHED" | translate}}</span>
+      <span *ngIf="order.status === 'accepted'">✅ {{"ORDER_CARD.ACCEPTEE" | translate}}</span>
+      <span *ngIf="order.status === 'pending'">⏳ {{"ORDER_CARD.WAITING" | translate}}</span>
+      <span *ngIf="order.status === 'cancelled'">❌ {{"ORDER_CARD.CANCEL" | translate}}</span>
+      <span *ngIf="order.status === 'deleted'">❌ {{"ORDER_CARD.DELETE" | translate}}</span>
+      <span *ngIf="order.status === 'refused'">❌ {{"ORDER_CARD.REFUSED" | translate}}</span>
+      <span *ngIf="order.status === 'no-show-pro'">❌ {{"ORDER_CARD.NO_PRESTA" | translate}}</span>
+      <span *ngIf="order.status === 'no-show-client'">❌ {{"ORDER_CARD.CLIENT_ABSENT" | translate}}</span>
     </div>
   </div>
 
@@ -40,7 +40,7 @@
       📄 {{"ORDER_CARD.FACTURE" | translate}}
     </button>
     <button *ngIf="availableActions.includes('cancel')" class="action-button" (click)="cancelBooking(order)">
-      ❌ {{"ORDER_CARD.FACTURE" | translate}}
+      ❌ {{"ORDER_CARD.CANCEL" | translate}}
     </button>
     <button *ngIf="availableActions.includes('delete')" class="action-button" (click)="deleteBooking(order)">
       🗑 {{"ORDER_CARD.DELETED" | translate}}

@@ -2,6 +2,7 @@
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 20px;
+  text-align: center;
   color: #333;
 }
 
@@ -142,4 +143,122 @@
     align-self: stretch;
     text-align: center;
   }
+}
+
+.service-info {
+  text-align: center;
+  margin-bottom: 20px;
+
+  .service-name {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ff4081;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    max-width: 450px;
+    text-align: left;
+  }
+
+  .service-description {
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
+    max-width: 450px;
+    margin: 0 auto;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+}
+
+.service-info {
+  animation: fadeIn 0.6s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.service-container {
+  display: flex;
+  align-items: center;
+  margin: 0 16px;
+  gap: 16px;
+  /* petit espace entre image et texte */
+}
+
+.service-image-wrapper {
+  flex-shrink: 0;
+  /* Ne pas réduire l'image */
+}
+
+.service-image {
+  width: 100px;
+  /* largeur fixe, ajustable selon ton design */
+  height: 100px;
+  /* hauteur fixe pour garder un beau carré */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.service-info {
+  flex: 1;
+  /* le texte prend tout l'espace restant */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #d40055;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 2;
+}
+
+.close-button:hover {
+  color: #b00040;
+}
+
+
+.btn.qr {
+  background-color: #ffe6f0;
+  color: #ff4081;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn.qr:hover {
+  background-color: #ffd6e6;
+  color: #d40055;
+}
+.mat-dialog-container {
+  position: relative; /* Nécessaire pour que le bouton "X" soit bien positionné */
+  padding-top: 50px; /* Laisse un peu d’espace pour le bouton de fermeture */
 }

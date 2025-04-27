@@ -108,6 +108,16 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
     this.loadedShops[shopId] = true;
   }
 
+  scrollLeft() {
+    const container = this.scrollContainer.nativeElement;
+    container.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  scrollRight() {
+    const container = this.scrollContainer.nativeElement;
+    container.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
   trackImpressions() {
     console.log("🔍 Initialisation de l'observateur d'impressions...");
 

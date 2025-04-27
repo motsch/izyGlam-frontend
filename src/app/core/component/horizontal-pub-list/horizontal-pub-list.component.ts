@@ -146,6 +146,16 @@ export class HorizontalPubListComponent implements OnInit {
     }
   }
 
+  scrollLeft() {
+    const container = this.scrollContainerAds.nativeElement;
+    container.scrollBy({ left: -300, behavior: 'smooth' });
+  }
+
+  scrollRight() {
+    const container = this.scrollContainerAds.nativeElement;
+    container.scrollBy({ left: 300, behavior: 'smooth' });
+  }
+
   // ✅ Envoyer le temps d'affichage au backend
   sendDisplayTimeToBackend(pubId: string, timeSpent: number) {
     this.adService.updateAdDisplayTime(pubId, timeSpent).subscribe(

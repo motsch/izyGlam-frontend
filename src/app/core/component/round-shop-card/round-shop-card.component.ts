@@ -73,4 +73,9 @@ export class RoundShopCardComponent {
     onShopLoaded(shopId: string) {
         this.loadedShops[shopId] = true;
     }
+
+    getShortTrad(trad: string, limit: number = 20): string {
+        if (!trad) return '';
+        return trad.length > limit ? trad.substring(0, limit) + '...' : trad;
+      }
 }
