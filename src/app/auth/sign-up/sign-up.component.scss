@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px; /* ou la hauteur de ton header */
+  padding-top: 80px;
+  /* ou la hauteur de ton header */
   padding-bottom: 40px;
   background: #fff;
   min-height: 100vh;
@@ -49,12 +50,14 @@
 }
 
 .btn.google {
-  background-color: #e8e8e8; /* Google's blue */
+  background-color: #e8e8e8;
+  /* Google's blue */
   color: #000;
 }
 
 .btn.google:hover {
-  background-color: #b0b0b0; /* Google's blue */
+  background-color: #b0b0b0;
+  /* Google's blue */
   color: #000;
 }
 
@@ -84,12 +87,40 @@
 }
 
 .btn.qr:hover {
-  background-color: #e8e8e8; /* Google's blue */
+  background-color: #e8e8e8;
+  /* Google's blue */
   color: #000;
 }
+
 .btn-icon {
   width: 15px;
   height: 15px;
   margin-top: -2px;
   margin-right: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px; // Correspond à la marge des autres éléments de formulaire
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 8" width="15" height="15"><path fill="%23999" d="M6 8l6-6H0z"/></svg>'); // Nouvelle flèche épurée avec dimensions ajustées
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 15px 15px; // Ajuste la taille de l'icône
+}
+
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
 }

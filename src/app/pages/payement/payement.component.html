@@ -32,11 +32,17 @@
               <h3 class="section-title">{{ 'PAYEMENT.WHERE' | translate }}</h3>
               <p class="section-subtitle">{{ 'PAYEMENT.SELECT_ADDRESS' | translate }}</p>
               <div class="address-selection">
-                <label *ngFor="let address of me.address; index as i" class="address-info">
-                  <input [(ngModel)]="bill.address" type="radio" name="address" [value]="address._id" />
-                  <span class="address-text">Adresse {{ i + 1 }} : {{ address.street }}, {{ address.city }}</span>
-                </label>
+                <div *ngFor="let address of me.address; index as i" class="address-info">
+                  <label>
+                    <input [(ngModel)]="bill.address" class="adresse-selector" type="radio" name="address" [value]="address._id" />
+                    <span class="address-text">
+                      Adresse {{ i + 1 }} : {{ address.street }}, {{ address.city }}
+                    </span>
+                  </label>
+                  <button type="button" class="delete-btn" (click)="removeAddress(i)">🗑️</button>
+                </div>
               </div>
+
               <div class="add-relative text-start mt-3">
                 <a (click)="openAddressModal()">
                   <i class="fa fa-map-marker"></i> {{ 'PAYEMENT.ADD_ADDRESS' | translate }}
@@ -51,15 +57,18 @@
                 <form class="payment-form">
                   <div class="form-group">
                     <label for="cardNumber">{{ 'PAYEMENT.CARD_NUM' | translate }}</label>
-                    <input class="form-control" type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" required />
+                    <input class="form-control" type="text" id="cardNumber" name="cardNumber"
+                      placeholder="1234 5678 9012 3456" required />
                   </div>
                   <div class="form-group">
                     <label for="cardName">{{ 'PAYEMENT.CARD_NAME' | translate }}</label>
-                    <input class="form-control" type="text" id="cardName" name="cardName" placeholder="Nom du titulaire" required />
+                    <input class="form-control" type="text" id="cardName" name="cardName" placeholder="Nom du titulaire"
+                      required />
                   </div>
                   <div class="form-group">
                     <label for="expiryDate">{{ 'PAYEMENT.EXPIRATION' | translate }}</label>
-                    <input class="form-control" type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA" required />
+                    <input class="form-control" type="text" id="expiryDate" name="expiryDate" placeholder="MM/AA"
+                      required />
                   </div>
                   <div class="form-group">
                     <label for="cvv">{{ 'PAYEMENT.CVV' | translate }}</label>
@@ -93,7 +102,8 @@
                   <li><strong>{{ 'PAYEMENT.DATE' | translate }} :</strong> {{ dateSlot }}</li>
                   <li><strong>{{ 'PAYEMENT.HOUR' | translate }} :</strong> {{ startSlot }}</li>
                   <li><strong>{{ 'PAYEMENT.PRESTA' | translate }} :</strong> {{ itemToBuy2.name }}</li>
-                  <li><strong>{{ 'PAYEMENT.WITH' | translate }} :</strong> {{ shop?.name }}, {{ shop?.trad | translate }}</li>
+                  <li><strong>{{ 'PAYEMENT.WITH' | translate }} :</strong> {{ shop?.name }}, {{ shop?.trad | translate
+                    }}</li>
                   <li><strong>{{ 'PAYEMENT.TOTAL' | translate }} :</strong> {{ price }} €</li>
                 </ul>
               </div>

@@ -196,6 +196,16 @@ export class OrderCardComponent {
         console.log("no-show-pro FAILED");
       });
   }
+  formatPrice(price: any): string {
+    const numericPrice = parseFloat(price);
+  
+    if (isNaN(numericPrice)) {
+      return '0.00 €';
+    }
+  
+    return numericPrice.toFixed(2);
+  }
+  
 
   cancelBooking(order: any) {
     console.log('Annulation de la commande :', order);

@@ -30,7 +30,7 @@
       <p class="product-name">{{ order.productName }}</p>
       <p><span class="label">📍 {{"ORDER_CARD.ADRESSE" | translate}} :</span> {{ order.address }}</p>
       <p><span class="label">🗓️ {{"ORDER_CARD.DATE" | translate}} :</span> {{ order.orderDate }} - {{ order.orderTime }}</p>
-      <p><span class="label">💰 {{"ORDER_CARD.TOTAL" | translate}} :</span> {{ order.price }}€</p>
+      <p><span class="label">💰 {{"ORDER_CARD.TOTAL" | translate}} :</span> {{ formatPrice(order.price) }}€</p>
     </div>
   </div>
 

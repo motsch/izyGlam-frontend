@@ -51,7 +51,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     isAddingAddress = false;
     newAddress: any = {};
     selectedCountry = 'France';
-    selectedCity: any = {};
+    selectedCity: any = '';
     selectedArrondissement = '';
     availableCountries = ['France'];
     availableCities: any[] = [];
@@ -404,6 +404,15 @@ export class MainComponent implements OnInit, AfterViewInit {
     }
 
 
+
+    removeAddress(index: number) {
+        this.me.address.splice(index, 1);
+        this.userService.update(this.me).subscribe((result: any) => {
+          console.log(result);
+        }, (error: any) => {
+          console.log(error);
+        });
+      }
 
 
 

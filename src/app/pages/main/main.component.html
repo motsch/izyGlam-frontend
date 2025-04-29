@@ -88,44 +88,56 @@
       </h3>
       <!-- Liste des adresses si on n'ajoute pas -->
       <ul class="address-list" *ngIf="!isAddingAddress">
-        <li *ngFor="let address of userAddresses" (click)="selectPostalCode(address)"
-          [class.active]="isSameAddress(address, selectedAddress)">
-          <span class="icon">{{ address.street === 'MAIN_PAGE.MA_POSITION' ? '📍' : '📌' }}</span>
-          <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
+        <li *ngFor="let address of userAddresses; index as i"
+            class="address-item"
+            (click)="selectPostalCode(address)"
+            [class.active]="isSameAddress(address, selectedAddress)">
+          <div class="address-info">
+            <span class="icon">{{ address.street === 'MAIN_PAGE.MA_POSITION' ? '📍' : '📌' }}</span>
+            <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
+          </div>
+          <button type="button" class="delete-btn" (click)="removeAddress(i)">🗑️</button>
         </li>
         <li class="add-address-btn" (click)="toggleAddAddress()">
           ➕ Ajouter une nouvelle adresse
         </li>
       </ul>
+      
       <!-- Formulaire d'ajout d'adresse -->
-      <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form margin-top-60">
+      <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form">
         <!-- 1. Choix du pays -->
         <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
           <option value="">-- Choisir un pays --</option>
           <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
         </select>
         <input *ngIf="availableCountries.length === 1" type="hidden" name="country" [(ngModel)]="selectedCountry" />
+        
         <!-- 2. Code postal -->
         <input type="text" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
           (change)="onPostalCodeEntered()" required maxlength="10" />
+        
         <!-- 3. Villes correspondant au code postal -->
-        <select *ngIf="availableCities.length > 0" [(ngModel)]="selectedCity" name="city" required>
+        <select [(ngModel)]="selectedCity" name="city" required>
           <option value="">-- Choisir une ville --</option>
           <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
         </select>
+        
         <!-- 4. Arrondissements -->
         <select *ngIf="availableArrondissements.length > 1" [(ngModel)]="selectedArrondissement" name="arrondissement">
           <option value="">-- Choisir un arrondissement --</option>
           <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
         </select>
+        
         <!-- 5. Rue -->
         <input type="text" [(ngModel)]="newAddress.street" name="street" placeholder="Rue" required />
+        
         <!-- 6. Boutons -->
-        <div class="form-buttons">
+        <div class="form-buttons margin-bottom-20">
           <button type="button" class="cancel-btn" (click)="toggleAddAddress()">Annuler</button>
           <button type="submit" class="save-btn">Enregistrer</button>
         </div>
       </form>
+      
       <button (click)="closeAddressModal()" class="close-btn">Fermer</button>
     </div>
   </div>

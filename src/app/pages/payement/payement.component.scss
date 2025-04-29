@@ -305,3 +305,63 @@ input[type="radio"]:checked {
     width: 100%;
   }
 }
+
+
+/* Custom pour la liste d'adresses et le bouton poubelle */
+.address-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* ← Pousse la poubelle à droite */
+  padding: 12px 20px;
+  background: #ffffff;
+  border: 1px solid #e5e5ea;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.address-info:hover {
+  background: #f0f0f5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.address-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1; /* ← Prend toute la place possible */
+}
+
+.address-text {
+  font-size: 15px;
+  color: #3a3a3c;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  font-size: 20px;
+  color: #ff3b30; /* Rouge Apple */
+}
+
+.delete-btn:hover {
+  background-color: rgba(255, 59, 48, 0.1);
+}
+
+.address-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Le bouton ira tout à droite */
+  padding: 10px 0;
+  border-bottom: 1px solid #eee; /* Optionnel pour séparer les adresses */
+}
+
+.adresse-selector {
+  margin-left: 15px;
+}

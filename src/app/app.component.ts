@@ -143,7 +143,7 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
     async logout() {
         await this.drawerService.closeDrawer();
         await this.sessionService.destroy();
-        await this.mqttService.unsubscribeAll();
+        // await this.mqttService.unsubscribeAll();
         await this.mqttService.logout();
         await this.router.navigate(['/']);
         window.location.reload(); // 🔄 Recharge la page après la déconnexion complète

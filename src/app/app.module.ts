@@ -22,7 +22,7 @@ import { InterceptorService } from './core/services/interceptor.service';
 import { SessionService } from './core/services/session.service';
 import localeFr from '@angular/common/locales/fr';
 import { UnauthorizedInterceptorService } from './core/services/unauthorizeInterceptor.service';
-import { WebsocketService } from './core/services/websocket.service';
+
 import { PagesModule } from './pages/pages.module';
 import { AppRoutingModule } from './app.routing.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -43,6 +43,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DragScrollDirective } from './core/directives/drag-scroll.directive';
 import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
 import { environment } from 'src/environments/environment';
+import { WebSocketService } from './core/services/websocket.service';
 
 
 const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
@@ -108,7 +109,7 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
         GuestGuard,
         SessionService,
         AlertService,
-        WebsocketService,
+        WebSocketService,
         provideHttpClient(withInterceptorsFromDi()),
     ],
 })

@@ -489,6 +489,8 @@
     "PLACEHOLDER_PASSWORD_CONFIRMED": "Confirmer mot de passe"
   },
   "SIGNUP": {
+    "SEX_MALE": "Homme",
+    "SEX_FEMALE": "Femme",
     "TITLE": "Entrez vos informations personnelles.",
     "CONTINUER": "Continuer",
     "OR": "Ou",

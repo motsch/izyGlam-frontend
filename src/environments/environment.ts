@@ -8,6 +8,7 @@ export const environment = {
     imgStorageUrl: 'assets/images/',
     videoStorageUrl: 'assets/videos/',
     APIimgStorageUrl: 'http://localhost:3000/',
+    webSocketUrl: 'ws://localhost:3000',
     allowedCountries: ['FR'],
     comingSoonCountries: ['DE', 'ES', 'IT', 'NL', 'PT'],
     comingSoonCountriesDate: '2026-01-01',
