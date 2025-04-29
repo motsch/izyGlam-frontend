@@ -24,14 +24,6 @@ export const environment = {
   BLUESKY_REDIRECT_URI: 'none',
   X_APP_ID: 'VOTRE_APP_ID_TWITTER',
   X_REDIRECT_URI: 'https://izyglam.com/x-login',
-  mqtt: {
-    hostname: 'mqtt.izyglam.com',
-    port: 443,
-    path: '/mqtt',
-    protocol: 'wss',
-    username: 'fmotsch',
-    password: 'Fr@ncis2018!'
-  },
 
   stripePublicKey: 'pk_test_51NG9rzEDs001iAIL6R6k2IMnLte54Cs3Iihtv9cC95dDobeYSiqPeBpRgZgyRFbyyUhkYzRoG3AI2Wb738MYSRVk00mFFBaVSy', // Remplacez par votre clé publique
 

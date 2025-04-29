@@ -41,19 +41,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { DragScrollDirective } from './core/directives/drag-scroll.directive';
-import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
-import { environment } from 'src/environments/environment';
 import { WebSocketService } from './core/services/websocket.service';
 
-
-const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-    hostname: environment.mqtt.hostname,
-    port: environment.mqtt.port,
-    path: environment.mqtt.path,
-    protocol: environment.mqtt.protocol as 'ws' | 'wss',
-    username: environment.mqtt.username,
-    password: environment.mqtt.password
-};
 @NgModule({
     declarations: [AppComponent, DragScrollDirective],
     bootstrap: [AppComponent],
@@ -79,7 +68,6 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
-        MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
         CalendarModule.forRoot({
             provide: DateAdapter,
             useFactory: adapterFactory,
