@@ -14,10 +14,6 @@ export const environment = {
     comingSoonCountriesDate: '2026-01-01',
     comingSoonCountries2: ['SV', 'PL', 'DA', 'FI', 'DA'],
     comingSoonCountries2Date: '2027-01-01',
-    // mqttBrokerUrl: 'ws://localhost:5230/ws',
-    // mqttClientIdPrefix: "FrontEndClient",
-    // mqttUserName: "FrontClient",
-    // mqttPassword: "pwd"
 
     RUNWAY_API_KEY: 'key_303796e33ce225b9658999b655d16a4bfdbd4cfc864f5fe7501584333059d5840133b7e55aa45585769ce6769f5b6ead0e0c50679025a275594dc485ce9e155b',
     FACEBOOK_APP_ID: '1211724509934142',
@@ -29,7 +25,6 @@ export const environment = {
     FACEBOOK_REDIRECT_URI: 'http://localhost:4200/meta-login',
     INSTAGRAM_REDIRECT_URI: 'https://a908-2a01-cb04-ada-600-4dc4-9b5f-9ff4-e468.ngrok-free.app/insta-login',
     THREADS_REDIRECT_URI: 'http://localhost:4200/insta-login',
-    // INSTAGRAM_REDIRECT_URI: 'http://localhost:4200/insta-login',
     LINKEDIN_REDIRECT_URI: 'http://localhost:4200/linkedin-login',
     TIKTOK_REDIRECT_URI: 'http://localhost:4200/tiktok-login',
     BLUESKY_REDIRECT_URI: 'none',
