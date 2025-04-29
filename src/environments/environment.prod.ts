@@ -8,7 +8,7 @@ export const environment = {
   comingSoonCountriesDate: '2025-01-01',
   comingSoonCountries2: ['SV', 'PL', 'DA', 'FI', 'DE'],
   comingSoonCountries2Date: '2027-01-01',
-
+  webSocketUrl: 'wss://api.izyglam.com',
   RUNWAY_API_KEY: 'key_303796e33ce225b9658999b655d16a4bfdbd4cfc864f5fe7501584333059d5840133b7e55aa45585769ce6769f5b6ead0e0c50679025a275594dc485ce9e155b',
   FACEBOOK_APP_ID: '1211724509934142',
   INSTAGRAM_APP_ID: '1075343971007464',
