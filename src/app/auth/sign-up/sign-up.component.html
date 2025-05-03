@@ -4,47 +4,81 @@
       <div class="text-left">
          <p class="welcome-text">{{ 'SIGNUP.TITLE' | translate }}</p>
       </div>
-      <form class="auth-form">
+      <form class="auth-form" #signupForm="ngForm" (ngSubmit)="validAjouterModifier()" novalidate>
          <div class="form-group">
-            <select [(ngModel)]="user.sex" name="sex">
-               <option [value]="'male'">{{ 'SIGNUP.SEX_MALE' | translate }}</option>
-               <option [value]="'female'">{{ 'SIGNUP.SEX_FEMALE' | translate }}</option>
-             </select>
-         </div>
-         <div class="form-group">
-            <input required="" name="loginlastname" type="text" class="form-control" [(ngModel)]="user.lastname"
-               id="inputlastname" [placeholder]="placeholerFirstName">
-         </div>
-         <div class="form-group">
-            <input required="" name="loginfirstname" type="text" class="form-control" [(ngModel)]="user.firstname"
-               id="inputfirstname" [placeholder]="placeholerLastName">
-         </div>
-         <div class="form-group">
-            <input required="" name="loginphone" type="text" class="form-control" [(ngModel)]="user.phone"
-               id="inputphone" [placeholder]="placeholerPhone">
-         </div>
-         <div class="form-group">
-            <input required="" name="loginemail" type="text" class="form-control" [(ngModel)]="user.email"
-               id="inputemail" [placeholder]="placeholerEmail">
-         </div>
-         <div class="form-group">
-            <input required="" name="loginpassword" type="text" class="form-control" [(ngModel)]="user.password"
-               id="inputpassword" [placeholder]="placeholderPassword">
-         </div>
-         <div class="form-group">
-            <input required="" name="loginpasswordConfirmed" type="text" class="form-control"
-               [(ngModel)]="user.passwordConfirmed" id="inputpasswordConfirmed"
-               [placeholder]="placeholderConfirmPassword">
-         </div>
-         <div class="form-group">
-            <select [(ngModel)]="user.country" name="country" required>
-                <option [value]="'France'">France</option>
-                <option [value]="'Royaume-Uni'">Royaume-Uni</option>
+            Genre
+            <select [(ngModel)]="user.sex" name="sex" #sex="ngModel" required>
+               <option value="" disabled selected hidden>-- Choisir --</option>
+               <option value="male">{{ 'SIGNUP.SEX_MALE' | translate }}</option>
+               <option value="female">{{ 'SIGNUP.SEX_FEMALE' | translate }}</option>
             </select>
-        </div>
-        
-         <button type="submit" class="btn submit" (click)="validAjouterModifier()">{{ 'SIGNUP.CONTINUER' | translate
-            }}</button>
+            <div *ngIf="sex.invalid && sex.touched" class="error">Sexe requis</div>
+         </div>
+         <div class="form-group">
+            Nom de famille
+            <input required name="lastname" type="text" class="form-control" [(ngModel)]="user.lastname"
+               #lastname="ngModel" id="inputlastname" [placeholder]="placeholerLastName">
+            <div *ngIf="lastname.invalid && lastname.touched" class="error">Nom requis</div>
+         </div>
+         <div class="form-group">
+            Prénom
+            <input required name="firstname" type="text" class="form-control" [(ngModel)]="user.firstname"
+               #firstname="ngModel" id="inputfirstname" [placeholder]="placeholerFirstName">
+            <div *ngIf="firstname.invalid && firstname.touched" class="error">Prénom requis</div>
+         </div>
+         <div class="form-group">
+            Numéro de téléphone
+            <input required name="phone" type="tel" class="form-control" [(ngModel)]="user.phone" #phone="ngModel"
+               pattern="^0[1-9][0-9]{8}$" id="inputphone" placeholder="06xxxxxxxx">
+
+            <div *ngIf="phone.errors?.['required'] && phone.touched" class="error">
+               Numéro de téléphone requis
+            </div>
+            <div *ngIf="phone.errors?.['pattern'] && phone.touched" class="error">
+               Format invalide (ex: 0612345678)
+            </div>
+         </div>
+         <div class="form-group">
+            Email
+            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Entrez votre email"
+               required [(ngModel)]="user.email" [ngModelOptions]="{ updateOn: 'blur' }" #email="ngModel" />
+
+            <div *ngIf="email.errors?.['required'] && email.touched" class="error">
+               Email requis
+            </div>
+            <div *ngIf="email.errors?.['email'] && email.touched" class="error">
+               Format de l'email invalide
+            </div>
+         </div>
+
+         <div class="form-group">
+            Mot de passe
+            <input required name="password" type="password" class="form-control" [(ngModel)]="user.password"
+               #passwordConfirmed="ngModel" id="inputpassword" [placeholder]="placeholderConfirmPassword">
+            <div *ngIf="user.password.invalid && user.password.touched" class="error">Confirmation requise</div>
+         </div>
+         <div class="form-group">
+            Mot de passe
+            <input required name="passwordConfirmed" type="password" class="form-control"
+               [(ngModel)]="user.passwordConfirmed" #passwordConfirmed="ngModel" id="inputpasswordConfirmed"
+               [placeholder]="placeholderConfirmPassword">
+            <div *ngIf="passwordConfirmed.invalid && passwordConfirmed.touched" class="error">Confirmation requise</div>
+            <div *ngIf="user.password !== user.passwordConfirmed && passwordConfirmed.touched" class="error">
+               Les mots de passe ne correspondent pas
+            </div>
+         </div>
+         <div class="form-group">
+            Pays
+            <select [(ngModel)]="user.country" name="country" #country="ngModel" required>
+               <option value="" disabled selected hidden>-- Choisir --</option>
+               <option value="France">France</option>
+               <option value="Royaume-Uni">Royaume-Uni</option>
+            </select>
+            <div *ngIf="country.invalid && country.touched" class="error">Pays requis</div>
+         </div>
+         <button type="submit" class="btn submit" [disabled]="signupForm.invalid">
+            {{ 'SIGNUP.CONTINUER' | translate }}
+         </button>
          <app-connexion-buttons [forConnection]="false"></app-connexion-buttons>
       </form>
    </div>

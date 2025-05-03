@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, NgModule, OnInit } from '@angular/core';
+import { AbstractControl, FormsModule } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,12 +10,14 @@ import { SeoService } from 'src/app/core/services/seo.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 import { v4 as uuidv4 } from 'uuid'; // Assure-toi d'avoir installé `uuid`
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-sign-up',
     templateUrl: './sign-up.component.html',
     styleUrls: ['./sign-up.component.scss'],
 })
+
 export class SignUpComponent implements OnInit {
     passwordConfirmed!: ElementRef;
     placeholerFirstName: string = 'SIGNUP.PLACEHOLDER_FIRSTNAME';
@@ -47,6 +50,8 @@ export class SignUpComponent implements OnInit {
     notDeleted = false;
     userRole: string | undefined;
     error: any = {};
+    emailFormControl = new FormControl('', { nonNullable: true });
+    
     constructor(
         public translate: TranslateService,
         private route: ActivatedRoute,
@@ -81,6 +86,7 @@ export class SignUpComponent implements OnInit {
             this.placeholderConfirmPassword = res;
         });
         this.user.sex = 'female';
+        this.user.country = 'France';
     }
 
     /*
@@ -89,17 +95,14 @@ export class SignUpComponent implements OnInit {
     validAjouterModifier() {
         //crétion d'un user
         this.user.role = 'user';
-
         // 💬 conversationId obligatoire
         this.user.conversationId = uuidv4();
-
         // 🪄 Si fidelity est requis, on le remplit :
         this.user.fidelity = {
           stars: 0,
           card_expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000), // +1 an
           rewards_history: [],
         };
-
         // TODO User à mettre en dynamique asap
         // this.user.roleId = 1;
         if (!this.newUserOrEditUser) {
@@ -109,7 +112,6 @@ export class SignUpComponent implements OnInit {
                 () => {
                     // this.modalService.dismissAll();
                     // this.modalRMSService.updateData();
-
                     const uploadTranslation = this.translate.instant(
                         'SUCCESS.USERCREATED'
                     );
@@ -139,14 +141,34 @@ export class SignUpComponent implements OnInit {
      * @param email Validate email
      * @returns
      */
-    validateEmail(email: string | undefined): boolean {
-        if (email) {
-            const emailRegex =
-                /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            const isValid = emailRegex.test(email);
-            return isValid ? true : false;
+    validateEmail(email: string): void {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+        if (!emailRegex.test(email)) {
+          // Ajout d'une erreur personnalisée
+          this.emailFormControl.setErrors({ customEmail: true });
+        } else {
+          // Supprimer l'erreur custom si l'email est valide
+          const errors = this.emailFormControl.errors;
+          if (errors) {
+            delete errors['customEmail'];
+            if (Object.keys(errors).length === 0) {
+              this.emailFormControl.setErrors(null);
+            } else {
+              this.emailFormControl.setErrors(errors);
+            }
+          }
         }
-        return false;
+      }
+      
+      
+    customEmailValidator(control: AbstractControl) {
+        const value = control.value;
+        const regex = /^[^@]+@[^@]+\.[^@]+$/;
+      
+        if (!value) return null; // ne pas valider si vide (le required s'en charge)
+      
+        return regex.test(value) ? null : { customEmail: true };
     }
 
     openSnackBar(phrase: string) {
@@ -158,4 +180,9 @@ export class SignUpComponent implements OnInit {
             panelClass: ['orange-snackbar', 'login-snackbar'],
         });
     }
+
+    onPhoneInput() {
+        this.user.phone = this.user.phone.replace(/[^0-9]/g, '').slice(0, 10);
+      }
+      
 }

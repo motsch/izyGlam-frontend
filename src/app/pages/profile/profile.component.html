@@ -33,7 +33,6 @@
         </li>
       </ul>
     </div>
-
     <!-- CONTENU PRINCIPAL -->
     <div class="col-12 col-md-9 content">
       <div *ngIf="isSectionActive('account-info')" id="account-info-content">
@@ -43,7 +42,6 @@
         </div>
         <app-profile-informations [me]="me"></app-profile-informations>
       </div>
-
       <div *ngIf="isSectionActive('security')" id="security-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.SECURITY" | translate }}</h1>
@@ -51,7 +49,6 @@
         </div>
         <app-change-password [me]="me"></app-change-password>
       </div>
-
       <div *ngIf="isSectionActive('privacy')" id="privacy-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.CONFIDENTIAL" | translate }}</h1>
@@ -59,7 +56,6 @@
         </div>
         <app-confidential-policy></app-confidential-policy>
       </div>
-
       <div *ngIf="isSectionActive('calendar')" id="calendar-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.CALENDAR" | translate }}</h1>
@@ -67,7 +63,6 @@
         </div>
         <app-agenda [me]="me" [shops]="shops"></app-agenda>
       </div>
-
       <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
@@ -75,7 +70,6 @@
         </div>
         <app-dashboard [me]="me"></app-dashboard>
       </div>
-
       <div *ngIf="isSectionActive('company')" id="company-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
@@ -90,13 +84,11 @@
           </mat-tab>
         </mat-tab-group>
       </div>
-
       <div *ngIf="isSectionActive('management')" id="management-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.SHOP" | translate }}</h1>
           <p class="page-subtitle">{{ "PROFILE_MENU.SHOP_SUBTITLE" | translate }}</p>
         </div>
-
         <!-- SECTION BOUTONS SHOP -->
         <div class="row g-2 align-items-center mb-4">
           <div class="col-12 col-md-5">
@@ -115,13 +107,11 @@
               </ul>
             </div>
           </div>
-
-          <div class="col-6 col-md-2 mt-3 mt-md-0">
-            <button class="btn rounded btn-delete w-100" (click)="deletShop()" [disabled]="shops.length <= 1">
+          <div class="col-md-1 mt-3 mt-md-0">
+            <button class="btn btn-apple-like w-100" (click)="deletShop()" [disabled]="shops.length <= 1">
               <i class="fa fa-trash"></i>
             </button>
-          </div>
-
+          </div>        
           <div class="col-6 col-md-5 mt-3 mt-md-0">
             <button [disabled]="shops.length >= 5" class="btn btn-primary action-btn w-100"
               (click)="openCreateShopModal()">
@@ -129,7 +119,6 @@
             </button>
           </div>
         </div>
-
         <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab label="Informations générales" color="primary">
             <app-shop-management *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"
@@ -148,13 +137,11 @@
           </mat-tab>
         </mat-tab-group>
       </div>
-
       <div *ngIf="isSectionActive('admin')" id="admin-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.ADMIN" | translate }}</h1>
           <p class="page-subtitle">{{ "PROFILE_MENU.ADMIN_SUBTITLE" | translate }}</p>
         </div>
-
         <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab label="Statistiques" color="primary">
             <app-admin></app-admin>

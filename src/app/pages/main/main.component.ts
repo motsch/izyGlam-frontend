@@ -40,14 +40,10 @@ export class MainComponent implements OnInit, AfterViewInit {
     availablePostalCodes: string[] = ['75001'];
     userAddresses: any[] = [];
     selectedAddress: any = null;
-
     allCitiesData: any[] = [];        // on stocke ici toutes les villes brutes
     searchControl = new FormControl('');
     categoryTrad: string = '';
-
     availableArrondissements: string[] = []; // liste filtrée d'arrondissements (name) pour une ville
-
-
     isAddingAddress = false;
     newAddress: any = {};
     selectedCountry = 'France';
@@ -162,8 +158,10 @@ export class MainComponent implements OnInit, AfterViewInit {
     }
 
     private loadUserAndShops() {
+        console.log("SHOP LOADING 1")
         this.userService.getMe().subscribe({
             next: (data: any) => {
+                console.log("SHOP LOADING 2")
                 this.me = data;
                 this.sharedService.updateMe(data);
 
@@ -173,6 +171,7 @@ export class MainComponent implements OnInit, AfterViewInit {
                 localStorage.removeItem('selectItemFromShop');
                 localStorage.removeItem('menu-param');
                 localStorage.removeItem('menu-param');
+                console.log("SHOP LOADING 3")
 
                 // ✅ Gestion des adresses
                 if (data.address && data.address.length > 0) {
@@ -186,6 +185,7 @@ export class MainComponent implements OnInit, AfterViewInit {
                     // Optionnel : liste des codes postaux dispos
                     this.availablePostalCodes = this.userAddresses.map((a: any) => a.code_postal);
                 }
+                console.log("SHOP LOADING 4")
 
                 // Chargement des catégories & shops selon l'adresse sélectionnée
                 this.loadCategories();
@@ -196,8 +196,6 @@ export class MainComponent implements OnInit, AfterViewInit {
             },
         });
     }
-
-
 
     onCountryChange() {
         this.postalCode = '';
@@ -250,6 +248,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
 
     private loadShops() {
+        console.log("SHOP LOADING ?")
         this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe(async (shops: any[]) => {
             const favoriteShops = this.me.favoriteShops || [];
 
@@ -257,12 +256,11 @@ export class MainComponent implements OnInit, AfterViewInit {
                 ...shop,
                 isFavorite: favoriteShops.includes(shop._id),
             }));
-
+            console.log('SHOP : ' + JSON.stringify(this.shops));
             this.filteredItemsAdecouvrir = this.shuffleArray(this.shops);
             this.filteredItemsApprecier = this.shuffleArray(this.shops);
             this.filteredItemsMalin = this.shuffleArray(this.shops);
             this.filteredItemsTop10 = this.shuffleArray(this.shops);
-
             this.promotedShops = this.shops.filter((x: any) => x.promo?.active === true);
         });
     }
@@ -408,11 +406,11 @@ export class MainComponent implements OnInit, AfterViewInit {
     removeAddress(index: number) {
         this.me.address.splice(index, 1);
         this.userService.update(this.me).subscribe((result: any) => {
-          console.log(result);
+            console.log(result);
         }, (error: any) => {
-          console.log(error);
+            console.log(error);
         });
-      }
+    }
 
 
 

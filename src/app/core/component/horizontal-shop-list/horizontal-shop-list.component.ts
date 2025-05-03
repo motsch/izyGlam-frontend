@@ -8,8 +8,8 @@ import {
   OnDestroy
 } from '@angular/core';
 import { AdvertisementService } from '../../services/advertisement.service';
-import { MqttService } from 'ngx-mqtt';
 import { environment } from 'src/environments/environment';
+import { MqttService } from '../../services/mqtt.service';
 
 @Component({
   selector: 'app-horizontal-shop-list',
@@ -28,7 +28,6 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   advertisements: any[] = [];
   displayItems: any[] = [];
   loadedShops: { [key: string]: boolean } = {};
-
   displayTimes: { [key: string]: number } = {};
   displayIntervals: { [key: string]: any } = {};
   alreadySeen: { [key: string]: boolean } = {};
@@ -62,7 +61,6 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   getAds() {
     this.adService.getAdvertisements('CLASSIC').subscribe(ads => {
       console.log("📢 Publicités récupérées :", ads);
-
       this.advertisements = this.balanceAds(
         ads.filter(ad => new Date(ad.date_expiration) > new Date())
       );
@@ -75,7 +73,6 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
     const interval = 5;
     this.displayItems = [];
     let adIndex = 0;
-
     for (let i = 0; i < this.shops.length; i++) {
       if ((i - startIndex) % interval === 0 && (i - startIndex) >= 0 && this.advertisements.length > 0) {
         const adToShowIndex = (adIndex + startIndex) % this.advertisements.length;
@@ -84,10 +81,7 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
       }
       this.displayItems.push({ type: 'shop', data: this.shops[i] });
     }
-
     console.log('🧪 displayItems après injection :', this.displayItems);
-
-
     setTimeout(() => {
       console.log("🚀 Activation du tracking après affichage des pubs/shops.");
       this.trackImpressions();
@@ -120,7 +114,6 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
 
   trackImpressions() {
     console.log("🔍 Initialisation de l'observateur d'impressions...");
-
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -128,20 +121,16 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
           const pubId = el.getAttribute('data-pub-id');
           const type = el.getAttribute('data-type');
           const visibilityRatio = entry.intersectionRatio;
-
           if (pubId && entry.isIntersecting && visibilityRatio >= 0.7) {
-            // if (!this.alreadySeen[itemId]) {
             this.alreadySeen[pubId] = true;
             this.incrementImpression(pubId, type);
             this.startTrackingDisplayTime(pubId, type);
-            // }
           } else if (pubId) {
             this.stopTrackingDisplayTime(pubId, type);
           }
         });
       }, { threshold: [0.7] }
     );
-
     setTimeout(() => {
       const items = this.scrollContainer?.nativeElement?.querySelectorAll('[data-pub-id]');
       if (!items || items.length === 0) {
@@ -159,11 +148,14 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
       id,
       timestamp: new Date().toISOString(),
     });
-
     if (type === 'shop') {
-      this.mqttService.publish('shop/impression', payload).subscribe();
+      console.log('shop impression')
+      // this.mqttService.publish('shop/impression', payload).subscribe();
+      this.mqttService.publish('pub/impression', payload);
     } else if (type === 'pub') {
-      this.mqttService.publish('pub/impression', payload).subscribe();
+      console.log('pub impression')
+      // this.mqttService.publish('pub/impression', payload).subscribe();
+      this.mqttService.publish('shop/impression', payload);
     }
   }
 
@@ -183,7 +175,6 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
       console.log(`🛑 Fin de visibilité détectée pour ${type} ${id}`);
       clearInterval(this.displayIntervals[id]);
       delete this.displayIntervals[id];
-
       const timeSpent = this.displayTimes[id] || 0;
       if (timeSpent > 0) {
         this.sendDisplayTimeToBackend(id, timeSpent);
@@ -193,10 +184,11 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   }
 
   sendDisplayTimeToBackend(pubId: string, timeSpent: number) {
-    this.adService.updateAdDisplayTime(pubId, timeSpent).subscribe(
-      () => console.log(`✅ Temps d'affichage (${timeSpent}s) enregistré pour pub ${pubId}`),
-      err => console.error(`❌ Erreur lors de l'enregistrement du temps d'affichage :`, err)
-    );
+    const payload = {
+      _id: pubId,
+      timeSpent: timeSpent,
+    };
+    this.mqttService.publish("shop/display", JSON.stringify(payload));
   }
 
   onAdClick(ad: any) {

@@ -42,6 +42,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { DragScrollDirective } from './core/directives/drag-scroll.directive';
 import { WebSocketService } from './core/services/websocket.service';
+import { MQTT_SERVICE_OPTIONS, MqttModule } from 'ngx-mqtt';
 
 @NgModule({
     declarations: [AppComponent, DragScrollDirective],
@@ -68,6 +69,7 @@ import { WebSocketService } from './core/services/websocket.service';
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
+        MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
         CalendarModule.forRoot({
             provide: DateAdapter,
             useFactory: adapterFactory,
