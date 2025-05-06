@@ -13,6 +13,7 @@ import { ShopService } from '../../services/shop.service';
 import { ProductService } from '../../services/product.service';
 import { ImageService } from '../../services/image.service';
 import { environment } from 'src/environments/environment';
+import { VilleService } from '../../services/ville.service';
 
 @Component({
     selector: 'app-shop-management',
@@ -24,6 +25,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     @Input() me: any = {};
     @Output() shopUpdated: EventEmitter<string> = new EventEmitter<string>();
     imageUsed: string | null = null;
+    error: any = {};
     selectedFile: File | null = null;
     imagePreview: string | null = null;
     shopCopyData: any | null = null;
@@ -35,6 +37,16 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }[] = [];
     formModified = false;
     formValid = false;
+    deliveryPostalCode: string = '';
+    deliveryPostalCodesList: string[] = [];
+    
+    
+    selectedCountry = 'France';
+    selectedCity: any = {};
+    selectedArrondissement = '';
+    availableCountries = ['France'];
+    availableCities: any[] = [];
+    postalCode: string = '';
 
     arrondissementsParis = [
         { name: '1er', latitude: 48.8626, longitude: 2.3364 },
@@ -102,7 +114,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
     constructor(
         private shopService: ShopService,
-        private imageService: ImageService
+        private imageService: ImageService,
+        private villeService: VilleService
     ) {}
 
     ngOnInit(): void {
@@ -116,7 +129,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
                 'uploads/images/' +
                 this.shopCopyData.image;
             console.log('shopCopyData initialisé :', this.shopCopyData.image);
-
+            
             // this.onCityChange();
         }
     }
@@ -157,6 +170,48 @@ export class ShopManagementComponent implements OnInit, OnChanges {
             afternoonHoursValid;
     }
 
+
+    removePostalCode(index: number) {
+        this.deliveryPostalCodesList.splice(index, 1);
+        this.shopCopyData.deliveryPostalCodes = this.deliveryPostalCodesList;
+    }
+
+    onPostalCodeEntered() {
+        if (!this.postalCode || this.postalCode.length < 4) return;
+
+        this.villeService.getByPostalCode(this.postalCode, this.selectedCountry).subscribe((cities: any[]) => {
+            console.log(cities)
+            this.availableCities = cities;
+            this.shopCopyData.code_postal = this.postalCode;
+
+            if (cities.length === 1) {
+                this.selectedCity = cities[0];
+            }
+        });
+    }
+
+    addPostalCode() {
+        if (!this.deliveryPostalCode) return;
+        // Vérifie si le code est déjà ajouté
+        if (this.deliveryPostalCodesList.includes(this.deliveryPostalCode)) {
+            this.error.deliveryPostalCode = "Ce code postal est déjà ajouté.";
+            return;
+        }
+        this.villeService.getByPostalCode(this.deliveryPostalCode).subscribe({
+            next: (res) => {
+                if (res.length > 0) {
+                    this.shopCopyData.deliveryPostalCodes.push(this.deliveryPostalCode);
+                    this.deliveryPostalCode = ''; // Réinitialise le champ
+                    this.error.deliveryPostalCode = null;
+                } else {
+                    this.error.deliveryPostalCode = "Code postal introuvable dans la base";
+                }
+            },
+            error: () => {
+                alert("Erreur lors de la recherche du code postal.");
+            }
+        });
+    }
     markFormModified(): void {
         this.formModified = true;
         this.validateForm();

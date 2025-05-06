@@ -4,7 +4,7 @@
       <div class="text-left">
          <p class="welcome-text">{{ 'SIGNUP.TITLE' | translate }}</p>
       </div>
-      <form class="auth-form" #signupForm="ngForm" (ngSubmit)="validAjouterModifier()" novalidate>
+      <form class="auth-form" #signupForm="ngForm" novalidate>
          <div class="form-group">
             Genre
             <select [(ngModel)]="user.sex" name="sex" #sex="ngModel" required>
@@ -12,31 +12,25 @@
                <option value="male">{{ 'SIGNUP.SEX_MALE' | translate }}</option>
                <option value="female">{{ 'SIGNUP.SEX_FEMALE' | translate }}</option>
             </select>
-            <div *ngIf="sex.invalid && sex.touched" class="error">Sexe requis</div>
+            <div *ngIf="error.sex" class="error">{{error.sex}}</div>
          </div>
          <div class="form-group">
             Nom de famille
             <input required name="lastname" type="text" class="form-control" [(ngModel)]="user.lastname"
                #lastname="ngModel" id="inputlastname" [placeholder]="placeholerLastName">
-            <div *ngIf="lastname.invalid && lastname.touched" class="error">Nom requis</div>
+            <div *ngIf="error.lastname" class="error">{{error.lastname}}</div>
          </div>
          <div class="form-group">
             Prénom
             <input required name="firstname" type="text" class="form-control" [(ngModel)]="user.firstname"
                #firstname="ngModel" id="inputfirstname" [placeholder]="placeholerFirstName">
-            <div *ngIf="firstname.invalid && firstname.touched" class="error">Prénom requis</div>
+            <div *ngIf="error.firstname" class="error">{{error.firstname}}</div>
          </div>
          <div class="form-group">
             Numéro de téléphone
             <input required name="phone" type="tel" class="form-control" [(ngModel)]="user.phone" #phone="ngModel"
-               pattern="^0[1-9][0-9]{8}$" id="inputphone" placeholder="06xxxxxxxx">
-
-            <div *ngIf="phone.errors?.['required'] && phone.touched" class="error">
-               Numéro de téléphone requis
-            </div>
-            <div *ngIf="phone.errors?.['pattern'] && phone.touched" class="error">
-               Format invalide (ex: 0612345678)
-            </div>
+               pattern="^0[1-9][0-9]{8}$" id="inputphone" placeholder="0601020304">
+            <div *ngIf="error.phone" class="error">{{error.phone}}</div>
          </div>
          <div class="form-group">
             Email
@@ -49,23 +43,20 @@
             <div *ngIf="email.errors?.['email'] && email.touched" class="error">
                Format de l'email invalide
             </div>
+            <div *ngIf="error.email" class="error">{{error.email}}</div>
          </div>
 
          <div class="form-group">
             Mot de passe
-            <input required name="password" type="password" class="form-control" [(ngModel)]="user.password"
-               #passwordConfirmed="ngModel" id="inputpassword" [placeholder]="placeholderConfirmPassword">
-            <div *ngIf="user.password.invalid && user.password.touched" class="error">Confirmation requise</div>
+            <input required name="password" type="password" class="form-control" [(ngModel)]="user.password" id="inputpassword" [placeholder]="placeholderPassword">
+            <div *ngIf="error.password" class="error">{{error.password}}</div>
          </div>
          <div class="form-group">
-            Mot de passe
+            Confirmation de mot de passe
             <input required name="passwordConfirmed" type="password" class="form-control"
-               [(ngModel)]="user.passwordConfirmed" #passwordConfirmed="ngModel" id="inputpasswordConfirmed"
+               [(ngModel)]="user.passwordConfirmed" id="inputpasswordConfirmed"
                [placeholder]="placeholderConfirmPassword">
-            <div *ngIf="passwordConfirmed.invalid && passwordConfirmed.touched" class="error">Confirmation requise</div>
-            <div *ngIf="user.password !== user.passwordConfirmed && passwordConfirmed.touched" class="error">
-               Les mots de passe ne correspondent pas
-            </div>
+               <div *ngIf="error.passwordConfirmed" class="error">{{error.passwordConfirmed}}</div>
          </div>
          <div class="form-group">
             Pays
@@ -74,9 +65,9 @@
                <option value="France">France</option>
                <option value="Royaume-Uni">Royaume-Uni</option>
             </select>
-            <div *ngIf="country.invalid && country.touched" class="error">Pays requis</div>
+            <div *ngIf="error.country" class="error">{{error.country}}</div>
          </div>
-         <button type="submit" class="btn submit" [disabled]="signupForm.invalid">
+         <button type="submit" class="btn submit" (click)="validAjouterModifier()">
             {{ 'SIGNUP.CONTINUER' | translate }}
          </button>
          <app-connexion-buttons [forConnection]="false"></app-connexion-buttons>

@@ -113,3 +113,21 @@ h2 {
   width: 90px !important;
   height: auto;
 }
+@media (max-width: 768px) {
+  .qr-code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centrer les textes */
+    width: 100%;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .qr-text {
+    text-align: center; /* Centrer le texte dans le bloc */
+  }
+}

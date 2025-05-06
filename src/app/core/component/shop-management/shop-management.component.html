@@ -33,6 +33,7 @@
         </div>
       </div>
       <div class="column">
+        {{shopCopyData.active}}
         <label for="name" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_NAME" | translate}}</label>
         <input
           disabled
@@ -58,58 +59,24 @@
         (ngModelChange)="markFormModified()"
       ></textarea>
     </div>
-    <div class="form-section">
-      <div class="column">
-        <label for="ville">{{ "SHOP_MANAGEMENT.CITY" | translate}}</label>
-        <select
-          [(ngModel)]="shopCopyData.ville"
-          (change)="onCityChange()"
-          class="input-style"
-          id="ville"
-        >
-          <option *ngFor="let ville of villes" [value]="ville">
-            {{ ville }}
-          </option>
-        </select>
-      </div>
-      <div class="column">
-        <label for="arrondissements">{{ "SHOP_MANAGEMENT.DISCRICT" | translate}}</label>
-        <select
-          [(ngModel)]="shopCopyData.district"
-          (change)="onDistrictChange()"
-          class="input-style"
-          id="arrondissements"
-        >
-          <option
-            *ngFor="let arr of filteredArrondissements"
-            [value]="arr.name"
-          >
-            {{ arr.name }}
-          </option>
-        </select>
-      </div>
-    </div>
+
     <!-- Coordonnées -->
     <div class="form-section">
       <div class="column">
-        <label for="latitude">{{ "SHOP_MANAGEMENT.LAT" | translate}}</label>
-        <input
-          disabled
-          [(ngModel)]="shopCopyData?.location.latitude"
-          class="input-style"
-          type="number"
-          id="latitude"
-        />
-      </div>
-      <div class="column">
-        <label for="longitude">{{ "SHOP_MANAGEMENT.LON" | translate}}</label>
-        <input
-          disabled
-          [(ngModel)]="shopCopyData?.location.longitude"
-          class="input-style"
-          type="number"
-          id="longitude"
-        />
+        <label for="deliveryPostalCode">Codes postaux desservis</label>
+        <div class="postal-code-entry">
+          <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10" />
+          <button type="button" class="add-postal-code-btn" (click)="addPostalCode()">
+            +
+          </button>
+        </div>
+        <div *ngIf="error.deliveryPostalCode" class="error">{{error.deliveryPostalCode}}</div>
+        <div class="postal-code-list">
+          <span class="postal-code-tag" *ngFor="let code of shopCopyData.deliveryPostalCodes; let i = index">
+            {{ code }}
+            <button type="button" class="remove-btn" (click)="removePostalCode(i)">×</button>
+          </span>
+        </div>
       </div>
       <div class="column">
         <label for="longitude">{{ "SHOP_MANAGEMENT.ZONE" | translate}}</label>

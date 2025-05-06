@@ -14,14 +14,15 @@ import { VilleService } from '../../services/ville.service';
     styleUrls: ['./create-shop.component.scss'],
 })
 export class CreateShopComponent implements OnInit {
+    error: any = {};
     me: any = {};
-    newShopUser: any = {};
-    error: string | null = null;
+    newShop: any = {};
     isUserConnected: boolean = false;
     alreadyProfessionnal: boolean = false;
     categories: any[] = [];
     newAddress: any = {};
-
+    deliveryPostalCode: string = '';
+    deliveryPostalCodesList: string[] = [];
     latitude = 0.0;
     longitude = 0.0;
     // Données récupérées de l'API
@@ -30,7 +31,7 @@ export class CreateShopComponent implements OnInit {
 
     // Valeurs sélectionnées par l'utilisateur
 
-    
+
     selectedCountry = 'France';
     selectedCity: any = {};
     selectedArrondissement = '';
@@ -56,8 +57,8 @@ export class CreateShopComponent implements OnInit {
                 console.log(error);
             },
         });
-        this.newShopUser.companyType = 'coiffure';
-        this.newShopUser.countryIndication = 'FR';
+        this.newShop.companyType = 'coiffure';
+        this.newShop.countryIndication = 'FR';
         this.userService.getMe().subscribe({
             next: (data: any) => {
                 this.me = { ...data };
@@ -80,14 +81,42 @@ export class CreateShopComponent implements OnInit {
     // ----------------------------------------
     // 1) Quand l’utilisateur choisit un pays
     // ----------------------------------------
-    
+
 
     onCountryChange() {
         this.postalCode = '';
         this.availableCities = [];
         this.selectedCity = {};
     }
-    
+
+    addPostalCode() {
+        if (!this.deliveryPostalCode) return;
+        // Vérifie si le code est déjà ajouté
+        if (this.deliveryPostalCodesList.includes(this.deliveryPostalCode)) {
+            this.error.deliveryPostalCode = "Ce code postal est déjà ajouté.";
+            return;
+        }
+        this.villeService.getByPostalCode(this.deliveryPostalCode).subscribe({
+            next: (res) => {
+                if (res.length > 0) {
+                    this.deliveryPostalCodesList.push(this.deliveryPostalCode);
+                    this.newShop.deliveryPostalCodes = this.deliveryPostalCodesList;
+                    this.deliveryPostalCode = ''; // Réinitialise le champ
+                    this.error.deliveryPostalCode = null;
+                } else {
+                    this.error.deliveryPostalCode = "Code postal introuvable dans la base";
+                }
+            },
+            error: () => {
+                alert("Erreur lors de la recherche du code postal.");
+            }
+        });
+    }
+
+    removePostalCode(index: number) {
+        this.deliveryPostalCodesList.splice(index, 1);
+        this.newShop.deliveryPostalCodes = this.deliveryPostalCodesList;
+    }
 
     onPostalCodeEntered() {
         if (!this.postalCode || this.postalCode.length < 4) return;
@@ -153,24 +182,55 @@ export class CreateShopComponent implements OnInit {
     }
 
     onSubmit() {
+        if (!this.validateNameWithInitial(this.newShop.name)) {
+            this.error.name = "Le nom doit être au format Michelle T.";
+            return;
+        } else {
+            this.error.name = null;
+        }
+
+        if (!this.newShop.street) {
+            this.error.street = "La rue est obligatoire";
+            return;
+        } else {
+            this.error.street = null;
+        }
+
+        if (!this.selectedCountry) {
+            this.error.selectedCountry = "Le pays est obligatoire";
+            return;
+        }
+
+        if (!this.selectedCity) {
+            this.error.selectedCity = "La ville est obligatoire";
+            return;
+        }
+
+        if (!this.newShop.companyType) {
+            this.error.companyType = "Le type de service proposé est obligatoire";
+            return;
+        }
+
         // let test = this.createShop('coiffure', 'id_fake');
         // console.log(test);
 
         // Si toutes les vérifications passent, on continue
         if (this.isUserConnected) {
-            this.me.shopCompany = this.newShopUser;
+            this.me.shopCompany = this.newShop;
             this.me.role = 'professionnel';
             this.userService.update(this.me).subscribe({
                 next: async (data: any) => {
                     console.log(data);
                     let shopToCreate: any = {};
+
+
                     shopToCreate.name =
                         this.me.firstname +
                         ' ' +
                         this.me.lastname.charAt(0) +
                         '.';
                     await this.createShop(
-                        this.newShopUser.companyType,
+                        this.newShop.companyType,
                         this.me._id
                     );
                 },
@@ -180,6 +240,11 @@ export class CreateShopComponent implements OnInit {
             });
         }
     }
+    validateNameWithInitial(input: string): boolean {
+        const nameRegex = /^[A-Z][a-z]+ [A-Z]\.$/;
+        return nameRegex.test(input.trim());
+    }
+
 
     createShop(type: string, idUser: string): any {
         let newShopToCreate: any = {};
@@ -192,9 +257,9 @@ export class CreateShopComponent implements OnInit {
                 '.';
         } else {
             newShopToCreate.name =
-                this.newShopUser.firstname +
+                this.newShop.firstname +
                 ' ' +
-                this.newShopUser.lastname.charAt(0) +
+                this.newShop.lastname.charAt(0) +
                 '.';
         }
         let categoryToSelect = this.categories.find(
@@ -211,7 +276,7 @@ export class CreateShopComponent implements OnInit {
         newShopToCreate.promo = {};
         newShopToCreate.promo.active = false;
         newShopToCreate.promo.type = '1';
-        
+
         newShopToCreate.location = {};
         newShopToCreate.location.latitude = this.latitude;
         newShopToCreate.location.longitude = this.longitude;
@@ -240,4 +305,8 @@ export class CreateShopComponent implements OnInit {
     }
 
     formChecking() { }
+
+    goToSignUp() {
+        this.router.navigate(['/sign-in']);
+    }
 }

@@ -12,7 +12,6 @@ import { environment } from 'src/environments/environment';
 import { ShopTemplateService } from 'src/app/core/services/shop-template.service';
 import { forkJoin } from 'rxjs';
 import { ChatModalComponent } from 'src/app/core/component/chat-modal/chat-modal.component';
-import { CreateShopModalComponent } from 'src/app/core/component/create-shop-modal/create-shop-modal.component';
 import { CreateShopComponent } from 'src/app/core/component/create-shop/create-shop.component';
 @Component({
     selector: 'app-profile',
