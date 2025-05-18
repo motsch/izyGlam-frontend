@@ -189,4 +189,18 @@ export class ShopService {
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c;
     }
+
+    /**
+ * Génère une description professionnelle à partir du type de salon et d'une description utilisateur (facultative)
+ * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
+ * @param userDescription Une description éventuelle saisie par l'utilisateur
+ */
+    generateIzyGlamDescription(type: string, userDescription?: string): Observable<string> {
+        return this.http.post<{ formattedDescription: string }>(
+            `${environment.apiUrl}shop-description`,
+            { type, userDescription }
+        ).pipe(
+            map(response => response.formattedDescription)
+        );
+    }
 }

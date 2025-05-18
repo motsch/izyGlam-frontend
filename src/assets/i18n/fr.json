@@ -48,7 +48,7 @@
     "NO_IMAGE": "Aucune image dans la galerie."
   },
   "REVIEW_MODAL": {
-    "NOTE":"Noter votre commande",
+    "NOTE": "Noter votre commande",
     "DATE": "Date",
     "SERVICE": "Service",
     "AVIS": "Votre avis",
@@ -126,7 +126,7 @@
     "STYLISME": "Stylisme",
     "YOGA": "Relaxation",
     "DEVELOPPEMENT": "Élévation",
-    "EYELASH":"Extensions de cils"
+    "EYELASH": "Extensions de cils"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Une coiffeuse",
@@ -157,11 +157,11 @@
     "DASHBOARD_SUBTITLE": "Gère facilement les données de ton activité.",
     "COMPANY": "Gestion de mon entreprise",
     "COMPANY_SUBTITLE": "Gère facilement tes rendez-vous passés, à venir ou annulés.",
-    "SHOP": "Gestion de mes boutiques",
-    "SHOP_SUBTITLE": "Gère facilement tes rendez-vous passés, à venir ou annulés.",
+    "SHOP": "Gestion de mon salon",
+    "SHOP_SUBTITLE": "Gère ton salon, tes prestations et tes finances.",
     "FINANCIAL": "Suivi financier",
     "ADMIN": "Administration générale",
-    "ADMIN_SUBTITLE": "Gère facilement tes rendez-vous passés, à venir ou annulés.",
+    "ADMIN_SUBTITLE": "Gère facilement l'ensemble de ce chef d'oeuvre. A toi le monde champion !",
     "CALENDAR": "Agenda",
     "CALENDAR_SUBTITLE": "Gère facilement tes rendez-vous passés ou à venir.",
     "SELECT_SALON": "Sélectionnez un salon",
@@ -247,6 +247,24 @@
     "RESERVES": "Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. En cas de modifications importantes, nous vous en informerons par email. Nous vous encourageons à consulter régulièrement cette page pour être au courant des mises à jour."
   },
   "PAYEMENT": {
+    
+    "HEADER_TITLE": "Paiement",
+    "SERVICE_TITLE": "Service",
+    "SERVICE_NOTE": "Note:",
+    "ADDRESS_TITLE": "Adresse de la prestation",
+    "ADDRESS_RENDEZVOUS": "Rendez-vous devant ma porte",
+    "ADDRESS_CHANGE": "Sélectionner une autre adresse",
+    "PAYMENT_SECTION_TITLE": "Paiement",
+    "PAYMENT_METHOD": "Carte principale",
+    "PAYMENT_EXPIRE": "Expire",
+    "PAYMENT_NO_CARD": "Aucune carte principale définie",
+    "PAYMENT_NO_CARD_DESC": "Veuillez ajouter ou sélectionner une carte comme méthode de paiement principale.",
+    "SUMMARY_SUBTOTAL": "Sous-total",
+    "SUMMARY_SERVICE_FEE": "Commission izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Frais de service",
+    "SUMMARY_TOTAL": "Total",
+
+    
     "TITLE": "Prenez votre rendez-vous en ligne",
     "FOR_WHO": "Pour qui prenez-vous ce rendez-vous ?",
     "ADD_PROCHE": "Ajouter un proche",
@@ -269,7 +287,10 @@
     "RETOUR": "RETOUR",
     "CONTINUER": "CONTINUER",
     "VALIDER": "VALIDER",
-    "ADRESSE": "Adresse"
+    "ADRESSE": "Adresse",
+    "LEGAL_TEXT_1": "En cliquant sur le bouton pour passer votre commande, vous acceptez le Contrat sur les services de livraison avec Uber Eats France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Vous renoncez pour rappel à votre droit de rétractation ayant pour objet les services de livraison. Vous avez la possibilité de recourir à un médiateur de la consommation ici.",
+    "LEGAL_TEXT_3": "Si vous n'êtes pas là lors de l’arrivée du coursier, ce dernier déposera votre commande devant la porte. Lorsque vous passez une commande, vous acceptez d’en assumer l’entière responsabilité une fois celle-ci livrée. En votre absence, les commandes contenant de l’alcool ou d’autres articles faisant l’objet de restrictions seront directement retournées à l’établissement."
   },
   "CREATION_SHOP_STEPS": {
     "TITLE": "izyGlam pour les indépendants",
@@ -578,7 +599,6 @@
     "REINITIALIZE_PASSWORD": "Mot de passe par défaut pour réinitialisation",
     "CHANGE_PASSWORD": "Modifier le mot de passe"
   },
-
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Créditer le compte de l'employé",
     "AMOUNT": "Montant à créditer ",
@@ -654,7 +674,8 @@
     "IMAGE": "Image",
     "ACTIONS": "Actions",
     "MINUTES": "minutes",
-    "CHANGE": "Mofifier",
+    "CHANGE": "Modifier",
+    "DELETE": "Supprimer",
     "SERVICE_NAME": "Nom du service",
     "TIME_MINUTES": "Durée (en minutes)",
     "PREST_IMAGE": "Image de la prestation",
@@ -683,7 +704,15 @@
     "MORNING_CLOSE": "Matin - Fermeture",
     "AFTERNOON_OPEN": "Après-midi - Ouverture",
     "AFTERNOON_CLOSE": "Après-midi - Fermeture",
-    "SAVE": "Enregistrer la boutique"
+    "SAVE": "Enregistrer la boutique",
+    "MONDAY": "Lundi",
+    "TUESDAY": "Mardi",
+    "WEDNESDAY": "Mercredi",
+    "THURSDAY": "Jeudi",
+    "FRIDAY": "Vendredi",
+    "SATURDAY": "Samedi",
+    "SUNDAY": "Dimanche",
+    "CLOSED": "Fermé"
   },
   "AVIS": {
     "TITLE": "CE QUE DISENT NOS UTILISATEURS",

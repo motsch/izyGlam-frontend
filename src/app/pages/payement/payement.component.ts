@@ -14,6 +14,7 @@ import { BookingService } from 'src/app/core/services/booking.service';
 import { loadStripe } from '@stripe/stripe-js';
 import { FinancialService } from 'src/app/core/services/financial.service';
 import { StripeService } from 'src/app/core/services/stripe.service';
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: 'app-payement',
@@ -21,6 +22,17 @@ import { StripeService } from 'src/app/core/services/stripe.service';
   styleUrls: ['./payement.component.scss'],
 })
 export class PayementComponent implements OnInit {
+
+
+  // Champs de formulaire pour la carte
+  cardNumber: string = '';
+  cardHolderName: string = '';
+  expiryDate: string = '';
+  cvv: string = '';
+  errorMessage: string | null = null;
+
+
+
   step = 1;
   shop: any;
   startSlot: any | null;
@@ -53,6 +65,7 @@ export class PayementComponent implements OnInit {
     public dialog: MatDialog,
     private adminService: AdminService,
     private bookingService: BookingService,
+    private authenticationService: AuthenticationService,
     private financialService: FinancialService,
     private stripeService: StripeService,
   ) { }
@@ -139,11 +152,7 @@ export class PayementComponent implements OnInit {
         });
       });
 
-
-
-
     /** STRIPE **/
-
     // console.log((this.itemToBuy2));
     let dateBrut: any = localStorage.getItem("selectItemFromShop");
     if (dateBrut) {
@@ -233,26 +242,25 @@ export class PayementComponent implements OnInit {
     });
   }
 
-  validate() {
-    // Calcul du montant total en tenant compte de la commission et des frais de service, en cents
-    const amount = (parseFloat(this.price) +
-      parseFloat(this.price) * this.adminSettings.commissionRate +
-      this.adminSettings.serviceFee) * 100;
+
+
+  // Valider le paiement avec Stripe
+  async validate(): Promise<void> {
+    const amount = (parseFloat(this.price) + parseFloat(this.price) * this.adminSettings.commissionRate + this.adminSettings.serviceFee) * 100;
     const currency = 'eur'; // Devise
 
-    // Étape 1 : Créer une intention de paiement
+    // Créer une intention de paiement
     this.stripeService.createPaymentIntent(amount, currency, this.stripeCustomerID!).subscribe(
       async (response: any) => {
         const { clientSecret } = response;
 
         // Vérifier si une carte par défaut est disponible
         if (!this.defaultCard) {
-          console.error('Aucune carte par défaut disponible.');
           alert('Veuillez ajouter ou sélectionner une carte pour effectuer le paiement.');
           return;
         }
 
-        // Étape 2 : Confirmer le paiement avec Stripe.js
+        // Confirmer le paiement avec Stripe
         const stripe = await loadStripe(environment.stripePublicKey);
         const { error, paymentIntent } = await stripe!.confirmCardPayment(clientSecret, {
           payment_method: this.defaultCard.id,
@@ -263,14 +271,12 @@ export class PayementComponent implements OnInit {
           alert('Le paiement a échoué.');
         } else if (paymentIntent.status === 'succeeded') {
           console.log('Paiement réussi !');
-          // On stocke l'ID du paymentIntent dans le bill pour l'enregistrer avec le booking
           this.bill.paymentIntentId = paymentIntent.id;
-          // Étape 3 : Enregistrer la commande (booking) et les transactions initiales
           this.saveBill();
         }
       },
-      (error: any) => {
-        console.error("Erreur lors de la création de l'intention de paiement :", error);
+      (error) => {
+        console.error('Erreur lors de la création de l\'intention de paiement :', error);
       }
     );
   }

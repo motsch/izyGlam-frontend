@@ -7,10 +7,7 @@ import {
     Output,
     EventEmitter,
 } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { UserService } from '../../services/user.service';
 import { ShopService } from '../../services/shop.service';
-import { ProductService } from '../../services/product.service';
 import { ImageService } from '../../services/image.service';
 import { environment } from 'src/environments/environment';
 import { VilleService } from '../../services/ville.service';
@@ -23,6 +20,8 @@ import { VilleService } from '../../services/ville.service';
 export class ShopManagementComponent implements OnInit, OnChanges {
     @Input() myShopData: any = {};
     @Input() me: any = {};
+    allowedMorningHours: string[] = [];
+allowedAfternoonHours: string[] = []
     @Output() shopUpdated: EventEmitter<string> = new EventEmitter<string>();
     imageUsed: string | null = null;
     error: any = {};
@@ -38,38 +37,15 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     formModified = false;
     formValid = false;
     deliveryPostalCode: string = '';
-    deliveryPostalCodesList: string[] = [];
-    
-    
+    days: string[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+
     selectedCountry = 'France';
     selectedCity: any = {};
     selectedArrondissement = '';
     availableCountries = ['France'];
     availableCities: any[] = [];
     postalCode: string = '';
-
-    arrondissementsParis = [
-        { name: '1er', latitude: 48.8626, longitude: 2.3364 },
-        { name: '2ème', latitude: 48.8682, longitude: 2.3449 },
-        { name: '3ème', latitude: 48.8635, longitude: 2.36 },
-        { name: '4ème', latitude: 48.8546, longitude: 2.357 },
-        { name: '5ème', latitude: 48.8445, longitude: 2.3488 },
-        { name: '6ème', latitude: 48.8493, longitude: 2.3332 },
-        { name: '7ème', latitude: 48.8566, longitude: 2.3126 },
-        { name: '8ème', latitude: 48.8718, longitude: 2.3115 },
-        { name: '9ème', latitude: 48.8767, longitude: 2.3362 },
-        { name: '10ème', latitude: 48.8744, longitude: 2.3572 },
-        { name: '11ème', latitude: 48.8594, longitude: 2.3798 },
-        { name: '12ème', latitude: 48.8414, longitude: 2.3929 },
-        { name: '13ème', latitude: 48.8311, longitude: 2.3557 },
-        { name: '14ème', latitude: 48.8323, longitude: 2.3233 },
-        { name: '15ème', latitude: 48.8407, longitude: 2.2981 },
-        { name: '16ème', latitude: 48.862, longitude: 2.2709 },
-        { name: '17ème', latitude: 48.8848, longitude: 2.3157 },
-        { name: '18ème', latitude: 48.8924, longitude: 2.3447 },
-        { name: '19ème', latitude: 48.8847, longitude: 2.3829 },
-        { name: '20ème', latitude: 48.8635, longitude: 2.3985 },
-    ];
 
     arrondissementsBerlin = [
         { name: 'Mitte', latitude: 52.52, longitude: 13.405 },
@@ -116,9 +92,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         private shopService: ShopService,
         private imageService: ImageService,
         private villeService: VilleService
-    ) {}
+    ) { }
 
     ngOnInit(): void {
+        this.allowedMorningHours = this.generateTimeSlots('05:00', '12:00');
+        this.allowedAfternoonHours = this.generateTimeSlots('12:00', '23:00');
         localStorage.setItem("menu-param", 'management');
         if (this.myShopData && Object.keys(this.myShopData).length > 0) {
             console.log(this.myShopData.image);
@@ -129,11 +107,52 @@ export class ShopManagementComponent implements OnInit, OnChanges {
                 'uploads/images/' +
                 this.shopCopyData.image;
             console.log('shopCopyData initialisé :', this.shopCopyData.image);
-            
-            // this.onCityChange();
+            this.initHoursStructure();
+        }
+    }
+    initHoursStructure() {
+        const defaultSchedule = {
+            morning: { start: '09:00', end: '12:00' },
+            afternoon: { start: '13:00', end: '18:00' },
+            closed: false
+        };
+
+        const legacy = this.shopCopyData.hours;
+
+        // Si l'objet n'est pas encore au bon format, on transforme :
+        if (!legacy.monday) {
+            const fullWeek: any = {};
+            const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+            days.forEach(day => {
+                fullWeek[day] = {
+                    morning: legacy.morning || defaultSchedule.morning,
+                    afternoon: legacy.afternoon || defaultSchedule.afternoon,
+                    closed: false
+                };
+            });
+
+            this.shopCopyData.hours = fullWeek;
         }
     }
 
+
+    generateTimeSlots(start: string, end: string): string[] {
+        const times: string[] = [];
+        let [h, m] = start.split(':').map(Number);
+        const [endH, endM] = end.split(':').map(Number);
+      
+        while (h < endH || (h === endH && m <= endM)) {
+          const hourStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+          times.push(hourStr);
+          m += 30; // <== ici on ajoute 30 minutes à chaque fois
+          if (m >= 60) {
+            m = 0;
+            h++;
+          }
+        }
+        return times;
+      }
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['myShopData'] && changes['myShopData'].currentValue) {
             this.shopCopyData = { ...this.myShopData };
@@ -143,8 +162,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
                 'uploads/images/' +
                 this.shopCopyData.image;
 
-                console.log('imageUsed :', this.imageUsed);
-            this.onCityChange();
+            console.log('imageUsed :', this.imageUsed);
+            // this.onCityChange();
         }
     }
 
@@ -152,28 +171,50 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         const descriptionValid =
             this.shopCopyData.description &&
             this.shopCopyData.description.length >= 25;
-        const cityValid = this.shopCopyData.ville && this.shopCopyData.district;
+
+        const cityValid =
+            this.shopCopyData.ville && this.shopCopyData.district;
+
         const maxDistanceValid =
             this.shopCopyData.maxDistance && this.shopCopyData.maxDistance > 0;
-        const morningHoursValid =
-            this.shopCopyData.hours.morning.start &&
-            this.shopCopyData.hours.morning.end;
-        const afternoonHoursValid =
-            this.shopCopyData.hours.afternoon.start &&
-            this.shopCopyData.hours.afternoon.end;
+
+        const allDaysValid = Object.entries(this.shopCopyData.hours).every(([day, data]: [string, any]) => {
+            if (data.closed) return true; // jour fermé = OK
+            return (
+                data.morning?.start &&
+                data.morning?.end &&
+                data.afternoon?.start &&
+                data.afternoon?.end
+            );
+        });
 
         this.formValid =
             descriptionValid &&
             cityValid &&
             maxDistanceValid &&
-            morningHoursValid &&
-            afternoonHoursValid;
+            allDaysValid;
+    }
+
+    generateIzyGlamDescription() {
+        const type = this.shopCopyData.type; // à adapter selon ta structure exacte
+        const userDescription = this.shopCopyData.description || null;
+
+        this.shopService.generateIzyGlamDescription(type, userDescription)
+            .subscribe({
+                next: (description: string) => {
+                    this.shopCopyData.description = description;
+                    this.markFormModified();
+                },
+                error: (err) => {
+                    console.error('Erreur lors de la génération de la description :', err);
+                }
+            });
     }
 
 
     removePostalCode(index: number) {
-        this.deliveryPostalCodesList.splice(index, 1);
-        this.shopCopyData.deliveryPostalCodes = this.deliveryPostalCodesList;
+        this.shopCopyData.deliveryPostalCodes.splice(index, 1);
+        this.shopCopyData.deliveryPostalCodes = this.shopCopyData.deliveryPostalCodes;
     }
 
     onPostalCodeEntered() {
@@ -193,7 +234,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     addPostalCode() {
         if (!this.deliveryPostalCode) return;
         // Vérifie si le code est déjà ajouté
-        if (this.deliveryPostalCodesList.includes(this.deliveryPostalCode)) {
+        if (this.shopCopyData.deliveryPostalCodes.includes(this.deliveryPostalCode)) {
             this.error.deliveryPostalCode = "Ce code postal est déjà ajouté.";
             return;
         }
@@ -203,6 +244,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
                     this.shopCopyData.deliveryPostalCodes.push(this.deliveryPostalCode);
                     this.deliveryPostalCode = ''; // Réinitialise le champ
                     this.error.deliveryPostalCode = null;
+                    this.saveShop();
                 } else {
                     this.error.deliveryPostalCode = "Code postal introuvable dans la base";
                 }
@@ -215,6 +257,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     markFormModified(): void {
         this.formModified = true;
         this.validateForm();
+        this.saveShop();
     }
 
     updateSubmitButtonState(): void {
@@ -224,42 +267,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         if (submitButton) {
             submitButton.disabled = !(this.formValid && this.formModified);
         }
-    }
-
-    onCityChange(): void {
-        switch (this.shopCopyData.ville) {
-            case 'Paris':
-                this.filteredArrondissements = this.arrondissementsParis;
-                break;
-            case 'Berlin':
-                this.filteredArrondissements = this.arrondissementsBerlin;
-                break;
-            case 'Londres':
-                this.filteredArrondissements = this.arrondissementsLondres;
-                break;
-            case 'Madrid':
-                this.filteredArrondissements = this.arrondissementsMadrid;
-                break;
-            case 'Rome':
-                this.filteredArrondissements = this.arrondissementsRome;
-                break;
-            default:
-                this.filteredArrondissements = [];
-                break;
-        }
-
-        if (this.filteredArrondissements.length > 0) {
-            this.shopCopyData.district = this.filteredArrondissements[0].name;
-            this.shopCopyData.location.latitude =
-                this.filteredArrondissements[0].latitude;
-            this.shopCopyData.location.longitude =
-                this.filteredArrondissements[0].longitude;
-        } else {
-            this.shopCopyData.district = '';
-            this.shopCopyData.location.latitude = 0;
-            this.shopCopyData.location.longitude = 0;
-        }
-        this.markFormModified();
     }
 
     onDistrictChange(): void {

@@ -82,6 +82,13 @@
   <!-- MODAL d'adresses -->
   <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
     <div class="modal-content address-modal" (click)="$event.stopPropagation()">
+      
+      
+      <!-- Bouton de fermeture -->
+      <button class="close-button" (click)="closeAddressModal()">
+        <mat-icon>close</mat-icon>
+      </button>
+
       <!-- Titre dynamique -->
       <h3 class="modal-title">
         {{ isAddingAddress ? 'Ajouter une nouvelle adresse' : 'Choisis une adresse' }}

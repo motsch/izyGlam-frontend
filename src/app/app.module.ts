@@ -49,6 +49,7 @@ import { MQTT_SERVICE_OPTIONS, MqttModule } from 'ngx-mqtt';
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
+        
         CommonModule,
         NgbModule,
         BrowserModule,

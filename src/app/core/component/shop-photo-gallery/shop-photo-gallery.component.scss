@@ -5,12 +5,12 @@
 }
 
 .gallery-image {
-    width: 200px;
-    height: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
 }
-
 
   .delete-button {
     position: absolute;
@@ -36,3 +36,22 @@
     background-color: #9f4444; /* Couleur plus foncée au survol */
   }
   
+
+.custom-upload button {
+  background: linear-gradient(135deg, #f2f2f2, #ffffff);
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.custom-upload button:hover {
+  background: linear-gradient(135deg, #e6e6e6, #fafafa);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+}

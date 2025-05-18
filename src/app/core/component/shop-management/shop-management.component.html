@@ -1,74 +1,60 @@
+<!-- ============================
+     SHOP MANAGEMENT FORM HTML
+     ============================ -->
 <div class="container">
   <div class="form">
+    <!-- IMAGE + NOM DU SHOP -->
     <div class="form-section">
       <div class="column">
-        <!-- Affichage de l'image sélectionnée -->
         <div *ngIf="imageUsed">
-          <label for="imageUpload" class="margin-top-20"
-            >{{ "SHOP_MANAGEMENT.SHOP_IMAGE" | translate}}</label
-          >
-          <img
-            [src]="imageUsed"
-            alt="Aperçu de l'image"
-            class="image-preview small-preview"
-          />
+          <label for="imageUpload" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_IMAGE" | translate}}</label>
+          <img [src]="imageUsed" alt="Image du shop" class="image-preview small-preview" />
         </div>
-        <label for="imageUpload" class="margin-top-20"
-          >{{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate}}</label
-        >
-        <input
-          type="file"
-          id="imageUpload"
-          (change)="onFileSelected($event)"
-          accept="image/*"
-          class="input-style"
-        />
+        <div class="custom-upload">
+          <button type="button" class="margin-top-20" (click)="fileInput.click()">📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" |
+            translate}}</button>
+          <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
+        </div>
+
         <div *ngIf="imagePreview">
           <p class="margin-top-20">{{ "SHOP_MANAGEMENT.SNEEK_PIC" | translate}}:</p>
-          <img
-            [src]="imagePreview"
-            alt="Aperçu de l'image"
-            class="image-preview small-preview"
-          />
+          <img [src]="imagePreview" alt="Aperçu de l'image" class="image-preview small-preview" />
         </div>
       </div>
       <div class="column">
-        {{shopCopyData.active}}
-        <label for="name" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_NAME" | translate}}</label>
-        <input
-          disabled
-          [(ngModel)]="shopCopyData.name"
-          class="input-style"
-          type="text"
-          id="name"
-        />
+        <h3 style="margin-bottom: 10px;">Exemples de photos acceptées / refusées :</h3>
+        <!--IMAGE EXPLICATIVE-->
+          <img src="assets/images/photomaton.png" alt="Image du shop" class="photomaton" />
       </div>
     </div>
+
+    <!-- NOM DE LA BOUTIQUE -->
     <div>
-      <label for="description"
-        >{{ "SHOP_MANAGEMENT.DESCRIPTION" | translate}}
-        <span *ngIf="shopCopyData.description?.length < 25" class="error-text">
-          {{ "SHOP_MANAGEMENT.DESC_INFO" | translate}}</span
-        ></label
-      >
-      <textarea
-        [(ngModel)]="shopCopyData.description"
-        class="input-style"
-        type="text"
-        id="description"
-        (ngModelChange)="markFormModified()"
-      ></textarea>
+      <label for="name" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_NAME" | translate}}</label>
+      <input disabled [(ngModel)]="shopCopyData.name" class="input-style" type="text" id="name" />
     </div>
 
-    <!-- Coordonnées -->
+    <!-- DESCRIPTION -->
+    <div>
+      <label for="description">{{ "SHOP_MANAGEMENT.DESCRIPTION" | translate }}
+        <span *ngIf="shopCopyData.description?.length < 25" class="error-text">
+          {{ "SHOP_MANAGEMENT.DESC_INFO" | translate }}</span></label>
+      <textarea [(ngModel)]="shopCopyData.description" class="input-style" id="description"
+        (ngModelChange)="markFormModified()"></textarea>
+
+      <button type="button" (click)="generateIzyGlamDescription()">
+        ✨ Générer avec izyGlam
+      </button>
+    </div>
+
+    <!-- CODES POSTAUX + ZONE -->
     <div class="form-section">
       <div class="column">
         <label for="deliveryPostalCode">Codes postaux desservis</label>
         <div class="postal-code-entry">
-          <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10" />
-          <button type="button" class="add-postal-code-btn" (click)="addPostalCode()">
-            +
-          </button>
+          <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10"
+            (keyup.enter)="addPostalCode()" />
+          <button type="button" class="add-postal-code-btn" (click)="addPostalCode()">+</button>
         </div>
         <div *ngIf="error.deliveryPostalCode" class="error">{{error.deliveryPostalCode}}</div>
         <div class="postal-code-list">
@@ -80,70 +66,67 @@
       </div>
       <div class="column">
         <label for="longitude">{{ "SHOP_MANAGEMENT.ZONE" | translate}}</label>
-        <input
-          [(ngModel)]="shopCopyData.maxDistance"
-          class="input-style"
-          type="number"
-          id="maxDistance"
-          (ngModelChange)="markFormModified()"
-        />
+        <input [(ngModel)]="shopCopyData.maxDistance" class="input-style" type="number" id="maxDistance"
+          (ngModelChange)="markFormModified()" />
       </div>
     </div>
-    <!-- Horaires -->
+
+    <!-- HORAIRES D'OUVERTURE -->
     <h2>{{ "SHOP_MANAGEMENT.OPENNING" | translate}}</h2>
-    <div class="form-section">
-      <div class="column">
-        <label for="morningStart">{{ "SHOP_MANAGEMENT.MORNING_OPEN" | translate}}</label>
-        <input
-          type="time"
-          id="morningStart"
-          class="input-style"
-          [(ngModel)]="shopCopyData.hours.morning.start"
-          (ngModelChange)="markFormModified()"
-        />
+    <div *ngFor="let day of days" class="form-section">
+      <div class="day-header-vertical">
+        <h3>{{ 'SHOP_MANAGEMENT.' + day.toUpperCase() | translate }}</h3>
+        <div class="closed-switch">
+          <span>{{ 'SHOP_MANAGEMENT.CLOSED' | translate }}</span>
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="shopCopyData.hours[day].closed" (change)="markFormModified()" />
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
-      <div class="column">
-        <label for="morningEnd">{{ "SHOP_MANAGEMENT.MORNING_CLOSE" | translate}}</label>
-        <input
-          type="time"
-          id="morningEnd"
-          class="input-style"
-          [(ngModel)]="shopCopyData.hours.morning.end"
-          (ngModelChange)="markFormModified()"
-        />
+
+
+      <div class="grid-hours" *ngIf="!shopCopyData.hours[day].closed">
+        <!-- Matin -->
+        <div class="hour-row">
+          <div class="hour-column">
+            <label>{{ "SHOP_MANAGEMENT.MORNING_OPEN" | translate }}</label>
+            <select [(ngModel)]="shopCopyData.hours[day].morning.start" (ngModelChange)="saveShop()">
+              <option *ngFor="let hour of allowedMorningHours" [value]="hour">{{ hour }}</option>
+            </select>
+          </div>
+          <div class="hour-column">
+            <label>{{ "SHOP_MANAGEMENT.MORNING_CLOSE" | translate }}</label>
+            <select [(ngModel)]="shopCopyData.hours[day].morning.end" (ngModelChange)="saveShop()">
+              <option *ngFor="let hour of allowedMorningHours"
+                      [value]="hour"
+                      [disabled]="hour <= shopCopyData.hours[day].morning.start">
+                {{ hour }}
+              </option>
+            </select>
+          </div>
+        </div>
+      
+        <!-- Après-midi -->
+        <div class="hour-row">
+          <div class="hour-column">
+            <label>{{ "SHOP_MANAGEMENT.AFTERNOON_OPEN" | translate }}</label>
+            <select [(ngModel)]="shopCopyData.hours[day].afternoon.start" (ngModelChange)="saveShop()">
+              <option *ngFor="let hour of allowedAfternoonHours" [value]="hour">{{ hour }}</option>
+            </select>
+          </div>
+          <div class="hour-column">
+            <label>{{ "SHOP_MANAGEMENT.AFTERNOON_CLOSE" | translate }}</label>
+            <select [(ngModel)]="shopCopyData.hours[day].afternoon.end" (ngModelChange)="saveShop()">
+              <option *ngFor="let hour of allowedAfternoonHours"
+                      [value]="hour"
+                      [disabled]="hour <= shopCopyData.hours[day].afternoon.start">
+                {{ hour }}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- Après-midi -->
-    <div class="form-section">
-      <div class="column">
-        <label for="afternoonStart">{{ "SHOP_MANAGEMENT.AFTERNOON_OPEN" | translate}}</label>
-        <input
-          type="time"
-          id="afternoonStart"
-          class="input-style"
-          [(ngModel)]="shopCopyData.hours.afternoon.start"
-          (ngModelChange)="markFormModified()"
-        />
-      </div>
-      <div class="column">
-        <label for="afternoonEnd">{{ "SHOP_MANAGEMENT.AFTERNOON_CLOSE" | translate}}</label>
-        <input
-          type="time"
-          id="afternoonEnd"
-          class="input-style"
-          [(ngModel)]="shopCopyData.hours.afternoon.end"
-          (ngModelChange)="markFormModified()"
-        />
-      </div>
-    </div>
-    <!-- Bouton de validation -->
-    <div class="form-actions">
-      <button
-        (click)="saveShop()"
-        class="btn btn-primary"
-      >
-      {{ "SHOP_MANAGEMENT.SAVE" | translate}}
-      </button>
     </div>
   </div>
 </div>

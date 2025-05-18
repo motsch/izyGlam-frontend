@@ -121,13 +121,11 @@
               class="image-preview small-preview"
             />
           </div>
-          <input
-            type="file"
-            id="shopImage"
-            (change)="onFileSelected($event)"
-            accept="image/*"
-            class="input-style"
-          />
+          
+        <div class="custom-upload">
+          <button type="button" class="margin-top-20" (click)="fileInput.click()">📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate}}</button>
+          <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
+        </div>
         </div>
 
         <!-- Type de boutique -->

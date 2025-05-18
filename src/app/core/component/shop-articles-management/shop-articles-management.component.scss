@@ -86,91 +86,6 @@ button:disabled {
   color: red;
 }
 
-.btn {
-  margin-right: 5px;
-  // border-radius: 50%; /* Rendre les boutons ronds */
-  width: 35px; /* Réduction de la taille des boutons */
-  height: 35px; /* Réduction de la taille des boutons */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  font-size: 16px; /* Réduction de la taille de la police */
-  line-height: 1;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Ajout d'une ombre subtile */
-  transition: transform 0.1s, box-shadow 0.1s; /* Animation au survol */
-}
-
-.btn-primary {
-  background-color: #ff6b6b; /* Harmoniser avec le reste de l'appli */
-  border: none;
-}
-
-
-.btn-primary:active {
-  background-color: #df5151; /* Harmoniser avec le reste de l'appli */
-  border: none;
-}
-
-.btn-warning {
-  background-color: #ffffff; /* Teinte plus douce pour le bouton de modification */
-  border: none;
-  color: #ff6b6b;
-}
-
-.btn-warning:hover {
-  background-color: #ffffff; /* Teinte plus douce pour le bouton de modification */
-}
-
-.btn-danger {
-  background-color: #ff4d4d; /* Harmoniser avec le reste de l'appli */
-  border: none;
-  color: white;
-}
-
-.btn:hover {
-  transform: translateY(-2px); /* Légère élévation au survol */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
-}
-
-.delete-button {
-  color: #ff6b6b;
-  background-color: white;
-  border-radius: 50%;
-  height: 26px;
-  width: 26px;
-}
-
-.fa-trash {
-  font-size: 14px;
-}
-
-.create-btn {
-  background-color: white;
-  color: #ff4081;
-  // border-radius: 50%;
-  width: 120px; /* Taille ajustée */
-  height: 35px; /* Taille ajustée */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  font-size: 13px; /* Taille ajustée */
-  line-height: 1;
-}
-
-.action-btn {
-  // border-radius: 50%;
-  width: 70px; /* Taille ajustée */
-  height: 35px; /* Taille ajustée */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  font-size: 13px; /* Taille ajustée */
-  line-height: 1;
-}
-
 .margin-top-5 {
   margin-top: 5px; /* Ajout d'un léger espacement entre les boutons */
 }
@@ -204,6 +119,7 @@ button:disabled {
 .modal-dialog {
   margin-top: 15vh;
 }
+
 .modal-footer .btn {
   border-radius: 5px; /* Coins légèrement arrondis */
   padding: 10px 20px; /* Taille du bouton ajustée */
@@ -214,27 +130,121 @@ button:disabled {
   transition: background-color 0.3s ease; /* Transition pour l'effet de survol */
 }
 
-.modal-footer .btn-secondary {
-  background-color: #6c757d; /* Couleur du bouton "Annuler" */
-  border: none;
-  color: white;
-}
 
+
+/* Bouton principal */
 .modal-footer .btn-primary {
-  background-color: #007bff; /* Couleur du bouton "Enregistrer" */
+  background-color: #000;
+  color: #fff;
   border: none;
-  color: white;
-}
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+  width: 100%;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 
-.modal-footer .btn:hover {
-  background-color: #0056b3; /* Couleur de survol pour les boutons */
-  transform: none; /* Retirer l'effet de transformation au survol */
-  box-shadow: none; /* Retirer l'effet d'ombre au survol */
-}
+  &:hover {
+    background-color: #333;
+  }
 
+  &:disabled {
+    background-color: #999;
+    color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
 .image-preview {
   height: 120px;
   width: auto;
   object-fit: contain;
   border-radius: 14px;
+}
+
+.custom-upload button {
+  background: linear-gradient(135deg, #f2f2f2, #ffffff);
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal-title {
+  margin-top: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ff4081;
+}
+
+.custom-upload button:hover {
+  background: linear-gradient(135deg, #e6e6e6, #fafafa);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+}
+
+/* Bouton principal (Créer) */
+.btn-create {
+  background: linear-gradient(to right, #fcdde1, #ffe9f0);
+  color: #d63384;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 12px;
+  border: none;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn-create:hover {
+  background: linear-gradient(to right, #ffe9f0, #fcdde1);
+  transform: translateY(-2px);
+}
+
+/* Bouton action - Modifier */
+.btn-edit {
+  background-color: #fff;
+  color: #d63384;
+  border: 1px solid #f8cdd8;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 6px 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-edit:hover {
+  background-color: #fff0f5;
+  transform: translateY(-1px);
+}
+
+/* Bouton action - Supprimer */
+.btn-delete {
+  background-color: #fff;
+  color: #ff4d4d;
+  border: 1px solid #ffd6d6;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 6px 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-delete:hover {
+  background-color: #ffe5e5;
+  transform: translateY(-1px);
+}
+
+/* Pour les icônes */
+.btn i {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+label {
+  color: #000;
+  font-size: 15px;
 }

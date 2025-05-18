@@ -1,7 +1,10 @@
 <div>
 
-  <!-- Formulaire pour uploader des images -->
-  <input type="file" multiple (change)="onFilesSelected($event)" />
+  <div class="custom-upload">
+    <button type="button" class="margin-top-20" (click)="fileInput.click()">📷 {{
+      "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate}}</button>
+    <input type="file" #fileInput multiple (change)="onFilesSelected($event)" accept="image/*" hidden>
+  </div>
   <!-- Affichage des images de la galerie --><div *ngIf="galleryImages.length > 0">
   <div *ngFor="let image of galleryImages" class="gallery-item">
     <img [src]="imgStorageUrl + image" alt="Image de la galerie" class="gallery-image" />

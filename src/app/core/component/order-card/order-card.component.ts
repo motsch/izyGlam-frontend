@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
   styleUrl: './order-card.component.scss'
 })
 export class OrderCardComponent {
+  APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
   @Input() order: any;
   @Input() index: number = 0;
   @Input() imageLoaded: boolean = false;

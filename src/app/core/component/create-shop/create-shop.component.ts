@@ -7,6 +7,7 @@ import { max } from 'lodash';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 import { VilleService } from '../../services/ville.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-create-shop',
@@ -44,6 +45,7 @@ export class CreateShopComponent implements OnInit {
         private productService: ProductService,
         private router: Router,
         private villeService: VilleService,
+        private dialogRef: MatDialogRef<CreateShopComponent>,  // Injection du MatDialogRef
         private shopTemplateService: ShopTemplateService,
         private categoryService: CategoryService
     ) { }
@@ -131,27 +133,6 @@ export class CreateShopComponent implements OnInit {
             }
         });
     }
-    // ------------------------------------------------
-    // 3) Quand l’utilisateur choisit un arrondissement
-    // ------------------------------------------------
-    onArrondissementChange() {
-        // Refiltrer pour trouver l’unique document
-        const doc = this.allCitiesData.find(
-            v =>
-                v.pays === this.selectedCountry &&
-                v.city === this.selectedCity &&
-                v.name === this.selectedArrondissement
-        );
-        if (doc) {
-            console.log("DOC : " + JSON.stringify(doc));
-            this.newAddress.code_postal = doc.code_postal;
-            this.latitude = doc.latitude;
-            this.longitude = doc.longitude;
-            // on peut aussi récupérer d’autres infos si besoin
-        }
-        // Mettre à jour l'objet newAddress
-        this.newAddress.arrondissement = this.selectedArrondissement;
-    }
 
     // -----------------------------------------
     // 2) Quand l’utilisateur choisit une ville
@@ -210,7 +191,8 @@ export class CreateShopComponent implements OnInit {
             this.error.companyType = "Le type de service proposé est obligatoire";
             return;
         }
-
+        // this.newShop.deliveryPostalCodesList = this.deliveryPostalCodesList;
+        // console.log(this.newShop.name)
         // let test = this.createShop('coiffure', 'id_fake');
         // console.log(test);
 
@@ -222,13 +204,6 @@ export class CreateShopComponent implements OnInit {
                 next: async (data: any) => {
                     console.log(data);
                     let shopToCreate: any = {};
-
-
-                    shopToCreate.name =
-                        this.me.firstname +
-                        ' ' +
-                        this.me.lastname.charAt(0) +
-                        '.';
                     await this.createShop(
                         this.newShop.companyType,
                         this.me._id
@@ -246,26 +221,61 @@ export class CreateShopComponent implements OnInit {
     }
 
 
+
+
+    /**
+     * Reformate newShop.name en "Prénom N."
+     * Ex : "Pierre Dupont" → "Pierre D."
+     */
+    formatShopName(): void {
+        // 1) Nettoyage et découpe
+        const raw = this.newShop.name.trim();
+        if (!raw) {
+            this.newShop.name = '';
+            return;
+        }
+        const parts = raw.split(/\s+/);
+
+        // 2) Normalisation du prénom
+        const rawFirst = parts[0];
+        const firstName = rawFirst.charAt(0).toUpperCase()
+            + rawFirst.slice(1).toLowerCase();
+
+        // 3) Détermination de l'initiale
+        let initial: string;
+        if (parts.length >= 2) {
+            const rawLast = parts[parts.length - 1];
+            initial = rawLast.charAt(0).toUpperCase();
+        } else {
+            // lettre aléatoire si pas de nom
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            initial = letters.charAt(
+                Math.floor(Math.random() * letters.length)
+            );
+        }
+
+        // 4) Assemblage final
+        this.newShop.name = `${firstName} ${initial}.`;
+    }
+
     createShop(type: string, idUser: string): any {
         let newShopToCreate: any = {};
+        newShopToCreate.name = this.newShop.name;
 
-        if (this.isUserConnected) {
-            newShopToCreate.name =
-                this.me.firstname +
-                ' ' +
-                this.me.lastname.charAt(0) +
-                '.';
-        } else {
-            newShopToCreate.name =
-                this.newShop.firstname +
-                ' ' +
-                this.newShop.lastname.charAt(0) +
-                '.';
-        }
+        // Trouver la catégorie correspondant au type
         let categoryToSelect = this.categories.find(
             (x: any) => x.filter === type
-        )
-        let description = categoryToSelect.descriptionTrad;
+        );
+
+        // Si aucune catégorie n'est trouvée, définir une description par défaut
+        if (!categoryToSelect) {
+            console.error('Catégorie non trouvée pour le type:', type);
+            categoryToSelect = { descriptionTrad: 'Description par défaut', trad: 'Traduit par défaut' };
+        }
+
+        // Assignation des valeurs pour la nouvelle boutique
+        newShopToCreate.deliveryPostalCodes = this.deliveryPostalCodesList;
+        let description = categoryToSelect.descriptionTrad;  // Utilisation de la descriptionTrad de la catégorie trouvée
         newShopToCreate.description = description;
         newShopToCreate.image = 'default.png';
         newShopToCreate.note = '5';
@@ -281,7 +291,7 @@ export class CreateShopComponent implements OnInit {
         newShopToCreate.location.latitude = this.latitude;
         newShopToCreate.location.longitude = this.longitude;
 
-
+        // Définition des horaires de la boutique
         newShopToCreate.hours = {};
         newShopToCreate.trad = categoryToSelect.trad;
         newShopToCreate.hours.morning = {};
@@ -290,11 +300,13 @@ export class CreateShopComponent implements OnInit {
         newShopToCreate.hours.afternoon = {};
         newShopToCreate.hours.afternoon.start = '13:00';
         newShopToCreate.hours.afternoon.end = '18:00';
+
+        // Envoi de la requête pour créer la boutique
         this.shopService.create(newShopToCreate).subscribe({
             next: (data: any) => {
                 console.log(data);
-                // this.router.navigate(['/profile']);
-
+                // Ferme la modal après la création réussie de la boutique
+                this.dialogRef.close(data);  // Ferme la modal et passe la donnée à la modal par le `close()`
             },
             error: (error: any) => {
                 console.log('Error : ' + JSON.stringify(error));
@@ -303,6 +315,7 @@ export class CreateShopComponent implements OnInit {
             },
         });
     }
+
 
     formChecking() { }
 

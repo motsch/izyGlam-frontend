@@ -1,5 +1,5 @@
 <div class="container-fluid mt-4">
-  <div class="row margin-top-50">
+  <div class="row margin-top-10">
     <!-- MENU LATÉRAL -->
     <div class="col-12 col-md-3 sidebar mb-3">
       <ul>
@@ -90,35 +90,45 @@
           <p class="page-subtitle">{{ "PROFILE_MENU.SHOP_SUBTITLE" | translate }}</p>
         </div>
         <!-- SECTION BOUTONS SHOP -->
-        <div class="row g-2 align-items-center mb-4">
-          <div class="col-12 col-md-5">
-            <label for="languageSelect">
-              {{ "PROFILE_MENU.SELECT_SALON" | translate }}:
-            </label>
-            <div class="select-box">
-              <div class="selected" (click)="toggleDropdown()">
-                {{ selected?.trad | translate }}
-                <i class="arrow down"></i>
+        <div class="row justify-content-between align-items-center g-3 flex-wrap shop-selector-wrapper">
+          <div class="col-12 col-md-8">
+            <div class="d-flex flex-column flex-sm-row align-items-center gap-2">
+              <div class="flex-grow-1 w-100">
+                <label for="languageSelect" class="form-label title-label">
+                  {{ "PROFILE_MENU.SELECT_SALON" | translate }}:
+                </label>
+                <div class="select-box rosy-select" (click)="toggleDropdown()">
+                  <div class="selected">
+                    <div>{{ selected?.name | translate }} <span class="pink">({{ selected?.trad | translate }})</span>
+                    </div>
+                    <i class="arrow down"></i>
+                  </div>
+                  <ul class="options" *ngIf="dropdownOpen">
+                    <li *ngFor="let shop of shops" (click)="selectShop(shop)">
+                      {{ shop?.name | translate }} <span class="pink">({{ shop.trad | translate }})</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <ul class="options" *ngIf="dropdownOpen">
-                <li *ngFor="let shop of shops" (click)="selectShop(shop)">
-                  {{ shop.trad | translate }}
-                </li>
-              </ul>
+
+              <div class="d-flex justify-content-center align-items-center mt-2 mt-sm-4">
+                <button class="btn btn-apple-like rounded-circle" (click)="deletShop()" [disabled]="shops.length <= 1">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
             </div>
           </div>
-          <div class="col-md-1 mt-3 mt-md-0">
-            <button class="btn btn-apple-like w-100" (click)="deletShop()" [disabled]="shops.length <= 1">
-              <i class="fa fa-trash"></i>
-            </button>
-          </div>        
-          <div class="col-6 col-md-5 mt-3 mt-md-0">
-            <button [disabled]="shops.length >= 5" class="btn btn-primary action-btn w-100"
+
+
+          <div class="col-12 col-md-4 d-flex align-items-center justify-content-md-end justify-content-start">
+            <button [disabled]="shops.length >= 5" class="btn btn-primary rosy-action-btn"
               (click)="openCreateShopModal()">
               {{ "PROFILE_MENU.NEW_SALON" | translate }}
             </button>
           </div>
         </div>
+
+
         <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab label="Informations générales" color="primary">
             <app-shop-management *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"

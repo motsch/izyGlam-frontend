@@ -47,11 +47,11 @@ export class ProfileComponent implements OnInit {
         public dialog: MatDialog,
         private categoryService: CategoryService,
         private shopTemplateService: ShopTemplateService
-    ) {}
+    ) { }
 
     ngOnInit() {
         let section = localStorage.getItem('menu-param');
-        if(section && section !== undefined && section !== '') {
+        if (section && section !== undefined && section !== '') {
             this.activeSection = section;
             // localStorage.setItem('activeMenu', section);
         } else {
@@ -59,7 +59,10 @@ export class ProfileComponent implements OnInit {
             let activeSection = 'account-info';
             localStorage.setItem('menu-param', activeSection);
         }
+        this.initData();
+    }
 
+    initData() {
         // Récupérer l'utilisateur et ses shops
         this.userService.getMe().subscribe({
             next: (me: any) => {
@@ -136,18 +139,19 @@ export class ProfileComponent implements OnInit {
             panelClass: 'custom-modalbox',
         });
     }
-    
+
     openCreateShopModal() {
-      const dialogRef = this.dialog.open(CreateShopComponent, {
-        width: '600px',
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          console.log('Résultat retourné :', result);
-          // Recharge tes shops ici si besoin
-        }
-      });
+        const dialogRef = this.dialog.open(CreateShopComponent, {
+            width: '600px',
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                console.log('Résultat retourné :', result);
+                // Recharge tes shops ici si besoin (ex: tu appelles une méthode pour recharger la liste)
+                this.initData();
+            }
+        });
     }
 
     onArticleUpdated() {
@@ -226,7 +230,9 @@ export class ProfileComponent implements OnInit {
         this.myArticlesData = [];
         console.log(type);
         this.selected = type;
-
+        if(this.dropdownOpen) {
+            this.toggleDropdown();
+        }
         this.shopService.getById(type._id).subscribe({
             next: (shop: any) => {
                 this.myShopData = shop;
@@ -268,12 +274,22 @@ export class ProfileComponent implements OnInit {
         this.modalDeleteShopOpen = true;
     }
 
+    // Écouter les clics en dehors de la zone de la dropdown
+    @HostListener('document:click', ['$event'])
+    onClickOutside(event: MouseEvent) {
+        const dropdownElement = document.querySelector('.rosy-select');
+        if (dropdownElement && !dropdownElement.contains(event.target as Node)) {
+            if (this.dropdownOpen) {
+                this.toggleDropdown(); // Ferme le dropdown si un clic en dehors
+            }
+        }
+    }
     deleteConfirm() {
         /** D'abord faire un delete sur les products du shop */
         this.productService.deleteAllByShopId(this.myShopData._id).subscribe({
             next: (data: any) => {
                 console.log(data);
-                
+
                 /** Puis faire un delete sur le shop */
                 this.shopService.delete(this.myShopData._id).subscribe({
                     next: (data: any) => {
@@ -291,7 +307,7 @@ export class ProfileComponent implements OnInit {
             },
         });
     }
-    
+
     closeModal(): void {
         this.modalOpen = false;
     }

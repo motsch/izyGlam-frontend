@@ -194,4 +194,5 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   onAdClick(ad: any) {
     this.adService.incrementClick(ad._id).subscribe();
   }
+
 }
