@@ -46,7 +46,6 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { GiftCardComponent } from './gift-card/gift-card.component';
 import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
 import { CreationShopComponent } from './creation-shop/creation-shop.component';
-import { CreateShopInfoComponent } from '../core/component/create-shop-info/create-shop-info.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CreateCompanyInfoComponent } from '../core/component/create-company-info/create-company-info.component';
 import { CreationCompanyComponent } from './creation-company/creation-company.component';
@@ -113,11 +112,10 @@ import { FidelityComponent } from './fidelity/fidelity.component';
         GiftCardComponent,
         InviteFriendsComponent,
         CreationShopComponent,
-        CreateShopInfoComponent,
         CreationCompanyComponent,
         CreateCompanyInfoComponent,
         FidelityComponent,
     ],
-    exports: [CreateShopInfoComponent, CreationShopComponent, CreateCompanyInfoComponent, CreationCompanyComponent],
+    exports: [CreationShopComponent, CreateCompanyInfoComponent, CreationCompanyComponent],
 })
 export class PagesModule {}

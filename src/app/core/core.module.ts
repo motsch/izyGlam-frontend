@@ -80,6 +80,7 @@ import { HorizontalPubListComponent } from './component/horizontal-pub-list/hori
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { OrderCardComponent } from './component/order-card/order-card.component';
 import { ReviewModalComponent } from './component/review-modal/review-modal.component';
+import { CreateShopInfoComponent } from './component/create-shop-info/create-shop-info.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -129,6 +130,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         }),
     ],    
     declarations: [
+        CreateShopComponent,
         AiMarkdownPipe,
         PageNotFoundComponent,
         FilterByString,
@@ -167,7 +169,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CompanyFinanceManagementComponent,
         ShopArticlesManagementComponent,
         OrderItemComponent,
-        CreateShopComponent,
+        CreateShopInfoComponent,
         CreateShopStepsComponent,
         CreateCompanyComponent,
         CreateCompanyStepComponent,
@@ -215,6 +217,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         RoundShopCardComponent,
         DashboardComponent,
         CreateShopComponent,
+        CreateShopInfoComponent,
         CreateShopStepsComponent,
         CreateCompanyComponent,
         CreateCompanyStepComponent,

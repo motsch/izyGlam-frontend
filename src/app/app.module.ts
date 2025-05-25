@@ -43,13 +43,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { DragScrollDirective } from './core/directives/drag-scroll.directive';
 import { WebSocketService } from './core/services/websocket.service';
 import { MQTT_SERVICE_OPTIONS, MqttModule } from 'ngx-mqtt';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     declarations: [AppComponent, DragScrollDirective],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-        
+        ToastrModule.forRoot({
+          positionClass: 'toast-top-center',
+          timeOut: 3500,
+        }),
         CommonModule,
         NgbModule,
         BrowserModule,

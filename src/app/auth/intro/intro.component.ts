@@ -129,7 +129,7 @@ export class IntroComponent implements OnInit {
       this.propositionIndex = (this.propositionIndex + 1) % this.propositions.length;
       this.currentProposition = this.propositions[this.propositionIndex];
       this.currentKey++;
-    }, 3000);
+    }, 1200);
   }
 
   onButtonClick(): void {

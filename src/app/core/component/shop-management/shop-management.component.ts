@@ -11,6 +11,7 @@ import { ShopService } from '../../services/shop.service';
 import { ImageService } from '../../services/image.service';
 import { environment } from 'src/environments/environment';
 import { VilleService } from '../../services/ville.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-shop-management',
@@ -20,8 +21,6 @@ import { VilleService } from '../../services/ville.service';
 export class ShopManagementComponent implements OnInit, OnChanges {
     @Input() myShopData: any = {};
     @Input() me: any = {};
-    allowedMorningHours: string[] = [];
-allowedAfternoonHours: string[] = []
     @Output() shopUpdated: EventEmitter<string> = new EventEmitter<string>();
     imageUsed: string | null = null;
     error: any = {};
@@ -36,8 +35,6 @@ allowedAfternoonHours: string[] = []
     }[] = [];
     formModified = false;
     formValid = false;
-    deliveryPostalCode: string = '';
-    days: string[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 
     selectedCountry = 'France';
@@ -46,6 +43,13 @@ allowedAfternoonHours: string[] = []
     availableCountries = ['France'];
     availableCities: any[] = [];
     postalCode: string = '';
+
+
+    allowedMorningHours: string[] = [];
+    allowedAfternoonHours: string[] = [];
+    deliveryPostalCode: string = '';
+    days: string[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
 
     arrondissementsBerlin = [
         { name: 'Mitte', latitude: 52.52, longitude: 13.405 },
@@ -91,7 +95,8 @@ allowedAfternoonHours: string[] = []
     constructor(
         private shopService: ShopService,
         private imageService: ImageService,
-        private villeService: VilleService
+        private villeService: VilleService,
+        private toastr: ToastrService
     ) { }
 
     ngOnInit(): void {
@@ -141,18 +146,18 @@ allowedAfternoonHours: string[] = []
         const times: string[] = [];
         let [h, m] = start.split(':').map(Number);
         const [endH, endM] = end.split(':').map(Number);
-      
+
         while (h < endH || (h === endH && m <= endM)) {
-          const hourStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
-          times.push(hourStr);
-          m += 30; // <== ici on ajoute 30 minutes à chaque fois
-          if (m >= 60) {
-            m = 0;
-            h++;
-          }
+            const hourStr = `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+            times.push(hourStr);
+            m += 30; // <== ici on ajoute 30 minutes à chaque fois
+            if (m >= 60) {
+                m = 0;
+                h++;
+            }
         }
         return times;
-      }
+    }
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['myShopData'] && changes['myShopData'].currentValue) {
             this.shopCopyData = { ...this.myShopData };
@@ -296,6 +301,9 @@ allowedAfternoonHours: string[] = []
         this.markFormModified();
     }
 
+    showCustomToast(message: string) {
+        this.toastr.success(message);
+    }
 
     saveShop(): void {
         this.myShopData = this.shopCopyData;
@@ -332,9 +340,11 @@ allowedAfternoonHours: string[] = []
                                 'shopCopyData initialisé :',
                                 this.shopCopyData
                             );
+                            this.showCustomToast('Salon mis à jour avec succès');
                         },
                         error: (error: any) => {
                             console.log(error);
+                            this.showCustomToast('Erreur lors de la mise à jour du salon');
                         },
                     });
                 },
@@ -343,6 +353,7 @@ allowedAfternoonHours: string[] = []
                         "Erreur lors de l'upload de l'image : ",
                         error
                     );
+                    this.showCustomToast('Erreur lors de la mise à jour de la photo');
                 }
             );
         } else {
@@ -352,9 +363,11 @@ allowedAfternoonHours: string[] = []
                     this.shopCopyData = { ...data };
                     this.myShopData = { ...data };
                     this.shopUpdated.emit(this.myShopData._id);
+                    this.showCustomToast('Mise à jour du salon avec succès');
                 },
                 error: (error: any) => {
                     console.log(error);
+                    this.showCustomToast('Erreur lors de la mise à jour du salon');
                 },
             });
         }

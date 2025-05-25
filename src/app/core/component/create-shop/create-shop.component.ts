@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ShopService } from '../../services/shop.service';
@@ -7,7 +7,8 @@ import { max } from 'lodash';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 import { VilleService } from '../../services/ville.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+// import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-create-shop',
@@ -45,9 +46,10 @@ export class CreateShopComponent implements OnInit {
         private productService: ProductService,
         private router: Router,
         private villeService: VilleService,
-        private dialogRef: MatDialogRef<CreateShopComponent>,  // Injection du MatDialogRef
-        private shopTemplateService: ShopTemplateService,
-        private categoryService: CategoryService
+        private categoryService: CategoryService,
+        @Optional() public dialogRef?: MatDialogRef<CreateShopComponent>,
+        @Optional() @Inject(MAT_DIALOG_DATA) public data?: any,
+        // private shopTemplateService: ShopTemplateService,
     ) { }
 
     ngOnInit() {
@@ -306,7 +308,8 @@ export class CreateShopComponent implements OnInit {
             next: (data: any) => {
                 console.log(data);
                 // Ferme la modal après la création réussie de la boutique
-                this.dialogRef.close(data);  // Ferme la modal et passe la donnée à la modal par le `close()`
+                if (this.dialogRef)
+                    this.dialogRef.close(data);  // Ferme la modal et passe la donnée à la modal par le `close()`
             },
             error: (error: any) => {
                 console.log('Error : ' + JSON.stringify(error));

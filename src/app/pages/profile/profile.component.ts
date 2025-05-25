@@ -226,16 +226,17 @@ export class ProfileComponent implements OnInit {
         this.router.navigate(['/creation-shop']);
     }
 
-    selectShop(type: any) {
+    selectShop(shop: any) {
         this.myArticlesData = [];
-        console.log(type);
-        this.selected = type;
+        console.log(shop);
+        this.selected = shop;
         if(this.dropdownOpen) {
             this.toggleDropdown();
         }
-        this.shopService.getById(type._id).subscribe({
+        this.shopService.getById(shop._id).subscribe({
             next: (shop: any) => {
                 this.myShopData = shop;
+                console.log('totototo : ' + JSON.stringify(this.myShopData));
                 this.productService.getProductsByShop(shop._id).subscribe({
                     next: (data: any[]) => {
                         console.log('totototo');
