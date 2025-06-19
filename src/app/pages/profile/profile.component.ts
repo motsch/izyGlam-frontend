@@ -63,72 +63,72 @@ export class ProfileComponent implements OnInit {
     }
 
     initData() {
-        // Récupérer l'utilisateur et ses shops
         this.userService.getMe().subscribe({
             next: (me: any) => {
                 this.me = me;
+
                 let companyId = me.companyId;
-
-                // Utiliser forkJoin pour récupérer plusieurs données en parallèle
-                forkJoin({
-                    shops: this.shopService.getShopsByUserId(me._id),
-                    company: this.companyService.getById(companyId),
-                    companyUsers: this.userService.getByCompanyId(companyId),
-                }).subscribe({
-                    next: (results: any) => {
-                        this.shops = results.shops;
-                        this.myCompany = results.company;
-                        this.employees = results.companyUsers;
-
-                        // Sélectionner le premier shop
-                        if (this.shops && this.shops.length > 0) {
-                            this.selected = this.shops[0];
-                            this.myShopData = this.shops[0];
-
-                            // Charger les catégories après avoir filtré les shops
-                            const shopFilters = this.shops.map(
-                                (shop) => shop.type
-                            );
-                            this.categoryService.getAll().subscribe({
-                                next: (categories: any[]) => {
-                                    this.categories = categories.filter(
-                                        (category) =>
-                                            !shopFilters.includes(
-                                                category.filter
-                                            )
-                                    );
-                                    this.selectedCategory = this.categories[0];
-                                },
-                                error: (error: any) => {
-                                    console.log(error);
-                                },
-                            });
-
-                            // Charger les produits du shop sélectionné
-                            this.productService
-                                .getProductsByShop(this.shops[0]._id)
-                                .subscribe({
-                                    next: (products: any[]) => {
-                                        this.myArticlesData = products;
-                                    },
-                                    error: (error: any) => {
-                                        console.log(error);
-                                    },
-                                });
-
-                            // Charger les données du shop après la sélection
-                            this.shopService.loadShopData(this.shops[0]._id);
-                        }
-                    },
-                    error: (error: any) => {
-                        console.log(error);
-                    },
-                });
+                console.log("ROLE : " + me.role)
+                if (me.role === 'boss') {
+                    // 👑 Patron → on récupère tous les salons de ses employés
+                    forkJoin({
+                        shops: this.shopService.getShopsByBoss(),
+                        employees: this.userService.getMyEmployees(),
+                    }).subscribe({
+                        next: (results: any) => {
+                            this.shops = results.shops;
+                            this.employees = results.employees;
+                            this.handleShopsLoad();
+                        },
+                        error: (error) => console.log(error),
+                    });
+                } else {
+                    // 👨‍🔧 Employé classique
+                    forkJoin({
+                        shops: this.shopService.getShopsByUserId(me._id),
+                        // company: this.companyService.getById(companyId),
+                        // companyUsers: this.userService.getByCompanyId(companyId),
+                    }).subscribe({
+                        next: (results: any) => {
+                            this.shops = results.shops;
+                            console.log("SHOP !!!!  : " + JSON.stringify(this.shops));
+                            // this.myCompany = results.company;
+                            // console.log("COMPANY !!!!  : " + JSON.stringify(this.myCompany));
+                            // this.employees = results.companyUsers;
+                            // console.log("EMPLOYEE !!!!  : " + JSON.stringify(this.employees));
+                            this.handleShopsLoad();
+                        },
+                        error: (error) => console.log(error),
+                    });
+                }
             },
-            error: (error: any) => {
-                console.log(error);
-            },
+            error: (error) => console.log(error),
         });
+    }
+
+    handleShopsLoad() {
+        if (this.shops && this.shops.length > 0) {
+            this.selected = this.shops[0];
+            this.myShopData = this.shops[0];
+
+            const shopFilters = this.shops.map((shop) => shop.type);
+            this.categoryService.getAll().subscribe({
+                next: (categories: any[]) => {
+                    this.categories = categories.filter(
+                        (category) => !shopFilters.includes(category.filter)
+                    );
+                    this.selectedCategory = this.categories[0];
+                },
+            });
+
+            this.productService
+                .getProductsByShop(this.shops[0]._id)
+                .subscribe((products: any[]) => {
+                    this.myArticlesData = products;
+                });
+
+            this.shopService.loadShopData(this.shops[0]._id);
+        }
     }
 
     openChat(): void {
@@ -230,7 +230,7 @@ export class ProfileComponent implements OnInit {
         this.myArticlesData = [];
         console.log(shop);
         this.selected = shop;
-        if(this.dropdownOpen) {
+        if (this.dropdownOpen) {
             this.toggleDropdown();
         }
         this.shopService.getById(shop._id).subscribe({

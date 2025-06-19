@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     getUsersCount() {
         return this.http.get<number>(environment.apiUrl + 'users-count-all');
@@ -46,14 +46,14 @@ export class UserService {
         return this.http.get<any>(environment.apiUrl + 'me');
     }
 
-    
+
     // Ajoute une adresse pour un utilisateur donné
     addAddress(userId: string, address: any) {
         const url = environment.apiUrl + 'users/' + userId + '/address';
         // Utilise PATCH pour une mise à jour partielle
         return this.http.patch<any>(url, { address });
     }
-    
+
     /**
      * Verifie le mail du user
      * @param user (email et password)
@@ -110,4 +110,48 @@ export class UserService {
     updateUserFavorites(userId: string, favoriteShops: Array<string>) {
         return this.http.put<any>(environment.apiUrl + 'update-user-favs/' + userId, { favoriteShops });
     }
+
+    /**
+ * Récupère les employés rattachés à un patron (le user connecté)
+ */
+    getMyEmployees() {
+        return this.http.get<any[]>(environment.apiUrl + 'boss/employees');
+    }
+
+
+    /**
+     * Ajoute un employé au patron connecté (lien bidirectionnel boss-employé)
+     * @param employeeId ID du professionnel à rattacher
+     */
+    addEmployeeToBoss(employeeId: string) {
+        return this.http.post<any>(
+            environment.apiUrl + 'boss/add-employee',
+            { employeeId }
+        );
+    }
+
+    removeEmployeeFromBoss(employeeId: string) {
+        return this.http.post<any>(environment.apiUrl + 'boss/remove-employee', { employeeId });
+    }
+
+    /**
+     * Crée un professionnel et l'ajoute au boss connecté
+     * @param newEmployee Données du nouvel employé (email, firstname, lastname)
+     */
+    createAndAddEmployeeToBoss(newEmployee: { email: string, firstname: string, lastname: string }) {
+        return this.http.post<any>(environment.apiUrl + 'boss/create-and-add-employee', newEmployee);
+    }
+
+
+
+
+    getSubscription() {
+        return this.http.get<any>(environment.apiUrl + 'users-subscription');
+      }
+      
+      subscribeToPlan(plan: string, durationInMonths: number) {
+        return this.http.post<any>(environment.apiUrl + 'users-subscribe', { newPlan: plan, durationInMonths });
+      }
+      
+
 }

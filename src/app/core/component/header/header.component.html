@@ -47,16 +47,31 @@
 
   <!-- Connected Menu -->
   <div class="container-fluid" *ngIf="sessionService.getCurrentUser()">
-    <div class="row align-items-center w-100">
+    <div class="d-flex align-items-center justify-content-between flex-nowrap w-100 flex-wrap-mobile-fix">
+
+      
       <div class="col-auto">
-        <a (click)="openDrawer()"><img class="menuBurger" [src]="imgStorageUrl+'menuBurger.png'" alt="logo" /></a>
-      </div>
-      <div class="col-auto">
-        <a class="navbar-brand" [routerLink]="'/main'"><img [src]="imgStorageUrl+'logo/'+'glam_logo.png'" class="logo"
-            alt="logo" (click)="removeSettingsProfil()" />
+        <a (click)="openDrawer()">
+          <img class="menuBurger" [src]="imgStorageUrl + 'menuBurger.png'" alt="logo" />
         </a>
       </div>
+  
+      <div class="col-auto">
+        <a class="navbar-brand" [routerLink]="'/main'">
+          <img [src]="imgStorageUrl + 'logo/glam_logo.png'" class="logo" alt="logo" (click)="removeSettingsProfil()" />
+        </a>
+      </div>
+  
+      <div class="col"></div> <!-- Espace entre le logo et le bouton -->
+  
+      <div class="col-auto ms-auto" *ngIf="me.role === 'boss' || me.role === 'professionnel'">
+        <button class="btn btn-primary lavender-action-btn" (click)="goToPrices()">
+          Gérer mon abonnement
+        </button>
+      </div>
+  
     </div>
   </div>
+  
 </nav>
 <!--Nav end -->

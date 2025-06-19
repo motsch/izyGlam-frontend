@@ -81,6 +81,8 @@ import { CalendarComponent } from './component/calendar/calendar.component';
 import { OrderCardComponent } from './component/order-card/order-card.component';
 import { ReviewModalComponent } from './component/review-modal/review-modal.component';
 import { CreateShopInfoComponent } from './component/create-shop-info/create-shop-info.component';
+import { ShopEmployeesComponent } from './component/shop-employees/shop-employees.component';
+import { StripeCardFormComponent } from './component/stripe-card-form/stripe-card-form.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -144,6 +146,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ChangePasswordComponent,
         ConfidentialPolicyComponent,
         FooterComponent,
+        StripeCardFormComponent,
         CompanyManagementComponent,
         ShopCardComponent,
         ShopItemCardComponent,
@@ -162,6 +165,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopArticlesManagementComponent,
         CompanySetDefaultPasswordComponent,
         ShopManagementComponent,
+        ShopEmployeesComponent,
         CompanyManagementComponent,
         OrderItemComponent,
         CreditEmployeeModalComponent,
@@ -218,6 +222,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         DashboardComponent,
         CreateShopComponent,
         CreateShopInfoComponent,
+        ShopEmployeesComponent,
         CreateShopStepsComponent,
         CreateCompanyComponent,
         CreateCompanyStepComponent,
@@ -226,6 +231,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopPhotoGalleryComponent,
         ChatModalComponent,
         AvatarComponent,
+        StripeCardFormComponent,
         ZombieComponent,
         SurvivorComponent,
         AdminParamComponent,

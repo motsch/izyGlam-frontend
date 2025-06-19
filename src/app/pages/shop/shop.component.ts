@@ -34,6 +34,7 @@ export class ShopComponent {
     isLightboxOpen = false;
     selectedImage: string = '';
     currentIndex: number = 0;
+    isExpanded = false;
 
     constructor(
         private router: Router,
@@ -43,7 +44,7 @@ export class ShopComponent {
         private activatedRoute: ActivatedRoute,
         private shopService: ShopService,
         private adminService: AdminService
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         this.adminService.getAdminSettings().subscribe({
@@ -58,23 +59,28 @@ export class ShopComponent {
         });
         //récupérer l'id du shop sur la route
         let shopId = this.activatedRoute.snapshot.params['id'];
-        console.log("shop id : "+shopId);
+        console.log("shop id : " + shopId);
         localStorage.setItem("shopSelected", shopId);
         this.shopItems = [];
-        this.productService.getProductsByShop(shopId).subscribe((data:any) => {
+        this.productService.getProductsByShop(shopId).subscribe((data: any) => {
             console.log(data);
             this.shopItems = data;
         });
-        this.shopService.getById(shopId).subscribe((data:any)=>{
-            console.log("here: "+JSON.stringify(data));
+        this.shopService.getById(shopId).subscribe((data: any) => {
+            console.log("here: " + JSON.stringify(data));
             this.shopInfo = data;
             this.shopInfo.note = 0;
             this.shopInfo.noteCount = data.reviews.length
-            for(let elem of data.reviews) {
+            for (let elem of data.reviews) {
                 this.shopInfo.note = this.shopInfo.note + elem.rating
             }
-            this.shopInfo.note = this.shopInfo.note/data.reviews.length
+            this.shopInfo.note = this.shopInfo.note / data.reviews.length
         })
+    }
+
+
+    toggleDescription() {
+        this.isExpanded = !this.isExpanded;
     }
 
     // Methods for Lightbox functionality

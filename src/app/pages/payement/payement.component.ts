@@ -15,6 +15,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { FinancialService } from 'src/app/core/services/financial.service';
 import { StripeService } from 'src/app/core/services/stripe.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { SubscriptionService } from 'src/app/core/services/subscription.service';
 
 @Component({
   selector: 'app-payement',
@@ -55,19 +56,24 @@ export class PayementComponent implements OnInit {
   defaultCard: any = null;
   prestationDateForBill: string | undefined;
   cards: any[] = []; // Liste des cartes de l'utilisateur
+
+  selectedCardId: string | null = null;
+  // allCards: any[] = []; // toutes les cartes Stripe enregistrées par l'utilisateur
+  showAddCardForm = false;
+
+
+
   constructor(
     private router: Router,
     private datePipe: DatePipe,
-    private communicationService: CommunicationService,
     private shopService: ShopService,
-    private scheduleService: ScheduleService,
     private userService: UserService,
     public dialog: MatDialog,
     private adminService: AdminService,
     private bookingService: BookingService,
-    private authenticationService: AuthenticationService,
     private financialService: FinancialService,
     private stripeService: StripeService,
+    private subscriptionService: SubscriptionService // 👈 ici
   ) { }
 
   ngOnInit(): void {
@@ -161,6 +167,28 @@ export class PayementComponent implements OnInit {
     this.prestationDateForBill = dateBrut.slot.dateBrut;
   }
 
+  createSubscription(): void {
+    const payload = {
+      userId: this.userId!,
+      paymentMethodId: this.selectedCardId!,
+      subscriptionId: this.itemToBuy2.subscriptionId, // 👈 Assure-toi que `productToBuy` contient bien ce champ
+    };
+
+    this.subscriptionService.startSubscription(payload).subscribe({
+      next: (response) => {
+        console.log('Souscription Stripe créée :', response);
+        // Tu peux stocker la souscription dans le bill si besoin
+        this.bill.stripeSubscriptionId = response.subscription.id;
+        this.saveBill(); // ⬅️ Continue le flux habituel ici
+      },
+      error: (error) => {
+        console.error('Erreur lors de la souscription :', error);
+        alert('Impossible de créer la souscription. Veuillez réessayer.');
+      },
+    });
+  }
+
+
   openProchesModal() {
     this.dialog.open(ProchesModalComponent, {
       width: '400px',
@@ -170,12 +198,27 @@ export class PayementComponent implements OnInit {
     });
   }
 
+  isCardSelected(card: any): boolean {
+    return card.id === this.selectedCardId;
+  }
+
+  onCardAdded(event: any) {
+    this.showAddCardForm = false;
+    this.loadCards(); // recharge les cartes
+  }
+
+
+  selectCard(cardId: string) {
+    this.selectedCardId = cardId;
+  }
+
   /*
    * Charge la liste des cartes depuis le serveur.
    */
   async loadCards(): Promise<void> {
     try {
-      console.log('Chargement des cartes...');
+      console.log('Chargement des cartes Stripe...');
+
       const response = await fetch(`${environment.apiUrl}stripe/get-cards?customerId=${this.stripeCustomerID}`);
       if (!response.ok) {
         const errorMessage = await response.text();
@@ -183,15 +226,21 @@ export class PayementComponent implements OnInit {
       }
 
       const data = await response.json();
+
+      // On remplit la liste complète
       this.cards = data.cards || [];
 
-      // Filtrer la carte par défaut (isDefault: true)
+      // On cherche la carte par défaut (flag isDefault depuis ton backend)
       this.defaultCard = this.cards.find((card: any) => card.isDefault === true) || null;
 
-      console.log('Carte par défaut chargée :', this.defaultCard);
+      // On initialise la carte sélectionnée par défaut
+      this.selectedCardId = this.defaultCard?.id || (this.cards.length > 0 ? this.cards[0].id : null);
+
+      console.log('Cartes chargées :', this.cards);
+      console.log('Carte par défaut :', this.defaultCard);
     } catch (error) {
       console.error('Erreur lors du chargement des cartes :', error);
-      alert('Une erreur est survenue lors du chargement des cartes.');
+      alert('Une erreur est survenue lors du chargement de vos cartes bancaires.');
     }
   }
 
@@ -242,8 +291,6 @@ export class PayementComponent implements OnInit {
     });
   }
 
-
-
   // Valider le paiement avec Stripe
   async validate(): Promise<void> {
     const amount = (parseFloat(this.price) + parseFloat(this.price) * this.adminSettings.commissionRate + this.adminSettings.serviceFee) * 100;
@@ -272,7 +319,7 @@ export class PayementComponent implements OnInit {
         } else if (paymentIntent.status === 'succeeded') {
           console.log('Paiement réussi !');
           this.bill.paymentIntentId = paymentIntent.id;
-          this.saveBill();
+          this.createSubscription();
         }
       },
       (error) => {

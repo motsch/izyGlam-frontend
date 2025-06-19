@@ -1,0 +1,101 @@
+
+<!-- Nouveau HTML inspiré de Spotify Premium -->
+<div class="price-plans">
+  <div class="intro-section">
+    <h1 class="title-gradient">{{ "TARIF.DISCOVER" | translate }}</h1>
+    <h2 class="title-gradient">{{ "TARIF.DISCOVER2" | translate }}</h2>
+    <p class="subtitle-soft">{{ "TARIF.SOLUTIONS" | translate }}</p>
+  
+    <div class="payment-icons">
+      <img src="/assets/payment/visa.png" alt="Visa">
+      <img src="/assets/payment/mastercard.png" alt="MasterCard">
+      <img src="/assets/payment/amex.png" alt="Amex">
+      <img src="/assets/payment/paypal.png" alt="Paypal">
+    </div>
+  
+    <p class="magic-line">{{ "TARIF.TEST" | translate }}</p>
+  </div>
+
+  <div class="plans-container">
+    <div class="plan-card freeForm">
+      <h2 class="free">🌱 {{ "TARIF.FREE" | translate }}</h2>
+      <div>{{ "TARIF.FREE_SUBTITLE" | translate }}</div>
+      <p class="price">0€/mois</p>
+      <ul>
+        <li>- {{ "TARIF.FREE1" | translate }}</li>
+        <li>- {{ "TARIF.FREE2" | translate }}</li>
+        <li>- {{ "TARIF.FREE3" | translate }}</li>
+        <li>- {{ "TARIF.FREE4" | translate }}</li>
+        <li>- {{ "TARIF.FREE5" | translate }}</li>
+      </ul>
+      <button class="btn" (click)="goToShopCreation()">{{ "TARIF.FREE6" | translate }}</button>
+    </div>
+
+    <div class="plan-card student">
+      <span class="badge">Gratuit pendant 1 mois</span>
+      <h2 class="basic">✨ {{ "TARIF.BASIC" | translate }}</h2>
+      <div>{{ "TARIF.BASIC_SUBTITLE" | translate }}</div>
+      <p class="price">89,00€/mois {{ "TARIF.THEN" | translate }}</p>
+      <ul>
+        <li>- {{ "TARIF.BASIC1" | translate }}</li>
+        <li>- {{ "TARIF.BASIC2" | translate }}</li>
+        <li>- {{ "TARIF.FREE3" | translate }}</li>
+        <li>- {{ "TARIF.FREE4" | translate }}</li>
+        <li>- <strong>{{ "TARIF.BASIC3" | translate }}</strong> : {{ "TARIF.BASIC4" | translate }}</li>
+        <li>- {{ "TARIF.BASIC5" | translate }}</li>
+      </ul>
+      <button class="btn" (click)="goToPaiement('elue')">{{ "TARIF.BASIC6" | translate }}</button>
+    </div>
+
+    <div class="plan-card duo">
+      <h2 class="premium">👑 {{ "TARIF.PREMIUM" | translate }}</h2>
+      <div>{{ "TARIF.PREMIUM_SUBTITLE" | translate }}</div>
+      <p class="price">299,00€/mois</p>
+      <ul>
+        <li>- {{ "TARIF.PREMIUM1" | translate }}</li>
+        <li>- {{ "TARIF.PREMIUM2" | translate }}</li>
+        <li>- {{ "TARIF.FREE3" | translate }}</li>
+        <li>- {{ "TARIF.FREE4" | translate }}</li>
+        <li>- <strong>{{ "TARIF.PREMIUM3" | translate }}</strong> : {{ "TARIF.PREMIUM4" | translate }}</li>
+        <li>- {{ "TARIF.PREMIUM5" | translate }}</li>
+        <li>- {{ "TARIF.PREMIUM6" | translate }}</li>
+      </ul>
+      <button class="btn" (click)="goToPaiement('reine')">{{ "TARIF.PREMIUM7" | translate }}</button>
+    </div>
+
+    <div class="plan-card family">
+      <h2 class="business">🔱 {{ "TARIF.BUSINESS" | translate }}</h2>
+      <div>{{ "TARIF.BUSINESS_SUBTITLE" | translate }}</div>
+      <p class="price">{{ "TARIF.BUSINESS1" | translate }}</p>
+      <ul>
+        <li>- {{ "TARIF.BUSINESS2" | translate }}</li>
+        <li>- {{ "TARIF.BUSINESS3" | translate }}</li>
+        <li>- {{ "TARIF.BUSINESS4" | translate }}</li>
+        <li>- {{ "TARIF.BUSINESS5" | translate }}</li>
+      </ul>
+      <button class="btn" (click)="goToPaiement('deesse')">{{ "TARIF.BUSINESS6" | translate }}</button>
+    </div>
+  </div>
+
+  <div class="comparison-table">
+    <h3>{{ "TARIF.COMPARE" | translate }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Avantages</th>
+          <th>{{ "TARIF.FREE" | translate }}</th>
+          <th>{{ "TARIF.BASIC" | translate }}</th>
+          <th>{{ "TARIF.PREMIUM" | translate }}</th>
+          <th>{{ "TARIF.BUSINESS" | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>{{ "TARIF.FREE3" | translate }}</td><td>–</td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+        <tr><td>{{ "TARIF.STUDIO_BASIC" | translate }}</td><td>–</td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+        <tr><td>{{ "TARIF.STUDIO_ADVANCED" | translate }}</td><td>–</td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+        <tr><td>{{ "TARIF.ANALYSE" | translate }}</td><td>–</td><td>✔️</td><td>✔️</td><td>✔️</td></tr>
+        <tr><td>{{ "TARIF.PLANS" | translate }}</td><td>1</td><td>3</td><td>10</td><td>♾️</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

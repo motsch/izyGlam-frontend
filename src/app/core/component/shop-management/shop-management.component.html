@@ -28,10 +28,21 @@
       </div>
     </div>
 
-    <!-- NOM DE LA BOUTIQUE -->
+    <!-- EMPLOYE SUR LE SALON -->
+    <div *ngIf="me.role === 'boss'">
+      <label for="name" class="margin-top-20">{{ "Employé sur le salon" | translate}}</label>
+      <select [(ngModel)]="shopCopyData.idUser" (ngModelChange)="saveShop()">
+        <option *ngFor="let employee of employees"
+                [value]="employee._id">
+          {{ employee.firstname }} {{ employee.lastname }}
+        </option>
+      </select>
+    </div>
+
+    <!-- NOM DU SALON -->
     <div>
       <label for="name" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_NAME" | translate}}</label>
-      <input disabled [(ngModel)]="shopCopyData.name" class="input-style" type="text" id="name" />
+      <input [disabled]="me.role !== 'boss'" [(ngModel)]="shopCopyData.name" class="input-style" type="text" id="name" (ngModelChange)="saveShop()" />
     </div>
 
     <!-- DESCRIPTION -->

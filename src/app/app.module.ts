@@ -50,10 +50,6 @@ import { ToastrModule } from 'ngx-toastr';
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-        ToastrModule.forRoot({
-          positionClass: 'toast-top-center',
-          timeOut: 3500,
-        }),
         CommonModule,
         NgbModule,
         BrowserModule,
@@ -75,6 +71,11 @@ import { ToastrModule } from 'ngx-toastr';
         MatInputModule,
         MatButtonModule,
         MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
+        ToastrModule.forRoot({
+            positionClass: 'toast-custom-bottom-center',
+            timeOut: 3000,
+            preventDuplicates: true,
+        }),
         CalendarModule.forRoot({
             provide: DateAdapter,
             useFactory: adapterFactory,

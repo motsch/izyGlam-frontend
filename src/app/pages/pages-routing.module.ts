@@ -18,6 +18,9 @@ import { CreationShopComponent } from './creation-shop/creation-shop.component';
 import { CreationCompanyComponent } from './creation-company/creation-company.component';
 import { SponsorComponent } from './sponsor/sponsor.component';
 import { FidelityComponent } from './fidelity/fidelity.component';
+import { PricePlansComponent } from './price-plans/price-plans.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
+import { PayementProComponent } from './payement-pro/payement-pro.component';
 
 const routes: Routes = [
     {
@@ -44,6 +47,11 @@ const routes: Routes = [
     {
         path: 'billing',
         component: PayementComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'payement-pro/:abonnement',
+        component: PayementProComponent,
         canActivate: [AuthGuard],
     },
     {
@@ -88,6 +96,16 @@ const routes: Routes = [
     {
         path: 'fidelity',
         component: FidelityComponent,
+        canActivate: [],
+    },
+    {
+        path: 'prices',
+        component: PricePlansComponent,
+        canActivate: [],
+    },
+    {
+        path: 'subscription',
+        component: SubscriptionComponent,
         canActivate: [],
     },
     { path: '', redirectTo: 'main', pathMatch: 'full' },

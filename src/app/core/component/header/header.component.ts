@@ -24,6 +24,7 @@ import { environment } from 'src/environments/environment';
 export class HeaderComponent implements OnInit {
     @Input() page: string | undefined;
     @Input() connected: boolean | undefined;
+    @Input() me: any | undefined;
     isMobileMenuOpen: boolean = false;
     logoLangue: string | null = null;
     public darkHeader: boolean = false;
@@ -104,6 +105,10 @@ export class HeaderComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        if (!this.me) {
+            this.me = this.sessionService.getCurrentUser();
+            console.log('[Header] Me rechargé depuis SessionService :', this.me);
+        }
         // $.getScript('./assets/js/script.js');
         // $.getScript('./assets/js/tilt.js');
 
@@ -171,5 +176,9 @@ export class HeaderComponent implements OnInit {
 
     toggleMobileMenu(): void {
         this.isMobileMenuOpen = !this.isMobileMenuOpen;
+    }
+
+    goToPrices() {
+        this.router.navigate(['/prices']);
     }
 }

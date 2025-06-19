@@ -511,3 +511,39 @@ app-round-shop-card, .card {
   flex-direction: column;
   justify-content: center;
 }
+
+.description-wrapper {
+  margin-top: 20px;
+  color: #c71585; /* ou ce que tu utilises pour .pink2 */
+}
+
+.description-text {
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+  white-space: pre-line;
+}
+
+.description-text.collapsed {
+  max-height: 100px;
+  padding-bottom: 0;
+}
+
+.description-text.expanded {
+  max-height: 1000px;
+  padding-bottom: 10px;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #d63384;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.toggle-button:hover {
+  color: #a91e60;
+}

@@ -176,14 +176,7 @@ nav {
   height: 60px;
   overflow: hidden;
   position: relative;
-  left: -15px;
-}
-
-.navbar-brand video {
-  position: absolute;
-  top: -10px;   /* rogne le haut */
-  left: -15px;   /* rogne la gauche */
-  height: 80px;
+  left: 10px;
 }
 
 
@@ -236,6 +229,40 @@ nav {
 @media (max-width: 768px) {
   .logo {
     height: 35px;
-    margin-left: 20px;
+  }
+}
+
+
+
+
+
+.lavender-action-btn {
+  height: 55px;
+  font-weight: 500;
+  font-size: 12px;
+  background: linear-gradient(to right, #bcaeff, #e3d5ff); /* violet doux */
+  color: white;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.lavender-action-btn:hover {
+  box-shadow: 0 4px 12px rgba(188, 174, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .lavender-action-btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 576px) {
+
+  .lavender-action-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+    white-space: nowrap;
   }
 }

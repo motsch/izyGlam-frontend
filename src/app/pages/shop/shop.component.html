@@ -28,9 +28,21 @@
               </span>
             </div>
           </div>
-          <div class="margin-top-20 pink2">
-            {{ shopInfo.description }}
+          <div class="description-wrapper">
+            <div
+              class="description-text"
+              [class.collapsed]="!isExpanded"
+              [class.expanded]="isExpanded"
+              [style.maxHeight]="isExpanded ? '1000px' : '100px'"
+            >
+              {{ shopInfo.description }}
+            </div>
+          
+            <button class="toggle-button" (click)="toggleDescription()">
+              {{ isExpanded ? 'Voir moins' : 'Voir plus' }}
+            </button>
           </div>
+          
 
           <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-40 bold">{{ "SHOP.GALLERY" | translate }}:
           </div>

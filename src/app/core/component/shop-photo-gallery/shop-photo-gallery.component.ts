@@ -89,6 +89,7 @@ export class ShopPhotoGalleryComponent implements OnInit, OnChanges {
       next: (data: any) => {
         this.shopUpdated.emit(this.myShopData._id);
         console.log(data);
+        console.log('Photo supprimée de la galerie');
         this.showCustomToast('Photo supprimée de la galerie');
       },
       error: (error) => {

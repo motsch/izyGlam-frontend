@@ -34,7 +34,8 @@
               <div class="address-selection">
                 <div *ngFor="let address of me.address; index as i" class="address-info">
                   <label>
-                    <input [(ngModel)]="bill.address" class="adresse-selector" type="radio" name="address" [value]="address._id" />
+                    <input [(ngModel)]="bill.address" class="adresse-selector" type="radio" name="address"
+                      [value]="address._id" />
                     <span class="address-text">
                       Adresse {{ i + 1 }} : {{ address.street }}, {{ address.city }}
                     </span>
@@ -53,20 +54,37 @@
             <!-- Bloc PAIEMENT -->
             <div *ngIf="step === 2" class="mt-4">
               <h3 class="section-title">{{ 'PAYEMENT.CARD_PAY' | translate }}</h3>
-              
+
               <div class="payment-method">
                 <i class="fa fa-credit-card"></i>
-
-                <div *ngIf="defaultCard">
-                  <h3>{{ defaultCard.brand }} - **** **** **** {{ defaultCard.last4 }}</h3>
-                  <p>{{"PAYEMENT.PAYMENT_METHOD" | translate}} | {{"PAYEMENT.PAYMENT_EXPIRE" | translate}} {{ defaultCard.exp_month }}/{{ defaultCard.exp_year }}</p>
+                {{ cards | json }}
+                <!-- Liste des cartes -->
+                <div *ngIf="cards.length > 0">
+                  <div *ngFor="let card of cards" class="card-option" [class.selected]="card.id === selectedCardId"
+                    (click)="selectCard(card.id)">
+                    <h3>{{ card.brand }} - **** **** **** {{ card.last4 }}</h3>
+                    <p>{{"PAYEMENT.PAYMENT_EXPIRE" | translate}} {{ card.exp_month }}/{{ card.exp_year }}</p>
+                  </div>
                 </div>
-                <div *ngIf="!defaultCard" class="no-default-card">
+
+                <!-- Aucune carte -->
+                <div *ngIf="cards.length === 0" class="no-default-card">
                   <h3>{{"PAYEMENT.PAYMENT_NO_CARD" | translate}}</h3>
                   <p>{{"PAYEMENT.PAYMENT_NO_CARD_DESC" | translate}}</p>
                 </div>
+
+                <!-- Bouton Ajouter une carte -->
+                <button class="add-card-btn" (click)="showAddCardForm = !showAddCardForm">
+                  {{ showAddCardForm ? ('PAYEMENT.HIDE_CARD_FORM' | translate) : ('PAYEMENT.ADD_CARD' | translate) }}
+                </button>
+
+                <!-- Formulaire Stripe Elements pour ajout de carte -->
+                <div *ngIf="showAddCardForm">
+                  <app-stripe-card-form [userId]="me._id" (cardAdded)="onCardAdded($event)"></app-stripe-card-form>
+                </div>
               </div>
             </div>
+
           </div>
 
           <!-- PARTIE DROITE -->

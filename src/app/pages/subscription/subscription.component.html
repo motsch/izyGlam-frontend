@@ -1,0 +1,12 @@
+<div *ngIf="subscription">
+    <h2>Votre abonnement actuel : {{ subscription.abonnement }}</h2>
+    <p *ngIf="subscription.abonnement_end">Expire le : {{ subscription.abonnement_end | date:'longDate' }}</p>
+    <p *ngIf="subscription.isExpired">⚠️ Votre abonnement a expiré</p>
+  
+    <h3>Changer d'abonnement :</h3>
+    <button (click)="onSubscribe('basic', 1)">Passer à Basic (1 mois)</button>
+    <button (click)="onSubscribe('pro', 1)">Passer à Pro (1 mois)</button>
+    <button (click)="onSubscribe('custom', 1)">Offre personnalisée</button>
+    <button (click)="onSubscribe('free', 0)">Retour à Gratuit</button>
+  </div>
+  

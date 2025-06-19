@@ -83,6 +83,10 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
         this.sharedService.me$.subscribe((data) => {
             this.me = data;
             console.log('Updated me in AppComponent:', this.me);
+            if (!this.me) {
+                this.me = this.sessionService.getCurrentUser();
+                console.log('[Header] Me rechargé depuis SessionService :', this.me);
+            }
         });
         this.geoLocationService.checkAndRedirect(['SY', 'KP', 'RU', 'IR', 'GB', 'CN']);
         this.backgroundImages = this.aPIimgStorageUrl + 'uploads/images/creation/15/14.png';

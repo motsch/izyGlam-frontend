@@ -157,3 +157,18 @@ label {
   color: #2aa4c6;
   margin-top: 1rem;
 }
+
+
+
+.toast-custom-bottom-center {
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  right: auto !important;
+  top: auto !important;
+  position: fixed !important;
+}
+.toast-success {
+  background-color: #ff69b4 !important; // Rose flashy (HotPink), change si tu veux un rose plus doux
+  color: white !important;
+}

@@ -1,0 +1,37 @@
+<div class="employees-wrapper">  
+    <h3 class="loading">Ajouter un employé</h3>
+    <div class="add-employee-form">
+      <div class="form-flex">
+        <div class="form-inputs">
+          <input [(ngModel)]="newEmployee.email" placeholder="Email de l'employé" type="email">
+          <input [(ngModel)]="newEmployee.firstname" placeholder="Prénom" type="text">
+          <input [(ngModel)]="newEmployee.lastname" placeholder="Nom" type="text">
+          <input [(ngModel)]="newEmployee.phone" placeholder="Téléphone" type="text">
+          <input [(ngModel)]="newEmployee.password" placeholder="Mot de passe" type="text">
+        </div>
+        <div class="form-button">
+          <button class="rosy-action-btn" [disabled]="isSubmitting" (click)="addEmployee()">Ajouter</button>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="loading" class="loading">Chargement...</div>
+  
+    <h3 class="loading">Liste des employés</h3>
+    
+    <ul *ngIf="!loading">
+      <li *ngFor="let emp of employees">
+        {{ emp.firstname }} {{ emp.lastname }} ({{ emp.email }})     
+        <div class="d-flex justify-content-center align-items-center">
+            <button class="btn btn-apple-like rounded-circle" (click)="removeEmployee(emp._id)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+      </li>
+    </ul>
+  
+    <div class="feedback" *ngIf="feedbackMessage">
+      {{ feedbackMessage }}
+    </div>
+  </div>
+  

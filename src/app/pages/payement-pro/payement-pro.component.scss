@@ -1,0 +1,225 @@
+.payment-container {
+  max-width: 640px;
+  margin: 2rem auto;
+  margin-top: 60px;
+  font-family: 'Poppins', sans-serif;
+  background: #1E1E1E;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(255, 192, 203, 0.1);
+  color: #fff;
+  overflow: hidden;
+
+  section,
+  header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #333;
+  }
+
+  .payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      height: 40px;
+    }
+
+    .change-subscription {
+      font-size: 0.9rem;
+      color: #F5A3B5;
+      text-decoration: underline;
+    }
+  }
+
+  .subscription-details {
+    .plan {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .plan-icon {
+        height: 48px;
+        margin-right: 1rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+        color: #F5A3B5;
+        margin: 0;
+      }
+
+      p {
+        margin: 0;
+        color: #bbb;
+        font-size: 0.95rem;
+      }
+
+      .price {
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: right;
+
+        span {
+          display: block;
+          font-size: 0.8rem;
+          color: #888;
+        }
+      }
+    }
+
+    .benefits {
+      margin-top: 1rem;
+      padding-left: 1.25rem;
+
+      li {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        color: #aaa;
+
+        a {
+          color: #F5A3B5;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .address {
+    h3 {
+      color: #f9f9f9;
+    }
+
+    .address-info {
+      background: #2A2A2A;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      .edit {
+        color: #F5A3B5;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .payment-method {
+    h3 {
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    form {
+      label {
+        display: block;
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+        color: #F5A3B5;
+      }
+
+      .card-icons img {
+        height: 24px;
+        margin-right: 0.5rem;
+        filter: grayscale(1) brightness(1.5);
+      }
+
+      .credit-card-form {
+        input[type="text"] {
+          display: block;
+          width: 100%;
+          padding: 0.7rem;
+          margin-bottom: 0.5rem;
+          border: 1px solid #444;
+          background: #2A2A2A;
+          border-radius: 8px;
+          color: #fff;
+        }
+
+        .card-details {
+          display: flex;
+          gap: 1rem;
+        }
+
+        label {
+          font-size: 0.9rem;
+          color: #F5A3B5;
+        }
+
+        .info {
+          font-size: 0.8rem;
+          color: #999;
+          margin-top: 0.4rem;
+        }
+      }
+
+      .paypal-option {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.95rem;
+        color: #F5A3B5;
+
+        img {
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  .summary {
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #ccc;
+
+      img {
+        height: 32px;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 0.5rem;
+      color: #fff;
+    }
+  }
+
+  .confirmation {
+    .terms {
+      font-size: 0.85rem;
+      color: #aaa;
+
+      a {
+        color: #F5A3B5;
+        text-decoration: underline;
+      }
+    }
+
+    .confirm-button {
+      margin-top: 1rem;
+      background-color: #F5A3B5;
+      color: black;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: bold;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background-color: #ffaec2;
+      }
+    }
+  }
+}

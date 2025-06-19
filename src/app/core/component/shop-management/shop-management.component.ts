@@ -12,6 +12,8 @@ import { ImageService } from '../../services/image.service';
 import { environment } from 'src/environments/environment';
 import { VilleService } from '../../services/ville.service';
 import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../../services/user.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
     selector: 'app-shop-management',
@@ -35,6 +37,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }[] = [];
     formModified = false;
     formValid = false;
+    employees: any[] = [];
 
 
     selectedCountry = 'France';
@@ -96,10 +99,18 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         private shopService: ShopService,
         private imageService: ImageService,
         private villeService: VilleService,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        private userService: UserService,
+        private sessionService: SessionService
     ) { }
 
     ngOnInit(): void {
+        if (!this.me) {
+            this.me = this.sessionService.getCurrentUser();
+        }
+        if(this.me.role === 'boss') {
+            this.fetchEmployees();
+        }
         this.allowedMorningHours = this.generateTimeSlots('05:00', '12:00');
         this.allowedAfternoonHours = this.generateTimeSlots('12:00', '23:00');
         localStorage.setItem("menu-param", 'management');
@@ -115,6 +126,19 @@ export class ShopManagementComponent implements OnInit, OnChanges {
             this.initHoursStructure();
         }
     }
+
+    
+
+  fetchEmployees() {
+    this.userService.getMyEmployees().subscribe({
+      next: (users: any[]) => {
+        this.employees = users;
+      },
+      error: (error: any) => {
+        console.log(error)
+      }
+    });
+  } 
     initHoursStructure() {
         const defaultSchedule = {
             morning: { start: '09:00', end: '12:00' },
@@ -161,7 +185,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['myShopData'] && changes['myShopData'].currentValue) {
             this.shopCopyData = { ...this.myShopData };
-
+            console.log('shopCopyData :', JSON.stringify(this.shopCopyData));
             this.imageUsed =
                 environment.APIimgStorageUrl +
                 'uploads/images/' +
@@ -220,6 +244,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     removePostalCode(index: number) {
         this.shopCopyData.deliveryPostalCodes.splice(index, 1);
         this.shopCopyData.deliveryPostalCodes = this.shopCopyData.deliveryPostalCodes;
+        this.saveShop()
     }
 
     onPostalCodeEntered() {

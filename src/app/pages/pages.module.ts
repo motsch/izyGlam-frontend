@@ -50,9 +50,12 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CreateCompanyInfoComponent } from '../core/component/create-company-info/create-company-info.component';
 import { CreationCompanyComponent } from './creation-company/creation-company.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Calendar } from '@fullcalendar/core';
 import { SponsorComponent } from './sponsor/sponsor.component';
 import { FidelityComponent } from './fidelity/fidelity.component';
+import { PricePlansComponent } from './price-plans/price-plans.component';
+import { Subscription } from 'rxjs';
+import { SubscriptionComponent } from './subscription/subscription.component';
+import { PayementProComponent } from './payement-pro/payement-pro.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -105,6 +108,7 @@ import { FidelityComponent } from './fidelity/fidelity.component';
         ThankYouComponent,
         ComingSoonComponent,
         PayementComponent,
+        PayementProComponent,
         OrdersComponent,
         HelpComponent,
         FavoritesComponent,
@@ -115,6 +119,8 @@ import { FidelityComponent } from './fidelity/fidelity.component';
         CreationCompanyComponent,
         CreateCompanyInfoComponent,
         FidelityComponent,
+        PricePlansComponent,
+        SubscriptionComponent,
     ],
     exports: [CreationShopComponent, CreateCompanyInfoComponent, CreationCompanyComponent],
 })
