@@ -30,6 +30,7 @@ export class AdminParamComponent implements OnInit {
   }
 
   saveSettings(): void {
+    console.log(this.settings.pubActivated)
     const settingsToSave = {
       ...this.settings,
       commissionRate: this.settings.commissionRate / 100, // Conversion décimale pour sauvegarde

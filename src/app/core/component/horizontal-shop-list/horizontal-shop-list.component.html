@@ -16,7 +16,7 @@
             (loaded)="onShopLoaded(item.data._id)"></app-round-shop-card>
         </div>
         <!-- Pub -->
-        <div class="shop-card-wrapper margin-right-50 margin-left-10 pub-card track-card" *ngIf="item.type === 'ad'"
+        <div class="shop-card-wrapper margin-right-50 margin-left-10 pub-card track-card" *ngIf="pubActivated && item.type === 'ad'"
           [attr.data-pub-id]="item.data._id" data-type="ad">
           <a [href]="item.data.lien" target="_blank">
             <img [src]="imgStorageUrl + 'uploads/images/pub/' + item.data.image" alt="Publicité" class="shop-ad-banner"

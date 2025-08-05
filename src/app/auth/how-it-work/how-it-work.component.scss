@@ -42,7 +42,6 @@ h1 {
 
 button {
   background-color: #000;
-  width: 100%;
   color: white;
   border: none;
   padding: 15px 30px;
@@ -98,11 +97,5 @@ img {
     font-size: 16px; /* Texte un peu plus petit */
     margin-bottom: 20px; /* Moins d'espacement */
     line-height: 1.4;
-  }
-
-  button {
-    width: 100%; /* Pour occuper tout l’espace, optionnel */
-    padding: 12px 20px;
-    font-size: 15px;
   }
 }

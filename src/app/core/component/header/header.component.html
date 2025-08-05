@@ -1,29 +1,26 @@
 <!--Nav start-->
 <nav class="navbar fixed-top" [class.darkHeader]="darkHeader">
   <div class="container" *ngIf="!sessionService.getCurrentUser()">
-    <a class="navbar-brand" [routerLink]="'/'"><img *ngIf="darkHeader" [src]="imgStorageUrl+'logo/'+'glam_logo.png'"
-        class="logo" alt="logo" /><img *ngIf="!darkHeader" [src]="imgStorageUrl+'logo/'+'glam_logo2.png'" class="logo"
+    <a class="navbar-brand" [routerLink]="'/'">
+        <img [src]="imgStorageUrl+'logo/'+'glam_logo2.png'" class="logo"
         alt="logo" /></a>
     <div>
       <ul>
         <li class=""></li>
         <div class="flex buttons-wrapper">
           <!-- Boutons visibles en grand écran -->
-          <button type="button" (click)="routerNavigate('/sign-in')" class="btn desktop-only"
-            [ngClass]="!darkHeader ? 'color-izyglam' : 'color-izyglam2'" *ngIf="page !== 'connected'">
+          <button type="button" (click)="routerNavigate('/sign-in')" class="btn desktop-only color-izyglam" *ngIf="page !== 'connected'">
             {{'INTRO.CONNEXION' | translate}}
           </button>
 
-          <button type="button" (click)="routerNavigate('/sign-up')" class="btn desktop-only"
-            [ngClass]="!darkHeader ? 'color_izyglam' : 'color_white'" *ngIf="page !== 'connected'">
+          <button type="button" (click)="routerNavigate('/sign-up')" class="btn desktop-only color_izyglam" *ngIf="page !== 'connected'">
             {{'INTRO.REGISTRATION' | translate}}
           </button>
 
           <!-- Bouton de menu hamburger visible sur mobile -->
           <div class="mobile-only">
             <button class="menu-btn" (click)="toggleMobileMenu()">
-              <i *ngIf="darkHeader" class="fa fa-bars color-white"></i>
-              <i *ngIf="!darkHeader" class="fa fa-bars color-izyglam"></i>
+              <i class="fa fa-bars color-izyglam"></i>
             </button>
 
             <!-- Menu déroulant -->
@@ -63,12 +60,13 @@
       </div>
   
       <div class="col"></div> <!-- Espace entre le logo et le bouton -->
-  
+      <!--
       <div class="col-auto ms-auto" *ngIf="me.role === 'boss' || me.role === 'professionnel'">
         <button class="btn btn-primary lavender-action-btn" (click)="goToPrices()">
           Gérer mon abonnement
         </button>
       </div>
+      -->
   
     </div>
   </div>

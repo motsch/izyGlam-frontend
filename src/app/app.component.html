@@ -41,18 +41,16 @@
           <img class="side-icon" src="assets/images/icon/help.png" alt="Aide" />
           <span class="side-item">{{ "SIDEBAR.HELP" | translate }}</span>
         </li>
-  
+        <!--
         <li class="menu-hover" (click)="goTo('fidelity')">
           <img class="side-icon" src="assets/images/icon/gift.png" alt="Programme de fidélité" />
           <span class="side-item">{{ "SIDEBAR.FIDELITY" | translate }}</span>
         </li>
-
-        
-  
         <li class="menu-hover" (click)="goTo('prices')">
           <img class="side-icon" src="assets/images/icon/prices.png" alt="Programme de fidélité" />
           <span class="side-item">{{ "SIDEBAR.PRICES" | translate }}</span>
         </li>
+        -->
       </ul>
   
       <!-- Footer du drawer -->
@@ -68,9 +66,9 @@
   
         <!-- Menu secondaire -->
         <ul class="drawer-menu secondary">
-          <li class="menu-hover" (click)="goTo('subscription')">
+          <!--<li class="menu-hover" (click)="goTo('subscription')">
             <span class="side-item">{{ "SIDEBAR.MY_ABO" | translate }} : {{ me.abonnement }}</span>
-          </li>
+          </li>-->
           <li class="menu-hover" (click)="goTo('creation-shop')">
             <span class="side-item">{{ "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate }}</span>
           </li>
@@ -93,10 +91,11 @@
       <app-header [connected]="sessionService.isLoggedIn()" [me]="me"></app-header>
 
       <!-- Bouton de chat -->
+      <!--
       <div class="chat-container" (click)="openChat()">
         <img src="assets/images/chat/lizy.png" alt="Lizy Chat Icon" class="chat-button" />
       </div>
-
+      -->
       <!-- Contenu dynamique -->
       <div class="content">
         <router-outlet></router-outlet>

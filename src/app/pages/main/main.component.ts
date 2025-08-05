@@ -12,6 +12,7 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
 import { MqttService } from 'src/app/core/services/mqtt.service';
 import { VilleService } from 'src/app/core/services/ville.service';
+import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
     selector: 'app-main',
@@ -52,6 +53,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     availableCountries = ['France'];
     availableCities: any[] = [];
     postalCode: string = '';
+    pubActivated: boolean = false;
 
     private searchSubject = new Subject<string>();
     private subscription!: Subscription;
@@ -72,6 +74,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         private router: Router,
         private advertisementService: AdvertisementService,
         private mqttService: MqttService,
+        private adminService: AdminService
     ) { }
 
     ngOnInit() {
@@ -87,6 +90,16 @@ export class MainComponent implements OnInit, AfterViewInit {
             });
         this.loadUserAndShops();
         // this.getCities();
+        
+    this.adminService.getAdminSettings().subscribe(
+      (data :any) => {
+        console.log('Paramètres de la plateforme :', JSON.stringify(data));
+        this.pubActivated = data.pubActivated
+      },
+      (error:any) => {
+        console.error('Erreur lors de la récupération des paramètres', error);
+      }
+    );
     }
 
     onSearchChange(query: string) {

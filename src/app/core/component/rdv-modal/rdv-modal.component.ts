@@ -135,4 +135,8 @@ export class RdvModalComponent implements OnInit {
             this.router.navigate(['billing']);
         }
     }
+    onImageError(event: Event) {
+        const imgElement = event.target as HTMLImageElement;
+        imgElement.src = this.imgStorageUrl + '/uploads/images/logo.png';
+      }
 }

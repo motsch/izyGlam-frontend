@@ -33,23 +33,23 @@
       </div>
     </div>
     <!-- SECTION : PUBS & OFFRES -->
-    <app-horizontal-pub-list [me]="me"></app-horizontal-pub-list>
+    <app-horizontal-pub-list *ngIf="pubActivated" [me]="me"></app-horizontal-pub-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && promotedShops.length > 0"
-      [title]="'Offres du moment'" [shops]="promotedShops" [me]="me" [pubIndexe]="'0'"></app-horizontal-shop-list>
+      [title]="'Offres du moment'" [pubActivated]="pubActivated" [shops]="promotedShops" [me]="me" [pubIndexe]="'0'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsAdecouvrir.length > 0"
-      [title]="'À découvrir'" [shops]="filteredItemsAdecouvrir" [me]="me" [pubIndexe]="'1'"></app-horizontal-shop-list>
+      [title]="'À découvrir'" [pubActivated]="pubActivated" [shops]="filteredItemsAdecouvrir" [me]="me" [pubIndexe]="'1'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsApprecier.length > 0"
-      [title]="'Les plus appréciés'" [shops]="filteredItemsApprecier" [me]="me"
+      [title]="'Les plus appréciés'" [pubActivated]="pubActivated" [shops]="filteredItemsApprecier" [me]="me"
       [pubIndexe]="'2'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsMalin.length > 0"
-      [title]="'Les plans malins'" [shops]="filteredItemsMalin" [me]="me" [pubIndexe]="'3'"></app-horizontal-shop-list>
+      [title]="'Les plans malins'" [pubActivated]="pubActivated" [shops]="filteredItemsMalin" [me]="me" [pubIndexe]="'3'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsTop10.length > 0"
-      [title]="'Top10 de la semaine'" [shops]="filteredItemsTop10" [me]="me"
+      [title]="'Top10 de la semaine'" [pubActivated]="pubActivated" [shops]="filteredItemsTop10" [me]="me"
       [pubIndexe]="'4'"></app-horizontal-shop-list>
 
     <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
@@ -82,8 +82,7 @@
   <!-- MODAL d'adresses -->
   <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
     <div class="modal-content address-modal" (click)="$event.stopPropagation()">
-      
-      
+
       <!-- Bouton de fermeture -->
       <button class="close-button" (click)="closeAddressModal()">
         <mat-icon>close</mat-icon>

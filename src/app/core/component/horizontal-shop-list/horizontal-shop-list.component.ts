@@ -21,6 +21,8 @@ export class HorizontalShopListComponent implements OnChanges, OnDestroy {
   @Input() shops: any[] = [];
   @Input() me: any;
   @Input() pubIndexe: string = "1";
+  @Input() pubActivated: boolean = false;
+  
   imgStorageUrl: string = environment.APIimgStorageUrl;
 
   @ViewChild('scrollContainerAds') scrollContainer!: ElementRef;
