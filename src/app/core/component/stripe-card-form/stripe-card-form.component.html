@@ -1,6 +1,11 @@
 <div class="card-form">
-    <form (submit)="handleFormSubmit($event)">
-        <div id="card-element" class="card-element margin-top-20"></div>
-        <button class="margin-top-20" (click)="addCard()">Ajouter la carte</button>
-    </form>
+  <form (submit)="handleFormSubmit($event)" class="card-form-container">
+    <div id="card-element" class="card-element margin-top-20"></div>
+
+    <div class="btn-add-card-wrapper">
+      <button type="submit" class="btn-add-card">
+        Ajouter la carte
+      </button>
+    </div>
+  </form>
 </div>

@@ -1,0 +1,41 @@
+.btn-add-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 25px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #000000, #000000);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(99, 99, 99, 0.4);
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 14px;
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, #404040, #404040);
+    box-shadow: 0 6px 16px rgba(99, 99, 99, 0.4);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(99, 99, 99, 0.4);
+  }
+}
+
+.card-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-add-card-wrapper {
+  display: flex;
+  justify-content: flex-end; /* bouton à droite */
+}

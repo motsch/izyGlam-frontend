@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class CreateShopInfoComponent {
 
   currentIndex = 0;
+  autoScrollInterval: any;
 
   steps = [
     {
@@ -27,15 +28,43 @@ export class CreateShopInfoComponent {
     }
   ];
 
+  constructor() {
+    this.startAutoScroll();
+  }
+
   get currentStep() {
     return this.steps[this.currentIndex];
   }
 
   prevStep() {
     this.currentIndex = (this.currentIndex - 1 + this.steps.length) % this.steps.length;
+    this.restartAutoScroll();
   }
 
   nextStep() {
     this.currentIndex = (this.currentIndex + 1) % this.steps.length;
+    this.restartAutoScroll();
+  }
+
+  startAutoScroll() {
+    this.autoScrollInterval = setInterval(() => {
+      this.nextStep();
+    }, 5000); // Passage automatique toutes les 3 secondes
+  }
+
+  restartAutoScroll() {
+    this.stopAutoScroll();
+    this.startAutoScroll();
+  }
+
+  stopAutoScroll() {
+    if (this.autoScrollInterval) {
+      clearInterval(this.autoScrollInterval);
+      this.autoScrollInterval = null;
+    }
+  }
+
+  ngOnDestroy() {
+    this.stopAutoScroll(); // Nettoyer l'intervalle pour éviter les fuites
   }
 }

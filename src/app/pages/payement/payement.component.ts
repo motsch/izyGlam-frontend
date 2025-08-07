@@ -60,7 +60,7 @@ export class PayementComponent implements OnInit {
   selectedCardId: string | null = null;
   // allCards: any[] = []; // toutes les cartes Stripe enregistrées par l'utilisateur
   showAddCardForm = false;
-
+defaultCardId="";
 
 
   constructor(
@@ -278,6 +278,10 @@ export class PayementComponent implements OnInit {
     this.step -= 1;
     console.log(this.step);
   }
+
+  setDefaultCard(id:string) {}
+  removeCard(id:string) {}
+
 
   // Charger Stripe.js dynamiquement
   private loadStripe(publicKey: string): Promise<any> {
