@@ -1,30 +1,147 @@
-<form>
-  <div class="row">
-    <!-- Section: Total généré -->
-    <div class="col-md-4 col-sm-12 mb-4">
-      <div class="finance-card">
-        <h3>{{ "FINANCE.TOTAL_GENERATED" | translate }}</h3>
-        <p class="finance-number">{{ totalGenerated | currency : "EUR" }}</p>
-        <p class="finance-description">{{ "FINANCE.CA" | translate }}</p>
-      </div>
-    </div>
+<!-- Bouton d'ajout -->
+<div class="text-end mb-4">
+  <button class="btn-create-service" (click)="openBankModal()">
+    <i class="fa fa-plus me-2"></i> {{ "BANK.ADD_BANK_INFO" | translate }}
+  </button>
+</div>
 
-    <!-- Section: Commission prélevée -->
-    <div class="col-md-4 col-sm-12 mb-4">
-      <div class="finance-card">
-        <h3>{{ "FINANCE.COMMISSION_TAKEN" | translate }}</h3>
-        <p class="finance-number">{{ commission | currency : "EUR" }}</p>
-        <p class="finance-description">{{ "FINANCE.COMMISSIONS" | translate }}</p>
-      </div>
-    </div>
+<!-- MODAL BACKDROP -->
+<div class="modal-backdrop" *ngIf="bankModalVisible" (click)="closeBankModal()"></div>
 
-    <!-- Section: Montant à verser -->
-    <div class="col-md-4 col-sm-12 mb-4">
-      <div class="finance-card">
-        <h3>{{ "FINANCE.PROGRESS" | translate }}</h3>
-        <p class="finance-number">+ {{ netToPay }} %</p>
-        <p class="finance-description">{{ "FINANCE.PROGRESSION" | translate }}</p>
+<!-- MODAL -->
+<div class="modal-container" *ngIf="bankModalVisible">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="modal-close" type="button" (click)="closeBankModal()">×</button>
+    <h4 class="modal-title">{{ "BANK.ENTER_BANK_INFO" | translate }}</h4>
+
+    <form (ngSubmit)="saveBankInfo()" #bankForm="ngForm">
+      <div class="mb-3">
+        <label for="iban">IBAN</label>
+        <input id="iban" type="text" [(ngModel)]="bank.iban" name="iban" required />
       </div>
+
+      <div class="mb-3">
+        <label for="bic">BIC</label>
+        <input id="bic" type="text" [(ngModel)]="bank.bic" name="bic" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="bank_name">{{ "BANK.BANK_NAME" | translate }}</label>
+        <input id="bank_name" type="text" [(ngModel)]="bank.bank_name" name="bank_name" />
+      </div>
+
+      <div class="mb-3">
+        <label for="holder_name">{{ "BANK.HOLDER_NAME" | translate }}</label>
+        <input id="holder_name" type="text" [(ngModel)]="bank.holder_name" name="holder_name" />
+      </div>
+
+      <div class="mb-4">
+        <label for="country">{{ "BANK.COUNTRY" | translate }}</label>
+        <input id="country" type="text" [(ngModel)]="bank.country" name="country" />
+      </div>
+
+      <button type="submit" class="btn-submit">
+        {{ "BANK.SAVE" | translate }}
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- KPI Cards -->
+<div class="row kpi-section">
+  <!-- Total CA -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.TOTAL_GENERATED" | translate }}</h3>
+      <p class="finance-number">{{ totalRevenue | currency : 'EUR' }}</p>
+      <p class="finance-description">{{ "FINANCE.CA" | translate }}</p>
     </div>
   </div>
-</form>
+
+  <!-- Commission -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.COMMISSION_TAKEN" | translate }}</h3>
+      <p class="finance-number">{{ totalCommission | currency : 'EUR' }}</p>
+      <p class="finance-description">{{ "FINANCE.COMMISSIONS" | translate }}</p>
+    </div>
+  </div>
+
+  <!-- Progression -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.PROGRESS" | translate }}</h3>
+      <p class="finance-number text-success">+{{ evolution }}%</p>
+      <p class="finance-description">{{ "FINANCE.PROGRESSION" | translate }}</p>
+    </div>
+  </div>
+
+  <!-- KPI 4: Revenu net à verser -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.TOTAL_EARNINGS" | translate }}</h3>
+      <p class="finance-number">{{ totalEarnings | currency : 'EUR' }}</p>
+      <p class="finance-description">{{ "FINANCE.NET_TO_PAY" | translate }}</p>
+    </div>
+  </div>
+
+  <!-- KPI 5: Nb de prestations -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.TOTAL_BOOKINGS" | translate }}</h3>
+      <p class="finance-number">{{ totalBookings }}</p>
+      <p class="finance-description">{{ "FINANCE.SERVICES_COMPLETED" | translate }}</p>
+    </div>
+  </div>
+
+  <!-- KPI 6: Nb de prestations annulées -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.CANCELLED_BOOKINGS" | translate }}</h3>
+      <p class="finance-number text-danger">{{ cancelledBookings }}</p>
+      <p class="finance-description">{{ "FINANCE.SERVICES_CANCELLED" | translate }}</p>
+    </div>
+  </div>
+
+  <!-- KPI 7: Prix moyen -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.AVG_PRICE" | translate }}</h3>
+      <p class="finance-number">{{ avgPrice | currency : 'EUR' }}</p>
+      <p class="finance-description">{{ "FINANCE.PER_SERVICE" | translate }}</p>
+    </div>
+  </div>
+
+  <!-- KPI 8: Taux d’avis clients -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.REVIEW_RATIO" | translate }}</h3>
+      <p class="finance-number">{{ reviewRatio }}%</p>
+      <p class="finance-description">{{ "FINANCE.CLIENT_FEEDBACK" | translate }}</p>
+    </div>
+  </div>
+
+  <!-- KPI 9: Durée moyenne -->
+  <div class="col-md-4 col-sm-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.AVG_DURATION" | translate }}</h3>
+      <p class="finance-number">{{ avgDuration }} min</p>
+      <p class="finance-description">{{ "FINANCE.DURATION_PER_BOOKING" | translate }}</p>
+    </div>
+  </div>
+
+
+  <!-- KPI 10: Top prestations -->
+  <div class="col-12 mb-4">
+    <div class="finance-card">
+      <h3>{{ "FINANCE.TOP_PRODUCTS" | translate }}</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between" *ngFor="let item of topProducts">
+          <span>{{ item.product }}</span>
+          <strong>{{ item.total | currency : 'EUR' }}</strong>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

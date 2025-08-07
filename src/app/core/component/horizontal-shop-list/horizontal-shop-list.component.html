@@ -10,7 +10,7 @@
     <div #scrollContainerAds class="scrollable-shop-list" appDragScroll>
       <ng-container *ngFor="let item of displayItems">
         <!-- Shop -->
-        <div class="shop-card-wrapper track-card" *ngIf="item.type === 'shop'" [attr.data-pub-id]="item.data._id"
+        <div class="shop-card-wrapper track-card" [ngClass]="!pubActivated ? 'margin-left-50' : ''" *ngIf="item.type === 'shop'" [attr.data-pub-id]="item.data._id"
           data-type="shop">
           <app-round-shop-card [shop]="item.data" [me]="me" [promoVisible]="item.data.promo?.active"
             (loaded)="onShopLoaded(item.data._id)"></app-round-shop-card>

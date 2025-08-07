@@ -8,12 +8,12 @@
   <!-- Drawer latéral gauche -->
   <mat-drawer #drawer *ngIf="me" mode="over" class="drawer-content" (closedStart)="closeDrawer()">
     <div class="drawer-inner">
-      
+
       <!-- Bouton de fermeture -->
       <button class="close-button" (click)="drawer.close()">
         <mat-icon>close</mat-icon>
       </button>
-  
+
       <!-- Section profil -->
       <div class="profile-section">
         <img [src]="imgStorageUrl + 'default.jpeg'" class="profile-pic" alt="Profile Picture" />
@@ -24,35 +24,35 @@
           </a>
         </div>
       </div>
-  
+
       <!-- Menu principal -->
       <ul class="drawer-menu">
-        <li class="menu-hover" (click)="goTo('orders')">
+        <li class="menu-hover" [ngClass]="{'active': isActive('orders')}" (click)="goTo('orders')">
           <img class="side-icon" src="assets/images/icon/order.png" alt="Commandes passées" />
           <span class="side-item">{{ "SIDEBAR.ORDERS" | translate }}</span>
         </li>
-  
-        <li class="menu-hover" (click)="goTo('favorites')">
+
+        <li class="menu-hover" [ngClass]="{'active': isActive('favorites')}" (click)="goTo('favorites')">
           <img class="side-icon" src="assets/images/icon/favorite.png" alt="Favoris" />
           <span class="side-item">{{ "SIDEBAR.FAVORITES" | translate }}</span>
         </li>
-  
-        <li class="menu-hover" (click)="goTo('help')">
+
+        <li class="menu-hover" [ngClass]="{'active': isActive('help')}" (click)="goTo('help')">
           <img class="side-icon" src="assets/images/icon/help.png" alt="Aide" />
           <span class="side-item">{{ "SIDEBAR.HELP" | translate }}</span>
         </li>
-        <!--
-        <li class="menu-hover" (click)="goTo('fidelity')">
+
+        <li class="menu-hover" (click)="goTo('fidelity')" *ngIf="settings.fidelityActivated">
           <img class="side-icon" src="assets/images/icon/gift.png" alt="Programme de fidélité" />
           <span class="side-item">{{ "SIDEBAR.FIDELITY" | translate }}</span>
         </li>
-        <li class="menu-hover" (click)="goTo('prices')">
-          <img class="side-icon" src="assets/images/icon/prices.png" alt="Programme de fidélité" />
+
+        <li class="menu-hover" (click)="goTo('prices')" *ngIf="settings.multiShopsActivated">
+          <img class="side-icon" src="assets/images/icon/prices.png" alt="Abonnement Premium" />
           <span class="side-item">{{ "SIDEBAR.PRICES" | translate }}</span>
         </li>
-        -->
       </ul>
-  
+
       <!-- Footer du drawer -->
       <div class="drawer-footer">
         <div class="download-buttons">
@@ -63,16 +63,16 @@
             <img src="assets/images/app-store-badge.png" alt="App Store">
           </a>
         </div>
-  
+
         <!-- Menu secondaire -->
         <ul class="drawer-menu secondary">
-          <!--<li class="menu-hover" (click)="goTo('subscription')">
+          <li class="menu-hover" (click)="goTo('subscription')" *ngIf="settings.multiShopsActivated">
             <span class="side-item">{{ "SIDEBAR.MY_ABO" | translate }} : {{ me.abonnement }}</span>
-          </li>-->
+          </li>
           <li class="menu-hover" (click)="goTo('creation-shop')">
             <span class="side-item">{{ "SIDEBAR.YOUR_BEAUTY_SERVICES" | translate }}</span>
           </li>
-          <li class="menu-hover" (click)="goTo('creation-company')">
+          <li class="menu-hover" (click)="goTo('creation-company')" *ngIf="settings.companyActivated">
             <span class="side-item">{{ "SIDEBAR.YOUR_COMPANY" | translate }}</span>
           </li>
           <li class="menu-hover" (click)="logout()">
@@ -82,7 +82,7 @@
       </div>
     </div>
   </mat-drawer>
-  
+
 
   <!-- Contenu principal -->
   <mat-drawer-content>

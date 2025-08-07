@@ -1,49 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { environment } from 'src/environments/environment';
-
 @Component({
     selector: 'app-testimonial',
     templateUrl: './testimonial.component.html',
     styleUrls: ['./testimonial.component.scss'],
 })
 export class TestimonialComponent implements OnInit {
-    imgStorageUrl: string = environment.imgStorageUrl;
-    constructor() {}
+  imgStorageUrl = environment.imgStorageUrl;
 
-    ngOnInit() {}
+  sponsors = [
+    { name: 'LVMH', logo: 'sponsors/lvmh.png', url: 'https://www.lvmh.com/' },
+    { name: 'Dyson Beauty', logo: 'sponsors/dyson.png', url: 'https://www.dyson.fr' },
+    { name: 'Chanel', logo: 'sponsors/chanel.png', url: 'https://www.chanel.com/' },
+    { name: 'Sephora', logo: 'sponsors/sephora.png', url: 'https://www.sephora.fr/' },
+    { name: 'L’Oréal Pro', logo: 'sponsors/loreal.png', url: 'https://www.lorealprofessionnel.fr/' }
+  ];
 
-    // Testimonial Carousel
-    public testimonial = [
-        {
-            image: 'assets/images/1.png',
-            name: 'Mark jkcno',
-            designation: 'Designer',
-            description:
-                'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.Contrary to popular belief, Lorem Ipsum is not simply random text. ',
-        },
-        {
-            image: 'assets/images/1.png',
-            name: 'Adegoke Yusuff',
-            designation: 'Content Writer',
-            description:
-                'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.Contrary to popular belief, Lorem Ipsum is not simply random text.',
-        },
-        {
-            image: 'assets/images/1.png',
-            name: 'John Shipmen',
-            designation: 'Lead Developer',
-            description:
-                'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.Contrary to popular belief, Lorem Ipsum is not simply random text. ',
-        },
-    ];
+  constructor() {}
 
-    // Testimonial Carousel Options
-    public testimonialCarousel: OwlOptions = {
-        loop: true,
-        margin: 10,
-        nav: false,
-        dots: true,
-        items: 1,
-    };
+  ngOnInit(): void {}
 }

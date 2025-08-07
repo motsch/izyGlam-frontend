@@ -6,7 +6,7 @@
       <div class="col-xl-5 col-12 home-right">
         <div class="mobile-slid">
           <img *ngIf="!paramVideo" [src]="imgStorageUrl + 'intro.png'" alt="illustration" class="img-fluid" />
-        
+
           <div *ngIf="paramVideo" class="video-wrapper">
             <video #videoElementIntro autoplay muted playsinline loop>
               <source [src]="aPIimgStorageUrl + '/uploads/images/front/intro.mp4'" type="video/mp4" />
@@ -14,7 +14,7 @@
             </video>
           </div>
         </div>
-        
+
       </div>
 
       <!-- TEXTE RESPONSIVE (DUPLIQUÉ POUR MOBILE) -->
@@ -23,15 +23,13 @@
           <h1>
             {{ "HOMEPAGE.TITLERED" | translate }}
             <div class="main-title">
-              <span
-                class="animated-text"
-                *ngIf="currentProposition"
-                [@fadeInOut]
-                [attr.data-key]="currentKey"
-              >
-                {{ currentProposition | translate }}
-              </span>
+              <ng-container *ngIf="textVisible">
+                <span class="animated-text" [@slideFadeInOut] [attr.data-key]="currentKey">
+                  {{ currentProposition | translate }}
+                </span>
+              </ng-container>
             </div>
+
           </h1>
 
           <div class="search-container">
@@ -53,15 +51,13 @@
           <h1>
             {{ "HOMEPAGE.TITLERED" | translate }}
             <div class="main-title">
-              <span
-                class="animated-text"
-                *ngIf="currentProposition"
-                [@fadeInOut]
-                [attr.data-key]="currentKey"
-              >
-                {{ currentProposition | translate }}
-              </span>
+              <ng-container *ngIf="textVisible">
+                <span class="animated-text" [@slideFadeInOut] [attr.data-key]="currentKey">
+                  {{ currentProposition | translate }}
+                </span>
+              </ng-container>
             </div>
+
           </h1>
 
           <div class="search-container">

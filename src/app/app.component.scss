@@ -83,7 +83,10 @@ mat-drawer-content {
     color: #cc3366;
   }
 }
-
+.active {
+    background-color: #ffb8d7; // Hover rose clair
+    color: #cc3366;
+}
 .side-icon {
   width: 18px !important;
   height: auto;

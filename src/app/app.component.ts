@@ -13,6 +13,7 @@ import { GeoLocationService } from './core/services/geolocation.service';
 import { SharedService } from './core/services/shared.service';
 // import { MqttService } from './core/services/mqtt.service';
 import { MatDrawer } from '@angular/material/sidenav';
+import { AdminService } from './core/services/admin.service';
 
 @Component({
     selector: 'app-root',
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
     today: number = Date.now();
     drawerOpen = false;
     cartOpen = false;
+    settings:any = {};
     imgStorageUrl: string = environment.imgStorageUrl;
     aPIimgStorageUrl: string = environment.APIimgStorageUrl;
     backgroundImages = "";
@@ -39,6 +41,7 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
         private router: Router,
         public dialog: MatDialog,
         private cdr: ChangeDetectorRef,
+        private adminService: AdminService,
         // private mqttService: MqttService,
         private geoLocationService: GeoLocationService
     ) {
@@ -88,6 +91,9 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
                 console.log('[Header] Me rechargé depuis SessionService :', this.me);
             }
         });
+        this.adminService.getAdminSettings().subscribe((data) => {
+            this.settings = data;
+        });
         this.geoLocationService.checkAndRedirect(['SY', 'KP', 'RU', 'IR', 'GB', 'CN']);
         this.backgroundImages = this.aPIimgStorageUrl + 'uploads/images/creation/15/14.png';
 
@@ -108,6 +114,11 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
         */
     }
 
+
+    isActive(route: string): boolean {
+        return this.router.url.includes(route); // ou === `/orders` si besoin plus strict
+    }
+    
     getBackgroundStyle() {
         return {
             'background-image': `url(${this.backgroundImages})`

@@ -13,16 +13,19 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.scss'],
   animations: [
-    trigger('fadeInOut', [
+    trigger('slideFadeInOut', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(10px)' }),
-        animate('600ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+        style({ opacity: 0, transform: 'translateY(20px) scale(0.95)' }),
+        animate('500ms ease-out', style({ opacity: 1, transform: 'translateY(0) scale(1)' }))
       ]),
       transition(':leave', [
-        animate('600ms ease-in', style({ opacity: 0, transform: 'translateY(-10px)' }))
+        animate('500ms ease-in', style({ opacity: 0, transform: 'translateY(-20px) scale(0.95)' }))
       ])
     ])
   ]
+
+
+
 })
 export class IntroComponent implements OnInit {
   @ViewChild('videoElementIntro') videoElement!: ElementRef<HTMLVideoElement>;
@@ -53,6 +56,7 @@ export class IntroComponent implements OnInit {
   propositionIndex: number = 0;
   currentKey = 0;
   playbackRate: number = 0.9; // Vitesse de lecture
+  textVisible = true;
 
   streetError = false;
   locationError = false;
@@ -94,17 +98,17 @@ export class IntroComponent implements OnInit {
 
   }
 
-  
+
 
   ngAfterViewInit(): void {
     if (this.paramVideo) {
       const video = this.videoElement.nativeElement;
-  
+
       // Configurer la vitesse de lecture
       video.playbackRate = this.playbackRate;
       // Assurez-vous que la vidéo est en mode muet
       video.muted = true;
-  
+
       // Tenter de lire la vidéo automatiquement
       video.play()
         .then(() => {
@@ -126,11 +130,20 @@ export class IntroComponent implements OnInit {
 
   startRotatingPropositions(): void {
     setInterval(() => {
-      this.propositionIndex = (this.propositionIndex + 1) % this.propositions.length;
-      this.currentProposition = this.propositions[this.propositionIndex];
-      this.currentKey++;
-    }, 1200);
+      // Masquer le texte actuel (déclenche l'animation :leave)
+      this.textVisible = false;
+
+      // Attendre que l'animation :leave se termine (ex: 500ms)
+      setTimeout(() => {
+        this.propositionIndex = (this.propositionIndex + 1) % this.propositions.length;
+        this.currentProposition = this.propositions[this.propositionIndex];
+        this.currentKey++; // pas indispensable ici mais bon pour debug
+        this.textVisible = true; // relancer l'affichage (déclenche l'animation :enter)
+      }, 500);
+    }, 3000); // intervalle plus lent pour laisser respirer l’anim
   }
+
+
 
   onButtonClick(): void {
     this.router.navigate(['/sign-in']);

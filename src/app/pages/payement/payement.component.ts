@@ -237,6 +237,9 @@ export class PayementComponent implements OnInit {
       this.selectedCardId = this.defaultCard?.id || (this.cards.length > 0 ? this.cards[0].id : null);
 
       console.log('Cartes chargées :', this.cards);
+      if (!this.defaultCard && this.cards.length > 0) {
+        this.defaultCard = this.cards[0];
+      }
       console.log('Carte par défaut :', this.defaultCard);
     } catch (error) {
       console.error('Erreur lors du chargement des cartes :', error);
@@ -302,7 +305,7 @@ export class PayementComponent implements OnInit {
         const { clientSecret } = response;
 
         // Vérifier si une carte par défaut est disponible
-        if (!this.defaultCard) {
+        if (!this.selectedCardId) {
           alert('Veuillez ajouter ou sélectionner une carte pour effectuer le paiement.');
           return;
         }
@@ -310,7 +313,7 @@ export class PayementComponent implements OnInit {
         // Confirmer le paiement avec Stripe
         const stripe = await loadStripe(environment.stripePublicKey);
         const { error, paymentIntent } = await stripe!.confirmCardPayment(clientSecret, {
-          payment_method: this.defaultCard.id,
+          payment_method: this.selectedCardId,
         });
 
         if (error) {
@@ -319,7 +322,10 @@ export class PayementComponent implements OnInit {
         } else if (paymentIntent.status === 'succeeded') {
           console.log('Paiement réussi !');
           this.bill.paymentIntentId = paymentIntent.id;
-          this.createSubscription();
+          // this.createSubscription();
+
+          // Tu peux stocker la souscription dans le bill si besoin
+          this.saveBill(); // ⬅️ Continue le flux habituel ici
         }
       },
       (error) => {
@@ -390,18 +396,8 @@ export class PayementComponent implements OnInit {
     this.bookingService.create(this.bill).subscribe({
       next: (bookingResponse: any) => {
         console.log("Booking created:", bookingResponse);
-        // Une fois le booking créé, enregistrer le paiement initial via le FinancialService
-        this.financialService.createInitialPayment(bookingResponse).subscribe({
-          next: (financialResponse: any) => {
-            console.log("Initial payment recorded:", financialResponse);
-            // Rediriger ou notifier l'utilisateur
-            this.router.navigate(['home']);
-          },
-          error: (financialError: any) => {
-            console.error("Erreur lors de l'enregistrement du paiement initial :", financialError);
-            // Optionnel : notifier l'utilisateur et/ou annuler la commande
-          }
-        });
+        // Rediriger ou notifier l'utilisateur
+        this.router.navigate(['home']);
       },
       error: (error: any) => {
         console.error("Erreur lors de la création de la réservation", error);

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../services/booking.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'app-finance',
@@ -12,12 +13,29 @@ export class FinanceComponent implements OnInit {
     shopCopyData: any = {};
     @Input() me: any = {};
     transactions: any[] = [];
-    totalGenerated: number = 0; // Exemple de chiffre d'affaires total généré
-    commission: number = 0; // Exemple de commission prélevée
-    netToPay: number = 0; // Montant restant après déduction de la commission
     withdrawalForm: FormGroup;
+    bankModalVisible = false;
 
-    constructor(private fb: FormBuilder, private bookingService: BookingService) {
+
+    totalRevenue = 0;
+    totalCommission = 0;
+    evolution = 0;
+    totalEarnings = 0;
+    totalBookings = 0;
+    cancelledBookings = 0;
+    avgPrice = 0;
+    reviewRatio = 0;
+    topProducts:any[] = [];
+    avgDuration = 0;
+
+    bank = {
+        iban: '',
+        bic: '',
+        bank_name: '',
+        holder_name: '',
+        country: ''
+    };
+    constructor(private fb: FormBuilder, private bookingService: BookingService, private userService: UserService) {
         this.withdrawalForm = this.fb.group({
             amount: ['', [Validators.required, Validators.min(1)]],
             accountDetails: ['', Validators.required],
@@ -28,33 +46,66 @@ export class FinanceComponent implements OnInit {
         localStorage.setItem("menu-param", 'management');
         console.log('myShopData :', this.myShopData);
         // Tu peux initialiser tes données ici si nécessaire
+        this.bank = this.me.bank;
+
+        this.bookingService.getDashboardStats(this.myShopData._id).subscribe((data) => {
+            console.log('Dashboard stats:', data);
+            this.totalRevenue = data.totalRevenue;
+            this.totalCommission = data.totalCommission;
+            this.evolution = data.evolution;
+            this.totalEarnings = data.totalEarnings;
+            this.totalBookings = data.totalBookings;
+            this.cancelledBookings = data.cancelledBookings;
+            this.avgPrice = data.avgPrice;
+            this.reviewRatio = data.reviewRatio;
+            this.topProducts = data.topProducts;
+            this.avgDuration = data.avgDuration;
+        });
+
     }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['myShopData'] && changes['myShopData'].currentValue) {
             this.shopCopyData = { ...this.myShopData }; // Met à jour la boutique affichée
-            console.log('myShopData a été mis à jour :', this.shopCopyData);
-            this.bookingService.getBookingsByShop(this.shopCopyData._id).subscribe({
-                next: (data: any) => {
-                    console.log("Bookings by shop :" + JSON.stringify(data));
-                    this.commission = 0;
-                    this.totalGenerated = 0;
-                    this.netToPay = 0;
-                    for(let elem of data) {
-                        elem.date = new Date(elem.date);
-                        this.totalGenerated += parseFloat(elem.price);
-                        this.commission += parseFloat(elem.commission);
-                    }
-                    this.netToPay = this.totalGenerated - this.commission;
-                    this.transactions = data;
-                },
-                error: (error: any) => {
-                    console.log(error);
-                    this.commission = 0;
-                    this.totalGenerated = 0;
-                    this.netToPay = 0;
-                },
-            });
+            
+
+        this.bookingService.getDashboardStats(this.myShopData._id).subscribe((data) => {
+            console.log('Dashboard stats:', data);
+            this.totalRevenue = data.totalRevenue;
+            this.totalCommission = data.totalCommission;
+            this.evolution = data.evolution;
+            this.totalEarnings = data.totalEarnings;
+            this.totalBookings = data.totalBookings;
+            this.cancelledBookings = data.cancelledBookings;
+            this.avgPrice = data.avgPrice;
+            this.reviewRatio = data.reviewRatio;
+            this.topProducts = data.topProducts;
+            this.avgDuration = data.avgDuration;
+        });
         }
+    }
+    openBankModal() {
+        this.bankModalVisible = true;
+    }
+
+    closeBankModal() {
+        this.bankModalVisible = false;
+    }
+
+    saveBankInfo() {
+        // 🔒 Appel backend à ajouter ici
+        console.log('Bank info:', this.bank);
+        this.me.bank = this.bank;
+        // Exemple de requête HTTP (remplace par ton UserService ou HttpClient)
+        this.userService.update(this.me).subscribe({
+            next: () => {
+                // toast de succès
+                this.closeBankModal();
+            },
+            error: (err: any) => {
+                // gestion d'erreur
+                console.error(err);
+            }
+        });
     }
 }

@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 import { TransactionService } from '../../services/transaction.service';
 import { StripeService } from '../../services/stripe.service';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-order-card',
   standalone: false,
@@ -199,14 +198,14 @@ export class OrderCardComponent {
   }
   formatPrice(price: any): string {
     const numericPrice = parseFloat(price);
-  
+
     if (isNaN(numericPrice)) {
       return '0.00 €';
     }
-  
+
     return numericPrice.toFixed(2);
   }
-  
+
 
   cancelBooking(order: any) {
     console.log('Annulation de la commande :', order);

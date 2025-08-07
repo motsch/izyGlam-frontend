@@ -18,32 +18,49 @@ h2 {
   font-size: 20px;
   margin-bottom: 15px;
 }
+.kpi-section {
+  padding-top: 20px;
+}
+
 .finance-card {
-  background-color: #f7f7f7;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 24px;
+  padding: 32px 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
 }
 
 .finance-card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #ff6b6b;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e91e63;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .finance-number {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 28px;
+  font-weight: 700;
   color: #333;
+  margin-bottom: 4px;
 }
 
 .finance-description {
-  font-size: 14px;
-  color: #666;
+  font-size: 13px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
+
+
+
 
 .form-group {
   margin-bottom: 15px;
@@ -57,4 +74,120 @@ h2 {
 
 .table {
   margin-top: 20px;
+}
+
+
+
+.list-group-item {
+  border: none;
+  padding: 12px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); // doux rose transparent
+  backdrop-filter: blur(2px);
+  z-index: 1040;
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 480px;
+  background: #fff;
+  margin-top: 30px;
+  border-radius: 24px;
+  padding: 32px;
+  z-index: 1050;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #000;
+}
+
+.modal-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #e91e63 !important;
+  margin-bottom: 24px;
+}
+
+.modal-content label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background-color: #fafafa;
+  transition: border 0.3s ease;
+}
+
+.modal-content input:focus {
+  border-color: #e91e63;
+  outline: none;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #333;
+}
+
+.btn-create-service {
+  background: linear-gradient(to right, #f48fb1, #f06292);
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 24px;
+  box-shadow: 0 4px 10px rgba(244, 143, 177, 0.25);
+  transition: all 0.3s ease;
+}
+
+.btn-create-service:hover {
+  background: linear-gradient(to right, #ec407a, #f06292);
+  box-shadow: 0 6px 16px rgba(244, 143, 177, 0.35);
 }

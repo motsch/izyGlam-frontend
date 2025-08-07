@@ -1,9 +1,12 @@
 <div class="orders-content">
   <!-- Sélecteur de type de commande -->
   <div class="order-type-selector">
-    <button [class.active]="selectedOrderType === 'upcoming'" (click)="selectedOrderType = 'upcoming'">📅 {{"CALENDAR.COMING" | translate }}</button>
-    <button [class.active]="selectedOrderType === 'past'" (click)="selectedOrderType = 'past'">✅ {{"CALENDAR.PAST" | translate }}</button>
-    <button [class.active]="selectedOrderType === 'cancelled'" (click)="selectedOrderType = 'cancelled'">❌ {{"CALENDAR.CANCELLED" | translate }}</button>
+    <button [class.active]="selectedOrderType === 'upcoming'" (click)="selectedOrderType = 'upcoming'">📅
+      {{"CALENDAR.COMING" | translate }}</button>
+    <button [class.active]="selectedOrderType === 'past'" (click)="selectedOrderType = 'past'">✅ {{"CALENDAR.PAST" |
+      translate }}</button>
+    <button [class.active]="selectedOrderType === 'cancelled'" (click)="selectedOrderType = 'cancelled'">❌
+      {{"CALENDAR.CANCELLED" | translate }}</button>
   </div>
 
   <!-- SECTION À VENIR -->
@@ -13,15 +16,9 @@
     </div>
 
     <ng-container *ngFor="let order of upcomingOrders">
-      <app-order-card
-        *ngIf="order.status !== 'deleted'"
-        [order]="order"
-        [selectionUser]="selectionUser"
-        [imageLoaded]="imageLoaded[order._id]"
-        [availableActions]="getAvailableActions(order)"
-        (onDownloadInvoice)="downloadInvoice(order)"
-        (onUpdateNeeded)="onUpdateAsked()"
-      ></app-order-card>
+      <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
+        [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
+        (onDownloadInvoice)="downloadInvoice(order)" (onUpdateNeeded)="onUpdateAsked()"></app-order-card>
     </ng-container>
   </div>
 
@@ -32,16 +29,10 @@
     </div>
 
     <ng-container *ngFor="let order of pastOrders">
-      <app-order-card
-        *ngIf="order.status !== 'deleted'"
-        [order]="order"
-        [selectionUser]="selectionUser"
-        [imageLoaded]="imageLoaded[order._id]"
-        [availableActions]="getAvailableActions(order)"
-        (onDownloadInvoice)="downloadInvoice(order)"
-        (onUpdateNeeded)="onUpdateAsked()"
-        (modalReview)="openModal(order)"
-      ></app-order-card>
+      <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
+        [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
+        (onDownloadInvoice)="downloadInvoice(order)" (onUpdateNeeded)="onUpdateAsked()"
+        (modalReview)="openModal(order)"></app-order-card>
     </ng-container>
   </div>
 
@@ -52,25 +43,14 @@
     </div>
 
     <ng-container *ngFor="let order of cancelledOrders">
-      <app-order-card
-        *ngIf="order.status !== 'deleted'"
-        [order]="order"
-        [selectionUser]="selectionUser"
-        [imageLoaded]="imageLoaded[order._id]"
-        [availableActions]="getAvailableActions(order)"
-        (onUpdateNeeded)="onUpdateAsked()"
-      ></app-order-card>
+      <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
+        [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
+        (onUpdateNeeded)="onUpdateAsked()"></app-order-card>
     </ng-container>
   </div>
 
   <div style="height: 80px;"></div>
 </div>
 
-
-
-
-<app-review-modal
-  *ngIf="showReviewModal"
-  [booking]="selectedBooking"
-  (closeModal)="closeReviewModal()">
+<app-review-modal *ngIf="showReviewModal" [booking]="selectedBooking" (closeModal)="closeReviewModal()">
 </app-review-modal>

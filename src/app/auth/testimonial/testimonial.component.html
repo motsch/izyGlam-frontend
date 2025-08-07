@@ -1,35 +1,16 @@
-<!--testimonail page -->
-<section class="testimonial" id="testimonial">
-  <div class="animation-circle-inverse">
-    <i></i>
-    <i></i>
-    <i></i>
-  </div>
-  <div class="container custom-container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="testimonil-box">
-          <!-- If images array is dynamically changing pass this array to [items] input -->
-          <owl-carousel-o class="testimonial-slider" [options]="testimonialCarousel">
-            <ng-container *ngFor="let testimonials of testimonial">
-              <ng-template carouselSlide>
-                <div class="item testi-profile">
-                  <div class="d-flex">
-                    <div class="animated-circle">
-                      <img [src]="testimonials.image" alt="1" class="img-fluid align-self-center" />
-                    </div>
-                    <div class="flex-grow-1">
-                      <h3 class="mt-0 sub-title">{{ testimonials.name }} <img [src]="imgStorageUrl+'star5.png'"></h3>
-                      <p>{{ testimonials.description }}</p>
-                    </div>
-                  </div>
-                </div>
-              </ng-template>
-            </ng-container>
-          </owl-carousel-o>
-        </div>
-      </div>
+<section class="sponsor-section">
+  <div class="container">
+    <h2 class="title">Ils nous font confiance</h2>
+    <div class="sponsor-logos">
+      <a
+        *ngFor="let sponsor of sponsors"
+        [href]="sponsor.url"
+        class="sponsor-logo"
+        target="_blank"
+        rel="noopener"
+      >
+        <img [src]="imgStorageUrl + sponsor.logo" [alt]="sponsor.name" />
+      </a>
     </div>
   </div>
 </section>
-<!-- end testimonial section -->

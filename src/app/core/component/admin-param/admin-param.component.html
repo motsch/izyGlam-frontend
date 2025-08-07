@@ -59,12 +59,60 @@
     </div>
 
     <div class="form-group">
-      <label for="taxRate">Activer les pubs (Vrai ou Faux)</label>
+      <label for="taxRate">Activer les pubs</label>
       <label class="switch">
             <input type="checkbox" [(ngModel)]="settings.pubActivated" name="pubsActivated" />
             <span class="slider round"></span>
           </label>
       <input id="taxRate"  [(ngModel)]="settings.pubActivated" disabled name="pubsActivated2" />
+      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
+        <small class="error">Valeur obligatoire</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="taxRate">Activer le commerce avec les entreprises</label>
+      <label class="switch">
+            <input type="checkbox" [(ngModel)]="settings.companyActivated" name="companyActivated" />
+            <span class="slider round"></span>
+          </label>
+      <input id="taxRate"  [(ngModel)]="settings.companyActivated" disabled name="companyActivated2" />
+      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
+        <small class="error">Valeur obligatoire</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="taxRate">Activer la fidélisation</label>
+      <label class="switch">
+            <input type="checkbox" [(ngModel)]="settings.fidelityActivated" name="fidelityActivated" />
+            <span class="slider round"></span>
+          </label>
+      <input id="taxRate"  [(ngModel)]="settings.fidelityActivated" disabled name="fidelityActivated2" />
+      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
+        <small class="error">Valeur obligatoire</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="taxRate">Activer le multi-boutique</label>
+      <label class="switch">
+            <input type="checkbox" [(ngModel)]="settings.multiShopsActivated" name="multiShopsActivated" />
+            <span class="slider round"></span>
+          </label>
+      <input id="taxRate"  [(ngModel)]="settings.multiShopsActivated" disabled name="multiShopsActivated2" />
+      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
+        <small class="error">Valeur obligatoire</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="taxRate">Activer la partie sponsors sur la landing page</label>
+      <label class="switch">
+            <input type="checkbox" [(ngModel)]="settings.sponsorsActivated" name="sponsorsActivated" />
+            <span class="slider round"></span>
+          </label>
+      <input id="taxRate"  [(ngModel)]="settings.sponsorsActivated" disabled name="sponsorsActivated2" />
       <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
         <small class="error">Valeur obligatoire</small>
       </div>

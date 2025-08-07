@@ -9,20 +9,20 @@
         <li [ngClass]="{ active: isSectionActive('security') }" (click)="setActiveSection('security')">
           {{ "PROFILE_MENU.SECURITY" | translate }}
         </li>
-        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'" [ngClass]="{ active: isSectionActive('calendar') }"
-          (click)="setActiveSection('calendar')">
+        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
+          [ngClass]="{ active: isSectionActive('calendar') }" (click)="setActiveSection('calendar')">
           {{ "PROFILE_MENU.CALENDAR" | translate }}
         </li>
-        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'" [ngClass]="{ active: isSectionActive('dashboard') }"
-          (click)="setActiveSection('dashboard')">
+        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
+          [ngClass]="{ active: isSectionActive('dashboard') }" (click)="setActiveSection('dashboard')">
           {{ "PROFILE_MENU.DASHBOARD" | translate }}
         </li>
         <li *ngIf="me.role === 'entreprise'" [ngClass]="{ active: isSectionActive('company') }"
           (click)="setActiveSection('company')">
           {{ "PROFILE_MENU.COMPANY" | translate }}
         </li>
-        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'" [ngClass]="{ active: isSectionActive('management') }"
-          (click)="setActiveSection('management')">
+        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
+          [ngClass]="{ active: isSectionActive('management') }" (click)="setActiveSection('management')">
           {{ "PROFILE_MENU.SHOP" | translate }}
         </li>
         <li [ngClass]="{ active: isSectionActive('admin') }" (click)="setActiveSection('admin')">
@@ -90,7 +90,8 @@
           <p class="page-subtitle">{{ "PROFILE_MENU.SHOP_SUBTITLE" | translate }}</p>
         </div>
         <!-- SECTION BOUTONS SHOP -->
-        <div class="row justify-content-between align-items-center g-3 flex-wrap shop-selector-wrapper" *ngIf="me.role === 'boss'">
+        <div class="row justify-content-between align-items-center g-3 flex-wrap shop-selector-wrapper"
+          *ngIf="me.role === 'boss'">
           <div class="col-12 col-md-8">
             <div class="d-flex flex-column flex-sm-row align-items-center gap-2">
               <div class="flex-grow-1 w-100">
@@ -128,6 +129,9 @@
           </div>
         </div>
         <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
+          <mat-tab label="Suivi financier">
+            <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
+          </mat-tab>
           <mat-tab label="Informations générales" color="primary">
             <app-shop-management *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"
               (shopUpdated)="onShopUpdated($event)"></app-shop-management>
@@ -142,9 +146,6 @@
           <mat-tab label="Galerie photos">
             <app-shop-photo-gallery *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"
               (shopUpdated)="onShopUpdated($event)"></app-shop-photo-gallery>
-          </mat-tab>
-          <mat-tab label="Suivi financier">
-            <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
           </mat-tab>
         </mat-tab-group>
       </div>

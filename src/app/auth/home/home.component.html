@@ -2,9 +2,9 @@
 <app-intro></app-intro>
 <app-how-it-work></app-how-it-work>
 <app-about></app-about>
-<app-feature></app-feature>
+<app-feature *ngIf="settings.companyActivated"></app-feature>
 <app-avis-users></app-avis-users>
-<!--<app-testimonial></app-testimonial>-->
+<app-testimonial *ngIf="settings.sponsorsActivated"></app-testimonial>
 <!--<app-faq></app-faq>-->
 <app-download></app-download>
 <!--<app-contact-us></app-contact-us>-->

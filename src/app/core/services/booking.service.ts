@@ -7,19 +7,19 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class BookingService {
-    constructor(private http: HttpClient) {}
-  
+    constructor(private http: HttpClient) { }
+
     getCACount() {
         return this.http.get<number>(environment.apiUrl + 'ca-count-all');
     }
     // Récupérer les créneaux disponibles pour un service dans une boutique
     getAvailableTimeSlots(shopId: string, serviceId: string): Observable<any> {
-      return this.http.get(`${environment.apiUrl}available-slots/${shopId}/services/${serviceId}`);
+        return this.http.get(`${environment.apiUrl}available-slots/${shopId}/services/${serviceId}`);
     }
 
     // Récupérer les réservations d'une boutique
     getBookingsByShop(shopId: string): Observable<any> {
-      return this.http.get(`${environment.apiUrl}booking-by-shop/${shopId}`);
+        return this.http.get(`${environment.apiUrl}booking-by-shop/${shopId}`);
     }
 
     /**
@@ -82,18 +82,27 @@ export class BookingService {
     }
 
 
-  // Méthode pour mettre à jour le statut d'une commande
-  updateBookingStatus(bookingId: string, status: string): Observable<any> {
-    return this.http.patch<any>(`${environment.apiUrl}booking-update-status/${bookingId}`, { status });
-  }
+    // Méthode pour mettre à jour le statut d'une commande
+    updateBookingStatus(bookingId: string, status: string): Observable<any> {
+        return this.http.patch<any>(`${environment.apiUrl}booking-update-status/${bookingId}`, { status });
+    }
 
-  /**
-   * Confirmer le code d'une booking
-   * @param bookingId (ID de la booking)
-   * @param code (code à vérifier)
-   * @returns Observable<{ confirmed: boolean }>
+    /**
+     * Confirmer le code d'une booking
+     * @param bookingId (ID de la booking)
+     * @param code (code à vérifier)
+     * @returns Observable<{ confirmed: boolean }>
+     */
+    confirmBookingCode(bookingId: string, code: string): Observable<{ confirmed: boolean }> {
+        return this.http.post<{ confirmed: boolean }>(`${environment.apiUrl}bookings-confirm-code`, { bookingId, code });
+    }
+
+    /**
+   * Récupérer les statistiques du dashboard pour un salon donné
+   * @param shopId (ID de la boutique)
    */
-  confirmBookingCode(bookingId: string, code: string): Observable<{ confirmed: boolean }> {
-      return this.http.post<{ confirmed: boolean }>(`${environment.apiUrl}bookings-confirm-code`, { bookingId, code });
-  }
+    getDashboardStats(shopId: string): Observable<any> {
+        return this.http.get<any>(`${environment.apiUrl}booking-dashboard/${shopId}`);
+    }
+
 }
