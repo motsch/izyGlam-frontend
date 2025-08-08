@@ -7,7 +7,7 @@
     </div>
     <div class="row test66">
       <!-- Utilisation de 'row' pour démarrer une grille -->
-      <app-round-shop-card *ngFor="let item of shops" [shop]="item" [promoVisible]="false"
+      <app-round-shop-card *ngFor="let item of shops" [shop]="item" [me]="currentUser" [promoVisible]="false"
         class="card pointer"></app-round-shop-card>
       <!-- Chaque carte prendra toute la largeur sur les très petits écrans, la moitié de la largeur sur les petits écrans, un quart sur les moyens et un tiers sur les grands écrans -->
     </div>

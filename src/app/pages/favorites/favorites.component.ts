@@ -17,6 +17,7 @@ export class FavoritesComponent implements OnInit {
   filteredItems: any[] = [];
   shops: any[] = []; // Tableau pour stocker les informations des boutiques récupérées de l'API
   currentUser: any = {};
+  me:any = {};
   constructor(
       private router: Router,
       private shopService: ShopService,
