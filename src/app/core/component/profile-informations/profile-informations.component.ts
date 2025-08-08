@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { UserService } from '../../services/user.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-profile-informations',
@@ -20,7 +21,8 @@ export class ProfileInformationsComponent implements OnInit, OnChanges {
     user: any = {};
     userCopy: any = {};
 
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService,
+            private translate: TranslateService) {}
 
     ngOnInit(): void {
         localStorage.setItem("menu-param", 'account-info')
@@ -53,7 +55,7 @@ export class ProfileInformationsComponent implements OnInit, OnChanges {
             },
             error: (updateError: any) => {
                 console.error('Erreur lors de la mise à jour du mot de passe:', updateError);
-                this.userChangeError = 'Une erreur est survenue lors de la mise à jour du mot de passe.';
+                this.userChangeError = this.translate.instant('PROFILE.UPDATE_ERROR');
                 this.handleErrorClearance();
             }
         });

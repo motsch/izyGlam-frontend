@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class ShopEmployeesComponent implements OnInit {
   feedbackMessage = '';
   isSubmitting = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+          private translate: TranslateService) { }
 
   ngOnInit() {
     this.fetchEmployees();
@@ -23,7 +25,7 @@ export class ShopEmployeesComponent implements OnInit {
 
 addEmployee() {
   if (!this.newEmployee.email || !this.newEmployee.firstname || !this.newEmployee.lastname) {
-    this.feedbackMessage = "Tous les champs sont obligatoires.";
+    this.feedbackMessage = this.translate.instant('EMPLOYEES.HAVE_TO');
     return;
   }
 
@@ -40,11 +42,11 @@ addEmployee() {
     next: (createdUser: any) => {
       this.employees.push(createdUser.employee);
       this.newEmployee = { email: '', firstname: '', lastname: '' };
-      this.feedbackMessage = "Employé ajouté avec succès.";
+      this.feedbackMessage = this.translate.instant('EMPLOYEES.EMPLOYEE_OK');
       this.isSubmitting = false;
     },
     error: (err) => {
-      this.feedbackMessage = err?.error?.message || "Erreur lors de l'ajout de l'employé.";
+      this.feedbackMessage = err?.error?.message || this.translate.instant('EMPLOYEES.ADD_EMPLOYEE_ERROR');
       this.isSubmitting = false;
     }
   });

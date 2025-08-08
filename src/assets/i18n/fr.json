@@ -24,7 +24,28 @@
     "LOADING": "Loading"
   },
   "SPONSORS": {
-    "TITLE": "Nos Sponsors"
+    "TITLE": "Nos Sponsors",
+    "SPONSORISED": "Sponsorisée"
+  },
+  "TABS": {
+    "FINANCE": "Suivi financier",
+    "GENERAL_INFO": "Informations générales",
+    "EMPLOYEES": "Gestions des employés",
+    "SERVICES": "Gestion des prestations",
+    "PHOTOS": "Galerie photos",
+    "STATS": "Statistiques",
+    "PARAM": "Paramétrage",
+    "SHOPS": "Les boutiques",
+    "USERS": "Les utilisateurs",
+    "MESSAGE": "Messagerie"
+  },
+  "CARD": {
+    "ADD": "Ajouter la carte",
+    "NO_IMAGE": "Aucune image dans la galerie.",
+    "SALON": "Salon mis à jour avec succès",
+    "ERROR1": "Erreur lors de la mise à jour du salon",
+    "ERROR2": "Erreur lors de la mise à jour de la photo",
+    "UPDATE": "Mise à jour du salon avec succès"
   },
   "ORDER_CARD": {
     "FINISHED": "Terminée",
@@ -43,6 +64,7 @@
     "DELETED": "Supprimer",
     "AVIS": "Avis",
     "SUPPORT": "Support",
+    "CODE": "Code de confirmation",
     "CODE_A_DONNER": "Code à donner au prestataire",
     "PRESTA_ABSENT": "Prestataire absent"
   },
@@ -190,7 +212,8 @@
     "ADDRESS": "Adresse courriel",
     "CHANGE_USER": "Modifier l'utilisateur",
     "CANCEL": "Annuler",
-    "SUCCESS": "Profil modifié avec succès"
+    "SUCCESS": "Profil modifié avec succès",
+    "UPDATE_ERROR": "Une erreur est survenue lors de la mise à jour du mot de passe."
   },
   "SECURITY": {
     "CHANGE_PASSWORD_TITLE": "Changer de mot de passe",
@@ -255,6 +278,7 @@
     "RESERVES": "Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. En cas de modifications importantes, nous vous en informerons par email. Nous vous encourageons à consulter régulièrement cette page pour être au courant des mises à jour."
   },
   "PAYEMENT": {
+    "YOU": "Vous",
     "HEADER_TITLE": "Paiement",
     "SERVICE_TITLE": "Service",
     "SERVICE_NOTE": "Note:",
@@ -286,6 +310,9 @@
     "DATE": "Date",
     "HOUR": "Heure",
     "PRESTA": "Prestation",
+    "EXPIRE": "Expire",
+    "DEFAULT": "Par défaut",
+    "NOCARD": "Aucune carte enregistrée",
     "WITH": "Avec",
     "TOTAL": "Total à payer",
     "ANNULER": "ANNULER",
@@ -295,7 +322,9 @@
     "ADRESSE": "Adresse",
     "LEGAL_TEXT_1": "En cliquant sur le bouton pour passer votre commande, vous acceptez le Contrat sur les services de livraison avec Uber Eats France SAS (ROS 841 983 828).",
     "LEGAL_TEXT_2": "Vous renoncez pour rappel à votre droit de rétractation ayant pour objet les services de livraison. Vous avez la possibilité de recourir à un médiateur de la consommation ici.",
-    "LEGAL_TEXT_3": "Si vous n'êtes pas là lors de l’arrivée du coursier, ce dernier déposera votre commande devant la porte. Lorsque vous passez une commande, vous acceptez d’en assumer l’entière responsabilité une fois celle-ci livrée. En votre absence, les commandes contenant de l’alcool ou d’autres articles faisant l’objet de restrictions seront directement retournées à l’établissement."
+    "LEGAL_TEXT_3": "Si vous n'êtes pas là lors de l’arrivée du coursier, ce dernier déposera votre commande devant la porte. Lorsque vous passez une commande, vous acceptez d’en assumer l’entière responsabilité une fois celle-ci livrée. En votre absence, les commandes contenant de l’alcool ou d’autres articles faisant l’objet de restrictions seront directement retournées à l’établissement.",
+    "CLOSE_FORM": "Fermer le formulaire",
+    "ADD_CARD": "Ajouter une carte"
   },
   "CREATION_SHOP_STEPS": {
     "TITLE": "izyGlam pour les indépendants",
@@ -312,6 +341,17 @@
       "TEXT": "Vous êtes averti en avance des réservations à venir et on vous guide pour aller chez chaque client."
     }
   },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Créditer le compte de l'entreprise",
+    "SOLDE": "Solde actuel",
+    "CREDIT": "Montant à créditer",
+    "COMPANY": "Créditer le compte de l'entreprise",
+    "DEPENSE": "Suivi des dépenses",
+    "DATE": "Date",
+    "COUNT": "Montant",
+    "EMPLOYEE": "Employé",
+    "DESCRIPTION": "Description"
+  },
   "CREATION_SHOP": {
     "ALREDAY_SHOP": "Vous avez déjà un compte partenaire ou d'entreprise !",
     "NOT_CONNECTED": "Veuillez-vous connecter pour enregistrer un salon",
@@ -321,6 +361,7 @@
     "ADDRESS": "Adresse de votre entreprise",
     "STREET": "Rue",
     "CITY": "Ville",
+    "CODE_POSTAL_POSSIBLE": "Codes postaux desservis",
     "CODE_POSTAL": "Code Postal",
     "COUNTRY": "Pays",
     "ADDRESSPLACEHOLDER": "123, rue Principale",
@@ -347,6 +388,26 @@
     "ERROR6": "L'e-mail est obligatoire.",
     "ERROR7": "Le numéro de téléphone portable est obligatoire.",
     "ERROR8": "Vous devez accepter de recevoir des messages sur WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Modifier l’adresse",
+    "FIND_SHOP": "Rechercher une boutique",
+    "CATEGORIES": "Catégories",
+    "OFFRE": "Offres du moment",
+    "DISCOVER": "À découvrir",
+    "APPRECIATE": "Les plus appréciés",
+    "SMART": "Les plans malins",
+    "TOP10": "Top10 de la semaine",
+    "SEARCH_RESULT": "Résultats de recherche",
+    "NOT_AVAILABLE": "Pas encore disponible à cette adresse",
+    "NEW_ADDRESS": "Ajouter une nouvelle adresse",
+    "CHOOSE_ADDRESS": "Choisis une adresse",
+    "CHOOSE_COUNTRY": "Choisir un pays",
+    "CHOOSE_CITY": "Choisir une ville",
+    "CHOOSE_ARRONDISSEMENT": "Choisir un arrondissement",
+    "CANCEL": "Annuler",
+    "SAVE": "Enregistrer",
+    "CLOSE": "Fermer"
   },
   "ADMIN_SHOP": {
     "NAME": "Nom",
@@ -559,6 +620,25 @@
     "CHANGE": "Modifier",
     "CLOSE": "Fermer"
   },
+  "ADMIN_PARAM": {
+    "TITLE": "Paramètres de la plateforme",
+    "COMMISSION": "Taux de commission (%)",
+    "0to100": "Valeur entre 0 et 100 obligatoire",
+    "SERVICE": "Frais de service (€)",
+    "WEEKS": "Nombre de semaines affichées",
+    "SUP0": "Valeur supérieure à 0 obligatoire",
+    "LESS24": "Frais d'annulation à moins de 24h (%)",
+    "LESS48": "Frais d'annulation à moins de 48h (€)",
+    "DELAY": "Délai minimum de réservation (heures)",
+    "TVA": "Taux de TVA (%)",
+    "ADS": "Activer les pubs",
+    "COMPANY": "Activer le commerce avec les entreprises",
+    "FIDELITY": "Activer la fidélisation",
+    "MULTI_SHOP": "Activer le multi-boutique",
+    "PROMO": "Activer les promotions en boutique",
+    "SPONSORS": "Activer la partie sponsors sur la landing page",
+    "SAVE": "Sauvegarder"
+  },
   "ADMIN_PAGE": {
     "ALL_SHOPS": "Total des boutiques",
     "ACT_SHOPS": "Nombre de boutiques actives",
@@ -707,7 +787,17 @@
     "PRESTA_COLOR": "Couleur de la prestation",
     "CANCEL": "Annuler",
     "SAVE": "Enregistrer",
-    "AVG_PRICE": "Tarif moyen"
+    "AVG_PRICE": "Tarif moyen",
+    "IMAGE_OK": "Image chargée avec succès",
+    "ERROR_IMAGE_LOAD": "Erreur lors du chargement de l'image",
+    "UPDATE_SUCCESS": "Prestation mise à jour avec succès",
+    "ERROR_PRESTA": "Erreur lors de la mise à jour de la prestation",
+    "PRESTA_UPDATED": "Prestation mise à jour avec succès",
+    "PRESTA_ERROR": "Erreur lors de la mise à jour de la prestation",
+    "PRESTA_SUCCESS": "Prestation mise à jour avec succès",
+    "PHOTO_ERROR": "Erreur lors de la mise à jour de la photo",
+    "PRESTA_DELETED": "Prestation supprimée avec succès",
+    "PRESTA_DELETE_ERROR": "Erreur lors de la suppression de la prestation"
   },
   "SHOP_MANAGEMENT": {
     "SHOP_IMAGE": "Image de la boutique",
@@ -734,7 +824,26 @@
     "FRIDAY": "Vendredi",
     "SATURDAY": "Samedi",
     "SUNDAY": "Dimanche",
-    "CLOSED": "Fermé"
+    "CLOSED": "Fermé",
+    "GENERATE": "Générer avec izyGlam",
+    "PHOTO": "Exemples de photos acceptées / refusées",
+    "CODE_POSTAUX": "Codes postaux desservis",
+    "EXEMPLE_LOCAL": "Ex: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Ajouter un employé",
+    "LOADING": "Chargement",
+    "LIST": "Liste des employés",
+    "ADD": "Ajouter",
+    "EMAIL": "Email de l'employé",
+    "FIRSTNAME": "Prénom",
+    "FAMILY_NAME": "Nom",
+    "PHONE": "Téléphone",
+    "PASSWORD": "Mot de passe",
+    "HAVE_TO": "Tous les champs sont obligatoires.",
+    "EMAIL_ERROR": "Email invalide.",
+    "EMPLOYEE_OK": "Employé ajouté avec succès.",
+    "ADD_EMPLOYEE_ERROR": "Erreur lors de l'ajout de l'employé."
   },
   "AVIS": {
     "TITLE": "CE QUE DISENT NOS UTILISATEURS",

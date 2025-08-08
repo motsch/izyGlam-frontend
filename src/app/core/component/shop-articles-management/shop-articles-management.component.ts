@@ -13,6 +13,7 @@ import { ColorService } from '../../services/color.service';
 import { environment } from 'src/environments/environment';
 import { ShopTemplateService } from '../../services/shop-template.service';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-shop-articles-management',
@@ -43,7 +44,8 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
         private productService: ProductService,
         private colorService: ColorService,
         private shopTemplateService: ShopTemplateService,
-        private toastr: ToastrService
+        private toastr: ToastrService,
+        private translate: TranslateService
     ) { }
 
     ngOnInit(): void {
@@ -121,14 +123,14 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                             'Image uploadée avec succès : ',
                             response.imageUrl
                         );
-                        this.showCustomToast('Image chargée avec succès');
+                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.IMAGE_OK'));
                     },
                     (error) => {
                         console.error(
                             "Erreur lors de l'upload de l'image : ",
                             error
                         );
-                        this.showCustomToast('Erreur lors du chargement de l\'image');
+                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'));
                     }
                 );
         }
@@ -275,14 +277,14 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                                             'Service updated successfully'
                                         );
                                         this.closeModal();
-                                        this.showCustomToast('Prestation mise à jour avec succès');
+                                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.UPDATE_SUCCESS'));
                                     },
                                     error: (error: any) => {
                                         console.log(
                                             'Error updating service:',
                                             error
                                         );
-                                        this.showCustomToast('Erreur lors de la mise à jour de la prestation');
+                                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.ERROR_PRESTA'));
                                     },
                                 });
                         },
@@ -314,12 +316,12 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                             );
                             this.articleUpdated.emit();
                             console.log('Service updated successfully');
-                            this.showCustomToast('Prestation mise à jour avec succès');
+                            this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_UPDATED'));
                             this.closeModal();
                         },
                         error: (error: any) => {
                             console.log('Error updating service:', error);
-                            this.showCustomToast('Erreur lors de la mise à jour de la prestation');
+                            this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'));
                         },
                     });
             }
@@ -366,7 +368,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                                                 console.log(
                                                     'Service updated successfully'
                                                 );
-                                                this.showCustomToast('Prestation mise à jour avec succès');
+                                                this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_SUCCESS'));
                                                 this.closeModal();
                                             },
                                             error: (error: any) => {
@@ -374,7 +376,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                                                     'Error updating service:',
                                                     error
                                                 );
-                                                this.showCustomToast('Erreur lors de la mise à jour de la prestation');
+                                                this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'));
                                             },
                                         });
                                     // Récupérer l'_id du service en cours d'édition
@@ -387,13 +389,13 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                                         "Erreur lors de l'upload de l'image : ",
                                         error
                                     );
-                                    this.showCustomToast('Erreur lors de la mise à jour de la photo');
+                                    this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PHOTO_ERROR'));
                                 }
                             );
                     },
                     error: (error: any) => {
                         console.log('Error updating service:', error);
-                        this.showCustomToast('Erreur lors de la mise à jour de la prestation');
+                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'));
 
                         // Ajouter un nouvel article si nous ne sommes pas en mode édition
                         this.articlesCopyData.push(this.modalService);
@@ -414,7 +416,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                 this.productService.create(this.modalService).subscribe({
                     next: (data: any) => {
                         console.log('Service updated successfully');
-                        this.showCustomToast('Prestation mise à jour avec succès');
+                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_SUCCESS'));
 
                         console.log(data);
                         this.closeModal();
@@ -422,18 +424,13 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                     },
                     error: (error: any) => {
                         console.log('Error updating service:', error);
-                        this.showCustomToast('Erreur lors de la mise à jour de la prestation');
+                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'));
 
                         // Ajouter un nouvel article si nous ne sommes pas en mode édition
                         this.articlesCopyData.push(this.modalService);
                     },
                 });
             }
-            /*
-            this.modalService.shopId = this.me.shopIds[0];
-            this.modalService.image = this.me.shopIds[0];
-            this.modalService.type = this.me.shopIds[0];
-            */
             // Fermer la modal
             this.closeModal();
         }
@@ -453,10 +450,10 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
             next: (data: any) => {
                 this.articleUpdated.emit();
                 console.log(data);
-                this.showCustomToast('Prestation supprimée avec succès');
+                this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_DELETED'));
             },
             error: (error) => {
-                this.showCustomToast('Erreur lors de la suppression de la prestation');
+                this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_DELETE_ERROR'));
                 console.log('Error updating shop:', error);
             },
         });

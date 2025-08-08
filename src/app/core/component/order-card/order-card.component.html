@@ -56,7 +56,7 @@
   <!-- Code à afficher (client) -->
   <div class="code-card" *ngIf="isWithinDisplayTime">
     <div *ngIf="!order.generatedCode">
-      <button class="btn-secondary" (click)="generateCode(order)">Code de confirmation</button>
+      <button class="btn-secondary" (click)="generateCode(order)">{{"ORDER_CARD.CODE" | translate}}</button>
     </div>
     <div *ngIf="order.generatedCode">
       <label>{{"ORDER_CARD.CODE_A_DONNER" | translate}} :</label>

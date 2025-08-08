@@ -22,7 +22,7 @@
                   <div class="flex-grow-1">
                     <span class="name">{{ me.firstname }} <span class="uppercase">{{ me.lastname }}</span></span>
                   </div>
-                  <span class="you">(vous)</span>
+                  <span class="you">({{ 'PAYEMENT.YOU' | translate }})</span>
                 </label>
               </div>
             </div>
@@ -66,13 +66,13 @@
                       <i class="fa fa-credit-card card-icon"></i>
                       <div>
                         <h4>{{ card.brand | titlecase }} •••• {{ card.last4 }}</h4>
-                        <p>Expire {{ card.exp_month }}/{{ card.exp_year }}</p>
+                        <p>{{ 'PAYEMENT.EXPIRE' | translate }} {{ card.exp_month }}/{{ card.exp_year }}</p>
                       </div>
                     </div>
                     <div class="card-actions">
                       <button (click)="setDefaultCard(card.id)" [disabled]="card.id === defaultCardId"
                         class="btn btn-sm btn-outline-primary">
-                        <i class="fa fa-star"></i> Par défaut
+                        <i class="fa fa-star"></i> {{ 'PAYEMENT.DEFAULT' | translate }}
                       </button>
                       <button (click)="removeCard(card.id)" class="btn btn-sm btn-outline-danger">
                         <i class="fa fa-trash"></i>
@@ -82,11 +82,11 @@
                 </div>
 
                 <div *ngIf="cards.length === 0" class="no-default-card">
-                  <p>Aucune carte enregistrée</p>
+                  <p>{{ 'PAYEMENT.NOCARD' | translate }}</p>
                 </div>
 
                 <button class="btn btn-outline-secondary mt-3" (click)="showAddCardForm = !showAddCardForm">
-                  <i class="fa fa-plus"></i> {{ showAddCardForm ? 'Fermer le formulaire' : 'Ajouter une carte' }}
+                  <i class="fa fa-plus"></i> {{ showAddCardForm ? ('BUTTON.CLOSE_FORM' | translate) : ('BUTTON.ADD_CARD' | translate) }}
                 </button>
 
                 <div *ngIf="showAddCardForm" class="mt-3">

@@ -30,15 +30,6 @@ export class FavoritesComponent implements OnInit {
       localStorage.removeItem('productToBuy');
       localStorage.removeItem('selectItemFromShop');
       localStorage.removeItem('menu-param');
-      // this.getLocationAndLoadShops(); // Charge les shops basés sur la localisation du client
-      this.userService.getMe().subscribe({
-          next: (data: any) => {
-              console.log(data);
-          },
-          error: (error: any) => {
-              console.log(error);
-          },
-      });
 
     this.loadFavoriteShops();
   }

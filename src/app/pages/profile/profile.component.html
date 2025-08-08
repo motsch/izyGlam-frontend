@@ -125,30 +125,36 @@
           </div>
 
 
-          <div class="col-12 col-md-4 d-flex align-items-center justify-content-md-end justify-content-start" *ngIf="multiShopsActivated">
+          <div class="col-12 col-md-4 d-flex align-items-center justify-content-md-end justify-content-start"
+            *ngIf="multiShopsActivated">
             <button [disabled]="shops.length >= 10" class="btn btn-primary rosy-action-btn"
               (click)="openCreateShopModal()">
               {{ "PROFILE_MENU.NEW_SALON" | translate }}
             </button>
           </div>
         </div>
-        <mat-tab-group class="custom-tab-group" [ngClass]="!multiShopsActivated ? 'margin-top-n80' : ''" mat-stretch-tabs="false" mat-align-tabs="start">
-          <mat-tab label="Suivi financier">
+        <mat-tab-group class="custom-tab-group" [ngClass]="!multiShopsActivated ? 'margin-top-n80' : ''"
+          mat-stretch-tabs="false" mat-align-tabs="start">
+          <mat-tab [label]="'TABS.FINANCE' | translate">
             <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
           </mat-tab>
-          <mat-tab label="Informations générales" color="primary">
-            <app-shop-management *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"
+
+          <mat-tab color="primary" [label]="'TABS.GENERAL_INFO' | translate">
+            <app-shop-management *ngIf="myShopData && me" [myShopData]="myShopData"
               (shopUpdated)="onShopUpdated($event)"></app-shop-management>
           </mat-tab>
-          <mat-tab label="Gestions des employés" color="primary" *ngIf="me.role === 'boss' && multiShopsActivated">
+
+          <mat-tab color="primary" *ngIf="me.role === 'admin'" [label]="'TABS.EMPLOYEES' | translate">
             <app-shop-employees *ngIf="myShopData && me" [me]="me"></app-shop-employees>
           </mat-tab>
-          <mat-tab label="Gestion des prestations">
-            <app-shop-articles-management [myArticlesData]="myArticlesData" [myShopData]="myShopData" [me]="me"
+
+          <mat-tab [label]="'TABS.SERVICES' | translate">
+            <app-shop-articles-management [myArticlesData]="myArticlesData"
               (articleUpdated)="onArticleUpdated()"></app-shop-articles-management>
           </mat-tab>
-          <mat-tab label="Galerie photos">
-            <app-shop-photo-gallery *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"
+
+          <mat-tab [label]="'TABS.PHOTOS' | translate">
+            <app-shop-photo-gallery *ngIf="myShopData && me" [myShopData]="myShopData"
               (shopUpdated)="onShopUpdated($event)"></app-shop-photo-gallery>
           </mat-tab>
         </mat-tab-group>
@@ -159,19 +165,19 @@
           <p class="page-subtitle">{{ "PROFILE_MENU.ADMIN_SUBTITLE" | translate }}</p>
         </div>
         <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
-          <mat-tab label="Statistiques" color="primary">
+          <mat-tab [label]="'TABS.STATS' | translate" color="primary">
             <app-admin></app-admin>
           </mat-tab>
-          <mat-tab label="Paramétrage">
+          <mat-tab [label]="'TABS.PARAM' | translate">
             <app-admin-param></app-admin-param>
           </mat-tab>
-          <mat-tab label="Les boutiques">
+          <mat-tab [label]="'TABS.SHOPS' | translate">
             <app-admin-shops-management></app-admin-shops-management>
           </mat-tab>
-          <mat-tab label="Les utilisateurs">
+          <mat-tab [label]="'TABS.USERS' | translate">
             <app-admin-clients-management></app-admin-clients-management>
           </mat-tab>
-          <mat-tab label="Messagerie">
+          <mat-tab [label]="'TABS.MESSAGE' | translate">
             <app-admin-messagerie></app-admin-messagerie>
           </mat-tab>
         </mat-tab-group>

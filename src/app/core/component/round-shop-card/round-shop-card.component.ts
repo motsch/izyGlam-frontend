@@ -24,6 +24,7 @@ export class RoundShopCardComponent {
     
     // Méthode pour gérer le clic sur le coeur
     toggleFavorite(): void {
+        console.log("ME : " + this.me)
         if (!this.me.favoriteShops) {
             this.me.favoriteShops = [];
         }

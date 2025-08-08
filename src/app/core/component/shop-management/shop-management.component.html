@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="column">
-        <h3 style="margin-bottom: 10px;">Exemples de photos acceptées / refusées :</h3>
+        <h3 style="margin-bottom: 10px;">{{ "SHOP_MANAGEMENT.PHOTO" | translate}}:</h3>
         <!--IMAGE EXPLICATIVE-->
           <img src="assets/images/photomaton.png" alt="Image du shop" class="photomaton" />
       </div>
@@ -54,16 +54,16 @@
         (ngModelChange)="markFormModified()"></textarea>
 
       <button type="button" (click)="generateIzyGlamDescription()">
-        ✨ Générer avec izyGlam
+        ✨ {{ "SHOP_MANAGEMENT.GENERATE" | translate }}
       </button>
     </div>
 
     <!-- CODES POSTAUX + ZONE -->
     <div class="form-section">
       <div class="column">
-        <label for="deliveryPostalCode">Codes postaux desservis</label>
+        <label for="deliveryPostalCode">{{ "SHOP_MANAGEMENT.CODE_POSTAUX" | translate }}</label>
         <div class="postal-code-entry">
-          <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10"
+          <input type="text" [(ngModel)]="deliveryPostalCode" [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_LOCAL' | translate)" maxlength="10"
             (keyup.enter)="addPostalCode()" />
           <button type="button" class="add-postal-code-btn" (click)="addPostalCode()">+</button>
         </div>

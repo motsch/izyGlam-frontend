@@ -22,7 +22,7 @@
             <img [src]="imgStorageUrl + 'uploads/images/pub/' + item.data.image" alt="Publicité" class="shop-ad-banner"
               (click)="onAdClick(item.data)" />
           </a>
-          <div class="margin-left-20">Sponsorisée</div>
+          <div class="margin-left-20">{{"SPONSORS.SPONSORISED" | translate}}</div>
         </div>
       </ng-container>
     </div>

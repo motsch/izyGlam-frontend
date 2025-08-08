@@ -14,6 +14,7 @@ import { VilleService } from '../../services/ville.service';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 import { SessionService } from '../../services/session.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-shop-management',
@@ -101,7 +102,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         private villeService: VilleService,
         private toastr: ToastrService,
         private userService: UserService,
-        private sessionService: SessionService
+        private sessionService: SessionService,
+        private translate: TranslateService
     ) { }
 
     ngOnInit(): void {
@@ -365,11 +367,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
                                 'shopCopyData initialisé :',
                                 this.shopCopyData
                             );
-                            this.showCustomToast('Salon mis à jour avec succès');
+                            this.showCustomToast(this.translate.instant('CARD.SALON'));
                         },
                         error: (error: any) => {
                             console.log(error);
-                            this.showCustomToast('Erreur lors de la mise à jour du salon');
+                            this.showCustomToast(this.translate.instant('CARD.ERROR1'));
                         },
                     });
                 },
@@ -378,7 +380,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
                         "Erreur lors de l'upload de l'image : ",
                         error
                     );
-                    this.showCustomToast('Erreur lors de la mise à jour de la photo');
+                    this.showCustomToast(this.translate.instant('CARD.ERROR2'));
+
                 }
             );
         } else {
@@ -388,11 +391,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
                     this.shopCopyData = { ...data };
                     this.myShopData = { ...data };
                     this.shopUpdated.emit(this.myShopData._id);
-                    this.showCustomToast('Mise à jour du salon avec succès');
+                    this.showCustomToast(this.translate.instant('CARD.UPDATE'));
                 },
                 error: (error: any) => {
                     console.log(error);
-                    this.showCustomToast('Erreur lors de la mise à jour du salon');
+                    this.showCustomToast(this.translate.instant('CARD.ERROR1'));
                 },
             });
         }

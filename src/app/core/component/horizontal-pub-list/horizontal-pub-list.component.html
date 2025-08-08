@@ -17,7 +17,7 @@
             (load)="onImageLoad(pub._id)" (error)="onImageError(pub._id)" [class.loaded]="loadedImages[pub._id]" />
           <div class="skeleton-loader" *ngIf="!loadedImages[pub._id]"></div>
         </div>
-        <div>Sponsorisée</div>
+        <div>{{"SPONSORS.SPONSORISED" | translate}}</div>
       </div>
     </div>
   </div>

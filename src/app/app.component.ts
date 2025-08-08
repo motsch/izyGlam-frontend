@@ -24,7 +24,8 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
     today: number = Date.now();
     drawerOpen = false;
     cartOpen = false;
-    settings:any = {};
+    currentYear: number = new Date().getFullYear();
+    settings: any = {};
     imgStorageUrl: string = environment.imgStorageUrl;
     aPIimgStorageUrl: string = environment.APIimgStorageUrl;
     backgroundImages = "";
@@ -118,7 +119,7 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
     isActive(route: string): boolean {
         return this.router.url.includes(route); // ou === `/orders` si besoin plus strict
     }
-    
+
     getBackgroundStyle() {
         return {
             'background-image': `url(${this.backgroundImages})`

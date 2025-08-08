@@ -1,23 +1,23 @@
 <div class="employees-wrapper">  
-    <h3 class="loading">Ajouter un employé</h3>
+    <h3 class="loading">{{ "EMPLOYEES.ADD_EMPLOYEES" | translate }}</h3>
     <div class="add-employee-form">
       <div class="form-flex">
         <div class="form-inputs">
-          <input [(ngModel)]="newEmployee.email" placeholder="Email de l'employé" type="email">
-          <input [(ngModel)]="newEmployee.firstname" placeholder="Prénom" type="text">
-          <input [(ngModel)]="newEmployee.lastname" placeholder="Nom" type="text">
-          <input [(ngModel)]="newEmployee.phone" placeholder="Téléphone" type="text">
-          <input [(ngModel)]="newEmployee.password" placeholder="Mot de passe" type="text">
+          <input [(ngModel)]="newEmployee.email" [placeholder]="('EMPLOYEES.EMAIL' | translate)" type="email">
+          <input [(ngModel)]="newEmployee.firstname" [placeholder]="('EMPLOYEES.FIRSTNAME' | translate)" type="text">
+          <input [(ngModel)]="newEmployee.lastname" [placeholder]="('EMPLOYEES.FAMILY_NAME' | translate)" type="text">
+          <input [(ngModel)]="newEmployee.phone" [placeholder]="('EMPLOYEES.PHONE' | translate)" type="text">
+          <input [(ngModel)]="newEmployee.password" [placeholder]="('EMPLOYEES.PASSWORD' | translate)" type="text">
         </div>
         <div class="form-button">
-          <button class="rosy-action-btn" [disabled]="isSubmitting" (click)="addEmployee()">Ajouter</button>
+          <button class="rosy-action-btn" [disabled]="isSubmitting" (click)="addEmployee()">{{ "EMPLOYEES.ADD" | translate }}</button>
         </div>
       </div>
     </div>
   
-    <div *ngIf="loading" class="loading">Chargement...</div>
+    <div *ngIf="loading" class="loading">{{ "EMPLOYEES.LOADING" | translate }}...</div>
   
-    <h3 class="loading">Liste des employés</h3>
+    <h3 class="loading">{{ "EMPLOYEES.LIST" | translate }}</h3>
     
     <ul *ngIf="!loading">
       <li *ngFor="let emp of employees">

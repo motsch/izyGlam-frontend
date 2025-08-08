@@ -5,10 +5,10 @@
     <div class="address-search-row">
       <button class="address-button-pretty" (click)="openAddressModal()">
         <i class="icon-location">📍</i>
-        {{ selectedPostalCode }} <span class="light-text">— Modifier l’adresse</span>
+        {{ selectedPostalCode }} <span class="light-text">— {{ "MAIN.CHANGE_ADDRESS" | translate }}</span>
       </button>
       <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
-        placeholder="Rechercher une boutique" class="pretty-search-bar" />
+        [placeholder]="('MAIN.FIND_SHOP' | translate)" class="pretty-search-bar" />
     </div>
   </div>
 
@@ -17,7 +17,7 @@
     <!-- BANDEAU DES CATÉGORIES -->
     <div class="horizontal-section-wrapper margin-top-40" *ngIf="categoriesFilter.length > 0">
       <div class="section-header">
-        <h3>Catégories</h3>
+        <h3>{{ "MAIN.CATEGORIES" | translate }}</h3>
       </div>
       <div class="horizontal-scroll-wrapper">
         <div class="scrollable-category-list drag-scroll" appDragScroll>
@@ -36,20 +36,20 @@
     <app-horizontal-pub-list *ngIf="pubActivated" [me]="me"></app-horizontal-pub-list>
 
     <app-horizontal-shop-list *ngIf="promoActivated && !filterClicked && searchQuery.length === 0 && promotedShops.length > 0"
-      [title]="'Offres du moment'" [pubActivated]="pubActivated" [shops]="promotedShops" [me]="me" [pubIndexe]="'0'"></app-horizontal-shop-list>
+      [title]="('MAIN.OFFRE' | translate)" [pubActivated]="pubActivated" [shops]="promotedShops" [me]="me" [pubIndexe]="'0'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsAdecouvrir.length > 0"
-      [title]="'À découvrir'" [pubActivated]="pubActivated" [shops]="filteredItemsAdecouvrir" [me]="me" [pubIndexe]="'1'"></app-horizontal-shop-list>
+      [title]="('MAIN.DISCOVER' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsAdecouvrir" [me]="me" [pubIndexe]="'1'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsApprecier.length > 0"
-      [title]="'Les plus appréciés'" [pubActivated]="pubActivated" [shops]="filteredItemsApprecier" [me]="me"
+      [title]="('MAIN.APPRECIATE' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsApprecier" [me]="me"
       [pubIndexe]="'2'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsMalin.length > 0"
-      [title]="'Les plans malins'" [pubActivated]="pubActivated" [shops]="filteredItemsMalin" [me]="me" [pubIndexe]="'3'"></app-horizontal-shop-list>
+      [title]="('MAIN.SMART' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsMalin" [me]="me" [pubIndexe]="'3'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsTop10.length > 0"
-      [title]="'Top10 de la semaine'" [pubActivated]="pubActivated" [shops]="filteredItemsTop10" [me]="me"
+      [title]="('MAIN.TOP10' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsTop10" [me]="me"
       [pubIndexe]="'4'"></app-horizontal-shop-list>
 
     <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
@@ -63,7 +63,7 @@
     <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
     <div class="horizontal-section-wrapper" *ngIf="searchQuery.length > 0">
       <div class="section-header">
-        <h3>Résultats de recherche</h3>
+        <h3>{{ "MAIN.SEARCH_RESULT" | translate }}</h3>
       </div>
       <div class="horizontal-scroll-wrapper">
         <div class="scrollable-shop-list">
@@ -75,7 +75,7 @@
     <!-- SECTION : PAS DISPONIBLE -->
     <div class="horizontal-section-wrapper" *ngIf="shops.length === 0">
       <div class="section-header">
-        <div class="not-disponible">Pas encore disponible à cette adresse</div>
+        <div class="not-disponible">{{ "MAIN.NOT_AVAILABLE" | translate }}</div>
       </div>
     </div>
   </div> <!-- /izy-content -->
@@ -90,7 +90,7 @@
 
       <!-- Titre dynamique -->
       <h3 class="modal-title">
-        {{ isAddingAddress ? 'Ajouter une nouvelle adresse' : 'Choisis une adresse' }}
+        {{ isAddingAddress ? ('MAIN.NEW_ADDRESS' | translate) : ('MAIN.CHOOSE_ADDRESS' | translate) }}
       </h3>
       <!-- Liste des adresses si on n'ajoute pas -->
       <ul class="address-list" *ngIf="!isAddingAddress">
@@ -105,7 +105,7 @@
           <button type="button" class="delete-btn" (click)="removeAddress(i)">🗑️</button>
         </li>
         <li class="add-address-btn" (click)="toggleAddAddress()">
-          ➕ Ajouter une nouvelle adresse
+          ➕ {{ "MAIN.NEW_ADDRESS" | translate }}
         </li>
       </ul>
       
@@ -113,7 +113,7 @@
       <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form">
         <!-- 1. Choix du pays -->
         <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
-          <option value="">-- Choisir un pays --</option>
+          <option value="">-- {{ "MAIN.CHOOSE_COUNTRY" | translate }} --</option>
           <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
         </select>
         <input *ngIf="availableCountries.length === 1" type="hidden" name="country" [(ngModel)]="selectedCountry" />
@@ -124,13 +124,13 @@
         
         <!-- 3. Villes correspondant au code postal -->
         <select [(ngModel)]="selectedCity" name="city" required>
-          <option value="">-- Choisir une ville --</option>
+          <option value="">-- {{ "MAIN.CHOOSE_CITY" | translate }} --</option>
           <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
         </select>
         
         <!-- 4. Arrondissements -->
         <select *ngIf="availableArrondissements.length > 1" [(ngModel)]="selectedArrondissement" name="arrondissement">
-          <option value="">-- Choisir un arrondissement --</option>
+          <option value="">-- {{ "MAIN.CHOOSE_ARRONDISSEMENT" | translate }} --</option>
           <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
         </select>
         
@@ -139,12 +139,12 @@
         
         <!-- 6. Boutons -->
         <div class="form-buttons margin-bottom-20">
-          <button type="button" class="cancel-btn" (click)="toggleAddAddress()">Annuler</button>
-          <button type="submit" class="save-btn">Enregistrer</button>
+          <button type="button" class="cancel-btn" (click)="toggleAddAddress()">{{ "MAIN.CANCEL" | translate }}</button>
+          <button type="submit" class="save-btn">{{ "MAIN.SAVE" | translate }}</button>
         </div>
       </form>
       
-      <button (click)="closeAddressModal()" class="close-btn">Fermer</button>
+      <button (click)="closeAddressModal()" class="close-btn">{{ "MAIN.CLOSE" | translate }}</button>
     </div>
   </div>
 </div> <!-- /izy-wrapper -->

@@ -107,7 +107,7 @@
 
             <div class="row input-group-row">
               <div class="col-md-12">
-                <label for="deliveryPostalCode">Codes postaux desservis</label>
+                <label for="deliveryPostalCode">{{ "CREATION_SHOP.CODE_POSTAL_POSSIBLE" | translate }}</label>
                 <div class="postal-code-entry">
                   <input type="text" id="deliveryPostalCode" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001"
                     maxlength="10" (keyup.enter)="addPostalCode()" />
