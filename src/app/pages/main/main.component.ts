@@ -54,6 +54,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     availableCities: any[] = [];
     postalCode: string = '';
     pubActivated: boolean = false;
+    promoActivated: boolean = false;
 
     private searchSubject = new Subject<string>();
     private subscription!: Subscription;
@@ -94,7 +95,8 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.adminService.getAdminSettings().subscribe(
       (data :any) => {
         console.log('Paramètres de la plateforme :', JSON.stringify(data));
-        this.pubActivated = data.pubActivated
+        this.pubActivated = data.pubActivated;
+        this.promoActivated = data.promoActivated;
       },
       (error:any) => {
         console.error('Erreur lors de la récupération des paramètres', error);

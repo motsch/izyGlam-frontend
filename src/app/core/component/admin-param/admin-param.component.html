@@ -1,10 +1,11 @@
 <div class="admin-param">
   <h3>Paramètres de la plateforme</h3>
-  
+
   <form (ngSubmit)="saveSettings()">
     <div class="form-group margin-top-40">
       <label for="commissionRate">Taux de commission (%)</label>
-      <input id="commissionRate" [(ngModel)]="settings.commissionRate" name="commissionRate" type="number" min="0" max="100" />
+      <input id="commissionRate" [(ngModel)]="settings.commissionRate" name="commissionRate" type="number" min="0"
+        max="100" />
       <div *ngIf="settings.commissionRate < 0 || settings.commissionRate > 100">
         <small class="error">Valeur entre 0 et 100 obligatoire</small>
       </div>
@@ -20,7 +21,8 @@
 
     <div class="form-group">
       <label for="bookingWindowWeeks">Nombre de semaines affichées</label>
-      <input id="bookingWindowWeeks" [(ngModel)]="settings.bookingWindowWeeks" name="bookingWindowWeeks" type="number" min="1" />
+      <input id="bookingWindowWeeks" [(ngModel)]="settings.bookingWindowWeeks" name="bookingWindowWeeks" type="number"
+        min="1" />
       <div *ngIf="settings.bookingWindowWeeks < 1">
         <small class="error">Valeur supérieure à 0 obligatoire</small>
       </div>
@@ -28,7 +30,8 @@
 
     <div class="form-group">
       <label for="cancellationPolicy24h">Frais d'annulation à moins de 24h (%)</label>
-      <input id="cancellationPolicy24h" [(ngModel)]="settings.cancellationPolicy24h" name="cancellationPolicy24h" type="number" min="0" max="100" />
+      <input id="cancellationPolicy24h" [(ngModel)]="settings.cancellationPolicy24h" name="cancellationPolicy24h"
+        type="number" min="0" max="100" />
       <div *ngIf="settings.cancellationPolicy24h < 0 || settings.cancellationPolicy24h > 100">
         <small class="error">Valeur entre 0 et 100 obligatoire</small>
       </div>
@@ -36,7 +39,8 @@
 
     <div class="form-group">
       <label for="cancellationPolicy48h">Frais d'annulation à moins de 48h (€)</label>
-      <input id="cancellationPolicy48h" [(ngModel)]="settings.cancellationPolicy48h" name="cancellationPolicy48h" type="number" min="0" />
+      <input id="cancellationPolicy48h" [(ngModel)]="settings.cancellationPolicy48h" name="cancellationPolicy48h"
+        type="number" min="0" />
       <div *ngIf="settings.cancellationPolicy48h < 0">
         <small class="error">Valeur positive obligatoire</small>
       </div>
@@ -44,7 +48,8 @@
 
     <div class="form-group">
       <label for="minimumBookingNotice">Délai minimum de réservation (heures)</label>
-      <input id="minimumBookingNotice" [(ngModel)]="settings.minimumBookingNotice" name="minimumBookingNotice" type="number" min="1" />
+      <input id="minimumBookingNotice" [(ngModel)]="settings.minimumBookingNotice" name="minimumBookingNotice"
+        type="number" min="1" />
       <div *ngIf="settings.minimumBookingNotice < 1">
         <small class="error">Valeur supérieure à 0 obligatoire</small>
       </div>
@@ -59,63 +64,57 @@
     </div>
 
     <div class="form-group">
-      <label for="taxRate">Activer les pubs</label>
+      <label for="pubsActivated">Activer les pubs</label>
       <label class="switch">
-            <input type="checkbox" [(ngModel)]="settings.pubActivated" name="pubsActivated" />
-            <span class="slider round"></span>
-          </label>
-      <input id="taxRate"  [(ngModel)]="settings.pubActivated" disabled name="pubsActivated2" />
-      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
-        <small class="error">Valeur obligatoire</small>
-      </div>
+        <input type="checkbox" [(ngModel)]="settings.pubActivated" name="pubsActivated" />
+        <span class="slider round"></span>
+      </label>
+      <input id="pubsActivated" [(ngModel)]="settings.pubActivated" disabled name="pubsActivated2" />
     </div>
 
     <div class="form-group">
-      <label for="taxRate">Activer le commerce avec les entreprises</label>
+      <label for="companyActivated">Activer le commerce avec les entreprises</label>
       <label class="switch">
-            <input type="checkbox" [(ngModel)]="settings.companyActivated" name="companyActivated" />
-            <span class="slider round"></span>
-          </label>
-      <input id="taxRate"  [(ngModel)]="settings.companyActivated" disabled name="companyActivated2" />
-      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
-        <small class="error">Valeur obligatoire</small>
-      </div>
+        <input type="checkbox" [(ngModel)]="settings.companyActivated" name="companyActivated" />
+        <span class="slider round"></span>
+      </label>
+      <input id="companyActivated" [(ngModel)]="settings.companyActivated" disabled name="companyActivated2" />
     </div>
 
     <div class="form-group">
-      <label for="taxRate">Activer la fidélisation</label>
+      <label for="fidelityActivated">Activer la fidélisation</label>
       <label class="switch">
-            <input type="checkbox" [(ngModel)]="settings.fidelityActivated" name="fidelityActivated" />
-            <span class="slider round"></span>
-          </label>
-      <input id="taxRate"  [(ngModel)]="settings.fidelityActivated" disabled name="fidelityActivated2" />
-      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
-        <small class="error">Valeur obligatoire</small>
-      </div>
+        <input type="checkbox" [(ngModel)]="settings.fidelityActivated" name="fidelityActivated" />
+        <span class="slider round"></span>
+      </label>
+      <input id="fidelityActivated" [(ngModel)]="settings.fidelityActivated" disabled name="fidelityActivated2" />
     </div>
 
     <div class="form-group">
-      <label for="taxRate">Activer le multi-boutique</label>
+      <label for="multiShopsActivated">Activer le multi-boutique</label>
       <label class="switch">
-            <input type="checkbox" [(ngModel)]="settings.multiShopsActivated" name="multiShopsActivated" />
-            <span class="slider round"></span>
-          </label>
-      <input id="taxRate"  [(ngModel)]="settings.multiShopsActivated" disabled name="multiShopsActivated2" />
-      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
-        <small class="error">Valeur obligatoire</small>
-      </div>
+        <input type="checkbox" [(ngModel)]="settings.multiShopsActivated" name="multiShopsActivated" />
+        <span class="slider round"></span>
+      </label>
+      <input id="multiShopsActivated" [(ngModel)]="settings.multiShopsActivated" disabled name="multiShopsActivated2" />
     </div>
 
     <div class="form-group">
-      <label for="taxRate">Activer la partie sponsors sur la landing page</label>
+      <label for="promoActivated">Activer les promotions en boutique</label>
       <label class="switch">
-            <input type="checkbox" [(ngModel)]="settings.sponsorsActivated" name="sponsorsActivated" />
-            <span class="slider round"></span>
-          </label>
-      <input id="taxRate"  [(ngModel)]="settings.sponsorsActivated" disabled name="sponsorsActivated2" />
-      <div *ngIf="settings.taxRate < 0 || settings.taxRate > 100">
-        <small class="error">Valeur obligatoire</small>
-      </div>
+        <input type="checkbox" [(ngModel)]="settings.promoActivated" name="promoActivated" />
+        <span class="slider round"></span>
+      </label>
+      <input id="promoActivated" [(ngModel)]="settings.promoActivated" disabled name="promoActivated2" />
+    </div>
+
+    <div class="form-group">
+      <label for="sponsorsActivated">Activer la partie sponsors sur la landing page</label>
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]="settings.sponsorsActivated" name="sponsorsActivated" />
+        <span class="slider round"></span>
+      </label>
+      <input id="sponsorsActivated" [(ngModel)]="settings.sponsorsActivated" disabled name="sponsorsActivated2" />
     </div>
 
     <button type="submit" mat-raised-button color="primary">Sauvegarder</button>

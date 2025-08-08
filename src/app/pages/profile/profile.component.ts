@@ -13,6 +13,7 @@ import { ShopTemplateService } from 'src/app/core/services/shop-template.service
 import { forkJoin } from 'rxjs';
 import { ChatModalComponent } from 'src/app/core/component/chat-modal/chat-modal.component';
 import { CreateShopComponent } from 'src/app/core/component/create-shop/create-shop.component';
+import { AdminService } from 'src/app/core/services/admin.service';
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
@@ -37,6 +38,7 @@ export class ProfileComponent implements OnInit {
     userChangeError: string = '';
     categories: any[] = [];
     selectedCategory: any = null;
+    multiShopsActivated = false;
     constructor(
         private eRef: ElementRef,
         private userService: UserService,
@@ -46,10 +48,17 @@ export class ProfileComponent implements OnInit {
         private router: Router,
         public dialog: MatDialog,
         private categoryService: CategoryService,
-        private shopTemplateService: ShopTemplateService
+        private shopTemplateService: ShopTemplateService,
+        private adminService: AdminService
     ) { }
 
     ngOnInit() {
+        this.adminService.getAdminSettings().subscribe({
+            next: (data: any) => {
+                this.multiShopsActivated = data.multiShopsActivated;
+            },
+            error: (error) => console.log(error),
+        });
         let section = localStorage.getItem('menu-param');
         if (section && section !== undefined && section !== '') {
             this.activeSection = section;

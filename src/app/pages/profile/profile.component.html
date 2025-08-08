@@ -10,20 +10,22 @@
           {{ "PROFILE_MENU.SECURITY" | translate }}
         </li>
         <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
+          [ngClass]="{ active: isSectionActive('management') }" (click)="setActiveSection('management')">
+          {{ "PROFILE_MENU.SHOP" | translate }}
+        </li>
+        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
           [ngClass]="{ active: isSectionActive('calendar') }" (click)="setActiveSection('calendar')">
           {{ "PROFILE_MENU.CALENDAR" | translate }}
         </li>
+        <!--
         <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
           [ngClass]="{ active: isSectionActive('dashboard') }" (click)="setActiveSection('dashboard')">
           {{ "PROFILE_MENU.DASHBOARD" | translate }}
         </li>
+        -->
         <li *ngIf="me.role === 'entreprise'" [ngClass]="{ active: isSectionActive('company') }"
           (click)="setActiveSection('company')">
           {{ "PROFILE_MENU.COMPANY" | translate }}
-        </li>
-        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
-          [ngClass]="{ active: isSectionActive('management') }" (click)="setActiveSection('management')">
-          {{ "PROFILE_MENU.SHOP" | translate }}
         </li>
         <li [ngClass]="{ active: isSectionActive('admin') }" (click)="setActiveSection('admin')">
           {{ "PROFILE_MENU.ADMIN" | translate }}
@@ -63,6 +65,7 @@
         </div>
         <app-agenda [me]="me" [shops]="shops"></app-agenda>
       </div>
+      <!--
       <div *ngIf="isSectionActive('dashboard')" id="dashboard-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.DASHBOARD" | translate }}</h1>
@@ -70,6 +73,7 @@
         </div>
         <app-dashboard [me]="me"></app-dashboard>
       </div>
+      -->
       <div *ngIf="isSectionActive('company')" id="company-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
@@ -92,7 +96,7 @@
         <!-- SECTION BOUTONS SHOP -->
         <div class="row justify-content-between align-items-center g-3 flex-wrap shop-selector-wrapper"
           *ngIf="me.role === 'boss'">
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-8" *ngIf="multiShopsActivated">
             <div class="d-flex flex-column flex-sm-row align-items-center gap-2">
               <div class="flex-grow-1 w-100">
                 <label for="languageSelect" class="form-label title-label">
@@ -121,14 +125,14 @@
           </div>
 
 
-          <div class="col-12 col-md-4 d-flex align-items-center justify-content-md-end justify-content-start">
+          <div class="col-12 col-md-4 d-flex align-items-center justify-content-md-end justify-content-start" *ngIf="multiShopsActivated">
             <button [disabled]="shops.length >= 10" class="btn btn-primary rosy-action-btn"
               (click)="openCreateShopModal()">
               {{ "PROFILE_MENU.NEW_SALON" | translate }}
             </button>
           </div>
         </div>
-        <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab-group class="custom-tab-group" [ngClass]="!multiShopsActivated ? 'margin-top-n80' : ''" mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab label="Suivi financier">
             <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
           </mat-tab>
@@ -136,7 +140,7 @@
             <app-shop-management *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"
               (shopUpdated)="onShopUpdated($event)"></app-shop-management>
           </mat-tab>
-          <mat-tab label="Gestions des employés" color="primary" *ngIf="me.role === 'boss'">
+          <mat-tab label="Gestions des employés" color="primary" *ngIf="me.role === 'boss' && multiShopsActivated">
             <app-shop-employees *ngIf="myShopData && me" [me]="me"></app-shop-employees>
           </mat-tab>
           <mat-tab label="Gestion des prestations">
