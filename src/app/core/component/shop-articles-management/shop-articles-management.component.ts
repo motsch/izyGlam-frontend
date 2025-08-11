@@ -45,7 +45,8 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
         private colorService: ColorService,
         private shopTemplateService: ShopTemplateService,
         private toastr: ToastrService,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private shopService: ShopService
     ) { }
 
     ngOnInit(): void {
@@ -146,6 +147,41 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
         });
         this.selectedColor = color;
         this.modalService.color = color;
+    }
+
+    generateIzyGlamImage(product: any) {
+        const type = product.type; // à adapter selon ta structure exacte
+        const userDescription = this.myShopData.description || null;
+
+        this.shopService.generateIzyGlamImage(product)
+            .subscribe({
+                next: (data: any) => {
+                    // this.modalService.image = '';
+                    this.articleUpdated.emit();
+
+                },
+                error: (err: any) => {
+                    console.error('Erreur lors de la génération de la description :', err);
+                }
+            });
+    }
+
+    generateIzyGlamProductDescription(product: any) {
+        const type = product.type; // à adapter selon ta structure exacte
+        const userDescription = this.myShopData.description || null;
+
+        this.shopService.generateIzyGlamProductDescription(product)
+            .subscribe({
+                next: (data: any) => {
+                    // this.modalService.image = '';
+                    this.modalService.description = data.formattedDescription;
+                    this.articleUpdated.emit();
+
+                },
+                error: (err: any) => {
+                    console.error('Erreur lors de la génération de la description :', err);
+                }
+            });
     }
 
     truncateDescription() {

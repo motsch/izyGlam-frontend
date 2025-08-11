@@ -4,14 +4,48 @@
       <div class="col-md-12 text-center">
         <div class="social-footer">
           <ul>
-            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li>
+              <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
-    <p>© {{today | date:'y'}} izyGlam - {{ "FOOTER.ALL_RIGHT" | translate }}</p>
-    <p><a href="/cgu" target="_blank" class="pink">{{ "FOOTER.CONFIDENTIAL" | translate }}</a> · <a href="/cgu" target="_blank" class="pink">{{
-        "FOOTER.ACCESS" | translate }}</a> · <a href="/cgu" target="_blank" class="pink">{{ "FOOTER.CONDITIONS" | translate }}</a></p>
+
+    <p>© {{ today | date:'y' }} izyGlam – {{ "FOOTER.ALL_RIGHT" | translate }}</p>
+
+    <p>
+      <a class="pink" (click)="openModal('confidentiality', $event)">{{ "FOOTER.CONFIDENTIAL" | translate }}</a>
+      ·
+      <a class="pink" (click)="openModal('accessibility', $event)">{{ "FOOTER.ACCESS" | translate }}</a>
+      ·
+      <a class="pink" (click)="openModal('conditions', $event)">{{ "FOOTER.CONDITIONS" | translate }}</a>
+    </p>
   </div>
+  <!-- MODAL -->
+  <div class="modal-backdrop" *ngIf="modalVisible" (click)="closeOnBackdrop($event)">
+    <div class="modal-panel" role="dialog" aria-modal="true" [attr.aria-label]="modalTitle"
+      (click)="$event.stopPropagation()">
+
+      <div class="modal-header">
+        <h1 class="modal-title">{{ modalTitle }}</h1>
+        <button class="modal-close" type="button" (click)="closeModal()" aria-label="Fermer">×</button>
+      </div>
+
+      <!-- zone scrollable -->
+      <div class="modal-body">
+        <ng-container *ngIf="activeComponent" [ngComponentOutlet]="activeComponent">
+        </ng-container>
+      </div>
+
+    </div>
+  </div>
+
 </footer>

@@ -31,9 +31,6 @@ export class PayementComponent implements OnInit {
   expiryDate: string = '';
   cvv: string = '';
   errorMessage: string | null = null;
-
-
-
   step = 1;
   shop: any;
   startSlot: any | null;
@@ -60,7 +57,7 @@ export class PayementComponent implements OnInit {
   selectedCardId: string | null = null;
   // allCards: any[] = []; // toutes les cartes Stripe enregistrées par l'utilisateur
   showAddCardForm = false;
-defaultCardId="";
+  defaultCardId = "";
 
 
   constructor(
@@ -71,7 +68,6 @@ defaultCardId="";
     public dialog: MatDialog,
     private adminService: AdminService,
     private bookingService: BookingService,
-    private financialService: FinancialService,
     private stripeService: StripeService,
     private subscriptionService: SubscriptionService // 👈 ici
   ) { }
@@ -82,89 +78,101 @@ defaultCardId="";
         console.log(data);
         this.adminSettings = data;
         console.log(this.adminSettings);
+        this.itemToBuy = localStorage.getItem('selectItemFromShop');
+        this.itemToBuy = JSON.parse(this.itemToBuy);
+        console.log("itemToBuy");
+        console.log(this.itemToBuy);
+        this.startSlot = this.itemToBuy.slot.start;
+        this.endSlot = this.itemToBuy.slot.end;
+        this.dateSlot = this.itemToBuy.date;
+        this.itemToBuy2 = localStorage.getItem('productToBuy');
+        console.log(this.itemToBuy2);
+        this.itemToBuy2 = JSON.parse(this.itemToBuy2);
+        /*if (this.itemToBuy2 && this.itemToBuy2.price) {
+          this.price = this.itemToBuy2.price;
+          console.log('this.itemToBuy2 : ' + JSON.stringify(this.itemToBuy2));
+          console.log('this.price : ' + this.price);
+        }*/
+        // Exemple d'utilisation dans ton code :
+        if (this.itemToBuy2 && this.itemToBuy2.price) {
+          this.price = this.itemToBuy2.price;
+          const commissionRate = this.adminSettings?.commissionRate || 0;
+          const taxRate = this.adminSettings?.taxRate || 0;
+          this.price = this.calculateFinalPrice(this.itemToBuy2.price, commissionRate, taxRate).toString();
+          console.log('commissionRate : ' + commissionRate);
+          console.log('commissionRate : ' + commissionRate);
+          console.log('taxRate : ' + taxRate);
+          console.log('this.price (avec commission + TVA) : ' + this.price);
+        }
+        console.log(this.itemToBuy);
+        // this.shop._id = this.itemToBuy.shopId;
+        this.shopService
+          .getById(this.itemToBuy.shopId)
+          .subscribe((shop: any) => {
+            console.log(shop);
+            this.shop = shop;
+
+            this.userService.getMe().subscribe(async (user: any) => {
+              console.log(user);
+
+              if (user.sex === 'male') {
+                this.meSex = 'M.';
+              }
+              this.stripeCustomerID = user.customerId;
+              this.userId = user._id;
+              this.me = user;
+              this.me.initials =
+                user.firstname.charAt(0) + user.lastname.charAt(0);
+              if (!this.bill) {
+                this.bill = {};
+              }
+              this.bill.image = this.itemToBuy2.image,
+                this.bill.client = this.me._id;
+              let addressTemp = this.me.address.find((x: any) => {
+                return x.main === true;
+              });
+
+              this.bill.address = addressTemp
+                ? addressTemp._id
+                : this.me.address[0]._id;
+
+
+              this.adressePrincipale = addressTemp
+                ? addressTemp
+                : this.me.address[0];
+
+              // Chargez Stripe dès le démarrage du composant
+              this.stripePromise = loadStripe(environment.stripePublicKey);
+              if (!this.stripePromise) {
+                throw new Error('Clé publique Stripe manquante ou invalide.');
+              }
+
+              // Récupérez l'utilisateur courant depuis votre backend
+              if (!this.userId) {
+                throw new Error('Aucun userId trouvé. Veuillez vous connecter.');
+              }
+
+              if (!this.stripeCustomerID) {
+                console.warn('Aucun customerId trouvé. Les cartes ne peuvent pas être chargées.');
+              } else {
+                // Chargez les cartes existantes avec le customerId
+                await this.loadCards();
+              }
+            });
+          });
+
+        /** STRIPE **/
+        // console.log((this.itemToBuy2));
+        let dateBrut: any = localStorage.getItem("selectItemFromShop");
+        if (dateBrut) {
+          dateBrut = JSON.parse(dateBrut);
+        }
+        this.prestationDateForBill = dateBrut.slot.dateBrut;
       },
       error: (error: any) => {
         console.log(error);
       },
     });
-    this.itemToBuy = localStorage.getItem('selectItemFromShop');
-    this.itemToBuy = JSON.parse(this.itemToBuy);
-    console.log("itemToBuy");
-    console.log(this.itemToBuy);
-    this.startSlot = this.itemToBuy.slot.start;
-    this.endSlot = this.itemToBuy.slot.end;
-    this.dateSlot = this.itemToBuy.date;
-    this.itemToBuy2 = localStorage.getItem('productToBuy');
-    console.log(this.itemToBuy2);
-    this.itemToBuy2 = JSON.parse(this.itemToBuy2);
-    if (this.itemToBuy2 && this.itemToBuy2.price) {
-      this.price = this.itemToBuy2.price;
-      console.log('this.price : ' + this.price);
-    }
-    console.log(this.itemToBuy);
-    // this.shop._id = this.itemToBuy.shopId;
-    this.shopService
-      .getById(this.itemToBuy.shopId)
-      .subscribe((shop: any) => {
-        console.log(shop);
-        this.shop = shop;
-
-        this.userService.getMe().subscribe(async (user: any) => {
-          console.log(user);
-
-          if (user.sex === 'male') {
-            this.meSex = 'M.';
-          }
-          this.stripeCustomerID = user.customerId;
-          this.userId = user._id;
-          this.me = user;
-          this.me.initials =
-            user.firstname.charAt(0) + user.lastname.charAt(0);
-          if (!this.bill) {
-            this.bill = {};
-          }
-          this.bill.image = this.itemToBuy2.image,
-            this.bill.client = this.me._id;
-          let addressTemp = this.me.address.find((x: any) => {
-            return x.main === true;
-          });
-
-          this.bill.address = addressTemp
-            ? addressTemp._id
-            : this.me.address[0]._id;
-
-
-          this.adressePrincipale = addressTemp
-            ? addressTemp
-            : this.me.address[0];
-
-          // Chargez Stripe dès le démarrage du composant
-          this.stripePromise = loadStripe(environment.stripePublicKey);
-          if (!this.stripePromise) {
-            throw new Error('Clé publique Stripe manquante ou invalide.');
-          }
-
-          // Récupérez l'utilisateur courant depuis votre backend
-          if (!this.userId) {
-            throw new Error('Aucun userId trouvé. Veuillez vous connecter.');
-          }
-
-          if (!this.stripeCustomerID) {
-            console.warn('Aucun customerId trouvé. Les cartes ne peuvent pas être chargées.');
-          } else {
-            // Chargez les cartes existantes avec le customerId
-            await this.loadCards();
-          }
-        });
-      });
-
-    /** STRIPE **/
-    // console.log((this.itemToBuy2));
-    let dateBrut: any = localStorage.getItem("selectItemFromShop");
-    if (dateBrut) {
-      dateBrut = JSON.parse(dateBrut);
-    }
-    this.prestationDateForBill = dateBrut.slot.dateBrut;
   }
 
   createSubscription(): void {
@@ -188,6 +196,16 @@ defaultCardId="";
     });
   }
 
+  calculateFinalPrice(productPrice: number, commissionRate: number, taxRate: number): number {
+    // 1️⃣ Ajout de la commission
+    const priceWithCommission = productPrice + (productPrice * commissionRate);
+
+    // 2️⃣ Application de la TVA
+    const finalPrice = priceWithCommission + (priceWithCommission * taxRate);
+
+    // Arrondi à 2 décimales
+    return parseFloat(finalPrice.toFixed(2));
+  }
 
   openProchesModal() {
     this.dialog.open(ProchesModalComponent, {
@@ -279,8 +297,8 @@ defaultCardId="";
     console.log(this.step);
   }
 
-  setDefaultCard(id:string) {}
-  removeCard(id:string) {}
+  setDefaultCard(id: string) { }
+  removeCard(id: string) { }
 
 
   // Charger Stripe.js dynamiquement
@@ -300,7 +318,7 @@ defaultCardId="";
 
   // Valider le paiement avec Stripe
   async validate(): Promise<void> {
-    const amount = (parseFloat(this.price) + parseFloat(this.price) * this.adminSettings.commissionRate + this.adminSettings.serviceFee) * 100;
+    const amount = Math.round(parseFloat(this.price) * 100); // Convertit en centimes (int)
     const currency = 'eur'; // Devise
 
     // Créer une intention de paiement

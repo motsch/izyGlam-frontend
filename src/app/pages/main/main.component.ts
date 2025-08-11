@@ -235,6 +235,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     private loadCategories() {
         this.categoryService.getAvailableCategories(undefined, undefined, [this.selectedPostalCode]).subscribe({
             next: (data: any[]) => {
+                console.log("Log des data : " + JSON.stringify(data));
                 this.categoriesFilter = data.sort((a, b) => a.position - b.position);
             },
             error: (error: any) => {

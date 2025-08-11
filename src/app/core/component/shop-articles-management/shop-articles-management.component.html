@@ -2,7 +2,6 @@
   <button class="btn btn-create float-end" (click)="openModal()" data-bs-toggle="tooltip" data-bs-placement="top">
     <i class="fa fa-plus"></i> {{ "SHOP_ARTICLES_MANAGEMENT.CREATE_BUTTON" | translate }}
   </button>
-
   <table class="table table-striped">
     <thead>
       <tr>
@@ -34,7 +33,6 @@
           <button class="btn btn-edit" (click)="openModal(service)" data-bs-toggle="tooltip" data-bs-placement="top">
             <i class="fa fa-pencil-alt"></i> {{ "SHOP_ARTICLES_MANAGEMENT.CHANGE" | translate }}
           </button>
-        
           <button class="btn btn-delete margin-top-5" (click)="deleteService(i)" data-bs-toggle="tooltip"
             data-bs-placement="top" [disabled]="articlesCopyData.length <= 1">
             {{ "SHOP_ARTICLES_MANAGEMENT.DELETE" | translate }}
@@ -43,77 +41,103 @@
       </tr>
     </tbody>
   </table>
-<!-- Modal -->
-<div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
-  [ngClass]="{ show: modalOpen }">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title">
-          {{
+  <!-- Modal -->
+  <div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
+    [ngClass]="{ show: modalOpen }">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            {{
             editingServiceIndex !== null
             ? "Modifier la prestation " + modalService.type
             : "Crééons une prestation de " + creationType + " !"
-          }}
-        </h3>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="serviceName">{{ "SHOP_ARTICLES_MANAGEMENT.SERVICE_NAME" | translate }}</label>
-          <input type="text" id="serviceName" [(ngModel)]="modalService.name" class="form-control" required />
+            }}
+          </h3>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
         </div>
-        <div class="form-group">
-          <label for="serviceDescription">{{ "SHOP_ARTICLES_MANAGEMENT.DESCRIPTION" | translate }}</label>
-          <textarea id="serviceDescription" [(ngModel)]="modalService.description" class="form-control"
-            required></textarea>
-        </div>
-        <div class="form-group">
-          <label for="servicePrice">{{ "SHOP_ARTICLES_MANAGEMENT.PRICE" | translate }}</label>
-          <input type="number" id="servicePrice" [(ngModel)]="modalService.price" class="form-control" required />
-        </div>
-        <div class="form-group">
-          <label for="serviceDuration">{{ "SHOP_ARTICLES_MANAGEMENT.TIME_MINUTES" | translate }}</label>
-          <input type="number" id="serviceDuration" [(ngModel)]="modalService.duration" class="form-control"
-            required />
-        </div>
-
-        <div class="form-group">
+        <div class="modal-body">
           <div class="form-group">
-            <label for="serviceDescription">{{ "SHOP_ARTICLES_MANAGEMENT.PREST_IMAGE" | translate }}</label>
-            <div *ngIf="imageUsed">
-              <img [src]="imgStorageUrl + imageUsed" alt="Aperçu de l'image" class="image-preview small-preview" />
-            </div>
-            <div *ngIf="!imageUsed" class="no_photo">
-              {{ "SHOP_ARTICLES_MANAGEMENT.NO_PICS" | translate }}
-            </div>
+            <label for="serviceName">{{ "SHOP_ARTICLES_MANAGEMENT.SERVICE_NAME" | translate }}</label>
+            <input type="text" id="serviceName" [(ngModel)]="modalService.name" class="form-control" required />
           </div>
-          <div class="custom-upload">
-            <button type="button" class="margin-top-20" (click)="fileInput.click()">📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate }}</button>
-            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
-          </div>
-          <div *ngIf="imagePreview">
-            <p class="margin-top-20">
-              {{ "SHOP_ARTICLES_MANAGEMENT.NEW_PIC" | translate }}:
-            </p>
-            <img [src]="imagePreview" alt="Aperçu de l'image" class="image-preview small-preview" />
-          </div>
-        </div>
+          <!-- DESCRIPTION -->
+          <div class="form-group">
+            <label for="serviceDescription">{{ "SHOP_ARTICLES_MANAGEMENT.DESCRIPTION" | translate }}</label>
 
-        <label for="serviceDuration">{{ "SHOP_ARTICLES_MANAGEMENT.PRESTA_COLOR" | translate }}:</label>
-        <div class="color-dots">
-          <div *ngFor="let color of colors" class="color-dot-selection pointer"
-            [ngClass]="color.selected ? 'selected' : ''" [ngStyle]="{ 'background-color': color.hex }"
-            (click)="selectColor(color.hex)"></div>
+            <textarea id="serviceDescription" [(ngModel)]="modalService.description" class="form-control"
+              rows="5"></textarea>
+
+            <!-- bouton sous le champ, aligné à droite -->
+            <div class="actions-row end">
+              <button type="button" class="btn-izygenerate" (click)="generateIzyGlamProductDescription(modalService)">
+                ✨{{ "SHOP_MANAGEMENT.GENERATE_DESCRIPTION" | translate }}
+              </button>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label for="servicePrice">{{ "SHOP_ARTICLES_MANAGEMENT.PRICE" | translate }}</label>
+            <input type="number" id="servicePrice" [(ngModel)]="modalService.price" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="serviceDuration">{{ "SHOP_ARTICLES_MANAGEMENT.TIME_MINUTES" | translate }}</label>
+            <input type="number" id="serviceDuration" [(ngModel)]="modalService.duration" class="form-control"
+              required />
+          </div>
+
+          <!-- IMAGE -->
+          <div class="form-group">
+            <label for="serviceImage">{{ "SHOP_ARTICLES_MANAGEMENT.PREST_IMAGE" | translate }}</label>
+
+            <div class="image-grid">
+              <!-- Colonne gauche : image ou placeholder + éventuel nouveau preview -->
+              <div class="image-left">
+                <ng-container *ngIf="imageUsed; else noImage">
+                  <img [src]="imgStorageUrl + imageUsed" alt="Aperçu de l'image" class="image-preview small-preview" />
+                </ng-container>
+                <ng-template #noImage>
+                  <div class="image-placeholder">
+                    {{ "SHOP_ARTICLES_MANAGEMENT.NO_PICS" | translate }}
+                  </div>
+                </ng-template>
+
+                <div *ngIf="imagePreview" class="margin-top-20">
+                  <p>{{ "SHOP_ARTICLES_MANAGEMENT.NEW_PIC" | translate }}:</p>
+                  <img [src]="imagePreview" alt="Aperçu de l'image" class="image-preview small-preview" />
+                </div>
+              </div>
+
+              <!-- Colonne droite : boutons empilés -->
+              <div class="image-actions">
+                <button type="button" class="btn-izygenerate w-100" (click)="generateIzyGlamImage(modalService)">
+                  ✨{{ "SHOP_MANAGEMENT.GENERATE_IMAGE" | translate }}
+                </button>
+
+                <button type="button" class="btn-upload w-100" (click)="fileInput.click()">
+                  📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate }}
+                </button>
+
+                <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
+              </div>
+            </div>
+          </div>
+
+
+          <label for="serviceDuration">{{ "SHOP_ARTICLES_MANAGEMENT.PRESTA_COLOR" | translate }}:</label>
+          <div class="color-dots">
+            <div *ngFor="let color of colors" class="color-dot-selection pointer"
+              [ngClass]="color.selected ? 'selected' : ''" [ngStyle]="{ 'background-color': color.hex }"
+              (click)="selectColor(color.hex)"></div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="saveService()">
-          {{ "SHOP_ARTICLES_MANAGEMENT.SAVE" | translate }}
-        </button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="saveService()">
+            {{ "SHOP_ARTICLES_MANAGEMENT.SAVE" | translate }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </div>

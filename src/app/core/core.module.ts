@@ -83,6 +83,9 @@ import { ReviewModalComponent } from './component/review-modal/review-modal.comp
 import { CreateShopInfoComponent } from './component/create-shop-info/create-shop-info.component';
 import { ShopEmployeesComponent } from './component/shop-employees/shop-employees.component';
 import { StripeCardFormComponent } from './component/stripe-card-form/stripe-card-form.component';
+import { TermsComponent } from '../pages/terms/terms.component';
+import { AccessibilityPolicyComponent } from './component/accessibility-policy/accessibility-policy.component';
+import { TermsPolicyComponent } from './component/terms-policy/terms-policy.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -132,6 +135,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         }),
     ],    
     declarations: [
+        TermsPolicyComponent,
         CreateShopComponent,
         AiMarkdownPipe,
         PageNotFoundComponent,
@@ -145,6 +149,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ProfileInformationsComponent,
         ChangePasswordComponent,
         ConfidentialPolicyComponent,
+        AccessibilityPolicyComponent,
         FooterComponent,
         StripeCardFormComponent,
         CompanyManagementComponent,
@@ -156,7 +161,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ProchesModalComponent,
         CompanyFinanceManagementComponent,
         ChangePasswordComponent,
-        ConfidentialPolicyComponent,
         DashboardComponent,
         CalendarComponent,
         ProfileInformationsComponent,
@@ -197,6 +201,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
+        TermsPolicyComponent,
         CalendarComponent,
         PageNotFoundComponent,
         HeaderComponent,
@@ -206,6 +211,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ProfileInformationsComponent,
         ChangePasswordComponent,
         ConfidentialPolicyComponent,
+        AccessibilityPolicyComponent,
         ModalYesNoComponent,
         OrderItemComponent,
         CompanyManagementComponent,

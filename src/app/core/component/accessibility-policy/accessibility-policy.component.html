@@ -1,0 +1,139 @@
+<form>
+  <div>
+    <h2>I. {{ 'ACCESSIBILITY.DECLARATION.TITLE' | translate }}</h2>
+    <p>{{ 'ACCESSIBILITY.DECLARATION.TEXT' | translate }}</p>
+
+    <h2>II. {{ 'ACCESSIBILITY.SCOPE.TITLE' | translate }}</h2>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.SCOPE.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.SCOPE.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.SCOPE.L3' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.SCOPE.L4' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.SCOPE.L5' | translate }}</li>
+    </ul>
+
+    <h2>III. {{ 'ACCESSIBILITY.STATUS.TITLE' | translate }}</h2>
+    <p>{{ 'ACCESSIBILITY.STATUS.TEXT' | translate }}</p>
+
+    <h2>IV. {{ 'ACCESSIBILITY.PREPARATION.TITLE' | translate }}</h2>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.PREPARATION.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.PREPARATION.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.PREPARATION.L3' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.PREPARATION.L4' | translate }}</li>
+    </ul>
+
+    <h2>V. {{ 'ACCESSIBILITY.FEATURES.TITLE' | translate }}</h2>
+
+    <h3>A. {{ 'ACCESSIBILITY.FEATURES.KEYBOARD.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.FEATURES.KEYBOARD.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.KEYBOARD.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.KEYBOARD.L3' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.KEYBOARD.L4' | translate }}</li>
+    </ul>
+
+    <h3>B. {{ 'ACCESSIBILITY.FEATURES.SCREENREADERS.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.FEATURES.SCREENREADERS.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.SCREENREADERS.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.SCREENREADERS.L3' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.SCREENREADERS.L4' | translate }}</li>
+    </ul>
+
+    <h3>C. {{ 'ACCESSIBILITY.FEATURES.CONTRAST.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.FEATURES.CONTRAST.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.CONTRAST.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.CONTRAST.L3' | translate }}</li>
+    </ul>
+
+    <h3>D. {{ 'ACCESSIBILITY.FEATURES.FORMS.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.FEATURES.FORMS.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.FORMS.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.FORMS.L3' | translate }}</li>
+    </ul>
+
+    <h3>E. {{ 'ACCESSIBILITY.FEATURES.DYNAMIC.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.FEATURES.DYNAMIC.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.DYNAMIC.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.DYNAMIC.L3' | translate }}</li>
+    </ul>
+
+    <h3>F. {{ 'ACCESSIBILITY.FEATURES.MEDIA.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.FEATURES.MEDIA.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.MEDIA.L2' | translate }}</li>
+    </ul>
+
+    <h3>G. {{ 'ACCESSIBILITY.FEATURES.MOBILE.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.FEATURES.MOBILE.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.FEATURES.MOBILE.L2' | translate }}</li>
+    </ul>
+
+    <h2>VI. {{ 'ACCESSIBILITY.ENVIRONMENTS.TITLE' | translate }}</h2>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.ENVIRONMENTS.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.ENVIRONMENTS.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.ENVIRONMENTS.L3' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.ENVIRONMENTS.L4' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.ENVIRONMENTS.L5' | translate }}</li>
+    </ul>
+
+    <h2>VII. {{ 'ACCESSIBILITY.NONACCESSIBLE.TITLE' | translate }}</h2>
+    <p>{{ 'ACCESSIBILITY.NONACCESSIBLE.TEXT' | translate }}</p>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.NONACCESSIBLE.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.NONACCESSIBLE.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.NONACCESSIBLE.L3' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.NONACCESSIBLE.L4' | translate }}</li>
+    </ul>
+    <p><em>{{ 'ACCESSIBILITY.NONACCESSIBLE.MOTIVES' | translate }}</em></p>
+
+    <h2>VIII. {{ 'ACCESSIBILITY.ACCOMMODATIONS.TITLE' | translate }}</h2>
+    <p>{{ 'ACCESSIBILITY.ACCOMMODATIONS.TEXT' | translate }}</p>
+
+    <h2>IX. {{ 'ACCESSIBILITY.FEEDBACK.TITLE' | translate }}</h2>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.FEEDBACK.L1' | translate }}</li>
+      <li>
+        {{ 'ACCESSIBILITY.FEEDBACK.L2A' | translate }}
+        <a [href]="'mailto:' + ('ACCESSIBILITY.CONTACT.EMAIL_ACCESS' | translate)">
+          {{ 'ACCESSIBILITY.CONTACT.EMAIL_ACCESS' | translate }}
+        </a>
+        {{ 'ACCESSIBILITY.FEEDBACK.L2B' | translate }}
+        <a [href]="'mailto:' + ('ACCESSIBILITY.CONTACT.EMAIL_SUPPORT' | translate)">
+          {{ 'ACCESSIBILITY.CONTACT.EMAIL_SUPPORT' | translate }}
+        </a>.
+      </li>
+      <li>{{ 'ACCESSIBILITY.FEEDBACK.L3' | translate }}</li>
+    </ul>
+
+    <h2>X. {{ 'ACCESSIBILITY.RECOURSE.TITLE' | translate }}</h2>
+    <p>{{ 'ACCESSIBILITY.RECOURSE.TEXT' | translate }}</p>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.RECOURSE.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.RECOURSE.L2' | translate }}</li>
+    </ul>
+    <p>
+      {{ 'ACCESSIBILITY.RECOURSE.MORE' | translate }}
+      <a href="https://www.defenseurdesdroits.fr" target="_blank" rel="noopener">
+        {{ 'ACCESSIBILITY.RECOURSE.LINK' | translate }}
+      </a>.
+    </p>
+
+    <h2>XI. {{ 'ACCESSIBILITY.CONTINUOUS.TITLE' | translate }}</h2>
+    <ul>
+      <li>{{ 'ACCESSIBILITY.CONTINUOUS.L1' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.CONTINUOUS.L2' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.CONTINUOUS.L3' | translate }}</li>
+      <li>{{ 'ACCESSIBILITY.CONTINUOUS.L4' | translate }}</li>
+    </ul>
+
+    <h2>XII. {{ 'ACCESSIBILITY.DATE.TITLE' | translate }}</h2>
+    <p>{{ 'ACCESSIBILITY.DATE.TEXT' | translate }}</p>
+  </div>
+</form>

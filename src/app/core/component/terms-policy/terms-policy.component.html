@@ -1,0 +1,141 @@
+<form>
+  <div>
+    <!-- I -->
+    <h2>I. {{ 'TERMS.ACCEPT.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.ACCEPT.TEXT' | translate"></p>
+
+    <!-- II -->
+    <h2>II. {{ 'TERMS.DEFINITIONS.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.DEFINITIONS.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.DEFINITIONS.L2' | translate"></li>
+      <li [innerHTML]="'TERMS.DEFINITIONS.L3' | translate"></li>
+      <li [innerHTML]="'TERMS.DEFINITIONS.L4' | translate"></li>
+    </ul>
+
+    <!-- III -->
+    <h2>III. {{ 'TERMS.SERVICE_ROLE.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.SERVICE_ROLE.TEXT' | translate"></p>
+
+    <!-- IV -->
+    <h2>IV. {{ 'TERMS.ACCOUNT.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.ACCOUNT.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.ACCOUNT.L2' | translate"></li>
+      <li [innerHTML]="'TERMS.ACCOUNT.L3' | translate"></li>
+      <li [innerHTML]="'TERMS.ACCOUNT.L4' | translate"></li>
+    </ul>
+
+    <!-- V -->
+    <h2>V. {{ 'TERMS.BOOKINGS.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.BOOKINGS.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.BOOKINGS.L2' | translate"></li>
+      <li [innerHTML]="'TERMS.BOOKINGS.L3' | translate"></li>
+      <li [innerHTML]="'TERMS.BOOKINGS.L4' | translate"></li>
+    </ul>
+
+    <!-- VI -->
+    <h2>VI. {{ 'TERMS.PRICES_PAYMENTS.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.PRICES_PAYMENTS.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.PRICES_PAYMENTS.L2' | translate"></li>
+      <li [innerHTML]="'TERMS.PRICES_PAYMENTS.L3' | translate"></li>
+      <li [innerHTML]="'TERMS.PRICES_PAYMENTS.L4' | translate"></li>
+    </ul>
+
+    <!-- VII -->
+    <h2>VII. {{ 'TERMS.CANCELLATIONS.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.CANCELLATIONS.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.CANCELLATIONS.L2' | translate"></li>
+      <li [innerHTML]="'TERMS.CANCELLATIONS.L3' | translate"></li>
+      <li [innerHTML]="'TERMS.CANCELLATIONS.L4' | translate"></li>
+    </ul>
+
+    <!-- VIII -->
+    <h2>VIII. {{ 'TERMS.PAYOUTS.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.PAYOUTS.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.PAYOUTS.L2' | translate"></li>
+      <li [innerHTML]="'TERMS.PAYOUTS.L3' | translate"></li>
+    </ul>
+
+    <!-- IX -->
+    <h2>IX. {{ 'TERMS.RESPONSIBILITIES.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.RESPONSIBILITIES.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.RESPONSIBILITIES.L2' | translate"></li>
+      <li [innerHTML]="'TERMS.RESPONSIBILITIES.L3' | translate"></li>
+    </ul>
+
+    <!-- X -->
+    <h2>X. {{ 'TERMS.REVIEWS.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.REVIEWS.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.REVIEWS.L2' | translate"></li>
+    </ul>
+
+    <!-- XI -->
+    <h2>XI. {{ 'TERMS.PROHIBITED.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'TERMS.PROHIBITED.L1' | translate"></li>
+      <li [innerHTML]="'TERMS.PROHIBITED.L2' | translate"></li>
+      <li [innerHTML]="'TERMS.PROHIBITED.L3' | translate"></li>
+      <li [innerHTML]="'TERMS.PROHIBITED.L4' | translate"></li>
+    </ul>
+
+    <!-- XII -->
+    <h2>XII. {{ 'TERMS.IPR.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.IPR.TEXT' | translate"></p>
+
+    <!-- XIII -->
+    <h2>XIII. {{ 'TERMS.THIRD_PARTY.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.THIRD_PARTY.TEXT' | translate"></p>
+
+    <!-- XIV -->
+    <h2>XIV. {{ 'TERMS.AVAILABILITY.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.AVAILABILITY.TEXT' | translate"></p>
+
+    <!-- XV -->
+    <h2>XV. {{ 'TERMS.LIABILITY.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.LIABILITY.TEXT' | translate"></p>
+
+    <!-- XVI -->
+    <h2>XVI. {{ 'TERMS.TERMINATION.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.TERMINATION.TEXT' | translate"></p>
+
+    <!-- XVII -->
+    <h2>XVII. {{ 'TERMS.PRIVACY.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.PRIVACY.TEXT' | translate"></p>
+
+    <!-- XVIII -->
+    <h2>XVIII. {{ 'TERMS.CHANGES.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.CHANGES.TEXT' | translate"></p>
+
+    <!-- XIX -->
+    <h2>XIX. {{ 'TERMS.LAW.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.LAW.TEXT' | translate"></p>
+
+    <!-- XX -->
+    <h2>XX. {{ 'TERMS.CONTACT.TITLE' | translate }}</h2>
+    <ul>
+      <li>
+        <strong>{{ 'TERMS.CONTACT.SUPPORT_LABEL' | translate }}</strong>
+        <a [href]="'mailto:' + ('TERMS.CONTACT.EMAIL_SUPPORT' | translate)">
+          {{ 'TERMS.CONTACT.EMAIL_SUPPORT_TEXT' | translate }}
+        </a>
+      </li>
+      <li>
+        <strong>{{ 'TERMS.CONTACT.LEGAL_LABEL' | translate }}</strong>
+        <a [href]="'mailto:' + ('TERMS.CONTACT.EMAIL_LEGAL' | translate)">
+          {{ 'TERMS.CONTACT.EMAIL_LEGAL_TEXT' | translate }}
+        </a>
+      </li>
+    </ul>
+
+    <!-- XXI -->
+    <h2>XXI. {{ 'TERMS.EFFECTIVE.TITLE' | translate }}</h2>
+    <p [innerHTML]="'TERMS.EFFECTIVE.TEXT' | translate"></p>
+  </div>
+</form>

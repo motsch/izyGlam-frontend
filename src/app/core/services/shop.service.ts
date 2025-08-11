@@ -190,6 +190,15 @@ export class ShopService {
         return R * c;
     }
 
+    generateIzyGlamProductDescription(product?: any): Observable<string> {
+        return this.http.post<{ formattedDescription: string }>(
+            `${environment.apiUrl}product-description`,
+            { product }
+        ).pipe(
+            map(response => response.formattedDescription)
+        );
+    }
+
     /**
  * Génère une description professionnelle à partir du type de salon et d'une description utilisateur (facultative)
  * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
@@ -204,10 +213,24 @@ export class ShopService {
         );
     }
 
+    /**
+ * Génère une illustration professionnelle à partir du nom de la prestation et une description utilisateur (facultative)
+ * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
+ * @param userDescription Une description éventuelle saisie par l'utilisateur
+ */
+    generateIzyGlamImage(product?: any): Observable<string> {
+        return this.http.post<{ formattedDescription: string }>(
+            `${environment.apiUrl}prestation-image`,
+            { product }
+        ).pipe(
+            map(response => response.formattedDescription)
+        );
+    }
+
     getShopsByBoss(): Observable<any[]> {
         return this.http.get<any[]>(
             `${environment.apiUrl}shops-by-boss`
         );
     }
-      
+
 }

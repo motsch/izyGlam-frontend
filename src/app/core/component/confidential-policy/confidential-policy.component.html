@@ -1,106 +1,161 @@
 <form>
   <div>
-    <h2>I. {{ 'CONFIDENTIAL.INTRO' | translate}}</h2>
+    <!-- I -->
+    <h2>I. {{ 'PRIVACY.WHO.TITLE' | translate }}</h2>
+    <p [innerHTML]="'PRIVACY.WHO.TEXT' | translate"></p>
+
+    <!-- II -->
+    <h2>II. {{ 'PRIVACY.SCOPE.TITLE' | translate }}</h2>
+    <p>{{ 'PRIVACY.SCOPE.TEXT' | translate }}</p>
+
+    <!-- III -->
+    <h2>III. {{ 'PRIVACY.DATA.TITLE' | translate }}</h2>
+
+    <h3>A. {{ 'PRIVACY.DATA.PROVIDED.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'PRIVACY.DATA.PROVIDED.L1' | translate }}</li>
+      <li>{{ 'PRIVACY.DATA.PROVIDED.L2' | translate }}</li>
+      <li>{{ 'PRIVACY.DATA.PROVIDED.L3' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.DATA.PROVIDED.L4' | translate"></li>
+      <li>{{ 'PRIVACY.DATA.PROVIDED.L5' | translate }}</li>
+      <li>{{ 'PRIVACY.DATA.PROVIDED.L6' | translate }}</li>
+    </ul>
+
+    <h3>B. {{ 'PRIVACY.DATA.AUTOMATIC.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'PRIVACY.DATA.AUTOMATIC.L1' | translate }}</li>
+      <li>{{ 'PRIVACY.DATA.AUTOMATIC.L2' | translate }}</li>
+      <li>{{ 'PRIVACY.DATA.AUTOMATIC.L3' | translate }}</li>
+      <li>{{ 'PRIVACY.DATA.AUTOMATIC.L4' | translate }}</li>
+    </ul>
+
+    <h3>C. {{ 'PRIVACY.DATA.THIRD.TITLE' | translate }}</h3>
+    <ul>
+      <li>{{ 'PRIVACY.DATA.THIRD.L1' | translate }}</li>
+      <li>{{ 'PRIVACY.DATA.THIRD.L2' | translate }}</li>
+      <li>{{ 'PRIVACY.DATA.THIRD.L3' | translate }}</li>
+    </ul>
+
+    <!-- IV -->
+    <h2>IV. {{ 'PRIVACY.PURPOSES.TITLE' | translate }}</h2>
+    <p>{{ 'PRIVACY.PURPOSES.TEXT' | translate }}</p>
+    <ul>
+      <li [innerHTML]="'PRIVACY.PURPOSES.L1' | translate"></li>
+      <li [innerHTML]="'PRIVACY.PURPOSES.L2' | translate"></li>
+      <li [innerHTML]="'PRIVACY.PURPOSES.L3' | translate"></li>
+      <li [innerHTML]="'PRIVACY.PURPOSES.L4' | translate"></li>
+      <li [innerHTML]="'PRIVACY.PURPOSES.L5' | translate"></li>
+      <li [innerHTML]="'PRIVACY.PURPOSES.L6' | translate"></li>
+      <li [innerHTML]="'PRIVACY.PURPOSES.L7' | translate"></li>
+    </ul>
+
+    <!-- V -->
+    <h2>V. {{ 'PRIVACY.SHARING.TITLE' | translate }}</h2>
+    <ul>
+      <li>{{ 'PRIVACY.SHARING.L1' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.SHARING.L2' | translate"></li>
+      <li>{{ 'PRIVACY.SHARING.L3' | translate }}</li>
+      <li>{{ 'PRIVACY.SHARING.L4' | translate }}</li>
+    </ul>
+
+    <!-- VI -->
+    <h2>VI. {{ 'PRIVACY.TRANSFERS.TITLE' | translate }}</h2>
+    <p [innerHTML]="'PRIVACY.TRANSFERS.TEXT' | translate"></p>
+
+    <!-- VII -->
+    <h2>VII. {{ 'PRIVACY.RETENTION.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'PRIVACY.RETENTION.L1' | translate"></li>
+      <li [innerHTML]="'PRIVACY.RETENTION.L2' | translate"></li>
+      <li [innerHTML]="'PRIVACY.RETENTION.L3' | translate"></li>
+      <li [innerHTML]="'PRIVACY.RETENTION.L4' | translate"></li>
+    </ul>
+    <p>{{ 'PRIVACY.RETENTION.NOTE' | translate }}</p>
+
+    <!-- VIII -->
+    <h2>VIII. {{ 'PRIVACY.COOKIES.TITLE' | translate }}</h2>
+    <p>{{ 'PRIVACY.COOKIES.TEXT' | translate }}</p>
+    <ul>
+      <li>{{ 'PRIVACY.COOKIES.L1' | translate }}</li>
+      <li>{{ 'PRIVACY.COOKIES.L2' | translate }}</li>
+      <li>{{ 'PRIVACY.COOKIES.L3' | translate }}</li>
+    </ul>
+    <p>{{ 'PRIVACY.COOKIES.PREF' | translate }}</p>
+
+    <!-- IX -->
+    <h2>IX. {{ 'PRIVACY.AUTOMATION.TITLE' | translate }}</h2>
+    <p>{{ 'PRIVACY.AUTOMATION.TEXT' | translate }}</p>
+
+    <!-- X -->
+    <h2>X. {{ 'PRIVACY.RIGHTS.TITLE' | translate }}</h2>
+    <ul>
+      <li [innerHTML]="'PRIVACY.RIGHTS.L1' | translate"></li>
+      <li [innerHTML]="'PRIVACY.RIGHTS.L2' | translate"></li>
+      <li [innerHTML]="'PRIVACY.RIGHTS.L3' | translate"></li>
+      <li [innerHTML]="'PRIVACY.RIGHTS.L4' | translate"></li>
+      <li [innerHTML]="'PRIVACY.RIGHTS.L5' | translate"></li>
+    </ul>
     <p>
-      {{ 'CONFIDENTIAL.INTRO_BIS' | translate}}.
+      {{ 'PRIVACY.RIGHTS.CONTACT' | translate }}
+      <a [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)">
+        {{ 'PRIVACY.CONTACT.EMAIL_PRIVACY_TEXT' | translate }}
+      </a>.
+      {{ 'PRIVACY.RIGHTS.VERIFY' | translate }}
     </p>
 
-    <h2>II. {{ 'CONFIDENTIAL.APPLICATION' | translate}}</h2>
+    <!-- XI -->
+    <h2>XI. {{ 'PRIVACY.SECURITY.TITLE' | translate }}</h2>
+    <p>{{ 'PRIVACY.SECURITY.TEXT' | translate }}</p>
+
+    <!-- XII -->
+    <h2>XII. {{ 'PRIVACY.MINORS.TITLE' | translate }}</h2>
+    <p>{{ 'PRIVACY.MINORS.TEXT' | translate }}</p>
+
+    <!-- XIII -->
+    <h2>XIII. {{ 'PRIVACY.SUBPROCESSORS.TITLE' | translate }}</h2>
     <p>
-      {{ 'CONFIDENTIAL.DECLARATION' | translate}}.
+      {{ 'PRIVACY.SUBPROCESSORS.TEXT' | translate }}
+      <a [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)">
+        {{ 'PRIVACY.CONTACT.EMAIL_PRIVACY_TEXT' | translate }}
+      </a>.
     </p>
 
-    <h2>III. {{ 'CONFIDENTIAL.COLLECTE' | translate}}</h2>
-    <h3>A. {{ 'CONFIDENTIAL.DATA_GET' | translate}}</h3>
-    <p>{{ 'CONFIDENTIAL.DATA_TAKEN' | translate}} :</p>
+    <!-- XIV -->
+    <h2>XIV. {{ 'PRIVACY.CONTACT.TITLE' | translate }}</h2>
     <ul>
       <li>
-        <strong>{{ 'CONFIDENTIAL.DATA_USED' | translate}} :</strong> {{ 'CONFIDENTIAL.PERSONNAL' | translate}}.
+        <strong>{{ 'PRIVACY.CONTACT.PRIVACY_LABEL' | translate }}</strong>
+        <a [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)">
+          {{ 'PRIVACY.CONTACT.EMAIL_PRIVACY_TEXT' | translate }}
+        </a>
       </li>
       <li>
-        <strong>{{ 'CONFIDENTIAL.CREATE_DATA' | translate}} :</strong> {{ 'CONFIDENTIAL.HISTORY' | translate}}.
+        <strong>{{ 'PRIVACY.CONTACT.SUPPORT_LABEL' | translate }}</strong>
+        <a [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_SUPPORT' | translate)">
+          {{ 'PRIVACY.CONTACT.EMAIL_SUPPORT_TEXT' | translate }}
+        </a>
       </li>
       <li>
-        <strong>{{ 'CONFIDENTIAL.RELATION' | translate}} :</strong> {{ 'CONFIDENTIAL.DETAILS' | translate}}.
+        <strong>{{ 'PRIVACY.CONTACT.AUTHORITY_LABEL' | translate }}</strong>
+        <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>
       </li>
     </ul>
 
-    <h3>B. {{ 'CONFIDENTIAL.USED' | translate}}</h3>
-    <p>{{ 'CONFIDENTIAL.USED_FOR' | translate}} :</p>
+    <!-- XV -->
+    <h2>XV. {{ 'PRIVACY.CHANGES.TITLE' | translate }}</h2>
+    <p [innerHTML]="'PRIVACY.CHANGES.TEXT' | translate"></p>
+
+    <!-- XVI -->
+    <h2>XVI. {{ 'PRIVACY.LOCAL.TITLE' | translate }}</h2>
+    <p>{{ 'PRIVACY.LOCAL.TEXT' | translate }}</p>
+
+    <!-- XVII -->
+    <h2>XVII. {{ 'PRIVACY.GLOSSARY.TITLE' | translate }}</h2>
     <ul>
-      <li>{{ 'CONFIDENTIAL.BEST_SERVICES' | translate}}.</li>
-      <li>
-        {{ 'CONFIDENTIAL.PARTICULIER' | translate}}.
-      </li>
-      <li>
-        {{ 'CONFIDENTIAL.SEND' | translate}}.
-      </li>
-      <li>{{ 'CONFIDENTIAL.ASSURER' | translate}}.</li>
-      <li>
-        {{ 'CONFIDENTIAL.EFFECTUER' | translate}}.
-      </li>
-      <li>
-        {{ 'CONFIDENTIAL.PERSONNALISER' | translate}}.
-      </li>
+      <li [innerHTML]="'PRIVACY.GLOSSARY.L1' | translate"></li>
+      <li [innerHTML]="'PRIVACY.GLOSSARY.L2' | translate"></li>
+      <li [innerHTML]="'PRIVACY.GLOSSARY.L3' | translate"></li>
+      <li [innerHTML]="'PRIVACY.GLOSSARY.L4' | translate"></li>
     </ul>
-
-    <h2>IV. {{ 'CONFIDENTIAL.CHOICE' | translate}}</h2>
-    <h3>A. {{ 'CONFIDENTIAL.RIGHT' | translate}}</h3>
-    <p>{{ 'CONFIDENTIAL.RGPD' | translate}} :</p>
-    <ul>
-      <li>{{ 'CONFIDENTIAL.PERSONNAL_DATA_ACCESS' | translate}}.</li>
-      <li>{{ 'CONFIDENTIAL.ASK_CORRECTION' | translate}}.</li>
-      <li>{{ 'CONFIDENTIAL.ASK_DELETE' | translate}}.</li>
-      <li>{{ 'CONFIDENTIAL.RESTREINDRE' | translate}}.</li>
-      <li>{{ 'CONFIDENTIAL.ASK_PORTA' | translate}}.</li>
-      <li>
-        {{ 'CONFIDENTIAL.CONSENT' | translate}}.
-      </li>
-      <li>
-        {{ 'CONFIDENTIAL.RECLAMATION' | translate}}.
-      </li>
-    </ul>
-
-    <h3>B. {{ 'CONFIDENTIAL.COOKIES' | translate}}</h3>
-    <p>
-      {{ 'CONFIDENTIAL.MANAGE_COOKIES_PREF' | translate}}.
-    </p>
-
-    <h2>V. {{ 'CONFIDENTIAL.SHARE_DATA' | translate}}</h2>
-    <p>
-      {{ 'CONFIDENTIAL.WE_SHARE' | translate}} :
-    </p>
-    <ul>
-      <li>{{ 'CONFIDENTIAL.FOURNISSEUR_SERV' | translate}}.</li>
-      <li>{{ 'CONFIDENTIAL.TRANSPORT' | translate}}.</li>
-      <li>{{ 'CONFIDENTIAL.MARKETING' | translate}}.</li>
-      <li>{{ 'CONFIDENTIAL.HEALTHCARE' | translate}}.</li>
-      <li>{{ 'CONFIDENTIAL.CLOUD' | translate}}.</li>
-    </ul>
-
-    <h2>VI. {{ 'CONFIDENTIAL.DATA_SAVED' | translate}}</h2>
-    <p>
-      {{ 'CONFIDENTIAL.WE_SAVE' | translate}}.
-    </p>
-
-    <h2>VII. {{ 'CONFIDENTIAL.SECURITY' | translate}}</h2>
-    <p>
-      {{ 'CONFIDENTIAL.TECHNICAL' | translate}}.
-    </p>
-
-    <h2>VIII. {{ 'CONFIDENTIAL.INTERNATIONAL' | translate}}</h2>
-    <p>
-      {{ 'CONFIDENTIAL.PERSONNAL_DATA' | translate}}.
-    </p>
-
-    <h2>IX. {{ 'CONFIDENTIAL.CONTACT' | translate}}</h2>
-    <p>
-      {{ 'CONFIDENTIAL.QUESTION' | translate}}.
-    </p>
-
-    <h2>X. {{ 'CONFIDENTIAL.CHANGE_POLITIQUE' | translate}}</h2>
-    <p>
-      {{ 'CONFIDENTIAL.RESERVES' | translate}}.
-    </p>
   </div>
 </form>

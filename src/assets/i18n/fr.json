@@ -225,58 +225,6 @@
     "CHANGE_LANGUE": "Changer la langue",
     "LANGUE": "Langue"
   },
-  "CONFIDENTIAL": {
-    "INTRO": "Introduction",
-    "INTRO_BIS": "Lorsque vous utilisez izyGlam, vous nous confiez vos données personnelles. Nous nous engageons à faire honneur à votre confiance en protégeant vos informations. Cette déclaration de confidentialité décrit les données personnelles (« données ») que nous recueillons, comment nous les utilisons et les partageons, ainsi que vos choix à cet égard. Nous vous conseillons de lire ce document attentivement.",
-    "APPLICATION": "Champ d'application",
-    "DECLARATION": "Cette déclaration s'applique aux utilisateurs de la plateforme izyGlam qui met en relation des particuliers et des entreprises avec des professionnels indépendants de l'esthétique tels que des manucures, pédicures, maquilleurs et coiffeurs. Elle couvre l'ensemble des services proposés par izyGlam dans le monde.",
-    "COLLECTE": "Collecte et utilisation des données",
-    "DATA_GET": "Données recueillies par izyGlam",
-    "DATA_TAKEN": "izyGlam collecte les données suivantes",
-    "DATA_USED": "Données fournies par les utilisateurs",
-    "PERSONNAL": "Informations personnelles (nom, adresse e-mail, numéro de téléphone), informations de compte (identifiants, mots de passe, préférences de services esthétiques), informations de paiement (détails de carte de crédit, informations bancaires, historique de transactions)",
-    "CREATE_DATA": "Données créées pendant l'utilisation de nos services",
-    "HISTORY": "Historique de navigation, cookies, adresse IP, type de navigateur, système d'exploitation, temps passé sur la plateforme",
-    "RELATION": "Données de mise en relation",
-    "DETAILS": "Détails sur les professionnels de l'esthétique contactés, services demandés, horaires des rendez-vous, communications échangées",
-    "USED": "Utilisation des données",
-    "USED_FOR": "izyGlam utilise les données pour",
-    "BEST_SERVICES": "Fournir et améliorer nos services, personnaliser votre expérience et traiter vos commandes.",
-    "PARTICULIER": "Faciliter la mise en relation entre les particuliers/entreprises et les professionnels de l'esthétique indépendants.",
-    "SEND": "Vous envoyer des informations sur nos produits, services, offres spéciales et nouvelles fonctionnalités.",
-    "ASSURER": "Assurer la sécurité de nos systèmes et prévenir les fraudes.",
-    "EFFECTUER": "Effectuer des analyses pour comprendre les tendances d'utilisation de la plateforme.",
-    "PERSONNALISER": "Personnaliser votre expérience en fonction de vos préférences et de votre historique d'utilisation.",
-    "CHOICE": "Choix et transparence",
-    "RIGHT": "Vos droits",
-    "RGPD": "En vertu du RGPD, vous avez le droit de",
-    "PERSONNAL_DATA_ACCESS": "Accéder à vos données personnelles et demander une copie de celles-ci.",
-    "ASK_CORRECTION": "Demander la correction de données incorrectes ou incomplètes.",
-    "ASK_DELETE": "Demander la suppression de vos données (« droit à l'oubli »).",
-    "RESTREINDRE": "Restreindre ou vous opposer au traitement de vos données.",
-    "ASK_PORTA": "Demander la portabilité de vos données à un autre service.",
-    "CONSENT": "Retirer votre consentement à tout moment lorsque le traitement est basé sur le consentement.",
-    "RECLAMATION": "Introduire une réclamation auprès d'une autorité de contrôle compétente si vous estimez que vos droits ne sont pas respectés.",
-    "COOKIES": "Paramètres de confidentialité et cookies",
-    "MANAGE_COOKIES_PREF": "Vous pouvez gérer vos préférences de cookies via les paramètres de votre navigateur ou un outil de gestion des cookies disponible sur notre site. À l'avenir, izyGlam pourra utiliser d'autres technologies pour le suivi des utilisateurs.",
-    "SHARE_DATA": "Partage des données",
-    "WE_SHARE": "Nous partageons vos données personnelles uniquement avec des tiers de confiance, nécessaires pour le traitement de vos commandes et la fourniture des services tels que",
-    "FOURNISSEUR_SERV": "Fournisseurs de services de paiement pour le traitement sécurisé des transactions.",
-    "TRANSPORT": "Transporteurs ou coursiers pour la livraison de produits, le cas échéant.",
-    "MARKETING": "Fournisseurs de services de marketing et de publicité, uniquement avec votre consentement.",
-    "HEALTHCARE": "Spécialistes de l'esthétique indépendants avec lesquels vous avez pris rendez-vous via la plateforme.",
-    "CLOUD": "Fournisseurs de services de cloud et d'hébergement pour assurer la disponibilité et la sécurité de notre plateforme.",
-    "DATA_SAVED": "Conservation des données",
-    "WE_SAVE": "Nous conservons vos données personnelles uniquement pendant la durée nécessaire pour atteindre les objectifs pour lesquels elles ont été collectées, y compris pour répondre à toute obligation légale, comptable ou de rapport. Les données sont généralement conservées entre 3 et 6 mois.",
-    "SECURITY": "Sécurité des données",
-    "TECHNICAL": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données personnelles contre toute perte, utilisation abusive, accès non autorisé, divulgation, altération ou destruction. Parmi ces mesures, nous utilisons le chiffrement des données en transit et au repos, l'authentification forte pour l'accès aux systèmes internes, ainsi que la surveillance continue des menaces et des failles de sécurité potentielles. Nous n'avons pas encore mis en place de protocoles de réponse en cas de violation des données, mais c'est un aspect que nous envisageons pour l'avenir.",
-    "INTERNATIONAL": "Transfert international de données",
-    "PERSONNAL_DATA": "Les données personnelles que nous collectons peuvent être transférées et stockées dans des pays en dehors de l'Espace Économique Européen (EEE). Lorsque ces transferts ont lieu, nous nous assurons qu'ils sont réalisés conformément à la réglementation applicable en utilisant des mécanismes tels que les clauses contractuelles types approuvées par la Commission européenne.",
-    "CONTACT": "Contact",
-    "QUESTION": "Pour toute question concernant notre politique de confidentialité ou pour exercer vos droits, veuillez nous contacter à : userprotection@izyglam.com.",
-    "CHANGE_POLITIQUE": "Modifications de cette politique de confidentialité",
-    "RESERVES": "Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. En cas de modifications importantes, nous vous en informerons par email. Nous vous encourageons à consulter régulièrement cette page pour être au courant des mises à jour."
-  },
   "PAYEMENT": {
     "YOU": "Vous",
     "HEADER_TITLE": "Paiement",
@@ -825,7 +773,8 @@
     "SATURDAY": "Samedi",
     "SUNDAY": "Dimanche",
     "CLOSED": "Fermé",
-    "GENERATE": "Générer avec izyGlam",
+    "GENERATE_IMAGE": "Générer l'image",
+    "GENERATE_DESCRIPTION": "Générer la description",
     "PHOTO": "Exemples de photos acceptées / refusées",
     "CODE_POSTAUX": "Codes postaux desservis",
     "EXEMPLE_LOCAL": "Ex: 75001"
@@ -912,6 +861,127 @@
     "READY": "Prête à faire grandir ton activité ?",
     "DISCOVERS": "Découvrir les offres IzyGlam"
   },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Déclaration d’accessibilité",
+      "TEXT": "izyGlam s’engage à rendre ses services accessibles au plus grand nombre. Notre objectif est d’atteindre un niveau de conformité WCAG 2.2 niveau AA et de nous aligner sur le RGAA (France), dans la mesure du possible."
+    },
+    "SCOPE": {
+      "TITLE": "Périmètre couvert",
+      "L1": "Site web public et pages d’information.",
+      "L2": "Application web (tableau de bord) destinée aux clients et aux professionnels.",
+      "L3": "Application mobile (iOS/Android) le cas échéant.",
+      "L4": "E-mails transactionnels et centre d’aide.",
+      "L5": "Outils de support client."
+    },
+    "STATUS": {
+      "TITLE": "Statut de conformité",
+      "TEXT": "Au jour de la présente déclaration, l’accessibilité des interfaces d’izyGlam est partiellement conforme aux WCAG 2.2 AA / RGAA. Nous améliorons continuellement nos interfaces et corrigeons les écarts prioritaires."
+    },
+    "PREPARATION": {
+      "TITLE": "Méthode de préparation de la déclaration",
+      "L1": "Auto-évaluations par l’équipe produit/UI : revue sémantique HTML, rôles ARIA, ordre de tabulation.",
+      "L2": "Tests manuels : navigation clavier, focus visible, zoom 200 %+, lecteurs d’écran.",
+      "L3": "Tests outillés (audit automatisé sur échantillons d’écrans).",
+      "L4": "Recette continue lors des mises à jour (Design System, composants réutilisables accessibles)."
+    },
+    "FEATURES": {
+      "TITLE": "Fonctionnalités d’accessibilité disponibles",
+      "KEYBOARD": {
+        "TITLE": "Navigation au clavier",
+        "L1": "Parcours complet au clavier (Tab, Shift+Tab, Entrée, Espace, Échap, flèches).",
+        "L2": "Indicateur de focus visible cohérent et contrasté.",
+        "L3": "Liens « Aller au contenu » pour ignorer l’en-tête.",
+        "L4": "Menus, modales et listes déroulantes pilotables au clavier (ouverture/fermeture, piégeage de focus maîtrisé, fermeture avec Échap)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Lecteurs d’écran et structure",
+        "L1": "Structure sémantique avec titres hiérarchisés (h1→h6) et repères (header, nav, main, footer).",
+        "L2": "Libellés explicites pour tous les champs et boutons, noms accessibles cohérents.",
+        "L3": "Annonce des changements d’état via régions aria-live (erreurs, succès, chargements).",
+        "L4": "Images informatives avec attribut alt descriptif, images décoratives ignorées."
+      },
+      "CONTRAST": {
+        "TITLE": "Contrastes, couleurs et mise à l’échelle",
+        "L1": "Contraste visé ≥ 4.5:1 pour le texte normal et ≥ 3:1 pour le texte large.",
+        "L2": "Interface utilisable jusqu’à 200 % de zoom sans perte de contenu ni de fonctionnalité.",
+        "L3": "Aucune information portée uniquement par la couleur."
+      },
+      "FORMS": {
+        "TITLE": "Formulaires et messages d’erreur",
+        "L1": "Association label⇄input, indications de champs obligatoires.",
+        "L2": "Erreurs présentées près du champ et récapitulées si nécessaire.",
+        "L3": "Focus positionné sur le premier champ en erreur, conseils de correction fournis."
+      },
+      "DYNAMIC": {
+        "TITLE": "Contenus dynamiques et animations",
+        "L1": "Carrousels/éléments animés pausables et non bloquants.",
+        "L2": "Respect de la préférence système « réduire les animations » lorsque possible.",
+        "L3": "Modales non intrusives, fermables au clavier et au clic extérieur."
+      },
+      "MEDIA": {
+        "TITLE": "Médias",
+        "L1": "Vidéos (le cas échéant) avec sous-titres et/ou transcriptions.",
+        "L2": "Éléments audio/vidéo contrôlables au clavier."
+      },
+      "MOBILE": {
+        "TITLE": "Mobile",
+        "L1": "Zones tactiles suffisamment grandes et espacées.",
+        "L2": "Navigation cohérente avec TalkBack (Android) et VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Environnements et technologies d’assistance visés",
+      "L1": "Windows : NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS : VoiceOver (Safari).",
+      "L3": "iOS/iPadOS : VoiceOver (Safari/Chrome).",
+      "L4": "Android : TalkBack (Chrome).",
+      "L5": "Navigateurs récents supportés et à jour."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Contenus non accessibles (constatés ou potentiels)",
+      "TEXT": "Malgré nos efforts, certains éléments peuvent rester en non-conformité :",
+      "L1": "Anciennes images sans texte alternatif descriptif.",
+      "L2": "Documents fournis par des tiers (PDF, pièces jointes) non pleinement accessibles.",
+      "L3": "Vidéos historiques sans sous-titres/description.",
+      "L4": "Composants intégrés de tiers (paiement, cartographie, lecteurs) avec limites propres.",
+      "MOTIVES": "Motifs possibles : contenu tiers, charge disproportionnée, mise à jour en cours."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatives et aménagements raisonnables",
+      "TEXT": "Si vous avez besoin d’un format alternatif (ex. document accessible, aide à la réservation), contactez-nous. Nous ferons le maximum pour proposer une solution équivalente."
+    },
+    "FEEDBACK": {
+      "TITLE": "Retour d’expérience et assistance",
+      "L1": "Par l’application : rubrique Aide > Accessibilité.",
+      "L2A": "Par e-mail :",
+      "L2B": "ou",
+      "L3": "Merci d’indiquer l’écran/URL, l’appareil, le navigateur et, le cas échéant, le lecteur d’écran utilisé."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Procédure de recours (France)",
+      "TEXT": "Si vous constatez un défaut d’accessibilité vous empêchant d’accéder à un contenu ou à une fonctionnalité, et que vous ne parvenez pas à obtenir une réponse satisfaisante de notre part, vous pouvez :",
+      "L1": "Écrire au Défenseur des droits ou à son délégué dans votre département,",
+      "L2": "Ou saisir le Médiateur le cas échéant.",
+      "MORE": "Plus d’informations :",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Amélioration continue",
+      "L1": "Design System avec composants accessibles.",
+      "L2": "Revue de code et tests d’accessibilité à chaque livraison.",
+      "L3": "Formations régulières des équipes produit et support.",
+      "L4": "Priorisation des correctifs selon l’impact utilisateur."
+    },
+    "DATE": {
+      "TITLE": "Date de déclaration et mises à jour",
+      "TEXT": "Déclaration établie le 11 août 2025. Elle sera mise à jour au minimum une fois par an ou lors de changements majeurs."
+    }
+  },
   "HELP": {
     "QUESTION1": "Comment réserver une prestation sur IzyGlam ?",
     "QUESTION2": "Comment choisir le bon professionnel pour moi ?",
@@ -941,5 +1011,243 @@
     "REPONSE12": "Tu ne peux pas encore offrir une prestation à une autre personne depuis ton compte. En revanche, si un professionnel propose une formule duo ou famille, tu peux réserver pour plusieurs personnes dans ce cadre spécifique.",
     "REPONSE13": "Tu es esthéticienne, coiffeuse ou praticien(ne) bien-être ? Tu peux rejoindre la communauté IzyGlam en remplissant le formulaire disponible sur la page \"Devenir partenaire\". Notre équipe te recontactera rapidement pour finaliser ton inscription.",
     "REPONSE14": "La sécurité de tes données est notre priorité. Nous respectons les obligations du RGPD. Seules les informations strictement nécessaires à la prestation sont accessibles aux professionnels. Une messagerie intégrée permet d’échanger si besoin, mais tout comportement visant à contourner la plateforme sera surveillé."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Qui sommes-nous ?",
+      "TEXT": "La présente Politique de confidentialité explique comment <strong>izyGlam</strong> (ci-après « nous », « notre » ou « la Plateforme ») collecte, utilise, conserve, partage et protège vos données personnelles lorsque vous utilisez nos services (site web, application web, application mobile, e-mails et support). Nous agissons en qualité de <strong>responsable du traitement</strong> pour les traitements décrits ci-dessous."
+    },
+    "SCOPE": {
+      "TITLE": "Portée de la politique",
+      "TEXT": "Cette politique s’applique aux <strong>clients</strong> qui réservent des prestations, aux <strong>professionnels</strong> qui proposent des services via izyGlam, et aux <strong>visiteurs</strong> de nos interfaces."
+    },
+    "DATA": {
+      "TITLE": "Données collectées",
+      "PROVIDED": {
+        "TITLE": "Données que vous fournissez",
+        "L1": "<strong>Identité & contact :</strong> nom, prénom, e-mail, téléphone, adresse(s), photo/avatars.",
+        "L2": "<strong>Compte :</strong> identifiants, mots de passe (hachés), préférences, langue.",
+        "L3": "<strong>Réservations :</strong> services choisis, date/heure, adresses d’intervention, notes, pièces jointes.",
+        "L4": "<strong>Paiement :</strong> informations de paiement <em>via notre prestataire (ex. Stripe)</em> — nous ne stockons pas vos données de carte.",
+        "L5": "<strong>Professionnels :</strong> profil public, prestations, tarifs, zones d’intervention, disponibilité, RIB/IBAN (sécurisé), documents de vérification si requis.",
+        "L6": "<strong>Support :</strong> messages, tickets, enregistrements d’appels le cas échéant."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Données collectées automatiquement",
+        "L1": "<strong>Données techniques :</strong> modèle d’appareil, OS, navigateur, résolutions, identifiants de session.",
+        "L2": "<strong>Journalisation :</strong> adresses IP, horodatages, événements d’erreurs, usages de fonctionnalités.",
+        "L3": "<strong>Localisation :</strong> position approximative (IP) ou précise (GPS, avec votre accord explicite).",
+        "L4": "<strong>Cookies & SDK :</strong> voir la section dédiée ci-dessous."
+      },
+      "THIRD": {
+        "TITLE": "Données obtenues de tiers",
+        "L1": "<strong>Prestataires de paiement</strong> (statuts de paiement, tokens).",
+        "L2": "<strong>Partenaires analytics/anti-fraude</strong> (signaux de risque, agrégats d’usage).",
+        "L3": "<strong>Intégrations</strong> (ex. outils de communication, cartographie, stockage cloud)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Finalités & bases légales",
+      "TEXT": "Nous traitons les données pour les finalités suivantes :",
+      "L1": "<strong>Fournir le service</strong> (création de compte, réservation, mise en relation, notifications) — <em>Base : exécution du contrat</em>.",
+      "L2": "<strong>Paiement & facturation</strong> — <em>Contrat, obligation légale</em>.",
+      "L3": "<strong>Sécurité, prévention des abus/fraudes</strong> — <em>Intérêt légitime, obligation légale</em>.",
+      "L4": "<strong>Amélioration produit, statistiques</strong> — <em>Intérêt légitime</em>.",
+      "L5": "<strong>Support & qualité</strong> — <em>Contrat, intérêt légitime</em>.",
+      "L6": "<strong>Marketing direct</strong> (emails/app) — <em>Consentement lorsque requis</em> ; possibilité d’opt-out à tout moment.",
+      "L7": "<strong>Conformité légale</strong> (comptabilité, demandes d’autorités) — <em>Obligation légale</em>."
+    },
+    "SHARING": {
+      "TITLE": "Partage de données",
+      "L1": "<strong>Professionnels / Clients</strong> : informations nécessaires à la prestation (nom, moyen de contact, adresse d’intervention, détails de réservation).",
+      "L2": "<strong>Prestataires</strong> : paiement (ex. Stripe), hébergement/stockage, analytics, e-mail/SMS push, support, KYC le cas échéant. <em>Accès limité au nécessaire, contrats conformes RGPD.</em>",
+      "L3": "<strong>Partenaires</strong> : si vous y consentez pour des offres spécifiques.",
+      "L4": "<strong>Autorités</strong> : lorsque la loi l’exige ou pour défendre nos droits."
+    },
+    "TRANSFERS": {
+      "TITLE": "Transferts hors UE/EEE",
+      "TEXT": "Lorsque des données sont transférées vers des pays ne disposant pas d’une décision d’adéquation, nous utilisons des <strong>clauses contractuelles types</strong> (CCT) et mettons en place des mesures complémentaires."
+    },
+    "RETENTION": {
+      "TITLE": "Durées de conservation",
+      "L1": "<strong>Compte & identité</strong> : pendant l’usage du compte, puis <em>jusqu’à 3 ans</em> après la dernière activité (prospection) ou <em>5 à 10 ans</em> pour obligations comptables/légales.",
+      "L2": "<strong>Réservations/factures</strong> : <em>10 ans</em> (obligation légale).",
+      "L3": "<strong>Logs de sécurité</strong> : <em>6 à 24 mois</em> selon criticité.",
+      "L4": "<strong>Cookies</strong> : voir la section Cookies.",
+      "NOTE": "Au-delà, les données sont supprimées ou anonymisées."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies & SDK",
+      "TEXT": "Nous utilisons des cookies/SDK pour faire fonctionner la Plateforme, mesurer l’audience, prévenir la fraude et, avec votre consentement, personnaliser l’expérience.",
+      "L1": "<strong>Nécessaires</strong> : authentification, sécurité, préférences techniques.",
+      "L2": "<strong>Mesure d’audience</strong> : statistiques d’usage agrégées.",
+      "L3": "<strong>Marketing</strong> : uniquement si vous l’acceptez.",
+      "PREF": "Vous pouvez gérer vos préférences à tout moment via le bandeau et les réglages de votre navigateur."
+    },
+    "AUTOMATION": {
+      "TITLE": "Décisions automatisées & profilage",
+      "TEXT": "Nous pouvons utiliser des signaux automatiques (ex. risque de fraude, disponibilité pro, distance) pour prioriser des actions ou proposer des créneaux. Aucune décision produisant des effets juridiques significatifs n’est prise sans intervention humaine, sauf obligation légale ou votre consentement explicite."
+    },
+    "RIGHTS": {
+      "TITLE": "Vos droits (RGPD)",
+      "L1": "Droit d’<strong>accès</strong>, de <strong>rectification</strong>, d’<strong>effacement</strong>.",
+      "L2": "Droit à la <strong>limitation</strong> et à la <strong>portabilité</strong>.",
+      "L3": "Droit d’<strong>opposition</strong> au traitement fondé sur l’intérêt légitime.",
+      "L4": "Droit de <strong>retirer votre consentement</strong> à tout moment.",
+      "L5": "Droit d’introduire une <strong>réclamation</strong> auprès de la CNIL.",
+      "CONTACT": "Pour exercer vos droits, contactez-nous :",
+      "VERIFY": "Nous pouvons vous demander des informations supplémentaires pour vérifier votre identité."
+    },
+    "SECURITY": {
+      "TITLE": "Sécurité",
+      "TEXT": "Nous mettons en œuvre des mesures techniques et organisationnelles adaptées : chiffrement en transit (TLS), hachage des mots de passe, journalisation et supervision, contrôle d’accès, sauvegardes, revue de code et tests de sécurité."
+    },
+    "MINORS": {
+      "TITLE": "Données des mineurs",
+      "TEXT": "Nos services ne s’adressent pas aux personnes de moins de 15 ans. Si un compte mineur est identifié, nous le supprimerons après vérification."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Sous-traitants principaux",
+      "TEXT": "Nous travaillons avec des sous-traitants essentiels pour l’hébergement, le paiement, l’e-mailing, l’analytics et le stockage. Une liste à jour peut être fournie sur demande à"
+    },
+    "CONTACT": {
+      "TITLE": "Contact & DPO",
+      "PRIVACY_LABEL": "Contact confidentialité",
+      "SUPPORT_LABEL": "Support",
+      "AUTHORITY_LABEL": "Autorité de contrôle",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy&#64;izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Modifications de cette politique",
+      "TEXT": "Nous pouvons mettre à jour la présente politique pour refléter des évolutions légales ou fonctionnelles. En cas de changement significatif, nous vous en informerons par e-mail ou via l’application. Date d’entrée en vigueur : <strong>11&nbsp;août&nbsp;2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Dispositions locales",
+      "TEXT": "Si vous êtes situé(e) en Union européenne, vos données sont traitées conformément au RGPD. Des compléments spécifiques par pays ou région peuvent s’appliquer et seront communiqués le cas échéant."
+    },
+    "GLOSSARY": {
+      "TITLE": "Glossaire (extrait)",
+      "L1": "<strong>Responsable du traitement</strong> : entité qui détermine les finalités et moyens du traitement.",
+      "L2": "<strong>Sous-traitant</strong> : entité qui traite des données pour le compte du responsable.",
+      "L3": "<strong>Base légale</strong> : fondement autorisant le traitement (contrat, consentement, obligation légale, intérêt légitime).",
+      "L4": "<strong>Cookies/SDK</strong> : traceurs utilisés par le site/app pour fournir, mesurer et personnaliser le service."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Acceptation des conditions",
+      "TEXT": "En accédant aux services d’izyGlam (site, application web, application mobile), vous acceptez sans réserve les présentes Conditions Générales d’Utilisation (« CGU »). Si vous n’acceptez pas ces CGU, vous ne devez pas utiliser la Plateforme."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Définitions",
+      "L1": "<strong>Client</strong> : toute personne qui réserve et/ou paie une prestation sur la Plateforme.",
+      "L2": "<strong>Professionnel</strong> : toute personne qui propose des prestations via la Plateforme.",
+      "L3": "<strong>Prestation</strong> : service proposé par un Professionnel (ex. beauté à domicile).",
+      "L4": "<strong>Plateforme</strong> : l’infrastructure logicielle, les sites et applications exploités par izyGlam."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Services et rôle d’izyGlam",
+      "TEXT": "izyGlam est une <strong>plateforme de mise en relation</strong>. Les Professionnels sont <strong>seuls responsables</strong> des prestations qu’ils réalisent (qualité, conformité, assurances). Sauf mention contraire, izyGlam n’est ni vendeur ni prestataire de ces services et n’assume pas la responsabilité d’exécution."
+    },
+    "ACCOUNT": {
+      "TITLE": "Compte et éligibilité",
+      "L1": "L’inscription est obligatoire pour réserver ou proposer une prestation. Vous vous engagez à fournir des informations exactes et à les tenir à jour.",
+      "L2": "Vous devez avoir au moins 15 ans pour utiliser la Plateforme. Les Professionnels doivent être légalement habilités à exercer.",
+      "L3": "Vous êtes responsable de la confidentialité de vos identifiants et de toute activité réalisée depuis votre compte.",
+      "L4": "izyGlam se réserve le droit de suspendre ou résilier un compte en cas de violation des CGU ou de risque avéré de fraude."
+    },
+    "BOOKINGS": {
+      "TITLE": "Réservations et formation du contrat",
+      "L1": "Les prestations sont <strong>réservées et payées en ligne</strong> par le Client. Aucune somme en espèces n’est due sur place.",
+      "L2": "La réservation est <strong>soumise à validation par le Professionnel</strong> après paiement. En cas de refus, le Client est <strong>intégralement remboursé</strong>.",
+      "L3": "Le contrat de prestation est conclu directement entre le Client et le Professionnel au moment de l’acceptation.",
+      "L4": "Les horaires, adresses d’intervention et toute condition particulière doivent être vérifiés par les parties."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Tarifs, abonnements et paiements",
+      "L1": "Les tarifs des prestations sont fixés librement par les Professionnels. izyGlam applique une <strong>commission</strong> de plateforme.",
+      "L2": "Abonnements pour Professionnels (exemple actuel) : <em>1 salon gratuit à vie</em> ; <em>Basic : 3 salons – 99 € / mois</em> ; <em>Premium : 10 salons – 499 € / mois</em> ; <em>au-delà : devis</em>.",
+      "L3": "Paiement <strong>par carte bancaire uniquement</strong> via un prestataire (ex. Stripe). <strong>Pas d’espèces</strong>, pas de code promo ni programme de fidélité à ce stade.",
+      "L4": "Les montants, taxes et frais applicables sont indiqués avant validation. Les conditions d’abonnement peuvent évoluer ; les modifications seront communiquées en amont."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Annulation, remboursement et absence",
+      "L1": "Annulation gratuite jusqu’à <strong>24h</strong> avant l’horaire de prestation prévu.",
+      "L2": "À moins de 24h, des <strong>frais</strong> peuvent s’appliquer selon la politique en vigueur.",
+      "L3": "En cas de <strong>refus</strong> par le Professionnel après paiement, le Client est remboursé à 100 %. L’automatisation des remboursements est en déploiement ; le cas échéant, le support initiera l’opération.",
+      "L4": "Les <strong>no-show</strong> (absence non signalée) peuvent entraîner des frais ou l’impossibilité de remboursement."
+    },
+    "PAYOUTS": {
+      "TITLE": "Versements aux Professionnels",
+      "L1": "Le versement des gains au Professionnel est déclenché à la <strong>confirmation de la réalisation</strong> de la prestation (ex. confirmation d’un <em>code de validation</em>).",
+      "L2": "Le RIB/IBAN fourni par le Professionnel est utilisé pour le virement. Le Professionnel garantit l’exactitude de ses informations bancaires.",
+      "L3": "Les montants versés correspondent au prix de la prestation <em>déduction faite</em> de la commission et des frais applicables."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Responsabilités des parties",
+      "L1": "Les Professionnels assurent la conformité de leurs services, le respect de la réglementation, l’hygiène et la sécurité.",
+      "L2": "Les Clients s’engagent à fournir des informations exactes (adresse, disponibilité, contraintes d’accès) et à respecter les rendez-vous.",
+      "L3": "izyGlam met à disposition la Plateforme et des outils (réservation, paiement, messagerie) mais ne garantit pas les résultats d’une prestation."
+    },
+    "REVIEWS": {
+      "TITLE": "Avis et notations",
+      "L1": "Les avis ne peuvent être laissés <strong>qu’après une prestation réellement effectuée</strong>.",
+      "L2": "Les avis peuvent être soumis à une <strong>modération</strong> (ex. suppression de contenus contraires à la loi ou aux présentes CGU)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Comportements interdits",
+      "L1": "Fraude, usurpation d’identité, contournement de la Plateforme, incitation à des transactions hors Plateforme.",
+      "L2": "Contenus illicites, diffamatoires, discriminatoires, violents ou contraires aux bonnes mœurs.",
+      "L3": "Intrusion, déni de service, ingénierie inverse, contournement des mesures de sécurité.",
+      "L4": "Collecte non autorisée de données personnelles d’autres utilisateurs."
+    },
+    "IPR": {
+      "TITLE": "Propriété intellectuelle",
+      "TEXT": "Les contenus, marques et éléments de la Plateforme (code, design, textes, logos, images) sont protégés. Sauf autorisation expresse, toute reproduction, distribution ou adaptation est interdite. Les contenus fournis par les Professionnels restent leur propriété ; ils concèdent à izyGlam une licence non exclusive nécessaire à l’exploitation de la Plateforme."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Services tiers",
+      "TEXT": "La Plateforme peut intégrer des services de tiers (paiement, cartographie, hébergement, analytics). Leurs conditions s’appliquent. izyGlam n’est pas responsable des interruptions ou défaillances de ces services."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Disponibilité, maintenance et mises à jour",
+      "TEXT": "Nous pouvons modifier, suspendre ou interrompre tout ou partie de la Plateforme pour maintenance ou amélioration. Nous mettons en œuvre des efforts raisonnables pour limiter l’impact pour les utilisateurs."
+    },
+    "LIABILITY": {
+      "TITLE": "Limitation de responsabilité et indemnisation",
+      "TEXT": "Dans les limites autorisées par la loi, la responsabilité d’izyGlam est limitée aux dommages directs, à l’exclusion des dommages indirects (perte de chance, perte de chiffre d’affaires, etc.). Vous vous engagez à indemniser izyGlam de toute réclamation résultant d’une violation des présentes ou d’une utilisation illicite de la Plateforme."
+    },
+    "TERMINATION": {
+      "TITLE": "Résiliation et suspension",
+      "TEXT": "Vous pouvez supprimer votre compte à tout moment. Nous pouvons suspendre ou résilier l’accès en cas de violation des CGU, de fraude, d’abus ou sur injonction légale. Certaines obligations (ex. paiement des sommes dues, clauses de responsabilité) survivent à la résiliation."
+    },
+    "PRIVACY": {
+      "TITLE": "Données personnelles",
+      "TEXT": "Le traitement de vos données est décrit dans notre <strong>Politique de confidentialité</strong>. En utilisant la Plateforme, vous acceptez cette politique. Consultez-la pour connaître vos droits RGPD et nos engagements."
+    },
+    "CHANGES": {
+      "TITLE": "Modifications des CGU",
+      "TEXT": "Nous pouvons modifier ces CGU pour des raisons légales, réglementaires ou fonctionnelles. En cas de changement significatif, nous vous en informerons par e-mail ou via l’application et publierons la version mise à jour."
+    },
+    "LAW": {
+      "TITLE": "Droit applicable et litiges",
+      "TEXT": "Les présentes CGU sont soumises au <strong>droit français</strong>. Tout litige sera porté devant les tribunaux compétents du lieu du siège d’izyGlam, sous réserve de dispositions légales impératives plus favorables au consommateur."
+    },
+    "CONTACT": {
+      "TITLE": "Contact",
+      "SUPPORT_LABEL": "Support",
+      "LEGAL_LABEL": "Juridique",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Date d’effet",
+      "TEXT": "Les présentes CGU entrent en vigueur le <strong>11&nbsp;août&nbsp;2025</strong> et remplacent toute version antérieure."
+    }
   }
 }

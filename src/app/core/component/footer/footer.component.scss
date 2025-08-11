@@ -69,3 +69,94 @@
   width: 150px;
   height: auto;
 }
+
+
+/* Backdrop un peu plus léger */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 15, 15, .35);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 6rem 1rem 2rem;
+  z-index: 1000;
+}
+
+/* Panneau clair type Apple/Uber */
+.modal-panel {
+  background: #ffffff;
+  color: #0b0b0b;
+  width: 100%;
+  max-width: 880px;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,.20), 0 2px 8px rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.06);
+  overflow: hidden; /* le body interne gère le scroll */
+}
+
+/* En-tête fixe */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  background: #ffffffcc;
+  backdrop-filter: saturate(1.2) blur(4px);
+  padding: 18px 56px 16px; /* on réserve la place du bouton close */
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* Corps scrollable */
+.modal-body {
+  max-height: min(78vh, 920px);
+  overflow-y: auto;
+  padding: 24px 28px 28px;
+  -webkit-overflow-scrolling: touch; /* iOS smooth */
+}
+
+/* Bouton close discret */
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,.08);
+  background: #fff;
+  color: #111;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-close:hover { background: #f6f6f6; }
+
+/* Liens */
+.pink { color: #ff4da6; }
+.pink:hover { text-decoration: underline; }
+
+/* Footer base (clair + sombre compatible) */
+.footer { background: #0f0f0f; padding: 2rem 0; }
+.footer .footer-bottom p { margin: .25rem 0; }
+
+/* Petits ajustements contenus (au besoin)  */
+.modal-body h1, .modal-body h2, .modal-body h3 { color: #0b0b0b; }
+.modal-body p { color: #2b2b2b; line-height: 1.6; }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal-header { padding: 14px 48px 12px; }
+  .modal-body { padding: 18px 18px 22px; max-height: 75vh; }
+}
+
+.modal-header { background: linear-gradient(180deg, #fff, rgba(255,255,255,.92)); }
