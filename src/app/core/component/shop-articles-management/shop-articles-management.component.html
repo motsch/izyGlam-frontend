@@ -51,7 +51,7 @@
             {{
             editingServiceIndex !== null
             ? "Modifier la prestation " + modalService.type
-            : "Crééons une prestation de " + creationType + " !"
+            : "Crééons une nouvelle prestation !"
             }}
           </h3>
           <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
@@ -65,43 +65,49 @@
           <div class="form-group">
             <label for="serviceDescription">{{ "SHOP_ARTICLES_MANAGEMENT.DESCRIPTION" | translate }}</label>
 
-            <textarea id="serviceDescription" [(ngModel)]="modalService.description" class="form-control"
-              rows="5"></textarea>
+            <textarea id="serviceDescription" [disabled]="isGeneratingDescription || !modalService.name"
+              [(ngModel)]="modalService.description" class="form-control" rows="5"></textarea>
 
             <!-- bouton sous le champ, aligné à droite -->
             <div class="actions-row end">
-              <button type="button" class="btn-izygenerate" (click)="generateIzyGlamProductDescription(modalService)">
-                ✨{{ "SHOP_MANAGEMENT.GENERATE_DESCRIPTION" | translate }}
+              <button type="button" class="btn-izygenerate fixed-btn" [disabled]="isGeneratingDescription || !modalService.name"
+                (click)="onGenerateDescription()">
+                <span *ngIf="!isGeneratingDescription">✨ {{ "SHOP_MANAGEMENT.GENERATE_DESCRIPTION" | translate }}</span>
+                <span *ngIf="isGeneratingDescription" class="loader"></span>
               </button>
             </div>
           </div>
-
-
           <div class="form-group">
             <label for="servicePrice">{{ "SHOP_ARTICLES_MANAGEMENT.PRICE" | translate }}</label>
-            <input type="number" id="servicePrice" [(ngModel)]="modalService.price" class="form-control" required />
+            <input type="number" id="servicePrice" [(ngModel)]="modalService.price" class="form-control" [disabled]="!modalService.name || !modalService.description" required />
           </div>
           <div class="form-group">
             <label for="serviceDuration">{{ "SHOP_ARTICLES_MANAGEMENT.TIME_MINUTES" | translate }}</label>
-            <input type="number" id="serviceDuration" [(ngModel)]="modalService.duration" class="form-control"
+            <input type="number" id="serviceDuration" [(ngModel)]="modalService.duration" class="form-control" [disabled]="!modalService.name || !modalService.description || !modalService.price"
               required />
           </div>
-
           <!-- IMAGE -->
           <div class="form-group">
             <label for="serviceImage">{{ "SHOP_ARTICLES_MANAGEMENT.PREST_IMAGE" | translate }}</label>
-
             <div class="image-grid">
               <!-- Colonne gauche : image ou placeholder + éventuel nouveau preview -->
               <div class="image-left">
-                <ng-container *ngIf="imageUsed; else noImage">
-                  <img [src]="imgStorageUrl + imageUsed" alt="Aperçu de l'image" class="image-preview small-preview" />
-                </ng-container>
-                <ng-template #noImage>
-                  <div class="image-placeholder">
-                    {{ "SHOP_ARTICLES_MANAGEMENT.NO_PICS" | translate }}
+                <div class="image-wrapper" [class.loading]="isGeneratingImage">
+                  <ng-container *ngIf="imageUsed; else noImage">
+                    <img [src]="imgStorageUrl + imageUsed" alt="Aperçu de l'image"
+                      class="image-preview small-preview" />
+                  </ng-container>
+                  <ng-template #noImage>
+                    <div class="image-placeholder">
+                      {{ "SHOP_ARTICLES_MANAGEMENT.NO_PICS" | translate }}
+                    </div>
+                  </ng-template>
+
+                  <!-- Nouveau overlay -->
+                  <div class="image-overlay" *ngIf="isGeneratingImage">
+                    <span class="loader"></span>
                   </div>
-                </ng-template>
+                </div>
 
                 <div *ngIf="imagePreview" class="margin-top-20">
                   <p>{{ "SHOP_ARTICLES_MANAGEMENT.NEW_PIC" | translate }}:</p>
@@ -109,22 +115,21 @@
                 </div>
               </div>
 
-              <!-- Colonne droite : boutons empilés -->
+              <!-- Bouton Image -->
               <div class="image-actions">
-                <button type="button" class="btn-izygenerate w-100" (click)="generateIzyGlamImage(modalService)">
-                  ✨{{ "SHOP_MANAGEMENT.GENERATE_IMAGE" | translate }}
+                <button type="button" class="btn-izygenerate w-100 fixed-btn" [disabled]="isGeneratingImage || !modalService.name || !modalService.description || !modalService.price || !modalService.duration"
+                  (click)="onGenerateImage()">
+                  <span *ngIf="!isGeneratingImage">✨ {{ "SHOP_MANAGEMENT.GENERATE_IMAGE" | translate }}</span>
+                  <span *ngIf="isGeneratingImage" class="loader"></span>
                 </button>
-
-                <button type="button" class="btn-upload w-100" (click)="fileInput.click()">
+                <button type="button" class="btn-upload w-100" [disabled]="isGeneratingImage"
+                  (click)="fileInput.click()" [disabled]="isGeneratingImage || !modalService.name || !modalService.description || !modalService.price || !modalService.duration">
                   📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate }}
                 </button>
-
                 <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
               </div>
             </div>
           </div>
-
-
           <label for="serviceDuration">{{ "SHOP_ARTICLES_MANAGEMENT.PRESTA_COLOR" | translate }}:</label>
           <div class="color-dots">
             <div *ngFor="let color of colors" class="color-dot-selection pointer"

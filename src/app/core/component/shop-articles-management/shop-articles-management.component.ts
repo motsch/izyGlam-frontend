@@ -6,6 +6,7 @@ import {
     OnInit,
     Output,
     SimpleChanges,
+    ChangeDetectorRef,
 } from '@angular/core';
 import { ShopService } from '../../services/shop.service';
 import { ProductService } from '../../services/product.service';
@@ -14,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { ShopTemplateService } from '../../services/shop-template.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { finalize } from 'rxjs/operators';
 
 @Component({
     selector: 'app-shop-articles-management',
@@ -25,6 +27,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     @Input() myShopData: any = {};
     @Input() me: any = {};
     @Output() articleUpdated: EventEmitter<string> = new EventEmitter<string>();
+
     services: any[] = [];
     selectedService: any = {};
     modalOpen = false;
@@ -40,22 +43,24 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     templateByType: any[] = [];
     creationType: string | null = null;
 
+    isGeneratingDescription = false;
+    isGeneratingImage = false;
+
     constructor(
         private productService: ProductService,
         private colorService: ColorService,
         private shopTemplateService: ShopTemplateService,
         private toastr: ToastrService,
         private translate: TranslateService,
-        private shopService: ShopService
+        private shopService: ShopService,
+        private cd: ChangeDetectorRef
     ) { }
 
     ngOnInit(): void {
-        localStorage.setItem("menu-param", 'management');
-        // Initialize articlesCopyData if needed
+        localStorage.setItem('menu-param', 'management');
         this.colorService.getAll().subscribe({
             next: (data: any) => {
-                console.log(data);
-                this.colors = data;
+                this.colors = data || [];
                 for (let elem of this.colors) {
                     elem.selected = false;
                 }
@@ -67,36 +72,18 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        if (
-            changes['myArticlesData'] &&
-            changes['myArticlesData'].currentValue
-        ) {
+        if (changes['myArticlesData'] && changes['myArticlesData'].currentValue) {
             this.articlesCopyData = [...this.myArticlesData];
-            for (let elem of this.articlesCopyData) {
-                /*elem.image =
-                    environment.APIimgStorageUrl +
-                    elem.image.replace(/^\/+/, '');*/
-            }
-            console.log(
-                'myArticlesData has been updated:',
-                this.myArticlesData
-            );
-        } else if (
-            changes['myShopData'] &&
-            changes['myShopData'].currentValue
-        ) {
+            console.log('myArticlesData has been updated:', this.myArticlesData);
+        } else if (changes['myShopData'] && changes['myShopData'].currentValue) {
             this.articleUpdated.emit();
         }
     }
 
     onFileSelected(event: any): void {
-        const file: File = event.target.files[0];
+        const file: File = event.target.files?.[0];
         if (file) {
             this.selectedFile = file;
-
-            console.log(
-                'Selected File 1 : ' + JSON.stringify(this.selectedFile)
-            );
             const reader = new FileReader();
             reader.onload = () => {
                 this.imagePreview = reader.result as string;
@@ -109,29 +96,46 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
         this.toastr.success(message);
     }
 
+    // ---------- Patch utilitaire : propage un patch à la ligne du tableau en cours d’édition ----------
+    private patchEditedRow(patch: Partial<any>) {
+        if (this.editingServiceIndex !== null && this.editingServiceIndex > -1) {
+            // immutabilité pour déclencher proprement le CD
+            this.articlesCopyData = this.articlesCopyData.map((s, i) =>
+                i === this.editingServiceIndex ? { ...s, ...patch } : s
+            );
+        }
+    }
+
+    // ---------- Wrappers appelés par le template ----------
+    onGenerateDescription() {
+        if (this.isGeneratingDescription) return; // anti double-clic
+        this.isGeneratingDescription = true;
+        this.generateIzyGlamProductDescription(this.modalService);
+    }
+
+    onGenerateImage() {
+        if (this.isGeneratingImage) return;
+        this.isGeneratingImage = true;
+        this.generateIzyGlamImage(this.modalService);
+    }
+
     uploadImage(): void {
         if (this.selectedFile) {
-            console.log('selectedFile =====>');
-            console.log(JSON.stringify(this.selectedFile));
             this.productService
-                .uploadGalleryImages(
-                    this.selectedService._id,
-                    this.selectedFile
-                )
+                .uploadGalleryImages(this.selectedService._id, this.selectedFile)
                 .subscribe(
                     (response) => {
-                        console.log(
-                            'Image uploadée avec succès : ',
-                            response.imageUrl
+                        this.showCustomToast(
+                            this.translate.instant('SHOP_ARTICLES_MANAGEMENT.IMAGE_OK')
                         );
-                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.IMAGE_OK'));
                     },
                     (error) => {
-                        console.error(
-                            "Erreur lors de l'upload de l'image : ",
-                            error
+                        console.error("Erreur lors de l'upload de l'image : ", error);
+                        this.showCustomToast(
+                            this.translate.instant(
+                                'SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'
+                            )
                         );
-                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'));
                     }
                 );
         }
@@ -139,133 +143,171 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
 
     selectColor(color: string) {
         this.colors.forEach((elem: any) => {
-            if (elem.hex === color) {
-                elem.selected = true;
-            } else {
-                elem.selected = false;
-            }
+            elem.selected = elem.hex === color;
         });
         this.selectedColor = color;
-        this.modalService.color = color;
+        if (this.modalService) {
+            this.modalService.color = color;
+            // reflet immédiat dans la ligne en édition
+            this.patchEditedRow({ color });
+        }
     }
 
-    generateIzyGlamImage(product: any) {
-        const type = product.type; // à adapter selon ta structure exacte
-        const userDescription = this.myShopData.description || null;
+    // ---------- Génération : Description (maj MODAL + TABLEAU) ----------
+    generateIzyGlamProductDescription(product: any) {
+        const type = product?.type;
+        // const userDescription = this.myShopData?.description || null;
 
-        this.shopService.generateIzyGlamImage(product)
+        // shop-articles-management.component.ts
+        this.shopService.generateIzyGlamProductDescription(product)
+            .pipe(
+                finalize(() => {
+                    this.isGeneratingDescription = false;
+                    this.cd.detectChanges();
+                })
+            )
             .subscribe({
-                next: (data: any) => {
-                    // this.modalService.image = '';
-                    this.articleUpdated.emit();
+                next: (prod: any) => {
+                    console.log('Réponse backend :', prod); // <-- ici tu verras bien l'objet
+                    const newDescription = prod?.description || '';
 
+                    // 1) MAJ immédiate de la modal
+                    this.modalService.description = newDescription;
+
+                    // 2) MAJ de la ligne du tableau si on est en édition
+                    this.patchEditedRow({ description: newDescription });
+
+                    this.showCustomToast(
+                        this.translate.instant('SHOP_MANAGEMENT.DESCRIPTION_OK') ||
+                        'Description générée ✅'
+                    );
                 },
                 error: (err: any) => {
                     console.error('Erreur lors de la génération de la description :', err);
-                }
+                    this.showCustomToast(
+                        this.translate.instant('SHOP_ARTICLES_MANAGEMENT.ERROR_GENERATE_DESC') ||
+                        'Erreur de génération ❌'
+                    );
+                },
             });
     }
 
-    generateIzyGlamProductDescription(product: any) {
-        const type = product.type; // à adapter selon ta structure exacte
-        const userDescription = this.myShopData.description || null;
+    // ---------- Génération : Image (maj MODAL + APERÇU + TABLEAU) ----------
+    generateIzyGlamImage(product: any) {
+        const type = product?.type;
+        const userDescription = this.myShopData?.description || null;
 
-        this.shopService.generateIzyGlamProductDescription(product)
+        this.shopService
+            .generateIzyGlamImage(product)
+            .pipe(
+                finalize(() => {
+                    this.isGeneratingImage = false;
+                    this.cd.detectChanges();
+                })
+            )
             .subscribe({
                 next: (data: any) => {
-                    // this.modalService.image = '';
-                    this.modalService.description = data.formattedDescription;
-                    this.articleUpdated.emit();
+                    const newImagePath =
+                        data?.image ?? data?.imageUrl ?? data?.result?.image ?? null;
 
+                    if (!newImagePath) {
+                        this.showCustomToast(
+                            this.translate.instant(
+                                'SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'
+                            ) || 'Image non reçue ❌'
+                        );
+                        return;
+                    }
+
+                    // 1) MAJ MODAL (données + aperçu)
+                    this.modalService.image = newImagePath;
+                    this.imageUsed = newImagePath; // <img [src]="imgStorageUrl + imageUsed">
+                    this.imagePreview = null;
+                    this.selectedFile = null;
+
+                    // 2) MAJ TABLEAU (ligne en cours d’édition)
+                    this.patchEditedRow({ image: newImagePath });
+
+                    this.showCustomToast(
+                        this.translate.instant('SHOP_ARTICLES_MANAGEMENT.IMAGE_OK') ||
+                        'Image générée ✅'
+                    );
+
+                    // Si tu veux informer le parent pour re-fetch global : décommente
+                    // this.articleUpdated.emit();
                 },
                 error: (err: any) => {
-                    console.error('Erreur lors de la génération de la description :', err);
-                }
+                    console.error('Erreur lors de la génération de l’image :', err);
+                    this.showCustomToast(
+                        this.translate.instant(
+                            'SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'
+                        ) || 'Erreur de génération ❌'
+                    );
+                },
             });
     }
 
     truncateDescription() {
-        if (this.modalService.description.length > 50) {
+        if (this.modalService?.description?.length > 50) {
             this.modalService.description =
                 this.modalService.description.substring(0, 50) + '...';
         }
     }
 
     openModal(service?: any): void {
-        console.log("this.myShopData : " + JSON.stringify(this.myShopData))
+        console.log('this.myShopData : ' + JSON.stringify(this.myShopData));
         if (!service) {
+            this.imageUsed = null;
             this.shopTemplateService
                 .getServiceTemplatesByCategory(this.myShopData.type)
                 .subscribe({
                     next: (data: any[]) => {
-                        console.log(data);
-                        this.templateByType = data;
-                        console.log(
-                            "Type de l'article : " + this.myShopData.type
-                        );
-                        console.log(
-                            'TtemplateByType : ' +
-                            JSON.stringify(this.templateByType)
-                        );
+                        this.templateByType = data || [];
 
-                        // Sélectionner un élément de manière aléatoire :
                         const filteredTemplates = this.templateByType.filter(
                             (x: any) => x.type === this.myShopData.type
                         );
 
                         if (filteredTemplates.length > 0) {
-                            console.log("filteredTemplates .length > 0 ==>" + filteredTemplates.length);
                             const randomIndex = Math.floor(
                                 Math.random() * filteredTemplates.length
                             );
-                            console.log("randomIndex : " + randomIndex);
                             this.modalService = filteredTemplates[randomIndex];
                         } else {
-                            console.log("filteredTemplates .length <= 0 ==>" + filteredTemplates.length);
-                            this.modalService = null; // Au cas où il n'y a aucun élément correspondant au type
+                            this.modalService = null;
                         }
-                        console.log(
-                            'Service Selected : ' + this.modalService.name
-                        );
-                        console.log(
-                            'Service type Selected : ' + this.modalService.type
-                        );
-                        this.modalService._id = undefined;
-                        this.modalService.shopId =
-                            this.myArticlesData[0].shopId;
 
-                        this.creationType = this.modalService.type;
-                        this.editingServiceIndex = null;
-                        service = this.modalService;
-                        this.imageUsed = service.image;
-                        this.imagePreview = null;
-                        this.selectedService = service;
-                        this.selectedFile = null;
+                        if (this.modalService) {
+                            this.modalService._id = undefined;
+                            this.modalService.shopId = this.myArticlesData?.[0]?.shopId;
+                            this.creationType = this.modalService.type;
+                            this.editingServiceIndex = null;
+                            service = this.modalService;
+                            this.imageUsed = service.image;
+                            this.imagePreview = null;
+                            this.selectedService = service;
+                            this.selectedFile = null;
+                        }
                     },
                     error: (error: any) => {
                         console.log(error);
                     },
                 });
-            // return;
         }
+
         this.imagePreview = null;
-        // this.imagePreview = this.modalService.image;
-        console.log('OPEN MODAL');
-        console.log('OPEN MODAL');
         this.selectedService = service;
         this.modalOpen = true;
-        this.imageUsed = service.image;
-        // this.imageUsed = environment.APIimgStorageUrl + service.image;
-        let coloSelected = this.colors.find((x: any) => x.selected === true);
-        coloSelected = false;
-        for (let elem of this.colors) {
-            if (elem.hex === service.color) {
-                elem.selected = true;
-            } else {
-                elem.selected = false;
-            }
-        }
+
         if (service) {
+            this.imageUsed = service.image;
+
+            // couleurs
+            for (let elem of this.colors) {
+                elem.selected = elem.hex === service.color;
+            }
+
+            // copie pour la modal et index pour patcher le tableau
             this.modalService = { ...service };
             this.editingServiceIndex = this.articlesCopyData.indexOf(service);
         } else {
@@ -280,216 +322,174 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
 
     saveService(): void {
         if (this.editingServiceIndex !== null) {
+            // MODE ÉDITION
             if (this.selectedFile) {
                 this.productService
-                    .uploadGalleryImages(
-                        this.selectedService._id,
-                        this.selectedFile
-                    )
+                    .uploadGalleryImages(this.selectedService._id, this.selectedFile)
                     .subscribe(
                         (response) => {
-                            console.log(
-                                'Image uploadée avec succès : ',
-                                response.image
-                            );
-
-                            // Retirer "/uploads/images/" de l'URL de l'image
-                            const cleanedImageUrl = response.image.replace(
+                            const cleanedImageUrl = response.image?.replace(
                                 '/uploads/images/',
                                 ''
                             );
-                            console.log(cleanedImageUrl);
                             this.modalService.image = response.image;
 
-                            // Récupérer l'_id du service en cours d'édition
                             const serviceId = this.modalService._id;
-                            // Envoyer la mise à jour au serveur avec l'_id
-                            this.productService
-                                .update(serviceId, this.modalService)
-                                .subscribe({
-                                    next: (data: any) => {
-                                        this.articleUpdated.emit();
-                                        console.log(
-                                            'Service updated successfully'
-                                        );
-                                        this.closeModal();
-                                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.UPDATE_SUCCESS'));
-                                    },
-                                    error: (error: any) => {
-                                        console.log(
-                                            'Error updating service:',
-                                            error
-                                        );
-                                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.ERROR_PRESTA'));
-                                    },
-                                });
+                            this.productService.update(serviceId, this.modalService).subscribe({
+                                next: (data: any) => {
+                                    this.articleUpdated.emit();
+                                    this.closeModal();
+                                    this.showCustomToast(
+                                        this.translate.instant(
+                                            'SHOP_ARTICLES_MANAGEMENT.UPDATE_SUCCESS'
+                                        )
+                                    );
+                                },
+                                error: (error: any) => {
+                                    console.log('Error updating service:', error);
+                                    this.showCustomToast(
+                                        this.translate.instant(
+                                            'SHOP_ARTICLES_MANAGEMENT.ERROR_PRESTA'
+                                        )
+                                    );
+                                },
+                            });
                         },
                         (error) => {
-                            console.error(
-                                "Erreur lors de l'upload de l'image : ",
-                                error
-                            );
+                            console.error("Erreur lors de l'upload de l'image : ", error);
                         }
                     );
             } else {
-                // Récupérer l'_id du service en cours d'édition
                 const serviceId = this.modalService._id;
-                console.log(serviceId);
-                console.log(
-                    "Image de l'article dans update : " +
-                    this.modalService.image
-                );
-                //this.modalService.image = this.modalService.image.split('/uploads/images/articles').pop();
-                // /uploads/images/articles
-                // Envoyer la mise à jour au serveur avec l'_id
-                this.productService
-                    .update(serviceId, this.modalService)
-                    .subscribe({
-                        next: (data: any) => {
-                            console.log(
-                                'Article updated successfully DATA : ' +
-                                JSON.stringify(data)
-                            );
-                            this.articleUpdated.emit();
-                            console.log('Service updated successfully');
-                            this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_UPDATED'));
-                            this.closeModal();
-                        },
-                        error: (error: any) => {
-                            console.log('Error updating service:', error);
-                            this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'));
-                        },
-                    });
+                this.productService.update(serviceId, this.modalService).subscribe({
+                    next: (data: any) => {
+                        this.articleUpdated.emit();
+                        this.showCustomToast(
+                            this.translate.instant(
+                                'SHOP_ARTICLES_MANAGEMENT.PRESTA_UPDATED'
+                            )
+                        );
+                        this.closeModal();
+                    },
+                    error: (error: any) => {
+                        console.log('Error updating service:', error);
+                        this.showCustomToast(
+                            this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR')
+                        );
+                    },
+                });
             }
         } else {
+            // MODE CRÉATION
             if (this.selectedFile) {
                 this.modalService.shopId = this.myShopData._id;
-                // Création du nouvel article
                 this.productService.create(this.modalService).subscribe({
                     next: (data: any) => {
-                        console.log('Service updated successfully');
                         this.selectedService = data;
                         this.modalService = data;
+
                         if (!this.selectedFile) {
+                            this.closeModal();
+                            this.articleUpdated.emit();
                             return;
                         }
+
                         this.productService
-                            .uploadGalleryImages(
-                                this.selectedService._id,
-                                this.selectedFile
-                            )
+                            .uploadGalleryImages(this.selectedService._id, this.selectedFile)
                             .subscribe(
                                 (response) => {
-                                    console.log(
-                                        'Image uploadée avec succès : ',
-                                        response.image
+                                    const cleanedImageUrl = response.image?.replace(
+                                        '/uploads/images/',
+                                        ''
                                     );
-
-                                    // Retirer "/uploads/images/" de l'URL de l'image
-                                    const cleanedImageUrl =
-                                        response.image.replace(
-                                            '/uploads/images/',
-                                            ''
-                                        );
-                                    console.log(cleanedImageUrl);
                                     this.modalService.image = response.image;
+
                                     this.productService
-                                        .update(
-                                            this.modalService._id,
-                                            this.modalService
-                                        )
+                                        .update(this.modalService._id, this.modalService)
                                         .subscribe({
                                             next: (data: any) => {
                                                 this.articleUpdated.emit();
-                                                console.log(
-                                                    'Service updated successfully'
+                                                this.showCustomToast(
+                                                    this.translate.instant(
+                                                        'SHOP_ARTICLES_MANAGEMENT.PRESTA_SUCCESS'
+                                                    )
                                                 );
-                                                this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_SUCCESS'));
                                                 this.closeModal();
                                             },
                                             error: (error: any) => {
-                                                console.log(
-                                                    'Error updating service:',
-                                                    error
+                                                console.log('Error updating service:', error);
+                                                this.showCustomToast(
+                                                    this.translate.instant(
+                                                        'SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'
+                                                    )
                                                 );
-                                                this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'));
                                             },
                                         });
-                                    // Récupérer l'_id du service en cours d'édition
-                                    const serviceId = this.modalService._id;
+
                                     this.closeModal();
                                     this.articleUpdated.emit();
                                 },
                                 (error) => {
-                                    console.error(
-                                        "Erreur lors de l'upload de l'image : ",
-                                        error
+                                    console.error("Erreur lors de l'upload de l'image : ", error);
+                                    this.showCustomToast(
+                                        this.translate.instant(
+                                            'SHOP_ARTICLES_MANAGEMENT.PHOTO_ERROR'
+                                        )
                                     );
-                                    this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PHOTO_ERROR'));
                                 }
                             );
                     },
                     error: (error: any) => {
                         console.log('Error updating service:', error);
-                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'));
-
-                        // Ajouter un nouvel article si nous ne sommes pas en mode édition
+                        this.showCustomToast(
+                            this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR')
+                        );
                         this.articlesCopyData.push(this.modalService);
                     },
                 });
             } else {
-                // Récupérer l'_id du service en cours d'édition
                 const serviceId = this.modalService._id;
-                console.log(serviceId);
-                console.log(
-                    "Image de l'article dans update : " +
-                    this.modalService.image
-                );
-                //this.modalService.image = this.modalService.image.split('/uploads/images/articles').pop();
-                // /uploads/images/articles
-                // Envoyer la mise à jour au serveur avec l'_id
-
                 this.productService.create(this.modalService).subscribe({
                     next: (data: any) => {
-                        console.log('Service updated successfully');
-                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_SUCCESS'));
-
-                        console.log(data);
+                        this.showCustomToast(
+                            this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_SUCCESS')
+                        );
                         this.closeModal();
                         this.articleUpdated.emit();
                     },
                     error: (error: any) => {
                         console.log('Error updating service:', error);
-                        this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'));
-
-                        // Ajouter un nouvel article si nous ne sommes pas en mode édition
+                        this.showCustomToast(
+                            this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR')
+                        );
                         this.articlesCopyData.push(this.modalService);
                     },
                 });
             }
-            // Fermer la modal
+
             this.closeModal();
         }
     }
 
     deleteService(index: number): void {
-        console.log('INDEX : ' + index);
-        // Logique pour supprimer l'image de la galerie
-        // const index = this.galleryImages.indexOf(image);
         const toDelete = this.articlesCopyData[index];
         if (index !== -1) {
             this.articlesCopyData.splice(index, 1);
         }
 
-        // this.myShopData.galleryImages = this.galleryImages;
         this.productService.delete(toDelete._id).subscribe({
             next: (data: any) => {
                 this.articleUpdated.emit();
-                console.log(data);
-                this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_DELETED'));
+                this.showCustomToast(
+                    this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_DELETED')
+                );
             },
             error: (error) => {
-                this.showCustomToast(this.translate.instant('SHOP_ARTICLES_MANAGEMENT.PRESTA_DELETE_ERROR'));
+                this.showCustomToast(
+                    this.translate.instant(
+                        'SHOP_ARTICLES_MANAGEMENT.PRESTA_DELETE_ERROR'
+                    )
+                );
                 console.log('Error updating shop:', error);
             },
         });

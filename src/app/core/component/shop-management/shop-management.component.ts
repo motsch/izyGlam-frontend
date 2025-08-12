@@ -230,7 +230,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         const type = this.shopCopyData.type; // à adapter selon ta structure exacte
         const userDescription = this.shopCopyData.description || null;
 
-        this.shopService.generateIzyGlamDescription(type, userDescription)
+        this.shopService.generateIzyGlamShopDescription(type, userDescription)
             .subscribe({
                 next: (description: string) => {
                     this.shopCopyData.description = description;

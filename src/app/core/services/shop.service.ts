@@ -190,12 +190,10 @@ export class ShopService {
         return R * c;
     }
 
-    generateIzyGlamProductDescription(product?: any): Observable<string> {
-        return this.http.post<{ formattedDescription: string }>(
+    generateIzyGlamProductDescription(product?: any) {
+        return this.http.post<{ data: any }>(
             `${environment.apiUrl}product-description`,
             { product }
-        ).pipe(
-            map(response => response.formattedDescription)
         );
     }
 
@@ -204,7 +202,7 @@ export class ShopService {
  * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
  * @param userDescription Une description éventuelle saisie par l'utilisateur
  */
-    generateIzyGlamDescription(type: string, userDescription?: string): Observable<string> {
+    generateIzyGlamShopDescription(type: string, userDescription?: string): Observable<string> {
         return this.http.post<{ formattedDescription: string }>(
             `${environment.apiUrl}shop-description`,
             { type, userDescription }
@@ -218,12 +216,10 @@ export class ShopService {
  * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
  * @param userDescription Une description éventuelle saisie par l'utilisateur
  */
-    generateIzyGlamImage(product?: any): Observable<string> {
+    generateIzyGlamImage(product?: any) {
         return this.http.post<{ formattedDescription: string }>(
             `${environment.apiUrl}prestation-image`,
             { product }
-        ).pipe(
-            map(response => response.formattedDescription)
         );
     }
 
