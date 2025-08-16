@@ -24,7 +24,7 @@
       <div class="column">
         <h3 style="margin-bottom: 10px;">{{ "SHOP_MANAGEMENT.PHOTO" | translate}}:</h3>
         <!--IMAGE EXPLICATIVE-->
-          <img src="assets/images/photomaton.png" alt="Image du shop" class="photomaton" />
+        <img src="assets/images/photomaton.png" alt="Image du shop" class="photomaton" />
       </div>
     </div>
 
@@ -32,8 +32,7 @@
     <div *ngIf="me.role === 'boss'">
       <label for="name" class="margin-top-20">{{ "Employé sur le salon" | translate}}</label>
       <select [(ngModel)]="shopCopyData.idUser" (ngModelChange)="saveShop()">
-        <option *ngFor="let employee of employees"
-                [value]="employee._id">
+        <option *ngFor="let employee of employees" [value]="employee._id">
           {{ employee.firstname }} {{ employee.lastname }}
         </option>
       </select>
@@ -42,7 +41,8 @@
     <!-- NOM DU SALON -->
     <div>
       <label for="name" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_NAME" | translate}}</label>
-      <input [disabled]="me.role !== 'boss'" [(ngModel)]="shopCopyData.name" class="input-style" type="text" id="name" (ngModelChange)="saveShop()" />
+      <input [disabled]="me.role !== 'boss'" [(ngModel)]="shopCopyData.name" class="input-style" type="text" id="name"
+        (ngModelChange)="saveShop()" />
     </div>
 
     <!-- DESCRIPTION -->
@@ -63,7 +63,8 @@
       <div class="column">
         <label for="deliveryPostalCode">{{ "SHOP_MANAGEMENT.CODE_POSTAUX" | translate }}</label>
         <div class="postal-code-entry">
-          <input type="text" [(ngModel)]="deliveryPostalCode" [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_LOCAL' | translate)" maxlength="10"
+          <input type="text" [(ngModel)]="deliveryPostalCode"
+            [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_LOCAL' | translate)" maxlength="10"
             (keyup.enter)="addPostalCode()" />
           <button type="button" class="add-postal-code-btn" (click)="addPostalCode()">+</button>
         </div>
@@ -109,15 +110,14 @@
           <div class="hour-column">
             <label>{{ "SHOP_MANAGEMENT.MORNING_CLOSE" | translate }}</label>
             <select [(ngModel)]="shopCopyData.hours[day].morning.end" (ngModelChange)="saveShop()">
-              <option *ngFor="let hour of allowedMorningHours"
-                      [value]="hour"
-                      [disabled]="hour <= shopCopyData.hours[day].morning.start">
+              <option *ngFor="let hour of allowedMorningHours" [value]="hour"
+                [disabled]="hour <= shopCopyData.hours[day].morning.start">
                 {{ hour }}
               </option>
             </select>
           </div>
         </div>
-      
+
         <!-- Après-midi -->
         <div class="hour-row">
           <div class="hour-column">
@@ -129,9 +129,8 @@
           <div class="hour-column">
             <label>{{ "SHOP_MANAGEMENT.AFTERNOON_CLOSE" | translate }}</label>
             <select [(ngModel)]="shopCopyData.hours[day].afternoon.end" (ngModelChange)="saveShop()">
-              <option *ngFor="let hour of allowedAfternoonHours"
-                      [value]="hour"
-                      [disabled]="hour <= shopCopyData.hours[day].afternoon.start">
+              <option *ngFor="let hour of allowedAfternoonHours" [value]="hour"
+                [disabled]="hour <= shopCopyData.hours[day].afternoon.start">
                 {{ hour }}
               </option>
             </select>

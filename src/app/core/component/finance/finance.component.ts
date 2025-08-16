@@ -15,8 +15,6 @@ export class FinanceComponent implements OnInit {
     transactions: any[] = [];
     withdrawalForm: FormGroup;
     bankModalVisible = false;
-
-
     totalRevenue = 0;
     totalCommission = 0;
     evolution = 0;
@@ -27,7 +25,6 @@ export class FinanceComponent implements OnInit {
     reviewRatio = 0;
     topProducts:any[] = [];
     avgDuration = 0;
-
     bank = {
         iban: '',
         bic: '',
@@ -35,6 +32,7 @@ export class FinanceComponent implements OnInit {
         holder_name: '',
         country: ''
     };
+    
     constructor(private fb: FormBuilder, private bookingService: BookingService, private userService: UserService) {
         this.withdrawalForm = this.fb.group({
             amount: ['', [Validators.required, Validators.min(1)]],
@@ -61,7 +59,6 @@ export class FinanceComponent implements OnInit {
             this.topProducts = data.topProducts;
             this.avgDuration = data.avgDuration;
         });
-
     }
 
     ngOnChanges(changes: SimpleChanges): void {
