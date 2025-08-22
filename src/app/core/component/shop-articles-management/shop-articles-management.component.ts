@@ -27,7 +27,6 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     @Input() myShopData: any = {};
     @Input() me: any = {};
     @Output() articleUpdated: EventEmitter<string> = new EventEmitter<string>();
-
     services: any[] = [];
     selectedService: any = {};
     modalOpen = false;
@@ -42,7 +41,6 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     imagePreview: string | null = null;
     templateByType: any[] = [];
     creationType: string | null = null;
-
     isGeneratingDescription = false;
     isGeneratingImage = false;
 

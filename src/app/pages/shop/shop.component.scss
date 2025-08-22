@@ -480,7 +480,7 @@ app-round-shop-card, .card {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 @media (max-width: 768px) {
@@ -497,8 +497,10 @@ app-round-shop-card, .card {
 }
 
 
+
+
 .shopInfoImage {
-  margin-top: 15px;
+  margin-top: -10px;
   width: 100px; /* Taille de ton image */
   height: 100px;
   object-fit: cover; /* Que l'image reste jolie même si pas carrée */
@@ -547,3 +549,55 @@ app-round-shop-card, .card {
 .toggle-button:hover {
   color: #a91e60;
 }
+
+/* Par défaut (desktop/tablette) -> rien ne change */
+.shop-hero {
+  display: block;
+}
+
+/* MOBILE UNIQUEMENT : description à droite du bloc image+infos */
+@media (max-width: 768px) {
+  .shop-hero {
+    display: grid;
+    grid-template-columns: 130px 1fr; /* largeur colonne gauche (image+infos) / droite (description) */
+    column-gap: 16px;
+    align-items: start;
+  }
+
+  /* Le bloc image + nom + note reste en colonne (comme aujourd'hui) */
+  .shop-info-header {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;   /* image au-dessus du nom+note */
+    align-items: center;      /* centre joliment l'avatar */
+    text-align: left;         /* texte aligné à gauche */
+    margin-bottom: 0;         /* supprime l'espace vertical inutile */
+  }
+
+  /* Taille un peu plus compacte de l’avatar sur mobile */
+  .shopInfoImage {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* La description passe à droite */
+  .description-wrapper {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  /* Optionnel: on réduit la contrainte de hauteur pour éviter un grand vide */
+  .description-text.collapsed {
+    max-height: 140px; /* au lieu de 100px si tu veux un peu plus d’aperçu */
+  }
+
+  /* On annule l’ancienne règle qui forçait le header en colonne/centre sur mobile,
+     pour éviter que d’autres styles ne contredisent la grille. */
+  .shop-info-header,
+  .shop-info-texts {
+    width: 100%;
+  }
+}
+

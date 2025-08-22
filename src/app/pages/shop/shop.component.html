@@ -7,70 +7,65 @@
       <!-- Collapsible wrapper -->
       <div class="mb-5" id="navbarSupportedContent">
         <div>
-          <div class="shop-info-header">
-            <img [src]="APIimgStorageUrl + '/uploads/images/' + (shopInfo.image ? shopInfo.image : 'default.png')"
-              alt="shopLogo" class="shopInfoImage" />
+          <div class="shop-hero"><!-- ⬅️ nouveau wrapper -->
+            <div class="shop-info-header">
+              <img [src]="APIimgStorageUrl + '/uploads/images/' + (shopInfo.image ? shopInfo.image : 'default.png')"
+                alt="shopLogo" class="shopInfoImage" />
 
-            <div class="shop-info-texts">
-              <div>
-                <h4>{{ shopInfo.name }}</h4>
-                <div class="pink">{{ shopInfo.trad | translate }}</div>
+              <div class="shop-info-texts">
+                <div>
+                  <h4>{{ shopInfo.name }}</h4>
+                  <div class="pink">{{ shopInfo.trad | translate }}</div>
+                </div>
+                <span>
+                  {{ shopInfo.note }}
+                  <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
+                  ({{ shopInfo.noteCount }}+) <br />
+                </span>
               </div>
-              <span>
-                {{ shopInfo.note }}
-                <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
-                ({{ shopInfo.noteCount }}+) <br />
-              </span>
-              <span>
-                {{ "SHOP.MOVING_FEE" | translate }}
-                {{ adminSettings.serviceFee | number : "1.2-2" }}€<br />
-                {{ "SHOP.DISTANCE" | translate }} {{ shopInfo.maxDistance }}km
-              </span>
             </div>
-          </div>
-          <div class="description-wrapper">
-            <div
-              class="description-text"
-              [class.collapsed]="!isExpanded"
-              [class.expanded]="isExpanded"
-              [style.maxHeight]="isExpanded ? '1000px' : '100px'"
-            >
-              {{ shopInfo.description }}
-            </div>
-          
-            <button class="toggle-button" (click)="toggleDescription()">
-              {{ isExpanded ? 'Voir moins' : 'Voir plus' }}
-            </button>
-          </div>
-          
 
-          <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-40 bold">{{ "SHOP.GALLERY" | translate }}:
+            <div class="description-wrapper">
+              <div class="description-text">
+                {{ shopInfo.description }}
+              </div>
+
+              <button class="toggle-button" (click)="toggleDescription()">
+                {{ isExpanded ? 'Voir moins' : 'Voir plus' }}
+              </button>
+            </div>
           </div>
-          <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-10">
-            <div class="gallery-container">
-              <div class="gallery-thumbnails">
-                <div *ngFor="let image of shopInfo.galleryImages" class="thumbnail" (click)="openLightbox(image)">
-                  <img [src]="APIimgStorageUrl + image" alt="Gallery Image" />
+
+
+          <div *ngIf="isExpanded">
+            <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-40 bold">{{ "SHOP.GALLERY" | translate }}:
+            </div>
+            <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-10">
+              <div class="gallery-container">
+                <div class="gallery-thumbnails">
+                  <div *ngFor="let image of shopInfo.galleryImages" class="thumbnail" (click)="openLightbox(image)">
+                    <img [src]="APIimgStorageUrl + image" alt="Gallery Image" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Lightbox Modal -->
+              <div class="lightbox" *ngIf="isLightboxOpen">
+                <div class="lightbox-content">
+                  <span class="close-lightbox" (click)="closeLightbox()">&times;</span>
+                  <img [src]="APIimgStorageUrl + selectedImage" class="lightbox-image" />
+                  <a class="prev" (click)="prevImage()">&#10094;</a>
+                  <a class="next" (click)="nextImage()">&#10095;</a>
                 </div>
               </div>
             </div>
-
-            <!-- Lightbox Modal -->
-            <div class="lightbox" *ngIf="isLightboxOpen">
-              <div class="lightbox-content">
-                <span class="close-lightbox" (click)="closeLightbox()">&times;</span>
-                <img [src]="APIimgStorageUrl + selectedImage" class="lightbox-image" />
-                <a class="prev" (click)="prevImage()">&#10094;</a>
-                <a class="next" (click)="nextImage()">&#10095;</a>
-              </div>
+            <div>
+              <img [src]="imgStorageUrl + 'money.png'" alt="starLogo" class="moneyLogo" />
             </div>
-          </div>
-          <div>
-            <img [src]="imgStorageUrl + 'money.png'" alt="starLogo" class="moneyLogo" />
-          </div>
-          <div>
-            {{ "SHOP.PAYEMENT" | translate }}<br />
-            {{ "SHOP.PRESS_FOR_INFO" | translate }}
+            <div>
+              {{ "SHOP.PAYEMENT" | translate }}<br />
+              {{ "SHOP.PRESS_FOR_INFO" | translate }}
+            </div>
           </div>
         </div>
       </div>

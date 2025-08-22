@@ -29,8 +29,8 @@ export class RdvModalComponent implements OnInit {
         public dialog: MatDialog,
         private communicationService: CommunicationService,
         private bookingService: BookingService
-    ) {}
-    
+    ) { }
+
     ngOnInit() {
         if (localStorage.getItem('shopSelected')) {
             this.shopId = localStorage.getItem('shopSelected');
@@ -38,7 +38,7 @@ export class RdvModalComponent implements OnInit {
             this.toggleDate(0);
         }
     }
-    
+
     generateDates() {
         if (this.shopId) {
             const serviceString = localStorage.getItem('productToBuy');
@@ -64,7 +64,7 @@ export class RdvModalComponent implements OnInit {
             }
         }
     }
-    
+
     formatAvailableSlots(data: any[]): any[] {
         const formattedSchedules = data.map(slot => ({
             date: this.formatDate(slot.date),
@@ -112,7 +112,7 @@ export class RdvModalComponent implements OnInit {
     }
 
     onNoClick(): void {
-        this.dialogRef.close(); 
+        this.dialogRef.close();
     }
 
     slotClick(slot: any, date: any) {
@@ -138,5 +138,5 @@ export class RdvModalComponent implements OnInit {
     onImageError(event: Event) {
         const imgElement = event.target as HTMLImageElement;
         imgElement.src = this.imgStorageUrl + '/uploads/images/logo.png';
-      }
+    }
 }

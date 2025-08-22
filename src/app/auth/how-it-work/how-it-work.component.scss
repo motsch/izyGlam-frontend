@@ -19,24 +19,39 @@
 }
 
 h1 {
-  font-size: 2rem; /* taille raisonnable pour mobile */
-  line-height: 1.2; /* évite les sauts de ligne trop espacés */
-  word-break: break-word; /* casse les longs mots si besoin */
-  hyphens: auto; /* ajoute des tirets si nécessaire pour couper proprement */
+  font-size: 2rem;
+  /* taille raisonnable pour mobile */
+  line-height: 1.2;
+  /* évite les sauts de ligne trop espacés */
+  word-break: break-word;
+  /* casse les longs mots si besoin */
+  hyphens: auto;
+  /* ajoute des tirets si nécessaire pour couper proprement */
   text-align: left;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem; /* plus petit sur mobile */
-    text-align: center; /* si tu veux centrer le texte sur mobile */
-    padding: 0 1rem; /* un peu de marge interne */
+    font-size: 1.5rem;
+    /* plus petit sur mobile */
+    text-align: center;
+    /* si tu veux centrer le texte sur mobile */
+    padding: 0 1rem;
+    /* un peu de marge interne */
   }
 }
+
+
 .content p {
   color: #000;
+  /* Couleur noire pour correspondre au style izyGlam */
   line-height: 1.5;
   font-size: 18px;
+  /* Augmenté pour correspondre à la taille de police de l'exemple izyGlam */
   margin-bottom: 30px;
+  /* Ajouté pour espacement */
 }
+
+
+
 
 
 
@@ -67,10 +82,14 @@ button:hover {
   transform: scale(1.06);
 }
 
+
 img {
-  border-radius: 20px; /* Vous pouvez ajuster cette valeur pour obtenir l'arrondi souhaité */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre portée pour l'effet de profondeur */
+  border-radius: 20px;
+  /* Vous pouvez ajuster cette valeur pour obtenir l'arrondi souhaité */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Légère ombre portée pour l'effet de profondeur */
 }
+
 @media (max-width: 768px) {
   .main-section {
     flex-direction: column;
@@ -89,13 +108,23 @@ img {
   }
 
   .content h1 {
-    font-size: 24px; /* Réduction de la taille du titre */
+    font-size: 24px;
+    /* Réduction de la taille du titre */
     margin-bottom: 15px;
   }
 
   .content p {
-    font-size: 16px; /* Texte un peu plus petit */
-    margin-bottom: 20px; /* Moins d'espacement */
+    font-size: 16px;
+    /* Texte un peu plus petit */
+    margin-bottom: 20px;
+    /* Moins d'espacement */
     line-height: 1.4;
+  }
+
+  button {
+    width: 100%;
+    /* Pour occuper tout l’espace, optionnel */
+    padding: 12px 20px;
+    font-size: 15px;
   }
 }

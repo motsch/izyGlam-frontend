@@ -1,118 +1,118 @@
 .article-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin-bottom: 20px;
-  height: auto;
-  width: 100%;
-  max-width: 600px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  gap: 15px;
-  box-sizing: border-box;
-  flex-wrap: nowrap;
-}
+  /* La card occupe toute la hauteur disponible de la cellule de grille */
+  height: 100%;
 
-.article-info {
-  flex: 1;
-  overflow: hidden;
+  /* structure interne : texte à gauche, image à droite */
+  display: grid;
+  grid-template-columns: 1fr 100px; /* texte / image */
+  gap: 16px;
+
+  padding: 14px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  background: #fff;
+
+  /* améliore le rendu si l’utilisateur réduit beaucoup l’écran */
   min-width: 0;
 }
 
-.article-info h3 {
+.article-info {
+  min-width: 0;     /* important pour que l’ellipsis marche */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centre verticalement le bloc texte */
+  gap: 8px;
+}
+
+/* Titre sur une seule ligne, ellipsé */
+.title {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 700;
   color: #ff4081;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.2;
 }
 
-.article-info .price {
-  font-weight: normal;
-  margin: 5px 0;
-}
-
-.article-info .description {
-  color: #666;
+/* Prix + durée sur une ligne */
+.price-duration {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 15px;
+  color: #444;
+}
+
+/* Description sur 2 lignes max, pour stabiliser la hauteur */
+.description {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;      /* <-- ajuste à 2 ou 3 selon ton design */
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limite à 2 lignes */
-  -webkit-box-orient: vertical;
-}
-
-.add-button {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* permet au bloc texte d’occuper l’espace sans pousser l’image */
+  min-height: 0;
 }
 
 .article-image {
   position: relative;
-  width: 110px;
-  height: 110px;
-  border-radius: 8px;
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
   overflow: hidden;
+  justify-self: end; /* colle l'image à droite */
+  align-self: center; /* centre l'image verticalement dans la card */
   flex-shrink: 0;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  .add-button {
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-    // Style du bouton selon ton besoin
-  }
 }
 
-@media (max-width: 480px) {
+.article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.add-button {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,.12);
+}
+
+/* Petites largeurs : on garde l’image à droite,
+   mais on peut réduire sa taille pour éviter la casse */
+@media (max-width: 420px) {
   .article-card {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto;
+    grid-template-columns: 1fr 84px;
+    gap: 12px;
+    padding: 12px 14px;
   }
-
   .article-image {
-    align-self: center;
-    width: 200px;
-    height: 200px;
-    margin-top: 10px;
+    width: 84px;
+    height: 84px;
+    border-radius: 10px;
   }
 }
 
-.price-duration {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 5px;
-  font-size: 14px;
-  color: #444;
-  align-items: center;
-}
-
-.price-tag, .duration-tag {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.price-tag i, .duration-tag i {
-  color: #ff4081; // rose stylé façon izyGlam
+/* Optionnel : hover subtil */
+.article-card:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+  transform: translateY(-1px);
+  transition: box-shadow .2s ease, transform .2s ease;
 }

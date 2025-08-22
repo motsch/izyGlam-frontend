@@ -1,5 +1,10 @@
 <!-- WRAPPER GLOBAL -->
 <div class="izy-wrapper">
+  <!-- Bandeau info si géolocalisation désactivée (non bloquant) -->
+  <div *ngIf="locationCheckDone && !geolocationAvailable" class="geo-banner">
+    {{ 'MAIN.GEO_DISABLED_INFO' | translate : { fallback: selectedPostalCode } }}
+  </div>
+
   <!-- SECTION ADRESSE & RECHERCHE -->
   <div class="address-search-wrapper margin-top-60">
     <div class="address-search-row">
@@ -32,21 +37,26 @@
         </div>
       </div>
     </div>
+
     <!-- SECTION : PUBS & OFFRES -->
     <app-horizontal-pub-list *ngIf="pubActivated" [me]="me"></app-horizontal-pub-list>
 
-    <app-horizontal-shop-list *ngIf="promoActivated && !filterClicked && searchQuery.length === 0 && promotedShops.length > 0"
-      [title]="('MAIN.OFFRE' | translate)" [pubActivated]="pubActivated" [shops]="promotedShops" [me]="me" [pubIndexe]="'0'"></app-horizontal-shop-list>
+    <app-horizontal-shop-list
+      *ngIf="promoActivated && !filterClicked && searchQuery.length === 0 && promotedShops.length > 0"
+      [title]="('MAIN.OFFRE' | translate)" [pubActivated]="pubActivated" [shops]="promotedShops" [me]="me"
+      [pubIndexe]="'0'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsAdecouvrir.length > 0"
-      [title]="('MAIN.DISCOVER' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsAdecouvrir" [me]="me" [pubIndexe]="'1'"></app-horizontal-shop-list>
+      [title]="('MAIN.DISCOVER' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsAdecouvrir" [me]="me"
+      [pubIndexe]="'1'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsApprecier.length > 0"
       [title]="('MAIN.APPRECIATE' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsApprecier" [me]="me"
       [pubIndexe]="'2'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsMalin.length > 0"
-      [title]="('MAIN.SMART' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsMalin" [me]="me" [pubIndexe]="'3'"></app-horizontal-shop-list>
+      [title]="('MAIN.SMART' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsMalin" [me]="me"
+      [pubIndexe]="'3'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsTop10.length > 0"
       [title]="('MAIN.TOP10' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsTop10" [me]="me"
@@ -60,6 +70,7 @@
           [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
       </div>
     </div>
+
     <!-- SECTION : RÉSULTATS DE RECHERCHE GLOBALE -->
     <div class="horizontal-section-wrapper" *ngIf="searchQuery.length > 0">
       <div class="section-header">
@@ -72,6 +83,7 @@
         </div>
       </div>
     </div>
+
     <!-- SECTION : PAS DISPONIBLE -->
     <div class="horizontal-section-wrapper" *ngIf="shops.length === 0">
       <div class="section-header">
@@ -79,10 +91,10 @@
       </div>
     </div>
   </div> <!-- /izy-content -->
+
   <!-- MODAL d'adresses -->
   <div class="modal-overlay" *ngIf="showAddressModal" (click)="closeAddressModal()">
     <div class="modal-content address-modal" (click)="$event.stopPropagation()">
-
       <!-- Bouton de fermeture -->
       <button class="close-button" (click)="closeAddressModal()">
         <mat-icon>close</mat-icon>
@@ -92,23 +104,23 @@
       <h3 class="modal-title">
         {{ isAddingAddress ? ('MAIN.NEW_ADDRESS' | translate) : ('MAIN.CHOOSE_ADDRESS' | translate) }}
       </h3>
+
       <!-- Liste des adresses si on n'ajoute pas -->
       <ul class="address-list" *ngIf="!isAddingAddress">
-        <li *ngFor="let address of userAddresses; index as i"
-            class="address-item"
-            (click)="selectPostalCode(address)"
-            [class.active]="isSameAddress(address, selectedAddress)">
+        <li *ngFor="let address of displayedAddresses; index as i" class="address-item"
+          (click)="selectPostalCode(address)" [class.active]="isSameAddress(address, selectedAddress)">
           <div class="address-info">
             <span class="icon">{{ address.street === 'MAIN_PAGE.MA_POSITION' ? '📍' : '📌' }}</span>
             <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
           </div>
           <button type="button" class="delete-btn" (click)="removeAddress(i)">🗑️</button>
         </li>
+
         <li class="add-address-btn" (click)="toggleAddAddress()">
           ➕ {{ "MAIN.NEW_ADDRESS" | translate }}
         </li>
       </ul>
-      
+
       <!-- Formulaire d'ajout d'adresse -->
       <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form">
         <!-- 1. Choix du pays -->
@@ -117,33 +129,33 @@
           <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
         </select>
         <input *ngIf="availableCountries.length === 1" type="hidden" name="country" [(ngModel)]="selectedCountry" />
-        
+
         <!-- 2. Code postal -->
         <input type="text" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
           (change)="onPostalCodeEntered()" required maxlength="10" />
-        
+
         <!-- 3. Villes correspondant au code postal -->
         <select [(ngModel)]="selectedCity" name="city" required>
           <option value="">-- {{ "MAIN.CHOOSE_CITY" | translate }} --</option>
           <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
         </select>
-        
+
         <!-- 4. Arrondissements -->
         <select *ngIf="availableArrondissements.length > 1" [(ngModel)]="selectedArrondissement" name="arrondissement">
           <option value="">-- {{ "MAIN.CHOOSE_ARRONDISSEMENT" | translate }} --</option>
           <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
         </select>
-        
+
         <!-- 5. Rue -->
         <input type="text" [(ngModel)]="newAddress.street" name="street" placeholder="Rue" required />
-        
+
         <!-- 6. Boutons -->
         <div class="form-buttons margin-bottom-20">
           <button type="button" class="cancel-btn" (click)="toggleAddAddress()">{{ "MAIN.CANCEL" | translate }}</button>
           <button type="submit" class="save-btn">{{ "MAIN.SAVE" | translate }}</button>
         </div>
       </form>
-      
+
       <button (click)="closeAddressModal()" class="close-btn">{{ "MAIN.CLOSE" | translate }}</button>
     </div>
   </div>

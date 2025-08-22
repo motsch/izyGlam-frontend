@@ -202,10 +202,10 @@ export class ShopService {
  * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
  * @param userDescription Une description éventuelle saisie par l'utilisateur
  */
-    generateIzyGlamShopDescription(type: string, userDescription?: string): Observable<string> {
+    generateIzyGlamShopDescription(type: string, description?: string): Observable<string> {
         return this.http.post<{ formattedDescription: string }>(
             `${environment.apiUrl}shop-description`,
-            { type, userDescription }
+            { type, description }
         ).pipe(
             map(response => response.formattedDescription)
         );

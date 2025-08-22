@@ -8,488 +8,518 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { AdvertisementService } from 'src/app/core/services/advertisement.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
 import { MqttService } from 'src/app/core/services/mqtt.service';
 import { VilleService } from 'src/app/core/services/ville.service';
 import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
-    selector: 'app-main',
-    templateUrl: './main.component.html',
-    styleUrls: ['./main.component.scss'],
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit, AfterViewInit {
-    me: any = {};
-    imgStorageUrl: string = environment.imgStorageUrl;
-    filteredItems: any[] = [];
-    filteredItemsAdecouvrir: any[] = [];
-    filteredItemsApprecier: any[] = [];
-    filteredItemsMalin: any[] = [];
-    filteredItemsTop10: any[] = [];
-    selectedCategory: string | undefined;
-    filterClicked = false;
-    promotedShops: any[] = [];
-    categoriesFilter: any[] = [];
-    showAddressModal: boolean = false;
-    shops: any[] = [];
-    searchQuery: string = '';
-    searchActive: boolean = false;
-    filteredSearchResults: any[] = [];
-    // Sélection adresse / code postal
-    selectedPostalCode: string = '75001';
-    availablePostalCodes: string[] = ['75001'];
-    userAddresses: any[] = [];
-    selectedAddress: any = null;
-    allCitiesData: any[] = [];        // on stocke ici toutes les villes brutes
-    searchControl = new FormControl('');
-    categoryTrad: string = '';
-    availableArrondissements: string[] = []; // liste filtrée d'arrondissements (name) pour une ville
-    isAddingAddress = false;
-    newAddress: any = {};
-    selectedCountry = 'France';
-    selectedCity: any = '';
-    selectedArrondissement = '';
-    availableCountries = ['France'];
-    availableCities: any[] = [];
-    postalCode: string = '';
-    pubActivated: boolean = false;
-    promoActivated: boolean = false;
+  me: any = {};
+  imgStorageUrl: string = environment.imgStorageUrl;
 
-    private searchSubject = new Subject<string>();
-    private subscription!: Subscription;
-    @ViewChild('scrollContainerCategory') private scrollContainerCategory?: ElementRef;
-    @ViewChild('scrollContainerDiscover') private scrollContainerDiscover?: ElementRef;
-    @ViewChild('scrollContainerAround') private scrollContainerAround?: ElementRef;
-    @ViewChild('scrollContainerPromo') private scrollContainerPromo?: ElementRef;
-    @ViewChild('scrollContainerTop10') private scrollContainerTop10?: ElementRef;
-    @ViewChild('scrollContainerSmart') private scrollContainerSmart?: ElementRef;
+  // --- GEO SAFE MODE ---
+  geolocationAvailable = false;      // vrai si l’app a le droit + peut lire une position
+  locationCheckDone = false;         // pour éviter tout "blocage" UI pendant la détection
+  locationError: string = '';        // message informatif (non bloquant)
+  // ----------------------
 
-    constructor(
-        private sharedService: SharedService,
-        private shopService: ShopService,
-        public sessionService: SessionService,
-        private villeService: VilleService,
-        private categoryService: CategoryService,
-        private userService: UserService,
-        private router: Router,
-        private advertisementService: AdvertisementService,
-        private mqttService: MqttService,
-        private adminService: AdminService
-    ) { }
+  filteredItems: any[] = [];
+  filteredItemsAdecouvrir: any[] = [];
+  filteredItemsApprecier: any[] = [];
+  filteredItemsMalin: any[] = [];
+  filteredItemsTop10: any[] = [];
+  selectedCategory: string | undefined;
+  filterClicked = false;
+  promotedShops: any[] = [];
+  categoriesFilter: any[] = [];
+  showAddressModal: boolean = false;
+  shops: any[] = [];
+  searchQuery: string = '';
+  searchActive: boolean = false;
+  filteredSearchResults: any[] = [];
 
-    ngOnInit() {
-        // 🔐 Redirection si non connecté
-        if (!this.sessionService.isLoggedIn()) {
-            this.router.navigate(['/login']);
-            return;
-        }
-        this.subscription = this.searchSubject
-            .pipe(debounceTime(300), distinctUntilChanged())
-            .subscribe((query) => {
-                this.performSearch(query);
-            });
-        this.loadUserAndShops();
-        // this.getCities();
-        
+  // Sélection adresse / code postal
+  selectedPostalCode: string = '75001';
+  availablePostalCodes: string[] = ['75001'];
+  userAddresses: any[] = [];
+  displayedAddresses: any[] = []; // <- liste réellement affichée (sans "Ma position" si géoloc OFF)
+  selectedAddress: any = null;
+
+  allCitiesData: any[] = []; // on stocke ici toutes les villes brutes
+  searchControl = new FormControl('');
+  categoryTrad: string = '';
+  availableArrondissements: string[] = []; // liste filtrée d'arrondissements (name) pour une ville
+  isAddingAddress = false;
+  newAddress: any = {};
+  selectedCountry = 'France';
+  selectedCity: any = '';
+  selectedArrondissement = '';
+  availableCountries = ['France'];
+  availableCities: any[] = [];
+  postalCode: string = '';
+  pubActivated: boolean = false;
+  promoActivated: boolean = false;
+
+  private searchSubject = new Subject<string>();
+  private subscription!: Subscription;
+
+  @ViewChild('scrollContainerCategory') private scrollContainerCategory?: ElementRef;
+  @ViewChild('scrollContainerDiscover') private scrollContainerDiscover?: ElementRef;
+  @ViewChild('scrollContainerAround') private scrollContainerAround?: ElementRef;
+  @ViewChild('scrollContainerPromo') private scrollContainerPromo?: ElementRef;
+  @ViewChild('scrollContainerTop10') private scrollContainerTop10?: ElementRef;
+  @ViewChild('scrollContainerSmart') private scrollContainerSmart?: ElementRef;
+
+  constructor(
+    private sharedService: SharedService,
+    private shopService: ShopService,
+    public sessionService: SessionService,
+    private villeService: VilleService,
+    private categoryService: CategoryService,
+    private userService: UserService,
+    private router: Router,
+    private advertisementService: AdvertisementService,
+    private mqttService: MqttService,
+    private adminService: AdminService
+  ) { }
+
+  ngOnInit() {
+    // 🔐 Redirection si non connecté
+    if (!this.sessionService.isLoggedIn()) {
+      this.router.navigate(['/login']);
+      return;
+    }
+
+    // 🔎 Recherche globale (non bloquante)
+    this.subscription = this.searchSubject
+      .pipe(debounceTime(300), distinctUntilChanged())
+      .subscribe((query) => this.performSearch(query));
+
+    // ⚙️ Paramètres plateforme
     this.adminService.getAdminSettings().subscribe(
-      (data :any) => {
-        console.log('Paramètres de la plateforme :', JSON.stringify(data));
+      (data: any) => {
         this.pubActivated = data.pubActivated;
         this.promoActivated = data.promoActivated;
       },
-      (error:any) => {
-        console.error('Erreur lors de la récupération des paramètres', error);
-      }
+      (error: any) => console.error('Erreur lors de la récupération des paramètres', error)
     );
-    }
 
-    onSearchChange(query: string) {
-        this.searchSubject.next(query);
-    }
+    // 🚀 On charge l’utilisateur + les shops PAR CODE POSTAL (indépendant de la géoloc)
+    this.loadUserAndShops();
 
-    performSearch(query: string) {
-        if (!query || query.trim().length < 2) {
-            this.filteredSearchResults = []; // Vide si pas assez de caractères
-            return;
+    // 🧭 On vérifie la géolocalisation EN ARRIÈRE-PLAN (non bloquant)
+    this.checkGeolocationAvailability();
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) this.subscription.unsubscribe();
+  }
+
+  // === GÉOLOCALISATION : détection non bloquante ===
+  private async checkGeolocationAvailability() {
+    try {
+      // 1) Permissions API (si dispo) – rapide
+      // @ts-ignore
+      if (navigator?.permissions?.query) {
+        // @ts-ignore
+        const status = await navigator.permissions.query({ name: 'geolocation' });
+        if (status.state === 'denied') {
+          this.geolocationAvailable = false;
+          this.locationError = 'La géolocalisation est désactivée par le navigateur.';
+          this.locationCheckDone = true;
+          this.refreshDisplayedAddresses();
+          return;
         }
+      }
 
-        this.shopService
-            .searchShopsWithServices(this.selectedPostalCode, query)
-            .subscribe((results) => {
-                this.filteredSearchResults = results;
-            });
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe(); // Nettoyage
-    }
-
-    ngAfterViewInit(): void {
-        const elements = document.querySelectorAll('.drag-scroll');
-
-        elements.forEach((el) => {
-            let isDown = false;
-            let startX = 0;
-            let scrollLeft = 0;
-
-            (el as HTMLElement).addEventListener('mousedown', (event) => {
-                const e = event as MouseEvent;
-                isDown = true;
-                (el as HTMLElement).classList.add('active-drag');
-                startX = e.pageX - (el as HTMLElement).offsetLeft;
-                scrollLeft = (el as HTMLElement).scrollLeft;
-            });
-
-            (el as HTMLElement).addEventListener('mouseleave', () => {
-                isDown = false;
-                (el as HTMLElement).classList.remove('active-drag');
-            });
-
-            (el as HTMLElement).addEventListener('mouseup', () => {
-                isDown = false;
-                (el as HTMLElement).classList.remove('active-drag');
-            });
-
-            (el as HTMLElement).addEventListener('mousemove', (event) => {
-                const e = event as MouseEvent;
-                if (!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - (el as HTMLElement).offsetLeft;
-                const walk = (x - startX) * 1.2; // ajustable
-                (el as HTMLElement).scrollLeft = scrollLeft - walk;
-            });
-        });
-    }
-
-    goTo(link: string) {
-        console.log("click: " + link);
-
-        if (link.startsWith('http://') || link.startsWith('https://')) {
-            window.open(link, '_blank'); // Ouvre le lien externe dans un nouvel onglet
-        } else {
-            this.router.navigateByUrl(link); // Navigation interne Angular
+      // 2) Tentative ultra-courte pour savoir si on peut obtenir une position
+      await new Promise<void>((resolve, reject) => {
+        if (!navigator?.geolocation) {
+          reject(new Error('API geolocation indisponible'));
+          return;
         }
-    }
+        const onSuccess = () => resolve();
+        const onError = () => reject(new Error('Refus ou indisponible'));
 
-    private loadUserAndShops() {
-        console.log("SHOP LOADING 1")
-        this.userService.getMe().subscribe({
-            next: (data: any) => {
-                console.log("SHOP LOADING 2")
-                this.me = data;
-                this.sharedService.updateMe(data);
-
-                // Nettoyage localStorage
-                localStorage.removeItem('shopSelected');
-                localStorage.removeItem('productToBuy');
-                localStorage.removeItem('selectItemFromShop');
-                localStorage.removeItem('menu-param');
-                localStorage.removeItem('menu-param');
-                console.log("SHOP LOADING 3")
-
-                // ✅ Gestion des adresses
-                if (data.address && data.address.length > 0) {
-                    this.userAddresses = data.address;
-
-                    // Prendre la première adresse si aucune n'est encore sélectionnée
-                    if (!this.selectedAddress) {
-                        this.selectedAddress = this.userAddresses[0];
-                    }
-
-                    // Optionnel : liste des codes postaux dispos
-                    this.availablePostalCodes = this.userAddresses.map((a: any) => a.code_postal);
-                }
-                console.log("SHOP LOADING 4")
-
-                // Chargement des catégories & shops selon l'adresse sélectionnée
-                this.loadCategories();
-                this.loadShops();
-            },
-            error: (error: any) => {
-                console.log(error);
-            },
-        });
-    }
-
-    onCountryChange() {
-        this.postalCode = '';
-        this.availableCities = [];
-        this.selectedCity = {};
-    }
-
-    onPostalCodeEntered() {
-        if (!this.postalCode || this.postalCode.length < 4) return;
-
-        this.villeService.getByPostalCode(this.postalCode, this.selectedCountry).subscribe((cities: any[]) => {
-            console.log(cities)
-            this.availableCities = cities;
-            this.newAddress.code_postal = this.postalCode;
-
-            if (cities.length === 1) {
-                this.selectedCity = cities[0];
-            }
-        });
-    }
-
-    private loadCategories() {
-        this.categoryService.getAvailableCategories(undefined, undefined, [this.selectedPostalCode]).subscribe({
-            next: (data: any[]) => {
-                console.log("Log des data : " + JSON.stringify(data));
-                this.categoriesFilter = data.sort((a, b) => a.position - b.position);
-            },
-            error: (error: any) => {
-                console.log(error);
-            },
-        });
-    }
-
-
-    filterShops() {
-        const query = this.searchQuery.trim().toLowerCase();
-
-        if (!query) {
-            this.filteredSearchResults = [...this.shops];
-            return;
-        }
-
-        this.filteredSearchResults = this.shops.filter(shop =>
-            this.normalizeText(shop.name).includes(this.normalizeText(query))
+        navigator.geolocation.getCurrentPosition(
+          onSuccess,
+          onError,
+          { enableHighAccuracy: false, timeout: 1500, maximumAge: 600000 }
         );
+      });
+
+      this.geolocationAvailable = true;
+      this.locationError = '';
+    } catch (e: any) {
+      this.geolocationAvailable = false;
+      this.locationError = 'Géolocalisation non autorisée. Utilisez le code postal.';
+    } finally {
+      this.locationCheckDone = true;
+      this.refreshDisplayedAddresses();
     }
+  }
 
-    normalizeText(text: string): string {
-        return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-    }
+  // Met à jour la liste visible en fonction de la géoloc
+  private refreshDisplayedAddresses() {
+    const hideGeoSpecial = !this.geolocationAvailable;
+    this.displayedAddresses = (this.userAddresses || []).filter((a: any) => {
+      // On masque l'entrée spéciale "Ma position" si géoloc OFF
+      const isMyPosition = a?.street === 'MAIN_PAGE.MA_POSITION';
+      return hideGeoSpecial ? !isMyPosition : true;
+    });
 
-
-    private loadShops() {
-        console.log("SHOP LOADING ?")
-        this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe(async (shops: any[]) => {
-            const favoriteShops = this.me.favoriteShops || [];
-
-            this.shops = shops.map((shop) => ({
-                ...shop,
-                isFavorite: favoriteShops.includes(shop._id),
-            }));
-            console.log('SHOP : ' + JSON.stringify(this.shops));
-            this.filteredItemsAdecouvrir = this.shuffleArray(this.shops);
-            this.filteredItemsApprecier = this.shuffleArray(this.shops);
-            this.filteredItemsMalin = this.shuffleArray(this.shops);
-            this.filteredItemsTop10 = this.shuffleArray(this.shops);
-            this.promotedShops = this.shops.filter((x: any) => x.promo?.active === true);
-        });
-    }
-
-    filterByCategory(type: string, trad: string) {
-        this.categoryTrad = trad;
-        if (!this.filterClicked) {
-            this.selectedCategory = type;
-            this.filterClicked = true;
-            this.filteredItems = this.shops.filter((x: any) => x.type === type);
-            return;
-        }
-        if (this.selectedCategory === type) {
-            this.cancelFilter();
-            this.categoryTrad = '';
-        } else {
-            this.selectedCategory = type;
-            this.filteredItems = this.shops.filter((x: any) => x.type === type);
-        }
-    }
-
-    cancelFilter() {
-        this.selectedCategory = '';
-        this.filterClicked = false;
-        this.filteredItems = this.shops;
-    }
-
-    shuffleArray<T>(array: T[]): T[] {
-        let shuffledArray = array.slice();
-        for (let i = shuffledArray.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-        }
-        return shuffledArray;
-    }
-
-    scrollLeft(type: string) {
-        this.scrollBy(type, -this.calculateScrollAmount());
-    }
-
-    scrollRight(type: string) {
-        this.scrollBy(type, this.calculateScrollAmount());
-    }
-
-    private scrollBy(type: string, amount: number) {
-        const containerMap: { [key: string]: ElementRef | undefined } = {
-            category: this.scrollContainerCategory,
-            discover: this.scrollContainerDiscover,
-            around: this.scrollContainerAround,
-            promo: this.scrollContainerPromo,
-            top10: this.scrollContainerTop10,
-            smart: this.scrollContainerSmart,
-        };
-
-        const container = containerMap[type];
-        if (container) {
-            container.nativeElement.scrollBy({
-                left: amount,
-                behavior: 'smooth',
-            });
-        }
-    }
-
-    private calculateScrollAmount(): number {
-        return (300 + 20) * 4;
-    }
-    openAddressModal() {
-        this.showAddressModal = true;
-    }
-
-    closeAddressModal() {
-        this.showAddressModal = false;
-        this.isAddingAddress = false;
-    }
-
-    selectPostalCode(address: any) {
-        this.selectedAddress = address;
-        this.selectedPostalCode = address.code_postal;
+    // Si adresse sélectionnée n’est plus visible, on en choisit une autre
+    if (this.selectedAddress && hideGeoSpecial && this.selectedAddress?.street === 'MAIN_PAGE.MA_POSITION') {
+      this.selectedAddress = this.displayedAddresses[0] || null;
+      if (this.selectedAddress?.code_postal) {
+        this.selectedPostalCode = this.selectedAddress.code_postal;
         this.loadCategories();
         this.loadShops();
-        this.closeAddressModal();
+      }
     }
-    isSameAddress(a: any, b: any): boolean {
-        return a?.street === b?.street && a?.city === b?.city && a?.code_postal === b?.code_postal;
+  }
+  // === FIN GÉOLOCALISATION ===
+
+  onSearchChange(query: string) {
+    this.searchSubject.next(query);
+  }
+
+  performSearch(query: string) {
+    if (!query || query.trim().length < 2) {
+      this.filteredSearchResults = [];
+      return;
     }
+    // 🔎 Toujours par code postal -> pas dépendant de la géoloc
+    this.shopService
+      .searchShopsWithServices(this.selectedPostalCode, query)
+      .subscribe((results) => (this.filteredSearchResults = results));
+  }
 
+  ngAfterViewInit(): void {
+    const elements = document.querySelectorAll('.drag-scroll');
+    elements.forEach((el) => {
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
 
-    toggleAddAddress() {
-        this.isAddingAddress = !this.isAddingAddress;
+      (el as HTMLElement).addEventListener('mousedown', (event) => {
+        const e = event as MouseEvent;
+        isDown = true;
+        (el as HTMLElement).classList.add('active-drag');
+        startX = e.pageX - (el as HTMLElement).offsetLeft;
+        scrollLeft = (el as HTMLElement).scrollLeft;
+      });
+
+      (el as HTMLElement).addEventListener('mouseleave', () => {
+        isDown = false;
+        (el as HTMLElement).classList.remove('active-drag');
+      });
+
+      (el as HTMLElement).addEventListener('mouseup', () => {
+        isDown = false;
+        (el as HTMLElement).classList.remove('active-drag');
+      });
+
+      (el as HTMLElement).addEventListener('mousemove', (event) => {
+        const e = event as MouseEvent;
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - (el as HTMLElement).offsetLeft;
+        const walk = (x - startX) * 1.2; // ajustable
+        (el as HTMLElement).scrollLeft = scrollLeft - walk;
+      });
+    });
+  }
+
+  goTo(link: string) {
+    if (link.startsWith('http://') || link.startsWith('https://')) {
+      window.open(link, '_blank');
+    } else {
+      this.router.navigateByUrl(link);
     }
+  }
 
+  private loadUserAndShops() {
+    this.userService.getMe().subscribe({
+      next: (data: any) => {
+        this.me = data;
+        this.sharedService.updateMe(data);
 
-    // 📌 Enregistre la nouvelle adresse
-    saveAddress() {
-        if (!this.selectedCity || !this.newAddress.street) return;
-        // Assigne city et country aux nouvelles valeurs sélectionnées
-        this.newAddress.city = this.selectedCity.nom;
-        this.newAddress.country = this.selectedCountry;
+        // Nettoyage localStorage
+        localStorage.removeItem('shopSelected');
+        localStorage.removeItem('productToBuy');
+        localStorage.removeItem('selectItemFromShop');
+        localStorage.removeItem('menu-param');
 
-        console.log(this.newAddress)
+        // ✅ Gestion des adresses
+        if (data.address && data.address.length > 0) {
+          this.userAddresses = data.address;
 
-        // Vérifie que tous les champs nécessaires sont remplis
-        if (
-            this.newAddress.street &&
-            this.newAddress.code_postal &&
-            this.newAddress.city &&
-            this.newAddress.country
-        ) {
-            // Conserve une copie de la nouvelle adresse à ajouter
-            const addressToAdd = { ...this.newAddress };
+          // Si rien n’est sélectionné, on prend la première adresse "affichable"
+          this.refreshDisplayedAddresses();
 
-            // Optionnel : si tu tiens à mettre à jour un tableau local
-            this.userAddresses.push(addressToAdd);
+          if (!this.selectedAddress) {
+            this.selectedAddress = this.displayedAddresses[0] || this.userAddresses[0];
+          }
 
-            // Appelle la méthode du service pour ajouter l'adresse
-            this.userService.addAddress(this.me._id, addressToAdd).subscribe(
-                (result: any) => {
-                    this.loadUser(); // recharge les infos de l'utilisateur
-                    console.log("Adresse ajoutée, utilisateur mis à jour :", result);
-                },
-                (error: any) => {
-                    console.log(error);
-                }
-            );
+          // Liste des CP dispos
+          this.availablePostalCodes = this.userAddresses.map((a: any) => a.code_postal).filter(Boolean);
 
-            // Réinitialise le formulaire d'adresse
-            this.newAddress = { street: '', code_postal: '', city: '', country: '' };
-            this.isAddingAddress = false;
+          // Force le CP courant si sélection valide
+          if (this.selectedAddress?.code_postal) {
+            this.selectedPostalCode = this.selectedAddress.code_postal;
+          }
+        } else {
+          // Aucun adresse en base => on reste sur le CP par défaut (75001)
+          this.userAddresses = [];
+          this.displayedAddresses = [];
         }
+
+        // Chargement des catégories & shops selon le code postal sélectionné
+        this.loadCategories();
+        this.loadShops();
+      },
+      error: (error: any) => console.log(error),
+    });
+  }
+
+  onCountryChange() {
+    this.postalCode = '';
+    this.availableCities = [];
+    this.selectedCity = {};
+  }
+
+  onPostalCodeEntered() {
+    if (!this.postalCode || this.postalCode.length < 4) return;
+
+    this.villeService.getByPostalCode(this.postalCode, this.selectedCountry).subscribe((cities: any[]) => {
+      this.availableCities = cities;
+      this.newAddress.code_postal = this.postalCode;
+
+      if (cities.length === 1) {
+        this.selectedCity = cities[0];
+      }
+    });
+  }
+
+  private loadCategories() {
+    // On passe toujours par le code postal sélectionné (aucune dépendance à la géoloc)
+    this.categoryService.getAvailableCategories(undefined, undefined, [this.selectedPostalCode]).subscribe({
+      next: (data: any[]) => {
+        this.categoriesFilter = data.sort((a, b) => a.position - b.position);
+      },
+      error: (error: any) => console.log(error),
+    });
+  }
+
+  filterShops() {
+    const query = this.searchQuery.trim().toLowerCase();
+    if (!query) {
+      this.filteredSearchResults = [...this.shops];
+      return;
     }
+    this.filteredSearchResults = this.shops.filter(shop =>
+      this.normalizeText(shop.name).includes(this.normalizeText(query))
+    );
+  }
 
+  normalizeText(text: string): string {
+    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
 
+  private loadShops() {
+    // 🔥 IMPORTANT : récupération par code postal uniquement
+    this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe(async (shops: any[]) => {
+      const favoriteShops = this.me.favoriteShops || [];
+      this.shops = shops.map((shop) => ({
+        ...shop,
+        isFavorite: favoriteShops.includes(shop._id),
+      }));
+      this.filteredItemsAdecouvrir = this.shuffleArray(this.shops);
+      this.filteredItemsApprecier = this.shuffleArray(this.shops);
+      this.filteredItemsMalin = this.shuffleArray(this.shops);
+      this.filteredItemsTop10 = this.shuffleArray(this.shops);
+      this.promotedShops = this.shops.filter((x: any) => x.promo?.active === true);
+    });
+  }
 
-
-
-    loadUser() {
-        this.me = this.userService.getMe();
-        this.sharedService.updateMe(this.me);
+  filterByCategory(type: string, trad: string) {
+    this.categoryTrad = trad;
+    if (!this.filterClicked) {
+      this.selectedCategory = type;
+      this.filterClicked = true;
+      this.filteredItems = this.shops.filter((x: any) => x.type === type);
+      return;
     }
-
-
-
-    removeAddress(index: number) {
-        this.me.address.splice(index, 1);
-        this.userService.update(this.me).subscribe((result: any) => {
-            console.log(result);
-        }, (error: any) => {
-            console.log(error);
-        });
+    if (this.selectedCategory === type) {
+      this.cancelFilter();
+      this.categoryTrad = '';
+    } else {
+      this.selectedCategory = type;
+      this.filteredItems = this.shops.filter((x: any) => x.type === type);
     }
+  }
 
+  cancelFilter() {
+    this.selectedCategory = '';
+    this.filterClicked = false;
+    this.filteredItems = this.shops;
+  }
 
+  shuffleArray<T>(array: T[]): T[] {
+    let shuffledArray = array.slice();
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+    return shuffledArray;
+  }
 
+  scrollLeft(type: string) {
+    this.scrollBy(type, -this.calculateScrollAmount());
+  }
 
+  scrollRight(type: string) {
+    this.scrollBy(type, this.calculateScrollAmount());
+  }
 
-    // ----------------------------------------
-    // 1) Quand l’utilisateur choisit un pays
-    // ----------------------------------------
-    /*
-    onCountryChange() {
-        // Filtrer les villes qui appartiennent à ce pays
-        const filteredByCountry = this.allCitiesData.filter(v => v.pays === this.selectedCountry);
-        // Extraire la liste unique de city
-        this.availableCities = [...new Set(filteredByCountry.map(v => v.city))];
-        // On réinitialise la sélection de ville & arrondissements
-        this.selectedCity = '';
-        this.availableArrondissements = [];
-        // Mettre à jour l'objet newAddress
-        this.newAddress.country = this.selectedCountry;
-    }*/
+  private scrollBy(type: string, amount: number) {
+    const containerMap: { [key: string]: ElementRef | undefined } = {
+      category: this.scrollContainerCategory,
+      discover: this.scrollContainerDiscover,
+      around: this.scrollContainerAround,
+      promo: this.scrollContainerPromo,
+      top10: this.scrollContainerTop10,
+      smart: this.scrollContainerSmart,
+    };
 
-    // -----------------------------------------
-    // 2) Quand l’utilisateur choisit une ville
-    // -----------------------------------------
-    onCityChange() {
-        // Filtre les documents par pays + city
-        const filteredByCity = this.allCitiesData.filter(
-            v => v.pays === this.selectedCountry && v.city === this.selectedCity.nom
-        );
-        if (filteredByCity.length > 1) {
-            // Plusieurs arrondissements => on récupère juste la liste des name
-            this.availableArrondissements = [...new Set(filteredByCity.map(v => v.name))];
-            // On ne définit pas encore le code postal, 
-            // car l’utilisateur doit choisir l’arrondissement précis.
-            this.newAddress.code_postal = '';
-        } else if (filteredByCity.length === 1) {
-            // Un seul document => on récupère directement le code postal
-            const doc = filteredByCity[0];
-            this.availableArrondissements = [doc.name]; // si tu veux un tableau à un seul élément
-            this.selectedArrondissement = doc.name;     // on sélectionne l'arrondissement par défaut
-            this.newAddress.code_postal = doc.code_postal; // On met à jour le CP
+    const container = containerMap[type];
+    if (container) {
+      container.nativeElement.scrollBy({
+        left: amount,
+        behavior: 'smooth',
+      });
+    }
+  }
+
+  private calculateScrollAmount(): number {
+    return (300 + 20) * 4;
+  }
+
+  openAddressModal() {
+    this.showAddressModal = true;
+  }
+
+  closeAddressModal() {
+    this.showAddressModal = false;
+    this.isAddingAddress = false;
+  }
+
+  selectPostalCode(address: any) {
+    this.selectedAddress = address;
+    this.selectedPostalCode = address.code_postal;
+    this.loadCategories();
+    this.loadShops();
+    this.closeAddressModal();
+  }
+
+  isSameAddress(a: any, b: any): boolean {
+    return a?.street === b?.street && a?.city === b?.city && a?.code_postal === b?.code_postal;
+  }
+
+  toggleAddAddress() {
+    this.isAddingAddress = !this.isAddingAddress;
+  }
+
+  // 📌 Enregistre la nouvelle adresse
+  saveAddress() {
+    if (!this.selectedCity || !this.newAddress.street) return;
+
+    // Assigne city et country aux nouvelles valeurs sélectionnées
+    this.newAddress.city = this.selectedCity.nom;
+    this.newAddress.country = this.selectedCountry;
+
+    if (this.newAddress.street && this.newAddress.code_postal && this.newAddress.city && this.newAddress.country) {
+      const addressToAdd = { ...this.newAddress };
+
+      // MAJ locale immédiate
+      this.userAddresses.push(addressToAdd);
+      this.refreshDisplayedAddresses();
+
+      // Appel API
+      this.userService.addAddress(this.me._id, addressToAdd).subscribe(
+        (result: any) => {
+          this.loadUser(); // recharge synchronisation
+          // Si aucune adresse sélectionnée, on bascule sur celle qu’on vient d’ajouter
+          if (!this.selectedAddress) this.selectedAddress = addressToAdd;
+          this.selectedPostalCode = addressToAdd.code_postal;
+          this.loadCategories();
+          this.loadShops();
+        },
+        (error: any) => console.log(error)
+      );
+
+      // Reset form
+      this.newAddress = { street: '', code_postal: '', city: '', country: '' };
+      this.isAddingAddress = false;
+    }
+  }
+
+  loadUser() {
+    this.me = this.userService.getMe();
+    this.sharedService.updateMe(this.me);
+  }
+
+  removeAddress(index: number) {
+    this.me.address.splice(index, 1);
+    this.userService.update(this.me).subscribe(
+      (result: any) => {
+        // Après suppression, on recalcule la liste visible et on garantit un CP sélectionné
+        this.userAddresses = this.me.address || [];
+        this.refreshDisplayedAddresses();
+        if (!this.selectedAddress && this.displayedAddresses[0]) {
+          this.selectPostalCode(this.displayedAddresses[0]);
         }
-        // On met à jour la ville
-        this.newAddress.city = this.selectedCity.nom;
-    }
+      },
+      (error: any) => console.log(error)
+    );
+  }
 
-
-    // ------------------------------------------------
-    // 3) Quand l’utilisateur choisit un arrondissement
-    // ------------------------------------------------
-    onArrondissementChange() {
-        // Refiltrer pour trouver l’unique document
-        const doc = this.allCitiesData.find(
-            v =>
-                v.pays === this.selectedCountry &&
-                v.city === this.selectedCity.nom &&
-                v.name === this.selectedArrondissement
-        );
-        if (doc) {
-            this.newAddress.code_postal = doc.code_postal;
-            // on peut aussi récupérer d’autres infos si besoin
-        }
-        // Mettre à jour l'objet newAddress
-        this.newAddress.arrondissement = this.selectedArrondissement;
+  // -----------------------------------------
+  // Sélecteurs pays / ville / arrondissement
+  // -----------------------------------------
+  onCityChange() {
+    const filteredByCity = this.allCitiesData.filter(
+      v => v.pays === this.selectedCountry && v.city === this.selectedCity.nom
+    );
+    if (filteredByCity.length > 1) {
+      this.availableArrondissements = [...new Set(filteredByCity.map(v => v.name))];
+      this.newAddress.code_postal = '';
+    } else if (filteredByCity.length === 1) {
+      const doc = filteredByCity[0];
+      this.availableArrondissements = [doc.name];
+      this.selectedArrondissement = doc.name;
+      this.newAddress.code_postal = doc.code_postal;
     }
+    this.newAddress.city = this.selectedCity.nom;
+  }
+
+  onArrondissementChange() {
+    const doc = this.allCitiesData.find(
+      v =>
+        v.pays === this.selectedCountry &&
+        v.city === this.selectedCity.nom &&
+        v.name === this.selectedArrondissement
+    );
+    if (doc) {
+      this.newAddress.code_postal = doc.code_postal;
+    }
+    this.newAddress.arrondissement = this.selectedArrondissement;
+  }
 }

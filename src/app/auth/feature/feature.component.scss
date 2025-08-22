@@ -111,15 +111,22 @@ img {
 
 
 h1 {
-  font-size: 2rem; /* taille raisonnable pour mobile */
-  line-height: 1.2; /* évite les sauts de ligne trop espacés */
-  word-break: break-word; /* casse les longs mots si besoin */
-  hyphens: auto; /* ajoute des tirets si nécessaire pour couper proprement */
+  font-size: 2rem;
+  /* taille raisonnable pour mobile */
+  line-height: 1.2;
+  /* évite les sauts de ligne trop espacés */
+  word-break: break-word;
+  /* casse les longs mots si besoin */
+  hyphens: auto;
+  /* ajoute des tirets si nécessaire pour couper proprement */
   text-align: left;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem; /* plus petit sur mobile */
-    text-align: center; /* si tu veux centrer le texte sur mobile */
-    padding: 0 1rem; /* un peu de marge interne */
+    font-size: 1.5rem;
+    /* plus petit sur mobile */
+    text-align: center;
+    /* si tu veux centrer le texte sur mobile */
+    padding: 0 1rem;
+    /* un peu de marge interne */
   }
 }
