@@ -33,7 +33,6 @@ export class HorizontalPubListComponent implements OnInit {
     this.router.navigate(['sponsor', sponsorId]);
   }
 
-
   getAds() {
     this.adService.getAdvertisements('PREMIUM').subscribe(ads => {
       console.log("📢 Publicités récupérées :", ads);
@@ -116,7 +115,7 @@ export class HorizontalPubListComponent implements OnInit {
   }
 
   trackImpression(pubId: string) {
-    const payload:any = {
+    const payload: any = {
       pubId,
       timestamp: new Date().toISOString(),
     };
@@ -162,7 +161,7 @@ export class HorizontalPubListComponent implements OnInit {
       () => console.log(`✅ Temps d'affichage (${timeSpent}s) enregistré pour pub ${pubId}`),
       err => console.error(`❌ Erreur lors de l'enregistrement du temps d'affichage :`, err)
     );
-    
+
     const payload = {
       duree_affichage: timeSpent,
       _id: pubId

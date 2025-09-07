@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class BookingService {
+    storedLangue = (
+        localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
     constructor(private http: HttpClient) { }
 
     getCACount() {
@@ -53,13 +55,15 @@ export class BookingService {
         return this.http.get<any>(`${environment.apiUrl}booking/${id}`);
     }
 
+
     /**
-     * Créer un nouveau product
-     * @param task (données du product à créer)
-     */
-    create(booking: any): Observable<any> {
-        // Ajoutez l' comme paramètre
-        return this.http.post<any>(environment.apiUrl + 'booking', booking);
+ * Créer un nouveau booking
+ * @param booking (données de la réservation à créer)
+ * @param langue (langue de la notification)
+ */
+    create(booking: any, langue: string): Observable<any> {
+        const payload = { ...booking, lang: langue }; // 👈 on ajoute juste "lang"
+        return this.http.post<any>(`${environment.apiUrl}booking`, payload);
     }
 
     /**
@@ -73,6 +77,7 @@ export class BookingService {
         );
     }
 
+
     /**
      * Supprimer un product par son ID
      * @param id (ID du product à supprimer)
@@ -83,8 +88,8 @@ export class BookingService {
 
 
     // Méthode pour mettre à jour le statut d'une commande
-    updateBookingStatus(bookingId: string, status: string): Observable<any> {
-        return this.http.patch<any>(`${environment.apiUrl}booking-update-status/${bookingId}`, { status });
+    updateBookingStatus(bookingId: string, status: string, langue: string): Observable<any> {
+        return this.http.patch<any>(`${environment.apiUrl}booking-update-status/${bookingId}`, { status, langue });
     }
 
     /**

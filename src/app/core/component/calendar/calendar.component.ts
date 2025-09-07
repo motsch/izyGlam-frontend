@@ -28,6 +28,7 @@ export class CalendarComponent implements OnInit {
   availableActions: string[] = [];
   showReviewModal = false;
   selectedBooking = null;
+  storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
 
   constructor(
     private bookingService: BookingService,
@@ -88,7 +89,7 @@ export class CalendarComponent implements OnInit {
 
   acceptBooking(order: any) {
     console.log("Accept booking: ", JSON.stringify(order));
-    this.bookingService.updateBookingStatus(order._id, 'accepted')
+    this.bookingService.updateBookingStatus(order._id, 'accepted', this.storedLangue)
       .subscribe(response => {
         console.log(JSON.stringify(response));
         console.log("ACCEPTED OK");
@@ -127,7 +128,7 @@ export class CalendarComponent implements OnInit {
     console.log("Refused booking:", JSON.stringify(order));
 
     // Mise à jour du booking : on passe le statut à "refused" pour signaler que le prestataire a refusé la commande
-    this.bookingService.updateBookingStatus(order._id, 'refused').subscribe({
+    this.bookingService.updateBookingStatus(order._id, 'refused', this.storedLangue).subscribe({
       next: (response: any) => {
         console.log("Booking update response:", JSON.stringify(response));
         console.log("REFUSED OK");
@@ -251,7 +252,7 @@ export class CalendarComponent implements OnInit {
 
   finishOrder(order: any) {
     console.log("Booking to finishd : " + JSON.stringify(order));
-    this.bookingService.updateBookingStatus(order._id, 'finished')
+    this.bookingService.updateBookingStatus(order._id, 'finished', this.storedLangue)
       .subscribe(response => {
         console.log("Booking finishd response :", JSON.stringify(response));
         console.log("FINISHED OK");
@@ -267,7 +268,7 @@ export class CalendarComponent implements OnInit {
     console.log('Client absent pour la commande', order);
     console.log("Booking to no-show-client : " + JSON.stringify(order));
     // Mettre à jour le booking pour le marquer comme no-show-client
-    this.bookingService.updateBookingStatus(order._id, 'no-show-client')
+    this.bookingService.updateBookingStatus(order._id, 'no-show-client', this.storedLangue)
       .subscribe(response => {
         console.log("Booking no-show-client response :", JSON.stringify(response));
         // Mise à jour de la transaction initiale associée au booking pour indiquer que le paiement est définitivement validé
@@ -305,7 +306,7 @@ export class CalendarComponent implements OnInit {
   deleteBooking(order: any) {
     console.log("Booking to delete:", JSON.stringify(order));
     // Mise à jour du statut du booking
-    this.bookingService.updateBookingStatus(order._id, 'deleted').subscribe({
+    this.bookingService.updateBookingStatus(order._id, 'deleted', this.storedLangue).subscribe({
       next: (response: any) => {
         console.log("Booking update response:", JSON.stringify(response));
         console.log("DELETE OK");
@@ -393,7 +394,7 @@ export class CalendarComponent implements OnInit {
     console.log("Booking to no-show-pro : " + JSON.stringify(order));
 
     // Mise à jour du statut du booking en "no-show-pro"
-    this.bookingService.updateBookingStatus(order._id, 'no-show-pro')
+    this.bookingService.updateBookingStatus(order._id, 'no-show-pro', this.storedLangue)
       .subscribe(response => {
         console.log("Booking no-show-pro response :", JSON.stringify(response));
 

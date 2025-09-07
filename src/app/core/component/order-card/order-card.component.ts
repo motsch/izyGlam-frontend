@@ -26,13 +26,14 @@ export class OrderCardComponent {
   apiImageUrl = environment.APIimgStorageUrl;
   confirmCodeInput: string = '';
   imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
+  storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
 
   constructor(private stripeService: StripeService, private router: Router, private transactionService: TransactionService, private bookingService: BookingService, private financialService: FinancialService) { }
 
   deleteBooking(order: any) {
     console.log("Booking to delete:", JSON.stringify(order));
     // Mise à jour du statut du booking
-    this.bookingService.updateBookingStatus(order._id, 'deleted').subscribe({
+    this.bookingService.updateBookingStatus(order._id, 'deleted', this.storedLangue).subscribe({
       next: (response: any) => {
         console.log("Booking update response:", JSON.stringify(response));
         console.log("DELETE OK");
@@ -108,7 +109,7 @@ export class OrderCardComponent {
     console.log("Booking to no-show-pro : " + JSON.stringify(order));
 
     // Mise à jour du statut du booking en "no-show-pro"
-    this.bookingService.updateBookingStatus(order._id, 'no-show-pro')
+    this.bookingService.updateBookingStatus(order._id, 'no-show-pro', this.storedLangue)
       .subscribe(response => {
         console.log("Booking no-show-pro response :", JSON.stringify(response));
 
@@ -213,7 +214,7 @@ export class OrderCardComponent {
     console.log("Booking to delete:", JSON.stringify(order));
 
     // Mise à jour du statut du booking
-    this.bookingService.updateBookingStatus(order._id, 'deleted').subscribe({
+    this.bookingService.updateBookingStatus(order._id, 'deleted', this.storedLangue).subscribe({
       next: (response: any) => {
         console.log("Booking update response:", JSON.stringify(response));
         console.log("DELETE OK");

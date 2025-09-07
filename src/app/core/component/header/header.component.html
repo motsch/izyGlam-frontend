@@ -25,13 +25,11 @@
 
             <!-- Menu déroulant -->
             <div class="mobile-menu" *ngIf="isMobileMenuOpen">
-              <button type="button" (click)="routerNavigate('/sign-in'); isMobileMenuOpen = false" class="btn"
-                [ngClass]="darkHeader ? 'color-izyglam2' : 'color-izyglam'">
+              <button type="button" (click)="routerNavigate('/sign-in'); isMobileMenuOpen = false" class="btn color-izyglam">
                 {{'INTRO.CONNEXION' | translate}}
               </button>
 
-              <button type="button" (click)="routerNavigate('/sign-up'); isMobileMenuOpen = false" class="btn"
-                [ngClass]="darkHeader ? 'color-izyglam2' : 'color-izyglam'">
+              <button type="button" (click)="routerNavigate('/sign-up'); isMobileMenuOpen = false" class="btn color-izyglam">
                 {{'INTRO.REGISTRATION' | translate}}
               </button>
 

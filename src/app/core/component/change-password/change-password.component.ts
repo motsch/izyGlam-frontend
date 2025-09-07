@@ -109,15 +109,15 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     getLanguages() {
         this.languageService.getAllCleaned().subscribe((result: any[]) => {
             this.languagesInfos = result.filter(lang => lang.active); // uniquement actives
-    
+
             // On récupère la langue stockée
             const storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
-    
+
             // Filtrer les langues connues par ngx-translate ET actives dans la BDD
             this.langues = this.translate.getLangs()
                 .map(code => this.languagesInfos.find(lang => lang.code === code))
                 .filter(lang => lang !== undefined);
-    
+
             // Déterminer la langue sélectionnée
             if (this.langues.length === 1) {
                 this.selected = this.langues[0];
@@ -125,7 +125,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
                 this.selected = this.langues.find(lang => lang.code === storedLangue)
                     || this.languagesInfos.find(lang => lang.code === 'fr'); // fallback français
             }
-    
+
             // Appliquer la langue si retrouvée
             if (this.selected) {
                 this.translate.use(this.selected.code);
@@ -134,12 +134,12 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
             } else {
                 console.error('Language not found for code:', storedLangue);
             }
-    
+
         }, error => {
             console.error('Erreur lors du chargement des langues', error);
         });
     }
-    
+
 
 
     isPasswordFormValid(): boolean {
@@ -239,11 +239,31 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     selectLanguage(lang: any) {
         console.log(lang);
         localStorage.setItem('langue', lang.code);
+
+        // 🔹 ngx-translate
         this.translate.use(lang.code);
         this.sessionService.setLang(lang.code);
+
+        // 🔹 UI
         this.selected = lang;
         this.dropdownOpen = false;
 
+        // 🔹 SEO
         this.seoService.setLanguage(lang);
+
+        // 🔹 Backend : MAJ de la langue du user
+        if (this.me && this.me._id) {
+            const updatedUser = { ...this.me, language: lang.code };
+            this.userService.update(updatedUser).subscribe({
+                next: (res) => {
+                    console.log("✅ Langue utilisateur mise à jour côté backend :", res.language);
+                    this.me = res; // garde le user synchro avec la DB
+                },
+                error: (err) => {
+                    console.error("❌ Erreur lors de la mise à jour de la langue", err);
+                }
+            });
+        }
     }
+
 }

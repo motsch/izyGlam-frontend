@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class OrderItemComponent implements OnInit {
   @Input() order: any;
+  storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
 
   constructor(
     private bookingService: BookingService,
@@ -142,7 +143,7 @@ export class OrderItemComponent implements OnInit {
     // Mettre à jour le statut de la commande en "cancelled"
     const updatedStatus = 'cancelled';
 
-    this.bookingService.updateBookingStatus(this.order._id, updatedStatus)
+    this.bookingService.updateBookingStatus(this.order._id, updatedStatus, this.storedLangue)
       .subscribe(
         (response:any) => {
           // Mise à jour locale du statut après succès de la requête

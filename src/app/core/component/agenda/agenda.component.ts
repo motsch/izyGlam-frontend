@@ -9,6 +9,7 @@ import {
     MatDialogRef,
 } from '@angular/material/dialog';
 import { BookingService } from '../../services/booking.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
     selector: 'app-agenda',
@@ -67,8 +68,9 @@ export class AgendaComponent implements OnInit {
 
     constructor(
         public dialog: MatDialog,
-        private bookingService: BookingService
-    ) {}
+        private bookingService: BookingService,
+        private sessionService: SessionService
+    ) { }
 
     ngOnInit(): void {
         localStorage.setItem("menu-param", 'calendar')
@@ -140,8 +142,9 @@ export class AgendaComponent implements OnInit {
                     this.calendarOptions.events = [];
                 }
 
+                const sessionLangue = this.sessionService.getLang();
                 // Call the create method in the BookingService
-                this.bookingService.create(newBooking).subscribe({
+                this.bookingService.create(newBooking, sessionLangue!).subscribe({
                     next: (response) => {
                         console.log('Booking created successfully:', response);
                         // Optionally add the new booking to the calendar
@@ -198,7 +201,7 @@ export class ContentCalendarItemDialog {
     constructor(
         public dialogRef: MatDialogRef<ContentCalendarItemDialog>,
         @Inject(MAT_DIALOG_DATA) public data: any
-    ) {}
+    ) { }
 
     onNoClick(): void {
         this.dialogRef.close();

@@ -16,6 +16,7 @@ import { FinancialService } from 'src/app/core/services/financial.service';
 import { StripeService } from 'src/app/core/services/stripe.service';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { SubscriptionService } from 'src/app/core/services/subscription.service';
+import { SessionService } from 'src/app/core/services/session.service';
 
 @Component({
   selector: 'app-payement',
@@ -68,6 +69,7 @@ export class PayementComponent implements OnInit {
     public dialog: MatDialog,
     private adminService: AdminService,
     private bookingService: BookingService,
+    private sessionService: SessionService,
     private stripeService: StripeService,
     private subscriptionService: SubscriptionService // 👈 ici
   ) { }
@@ -415,7 +417,10 @@ export class PayementComponent implements OnInit {
     console.log(JSON.stringify(this.bill));
 
     // Création de la réservation (booking)
-    this.bookingService.create(this.bill).subscribe({
+
+    const sessionLangue = this.sessionService.getLang();
+    // Call the create method in the BookingService
+    this.bookingService.create(this.bill, sessionLangue!).subscribe({
       next: (bookingResponse: any) => {
         console.log("Booking created:", bookingResponse);
         // Rediriger ou notifier l'utilisateur

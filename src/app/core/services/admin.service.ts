@@ -4,10 +4,10 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class AdminService {
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Récupérer les paramètres administratifs
   getAdminSettings(): Observable<any> {

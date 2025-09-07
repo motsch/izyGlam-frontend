@@ -514,7 +514,9 @@
     "DISTANCE": "Distance max :",
     "PAYEMENT": "Paiement par CB et PayPal accepté",
     "PRESS_FOR_INFO": "Appuyez pour consulter les horaires, les informations, etc...",
-    "GALLERY": "Gallerie d'images"
+    "GALLERY": "Gallerie d'images",
+    "SEE_MORE": "Voir plus",
+    "SEE_LESS": "Voir moins"
   },
   "LOGIN": {
     "TITLE": "Entrez vos identifiants de connexion.",
