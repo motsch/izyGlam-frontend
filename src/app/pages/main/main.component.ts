@@ -332,22 +332,42 @@ export class MainComponent implements OnInit, AfterViewInit {
   normalizeText(text: string): string {
     return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
-
+  
   private loadShops() {
-    // 🔥 IMPORTANT : récupération par code postal uniquement
-    this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe(async (shops: any[]) => {
-      const favoriteShops = this.me.favoriteShops || [];
-      this.shops = shops.map((shop) => ({
-        ...shop,
-        isFavorite: favoriteShops.includes(shop._id),
-      }));
-      this.filteredItemsAdecouvrir = this.shuffleArray(this.shops);
-      this.filteredItemsApprecier = this.shuffleArray(this.shops);
-      this.filteredItemsMalin = this.shuffleArray(this.shops);
-      this.filteredItemsTop10 = this.shuffleArray(this.shops);
-      this.promotedShops = this.shops.filter((x: any) => x.promo?.active === true);
-    });
-  }
+  this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe(async (categories: any) => {
+    const favoriteShops = this.me.favoriteShops || [];
+
+    // On map chaque catégorie et on ajoute isFavorite
+    this.filteredItemsAdecouvrir = (categories.discover || []).map((shop: any) => ({
+      ...shop,
+      isFavorite: favoriteShops.includes(shop._id),
+    }));
+
+    this.filteredItemsApprecier = (categories.appreciated || []).map((shop: any) => ({
+      ...shop,
+      isFavorite: favoriteShops.includes(shop._id),
+    }));
+
+    this.filteredItemsMalin = (categories.smart || []).map((shop: any) => ({
+      ...shop,
+      isFavorite: favoriteShops.includes(shop._id),
+    }));
+
+    this.filteredItemsTop10 = (categories.top10 || []).map((shop: any) => ({
+      ...shop,
+      isFavorite: favoriteShops.includes(shop._id),
+    }));
+
+    // Promo = tous shops avec promo active (peu importe la catégorie)
+    this.promotedShops = [
+      ...this.filteredItemsAdecouvrir,
+      ...this.filteredItemsApprecier,
+      ...this.filteredItemsMalin,
+      ...this.filteredItemsTop10,
+    ].filter((x: any) => x.promo?.active === true);
+  });
+}
+
 
   filterByCategory(type: string, trad: string) {
     this.categoryTrad = trad;
