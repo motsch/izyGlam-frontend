@@ -41,10 +41,10 @@
     <!-- SECTION : PUBS & OFFRES -->
     <app-horizontal-pub-list *ngIf="pubActivated" [me]="me"></app-horizontal-pub-list>
 
-    <app-horizontal-shop-list
+    <!--<app-horizontal-shop-list
       *ngIf="promoActivated && !filterClicked && searchQuery.length === 0 && promotedShops.length > 0"
       [title]="('MAIN.OFFRE' | translate)" [pubActivated]="pubActivated" [shops]="promotedShops" [me]="me"
-      [pubIndexe]="'0'"></app-horizontal-shop-list>
+      [pubIndexe]="'0'"></app-horizontal-shop-list>-->
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsAdecouvrir.length > 0"
       [title]="('MAIN.DISCOVER' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsAdecouvrir" [me]="me"
