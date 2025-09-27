@@ -21,6 +21,7 @@ import { FidelityComponent } from './fidelity/fidelity.component';
 import { PricePlansComponent } from './price-plans/price-plans.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
+import { PayementValidationComponent } from './payement-validation/payement-validation.component';
 
 const routes: Routes = [
     {
@@ -66,6 +67,11 @@ const routes: Routes = [
     {
         path: 'favorites',
         component: FavoritesComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'paiement-validation',
+        component: PayementValidationComponent,
         canActivate: [AuthGuard],
     },
     {

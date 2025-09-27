@@ -1,0 +1,31 @@
+<div class="validation-container" *ngIf="success; else errorBlock">
+  <div class="card success">
+    <div class="icon">✅</div>
+    <h2>Paiement validé 🎉</h2>
+    <p>Merci ! Votre réservation a bien été prise en compte.</p>
+    <button class="primary-btn" routerLink="/home">Retour à l’accueil</button>
+  </div>
+</div>
+
+<ng-template #errorBlock>
+  <div class="card error" *ngIf="paiement; else failBlock">
+    <div class="icon">⚠️</div>
+    <h2>Problème de réservation</h2>
+    <p>
+      Votre paiement a bien été débité, mais la réservation n’a pas pu être
+      confirmée.<br />
+      Merci de contacter notre support à
+      <a href="mailto:support@izyglam.com">support&#64;izyglam.com</a>.
+    </p>
+    <button class="primary-btn" routerLink="/home">Retour à l’accueil</button>
+  </div>
+
+  <ng-template #failBlock>
+    <div class="card error">
+      <div class="icon">❌</div>
+      <h2>Paiement échoué</h2>
+      <p>Nous n’avons pas pu valider votre paiement. Veuillez réessayer.</p>
+      <button class="primary-btn" routerLink="/home">Retour à l’accueil</button>
+    </div>
+  </ng-template>
+</ng-template>

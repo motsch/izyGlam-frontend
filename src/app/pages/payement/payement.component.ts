@@ -59,7 +59,7 @@ export class PayementComponent implements OnInit {
   // allCards: any[] = []; // toutes les cartes Stripe enregistrées par l'utilisateur
   showAddCardForm = false;
   defaultCardId = "";
-
+  loading = false;
 
   constructor(
     private router: Router,
@@ -90,12 +90,6 @@ export class PayementComponent implements OnInit {
         this.itemToBuy2 = localStorage.getItem('productToBuy');
         console.log(this.itemToBuy2);
         this.itemToBuy2 = JSON.parse(this.itemToBuy2);
-        /*if (this.itemToBuy2 && this.itemToBuy2.price) {
-          this.price = this.itemToBuy2.price;
-          console.log('this.itemToBuy2 : ' + JSON.stringify(this.itemToBuy2));
-          console.log('this.price : ' + this.price);
-        }*/
-        // Exemple d'utilisation dans ton code :
         if (this.itemToBuy2 && this.itemToBuy2.price) {
           this.price = this.itemToBuy2.price;
           const commissionRate = this.adminSettings?.commissionRate || 0;
@@ -107,7 +101,6 @@ export class PayementComponent implements OnInit {
           console.log('this.price (avec commission + TVA) : ' + this.price);
         }
         console.log(this.itemToBuy);
-        // this.shop._id = this.itemToBuy.shopId;
         this.shopService
           .getById(this.itemToBuy.shopId)
           .subscribe((shop: any) => {
@@ -320,6 +313,7 @@ export class PayementComponent implements OnInit {
 
   // Valider le paiement avec Stripe
   async validate(): Promise<void> {
+    this.loading = true;
     const amount = Math.round(parseFloat(this.price) * 100); // Convertit en centimes (int)
     const currency = 'eur'; // Devise
 
@@ -341,6 +335,7 @@ export class PayementComponent implements OnInit {
         });
 
         if (error) {
+          this.loading = false;
           console.error('Erreur de paiement :', error.message);
           alert('Le paiement a échoué.');
         } else if (paymentIntent.status === 'succeeded') {
@@ -354,6 +349,11 @@ export class PayementComponent implements OnInit {
       },
       (error) => {
         console.error('Erreur lors de la création de l\'intention de paiement :', error);
+        this.router.navigate(
+          ['paiement-validation'],
+          { queryParams: { success: false, shopId: this.shop._id, paiement: false } }
+        );
+        this.loading = false;
       }
     );
   }
@@ -424,10 +424,20 @@ export class PayementComponent implements OnInit {
       next: (bookingResponse: any) => {
         console.log("Booking created:", bookingResponse);
         // Rediriger ou notifier l'utilisateur
-        this.router.navigate(['home']);
+        // this.router.navigate(['home']);
+        this.router.navigate(
+          ['paiement-validation'],
+          { queryParams: { success: true, shopId: this.shop._id, paiement: true } }
+        );
+        this.loading = false;
       },
       error: (error: any) => {
         console.error("Erreur lors de la création de la réservation", error);
+        this.router.navigate(
+          ['paiement-validation'],
+          { queryParams: { success: false, shopId: this.shop._id, paiement: true } }
+        );
+        this.loading = false;
       }
     });
   }

@@ -56,6 +56,7 @@ import { PricePlansComponent } from './price-plans/price-plans.component';
 import { Subscription } from 'rxjs';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
+import { PayementValidationComponent } from './payement-validation/payement-validation.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -107,6 +108,7 @@ import { PayementProComponent } from './payement-pro/payement-pro.component';
         TermsComponent,
         ThankYouComponent,
         ComingSoonComponent,
+        PayementValidationComponent,
         PayementComponent,
         PayementProComponent,
         OrdersComponent,
