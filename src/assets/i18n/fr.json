@@ -274,7 +274,18 @@
     "LEGAL_TEXT_2": "Vous renoncez pour rappel à votre droit de rétractation ayant pour objet les services de livraison. Vous avez la possibilité de recourir à un médiateur de la consommation ici.",
     "LEGAL_TEXT_3": "Si vous n'êtes pas là lors de l’arrivée du coursier, ce dernier déposera votre commande devant la porte. Lorsque vous passez une commande, vous acceptez d’en assumer l’entière responsabilité une fois celle-ci livrée. En votre absence, les commandes contenant de l’alcool ou d’autres articles faisant l’objet de restrictions seront directement retournées à l’établissement.",
     "CLOSE_FORM": "Fermer le formulaire",
-    "ADD_CARD": "Ajouter une carte"
+    "ADD_CARD": "Ajouter une carte",
+    "TRAITEMENT": "Traitement en cours"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Paiement validé",
+    "THANKS": "Merci ! Votre réservation a bien été prise en compte.",
+    "BACKHOME": "Retour à l’accueil",
+    "PROBLEME": "Problème de réservation",
+    "PAIEMENT": "Votre paiement a bien été débité, mais la réservation n’a pas pu être confirmée.",
+    "THANKSCONTACT": "Merci de contacter notre support à",
+    "FAILED": "Paiement échoué",
+    "VALIDATE": "Nous n’avons pas pu valider votre paiement. Veuillez réessayer."
   },
   "CREATION_SHOP_STEPS": {
     "TITLE": "izyGlam pour les indépendants",

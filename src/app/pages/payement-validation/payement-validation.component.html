@@ -1,31 +1,30 @@
 <div class="validation-container" *ngIf="success; else errorBlock">
   <div class="card success">
     <div class="icon">✅</div>
-    <h2>Paiement validé 🎉</h2>
-    <p>Merci ! Votre réservation a bien été prise en compte.</p>
-    <button class="primary-btn" routerLink="/home">Retour à l’accueil</button>
+    <h2>{{ 'PAYEMENT_VALIDATION.VALIDATION' | translate }} 🎉</h2>
+    <p>{{ 'PAYEMENT_VALIDATION.THANKS' | translate }}</p>
+    <button class="primary-btn" routerLink="/home">{{ 'PAYEMENT_VALIDATION.BACKHOME' | translate }}</button>
   </div>
 </div>
 
 <ng-template #errorBlock>
   <div class="card error" *ngIf="paiement; else failBlock">
     <div class="icon">⚠️</div>
-    <h2>Problème de réservation</h2>
+    <h2>{{ 'PAYEMENT_VALIDATION.PROBLEME' | translate }}</h2>
     <p>
-      Votre paiement a bien été débité, mais la réservation n’a pas pu être
-      confirmée.<br />
-      Merci de contacter notre support à
+      {{ 'PAYEMENT_VALIDATION.PAIEMENT' | translate }}<br />
+      {{ 'PAYEMENT_VALIDATION.THANKSCONTACT' | translate }}
       <a href="mailto:support@izyglam.com">support&#64;izyglam.com</a>.
     </p>
-    <button class="primary-btn" routerLink="/home">Retour à l’accueil</button>
+    <button class="primary-btn" routerLink="/home">{{ 'PAYEMENT_VALIDATION.BACKHOME' | translate }}</button>
   </div>
 
   <ng-template #failBlock>
     <div class="card error">
       <div class="icon">❌</div>
-      <h2>Paiement échoué</h2>
-      <p>Nous n’avons pas pu valider votre paiement. Veuillez réessayer.</p>
-      <button class="primary-btn" routerLink="/home">Retour à l’accueil</button>
+      <h2>{{ 'PAYEMENT_VALIDATION.FAILED' | translate }}</h2>
+      <p>{{ 'PAYEMENT_VALIDATION.VALIDATE' | translate }}</p>
+      <button class="primary-btn" routerLink="/home">{{ 'PAYEMENT_VALIDATION.BACKHOME' | translate }}</button>
     </div>
   </ng-template>
 </ng-template>
