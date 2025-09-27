@@ -85,11 +85,18 @@
     </div>
 
     <!-- SECTION : PAS DISPONIBLE -->
-    <div class="horizontal-section-wrapper" *ngIf="shops.length === 0">
+    <!-- SECTION : PAS DISPONIBLE -->
+    <div class="horizontal-section-wrapper" *ngIf="
+    (filteredItemsAdecouvrir?.length || 0) +
+    (filteredItemsApprecier?.length || 0) +
+    (filteredItemsMalin?.length || 0) +
+    (filteredItemsTop10?.length || 0) === 0
+  ">
       <div class="section-header">
         <div class="not-disponible">{{ "MAIN.NOT_AVAILABLE" | translate }}</div>
       </div>
     </div>
+
   </div> <!-- /izy-content -->
 
   <!-- MODAL d'adresses -->
