@@ -34,4 +34,21 @@ export class MqttService {
   public logout(): void {
     this.webSocketService.close();
   }
+
+  
+
+  public subscribeToConversation(conversationId: string): void {
+    this.webSocketService.send({
+      action: 'subscribe',
+      topic: `conversation/${conversationId}`,
+    });
+  }
+
+  public sendMessage(conversationId: string, senderId: string, content: string): void {
+    this.webSocketService.send({
+      action: 'publish',
+      topic: `conversation/${conversationId}/new`,
+      message: { sender: senderId, content, messageType: 'text' },
+    });
+  }
 }

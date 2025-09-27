@@ -178,6 +178,8 @@
   },
   "PROFILE_MENU": {
     "INFORMATION": "Informations relatives au compte",
+    "MESSAGE": "Mes messages",
+    "MESSAGE_SUBTITLE": "La liste de mes conversations en cours.",
     "INFORMATION_SUBTITLE": "Modifie tes infos perso en toute simplicité.",
     "SECURITY": "Sécurité et langue",
     "SECURITY_SUBTITLE": "Mot de passe, langue… tout est sous contrôle ici.",

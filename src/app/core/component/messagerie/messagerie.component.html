@@ -1,0 +1,121 @@
+<!-- Content -->
+<main class="content">
+  <!-- Liste des conversations -->
+  <div class="conversation-list" [ngClass]="{ 'open': isConversationListOpen }">
+
+    <!-- Refresh (tu peux remplacer ça par ton propre bouton) -->
+    <div *ngIf="isConversationListOpen" class="refresh-container">
+      <button class="refresh-btn" (click)="refreshPage($event)">⟳</button>
+    </div>
+
+    <!-- Si aucune conversation -->
+    <div *ngIf="conversations.length === 0" class="error-container">
+      <p class="error-message">{{ "MESSAGE.NO_CONV" | translate }}</p>
+      <p class="error-subtitle">{{ "MESSAGE.CREATE" | translate }}</p>
+
+      <!-- Accès rapide support même si aucune conv -->
+      <div class="conversation-item" (click)="getOrCreateSupportConversation()">
+        <div class="conversation-content">
+          <img src="assets/images/default2.jpeg" class="profile-pic" alt="Service Client">
+          <div class="conversation-info">
+            <h3>{{ "MESSAGE.SERVICE_CLIENT" | translate }}</h3>
+            <p>{{ supportPreview || translateSupportDefault() }}</p>
+          </div>
+          <span class="message-time">{{ supportPreviewTime }}</span>
+        </div>
+      </div>
+
+      <!-- Form création conv -->
+      <div class="new-conversation-form">
+        <input type="email" [(ngModel)]="newConversationEmail" placeholder="Email de l'utilisateur"
+               class="input-email" />
+        <button class="create-button" (click)="createConversationByEmail()">
+          {{ "MESSAGE.CREATE_CONV" | translate }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Liste quand on a des conversations -->
+    <ng-container *ngIf="conversations.length > 0">
+
+      <!-- Bandeau Support -->
+      <div class="conversation-item" (click)="getOrCreateSupportConversation()">
+        <div class="conversation-content">
+          <img src="assets/images/default2.jpeg" class="profile-pic" alt="Service Client">
+          <div class="conversation-info">
+            <h3>
+              {{ "MESSAGE.SERVICE_CLIENT" | translate }}
+              <span *ngIf="supportUnreadCount > 0" class="badge">{{ supportUnreadCount }}</span>
+            </h3>
+            <p>{{ supportPreview || translateSupportDefault() }}</p>
+          </div>
+          <span class="message-time">{{ supportPreviewTime }}</span>
+        </div>
+      </div>
+
+      <!-- Conversations utilisateur -->
+      <div *ngFor="let conversation of conversations; trackBy: trackByConvId"
+           class="conversation-item"
+           [class.active]="selectedConversation?._id === conversation._id"
+           (click)="selectConversation(conversation)">
+        <div class="conversation-content">
+          <img *ngIf="conversation.participants?.length === 2"
+               [src]="getProfileImage(conversation)" class="profile-pic" alt="Photo de profil">
+          <div class="conversation-info">
+            <h3>
+              {{ getConversationName(conversation) }}
+              <span *ngIf="conversation.unreadCount > 0" class="badge">
+                {{ conversation.unreadCount }}
+              </span>
+            </h3>
+            <p>{{ getLastMessage(conversation) }}</p>
+          </div>
+          <span class="message-time">{{ getLastMessageTime(conversation) }}</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- Zone de chat -->
+  <div class="chat-box" *ngIf="selectedConversation">
+    <!-- Messages - zone scrollable -->
+    <div class="chat-messages" #chatMessages>
+      <ng-container *ngFor="let message of selectedConversation?.messages; trackBy: trackByMessage">
+        <div class="message-row" [ngClass]="{
+              'sent': message.sender === currentUserId,
+              'received': message.sender !== currentUserId
+            }">
+
+          <div class="bubble" [ngClass]="{ 'photo': message.messageType === 'photo', 'failed': message.__failed }">
+            <ng-container [ngSwitch]="message.messageType">
+              <img *ngSwitchCase="'photo'" [src]="message.mediaUrl" alt="photo envoyée" />
+              <p *ngSwitchDefault>{{ message.content }}</p>
+            </ng-container>
+            <span class="timestamp">{{ message.createdAt | date:'shortTime' }}</span>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Input (toujours visible en bas) -->
+    <div class="message-input">
+      <textarea
+        #messageBox
+        [(ngModel)]="newMessage"
+        class="input"
+        rows="1"
+        placeholder="Écrire un message…"
+        (input)="autoResize(messageBox)"
+        (focus)="scrollToBottom()"
+        (keydown)="onKeydown($event)"
+        [disabled]="isSending"
+        autofocus>
+      </textarea>
+
+      <button class="send-button" (click)="sendMessage()"
+              [disabled]="isSending" [class.sending]="isSending">
+        ➤
+      </button>
+    </div>
+  </div>
+</main>

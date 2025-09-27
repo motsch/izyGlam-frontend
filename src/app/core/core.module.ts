@@ -65,8 +65,6 @@ import { ShopPhotoGalleryComponent } from './component/shop-photo-gallery/shop-p
 import { ChatModalComponent } from './component/chat-modal/chat-modal.component';
 import { AiMarkdownPipe } from './pipe/aiMarkDown.pipe';
 import { AvatarComponent } from './component/avatar/avatar.component';
-import { ZombieComponent } from './component/monstres/zombie/zombie.component';
-import { SurvivorComponent } from './component/monstres/surviror/survivor.component';
 import { RatingModalComponent } from './component/rating-modal/rating-modal.component';
 import { AdminParamComponent } from './component/admin-param/admin-param.component';
 import { AdminClientsManagementComponent } from './component/admin-clients-management/admin-clients-management.component';
@@ -86,6 +84,7 @@ import { StripeCardFormComponent } from './component/stripe-card-form/stripe-car
 import { TermsComponent } from '../pages/terms/terms.component';
 import { AccessibilityPolicyComponent } from './component/accessibility-policy/accessibility-policy.component';
 import { TermsPolicyComponent } from './component/terms-policy/terms-policy.component';
+import { MessagerieComponent } from './component/messagerie/messagerie.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -138,6 +137,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         TermsPolicyComponent,
         CreateShopComponent,
         AiMarkdownPipe,
+        MessagerieComponent,
         PageNotFoundComponent,
         FilterByString,
         TruncatePipe,
@@ -187,8 +187,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopPhotoGalleryComponent,
         ChatModalComponent,
         AvatarComponent,
-        ZombieComponent,
-        SurvivorComponent,
         RatingModalComponent,
         AdminParamComponent,
         AdminClientsManagementComponent,
@@ -205,6 +203,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CalendarComponent,
         PageNotFoundComponent,
         HeaderComponent,
+        MessagerieComponent,
         ShopManagementComponent,
         AdminComponent,
         FinanceComponent,
@@ -238,8 +237,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ChatModalComponent,
         AvatarComponent,
         StripeCardFormComponent,
-        ZombieComponent,
-        SurvivorComponent,
         AdminParamComponent,
         AdminClientsManagementComponent,
         AdminShopsManagementComponent,
