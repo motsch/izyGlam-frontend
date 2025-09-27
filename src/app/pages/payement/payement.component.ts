@@ -24,8 +24,6 @@ import { SessionService } from 'src/app/core/services/session.service';
   styleUrls: ['./payement.component.scss'],
 })
 export class PayementComponent implements OnInit {
-
-
   // Champs de formulaire pour la carte
   cardNumber: string = '';
   cardHolderName: string = '';

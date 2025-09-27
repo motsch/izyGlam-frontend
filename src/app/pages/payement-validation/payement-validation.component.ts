@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 export class PayementValidationComponent implements OnInit {
   success = false;
   shopId = "";
-  paiement = false
+  paiement = false;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
