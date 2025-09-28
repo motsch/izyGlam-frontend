@@ -542,7 +542,9 @@
     "PLACEHOLDER_EMAIL": "Adresse email",
     "PLACEHOLDER_PASSWORD": "Mot de passe",
     "PLACEHOLDER_PASSWORD_NEW": "Nouveau mot de passe",
-    "PLACEHOLDER_PASSWORD_CONFIRMED": "Confirmer mot de passe"
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Confirmer mot de passe",
+    "CHANGE_PASSWORD": "Modifiez votre mot de passe",
+    "REINIT": "Réinitialiser"
   },
   "SIGNUP": {
     "SEX_MALE": "Homme",
