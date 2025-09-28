@@ -68,6 +68,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   private searchSubject = new Subject<string>();
   private subscription!: Subscription;
+  loading = false;
 
   @ViewChild('scrollContainerCategory') private scrollContainerCategory?: ElementRef;
   @ViewChild('scrollContainerDiscover') private scrollContainerDiscover?: ElementRef;
@@ -95,7 +96,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/login']);
       return;
     }
-
+    this.loading = true;
     // 🔎 Recherche globale (non bloquante)
     this.subscription = this.searchSubject
       .pipe(debounceTime(300), distinctUntilChanged())
@@ -109,7 +110,6 @@ export class MainComponent implements OnInit, AfterViewInit {
       },
       (error: any) => console.error('Erreur lors de la récupération des paramètres', error)
     );
-
     // 🚀 On charge l’utilisateur + les shops PAR CODE POSTAL (indépendant de la géoloc)
     this.loadUserAndShops();
 
@@ -332,41 +332,47 @@ export class MainComponent implements OnInit, AfterViewInit {
   normalizeText(text: string): string {
     return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
-  
+
   private loadShops() {
-  this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe(async (categories: any) => {
-    const favoriteShops = this.me.favoriteShops || [];
+    this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe(async (categories: any) => {
+      const favoriteShops = this.me.favoriteShops || [];
 
-    // On map chaque catégorie et on ajoute isFavorite
-    this.filteredItemsAdecouvrir = (categories.discover || []).map((shop: any) => ({
-      ...shop,
-      isFavorite: favoriteShops.includes(shop._id),
-    }));
+      this.shops = (categories.discover || []).map((shop: any) => ({
+        ...shop,
+        isFavorite: favoriteShops.includes(shop._id),
+      }));
+      // On map chaque catégorie et on ajoute isFavorite
+      this.filteredItemsAdecouvrir = (categories.discover || []).map((shop: any) => ({
+        ...shop,
+        isFavorite: favoriteShops.includes(shop._id),
+      }));
 
-    this.filteredItemsApprecier = (categories.appreciated || []).map((shop: any) => ({
-      ...shop,
-      isFavorite: favoriteShops.includes(shop._id),
-    }));
+      this.filteredItemsApprecier = (categories.appreciated || []).map((shop: any) => ({
+        ...shop,
+        isFavorite: favoriteShops.includes(shop._id),
+      }));
 
-    this.filteredItemsMalin = (categories.smart || []).map((shop: any) => ({
-      ...shop,
-      isFavorite: favoriteShops.includes(shop._id),
-    }));
+      this.filteredItemsMalin = (categories.smart || []).map((shop: any) => ({
+        ...shop,
+        isFavorite: favoriteShops.includes(shop._id),
+      }));
 
-    this.filteredItemsTop10 = (categories.top10 || []).map((shop: any) => ({
-      ...shop,
-      isFavorite: favoriteShops.includes(shop._id),
-    }));
+      this.filteredItemsTop10 = (categories.top10 || []).map((shop: any) => ({
+        ...shop,
+        isFavorite: favoriteShops.includes(shop._id),
+      }));
 
-    // Promo = tous shops avec promo active (peu importe la catégorie)
-    this.promotedShops = [
-      ...this.filteredItemsAdecouvrir,
-      ...this.filteredItemsApprecier,
-      ...this.filteredItemsMalin,
-      ...this.filteredItemsTop10,
-    ].filter((x: any) => x.promo?.active === true);
-  });
-}
+      // Promo = tous shops avec promo active (peu importe la catégorie)
+      this.promotedShops = [
+        ...this.filteredItemsAdecouvrir,
+        ...this.filteredItemsApprecier,
+        ...this.filteredItemsMalin,
+        ...this.filteredItemsTop10,
+      ].filter((x: any) => x.promo?.active === true);
+
+      this.loading = false;
+    });
+  }
 
 
   filterByCategory(type: string, trad: string) {

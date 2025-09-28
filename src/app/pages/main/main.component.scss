@@ -421,3 +421,43 @@ html, body {
 .close-button:hover {
   background-color: rgba(0, 0, 0, 0.2); /* Effet au survol */
 }
+
+
+  
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+
+  p {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #444;
+    font-weight: 500;
+  }
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #ff7eb3; // ton rose izyglam
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -122,6 +122,15 @@ export class ShopService {
         const url = `${environment.apiUrl}shop/delivery?codes=${codesParam}`;
         return this.http.get<any[]>(url);
     }
+
+
+    getShopsByPostalCodesAll(codes: string[]): Observable<any[]> {
+        // On transforme le tableau ["75001","75002"] en "75001,75002"
+        const codesParam = codes.join(',');
+        // On construit l’URL
+        const url = `${environment.apiUrl}shop/deliveryAll?codes=${codesParam}`;
+        return this.http.get<any[]>(url);
+    }
     getShopsNearby(
         clientLatitude: number,
         clientLongitude: number
