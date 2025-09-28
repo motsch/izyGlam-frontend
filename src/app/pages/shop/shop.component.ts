@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
     selector: 'app-shop',
     templateUrl: './shop.component.html',
     styleUrls: ['./shop.component.scss'],
-    
+
 })
 export class ShopComponent {
     adminSettings: any = {};
@@ -45,7 +45,7 @@ export class ShopComponent {
         private activatedRoute: ActivatedRoute,
         private shopService: ShopService,
         private adminService: AdminService
-        
+
     ) { }
 
     ngOnInit(): void {
@@ -77,6 +77,14 @@ export class ShopComponent {
                 this.shopInfo.note = this.shopInfo.note + elem.rating
             }
             this.shopInfo.note = this.shopInfo.note / data.reviews.length
+
+
+            if (!this.shopInfo.note || isNaN(this.shopInfo.note)) {
+                this.shopInfo.note = 5;
+            }
+            if (!this.shopInfo.noteCount) {
+                this.shopInfo.noteCount = 0;
+            }
         })
     }
 

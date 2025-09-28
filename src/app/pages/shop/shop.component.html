@@ -18,10 +18,11 @@
                   <div class="pink">{{ shopInfo.trad | translate }}</div>
                 </div>
                 <span>
-                  {{ shopInfo.note }}
+                  {{ shopInfo.note ?? 5 }}
                   <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
-                  ({{ shopInfo.noteCount }}+) <br />
+                  ({{ shopInfo.noteCount ?? 0 }}+) <br />
                 </span>
+
               </div>
             </div>
 
