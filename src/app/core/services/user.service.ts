@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -62,6 +62,8 @@ export class UserService {
         return this.http.post<any>(environment.apiUrl + 'users', user);
     }
 
+
+
     /**
      * Verifie le mail du user
      * @param user (email et password)
@@ -118,7 +120,6 @@ export class UserService {
         return this.http.get<any[]>(environment.apiUrl + 'boss/employees');
     }
 
-
     /**
      * Ajoute un employé au patron connecté (lien bidirectionnel boss-employé)
      * @param employeeId ID du professionnel à rattacher
@@ -142,16 +143,24 @@ export class UserService {
         return this.http.post<any>(environment.apiUrl + 'boss/create-and-add-employee', newEmployee);
     }
 
+    /** Vérifie l’email via token reçu par mail (GET /verify-email?token=...) */
+    verifyEmail(token: string) {
+        const params = new HttpParams().set('token', token);
+        return this.http.get<any>(environment.apiUrl + 'verify-email', { params });
+    }
 
-
+    /** Renvoyer l’email d’activation */
+    resendVerificationEmail(email: string) {
+        return this.http.post<any>(environment.apiUrl + 'resend-verification', { email });
+    }
 
     getSubscription() {
         return this.http.get<any>(environment.apiUrl + 'users-subscription');
-      }
-      
-      subscribeToPlan(plan: string, durationInMonths: number) {
+    }
+
+    subscribeToPlan(plan: string, durationInMonths: number) {
         return this.http.post<any>(environment.apiUrl + 'users-subscribe', { newPlan: plan, durationInMonths });
-      }
-      
+    }
+
 
 }

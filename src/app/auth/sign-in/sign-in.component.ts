@@ -42,7 +42,7 @@ export class SignInComponent implements OnInit {
         private router: Router,
         private translate: TranslateService,
         private seoService: SeoService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.title.setTitle(this.route.snapshot.data['title']);
@@ -56,12 +56,12 @@ export class SignInComponent implements OnInit {
             .subscribe((res: string) => {
                 this.placeholderPassword = res;
             });
-            this.seoService.updateMeta('login');
+        this.seoService.updateMeta('login');
     }
 
     togglePasswordVisibility(): void {
         this.isPasswordVisible = !this.isPasswordVisible;
-      }
+    }
     onMoreOptions() {
         console.log('Showing more options...');
         this.router.navigate(['sign-in-sms']);

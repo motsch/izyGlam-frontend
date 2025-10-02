@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { SeoService } from '../../services/seo.service';
 import { LanguageService } from '../../services/language.service';
+import { CountryService } from '../../services/country.service';
 
 @Component({
     selector: 'app-change-password',
@@ -21,11 +22,14 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     passwordChangeSuccess: boolean = false;
     passwordChangeError: string = '';
     dropdownOpen = false;
+    dropdownOpenCountry = false;
     langues: any[] = [];
+    countries: any[] = [];
     selected: any = {};
-
+    selectedCountry: any = {};
     storedLangue: string = '';
     languagesInfos: any[] = [];
+    countriesInfos: any[] = [];
 
     constructor(
         public translate: TranslateService,
@@ -33,6 +37,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
         private userService: UserService,
         private languageService: LanguageService,
         private authenticationService: AuthenticationService,
+        private countryService: CountryService,
         private seoService: SeoService
     ) {
         translate.addLangs([
@@ -71,27 +76,8 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
         localStorage.setItem("menu-param", 'security');
         // Si 'me' est déjà disponible
         this.updateUser();
-        this.getLanguages();
-        this.langues = this.translate.getLangs().map(langCode => {
-            return this.languagesInfos.find((x: any) => x.code === langCode) || {};
-        });
-
-        let storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
-
-        if (storedLangue.length !== 2) {
-            console.error('Stored Langue has an unexpected length:', storedLangue.length);
-            return;
-        }
-        console.log(storedLangue)
-        this.selected = this.languagesInfos.find(x => x.code === storedLangue) || this.languagesInfos.find(x => x.code === 'fr');
-
-        if (!this.selected) {
-            console.error('Language not found for code:', storedLangue);
-        }
+        this.getCountries();
     }
-
-
-
 
     loadLangues() {
         this.languageService.getAll().subscribe(
@@ -106,41 +92,105 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
             }
         );
     }
-    getLanguages() {
-        this.languageService.getAllCleaned().subscribe((result: any[]) => {
-            this.languagesInfos = result.filter(lang => lang.active); // uniquement actives
 
-            // On récupère la langue stockée
-            const storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
+    /** Charge les pays puis sélectionne le pays stocké (ou 'France' à défaut), et charge ses langues */
+    getCountries(): void {
+        // Option: filtrer que les actifs -> getAll({ active: true })
+        this.countryService.getAll({ active: true }).subscribe({
+            next: (countries: any[]) => {
+                this.countries = countries || [];
 
-            // Filtrer les langues connues par ngx-translate ET actives dans la BDD
-            this.langues = this.translate.getLangs()
-                .map(code => this.languagesInfos.find(lang => lang.code === code))
-                .filter(lang => lang !== undefined);
+                // Lecture du localStorage (on stocke le *name* du pays)
+                let storedCountry = (localStorage.getItem('pays') || '').replace(/^"(.*)"$/, '$1').trim();
+                if (!storedCountry) storedCountry = 'France';
 
-            // Déterminer la langue sélectionnée
-            if (this.langues.length === 1) {
-                this.selected = this.langues[0];
-            } else {
-                this.selected = this.langues.find(lang => lang.code === storedLangue)
-                    || this.languagesInfos.find(lang => lang.code === 'fr'); // fallback français
+                // On tente de retrouver par name exact (insensible à la casse)
+                this.selectedCountry = this.findCountryByNameOrTranslation(storedCountry);
+
+                // Fallback: France si pas trouvé
+                if (!this.selectedCountry) {
+                    this.selectedCountry = this.findCountryByNameOrTranslation('France') || this.countries[0] || null;
+                }
+
+                // Appliquer le pays côté session
+                if (this.selectedCountry) {
+                    this.sessionService.setCountry(this.selectedCountry.name);
+                    // Charger les langues du pays
+                    this.loadLanguagesForCountry(this.selectedCountry.name);
+                } else {
+                    console.error('Country not found for name:', storedCountry);
+                }
+            },
+            error: (err) => {
+                console.error('Erreur lors du chargement des pays', err);
             }
-
-            // Appliquer la langue si retrouvée
-            if (this.selected) {
-                this.translate.use(this.selected.code);
-                this.sessionService.setLang(this.selected.code);
-                this.seoService.setLanguage(this.selected);
-            } else {
-                console.error('Language not found for code:', storedLangue);
-            }
-
-        }, error => {
-            console.error('Erreur lors du chargement des langues', error);
         });
     }
 
+    /** Recherche par name, sinon par translation (insensible à la casse) */
+    private findCountryByNameOrTranslation(raw: string): any | undefined {
+        const norm = raw.trim().toLowerCase();
+        return this.countries.find(c =>
+            c.name?.toLowerCase() === norm || c.translation?.toLowerCase() === norm
+        );
+    }
 
+    /** Charge les langues disponibles (actives par défaut) pour un pays donné */
+    private loadLanguagesForCountry(countryName: string): void {
+        this.countryService.getLanguagesByName(countryName /*, includeInactive? false par défaut */).subscribe({
+            next: (langs: any) => {
+                // On garde seulement les actives (le backend peut déjà filtrer, mais on protège)
+                this.langues = langs.languages;
+
+                // Pré-sélection de la langue : localStorage -> sinon 'fr' -> sinon première
+                let storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().toLowerCase();
+                if (!storedLangue) storedLangue = 'fr';
+
+                this.selected = this.langues.find(l => l.code.toLowerCase() === storedLangue) || this.langues[0] || null;
+
+                // Appliquer la langue si trouvée
+                if (this.selected) {
+                    this.applyLanguage(this.selected);
+                } else {
+                    console.error('Language not found for code:', storedLangue);
+                }
+            },
+            error: (err) => {
+                console.error('Erreur lors du chargement des langues', err);
+                this.langues = [];
+                this.selected = null;
+            }
+        });
+    }
+
+    /** Sélection d’un pays depuis le menu */
+    selectCountry(country: any): void {
+        this.selectedCountry = country;
+        this.dropdownOpenCountry = false;
+
+        // Stocker le nom (name) pour cohérence avec la recherche backend par name
+        localStorage.setItem('pays', country.name);
+
+        this.sessionService.setCountry(country.name);
+
+        // Recharger les langues du pays
+        this.loadLanguagesForCountry(country.name);
+    }
+
+    /** Sélection d’une langue depuis le menu */
+    selectLanguage(lang: any): void {
+        this.selected = lang;
+        this.dropdownOpen = false;
+        this.applyLanguage(lang);
+    }
+
+    /** Applique langue à ngx-translate + session + SEO + localStorage */
+    private applyLanguage(lang: any): void {
+        this.translate.use(lang.code);
+        this.sessionService.setLang(lang.code);
+        this.seoService.setLanguage(lang);
+        localStorage.setItem('langue', lang.code);
+    }
 
     isPasswordFormValid(): boolean {
         return (
@@ -236,34 +286,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
         this.dropdownOpen = !this.dropdownOpen;
     }
 
-    selectLanguage(lang: any) {
-        console.log(lang);
-        localStorage.setItem('langue', lang.code);
-
-        // 🔹 ngx-translate
-        this.translate.use(lang.code);
-        this.sessionService.setLang(lang.code);
-
-        // 🔹 UI
-        this.selected = lang;
-        this.dropdownOpen = false;
-
-        // 🔹 SEO
-        this.seoService.setLanguage(lang);
-
-        // 🔹 Backend : MAJ de la langue du user
-        if (this.me && this.me._id) {
-            const updatedUser = { ...this.me, language: lang.code };
-            this.userService.update(updatedUser).subscribe({
-                next: (res) => {
-                    console.log("✅ Langue utilisateur mise à jour côté backend :", res.language);
-                    this.me = res; // garde le user synchro avec la DB
-                },
-                error: (err) => {
-                    console.error("❌ Erreur lors de la mise à jour de la langue", err);
-                }
-            });
-        }
+    toggleDropdownCountry() {
+        this.dropdownOpenCountry = !this.dropdownOpenCountry;
     }
-
 }

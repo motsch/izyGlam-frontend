@@ -1,0 +1,74 @@
+[
+  {
+    "name": "中国",
+    "translation": "China",
+    "active": true,
+    "languages": ["zh", "en"]
+  },
+  {
+    "name": "भारत",
+    "translation": "India",
+    "active": true,
+    "languages": ["hi", "en", "bn", "ta", "te", "ml", "mr", "gu", "pa", "ur", "kn"]
+  },
+  {
+    "name": "日本",
+    "translation": "Japan",
+    "active": true,
+    "languages": ["ja", "en"]
+  },
+  {
+    "name": "대한민국",
+    "translation": "South Korea",
+    "active": true,
+    "languages": ["ko", "en"]
+  },
+  {
+    "name": "Indonesia",
+    "translation": "Indonesia",
+    "active": true,
+    "languages": ["id", "en", "ms", "zh"]
+  },
+  {
+    "name": "Pilipinas",
+    "translation": "Philippines",
+    "active": true,
+    "languages": ["tl", "en", "zh"]
+  },
+  {
+    "name": "ประเทศไทย",
+    "translation": "Thailand",
+    "active": true,
+    "languages": ["th", "en"]
+  },
+  {
+    "name": "Việt Nam",
+    "translation": "Vietnam",
+    "active": true,
+    "languages": ["vi", "en"]
+  },
+  {
+    "name": "Malaysia",
+    "translation": "Malaysia",
+    "active": true,
+    "languages": ["ms", "en", "zh", "ta"]
+  },
+  {
+    "name": "Singapura",
+    "translation": "Singapore",
+    "active": true,
+    "languages": ["en", "zh", "ms", "ta"]
+  },
+  {
+    "name": "الإمارات العربية المتحدة",
+    "translation": "United Arab Emirates",
+    "active": true,
+    "languages": ["ar", "en", "hi", "ur", "bn", "ta", "ml", "tl"]
+  },
+  {
+    "name": "المملكة العربية السعودية",
+    "translation": "Saudi Arabia",
+    "active": true,
+    "languages": ["ar", "en", "ur", "hi", "bn"]
+  }
+]

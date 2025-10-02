@@ -57,6 +57,7 @@ import { Subscription } from 'rxjs';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
 import { PayementValidationComponent } from './payement-validation/payement-validation.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -113,6 +114,7 @@ import { PayementValidationComponent } from './payement-validation/payement-vali
         PayementProComponent,
         OrdersComponent,
         HelpComponent,
+        VerifyEmailComponent,
         FavoritesComponent,
         SponsorComponent,
         GiftCardComponent,

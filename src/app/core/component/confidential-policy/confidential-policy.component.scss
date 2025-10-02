@@ -25,3 +25,19 @@ h3 {
   font-size: 16px;
   margin-bottom: 20px;
 }
+
+
+
+/* Tout à gauche par défaut */
+.privacy {
+  text-align: left;
+}
+
+/* Titres centrés uniquement */
+.privacy h2,
+.privacy h3 {
+  text-align: center;
+}
+
+/* (optionnel) s’assurer que les listes sont bien alignées */
+.privacy ul { margin-left: 1.25rem; list-style: disc outside; }

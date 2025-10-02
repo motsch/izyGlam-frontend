@@ -12,6 +12,21 @@
     "ACUPUNCTURE": "Acupuncture",
     "OTHER": "Autre"
   },
+  "SUCCESS": {
+    "USERCREATED": "Utilisateur créé avec succès. Un email de confirmation vous a été envoyé"
+  },
+  "ERROR": {
+    "USERNOTCREATED": "Impossible de créer l'utilisateur"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Vérification en cours",
+    "VALIDE": "Nous validons votre lien d’activation. Cela ne prend qu’un instant.",
+    "ACCOUNT": "Compte activé",
+    "CONNECT": "Se connecter",
+    "OUPS": "Oups",
+    "WRITE": "Besoin d’aide ? Écrivez-nous à",
+    "RESEND": "Renvoyer l’email d’activation"
+  },
   "BANK": {
     "ENTER_BANK_INFO": "Mes informations bancaires",
     "ADD_BANK_INFO": "Ajouter mes informations bancaires",
@@ -225,7 +240,9 @@
     "CHANGE_PASSWORD": "Changer le mot de passe",
     "CHANGE_OK": "Mot de passe changé avec succès",
     "CHANGE_LANGUE": "Changer la langue",
-    "LANGUE": "Langue"
+    "CHANGE_COUNTRY": "Changer le pays",
+    "LANGUE": "Langue",
+    "COUNTRY": "Pays"
   },
   "PAYEMENT": {
     "YOU": "Vous",
@@ -547,6 +564,8 @@
     "REINIT": "Réinitialiser"
   },
   "SIGNUP": {
+    "GENRE": "Genre",
+    "CHOOSE": "Choisir",
     "SEX_MALE": "Homme",
     "SEX_FEMALE": "Femme",
     "TITLE": "Entrez vos informations personnelles.",
@@ -557,9 +576,13 @@
     "PLACEHOLDER_FIRSTNAME": "Prénom",
     "PLACEHOLDER_LASTNAME": "Nom de famille",
     "PLACEHOLDER_EMAIL": "Email",
+    "PLACEHOLDER_EMAIL_REQUIRED": "Email requis",
+    "PLACEHOLDER_EMAIL_WRONG": "Format de l'email invalide",
     "PLACEHOLDER_PHONE": "Téléphone",
+    "PLACEHOLDER_PHONE_NUMBER": "Numéro de téléphone",
     "PLACEHOLDER_PASSWORD": "Mot de passe",
-    "PLACEHOLDER_PASSWORDCONFIRMED": "Confirmation de mot de passe"
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Confirmation de mot de passe",
+    "COUNTRY": "Pays"
   },
   "LANGUE": {
     "FRANCAIS": "Français",
@@ -571,8 +594,55 @@
     "PORTUGAIS": "Portugais",
     "POLONAIS": "Polonais",
     "DANOIS": "Danois",
-    "FINLANDAIS": "Finlandais",
-    "SUEDOIS": "Suédois"
+    "FINNOIS": "Finnois",
+    "SUEDOIS": "Suédois",
+    "ARABE": "Arabe",
+    "TURC": "Turc",
+    "CHINOIS": "Chinois",
+    "RUSSE": "Russe",
+    "PERSAN": "Persan",
+    "UKRAINIEN": "Ukrainien",
+    "ROUMAIN": "Roumain",
+    "CATALAN": "Catalan",
+    "BASQUE": "Basque",
+    "GALICIEN": "Galicien",
+    "ALBANAIS": "Albanais",
+    "KURDE": "Kurde",
+    "ESTONIEN": "Estonien",
+    "SOMALIEN": "Somalien",
+    "BIELORUSSE": "Biélorusse",
+    "JAPONAIS": "Japonais",
+    "COREEN": "Coréen",
+    "INDONESIEN": "Indonésien",
+    "MALAIS": "Malais",
+    "THAI": "Thaï",
+    "VIETNAMIEN": "Vietnamien",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bengali"
+  },
+  "COUNTRY": {
+    "FRANCE": "France",
+    "ALLEMAGNE": "Allemagne",
+    "SPAIN": "Espagne",
+    "ITALY": "Italie",
+    "DANEMARK": "Danemark",
+    "FINLAND": "Finlande",
+    "NETHERLAND": "Pays-Bas",
+    "POLAND": "Pologne",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Suède",
+    "CHINA": "Chine",
+    "INDIA": "Inde",
+    "JAPAN": "Japon",
+    "SOUTH_KOREA": "Corée du Sud",
+    "INDONESIA": "Indonésie",
+    "PHILIPPINES": "Philippines",
+    "THAILAND": "Thaïlande",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malaisie",
+    "SINGAPOURE": "Singapour",
+    "EMIRAT_ARABE": "Émirats arabes unis",
+    "SAUDI_ARABIA": "Arabie saoudite"
   },
   "ADDRESS_MODAL": {
     "ADDRESS": "Mes adresses",
@@ -996,7 +1066,7 @@
     },
     "DATE": {
       "TITLE": "Date de déclaration et mises à jour",
-      "TEXT": "Déclaration établie le 11 août 2025. Elle sera mise à jour au minimum une fois par an ou lors de changements majeurs."
+      "TEXT": "Déclaration établie le 25 décembre 2025. Elle sera mise à jour au minimum une fois par an ou lors de changements majeurs."
     }
   },
   "HELP": {
@@ -1134,8 +1204,8 @@
       "AUTHORITY_LABEL": "Autorité de contrôle",
       "EMAIL_PRIVACY": "privacy@izyglam.com",
       "EMAIL_SUPPORT": "support@izyglam.com",
-      "EMAIL_PRIVACY_TEXT": "privacy&#64;izyglam.com",
-      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com"
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
     },
     "CHANGES": {
       "TITLE": "Modifications de cette politique",
@@ -1264,7 +1334,7 @@
     },
     "EFFECTIVE": {
       "TITLE": "Date d’effet",
-      "TEXT": "Les présentes CGU entrent en vigueur le <strong>11&nbsp;août&nbsp;2025</strong> et remplacent toute version antérieure."
+      "TEXT": "Les présentes CGU entrent en vigueur le <strong>25&nbsp;décembre&nbsp;2025</strong> et remplacent toute version antérieure."
     }
   }
 }

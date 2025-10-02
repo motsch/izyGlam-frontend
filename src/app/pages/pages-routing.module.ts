@@ -22,11 +22,12 @@ import { PricePlansComponent } from './price-plans/price-plans.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
 import { PayementValidationComponent } from './payement-validation/payement-validation.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 
 const routes: Routes = [
     {
         path: 'main',
-        component: MainComponent, canActivate: [AuthGuard] 
+        component: MainComponent, canActivate: [AuthGuard]
     },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     {
@@ -68,6 +69,10 @@ const routes: Routes = [
         path: 'favorites',
         component: FavoritesComponent,
         canActivate: [AuthGuard],
+    },
+    {
+        path: 'verify-email', component: VerifyEmailComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'paiement-validation',
@@ -122,4 +127,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
 })
-export class PagesRoutingModule {}
+export class PagesRoutingModule { }

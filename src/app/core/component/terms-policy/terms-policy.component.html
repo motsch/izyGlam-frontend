@@ -1,4 +1,4 @@
-<form>
+<form class="privacy">
   <div>
     <!-- I -->
     <h2>I. {{ 'TERMS.ACCEPT.TITLE' | translate }}</h2>
@@ -121,15 +121,15 @@
     <h2>XX. {{ 'TERMS.CONTACT.TITLE' | translate }}</h2>
     <ul>
       <li>
-        <strong>{{ 'TERMS.CONTACT.SUPPORT_LABEL' | translate }}</strong>
-        <a [href]="'mailto:' + ('TERMS.CONTACT.EMAIL_SUPPORT' | translate)">
-          {{ 'TERMS.CONTACT.EMAIL_SUPPORT_TEXT' | translate }}
+        <strong>{{ 'TERMS.CONTACT.SUPPORT_LABEL' | translate }}</strong>:&nbsp;
+        <a class="link" [href]="'mailto:' + ('TERMS.CONTACT.EMAIL_SUPPORT' | translate)">
+          {{ 'TERMS.CONTACT.EMAIL_SUPPORT' | translate }}
         </a>
       </li>
       <li>
-        <strong>{{ 'TERMS.CONTACT.LEGAL_LABEL' | translate }}</strong>
-        <a [href]="'mailto:' + ('TERMS.CONTACT.EMAIL_LEGAL' | translate)">
-          {{ 'TERMS.CONTACT.EMAIL_LEGAL_TEXT' | translate }}
+        <strong>{{ 'TERMS.CONTACT.LEGAL_LABEL' | translate }}</strong>:&nbsp;
+        <a class="link" [href]="'mailto:' + ('TERMS.CONTACT.EMAIL_LEGAL' | translate)">
+          {{ 'TERMS.CONTACT.EMAIL_LEGAL' | translate }}
         </a>
       </li>
     </ul>

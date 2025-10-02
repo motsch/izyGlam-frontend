@@ -1,0 +1,35 @@
+<!-- src/app/pages/verify-email/verify-email.component.html -->
+<div class="validation-container">
+  <ng-container [ngSwitch]="status">
+    <!-- Loading -->
+    <div class="card" *ngSwitchCase="'loading'">
+      <div class="icon">⏳</div>
+      <h2>{{ "VERIFY_EMAIL.VERIFICATION" | translate }}…</h2>
+      <p>{{ "VERIFY_EMAIL.VALIDE" | translate }}</p>
+    </div>
+
+    <!-- Success -->
+    <div class="card success" *ngSwitchCase="'success'">
+      <div class="icon">✅</div>
+      <h2>{{ "VERIFY_EMAIL.ACCOUNT" | translate }} 🎉</h2>
+      <p>{{ message }}</p>
+      <button class="primary-btn" routerLink="/login">{{ "VERIFY_EMAIL.CONNECT" | translate }}</button>
+    </div>
+
+    <!-- Error -->
+    <div class="card error" *ngSwitchCase="'error'">
+      <div class="icon">❌</div>
+      <h2>{{ "VERIFY_EMAIL.OUPS" | translate }} 😕</h2>
+      <p>
+        {{ message }}<br />
+        {{ "VERIFY_EMAIL.WRITE" | translate }}
+        <a class="link" href="mailto:support@izyglam.com">support&#64;izyglam.com</a>.
+      </p>
+
+      <div class="btns">
+        <button class="primary-btn" (click)="resendActivationEmail()">{{ "VERIFY_EMAIL.RESEND" | translate }}</button>
+        <a class="secondary-link" routerLink="/login">{{ "VERIFY_EMAIL.CONNECT" | translate }}</a>
+      </div>
+    </div>
+  </ng-container>
+</div>

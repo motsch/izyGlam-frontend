@@ -21,6 +21,8 @@ import { FormControl } from '@angular/forms';
 export class SignUpComponent implements OnInit {
     error: any = {};
     passwordConfirmed!: ElementRef;
+    isPasswordVisible: boolean = false;
+    isPasswordVisible2: boolean = false;
     placeholerFirstName: string = 'SIGNUP.PLACEHOLDER_FIRSTNAME';
     placeholerLastName: string = 'SIGNUP.PLACEHOLDER_LASTNAME';
     placeholerEmail: string = 'SIGNUP.PLACEHOLDER_EMAIL';
@@ -89,6 +91,13 @@ export class SignUpComponent implements OnInit {
         this.user.country = 'France';
     }
 
+    togglePasswordVisibility(): void {
+        this.isPasswordVisible = !this.isPasswordVisible;
+    }
+
+    togglePasswordVisibility2(): void {
+        this.isPasswordVisible2 = !this.isPasswordVisible2;
+    }
     /*
      * Displays the add/edit user modal
      */
@@ -96,8 +105,8 @@ export class SignUpComponent implements OnInit {
         if (!this.user.sex) {
             this.error.sex = "Le genre est obligatoire";
             return;
-        } 
-        
+        }
+
         if (!this.user.lastname) {
             this.error.lastname = "Le nom de famille est obligatoire";
             return;
@@ -166,6 +175,7 @@ export class SignUpComponent implements OnInit {
         // TODO User à mettre en dynamique asap
         // this.user.roleId = 1;
         if (!this.newUserOrEditUser) {
+            localStorage.setItem("userEmail", this.user.email);
             // une fois l'erreur : on desactive le loader
             this.emitterService.change(true);
             this.userService.createNoToken(this.user).subscribe(
@@ -210,11 +220,11 @@ export class SignUpComponent implements OnInit {
     validatePhoneNumber(indicatif: string, phoneNumber: string): boolean {
         const indicatifRegex = /^\+\d+$/;
         const phoneNumberRegex = /^\d{10}$/;
-    
+
         return indicatifRegex.test(indicatif) && phoneNumberRegex.test(phoneNumber);
     }
-    
-    
+
+
 
     customEmailValidator(control: AbstractControl) {
         const value = control.value;

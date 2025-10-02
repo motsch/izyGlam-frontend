@@ -11,6 +11,7 @@ export class SessionService {
     user: any;
     rememberMe: boolean | undefined;
     langue: string | undefined;
+    country: string | undefined;
     apiURL = environment.apiUrl;
 
     private readonly fbAccessTokenKey = 'fbAccessToken';
@@ -162,6 +163,11 @@ export class SessionService {
         this.langue = langue;
         localStorage.setItem('langue', JSON.stringify(langue));
         // location.reload();
+    }
+
+    setCountry(country: string) {
+        this.country = country;
+        localStorage.setItem('pays', JSON.stringify(country));
     }
 
     /**

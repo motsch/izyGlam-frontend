@@ -1,4 +1,4 @@
-<form>
+<form class="privacy">
   <div>
     <h2>I. {{ 'ACCESSIBILITY.DECLARATION.TITLE' | translate }}</h2>
     <p>{{ 'ACCESSIBILITY.DECLARATION.TEXT' | translate }}</p>
@@ -101,11 +101,11 @@
       <li>{{ 'ACCESSIBILITY.FEEDBACK.L1' | translate }}</li>
       <li>
         {{ 'ACCESSIBILITY.FEEDBACK.L2A' | translate }}
-        <a [href]="'mailto:' + ('ACCESSIBILITY.CONTACT.EMAIL_ACCESS' | translate)">
+        <a class="link" [href]="'mailto:' + ('ACCESSIBILITY.CONTACT.EMAIL_ACCESS' | translate)">
           {{ 'ACCESSIBILITY.CONTACT.EMAIL_ACCESS' | translate }}
         </a>
         {{ 'ACCESSIBILITY.FEEDBACK.L2B' | translate }}
-        <a [href]="'mailto:' + ('ACCESSIBILITY.CONTACT.EMAIL_SUPPORT' | translate)">
+        <a class="link" [href]="'mailto:' + ('ACCESSIBILITY.CONTACT.EMAIL_SUPPORT' | translate)">
           {{ 'ACCESSIBILITY.CONTACT.EMAIL_SUPPORT' | translate }}
         </a>.
       </li>
@@ -120,7 +120,7 @@
     </ul>
     <p>
       {{ 'ACCESSIBILITY.RECOURSE.MORE' | translate }}
-      <a href="https://www.defenseurdesdroits.fr" target="_blank" rel="noopener">
+      <a class="link" href="https://www.defenseurdesdroits.fr" target="_blank" rel="noopener">
         {{ 'ACCESSIBILITY.RECOURSE.LINK' | translate }}
       </a>.
     </p>

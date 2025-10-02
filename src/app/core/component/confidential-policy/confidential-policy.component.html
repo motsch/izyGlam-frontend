@@ -1,4 +1,4 @@
-<form>
+<form class="privacy">
   <div>
     <!-- I -->
     <h2>I. {{ 'PRIVACY.WHO.TITLE' | translate }}</h2>
@@ -6,39 +6,39 @@
 
     <!-- II -->
     <h2>II. {{ 'PRIVACY.SCOPE.TITLE' | translate }}</h2>
-    <p>{{ 'PRIVACY.SCOPE.TEXT' | translate }}</p>
+    <p [innerHTML]="'PRIVACY.SCOPE.TEXT' | translate"></p>
 
     <!-- III -->
     <h2>III. {{ 'PRIVACY.DATA.TITLE' | translate }}</h2>
 
     <h3>A. {{ 'PRIVACY.DATA.PROVIDED.TITLE' | translate }}</h3>
     <ul>
-      <li>{{ 'PRIVACY.DATA.PROVIDED.L1' | translate }}</li>
-      <li>{{ 'PRIVACY.DATA.PROVIDED.L2' | translate }}</li>
-      <li>{{ 'PRIVACY.DATA.PROVIDED.L3' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.DATA.PROVIDED.L1' | translate"></li>
+      <li [innerHTML]="'PRIVACY.DATA.PROVIDED.L2' | translate"></li>
+      <li [innerHTML]="'PRIVACY.DATA.PROVIDED.L3' | translate"></li>
       <li [innerHTML]="'PRIVACY.DATA.PROVIDED.L4' | translate"></li>
-      <li>{{ 'PRIVACY.DATA.PROVIDED.L5' | translate }}</li>
-      <li>{{ 'PRIVACY.DATA.PROVIDED.L6' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.DATA.PROVIDED.L5' | translate"></li>
+      <li [innerHTML]="'PRIVACY.DATA.PROVIDED.L6' | translate"></li>
     </ul>
 
     <h3>B. {{ 'PRIVACY.DATA.AUTOMATIC.TITLE' | translate }}</h3>
     <ul>
-      <li>{{ 'PRIVACY.DATA.AUTOMATIC.L1' | translate }}</li>
-      <li>{{ 'PRIVACY.DATA.AUTOMATIC.L2' | translate }}</li>
-      <li>{{ 'PRIVACY.DATA.AUTOMATIC.L3' | translate }}</li>
-      <li>{{ 'PRIVACY.DATA.AUTOMATIC.L4' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.DATA.AUTOMATIC.L1' | translate"></li>
+      <li [innerHTML]="'PRIVACY.DATA.AUTOMATIC.L2' | translate"></li>
+      <li [innerHTML]="'PRIVACY.DATA.AUTOMATIC.L3' | translate"></li>
+      <li [innerHTML]="'PRIVACY.DATA.AUTOMATIC.L4' | translate"></li>
     </ul>
 
     <h3>C. {{ 'PRIVACY.DATA.THIRD.TITLE' | translate }}</h3>
     <ul>
-      <li>{{ 'PRIVACY.DATA.THIRD.L1' | translate }}</li>
-      <li>{{ 'PRIVACY.DATA.THIRD.L2' | translate }}</li>
-      <li>{{ 'PRIVACY.DATA.THIRD.L3' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.DATA.THIRD.L1' | translate"></li>
+      <li [innerHTML]="'PRIVACY.DATA.THIRD.L2' | translate"></li>
+      <li [innerHTML]="'PRIVACY.DATA.THIRD.L3' | translate"></li>
     </ul>
 
     <!-- IV -->
     <h2>IV. {{ 'PRIVACY.PURPOSES.TITLE' | translate }}</h2>
-    <p>{{ 'PRIVACY.PURPOSES.TEXT' | translate }}</p>
+    <p [innerHTML]="'PRIVACY.PURPOSES.TEXT' | translate"></p>
     <ul>
       <li [innerHTML]="'PRIVACY.PURPOSES.L1' | translate"></li>
       <li [innerHTML]="'PRIVACY.PURPOSES.L2' | translate"></li>
@@ -52,10 +52,10 @@
     <!-- V -->
     <h2>V. {{ 'PRIVACY.SHARING.TITLE' | translate }}</h2>
     <ul>
-      <li>{{ 'PRIVACY.SHARING.L1' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.SHARING.L1' | translate"></li>
       <li [innerHTML]="'PRIVACY.SHARING.L2' | translate"></li>
-      <li>{{ 'PRIVACY.SHARING.L3' | translate }}</li>
-      <li>{{ 'PRIVACY.SHARING.L4' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.SHARING.L3' | translate"></li>
+      <li [innerHTML]="'PRIVACY.SHARING.L4' | translate"></li>
     </ul>
 
     <!-- VI -->
@@ -74,17 +74,17 @@
 
     <!-- VIII -->
     <h2>VIII. {{ 'PRIVACY.COOKIES.TITLE' | translate }}</h2>
-    <p>{{ 'PRIVACY.COOKIES.TEXT' | translate }}</p>
+    <p [innerHTML]="'PRIVACY.COOKIES.TEXT' | translate"></p>
     <ul>
-      <li>{{ 'PRIVACY.COOKIES.L1' | translate }}</li>
-      <li>{{ 'PRIVACY.COOKIES.L2' | translate }}</li>
-      <li>{{ 'PRIVACY.COOKIES.L3' | translate }}</li>
+      <li [innerHTML]="'PRIVACY.COOKIES.L1' | translate"></li>
+      <li [innerHTML]="'PRIVACY.COOKIES.L2' | translate"></li>
+      <li [innerHTML]="'PRIVACY.COOKIES.L3' | translate"></li>
     </ul>
     <p>{{ 'PRIVACY.COOKIES.PREF' | translate }}</p>
 
     <!-- IX -->
     <h2>IX. {{ 'PRIVACY.AUTOMATION.TITLE' | translate }}</h2>
-    <p>{{ 'PRIVACY.AUTOMATION.TEXT' | translate }}</p>
+    <p [innerHTML]="'PRIVACY.AUTOMATION.TEXT' | translate"></p>
 
     <!-- X -->
     <h2>X. {{ 'PRIVACY.RIGHTS.TITLE' | translate }}</h2>
@@ -97,7 +97,7 @@
     </ul>
     <p>
       {{ 'PRIVACY.RIGHTS.CONTACT' | translate }}
-      <a [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)">
+      <a class="link" [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)">
         {{ 'PRIVACY.CONTACT.EMAIL_PRIVACY_TEXT' | translate }}
       </a>.
       {{ 'PRIVACY.RIGHTS.VERIFY' | translate }}
@@ -105,18 +105,19 @@
 
     <!-- XI -->
     <h2>XI. {{ 'PRIVACY.SECURITY.TITLE' | translate }}</h2>
-    <p>{{ 'PRIVACY.SECURITY.TEXT' | translate }}</p>
+    <p [innerHTML]="'PRIVACY.SECURITY.TEXT' | translate"></p>
 
     <!-- XII -->
     <h2>XII. {{ 'PRIVACY.MINORS.TITLE' | translate }}</h2>
-    <p>{{ 'PRIVACY.MINORS.TEXT' | translate }}</p>
+    <p [innerHTML]="'PRIVACY.MINORS.TEXT' | translate"></p>
 
     <!-- XIII -->
     <h2>XIII. {{ 'PRIVACY.SUBPROCESSORS.TITLE' | translate }}</h2>
     <p>
       {{ 'PRIVACY.SUBPROCESSORS.TEXT' | translate }}
-      <a [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)">
-        {{ 'PRIVACY.CONTACT.EMAIL_PRIVACY_TEXT' | translate }}
+      <a class="link" [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)"
+      >
+      {{ 'PRIVACY.CONTACT.EMAIL_PRIVACY_TEXT' | translate }}
       </a>.
     </p>
 
@@ -124,20 +125,20 @@
     <h2>XIV. {{ 'PRIVACY.CONTACT.TITLE' | translate }}</h2>
     <ul>
       <li>
-        <strong>{{ 'PRIVACY.CONTACT.PRIVACY_LABEL' | translate }}</strong>
-        <a [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)">
-          {{ 'PRIVACY.CONTACT.EMAIL_PRIVACY_TEXT' | translate }}
+        <strong>{{ 'PRIVACY.CONTACT.PRIVACY_LABEL' | translate }}</strong>:&nbsp;
+        <a class="link" [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_PRIVACY' | translate)">
+         {{ 'PRIVACY.CONTACT.EMAIL_PRIVACY_TEXT' | translate }}
         </a>
       </li>
       <li>
-        <strong>{{ 'PRIVACY.CONTACT.SUPPORT_LABEL' | translate }}</strong>
-        <a [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_SUPPORT' | translate)">
+        <strong>{{ 'PRIVACY.CONTACT.SUPPORT_LABEL' | translate }}</strong>:&nbsp;
+        <a class="link" [href]="'mailto:' + ('PRIVACY.CONTACT.EMAIL_SUPPORT' | translate)">
           {{ 'PRIVACY.CONTACT.EMAIL_SUPPORT_TEXT' | translate }}
         </a>
       </li>
       <li>
-        <strong>{{ 'PRIVACY.CONTACT.AUTHORITY_LABEL' | translate }}</strong>
-        <a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>
+        <strong>{{ 'PRIVACY.CONTACT.AUTHORITY_LABEL' | translate }}</strong>:&nbsp;
+        <a href="https://www.cnil.fr" target="_blank" rel="noopener" class="link">cnil.fr</a>
       </li>
     </ul>
 
@@ -147,7 +148,7 @@
 
     <!-- XVI -->
     <h2>XVI. {{ 'PRIVACY.LOCAL.TITLE' | translate }}</h2>
-    <p>{{ 'PRIVACY.LOCAL.TEXT' | translate }}</p>
+    <p [innerHTML]="'PRIVACY.LOCAL.TEXT' | translate"></p>
 
     <!-- XVII -->
     <h2>XVII. {{ 'PRIVACY.GLOSSARY.TITLE' | translate }}</h2>
