@@ -100,11 +100,25 @@
     "LOADING": "Indlæser…",
     "UNEXPECTED_ERROR": "Der opstod en uventet fejl"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Kundeservice",
+    "WRITE": "Skriv en besked…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Indtast din login-e-mail",
+    "VALIDE": "Indtast venligst en gyldig e-mailadresse.",
+    "LOADING": "Indlæser",
+    "VERIF": "Vi verificerer dine oplysninger, vent venligst",
+    "ACCUEIL": "Tilbage til forsiden",
+    "OK": "Login lykkedes!",
+    "SPACE": "Omdirigerer til dit område"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verifikation i gang",
     "VALIDE": "Vi validerer dit aktiveringslink. Det tager kun et øjeblik.",
     "ACCOUNT": "Konto aktiveret",
     "CONNECT": "Log ind",
+    "REGISTER": "Registrér dig",
     "OUPS": "Ups",
     "WRITE": "Brug for hjælp? Skriv til os på",
     "RESEND": "Send aktiveringsmail igen"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Op til 10 aktive saloner",
     "PREMIUM2": "Adgang til avanceret statistik over dine resultater",
     "PREMIUM3": "Smarta anbefalinger til at booste din omsætning",
-    "PREMIUM4": "Øget synlighed på IzyGlam-platformen",
+    "PREMIUM4": "Øget synlighed påizyGlam-platformen",
     "PREMIUM5": "Prioriteret support",
     "PREMIUM6": "Til ambitiøse selvstændige",
     "PREMIUM7": "Vælg Dronning",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Avanceret",
     "PLANS": "Antal aktive saloner",
     "READY": "Klar til at vækste din forretning?",
-    "DISCOVERS": "Udforsk IzyGlam-tilbuddene"
+    "DISCOVERS": "UdforskizyGlam-tilbuddene"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Hvordan booker jeg en ydelse på IzyGlam?",
+    "QUESTION1": "Hvordan booker jeg en ydelse påizyGlam?",
     "QUESTION2": "Hvordan vælger jeg den rette professionelle til mig?",
     "QUESTION3": "Hvordan ændrer eller annullerer jeg min aftale?",
     "QUESTION4": "Hvordan kan jeg følge min ordre?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Kan jeg skrive en anmeldelse efter min behandling?",
     "QUESTION8": "Hvordan bruger jeg loyalitets- og kampagnetilbud?",
     "QUESTION9": "Hvad gør jeg, hvis der er et problem med min ordre?",
-    "QUESTION10": "Hvordan kontakter jeg IzyGlam-teamet?",
+    "QUESTION10": "Hvordan kontakter jegizyGlam-teamet?",
     "QUESTION11": "Hvordan fungerer aflysnings- og refusionspolitikken?",
     "QUESTION12": "Kan jeg booke for en anden (gave, overraskelse)?",
-    "QUESTION13": "Hvordan bliver jeg professionel partner på IzyGlam?",
-    "QUESTION14": "Hvordan beskytter I mine personlige oplysninger på IzyGlam?",
+    "QUESTION13": "Hvordan bliver jeg professionel partner påizyGlam?",
+    "QUESTION14": "Hvordan beskytter I mine personlige oplysninger påizyGlam?",
     "REPONSE1": "Det er nemt og hurtigt. Når du har oprettet dig, vælg den ydelse, der interesserer dig, se de tilgængelige professionelle nær dig, og vælg dato og tid. Klik på \"Book\" for at afslutte, og betal med betalingskort. Din reservation valideres derefter manuelt af den professionelle. Ved afvisning refunderes du fuldt ud.",
     "REPONSE2": "Hver professionel har en detaljeret profil med ydelser, priser, porteføljebilleder og kundeanmeldelser. Du kan også tilføje favoritter. Sammenlign profiler for at vælge den, der passer bedst til dine forventninger.",
     "REPONSE3": "Du kan ændre eller annullere din reservation fra din profil. Aflysninger er gratis op til 24 timer før behandlingen. Herefter kan der pålægges gebyrer. Har du et problem, står vores support klar.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Betaling sker udelukkende med betalingskort (Visa, MasterCard, American Express). Vi tilbyder ikke kontantbetaling eller PayPal på nuværende tidspunkt. Alt er sikret for din tryghed.",
     "REPONSE6": "Når din reservation er bekræftet, modtager du en opsummeringsmail. Vi sender også en påmindelse før behandlingen (via e-mail og/eller push). Du kan altid følge status i din profil.",
     "REPONSE7": "Ja. Efter hver gennemført behandling bliver du inviteret til at skrive en anmeldelse. Anmeldelser modereres manuelt for at sikre autenticitet. Professionelle kan ikke svare på eller ændre anmeldelser.",
-    "REPONSE8": "I øjeblikket tilbyder IzyGlam endnu ikke loyalitetsprogram eller rabatkoder. Disse funktioner kommer i en senere fase.",
+    "REPONSE8": "I øjeblikket tilbyderizyGlam endnu ikke loyalitetsprogram eller rabatkoder. Disse funktioner kommer i en senere fase.",
     "REPONSE9": "Du kan kontakte os direkte via \"Kontakt\" eller pr. e-mail. Vi bestræber os på at svare inden for 24 timer (vejledende) og hjælpe dig bedst muligt.",
     "REPONSE10": "Du kan kontakte os via kontaktformularen på web eller app. Kundesupport er tilgængelig mandag–lørdag kl. 9–18. Eksempel på e-mail: support@izyglam.com",
     "REPONSE11": "Du kan annullere uden gebyr op til 24 timer før aftalen. Herefter kan gebyrer gælde. Hvis din reservation afvises af den professionelle, refunderes du automatisk. Automatisk refundering er under udrulning.",
     "REPONSE12": "Du kan endnu ikke give en ydelse som gave fra din konto. Hvis en professionel tilbyder duo- eller familieformler, kan du dog booke til flere personer i det specifikke format.",
-    "REPONSE13": "Er du kosmetolog, frisør eller wellness-udøver? Deltag i IzyGlam-fællesskabet ved at udfylde formularen på siden \"Bliv partner\". Vores team kontakter dig hurtigt for at færdiggøre tilmeldingen.",
+    "REPONSE13": "Er du kosmetolog, frisør eller wellness-udøver? Deltag iizyGlam-fællesskabet ved at udfylde formularen på siden \"Bliv partner\". Vores team kontakter dig hurtigt for at færdiggøre tilmeldingen.",
     "REPONSE14": "Sikkerheden for dine data er vores prioritet. Vi overholder GDPR. Kun oplysninger, der er strengt nødvendige for ydelsen, er tilgængelige for professionelle. En integreret beskedtjeneste muliggør kontakt ved behov, men forsøg på at omgå platformen overvåges."
   },
   "PRIVACY": {

@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreditEmployeeModalComponent } from '../credit-employee-modal/credit-employee-modal.component';
 import { CompanyService } from '../../services/company.service';
 
-// ✅ IzyGlam: traductions & toasts
+// ✅izyGlam: traductions & toasts
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
@@ -38,7 +38,7 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
     // (non utilisé ici mais gardé si besoin d’API côté entreprise)
     private companyService: CompanyService,
 
-    // ✅ IzyGlam
+    // ✅izyGlam
     private translate: TranslateService,
     private toastr: ToastrService
   ) { }
@@ -211,7 +211,7 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
   }
 
   // ------------------------------------------------------------
-  // ✨ Toast IzyGlam centralisé
+  // ✨ ToastizyGlam centralisé
   // ------------------------------------------------------------
   private showCustomToast(message: string) {
     this.toastr.error(message);

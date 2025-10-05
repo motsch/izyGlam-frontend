@@ -3,7 +3,7 @@ import { ChatGptService } from '../../services/chat-gpt.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { Router } from '@angular/router';
 
-// ✅ IzyGlam: traductions & toasts
+// ✅izyGlam: traductions & toasts
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
@@ -33,7 +33,7 @@ export class ChatModalComponent implements OnInit {
     private chatService: ChatGptService,
     private router: Router,
 
-    // ✅ IzyGlam
+    // ✅izyGlam
     private translate: TranslateService,
     private toastr: ToastrService
   ) {}
@@ -131,7 +131,7 @@ export class ChatModalComponent implements OnInit {
           },
           error: (error) => {
             console.error('Erreur lors de la communication avec OpenAI', error);
-            // ✅ Toast d’erreur IzyGlam générique
+            // ✅ Toast d’erreurizyGlam générique
             this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
 
             // Fin d’état de frappe / réactivation de l’envoi
@@ -221,7 +221,7 @@ export class ChatModalComponent implements OnInit {
   }
 
   // -----------------------------------------------------------
-  // ✨ Toast d’erreur/notification stylisé IzyGlam
+  // ✨ Toast d’erreur/notification styliséizyGlam
   // -----------------------------------------------------------
   private showCustomToast(message: string) {
     // ℹ️ Convention: pour erreurs → error(); pour messages neutres → success() si besoin.

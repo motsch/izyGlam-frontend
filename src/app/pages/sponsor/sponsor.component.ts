@@ -34,7 +34,7 @@ export class SponsorComponent implements OnInit {
       },
       {
         title: '🎁 Utilisez vos points de fidélité',
-        description: 'Accédez à une sélection privilège de soins, produits et services offerts contre vos points IzyGlam.',
+        description: 'Accédez à une sélection privilège de soins, produits et services offerts contre vos pointsizyGlam.',
         button: 'J\'utilise mes points',
         image: 'assets/images/pub/sponsor_5.png',
         action: 'points',

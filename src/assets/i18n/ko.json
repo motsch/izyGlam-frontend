@@ -100,11 +100,25 @@
     "LOADING": "로딩 중…",
     "UNEXPECTED_ERROR": "예기치 않은 오류가 발생했습니다"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Shërbimi ndaj klientit",
+    "WRITE": "Shkruaj një mesazh…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "로그인 이메일을 입력하세요",
+    "VALIDE": "유효한 이메일 주소를 입력해 주세요.",
+    "LOADING": "로딩 중",
+    "VERIF": "정보를 확인하고 있습니다. 잠시만 기다려 주세요",
+    "ACCUEIL": "홈으로 돌아가기",
+    "OK": "로그인 성공!",
+    "SPACE": "내 공간으로 이동 중입니다"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "검증 중",
     "VALIDE": "활성화 링크를 확인하고 있습니다. 잠시만 기다려 주세요.",
     "ACCOUNT": "계정이 활성화되었습니다",
     "CONNECT": "로그인",
+    "REGISTER": "회원가입",
     "OUPS": "이런",
     "WRITE": "도움이 필요하신가요? 다음으로 문의하세요",
     "RESEND": "활성화 이메일 다시 보내기"

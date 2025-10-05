@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../../services/user.service';
 import { environment } from 'src/environments/environment';
 
-// ✅ Ajouts IzyGlam : toasts + i18n
+// ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -40,7 +40,7 @@ export class AdminClientsManagementComponent implements OnInit, AfterViewInit {
   constructor(
     private userService: UserService,
 
-    // ✅ IzyGlam
+    // ✅izyGlam
     private toastr: ToastrService,
     private translate: TranslateService
   ) { }
@@ -208,7 +208,7 @@ export class AdminClientsManagementComponent implements OnInit, AfterViewInit {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------
   private showCustomToast(message: string) {
     // Standard : erreurs → toastr.error

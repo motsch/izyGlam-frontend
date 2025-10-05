@@ -100,11 +100,25 @@
     "LOADING": "A carregar…",
     "UNEXPECTED_ERROR": "Ocorreu um erro inesperado"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Obsługa klienta",
+    "WRITE": "Napisz wiadomość…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Insira o seu e-mail de login",
+    "VALIDE": "Por favor, insira um endereço de e-mail válido.",
+    "LOADING": "Carregando",
+    "VERIF": "Verificando suas informações, aguarde",
+    "ACCUEIL": "Voltar à página inicial",
+    "OK": "Login realizado com sucesso!",
+    "SPACE": "Redirecionando para a sua área"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verificação em curso",
     "VALIDE": "Estamos a validar a sua ligação de ativação. É rápido.",
     "ACCOUNT": "Conta ativada",
     "CONNECT": "Iniciar sessão",
+    "REGISTER": "Registrar-se",
     "OUPS": "Oops",
     "WRITE": "Precisa de ajuda? Escreva-nos para",
     "RESEND": "Reenviar e-mail de ativação"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Até 10 salões ativos",
     "PREMIUM2": "Acesso a estatísticas avançadas de desempenho",
     "PREMIUM3": "Recomendações inteligentes para aumentar o teu volume de negócios",
-    "PREMIUM4": "Maior visibilidade na plataforma IzyGlam",
+    "PREMIUM4": "Maior visibilidade na plataformaizyGlam",
     "PREMIUM5": "Suporte prioritário",
     "PREMIUM6": "Pensado para independentes ambiciosas",
     "PREMIUM7": "Obter Rainha",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Avançada",
     "PLANS": "Número de salões ativos",
     "READY": "Pronta para fazer crescer a tua atividade?",
-    "DISCOVERS": "Descobrir as ofertas IzyGlam"
+    "DISCOVERS": "Descobrir as ofertasizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Como reservar uma prestação na IzyGlam?",
+    "QUESTION1": "Como reservar uma prestação naizyGlam?",
     "QUESTION2": "Como escolher o profissional certo para mim?",
     "QUESTION3": "Como alterar ou cancelar a minha marcação?",
     "QUESTION4": "Como posso acompanhar a minha encomenda?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Posso deixar uma avaliação após a minha prestação?",
     "QUESTION8": "Como usar as minhas ofertas de fidelidade e promoções?",
     "QUESTION9": "O que fazer se tiver um problema com a minha encomenda?",
-    "QUESTION10": "Como contactar a equipa IzyGlam?",
+    "QUESTION10": "Como contactar a equipaizyGlam?",
     "QUESTION11": "Como funciona a política de cancelamento e reembolso?",
     "QUESTION12": "Posso reservar para outra pessoa (presente, surpresa)?",
-    "QUESTION13": "Como me tornar profissional parceiro na IzyGlam?",
-    "QUESTION14": "Como proteger as minhas informações pessoais na IzyGlam?",
+    "QUESTION13": "Como me tornar profissional parceiro naizyGlam?",
+    "QUESTION14": "Como proteger as minhas informações pessoais naizyGlam?",
     "REPONSE1": "É simples e rápido. Depois de te inscreveres, escolhe o serviço que te interessa, vê os profissionais disponíveis perto de ti e seleciona uma data e hora. Clica em \"Reservar\" para finalizar e paga com cartão bancário. A tua reserva será validada manualmente pelo profissional. Em caso de recusa, és reembolsado(a) na totalidade.",
     "REPONSE2": "Cada profissional tem um perfil detalhado com prestações, preços, fotos de trabalhos e avaliações. Podes também adicionar favoritos para os encontrares facilmente. Compara os perfis para escolheres o que melhor corresponde às tuas expectativas.",
     "REPONSE3": "Podes alterar ou cancelar a tua reserva a partir do teu espaço pessoal. Os cancelamentos são gratuitos até 24h antes da prestação. Depois desse prazo, podem aplicar-se taxas. Se tiveres algum problema, o nosso suporte está à disposição.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "O pagamento é efetuado exclusivamente por cartão bancário (Visa, MasterCard, American Express). Não disponibilizamos pagamento em dinheiro nem via PayPal. Tudo é seguro para garantir a tua tranquilidade.",
     "REPONSE6": "Após a confirmação da reserva, recebes um e-mail de resumo. Também enviaremos um lembrete antes da prestação (por e-mail e/ou notificação push). Podes igualmente acompanhar o estado no teu espaço pessoal.",
     "REPONSE7": "Sim. Depois de cada prestação realizada, és convidado(a) a deixar uma avaliação do profissional. As avaliações são moderadas manualmente para garantir a autenticidade. Os profissionais não podem responder nem alterar as avaliações.",
-    "REPONSE8": "De momento, a IzyGlam ainda não oferece programa de fidelidade nem códigos promocionais. Estas funcionalidades estão previstas para uma fase posterior.",
+    "REPONSE8": "De momento, aizyGlam ainda não oferece programa de fidelidade nem códigos promocionais. Estas funcionalidades estão previstas para uma fase posterior.",
     "REPONSE9": "Podes contactar-nos diretamente na secção \"Contacto\" ou por e-mail. Faremos o possível para responder em 24h (prazo indicativo) e ajudar a resolver o problema rapidamente.",
     "REPONSE10": "Podes falar connosco através do formulário no site ou na aplicação. O suporte está disponível de segunda a sábado, das 9h às 18h. Exemplo de e-mail: support@izyglam.com",
     "REPONSE11": "Podes cancelar a tua reserva sem custos até 24h antes da hora prevista. Após esse prazo, podem aplicar-se taxas. Se a tua reserva for recusada pelo profissional, o reembolso é automático. O sistema automático de reembolso está em implementação.",
     "REPONSE12": "Ainda não podes oferecer uma prestação a outra pessoa a partir da tua conta. Contudo, se um profissional propuser uma fórmula duo ou familiar, podes reservar para várias pessoas nesse contexto.",
-    "REPONSE13": "És esteticista, cabeleireira ou profissional de bem-estar? Podes juntar-te à comunidade IzyGlam preenchendo o formulário na página \"Tornar-se parceiro\". A nossa equipa entrará em contacto para finalizar a inscrição.",
+    "REPONSE13": "És esteticista, cabeleireira ou profissional de bem-estar? Podes juntar-te à comunidadeizyGlam preenchendo o formulário na página \"Tornar-se parceiro\". A nossa equipa entrará em contacto para finalizar a inscrição.",
     "REPONSE14": "A segurança dos teus dados é a nossa prioridade. Cumprimos o RGPD. Apenas as informações estritamente necessárias à prestação são acessíveis aos profissionais. Existe uma mensagem integrada para comunicar se necessário, mas comportamentos que contornem a plataforma serão monitorizados."
   },
   "PRIVACY": {

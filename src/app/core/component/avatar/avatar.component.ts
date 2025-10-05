@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-// ✅ Ajouts IzyGlam : toasts + i18n
+// ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -21,7 +21,7 @@ export class AvatarComponent {
   imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
   constructor(
-    // ✅ IzyGlam
+    // ✅izyGlam
     private toastr: ToastrService,
     private translate: TranslateService
   ) {}
@@ -44,10 +44,10 @@ export class AvatarComponent {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------
   private showCustomToast(message: string) {
-    // Standard IzyGlam : erreurs → toastr.error
+    // StandardizyGlam : erreurs → toastr.error
     this.toastr.error(message);
   }
 }

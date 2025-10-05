@@ -29,12 +29,12 @@
          <div class="form-group">
             {{ 'SIGNUP.PLACEHOLDER_PHONE_NUMBER' | translate }}
             <input required name="phone" type="tel" class="form-control" [(ngModel)]="user.phone" #phone="ngModel"
-               pattern="^0[1-9][0-9]{8}$" id="inputphone" placeholder="0601020304">
+               pattern="^0[1-9][0-9]{8}$" id="inputphone" [placeholder]="placeholerPhone">
             <div *ngIf="error.phone" class="error">{{error.phone}}</div>
          </div>
          <div class="form-group">
             {{ 'SIGNUP.PLACEHOLDER_EMAIL' | translate }}
-            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Entrez votre email"
+            <input type="email" name="email" class="form-control" id="inputEmail" [placeholder]="placeholerEmail"
                required [(ngModel)]="user.email" [ngModelOptions]="{ updateOn: 'blur' }" #email="ngModel" />
 
             <div *ngIf="email.errors?.['required'] && email.touched" class="error">

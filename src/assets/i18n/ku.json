@@ -100,11 +100,25 @@
     "LOADING": "Tê barkirin…",
     "UNEXPECTED_ERROR": "Çewtiyek nehewldayî çêbû"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Xizmeta mişterîyan",
+    "WRITE": "Peyamek binivîse…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "E-nameya têketinê xwe binivîse",
+    "VALIDE": "Ji kerema xwe navnîşana e-nameyeke derbasdar binivîse.",
+    "LOADING": "Tê barkirin",
+    "VERIF": "Agahiyên te tên kontrolkirin, ji kerema xwe bisekine",
+    "ACCUEIL": "Vegere serûpel",
+    "OK": "Têketin serketî bû!",
+    "SPACE": "Tê veguheztin bo qada te"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Pêşniyara pejirandinê tê kiriye",
     "VALIDE": "Em lînkê çalakirinê te diapîvînin. Tenê çend çirkeyên kêm dike.",
     "ACCOUNT": "Hesab hate çalakirin",
     "CONNECT": "Têkeve",
+    "REGISTER": "Xwe tomar bike",
     "OUPS": "Ops",
     "WRITE": "Pêwîstî bi alîkarî heye? Me binivîse li",
     "RESEND": "E-peyamê çalakirinê ji nû ve bişîne"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Heta 10 salonên çalak",
     "PREMIUM2": "Gihîştina statîstîkên pêşketî li performansê",
     "PREMIUM3": "Pêşniyarên jîr ji bo zêdekirina CA ya te",
-    "PREMIUM4": "Dîtinbûna bilez di pêlatforma IzyGlam de",
+    "PREMIUM4": "Dîtinbûna bilez di pêlatformaizyGlam de",
     "PREMIUM5": "Destekê pêşî",
     "PREMIUM6": "Ji bo serbestkarên hêvîdar hatî afirandin",
     "PREMIUM7": "Bibe Şêxa",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Pêşketî",
     "PLANS": "Hejmara salonên çalak",
     "READY": "Amadeyî ku çalakiyê xwe mezintir bikî?",
-    "DISCOVERS": "Pêşniyarên IzyGlam bibîne"
+    "DISCOVERS": "PêşniyarênizyGlam bibîne"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Çawa li IzyGlamê xizmetek rezerv bikim?",
+    "QUESTION1": "Çawa liizyGlamê xizmetek rezerv bikim?",
     "QUESTION2": "Çawa profesyonelê rast ji bo xwe hilbijêrim?",
     "QUESTION3": "Çawa randevûyê biguherînim an betal bikim?",
     "QUESTION4": "Çawa dikarim fermana xwe bişopînim?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Dikarim piştî xizmetê raya xwe bihêlim?",
     "QUESTION8": "Çawa fîdelîte û promosyonan bi kar bînim?",
     "QUESTION9": "Heke pirsgirêk bi fermana min re hebû çi bikim?",
-    "QUESTION10": "Çawa bi tîma IzyGlam re têkilî bigirim?",
+    "QUESTION10": "Çawa bi tîmaizyGlam re têkilî bigirim?",
     "QUESTION11": "Siyaseta betalê û paşveguhartinê çawa dixebite?",
     "QUESTION12": "Ma dikarim ji bo kesekî din rezerv bikim (diyarkirin, şaşî)?",
-    "QUESTION13": "Çawa bibe profesyonelê hevkariyê li IzyGlamê?",
-    "QUESTION14": "Çawa agahiyên kesaneya xwe li IzyGlamê biparêzim?",
+    "QUESTION13": "Çawa bibe profesyonelê hevkariyê liizyGlamê?",
+    "QUESTION14": "Çawa agahiyên kesaneya xwe liizyGlamê biparêzim?",
     "REPONSE1": "Hêsan û bilez e. Dema qeydkirî bûyî, servîsa ku hez dikî hilbijêre, profesyonelên nêzîk bibîne, dîrok û demjimêr hilbijêre. Bi \"Rezervînin\" bitikîne û bi karta bankê pere bide. Pêşkêşkar bi destan rezervasyonê piştrast dike. Heke red bibe, %100 paşve tê dayîn.",
     "REPONSE2": "Her profesyonel profîleka tije heye: xizmet, bihayê, wêne, rayan. Dikare favorkan zêde bikî. Profîlan bi hev re berpirsekî bike û yê herî li hewceyên te bibijêre.",
     "REPONSE3": "Ji qada xwe ya kesane rezervasyonê biguherîne an betal bike. Betal kirin heta 24 saet berê xizmetê belaş e; ji wêyî pê re dibe xerc bê. Heke pirsgirêk hebû, destekê me amade ye.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Tevdan tenê bi karta bankê (Visa, MasterCard, American Express) ye. Em pereya kaxiz an PayPal pêşkêş nakin. Hemû tişt ewle ye.",
     "REPONSE6": "Dema rezervasyonê hate pejirandin, e-peyamekê yekser distînî. Pêşniyara bîranînê jî (e-peyam/push) tên. Ji qada xwe jî rewş bibîne.",
     "REPONSE7": "Erê. Piştî her xizmetê ku qediya, tu tê daxwaz kirin ku raya xwe bihêlî. Rayan bi destan tên kontrole kirin. Profesyonel nikarin rayan bersiv bide an biguherînin.",
-    "REPONSE8": "Hê niha, IzyGlam bernameya fidelîte an koda promosyonê nîne. Ev taybetmendî dê di pêş demê de were zêdekirin.",
+    "REPONSE8": "Hê niha,izyGlam bernameya fidelîte an koda promosyonê nîne. Ev taybetmendî dê di pêş demê de were zêdekirin.",
     "REPONSE9": "Dikarî rasterast ji beşa \"Têkilî\" re an bi e-peyamê bi me re têkilî bigirî. Hedefa me ye ku di nav 24 saetan de (rêvebirinê) bersiv bidin û pirsgirêkê bi başî çareser bikin.",
     "REPONSE10": "Bi forma têkilî ya li malperê/sepanê me re binivîse. Desteka mişterî ji Duşem heya Şemî, ji 9:00 heya 18:00 heye. Mînak e-peyamê: support@izyglam.com",
     "REPONSE11": "Tu dikarî heta 24 saet berê demê pêşbîrê belaş betal bikî. Piştre dibe xerc bê. Heke pêşkêşkar rezervasyonê red kir, paşveguhartin otomatîk e (pergal li ser rê ye).",
     "REPONSE12": "Hê niha nikarî ji nav hesabê xwe ji bo kesekî din pêşkêşek bidî. Lê heke profesyonel formûla du/zanînî pêşkêş dike, dikarî ji bo gelek kesan di heman çarçoveyê de rezerv bikî.",
-    "REPONSE13": "Ger estetîkvan, şêvger an pratîsyonekê xweşbûnê yî, dikarî bi tîmê IzyGlam re beşdar bî. Forma li rûpela \"Bibe hevkar\" dagirtin û em wê bi te re têkilî bigirin.",
+    "REPONSE13": "Ger estetîkvan, şêvger an pratîsyonekê xweşbûnê yî, dikarî bi tîmêizyGlam re beşdar bî. Forma li rûpela \"Bibe hevkar\" dagirtin û em wê bi te re têkilî bigirin.",
     "REPONSE14": "Ewlehîbûna daneyên te pêşiya me ye. Em rêbazên GDPRê rêz dikin. Tenê agahiyên pêwîst ji bo xizmetê bi profesyonelan têne parve kirin. Peyamgehê ya hundirîn heye, lê lêkolînên ji bo derbasbûna pêlatformê tên kontrol kirin."
   },
   "PRIVACY": {

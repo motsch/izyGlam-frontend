@@ -3,7 +3,7 @@ import { UserService } from '../../services/user.service';
 import { ShopService } from '../../services/shop.service';
 import { BookingService } from '../../services/booking.service';
 
-// ✅ Ajouts IzyGlam : toasts + i18n
+// ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -39,7 +39,7 @@ export class AdminComponent implements OnInit {
     private shopService: ShopService,
     private bookingService: BookingService,
 
-    // ✅ Injections IzyGlam
+    // ✅ InjectionsizyGlam
     private toastr: ToastrService,
     private translate: TranslateService
   ) {}
@@ -94,10 +94,10 @@ export class AdminComponent implements OnInit {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------
   private showCustomToast(message: string) {
-    // Standard IzyGlam : erreurs → toastr.error
+    // StandardizyGlam : erreurs → toastr.error
     // Clé i18n recommandée : ERROR.GENERIC_ERROR
     this.toastr.error(message);
   }

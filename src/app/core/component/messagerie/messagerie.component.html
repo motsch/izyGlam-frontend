@@ -104,7 +104,7 @@
         [(ngModel)]="newMessage"
         class="input"
         rows="1"
-        placeholder="Écrire un message…"
+        [placeholder]="('MESSAGE.WRITE' | translate)"
         (input)="autoResize(messageBox)"
         (focus)="scrollToBottom()"
         (keydown)="onKeydown($event)"

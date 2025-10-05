@@ -1,8 +1,9 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import frLocale from '@fullcalendar/core/locales/fr'; // Import de la localisation française
+import allLocales from '@fullcalendar/core/locales-all'; // ✅ toutes les locales FC
+import { FullCalendarComponent } from '@fullcalendar/angular';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
@@ -11,7 +12,7 @@ import {
 import { BookingService } from '../../services/booking.service';
 import { SessionService } from '../../services/session.service';
 
-// ✅ Ajouts IzyGlam : toasts + i18n
+// ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -26,6 +27,7 @@ export class AgendaComponent implements OnInit {
 
   openNewEventModal = false;
   newEventData: any = {};
+  @ViewChild('calendar', { static: false }) calendarComponent?: FullCalendarComponent;
 
   // ⚙️ Options FullCalendar (config par défaut + FR)
   calendarOptions: CalendarOptions = {
@@ -34,14 +36,15 @@ export class AgendaComponent implements OnInit {
     weekends: true,
     slotMinTime: '04:00:00',
     slotMaxTime: '23:59:59',
-    allDayText: 'Events',
+    // allDayText: 'Events',
     eventOrder: 'status,-start',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay',
     },
-    locale: frLocale,
+    locales: allLocales, // ✅ toutes les locales
+    locale: 'fr',
     // Événements d’exemple (restent si pas de données)
     events: [
       {
@@ -78,10 +81,10 @@ export class AgendaComponent implements OnInit {
     private bookingService: BookingService,
     private sessionService: SessionService,
 
-    // ✅ IzyGlam
+    // ✅izyGlam
     private toastr: ToastrService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   // ------------------------------------------------------
   // ⏱️ Chargement : on set le menu + on récupère les bookings pro
@@ -89,7 +92,26 @@ export class AgendaComponent implements OnInit {
   ngOnInit(): void {
     localStorage.setItem('menu-param', 'calendar');
 
-    // ⚠️ Si me/shps ne sont pas encore injectés, on évite l’appel vide
+    // ✅ 1) Récupère la langue (SessionService prioritaire)
+    const initialLang = this.sessionService.getLang() || localStorage.getItem('langue') || 'fr';
+    // localStorage.getItem('langue') peut contenir des guillemets si JSON.stringify, on gère vite fait :
+    const cleanedLang = (initialLang || 'fr').toString().replace(/^"+|"+$/g, '');
+
+    // ✅ 2) Applique aux traductions app (si ce n’est pas déjà fait ailleurs)
+    this.translate.use(cleanedLang);
+
+    // ✅ 3) Applique au calendrier
+    this.setCalendarLocale(cleanedLang);
+
+    // ✅ 4) Réagit quand la langue change via ngx-translate
+    this.translate.onLangChange.subscribe((e) => {
+      const newLang = e.lang || 'fr';
+      // optionnel : persister côté session/local
+      this.sessionService.setLang(newLang);
+      this.setCalendarLocale(newLang);
+    });
+
+    // ⚠️ Si me/shops ne sont pas encore injectés, on évite l’appel vide
     if (!this?.me?._id) {
       console.warn('AgendaComponent: me._id manquant — abonnement non lancé.');
       return;
@@ -97,7 +119,6 @@ export class AgendaComponent implements OnInit {
 
     this.bookingService.getBookingByUserPro(this.me._id).subscribe({
       next: (data: any) => {
-        // On injecte les propriétés attendues par FullCalendar
         if (this.calendarOptions.events) {
           data.forEach((elem: any) => {
             elem.start = new Date(elem.start);
@@ -120,6 +141,16 @@ export class AgendaComponent implements OnInit {
     });
   }
 
+  private setCalendarLocale(lang: string) {
+    // 1) Mets à jour l’option locale dans l’objet (utile si Angular re-render)
+    this.calendarOptions = { ...this.calendarOptions, locale: lang };
+
+    // 2) Mets à jour directement l’instance FullCalendar si déjà montée
+    const api = this.calendarComponent?.getApi();
+    if (api) {
+      api.setOption('locale', lang);
+    }
+  }
   // ------------------------------------------------------
   // ➕ Ouvrir la modale d’ajout d’événement
   // ------------------------------------------------------
@@ -237,7 +268,7 @@ export class AgendaComponent implements OnInit {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------
   private showCustomToast(message: string) {
     // Standard : erreurs → toastr.error
@@ -254,7 +285,7 @@ export class ContentCalendarItemDialog {
   constructor(
     public dialogRef: MatDialogRef<ContentCalendarItemDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();

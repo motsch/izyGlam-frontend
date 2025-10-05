@@ -183,7 +183,7 @@ export class DashboardComponent implements OnInit {
       .slice(0, count);
   }
 
-  // --- IzyGlam: toasts unifiés ---
+  // ---izyGlam: toasts unifiés ---
   private showCustomToast(message: string) {
     // Erreur stylisée (clé de traduction attendue : ERROR.GENERIC_ERROR)
     this.toastr.error(message);

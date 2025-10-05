@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 
-// ✅ Ajouts IzyGlam : toasts + i18n
+// ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -96,7 +96,7 @@ export class VerifyEmailComponent implements OnInit {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------
   private showCustomToast(message: string) {
     // Ex conseillé (fr.json) :

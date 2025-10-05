@@ -100,11 +100,25 @@
     "LOADING": "Đang tải…",
     "UNEXPECTED_ERROR": "Đã xảy ra lỗi không mong muốn"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "บริการลูกค้า",
+    "WRITE": "เขียนข้อความ…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Nhập email đăng nhập của bạn",
+    "VALIDE": "Vui lòng nhập địa chỉ email hợp lệ.",
+    "LOADING": "Đang tải",
+    "VERIF": "Đang xác minh thông tin của bạn, vui lòng chờ",
+    "ACCUEIL": "Quay lại trang chủ",
+    "OK": "Đăng nhập thành công!",
+    "SPACE": "Đang chuyển hướng đến không gian của bạn"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Đang xác minh",
     "VALIDE": "Chúng tôi đang xác thực liên kết kích hoạt của bạn. Chỉ mất một lát.",
     "ACCOUNT": "Tài khoản đã được kích hoạt",
     "CONNECT": "Đăng nhập",
+    "REGISTER": "Đăng ký",
     "OUPS": "Rất tiếc",
     "WRITE": "Cần trợ giúp? Viết cho chúng tôi tại",
     "RESEND": "Gửi lại email kích hoạt"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Tối đa 10 salon hoạt động",
     "PREMIUM2": "Truy cập thống kê nâng cao",
     "PREMIUM3": "Khuyến nghị thông minh tăng doanh thu",
-    "PREMIUM4": "Tăng hiển thị trên IzyGlam",
+    "PREMIUM4": "Tăng hiển thị trênizyGlam",
     "PREMIUM5": "Hỗ trợ ưu tiên",
     "PREMIUM6": "Dành cho freelancer tham vọng",
     "PREMIUM7": "Nhận gói Nữ hoàng",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Nâng cao",
     "PLANS": "Số salon hoạt động",
     "READY": "Sẵn sàng phát triển hoạt động?",
-    "DISCOVERS": "Khám phá các gói của IzyGlam"
+    "DISCOVERS": "Khám phá các gói củaizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Làm sao để đặt dịch vụ trên IzyGlam?",
+    "QUESTION1": "Làm sao để đặt dịch vụ trênizyGlam?",
     "QUESTION2": "Làm sao chọn đúng chuyên gia cho tôi?",
     "QUESTION3": "Làm sao sửa đổi hoặc hủy lịch hẹn?",
     "QUESTION4": "Tôi theo dõi đơn hàng như thế nào?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Tôi có thể để lại đánh giá sau dịch vụ không?",
     "QUESTION8": "Làm sao dùng ưu đãi tích điểm & khuyến mãi?",
     "QUESTION9": "Nếu gặp vấn đề với đơn hàng thì sao?",
-    "QUESTION10": "Liên hệ đội IzyGlam thế nào?",
+    "QUESTION10": "Liên hệ độiizyGlam thế nào?",
     "QUESTION11": "Chính sách hủy & hoàn tiền hoạt động ra sao?",
     "QUESTION12": "Tôi có thể đặt cho người khác (quà, bất ngờ) không?",
-    "QUESTION13": "Làm sao trở thành đối tác chuyên nghiệp trên IzyGlam?",
-    "QUESTION14": "Làm sao bảo vệ dữ liệu cá nhân của tôi trên IzyGlam?",
+    "QUESTION13": "Làm sao trở thành đối tác chuyên nghiệp trênizyGlam?",
+    "QUESTION14": "Làm sao bảo vệ dữ liệu cá nhân của tôi trênizyGlam?",
     "REPONSE1": "Rất đơn giản và nhanh chóng. Sau khi đăng ký, chọn dịch vụ bạn quan tâm, xem chuyên gia gần bạn, rồi chọn ngày giờ. Nhấn “Đặt” để hoàn tất và thanh toán bằng thẻ. Đặt chỗ sẽ được chuyên gia duyệt thủ công. Nếu bị từ chối, bạn sẽ được hoàn tiền 100%.",
     "REPONSE2": "Mỗi chuyên gia có hồ sơ chi tiết: dịch vụ, giá, ảnh tác phẩm và đánh giá. Bạn cũng có thể thêm vào yêu thích để tìm lại nhanh. Hãy so sánh để chọn người phù hợp nhất.",
     "REPONSE3": "Bạn có thể sửa hoặc hủy trong khu vực cá nhân. Hủy miễn phí đến trước 24h. Sau đó có thể áp phí. Gặp vấn đề? Hỗ trợ của chúng tôi luôn sẵn sàng.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Thanh toán chỉ bằng thẻ (Visa, MasterCard, American Express). Hiện chưa hỗ trợ tiền mặt hay PayPal. Mọi giao dịch đều an toàn.",
     "REPONSE6": "Khi đặt chỗ được xác nhận, bạn nhận email tóm tắt. Chúng tôi cũng gửi nhắc trước dịch vụ (qua email và/hoặc thông báo đẩy). Bạn có thể theo dõi trạng thái trong tài khoản.",
     "REPONSE7": "Có. Sau mỗi dịch vụ, bạn sẽ được mời để lại đánh giá. Đánh giá được kiểm duyệt thủ công để đảm bảo tính xác thực. Chuyên gia không thể trả lời hoặc sửa đánh giá.",
-    "REPONSE8": "Hiện tại, IzyGlam chưa có chương trình tích điểm hay mã khuyến mãi. Các tính năng này sẽ được triển khai ở giai đoạn sau.",
+    "REPONSE8": "Hiện tại,izyGlam chưa có chương trình tích điểm hay mã khuyến mãi. Các tính năng này sẽ được triển khai ở giai đoạn sau.",
     "REPONSE9": "Bạn có thể liên hệ trực tiếp từ mục “Liên hệ” hoặc qua email. Chúng tôi cố gắng phản hồi trong vòng 24h (ước tính) và hỗ trợ giải quyết nhanh nhất.",
     "REPONSE10": "Liên hệ qua biểu mẫu trên trang web/ứng dụng. Hỗ trợ khách hàng từ thứ Hai đến thứ Bảy, 9h–18h. Ví dụ email: [support@izyglam.com](mailto:support@izyglam.com)",
     "REPONSE11": "Bạn có thể hủy miễn phí trước 24h. Sau đó có thể áp phí. Nếu chuyên gia từ chối sau khi thanh toán, bạn sẽ được hoàn toàn bộ. Hệ thống hoàn tiền tự động đang triển khai.",
     "REPONSE12": "Hiện bạn chưa thể tặng dịch vụ cho người khác từ tài khoản. Tuy nhiên, nếu chuyên gia có gói đôi hoặc gia đình, bạn có thể đặt cho nhiều người trong phạm vi đó.",
-    "REPONSE13": "Bạn là chuyên viên thẩm mỹ, thợ làm tóc hay chăm sóc sức khỏe? Hãy gia nhập cộng đồng IzyGlam bằng cách điền form ở trang “Trở thành đối tác”. Chúng tôi sẽ sớm liên hệ để hoàn tất.",
+    "REPONSE13": "Bạn là chuyên viên thẩm mỹ, thợ làm tóc hay chăm sóc sức khỏe? Hãy gia nhập cộng đồngizyGlam bằng cách điền form ở trang “Trở thành đối tác”. Chúng tôi sẽ sớm liên hệ để hoàn tất.",
     "REPONSE14": "Bảo mật dữ liệu là ưu tiên. Chúng tôi tuân thủ RGPD. Chỉ thông tin cần thiết mới được cung cấp cho chuyên gia. Có hộp thư tích hợp để trao đổi khi cần; mọi hành vi cố gắng lách nền tảng sẽ bị giám sát."
   },
   "PRIVACY": {

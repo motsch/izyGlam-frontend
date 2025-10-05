@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-// ✅ IzyGlam: traductions & toasts
+// ✅izyGlam: traductions & toasts
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
@@ -38,7 +38,7 @@ export class CreateCompanyInfoComponent implements OnDestroy {
   ];
 
   constructor(
-    // ✅ IzyGlam injections
+    // ✅izyGlam injections
     private translate: TranslateService,
     private toastr: ToastrService
   ) {
@@ -133,7 +133,7 @@ export class CreateCompanyInfoComponent implements OnDestroy {
   }
 
   // ------------------------------------------------------------
-  // ✨ Toasts IzyGlam
+  // ✨ ToastsizyGlam
   // ------------------------------------------------------------
   private showCustomToast(message: string) {
     this.toastr.error(message); // erreurs → .error()

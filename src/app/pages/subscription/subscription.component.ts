@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/core/services/user.service';
 
-// ✅ Ajouts IzyGlam : toasts + i18n
+// ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -20,7 +20,7 @@ export class SubscriptionComponent implements OnInit {
   constructor(
     private userService: UserService,
 
-    // ✅ Ajout IzyGlam
+    // ✅ AjoutizyGlam
     private toastr: ToastrService,
     private translate: TranslateService
   ) { }
@@ -71,7 +71,7 @@ export class SubscriptionComponent implements OnInit {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------
   private showCustomToast(message: string) {
     // Exemple conseillé (fr.json) :

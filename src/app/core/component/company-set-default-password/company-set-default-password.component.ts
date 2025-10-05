@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CreditEmployeeModalComponent } from '../credit-employee-modal/credit-employee-modal.component';
 import { CompanyService } from '../../services/company.service';
 
-// ✅ IzyGlam: traductions & toasts
+// ✅izyGlam: traductions & toasts
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
@@ -37,7 +37,7 @@ export class CompanySetDefaultPasswordComponent implements OnInit {
     private userService: UserService,          // gardé si besoin futur
     private companyService: CompanyService,     // utilisé pour sauvegarder le mot de passe
     private translate: TranslateService,        // ✅ I18n
-    private toastr: ToastrService               // ✅ Toasts IzyGlam
+    private toastr: ToastrService               // ✅ ToastsizyGlam
   ) {}
 
   // ------------------------------------------------------------
@@ -92,7 +92,7 @@ export class CompanySetDefaultPasswordComponent implements OnInit {
           this.myCompany = updated;
           this.myCompanyCopy = { ...updated };
 
-          // ✅ Toast succès IzyGlam
+          // ✅ Toast succèsizyGlam
           this.showSuccessToast(
             this.translate.instant('SUCCESS.DEFAULT_PASSWORD_UPDATED') || 'Mot de passe par défaut mis à jour.'
           );
@@ -109,7 +109,7 @@ export class CompanySetDefaultPasswordComponent implements OnInit {
   }
 
   // ------------------------------------------------------------
-  // ✨ Toasts IzyGlam
+  // ✨ ToastsizyGlam
   // ------------------------------------------------------------
   private showCustomToast(message: string) {
     this.toastr.error(message); // erreurs → .error()

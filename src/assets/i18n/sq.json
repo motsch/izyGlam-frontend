@@ -100,11 +100,25 @@
     "LOADING": "Duke u ngarkuar…",
     "UNEXPECTED_ERROR": "Ndodhi një gabim i papritur"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Shërbimi ndaj klientit",
+    "WRITE": "Shkruaj një mesazh…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Shkruaj emailin tënd të hyrjes",
+    "VALIDE": "Ju lutem shkruani një adresë emaili të vlefshme.",
+    "LOADING": "Po ngarkohet",
+    "VERIF": "Po verifikojmë të dhënat tuaja, ju lutemi prisni",
+    "ACCUEIL": "Kthehu te faqja kryesore",
+    "OK": "Hyrja u krye me sukses!",
+    "SPACE": "Duke të ridrejtuar te hapësira jote"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verifikim në proces",
     "VALIDE": "Po verifikojmë lidhjen tuaj të aktivizimit. Zgjat vetëm një çast.",
     "ACCOUNT": "Llogaria u aktivizua",
     "CONNECT": "Hyni",
+    "REGISTER": "Regjistrohu",
     "OUPS": "Ups",
     "WRITE": "Keni nevojë për ndihmë? Na shkruani në",
     "RESEND": "Ridërgo email-in e aktivizimit"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Deri në 10 sallone aktive",
     "PREMIUM2": "Akses në statistika të avancuara",
     "PREMIUM3": "Rekomandime inteligjente për të rritur xhiron",
-    "PREMIUM4": "Dukshmëri e rritur në IzyGlam",
+    "PREMIUM4": "Dukshmëri e rritur nëizyGlam",
     "PREMIUM5": "Suport prioritar",
     "PREMIUM6": "E menduar për të pavarura ambicioze",
     "PREMIUM7": "Merr Mbretëreshë",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "E avancuar",
     "PLANS": "Numri i salloneve aktive",
     "READY": "Gati ta rritësh aktivitetin?",
-    "DISCOVERS": "Zbulo ofertat e IzyGlam"
+    "DISCOVERS": "Zbulo ofertat eizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Si të rezervoj një shërbim në IzyGlam?",
+    "QUESTION1": "Si të rezervoj një shërbim nëizyGlam?",
     "QUESTION2": "Si të zgjedh profesionistin e duhur për mua?",
     "QUESTION3": "Si ta ndryshoj ose anuloj takimin?",
     "QUESTION4": "Si mund ta ndjek porosinë time?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "A mund të lë një vlerësim pas shërbimit?",
     "QUESTION8": "Si të përdor ofertat e besnikërisë dhe promocionet?",
     "QUESTION9": "Çfarë të bëj nëse kam problem me porosinë?",
-    "QUESTION10": "Si të kontaktoj ekipin IzyGlam?",
+    "QUESTION10": "Si të kontaktoj ekipinizyGlam?",
     "QUESTION11": "Si funksionon politika e anulimit dhe rimbursimit?",
     "QUESTION12": "A mund të rezervoj për dikë tjetër (dhuratë, surprizë)?",
-    "QUESTION13": "Si të bëhem profesionist partner në IzyGlam?",
-    "QUESTION14": "Si t’i mbroj informacionet e mia personale në IzyGlam?",
+    "QUESTION13": "Si të bëhem profesionist partner nëizyGlam?",
+    "QUESTION14": "Si t’i mbroj informacionet e mia personale nëizyGlam?",
     "REPONSE1": "Është e thjeshtë dhe e shpejtë. Pasi të regjistrohesh, zgjidh shërbimin, shiko profesionistët pranë teje, zgjidh datën/horën. Kliko “Rezervo” dhe paguaj me kartë. Rezervimi verifikohet manualisht nga profesionisti. Nëse refuzohet, rimbursohesh plotësisht.",
     "REPONSE2": "Çdo profesionist ka profil me shërbime, çmime, foto dhe vlerësime. Mund t’i shtosh te të preferuarit. Krahaso dhe zgjidh atë që të përshtatet më mirë.",
     "REPONSE3": "Mund të ndryshosh ose anulosh nga hapësira jote personale. Anulimi falas deri në 24h para shërbimit. Pas kësaj, mund të ketë tarifa. Suporti ynë është në dispozicion.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Pagesa bëhet vetëm me kartë (Visa, MasterCard, American Express). Nuk ofrojmë para në dorë as PayPal. Çdo gjë është e siguruar.",
     "REPONSE6": "Pasi të konfirmohet rezervimi, merrni email përmbledhës dhe një rikujtues para shërbimit (email dhe/ose njoftim). Mund ta ndiqni edhe nga hapësira juaj.",
     "REPONSE7": "Po. Pas çdo shërbimi, ftoheni të lini mendim. Vlerësimet moderohen manualisht për autenticitet. Profesionistët s’mund t’i ndryshojnë.",
-    "REPONSE8": "Aktualisht, IzyGlam nuk ka ende program besnikërie apo kode promo. Janë planifikuar për një fazë të ardhshme.",
+    "REPONSE8": "Aktualisht,izyGlam nuk ka ende program besnikërie apo kode promo. Janë planifikuar për një fazë të ardhshme.",
     "REPONSE9": "Na kontaktoni nga rubrika “Kontakt” ose me email. Ekipi ynë synon t’ju kthejë përgjigje brenda 24h (orientuese) dhe t’ju ndihmojë sa më shpejt.",
     "REPONSE10": "Na gjeni përmes formularit në faqe ose aplikacion. Suporti: hënë–të shtunë, 9:00–18:00. Shembull email: support@izyglam.com",
     "REPONSE11": "Mund të anuloni falas deri 24h para. Më pas, mund të ketë tarifa. Nëse profesionisti refuzon rezervimin pas pagesës, rimbursimi është automatik (sistemi i automatizuar është në zbatim).",
     "REPONSE12": "Ende nuk mund të dhuroni një shërbim nga llogaria juaj. Por, nëse profesionisti ofron formulë duo ose familje, mund të rezervoni për disa persona.",
-    "REPONSE13": "Jeni estetiste, parukiere apo praktikues/e mirëqenieje? Bashkohuni me IzyGlam duke plotësuar formularin te “Bëhu partner”. Do t’ju kontaktojmë shpejt.",
+    "REPONSE13": "Jeni estetiste, parukiere apo praktikues/e mirëqenieje? Bashkohuni meizyGlam duke plotësuar formularin te “Bëhu partner”. Do t’ju kontaktojmë shpejt.",
     "REPONSE14": "Siguria e të dhënave tuaja është prioritet. Respektojmë Rregulloren GDPR. Vetëm informacionet e domosdoshme u shfaqen profesionistëve. Mesazheria e integruar ndihmon komunikimin; shmangia e platformës monitorohet."
   },
   "PRIVACY": {

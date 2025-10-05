@@ -7,8 +7,8 @@
             {{ 'LOGIN.CONTINUE_WITH' | translate }}
             Facebook</button>
          <div class="or-separator"><span>{{ 'LOGIN.OR' | translate }}</span></div>
-         <button routerLink="/sign-up" *ngIf="forConnection" type="button" class="btn apple qr"> S'enregistrer</button>
-         <button routerLink="/sign-in" *ngIf="!forConnection" type="button" class="btn apple qr"> Se connecter</button>
+         <button routerLink="/sign-up" *ngIf="forConnection" type="button" class="btn apple qr"> {{ "VERIFY_EMAIL.REGISTER" | translate }}</button>
+         <button routerLink="/sign-in" *ngIf="!forConnection" type="button" class="btn apple qr"> {{ "VERIFY_EMAIL.CONNECT" | translate }}</button>
          <!--<div class="or-separator"><span>{{ 'LOGIN.OR' | translate }}</span></div>
          <button type="button" class="btn apple qr"><i class="fa fa-qrcode"></i> {{ 'LOGIN.QRCODE' | translate }}</button>-->
          

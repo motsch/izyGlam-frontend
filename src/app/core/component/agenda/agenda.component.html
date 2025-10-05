@@ -1,9 +1,8 @@
 <div class="calendar-header">
-    <button mat-raised-button class="create-event-btn" (click)="openAddEventModal()">
-      {{ "CALENDAR.ADD_EVENT" | translate }}
-    </button>
-  </div>
-  
-  <!-- Existing calendar display -->
-  <full-calendar [options]="calendarOptions"></full-calendar>
-  
+  <button mat-raised-button class="create-event-btn" (click)="openAddEventModal()">
+    {{ "CALENDAR.ADD_EVENT" | translate }}
+  </button>
+</div>
+
+<!-- ✅ ajoute #calendar pour pouvoir getApi() côté TS -->
+<full-calendar #calendar [options]="calendarOptions"></full-calendar>

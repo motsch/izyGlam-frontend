@@ -43,7 +43,7 @@
     "EMPLOYEE_DELETED": "L’employé a été supprimé.",
     "SLOT_SELECTED": "Créneau sélectionné",
     "PASSWORD_RESET": "Le mot de passe a été réinitialisé.",
-    "INVOICE_GENERATED":"Factures générées.",
+    "INVOICE_GENERATED": "Factures générées.",
     "REVIEW_SAVED": "Avis enregistré, merci !",
     "DEFAULT_PASSWORD_UPDATED": "Le mot de passe par défaut a été mis à jour.",
     "COMPANY_CREATED": "Votre compte professionnel a bien été créé."
@@ -82,26 +82,43 @@
     "PASSWORD_TOO_SHORT": "Le mot de passe doit contenir au moins 8 caractères."
   },
   "STRIPE": {
-"MISSING_PK": "Configuration Stripe manquante",
-"LOAD_FAILED": "Stripe n’a pas pu être chargé",
-  "NOT_READY": "Stripe non initialisé",
-  "CONFIRM_FAILED": "Échec de l’enregistrement de la carte",
-  "CARD_SAVED": "Carte enregistrée avec succès ✅",
-  "PM_FAILED": "Échec de création de la carte",
-  "SI_FAILED": "Impossible de préparer l’enregistrement de la carte",
-  "ATTACH_FAILED": "Impossible d’attacher la carte au compte",
-  "SAVE_CARD": "Enregistrer la carte",
-  "ADD_CARD": "Ajouter la carte"
-},
-"AUTH": { "LOGIN_REQUIRED": "Veuillez vous connecter" },
-"COMMON": { 
-  "LOADING": "Chargement…", 
-  "UNEXPECTED_ERROR": "Une erreur inattendue est survenue" },
+    "MISSING_PK": "Configuration Stripe manquante",
+    "LOAD_FAILED": "Stripe n’a pas pu être chargé",
+    "NOT_READY": "Stripe non initialisé",
+    "CONFIRM_FAILED": "Échec de l’enregistrement de la carte",
+    "CARD_SAVED": "Carte enregistrée avec succès ✅",
+    "PM_FAILED": "Échec de création de la carte",
+    "SI_FAILED": "Impossible de préparer l’enregistrement de la carte",
+    "ATTACH_FAILED": "Impossible d’attacher la carte au compte",
+    "SAVE_CARD": "Enregistrer la carte",
+    "ADD_CARD": "Ajouter la carte"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Veuillez vous connecter"
+  },
+  "COMMON": {
+    "LOADING": "Chargement…",
+    "UNEXPECTED_ERROR": "Une erreur inattendue est survenue"
+  },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Service client",
+    "WRITE": "Écrire un message…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Entrez votre email de connexion",
+    "VALIDE": "Veuillez entrer une adresse email valide.",
+    "LOADING": "Chargement",
+    "VERIF": "Vérification de vos informations, veuillez patienter",
+    "ACCUEIL": "Retour à l'accueil",
+    "OK": "Connexion réussie !",
+    "SPACE": "Redirection vers votre espace en cours"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Vérification en cours",
     "VALIDE": "Nous validons votre lien d’activation. Cela ne prend qu’un instant.",
     "ACCOUNT": "Compte activé",
     "CONNECT": "Se connecter",
+    "REGISTER": "S'enregistrer",
     "OUPS": "Oups",
     "WRITE": "Besoin d’aide ? Écrivez-nous à",
     "RESEND": "Renvoyer l’email d’activation"
@@ -1008,7 +1025,7 @@
     "PREMIUM1": "Jusqu'à 10 salons actifs",
     "PREMIUM2": "Accès à des statistiques avancées sur vos performances",
     "PREMIUM3": "Recommandations intelligentes pour booster votre CA",
-    "PREMIUM4": "Visibilité renforcée sur la plateforme IzyGlam",
+    "PREMIUM4": "Visibilité renforcée sur la plateformeizyGlam",
     "PREMIUM5": "Support prioritaire",
     "PREMIUM6": "Pensé pour les indépendantes ambitieuses",
     "PREMIUM7": "Obtenir Reine",
@@ -1030,7 +1047,7 @@
     "ADVANCE": "Avancée",
     "PLANS": "Nombre de salons actifs",
     "READY": "Prête à faire grandir ton activité ?",
-    "DISCOVERS": "Découvrir les offres IzyGlam"
+    "DISCOVERS": "Découvrir les offresizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1154,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Comment réserver une prestation sur IzyGlam ?",
+    "QUESTION1": "Comment réserver une prestation surizyGlam ?",
     "QUESTION2": "Comment choisir le bon professionnel pour moi ?",
     "QUESTION3": "Comment modifier ou annuler mon rendez-vous ?",
     "QUESTION4": "Comment puis-je suivre ma commande ?",
@@ -1163,11 +1180,11 @@
     "QUESTION7": "Puis-je laisser un avis après ma prestation ?",
     "QUESTION8": "Comment utiliser mes offres fidélité et promotions ?",
     "QUESTION9": "Que faire si j’ai un problème avec ma commande ?",
-    "QUESTION10": "Comment contacter l’équipe IzyGlam ?",
+    "QUESTION10": "Comment contacter l’équipeizyGlam ?",
     "QUESTION11": "Comment fonctionne la politique d’annulation et de remboursement ?",
     "QUESTION12": "Puis-je réserver pour quelqu’un d’autre (cadeau, surprise) ?",
-    "QUESTION13": "Comment devenir professionnel partenaire sur IzyGlam ?",
-    "QUESTION14": "Comment protéger mes informations personnelles sur IzyGlam ?",
+    "QUESTION13": "Comment devenir professionnel partenaire surizyGlam ?",
+    "QUESTION14": "Comment protéger mes informations personnelles surizyGlam ?",
     "REPONSE1": "C’est simple et rapide. Une fois inscrit(e), choisis le service qui t’intéresse, découvre les professionnels disponibles près de chez toi, puis sélectionne une date et une heure. Clique sur \"Réserver\" pour finaliser, et procède au paiement par carte bancaire. Ta réservation sera ensuite validée manuellement par le professionnel. En cas de refus, tu es intégralement remboursé(e).",
     "REPONSE2": "Chaque professionnel a un profil détaillé avec ses prestations, tarifs, photos de réalisations et avis clients. Tu peux aussi ajouter tes favoris pour les retrouver facilement. Prends le temps de comparer les profils afin de choisir celui qui correspond le mieux à tes attentes.",
     "REPONSE3": "Tu peux modifier ou annuler ta réservation depuis ton espace personnel. Les annulations sont gratuites jusqu’à 24h avant la prestation. Au-delà, des frais peuvent être appliqués. Si tu rencontres un souci, notre support est à ta disposition.",
@@ -1175,12 +1192,12 @@
     "REPONSE5": "Le paiement s’effectue exclusivement par carte bancaire (Visa, MasterCard, American Express). Nous ne proposons pas de paiement en espèces ni via PayPal. Tout est sécurisé pour garantir ta tranquillité.",
     "REPONSE6": "Une fois ta réservation confirmée, tu reçois un email de récapitulatif. Nous t’enverrons aussi un rappel avant la prestation (par email et/ou notification push). Tu peux également suivre ton statut depuis ton espace personnel.",
     "REPONSE7": "Oui. Après chaque prestation réalisée, tu es invité(e) à laisser un avis sur le professionnel. Les avis sont modérés manuellement pour garantir leur authenticité. Les professionnels ne peuvent pas répondre ou modifier les avis.",
-    "REPONSE8": "Pour l’instant, IzyGlam ne propose pas encore de programme de fidélité ni de codes promotionnels. Ces fonctionnalités sont prévues pour une phase ultérieure.",
+    "REPONSE8": "Pour l’instant,izyGlam ne propose pas encore de programme de fidélité ni de codes promotionnels. Ces fonctionnalités sont prévues pour une phase ultérieure.",
     "REPONSE9": "Tu peux nous contacter directement depuis la rubrique \"Contact\" ou par email. Notre équipe fera le maximum pour te répondre sous 24h (délai indicatif) et t’aider à résoudre le problème dans les meilleurs délais.",
     "REPONSE10": "Tu peux nous joindre via le formulaire de contact sur le site ou l’application. Un support client est disponible du lundi au samedi, de 9h à 18h. Exemple d’email : support@izyglam.com",
     "REPONSE11": "Tu peux annuler ta réservation sans frais jusqu’à 24h avant l’heure prévue. Passé ce délai, des frais peuvent s’appliquer. Si ta réservation est refusée par le professionnel, le remboursement est automatique. Le système de remboursement automatique est en cours de déploiement.",
     "REPONSE12": "Tu ne peux pas encore offrir une prestation à une autre personne depuis ton compte. En revanche, si un professionnel propose une formule duo ou famille, tu peux réserver pour plusieurs personnes dans ce cadre spécifique.",
-    "REPONSE13": "Tu es esthéticienne, coiffeuse ou praticien(ne) bien-être ? Tu peux rejoindre la communauté IzyGlam en remplissant le formulaire disponible sur la page \"Devenir partenaire\". Notre équipe te recontactera rapidement pour finaliser ton inscription.",
+    "REPONSE13": "Tu es esthéticienne, coiffeuse ou praticien(ne) bien-être ? Tu peux rejoindre la communautéizyGlam en remplissant le formulaire disponible sur la page \"Devenir partenaire\". Notre équipe te recontactera rapidement pour finaliser ton inscription.",
     "REPONSE14": "La sécurité de tes données est notre priorité. Nous respectons les obligations du RGPD. Seules les informations strictement nécessaires à la prestation sont accessibles aux professionnels. Une messagerie intégrée permet d’échanger si besoin, mais tout comportement visant à contourner la plateforme sera surveillé."
   },
   "PRIVACY": {

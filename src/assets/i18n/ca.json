@@ -100,11 +100,25 @@
     "LOADING": "Carregant…",
     "UNEXPECTED_ERROR": "S’ha produït un error inesperat"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Atenció al client",
+    "WRITE": "Escriu un missatge…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Introdueix el teu correu d’accés",
+    "VALIDE": "Si us plau, introdueix una adreça de correu vàlida.",
+    "LOADING": "Carregant",
+    "VERIF": "Verificant la teva informació, espera si us plau",
+    "ACCUEIL": "Torna a l’inici",
+    "OK": "Inici de sessió correcte!",
+    "SPACE": "Redirigint cap al teu espai"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verificació en curs",
     "VALIDE": "Estem validant el teu enllaç d’activació. Només trigarà un instant.",
     "ACCOUNT": "Compte activat",
     "CONNECT": "Iniciar sessió",
+    "REGISTER": "Registrar-se",
     "OUPS": "Ups",
     "WRITE": "Necessites ajuda? Escriu-nos a",
     "RESEND": "Reenviar el correu d’activació"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Fins a 10 botigues actives",
     "PREMIUM2": "Accés a estadístiques avançades del teu rendiment",
     "PREMIUM3": "Recomanacions intel·ligents per impulsar la teva facturació",
-    "PREMIUM4": "Visibilitat reforçada a la plataforma IzyGlam",
+    "PREMIUM4": "Visibilitat reforçada a la plataformaizyGlam",
     "PREMIUM5": "Suport prioritari",
     "PREMIUM6": "Pensat per a autònomes amb ambició",
     "PREMIUM7": "Obtenir Reina",
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Com reservar una prestació a IzyGlam?",
+    "QUESTION1": "Com reservar una prestació aizyGlam?",
     "QUESTION2": "Com triar el professional adequat per a mi?",
     "QUESTION3": "Com modificar o cancel·lar la meva cita?",
     "QUESTION4": "Com puc seguir la meva comanda?",
@@ -1169,8 +1183,8 @@
     "QUESTION10": "Com contactar amb l’equip d’IzyGlam?",
     "QUESTION11": "Com funciona la política de cancel·lació i reemborsament?",
     "QUESTION12": "Puc reservar per a una altra persona (regal, sorpresa)?",
-    "QUESTION13": "Com esdevenir professional col·laborador a IzyGlam?",
-    "QUESTION14": "Com protegir les meves dades personals a IzyGlam?",
+    "QUESTION13": "Com esdevenir professional col·laborador aizyGlam?",
+    "QUESTION14": "Com protegir les meves dades personals aizyGlam?",
     "REPONSE1": "És simple i ràpid. Un cop registrat/da, tria el servei que t’interessa, descobreix els professionals disponibles a prop teu i selecciona una data i hora. Fes clic a «Reservar» per finalitzar i procedeix al pagament amb targeta bancària. La teva reserva serà validada manualment pel professional. En cas de refusar-la, se’t reemborsarà íntegrament.",
     "REPONSE2": "Cada professional té un perfil detallat amb prestacions, tarifes, fotos de treballs i opinions de clients. També pots afegir favorits per trobar-los fàcilment. Pren-te temps per comparar perfils i tria el que millor s’ajusti a les teves expectatives.",
     "REPONSE3": "Pots modificar o cancel·lar la reserva des del teu espai personal. Les cancel·lacions són gratuïtes fins a 24 h abans de la prestació. A partir d’aquell moment, es poden aplicar despeses. Si tens algun problema, el nostre suport és a la teva disposició.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "El pagament es fa exclusivament amb targeta (Visa, MasterCard, American Express). No oferim pagament en efectiu ni via PayPal. Tot és segur per garantir la teva tranquil·litat.",
     "REPONSE6": "Un cop confirmada la reserva, rebràs un correu de resum. També t’enviarem un recordatori abans de la prestació (per correu i/o notificació push). Pots seguir l’estat des del teu espai personal.",
     "REPONSE7": "Sí. Després de cada prestació realitzada, se’t convida a deixar una opinió sobre el professional. Les opinions es moderen manualment per garantir l’autenticitat. Els professionals no poden respondre ni modificar-les.",
-    "REPONSE8": "De moment, IzyGlam encara no ofereix programa de fidelitat ni codis promocionals. Aquestes funcionalitats estan previstes per a una fase posterior.",
+    "REPONSE8": "De moment,izyGlam encara no ofereix programa de fidelitat ni codis promocionals. Aquestes funcionalitats estan previstes per a una fase posterior.",
     "REPONSE9": "Pots contactar-nos directament des de l’apartat «Contacte» o per correu. Farem tot el possible per respondre’t en 24 h (termini indicatiu) i ajudar-te a resoldre el problema al més aviat possible.",
     "REPONSE10": "Ens pots contactar mitjançant el formulari del web o l’aplicació. Hi ha atenció al client de dilluns a dissabte, de 9 a 18 h. Exemple de correu: support@izyglam.com",
     "REPONSE11": "Pots cancel·lar la reserva sense càrrec fins a 24 h abans de l’hora prevista. Passat aquest termini, es poden aplicar despeses. Si el professional refusa la teva reserva, el reemborsament és automàtic. El sistema de reemborsament automàtic està en desplegament.",
     "REPONSE12": "Encara no pots oferir una prestació a una altra persona des del teu compte. Tanmateix, si un professional proposa una fórmula duo o familiar, pots reservar per a diverses persones en aquest marc específic.",
-    "REPONSE13": "Ets esteticista, perruquera o professional del benestar? Pots unir-te a la comunitat IzyGlam omplint el formulari de la pàgina «Fer-se col·laborador». El nostre equip es posarà en contacte amb tu per finalitzar la inscripció.",
+    "REPONSE13": "Ets esteticista, perruquera o professional del benestar? Pots unir-te a la comunitatizyGlam omplint el formulari de la pàgina «Fer-se col·laborador». El nostre equip es posarà en contacte amb tu per finalitzar la inscripció.",
     "REPONSE14": "La seguretat de les teves dades és la nostra prioritat. Respectem les obligacions del RGPD. Només la informació estrictament necessària per a la prestació és accessible als professionals. Hi ha una missatgeria integrada per comunicar si cal, però qualsevol comportament per esquivar la plataforma serà supervisat."
   },
   "PRIVACY": {

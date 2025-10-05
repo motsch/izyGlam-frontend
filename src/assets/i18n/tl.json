@@ -100,11 +100,25 @@
     "LOADING": "Naglo-load…",
     "UNEXPECTED_ERROR": "May hindi inaasahang error"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Serbisyo sa customer",
+    "WRITE": "Sumulat ng mensahe…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Introdueix el teu correu d’accés",
+    "VALIDE": "Si us plau, introdueix una adreça de correu vàlida.",
+    "LOADING": "Carregant",
+    "VERIF": "Verificant la teva informació, espera si us plau",
+    "ACCUEIL": "Torna a l’inici",
+    "OK": "Inici de sessió correcte!",
+    "SPACE": "Redirigint cap al teu espai"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Sinusuri…",
     "VALIDE": "Tinitiyak namin ang iyong activation link. Sandali lang ito.",
     "ACCOUNT": "Na-activate ang account",
     "CONNECT": "Mag-login",
+    "REGISTER": "Magrehistro",
     "OUPS": "Oops",
     "WRITE": "Kailangan ng tulong? Sumulat sa amin sa",
     "RESEND": "Muling ipadala ang e-mail ng activation"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Hanggang 10 aktibong salon",
     "PREMIUM2": "Access sa advanced performance stats",
     "PREMIUM3": "Matalinong rekomendasyon para i-boost ang kita",
-    "PREMIUM4": "Mas mataas na visibility sa IzyGlam",
+    "PREMIUM4": "Mas mataas na visibility saizyGlam",
     "PREMIUM5": "Prayoridad na support",
     "PREMIUM6": "Dinisenyo para sa ambisyosang independiyente",
     "PREMIUM7": "Kunin ang Reyna",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Advanced",
     "PLANS": "Bilang ng aktibong salon",
     "READY": "Handa ka na bang palaguin ang iyong negosyo?",
-    "DISCOVERS": "Tuklasin ang mga alok ng IzyGlam"
+    "DISCOVERS": "Tuklasin ang mga alok ngizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Paano mag-book ng serbisyo sa IzyGlam?",
+    "QUESTION1": "Paano mag-book ng serbisyo saizyGlam?",
     "QUESTION2": "Paano pumili ng tamang propesyonal para sa akin?",
     "QUESTION3": "Paano babaguhin o kakanselahin ang aking appointment?",
     "QUESTION4": "Paano ko masusubaybayan ang aking order?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Maaari ba akong mag-iwan ng review pagkatapos ng serbisyo?",
     "QUESTION8": "Paano gamitin ang aking loyalty at promos?",
     "QUESTION9": "Ano ang gagawin kung may problema sa aking order?",
-    "QUESTION10": "Paano makontak ang IzyGlam team?",
+    "QUESTION10": "Paano makontak angizyGlam team?",
     "QUESTION11": "Paano gumagana ang cancellation at refund policy?",
     "QUESTION12": "Maaari ba akong mag-book para sa iba (regalo, sorpresa)?",
-    "QUESTION13": "Paano maging partner professional sa IzyGlam?",
-    "QUESTION14": "Paano protektahan ang aking personal na impormasyon sa IzyGlam?",
+    "QUESTION13": "Paano maging partner professional saizyGlam?",
+    "QUESTION14": "Paano protektahan ang aking personal na impormasyon saizyGlam?",
     "REPONSE1": "Simple at mabilis. Kapag nakarehistro ka na, piliin ang serbisyong gusto mo, tingnan ang mga available na propesyonal malapit sa iyo, at piliin ang petsa at oras. I-click ang \"Mag-book\" para tapusin, at magbayad gamit ang bank card. Manu-manong iva-validate ng propesyonal ang iyong booking. Kapag tinanggihan, full refund ka.",
     "REPONSE2": "May detalyadong profile ang bawat propesyonal: mga serbisyo, presyo, larawan at review. Maaari ka ring magdagdag ng paborito. Ihambing ang mga profile para makapili ng pinakababagay sa iyo.",
     "REPONSE3": "Maaari mong baguhin o kanselahin ang booking mula sa iyong account. Libre ang cancellation hanggang 24h bago ang serbisyo. Lampas dito, maaaring may fee. Nandiyan ang support kung kailangan.",
@@ -1178,7 +1192,7 @@
     "REPONSE5": "Eksklusibo ang bayad sa bank card (Visa, MasterCard, American Express). Wala pang cash o PayPal. Lahat ay secure.",
     "REPONSE6": "Kapag nakumpirma ang booking, makakatanggap ka ng e-mail na buod. Magpapadala rin kami ng paalala bago ang serbisyo (e-mail at/o push). Masusubaybayan mo rin ito sa iyong account.",
     "REPONSE7": "Oo. Pagkatapos ng bawat serbisyong naisagawa, iimbitahan kang mag-iwan ng review. Mano-manong mino-moderate ang mga review para sa pagiging totoo. Hindi maaaring baguhin o sagutin ng propesyonal ang mga ito.",
-    "REPONSE8": "Sa ngayon, wala pang loyalty program o promo codes ang IzyGlam. Naka-planong ilunsad sa susunod na yugto.",
+    "REPONSE8": "Sa ngayon, wala pang loyalty program o promo codes angizyGlam. Naka-planong ilunsad sa susunod na yugto.",
     "REPONSE9": "Kontakin kami direkta sa \"Contact\" o sa e-mail. Sisikapin naming sumagot sa loob ng 24h (tantya) at tulungan kang maresolba ang isyu.",
     "REPONSE10": "Maaaring makipag-ugnayan sa contact form sa site o app. May support mula Lunes hanggang Sabado, 9am–6pm. Halimbawang e-mail: support@izyglam.com",
     "REPONSE11": "Libre ang cancellation hanggang 24h bago ang oras. Pag lampas, maaaring may fee. Kapag tinanggihan ng propesyonal, awtomatikong refund. Ang full automation ay isinasagawa.",

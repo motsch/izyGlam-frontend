@@ -4,7 +4,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 import { loadStripe } from '@stripe/stripe-js';
 
-// ✅ Ajouts pour toasts + i18n (standard IzyGlam)
+// ✅ Ajouts pour toasts + i18n (standardizyGlam)
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -55,7 +55,7 @@ export class PayementProComponent implements OnInit {
     private router: Router,
     private userService: UserService,
 
-    // ✅ Ajout IzyGlam
+    // ✅ AjoutizyGlam
     private toastr: ToastrService,
     private translate: TranslateService
   ) {}
@@ -189,7 +189,7 @@ export class PayementProComponent implements OnInit {
   }
 
   // -------------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // -------------------------------------------------------------
   showCustomToast(message: string) {
     // Ex : "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨"

@@ -100,11 +100,25 @@
     "LOADING": "Wird geladen…",
     "UNEXPECTED_ERROR": "Ein unerwarteter Fehler ist aufgetreten"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Kundenservice",
+    "WRITE": "Nachricht schreiben…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Geben Sie Ihre Login-E-Mail ein",
+    "VALIDE": "Bitte eine gültige E-Mail-Adresse eingeben.",
+    "LOADING": "Wird geladen",
+    "VERIF": "Ihre Angaben werden geprüft, bitte warten",
+    "ACCUEIL": "Zurück zur Startseite",
+    "OK": "Anmeldung erfolgreich!",
+    "SPACE": "Weiterleitung zu Ihrem Bereich läuft"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Überprüfung läuft",
     "VALIDE": "Wir prüfen Ihren Aktivierungslink. Das dauert nur einen Moment.",
     "ACCOUNT": "Konto aktiviert",
     "CONNECT": "Anmelden",
+    "REGISTER": "Registrieren",
     "OUPS": "Uups",
     "WRITE": "Brauchen Sie Hilfe? Schreiben Sie uns an",
     "RESEND": "Aktivierungs-E-Mail erneut senden"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Bis zu 10 aktive Salons",
     "PREMIUM2": "Zugang zu erweiterten Leistungsstatistiken",
     "PREMIUM3": "Intelligente Empfehlungen zur Umsatzsteigerung",
-    "PREMIUM4": "Erhöhte Sichtbarkeit auf der IzyGlam-Plattform",
+    "PREMIUM4": "Erhöhte Sichtbarkeit auf derizyGlam-Plattform",
     "PREMIUM5": "Priorisierter Support",
     "PREMIUM6": "Für ambitionierte Selbständige gedacht",
     "PREMIUM7": "Königin werden",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Erweitert",
     "PLANS": "Anzahl aktiver Salons",
     "READY": "Bereit, dein Business zu vergrößern?",
-    "DISCOVERS": "Angebote von IzyGlam entdecken"
+    "DISCOVERS": "Angebote vonizyGlam entdecken"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Wie buche ich eine Leistung auf IzyGlam?",
+    "QUESTION1": "Wie buche ich eine Leistung aufizyGlam?",
     "QUESTION2": "Wie wähle ich die/den passende(n) Profi für mich?",
     "QUESTION3": "Wie ändere oder storniere ich meinen Termin?",
     "QUESTION4": "Wie kann ich meine Bestellung verfolgen?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Kann ich nach meiner Leistung eine Bewertung abgeben?",
     "QUESTION8": "Wie nutze ich Treueangebote und Aktionen?",
     "QUESTION9": "Was kann ich bei einem Problem mit meiner Bestellung tun?",
-    "QUESTION10": "Wie kontaktiere ich das IzyGlam-Team?",
+    "QUESTION10": "Wie kontaktiere ich dasizyGlam-Team?",
     "QUESTION11": "Wie funktionieren Storno und Erstattung?",
     "QUESTION12": "Kann ich für jemand anderen buchen (Geschenk, Überraschung)?",
-    "QUESTION13": "Wie werde ich Partner-Profi bei IzyGlam?",
-    "QUESTION14": "Wie schütze ich meine persönlichen Daten bei IzyGlam?",
+    "QUESTION13": "Wie werde ich Partner-Profi beiizyGlam?",
+    "QUESTION14": "Wie schütze ich meine persönlichen Daten beiizyGlam?",
     "REPONSE1": "Ganz einfach und schnell. Nach der Registrierung wählst du den gewünschten Service, siehst verfügbare Profis in deiner Nähe und wählst Datum & Uhrzeit. Klicke auf „Buchen“, bezahle per Karte – die Buchung wird anschließend manuell vom Profi bestätigt. Bei Ablehnung wirst du vollständig erstattet.",
     "REPONSE2": "Jede*r Profi hat ein detailliertes Profil mit Leistungen, Preisen, Bildern und Bewertungen. Du kannst Favoriten speichern. Vergleiche in Ruhe und wähle, was am besten zu dir passt.",
     "REPONSE3": "Du kannst deine Reservierung in deinem Bereich ändern oder stornieren. Bis 24 h vor der Leistung kostenlos; danach können Gebühren anfallen. Bei Problemen hilft unser Support.",
@@ -1183,7 +1197,7 @@
     "REPONSE10": "Über das Kontaktformular auf Website oder App. Der Support ist Montag bis Samstag, 9–18 Uhr erreichbar. Beispiel-E-Mail: support@izyglam.com",
     "REPONSE11": "Du kannst bis 24 h vor Termin kostenlos stornieren. Danach können Gebühren anfallen. Wird deine Reservierung vom Profi abgelehnt, erfolgt die Erstattung automatisch. Die automatische Erstattung wird schrittweise ausgerollt.",
     "REPONSE12": "Du kannst derzeit noch keine Leistung für andere aus deinem Konto heraus verschenken. Wenn ein Profi jedoch eine Duo- oder Familienformel anbietet, kannst du für mehrere Personen im Rahmen dessen buchen.",
-    "REPONSE13": "Du bist Kosmetikerin, Friseurin oder Wellbeing-Profi? Schließe dich IzyGlam an, indem du das Formular auf der Seite „Partner werden“ ausfüllst. Wir melden uns zeitnah für den Abschluss der Registrierung.",
+    "REPONSE13": "Du bist Kosmetikerin, Friseurin oder Wellbeing-Profi? Schließe dichizyGlam an, indem du das Formular auf der Seite „Partner werden“ ausfüllst. Wir melden uns zeitnah für den Abschluss der Registrierung.",
     "REPONSE14": "Der Schutz deiner Daten hat Priorität. Wir beachten die DSGVO. Nur unbedingt nötige Infos sind für Profis sichtbar. Eine integrierte Nachrichtenfunktion ermöglicht Austausch – Umgehungsversuche der Plattform werden überwacht."
   },
   "PRIVACY": {

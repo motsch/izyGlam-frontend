@@ -100,11 +100,25 @@
     "LOADING": "Socoto…",
     "UNEXPECTED_ERROR": "Khalad lama filaan ah ayaa dhacay"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Adeegga macaamiisha",
+    "WRITE": "Qor fariin…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Geli iimaylka aad ku gasho",
+    "VALIDE": "Fadlan geli cinwaan iimayl sax ah.",
+    "LOADING": "Soo raraya",
+    "VERIF": "Xaqiijinta xogtaada, fadlan sug",
+    "ACCUEIL": "Ku noqo bogga hore",
+    "OK": "Gelitaanka wuu guuleystay!",
+    "SPACE": "Waxaa laguu leexinayaa aaggaaga"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Hubin socota",
     "VALIDE": "Waxaan xaqiijinaynaa xiriirkaaga kicinta. Waxay qaadanaysaa ilbidhiqsiyo yar.",
     "ACCOUNT": "Akoon la kiciyay",
     "CONNECT": "Gal",
+    "REGISTER": "Isdiiwaangeli",
     "OUPS": "Hooy",
     "WRITE": "Caawin u baahan tahay? Noo qor",
     "RESEND": "Dib u dir e-mailka kicinta"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Ilaa 10 saloon firfircoon",
     "PREMIUM2": "Hel tirakoobyo horumarsan",
     "PREMIUM3": "Talooyin c intelligent si loo kordhiyo dakhli",
-    "PREMIUM4": "Muuqaal kordhay gudaha IzyGlam",
+    "PREMIUM4": "Muuqaal kordhay gudahaizyGlam",
     "PREMIUM5": "Taageero mudnaan leh",
     "PREMIUM6": "Loogu talagalay madax-bannaanayaasha hamiga leh",
     "PREMIUM7": "Hel Boqorad",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Horumarsan",
     "PLANS": "Tirada saloonyada firfircoon",
     "READY": "Diyaar ma u tahay inaad kobciso ganacsiga?",
-    "DISCOVERS": "Ogow dalabyada IzyGlam"
+    "DISCOVERS": "Ogow dalabyadaizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Sideen ugu ballansadaa adeeg IzyGlam?",
+    "QUESTION1": "Sideen ugu ballansadaa adeegizyGlam?",
     "QUESTION2": "Sideen u doortaa xirfadle iigu habboon?",
     "QUESTION3": "Sideen u beddelaa ama u joojiyaa ballankayga?",
     "QUESTION4": "Sideen u raacaa dalabkayga?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Ma ka tagi karaa faallo ka dib adeegga?",
     "QUESTION8": "Sideen u isticmaalaa daacadnimo & dhimisyo?",
     "QUESTION9": "Maxaan sameeyaa haddii ay dhibaato timaado?",
-    "QUESTION10": "Sideen ula xiriiraa kooxda IzyGlam?",
+    "QUESTION10": "Sideen ula xiriiraa kooxdaizyGlam?",
     "QUESTION11": "Sidee u shaqeeyaa siyaasadda kansalka & lacag-celinta?",
     "QUESTION12": "Ma u ballansan karaa qof kale (hadiyad, yaab)?",
-    "QUESTION13": "Sideen ku noqdaa xirfadle lammaane IzyGlam?",
-    "QUESTION14": "Sidee loo ilaaliyaa xogtayda IzyGlam?",
+    "QUESTION13": "Sideen ku noqdaa xirfadle lammaaneizyGlam?",
+    "QUESTION14": "Sidee loo ilaaliyaa xogtaydaizyGlam?",
     "REPONSE1": "Way fududahay oo degdeg. Marka aad is diiwaangeliso, dooro adeegga aad rabto, ka hel xirfadlayaal agagaarkaaga, ka dibna dooro taariikh iyo saacad. Riix \"Ballan\" si aad u dhamaystirto, ka bixi kaarka bangiga. Xirfadluhu gacanta ayuu u xaqiijin doonaa ballanka. Haddii la diido, si buuxda ayaa laguu soo celiyaa.",
     "REPONSE2": "Xirfadle kasta wuxuu leeyahay profile faahfaahsan: adeegyo, qiime, sawirro shaqo & faallooyin. Waxaad ku dari kartaa kuwa aad jeceshahay. Is barbar dhig profiles si aad u doorato kan kugu habboon.",
     "REPONSE3": "Waxaad ku beddeli/joojin kartaa ballankaaga goobtaada shakhsiga. Kansalku waa bilaash ilaa 24 saac ka hor. Ka dib, kharash ayaa jiri kara. Haddii ay dhibaato timaado, taageeradayadu way ku caawin doonaan.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Bixintu waxaa lagu sameeyaa kaliya kaar (Visa, MasterCard, American Express). Ma aqbalno lacag caddaan ah ama PayPal. Ammaan buuxa.",
     "REPONSE6": "Marka ballanka la xaqiijiyo, waxaad heli doontaa e-mail soo koobid. Waxaan sidoo kale kuu soo diri doonaa xusuusin (e-mail iyo/ama push). Xaaladda waxaad ka arki kartaa goobtaada.",
     "REPONSE7": "Haa. Kadib adeeg kasta, waxaa lagu weydiinayaa faallo. Faallooyinka waxaa gacanta u habeeya kooxda si loo xaqiijiyo runnimada. Xirfadlayaashu ma beddeli karaan mana ka jawaabi karaan.",
-    "REPONSE8": "Waqtigan, IzyGlam wali ma laha barnaamij daacadnimo ama koodhadh dhimis. Waxay ku jirtaa qorshaha mustaqbalka.",
+    "REPONSE8": "Waqtigan,izyGlam wali ma laha barnaamij daacadnimo ama koodhadh dhimis. Waxay ku jirtaa qorshaha mustaqbalka.",
     "REPONSE9": "Nala soo xiriir qaybta \"Xiriir\" ama e-mail. Kooxdeennu waxay ku dadaali doonaan inay kuugu jawaabaan 24 saac gudaheed (qiyaas) oo ay xalliyaan dhibaatada sida ugu dhaqsaha badan.",
     "REPONSE10": "Nala soo xidhiidh foomka bogga ama app-ka. Taageero macaamiil ayaa diyaar ah Isniin–Sabti, 9–18. Tusaale e-mail: [support@izyglam.com](mailto:support@izyglam.com)",
     "REPONSE11": "Waxaad kansali kartaa bilaash ilaa 24 saac ka hor. Ka dib, kharash ayaa jiri kara. Haddii xirfadluhu diido ka dib bixinta, lacag-celin 100% ah. Nidaamka otomaatigga ah weli wuu socdaa.",
     "REPONSE12": "Weli si toos ah uguma hadiyayn kartid qof kale. Si kastaba, haddii xirfadle uu bixiyo duo/qoys, waxaad ballansan kartaa dhowr qof.",
-    "REPONSE13": "Adigu ma tahay esthetician, timo-jare ama xirfadle fayo-qabka? Ku biir bulshada IzyGlam adigoo buuxinaya foomka \"Noqo lammaane\". Kooxdu way kula soo xirmi doonaan si ay u dhammaystiraan diiwaangelinta.",
+    "REPONSE13": "Adigu ma tahay esthetician, timo-jare ama xirfadle fayo-qabka? Ku biir bulshadaizyGlam adigoo buuxinaya foomka \"Noqo lammaane\". Kooxdu way kula soo xirmi doonaan si ay u dhammaystiraan diiwaangelinta.",
     "REPONSE14": "Amniga xogtaadu waa mudnaanteena. Waxaan u hoggaansanaa GDPR. Kaliya xogta lagama maarmaanka u ah adeegga ayaa la siinayaa xirfadlaha. Farriimo ku dhex jira app-ka ayaa kuu oggolaanaya isgaarsiin ammaan ah; isku dayga hareer-marinta madasha waa la daba geli doonaa."
   },
   "PRIVACY": {
@@ -1324,7 +1338,7 @@
     },
     "SERVICE_ROLE": {
       "TITLE": "Adeegyada & doorka izyGlam",
-      "TEXT": "izyGlam waa <strong>madax-dhaxaad</strong>. Xirfadlayaashu waa <strong>mas’uul keliya</strong> tayada, waafaqidda, caymiska. IzyGlam caadiyan ma aha iibiyaha ama fuliyaha, mas’uuliyadda fulintana ma qaado."
+      "TEXT": "izyGlam waa <strong>madax-dhaxaad</strong>. Xirfadlayaashu waa <strong>mas’uul keliya</strong> tayada, waafaqidda, caymiska.izyGlam caadiyan ma aha iibiyaha ama fuliyaha, mas’uuliyadda fulintana ma qaado."
     },
     "ACCOUNT": {
       "TITLE": "Akoon & u-qalmaansho",

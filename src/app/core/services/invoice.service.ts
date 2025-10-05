@@ -98,7 +98,7 @@ export class InvoiceService {
           this.formatCurrency(order.shopEarnings || 0),
         ],
         [
-          'Commission IzyGlam',
+          'CommissionizyGlam',
           '1',
           'prestation',
           this.formatCurrency(order.commission || 0),

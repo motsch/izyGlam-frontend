@@ -100,11 +100,25 @@
     "LOADING": "Kargatzen…",
     "UNEXPECTED_ERROR": "Ustekabeko errore bat gertatu da"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Bezeroarentzako arreta",
+    "WRITE": "Idatzi mezu bat…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Sartu saio-hasierako zure helbide-elektronikoa",
+    "VALIDE": "Mesedez, sartu baliozko helbide elektroniko bat.",
+    "LOADING": "Kargatzen",
+    "VERIF": "Zure informazioa egiaztatzen ari gara, itxaron mesedez",
+    "ACCUEIL": "Itzuli hasierara",
+    "OK": "Saio-hasiera ongi burutu da!",
+    "SPACE": "Zure gunera berbideratzen"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Egiaztapena martxan",
     "VALIDE": "Zure aktibazio-esteka egiaztatzen ari gara. Segundo batzuk besterik ez dira.",
     "ACCOUNT": "Kontua aktibatuta",
     "CONNECT": "Hasi saioa",
+    "REGISTER": "Erregistratu",
     "OUPS": "Ene!",
     "WRITE": "Laguntza behar? Idatzi hona:",
     "RESEND": "Bidali berriro aktibazio-mezua"
@@ -188,7 +202,7 @@
     "PART1TITLE": "Etxean gozatu edertasun-zerbitzu onenez",
     "PART1TEXT": "Gure profesional kualifikatuek etxera joango dira kalitatezko edertasun-zaintzak eskaintzera, zure behar eta desioetara egokituak. Esperientzia paregabea bizi, bazkalorduan, lanaren ondoren edo lagunarteko arratsalde batean.",
     "PART2TITLE": "Lan egin nahi duzunean, sortu diru-sarrerak zure erritmora",
-    "PART2TEXT": "Plataforman jasotako eskaerak zure erritmoan onartuz, diru-sarrerak sortu. Zure materiala erabil dezakezu edo material profesionala alokatu IzyGlam bidez.",
+    "PART2TEXT": "Plataforman jasotako eskaerak zure erritmoan onartuz, diru-sarrerak sortu. Zure materiala erabil dezakezu edo material profesionala alokatuizyGlam bidez.",
     "PART3TITLE": "Edertasun-zerbitzuak enpresentzat berrasmatuak",
     "PART3TEXT": "Glam for Business enpresa tamaina guztietarako plataforma da, zure bezero eta langileen edertasun-beharrak kudeatzeko pentsatua. Eska ezazu zaintza pertsonalizatua zuzenean lanlekuan, enpresa-ekitaldietan edo une berezietan. Gure profesional kualifikatuek zure beharretara egokitutako zerbitzuak eskainiko dituzte.",
     "APPTITLE": "Aplikazioekin errazagoa da",
@@ -216,7 +230,7 @@
     "GLAM": "IzyGlam-ekin beti ondo",
     "RESERVED": "Erreserbatu aldez aurretik",
     "GIFTCARDS": "Opari-txartelak",
-    "WORKWITHUS": "Lan egin IzyGlam-ekin",
+    "WORKWITHUS": "Lan eginizyGlam-ekin",
     "GLAMFORBUSINESS": "Glam for Business",
     "CONFIDENTIAL": "Pribatutasuna",
     "ACCESS": "Irisgarritasuna",
@@ -395,7 +409,7 @@
     "TITLE": "IzyGlam autonomoentzat",
     "STEP1": {
       "TITLE": "Bezeroek eskaerak egiten dituzte",
-      "TEXT": "Bezeroak zure establezimendua aurkitzen du eta eskaera egiten du IzyGlam aplikazioan."
+      "TEXT": "Bezeroak zure establezimendua aurkitzen du eta eskaera egiten duizyGlam aplikazioan."
     },
     "STEP2": {
       "TITLE": "Zuk erreserba onartzen duzu",
@@ -502,7 +516,7 @@
     "IMAGE": "irudia"
   },
   "CREATE_SHOP_STEPS": {
-    "TITLE": "Zergatik IzyGlam?",
+    "TITLE": "ZergatikizyGlam?",
     "STEP1": {
       "TITLE": "Lan egin zure baldintzetan",
       "TEXT": "Antolatu zure egutegia eta kudeatu zure zerbitzuak askatasunez. Plataforma malgu batez baliatu zure jarduera maximizatzeko."
@@ -519,11 +533,11 @@
   "INFO_SHOP_STEPS": {
     "STEP1": {
       "TITLE": "Erraztu zure jardueraren kudeaketa",
-      "TEXT": "Kudeatu zure jarduera lasaitasunez IzyGlam-ekin, ongizate-profesionalentzako konponbide osoarekin. Baliatu tresna malguak eta laguntza pertsonalizatua zure behar guztietarako."
+      "TEXT": "Kudeatu zure jarduera lasaitasunezizyGlam-ekin, ongizate-profesionalentzako konponbide osoarekin. Baliatu tresna malguak eta laguntza pertsonalizatua zure behar guztietarako."
     },
     "STEP2": {
       "TITLE": "Bultzatu salmentak",
-      "TEXT": "Egunero, milaka pertsonak erabiltzen dute IzyGlam inguruko edertasun-adituak aurkitzeko. Baliatu aukera hau zure arloko bezero berrietara iristeko."
+      "TEXT": "Egunero, milaka pertsonak erabiltzen duteizyGlam inguruko edertasun-adituak aurkitzeko. Baliatu aukera hau zure arloko bezero berrietara iristeko."
     },
     "STEP3": {
       "TITLE": "Bezeroen gogobetetasuna bermatuta",
@@ -534,7 +548,7 @@
     "TITLE": "IzyGlam zure enpresarentzat?",
     "STEP1": {
       "TITLE": "Zure langileek eta bezeroek zerbitzuak erreserbatzen dituzte",
-      "TEXT": "Zure langileek edo bezeroek zuzenean aukeratzen dituzte ongizate-zerbitzuak IzyGlam aplikazioan."
+      "TEXT": "Zure langileek edo bezeroek zuzenean aukeratzen dituzte ongizate-zerbitzuakizyGlam aplikazioan."
     },
     "STEP2": {
       "TITLE": "Esleitzeko zenbatekoa erabakitzen duzu",
@@ -551,14 +565,14 @@
     "IMAGE": "irudia"
   },
   "CREATE_COMPANY_STEPS": {
-    "TITLE": "Zergatik IzyGlam?",
+    "TITLE": "ZergatikizyGlam?",
     "STEP1": {
       "TITLE": "Fidelizatu eta saritu zure langileak",
       "TEXT": "Eskaini abantaila berezia zure taldeei: hileko edertasun-aurrekontua. Ile-apaintzaileak, estetizistak eta ongizate-aditu gehiago beren eskura, gogobetetasuna eta kidetasuna hobetzeko."
     },
     "STEP2": {
       "TITLE": "Hobetu zure marka-irudia",
-      "TEXT": "Antolatu edertasun-ekitaldiak zure bezeroentzat edo bazkideentzat, edo integratu IzyGlam-eko zerbitzuak leialtasun-programetan. Utzi arrastoa kalitate goreneko zaintzekin."
+      "TEXT": "Antolatu edertasun-ekitaldiak zure bezeroentzat edo bazkideentzat, edo integratuizyGlam-eko zerbitzuak leialtasun-programetan. Utzi arrastoa kalitate goreneko zaintzekin."
     },
     "STEP3": {
       "TITLE": "Optimizatu ongizatea lanean",
@@ -642,7 +656,7 @@
     "CONTINUE_WITH": "Jarraitu honekin",
     "OR": "Edo",
     "QRCODE": "Hasi saioa QR kodearekin",
-    "CGU": "Jarraitzearen bidez, onartzen duzu IzyGlam eta bere filialek deiak, WhatsApp mezuak edo SMSak (automatizatuak izan daitezkeenak) bidaltzea emandako zenbakira.",
+    "CGU": "Jarraitzearen bidez, onartzen duzuizyGlam eta bere filialek deiak, WhatsApp mezuak edo SMSak (automatizatuak izan daitezkeenak) bidaltzea emandako zenbakira.",
     "PLACEHOLDER_EMAIL": "Helbide elektronikoa",
     "PLACEHOLDER_PASSWORD": "Pasahitza",
     "PLACEHOLDER_PASSWORD_NEW": "Pasahitz berria",
@@ -659,7 +673,7 @@
     "CONTINUER": "Jarraitu",
     "OR": "Edo",
     "QRCODE": "Hasi saioa QR kodearekin",
-    "CGU": "Jarraitzearen bidez, onartzen duzu IzyGlam eta bere filialek deiak, WhatsApp mezuak edo SMSak (automatizatuak izan daitezkeenak) bidaltzea emandako zenbakira.",
+    "CGU": "Jarraitzearen bidez, onartzen duzuizyGlam eta bere filialek deiak, WhatsApp mezuak edo SMSak (automatizatuak izan daitezkeenak) bidaltzea emandako zenbakira.",
     "PLACEHOLDER_FIRSTNAME": "Izena",
     "PLACEHOLDER_LASTNAME": "Abizena",
     "PLACEHOLDER_EMAIL": "E-posta",
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Gehienez 10 saloi aktibo",
     "PREMIUM2": "Errendimendu estatistika aurreratuak",
     "PREMIUM3": "Gomendio adimendunak zure fakturazioa handitzeko",
-    "PREMIUM4": "Ikusgarritasun handiagoa IzyGlam plataforman",
+    "PREMIUM4": "Ikusgarritasun handiagoaizyGlam plataforman",
     "PREMIUM5": "Lehentasunezko euskarria",
     "PREMIUM6": "Asmo handiko autonomoentzat pentsatua",
     "PREMIUM7": "Eskuratu Erregina",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Aurreratua",
     "PLANS": "Saloi aktibo kopurua",
     "READY": "Prest zure jarduera handitzeko?",
-    "DISCOVERS": "Ezagutu IzyGlam eskaintzak"
+    "DISCOVERS": "EzagutuizyGlam eskaintzak"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1050,7 +1064,7 @@
     },
     "STATUS": {
       "TITLE": "Bateragarritasun-egoera",
-      "TEXT": "Adierazpen hau egin den egunean, IzyGlam interfazeak partzialki bateragarriak dira WCAG 2.2 AA / RGAA arauekin. Etengabe hobetzen ari gara eta lehentasunezko hutsuneak zuzentzen."
+      "TEXT": "Adierazpen hau egin den egunean,izyGlam interfazeak partzialki bateragarriak dira WCAG 2.2 AA / RGAA arauekin. Etengabe hobetzen ari gara eta lehentasunezko hutsuneak zuzentzen."
     },
     "PREPARATION": {
       "TITLE": "Adierazpena prestatzeko metodoa",
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Nola erreserbatu zerbitzua IzyGlam-en?",
+    "QUESTION1": "Nola erreserbatu zerbitzuaizyGlam-en?",
     "QUESTION2": "Nola aukeratu niretzat profesional egokia?",
     "QUESTION3": "Nola aldatu edo ezeztatu nire hitzordua?",
     "QUESTION4": "Nola jarrai dezaket nire eskaera?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Eman al dezaket iritzia nire zerbitzuaren ondoren?",
     "QUESTION8": "Nola erabili nire leialtasun-eskaintzak eta promozioak?",
     "QUESTION9": "Zer egin behar dut nire eskaerarekin arazoa badut?",
-    "QUESTION10": "Nola jarri harremanetan IzyGlam taldearekin?",
+    "QUESTION10": "Nola jarri harremanetanizyGlam taldearekin?",
     "QUESTION11": "Nola funtzionatzen du ezeztapen eta itzulketen politikak?",
     "QUESTION12": "Beste norbaitentzako erreserbatu al dezaket (oparia, sorpresa)?",
-    "QUESTION13": "Nola bihurtu IzyGlam-eko bazkide profesional?",
-    "QUESTION14": "Nola babestu nire informazio pertsonala IzyGlam-en?",
+    "QUESTION13": "Nola bihurtuizyGlam-eko bazkide profesional?",
+    "QUESTION14": "Nola babestu nire informazio pertsonalaizyGlam-en?",
     "REPONSE1": "Erraza eta azkarra da. Izen-emanda, aukeratu interesatzen zaizun zerbitzua, begiratu inguruko profesional eskuragarriak, eta hautatu data eta ordua. Egin klik \"Erreserbatu\" botoian amaitzeko eta ordaindu kreditu-txartelarekin. Zure erreserba eskuz balioztatuko du profesionalak. Baztertuz gero, %100ean itzuliko zaizu dirua.",
     "REPONSE2": "Profesional bakoitzak profila du: zerbitzuak, tarifak, lanen argazkiak eta bezeroen iritziak. Gogokoetan ere gorde ditzakezu. Konparatu profilak behar duzunarekin bat datorrena aukeratzeko.",
     "REPONSE3": "Zure guneetatik aldatu edo ezeztatu dezakezu erreserba. Ezeztatzeak doakoak dira 24 ordu lehenago arte. Hortik aurrera, tasak aplika daitezke. Arazoa baduzu, gure laguntza zure esku dago.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Ordainketa esklusiboki kreditu-txartelarekin egiten da (Visa, MasterCard, American Express). Ez dugu onartzen eskudirua ezta PayPal ere. Segurtasun neurriak daude zure lasaitasunerako.",
     "REPONSE6": "Zure erreserba balioztatzen denean, laburpen e-posta jasoko duzu. Gogorarazpen bat ere bidaliko dizugu zerbitzuaren aurretik (e-posta eta/edo push jakinarazpena). Zure guneetatik ere ikus dezakezu egoera.",
     "REPONSE7": "Bai. Zerbitzua egin ondoren, gonbidatuko zaitugu profesionalari iritzia ematera. Iritziak eskuz moderatzen dira egiazkotasuna bermatzeko. Profesionalek ezin dute erantzun edo aldatu.",
-    "REPONSE8": "Oraingoz, IzyGlam-ek ez du oraindik leialtasun-programarik edo kode promozionalik. Funtzionalitate hauek etorkizunean aurreikusten dira.",
+    "REPONSE8": "Oraingoz,izyGlam-ek ez du oraindik leialtasun-programarik edo kode promozionalik. Funtzionalitate hauek etorkizunean aurreikusten dira.",
     "REPONSE9": "Jarri gurekin harremanetan zuzenean \"Kontaktua\" ataletik edo e-postaz. Ahalik eta azkarren erantzungo dugu (orientagarri) eta arazoa konpontzen lagunduko dizugu.",
     "REPONSE10": "Webguneko edo aplikazioko kontaktu-inprimakiaren bidez. Bezeroarentzako arreta astelehentik larunbatera, 9:00–18:00. Adibidez: support@izyglam.com",
     "REPONSE11": "Zure erreserba doan ezeztatu dezakezu aurreikusitako ordutik 24 ordu lehenago arte. Hortik aurrera, tasak aplika daitezke. Profesionalak baztertzen badu, diru-itzulketa automatikoa da. Sistema automatikoa ezartzen ari gara.",
     "REPONSE12": "Oraindik ezin duzu beste pertsona baterako zuzenean oparia erreserbatu. Hala ere, profesional batek bikote edo familia formulan eskaintzen badu, pertsona bat baino gehiagorentzat erreserbatu dezakezu testuinguru horretan.",
-    "REPONSE13": "Estetizista, ile-apaintzaile edo ongizate-praktikaria zara? Batu IzyGlam komunitatera \"Bazkide bihurtu\" orrian dagoen formularioa betez. Gure taldea laster jarriko da zurekin harremanetan izen-ematea amaitzeko.",
+    "REPONSE13": "Estetizista, ile-apaintzaile edo ongizate-praktikaria zara? BatuizyGlam komunitatera \"Bazkide bihurtu\" orrian dagoen formularioa betez. Gure taldea laster jarriko da zurekin harremanetan izen-ematea amaitzeko.",
     "REPONSE14": "Zure datuen segurtasuna gure lehentasuna da. RGPD betebeharrak errespetatzen ditugu. Zerbitzurako behar-beharrezkoak diren datuak soilik partekatzen dira profesionalekin. Barneko mezularitza dago beharrezkoa bada, baina plataforma saihesteko jokabideak gainbegiratuko dira."
   },
   "PRIVACY": {

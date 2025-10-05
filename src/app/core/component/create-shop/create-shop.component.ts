@@ -9,7 +9,7 @@ import { ProductService } from '../../services/product.service';
 import { VilleService } from '../../services/ville.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-// ✅ IzyGlam: traductions & toasts
+// ✅izyGlam: traductions & toasts
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
@@ -63,7 +63,7 @@ export class CreateShopComponent implements OnInit {
         private router: Router,
         private villeService: VilleService,
         private categoryService: CategoryService,
-        // ✅ IzyGlam: traductions & toasts
+        // ✅izyGlam: traductions & toasts
         private translate: TranslateService,
         private toastr: ToastrService,
         // ✅ Le composant peut être utilisé dans une modal (MatDialog)
@@ -418,7 +418,7 @@ export class CreateShopComponent implements OnInit {
     }
 
     // ------------------------------------------------------------
-    // ✨ Toasts IzyGlam
+    // ✨ ToastsizyGlam
     // ------------------------------------------------------------
     private showCustomToast(message: string) {
         // ❗️Erreurs → canal “error”

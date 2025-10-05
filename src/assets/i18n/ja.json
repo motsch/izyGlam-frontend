@@ -100,11 +100,25 @@
     "LOADING": "読み込み中…",
     "UNEXPECTED_ERROR": "予期しないエラーが発生しました"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "カスタマーサービス",
+    "WRITE": "メッセージを書く…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "ログイン用のメールアドレスを入力してください",
+    "VALIDE": "有効なメールアドレスを入力してください。",
+    "LOADING": "読み込み中",
+    "VERIF": "情報を確認しています。しばらくお待ちください",
+    "ACCUEIL": "ホームに戻る",
+    "OK": "ログインに成功しました！",
+    "SPACE": "マイページへリダイレクト中です"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "確認中",
     "VALIDE": "有効化リンクを検証しています。少々お待ちください。",
     "ACCOUNT": "アカウントが有効化されました",
     "CONNECT": "ログイン",
+    "REGISTER": "登録する",
     "OUPS": "おっと",
     "WRITE": "お困りですか？ご連絡先：",
     "RESEND": "有効化メールを再送"

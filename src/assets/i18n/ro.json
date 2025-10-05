@@ -100,11 +100,25 @@
     "LOADING": "Se încarcă…",
     "UNEXPECTED_ERROR": "A apărut o eroare neașteptată"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Serviciu clienți",
+    "WRITE": "Scrie un mesaj…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Introdu adresa ta de e-mail pentru autentificare",
+    "VALIDE": "Te rugăm să introduci o adresă de e-mail validă.",
+    "LOADING": "Se încarcă",
+    "VERIF": "Îți verificăm informațiile, te rugăm așteaptă",
+    "ACCUEIL": "Înapoi la pagina principală",
+    "OK": "Autentificare reușită!",
+    "SPACE": "Redirecționare către spațiul tău"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verificare în curs",
     "VALIDE": "Validăm linkul de activare. Durează doar o clipă.",
     "ACCOUNT": "Cont activat",
     "CONNECT": "Conectare",
+    "REGISTER": "Înregistrează-te",
     "OUPS": "Ups",
     "WRITE": "Ai nevoie de ajutor? Scrie-ne la",
     "RESEND": "Retrimite e-mailul de activare"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Până la 10 saloane active",
     "PREMIUM2": "Acces la statistici avansate de performanță",
     "PREMIUM3": "Recomandări inteligente pentru a-ți crește CA",
-    "PREMIUM4": "Vizibilitate sporită pe platforma IzyGlam",
+    "PREMIUM4": "Vizibilitate sporită pe platformaizyGlam",
     "PREMIUM5": "Suport prioritar",
     "PREMIUM6": "Gândit pentru independente ambițioase",
     "PREMIUM7": "Obține Regina",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Avansată",
     "PLANS": "Număr de saloane active",
     "READY": "Gata să-ți crești activitatea?",
-    "DISCOVERS": "Descoperă ofertele IzyGlam"
+    "DISCOVERS": "Descoperă oferteleizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Cum rezerv o prestație pe IzyGlam?",
+    "QUESTION1": "Cum rezerv o prestație peizyGlam?",
     "QUESTION2": "Cum aleg profesionistul potrivit pentru mine?",
     "QUESTION3": "Cum îmi modific sau anulez programarea?",
     "QUESTION4": "Cum îmi pot urmări comanda?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Pot lăsa o recenzie după prestație?",
     "QUESTION8": "Cum folosesc ofertele de loialitate și promoțiile?",
     "QUESTION9": "Ce fac dacă am o problemă cu comanda?",
-    "QUESTION10": "Cum contactez echipa IzyGlam?",
+    "QUESTION10": "Cum contactez echipaizyGlam?",
     "QUESTION11": "Cum funcționează politica de anulare și rambursare?",
     "QUESTION12": "Pot rezerva pentru altcineva (cadou, surpriză)?",
-    "QUESTION13": "Cum devin profesionist partener pe IzyGlam?",
-    "QUESTION14": "Cum îmi protejez datele personale pe IzyGlam?",
+    "QUESTION13": "Cum devin profesionist partener peizyGlam?",
+    "QUESTION14": "Cum îmi protejez datele personale peizyGlam?",
     "REPONSE1": "E simplu și rapid. După ce te înscrii, alege serviciul dorit, vezi profesioniștii disponibili aproape de tine, apoi selectează o dată și o oră. Click pe „Rezervă” pentru finalizare și plătește cu cardul. Rezervarea ta va fi validată manual de profesionist. În caz de refuz, ești rambursat(ă) integral.",
     "REPONSE2": "Fiecare profesionist are un profil detaliat cu prestații, tarife, fotografii și recenzii. Îți poți adăuga favoritele pentru a le regăsi ușor. Compară profilurile pentru a-l alege pe cel mai potrivit așteptărilor tale.",
     "REPONSE3": "Îți poți modifica sau anula rezervarea din spațiul personal. Anulările sunt gratuite până la 24h înainte. După acest termen, pot fi aplicate taxe. Dacă ai o problemă, suportul nostru e la dispoziție.",
@@ -1178,7 +1192,7 @@
     "REPONSE5": "Plata se face exclusiv cu cardul bancar (Visa, MasterCard, American Express). Nu oferim plată cash sau via PayPal. Totul este securizat pentru liniștea ta.",
     "REPONSE6": "După confirmarea rezervării, primești un e-mail de rezumat. Îți trimitem și un reminder înaintea prestației (prin e-mail și/sau notificare push). Poți urmări statusul și din spațiul personal.",
     "REPONSE7": "Da. După fiecare prestație efectuată, ești invitat(ă) să lași o recenzie. Recenziile sunt moderate manual pentru a le asigura autenticitatea. Profesioniștii nu pot răspunde sau modifica recenziile.",
-    "REPONSE8": "Deocamdată, IzyGlam nu oferă program de loialitate sau coduri promo. Aceste funcționalități sunt planificate pentru o fază ulterioară.",
+    "REPONSE8": "Deocamdată,izyGlam nu oferă program de loialitate sau coduri promo. Aceste funcționalități sunt planificate pentru o fază ulterioară.",
     "REPONSE9": "Ne poți contacta direct din secțiunea „Contact” sau prin e-mail. Vom face tot posibilul să răspundem în 24h (termen orientativ) și să te ajutăm să rezolvi problema rapid.",
     "REPONSE10": "Ne poți contacta prin formularul de pe site sau aplicație. Suportul clienți e disponibil luni–sâmbătă, 9:00–18:00. Exemplu e-mail: support@izyglam.com",
     "REPONSE11": "Poți anula fără costuri până la 24h înainte de oră. După acest termen, se pot aplica taxe. Dacă rezervarea este refuzată de profesionist, rambursarea este automată. Sistemul automat este în curs de implementare.",

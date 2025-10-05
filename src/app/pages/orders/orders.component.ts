@@ -406,7 +406,7 @@ export class OrdersComponent implements OnInit {
   }
 
   // -------------------------------
-  // 🔹 Méthode d’affichage toast stylisé IzyGlam
+  // 🔹 Méthode d’affichage toast styliséizyGlam
   // -------------------------------
   showCustomToast(message: string) {
     this.toastr.error(message);

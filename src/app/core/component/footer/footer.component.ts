@@ -141,7 +141,7 @@ export class FooterComponent implements OnInit {
   // --------------------------------
 
   /**
-   * Affiche un toast unifié IzyGlam
+   * Affiche un toast unifiéizyGlam
    * @param message  Texte (déjà traduit idéalement)
    * @param isError  True => toast d’erreur | False (défaut) => toast de succès
    *

@@ -7,7 +7,7 @@ import { max } from 'lodash';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 
-// ✅ IzyGlam: traductions & toasts
+// ✅izyGlam: traductions & toasts
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
@@ -41,7 +41,7 @@ export class CreateCompanyComponent implements OnInit {
     private shopTemplateService: ShopTemplateService,
     private categoryService: CategoryService,
 
-    // ✅ IzyGlam
+    // ✅izyGlam
     private translate: TranslateService,
     private toastr: ToastrService
   ) { }
@@ -213,7 +213,7 @@ export class CreateCompanyComponent implements OnInit {
   formChecking() { }
 
   // ------------------------------------------------------------
-  // ✨ Toasts IzyGlam
+  // ✨ ToastsizyGlam
   // ------------------------------------------------------------
   private showCustomToast(message: string) {
     this.toastr.error(message); // erreurs → .error()

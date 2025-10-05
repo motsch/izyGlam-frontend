@@ -90,7 +90,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   // ----------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ----------------------------------------------------
   showCustomToast(message: string) {
     // Standard : erreurs → toastr.error

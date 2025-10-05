@@ -100,11 +100,25 @@
     "LOADING": "Memuat…",
     "UNEXPECTED_ERROR": "Terjadi kesalahan tak terduga"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Layanan pelanggan",
+    "WRITE": "Tulis pesan…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Masukkan email login Anda",
+    "VALIDE": "Silakan masukkan alamat email yang valid.",
+    "LOADING": "Memuat",
+    "VERIF": "Memverifikasi informasi Anda, mohon tunggu",
+    "ACCUEIL": "Kembali ke beranda",
+    "OK": "Login berhasil!",
+    "SPACE": "Mengalihkan ke ruang Anda"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verifikasi sedang berlangsung",
     "VALIDE": "Kami sedang memvalidasi tautan aktivasi Anda. Ini hanya sebentar.",
     "ACCOUNT": "Akun diaktifkan",
     "CONNECT": "Masuk",
+    "REGISTER": "Daftar",
     "OUPS": "Ups",
     "WRITE": "Butuh bantuan? Tulis kepada kami di",
     "RESEND": "Kirim ulang email aktivasi"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Hingga 10 salon aktif",
     "PREMIUM2": "Akses statistik performa lanjutan",
     "PREMIUM3": "Rekomendasi cerdas untuk mendorong omzet",
-    "PREMIUM4": "Visibilitas ditingkatkan di platform IzyGlam",
+    "PREMIUM4": "Visibilitas ditingkatkan di platformizyGlam",
     "PREMIUM5": "Dukungan prioritas",
     "PREMIUM6": "Dirancang untuk independen ambisius",
     "PREMIUM7": "Dapatkan Ratu",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Lanjutan",
     "PLANS": "Jumlah salon aktif",
     "READY": "Siap menumbuhkan bisnismu?",
-    "DISCOVERS": "Lihat penawaran IzyGlam"
+    "DISCOVERS": "Lihat penawaranizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Bagaimana cara memesan layanan di IzyGlam?",
+    "QUESTION1": "Bagaimana cara memesan layanan diizyGlam?",
     "QUESTION2": "Bagaimana memilih profesional yang tepat untuk saya?",
     "QUESTION3": "Bagaimana mengubah atau membatalkan janji saya?",
     "QUESTION4": "Bagaimana saya bisa melacak pesanan saya?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Bisakah saya meninggalkan ulasan setelah layanan?",
     "QUESTION8": "Bagaimana menggunakan penawaran loyalitas & promo?",
     "QUESTION9": "Apa yang harus saya lakukan jika ada masalah dengan pesanan?",
-    "QUESTION10": "Bagaimana menghubungi tim IzyGlam?",
+    "QUESTION10": "Bagaimana menghubungi timizyGlam?",
     "QUESTION11": "Bagaimana kebijakan pembatalan & pengembalian dana?",
     "QUESTION12": "Bisakah saya memesan untuk orang lain (hadiah, kejutan)?",
-    "QUESTION13": "Bagaimana menjadi profesional mitra di IzyGlam?",
-    "QUESTION14": "Bagaimana melindungi informasi pribadi saya di IzyGlam?",
+    "QUESTION13": "Bagaimana menjadi profesional mitra diizyGlam?",
+    "QUESTION14": "Bagaimana melindungi informasi pribadi saya diizyGlam?",
     "REPONSE1": "Mudah dan cepat. Setelah mendaftar, pilih layanan yang Anda minati, lihat profesional yang tersedia di dekat Anda, lalu pilih tanggal dan waktu. Klik \"Pesan\" untuk menyelesaikan dan lakukan pembayaran dengan kartu. Reservasi Anda kemudian akan divalidasi manual oleh profesional. Jika ditolak, Anda akan dikembalikan 100%.",
     "REPONSE2": "Setiap profesional memiliki profil terperinci dengan layanan, tarif, foto karya, dan ulasan klien. Anda juga bisa menambahkan favorit untuk ditemukan kembali dengan mudah. Luangkan waktu membandingkan agar sesuai harapan Anda.",
     "REPONSE3": "Anda dapat mengubah atau membatalkan reservasi dari ruang pribadi Anda. Pembatalan gratis hingga 24 jam sebelum layanan. Setelah itu, biaya dapat diterapkan. Jika ada masalah, dukungan kami siap membantu.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Pembayaran dilakukan hanya dengan kartu (Visa, MasterCard, American Express). Kami tidak menawarkan pembayaran tunai maupun PayPal. Semuanya aman demi ketenangan Anda.",
     "REPONSE6": "Setelah reservasi dikonfirmasi, Anda menerima email ringkasan. Kami juga akan mengirim pengingat sebelum layanan (email dan/atau notifikasi push). Anda juga dapat memantau status dari ruang pribadi Anda.",
     "REPONSE7": "Ya. Setelah setiap layanan dilakukan, Anda diundang untuk memberi ulasan tentang profesional. Ulasan dimoderasi manual untuk menjamin keaslian. Profesional tidak dapat menanggapi atau mengubah ulasan.",
-    "REPONSE8": "Untuk saat ini, IzyGlam belum menawarkan program loyalitas atau kode promo. Fitur ini direncanakan di fase selanjutnya.",
+    "REPONSE8": "Untuk saat ini,izyGlam belum menawarkan program loyalitas atau kode promo. Fitur ini direncanakan di fase selanjutnya.",
     "REPONSE9": "Anda dapat menghubungi kami langsung dari bagian \"Kontak\" atau email. Tim kami akan berusaha membalas dalam 24 jam (perkiraan) dan membantu menyelesaikan masalah secepatnya.",
     "REPONSE10": "Anda dapat menghubungi kami melalui formulir kontak di situs atau aplikasi. Dukungan pelanggan tersedia Senin–Sabtu, pukul 09.00–18.00. Contoh email: support@izyglam.com",
     "REPONSE11": "Anda dapat membatalkan reservasi tanpa biaya hingga 24 jam sebelum waktu yang dijadwalkan. Setelah itu, biaya dapat berlaku. Jika reservasi Anda ditolak oleh profesional, pengembalian dana otomatis. Sistem ini sedang digulirkan.",
     "REPONSE12": "Anda belum bisa menghadiahkan layanan untuk orang lain dari akun Anda. Namun, jika seorang profesional menawarkan paket duo atau keluarga, Anda dapat memesan untuk beberapa orang dalam kerangka tersebut.",
-    "REPONSE13": "Anda seorang ahli kecantikan, penata rambut, atau praktisi wellness? Bergabunglah dengan komunitas IzyGlam dengan mengisi formulir di halaman \"Menjadi mitra\". Tim kami akan segera menghubungi Anda untuk menyelesaikan pendaftaran.",
+    "REPONSE13": "Anda seorang ahli kecantikan, penata rambut, atau praktisi wellness? Bergabunglah dengan komunitasizyGlam dengan mengisi formulir di halaman \"Menjadi mitra\". Tim kami akan segera menghubungi Anda untuk menyelesaikan pendaftaran.",
     "REPONSE14": "Keamanan data Anda prioritas kami. Kami mematuhi GDPR. Hanya informasi yang benar-benar diperlukan untuk layanan yang dapat diakses profesional. Ada pesan internal untuk berkomunikasi bila perlu, tetapi upaya mem-bypass platform akan diawasi."
   },
   "PRIVACY": {

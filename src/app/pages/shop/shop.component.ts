@@ -9,7 +9,7 @@ import { SessionService } from 'src/app/core/services/session.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { environment } from 'src/environments/environment';
 
-// ✅ Ajouts IzyGlam : toasts + i18n
+// ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -56,7 +56,7 @@ export class ShopComponent {
         private shopService: ShopService,
         private adminService: AdminService,
 
-        // ✅ Injections IzyGlam
+        // ✅ InjectionsizyGlam
         private toastr: ToastrService,
         private translate: TranslateService
     ) { }
@@ -172,7 +172,7 @@ export class ShopComponent {
     }
 
     // ----------------------------------------------------
-    // ✨ Toast d’erreur stylisé IzyGlam
+    // ✨ Toast d’erreur styliséizyGlam
     // ----------------------------------------------------
     private showCustomToast(message: string) {
         // Exemple conseillé (fr.json) :

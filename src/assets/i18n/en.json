@@ -100,11 +100,25 @@
     "LOADING": "Loading…",
     "UNEXPECTED_ERROR": "An unexpected error occurred"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Customer service",
+    "WRITE": "Write a message…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Enter your login email",
+    "VALIDE": "Please enter a valid email address.",
+    "LOADING": "Loading",
+    "VERIF": "Verifying your information, please wait",
+    "ACCUEIL": "Back to home",
+    "OK": "Login successful!",
+    "SPACE": "Redirecting to your space"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verification in progress",
     "VALIDE": "We are validating your activation link. This only takes a moment.",
     "ACCOUNT": "Account activated",
     "CONNECT": "Log in",
+    "REGISTER": "Register",
     "OUPS": "Oops",
     "WRITE": "Need help? Write to us at",
     "RESEND": "Resend activation email"
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "How do I book a service on IzyGlam?",
+    "QUESTION1": "How do I book a service onizyGlam?",
     "QUESTION2": "How do I choose the right professional for me?",
     "QUESTION3": "How do I modify or cancel my appointment?",
     "QUESTION4": "How can I track my order?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Can I leave a review after my service?",
     "QUESTION8": "How do I use my loyalty offers and promotions?",
     "QUESTION9": "What should I do if I have an issue with my order?",
-    "QUESTION10": "How do I contact the IzyGlam team?",
+    "QUESTION10": "How do I contact theizyGlam team?",
     "QUESTION11": "How do the cancellation and refund policies work?",
     "QUESTION12": "Can I book for someone else (gift, surprise)?",
-    "QUESTION13": "How do I become a partner professional on IzyGlam?",
-    "QUESTION14": "How do I protect my personal information on IzyGlam?",
+    "QUESTION13": "How do I become a partner professional onizyGlam?",
+    "QUESTION14": "How do I protect my personal information onizyGlam?",
     "REPONSE1": "It’s simple and fast. Once registered, choose the service you’re interested in, discover available professionals near you, then select a date and time. Click “Book” to finalize and pay by card. Your booking will then be manually validated by the professional. If refused, you’ll be fully refunded.",
     "REPONSE2": "Each professional has a detailed profile with services, prices, photos of work, and client reviews. You can also add favorites to find them easily. Take time to compare profiles and choose the one that best fits your expectations.",
     "REPONSE3": "You can modify or cancel your booking from your personal area. Cancellations are free up to 24h before the service. Beyond that, fees may apply. If you have an issue, our support team is here to help.",
@@ -1178,7 +1192,7 @@
     "REPONSE5": "Payment is by bank card only (Visa, MasterCard, American Express). We don’t offer cash or PayPal at this time. Everything is secured for your peace of mind.",
     "REPONSE6": "Once your booking is confirmed, you’ll receive a summary email. We’ll also send a reminder before the service (by email and/or push). You can also track the status from your personal area.",
     "REPONSE7": "Yes. After each completed service, you’re invited to leave a review. Reviews are manually moderated to ensure authenticity. Professionals cannot reply to or modify reviews.",
-    "REPONSE8": "For now, IzyGlam doesn’t yet offer a loyalty program or promo codes. These features are planned for a later phase.",
+    "REPONSE8": "For now,izyGlam doesn’t yet offer a loyalty program or promo codes. These features are planned for a later phase.",
     "REPONSE9": "You can contact us directly via the “Contact” section or by email. Our team will do its best to respond within 24h (indicative) and help resolve the issue as quickly as possible.",
     "REPONSE10": "You can reach us via the contact form on the site or app. Customer support is available Monday to Saturday, 9am–6pm. Example email: support@izyglam.com",
     "REPONSE11": "You can cancel free of charge up to 24h before the scheduled time. After that, fees may apply. If your booking is refused by the professional, the refund is automatic. The automatic refund system is being rolled out.",

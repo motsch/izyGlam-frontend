@@ -100,11 +100,25 @@
     "LOADING": "Laden…",
     "UNEXPECTED_ERROR": "Er is een onverwachte fout opgetreden"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Klantenservice",
+    "WRITE": "Bericht schrijven…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Voer je inlog-e-mail in",
+    "VALIDE": "Voer een geldig e-mailadres in.",
+    "LOADING": "Laden",
+    "VERIF": "Je gegevens worden gecontroleerd, even geduld",
+    "ACCUEIL": "Terug naar de startpagina",
+    "OK": "Inloggen gelukt!",
+    "SPACE": "Doorverwijzen naar je omgeving"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Bezig met verifiëren",
     "VALIDE": "We valideren uw activatielink. Dit duurt maar even.",
     "ACCOUNT": "Account geactiveerd",
     "CONNECT": "Inloggen",
+    "REGISTER": "Registreren",
     "OUPS": "Oeps",
     "WRITE": "Hulp nodig? Schrijf ons op",
     "RESEND": "Activatiemail opnieuw sturen"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Tot 10 actieve salons",
     "PREMIUM2": "Toegang tot geavanceerde statistieken over je prestaties",
     "PREMIUM3": "Slimme aanbevelingen om je omzet te boosten",
-    "PREMIUM4": "Extra zichtbaarheid op het IzyGlam-platform",
+    "PREMIUM4": "Extra zichtbaarheid op hetizyGlam-platform",
     "PREMIUM5": "Prioritaire support",
     "PREMIUM6": "Ontworpen voor ambitieuze zelfstandigen",
     "PREMIUM7": "Koningin verkrijgen",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Geavanceerd",
     "PLANS": "Aantal actieve salons",
     "READY": "Klaar om je activiteit te laten groeien?",
-    "DISCOVERS": "Ontdek de IzyGlam-aanbiedingen"
+    "DISCOVERS": "Ontdek deizyGlam-aanbiedingen"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Hoe boek ik een dienst op IzyGlam?",
+    "QUESTION1": "Hoe boek ik een dienst opizyGlam?",
     "QUESTION2": "Hoe kies ik de juiste professional voor mij?",
     "QUESTION3": "Hoe wijzig of annuleer ik mijn afspraak?",
     "QUESTION4": "Hoe kan ik mijn bestelling volgen?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Kan ik een beoordeling achterlaten na mijn dienst?",
     "QUESTION8": "Hoe gebruik ik mijn loyaliteitsaanbiedingen en promoties?",
     "QUESTION9": "Wat moet ik doen als ik een probleem heb met mijn bestelling?",
-    "QUESTION10": "Hoe neem ik contact op met het IzyGlam-team?",
+    "QUESTION10": "Hoe neem ik contact op met hetizyGlam-team?",
     "QUESTION11": "Hoe werkt de annulerings- en terugbetalingspolicy?",
     "QUESTION12": "Kan ik voor iemand anders boeken (cadeau, verrassing)?",
-    "QUESTION13": "Hoe word ik partnerprofessional op IzyGlam?",
-    "QUESTION14": "Hoe bescherm ik mijn persoonlijke gegevens op IzyGlam?",
+    "QUESTION13": "Hoe word ik partnerprofessional opizyGlam?",
+    "QUESTION14": "Hoe bescherm ik mijn persoonlijke gegevens opizyGlam?",
     "REPONSE1": "Het is simpel en snel. Na registratie kiest u de gewenste dienst, bekijkt u beschikbare professionals bij u in de buurt en selecteert u een datum en tijd. Klik op \"Boeken\" om af te ronden en betaal met bankkaart. Uw reservering wordt daarna handmatig gevalideerd door de professional. Bij weigering wordt u volledig terugbetaald.",
     "REPONSE2": "Elke professional heeft een uitgebreid profiel met diensten, prijzen, foto’s en klantbeoordelingen. U kunt favorieten toevoegen om ze snel terug te vinden. Neem de tijd om profielen te vergelijken en kies wat het beste bij u past.",
     "REPONSE3": "U kunt uw reservering wijzigen of annuleren in uw persoonlijke ruimte. Annuleren is gratis tot 24 uur voor de dienst. Daarna kunnen kosten worden aangerekend. Neem bij problemen contact op met onze support.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Betalen gebeurt uitsluitend met bankkaart (Visa, MasterCard, American Express). We bieden geen contante betaling of PayPal aan. Alles is beveiligd voor uw gemoedsrust.",
     "REPONSE6": "Zodra uw reservering is bevestigd, ontvangt u een bevestigingsmail. We sturen ook een herinnering voor de dienst (per e-mail en/of push). U kunt de status ook volgen in uw persoonlijke ruimte.",
     "REPONSE7": "Ja. Na elke uitgevoerde dienst wordt u uitgenodigd om een beoordeling achter te laten. Beoordelingen worden handmatig gemodereerd om authenticiteit te garanderen. Professionals kunnen beoordelingen niet beantwoorden of wijzigen.",
-    "REPONSE8": "Voorlopig biedt IzyGlam nog geen loyaliteitsprogramma of promotiecodes. Deze functies staan gepland voor een latere fase.",
+    "REPONSE8": "Voorlopig biedtizyGlam nog geen loyaliteitsprogramma of promotiecodes. Deze functies staan gepland voor een latere fase.",
     "REPONSE9": "U kunt ons rechtstreeks contacteren via de sectie \"Contact\" of per e-mail. We doen ons best om (indicatief) binnen 24 uur te reageren en u te helpen het probleem snel op te lossen.",
     "REPONSE10": "U bereikt ons via het contactformulier op de site of in de app. Klantenservice is beschikbaar van maandag tot zaterdag, 9.00–18.00 uur. Voorbeeld e-mail: [support@izyglam.com](mailto:support@izyglam.com)",
     "REPONSE11": "U kunt tot 24 uur voor de geplande tijd kosteloos annuleren. Daarna kunnen kosten worden aangerekend. Als uw reservering door de professional wordt geweigerd, is de terugbetaling automatisch. Het systeem voor automatische terugbetalingen is in uitrol.",
     "REPONSE12": "U kunt nog geen dienst cadeau doen vanuit uw account. Als een professional echter een duo- of gezinsformule aanbiedt, kunt u in dat kader voor meerdere personen boeken.",
-    "REPONSE13": "Bent u schoonheidsspecialiste, kapster of welzijnsprofessional? Word onderdeel van de IzyGlam-community door het formulier op de pagina \"Partner worden\" in te vullen. Ons team neemt snel contact met u op om de inschrijving te voltooien.",
+    "REPONSE13": "Bent u schoonheidsspecialiste, kapster of welzijnsprofessional? Word onderdeel van deizyGlam-community door het formulier op de pagina \"Partner worden\" in te vullen. Ons team neemt snel contact met u op om de inschrijving te voltooien.",
     "REPONSE14": "De veiligheid van uw gegevens is onze prioriteit. We respecteren de AVG-verplichtingen. Alleen strikt noodzakelijke informatie is zichtbaar voor professionals. Een ingebouwde chat laat u communiceren indien nodig, maar het omzeilen van het platform wordt gemonitord."
   },
   "PRIVACY": {

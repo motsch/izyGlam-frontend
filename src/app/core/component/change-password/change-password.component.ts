@@ -7,7 +7,7 @@ import { SeoService } from '../../services/seo.service';
 import { LanguageService } from '../../services/language.service';
 import { CountryService } from '../../services/country.service';
 
-// ✅ IzyGlam: toast de notif
+// ✅izyGlam: toast de notif
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -51,11 +51,47 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     private countryService: CountryService,
     private seoService: SeoService,
 
-    // ✅ IzyGlam
+    // ✅izyGlam
     private toastr: ToastrService
   ) {
     // Langues disponibles côté ngx-translate
-    translate.addLangs(['da', 'de', 'en', 'es', 'fi', 'fr', 'it', 'nl', 'pl', 'pt', 'sv']);
+    translate.addLangs([
+      'ar',
+      'be',
+      'bn',
+      'ca',
+      'da',
+      'de',
+      'en',
+      'es',
+      'et',
+      'eu',
+      'fa',
+      'fi',
+      'fr',
+      'gl',
+      'hi',
+      'id',
+      'it',
+      'ja',
+      'ko',
+      'ku',
+      'ms',
+      'nl',
+      'pl',
+      'pt',
+      'ro',
+      'ru',
+      'so',
+      'sq',
+      'sv',
+      'th',
+      'tl',
+      'tr',
+      'uk',
+      'vi',
+      'zh'
+    ]);
     const sessionServiceLangue = this.sessionService.getLang();
     if (sessionServiceLangue) {
       translate.setDefaultLang(sessionServiceLangue);
@@ -358,7 +394,7 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------
   private showCustomToast(message: string) {
     this.toastr.error(message);

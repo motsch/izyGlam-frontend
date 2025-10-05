@@ -85,6 +85,7 @@ import { TermsComponent } from '../pages/terms/terms.component';
 import { AccessibilityPolicyComponent } from './component/accessibility-policy/accessibility-policy.component';
 import { TermsPolicyComponent } from './component/terms-policy/terms-policy.component';
 import { MessagerieComponent } from './component/messagerie/messagerie.component';
+import { LocaleDatePipe } from './pipe/locale-date.pipe';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -169,6 +170,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopArticlesManagementComponent,
         CompanySetDefaultPasswordComponent,
         ShopManagementComponent,
+        LocaleDatePipe,
         ShopEmployeesComponent,
         CompanyManagementComponent,
         OrderItemComponent,
@@ -199,6 +201,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
+        LocaleDatePipe,
         TermsPolicyComponent,
         CalendarComponent,
         PageNotFoundComponent,

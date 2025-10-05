@@ -100,11 +100,25 @@
     "LOADING": "Ladataan…",
     "UNEXPECTED_ERROR": "Tapahtui odottamaton virhe"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Atención al cliente",
+    "WRITE": "Escribir un mensaje…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Anna kirjautumissähköpostisi",
+    "VALIDE": "Anna kelvollinen sähköpostiosoite.",
+    "LOADING": "Ladataan",
+    "VERIF": "Tietojasi tarkistetaan, odota hetki",
+    "ACCUEIL": "Takaisin etusivulle",
+    "OK": "Kirjautuminen onnistui!",
+    "SPACE": "Uudelleenohjataan omaan tilaasi"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Vahvistus käynnissä",
     "VALIDE": "Vahvistamme aktivointilinkkiäsi. Tämä kestää vain hetken.",
     "ACCOUNT": "Tili aktivoitu",
     "CONNECT": "Kirjaudu sisään",
+    "REGISTER": "Rekisteröidy",
     "OUPS": "Hups",
     "WRITE": "Tarvitsetko apua? Kirjoita meille osoitteeseen",
     "RESEND": "Lähetä aktivointisähköposti uudelleen"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Jopa 10 aktiivista salonkia",
     "PREMIUM2": "Kehittyneet suorituskykytilastot",
     "PREMIUM3": "Älykkäät suositukset liikevaihdon kasvattamiseksi",
-    "PREMIUM4": "Tehostettu näkyvyys IzyGlamissa",
+    "PREMIUM4": "Tehostettu näkyvyysizyGlamissa",
     "PREMIUM5": "Priorisoitu tuki",
     "PREMIUM6": "Ambitioisille itsenäisille",
     "PREMIUM7": "Hanki Kuningatar",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Edistynyt",
     "PLANS": "Aktiivisten salonkien määrä",
     "READY": "Valmis kasvattamaan toimintaasi?",
-    "DISCOVERS": "Tutustu IzyGlamin tarjouksiin"
+    "DISCOVERS": "TutustuizyGlamin tarjouksiin"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Miten varaan palvelun IzyGlamissa?",
+    "QUESTION1": "Miten varaan palvelunizyGlamissa?",
     "QUESTION2": "Miten valitsen minulle sopivan ammattilaisen?",
     "QUESTION3": "Miten muokkaan tai perun varaukseni?",
     "QUESTION4": "Miten voin seurata tilaustani?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Voinko jättää arvion palvelun jälkeen?",
     "QUESTION8": "Miten käytän kanta-asiakasetuja ja kampanjoita?",
     "QUESTION9": "Mitä teen, jos tilauksessani on ongelma?",
-    "QUESTION10": "Miten otan yhteyttä IzyGlam-tiimiin?",
+    "QUESTION10": "Miten otan yhteyttäizyGlam-tiimiin?",
     "QUESTION11": "Miten peruutus- ja hyvityskäytäntö toimii?",
     "QUESTION12": "Voinko varata toiselle (lahja, yllätys)?",
-    "QUESTION13": "Miten minusta tulee IzyGlamin kumppaniammattilainen?",
-    "QUESTION14": "Miten suojaan tietojani IzyGlamissa?",
+    "QUESTION13": "Miten minusta tuleeizyGlamin kumppaniammattilainen?",
+    "QUESTION14": "Miten suojaan tietojaniizyGlamissa?",
     "REPONSE1": "Se on helppoa ja nopeaa. Kun olet rekisteröitynyt, valitse palvelu, tutustu lähelläsi oleviin ammattilaisiin ja valitse päivä ja aika. Klikkaa ”Varaa” ja maksa kortilla. Ammattilainen vahvistaa varauksen manuaalisesti. Jos varaus hylätään, saat täyden hyvityksen.",
     "REPONSE2": "Jokaisella ammattilaisella on profiili, jossa on palvelut, hinnat, kuvat ja asiakasarviot. Voit lisätä suosikkeja. Vertaile profiileja rauhassa löytääksesi parhaiten sopivan.",
     "REPONSE3": "Voit muokata tai perua varauksen omasta profiilistasi. Peruutus on maksuton 24 h ennen palvelua. Sen jälkeen maksuja voidaan periä. Tukemme auttaa tarvittaessa.",
@@ -1178,7 +1192,7 @@
     "REPONSE5": "Maksu tapahtuu yksinomaan pankkikortilla (Visa, MasterCard, American Express). Emme tarjoa käteismaksua emmekä PayPalia. Kaikki on suojattu mielenrauhasi varmistamiseksi.",
     "REPONSE6": "Kun varaus on vahvistettu, saat vahvistusviestin. Lähetämme muistutuksen ennen palvelua (sähköpostilla ja/tai push-ilmoituksella). Voit myös seurata tilaa profiilissasi.",
     "REPONSE7": "Kyllä. Jokaisen toteutetun palvelun jälkeen sinua pyydetään jättämään arvio. Arviot moderoidaan aitouden varmistamiseksi. Ammattilaiset eivät voi muokata tai vastata arvioihin.",
-    "REPONSE8": "Toistaiseksi IzyGlamissa ei ole kanta-asiakasohjelmaa tai kampanjakoodeja. Ne ovat tulossa myöhemmin.",
+    "REPONSE8": "ToistaiseksiizyGlamissa ei ole kanta-asiakasohjelmaa tai kampanjakoodeja. Ne ovat tulossa myöhemmin.",
     "REPONSE9": "Voit ottaa yhteyttä suoraan ”Yhteys”-osiosta tai sähköpostilla. Pyrimme vastaamaan 24 h kuluessa (suuntaa-antava) ja auttamaan nopeasti.",
     "REPONSE10": "Voit ottaa yhteyttä lomakkeella sivustolla tai sovelluksessa. Asiakastuki ma–la klo 9–18. Esimerkki: support@izyglam.com",
     "REPONSE11": "Peruutus on maksuton 24 h ennen varattua aikaa. Sen jälkeen maksuja voidaan periä. Jos ammattilainen hylkää varauksen maksun jälkeen, hyvitys on automaattinen. Automaattinen hyvitys on käyttöönotossa.",

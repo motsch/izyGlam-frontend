@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { SeoService } from 'src/app/core/services/seo.service';
 import { SubscriptionService } from 'src/app/core/services/subscription.service';
 
-// ✅ Ajouts pour toasts + i18n (standard IzyGlam)
+// ✅ Ajouts pour toasts + i18n (standardizyGlam)
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -22,7 +22,7 @@ export class PricePlansComponent implements OnInit {
     private seoService: SeoService,
     private subscriptionService: SubscriptionService,
 
-    // ✅ Ajout IzyGlam
+    // ✅ AjoutizyGlam
     private toastr: ToastrService,
     private translate: TranslateService
   ) {}
@@ -84,7 +84,7 @@ export class PricePlansComponent implements OnInit {
   }
 
   // ------------------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------------------
   private showCustomToast(message: string) {
     // Exemple de message (dans fr.json) :

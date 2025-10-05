@@ -100,11 +100,25 @@
     "LOADING": "Yükleniyor…",
     "UNEXPECTED_ERROR": "Beklenmeyen bir hata oluştu"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Müşteri hizmetleri",
+    "WRITE": "Bir mesaj yazın…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Giriş e-postanızı girin",
+    "VALIDE": "Lütfen geçerli bir e-posta adresi girin.",
+    "LOADING": "Yükleniyor",
+    "VERIF": "Bilgileriniz doğrulanıyor, lütfen bekleyin",
+    "ACCUEIL": "Ana sayfaya dön",
+    "OK": "Giriş başarılı!",
+    "SPACE": "Alanınıza yönlendiriliyorsunuz"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Doğrulama sürüyor",
     "VALIDE": "Etkinleştirme bağlantınızı doğruluyoruz. Sadece bir an sürecek.",
     "ACCOUNT": "Hesap etkin",
     "CONNECT": "Giriş yap",
+    "REGISTER": "Kayıt ol",
     "OUPS": "Hata",
     "WRITE": "Yardıma mı ihtiyacınız var? Bize yazın:",
     "RESEND": "Etkinleştirme e-postasını yeniden gönder"
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Ödeme yalnızca banka kartı (Visa, MasterCard, American Express) ile yapılır. Şu anda nakit veya PayPal yoktur. Güvenliğiniz için her şey korunur.",
     "REPONSE6": "Rezervasyonun onaylandığında bir özet e-postası alırsın. Hizmetten önce (e-posta ve/veya itme bildirimiyle) hatırlatma da göndeririz. Durumu kişisel alanından da takip edebilirsin.",
     "REPONSE7": "Evet. Her hizmetten sonra profesyonel hakkında yorum yapmaya davet edilirsin. Yorumlar özgünlük için manuel olarak moderasyonlanır. Profesyoneller yorumlara yanıt veremez veya onları değiştiremez.",
-    "REPONSE8": "Şimdilik IzyGlam’da sadakat programı veya promosyon kodu yok. Bu özellikler ileride planlanıyor.",
+    "REPONSE8": "ŞimdilikizyGlam’da sadakat programı veya promosyon kodu yok. Bu özellikler ileride planlanıyor.",
     "REPONSE9": "“İletişim” bölümünden veya e-postayla bize ulaşabilirsin. Ekibimiz (bilgilendirici süre) 24 saat içinde yanıtlamak ve sorunu en kısa sürede çözmek için elinden geleni yapacaktır.",
     "REPONSE10": "Sitedeki veya uygulamadaki iletişim formu üzerinden bize ulaşabilirsin. Müşteri desteği Pazartesi–Cumartesi, 09:00–18:00 arasında mevcuttur. Örnek e-posta: [support@izyglam.com](mailto:support@izyglam.com)",
     "REPONSE11": "Planlanan saatten 24 saat öncesine kadar ücretsiz iptal mümkündür. Sonrasında ücret uygulanabilir. Profesyonel tarafından rezervasyonun reddedilirse otomatik geri ödeme yapılır. Otomatik geri ödeme sistemi devreye alınma aşamasındadır.",
     "REPONSE12": "Hesabından şimdilik başka biri için hizmet hediye edemezsin. Ancak bir profesyonel çift/aile paketi sunuyorsa, bu kapsamda birden fazla kişi için rezervasyon yapabilirsin.",
-    "REPONSE13": "Estetisyen, kuaför veya iyi yaşam uygulayıcısı mısın? “İş ortağı ol” sayfasındaki formu doldurarak IzyGlam topluluğuna katılabilirsin. Ekibimiz kaydını tamamlamak için seninle iletişime geçecektir.",
+    "REPONSE13": "Estetisyen, kuaför veya iyi yaşam uygulayıcısı mısın? “İş ortağı ol” sayfasındaki formu doldurarakizyGlam topluluğuna katılabilirsin. Ekibimiz kaydını tamamlamak için seninle iletişime geçecektir.",
     "REPONSE14": "Veri güvenliğin önceliğimizdir. GDPR yükümlülüklerine uyarız. Profesyoneller yalnızca hizmet için kesinlikle gerekli bilgilere erişir. Gerekirse iletişim için entegre mesajlaşma vardır; platformu baypas etmeye yönelik davranışlar izlenir."
   },
   "PRIVACY": {

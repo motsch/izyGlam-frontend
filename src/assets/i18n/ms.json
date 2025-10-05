@@ -100,11 +100,25 @@
     "LOADING": "Memuatkan…",
     "UNEXPECTED_ERROR": "Ralat tidak dijangka telah berlaku"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Khidmat pelanggan",
+    "WRITE": "Tulis mesej…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Masukkan emel log masuk anda",
+    "VALIDE": "Sila masukkan alamat emel yang sah.",
+    "LOADING": "Memuatkan",
+    "VERIF": "Mengesahkan maklumat anda, sila tunggu",
+    "ACCUEIL": "Kembali ke laman utama",
+    "OK": "Log masuk berjaya!",
+    "SPACE": "Sedang mengalihkan ke ruang anda"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Pengesahan sedang diproses",
     "VALIDE": "Kami sedang mengesahkan pautan pengaktifan anda. Ia hanya mengambil masa seketika.",
     "ACCOUNT": "Akaun diaktifkan",
     "CONNECT": "Log masuk",
+    "REGISTER": "Daftar",
     "OUPS": "Alamak",
     "WRITE": "Perlukan bantuan? Tulis kepada kami di",
     "RESEND": "Hantar semula e-mel pengaktifan"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Sehingga 10 salon aktif",
     "PREMIUM2": "Akses statistik lanjutan prestasi",
     "PREMIUM3": "Cadangan pintar untuk lonjakkan hasil",
-    "PREMIUM4": "Keterlihatan dipertingkat di platform IzyGlam",
+    "PREMIUM4": "Keterlihatan dipertingkat di platformizyGlam",
     "PREMIUM5": "Sokongan keutamaan",
     "PREMIUM6": "Difikirkan untuk mereka yang bercita-cita",
     "PREMIUM7": "Dapatkan Ratu",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Lanjutan",
     "PLANS": "Bilangan salon aktif",
     "READY": "Sedia untuk membesarkan aktiviti anda?",
-    "DISCOVERS": "Terokai tawaran IzyGlam"
+    "DISCOVERS": "Terokai tawaranizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Bagaimana menempah perkhidmatan di IzyGlam?",
+    "QUESTION1": "Bagaimana menempah perkhidmatan diizyGlam?",
     "QUESTION2": "Bagaimana memilih profesional yang sesuai untuk saya?",
     "QUESTION3": "Bagaimana mengubah atau membatalkan janji temu saya?",
     "QUESTION4": "Bagaimana saya boleh menjejak pesanan saya?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Bolehkah saya meninggalkan ulasan selepas perkhidmatan?",
     "QUESTION8": "Bagaimana menggunakan tawaran kesetiaan dan promosi saya?",
     "QUESTION9": "Apa yang perlu dilakukan jika saya ada masalah dengan pesanan?",
-    "QUESTION10": "Bagaimana menghubungi pasukan IzyGlam?",
+    "QUESTION10": "Bagaimana menghubungi pasukanizyGlam?",
     "QUESTION11": "Bagaimana dasar pembatalan dan bayaran balik berfungsi?",
     "QUESTION12": "Bolehkah saya menempah untuk orang lain (hadiah, kejutan)?",
-    "QUESTION13": "Bagaimana menjadi rakan profesional di IzyGlam?",
-    "QUESTION14": "Bagaimana melindungi maklumat peribadi saya di IzyGlam?",
+    "QUESTION13": "Bagaimana menjadi rakan profesional diizyGlam?",
+    "QUESTION14": "Bagaimana melindungi maklumat peribadi saya diizyGlam?",
     "REPONSE1": "Mudah dan pantas. Setelah mendaftar, pilih perkhidmatan yang anda minati, lihat profesional yang tersedia berhampiran anda, kemudian pilih tarikh dan masa. Klik \"Tempah\" untuk selesaikan, dan buat pembayaran dengan kad. Tempahan anda kemudian akan disahkan secara manual oleh profesional. Jika ditolak, anda akan dipulangkan sepenuhnya.",
     "REPONSE2": "Setiap profesional mempunyai profil terperinci dengan perkhidmatan, kadar, foto hasil kerja dan ulasan pelanggan. Anda juga boleh tambah kegemaran untuk menemuinya semula dengan mudah. Luangkan masa membandingkan untuk memilih yang paling sesuai.",
     "REPONSE3": "Anda boleh ubah atau batalkan tempahan dari ruang peribadi anda. Pembatalan adalah percuma sehingga 24j sebelum perkhidmatan. Selepas itu, caj mungkin dikenakan. Jika ada masalah, sokongan kami sedia membantu.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Pembayaran dibuat secara eksklusif dengan kad (Visa, MasterCard, American Express). Kami tidak menawarkan pembayaran tunai atau melalui PayPal. Semuanya selamat untuk ketenangan anda.",
     "REPONSE6": "Setelah tempahan disahkan, anda akan menerima e-mel ringkasan. Kami juga akan menghantar peringatan sebelum perkhidmatan (melalui e-mel dan/atau notifikasi tolak). Anda juga boleh menjejak status dari ruang peribadi.",
     "REPONSE7": "Ya. Selepas setiap perkhidmatan dilaksanakan, anda akan dijemput untuk meninggalkan ulasan tentang profesional. Ulasan disemak secara manual untuk menjamin keaslian. Profesional tidak boleh membalas atau mengubah ulasan.",
-    "REPONSE8": "Buat masa ini, IzyGlam belum menawarkan program kesetiaan atau kod promosi. Ciri-ciri ini dirancang untuk fasa seterusnya.",
+    "REPONSE8": "Buat masa ini,izyGlam belum menawarkan program kesetiaan atau kod promosi. Ciri-ciri ini dirancang untuk fasa seterusnya.",
     "REPONSE9": "Anda boleh menghubungi kami terus dari bahagian \"Hubungi\" atau melalui e-mel. Pasukan kami akan berusaha menjawab dalam 24j (anggaran) dan membantu menyelesaikan masalah secepat mungkin.",
     "REPONSE10": "Anda boleh hubungi kami melalui borang hubungan di laman atau aplikasi. Sokongan pelanggan tersedia Isnin hingga Sabtu, 9 pagi hingga 6 petang. Contoh e-mel: [support@izyglam.com](mailto:support@izyglam.com)",
     "REPONSE11": "Anda boleh membatalkan tempahan tanpa caj sehingga 24j sebelum masa yang ditetapkan. Selepas itu, caj mungkin dikenakan. Jika tempahan anda ditolak oleh profesional, bayaran balik adalah automatik. Sistem bayaran balik automatik sedang digerakkan.",
     "REPONSE12": "Anda belum boleh menghadiahkan perkhidmatan kepada orang lain dari akaun anda. Namun, jika profesional menawarkan pakej duo atau keluarga, anda boleh menempah untuk beberapa orang dalam konteks itu.",
-    "REPONSE13": "Anda ahli estetik, pendandan atau pengamal kesejahteraan? Sertai komuniti IzyGlam dengan mengisi borang di halaman \"Jadi rakan kongsi\". Pasukan kami akan menghubungi anda segera untuk memuktamadkan pendaftaran.",
+    "REPONSE13": "Anda ahli estetik, pendandan atau pengamal kesejahteraan? Sertai komunitiizyGlam dengan mengisi borang di halaman \"Jadi rakan kongsi\". Pasukan kami akan menghubungi anda segera untuk memuktamadkan pendaftaran.",
     "REPONSE14": "Keselamatan data anda adalah keutamaan kami. Kami mematuhi kewajipan GDPR. Hanya maklumat yang perlu untuk perkhidmatan boleh diakses oleh profesional. Pemesejan terbina dalam membolehkan anda berhubung jika perlu, tetapi sebarang cubaan memintas platform akan dipantau."
   },
   "PRIVACY": {

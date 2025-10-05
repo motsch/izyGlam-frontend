@@ -9,20 +9,20 @@
     <!-- Message d'attente -->
     <div class="status" *ngIf="!backendResponse">
       <div class="loader"></div>
-      <p>Vérification de vos informations, veuillez patienter...</p>
+      <p>{{ "FORGOT_DETAILS.VERIF" | translate }}...</p>
     </div>
 
     <!-- Message en cas d'erreur -->
     <div class="error" *ngIf="backendResponse && backendResponse.error">
       <h2>Erreur</h2>
       <p>Une erreur est survenue : {{ backendResponse.error.message || 'Erreur inconnue.' }}</p>
-      <button class="btn-primary" (click)="router.navigate(['/'])">Retour à l'accueil</button>
+      <button class="btn-primary" (click)="router.navigate(['/'])">{{ "FORGOT_DETAILS.ACCUEIL" | translate }}</button>
     </div>
 
     <!-- Message de succès -->
     <div class="success" *ngIf="backendResponse && !backendResponse.error">
-      <h2>Connexion réussie !</h2>
-      <p>Redirection vers votre espace en cours...</p>
+      <h2>{{ "FORGOT_DETAILS.OK" | translate }}</h2>
+      <p>{{ "FORGOT_DETAILS.SPACE" | translate }}...</p>
     </div>
   </div>
 </div>

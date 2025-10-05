@@ -159,7 +159,7 @@ export class FinanceComponent implements OnInit {
   // ---------------------------------------
 
   /**
-   * Affiche un toast uniforme IzyGlam
+   * Affiche un toast uniformeizyGlam
    * @param message  texte déjà traduit (ou clé si tu préfères)
    * @param isError  true → toast erreur | false → toast succès
    */

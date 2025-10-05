@@ -18,7 +18,7 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 import { SubscriptionService } from 'src/app/core/services/subscription.service';
 import { SessionService } from 'src/app/core/services/session.service';
 
-// ✅ Ajouts pour le système d'erreur IzyGlam
+// ✅ Ajouts pour le système d'erreurizyGlam
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -544,7 +544,7 @@ export class PayementComponent implements OnInit {
   }
 
   // -------------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // -------------------------------------------------------------
   showCustomToast(message: string) {
     // Message générique : "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨"

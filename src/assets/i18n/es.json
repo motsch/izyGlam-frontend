@@ -100,11 +100,25 @@
     "LOADING": "Cargando…",
     "UNEXPECTED_ERROR": "Se ha producido un error inesperado"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Customer service",
+    "WRITE": "Write a message…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Enter your login email",
+    "VALIDE": "Please enter a valid email address.",
+    "LOADING": "Loading",
+    "VERIF": "Verifying your information, please wait",
+    "ACCUEIL": "Back to home",
+    "OK": "Login successful!",
+    "SPACE": "Redirecting to your space"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verificación en curso",
     "VALIDE": "Estamos validando tu enlace de activación. Solo tardará un momento.",
     "ACCOUNT": "Cuenta activada",
     "CONNECT": "Iniciar sesión",
+    "REGISTER": "Registrarse",
     "OUPS": "Ups",
     "WRITE": "¿Necesitas ayuda? Escríbenos a",
     "RESEND": "Reenviar el e-mail de activación"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Hasta 10 salones activos",
     "PREMIUM2": "Acceso a estadísticas avanzadas de rendimiento",
     "PREMIUM3": "Recomendaciones inteligentes para impulsar tu facturación",
-    "PREMIUM4": "Mayor visibilidad en la plataforma IzyGlam",
+    "PREMIUM4": "Mayor visibilidad en la plataformaizyGlam",
     "PREMIUM5": "Soporte prioritario",
     "PREMIUM6": "Pensado para autónomas ambiciosas",
     "PREMIUM7": "Obtener Reina",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Avanzada",
     "PLANS": "Número de salones activos",
     "READY": "¿Lista para hacer crecer tu actividad?",
-    "DISCOVERS": "Descubrir las ofertas IzyGlam"
+    "DISCOVERS": "Descubrir las ofertasizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "¿Cómo reservar un servicio en IzyGlam?",
+    "QUESTION1": "¿Cómo reservar un servicio enizyGlam?",
     "QUESTION2": "¿Cómo elegir al profesional adecuado para mí?",
     "QUESTION3": "¿Cómo modificar o cancelar mi cita?",
     "QUESTION4": "¿Cómo puedo seguir mi pedido?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "¿Puedo dejar una reseña tras mi prestación?",
     "QUESTION8": "¿Cómo usar mis ofertas de fidelidad y promociones?",
     "QUESTION9": "¿Qué hago si tengo un problema con mi pedido?",
-    "QUESTION10": "¿Cómo contactar con el equipo de IzyGlam?",
+    "QUESTION10": "¿Cómo contactar con el equipo deizyGlam?",
     "QUESTION11": "¿Cómo funciona la política de cancelación y reembolso?",
     "QUESTION12": "¿Puedo reservar para otra persona (regalo, sorpresa)?",
-    "QUESTION13": "¿Cómo ser profesional asociado en IzyGlam?",
-    "QUESTION14": "¿Cómo proteger mi información personal en IzyGlam?",
+    "QUESTION13": "¿Cómo ser profesional asociado enizyGlam?",
+    "QUESTION14": "¿Cómo proteger mi información personal enizyGlam?",
     "REPONSE1": "Es simple y rápido. Una vez registrado(a), elige el servicio que te interesa, descubre los profesionales disponibles cerca de ti y selecciona fecha y hora. Haz clic en \"Reservar\" para finalizar y procede al pago con tarjeta. Tu reserva será validada manualmente por el profesional. En caso de rechazo, se te reembolsa íntegramente.",
     "REPONSE2": "Cada profesional tiene un perfil detallado con sus prestaciones, tarifas, fotos de trabajos y opiniones. También puedes añadir favoritos para encontrarlos fácilmente. Tómate tu tiempo para comparar y elegir el que mejor se ajuste a tus expectativas.",
     "REPONSE3": "Puedes modificar o cancelar tu reserva desde tu espacio personal. Las cancelaciones son gratuitas hasta 24 h antes de la prestación. Pasado ese plazo, pueden aplicarse cargos. Si tienes algún problema, nuestro soporte está a tu disposición.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "El pago se realiza exclusivamente con tarjeta (Visa, MasterCard, American Express). No ofrecemos pago en efectivo ni por PayPal. Todo está securizado para tu tranquilidad.",
     "REPONSE6": "Una vez confirmada tu reserva, recibirás un e-mail de resumen. También te enviaremos un recordatorio antes de la prestación (por e-mail y/o notificación push). Puedes seguir el estado desde tu espacio personal.",
     "REPONSE7": "Sí. Tras cada prestación, se te invita a dejar una reseña del profesional. Las reseñas se moderan manualmente para garantizar su autenticidad. Los profesionales no pueden responder ni modificarlas.",
-    "REPONSE8": "Por el momento, IzyGlam aún no ofrece programa de fidelidad ni códigos promocionales. Estas funciones están previstas para una fase posterior.",
+    "REPONSE8": "Por el momento,izyGlam aún no ofrece programa de fidelidad ni códigos promocionales. Estas funciones están previstas para una fase posterior.",
     "REPONSE9": "Puedes contactarnos directamente desde la sección \"Contacto\" o por e-mail. Nuestro equipo hará lo posible por responder en 24 h (plazo indicativo) y ayudarte a resolver el problema.",
     "REPONSE10": "Puedes escribirnos mediante el formulario del sitio o la app. El soporte está disponible de lunes a sábado, de 9:00 a 18:00. Ejemplo de e-mail: support@izyglam.com",
     "REPONSE11": "Puedes cancelar sin coste hasta 24 h antes de la hora prevista. Pasado ese plazo, pueden aplicarse cargos. Si tu reserva es rechazada por el profesional, el reembolso es automático. El sistema automático de reembolsos está en despliegue.",
     "REPONSE12": "Aún no puedes regalar una prestación a otra persona desde tu cuenta. No obstante, si un profesional ofrece formato dúo o familiar, puedes reservar para varias personas en ese marco.",
-    "REPONSE13": "¿Eres esteticista, peluquera o profesional del bienestar? Únete a la comunidad IzyGlam rellenando el formulario en la página \"Hazte partner\". Nuestro equipo te contactará para finalizar tu alta.",
+    "REPONSE13": "¿Eres esteticista, peluquera o profesional del bienestar? Únete a la comunidadizyGlam rellenando el formulario en la página \"Hazte partner\". Nuestro equipo te contactará para finalizar tu alta.",
     "REPONSE14": "La seguridad de tus datos es prioritaria. Respetamos el RGPD. Solo la información estrictamente necesaria es accesible a los profesionales. Hay mensajería integrada para comunicar si hace falta, pero cualquier intento de eludir la plataforma será monitoreado."
   },
   "PRIVACY": {

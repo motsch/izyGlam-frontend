@@ -11,7 +11,7 @@ import { VilleService } from '../../services/ville.service';
 import { UserService } from '../../services/user.service';
 import { SharedService } from '../../services/shared.service';
 
-// ✅ Ajouts IzyGlam : toasts + i18n
+// ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -67,7 +67,7 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
     private userService: UserService,
     private sharedService: SharedService,
 
-    // ✅ IzyGlam
+    // ✅izyGlam
     private toastr: ToastrService,
     private translate: TranslateService
   ) { }
@@ -232,10 +232,10 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
   }
 
   // ---------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ---------------------------------------------------
   private showCustomToast(message: string) {
-    // Standard IzyGlam : erreurs → toastr.error
+    // StandardizyGlam : erreurs → toastr.error
     // Exemple clé i18n : this.translate.instant('ERROR.GENERIC_ERROR')
     this.toastr.error(message);
   }

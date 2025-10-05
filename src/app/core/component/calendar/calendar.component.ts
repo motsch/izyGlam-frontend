@@ -10,7 +10,7 @@ import { TransactionService } from '../../services/transaction.service';
 import { UserService } from '../../services/user.service';
 import { InvoiceService } from '../../services/invoice.service';
 
-// ✅ Ajouts IzyGlam : toasts
+// ✅ AjoutsizyGlam : toasts
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -53,7 +53,7 @@ export class CalendarComponent implements OnInit {
     private transactionService: TransactionService,
     private financialService: FinancialService,
 
-    // ✅ IzyGlam
+    // ✅izyGlam
     private toastr: ToastrService
   ) {
     // Définir la langue par défaut
@@ -802,7 +802,7 @@ export class CalendarComponent implements OnInit {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ------------------------------------------------------
   private showCustomToast(message: string) {
     // Standard : erreurs → toastr.error

@@ -100,11 +100,25 @@
     "LOADING": "Laadimine…",
     "UNEXPECTED_ERROR": "Tekkis ootamatu viga"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Klienditeenindus",
+    "WRITE": "Kirjuta sõnum…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Sisesta oma sisselogimise e-post",
+    "VALIDE": "Palun sisesta kehtiv e-posti aadress.",
+    "LOADING": "Laadimine",
+    "VERIF": "Sinu andmeid kontrollitakse, palun oota",
+    "ACCUEIL": "Tagasi avalehele",
+    "OK": "Sisselogimine õnnestus!",
+    "SPACE": "Suunatakse sinu alale"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Kinnitamine käib",
     "VALIDE": "Kontrollime teie aktiveerimislinki. See võtab vaid hetke.",
     "ACCOUNT": "Konto aktiveeritud",
     "CONNECT": "Logi sisse",
+    "REGISTER": "Зарегистрироваться",
     "OUPS": "Ups",
     "WRITE": "Vajad abi? Kirjuta meile aadressil",
     "RESEND": "Saada aktiveerimiskiri uuesti"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Kuni 10 aktiivset salongi",
     "PREMIUM2": "Ligipääs edasijõudnud statistikatele",
     "PREMIUM3": "Targad soovitused käibe kasvatamiseks",
-    "PREMIUM4": "Suurendatud nähtavus IzyGlami platvormil",
+    "PREMIUM4": "Suurendatud nähtavusizyGlami platvormil",
     "PREMIUM5": "Prioriteetne tugi",
     "PREMIUM6": "Mõeldud ambitsioonikatele iseseisvatele",
     "PREMIUM7": "Hangi Kuninganna",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Edasijõudnud",
     "PLANS": "Aktiivsete salongide arv",
     "READY": "Valmis oma tegevust kasvatama?",
-    "DISCOVERS": "Avasta IzyGlami pakkumised"
+    "DISCOVERS": "AvastaizyGlami pakkumised"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Kuidas broneerida teenust IzyGlamis?",
+    "QUESTION1": "Kuidas broneerida teenustizyGlamis?",
     "QUESTION2": "Kuidas valida endale sobiv spetsialist?",
     "QUESTION3": "Kuidas muuta või tühistada kohtumist?",
     "QUESTION4": "Kuidas ma saan oma tellimust jälgida?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Kas saan pärast teenust jätta arvustuse?",
     "QUESTION8": "Kuidas kasutada lojaalsus- ja sooduspakkumisi?",
     "QUESTION9": "Mida teha, kui mul on tellimusega probleem?",
-    "QUESTION10": "Kuidas võtta ühendust IzyGlami tiimiga?",
+    "QUESTION10": "Kuidas võtta ühendustizyGlami tiimiga?",
     "QUESTION11": "Kuidas toimib tühistamis- ja tagasimaksepoliitika?",
     "QUESTION12": "Kas saan broneerida kellegi teise jaoks (kingitus, üllatus)?",
-    "QUESTION13": "Kuidas saada IzyGlami partner-professionaaliks?",
-    "QUESTION14": "Kuidas IzyGlamis oma isikuandmeid kaitsta?",
+    "QUESTION13": "Kuidas saadaizyGlami partner-professionaaliks?",
+    "QUESTION14": "KuidasizyGlamis oma isikuandmeid kaitsta?",
     "REPONSE1": "Lihtne ja kiire. Pärast registreerumist vali teenus, uuri läheduses olevaid spetsialiste ning vali kuupäev ja kellaaeg. Klõpsa „Broneeri” ja tasu pangakaardiga. Seejärel kinnitab spetsialist broneeringu käsitsi. Tagasilükkamise korral saad täismahus tagasimakse.",
     "REPONSE2": "Igal spetsialistil on detailne profiil: teenused, hinnad, fotod ja klientide arvustused. Saad lisada lemmikuid kiireks leidmiseks. Võrdle profiile ja vali sulle sobivaim.",
     "REPONSE3": "Saad muuta või tühistada broneeringu oma kontolt. Tühistamine on tasuta kuni 24 h enne teenust. Hiljem võivad rakenduda tasud. Probleemi korral aitab tugi.",
@@ -1183,7 +1197,7 @@
     "REPONSE10": "Saad meiega ühendust võtta veebivormi või rakenduse kaudu. Klienditugi: E–L, 9–18. Näidis e-post: support@izyglam.com",
     "REPONSE11": "Tühistamine on tasuta kuni 24 h enne teenust. Pärast seda võivad rakenduda tasud. Kui spetsialist broneeringu tagasi lükkab, toimub automaatne tagasimakse. Automaatne tagastus on juurutamisel.",
     "REPONSE12": "Hetkel ei saa oma kontolt broneerida teisele inimesele. Kui spetsialist pakub duo- või perepaketti, saad broneerida mitmele inimesele selle raames.",
-    "REPONSE13": "Kas oled kosmeetik, juuksur või heaoluspetsialist? Liitu IzyGlami kogukonnaga, täites vormi lehel „Saa partneriks”. Võtame sinuga peagi ühendust.",
+    "REPONSE13": "Kas oled kosmeetik, juuksur või heaoluspetsialist? LiituizyGlami kogukonnaga, täites vormi lehel „Saa partneriks”. Võtame sinuga peagi ühendust.",
     "REPONSE14": "Sinu andmete turvalisus on esmatähtis. Järgime GDPR-i nõudeid. Spetsialistid näevad vaid teenuse osutamiseks vajalikke andmeid. Integreeritud sõnumside võimaldab suhelda; platvormi kõrvalejuhtivaid tegevusi jälgime."
   },
   "PRIVACY": {

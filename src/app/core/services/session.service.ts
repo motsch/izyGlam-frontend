@@ -37,7 +37,12 @@ export class SessionService {
         } catch (e) {
             this.user = null;
             this.rememberMe = false;
-            this.langue = 'fr';
+            const lang = localStorage.getItem('langue');
+            if (lang) {
+                this.langue = lang;
+            } else {
+                this.langue = 'fr';
+            }
         }
     }
 

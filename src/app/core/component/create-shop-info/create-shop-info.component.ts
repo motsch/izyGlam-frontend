@@ -111,7 +111,7 @@ export class CreateShopInfoComponent implements OnDestroy {
     this.stopAutoScroll();
   }
 
-  // --- IzyGlam: toasts unifiés ---
+  // ---izyGlam: toasts unifiés ---
 
   // Erreur générique stylisée (clé: ERROR.GENERIC_ERROR)
   private showCustomToast(message: string) {

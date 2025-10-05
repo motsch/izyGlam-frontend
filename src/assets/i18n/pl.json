@@ -100,11 +100,25 @@
     "LOADING": "Ładowanie…",
     "UNEXPECTED_ERROR": "Wystąpił nieoczekiwany błąd"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Obsługa klienta",
+    "WRITE": "Napisz wiadomość…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Wpisz swój e-mail logowania",
+    "VALIDE": "Proszę podać prawidłowy adres e-mail.",
+    "LOADING": "Ładowanie",
+    "VERIF": "Weryfikujemy Twoje dane, prosimy czekać",
+    "ACCUEIL": "Powrót do strony głównej",
+    "OK": "Logowanie udane!",
+    "SPACE": "Trwa przekierowywanie do Twojej strefy"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Trwa weryfikacja",
     "VALIDE": "Weryfikujemy Twój link aktywacyjny. To potrwa tylko chwilę.",
     "ACCOUNT": "Konto aktywne",
     "CONNECT": "Zaloguj się",
+    "REGISTER": "Zarejestruj się",
     "OUPS": "Ups",
     "WRITE": "Potrzebujesz pomocy? Napisz do nas na",
     "RESEND": "Wyślij ponownie e-mail aktywacyjny"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Do 10 aktywnych salonów",
     "PREMIUM2": "Dostęp do zaawansowanych statystyk",
     "PREMIUM3": "Inteligentne rekomendacje, by zwiększyć przychody",
-    "PREMIUM4": "Wzmocniona widoczność na IzyGlam",
+    "PREMIUM4": "Wzmocniona widoczność naizyGlam",
     "PREMIUM5": "Priorytetowe wsparcie",
     "PREMIUM6": "Dla ambitnych niezależnych",
     "PREMIUM7": "Zdobądź Królową",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Zaawansowane",
     "PLANS": "Liczba aktywnych salonów",
     "READY": "Gotowa rozwinąć działalność?",
-    "DISCOVERS": "Poznaj ofertę IzyGlam"
+    "DISCOVERS": "Poznaj ofertęizyGlam"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Jak zarezerwować usługę w IzyGlam?",
+    "QUESTION1": "Jak zarezerwować usługę wizyGlam?",
     "QUESTION2": "Jak wybrać odpowiedniego specjalistę?",
     "QUESTION3": "Jak zmienić lub anulować wizytę?",
     "QUESTION4": "Jak śledzić moje zamówienie?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Czy mogę dodać opinię po usłudze?",
     "QUESTION8": "Jak korzystać z lojalności i promocji?",
     "QUESTION9": "Co zrobić w przypadku problemu z zamówieniem?",
-    "QUESTION10": "Jak skontaktować się z zespołem IzyGlam?",
+    "QUESTION10": "Jak skontaktować się z zespołemizyGlam?",
     "QUESTION11": "Jak działa polityka anulowania i zwrotów?",
     "QUESTION12": "Czy mogę zarezerwować dla kogoś (prezent, niespodzianka)?",
-    "QUESTION13": "Jak zostać partnerem-profesjonalistą w IzyGlam?",
-    "QUESTION14": "Jak chronione są moje dane osobowe w IzyGlam?",
+    "QUESTION13": "Jak zostać partnerem-profesjonalistą wizyGlam?",
+    "QUESTION14": "Jak chronione są moje dane osobowe wizyGlam?",
     "REPONSE1": "To proste i szybkie. Po rejestracji wybierz usługę, poznaj dostępnych profesjonalistów w pobliżu, a następnie wybierz datę i godzinę. Kliknij „Zarezerwuj”, aby sfinalizować i opłać kartą. Twoja rezerwacja zostanie ręcznie potwierdzona przez profesjonalistę. W razie odmowy otrzymasz pełny zwrot.",
     "REPONSE2": "Każdy specjalista ma szczegółowy profil z usługami, cenami, zdjęciami realizacji i opiniami klientów. Możesz też dodać ulubionych, aby szybko do nich wracać. Porównaj profile i wybierz najlepiej dopasowanego.",
     "REPONSE3": "Możesz zmienić lub anulować rezerwację w swoim panelu. Anulowanie jest bezpłatne do 24 h przed usługą. Później mogą obowiązywać opłaty. W razie problemów skontaktuj się z naszym wsparciem.",
@@ -1178,12 +1192,12 @@
     "REPONSE5": "Płatność odbywa się wyłącznie kartą (Visa, MasterCard, American Express). Nie oferujemy płatności gotówką ani przez PayPal. Wszystko jest bezpieczne.",
     "REPONSE6": "Po potwierdzeniu rezerwacji otrzymasz e-mail podsumowujący. Przypomnimy Ci również przed wizytą (e-mail i/lub powiadomienie push). Status sprawdzisz także w panelu.",
     "REPONSE7": "Tak. Po każdej zrealizowanej usłudze zaprosimy Cię do dodania opinii. Opinie są ręcznie moderowane. Profesjonaliści nie mogą odpowiadać ani ich modyfikować.",
-    "REPONSE8": "Na ten moment IzyGlam nie oferuje jeszcze programu lojalnościowego ani kodów promocyjnych. Funkcje są planowane w kolejnej fazie.",
+    "REPONSE8": "Na ten momentizyGlam nie oferuje jeszcze programu lojalnościowego ani kodów promocyjnych. Funkcje są planowane w kolejnej fazie.",
     "REPONSE9": "Skontaktuj się z nami przez zakładkę „Kontakt” lub e-mail. Dołożymy starań, by odpowiedzieć w ciągu 24 h (czas orientacyjny) i pomóc rozwiązać problem.",
     "REPONSE10": "Skorzystaj z formularza kontaktowego na stronie lub w aplikacji. Wsparcie klienta dostępne od poniedziałku do soboty, 9:00–18:00. Przykładowy e-mail: support@izyglam.com",
     "REPONSE11": "Możesz anulować bez opłat do 24 h przed planowaną godziną. Po tym czasie mogą obowiązywać opłaty. Jeśli specjalista odrzuci rezerwację po płatności, zwrot jest automatyczny. System automatycznych zwrotów jest wdrażany.",
     "REPONSE12": "Na razie nie możesz jeszcze podarować usługi innej osobie z konta. Jeśli specjalista oferuje pakiet dla dwóch/rodzinny, możesz zarezerwować dla kilku osób w tej formule.",
-    "REPONSE13": "Jesteś kosmetyczką, fryzjerką lub praktykiem wellness? Dołącz do społeczności IzyGlam, wypełniając formularz na stronie „Zostań partnerem”. Skontaktujemy się, by dokończyć rejestrację.",
+    "REPONSE13": "Jesteś kosmetyczką, fryzjerką lub praktykiem wellness? Dołącz do społecznościizyGlam, wypełniając formularz na stronie „Zostań partnerem”. Skontaktujemy się, by dokończyć rejestrację.",
     "REPONSE14": "Bezpieczeństwo Twoich danych to priorytet. Przestrzegamy RODO. Specjaliści widzą tylko informacje niezbędne do usługi. Wbudowany czat pozwala się komunikować, ale obchodzenie platformy będzie monitorowane."
   },
   "PRIVACY": {

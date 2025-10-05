@@ -100,11 +100,25 @@
     "LOADING": "Laddar…",
     "UNEXPECTED_ERROR": "Ett oväntat fel inträffade"
   },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "Kundtjänst",
+    "WRITE": "Skriv ett meddelande…"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "Ange din inloggnings-e-post",
+    "VALIDE": "Vänligen ange en giltig e-postadress.",
+    "LOADING": "Laddar",
+    "VERIF": "Verifierar dina uppgifter, vänta",
+    "ACCUEIL": "Tillbaka till startsidan",
+    "OK": "Inloggning lyckades!",
+    "SPACE": "Omdirigerar till din sida"
+  },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Verifiering pågår",
     "VALIDE": "Vi validerar din aktiveringslänk. Det tar bara ett ögonblick.",
     "ACCOUNT": "Konto aktiverat",
     "CONNECT": "Logga in",
+    "REGISTER": "Registrera dig",
     "OUPS": "Hoppsan",
     "WRITE": "Behöver du hjälp? Skriv till oss på",
     "RESEND": "Skicka aktiveringsmailet igen"
@@ -1011,7 +1025,7 @@
     "PREMIUM1": "Upp till 10 aktiva salonger",
     "PREMIUM2": "Tillgång till avancerad statistik",
     "PREMIUM3": "Smarta rekommendationer för att öka din omsättning",
-    "PREMIUM4": "Förstärkt synlighet på IzyGlam",
+    "PREMIUM4": "Förstärkt synlighet påizyGlam",
     "PREMIUM5": "Prioriterad support",
     "PREMIUM6": "Utformat för ambitiösa egenföretagare",
     "PREMIUM7": "Skaffa Drottning",
@@ -1033,7 +1047,7 @@
     "ADVANCE": "Avancerad",
     "PLANS": "Antal aktiva salonger",
     "READY": "Redo att växa?",
-    "DISCOVERS": "Utforska IzyGlam-erbjudanden"
+    "DISCOVERS": "UtforskaizyGlam-erbjudanden"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1157,7 +1171,7 @@
     }
   },
   "HELP": {
-    "QUESTION1": "Hur bokar jag en tjänst på IzyGlam?",
+    "QUESTION1": "Hur bokar jag en tjänst påizyGlam?",
     "QUESTION2": "Hur väljer jag rätt proffs för mig?",
     "QUESTION3": "Hur ändrar eller avbokar jag min tid?",
     "QUESTION4": "Hur kan jag följa min beställning?",
@@ -1166,11 +1180,11 @@
     "QUESTION7": "Kan jag lämna ett omdöme efter min behandling?",
     "QUESTION8": "Hur använder jag lojalitetserbjudanden och kampanjer?",
     "QUESTION9": "Vad gör jag om jag har problem med min beställning?",
-    "QUESTION10": "Hur kontaktar jag IzyGlam-teamet?",
+    "QUESTION10": "Hur kontaktar jagizyGlam-teamet?",
     "QUESTION11": "Hur fungerar avboknings- och återbetalningspolicy?",
     "QUESTION12": "Kan jag boka åt någon annan (present, överraskning)?",
-    "QUESTION13": "Hur blir jag partnerproffs på IzyGlam?",
-    "QUESTION14": "Hur skyddar jag mina personuppgifter på IzyGlam?",
+    "QUESTION13": "Hur blir jag partnerproffs påizyGlam?",
+    "QUESTION14": "Hur skyddar jag mina personuppgifter påizyGlam?",
     "REPONSE1": "Det är enkelt och snabbt. När du har registrerat dig väljer du tjänst, ser proffs nära dig och väljer datum och tid. Klicka på ”Boka” och betala med kort. Din bokning valideras manuellt av proffset. Vid avslag återbetalas du helt.",
     "REPONSE2": "Varje proffs har en profilsida med tjänster, priser, bilder och kundomdömen. Du kan även lägga till favoriter. Jämför profilerna för att välja det som passar bäst.",
     "REPONSE3": "Du kan ändra eller avboka i din personliga sida. Avbokning är gratis upp till 24 h före behandlingen. Därefter kan avgifter tillkomma. Vår support finns till hands vid problem.",
@@ -1183,7 +1197,7 @@
     "REPONSE10": "Du når oss via kontaktformuläret på webbplatsen eller i appen. Kundsupport finns måndag–lördag, 9–18. Exempelmail: support@izyglam.com",
     "REPONSE11": "Du kan avboka gratis upp till 24 h innan. Efter det kan avgifter tillkomma. Om din bokning nekas efter betalning återbetalas du automatiskt. Det automatiska systemet är under utrullning.",
     "REPONSE12": "Du kan ännu inte ge bort en tjänst från ditt konto. Om ett proffs erbjuder duo- eller familjeformat kan du däremot boka för flera personer inom det ramverket.",
-    "REPONSE13": "Är du kosmetolog, frisör eller välmåendetekniker? Gå med i IzyGlam genom att fylla i formuläret på sidan ”Bli partner”. Vi kontaktar dig snart för att slutföra registreringen.",
+    "REPONSE13": "Är du kosmetolog, frisör eller välmåendetekniker? Gå med iizyGlam genom att fylla i formuläret på sidan ”Bli partner”. Vi kontaktar dig snart för att slutföra registreringen.",
     "REPONSE14": "Datasäkerhet är vår prioritet. Vi följer GDPR. Endast information strikt nödvändig för tjänsten delas med proffsen. En intern chatt möjliggör kontakt vid behov; försök att kringgå plattformen övervakas."
   },
   "PRIVACY": {

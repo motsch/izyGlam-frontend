@@ -13,7 +13,7 @@ import { ChatModalComponent } from 'src/app/core/component/chat-modal/chat-modal
 import { CreateShopComponent } from 'src/app/core/component/create-shop/create-shop.component';
 import { AdminService } from 'src/app/core/services/admin.service';
 
-// ✅ Ajouts IzyGlam pour toasts + i18n
+// ✅ AjoutsizyGlam pour toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
         private shopTemplateService: ShopTemplateService,
         private adminService: AdminService,
 
-        // ✅ Ajouts IzyGlam
+        // ✅ AjoutsizyGlam
         private toastr: ToastrService,
         private translate: TranslateService
     ) { }
@@ -519,7 +519,7 @@ export class ProfileComponent implements OnInit {
     }
 
     // -------------------------------------------------
-    // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+    // ✨ Toast d’erreur styliséizyGlam (centralisé)
     // -------------------------------------------------
     private showCustomToast(message: string) {
         // Exemple de message dans fr.json :

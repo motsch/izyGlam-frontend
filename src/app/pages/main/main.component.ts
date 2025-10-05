@@ -644,10 +644,10 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   // ---------------------------------------------------
-  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ✨ Toast d’erreur styliséizyGlam (centralisé)
   // ---------------------------------------------------
   showCustomToast(message: string) {
-    // ⚠️ Standard IzyGlam : pour les erreurs, on utilise toastr.error
+    // ⚠️ StandardizyGlam : pour les erreurs, on utilise toastr.error
     // Exemple clé i18n : this.translate.instant('ERROR.GENERIC_ERROR')
     this.toastr.error(message);
   }
