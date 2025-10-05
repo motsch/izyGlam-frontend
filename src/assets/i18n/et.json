@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Juuksur",
+    "NAILTECHNICIAN": "Maniküür",
+    "MAKEUP": "Meigikunstnik",
+    "WAXING": "Kosmeetik",
+    "FACIAL": "Näohooldus",
+    "MASSAGE": "Massöör",
+    "EYELASH": "Ripsmepikendused",
+    "EYEBROW": "Kulmud",
+    "TANNING": "Päevitus",
+    "ACUPUNCTURE": "Nõelravi",
+    "OTHER": "Muu"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Foto eemaldati galeriist",
+    "PHOTO_UPLOAD": "Pilt on edukalt üles laaditud",
+    "PARTIAL_REFUND_CONFIRM": "Osaline tagasimakse kinnitatud!",
+    "CODE_SAVED": "Kood loodud.",
+    "USERCREATED": "Kasutaja on edukalt loodud. Kinnitussõnum saadeti teie e-posti aadressile.",
+    "SUBSCRIBE_SUCCESS": "Teie tellimus on registreeritud.",
+    "EMAIL_VERIFIED": "Teie konto on aktiveeritud 🎉 Nüüd saate sisse logida.",
+    "EMAIL_RESENT": "Kinnituskiri on uuesti saadetud. Kontrollige oma postkasti.",
+    "BOOKING_CREATED": "Teie broneering on salvestatud.",
+    "PAYMENT_OK": "Makse kinnitatud.",
+    "REFUND_OK": "Tagasimakse tehtud.",
+    "USERUPDATED": "Kasutaja uuendatud.",
+    "SETTINGS_UPDATED": "Seaded uuendatud.",
+    "REVIEW_ADDED": "Teie arvustus on avaldatud 🎉",
+    "SHOPUPDATED": "Pood uuendatud.",
+    "BOOKING_ACCEPTED": "Broneering vastu võetud.",
+    "BOOKING_FINISHED": "Broneering lõpetatud.",
+    "BOOKING_REFUSED": "Broneering tagasi lükatud.",
+    "BOOKING_DELETED": "Broneering kustutatud.",
+    "CODE_GENERATED": "Kood loodud.",
+    "CODE_CONFIRMED": "Kood kinnitatud.",
+    "INVOICE_DOWNLOADED": "Arve alla laaditud.",
+    "MARKED_NO_SHOW_CLIENT": "Klient märgiti puudujaks.",
+    "COMPANY_CREDITED": "Ettevõtte kontot krediteeriti.",
+    "MARKED_NO_SHOW_PRO": "Teenusepakkuja märgiti puudujaks.",
+    "EMPLOYEE_CREDITED": "Töötaja kontot krediteeriti.",
+    "NO_SHOW_PRO": "Rakendati trahv ja tagasimakse tehti.",
+    "EMPLOYEE_DELETED": "Töötaja on kustutatud.",
+    "SLOT_SELECTED": "Aeg valitud",
+    "PASSWORD_RESET": "Parool lähtestatud.",
+    "INVOICE_GENERATED": "Arved genereeritud.",
+    "REVIEW_SAVED": "Arvustus salvestatud, aitäh!",
+    "DEFAULT_PASSWORD_UPDATED": "Vaikimisi parool on uuendatud.",
+    "COMPANY_CREATED": "Teie ettevõttekonto on loodud."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Logige sisse, et hallata oma lemmikuid.",
+    "INVALID_IMAGE": "Vigane pilt.",
+    "NO_SLOTS": "Selle teenuse jaoks pole ühtegi vaba aega.",
+    "NO_SHOP_SELECTED": "Ühtegi poodi pole valitud.",
+    "NO_SERVICE_SELECTED": "Ühtegi teenust pole valitud.",
+    "ORDER_ERROR": "Tõrge tellimuse uuendamisel.",
+    "CODE_ERROR": "Tõrge koodi salvestamisel.",
+    "INVOICE_GENERATED_ERROR": "Tõrge arvete genereerimisel.",
+    "USERNOTCREATED": "Kasutajat ei õnnestunud luua.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Ettevõtte kontol pole selleks piisavalt vahendeid.",
+    "GENERIC_ERROR": "✨ Oih… ilmnes viga. Palun proovige uuesti ✨",
+    "COMPANY_CREDITED": "Ettevõtte kontot krediteeriti.",
+    "LINK_INVALID_OR_MISSING": "Link on vigane või puudub.",
+    "LINK_INVALID_OR_EXPIRED": "Link on vigane või aegunud.",
+    "EMAIL_NOT_FOUND": "Kasutaja e-postiaadressi ei leitud.",
+    "PAYMENT_FAILED": "Makse ebaõnnestus.",
+    "BOOKING_FAILED": "Broneeringu loomine ebaõnnestus.",
+    "LOAD_CARDS_FAILED": "Viga teie kaartide laadimisel.",
+    "LOAD_SHOP_FAILED": "Viga salongi laadimisel.",
+    "LOAD_PRODUCTS_FAILED": "Viga teenuste laadimisel.",
+    "INVALID_CODE": "Sisestatud kood on vigane.",
+    "PASSWORD_CHANGED": "Teie parool on uuendatud.",
+    "PASSWORDS_IDENTICAL": "Uus parool peab erinema praegusest.",
+    "INVALID_AMOUNT": "Sisestatud summa on vigane.",
+    "INVALID_CURRENT_PASSWORD": "Praegune parool on vale.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Praegune parool on vale või ilmnes viga.",
+    "PASSWORD_UPDATE_FAILED": "Parooli muutmine ebaõnnestus.",
+    "PASSWORD_UPDATE_GENERIC": "Tekkis viga parooli uuendamisel.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Paroolid ei ühti või on liiga lühikesed (min. 8 märki).",
+    "INVALID_PASSWORD": "Parool ei tohi olla tühi.",
+    "PASSWORD_TOO_SHORT": "Parool peab olema vähemalt 8 märki."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Stripe’i seadistus puudub.",
+    "LOAD_FAILED": "Stripe’i ei õnnestunud laadida",
+    "NOT_READY": "Stripe pole initsialiseeritud",
+    "CONFIRM_FAILED": "Kaardi salvestamine ebaõnnestus",
+    "CARD_SAVED": "Kaart salvestatud ✅",
+    "PM_FAILED": "Kaardi loomine ebaõnnestus",
+    "SI_FAILED": "Kaardi salvestamise ettevalmistamine ebaõnnestus",
+    "ATTACH_FAILED": "Kaarti ei õnnestunud kontoga siduda",
+    "SAVE_CARD": "Salvesta kaart",
+    "ADD_CARD": "Lisa kaart"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Palun logige sisse"
+  },
+  "COMMON": {
+    "LOADING": "Laadimine…",
+    "UNEXPECTED_ERROR": "Tekkis ootamatu viga"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Kinnitamine käib",
+    "VALIDE": "Kontrollime teie aktiveerimislinki. See võtab vaid hetke.",
+    "ACCOUNT": "Konto aktiveeritud",
+    "CONNECT": "Logi sisse",
+    "OUPS": "Ups",
+    "WRITE": "Vajad abi? Kirjuta meile aadressil",
+    "RESEND": "Saada aktiveerimiskiri uuesti"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Minu pangainfo",
+    "ADD_BANK_INFO": "Lisa pangainfo",
+    "BANK_NAME": "Panga nimi",
+    "HOLDER_NAME": "Konto omanik",
+    "COUNTRY": "Riik",
+    "SAVE": "Salvesta"
+  },
+  "LOADER": {
+    "LOADING": "Laadimine…"
+  },
+  "SPONSORS": {
+    "TITLE": "Meie sponsorid",
+    "SPONSORISED": "Sponsoreeritud"
+  },
+  "TABS": {
+    "FINANCE": "Finantsjälgimine",
+    "GENERAL_INFO": "Üldinfo",
+    "EMPLOYEES": "Töötajate haldus",
+    "SERVICES": "Teenuste haldus",
+    "PHOTOS": "Fotogalerii",
+    "STATS": "Statistika",
+    "PARAM": "Seadistused",
+    "SHOPS": "Poed",
+    "USERS": "Kasutajad",
+    "MESSAGE": "Sõnumid"
+  },
+  "CARD": {
+    "ADD": "Lisa kaart",
+    "NO_IMAGE": "Galerii on tühi.",
+    "SALON": "Salong edukalt uuendatud",
+    "ERROR1": "Viga salongi uuendamisel",
+    "ERROR2": "Viga foto uuendamisel",
+    "UPDATE": "Salong edukalt uuendatud"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Lõpetatud",
+    "ACCEPTEE": "Vastu võetud",
+    "WAITING": "Ootel",
+    "CANCEL": "Tühistatud",
+    "DELETE": "Kustutatud",
+    "REFUSED": "Tagasi lükatud",
+    "NO_PRESTA": "Teenusepakkuja puudus",
+    "CLIENT_ABSENT": "Klient puudus",
+    "ADRESSE": "Aadress",
+    "DATE": "Kuupäev",
+    "TOTAL": "Kokku",
+    "FACTURE": "Arve",
+    "CANCELLED": "Tühistatud",
+    "DELETED": "Kustuta",
+    "AVIS": "Arvustus",
+    "SUPPORT": "Tugi",
+    "CODE": "Kinnituskood",
+    "CODE_A_DONNER": "Kood, mille annate teenusepakkujale",
+    "PRESTA_ABSENT": "Teenusepakkuja puudus"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Poe arvustused",
+    "COMMENT": "Kommentaar",
+    "NOTE": "Hinne",
+    "CLOSE": "Sulge"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Galerii on tühi."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Hinda oma tellimust",
+    "DATE": "Kuupäev",
+    "SERVICE": "Teenus",
+    "AVIS": "Sinu arvustus",
+    "SEND": "Saada",
+    "PLACEHOLDER": "Kirjelda oma kogemust…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Too teenus koju",
+    "KNOWMORE": "Rohkem infot",
+    "PART1TITLE": "Nauti parimaid iluteenuseid oma kodus",
+    "PART1TEXT": "Meie kvalifitseeritud professionaalid tulevad sinu juurde, et pakkuda kvaliteetseid iluhooldusi, mis on kohandatud sinu vajaduste ja soovidega. Koge ainulaadset heaoluelamust lõunapausil, pärast tööpäeva või sõbrannadega pärastlõunal.",
+    "PART2TITLE": "Tööta siis, kui soovid, teeni paindlikult",
+    "PART2TEXT": "Teeni sissetulekut oma graafiku järgi, võttes platvormi kaudu vastu päringuid sulle sobivas tempos. Võid kasutada oma varustust või rentida professionaalseid vahendeid läbi izyGlami.",
+    "PART3TITLE": "Ettevõtetele loodud iluteenused",
+    "PART3TEXT": "Glam for Business on igas suuruses ettevõtetele mõeldud platvorm, mis aitab hallata sinu klientide ja töötajate iluvajadusi. Paku isikupärastatud iluteenuseid otse töökohal, ettevõtteüritustel või erilisteks puhkudeks. Meie spetsialistid tulevad kohale ja kohandavad teenused sinu vajadustele.",
+    "APPTITLE": "Rakendustega on lihtsam",
+    "DOWNLOADAPP1": "Laadi rakendus alla",
+    "DOWNLOADAPP2": "Laadi alla rakendus iluproffidele",
+    "SCANTODOWNLOAD": "Skaneeri allalaadimiseks",
+    "SIGNUP": "Registreeru!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Video taasesituse viga",
+    "AUTOPLAY_BLOCKED": "Automaatesitus on blokeeritud. Vajuta video käivitamiseks.",
+    "NAV_ERROR": "Navigeerimine nurjus"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Kuidas izyGlami rakendused ja saidid toimivad",
+    "HELPCENTER": "Ava abikeskus",
+    "BUSINESS": "Ettevõtted",
+    "ABOUT": "Meist",
+    "OURSERVICES": "Meie teenused",
+    "PRESSAREA": "Pressinurk",
+    "INVESTORS": "Investorid",
+    "CAREERS": "Tööpakkumised",
+    "AI": "Tehisintellekt",
+    "PRODUCTS": "Tooted",
+    "GLAM": "Alati vormis koos izyGlamiga",
+    "RESERVED": "Broneeri ette",
+    "GIFTCARDS": "Kinkekaardid",
+    "WORKWITHUS": "Tee meiega koostööd",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Privaatsus",
+    "ACCESS": "Juurdepääsetavus",
+    "CONDITIONS": "Tingimused",
+    "LANGUAGE": "Keel",
+    "LOCALISATION": "Asukoht",
+    "ALL_RIGHT": "Kõik õigused kaitstud"
+  },
+  "COMING_SOON": {
+    "TITLE": "Tuleme peagi",
+    "TITLE-NOT-COMING": "Me ei plaani veel tulla",
+    "DAYS": "Päeva",
+    "HOURS": "Tundi",
+    "MINUTES": "Minutit",
+    "SECONDS": "Sekundit",
+    "TEXT": "Töötame selle nimel, et pakkuda ainulaadset koduste iluteenuste kogemust. Hoia end kursis meie käivitusega."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Hetkepakkumised",
+    "DISCOVER": "Avasta izyGlamis",
+    "LIKED": "Lemmikud sinu lähedal",
+    "SMART": "Nutikad valikud",
+    "TOP10": "Nädala Top 10",
+    "SEARCHRESULT": "Otsingutulemused",
+    "AVIS": "Arvustused"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Juuksed",
+    "MANUCURE": "Maniküür",
+    "VISAGE": "Nägu",
+    "MASSAGE": "Massaaž",
+    "MAQUILLAGE": "Meik",
+    "EPILATION": "Epilatsioon",
+    "BRONZAGE": "Päevitus",
+    "PARTUM": "Sünnitusjärgne hool",
+    "NUTRITION": "Toitumine",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Nõelravi",
+    "STYLISME": "Stiil",
+    "YOGA": "Lõõgastus",
+    "DEVELOPPEMENT": "Eneseareng",
+    "EYELASH": "Ripsmepikendused"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Juuksur",
+    "MANUCURE": "Maniküürija",
+    "ESTETICIAN": "Kosmeetik",
+    "MASSAGE": "Massöör",
+    "MAQUILLAGE": "Meigikunstnik",
+    "PEDICURE": "Pediküürija",
+    "NUTRITION": "Toitumisnõustaja",
+    "FITNESS": "Treener"
+  },
+  "INTRO": {
+    "NORESULTS": "Tulemusi ei leitud",
+    "START": "Alusta",
+    "SPECIALITY": "Eriala?",
+    "WHERE": "Kus?",
+    "CONNEXION": "Sisselogimine",
+    "REGISTRATION": "Registreerimine"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Kontoandmed",
+    "MESSAGE": "Minu sõnumid",
+    "MESSAGE_SUBTITLE": "Minu käimasolevate vestluste loend.",
+    "INFORMATION_SUBTITLE": "Muuda oma isikuandmeid lihtsalt.",
+    "SECURITY": "Turvalisus ja keel",
+    "SECURITY_SUBTITLE": "Parool, keel… kõik on kontrolli all.",
+    "CONFIDENTIAL": "Privaatsus ja andmed",
+    "CONFIDENTIAL_SUBTITLE": "Sinu andmed on väärtuslikud. Nii hoolitseme nende eest.",
+    "DASHBOARD": "Töölaud",
+    "DASHBOARD_SUBTITLE": "Halda lihtsalt oma tegevuse andmeid.",
+    "COMPANY": "Minu ettevõtte haldus",
+    "COMPANY_SUBTITLE": "Halda oma minevikus ja tulevikus olevaid või tühistatud broneeringuid.",
+    "SHOP": "Minu salongi haldus",
+    "SHOP_SUBTITLE": "Halda oma salongi, teenuseid ja rahandust.",
+    "FINANCIAL": "Finantsjälgimine",
+    "ADMIN": "Üldhaldus",
+    "ADMIN_SUBTITLE": "Halda kogu seda meistriteost kerge vaevaga. Maailm on sinu!",
+    "CALENDAR": "Kalender",
+    "CALENDAR_SUBTITLE": "Halda hõlpsalt mineviku ja tuleviku kohtumisi.",
+    "SELECT_SALON": "Vali salong",
+    "NEW_SALON": "Loo salong",
+    "SHOP_TO_CREATE": "Loodava poe tüüp",
+    "CANCEL": "Tühista",
+    "CREATE": "Loo minu pood",
+    "INFO1": "Oled eemaldamas oma poodi:",
+    "INFO2": "Seda toimingut ei saa tagasi võtta",
+    "SURE": "Kas oled kindel, et soovid jätkata",
+    "DELETE": "Kustuta"
+  },
+  "PROFILE": {
+    "TITLE": "Põhiandmed",
+    "FIRSTNAME": "Eesnimi",
+    "LASTNAME": "Perekonnanimi",
+    "PHONE": "Telefoninumber",
+    "ADDRESS": "E-posti aadress",
+    "CHANGE_USER": "Muuda kasutajat",
+    "CANCEL": "Tühista",
+    "SUCCESS": "Profiil edukalt muudetud",
+    "UPDATE_ERROR": "Parooli uuendamisel tekkis viga."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Muuda parooli",
+    "ACTUAL_PASSWORD": "Praegune parool",
+    "NEW_PASSWORD": "Uus parool",
+    "CONFIRMED_PASSWORD": "Kinnita uus parool",
+    "CHANGE_PASSWORD": "Muuda parooli",
+    "CHANGE_OK": "Parool edukalt muudetud",
+    "CHANGE_LANGUE": "Muuda keelt",
+    "CHANGE_COUNTRY": "Muuda riiki",
+    "LANGUE": "Keel",
+    "COUNTRY": "Riik"
+  },
+  "PAYEMENT": {
+    "YOU": "Sina",
+    "HEADER_TITLE": "Makse",
+    "SERVICE_TITLE": "Teenus",
+    "SERVICE_NOTE": "Märkus:",
+    "ADDRESS_TITLE": "Teenuse aadress",
+    "ADDRESS_RENDEZVOUS": "Kohtume ukse ees",
+    "ADDRESS_CHANGE": "Vali teine aadress",
+    "PAYMENT_SECTION_TITLE": "Makse",
+    "PAYMENT_METHOD": "Põhikaart",
+    "PAYMENT_EXPIRE": "Aegub",
+    "PAYMENT_NO_CARD": "Põhikaart pole määratud",
+    "PAYMENT_NO_CARD_DESC": "Palun lisage või valige kaart kui põhine makseviis.",
+    "SUMMARY_SUBTOTAL": "Vahesumma",
+    "SUMMARY_SERVICE_FEE": "izyGlami vahendus",
+    "SUMMARY_DELIVERY_FEE": "Teenustasu",
+    "SUMMARY_TOTAL": "Kokku",
+    "TITLE": "Broneeri aeg veebis",
+    "FOR_WHO": "Kellele te broneerite?",
+    "ADD_PROCHE": "Lisa lähedane",
+    "WHERE": "Kus teenus toimub?",
+    "SELECT_ADDRESS": "Vali aadress",
+    "ADD_ADDRESS": "Lisa aadress",
+    "CARD_PAY": "Kaardimakse",
+    "CARD_NUM": "Kaardi number",
+    "CARD_NAME": "Nimi kaardil",
+    "EXPIRATION": "Aegumiskuupäev",
+    "CVV": "CVV",
+    "RDV": "Sinu kohtumise detailid",
+    "RESUME": "Kohtumise kokkuvõte",
+    "DATE": "Kuupäev",
+    "HOUR": "Kellaaeg",
+    "PRESTA": "Teenus",
+    "EXPIRE": "Aegub",
+    "DEFAULT": "Vaikimisi",
+    "NOCARD": "Kaardid puuduvad",
+    "WITH": "Koos",
+    "TOTAL": "Kokku tasuda",
+    "ANNULER": "TÜHISTA",
+    "RETOUR": "TAGASI",
+    "CONTINUER": "JÄTKA",
+    "VALIDER": "KINNITA",
+    "ADRESSE": "Aadress",
+    "LEGAL_TEXT_1": "Klõpsates tellimuse esitamise nupul, nõustute izyGlam France SAS (ROS 841 983 828) kohaletoimetamisteenuse lepinguga.",
+    "LEGAL_TEXT_2": "Tuletame meelde, et loobute taganemisõigusest kohaletoimetamisteenuste osas. Teil on võimalus pöörduda tarbijavahekohtu poole siin.",
+    "LEGAL_TEXT_3": "Kui te ei ole kohal kulleri saabumisel, jäetakse tellimus ukse ette. Tellimust esitades võtate selle eest vastutuse pärast kohale toimetamist. Alkoholiga või muude piirangutega kaubad tagastatakse teie puudumisel otse asutusse.",
+    "CLOSE_FORM": "Sulge vorm",
+    "ADD_CARD": "Lisa kaart",
+    "TRAITEMENT": "Töötlemine käib"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Makse kinnitatud",
+    "THANKS": "Aitäh! Teie broneering on registreeritud.",
+    "BACKHOME": "Tagasi avalehele",
+    "PROBLEME": "Broneerimisprobleem",
+    "PAIEMENT": "Teie makse debiteeriti, kuid broneeringut ei õnnestunud kinnitada.",
+    "THANKSCONTACT": "Palun võtke ühendust meie toega:",
+    "FAILED": "Makse ebaõnnestus",
+    "VALIDATE": "Me ei saanud teie makset kinnitada. Palun proovige uuesti."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam vabakutselistele",
+    "STEP1": {
+      "TITLE": "Kliendid esitavad tellimusi",
+      "TEXT": "Klient leiab teie ettevõtte ja esitab tellimuse izyGlami rakenduses."
+    },
+    "STEP2": {
+      "TITLE": "Teie kinnitate broneeringu",
+      "TEXT": "Kinnitate broneeringu ja teie kalender uuendatakse."
+    },
+    "STEP3": {
+      "TITLE": "Kohtumise ajal",
+      "TEXT": "Saate varajased teavitused tulevastest broneeringutest ja juhised iga kliendi juurde jõudmiseks."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Krediteeri ettevõtte kontot",
+    "SOLDE": "Praegune jääk",
+    "CREDIT": "Krediteeritav summa",
+    "COMPANY": "Krediteeri ettevõtte kontot",
+    "DEPENSE": "Kulude jälgimine",
+    "DATE": "Kuupäev",
+    "COUNT": "Summa",
+    "EMPLOYEE": "Töötaja",
+    "DESCRIPTION": "Kirjeldus"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Teil on juba partneri- või ettevõttekonto!",
+    "NOT_CONNECTED": "Palun logige salongi salvestamiseks sisse",
+    "TITLE": "Alustame!",
+    "TITLE2": "Loome salongi!",
+    "NAME": "Teie salongi nimi",
+    "ADDRESS": "Teie ettevõtte aadress",
+    "STREET": "Tänav",
+    "CITY": "Linn",
+    "CODE_POSTAL_POSSIBLE": "Teenindatavad sihtnumbrid",
+    "CODE_POSTAL": "Sihtnumber",
+    "COUNTRY": "Riik",
+    "ADDRESSPLACEHOLDER": "Näide: Põhja pst 123",
+    "FLOOR": "Korrus/sviit (valikuline)",
+    "BUSINESSTYPE": "Ettevõtte tüüp",
+    "FIRSTNAME": "Eesnimi",
+    "LASTNAME": "Perekonnanimi",
+    "PASSWORD": "Parool",
+    "PASSWORDCONFIRMED": "Kinnita parool",
+    "EMAIL": "E-post",
+    "PHONE": "Mobiiltelefon",
+    "WHATSAPP": "Nõustun saama sõnumeid WhatsAppis",
+    "BUTTON": "Salvesta pood",
+    "SUCCESS": "Pood on edukalt loodud!",
+    "ERROR": "Tekkis viga poe loomisel:",
+    "ERROR1": "Ettevõtte nimi on kohustuslik.",
+    "ERROR2": "Ettevõtte aadress on kohustuslik.",
+    "ERROR3": "Ettevõtte tüüp on kohustuslik.",
+    "ERROR4": "Eesnimi on kohustuslik.",
+    "CHOOSE_COUNTRY": "Vali riik",
+    "POSTAL_CODE": "Sihtnumber",
+    "CHOOSE_CITY": "Vali linn",
+    "ERROR5": "Perekonnanimi on kohustuslik.",
+    "ERROR6": "E-post on kohustuslik.",
+    "ERROR7": "Mobiilinumber on kohustuslik.",
+    "ERROR8": "Peate nõustuma WhatsAppi sõnumite vastuvõtmisega."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Muuda aadressi",
+    "FIND_SHOP": "Otsi poodi",
+    "CATEGORIES": "Kategooriad",
+    "OFFRE": "Hetkepakkumised",
+    "DISCOVER": "Avasta",
+    "APPRECIATE": "Kõige hinnatumad",
+    "SMART": "Nutikad valikud",
+    "TOP10": "Nädala Top10",
+    "SEARCH_RESULT": "Otsingutulemused",
+    "NOT_AVAILABLE": "Selles aadressis pole veel saadaval",
+    "NEW_ADDRESS": "Lisa uus aadress",
+    "CHOOSE_ADDRESS": "Vali aadress",
+    "CHOOSE_COUNTRY": "Vali riik",
+    "CHOOSE_CITY": "Vali linn",
+    "CHOOSE_ARRONDISSEMENT": "Vali linnaosa",
+    "CANCEL": "Tühista",
+    "SAVE": "Salvesta",
+    "CLOSE": "Sulge"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Nimi",
+    "CITY": "Linn",
+    "NOTE": "Hinne",
+    "MIDDLE_PRICE": "Keskmine hind",
+    "PROMOTION": "Soodustus",
+    "ACTIONS": "Tegevused",
+    "MODIFIER": "Muuda poe infot",
+    "SHOP_NAME": "Poe nimi",
+    "DESCRIPTION": "Kirjeldus",
+    "PRINCIPALE": "Põhipilt",
+    "SHOP": "Poe tüüp",
+    "ARRONDISSEMENT": "Linnaosa",
+    "MINIMUM_DELAI": "Minimaalne etteteatamisaeg",
+    "DISTANCE": "Maksimaalne vahemaa (km)",
+    "EMPLACEMENT": "Asukoht",
+    "HOURS_MORNING": "Lahtiolekuajad – hommik",
+    "HOURS_AFTERNOON": "Lahtiolekuajad – pärastlõuna",
+    "ACTIVE_PROMO": "Aktiivne soodustus",
+    "CANCEL": "Tühista",
+    "ENREGISTRER": "Salvesta"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Arenda oma tegevust",
+    "TEXT": "Tuhanded izyGlami kasutajad võivad otsida sinu piirkonnas teenuseid…",
+    "IMAGE": "pilt"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Miks izyGlam?",
+    "STEP1": {
+      "TITLE": "Tööta omadel tingimustel",
+      "TEXT": "Korralda oma ajakava ja halda teenuseid vabalt. Paindlik platvorm kohandub sinu vajadustega, et maksimeerida tegevust."
+    },
+    "STEP2": {
+      "TITLE": "Tugevda oma veebi-kohalolu",
+      "TEXT": "Tõmba ligi rohkem kliente rakendusse ehitatud turundusvahendite abil ning suurenda nähtavust."
+    },
+    "STEP3": {
+      "TITLE": "Loo püsikliente",
+      "TEXT": "Analüüsi klientide eelistusi, vasta arvustustele ja paku lojaalsussoodustusi."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Lihtsusta oma äri haldust",
+      "TEXT": "Halda oma tegevust muretult izyGlamiga – täielik lahendus heaoluspetsialistidele. Paindlikud tööriistad ja personaalne tugi."
+    },
+    "STEP2": {
+      "TITLE": "Suurenda müüki",
+      "TEXT": "Iga päev kasutavad tuhanded inimesed izyGlami, et leida iluspetsialiste enda lähedalt. Kasuta võimalust uute klientideni jõudmiseks."
+    },
+    "STEP3": {
+      "TITLE": "Tagatud kliendirahulolu",
+      "TEXT": "Paku personaliseeritud kogemust: halda broneeringuid, suhtle kiiresti ja kohanda teenuseid. Kliendid saavad hooldusi siis ja seal, kus soovivad."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam teie ettevõttele?",
+    "STEP1": {
+      "TITLE": "Töötajad ja kliendid broneerivad",
+      "TEXT": "Teie töötajad või kliendid valivad sobivad heaoluteenused otse izyGlami rakenduses."
+    },
+    "STEP2": {
+      "TITLE": "Määrate eraldatava eelarve",
+      "TEXT": "Saate töötajate ja klientide kontosid krediteerida perioodiliselt või ühekordselt."
+    },
+    "STEP3": {
+      "TITLE": "Teenused osutatakse",
+      "TEXT": "Meie ilueksperdid tulevad teie töötajate juurde või kontorisse, et pakkuda broneeritud teenuseid."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Tõsta oma ettevõtte väärtust",
+    "TEXT": "Tuhanded izyGlami kasutajad otsivad heaoluteenuseid. Paku töötajatele ja klientidele ligipääsu parimatele iluekspertidele nende lähedal.",
+    "IMAGE": "pilt"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Miks izyGlam?",
+    "STEP1": {
+      "TITLE": "Tunnusta ja premeeri töötajaid",
+      "TEXT": "Paku oma meeskonnale igakuist ilueelarvet. Juuksurid, kosmeetikud ja teised spetsialistid nende käsutuses – suurem rahulolu ja ühtekuuluvus."
+    },
+    "STEP2": {
+      "TITLE": "Paranda brändi mainet",
+      "TEXT": "Korralda klientidele ilusündmusi või integreeri teenused lojaalsusprogrammidesse, et jätta meeldejääv mulje."
+    },
+    "STEP3": {
+      "TITLE": "Optimeeri töökeskkonna heaolu",
+      "TEXT": "Muuda heaoluteenused töötajatele lihtsasti kättesaadavaks töökohal või selle lähedal – see tõstab motivatsiooni ja meeskonnavaimu."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Lihtsusta heaolule ligipääsu",
+      "TEXT": "IzyGlam pakub teie meeskonnale lihtsat ja paindlikku viisi enda eest hoolitsemiseks – iluhooldused või treeningud on vaid paari puudutuse kaugusel."
+    },
+    "STEP2": {
+      "TITLE": "Paku klientidele innovaatilisi hüvesid",
+      "TEXT": "Tugevda kliendisuhteid, pakkudes heaoluteenuseid üritustel või lojaalsusprogrammides. Näita, et hoolid nende kogemusest."
+    },
+    "STEP3": {
+      "TITLE": "Mõõdu järgi heaolu – kus ja millal vaja",
+      "TEXT": "Teie töötajad ja kliendid saavad kvaliteetseid teenuseid kõikjal, kus nad viibivad. Valitud eksperdid ja personaalne lähenemine tagavad rahulolu."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Halda kontot",
+    "ORDERS": "Varasemad tellimused",
+    "FAVORITES": "Lemmikud",
+    "HELP": "Abi",
+    "MY_ABO": "Minu tellimus",
+    "PRICES": "Hinnaplaanid",
+    "FIDELITY": "Püsiklientide programm",
+    "LOGOUT": "Logi välja",
+    "YOUR_BEAUTY_SERVICES": "Paku oma iluteenuseid",
+    "YOUR_COMPANY": "Registreeri oma ettevõte"
+  },
+  "SUBTITLES": {
+    "HELP": "Vajad abi? See leht on sinu jaoks."
+  },
+  "ORDERS": {
+    "TITLE": "Minu tellimused",
+    "TITLE_SUBTITLE": "Halda mineviku, tulevasi või tühistatud broneeringuid.",
+    "UPCOMING_SECTION": "📅 Tulemas",
+    "NO_UPCOMING": "Sul pole planeeritud teenuseid.",
+    "PAST_SECTION": "✅ Toimunud",
+    "NO_PAST": "Sul pole teostatud teenuseid.",
+    "ADDRESS": "Aadress",
+    "DATE": "Kuupäev",
+    "TOTAL": "Kokku",
+    "ITEMS": "artiklit",
+    "DELETE": "Kustuta",
+    "VISIT": "Külasta",
+    "PRESTA_FOR": "Teenuse saaja",
+    "AT": "kell",
+    "ORDER_AGAIN": "Telli uuesti",
+    "INVOICE": "Taotle arvet",
+    "REVIEW": "Jäta arvustus",
+    "CANCEL": "Tühista"
+  },
+  "FIDELITY": {
+    "TITLE": "Minu lemmikud",
+    "AGAIN": "Veel",
+    "AGAIN_SUBTITLE": "enne sinu preemiat",
+    "TITLE_SUBTITLE": "et avada sinu kingitus",
+    "DATE": "Kehtib kuni",
+    "HISTO": "Minu hoolduste ajalugu"
+  },
+  "FAVORITES": {
+    "TITLE": "Minu lemmikud",
+    "TITLE_SUBTITLE": "Leia oma lemmiksalongid ühe pilguga."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Teenustasu:",
+    "DISTANCE": "Max kaugus:",
+    "PAYEMENT": "Kaardimakse ja PayPal aktsepteeritud",
+    "PRESS_FOR_INFO": "Vajuta, et vaadata lahtiolekuaegu, infot jms.",
+    "GALLERY": "Pildigalerii",
+    "SEE_MORE": "Näita rohkem",
+    "SEE_LESS": "Näita vähem"
+  },
+  "LOGIN": {
+    "TITLE": "Sisestage oma sisselogimisandmed.",
+    "FORGET_PASSWORD": "Unustasid parooli?",
+    "CONTINUER": "Jätka",
+    "CONTINUE_WITH": "Jätka koos",
+    "OR": "Või",
+    "QRCODE": "Logi sisse QR-koodiga",
+    "CGU": "Jätkates nõustute saama kõnesid ja WhatsAppi/SMS-sõnumeid (sh automaatmeetoditega) izyGlamilt ja tema tütarettevõtetelt teie antud numbrile.",
+    "PLACEHOLDER_EMAIL": "E-posti aadress",
+    "PLACEHOLDER_PASSWORD": "Parool",
+    "PLACEHOLDER_PASSWORD_NEW": "Uus parool",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Kinnita parool",
+    "CHANGE_PASSWORD": "Muuda oma parooli",
+    "REINIT": "Lähtesta"
+  },
+  "SIGNUP": {
+    "GENRE": "Sugu",
+    "CHOOSE": "Vali",
+    "SEX_MALE": "Mees",
+    "SEX_FEMALE": "Naine",
+    "TITLE": "Sisestage oma isikuandmed.",
+    "CONTINUER": "Jätka",
+    "OR": "Või",
+    "QRCODE": "Logi sisse QR-koodiga",
+    "CGU": "Jätkates nõustute saama kõnesid ja WhatsAppi/SMS-sõnumeid (sh automaatmeetoditega) izyGlamilt ja tema tütarettevõtetelt teie antud numbrile.",
+    "PLACEHOLDER_FIRSTNAME": "Eesnimi",
+    "PLACEHOLDER_LASTNAME": "Perekonnanimi",
+    "PLACEHOLDER_EMAIL": "E-post",
+    "PLACEHOLDER_EMAIL_REQUIRED": "E-post on kohustuslik",
+    "PLACEHOLDER_EMAIL_WRONG": "E-posti vorming on vigane",
+    "PLACEHOLDER_PHONE": "Telefon",
+    "PLACEHOLDER_PHONE_NUMBER": "Telefoninumber",
+    "PLACEHOLDER_PASSWORD": "Parool",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Parooli kinnitus",
+    "COUNTRY": "Riik"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Prantsuse",
+    "ANGLAIS": "Inglise",
+    "ESPAGNOL": "Hispaania",
+    "NEERLANDAIS": "Hollandi",
+    "ITALIEN": "Itaalia",
+    "ALLEMAND": "Saksa",
+    "PORTUGAIS": "Portugali",
+    "POLONAIS": "Poola",
+    "DANOIS": "Taani",
+    "FINNOIS": "Soome",
+    "SUEDOIS": "Rootsi",
+    "ARABE": "Araabia",
+    "TURC": "Türgi",
+    "CHINOIS": "Hiina",
+    "RUSSE": "Vene",
+    "PERSAN": "Pärsia",
+    "UKRAINIEN": "Ukraina",
+    "ROUMAIN": "Rumeenia",
+    "CATALAN": "Katalaani",
+    "BASQUE": "Baski",
+    "GALICIEN": "Galeegi",
+    "ALBANAIS": "Albaania",
+    "KURDE": "Kurdi",
+    "ESTONIEN": "Eesti",
+    "SOMALIEN": "Somaali",
+    "BIELORUSSE": "Valgevene",
+    "JAPONAIS": "Jaapani",
+    "COREEN": "Korea",
+    "INDONESIEN": "Indoneesia",
+    "MALAIS": "Malai",
+    "THAI": "Tai",
+    "VIETNAMIEN": "Vietnami",
+    "TAGALOG": "Tagalogi",
+    "BENGALI": "Bengali"
+  },
+  "COUNTRY": {
+    "FRANCE": "Prantsusmaa",
+    "ALLEMAGNE": "Saksamaa",
+    "SPAIN": "Hispaania",
+    "ITALY": "Itaalia",
+    "DANEMARK": "Taani",
+    "FINLAND": "Soome",
+    "NETHERLAND": "Madalmaad",
+    "POLAND": "Poola",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Rootsi",
+    "CHINA": "Hiina",
+    "INDIA": "India",
+    "JAPAN": "Jaapan",
+    "SOUTH_KOREA": "Lõuna-Korea",
+    "INDONESIA": "Indoneesia",
+    "PHILIPPINES": "Filipiinid",
+    "THAILAND": "Tai",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malaisia",
+    "SINGAPOURE": "Singapur",
+    "EMIRAT_ARABE": "Araabia Ühendemiraadid",
+    "SAUDI_ARABIA": "Saudi Araabia"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Minu aadressid",
+    "ADDRESS_MODIFICATION": "Aadressi muutmine",
+    "STREET": "Tänav",
+    "CITY": "Linn",
+    "CP": "Sihtnumber",
+    "CREATE": "Loo",
+    "BACK": "Tagasi",
+    "CHANGE": "Muuda",
+    "CLOSE": "Sulge"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Platvormi seaded",
+    "COMMISSION": "Vahendustasu (%)",
+    "0to100": "Väärtus peab olema 0–100",
+    "SERVICE": "Teenustasu (€)",
+    "WEEKS": "Kuvatavate nädalate arv",
+    "SUP0": "Väärtus peab olema > 0",
+    "LESS24": "Tühistamistasu < 24 h (%)",
+    "LESS48": "Tühistamistasu < 48 h (€)",
+    "DELAY": "Minimaalne broneerimisaeg (tundi)",
+    "TVA": "Käibemaksu määr (%)",
+    "ADS": "Luba reklaamid",
+    "COMPANY": "Luba ettevõtetele",
+    "FIDELITY": "Luba lojaalsusprogramm",
+    "MULTI_SHOP": "Luba mitu poodi",
+    "PROMO": "Luba poesiseste soodustuste haldus",
+    "SPONSORS": "Kuva sponsorite plokk avalehel",
+    "SAVE": "Salvesta"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Poodide koguarv",
+    "ACT_SHOPS": "Aktiivsete poodide arv",
+    "USERS": "Kasutajate koguarv",
+    "NBR_USERS": "Registreerunud kasutajate arv",
+    "CA_TOTAL": "Kogukäive",
+    "CA_GENERATED": "Genereeritud käive",
+    "SHOPS_PERFO": "Poodide tulemused",
+    "SHOP_NAME": "Poe nimi",
+    "CITY": "Linn",
+    "REVENUES": "Tulu",
+    "BOOKINGS": "Broneeringute arv",
+    "NOTE": "Keskmine hinne",
+    "ACTIONS": "Tegevused",
+    "DETAILS": "Üksikasjad",
+    "ADJUST": "Kohanda",
+    "SHOP_ADJUST": "Kohanda poodi",
+    "STILL_DEVELOPPED": "See funktsioon on arendamisel",
+    "CLOSE": "Sulge"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Sündmuse üksikasjad",
+    "CLIENT": "Klient",
+    "DEBUT": "Algus",
+    "FIN": "Lõpp",
+    "ADDRESS": "Aadress",
+    "PHONE": "Telefon",
+    "CANCEL": "Tühista",
+    "SAVE": "Salvesta"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Loo sündmus",
+    "COMING": "Tulevad",
+    "PAST": "Möödunud",
+    "CANCELLED": "Tühistatud",
+    "NO_CANCELLED": "Tühistatud tellimusi pole."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Veebitugi"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Töötajate haldus",
+    "NAME": "Nimi",
+    "EMAIL": "E-post",
+    "SOLDE": "Konto jääk",
+    "ACTIONS": "Tegevused",
+    "DEFAULT_PASSWORD": "Vaikimisi parool",
+    "REINITIALIZE_PASSWORD": "Vaikimisi parool lähtestamiseks",
+    "CHANGE_PASSWORD": "Muuda parooli"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Krediteeri töötaja kontot",
+    "AMOUNT": "Krediteeritav summa",
+    "CANCEL": "Tühista",
+    "SAVE": "Kinnita"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Broneeringuid kokku",
+    "TOTAL_MONTH": "Broneeringuid sel kuul",
+    "GENERATED": "Genereeritud tulu",
+    "MONTHLY": "Tulu sel kuul",
+    "AVG_NOTE": "Keskmine hinne",
+    "BASED_ON": "Põhineb",
+    "REVIEWS": "arvustusel",
+    "NEXT_APPOINTEMENT": "Järgmised kohtumised",
+    "POPULAR_SERVICES": "Populaarseimad teenused",
+    "RESERVATION": "broneeringut"
+  },
+  "FINANCE": {
+    "PROGRESS": "Muutus võrreldes eelmise kuuga",
+    "PROGRESSION": "Edenemine",
+    "TOTAL_GENERATED": "Kokku tekitatud käive",
+    "CA": "Käive",
+    "COMMISSION_TAKEN": "Võetud vahendustasud",
+    "COMMISSIONS": "Vahendustasud",
+    "NET_TO_PAY": "Netosumma väljamakseks",
+    "DISPO_AMOUNT": "Saadaval summa",
+    "REQUEST_WITHDRAWAL": "Taotle ülekannet",
+    "TAKE": "Väljavõetav summa",
+    "TOTAL_EARNINGS": "Netotulu",
+    "TOTAL_BOOKINGS": "Teostatud teenuseid",
+    "CANCELLED_BOOKINGS": "Tühistatud teenuseid",
+    "SERVICES_CANCELLED": "Tühistatud või tagasi lükatud broneeringud",
+    "SERVICES_COMPLETED": "Lõpetatud broneeringud",
+    "AVG_PRICE": "Keskmine hind",
+    "PER_SERVICE": "Teenuse kohta",
+    "REVIEW_RATIO": "Kliendiarvamused",
+    "CLIENT_FEEDBACK": "Tagasiside määr",
+    "TOP_PRODUCTS": "Enim müüdud teenused",
+    "AVG_DURATION": "Keskmine kestus",
+    "DURATION_PER_BOOKING": "Aeg broneeringu kohta",
+    "DETAILS": "Pangakonto üksikasjad",
+    "ASK": "Taotle ülekannet",
+    "HISTORY": "Tehingute ajalugu",
+    "DATE": "Kuupäev",
+    "AMOUNT": "Summa",
+    "COMMISSION": "Komisjon",
+    "STATUS": "Staatus"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Vali loodava poe tüüp",
+    "CANCEL": "Tühista",
+    "CREATE": "Kinnita"
+  },
+  "PROCHES": {
+    "TITLE": "Minu lähedased",
+    "UPDATE": "Lähedase andmete muutmine",
+    "FIRSTNAME": "Eesnimi",
+    "NAME": "Perekonnanimi",
+    "EMAIL": "E-post",
+    "PHONE": "Telefon",
+    "CREATE": "Loo",
+    "BACK": "Tagasi",
+    "CHANGE": "Muuda",
+    "CLOSE": "Sulge"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Anna oma hinnang",
+    "RATING": "Hinne",
+    "COMMENT": "Kommentaar",
+    "CLOSE": "Sulge",
+    "SUBMIT": "Saada"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Vali teenuse kuupäev",
+    "CANCEL": "Tühista"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Loo teenus",
+    "NAME": "Nimi",
+    "DESCRIPTION": "Kirjeldus",
+    "COLOR": "Värv",
+    "PRICE": "Hind",
+    "TIME": "Kestus",
+    "IMAGE": "Pilt",
+    "ACTIONS": "Tegevused",
+    "MINUTES": "minutit",
+    "CHANGE": "Muuda",
+    "DELETE": "Kustuta",
+    "SERVICE_NAME": "Teenuse nimi",
+    "TIME_MINUTES": "Kestus (minutites)",
+    "PREST_IMAGE": "Teenuse pilt",
+    "NO_PICS": "Pilti veel pole",
+    "UPLOAD": "Laadi pilt üles",
+    "NEW_PIC": "Uue pildi eelvaade",
+    "PRESTA_COLOR": "Teenuse värv",
+    "CANCEL": "Tühista",
+    "SAVE": "Salvesta",
+    "AVG_PRICE": "Keskmine hind",
+    "IMAGE_OK": "Pilt edukalt üles laaditud",
+    "ERROR_IMAGE_LOAD": "Viga pildi üleslaadimisel",
+    "UPDATE_SUCCESS": "Teenus edukalt uuendatud",
+    "ERROR_PRESTA": "Viga teenuse uuendamisel",
+    "PRESTA_UPDATED": "Teenus edukalt uuendatud",
+    "PRESTA_ERROR": "Viga teenuse uuendamisel",
+    "PRESTA_SUCCESS": "Teenus edukalt uuendatud",
+    "PHOTO_ERROR": "Viga foto uuendamisel",
+    "PRESTA_DELETED": "Teenus edukalt kustutatud",
+    "PRESTA_DELETE_ERROR": "Viga teenuse kustutamisel"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Poe pilt",
+    "UPLOAD_IMAGE": "Laadi pilt üles",
+    "SNEEK_PIC": "Pildi eelvaade",
+    "SHOP_NAME": "Poe nimi",
+    "DESCRIPTION": "Kirjeldus",
+    "DESC_INFO": "(vähemalt 25 märki)",
+    "CITY": "Linn",
+    "DISCRICT": "Linnaosad",
+    "LAT": "Laiuskraad",
+    "LON": "Pikkuskraad",
+    "ZONE": "Liikumisraadius (km)",
+    "OPENNING": "Lahtiolekuajad",
+    "MORNING_OPEN": "Hommik – avamine",
+    "MORNING_CLOSE": "Hommik – sulgemine",
+    "AFTERNOON_OPEN": "Pärastlõuna – avamine",
+    "AFTERNOON_CLOSE": "Pärastlõuna – sulgemine",
+    "SAVE": "Salvesta pood",
+    "MONDAY": "Esmaspäev",
+    "TUESDAY": "Teisipäev",
+    "WEDNESDAY": "Kolmapäev",
+    "THURSDAY": "Neljapäev",
+    "FRIDAY": "Reede",
+    "SATURDAY": "Laupäev",
+    "SUNDAY": "Pühapäev",
+    "CLOSED": "Suletud",
+    "GENERATE_IMAGE": "Genereeri pilt",
+    "GENERATE_DESCRIPTION": "Genereeri kirjeldus",
+    "PHOTO": "Näited lubatud/keelatud fotodest",
+    "CODE_POSTAUX": "Teenindatavad sihtnumbrid",
+    "EXEMPLE_LOCAL": "Nt: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Lisa töötaja",
+    "LOADING": "Laadimine",
+    "LIST": "Töötajate nimekiri",
+    "ADD": "Lisa",
+    "EMAIL": "Töötaja e-post",
+    "FIRSTNAME": "Eesnimi",
+    "FAMILY_NAME": "Perekonnanimi",
+    "PHONE": "Telefon",
+    "PASSWORD": "Parool",
+    "HAVE_TO": "Kõik väljad on kohustuslikud.",
+    "EMAIL_ERROR": "Vigane e-post.",
+    "EMPLOYEE_OK": "Töötaja edukalt lisatud.",
+    "ADD_EMPLOYEE_ERROR": "Töötaja lisamine ebaõnnestus."
+  },
+  "AVIS": {
+    "TITLE": "MIDA MEIE KASUTAJAD RÄÄGIVAD",
+    "AVIS1": "Algul olin skeptiline… aga tegelikult! Minu maniküür oli laitmatu, kodus ja stressivabalt. Sellest sai minu reedeõhtune rituaal.",
+    "AVIS2": "Broneerisin näohoolduse 3 minutiga, diivanilt. Kosmeetik oli õrn ja tähelepanelik… mu nahk pole kunagi parem olnud.",
+    "AVIS3": "Arvasin, et koduteenused on kallimad kui salongis… üllatus: sama hind või isegi soodsam! Ja ei pidanud kuhugi minema. Suur jah.",
+    "AVIS4": "Ühe sünnipäeva eel vajasin kiiret föönisoengut. Leidsin 2 klõpsuga vaba spetsialisti. Täpne, tore ja tulemus oli super.",
+    "AVIS5": "Olen üksikema – mul pole aega igale poole joosta. Siin broneerin siis, kui lapsed magavad. Lihtne, kiire ja tõesti suurepärane.",
+    "AVIS6": "Mulle meeldis juba esimene kord. Kosmeetik pani mind koheselt mugavalt tundma. Tundsin, et minust hoolitsetakse. Juba broneerisin uue aja järgmiseks nädalaks!"
+  },
+  "DOWNLOAD": {
+    "USERS": "rahulolevat kasutajat",
+    "SOCIAL": "saadaval professionaali",
+    "STORE": "App Store’is ja Google Play’s"
+  },
+  "TARIF": {
+    "DISCOVER": "Vali endale sobiv plaan",
+    "DISCOVER2": "ja alusta teekonda tippu",
+    "SOLUTIONS": "Sa väärid kaunist, võimsat ja sinule mõeldud lahendust. Saad meelt muuta igal ajal.",
+    "TEST": "Su esimene salong on 100% tasuta. Null stressi. Puhas maagia.",
+    "START_FREE": "Loo minu esimene salong",
+    "FREE": "Õpipoiss",
+    "FREE_SUBTITLE": "Alusta oma tõusu esimese salongiga",
+    "THEN": "seejärel",
+    "MONTHLY": "kuu",
+    "FREE1": "1 aktiivne salong",
+    "FREE2": "Piiramatu arv broneeringuid ja kliente",
+    "FREE3": "Teenuste ja kalendri haldus",
+    "FREE4": "Isikliku kalendri sünkroonimine",
+    "FREE5": "Ideaalne rahulikuks alustamiseks",
+    "FREE6": "Loo tasuta salong",
+    "BASIC": "Valitu",
+    "BASIC_SUBTITLE": "Vabasta oma potentsiaal ja hakka särama",
+    "BASIC1": "Kuni 3 aktiivset salongi",
+    "BASIC2": "Täielik teenuste, klientide ja broneeringute haldus",
+    "BASIC3": "Prioriteetne e-posti tugi",
+    "BASIC4": "Juurdepääs eksklusiivsetele kasvuresurssidele",
+    "BASIC5": "Ideaalne profidele, kes soovivad kliendibaasi kasvatada",
+    "BASIC6": "1 kuu tasuta proov",
+    "PREMIUM": "Kuninganna",
+    "PREMIUM_SUBTITLE": "Sinu impeerium võtab kuju, mõju kasvab",
+    "PREMIUM1": "Kuni 10 aktiivset salongi",
+    "PREMIUM2": "Ligipääs edasijõudnud statistikatele",
+    "PREMIUM3": "Targad soovitused käibe kasvatamiseks",
+    "PREMIUM4": "Suurendatud nähtavus IzyGlami platvormil",
+    "PREMIUM5": "Prioriteetne tugi",
+    "PREMIUM6": "Mõeldud ambitsioonikatele iseseisvatele",
+    "PREMIUM7": "Hangi Kuninganna",
+    "BUSINESS": "Jumalanna",
+    "BUSINESS_SUBTITLE": "Nõua oma trooni, Jumalanna",
+    "BUSINESS1": "Rätseplahendus",
+    "BUSINESS2": "Piiramatu arv salonge",
+    "BUSINESS3": "Personaalne strateegiline tugi",
+    "BUSINESS4": "Suurendatud nähtavus ja esiletoomine",
+    "BUSINESS5": "Lahendused äri skaleerimiseks",
+    "BUSINESS6": "Võta meiega ühendust",
+    "COMPARE": "Funktsioonide võrdlus",
+    "FONCTIONS": "Funktsioonid",
+    "BUSINESS9": "Tegevuse täielik haldus",
+    "STUDIO_BASIC": "Eksklusiivsed ressursid",
+    "STUDIO_ADVANCED": "Statistika & soovitused",
+    "ANALYSE": "Tulemusanalüüs",
+    "BASICS": "Põhiline",
+    "ADVANCE": "Edasijõudnud",
+    "PLANS": "Aktiivsete salongide arv",
+    "READY": "Valmis oma tegevust kasvatama?",
+    "DISCOVERS": "Avasta IzyGlami pakkumised"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Juurdepääsetavuse deklaratsioon",
+      "TEXT": "izyGlam on pühendunud oma teenuste võimalikult laiale juurdepääsetavusele. Meie eesmärk on saavutada WCAG 2.2 taseme AA vastavus ja võimalusel joonduda RGAA-ga (Prantsusmaa)."
+    },
+    "SCOPE": {
+      "TITLE": "Ulatus",
+      "L1": "Avalik veebisait ja infolehed.",
+      "L2": "Veebirakendus (töölaud) klientidele ja professionaalidele.",
+      "L3": "Mobiilirakendus (iOS/Android) vajadusel.",
+      "L4": "Tehingulised e-kirjad ja abikeskus.",
+      "L5": "Klienditoe tööriistad."
+    },
+    "STATUS": {
+      "TITLE": "Vastavuse staatus",
+      "TEXT": "Käesoleva deklaratsiooni koostamise hetkel on izyGlami kasutajaliidesed osaliselt vastavuses WCAG 2.2 AA / RGAA-ga. Parandame pidevalt ja kõrvaldatame prioriteetseid puudujääke."
+    },
+    "PREPARATION": {
+      "TITLE": "Deklaratsiooni ettevalmistamise meetod",
+      "L1": "Tootemeeskonna/UI enesehindamised: HTML-semantika, ARIA rollid, tabulaatori järjekord.",
+      "L2": "Käsitestsed: klaviatuuriga liikumine, nähtav fookus, 200%+ suum, ekraanilugejad.",
+      "L3": "Tööriistapõhised auditid (automatiseeritud valimitel).",
+      "L4": "Pidev testimine uuenduste käigus (Design System, taaskasutatavad ligipääsetavad komponendid)."
+    },
+    "FEATURES": {
+      "TITLE": "Saadaval olevad ligipääsetavusfunktsioonid",
+      "KEYBOARD": {
+        "TITLE": "Klaviatuuriga navigeerimine",
+        "L1": "Täielik liikumine klaviatuuriga (Tab, Shift+Tab, Enter, Tühik, Esc, nooled).",
+        "L2": "Järjepidev ja kontrastne fookuse indikaator.",
+        "L3": "„Liigu sisu juurde” lingid päise vahelejätmiseks.",
+        "L4": "Menüüd, modaalid ja rippmenüüd juhitavad klaviatuuriga (avamine/sulgemine, fookuse lõks kontrollitud, sulgemine Esc-iga)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Ekraanilugejad ja struktuur",
+        "L1": "Semantiline struktuur pealkirjadega (h1→h6) ja piirkondadega (header, nav, main, footer).",
+        "L2": "Selged sildid kõikidel väljadelt ja nuppudel, ühtsed ligipääsetavad nimed.",
+        "L3": "Oleku muutuste teavitamine aria-live piirkondade kaudu (vead, edu, laadimine).",
+        "L4": "Informatiivsetel piltidel kirjeldav alt-tekstid, dekoratiivsed pildid ignoreeritakse."
+      },
+      "CONTRAST": {
+        "TITLE": "Kontrastid, värvid ja skaleerimine",
+        "L1": "Eesmärk: kontrast ≥ 4.5 : 1 tavatekstil ja ≥ 3 : 1 suurel teksti puhul.",
+        "L2": "Kasutatav kuni 200% suumiga ilma sisu või funktsionaalsuse kadudeta.",
+        "L3": "Teave ei tugine ainuüksi värvile."
+      },
+      "FORMS": {
+        "TITLE": "Vormid ja veateated",
+        "L1": "Label⇄input seosed, kohustuslike väljade märgised.",
+        "L2": "Veateated välja vahetus läheduses ja vajadusel kokkuvõte.",
+        "L3": "Fookus seatakse esimesele veaga väljale, antakse parandamissoovitused."
+      },
+      "DYNAMIC": {
+        "TITLE": "Dünaamiline sisu ja animatsioonid",
+        "L1": "Karussellid/animatsioonid peatatatavad ja mittehäirivad.",
+        "L2": "Arvestame süsteemi eelistusega „vähenda animatsioone”, kui võimalik.",
+        "L3": "Mittepealetükkivad modaalid, suletavad klaviatuuriga ja välisklikiga."
+      },
+      "MEDIA": {
+        "TITLE": "Meedia",
+        "L1": "Videodel (vajadusel) subtiitrid ja/või transkriptsioonid.",
+        "L2": "Audio/video on juhitav klaviatuuriga."
+      },
+      "MOBILE": {
+        "TITLE": "Mobiil",
+        "L1": "Piisavalt suured ja eraldatud puutealad.",
+        "L2": "Kooskõlaline navigeerimine TalkBacki (Android) ja VoiceOveriga (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Sihtkeskkonnad ja abitehnoloogiad",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Toetatud on uuendatud kaasaegsed brauserid."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Mittejuurdepääsetav sisu (leitud või potentsiaalne)",
+      "TEXT": "Hoolimata pingutustest võivad mõned elemendid jääda mittevastavaks:",
+      "L1": "Vanimad pildid ilma kirjeldava alternatiivtekstita.",
+      "L2": "Kolmandate osapoolte dokumendid (PDF, manused), mis pole täielikult juurdepääsetavad.",
+      "L3": "Ajaloolised videod ilma subtiitrite/kirjelduseta.",
+      "L4": "Integreeritud kolmandate osapoolte komponendid (makse, kaardid, pleierid) oma piirangutega.",
+      "MOTIVES": "Võimalikud põhjused: kolmanda osapoole sisu, ebaproportsionaalne koormus, käimasolev uuendus."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatiivid ja mõistlikud kohandused",
+      "TEXT": "Kui vajate alternatiivset vormingut (nt ligipääsetav dokument, abi broneerimisel), võtke meiega ühendust. Püüame pakkuda samaväärset lahendust."
+    },
+    "FEEDBACK": {
+      "TITLE": "Tagasiside ja tugi",
+      "L1": "Rakenduses: Abi > Juurdepääsetavus.",
+      "L2A": "E-posti teel:",
+      "L2B": "või",
+      "L3": "Palun märkige ekraan/URL, seade, brauser ja vajadusel ekraanilugeja."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Vaidlustamise kord (Prantsusmaa)",
+      "TEXT": "Kui märkate juurdepääsetavuse puudujääki, mis takistab sisu või funktsioonide kasutamist, ja me ei paku rahuldavat vastust, võite:",
+      "L1": "Kirjutada õiguskantslerile (Défenseur des droits) või tema esindajale oma departemangus,",
+      "L2": "Või pöörduda vajadusel vahendaja poole.",
+      "MORE": "Lisainfo:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Pidev parendamine",
+      "L1": "Design System ligipääsetavate komponentidega.",
+      "L2": "Koodikontroll ja ligipääsetavuse testid igal väljastusel.",
+      "L3": "Regulaarsed koolitused toote- ja tugimeeskondadele.",
+      "L4": "Paranduste prioriseerimine kasutajamõju järgi."
+    },
+    "DATE": {
+      "TITLE": "Deklaratsiooni kuupäev ja uuendused",
+      "TEXT": "Deklaratsioon koostatud 25. detsembril 2025. Uuendame seda vähemalt kord aastas või oluliste muudatuste korral."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Kuidas broneerida teenust IzyGlamis?",
+    "QUESTION2": "Kuidas valida endale sobiv spetsialist?",
+    "QUESTION3": "Kuidas muuta või tühistada kohtumist?",
+    "QUESTION4": "Kuidas ma saan oma tellimust jälgida?",
+    "QUESTION5": "Milliseid makseviise saan kasutada?",
+    "QUESTION6": "Kuidas broneeringut või tellimust jälgida?",
+    "QUESTION7": "Kas saan pärast teenust jätta arvustuse?",
+    "QUESTION8": "Kuidas kasutada lojaalsus- ja sooduspakkumisi?",
+    "QUESTION9": "Mida teha, kui mul on tellimusega probleem?",
+    "QUESTION10": "Kuidas võtta ühendust IzyGlami tiimiga?",
+    "QUESTION11": "Kuidas toimib tühistamis- ja tagasimaksepoliitika?",
+    "QUESTION12": "Kas saan broneerida kellegi teise jaoks (kingitus, üllatus)?",
+    "QUESTION13": "Kuidas saada IzyGlami partner-professionaaliks?",
+    "QUESTION14": "Kuidas IzyGlamis oma isikuandmeid kaitsta?",
+    "REPONSE1": "Lihtne ja kiire. Pärast registreerumist vali teenus, uuri läheduses olevaid spetsialiste ning vali kuupäev ja kellaaeg. Klõpsa „Broneeri” ja tasu pangakaardiga. Seejärel kinnitab spetsialist broneeringu käsitsi. Tagasilükkamise korral saad täismahus tagasimakse.",
+    "REPONSE2": "Igal spetsialistil on detailne profiil: teenused, hinnad, fotod ja klientide arvustused. Saad lisada lemmikuid kiireks leidmiseks. Võrdle profiile ja vali sulle sobivaim.",
+    "REPONSE3": "Saad muuta või tühistada broneeringu oma kontolt. Tühistamine on tasuta kuni 24 h enne teenust. Hiljem võivad rakenduda tasud. Probleemi korral aitab tugi.",
+    "REPONSE4": "Logi oma kontole ja ava „Minu broneeringud”. Seal näed reaalajas olekut, saad tühistada või muuta ning vaadata ajalugu.",
+    "REPONSE5": "Makse toimub ainult pangakaardiga (Visa, MasterCard, American Express). Sularaha ja PayPal praegu ei toeta. Kõik on turvaline.",
+    "REPONSE6": "Kui broneering on kinnitatud, saad kokkuvõtte e-posti teel. Saadame meeldetuletuse enne teenust (e-post ja/või push). Staatus on nähtav ka sinu kontol.",
+    "REPONSE7": "Jah. Pärast iga teostatud teenust palume sul jätta arvustus. Arvustusi modereeritakse autentsuse tagamiseks. Spetsialistid ei saa arvustusi muuta ega neile vastata.",
+    "REPONSE8": "Praegu lojaalsusprogrammi ja sooduskoodide funktsiooni veel pole. Need on planeeritud hilisemaks.",
+    "REPONSE9": "Võta meiega ühendust „Kontakt” rubriigist või e-posti teel. Püüame vastata 24 h jooksul (orienteeruv tähtaeg) ja lahendada mure kiiresti.",
+    "REPONSE10": "Saad meiega ühendust võtta veebivormi või rakenduse kaudu. Klienditugi: E–L, 9–18. Näidis e-post: support@izyglam.com",
+    "REPONSE11": "Tühistamine on tasuta kuni 24 h enne teenust. Pärast seda võivad rakenduda tasud. Kui spetsialist broneeringu tagasi lükkab, toimub automaatne tagasimakse. Automaatne tagastus on juurutamisel.",
+    "REPONSE12": "Hetkel ei saa oma kontolt broneerida teisele inimesele. Kui spetsialist pakub duo- või perepaketti, saad broneerida mitmele inimesele selle raames.",
+    "REPONSE13": "Kas oled kosmeetik, juuksur või heaoluspetsialist? Liitu IzyGlami kogukonnaga, täites vormi lehel „Saa partneriks”. Võtame sinuga peagi ühendust.",
+    "REPONSE14": "Sinu andmete turvalisus on esmatähtis. Järgime GDPR-i nõudeid. Spetsialistid näevad vaid teenuse osutamiseks vajalikke andmeid. Integreeritud sõnumside võimaldab suhelda; platvormi kõrvalejuhtivaid tegevusi jälgime."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Kes me oleme?",
+      "TEXT": "Käesolev privaatsuspoliitika selgitab, kuidas <strong>izyGlam</strong> (edaspidi „meie”, „meie oma” või „Platvorm”) kogub, kasutab, säilitab, jagab ja kaitseb teie isikuandmeid meie teenuste kasutamisel (veebisait, veebirakendus, mobiilirakendus, e-kirjad ja tugi). Tegutseme allpool kirjeldatud töötlemiste osas <strong>vastutava töötlejana</strong>."
+    },
+    "SCOPE": {
+      "TITLE": "Poliitika ulatus",
+      "TEXT": "Poliitika kehtib <strong>klientidele</strong>, kes broneerivad teenuseid, <strong>professionaalidele</strong>, kes pakuvad teenuseid izyGlami kaudu, ja <strong>külastajatele</strong>."
+    },
+    "DATA": {
+      "TITLE": "Kogutavad andmed",
+      "PROVIDED": {
+        "TITLE": "Teie esitatud andmed",
+        "L1": "<strong>Isik ja kontakt:</strong> nimi, eesnimi, e-post, telefon, aadress(id), foto/avatari(d).",
+        "L2": "<strong>Konto:</strong> kasutajatunnused, paroolid (räsitud), eelistused, keel.",
+        "L3": "<strong>Broneeringud:</strong> valitud teenused, kuupäev/kellaaeg, teenuse aadressid, märkmed, manused.",
+        "L4": "<strong>Makse:</strong> makseinfo <em>meie teenusepakkuja kaudu (nt Stripe)</em> — me ei salvesta teie kaardiandmeid.",
+        "L5": "<strong>Professionaalid:</strong> avalik profiil, teenused, hinnad, liikumisraadius, saadavus, IBAN/RIB (turvaliselt), kontrolldokumendid vajadusel.",
+        "L6": "<strong>Tugi:</strong> sõnumid, piletid, vajadusel kõnesalvestised."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Automaatne kogumine",
+        "L1": "<strong>Tehnilised andmed:</strong> seadmemudel, OS, brauser, resolutsioonid, seansi tunnused.",
+        "L2": "<strong>Logid:</strong> IP-aadressid, ajatemplid, veasündmused, funktsioonide kasutus.",
+        "L3": "<strong>Asukoht:</strong> ligikaudne (IP) või täpne (GPS, teie selgesõnalisel nõusolekul).",
+        "L4": "<strong>Küpsised ja SDK-d:</strong> vt allolev jaotis."
+      },
+      "THIRD": {
+        "TITLE": "Kolmandatelt saadud andmed",
+        "L1": "<strong>Maksepakkujad</strong> (makse staatused, tokenid).",
+        "L2": "<strong>Analüütika/kelmusevastased partnerid</strong> (riskisignaalid, koondstatistika).",
+        "L3": "<strong>Integratsioonid</strong> (nt suhtlusvahendid, kaardid, pilvesalvestus)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Eesmärgid ja õiguslik alus",
+      "TEXT": "Töötleme andmeid järgmistel eesmärkidel:",
+      "L1": "<strong>Teenuse osutamine</strong> (konto loomine, broneering, vahendus, teavitused) — <em>alus: lepingu täitmine</em>.",
+      "L2": "<strong>Maksed ja arveldamine</strong> — <em>leping, õiguslik kohustus</em>.",
+      "L3": "<strong>Turvalisus, väärkasutuse/kelmuse ennetus</strong> — <em>õigustatud huvi, õiguslik kohustus</em>.",
+      "L4": "<strong>Toote täiustamine, statistika</strong> — <em>õigustatud huvi</em>.",
+      "L5": "<strong>Tugi ja kvaliteet</strong> — <em>leping, õigustatud huvi</em>.",
+      "L6": "<strong>Otseturundus</strong> (e-kirjad/rakendus) — <em>vajadusel nõusolek</em>; loobumisvõimalus igal ajal.",
+      "L7": "<strong>Õigusnõuetele vastavus</strong> (raamatupidamine, ametiasutuste päringud) — <em>õiguslik kohustus</em>."
+    },
+    "SHARING": {
+      "TITLE": "Andmete jagamine",
+      "L1": "<strong>Professionaalid / kliendid</strong>: teenuse osutamiseks vajalik info (nimi, kontakt, teenuse aadress, broneeringu detailid).",
+      "L2": "<strong>Teenusepakkujad</strong>: maksed (nt Stripe), majutus/salvestus, analüütika, e-post/SMS/push, tugi, KYC vajadusel. <em>Piiratud juurdepääs, GDPR-iga kooskõlas lepingud.</em>",
+      "L3": "<strong>Partnerid</strong>: teie nõusolekul spetsiifiliste pakkumiste jaoks.",
+      "L4": "<strong>Ametiasutused</strong>: seadusest tulenevalt või meie õiguste kaitseks."
+    },
+    "TRANSFERS": {
+      "TITLE": "Edastused väljapoole EL/EMP",
+      "TEXT": "Kui andmeid edastatakse riikidesse ilma piisavuse otsuseta, kasutame <strong>tüüptingimusi</strong> (SCC) ja rakendame täiendavaid meetmeid."
+    },
+    "RETENTION": {
+      "TITLE": "Säilitamistähtajad",
+      "L1": "<strong>Konto ja isikuandmed</strong>: konto kasutamise ajal, seejärel <em>kuni 3 aastat</em> pärast viimast tegevust (turundus) või <em>5–10 aastat</em> juriidiliste kohustuste jaoks.",
+      "L2": "<strong>Broneeringud/arved</strong>: <em>10 aastat</em> (õiguslik kohustus).",
+      "L3": "<strong>Turbelogid</strong>: <em>6–24 kuud</em> olenevalt kriitilisusest.",
+      "L4": "<strong>Küpsised</strong>: vt küpsiste jaotis.",
+      "NOTE": "Pärast tähtaega kustutame või anonüümime andmed."
+    },
+    "COOKIES": {
+      "TITLE": "Küpsised ja SDK-d",
+      "TEXT": "Kasutame küpsiseid/SDK-sid platvormi toimimiseks, auditi mõõtmiseks, kelmuse ennetamiseks ning teie nõusolekul kogemuse isikupärastamiseks.",
+      "L1": "<strong>Vajalikud</strong>: autentimine, turvalisus, tehnilised eelistused.",
+      "L2": "<strong>Mõõtmine</strong>: koondkasutusstatistika.",
+      "L3": "<strong>Turundus</strong>: ainult teie nõusolekul.",
+      "PREF": "Saate eelistusi hallata bänneri ja brauseri seadete kaudu igal ajal."
+    },
+    "AUTOMATION": {
+      "TITLE": "Automatiseeritud otsused ja profileerimine",
+      "TEXT": "Võime kasutada automaatseid signaale (nt pettuserisk, spetsialisti saadavus, kaugus), et prioritiseerida toiminguid või pakkuda aegu. Õiguslikult olulisi otsuseid ilma inimese sekkumiseta ei tehta, v.a. seadusest tulenevalt või teie selgesõnalisel nõusolekul."
+    },
+    "RIGHTS": {
+      "TITLE": "Teie õigused (GDPR)",
+      "L1": "Õigus <strong>juurdepääsule</strong>, <strong>parandamisele</strong>, <strong>kustutamisele</strong>.",
+      "L2": "Õigus <strong>piirata töötlemist</strong> ja <strong>andmete ülekantavusele</strong>.",
+      "L3": "Õigus <strong>vaidlustada</strong> õigustatud huvil põhinev töötlemine.",
+      "L4": "Õigus <strong>tühistada nõusolek</strong> igal ajal.",
+      "L5": "Õigus esitada <strong>kaebus</strong> järelevalveasutusele.",
+      "CONTACT": "Õiguste kasutamiseks võtke meiega ühendust:",
+      "VERIFY": "Võime paluda täiendavat infot teie isiku tuvastamiseks."
+    },
+    "SECURITY": {
+      "TITLE": "Turvalisus",
+      "TEXT": "Rakendame sobivaid tehnilisi ja organisatsioonilisi meetmeid: krüpteerimine edastusel (TLS), paroolide räsimine, logimine ja seire, juurdepääsukontroll, varukoopiad, koodikontroll ja turbetestid."
+    },
+    "MINORS": {
+      "TITLE": "Alaealiste andmed",
+      "TEXT": "Meie teenused ei ole suunatud alla 15-aastastele. Kui tuvastame alaealise konto, kustutame selle kontrolli järel."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Peamised volitatud töötlejad",
+      "TEXT": "Teeme koostööd elutähtsate alltarnijatega majutuse, maksete, e-posti, analüütika ja salvestuse jaoks. Värskendatud nimekirja saab küsida aadressilt"
+    },
+    "CONTACT": {
+      "TITLE": "Kontakt ja andmekaitseametnik (DPO)",
+      "PRIVACY_LABEL": "Privaatsuskontakt",
+      "SUPPORT_LABEL": "Tugi",
+      "AUTHORITY_LABEL": "Järelevalveasutus",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Poliitika muudatused",
+      "TEXT": "Võime poliitikat ajakohastada õiguslike või funktsionaalsete muudatuste tõttu. Olulistest muudatustest teavitame e-posti või rakenduse kaudu. Jõustumiskuupäev: <strong>11. august 2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Kohalikud sätted",
+      "TEXT": "Kui asute Euroopa Liidus, töödeldakse teie andmeid kooskõlas GDPR-iga. Vajadusel rakendame riigipõhiseid täiendusi."
+    },
+    "GLOSSARY": {
+      "TITLE": "Sõnastik (väljavõte)",
+      "L1": "<strong>Vastutav töötleja</strong>: üksus, kes määrab kindlaks töötlemise eesmärgid ja vahendid.",
+      "L2": "<strong>Volitatud töötleja</strong>: üksus, kes töötleb andmeid vastutava töötleja nimel.",
+      "L3": "<strong>Õiguslik alus</strong>: töötlemist lubav alus (leping, nõusolek, õiguslik kohustus, õigustatud huvi).",
+      "L4": "<strong>Küpsised/SDK</strong>: jälgijad, mida sait/rakendus kasutab teenuse pakkumiseks, mõõtmiseks ja isikupärastamiseks."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Tingimuste aktsepteerimine",
+      "TEXT": "Pääsedes ligi izyGlami teenustele (veebisait, veebirakendus, mobiilirakendus) nõustute tingimusteta käesolevate Üldtingimustega („CGU”). Kui te ei nõustu, ärge kasutage Platvormi."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Mõisted",
+      "L1": "<strong>Klient</strong>: isik, kes broneerib ja/või maksab teenuse eest Platvormil.",
+      "L2": "<strong>Professionaal</strong>: isik, kes pakub Platvormi kaudu teenuseid.",
+      "L3": "<strong>Teenus</strong>: professionaali pakutav teenus (nt kodune iluteenindus).",
+      "L4": "<strong>Platvorm</strong>: izyGlami hallatav tarkvarataristu, saidid ja rakendused."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Teenused ja izyGlami roll",
+      "TEXT": "izyGlam on <strong>vahendusplatvorm</strong>. Professionaalid vastutavad <strong>ainuüksi</strong> oma teenuste eest (kvaliteet, vastavus, kindlustused). Kui pole märgitud teisiti, ei ole izyGlam nende teenuste müüja ega osutaja ega vastuta täitmise eest."
+    },
+    "ACCOUNT": {
+      "TITLE": "Konto ja sobivus",
+      "L1": "Registreerumine on kohustuslik teenuse broneerimiseks või pakkumiseks. Kohustute esitama täpseid andmeid ja neid ajakohasena hoidma.",
+      "L2": "Platvormi kasutamiseks peate olema vähemalt 15-aastane. Professionaalidel peab olema seaduslik õigus teenust osutada.",
+      "L3": "Vastutate oma sisselogimisandmete konfidentsiaalsuse ja kontol tehtavate tegevuste eest.",
+      "L4": "izyGlam võib konto peatada või lõpetada CGU rikkumise või tuvastatud pettuseriski korral."
+    },
+    "BOOKINGS": {
+      "TITLE": "Broneeringud ja lepingu sõlmimine",
+      "L1": "Teenused <strong>broneeritakse ja tasutakse veebis</strong> kliendi poolt. Sularahas kohapeal maksta ei tule.",
+      "L2": "Broneering on <strong>professionaali kinnituse</strong> all pärast makset. Keeldumise korral <strong>tagastatakse</strong> klientidele täielik summa.",
+      "L3": "Teenuse leping sõlmitakse otse kliendi ja professionaali vahel kinnituse hetkel.",
+      "L4": "Osapooled peavad kontrollima aegu, teenuse aadresse ja eritingimusi."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Hinnad, paketid ja maksed",
+      "L1": "Teenuste hinnad määravad professionaalid. izyGlam rakendab <strong>platvormi vahendustasu</strong>.",
+      "L2": "Professionaalide paketid (praegune näide): <em>1 salong tasuta eluaegselt</em>; <em>Basic: 3 salongi – 99 € / kuu</em>; <em>Premium: 10 salongi – 499 € / kuu</em>; <em>rohkem: kokkuleppel</em>.",
+      "L3": "Makse <strong>ainult pangakaardiga</strong> makseteenuse kaudu (nt Stripe). <strong>Sularaha ei aktsepteerita</strong>, hetkel pole ka sooduskoode ega lojaalsusprogrammi.",
+      "L4": "Summa, maksud ja tasud kuvatakse enne kinnitamist. Paketitingimused võivad muutuda; muudatustest teavitame eelnevalt."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Tühistamine, tagasimakse ja puudumine",
+      "L1": "Tasuta tühistamine kuni <strong>24 h</strong> enne planeeritud aega.",
+      "L2": "Vähem kui 24 h enne võivad kehtida <strong>tasud</strong> vastava poliitika järgi.",
+      "L3": "Kui professionaal <strong>keeldub</strong> pärast makset, tagastatakse kliendile 100%. Tagasimaksete automatiseerimine on kasutuselevõtul; vajadusel teostab toimingu tugi.",
+      "L4": "<strong>Ilmumata jätmine</strong> (ette teatamata) võib kaasa tuua tasusid või tagasimakse puudumise."
+    },
+    "PAYOUTS": {
+      "TITLE": "Väljamaksed professionaalidele",
+      "L1": "Väljamakse käivitatakse, kui teenuse osutamine on <strong>kinnitatud</strong> (nt <em>kinnituskoodiga</em>).",
+      "L2": "Professionaali esitatud IBAN/RIB kasutatakse ülekandeks. Professionaal tagab pangainfo õigsuse.",
+      "L3": "Väljamakse summa on teenuse hind <em>miinus</em> komisjon ja kohaldatavad tasud."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Poolte vastutus",
+      "L1": "Professionaalid tagavad teenuste vastavuse, õigusnõuete täitmise, hügieeni ja ohutuse.",
+      "L2": "Kliendid esitavad täpsed andmed (aadress, kättesaadavus, ligipääsupiirangud) ja peavad kokkulepitud aegadest kinni.",
+      "L3": "izyGlam pakub Platvormi ja tööriistu (broneering, makse, sõnumid), kuid ei garanteeri teenuse tulemust."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Vigane hinnang.",
+      "TITLE": "Arvustused ja hinnangud",
+      "L1": "Arvustusi saab jätta <strong>ainult pärast tegelikult toimunud teenust</strong>.",
+      "L2": "Arvustusi võidakse <strong>modereerida</strong> (nt ebaseadusliku või nende tingimustega vastuolus oleva sisu eemaldamine)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Keelatud käitumised",
+      "L1": "Pettus, identiteedivargus, Platvormi kõrvalt tehingute soodustamine.",
+      "L2": "Ebaseaduslik, laimav, diskrimineeriv, vägivaldne või kõlblust rikkuv sisu.",
+      "L3": "Sissetung, teenusetõkestus, pöördprojekteerimine, turvameetmete vältimine.",
+      "L4": "Teiste kasutajate isikuandmete loata kogumine."
+    },
+    "IPR": {
+      "TITLE": "Intellektuaalomand",
+      "TEXT": "Platvormi sisu, kaubamärgid ja elemendid (kood, disain, tekstid, logod, pildid) on kaitstud. Ilma selgesõnalise loata on reprodutseerimine, levitamine või kohandamine keelatud. Professionaalide loodud sisu jääb nende omandiks; nad annavad izyGlamile mitte-eksklusiivse litsentsi Platvormi käitamiseks vajalikus ulatuses."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Kolmandate teenused",
+      "TEXT": "Platvorm võib kasutada kolmandate teenuseid (makse, kaardid, majutus, analüütika). Kehtivad nende tingimused. izyGlam ei vastuta nende teenuste katkestuste või tõrgete eest."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Saadavus, hooldus ja uuendused",
+      "TEXT": "Võime Platvormi osaliselt või täielikult muuta, peatada või katkestada hoolduse või täiustuste jaoks. Teeme mõistlikke pingutusi mõju minimeerimiseks."
+    },
+    "LIABILITY": {
+      "TITLE": "Vastutuse piirang ja hüvitamine",
+      "TEXT": "Seadusega lubatud ulatuses on izyGlami vastutus piiratud otseste kahjudega; kaudsed kahjud (nt saamata jäänud tulu) on välistatud. Te nõustute hüvitama izyGlamile kahju nõuete eest, mis tulenevad nende tingimuste rikkumisest või Platvormi ebaseaduslikust kasutamisest."
+    },
+    "TERMINATION": {
+      "TITLE": "Lõpetamine ja peatamine",
+      "TEXT": "Võite oma konto igal ajal kustutada. Me võime juurdepääsu peatada või lõpetada CGU rikkumise, pettuse, kuritarvituse või õiguskorralduse korral. Teatud kohustused (nt tasumisele kuuluvad summad, vastutuse sätted) jäävad kehtima ka pärast lõpetamist."
+    },
+    "PRIVACY": {
+      "TITLE": "Isikuandmed",
+      "TEXT": "Teie andmete töötlemist kirjeldatakse meie <strong>privaatsuspoliitikas</strong>. Platvormi kasutades nõustute selle poliitikaga. Vaadake sealt oma GDPR-i õigusi ja meie kohustusi."
+    },
+    "CHANGES": {
+      "TITLE": "CGU muudatused",
+      "TEXT": "Võime neid tingimusi muuta õiguslikel, regulatiivsetel või funktsionaalsetel põhjustel. Olulistest muudatustest teavitame e-posti või rakenduse kaudu ja avaldame uuendatud versiooni."
+    },
+    "LAW": {
+      "TITLE": "Kohaldatav õigus ja vaidlused",
+      "TEXT": "Käesolevatele tingimustele kohaldub <strong>Prantsuse õigus</strong>. Vaidlused lahendab izyGlami registrijärgse asukoha pädev kohus, välja arvatud tarbijale soodsamad kohustuslikud sätted."
+    },
+    "CONTACT": {
+      "TITLE": "Kontakt",
+      "SUPPORT_LABEL": "Tugi",
+      "LEGAL_LABEL": "Juriidika",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal@izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Jõustumiskuupäev",
+      "TEXT": "Käesolevad tingimused jõustuvad <strong>25. detsembril 2025</strong> ja asendavad kõik varasemad versioonid."
+    }
+  }
+}

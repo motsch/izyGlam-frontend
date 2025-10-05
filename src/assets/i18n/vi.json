@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Thợ làm tóc",
+    "NAILTECHNICIAN": "Thợ làm móng",
+    "MAKEUP": "Chuyên gia trang điểm",
+    "WAXING": "Chuyên viên thẩm mỹ",
+    "FACIAL": "Chăm sóc da mặt",
+    "MASSAGE": "Nhân viên massage",
+    "EYELASH": "Nối mi",
+    "EYEBROW": "Chân mày",
+    "TANNING": "Nhuộm da",
+    "ACUPUNCTURE": "Châm cứu",
+    "OTHER": "Khác"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Ảnh đã được xóa khỏi thư viện",
+    "PHOTO_UPLOAD": "Tải ảnh thành công",
+    "PARTIAL_REFUND_CONFIRM": "Xác nhận hoàn tiền một phần!",
+    "CODE_SAVED": "Mã đã được tạo.",
+    "USERCREATED": "Tạo tài khoản thành công. Một email xác nhận đã được gửi cho bạn.",
+    "SUBSCRIBE_SUCCESS": "Đăng ký của bạn đã được ghi nhận.",
+    "EMAIL_VERIFIED": "Tài khoản của bạn đã được kích hoạt 🎉 Bạn có thể đăng nhập ngay.",
+    "EMAIL_RESENT": "Đã gửi lại email xác minh. Vui lòng kiểm tra hộp thư.",
+    "BOOKING_CREATED": "Đặt chỗ của bạn đã được ghi nhận.",
+    "PAYMENT_OK": "Thanh toán thành công.",
+    "REFUND_OK": "Hoàn tiền thành công.",
+    "USERUPDATED": "Người dùng đã được cập nhật.",
+    "SETTINGS_UPDATED": "Cài đặt đã được cập nhật.",
+    "REVIEW_ADDED": "Đánh giá của bạn đã được đăng 🎉",
+    "SHOPUPDATED": "Cửa hàng đã được cập nhật.",
+    "BOOKING_ACCEPTED": "Đặt chỗ đã được chấp nhận.",
+    "BOOKING_FINISHED": "Đặt chỗ đã hoàn thành.",
+    "BOOKING_REFUSED": "Đặt chỗ bị từ chối.",
+    "BOOKING_DELETED": "Đặt chỗ đã bị xóa.",
+    "CODE_GENERATED": "Mã đã được tạo.",
+    "CODE_CONFIRMED": "Mã đã được xác nhận.",
+    "INVOICE_DOWNLOADED": "Hóa đơn đã được tải xuống.",
+    "MARKED_NO_SHOW_CLIENT": "Khách hàng bị đánh dấu vắng mặt.",
+    "COMPANY_CREDITED": "Tài khoản doanh nghiệp đã được ghi có.",
+    "MARKED_NO_SHOW_PRO": "Nhà cung cấp dịch vụ bị đánh dấu vắng mặt.",
+    "EMPLOYEE_CREDITED": "Tài khoản nhân viên đã được ghi có.",
+    "NO_SHOW_PRO": "Đã áp dụng phạt & hoàn tiền.",
+    "EMPLOYEE_DELETED": "Nhân viên đã bị xóa.",
+    "SLOT_SELECTED": "Đã chọn khung giờ",
+    "PASSWORD_RESET": "Mật khẩu đã được đặt lại.",
+    "INVOICE_GENERATED": "Đã tạo hóa đơn.",
+    "REVIEW_SAVED": "Đã lưu đánh giá, cảm ơn!",
+    "DEFAULT_PASSWORD_UPDATED": "Mật khẩu mặc định đã được cập nhật.",
+    "COMPANY_CREATED": "Tài khoản doanh nghiệp của bạn đã được tạo."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Vui lòng đăng nhập để quản lý mục yêu thích.",
+    "INVALID_IMAGE": "Hình ảnh không hợp lệ.",
+    "NO_SLOTS": "Không có khung giờ nào cho dịch vụ này.",
+    "NO_SHOP_SELECTED": "Chưa chọn cửa hàng.",
+    "NO_SERVICE_SELECTED": "Chưa chọn dịch vụ.",
+    "ORDER_ERROR": "Lỗi khi cập nhật đơn hàng.",
+    "CODE_ERROR": "Lỗi khi lưu mã.",
+    "INVOICE_GENERATED_ERROR": "Lỗi khi tạo hóa đơn.",
+    "USERNOTCREATED": "Không thể tạo người dùng.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Số dư doanh nghiệp không đủ cho khoản ghi có này.",
+    "GENERIC_ERROR": "✨ Rất tiếc… đã xảy ra lỗi. Vui lòng thử lại ✨",
+    "COMPANY_CREDITED": "Tài khoản doanh nghiệp đã được ghi có.",
+    "LINK_INVALID_OR_MISSING": "Liên kết không hợp lệ hoặc thiếu.",
+    "LINK_INVALID_OR_EXPIRED": "Liên kết không hợp lệ hoặc đã hết hạn.",
+    "EMAIL_NOT_FOUND": "Không tìm thấy email người dùng.",
+    "PAYMENT_FAILED": "Thanh toán thất bại.",
+    "BOOKING_FAILED": "Tạo đặt chỗ thất bại.",
+    "LOAD_CARDS_FAILED": "Có lỗi khi tải thẻ của bạn.",
+    "LOAD_SHOP_FAILED": "Có lỗi khi tải thông tin salon.",
+    "LOAD_PRODUCTS_FAILED": "Có lỗi khi tải danh sách dịch vụ.",
+    "INVALID_CODE": "Mã bạn nhập không hợp lệ.",
+    "PASSWORD_CHANGED": "Mật khẩu của bạn đã được cập nhật.",
+    "PASSWORDS_IDENTICAL": "Mật khẩu mới phải khác mật khẩu hiện tại.",
+    "INVALID_AMOUNT": "Số tiền không hợp lệ.",
+    "INVALID_CURRENT_PASSWORD": "Mật khẩu hiện tại không chính xác.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Mật khẩu hiện tại sai hoặc đã xảy ra lỗi.",
+    "PASSWORD_UPDATE_FAILED": "Cập nhật mật khẩu thất bại.",
+    "PASSWORD_UPDATE_GENERIC": "Có lỗi khi cập nhật mật khẩu.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Mật khẩu không khớp hoặc quá ngắn (tối thiểu 8 ký tự).",
+    "INVALID_PASSWORD": "Mật khẩu không được để trống.",
+    "PASSWORD_TOO_SHORT": "Mật khẩu phải có ít nhất 8 ký tự."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Thiếu cấu hình Stripe.",
+    "LOAD_FAILED": "Không thể tải Stripe",
+    "NOT_READY": "Stripe chưa được khởi tạo",
+    "CONFIRM_FAILED": "Lưu thẻ thất bại",
+    "CARD_SAVED": "Lưu thẻ thành công ✅",
+    "PM_FAILED": "Tạo phương thức thanh toán thất bại",
+    "SI_FAILED": "Không thể chuẩn bị việc lưu thẻ",
+    "ATTACH_FAILED": "Không thể gắn thẻ vào tài khoản",
+    "SAVE_CARD": "Lưu thẻ",
+    "ADD_CARD": "Thêm thẻ"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Vui lòng đăng nhập"
+  },
+  "COMMON": {
+    "LOADING": "Đang tải…",
+    "UNEXPECTED_ERROR": "Đã xảy ra lỗi không mong muốn"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Đang xác minh",
+    "VALIDE": "Chúng tôi đang xác thực liên kết kích hoạt của bạn. Chỉ mất một lát.",
+    "ACCOUNT": "Tài khoản đã được kích hoạt",
+    "CONNECT": "Đăng nhập",
+    "OUPS": "Rất tiếc",
+    "WRITE": "Cần trợ giúp? Viết cho chúng tôi tại",
+    "RESEND": "Gửi lại email kích hoạt"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Thông tin ngân hàng của tôi",
+    "ADD_BANK_INFO": "Thêm thông tin ngân hàng của tôi",
+    "BANK_NAME": "Tên ngân hàng",
+    "HOLDER_NAME": "Chủ tài khoản",
+    "COUNTRY": "Quốc gia",
+    "SAVE": "Lưu"
+  },
+  "LOADER": {
+    "LOADING": "Đang tải…"
+  },
+  "SPONSORS": {
+    "TITLE": "Nhà tài trợ của chúng tôi",
+    "SPONSORISED": "Được tài trợ"
+  },
+  "TABS": {
+    "FINANCE": "Theo dõi tài chính",
+    "GENERAL_INFO": "Thông tin chung",
+    "EMPLOYEES": "Quản lý nhân viên",
+    "SERVICES": "Quản lý dịch vụ",
+    "PHOTOS": "Thư viện ảnh",
+    "STATS": "Thống kê",
+    "PARAM": "Thiết lập",
+    "SHOPS": "Các cửa hàng",
+    "USERS": "Người dùng",
+    "MESSAGE": "Nhắn tin"
+  },
+  "CARD": {
+    "ADD": "Thêm thẻ",
+    "NO_IMAGE": "Không có ảnh trong thư viện.",
+    "SALON": "Cập nhật salon thành công",
+    "ERROR1": "Lỗi khi cập nhật salon",
+    "ERROR2": "Lỗi khi cập nhật ảnh",
+    "UPDATE": "Cập nhật salon thành công"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Đã hoàn thành",
+    "ACCEPTEE": "Đã chấp nhận",
+    "WAITING": "Đang chờ",
+    "CANCEL": "Đã hủy",
+    "DELETE": "Đã xóa",
+    "REFUSED": "Bị từ chối",
+    "NO_PRESTA": "Nhà cung cấp vắng mặt",
+    "CLIENT_ABSENT": "Khách hàng vắng mặt",
+    "ADRESSE": "Địa chỉ",
+    "DATE": "Ngày",
+    "TOTAL": "Tổng",
+    "FACTURE": "Hóa đơn",
+    "CANCELLED": "Đã hủy",
+    "DELETED": "Xóa",
+    "AVIS": "Đánh giá",
+    "SUPPORT": "Hỗ trợ",
+    "CODE": "Mã xác nhận",
+    "CODE_A_DONNER": "Mã đưa cho nhà cung cấp",
+    "PRESTA_ABSENT": "Nhà cung cấp vắng mặt"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Đánh giá về cửa hàng",
+    "COMMENT": "Bình luận",
+    "NOTE": "Điểm",
+    "CLOSE": "Đóng"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Không có ảnh trong thư viện."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Chấm điểm đơn hàng của bạn",
+    "DATE": "Ngày",
+    "SERVICE": "Dịch vụ",
+    "AVIS": "Đánh giá của bạn",
+    "SEND": "Gửi",
+    "PLACEHOLDER": "Hãy mô tả trải nghiệm của bạn…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Mang dịch vụ đến tận nhà",
+    "KNOWMORE": "Tìm hiểu thêm",
+    "PART1TITLE": "Tận hưởng dịch vụ làm đẹp tại nhà tốt nhất",
+    "PART1TEXT": "Các chuyên gia giàu kinh nghiệm đến tận nơi để mang đến cho bạn những liệu trình làm đẹp chất lượng, phù hợp với nhu cầu và mong muốn của bạn. Trải nghiệm thư giãn độc đáo — vào giờ nghỉ trưa, sau giờ làm hoặc một buổi chiều bên bạn bè.",
+    "PART2TITLE": "Làm việc khi bạn muốn, thu nhập theo ý bạn",
+    "PART2TEXT": "Tạo thu nhập theo lịch của riêng bạn bằng cách nhận các yêu cầu trên nền tảng với nhịp độ phù hợp. Bạn có thể dùng dụng cụ của mình hoặc thuê thiết bị chuyên nghiệp qua izyGlam.",
+    "PART3TITLE": "Dịch vụ làm đẹp dành cho doanh nghiệp",
+    "PART3TEXT": "Glam for Business là nền tảng dành cho mọi doanh nghiệp, giúp quản lý nhu cầu làm đẹp của khách hàng và nhân viên. Cung cấp dịch vụ cá nhân hóa ngay tại nơi làm việc, sự kiện công ty hoặc dịp đặc biệt. Chuyên gia của chúng tôi sẽ đến tận nơi để đáp ứng nhu cầu của bạn.",
+    "APPTITLE": "Dễ dàng hơn với ứng dụng",
+    "DOWNLOADAPP1": "Tải ứng dụng",
+    "DOWNLOADAPP2": "Tải ứng dụng cho chuyên gia làm đẹp",
+    "SCANTODOWNLOAD": "Quét để tải",
+    "SIGNUP": "Đăng ký ngay!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Lỗi phát video",
+    "AUTOPLAY_BLOCKED": "Tự động phát bị chặn. Nhấn để xem video.",
+    "NAV_ERROR": "Không thể điều hướng"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Cách hoạt động của ứng dụng và website izyGlam",
+    "HELPCENTER": "Truy cập trung tâm trợ giúp",
+    "BUSINESS": "Doanh nghiệp",
+    "ABOUT": "Về chúng tôi",
+    "OURSERVICES": "Dịch vụ của chúng tôi",
+    "PRESSAREA": "Phòng báo chí",
+    "INVESTORS": "Nhà đầu tư",
+    "CAREERS": "Tuyển dụng",
+    "AI": "Trí tuệ nhân tạo",
+    "PRODUCTS": "Sản phẩm",
+    "GLAM": "Luôn rạng rỡ cùng izyGlam",
+    "RESERVED": "Đặt trước",
+    "GIFTCARDS": "Thẻ quà tặng",
+    "WORKWITHUS": "Hợp tác với izyGlam",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Bảo mật",
+    "ACCESS": "Khả năng truy cập",
+    "CONDITIONS": "Điều khoản",
+    "LANGUAGE": "Ngôn ngữ",
+    "LOCALISATION": "Vị trí",
+    "ALL_RIGHT": "Đã đăng ký bản quyền"
+  },
+  "COMING_SOON": {
+    "TITLE": "Chúng tôi sắp ra mắt",
+    "TITLE-NOT-COMING": "Chúng tôi chưa có kế hoạch đến khu vực này",
+    "DAYS": "Ngày",
+    "HOURS": "Giờ",
+    "MINUTES": "Phút",
+    "SECONDS": "Giây",
+    "TEXT": "Chúng tôi đang nỗ lực để mang đến trải nghiệm làm đẹp tại nhà độc đáo. Hãy theo dõi để nhận thông tin ra mắt."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Ưu đãi hiện tại",
+    "DISCOVER": "Khám phá trên izyGlam",
+    "LIKED": "Được ưa thích gần bạn",
+    "SMART": "Ưu đãi thông minh",
+    "TOP10": "Top 10 trong tuần",
+    "SEARCHRESULT": "Kết quả tìm kiếm",
+    "AVIS": "Đánh giá"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Tóc",
+    "MANUCURE": "Móng",
+    "VISAGE": "Khuôn mặt",
+    "MASSAGE": "Massage",
+    "MAQUILLAGE": "Trang điểm",
+    "EPILATION": "Tẩy lông",
+    "BRONZAGE": "Nhuộm da",
+    "PARTUM": "Hậu sản",
+    "NUTRITION": "Dinh dưỡng",
+    "FITNESS": "Thể hình",
+    "ACUPUNCTURE": "Châm cứu",
+    "STYLISME": "Stylist",
+    "YOGA": "Thư giãn",
+    "DEVELOPPEMENT": "Nâng tầm",
+    "EYELASH": "Nối mi"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Một thợ làm tóc",
+    "MANUCURE": "Một thợ làm móng",
+    "ESTETICIAN": "Một chuyên viên thẩm mỹ",
+    "MASSAGE": "Một nhân viên massage",
+    "MAQUILLAGE": "Một chuyên gia trang điểm",
+    "PEDICURE": "Một thợ chăm sóc chân",
+    "NUTRITION": "Một chuyên gia dinh dưỡng",
+    "FITNESS": "Một huấn luyện viên"
+  },
+  "INTRO": {
+    "NORESULTS": "Không tìm thấy kết quả",
+    "START": "Bắt đầu",
+    "SPECIALITY": "Chuyên môn?",
+    "WHERE": "Ở đâu?",
+    "CONNEXION": "Đăng nhập",
+    "REGISTRATION": "Đăng ký"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Thông tin tài khoản",
+    "MESSAGE": "Tin nhắn của tôi",
+    "MESSAGE_SUBTITLE": "Danh sách các cuộc trò chuyện hiện tại.",
+    "INFORMATION_SUBTITLE": "Chỉnh sửa thông tin cá nhân thật đơn giản.",
+    "SECURITY": "Bảo mật & ngôn ngữ",
+    "SECURITY_SUBTITLE": "Mật khẩu, ngôn ngữ… tất cả ở đây.",
+    "CONFIDENTIAL": "Bảo mật & dữ liệu",
+    "CONFIDENTIAL_SUBTITLE": "Dữ liệu của bạn rất quan trọng. Đây là cách chúng tôi bảo vệ.",
+    "DASHBOARD": "Bảng điều khiển",
+    "DASHBOARD_SUBTITLE": "Quản lý dữ liệu hoạt động của bạn dễ dàng.",
+    "COMPANY": "Quản lý doanh nghiệp của tôi",
+    "COMPANY_SUBTITLE": "Quản lý cuộc hẹn đã qua, sắp tới hoặc đã hủy.",
+    "SHOP": "Quản lý salon của tôi",
+    "SHOP_SUBTITLE": "Quản lý salon, dịch vụ và tài chính của bạn.",
+    "FINANCIAL": "Theo dõi tài chính",
+    "ADMIN": "Quản trị tổng",
+    "ADMIN_SUBTITLE": "Quản lý toàn bộ kiệt tác này. Chinh phục thế giới nào!",
+    "CALENDAR": "Lịch",
+    "CALENDAR_SUBTITLE": "Quản lý cuộc hẹn đã qua hoặc sắp tới.",
+    "SELECT_SALON": "Chọn một salon",
+    "NEW_SALON": "Tạo salon",
+    "SHOP_TO_CREATE": "Loại cửa hàng cần tạo",
+    "CANCEL": "Hủy",
+    "CREATE": "Tạo cửa hàng của tôi",
+    "INFO1": "Bạn sắp xóa cửa hàng của mình tại",
+    "INFO2": "Hành động này không thể hoàn tác",
+    "SURE": "Bạn có chắc muốn tiếp tục không",
+    "DELETE": "Xóa"
+  },
+  "PROFILE": {
+    "TITLE": "Thông tin cơ bản",
+    "FIRSTNAME": "Tên",
+    "LASTNAME": "Họ",
+    "PHONE": "Số điện thoại",
+    "ADDRESS": "Địa chỉ email",
+    "CHANGE_USER": "Chỉnh sửa người dùng",
+    "CANCEL": "Hủy",
+    "SUCCESS": "Cập nhật hồ sơ thành công",
+    "UPDATE_ERROR": "Đã xảy ra lỗi khi cập nhật mật khẩu."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Đổi mật khẩu",
+    "ACTUAL_PASSWORD": "Mật khẩu hiện tại",
+    "NEW_PASSWORD": "Mật khẩu mới",
+    "CONFIRMED_PASSWORD": "Xác nhận mật khẩu mới",
+    "CHANGE_PASSWORD": "Đổi mật khẩu",
+    "CHANGE_OK": "Đổi mật khẩu thành công",
+    "CHANGE_LANGUE": "Đổi ngôn ngữ",
+    "CHANGE_COUNTRY": "Đổi quốc gia",
+    "LANGUE": "Ngôn ngữ",
+    "COUNTRY": "Quốc gia"
+  },
+  "PAYEMENT": {
+    "YOU": "Bạn",
+    "HEADER_TITLE": "Thanh toán",
+    "SERVICE_TITLE": "Dịch vụ",
+    "SERVICE_NOTE": "Ghi chú:",
+    "ADDRESS_TITLE": "Địa chỉ thực hiện",
+    "ADDRESS_RENDEZVOUS": "Gặp trước cửa nhà tôi",
+    "ADDRESS_CHANGE": "Chọn địa chỉ khác",
+    "PAYMENT_SECTION_TITLE": "Thanh toán",
+    "PAYMENT_METHOD": "Thẻ chính",
+    "PAYMENT_EXPIRE": "Hết hạn",
+    "PAYMENT_NO_CARD": "Chưa có thẻ chính",
+    "PAYMENT_NO_CARD_DESC": "Vui lòng thêm hoặc chọn một thẻ làm phương thức thanh toán chính.",
+    "SUMMARY_SUBTOTAL": "Tạm tính",
+    "SUMMARY_SERVICE_FEE": "Phí nền tảng izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Phí dịch vụ",
+    "SUMMARY_TOTAL": "Tổng",
+    "TITLE": "Đặt lịch trực tuyến",
+    "FOR_WHO": "Bạn đặt lịch cho ai?",
+    "ADD_PROCHE": "Thêm người thân",
+    "WHERE": "Bạn muốn nhận dịch vụ ở đâu?",
+    "SELECT_ADDRESS": "Chọn một địa chỉ",
+    "ADD_ADDRESS": "Thêm địa chỉ",
+    "CARD_PAY": "Thanh toán bằng thẻ",
+    "CARD_NUM": "Số thẻ",
+    "CARD_NAME": "Tên trên thẻ",
+    "EXPIRATION": "Ngày hết hạn",
+    "CVV": "CVV",
+    "RDV": "Chi tiết cuộc hẹn của bạn",
+    "RESUME": "Tóm tắt cuộc hẹn",
+    "DATE": "Ngày",
+    "HOUR": "Giờ",
+    "PRESTA": "Dịch vụ",
+    "EXPIRE": "Hết hạn",
+    "DEFAULT": "Mặc định",
+    "NOCARD": "Chưa lưu thẻ nào",
+    "WITH": "Với",
+    "TOTAL": "Tổng thanh toán",
+    "ANNULER": "HỦY",
+    "RETOUR": "QUAY LẠI",
+    "CONTINUER": "TIẾP TỤC",
+    "VALIDER": "XÁC NHẬN",
+    "ADRESSE": "Địa chỉ",
+    "LEGAL_TEXT_1": "Khi bấm đặt hàng, bạn chấp nhận Hợp đồng dịch vụ giao hàng với izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Bạn từ bỏ quyền rút lui đối với dịch vụ giao hàng. Bạn có thể liên hệ hòa giải tiêu dùng tại đây.",
+    "LEGAL_TEXT_3": "Nếu bạn vắng mặt khi người giao đến, đơn hàng sẽ được đặt trước cửa. Khi đặt hàng, bạn chấp nhận chịu trách nhiệm hoàn toàn sau khi đơn hàng được giao. Các đơn có đồ uống có cồn hoặc hàng hóa hạn chế sẽ được trả lại cơ sở nếu bạn vắng mặt.",
+    "CLOSE_FORM": "Đóng biểu mẫu",
+    "ADD_CARD": "Thêm thẻ",
+    "TRAITEMENT": "Đang xử lý"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Thanh toán thành công",
+    "THANKS": "Cảm ơn! Đặt chỗ của bạn đã được ghi nhận.",
+    "BACKHOME": "Về trang chủ",
+    "PROBLEME": "Sự cố đặt chỗ",
+    "PAIEMENT": "Thanh toán đã trừ nhưng không thể xác nhận đặt chỗ.",
+    "THANKSCONTACT": "Vui lòng liên hệ bộ phận hỗ trợ tại",
+    "FAILED": "Thanh toán thất bại",
+    "VALIDATE": "Chúng tôi không thể xác thực thanh toán của bạn. Vui lòng thử lại."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam dành cho freelancer",
+    "STEP1": {
+      "TITLE": "Khách đặt dịch vụ",
+      "TEXT": "Khách tìm thấy cơ sở của bạn và đặt trên ứng dụng izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Bạn chấp nhận đặt chỗ",
+      "TEXT": "Bạn chấp nhận đặt chỗ và lịch của bạn được cập nhật."
+    },
+    "STEP3": {
+      "TITLE": "Khi đến giờ hẹn",
+      "TEXT": "Bạn được báo trước về các cuộc hẹn sắp tới và được dẫn đường đến từng khách."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Ghi có vào tài khoản doanh nghiệp",
+    "SOLDE": "Số dư hiện tại",
+    "CREDIT": "Số tiền ghi có",
+    "COMPANY": "Ghi có vào tài khoản doanh nghiệp",
+    "DEPENSE": "Theo dõi chi tiêu",
+    "DATE": "Ngày",
+    "COUNT": "Số tiền",
+    "EMPLOYEE": "Nhân viên",
+    "DESCRIPTION": "Mô tả"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Bạn đã có tài khoản đối tác hoặc doanh nghiệp!",
+    "NOT_CONNECTED": "Vui lòng đăng nhập để lưu salon",
+    "TITLE": "Bắt đầu thôi!",
+    "TITLE2": "Hãy tạo một salon!",
+    "NAME": "Tên salon của bạn",
+    "ADDRESS": "Địa chỉ doanh nghiệp của bạn",
+    "STREET": "Đường",
+    "CITY": "Thành phố",
+    "CODE_POSTAL_POSSIBLE": "Mã bưu chính phục vụ",
+    "CODE_POSTAL": "Mã bưu chính",
+    "COUNTRY": "Quốc gia",
+    "ADDRESSPLACEHOLDER": "123, đường Chính",
+    "FLOOR": "Tầng/Phòng (không bắt buộc)",
+    "BUSINESSTYPE": "Loại hình doanh nghiệp",
+    "FIRSTNAME": "Tên",
+    "LASTNAME": "Họ",
+    "PASSWORD": "Mật khẩu",
+    "PASSWORDCONFIRMED": "Xác nhận mật khẩu",
+    "EMAIL": "E-mail",
+    "PHONE": "Số điện thoại di động",
+    "WHATSAPP": "Tôi đồng ý nhận tin nhắn qua WhatsApp",
+    "BUTTON": "Lưu cửa hàng",
+    "SUCCESS": "Tạo cửa hàng thành công!",
+    "ERROR": "Đã xảy ra lỗi khi tạo cửa hàng:",
+    "ERROR1": "Tên doanh nghiệp là bắt buộc.",
+    "ERROR2": "Địa chỉ doanh nghiệp là bắt buộc.",
+    "ERROR3": "Loại hình doanh nghiệp là bắt buộc.",
+    "ERROR4": "Tên là bắt buộc.",
+    "CHOOSE_COUNTRY": "Chọn quốc gia",
+    "POSTAL_CODE": "Mã bưu chính",
+    "CHOOSE_CITY": "Chọn thành phố",
+    "ERROR5": "Họ là bắt buộc.",
+    "ERROR6": "E-mail là bắt buộc.",
+    "ERROR7": "Số điện thoại di động là bắt buộc.",
+    "ERROR8": "Bạn phải đồng ý nhận tin nhắn qua WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Thay đổi địa chỉ",
+    "FIND_SHOP": "Tìm cửa hàng",
+    "CATEGORIES": "Danh mục",
+    "OFFRE": "Ưu đãi hiện tại",
+    "DISCOVER": "Khám phá",
+    "APPRECIATE": "Được ưa thích",
+    "SMART": "Ưu đãi thông minh",
+    "TOP10": "Top10 trong tuần",
+    "SEARCH_RESULT": "Kết quả tìm kiếm",
+    "NOT_AVAILABLE": "Chưa khả dụng tại địa chỉ này",
+    "NEW_ADDRESS": "Thêm địa chỉ mới",
+    "CHOOSE_ADDRESS": "Chọn một địa chỉ",
+    "CHOOSE_COUNTRY": "Chọn quốc gia",
+    "CHOOSE_CITY": "Chọn thành phố",
+    "CHOOSE_ARRONDISSEMENT": "Chọn quận",
+    "CANCEL": "Hủy",
+    "SAVE": "Lưu",
+    "CLOSE": "Đóng"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Tên",
+    "CITY": "Thành phố",
+    "NOTE": "Điểm",
+    "MIDDLE_PRICE": "Giá trung bình",
+    "PROMOTION": "Khuyến mãi",
+    "ACTIONS": "Thao tác",
+    "MODIFIER": "Chỉnh sửa thông tin cửa hàng",
+    "SHOP_NAME": "Tên cửa hàng",
+    "DESCRIPTION": "Mô tả",
+    "PRINCIPALE": "Ảnh chính",
+    "SHOP": "Loại cửa hàng",
+    "ARRONDISSEMENT": "Quận",
+    "MINIMUM_DELAI": "Thời gian tối thiểu",
+    "DISTANCE": "Khoảng cách tối đa (km)",
+    "EMPLACEMENT": "Vị trí",
+    "HOURS_MORNING": "Giờ mở cửa - Buổi sáng",
+    "HOURS_AFTERNOON": "Giờ mở cửa - Buổi chiều",
+    "ACTIVE_PROMO": "Đang kích hoạt khuyến mãi",
+    "CANCEL": "Hủy",
+    "ENREGISTRER": "Lưu"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Phát triển hoạt động của bạn",
+    "TEXT": "Hàng nghìn người dùng izyGlam có thể đang tìm một nhà hàng trong khu vực của bạn…",
+    "IMAGE": "hình ảnh"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Vì sao chọn izyGlam?",
+    "STEP1": {
+      "TITLE": "Làm việc theo điều kiện của riêng bạn",
+      "TEXT": "Tổ chức lịch làm việc và quản lý dịch vụ một cách tự do. Nền tảng linh hoạt giúp bạn tối đa hóa hoạt động."
+    },
+    "STEP2": {
+      "TITLE": "Tăng hiện diện trực tuyến",
+      "TEXT": "Thu hút thêm khách hàng nhờ các công cụ marketing tích hợp và gia tăng hiển thị."
+    },
+    "STEP3": {
+      "TITLE": "Giữ chân khách hàng",
+      "TEXT": "Xây dựng mối quan hệ bền vững bằng cách phân tích sở thích, phản hồi đánh giá và ưu đãi tích điểm."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Đơn giản hóa quản lý hoạt động",
+      "TEXT": "Quản lý công việc an tâm với izyGlam — giải pháp hoàn chỉnh cho chuyên gia làm đẹp & chăm sóc sức khỏe."
+    },
+    "STEP2": {
+      "TITLE": "Tăng doanh số",
+      "TEXT": "Mỗi ngày, hàng nghìn người dùng tìm chuyên gia gần họ trên izyGlam. Hãy tận dụng để tiếp cận khách mới."
+    },
+    "STEP3": {
+      "TITLE": "Sự hài lòng được đảm bảo",
+      "TEXT": "Cá nhân hóa trải nghiệm, quản lý lịch, giao tiếp thuận tiện và dịch vụ phù hợp — giúp giữ chân khách."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam cho doanh nghiệp của bạn?",
+    "STEP1": {
+      "TITLE": "Nhân viên & khách hàng đặt dịch vụ",
+      "TEXT": "Họ chọn các dịch vụ chăm sóc trực tiếp trên ứng dụng izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Bạn quyết định ngân sách",
+      "TEXT": "Bạn chủ động ghi có cho tài khoản nhân viên và khách hàng — định kỳ hoặc một lần."
+    },
+    "STEP3": {
+      "TITLE": "Dịch vụ được thực hiện",
+      "TEXT": "Chuyên gia làm đẹp đến tận nơi hoặc văn phòng để cung cấp dịch vụ đã đặt."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Nâng tầm doanh nghiệp của bạn",
+    "TEXT": "Hàng nghìn người dùng đang tìm dịch vụ chăm sóc. Hãy trao cho nhân viên & khách hàng quyền tiếp cận chuyên gia tốt nhất gần họ.",
+    "IMAGE": "hình ảnh"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Vì sao chọn izyGlam?",
+    "STEP1": {
+      "TITLE": "Giữ chân & tri ân nhân viên",
+      "TEXT": "Cấp ngân sách làm đẹp hàng tháng — từ làm tóc, chăm sóc da đến nhiều dịch vụ khác — để tăng sự hài lòng và gắn kết."
+    },
+    "STEP2": {
+      "TITLE": "Cải thiện hình ảnh thương hiệu",
+      "TEXT": "Tổ chức sự kiện làm đẹp cho khách/đối tác, hoặc tích hợp vào chương trình khách hàng thân thiết."
+    },
+    "STEP3": {
+      "TITLE": "Tối ưu phúc lợi tại nơi làm việc",
+      "TEXT": "Dịch vụ ngay tại văn phòng hoặc gần đó — chăm sóc tốt hơn giúp tăng động lực và gắn kết đội ngũ."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Đơn giản hóa phúc lợi cho đội ngũ",
+      "TEXT": "Với izyGlam, nhân viên có giải pháp linh hoạt để chăm sóc bản thân — từ thẩm mỹ đến luyện tập."
+    },
+    "STEP2": {
+      "TITLE": "Ưu đãi sáng tạo cho khách hàng",
+      "TEXT": "Tăng cường quan hệ bằng việc tặng dịch vụ trong sự kiện hoặc chương trình thân thiết."
+    },
+    "STEP3": {
+      "TITLE": "Phúc lợi theo nhu cầu, mọi lúc mọi nơi",
+      "TEXT": "Nhân viên và khách hàng được phục vụ bởi các chuyên gia phù hợp, với sự đồng hành cá nhân hóa."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Quản lý tài khoản",
+    "ORDERS": "Đơn hàng đã đặt",
+    "FAVORITES": "Yêu thích",
+    "HELP": "Trợ giúp",
+    "MY_ABO": "Gói đăng ký của tôi",
+    "PRICES": "Gói giá",
+    "FIDELITY": "Chương trình tích điểm",
+    "LOGOUT": "Đăng xuất",
+    "YOUR_BEAUTY_SERVICES": "Cung cấp dịch vụ làm đẹp của bạn",
+    "YOUR_COMPANY": "Đăng ký doanh nghiệp của bạn"
+  },
+  "SUBTITLES": {
+    "HELP": "Cần trợ giúp? Trang này dành cho bạn."
+  },
+  "ORDERS": {
+    "TITLE": "Đơn hàng của tôi",
+    "TITLE_SUBTITLE": "Quản lý cuộc hẹn đã qua, sắp tới hoặc đã hủy.",
+    "UPCOMING_SECTION": "📅 Sắp diễn ra",
+    "NO_UPCOMING": "Bạn chưa có dịch vụ nào được lên lịch.",
+    "PAST_SECTION": "✅ Đã hoàn thành",
+    "NO_PAST": "Bạn chưa có dịch vụ nào đã thực hiện.",
+    "ADDRESS": "Địa chỉ",
+    "DATE": "Ngày",
+    "TOTAL": "Tổng",
+    "ITEMS": "mục",
+    "DELETE": "Xóa",
+    "VISIT": "Xem",
+    "PRESTA_FOR": "Dịch vụ cho",
+    "AT": "lúc",
+    "ORDER_AGAIN": "Đặt lại",
+    "INVOICE": "Yêu cầu hóa đơn",
+    "REVIEW": "Gửi đánh giá",
+    "CANCEL": "Hủy"
+  },
+  "FIDELITY": {
+    "TITLE": "Mục yêu thích của tôi",
+    "AGAIN": "Còn",
+    "AGAIN_SUBTITLE": "trước khi nhận phần thưởng",
+    "TITLE_SUBTITLE": "để mở khóa quà tặng của bạn",
+    "DATE": "Có hiệu lực đến",
+    "HISTO": "Lịch sử dịch vụ của tôi"
+  },
+  "FAVORITES": {
+    "TITLE": "Mục yêu thích của tôi",
+    "TITLE_SUBTITLE": "Tìm lại salon yêu thích trong nháy mắt."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Phí dịch vụ:",
+    "DISTANCE": "Khoảng cách tối đa:",
+    "PAYEMENT": "Chấp nhận thanh toán bằng thẻ và PayPal",
+    "PRESS_FOR_INFO": "Nhấn để xem giờ mở cửa, thông tin, v.v.",
+    "GALLERY": "Thư viện hình ảnh",
+    "SEE_MORE": "Xem thêm",
+    "SEE_LESS": "Thu gọn"
+  },
+  "LOGIN": {
+    "TITLE": "Nhập thông tin đăng nhập của bạn.",
+    "FORGET_PASSWORD": "Quên mật khẩu?",
+    "CONTINUER": "Tiếp tục",
+    "CONTINUE_WITH": "Tiếp tục với",
+    "OR": "Hoặc",
+    "QRCODE": "Đăng nhập bằng mã QR",
+    "CGU": "Khi tiếp tục, bạn đồng ý nhận cuộc gọi, tin nhắn WhatsApp hoặc SMS (kể cả tự động) từ izyGlam và các công ty liên kết tới số đã cung cấp.",
+    "PLACEHOLDER_EMAIL": "Địa chỉ email",
+    "PLACEHOLDER_PASSWORD": "Mật khẩu",
+    "PLACEHOLDER_PASSWORD_NEW": "Mật khẩu mới",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Xác nhận mật khẩu",
+    "CHANGE_PASSWORD": "Đổi mật khẩu của bạn",
+    "REINIT": "Đặt lại"
+  },
+  "SIGNUP": {
+    "GENRE": "Giới tính",
+    "CHOOSE": "Chọn",
+    "SEX_MALE": "Nam",
+    "SEX_FEMALE": "Nữ",
+    "TITLE": "Nhập thông tin cá nhân của bạn.",
+    "CONTINUER": "Tiếp tục",
+    "OR": "Hoặc",
+    "QRCODE": "Đăng nhập bằng mã QR",
+    "CGU": "Khi tiếp tục, bạn đồng ý nhận cuộc gọi, tin nhắn WhatsApp hoặc SMS (kể cả tự động) từ izyGlam và các công ty liên kết tới số đã cung cấp.",
+    "PLACEHOLDER_FIRSTNAME": "Tên",
+    "PLACEHOLDER_LASTNAME": "Họ",
+    "PLACEHOLDER_EMAIL": "E-mail",
+    "PLACEHOLDER_EMAIL_REQUIRED": "Yêu cầu E-mail",
+    "PLACEHOLDER_EMAIL_WRONG": "Định dạng E-mail không hợp lệ",
+    "PLACEHOLDER_PHONE": "Điện thoại",
+    "PLACEHOLDER_PHONE_NUMBER": "Số điện thoại",
+    "PLACEHOLDER_PASSWORD": "Mật khẩu",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Xác nhận mật khẩu",
+    "COUNTRY": "Quốc gia"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Tiếng Pháp",
+    "ANGLAIS": "Tiếng Anh",
+    "ESPAGNOL": "Tiếng Tây Ban Nha",
+    "NEERLANDAIS": "Tiếng Hà Lan",
+    "ITALIEN": "Tiếng Ý",
+    "ALLEMAND": "Tiếng Đức",
+    "PORTUGAIS": "Tiếng Bồ Đào Nha",
+    "POLONAIS": "Tiếng Ba Lan",
+    "DANOIS": "Tiếng Đan Mạch",
+    "FINNOIS": "Tiếng Phần Lan",
+    "SUEDOIS": "Tiếng Thụy Điển",
+    "ARABE": "Tiếng Ả Rập",
+    "TURC": "Tiếng Thổ Nhĩ Kỳ",
+    "CHINOIS": "Tiếng Trung",
+    "RUSSE": "Tiếng Nga",
+    "PERSAN": "Tiếng Ba Tư",
+    "UKRAINIEN": "Tiếng Ukraina",
+    "ROUMAIN": "Tiếng Romania",
+    "CATALAN": "Tiếng Catalan",
+    "BASQUE": "Tiếng Basque",
+    "GALICIEN": "Tiếng Galician",
+    "ALBANAIS": "Tiếng Albania",
+    "KURDE": "Tiếng Kurd",
+    "ESTONIEN": "Tiếng Estonia",
+    "SOMALIEN": "Tiếng Somali",
+    "BIELORUSSE": "Tiếng Belarus",
+    "JAPONAIS": "Tiếng Nhật",
+    "COREEN": "Tiếng Hàn",
+    "INDONESIEN": "Tiếng Indonesia",
+    "MALAIS": "Tiếng Mã Lai",
+    "THAI": "Tiếng Thái",
+    "VIETNAMIEN": "Tiếng Việt",
+    "TAGALOG": "Tiếng Tagalog",
+    "BENGALI": "Tiếng Bengal"
+  },
+  "COUNTRY": {
+    "FRANCE": "Pháp",
+    "ALLEMAGNE": "Đức",
+    "SPAIN": "Tây Ban Nha",
+    "ITALY": "Ý",
+    "DANEMARK": "Đan Mạch",
+    "FINLAND": "Phần Lan",
+    "NETHERLAND": "Hà Lan",
+    "POLAND": "Ba Lan",
+    "PORTUGAL": "Bồ Đào Nha",
+    "SWEDEN": "Thụy Điển",
+    "CHINA": "Trung Quốc",
+    "INDIA": "Ấn Độ",
+    "JAPAN": "Nhật Bản",
+    "SOUTH_KOREA": "Hàn Quốc",
+    "INDONESIA": "Indonesia",
+    "PHILIPPINES": "Philippines",
+    "THAILAND": "Thái Lan",
+    "VIETNAM": "Việt Nam",
+    "MALAYSIA": "Malaysia",
+    "SINGAPOURE": "Singapore",
+    "EMIRAT_ARABE": "Các Tiểu vương quốc Ả Rập Thống nhất",
+    "SAUDI_ARABIA": "Ả Rập Xê Út"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Địa chỉ của tôi",
+    "ADDRESS_MODIFICATION": "Chỉnh sửa địa chỉ",
+    "STREET": "Đường",
+    "CITY": "Thành phố",
+    "CP": "Mã bưu chính",
+    "CREATE": "Tạo",
+    "BACK": "Quay lại",
+    "CHANGE": "Chỉnh sửa",
+    "CLOSE": "Đóng"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Thiết lập nền tảng",
+    "COMMISSION": "Tỷ lệ hoa hồng (%)",
+    "0to100": "Bắt buộc nhập giá trị từ 0 đến 100",
+    "SERVICE": "Phí dịch vụ (€)",
+    "WEEKS": "Số tuần hiển thị",
+    "SUP0": "Bắt buộc giá trị lớn hơn 0",
+    "LESS24": "Phí hủy dưới 24h (%)",
+    "LESS48": "Phí hủy dưới 48h (€)",
+    "DELAY": "Thời gian đặt trước tối thiểu (giờ)",
+    "TVA": "Thuế VAT (%)",
+    "ADS": "Bật quảng cáo",
+    "COMPANY": "Bật thương mại với doanh nghiệp",
+    "FIDELITY": "Bật tích điểm",
+    "MULTI_SHOP": "Bật đa cửa hàng",
+    "PROMO": "Bật khuyến mãi trong cửa hàng",
+    "SPONSORS": "Bật phần nhà tài trợ trên trang đích",
+    "SAVE": "Lưu"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Tổng số cửa hàng",
+    "ACT_SHOPS": "Số cửa hàng đang hoạt động",
+    "USERS": "Tổng số người dùng",
+    "NBR_USERS": "Số người dùng đã đăng ký",
+    "CA_TOTAL": "Tổng doanh thu",
+    "CA_GENERATED": "Doanh thu tạo ra",
+    "SHOPS_PERFO": "Hiệu suất cửa hàng",
+    "SHOP_NAME": "Tên cửa hàng",
+    "CITY": "Thành phố",
+    "REVENUES": "Doanh thu",
+    "BOOKINGS": "Số lượt đặt",
+    "NOTE": "Điểm trung bình",
+    "ACTIONS": "Thao tác",
+    "DETAILS": "Chi tiết",
+    "ADJUST": "Điều chỉnh",
+    "SHOP_ADJUST": "Điều chỉnh cửa hàng",
+    "STILL_DEVELOPPED": "Tính năng này đang được phát triển",
+    "CLOSE": "Đóng"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Chi tiết sự kiện",
+    "CLIENT": "Khách hàng",
+    "DEBUT": "Bắt đầu",
+    "FIN": "Kết thúc",
+    "ADDRESS": "Địa chỉ",
+    "PHONE": "Điện thoại",
+    "CANCEL": "Hủy",
+    "SAVE": "Lưu"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Tạo sự kiện",
+    "COMING": "Sắp diễn ra",
+    "PAST": "Đã qua",
+    "CANCELLED": "Đã hủy",
+    "NO_CANCELLED": "Không có đơn hàng nào bị hủy."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Hỗ trợ trực tuyến"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Quản lý nhân viên",
+    "NAME": "Tên",
+    "EMAIL": "E-mail",
+    "SOLDE": "Số dư tài khoản",
+    "ACTIONS": "Thao tác",
+    "DEFAULT_PASSWORD": "Mật khẩu mặc định",
+    "REINITIALIZE_PASSWORD": "Mật khẩu mặc định để đặt lại",
+    "CHANGE_PASSWORD": "Đổi mật khẩu"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Ghi có vào tài khoản nhân viên",
+    "AMOUNT": "Số tiền ghi có",
+    "CANCEL": "Hủy",
+    "SAVE": "Xác nhận"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Tổng số đặt chỗ",
+    "TOTAL_MONTH": "Đặt chỗ trong tháng này",
+    "GENERATED": "Doanh thu tạo ra",
+    "MONTHLY": "Doanh thu tháng này",
+    "AVG_NOTE": "Điểm trung bình",
+    "BASED_ON": "Dựa trên",
+    "REVIEWS": "đánh giá",
+    "NEXT_APPOINTEMENT": "Cuộc hẹn sắp tới",
+    "POPULAR_SERVICES": "Dịch vụ phổ biến nhất",
+    "RESERVATION": "lượt đặt"
+  },
+  "FINANCE": {
+    "PROGRESS": "Biến động so với T-1",
+    "PROGRESSION": "Tiến độ",
+    "TOTAL_GENERATED": "Tổng doanh số tạo ra",
+    "CA": "Doanh thu",
+    "COMMISSION_TAKEN": "Hoa hồng đã thu",
+    "COMMISSIONS": "Hoa hồng",
+    "NET_TO_PAY": "Số tiền ròng cần chuyển",
+    "DISPO_AMOUNT": "Số tiền khả dụng",
+    "REQUEST_WITHDRAWAL": "Yêu cầu chuyển khoản",
+    "TAKE": "Số tiền rút",
+    "TOTAL_EARNINGS": "Thu nhập ròng",
+    "TOTAL_BOOKINGS": "Dịch vụ đã thực hiện",
+    "CANCELLED_BOOKINGS": "Dịch vụ đã hủy",
+    "SERVICES_CANCELLED": "Đặt chỗ hủy hoặc bị từ chối",
+    "SERVICES_COMPLETED": "Đặt chỗ đã hoàn tất",
+    "AVG_PRICE": "Giá trung bình",
+    "PER_SERVICE": "Theo dịch vụ",
+    "REVIEW_RATIO": "Đánh giá của khách hàng",
+    "CLIENT_FEEDBACK": "Tỷ lệ phản hồi",
+    "TOP_PRODUCTS": "Dịch vụ bán chạy",
+    "AVG_DURATION": "Thời lượng trung bình",
+    "DURATION_PER_BOOKING": "Thời gian mỗi đặt chỗ",
+    "DETAILS": "Chi tiết tài khoản ngân hàng",
+    "ASK": "Yêu cầu chuyển khoản",
+    "HISTORY": "Lịch sử giao dịch",
+    "DATE": "Ngày",
+    "AMOUNT": "Số tiền",
+    "COMMISSION": "Hoa hồng",
+    "STATUS": "Trạng thái"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Chọn loại cửa hàng cần tạo",
+    "CANCEL": "Hủy",
+    "CREATE": "Xác nhận"
+  },
+  "PROCHES": {
+    "TITLE": "Người thân của tôi",
+    "UPDATE": "Chỉnh sửa người thân",
+    "FIRSTNAME": "Tên",
+    "NAME": "Họ",
+    "EMAIL": "E-mail",
+    "PHONE": "Điện thoại",
+    "CREATE": "Tạo",
+    "BACK": "Quay lại",
+    "CHANGE": "Chỉnh sửa",
+    "CLOSE": "Đóng"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Gửi đánh giá của bạn",
+    "RATING": "Điểm",
+    "COMMENT": "Bình luận",
+    "CLOSE": "Đóng",
+    "SUBMIT": "Gửi"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Chọn ngày thực hiện dịch vụ",
+    "CANCEL": "Hủy"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Tạo dịch vụ",
+    "NAME": "Tên",
+    "DESCRIPTION": "Mô tả",
+    "COLOR": "Màu",
+    "PRICE": "Giá",
+    "TIME": "Thời lượng",
+    "IMAGE": "Hình ảnh",
+    "ACTIONS": "Thao tác",
+    "MINUTES": "phút",
+    "CHANGE": "Chỉnh sửa",
+    "DELETE": "Xóa",
+    "SERVICE_NAME": "Tên dịch vụ",
+    "TIME_MINUTES": "Thời lượng (phút)",
+    "PREST_IMAGE": "Ảnh dịch vụ",
+    "NO_PICS": "Chưa có ảnh",
+    "UPLOAD": "Tải ảnh lên",
+    "NEW_PIC": "Xem trước ảnh mới",
+    "PRESTA_COLOR": "Màu của dịch vụ",
+    "CANCEL": "Hủy",
+    "SAVE": "Lưu",
+    "AVG_PRICE": "Giá trung bình",
+    "IMAGE_OK": "Tải ảnh thành công",
+    "ERROR_IMAGE_LOAD": "Lỗi khi tải ảnh",
+    "UPDATE_SUCCESS": "Cập nhật dịch vụ thành công",
+    "ERROR_PRESTA": "Lỗi khi cập nhật dịch vụ",
+    "PRESTA_UPDATED": "Cập nhật dịch vụ thành công",
+    "PRESTA_ERROR": "Lỗi khi cập nhật dịch vụ",
+    "PRESTA_SUCCESS": "Cập nhật dịch vụ thành công",
+    "PHOTO_ERROR": "Lỗi khi cập nhật ảnh",
+    "PRESTA_DELETED": "Xóa dịch vụ thành công",
+    "PRESTA_DELETE_ERROR": "Lỗi khi xóa dịch vụ"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Ảnh cửa hàng",
+    "UPLOAD_IMAGE": "Tải ảnh lên",
+    "SNEEK_PIC": "Xem trước ảnh",
+    "SHOP_NAME": "Tên cửa hàng",
+    "DESCRIPTION": "Mô tả",
+    "DESC_INFO": "(tối thiểu 25 ký tự)",
+    "CITY": "Thành phố",
+    "DISCRICT": "Quận",
+    "LAT": "Vĩ độ",
+    "LON": "Kinh độ",
+    "ZONE": "Bán kính di chuyển (km)",
+    "OPENNING": "Giờ mở cửa",
+    "MORNING_OPEN": "Sáng - Mở cửa",
+    "MORNING_CLOSE": "Sáng - Đóng cửa",
+    "AFTERNOON_OPEN": "Chiều - Mở cửa",
+    "AFTERNOON_CLOSE": "Chiều - Đóng cửa",
+    "SAVE": "Lưu cửa hàng",
+    "MONDAY": "Thứ Hai",
+    "TUESDAY": "Thứ Ba",
+    "WEDNESDAY": "Thứ Tư",
+    "THURSDAY": "Thứ Năm",
+    "FRIDAY": "Thứ Sáu",
+    "SATURDAY": "Thứ Bảy",
+    "SUNDAY": "Chủ Nhật",
+    "CLOSED": "Đóng cửa",
+    "GENERATE_IMAGE": "Tạo ảnh",
+    "GENERATE_DESCRIPTION": "Tạo mô tả",
+    "PHOTO": "Ví dụ ảnh chấp nhận / từ chối",
+    "CODE_POSTAUX": "Mã bưu chính phục vụ",
+    "EXEMPLE_LOCAL": "Ví dụ: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Thêm nhân viên",
+    "LOADING": "Đang tải",
+    "LIST": "Danh sách nhân viên",
+    "ADD": "Thêm",
+    "EMAIL": "E-mail nhân viên",
+    "FIRSTNAME": "Tên",
+    "FAMILY_NAME": "Họ",
+    "PHONE": "Điện thoại",
+    "PASSWORD": "Mật khẩu",
+    "HAVE_TO": "Tất cả các trường đều bắt buộc.",
+    "EMAIL_ERROR": "E-mail không hợp lệ.",
+    "EMPLOYEE_OK": "Thêm nhân viên thành công.",
+    "ADD_EMPLOYEE_ERROR": "Lỗi khi thêm nhân viên."
+  },
+  "AVIS": {
+    "TITLE": "NGƯỜI DÙNG NÓI GÌ",
+    "AVIS1": "Ban đầu tôi hơi nghi ngờ… nhưng bất ngờ quá! Móng tay hoàn hảo, làm tại nhà, không căng thẳng. Giờ đã thành thói quen tối thứ Sáu của tôi.",
+    "AVIS2": "Tôi đặt chăm sóc da mặt trong 3 phút, ngay trên sofa. Chuyên viên nhẹ nhàng, lắng nghe… da tôi chưa bao giờ đẹp vậy.",
+    "AVIS3": "Tưởng sẽ đắt hơn salon… bất ngờ: giá tương đương, thậm chí rẻ hơn! Và tôi không phải di chuyển. Quá tuyệt.",
+    "AVIS4": "Trước sinh nhật, tôi cần sấy tóc gấp. Tìm được chuyên gia rảnh chỉ sau 2 cú nhấp. Đúng giờ, thân thiện và kết quả xuất sắc.",
+    "AVIS5": "Là mẹ đơn thân, tôi không có thời gian chạy khắp nơi. Ở đây, tôi đặt lúc bọn trẻ ngủ. Đơn giản, nhanh và thật sự tuyệt.",
+    "AVIS6": "Tôi thích buổi đầu tiên. Chuyên viên khiến tôi thoải mái ngay. Cảm giác được nâng niu. Tôi đã đặt lại cho tuần sau!"
+  },
+  "DOWNLOAD": {
+    "USERS": "người dùng hài lòng",
+    "SOCIAL": "chuyên gia sẵn sàng",
+    "STORE": "trên App Store và Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Chọn gói phù hợp với bạn",
+    "DISCOVER2": "và bắt đầu hành trình chinh phục",
+    "SOLUTIONS": "Bạn xứng đáng có giải pháp đẹp, mạnh mẽ và dành riêng cho bạn. Bạn có thể thay đổi bất cứ lúc nào",
+    "TEST": "Salon đầu tiên của bạn hoàn toàn miễn phí. Không áp lực. Chỉ có phép màu.",
+    "START_FREE": "Tạo salon đầu tiên",
+    "FREE": "Tập sự",
+    "FREE_SUBTITLE": "Khởi đầu với salon đầu tay",
+    "THEN": "sau đó",
+    "MONTHLY": "tháng",
+    "FREE1": "1 salon hoạt động",
+    "FREE2": "Không giới hạn đặt chỗ & khách hàng",
+    "FREE3": "Quản lý dịch vụ & lịch làm việc",
+    "FREE4": "Đồng bộ lịch cá nhân",
+    "FREE5": "Hoàn hảo để khởi đầu vững chắc",
+    "FREE6": "Tạo salon miễn phí",
+    "BASIC": "Nổi bật",
+    "BASIC_SUBTITLE": "Mở khóa tiềm năng và bắt đầu tỏa sáng",
+    "BASIC1": "Tối đa 3 salon hoạt động",
+    "BASIC2": "Quản lý đầy đủ dịch vụ, khách hàng và cuộc hẹn",
+    "BASIC3": "Hỗ trợ email ưu tiên",
+    "BASIC4": "Truy cập tài nguyên độc quyền để phát triển",
+    "BASIC5": "Lý tưởng để mở rộng tệp khách hàng",
+    "BASIC6": "Dùng thử 1 tháng",
+    "PREMIUM": "Nữ hoàng",
+    "PREMIUM_SUBTITLE": "Đế chế của bạn hình thành, tầm ảnh hưởng tăng",
+    "PREMIUM1": "Tối đa 10 salon hoạt động",
+    "PREMIUM2": "Truy cập thống kê nâng cao",
+    "PREMIUM3": "Khuyến nghị thông minh tăng doanh thu",
+    "PREMIUM4": "Tăng hiển thị trên IzyGlam",
+    "PREMIUM5": "Hỗ trợ ưu tiên",
+    "PREMIUM6": "Dành cho freelancer tham vọng",
+    "PREMIUM7": "Nhận gói Nữ hoàng",
+    "BUSINESS": "Nữ thần",
+    "BUSINESS_SUBTITLE": "Đòi lại ngai vàng, Nữ thần",
+    "BUSINESS1": "Theo yêu cầu",
+    "BUSINESS2": "Không giới hạn số salon",
+    "BUSINESS3": "Chiến lược đồng hành cá nhân hóa",
+    "BUSINESS4": "Tăng cường hiển thị & đề xuất",
+    "BUSINESS5": "Giải pháp đo ni đóng giày để mở rộng",
+    "BUSINESS6": "Liên hệ với chúng tôi",
+    "COMPARE": "So sánh tính năng",
+    "FONCTIONS": "Tính năng",
+    "BUSINESS9": "Quản lý hoạt động toàn diện",
+    "STUDIO_BASIC": "Tài nguyên độc quyền",
+    "STUDIO_ADVANCED": "Thống kê & khuyến nghị",
+    "ANALYSE": "Phân tích hiệu suất",
+    "BASICS": "Cơ bản",
+    "ADVANCE": "Nâng cao",
+    "PLANS": "Số salon hoạt động",
+    "READY": "Sẵn sàng phát triển hoạt động?",
+    "DISCOVERS": "Khám phá các gói của IzyGlam"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Tuyên bố về khả năng truy cập",
+      "TEXT": "izyGlam cam kết làm cho dịch vụ của mình dễ tiếp cận với nhiều người nhất có thể. Mục tiêu của chúng tôi là đạt chuẩn WCAG 2.2 cấp AA và phù hợp RGAA (Pháp) trong khả năng cho phép."
+    },
+    "SCOPE": {
+      "TITLE": "Phạm vi bao phủ",
+      "L1": "Trang web công khai và trang thông tin.",
+      "L2": "Ứng dụng web (bảng điều khiển) cho khách hàng và chuyên gia.",
+      "L3": "Ứng dụng di động (iOS/Android) nếu có.",
+      "L4": "Email giao dịch và trung tâm trợ giúp.",
+      "L5": "Công cụ hỗ trợ khách hàng."
+    },
+    "STATUS": {
+      "TITLE": "Tình trạng tuân thủ",
+      "TEXT": "Tại thời điểm công bố, khả năng truy cập của các giao diện izyGlam tuân thủ một phần WCAG 2.2 AA / RGAA. Chúng tôi liên tục cải thiện và khắc phục các vấn đề ưu tiên."
+    },
+    "PREPARATION": {
+      "TITLE": "Phương pháp chuẩn bị tuyên bố",
+      "L1": "Tự đánh giá bởi đội sản phẩm/UI: ngữ nghĩa HTML, vai trò ARIA, thứ tự tab.",
+      "L2": "Kiểm thử thủ công: điều hướng bàn phím, hiển thị tiêu điểm, phóng to 200%+, trình đọc màn hình.",
+      "L3": "Kiểm thử bằng công cụ (kiểm toán tự động trên các màn hình mẫu).",
+      "L4": "Kiểm thử liên tục khi phát hành (Design System, thành phần tái sử dụng có khả năng truy cập)."
+    },
+    "FEATURES": {
+      "TITLE": "Tính năng hỗ trợ truy cập",
+      "KEYBOARD": {
+        "TITLE": "Điều hướng bằng bàn phím",
+        "L1": "Đi qua toàn bộ bằng Tab, Shift+Tab, Enter, Space, Esc, phím mũi tên.",
+        "L2": "Vùng tiêu điểm rõ ràng, tương phản.",
+        "L3": "Liên kết “Bỏ qua đến nội dung”.",
+        "L4": "Menu, modal, danh sách có thể điều khiển bằng bàn phím (mở/đóng, bẫy focus có kiểm soát, đóng bằng Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Trình đọc màn hình & cấu trúc",
+        "L1": "Cấu trúc ngữ nghĩa với tiêu đề h1→h6 và landmark (header, nav, main, footer).",
+        "L2": "Nhãn rõ ràng cho mọi trường & nút, tên truy cập nhất quán.",
+        "L3": "Thông báo thay đổi trạng thái qua aria-live (lỗi, thành công, tải).",
+        "L4": "Ảnh thông tin có alt mô tả, ảnh trang trí được bỏ qua."
+      },
+      "CONTRAST": {
+        "TITLE": "Tương phản, màu sắc & co giãn",
+        "L1": "Tương phản ≥ 4.5:1 cho văn bản thường và ≥ 3:1 cho văn bản lớn.",
+        "L2": "Dùng được đến 200% zoom mà không mất nội dung/tính năng.",
+        "L3": "Không chỉ dùng màu để truyền tải thông tin."
+      },
+      "FORMS": {
+        "TITLE": "Biểu mẫu & thông báo lỗi",
+        "L1": "Liên kết label⇄input, chỉ rõ trường bắt buộc.",
+        "L2": "Hiển thị lỗi gần trường và tổng hợp khi cần.",
+        "L3": "Đặt focus vào trường lỗi đầu tiên, kèm hướng dẫn sửa."
+      },
+      "DYNAMIC": {
+        "TITLE": "Nội dung động & hoạt ảnh",
+        "L1": "Băng chuyền/nhóm động có thể tạm dừng, không gây cản trở.",
+        "L2": "Tôn trọng tùy chọn hệ thống “giảm chuyển động” khi có thể.",
+        "L3": "Modal không xâm lấn, đóng bằng bàn phím & click ngoài."
+      },
+      "MEDIA": {
+        "TITLE": "Phương tiện",
+        "L1": "Video (nếu có) kèm phụ đề và/hoặc bản chép.",
+        "L2": "Âm thanh/video điều khiển được bằng bàn phím."
+      },
+      "MOBILE": {
+        "TITLE": "Di động",
+        "L1": "Vùng chạm đủ lớn & cách nhau.",
+        "L2": "Điều hướng tương thích TalkBack (Android) & VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Môi trường & công nghệ hỗ trợ",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Trình duyệt hiện đại được hỗ trợ và cập nhật."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Nội dung chưa truy cập được (đã thấy/tiềm ẩn)",
+      "TEXT": "Dù đã nỗ lực, một số thành phần có thể chưa tuân thủ:",
+      "L1": "Ảnh cũ thiếu văn bản thay thế mô tả.",
+      "L2": "Tài liệu của bên thứ ba (PDF, tệp đính kèm) chưa hoàn toàn truy cập được.",
+      "L3": "Video cũ thiếu phụ đề/mô tả.",
+      "L4": "Thành phần nhúng của bên thứ ba (thanh toán, bản đồ, trình phát) có giới hạn riêng.",
+      "MOTIVES": "Lý do có thể: nội dung của bên thứ ba, gánh nặng quá mức, đang cập nhật."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Phương án thay thế hợp lý",
+      "TEXT": "Nếu cần định dạng thay thế (ví dụ tài liệu truy cập được, hỗ trợ đặt lịch), hãy liên hệ chúng tôi. Chúng tôi sẽ cố gắng cung cấp giải pháp tương đương."
+    },
+    "FEEDBACK": {
+      "TITLE": "Phản hồi & hỗ trợ",
+      "L1": "Qua ứng dụng: mục Trợ giúp > Khả năng truy cập.",
+      "L2A": "Qua e-mail:",
+      "L2B": "hoặc",
+      "L3": "Vui lòng nêu màn hình/URL, thiết bị, trình duyệt và (nếu có) trình đọc màn hình đang dùng."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "[accessibilite@izyglam.com](mailto:accessibilite@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "RECOURSE": {
+      "TITLE": "Thủ tục khiếu nại (Pháp)",
+      "TEXT": "Nếu gặp lỗi truy cập khiến bạn không thể dùng nội dung/tính năng và không nhận được phản hồi thỏa đáng, bạn có thể:",
+      "L1": "Viết cho Défenseur des droits hoặc đại diện tại địa phương,",
+      "L2": "Hoặc liên hệ Hòa giải viên nếu cần.",
+      "MORE": "Thông tin thêm:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Cải tiến liên tục",
+      "L1": "Design System với các thành phần truy cập được.",
+      "L2": "Rà soát code & kiểm thử truy cập ở mỗi lần phát hành.",
+      "L3": "Đào tạo thường xuyên cho đội sản phẩm & hỗ trợ.",
+      "L4": "Ưu tiên sửa lỗi theo tác động người dùng."
+    },
+    "DATE": {
+      "TITLE": "Ngày công bố & cập nhật",
+      "TEXT": "Tuyên bố lập ngày 25 tháng 12 năm 2025. Sẽ được cập nhật ít nhất mỗi năm hoặc khi có thay đổi lớn."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Làm sao để đặt dịch vụ trên IzyGlam?",
+    "QUESTION2": "Làm sao chọn đúng chuyên gia cho tôi?",
+    "QUESTION3": "Làm sao sửa đổi hoặc hủy lịch hẹn?",
+    "QUESTION4": "Tôi theo dõi đơn hàng như thế nào?",
+    "QUESTION5": "Tôi có thể dùng phương thức thanh toán nào?",
+    "QUESTION6": "Làm sao theo dõi đơn hàng hoặc đặt chỗ?",
+    "QUESTION7": "Tôi có thể để lại đánh giá sau dịch vụ không?",
+    "QUESTION8": "Làm sao dùng ưu đãi tích điểm & khuyến mãi?",
+    "QUESTION9": "Nếu gặp vấn đề với đơn hàng thì sao?",
+    "QUESTION10": "Liên hệ đội IzyGlam thế nào?",
+    "QUESTION11": "Chính sách hủy & hoàn tiền hoạt động ra sao?",
+    "QUESTION12": "Tôi có thể đặt cho người khác (quà, bất ngờ) không?",
+    "QUESTION13": "Làm sao trở thành đối tác chuyên nghiệp trên IzyGlam?",
+    "QUESTION14": "Làm sao bảo vệ dữ liệu cá nhân của tôi trên IzyGlam?",
+    "REPONSE1": "Rất đơn giản và nhanh chóng. Sau khi đăng ký, chọn dịch vụ bạn quan tâm, xem chuyên gia gần bạn, rồi chọn ngày giờ. Nhấn “Đặt” để hoàn tất và thanh toán bằng thẻ. Đặt chỗ sẽ được chuyên gia duyệt thủ công. Nếu bị từ chối, bạn sẽ được hoàn tiền 100%.",
+    "REPONSE2": "Mỗi chuyên gia có hồ sơ chi tiết: dịch vụ, giá, ảnh tác phẩm và đánh giá. Bạn cũng có thể thêm vào yêu thích để tìm lại nhanh. Hãy so sánh để chọn người phù hợp nhất.",
+    "REPONSE3": "Bạn có thể sửa hoặc hủy trong khu vực cá nhân. Hủy miễn phí đến trước 24h. Sau đó có thể áp phí. Gặp vấn đề? Hỗ trợ của chúng tôi luôn sẵn sàng.",
+    "REPONSE4": "Đăng nhập khu vực cá nhân, mục “Đặt chỗ của tôi”. Ở đó có theo dõi thời gian thực, tùy chọn hủy/sửa và lịch sử dịch vụ.",
+    "REPONSE5": "Thanh toán chỉ bằng thẻ (Visa, MasterCard, American Express). Hiện chưa hỗ trợ tiền mặt hay PayPal. Mọi giao dịch đều an toàn.",
+    "REPONSE6": "Khi đặt chỗ được xác nhận, bạn nhận email tóm tắt. Chúng tôi cũng gửi nhắc trước dịch vụ (qua email và/hoặc thông báo đẩy). Bạn có thể theo dõi trạng thái trong tài khoản.",
+    "REPONSE7": "Có. Sau mỗi dịch vụ, bạn sẽ được mời để lại đánh giá. Đánh giá được kiểm duyệt thủ công để đảm bảo tính xác thực. Chuyên gia không thể trả lời hoặc sửa đánh giá.",
+    "REPONSE8": "Hiện tại, IzyGlam chưa có chương trình tích điểm hay mã khuyến mãi. Các tính năng này sẽ được triển khai ở giai đoạn sau.",
+    "REPONSE9": "Bạn có thể liên hệ trực tiếp từ mục “Liên hệ” hoặc qua email. Chúng tôi cố gắng phản hồi trong vòng 24h (ước tính) và hỗ trợ giải quyết nhanh nhất.",
+    "REPONSE10": "Liên hệ qua biểu mẫu trên trang web/ứng dụng. Hỗ trợ khách hàng từ thứ Hai đến thứ Bảy, 9h–18h. Ví dụ email: [support@izyglam.com](mailto:support@izyglam.com)",
+    "REPONSE11": "Bạn có thể hủy miễn phí trước 24h. Sau đó có thể áp phí. Nếu chuyên gia từ chối sau khi thanh toán, bạn sẽ được hoàn toàn bộ. Hệ thống hoàn tiền tự động đang triển khai.",
+    "REPONSE12": "Hiện bạn chưa thể tặng dịch vụ cho người khác từ tài khoản. Tuy nhiên, nếu chuyên gia có gói đôi hoặc gia đình, bạn có thể đặt cho nhiều người trong phạm vi đó.",
+    "REPONSE13": "Bạn là chuyên viên thẩm mỹ, thợ làm tóc hay chăm sóc sức khỏe? Hãy gia nhập cộng đồng IzyGlam bằng cách điền form ở trang “Trở thành đối tác”. Chúng tôi sẽ sớm liên hệ để hoàn tất.",
+    "REPONSE14": "Bảo mật dữ liệu là ưu tiên. Chúng tôi tuân thủ RGPD. Chỉ thông tin cần thiết mới được cung cấp cho chuyên gia. Có hộp thư tích hợp để trao đổi khi cần; mọi hành vi cố gắng lách nền tảng sẽ bị giám sát."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Chúng tôi là ai?",
+      "TEXT": "Chính sách bảo mật này giải thích cách <strong>izyGlam</strong> (“chúng tôi”, “của chúng tôi” hoặc “Nền tảng”) thu thập, sử dụng, lưu trữ, chia sẻ và bảo vệ dữ liệu cá nhân của bạn khi bạn sử dụng dịch vụ (website, ứng dụng web, ứng dụng di động, email và hỗ trợ). Chúng tôi là <strong>bên kiểm soát dữ liệu</strong> cho các hoạt động xử lý mô tả dưới đây."
+    },
+    "SCOPE": {
+      "TITLE": "Phạm vi chính sách",
+      "TEXT": "Chính sách áp dụng cho <strong>khách hàng</strong> đặt dịch vụ, <strong>chuyên gia</strong> cung cấp dịch vụ qua izyGlam, và <strong>khách truy cập</strong> các giao diện của chúng tôi."
+    },
+    "DATA": {
+      "TITLE": "Dữ liệu thu thập",
+      "PROVIDED": {
+        "TITLE": "Dữ liệu bạn cung cấp",
+        "L1": "<strong>Danh tính & liên hệ: </strong> họ tên, e-mail, điện thoại, địa chỉ, ảnh/đại diện.",
+        "L2": "<strong>Tài khoản: </strong> thông tin đăng nhập, mật khẩu (băm), tùy chọn, ngôn ngữ.",
+        "L3": "<strong>Đặt chỗ: </strong> dịch vụ đã chọn, ngày/giờ, địa chỉ thực hiện, ghi chú, tệp đính kèm.",
+        "L4": "<strong>Thanh toán: </strong> thông tin thanh toán <em>qua đối tác (vd. Stripe)</em> — chúng tôi không lưu dữ liệu thẻ.",
+        "L5": "<strong>Chuyên gia: </strong> hồ sơ công khai, dịch vụ, giá, vùng phục vụ, khả dụng, RIB/IBAN (bảo mật), tài liệu xác minh nếu cần.",
+        "L6": "<strong>Hỗ trợ: </strong> tin nhắn, vé hỗ trợ, ghi âm cuộc gọi nếu có."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Dữ liệu tự động thu thập",
+        "L1": "<strong>Kỹ thuật: </strong> thiết bị, hệ điều hành, trình duyệt, độ phân giải, mã phiên.",
+        "L2": "<strong>Nhật ký: </strong> IP, dấu thời gian, sự kiện lỗi, mức độ sử dụng tính năng.",
+        "L3": "<strong>Vị trí: </strong> vị trí gần đúng (IP) hoặc chính xác (GPS, có sự đồng ý).",
+        "L4": "<strong>Cookie & SDK: </strong> xem phần bên dưới."
+      },
+      "THIRD": {
+        "TITLE": "Dữ liệu từ bên thứ ba",
+        "L1": "<strong>Đơn vị thanh toán</strong> (trạng thái, token).",
+        "L2": "<strong>Đối tác phân tích/chống gian lận</strong> (tín hiệu rủi ro, số liệu tổng hợp).",
+        "L3": "<strong>Tích hợp</strong> (vd. công cụ liên lạc, bản đồ, lưu trữ đám mây)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Mục đích & cơ sở pháp lý",
+      "TEXT": "Chúng tôi xử lý dữ liệu cho các mục đích sau:",
+      "L1": "<strong>Cung cấp dịch vụ</strong> (tạo tài khoản, đặt chỗ, kết nối, thông báo) — <em>Cơ sở: thực hiện hợp đồng</em>.",
+      "L2": "<strong>Thanh toán & lập hóa đơn</strong> — <em>Hợp đồng, nghĩa vụ pháp lý</em>.",
+      "L3": "<strong>Bảo mật, chống lạm dụng/gian lận</strong> — <em>Lợi ích hợp pháp, nghĩa vụ pháp lý</em>.",
+      "L4": "<strong>Cải tiến sản phẩm, thống kê</strong> — <em>Lợi ích hợp pháp</em>.",
+      "L5": "<strong>Hỗ trợ & chất lượng</strong> — <em>Hợp đồng, lợi ích hợp pháp</em>.",
+      "L6": "<strong>Tiếp thị trực tiếp</strong> (email/app) — <em>Đồng ý khi cần</em>; có thể từ chối bất cứ lúc nào.",
+      "L7": "<strong>Tuân thủ pháp luật</strong> (kế toán, yêu cầu cơ quan) — <em>Nghĩa vụ pháp lý</em>."
+    },
+    "SHARING": {
+      "TITLE": "Chia sẻ dữ liệu",
+      "L1": "<strong>Chuyên gia / Khách hàng</strong>: thông tin cần thiết cho dịch vụ (tên, liên hệ, địa chỉ thực hiện, chi tiết đặt chỗ).",
+      "L2": "<strong>Nhà cung cấp</strong>: thanh toán (vd. Stripe), lưu trữ/hosting, phân tích, email/SMS/push, hỗ trợ, KYC nếu cần. <em>Truy cập giới hạn, hợp đồng tuân thủ RGPD.</em>",
+      "L3": "<strong>Đối tác</strong>: nếu bạn đồng ý cho các ưu đãi cụ thể.",
+      "L4": "<strong>Cơ quan</strong>: khi luật yêu cầu hoặc để bảo vệ quyền lợi của chúng tôi."
+    },
+    "TRANSFERS": {
+      "TITLE": "Chuyển dữ liệu ngoài EU/EEE",
+      "TEXT": "Khi dữ liệu chuyển đến các nước chưa có quyết định tương đương, chúng tôi dùng <strong>Điều khoản Hợp đồng Mẫu</strong> (SCC) và biện pháp bổ sung."
+    },
+    "RETENTION": {
+      "TITLE": "Thời gian lưu trữ",
+      "L1": "<strong>Tài khoản & danh tính</strong>: trong thời gian sử dụng, sau đó <em>tối đa 3 năm</em> kể từ lần hoạt động cuối (tiếp thị) hoặc <em>5–10 năm</em> cho nghĩa vụ kế toán/pháp lý.",
+      "L2": "<strong>Đặt chỗ/hóa đơn</strong>: <em>10 năm</em> (nghĩa vụ pháp lý).",
+      "L3": "<strong>Nhật ký bảo mật</strong>: <em>6–24 tháng</em> tùy mức độ.",
+      "L4": "<strong>Cookie</strong>: xem phần Cookie.",
+      "NOTE": "Hết thời hạn, dữ liệu sẽ bị xóa hoặc ẩn danh."
+    },
+    "COOKIES": {
+      "TITLE": "Cookie & SDK",
+      "TEXT": "Chúng tôi dùng cookie/SDK để vận hành, đo lường, chống gian lận và — khi bạn đồng ý — cá nhân hóa trải nghiệm.",
+      "L1": "<strong>Cần thiết</strong>: xác thực, bảo mật, tùy chọn kỹ thuật.",
+      "L2": "<strong>Đo lường</strong>: thống kê sử dụng tổng hợp.",
+      "L3": "<strong>Tiếp thị</strong>: chỉ khi bạn chấp nhận.",
+      "PREF": "Bạn có thể quản lý tùy chọn bất cứ lúc nào qua banner và cài đặt trình duyệt."
+    },
+    "AUTOMATION": {
+      "TITLE": "Quyết định tự động & hồ sơ hóa",
+      "TEXT": "Chúng tôi có thể dùng tín hiệu tự động (vd. rủi ro gian lận, mức khả dụng, khoảng cách) để ưu tiên hành động hoặc đề xuất khung giờ. Không có quyết định nào gây hiệu lực pháp lý đáng kể mà không có can thiệp của con người, trừ khi có nghĩa vụ pháp lý hoặc sự đồng ý rõ ràng của bạn."
+    },
+    "RIGHTS": {
+      "TITLE": "Quyền của bạn (RGPD)",
+      "L1": "Quyền <strong>truy cập</strong>, <strong>chỉnh sửa</strong>, <strong>xóa</strong>.",
+      "L2": "Quyền <strong>hạn chế</strong> và <strong>di chuyển dữ liệu</strong>.",
+      "L3": "Quyền <strong>phản đối</strong> xử lý dựa trên lợi ích hợp pháp.",
+      "L4": "Quyền <strong>rút lại đồng ý</strong> bất cứ lúc nào.",
+      "L5": "Quyền <strong>khiếu nại</strong> tới CNIL.",
+      "CONTACT": "Để thực hiện quyền, liên hệ chúng tôi:",
+      "VERIFY": "Chúng tôi có thể yêu cầu thông tin bổ sung để xác minh danh tính của bạn."
+    },
+    "SECURITY": {
+      "TITLE": "Bảo mật",
+      "TEXT": "Chúng tôi áp dụng biện pháp kỹ thuật & tổ chức phù hợp: mã hóa khi truyền (TLS), băm mật khẩu, ghi nhật ký & giám sát, kiểm soát truy cập, sao lưu, rà soát mã & kiểm thử bảo mật."
+    },
+    "MINORS": {
+      "TITLE": "Dữ liệu người chưa thành niên",
+      "TEXT": "Dịch vụ không dành cho người dưới 15 tuổi. Nếu phát hiện tài khoản chưa thành niên, chúng tôi sẽ xóa sau khi xác minh."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Nhà thầu phụ chính",
+      "TEXT": "Chúng tôi hợp tác với các nhà thầu phụ thiết yếu cho hosting, thanh toán, email, phân tích và lưu trữ. Danh sách cập nhật có thể cung cấp theo yêu cầu qua"
+    },
+    "CONTACT": {
+      "TITLE": "Liên hệ & DPO",
+      "PRIVACY_LABEL": "Liên hệ bảo mật",
+      "SUPPORT_LABEL": "Hỗ trợ",
+      "AUTHORITY_LABEL": "Cơ quan giám sát",
+      "EMAIL_PRIVACY": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_PRIVACY_TEXT": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "CHANGES": {
+      "TITLE": "Thay đổi chính sách",
+      "TEXT": "Chúng tôi có thể cập nhật để phản ánh thay đổi pháp lý hoặc tính năng. Nếu có thay đổi quan trọng, chúng tôi sẽ thông báo qua email hoặc ứng dụng. Ngày hiệu lực: <strong>11 tháng 8 2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Quy định địa phương",
+      "TEXT": "Nếu bạn ở Liên minh Châu Âu, dữ liệu được xử lý theo RGPD. Bổ sung cụ thể theo quốc gia/khu vực sẽ được thông báo khi cần."
+    },
+    "GLOSSARY": {
+      "TITLE": "Thuật ngữ (trích)",
+      "L1": "<strong>Bên kiểm soát dữ liệu</strong>: thực thể quyết định mục đích và phương tiện xử lý.",
+      "L2": "<strong>Bên xử lý dữ liệu</strong>: thực thể xử lý thay cho bên kiểm soát.",
+      "L3": "<strong>Cơ sở pháp lý</strong>: nền tảng cho phép xử lý (hợp đồng, đồng ý, nghĩa vụ pháp lý, lợi ích hợp pháp).",
+      "L4": "<strong>Cookie/SDK</strong>: bộ theo dõi dùng để vận hành, đo lường và cá nhân hóa dịch vụ."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Chấp nhận điều kiện",
+      "TEXT": "Khi truy cập dịch vụ izyGlam (website, ứng dụng web, ứng dụng di động), bạn đồng ý không điều kiện với các Điều khoản Sử dụng (“CGU”). Nếu không đồng ý, vui lòng không sử dụng Nền tảng."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Định nghĩa",
+      "L1": "<strong>Khách hàng</strong>: người đặt và/hoặc thanh toán dịch vụ trên Nền tảng.",
+      "L2": "<strong>Chuyên gia</strong>: người cung cấp dịch vụ qua Nền tảng.",
+      "L3": "<strong>Dịch vụ</strong>: dịch vụ do Chuyên gia cung cấp (vd. làm đẹp tại nhà).",
+      "L4": "<strong>Nền tảng</strong>: hạ tầng phần mềm, website và ứng dụng do izyGlam vận hành."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Dịch vụ & vai trò của izyGlam",
+      "TEXT": "izyGlam là <strong>nền tảng kết nối</strong>. Chuyên gia <strong>tự chịu trách nhiệm</strong> về dịch vụ (chất lượng, tuân thủ, bảo hiểm). Trừ khi có ghi chú khác, izyGlam không phải là người bán hay cung cấp dịch vụ và không chịu trách nhiệm thực hiện."
+    },
+    "ACCOUNT": {
+      "TITLE": "Tài khoản & điều kiện",
+      "L1": "Cần đăng ký để đặt hoặc cung cấp dịch vụ. Bạn cam kết cung cấp thông tin chính xác và cập nhật.",
+      "L2": "Bạn phải từ 15 tuổi trở lên để sử dụng. Chuyên gia phải đủ điều kiện pháp lý để hành nghề.",
+      "L3": "Bạn chịu trách nhiệm bảo mật thông tin đăng nhập và mọi hoạt động từ tài khoản.",
+      "L4": "izyGlam có quyền tạm ngừng hoặc chấm dứt tài khoản khi vi phạm điều khoản hoặc có nguy cơ gian lận."
+    },
+    "BOOKINGS": {
+      "TITLE": "Đặt chỗ & hình thành hợp đồng",
+      "L1": "Dịch vụ được <strong>đặt và thanh toán trực tuyến</strong> bởi Khách. Không thanh toán tiền mặt tại chỗ.",
+      "L2": "Đặt chỗ <strong>cần chuyên gia xác nhận</strong> sau thanh toán. Nếu bị từ chối, Khách được <strong>hoàn tiền 100%</strong>.",
+      "L3": "Hợp đồng dịch vụ được ký trực tiếp giữa Khách và Chuyên gia tại thời điểm chấp nhận.",
+      "L4": "Hai bên cần kiểm tra giờ giấc, địa chỉ thực hiện và điều kiện cụ thể."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Giá, gói & thanh toán",
+      "L1": "Giá dịch vụ do Chuyên gia tự quyết. izyGlam áp dụng <strong>phí hoa hồng</strong> nền tảng.",
+      "L2": "Gói cho Chuyên gia (ví dụ hiện tại): <em>1 salon miễn phí trọn đời</em>; <em>Basic: 3 salon – 99 € / tháng</em>; <em>Premium: 10 salon – 499 € / tháng</em>; <em>trên nữa: báo giá</em>.",
+      "L3": "Thanh toán <strong>chỉ bằng thẻ</strong> qua đối tác (vd. Stripe). <strong>Không dùng tiền mặt</strong>, chưa có mã khuyến mãi hay chương trình tích điểm ở giai đoạn này.",
+      "L4": "Các khoản, thuế phí được hiển thị trước khi xác nhận. Điều kiện gói có thể thay đổi; chúng tôi sẽ thông báo trước."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Hủy, hoàn tiền & vắng mặt",
+      "L1": "Hủy miễn phí đến <strong>24h</strong> trước giờ hẹn.",
+      "L2": "Trong vòng 24h có thể <strong>phát sinh phí</strong> theo chính sách hiện hành.",
+      "L3": "Nếu <strong>chuyên gia từ chối</strong> sau khi thanh toán, Khách được hoàn 100%. Tự động hoàn tiền đang triển khai; khi cần, hỗ trợ sẽ xử lý.",
+      "L4": "<strong>Vắng mặt</strong> (không báo) có thể phát sinh phí hoặc không thể hoàn tiền."
+    },
+    "PAYOUTS": {
+      "TITLE": "Thanh toán cho Chuyên gia",
+      "L1": "Thanh toán cho Chuyên gia được kích hoạt khi <strong>xác nhận đã thực hiện</strong> (vd. xác nhận <em>mã xác thực</em>).",
+      "L2": "RIB/IBAN do Chuyên gia cung cấp sẽ được dùng để chuyển khoản. Chuyên gia chịu trách nhiệm tính chính xác.",
+      "L3": "Số tiền chuyển bằng giá dịch vụ <em>trừ</em> hoa hồng và các khoản phí áp dụng."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Trách nhiệm của các bên",
+      "L1": "Chuyên gia đảm bảo dịch vụ tuân thủ, vệ sinh và an toàn.",
+      "L2": "Khách cung cấp thông tin chính xác (địa chỉ, thời gian, điều kiện vào cửa) và tôn trọng lịch hẹn.",
+      "L3": "izyGlam cung cấp nền tảng và công cụ (đặt chỗ, thanh toán, nhắn tin) nhưng không đảm bảo kết quả dịch vụ."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Điểm đánh giá không hợp lệ.",
+      "TITLE": "Đánh giá & chấm điểm",
+      "L1": "Chỉ <strong>sau dịch vụ thực tế</strong> mới có thể để lại đánh giá.",
+      "L2": "Đánh giá có thể được <strong>kiểm duyệt</strong> (vd. xóa nội dung trái luật/điều khoản)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Hành vi bị cấm",
+      "L1": "Gian lận, mạo danh, lách nền tảng, lôi kéo giao dịch ngoài nền tảng.",
+      "L2": "Nội dung bất hợp pháp, phỉ báng, phân biệt đối xử, bạo lực hoặc trái đạo đức.",
+      "L3": "Xâm nhập, tấn công từ chối dịch vụ, đảo ngược kỹ thuật, vượt biện pháp bảo mật.",
+      "L4": "Thu thập trái phép dữ liệu cá nhân của người dùng khác."
+    },
+    "IPR": {
+      "TITLE": "Sở hữu trí tuệ",
+      "TEXT": "Nội dung, nhãn hiệu và thành phần của Nền tảng (mã, thiết kế, văn bản, logo, hình ảnh) được bảo hộ. Nếu không có phép, nghiêm cấm sao chép, phân phối hoặc chỉnh sửa. Nội dung do Chuyên gia cung cấp vẫn thuộc sở hữu của họ; họ cấp cho izyGlam giấy phép không độc quyền cần thiết để vận hành Nền tảng."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Dịch vụ của bên thứ ba",
+      "TEXT": "Nền tảng có thể tích hợp dịch vụ bên thứ ba (thanh toán, bản đồ, hosting, phân tích). Điều khoản của họ sẽ áp dụng. izyGlam không chịu trách nhiệm cho gián đoạn hoặc lỗi của các dịch vụ đó."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Tính sẵn sàng, bảo trì & cập nhật",
+      "TEXT": "Chúng tôi có thể sửa đổi, tạm ngừng hoặc ngắt quãng một phần/toàn bộ Nền tảng để bảo trì hoặc nâng cấp. Chúng tôi nỗ lực giảm thiểu ảnh hưởng."
+    },
+    "LIABILITY": {
+      "TITLE": "Giới hạn trách nhiệm & bồi thường",
+      "TEXT": "Trong phạm vi luật cho phép, trách nhiệm của izyGlam giới hạn ở thiệt hại trực tiếp, loại trừ thiệt hại gián tiếp (mất cơ hội, mất doanh thu, v.v.). Bạn đồng ý bồi thường cho izyGlam đối với mọi khiếu nại phát sinh từ vi phạm điều khoản hoặc sử dụng bất hợp pháp."
+    },
+    "TERMINATION": {
+      "TITLE": "Chấm dứt & tạm ngừng",
+      "TEXT": "Bạn có thể xóa tài khoản bất cứ lúc nào. Chúng tôi có thể tạm ngừng hoặc chấm dứt truy cập khi vi phạm điều khoản, gian lận, lạm dụng hoặc theo yêu cầu pháp lý. Một số nghĩa vụ (vd. thanh toán, trách nhiệm) vẫn còn hiệu lực sau khi chấm dứt."
+    },
+    "PRIVACY": {
+      "TITLE": "Dữ liệu cá nhân",
+      "TEXT": "Việc xử lý dữ liệu của bạn được mô tả trong <strong>Chính sách bảo mật</strong> của chúng tôi. Bằng việc dùng Nền tảng, bạn chấp nhận chính sách này. Hãy xem để biết quyền RGPD và cam kết của chúng tôi."
+    },
+    "CHANGES": {
+      "TITLE": "Sửa đổi Điều khoản",
+      "TEXT": "Chúng tôi có thể sửa đổi vì lý do pháp lý, quy định hoặc tính năng. Nếu có thay đổi quan trọng, chúng tôi sẽ thông báo qua email hoặc ứng dụng và đăng phiên bản cập nhật."
+    },
+    "LAW": {
+      "TITLE": "Luật áp dụng & tranh chấp",
+      "TEXT": "Điều khoản này chịu sự điều chỉnh của <strong>luật Pháp</strong>. Mọi tranh chấp sẽ do tòa án nơi đặt trụ sở izyGlam giải quyết, trừ khi pháp luật bảo vệ người tiêu dùng quy định khác."
+    },
+    "CONTACT": {
+      "TITLE": "Liên hệ",
+      "SUPPORT_LABEL": "Hỗ trợ",
+      "LEGAL_LABEL": "Pháp lý",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL": "[legal@izyglam.com](mailto:legal@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL_TEXT": "[legal@izyglam.com](mailto:legal@izyglam.com)"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Ngày hiệu lực",
+      "TEXT": "Điều khoản này có hiệu lực từ <strong>25 tháng 12 2025</strong> và thay thế mọi phiên bản trước."
+    }
+  }
+}

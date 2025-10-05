@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Coafor",
+    "NAILTECHNICIAN": "Manichiură",
+    "MAKEUP": "Make-up artist",
+    "WAXING": "Cosmetician(ă)",
+    "FACIAL": "Îngrijire facială",
+    "MASSAGE": "Maseur(ă)",
+    "EYELASH": "Extensii de gene",
+    "EYEBROW": "Sprâncene",
+    "TANNING": "Bronzare",
+    "ACUPUNCTURE": "Acupunctură",
+    "OTHER": "Altul"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Fotografie ștearsă din galerie",
+    "PHOTO_UPLOAD": "Imagine încărcată cu succes",
+    "PARTIAL_REFUND_CONFIRM": "Ramburs parțial confirmat!",
+    "CODE_SAVED": "Cod generat.",
+    "USERCREATED": "Utilizator creat cu succes. Un e-mail de confirmare v-a fost trimis.",
+    "SUBSCRIBE_SUCCESS": "Abonarea dvs. a fost înregistrată.",
+    "EMAIL_VERIFIED": "Contul dvs. este activ 🎉 Vă puteți conecta acum.",
+    "EMAIL_RESENT": "E-mailul de verificare a fost retrimis. Verificați căsuța poștală.",
+    "BOOKING_CREATED": "Rezervarea dvs. a fost înregistrată.",
+    "PAYMENT_OK": "Plată validată.",
+    "REFUND_OK": "Rambursare efectuată.",
+    "USERUPDATED": "Utilizator actualizat.",
+    "SETTINGS_UPDATED": "Setări actualizate.",
+    "REVIEW_ADDED": "Opinia dvs. a fost publicată 🎉",
+    "SHOPUPDATED": "Magazin actualizat.",
+    "BOOKING_ACCEPTED": "Rezervare acceptată.",
+    "BOOKING_FINISHED": "Rezervare finalizată.",
+    "BOOKING_REFUSED": "Rezervare refuzată.",
+    "BOOKING_DELETED": "Rezervare ștearsă.",
+    "CODE_GENERATED": "Cod generat.",
+    "CODE_CONFIRMED": "Cod confirmat.",
+    "INVOICE_DOWNLOADED": "Factură descărcată.",
+    "MARKED_NO_SHOW_CLIENT": "Client marcat ca absent.",
+    "COMPANY_CREDITED": "Contul companiei a fost creditat.",
+    "MARKED_NO_SHOW_PRO": "Prestator marcat ca absent.",
+    "EMPLOYEE_CREDITED": "Contul angajatului a fost creditat.",
+    "NO_SHOW_PRO": "Penalitate aplicată & rambursare efectuată.",
+    "EMPLOYEE_DELETED": "Angajatul a fost șters.",
+    "SLOT_SELECTED": "Interval selectat",
+    "PASSWORD_RESET": "Parola a fost resetată.",
+    "INVOICE_GENERATED": "Facturi generate.",
+    "REVIEW_SAVED": "Recenzie salvată, mulțumim!",
+    "DEFAULT_PASSWORD_UPDATED": "Parola implicită a fost actualizată.",
+    "COMPANY_CREATED": "Contul dvs. de companie a fost creat."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Conectați-vă pentru a vă gestiona favoritele.",
+    "INVALID_IMAGE": "Imagine invalidă.",
+    "NO_SLOTS": "Niciun interval disponibil pentru acest serviciu.",
+    "NO_SHOP_SELECTED": "Niciun magazin selectat.",
+    "NO_SERVICE_SELECTED": "Niciun serviciu selectat.",
+    "ORDER_ERROR": "Eroare la actualizarea comenzii.",
+    "CODE_ERROR": "Eroare la salvarea codului.",
+    "INVOICE_GENERATED_ERROR": "Eroare la generarea facturilor.",
+    "USERNOTCREATED": "Imposibil de creat utilizatorul.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Sold insuficient al companiei pentru acest credit.",
+    "GENERIC_ERROR": "✨ Ups… a apărut o eroare. Vă rugăm să încercați din nou ✨",
+    "COMPANY_CREDITED": "Contul companiei a fost creditat.",
+    "LINK_INVALID_OR_MISSING": "Link invalid sau lipsă.",
+    "LINK_INVALID_OR_EXPIRED": "Link invalid sau expirat.",
+    "EMAIL_NOT_FOUND": "E-mailul utilizatorului nu a fost găsit.",
+    "PAYMENT_FAILED": "Plata a eșuat.",
+    "BOOKING_FAILED": "Crearea rezervării a eșuat.",
+    "LOAD_CARDS_FAILED": "A apărut o eroare la încărcarea cardurilor dvs.",
+    "LOAD_SHOP_FAILED": "A apărut o eroare la încărcarea salonului.",
+    "LOAD_PRODUCTS_FAILED": "A apărut o eroare la încărcarea prestațiilor.",
+    "INVALID_CODE": "Codul introdus este invalid.",
+    "PASSWORD_CHANGED": "Parola dvs. a fost actualizată.",
+    "PASSWORDS_IDENTICAL": "Noua parolă trebuie să fie diferită de cea actuală.",
+    "INVALID_AMOUNT": "Suma introdusă este invalidă.",
+    "INVALID_CURRENT_PASSWORD": "Parola actuală este incorectă.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Parola actuală este greșită sau a apărut o eroare.",
+    "PASSWORD_UPDATE_FAILED": "Modificarea parolei a eșuat.",
+    "PASSWORD_UPDATE_GENERIC": "A apărut o eroare la actualizarea parolei.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Parolele nu coincid sau sunt prea scurte (min. 8 caractere).",
+    "INVALID_PASSWORD": "Parola nu poate fi goală.",
+    "PASSWORD_TOO_SHORT": "Parola trebuie să conțină cel puțin 8 caractere."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Configurație Stripe lipsă.",
+    "LOAD_FAILED": "Stripe nu a putut fi încărcat",
+    "NOT_READY": "Stripe neinițializat",
+    "CONFIRM_FAILED": "Înregistrarea cardului a eșuat",
+    "CARD_SAVED": "Card salvat cu succes ✅",
+    "PM_FAILED": "Eroare la crearea cardului",
+    "SI_FAILED": "Imposibil de pregătit înregistrarea cardului",
+    "ATTACH_FAILED": "Imposibil de atașat cardul la cont",
+    "SAVE_CARD": "Salvează cardul",
+    "ADD_CARD": "Adaugă cardul"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Vă rugăm să vă conectați"
+  },
+  "COMMON": {
+    "LOADING": "Se încarcă…",
+    "UNEXPECTED_ERROR": "A apărut o eroare neașteptată"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Verificare în curs",
+    "VALIDE": "Validăm linkul de activare. Durează doar o clipă.",
+    "ACCOUNT": "Cont activat",
+    "CONNECT": "Conectare",
+    "OUPS": "Ups",
+    "WRITE": "Ai nevoie de ajutor? Scrie-ne la",
+    "RESEND": "Retrimite e-mailul de activare"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Informațiile mele bancare",
+    "ADD_BANK_INFO": "Adaugă informațiile mele bancare",
+    "BANK_NAME": "Numele băncii",
+    "HOLDER_NAME": "Titularul contului",
+    "COUNTRY": "Țara",
+    "SAVE": "Salvează"
+  },
+  "LOADER": {
+    "LOADING": "Se încarcă…"
+  },
+  "SPONSORS": {
+    "TITLE": "Sponsorii noștri",
+    "SPONSORISED": "Sponsorizată"
+  },
+  "TABS": {
+    "FINANCE": "Urmărire financiară",
+    "GENERAL_INFO": "Informații generale",
+    "EMPLOYEES": "Gestionarea angajaților",
+    "SERVICES": "Gestionarea prestațiilor",
+    "PHOTOS": "Galerie foto",
+    "STATS": "Statistici",
+    "PARAM": "Parametrizare",
+    "SHOPS": "Magazinele",
+    "USERS": "Utilizatorii",
+    "MESSAGE": "Mesagerie"
+  },
+  "CARD": {
+    "ADD": "Adaugă cardul",
+    "NO_IMAGE": "Nicio imagine în galerie.",
+    "SALON": "Salon actualizat cu succes",
+    "ERROR1": "Eroare la actualizarea salonului",
+    "ERROR2": "Eroare la actualizarea fotografiei",
+    "UPDATE": "Salon actualizat cu succes"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Finalizată",
+    "ACCEPTEE": "Acceptată",
+    "WAITING": "În așteptare",
+    "CANCEL": "Anulată",
+    "DELETE": "Ștearsă",
+    "REFUSED": "Refuzată",
+    "NO_PRESTA": "Prestator absent",
+    "CLIENT_ABSENT": "Client absent",
+    "ADRESSE": "Adresă",
+    "DATE": "Data",
+    "TOTAL": "Total",
+    "FACTURE": "Factură",
+    "CANCELLED": "Anulată",
+    "DELETED": "Șterge",
+    "AVIS": "Recenzie",
+    "SUPPORT": "Suport",
+    "CODE": "Cod de confirmare",
+    "CODE_A_DONNER": "Cod de dat prestatorului",
+    "PRESTA_ABSENT": "Prestator absent"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Recenzii despre magazin",
+    "COMMENT": "Comentariu",
+    "NOTE": "Notă",
+    "CLOSE": "Închide"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Nicio imagine în galerie."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Notează comanda",
+    "DATE": "Data",
+    "SERVICE": "Serviciu",
+    "AVIS": "Părerea ta",
+    "SEND": "Trimite",
+    "PLACEHOLDER": "Descrie-ți experiența…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Adu serviciile la tine acasă",
+    "KNOWMORE": "Află mai multe",
+    "PART1TITLE": "Bucură-te de cele mai bune servicii estetice la domiciliu",
+    "PART1TEXT": "Profesioniștii noștri calificați vin la tine pentru a oferi îngrijiri de frumusețe de calitate, adaptate nevoilor și dorințelor tale. Trăiește o experiență unică de bine, fie în pauza de prânz, după program, seara, sau într-o după-amiază cu prietenele.",
+    "PART2TITLE": "Lucrează când vrei, generează venituri pe măsura ta",
+    "PART2TEXT": "Generează venituri după propriul program acceptând cereri pe platformă în ritmul tău. Poți folosi propriul echipament sau poți alege să închiriezi echipament profesional prin izyGlam.",
+    "PART3TITLE": "Un serviciu de beauty regândit pentru companii",
+    "PART3TEXT": "Glam for Business este o platformă dedicată companiilor de orice dimensiune, concepută pentru a gestiona nevoile estetice ale clienților și angajaților tăi. Oferă îngrijiri personalizate direct la locul de muncă, la evenimente corporate sau cu ocazii speciale. Profesioniștii noștri calificați se deplasează pentru a furniza servicii adaptate nevoilor tale.",
+    "APPTITLE": "E mai simplu cu aplicațiile",
+    "DOWNLOADAPP1": "Descarcă aplicația",
+    "DOWNLOADAPP2": "Descarcă aplicația pentru profesioniștii din estetică",
+    "SCANTODOWNLOAD": "Scanează pentru a descărca",
+    "SIGNUP": "Înscrie-te!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Eroare la redarea video",
+    "AUTOPLAY_BLOCKED": "Redarea automată a fost blocată. Atinge pentru a porni.",
+    "NAV_ERROR": "Navigare imposibilă"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Cum funcționează aplicațiile și site-urile izyGlam",
+    "HELPCENTER": "Accesează centrul de ajutor",
+    "BUSINESS": "Companie",
+    "ABOUT": "Despre",
+    "OURSERVICES": "Serviciile noastre",
+    "PRESSAREA": "Spațiu presă",
+    "INVESTORS": "Investitori",
+    "CAREERS": "Oferte de muncă",
+    "AI": "Inteligență Artificială",
+    "PRODUCTS": "Produse",
+    "GLAM": "Întotdeauna la înălțime cu izyGlam",
+    "RESERVED": "Rezervă în avans",
+    "GIFTCARDS": "Carduri cadou",
+    "WORKWITHUS": "Lucrează cu izyGlam",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Confidențialitate",
+    "ACCESS": "Accesibilitate",
+    "CONDITIONS": "Condții",
+    "LANGUAGE": "Limbă",
+    "LOCALISATION": "Localizare",
+    "ALL_RIGHT": "Toate drepturile rezervate"
+  },
+  "COMING_SOON": {
+    "TITLE": "Sosim în curând",
+    "TITLE-NOT-COMING": "Încă nu am planificat să venim",
+    "DAYS": "Zile",
+    "HOURS": "Ore",
+    "MINUTES": "Minute",
+    "SECONDS": "Secunde",
+    "TEXT": "Lucrăm intens pentru a vă oferi o experiență unică de beauty la domiciliu. Rămâneți conectat(ă) pentru a fi informat(ă) despre lansare."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Ofertele momentului",
+    "DISCOVER": "De descoperit pe izyGlam",
+    "LIKED": "Cele mai apreciate din apropiere",
+    "SMART": "Oferte istețe",
+    "TOP10": "Top 10 al săptămânii",
+    "SEARCHRESULT": "Rezultatele căutării",
+    "AVIS": "Recenzii"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Coafură",
+    "MANUCURE": "Manichiură",
+    "VISAGE": "Față",
+    "MASSAGE": "Masaj",
+    "MAQUILLAGE": "Machiaj",
+    "EPILATION": "Epilare",
+    "BRONZAGE": "Bronzare",
+    "PARTUM": "Post-partum",
+    "NUTRITION": "Nutriție",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupunctură",
+    "STYLISME": "Stilism",
+    "YOGA": "Relaxare",
+    "DEVELOPPEMENT": "Elevație",
+    "EYELASH": "Extensii de gene"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "O coafeză",
+    "MANUCURE": "O specialistă în manichiură",
+    "ESTETICIAN": "O cosmeticiană",
+    "MASSAGE": "O maseuză",
+    "MAQUILLAGE": "O make-up artistă",
+    "PEDICURE": "O pedichiuristă",
+    "NUTRITION": "O nutriționistă",
+    "FITNESS": "O antrenoare"
+  },
+  "INTRO": {
+    "NORESULTS": "Niciun rezultat găsit",
+    "START": "Începe",
+    "SPECIALITY": "Specialitate?",
+    "WHERE": "Unde?",
+    "CONNEXION": "Conectare",
+    "REGISTRATION": "Înregistrare"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Informații despre cont",
+    "MESSAGE": "Mesajele mele",
+    "MESSAGE_SUBTITLE": "Lista conversațiilor mele în curs.",
+    "INFORMATION_SUBTITLE": "Îți modifici ușor datele personale.",
+    "SECURITY": "Securitate și limbă",
+    "SECURITY_SUBTITLE": "Parolă, limbă… totul sub control aici.",
+    "CONFIDENTIAL": "Confidențialitate și date",
+    "CONFIDENTIAL_SUBTITLE": "Datele tale sunt prețioase. Iată cum avem grijă de ele.",
+    "DASHBOARD": "Tablou de bord",
+    "DASHBOARD_SUBTITLE": "Gestionează ușor datele activității tale.",
+    "COMPANY": "Gestionarea companiei mele",
+    "COMPANY_SUBTITLE": "Gestionează ușor programările trecute, viitoare sau anulate.",
+    "SHOP": "Gestionarea salonului meu",
+    "SHOP_SUBTITLE": "Gestionează salonul, prestațiile și finanțele.",
+    "FINANCIAL": "Urmărire financiară",
+    "ADMIN": "Administrare generală",
+    "ADMIN_SUBTITLE": "Gestionează cu ușurință acest masterpiece. Lumea e a ta, campion(ă)!",
+    "CALENDAR": "Agendă",
+    "CALENDAR_SUBTITLE": "Gestionează ușor programările trecute sau viitoare.",
+    "SELECT_SALON": "Selectați un salon",
+    "NEW_SALON": "Creați un salon",
+    "SHOP_TO_CREATE": "Tip de magazin de creat",
+    "CANCEL": "Anulează",
+    "CREATE": "Creează magazinul meu",
+    "INFO1": "Ești pe cale să ștergi magazinul din",
+    "INFO2": "Această acțiune este ireversibilă",
+    "SURE": "Sigur vrei să continui",
+    "DELETE": "Șterge"
+  },
+  "PROFILE": {
+    "TITLE": "Informații de bază",
+    "FIRSTNAME": "Prenume",
+    "LASTNAME": "Nume de familie",
+    "PHONE": "Număr de telefon",
+    "ADDRESS": "Adresă e-mail",
+    "CHANGE_USER": "Modifică utilizatorul",
+    "CANCEL": "Anulează",
+    "SUCCESS": "Profil modificat cu succes",
+    "UPDATE_ERROR": "A apărut o eroare la actualizarea parolei."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Schimbă parola",
+    "ACTUAL_PASSWORD": "Parola actuală",
+    "NEW_PASSWORD": "Parola nouă",
+    "CONFIRMED_PASSWORD": "Confirmă parola nouă",
+    "CHANGE_PASSWORD": "Schimbă parola",
+    "CHANGE_OK": "Parolă schimbată cu succes",
+    "CHANGE_LANGUE": "Schimbă limba",
+    "CHANGE_COUNTRY": "Schimbă țara",
+    "LANGUE": "Limbă",
+    "COUNTRY": "Țara"
+  },
+  "PAYEMENT": {
+    "YOU": "Tu",
+    "HEADER_TITLE": "Plată",
+    "SERVICE_TITLE": "Serviciu",
+    "SERVICE_NOTE": "Notă:",
+    "ADDRESS_TITLE": "Adresa prestației",
+    "ADDRESS_RENDEZVOUS": "Întâlnire în fața ușii mele",
+    "ADDRESS_CHANGE": "Selectează o altă adresă",
+    "PAYMENT_SECTION_TITLE": "Plată",
+    "PAYMENT_METHOD": "Card principal",
+    "PAYMENT_EXPIRE": "Expiră",
+    "PAYMENT_NO_CARD": "Niciun card principal definit",
+    "PAYMENT_NO_CARD_DESC": "Vă rugăm să adăugați sau să selectați un card ca metodă principală de plată.",
+    "SUMMARY_SUBTOTAL": "Subtotal",
+    "SUMMARY_SERVICE_FEE": "Comision izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Taxă de serviciu",
+    "SUMMARY_TOTAL": "Total",
+    "TITLE": "Programează-ți online întâlnirea",
+    "FOR_WHO": "Pentru cine faci această programare?",
+    "ADD_PROCHE": "Adaugă un apropiat",
+    "WHERE": "Unde vei primi serviciul?",
+    "SELECT_ADDRESS": "Selectează o adresă",
+    "ADD_ADDRESS": "Adaugă o adresă",
+    "CARD_PAY": "Plată cu cardul bancar",
+    "CARD_NUM": "Numărul cardului",
+    "CARD_NAME": "Numele de pe card",
+    "EXPIRATION": "Data expirării",
+    "CVV": "CVV",
+    "RDV": "Programarea ta în detaliu",
+    "RESUME": "Rezumatul programării",
+    "DATE": "Data",
+    "HOUR": "Ora",
+    "PRESTA": "Prestație",
+    "EXPIRE": "Expiră",
+    "DEFAULT": "Implicit",
+    "NOCARD": "Niciun card înregistrat",
+    "WITH": "Cu",
+    "TOTAL": "Total de plătit",
+    "ANNULER": "ANULEAZĂ",
+    "RETOUR": "ÎNAPOI",
+    "CONTINUER": "CONTINUĂ",
+    "VALIDER": "VALIDARE",
+    "ADRESSE": "Adresă",
+    "LEGAL_TEXT_1": "Făcând clic pe butonul de plasare a comenzii, accepți Contractul privind serviciile de livrare cu izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Renunți, cu titlu de reamintire, la dreptul de retragere pentru serviciile de livrare. Poți apela la un mediator al consumatorilor aici.",
+    "LEGAL_TEXT_3": "Dacă nu ești acasă la sosirea curierului, acesta va lăsa comanda în fața ușii. Plasând comanda, îți asumi întreaga responsabilitate odată ce aceasta a fost livrată. În absența ta, comenzile care conțin alcool sau alte articole restricționate vor fi returnate direct la unitate.",
+    "CLOSE_FORM": "Închide formularul",
+    "ADD_CARD": "Adaugă un card",
+    "TRAITEMENT": "Procesare în curs"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Plată validată",
+    "THANKS": "Mulțumim! Rezervarea ta a fost înregistrată.",
+    "BACKHOME": "Înapoi la început",
+    "PROBLEME": "Problemă la rezervare",
+    "PAIEMENT": "Plata ta a fost debitată, dar rezervarea nu a putut fi confirmată.",
+    "THANKSCONTACT": "Te rugăm să contactezi suportul nostru la",
+    "FAILED": "Plata a eșuat",
+    "VALIDATE": "Nu am putut valida plata. Te rugăm să încerci din nou."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam pentru independenți",
+    "STEP1": {
+      "TITLE": "Clienții plasează comanda",
+      "TEXT": "Clientul găsește locația dvs. și plasează comanda în aplicația izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Acceptați rezervarea",
+      "TEXT": "Acceptați rezervarea și agenda dvs. este actualizată."
+    },
+    "STEP3": {
+      "TITLE": "La momentul programării",
+      "TEXT": "Sunteți anunțat(ă) din timp despre rezervările viitoare și sunteți ghidat(ă) către fiecare client."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Creditați contul companiei",
+    "SOLDE": "Sold actual",
+    "CREDIT": "Suma de creditat",
+    "COMPANY": "Creditați contul companiei",
+    "DEPENSE": "Urmărire cheltuieli",
+    "DATE": "Data",
+    "COUNT": "Suma",
+    "EMPLOYEE": "Angajat",
+    "DESCRIPTION": "Descriere"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Aveți deja un cont de partener sau de companie!",
+    "NOT_CONNECTED": "Vă rugăm să vă conectați pentru a înregistra un salon",
+    "TITLE": "Începeți acum!",
+    "TITLE2": "Să creăm un salon!",
+    "NAME": "Numele salonului dvs.",
+    "ADDRESS": "Adresa companiei dvs.",
+    "STREET": "Stradă",
+    "CITY": "Oraș",
+    "CODE_POSTAL_POSSIBLE": "Coduri poștale deservite",
+    "CODE_POSTAL": "Cod poștal",
+    "COUNTRY": "Țară",
+    "ADDRESSPLACEHOLDER": "Str. Principală, nr. 123",
+    "FLOOR": "Etaj/Suita (opțional)",
+    "BUSINESSTYPE": "Tip de companie",
+    "FIRSTNAME": "Prenume",
+    "LASTNAME": "Nume de familie",
+    "PASSWORD": "Parolă",
+    "PASSWORDCONFIRMED": "Confirmare parolă",
+    "EMAIL": "E-mail",
+    "PHONE": "Număr de telefon mobil",
+    "WHATSAPP": "Accept să primesc mesaje pe WhatsApp",
+    "BUTTON": "Înregistrează magazinul",
+    "SUCCESS": "Magazin creat cu succes!",
+    "ERROR": "A apărut o eroare la crearea magazinului:",
+    "ERROR1": "Numele companiei este obligatoriu.",
+    "ERROR2": "Adresa companiei este obligatorie.",
+    "ERROR3": "Tipul de companie este obligatoriu.",
+    "ERROR4": "Prenumele este obligatoriu.",
+    "CHOOSE_COUNTRY": "Alege o țară",
+    "POSTAL_CODE": "Cod poștal",
+    "CHOOSE_CITY": "Alege un oraș",
+    "ERROR5": "Numele de familie este obligatoriu.",
+    "ERROR6": "E-mailul este obligatoriu.",
+    "ERROR7": "Numărul de telefon mobil este obligatoriu.",
+    "ERROR8": "Trebuie să acceptați să primiți mesaje pe WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Modifică adresa",
+    "FIND_SHOP": "Caută un magazin",
+    "CATEGORIES": "Categorii",
+    "OFFRE": "Ofertele momentului",
+    "DISCOVER": "De descoperit",
+    "APPRECIATE": "Cele mai apreciate",
+    "SMART": "Oferte istețe",
+    "TOP10": "Top10 al săptămânii",
+    "SEARCH_RESULT": "Rezultatele căutării",
+    "NOT_AVAILABLE": "Încă nu este disponibil la această adresă",
+    "NEW_ADDRESS": "Adaugă o nouă adresă",
+    "CHOOSE_ADDRESS": "Alege o adresă",
+    "CHOOSE_COUNTRY": "Alege o țară",
+    "CHOOSE_CITY": "Alege un oraș",
+    "CHOOSE_ARRONDISSEMENT": "Alege un arondisment",
+    "CANCEL": "Anulează",
+    "SAVE": "Salvează",
+    "CLOSE": "Închide"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Nume",
+    "CITY": "Oraș",
+    "NOTE": "Notă",
+    "MIDDLE_PRICE": "Preț mediu",
+    "PROMOTION": "Promoție",
+    "ACTIONS": "Acțiuni",
+    "MODIFIER": "Modifică informațiile magazinului",
+    "SHOP_NAME": "Numele magazinului",
+    "DESCRIPTION": "Descriere",
+    "PRINCIPALE": "Imagine principală",
+    "SHOP": "Tip de magazin",
+    "ARRONDISSEMENT": "Arondisment",
+    "MINIMUM_DELAI": "Termen minim",
+    "DISTANCE": "Distanță maximă (km)",
+    "EMPLACEMENT": "Locație",
+    "HOURS_MORNING": "Program de lucru - Dimineața",
+    "HOURS_AFTERNOON": "Program de lucru - După-amiaza",
+    "ACTIVE_PROMO": "Promo activă",
+    "CANCEL": "Anulează",
+    "ENREGISTRER": "Salvează"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Dezvoltați-vă activitatea",
+    "TEXT": "Mii de utilizatori ai aplicației izyGlam ar putea căuta un restaurant în zona dvs.…",
+    "IMAGE": "imagine"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "De ce izyGlam?",
+    "STEP1": {
+      "TITLE": "Lucrați în propriile condiții",
+      "TEXT": "Organizați-vă programul și gestionați prestațiile în deplină libertate. Bucurați-vă de o platformă flexibilă care se adaptează nevoilor dvs. pentru a vă maximiza activitatea."
+    },
+    "STEP2": {
+      "TITLE": "Întăriți-vă prezența online",
+      "TEXT": "Atrageți mai mulți clienți cu instrumentele de marketing incluse în aplicație și creșteți rezultatele prin vizibilitate sporită."
+    },
+    "STEP3": {
+      "TITLE": "Fidelizați-vă clienții",
+      "TEXT": "Dezvoltați relații durabile analizând preferințele clienților, răspunzând la recenzii și oferind beneficii de loialitate."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Simplificați gestionarea activității",
+      "TEXT": "Gestionați-vă activitatea cu liniște datorită izyGlam, soluția completă pentru profesioniștii din wellness. Bucurați-vă de instrumente flexibile și de suport personalizat pentru toate nevoile."
+    },
+    "STEP2": {
+      "TITLE": "Impulsionați vânzările",
+      "TEXT": "În fiecare zi, mii de persoane folosesc izyGlam pentru a găsi experți în frumusețe în apropiere. Profitați de această oportunitate pentru a ajunge la clienți noi în domeniul dvs."
+    },
+    "STEP3": {
+      "TITLE": "Satisfacție garantată",
+      "TEXT": "Cu izyGlam, oferiți o experiență personalizată clienților. Gestionați ușor programările, comunicați rapid și oferiți servicii adaptate. Clienții beneficiază de îngrijiri unde și când doresc, asigurându-le satisfacția și loialitatea."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam pentru compania dvs.?",
+    "STEP1": {
+      "TITLE": "Angajații și clienții rezervă servicii",
+      "TEXT": "Angajații sau clienții dvs. selectează prestațiile de wellness potrivite direct în aplicația izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Decideți suma de alocat",
+      "TEXT": "Aveți controlul pentru a credita conturile angajaților și clienților. Puteți alege creditări periodice sau punctuale."
+    },
+    "STEP3": {
+      "TITLE": "Prestațiile sunt realizate",
+      "TEXT": "Experții noștri în frumusețe se deplasează la angajații dvs. sau la sediu pentru a presta serviciile rezervate, garantând o experiență optimă."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Valorizați-vă compania",
+    "TEXT": "Mii de utilizatori ai aplicației izyGlam caută servicii de wellness. Oferiți angajaților și clienților acces privilegiat la cei mai buni experți în frumusețe din apropiere.",
+    "IMAGE": "imagine"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "De ce izyGlam?",
+    "STEP1": {
+      "TITLE": "Fidelizați și răsplătiți angajații",
+      "TEXT": "Oferiți un beneficiu unic echipelor dvs. printr-un buget lunar pentru frumusețe. Coafeze, cosmeticiene și mulți alți experți la dispoziție, pentru a crește satisfacția și sentimentul de apartenență."
+    },
+    "STEP2": {
+      "TITLE": "Îmbunătățiți imaginea de brand",
+      "TEXT": "Organizați evenimente de beauty pentru clienți sau parteneri, sau integrați serviciile izyGlam în programele de loialitate. Lăsați o impresie memorabilă cu îngrijiri premium, adaptate fiecărei ocazii."
+    },
+    "STEP3": {
+      "TITLE": "Optimizați starea de bine la muncă",
+      "TEXT": "Facilitați accesul angajaților la servicii de wellness direct la locul de muncă sau în apropiere. Având grijă de bunăstarea lor, creșteți motivația și coeziunea echipei."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Simplificați accesul la wellness pentru echipe",
+      "TEXT": "Cu izyGlam, oferiți colaboratorilor o soluție simplă și flexibilă pentru a avea grijă de ei. De la îngrijiri estetice la sesiuni de fitness, totul este la îndemână."
+    },
+    "STEP2": {
+      "TITLE": "Oferiți beneficii inovatoare clienților",
+      "TEXT": "Întăriți relațiile cu clienții oferindu-le prestații de wellness la evenimente sau în programele de loialitate. Arătați-le că vă pasă de experiența lor prin atenții unice."
+    },
+    "STEP3": {
+      "TITLE": "Wellness la comandă, oriunde și oricând",
+      "TEXT": "Cu izyGlam, angajații și clienții dvs. pot beneficia de servicii de calitate oriunde s-ar afla. Experți selectați pentru nevoile lor specifice și suport personalizat pentru satisfacție garantată."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Gestionează contul",
+    "ORDERS": "Comenzi efectuate",
+    "FAVORITES": "Favorite",
+    "HELP": "Ajutor",
+    "MY_ABO": "Abonamentul meu",
+    "PRICES": "Planuri tarifare",
+    "FIDELITY": "Program de loialitate",
+    "LOGOUT": "Deconectare",
+    "YOUR_BEAUTY_SERVICES": "Oferă-ți serviciile de beauty",
+    "YOUR_COMPANY": "Înregistrează-ți compania"
+  },
+  "SUBTITLES": {
+    "HELP": "Ai nevoie de un ajutor? Pagina asta e pentru tine."
+  },
+  "ORDERS": {
+    "TITLE": "Comenzile mele",
+    "TITLE_SUBTITLE": "Gestionează ușor programările trecute, viitoare sau anulate.",
+    "UPCOMING_SECTION": "📅 Urmează",
+    "NO_UPCOMING": "Nu aveți nicio prestație planificată.",
+    "PAST_SECTION": "✅ Efectuate",
+    "NO_PAST": "Nu aveți nicio prestație realizată.",
+    "ADDRESS": "Adresă",
+    "DATE": "Data",
+    "TOTAL": "Total",
+    "ITEMS": "articole",
+    "DELETE": "Șterge",
+    "VISIT": "Vizitează",
+    "PRESTA_FOR": "Prestație pentru",
+    "AT": "la",
+    "ORDER_AGAIN": "Comandă din nou",
+    "INVOICE": "Solicită o factură",
+    "REVIEW": "Lasă o opinie",
+    "CANCEL": "Anulează"
+  },
+  "FIDELITY": {
+    "TITLE": "Favoritele mele",
+    "AGAIN": "Încă",
+    "AGAIN_SUBTITLE": "înainte de recompensa ta",
+    "TITLE_SUBTITLE": "ca să-ți deblochezi cadoul",
+    "DATE": "Valabil până la",
+    "HISTO": "Istoricul îngrijirilor mele"
+  },
+  "FAVORITES": {
+    "TITLE": "Favoritele mele",
+    "TITLE_SUBTITLE": "Regăsește-ți rapid saloanele preferate."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Taxă de serviciu:",
+    "DISTANCE": "Distanță max:",
+    "PAYEMENT": "Plata cu cardul și PayPal acceptată",
+    "PRESS_FOR_INFO": "Apasă pentru orar, informații etc.",
+    "GALLERY": "Galerie imagini",
+    "SEE_MORE": "Vezi mai mult",
+    "SEE_LESS": "Vezi mai puțin"
+  },
+  "LOGIN": {
+    "TITLE": "Introduceți datele de conectare.",
+    "FORGET_PASSWORD": "Ai uitat parola?",
+    "CONTINUER": "Continuă",
+    "CONTINUE_WITH": "Continuă cu",
+    "OR": "Sau",
+    "QRCODE": "Conectează-te cu cod QR",
+    "CGU": "Continuând, accepți să primești apeluri, mesaje WhatsApp sau SMS (inclusiv automate) din partea izyGlam și a afiliaților, la numărul indicat.",
+    "PLACEHOLDER_EMAIL": "Adresă e-mail",
+    "PLACEHOLDER_PASSWORD": "Parolă",
+    "PLACEHOLDER_PASSWORD_NEW": "Parolă nouă",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Confirmă parola",
+    "CHANGE_PASSWORD": "Modifică parola",
+    "REINIT": "Resetează"
+  },
+  "SIGNUP": {
+    "GENRE": "Gen",
+    "CHOOSE": "Alege",
+    "SEX_MALE": "Bărbat",
+    "SEX_FEMALE": "Femeie",
+    "TITLE": "Introduceți informațiile personale.",
+    "CONTINUER": "Continuă",
+    "OR": "Sau",
+    "QRCODE": "Conectează-te cu cod QR",
+    "CGU": "Continuând, accepți să primești apeluri, mesaje WhatsApp sau SMS (inclusiv automate) din partea izyGlam și a afiliaților, la numărul indicat.",
+    "PLACEHOLDER_FIRSTNAME": "Prenume",
+    "PLACEHOLDER_LASTNAME": "Nume de familie",
+    "PLACEHOLDER_EMAIL": "E-mail",
+    "PLACEHOLDER_EMAIL_REQUIRED": "E-mail obligatoriu",
+    "PLACEHOLDER_EMAIL_WRONG": "Format de e-mail invalid",
+    "PLACEHOLDER_PHONE": "Telefon",
+    "PLACEHOLDER_PHONE_NUMBER": "Număr de telefon",
+    "PLACEHOLDER_PASSWORD": "Parolă",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Confirmare parolă",
+    "COUNTRY": "Țară"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Franceză",
+    "ANGLAIS": "Engleză",
+    "ESPAGNOL": "Spaniolă",
+    "NEERLANDAIS": "Olandeză",
+    "ITALIEN": "Italiană",
+    "ALLEMAND": "Germană",
+    "PORTUGAIS": "Portugheză",
+    "POLONAIS": "Poloneză",
+    "DANOIS": "Daneză",
+    "FINNOIS": "Finlandeză",
+    "SUEDOIS": "Suedeză",
+    "ARABE": "Arabă",
+    "TURC": "Turcă",
+    "CHINOIS": "Chineză",
+    "RUSSE": "Rusă",
+    "PERSAN": "Persană",
+    "UKRAINIEN": "Ucraineană",
+    "ROUMAIN": "Română",
+    "CATALAN": "Catalană",
+    "BASQUE": "Bască",
+    "GALICIEN": "Galițiană",
+    "ALBANAIS": "Albaneză",
+    "KURDE": "Kurdă",
+    "ESTONIEN": "Estoniană",
+    "SOMALIEN": "Somaleză",
+    "BIELORUSSE": "Bielorusă",
+    "JAPONAIS": "Japoneză",
+    "COREEN": "Coreeană",
+    "INDONESIEN": "Indoneziană",
+    "MALAIS": "Malaeză",
+    "THAI": "Thai",
+    "VIETNAMIEN": "Vietnameză",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bengaleză"
+  },
+  "COUNTRY": {
+    "FRANCE": "Franța",
+    "ALLEMAGNE": "Germania",
+    "SPAIN": "Spania",
+    "ITALY": "Italia",
+    "DANEMARK": "Danemarca",
+    "FINLAND": "Finlanda",
+    "NETHERLAND": "Țările de Jos",
+    "POLAND": "Polonia",
+    "PORTUGAL": "Portugalia",
+    "SWEDEN": "Suedia",
+    "CHINA": "China",
+    "INDIA": "India",
+    "JAPAN": "Japonia",
+    "SOUTH_KOREA": "Coreea de Sud",
+    "INDONESIA": "Indonezia",
+    "PHILIPPINES": "Filipine",
+    "THAILAND": "Thailanda",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malaezia",
+    "SINGAPOURE": "Singapore",
+    "EMIRAT_ARABE": "Emiratele Arabe Unite",
+    "SAUDI_ARABIA": "Arabia Saudită"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Adresele mele",
+    "ADDRESS_MODIFICATION": "Modificare adresă",
+    "STREET": "Stradă",
+    "CITY": "Oraș",
+    "CP": "Cod poștal",
+    "CREATE": "Creează",
+    "BACK": "Înapoi",
+    "CHANGE": "Modifică",
+    "CLOSE": "Închide"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Setările platformei",
+    "COMMISSION": "Rată comision (%)",
+    "0to100": "Valoare obligatorie între 0 și 100",
+    "SERVICE": "Taxă de serviciu (€)",
+    "WEEKS": "Număr de săptămâni afișate",
+    "SUP0": "Valoare obligatorie > 0",
+    "LESS24": "Taxă anulare cu mai puțin de 24h (%)",
+    "LESS48": "Taxă anulare cu mai puțin de 48h (€)",
+    "DELAY": "Timp minim de rezervare (ore)",
+    "TVA": "TVA (%)",
+    "ADS": "Activează reclamele",
+    "COMPANY": "Activează comerțul cu companii",
+    "FIDELITY": "Activează loializarea",
+    "MULTI_SHOP": "Activează multi-magazin",
+    "PROMO": "Activează promoții în magazin",
+    "SPONSORS": "Activează secțiunea sponsori pe landing page",
+    "SAVE": "Salvează"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Total magazine",
+    "ACT_SHOPS": "Magazine active",
+    "USERS": "Total utilizatori",
+    "NBR_USERS": "Număr de utilizatori înregistrați",
+    "CA_TOTAL": "Cifră de afaceri totală",
+    "CA_GENERATED": "Cifră de afaceri generată",
+    "SHOPS_PERFO": "Performanța magazinelor",
+    "SHOP_NAME": "Numele magazinului",
+    "CITY": "Oraș",
+    "REVENUES": "Venituri",
+    "BOOKINGS": "Număr de rezervări",
+    "NOTE": "Notă medie",
+    "ACTIONS": "Acțiuni",
+    "DETAILS": "Detalii",
+    "ADJUST": "Ajustează",
+    "SHOP_ADJUST": "Ajustează magazinul",
+    "STILL_DEVELOPPED": "Funcționalitate încă în dezvoltare",
+    "CLOSE": "Închide"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Detalii eveniment",
+    "CLIENT": "Client",
+    "DEBUT": "Început",
+    "FIN": "Sfârșit",
+    "ADDRESS": "Adresă",
+    "PHONE": "Telefon",
+    "CANCEL": "Anulează",
+    "SAVE": "Salvează"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Creează un eveniment",
+    "COMING": "Urmează",
+    "PAST": "Trecute",
+    "CANCELLED": "Anulate",
+    "NO_CANCELLED": "Nicio comandă anulată."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Asistență online"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Gestionarea angajaților",
+    "NAME": "Nume",
+    "EMAIL": "E-mail",
+    "SOLDE": "Soldul contului",
+    "ACTIONS": "Acțiuni",
+    "DEFAULT_PASSWORD": "Parolă implicită",
+    "REINITIALIZE_PASSWORD": "Parolă implicită pentru resetare",
+    "CHANGE_PASSWORD": "Schimbă parola"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Creditează contul angajatului",
+    "AMOUNT": "Suma de creditat",
+    "CANCEL": "Anulează",
+    "SAVE": "Validează"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Total rezervări",
+    "TOTAL_MONTH": "Rezervări luna aceasta",
+    "GENERATED": "Venituri generate",
+    "MONTHLY": "Venituri luna aceasta",
+    "AVG_NOTE": "Note medii",
+    "BASED_ON": "Bazat pe",
+    "REVIEWS": "opinii",
+    "NEXT_APPOINTEMENT": "Următoarele programări",
+    "POPULAR_SERVICES": "Cele mai populare servicii",
+    "RESERVATION": "rezervări"
+  },
+  "FINANCE": {
+    "PROGRESS": "Evoluție față de luna -1",
+    "PROGRESSION": "Progres",
+    "TOTAL_GENERATED": "Total cifră generată",
+    "CA": "Cifră de afaceri",
+    "COMMISSION_TAKEN": "Comision reținut",
+    "COMMISSIONS": "Comisioane",
+    "NET_TO_PAY": "Sumă netă de plată",
+    "DISPO_AMOUNT": "Sumă disponibilă",
+    "REQUEST_WITHDRAWAL": "Cere transfer",
+    "TAKE": "Sumă de retras",
+    "TOTAL_EARNINGS": "Venituri nete",
+    "TOTAL_BOOKINGS": "Prestații realizate",
+    "CANCELLED_BOOKINGS": "Prestații anulate",
+    "SERVICES_CANCELLED": "Rezervări anulate sau refuzate",
+    "SERVICES_COMPLETED": "Rezervări finalizate",
+    "AVG_PRICE": "Preț mediu",
+    "PER_SERVICE": "Per prestație",
+    "REVIEW_RATIO": "Recenzii clienți",
+    "CLIENT_FEEDBACK": "Rată de feedback",
+    "TOP_PRODUCTS": "Prestații cele mai vândute",
+    "AVG_DURATION": "Durată medie",
+    "DURATION_PER_BOOKING": "Timp per rezervare",
+    "DETAILS": "Detalii cont bancar",
+    "ASK": "Cere transfer",
+    "HISTORY": "Istoric tranzacții",
+    "DATE": "Data",
+    "AMOUNT": "Sumă",
+    "COMMISSION": "Comision",
+    "STATUS": "Stare"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Selectați tipul de magazin de creat",
+    "CANCEL": "Anulează",
+    "CREATE": "Validează"
+  },
+  "PROCHES": {
+    "TITLE": "Apropiații mei",
+    "UPDATE": "Modificarea unui apropiat",
+    "FIRSTNAME": "Prenume",
+    "NAME": "Nume de familie",
+    "EMAIL": "E-mail",
+    "PHONE": "Telefon",
+    "CREATE": "Creează",
+    "BACK": "Înapoi",
+    "CHANGE": "Modifică",
+    "CLOSE": "Închide"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Oferă-ți opinia",
+    "RATING": "Notă",
+    "COMMENT": "Comentariu",
+    "CLOSE": "Închide",
+    "SUBMIT": "Trimite"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Alege data prestației",
+    "CANCEL": "Anulează"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Creează un serviciu",
+    "NAME": "Nume",
+    "DESCRIPTION": "Descriere",
+    "COLOR": "Culoare",
+    "PRICE": "Preț",
+    "TIME": "Durată",
+    "IMAGE": "Imagine",
+    "ACTIONS": "Acțiuni",
+    "MINUTES": "minute",
+    "CHANGE": "Modifică",
+    "DELETE": "Șterge",
+    "SERVICE_NAME": "Numele serviciului",
+    "TIME_MINUTES": "Durată (în minute)",
+    "PREST_IMAGE": "Imaginea prestației",
+    "NO_PICS": "Încă nicio fotografie",
+    "UPLOAD": "Încarcă o imagine",
+    "NEW_PIC": "Previzualizare imagine nouă",
+    "PRESTA_COLOR": "Culoarea prestației",
+    "CANCEL": "Anulează",
+    "SAVE": "Salvează",
+    "AVG_PRICE": "Tarif mediu",
+    "IMAGE_OK": "Imagine încărcată cu succes",
+    "ERROR_IMAGE_LOAD": "Eroare la încărcarea imaginii",
+    "UPDATE_SUCCESS": "Prestație actualizată cu succes",
+    "ERROR_PRESTA": "Eroare la actualizarea prestației",
+    "PRESTA_UPDATED": "Prestație actualizată cu succes",
+    "PRESTA_ERROR": "Eroare la actualizarea prestației",
+    "PRESTA_SUCCESS": "Prestație actualizată cu succes",
+    "PHOTO_ERROR": "Eroare la actualizarea fotografiei",
+    "PRESTA_DELETED": "Prestație ștearsă cu succes",
+    "PRESTA_DELETE_ERROR": "Eroare la ștergerea prestației"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Imaginea magazinului",
+    "UPLOAD_IMAGE": "Încarcă o imagine",
+    "SNEEK_PIC": "Previzualizarea imaginii",
+    "SHOP_NAME": "Numele magazinului",
+    "DESCRIPTION": "Descriere",
+    "DESC_INFO": "(min. 25 de caractere)",
+    "CITY": "Oraș",
+    "DISCRICT": "Arondismente",
+    "LAT": "Latitudine",
+    "LON": "Longitudine",
+    "ZONE": "Zonă de deplasare (km)",
+    "OPENNING": "Program de lucru",
+    "MORNING_OPEN": "Dimineața - Deschidere",
+    "MORNING_CLOSE": "Dimineața - Închidere",
+    "AFTERNOON_OPEN": "După-amiaza - Deschidere",
+    "AFTERNOON_CLOSE": "După-amiaza - Închidere",
+    "SAVE": "Salvează magazinul",
+    "MONDAY": "Luni",
+    "TUESDAY": "Marți",
+    "WEDNESDAY": "Miercuri",
+    "THURSDAY": "Joi",
+    "FRIDAY": "Vineri",
+    "SATURDAY": "Sâmbătă",
+    "SUNDAY": "Duminică",
+    "CLOSED": "Închis",
+    "GENERATE_IMAGE": "Generează imaginea",
+    "GENERATE_DESCRIPTION": "Generează descrierea",
+    "PHOTO": "Exemple de fotografii acceptate / refuzate",
+    "CODE_POSTAUX": "Coduri poștale deservite",
+    "EXEMPLE_LOCAL": "Ex.: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Adaugă un angajat",
+    "LOADING": "Se încarcă",
+    "LIST": "Lista angajaților",
+    "ADD": "Adaugă",
+    "EMAIL": "E-mailul angajatului",
+    "FIRSTNAME": "Prenume",
+    "FAMILY_NAME": "Nume",
+    "PHONE": "Telefon",
+    "PASSWORD": "Parolă",
+    "HAVE_TO": "Toate câmpurile sunt obligatorii.",
+    "EMAIL_ERROR": "E-mail invalid.",
+    "EMPLOYEE_OK": "Angajat adăugat cu succes.",
+    "ADD_EMPLOYEE_ERROR": "Eroare la adăugarea angajatului."
+  },
+  "AVIS": {
+    "TITLE": "CE SPUN UTILIZATORII NOȘTRI",
+    "AVIS1": "Eram sceptică la început… și totuși! Manichiura mea a fost impecabilă, acasă, fără stres. A devenit ritualul meu de vineri seara.",
+    "AVIS2": "Am rezervat un tratament facial în 3 minute, de pe canapea. Cosmeticiană blândă, atentă… iar pielea mea n-a arătat niciodată mai bine.",
+    "AVIS3": "Credeam că va fi mai scump decât la salon… surpriză: același tarif, chiar mai mic! Și nici nu a trebuit să mă deplasez. Un mare da.",
+    "AVIS4": "În ajunul unei aniversări voiam un brushing rapid. Am găsit o profesionistă disponibilă în 2 clicuri. Punctuală, drăguță și rezultat wow.",
+    "AVIS5": "Sunt mamă singură, nu am timp să alerg peste tot. Aici rezerv când dorm copiii. Simplu, rapid și sincer grozav.",
+    "AVIS6": "Mi-a plăcut la prima sesiune. Cosmeticiană m-a făcut să mă simt în largul meu imediat. M-am simțit răsfățată. Am rezervat deja pentru săptămâna viitoare!"
+  },
+  "DOWNLOAD": {
+    "USERS": "utilizatori mulțumiți",
+    "SOCIAL": "profesioniști disponibili",
+    "STORE": "pe App Store și Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Alege planul care ți se potrivește",
+    "DISCOVER2": "și începe ascensiunea spre vârf",
+    "SOLUTIONS": "Meriți o soluție frumoasă, puternică și gândită pentru tine. Îți poți schimba oricând părerea",
+    "TEST": "Primul tău salon este 100% gratuit. Zero stres. Doar magie.",
+    "START_FREE": "Creează primul meu salon",
+    "FREE": "Ucenică",
+    "FREE_SUBTITLE": "Începe-ți ascensiunea cu primul tău salon",
+    "THEN": "apoi",
+    "MONTHLY": "lună",
+    "FREE1": "1 salon activ",
+    "FREE2": "Număr nelimitat de rezervări și clienți",
+    "FREE3": "Gestionarea prestațiilor și a programului",
+    "FREE4": "Sincronizare cu calendarul personal",
+    "FREE5": "Perfect pentru un start liniștit",
+    "FREE6": "Creează un salon gratuit",
+    "BASIC": "Aleasă",
+    "BASIC_SUBTITLE": "Deblochează-ți potențialul și începe să strălucești",
+    "BASIC1": "Până la 3 saloane active",
+    "BASIC2": "Gestionare completă a prestațiilor, clienților și programărilor",
+    "BASIC3": "Suport e-mail prioritar",
+    "BASIC4": "Acces la resurse exclusive pentru a-ți dezvolta activitatea",
+    "BASIC5": "Ideal pentru profesioniștii care vor să-și crească baza de clienți",
+    "BASIC6": "1 lună de probă gratuită",
+    "PREMIUM": "Regină",
+    "PREMIUM_SUBTITLE": "Imperiul tău prinde formă, influența ta crește",
+    "PREMIUM1": "Până la 10 saloane active",
+    "PREMIUM2": "Acces la statistici avansate de performanță",
+    "PREMIUM3": "Recomandări inteligente pentru a-ți crește CA",
+    "PREMIUM4": "Vizibilitate sporită pe platforma IzyGlam",
+    "PREMIUM5": "Suport prioritar",
+    "PREMIUM6": "Gândit pentru independente ambițioase",
+    "PREMIUM7": "Obține Regina",
+    "BUSINESS": "Zeiță",
+    "BUSINESS_SUBTITLE": "Revendică-ți tronul, Zeiță",
+    "BUSINESS1": "La comandă",
+    "BUSINESS2": "Număr nelimitat de saloane",
+    "BUSINESS3": "Suport strategic personalizat",
+    "BUSINESS4": "Vizibilitate crescută și promovarea saloanelor",
+    "BUSINESS5": "Soluții la cheie pentru a scala activitatea",
+    "BUSINESS6": "Contactează-ne",
+    "COMPARE": "Comparație de funcționalități",
+    "FONCTIONS": "Funcționalități",
+    "BUSINESS9": "Gestionare completă a activității",
+    "STUDIO_BASIC": "Resurse exclusive",
+    "STUDIO_ADVANCED": "Statistici & recomandări",
+    "ANALYSE": "Analiză de performanță",
+    "BASICS": "Clasică",
+    "ADVANCE": "Avansată",
+    "PLANS": "Număr de saloane active",
+    "READY": "Gata să-ți crești activitatea?",
+    "DISCOVERS": "Descoperă ofertele IzyGlam"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Declarație de accesibilitate",
+      "TEXT": "izyGlam se angajează să își facă serviciile accesibile pentru cât mai mulți. Obiectivul nostru este conformitatea WCAG 2.2 nivel AA și alinierea la RGAA (Franța), pe cât posibil."
+    },
+    "SCOPE": {
+      "TITLE": "Domeniu acoperit",
+      "L1": "Site public și pagini informaționale.",
+      "L2": "Aplicație web (dashboard) pentru clienți și profesioniști.",
+      "L3": "Aplicație mobilă (iOS/Android), după caz.",
+      "L4": "E-mailuri tranzacționale și centru de ajutor.",
+      "L5": "Instrumente de suport clienți."
+    },
+    "STATUS": {
+      "TITLE": "Stare de conformitate",
+      "TEXT": "La data prezentei declarații, accesibilitatea interfețelor izyGlam este parțial conformă WCAG 2.2 AA / RGAA. Îmbunătățim continuu și corectăm neconformitățile prioritare."
+    },
+    "PREPARATION": {
+      "TITLE": "Metoda de pregătire a declarației",
+      "L1": "Autoevaluări de către echipa de produs/UI: revizuire semantică HTML, roluri ARIA, ordine de tabulare.",
+      "L2": "Teste manuale: navigare cu tastatura, focus vizibil, zoom 200%+, cititoare de ecran.",
+      "L3": "Teste cu instrumente (audit automatizat pe ecrane eșantion).",
+      "L4": "Recepție continuă la actualizări (Design System, componente reutilizabile accesibile)."
+    },
+    "FEATURES": {
+      "TITLE": "Funcționalități de accesibilitate disponibile",
+      "KEYBOARD": {
+        "TITLE": "Navigare cu tastatura",
+        "L1": "Parcurgere completă cu tastatura (Tab, Shift+Tab, Enter, Spațiu, Esc, săgeți).",
+        "L2": "Indicator de focus vizibil, coerent și cu contrast.",
+        "L3": "Link-uri „Sari la conținut” pentru a sări peste antet.",
+        "L4": "Meniuri, modale și liste derulante operabile din tastatură (deschidere/închidere, gestionare focus, închidere cu Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Cititoare de ecran și structură",
+        "L1": "Structură semantică cu titluri ierarhizate (h1→h6) și repere (header, nav, main, footer).",
+        "L2": "Etichete explicite pentru toate câmpurile și butoanele, denumiri accesibile coerente.",
+        "L3": "Anunțarea schimbărilor de stare via regiuni aria-live (erori, reușite, încărcări).",
+        "L4": "Imagini informative cu atribut alt descriptiv; imaginile decorative sunt ignorate."
+      },
+      "CONTRAST": {
+        "TITLE": "Contrast, culori și scalare",
+        "L1": "Contrast țintă ≥ 4,5:1 pentru text normal și ≥ 3:1 pentru text mare.",
+        "L2": "Interfață utilizabilă până la zoom 200% fără pierderi de conținut sau funcționalitate.",
+        "L3": "Nicio informație transmisă exclusiv prin culoare."
+      },
+      "FORMS": {
+        "TITLE": "Formulare și mesaje de eroare",
+        "L1": "Asociere label⇄input, indicarea câmpurilor obligatorii.",
+        "L2": "Erori afișate lângă câmp și rezumate la nevoie.",
+        "L3": "Focus poziționat pe primul câmp cu eroare, cu sfaturi de corectare."
+      },
+      "DYNAMIC": {
+        "TITLE": "Conținut dinamic și animații",
+        "L1": "Carusele/elemente animate care pot fi puse pe pauză și nu blochează.",
+        "L2": "Respectarea preferinței de sistem „reduce animations” când e posibil.",
+        "L3": "Modale neintruzive, închidere cu tastatura și clic în exterior."
+      },
+      "MEDIA": {
+        "TITLE": "Media",
+        "L1": "Videouri (dacă există) cu subtitrări și/sau transcrieri.",
+        "L2": "Elemente audio/video controlabile din tastatură."
+      },
+      "MOBILE": {
+        "TITLE": "Mobil",
+        "L1": "Zone tactile suficient de mari și spațiate.",
+        "L2": "Navigare coerentă cu TalkBack (Android) și VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Mediile și tehnologiile asistive vizate",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Browsere recente suportate și actualizate."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Conținut inaccesibil (constatat sau potențial)",
+      "TEXT": "În ciuda eforturilor, pot rămâne unele neconformități:",
+      "L1": "Imagini vechi fără text alternativ descriptiv.",
+      "L2": "Documente furnizate de terți (PDF, atașamente) nu pe deplin accesibile.",
+      "L3": "Videouri istorice fără subtitrare/descriere.",
+      "L4": "Componente integrate terțe (plată, hărți, playere) cu propriile limite.",
+      "MOTIVES": "Motive posibile: conținut terț, sarcină disproporționată, actualizare în curs."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternative și adaptări rezonabile",
+      "TEXT": "Dacă aveți nevoie de un format alternativ (ex. document accesibil, ajutor la rezervare), contactați-ne. Vom face tot posibilul pentru o soluție echivalentă."
+    },
+    "FEEDBACK": {
+      "TITLE": "Feedback și asistență",
+      "L1": "Prin aplicație: secțiunea Ajutor > Accesibilitate.",
+      "L2A": "Prin e-mail:",
+      "L2B": "sau",
+      "L3": "Vă rugăm să indicați ecranul/URL-ul, dispozitivul, browserul și, dacă e cazul, cititorul de ecran folosit."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Procedură de recurs (Franța)",
+      "TEXT": "Dacă observați un defect de accesibilitate care vă împiedică accesul la un conținut sau funcție și nu primiți un răspuns satisfăcător din partea noastră, puteți:",
+      "L1": "Scrie Defenderului drepturilor sau delegatului său din departamentul dvs.,",
+      "L2": "Sau sesiza Mediatorul, după caz.",
+      "MORE": "Mai multe informații:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Îmbunătățire continuă",
+      "L1": "Design System cu componente accesibile.",
+      "L2": "Revizie de cod și teste de accesibilitate la fiecare livrare.",
+      "L3": "Formări periodice pentru echipele de produs și suport.",
+      "L4": "Prioritizarea remediilor în funcție de impactul asupra utilizatorului."
+    },
+    "DATE": {
+      "TITLE": "Data declarației și actualizări",
+      "TEXT": "Declarație stabilită la 25 decembrie 2025. Va fi actualizată cel puțin anual sau la schimbări majore."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Cum rezerv o prestație pe IzyGlam?",
+    "QUESTION2": "Cum aleg profesionistul potrivit pentru mine?",
+    "QUESTION3": "Cum îmi modific sau anulez programarea?",
+    "QUESTION4": "Cum îmi pot urmări comanda?",
+    "QUESTION5": "Ce mijloace de plată pot folosi?",
+    "QUESTION6": "Cum îmi urmăresc comanda sau rezervarea?",
+    "QUESTION7": "Pot lăsa o recenzie după prestație?",
+    "QUESTION8": "Cum folosesc ofertele de loialitate și promoțiile?",
+    "QUESTION9": "Ce fac dacă am o problemă cu comanda?",
+    "QUESTION10": "Cum contactez echipa IzyGlam?",
+    "QUESTION11": "Cum funcționează politica de anulare și rambursare?",
+    "QUESTION12": "Pot rezerva pentru altcineva (cadou, surpriză)?",
+    "QUESTION13": "Cum devin profesionist partener pe IzyGlam?",
+    "QUESTION14": "Cum îmi protejez datele personale pe IzyGlam?",
+    "REPONSE1": "E simplu și rapid. După ce te înscrii, alege serviciul dorit, vezi profesioniștii disponibili aproape de tine, apoi selectează o dată și o oră. Click pe „Rezervă” pentru finalizare și plătește cu cardul. Rezervarea ta va fi validată manual de profesionist. În caz de refuz, ești rambursat(ă) integral.",
+    "REPONSE2": "Fiecare profesionist are un profil detaliat cu prestații, tarife, fotografii și recenzii. Îți poți adăuga favoritele pentru a le regăsi ușor. Compară profilurile pentru a-l alege pe cel mai potrivit așteptărilor tale.",
+    "REPONSE3": "Îți poți modifica sau anula rezervarea din spațiul personal. Anulările sunt gratuite până la 24h înainte. După acest termen, pot fi aplicate taxe. Dacă ai o problemă, suportul nostru e la dispoziție.",
+    "REPONSE4": "Conectează-te la spațiul personal, secțiunea „Rezervările mele”. Vei găsi acolo urmărirea în timp real, posibilitatea de a anula sau modifica, precum și istoricul prestațiilor.",
+    "REPONSE5": "Plata se face exclusiv cu cardul bancar (Visa, MasterCard, American Express). Nu oferim plată cash sau via PayPal. Totul este securizat pentru liniștea ta.",
+    "REPONSE6": "După confirmarea rezervării, primești un e-mail de rezumat. Îți trimitem și un reminder înaintea prestației (prin e-mail și/sau notificare push). Poți urmări statusul și din spațiul personal.",
+    "REPONSE7": "Da. După fiecare prestație efectuată, ești invitat(ă) să lași o recenzie. Recenziile sunt moderate manual pentru a le asigura autenticitatea. Profesioniștii nu pot răspunde sau modifica recenziile.",
+    "REPONSE8": "Deocamdată, IzyGlam nu oferă program de loialitate sau coduri promo. Aceste funcționalități sunt planificate pentru o fază ulterioară.",
+    "REPONSE9": "Ne poți contacta direct din secțiunea „Contact” sau prin e-mail. Vom face tot posibilul să răspundem în 24h (termen orientativ) și să te ajutăm să rezolvi problema rapid.",
+    "REPONSE10": "Ne poți contacta prin formularul de pe site sau aplicație. Suportul clienți e disponibil luni–sâmbătă, 9:00–18:00. Exemplu e-mail: support@izyglam.com",
+    "REPONSE11": "Poți anula fără costuri până la 24h înainte de oră. După acest termen, se pot aplica taxe. Dacă rezervarea este refuzată de profesionist, rambursarea este automată. Sistemul automat este în curs de implementare.",
+    "REPONSE12": "Încă nu poți oferi o prestație altei persoane din contul tău. Totuși, dacă un profesionist oferă formulă duo sau familie, poți rezerva pentru mai multe persoane în acest cadru.",
+    "REPONSE13": "Ești cosmeticiană, coafeză sau practician(ă) wellness? Te poți alătura comunității completând formularul din pagina „Devino partener”. Te vom contacta pentru finalizarea înscrierii.",
+    "REPONSE14": "Securitatea datelor tale este prioritatea noastră. Respectăm RGPD. Doar informațiile strict necesare prestației sunt accesibile profesioniștilor. Există mesagerie integrată pentru discuții, dar încercările de ocolire a platformei vor fi monitorizate."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Cine suntem?",
+      "TEXT": "Prezenta Politică de confidențialitate explică modul în care <strong>izyGlam</strong> (denumită în continuare „noi”, „al nostru” sau „Platforma”) colectează, utilizează, păstrează, partajează și protejează datele dvs. personale când utilizați serviciile noastre (site, aplicație web, aplicație mobilă, e-mailuri și suport). Acționăm ca <strong>operator</strong> pentru prelucrările descrise mai jos."
+    },
+    "SCOPE": {
+      "TITLE": "Domeniul politicii",
+      "TEXT": "Această politică se aplică <strong>clienților</strong> care rezervă prestații, <strong>profesioniștilor</strong> care oferă servicii prin izyGlam și <strong>vizitatorilor</strong> interfețelor noastre."
+    },
+    "DATA": {
+      "TITLE": "Date colectate",
+      "PROVIDED": {
+        "TITLE": "Date furnizate de dvs.",
+        "L1": "<strong>Identitate & contact: </strong> nume, prenume, e-mail, telefon, adresă(e), fotografie/avatare.",
+        "L2": "<strong>Cont: </strong> credențiale, parole (hash), preferințe, limbă.",
+        "L3": "<strong>Rezervări: </strong> servicii alese, dată/oră, adrese intervenție, note, atașamente.",
+        "L4": "<strong>Plată: </strong> informații de plată <em>prin prestatorul nostru (ex. Stripe)</em> — nu stocăm datele cardului.",
+        "L5": "<strong>Profesioniști: </strong> profil public, prestații, tarife, zone de intervenție, disponibilitate, RIB/IBAN (securizat), documente de verificare dacă e necesar.",
+        "L6": "<strong>Suport: </strong> mesaje, tichete, înregistrări de apeluri, după caz."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Date colectate automat",
+        "L1": "<strong>Date tehnice: </strong> model dispozitiv, OS, browser, rezoluții, identificatori de sesiune.",
+        "L2": "<strong>Jurnalizare: </strong> adrese IP, marcaje temporale, evenimente de eroare, utilizare funcționalități.",
+        "L3": "<strong>Localizare: </strong> poziție aproximativă (IP) sau precisă (GPS, cu acord explicit).",
+        "L4": "<strong>Cookies & SDK: </strong> vezi secțiunea dedicată."
+      },
+      "THIRD": {
+        "TITLE": "Date obținute de la terți",
+        "L1": "<strong>Procesatori de plată</strong> (status plăți, tokenuri).",
+        "L2": "<strong>Parteneri analytics/anti-fraudă</strong> (semnale de risc, agregate de utilizare).",
+        "L3": "<strong>Integrări</strong> (ex. instrumente de comunicare, cartografiere, stocare cloud)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Scopuri & baze legale",
+      "TEXT": "Prelucrăm datele pentru următoarele scopuri:",
+      "L1": "<strong>Furnizarea serviciului</strong> (creare cont, rezervare, intermediere, notificări) — <em>Bază: executarea contractului</em>.",
+      "L2": "<strong>Plată & facturare</strong> — <em>Contract, obligație legală</em>.",
+      "L3": "<strong>Securitate, prevenirea abuzurilor/fraudei</strong> — <em>Interes legitim, obligație legală</em>.",
+      "L4": "<strong>Îmbunătățire produs, statistici</strong> — <em>Interes legitim</em>.",
+      "L5": "<strong>Suport & calitate</strong> — <em>Contract, interes legitim</em>.",
+      "L6": "<strong>Marketing direct</strong> (e-mail/app) — <em>Consimțământ când e necesar</em>; opțiune de dezabonare oricând.",
+      "L7": "<strong>Conformitate legală</strong> (contabilitate, solicitări ale autorităților) — <em>Obligație legală</em>."
+    },
+    "SHARING": {
+      "TITLE": "Partajarea datelor",
+      "L1": "<strong>Profesioniști / Clienți</strong>: informațiile necesare prestației (nume, contact, adresa intervenției, detalii rezervare).",
+      "L2": "<strong>Procesatori</strong>: plată (ex. Stripe), găzduire/stocare, analytics, e-mail/SMS push, suport, KYC dacă e cazul. <em>Acces limitat la necesar, contracte conforme RGPD.</em>",
+      "L3": "<strong>Parteneri</strong>: cu consimțământul dvs., pentru oferte specifice.",
+      "L4": "<strong>Autorități</strong>: când o cere legea sau pentru apărarea drepturilor noastre."
+    },
+    "TRANSFERS": {
+      "TITLE": "Transferuri în afara UE/SEE",
+      "TEXT": "Când datele sunt transferate către țări fără decizie de adecvare, folosim <strong>clauze contractuale standard</strong> (SCC) și măsuri suplimentare."
+    },
+    "RETENTION": {
+      "TITLE": "Perioade de păstrare",
+      "L1": "<strong>Cont & identitate</strong>: pe durata utilizării contului, apoi <em>până la 3 ani</em> după ultima activitate (prospectare) sau <em>5–10 ani</em> pentru obligații contabile/legale.",
+      "L2": "<strong>Rezervări/facturi</strong>: <em>10 ani</em> (obligație legală).",
+      "L3": "<strong>Loguri de securitate</strong>: <em>6–24 luni</em> în funcție de criticitate.",
+      "L4": "<strong>Cookies</strong>: vezi secțiunea Cookies.",
+      "NOTE": "După termene, datele sunt șterse sau anonimizate."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies & SDK",
+      "TEXT": "Folosim cookies/SDK pentru a opera platforma, a măsura audiența, a preveni frauda și, cu consimțământul dvs., a personaliza experiența.",
+      "L1": "<strong>Necesare</strong>: autentificare, securitate, preferințe tehnice.",
+      "L2": "<strong>Măsurare audiență</strong>: statistici agregate de utilizare.",
+      "L3": "<strong>Marketing</strong>: doar dacă acceptați.",
+      "PREF": "Vă puteți gestiona preferințele oricând prin banner și setările browserului."
+    },
+    "AUTOMATION": {
+      "TITLE": "Decizii automatizate & profilare",
+      "TEXT": "Putem folosi semnale automate (ex. risc de fraudă, disponibilitate pro, distanță) pentru prioritizare sau propunere de intervale. Nicio decizie cu efecte juridice semnificative nu este luată fără intervenție umană, cu excepția obligației legale sau consimțământului explicit."
+    },
+    "RIGHTS": {
+      "TITLE": "Drepturile dvs. (RGPD)",
+      "L1": "Dreptul de <strong>acces</strong>, <strong>rectificare</strong>, <strong>ștergere</strong>.",
+      "L2": "Dreptul la <strong>restricționare</strong> și <strong>portabilitate</strong>.",
+      "L3": "Dreptul de <strong>opoziție</strong> la prelucrarea bazată pe interes legitim.",
+      "L4": "Dreptul de a <strong>retrage consimțământul</strong> în orice moment.",
+      "L5": "Dreptul de a depune <strong>plângere</strong> la CNIL.",
+      "CONTACT": "Pentru exercitarea drepturilor, contactați-ne:",
+      "VERIFY": "Putem solicita informații suplimentare pentru verificarea identității."
+    },
+    "SECURITY": {
+      "TITLE": "Securitate",
+      "TEXT": "Implementăm măsuri tehnice și organizatorice adecvate: criptare în tranzit (TLS), hash parole, jurnalizare și monitorizare, control acces, backup-uri, revizie de cod și teste de securitate."
+    },
+    "MINORS": {
+      "TITLE": "Date ale minorilor",
+      "TEXT": "Serviciile noastre nu se adresează persoanelor sub 15 ani. Dacă identificăm un cont de minor, îl vom șterge după verificare."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Subprocesatori principali",
+      "TEXT": "Lucrăm cu subprocesatori esențiali pentru găzduire, plată, e-mailing, analytics și stocare. O listă actualizată poate fi furnizată la cerere la"
+    },
+    "CONTACT": {
+      "TITLE": "Contact & DPO",
+      "PRIVACY_LABEL": "Contact confidențialitate",
+      "SUPPORT_LABEL": "Suport",
+      "AUTHORITY_LABEL": "Autoritate de supraveghere",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Modificări ale acestei politici",
+      "TEXT": "Putem actualiza această politică pentru a reflecta evoluții legale sau funcționale. În caz de schimbare semnificativă, vă vom informa prin e-mail sau aplicație. Data intrării în vigoare: <strong>11&nbsp;august&nbsp;2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Dispoziții locale",
+      "TEXT": "Dacă vă aflați în Uniunea Europeană, datele sunt prelucrate conform RGPD. Pot exista completări specifice pe țări/regiuni, comunicate la nevoie."
+    },
+    "GLOSSARY": {
+      "TITLE": "Glosar (extras)",
+      "L1": "<strong>Operator</strong>: entitatea care stabilește scopurile și mijloacele prelucrării.",
+      "L2": "<strong>Împuternicit</strong>: entitatea care prelucrează date în numele operatorului.",
+      "L3": "<strong>Bază legală</strong>: temeiul care autorizează prelucrarea (contract, consimțământ, obligație legală, interes legitim).",
+      "L4": "<strong>Cookies/SDK</strong>: trackere utilizate de site/app pentru a furniza, măsura și personaliza serviciul."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Acceptarea condițiilor",
+      "TEXT": "Accesând serviciile izyGlam (site, aplicație web, aplicație mobilă), acceptați fără rezerve prezentele Condiții Generale de Utilizare („CGU”). Dacă nu le acceptați, nu trebuie să utilizați Platforma."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Definiții",
+      "L1": "<strong>Client</strong>: orice persoană care rezervă și/sau plătește o prestație pe Platformă.",
+      "L2": "<strong>Profesionist</strong>: orice persoană care oferă prestații prin Platformă.",
+      "L3": "<strong>Prestație</strong>: serviciu oferit de un Profesionist (ex. beauty la domiciliu).",
+      "L4": "<strong>Platformă</strong>: infrastructura software, site-urile și aplicațiile operate de izyGlam."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Servicii și rolul izyGlam",
+      "TEXT": "izyGlam este o <strong>platformă de intermediere</strong>. Profesioniștii sunt <strong>singurii responsabili</strong> pentru prestațiile realizate (calitate, conformitate, asigurări). Cu excepții menționate, izyGlam nu este vânzător și nici prestator și nu își asumă responsabilitatea execuției."
+    },
+    "ACCOUNT": {
+      "TITLE": "Cont și eligibilitate",
+      "L1": "Înscrierea este obligatorie pentru a rezerva sau a oferi prestații. Vă angajați să furnizați informații exacte și actualizate.",
+      "L2": "Trebuie să aveți cel puțin 15 ani. Profesioniștii trebuie să fie autorizați legal să profeseze.",
+      "L3": "Sunteți responsabil(ă) pentru confidențialitatea credențialelor și pentru orice activitate din contul dvs.",
+      "L4": "izyGlam își rezervă dreptul de a suspenda sau închide un cont în caz de încălcare a CGU sau risc dovedit de fraudă."
+    },
+    "BOOKINGS": {
+      "TITLE": "Rezervări și formarea contractului",
+      "L1": "Prestațiile sunt <strong>rezervate și plătite online</strong> de Client. Nicio sumă în numerar nu este datorată la fața locului.",
+      "L2": "Rezervarea este <strong>supusă validării de către Profesionist</strong> după plată. În caz de refuz, Clientul este <strong>rambursat integral</strong>.",
+      "L3": "Contractul de prestare se încheie direct între Client și Profesionist la momentul acceptării.",
+      "L4": "Orele, adresele și orice condiții particulare trebuie verificate de părți."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Tarife, abonamente și plăți",
+      "L1": "Tarifele prestațiilor sunt stabilite liber de Profesioniști. izyGlam aplică un <strong>comision</strong> de platformă.",
+      "L2": "Abonamente pentru Profesioniști (exemplu curent): <em>1 salon gratuit pe viață</em>; <em>Basic: 3 saloane – 99 € / lună</em>; <em>Premium: 10 saloane – 499 € / lună</em>; <em>peste: ofertă</em>.",
+      "L3": "Plată <strong>numai cu cardul</strong> printr-un prestator (ex. Stripe). <strong>Fără numerar</strong>, fără cod promo sau program de loialitate în acest stadiu.",
+      "L4": "Sumele, taxele și comisioanele aplicabile sunt indicate înainte de validare. Condițiile de abonament pot evolua; modificările vor fi comunicate în avans."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Anulare, rambursare și absență",
+      "L1": "Anulare gratuită cu <strong>24h</strong> înainte de ora programată.",
+      "L2": "Cu mai puțin de 24h, pot fi aplicate <strong>taxe</strong> conform politicii în vigoare.",
+      "L3": "În caz de <strong>refuz</strong> de către Profesionist după plată, Clientul este rambursat 100%. Automatizarea rambursărilor este în implementare; când e cazul, suportul va iniția operațiunea.",
+      "L4": "<strong>No-show</strong> (absență nesemnalată) poate duce la taxe sau imposibilitatea rambursării."
+    },
+    "PAYOUTS": {
+      "TITLE": "Plăți către Profesioniști",
+      "L1": "Plata câștigurilor către Profesionist este declanșată la <strong>confirmarea realizării</strong> prestației (ex. confirmarea unui <em>cod de validare</em>).",
+      "L2": "RIB/IBAN furnizat de Profesionist este folosit pentru transfer. Profesionistul garantează exactitatea datelor bancare.",
+      "L3": "Sumele plătite corespund prețului prestației <em>minus</em> comisionul și taxele aplicabile."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Responsabilitățile părților",
+      "L1": "Profesioniștii asigură conformitatea serviciilor, respectarea reglementărilor, igiena și siguranța.",
+      "L2": "Clienții se angajează să furnizeze informații exacte (adresă, disponibilitate, constrângeri de acces) și să respecte programările.",
+      "L3": "izyGlam pune la dispoziție Platforma și instrumente (rezervare, plată, mesagerie) dar nu garantează rezultatele unei prestații."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Notă invalidă.",
+      "TITLE": "Recenzii și notări",
+      "L1": "Recenziile pot fi lăsate <strong>doar după o prestație efectivă</strong>.",
+      "L2": "Recenziile pot fi supuse <strong>moderării</strong> (ex. eliminarea conținuturilor contrare legii sau CGU)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Comportamente interzise",
+      "L1": "Fraudă, uzurpare de identitate, ocolirea Platformei, încurajarea tranzacțiilor în afara Platformei.",
+      "L2": "Conținuturi ilegale, defăimătoare, discriminatorii, violente sau contrare bunelor moravuri.",
+      "L3": "Intruziune, denial-of-service, inginerie inversă, ocolirea măsurilor de securitate.",
+      "L4": "Colectarea neautorizată a datelor personale ale altor utilizatori."
+    },
+    "IPR": {
+      "TITLE": "Proprietate intelectuală",
+      "TEXT": "Conținuturile, mărcile și elementele Platformei (cod, design, texte, logo-uri, imagini) sunt protejate. Fără autorizare expresă, orice reproducere, distribuire sau adaptare este interzisă. Conținuturile furnizate de Profesioniști rămân proprietatea lor; aceștia acordă izyGlam o licență neexclusivă necesară exploatării Platformei."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Servicii terțe",
+      "TEXT": "Platforma poate integra servicii terțe (plată, cartografiere, găzduire, analytics). Se aplică condițiile lor. izyGlam nu răspunde pentru întreruperi sau defecțiuni ale acestor servicii."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Disponibilitate, mentenanță și actualizări",
+      "TEXT": "Putem modifica, suspenda sau întrerupe parțial sau total Platforma pentru mentenanță sau îmbunătățiri. Depunem eforturi rezonabile pentru a limita impactul asupra utilizatorilor."
+    },
+    "LIABILITY": {
+      "TITLE": "Limitarea răspunderii și despăgubiri",
+      "TEXT": "În limitele legale, răspunderea izyGlam se limitează la daune directe, excluzând daune indirecte (pierdere de șansă, pierdere de CA etc.). Vă angajați să despăgubiți izyGlam pentru orice pretenție rezultată din încălcarea prezentelor sau folosirea ilicită a Platformei."
+    },
+    "TERMINATION": {
+      "TITLE": "Reziliere și suspendare",
+      "TEXT": "Vă puteți șterge contul oricând. Putem suspenda sau rezilia accesul în caz de încălcare a CGU, fraudă, abuz sau la ordin legal. Anumite obligații (ex. plăți datorate, clauze de răspundere) supraviețuiesc rezilierii."
+    },
+    "PRIVACY": {
+      "TITLE": "Date personale",
+      "TEXT": "Prelucrarea datelor dvs. este descrisă în <strong>Politica noastră de confidențialitate</strong>. Utilizând Platforma, o acceptați. Consultați-o pentru a vă cunoaște drepturile RGPD și angajamentele noastre."
+    },
+    "CHANGES": {
+      "TITLE": "Modificarea CGU",
+      "TEXT": "Putem modifica aceste CGU din motive legale, regulamentare sau funcționale. În caz de schimbări semnificative, vă vom informa prin e-mail sau aplicație și vom publica versiunea actualizată."
+    },
+    "LAW": {
+      "TITLE": "Drept aplicabil și litigii",
+      "TEXT": "Prezentele CGU sunt supuse <strong>dreptului francez</strong>. Orice litigiu va fi adus în fața instanțelor competente de la sediul izyGlam, sub rezerva dispozițiilor legale imperative mai favorabile consumatorului."
+    },
+    "CONTACT": {
+      "TITLE": "Contact",
+      "SUPPORT_LABEL": "Suport",
+      "LEGAL_LABEL": "Juridic",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Data intrării în vigoare",
+      "TEXT": "Prezentele CGU intră în vigoare la <strong>25&nbsp;decembrie&nbsp;2025</strong> și înlocuiesc orice versiune anterioară."
+    }
+  }
+}

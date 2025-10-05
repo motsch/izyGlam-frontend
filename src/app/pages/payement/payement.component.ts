@@ -18,23 +18,36 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
 import { SubscriptionService } from 'src/app/core/services/subscription.service';
 import { SessionService } from 'src/app/core/services/session.service';
 
+// ✅ Ajouts pour le système d'erreur IzyGlam
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-payement',
   templateUrl: './payement.component.html',
   styleUrls: ['./payement.component.scss'],
 })
 export class PayementComponent implements OnInit {
-  // Champs de formulaire pour la carte
+  // -----------------------------
+  // Champs du formulaire / état UI
+  // -----------------------------
   cardNumber: string = '';
   cardHolderName: string = '';
   expiryDate: string = '';
   cvv: string = '';
   errorMessage: string | null = null;
-  step = 1;
+
+  step = 1; // Étapes du process (UI)
+  loading = false; // Loader global du composant
+
+  // -----------------------------
+  // Données métier
+  // -----------------------------
   shop: any;
   startSlot: any | null;
   endSlot: any | null;
   dateSlot: any | null;
+
   itemToBuy: any | null;
   bill: any | null = {};
   orderDate: string | null = '';
@@ -46,18 +59,18 @@ export class PayementComponent implements OnInit {
   adminSettings: any = {};
   meSex: string = 'Mme.';
   adressePrincipale: any = {};
+
   stripeCustomerID: string | undefined;
-  private stripePromise: Promise<any> | undefined;
+  private stripePromise: Promise<any> | undefined; // Stripe SDK
   userId: string | undefined;
+
   defaultCard: any = null;
   prestationDateForBill: string | undefined;
-  cards: any[] = []; // Liste des cartes de l'utilisateur
+  cards: any[] = []; // Liste des cartes Stripe
 
   selectedCardId: string | null = null;
-  // allCards: any[] = []; // toutes les cartes Stripe enregistrées par l'utilisateur
   showAddCardForm = false;
-  defaultCardId = "";
-  loading = false;
+  defaultCardId = '';
 
   constructor(
     private router: Router,
@@ -69,167 +82,189 @@ export class PayementComponent implements OnInit {
     private bookingService: BookingService,
     private sessionService: SessionService,
     private stripeService: StripeService,
-    private subscriptionService: SubscriptionService // 👈 ici
-  ) { }
+    private subscriptionService: SubscriptionService,
 
+    // ✅ Injections ajoutées pour les toasts + i18n
+    private toastr: ToastrService,
+    private translate: TranslateService
+  ) {}
+
+  // ---------------------------------------------------------
+  // ⏱️ ngOnInit : charge paramètres, shop, user, cartes Stripe
+  // ---------------------------------------------------------
   ngOnInit(): void {
     this.adminService.getAdminSettings().subscribe({
       next: (data: any) => {
-        console.log(data);
+        // 1) Paramètres admin (commission, TVA, etc.)
         this.adminSettings = data;
-        console.log(this.adminSettings);
-        this.itemToBuy = localStorage.getItem('selectItemFromShop');
-        this.itemToBuy = JSON.parse(this.itemToBuy);
-        console.log("itemToBuy");
-        console.log(this.itemToBuy);
-        this.startSlot = this.itemToBuy.slot.start;
-        this.endSlot = this.itemToBuy.slot.end;
-        this.dateSlot = this.itemToBuy.date;
-        this.itemToBuy2 = localStorage.getItem('productToBuy');
-        console.log(this.itemToBuy2);
-        this.itemToBuy2 = JSON.parse(this.itemToBuy2);
-        if (this.itemToBuy2 && this.itemToBuy2.price) {
-          this.price = this.itemToBuy2.price;
-          const commissionRate = this.adminSettings?.commissionRate || 0;
-          const taxRate = this.adminSettings?.taxRate || 0;
-          this.price = this.calculateFinalPrice(this.itemToBuy2.price, commissionRate, taxRate).toString();
-          console.log('commissionRate : ' + commissionRate);
-          console.log('commissionRate : ' + commissionRate);
-          console.log('taxRate : ' + taxRate);
-          console.log('this.price (avec commission + TVA) : ' + this.price);
+
+        // 2) Récupération du "panier" local (slot + produit)
+        try {
+          this.itemToBuy = JSON.parse(localStorage.getItem('selectItemFromShop') || 'null');
+          if (!this.itemToBuy) {
+            throw new Error('selectItemFromShop manquant ou invalide');
+          }
+
+          this.startSlot = this.itemToBuy.slot.start;
+          this.endSlot = this.itemToBuy.slot.end;
+          this.dateSlot = this.itemToBuy.date;
+
+          this.itemToBuy2 = JSON.parse(localStorage.getItem('productToBuy') || 'null');
+          if (this.itemToBuy2 && this.itemToBuy2.price) {
+            // Calcule le prix final avec commission + TVA
+            const commissionRate = this.adminSettings?.commissionRate || 0;
+            const taxRate = this.adminSettings?.taxRate || 0;
+            this.price = this.calculateFinalPrice(this.itemToBuy2.price, commissionRate, taxRate).toString();
+          }
+        } catch (err) {
+          console.error('Erreur de parsing localStorage (panier) :', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+          return; // inutile d’aller plus loin si le panier est HS
         }
-        console.log(this.itemToBuy);
-        this.shopService
-          .getById(this.itemToBuy.shopId)
-          .subscribe((shop: any) => {
-            console.log(shop);
+
+        // 3) Récupération du shop
+        this.shopService.getById(this.itemToBuy.shopId).subscribe({
+          next: (shop: any) => {
             this.shop = shop;
 
-            this.userService.getMe().subscribe(async (user: any) => {
-              console.log(user);
+            // 4) Récupération de l’utilisateur + init Stripe + cartes
+            this.userService.getMe().subscribe({
+              next: async (user: any) => {
+                try {
+                  this.me = user;
+                  if (user.sex === 'male') this.meSex = 'M.';
+                  this.stripeCustomerID = user.customerId;
+                  this.userId = user._id;
+                  this.me.initials = user.firstname.charAt(0) + user.lastname.charAt(0);
 
-              if (user.sex === 'male') {
-                this.meSex = 'M.';
-              }
-              this.stripeCustomerID = user.customerId;
-              this.userId = user._id;
-              this.me = user;
-              this.me.initials =
-                user.firstname.charAt(0) + user.lastname.charAt(0);
-              if (!this.bill) {
-                this.bill = {};
-              }
-              this.bill.image = this.itemToBuy2.image,
-                this.bill.client = this.me._id;
-              let addressTemp = this.me.address.find((x: any) => {
-                return x.main === true;
-              });
+                  // Prépare le bill si vide
+                  if (!this.bill) this.bill = {};
+                  this.bill.image = this.itemToBuy2?.image;
+                  this.bill.client = this.me._id;
 
-              this.bill.address = addressTemp
-                ? addressTemp._id
-                : this.me.address[0]._id;
+                  // Adresse principale (main === true) ou fallback première adresse
+                  const addressTemp = this.me.address?.find((x: any) => x.main === true);
+                  this.bill.address = addressTemp ? addressTemp._id : this.me.address?.[0]?._id;
+                  this.adressePrincipale = addressTemp || this.me.address?.[0];
 
+                  // Charge Stripe SDK
+                  this.stripePromise = loadStripe(environment.stripePublicKey);
+                  if (!this.stripePromise) {
+                    throw new Error('Clé publique Stripe manquante ou invalide.');
+                  }
 
-              this.adressePrincipale = addressTemp
-                ? addressTemp
-                : this.me.address[0];
+                  // Doit exister pour récupérer cartes
+                  if (!this.userId) {
+                    throw new Error('Aucun userId trouvé. Veuillez vous connecter.');
+                  }
 
-              // Chargez Stripe dès le démarrage du composant
-              this.stripePromise = loadStripe(environment.stripePublicKey);
-              if (!this.stripePromise) {
-                throw new Error('Clé publique Stripe manquante ou invalide.');
-              }
+                  // Charge les cartes si on a un customerId Stripe
+                  if (!this.stripeCustomerID) {
+                    console.warn('Aucun customerId : chargement des cartes impossible.');
+                  } else {
+                    await this.loadCards(); // Gestion d’erreur faite dans loadCards()
+                  }
 
-              // Récupérez l'utilisateur courant depuis votre backend
-              if (!this.userId) {
-                throw new Error('Aucun userId trouvé. Veuillez vous connecter.');
-              }
-
-              if (!this.stripeCustomerID) {
-                console.warn('Aucun customerId trouvé. Les cartes ne peuvent pas être chargées.');
-              } else {
-                // Chargez les cartes existantes avec le customerId
-                await this.loadCards();
+                  // Stocke la date brute pour la facture (utilisée par convertToISO)
+                  let dateBrut: any = localStorage.getItem('selectItemFromShop');
+                  if (dateBrut) {
+                    dateBrut = JSON.parse(dateBrut);
+                    this.prestationDateForBill = dateBrut?.slot?.dateBrut;
+                  }
+                } catch (err) {
+                  console.error('Erreur lors de l’initialisation utilisateur/Stripe :', err);
+                  this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                }
+              },
+              error: (err) => {
+                console.error('Erreur lors de la récupération utilisateur :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
               }
             });
-          });
-
-        /** STRIPE **/
-        // console.log((this.itemToBuy2));
-        let dateBrut: any = localStorage.getItem("selectItemFromShop");
-        if (dateBrut) {
-          dateBrut = JSON.parse(dateBrut);
-        }
-        this.prestationDateForBill = dateBrut.slot.dateBrut;
+          },
+          error: (err) => {
+            console.error('Erreur lors du chargement du shop :', err);
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+          }
+        });
       },
-      error: (error: any) => {
-        console.log(error);
-      },
+      error: (err: any) => {
+        console.error('Erreur lors du chargement des paramètres admin :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
     });
   }
 
+  // ----------------------------------------------------------------
+  // 🔁 Lance une souscription Stripe (si ton produit le nécessite)
+  // ----------------------------------------------------------------
   createSubscription(): void {
     const payload = {
       userId: this.userId!,
       paymentMethodId: this.selectedCardId!,
-      subscriptionId: this.itemToBuy2.subscriptionId, // 👈 Assure-toi que `productToBuy` contient bien ce champ
+      subscriptionId: this.itemToBuy2?.subscriptionId, // ⚠️ Doit être présent dans productToBuy
     };
 
     this.subscriptionService.startSubscription(payload).subscribe({
       next: (response) => {
         console.log('Souscription Stripe créée :', response);
-        // Tu peux stocker la souscription dans le bill si besoin
-        this.bill.stripeSubscriptionId = response.subscription.id;
-        this.saveBill(); // ⬅️ Continue le flux habituel ici
+        // Stocke l’id de souscription dans le bill si besoin
+        this.bill!.stripeSubscriptionId = response.subscription.id;
+        this.saveBill(); // enchaîne le flux habituel
       },
-      error: (error) => {
-        console.error('Erreur lors de la souscription :', error);
-        alert('Impossible de créer la souscription. Veuillez réessayer.');
+      error: (err) => {
+        console.error('Erreur lors de la souscription :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       },
     });
   }
 
+  // -------------------------------------------------------------
+  // 💶 Calcule le prix final (commission + TVA) arrondi à 2 déc.
+  // -------------------------------------------------------------
   calculateFinalPrice(productPrice: number, commissionRate: number, taxRate: number): number {
-    // 1️⃣ Ajout de la commission
     const priceWithCommission = productPrice + (productPrice * commissionRate);
-
-    // 2️⃣ Application de la TVA
     const finalPrice = priceWithCommission + (priceWithCommission * taxRate);
-
-    // Arrondi à 2 décimales
     return parseFloat(finalPrice.toFixed(2));
   }
 
+  // -------------------------------------------------------------
+  // 👥 Ouvre la modal "Proches" (sélection d’un bénéficiaire)
+  // -------------------------------------------------------------
   openProchesModal() {
     this.dialog.open(ProchesModalComponent, {
       width: '400px',
-      data: {
-        user: this.me,
-      },
+      data: { user: this.me },
     });
   }
 
+  // -------------------------------------------------------------
+  // 🏦 Sélection UI d’une carte (radio/selection)
+  // -------------------------------------------------------------
   isCardSelected(card: any): boolean {
     return card.id === this.selectedCardId;
   }
 
-  onCardAdded(event: any) {
+  // -------------------------------------------------------------
+  // ➕ Callback quand une nouvelle carte a été ajoutée (UI)
+  // -------------------------------------------------------------
+  onCardAdded(_event: any) {
     this.showAddCardForm = false;
-    this.loadCards(); // recharge les cartes
+    this.loadCards(); // recharge les cartes (gestion d’erreur à l’intérieur)
   }
 
-
+  // -------------------------------------------------------------
+  // 🂡 Sélectionne une carte Stripe par ID
+  // -------------------------------------------------------------
   selectCard(cardId: string) {
     this.selectedCardId = cardId;
   }
 
-  /*
-   * Charge la liste des cartes depuis le serveur.
-   */
+  // -------------------------------------------------------------
+  // 📇 Charge la liste des cartes Stripe depuis ton backend
+  // -------------------------------------------------------------
   async loadCards(): Promise<void> {
     try {
-      console.log('Chargement des cartes Stripe...');
-
       const response = await fetch(`${environment.apiUrl}stripe/get-cards?customerId=${this.stripeCustomerID}`);
       if (!response.ok) {
         const errorMessage = await response.text();
@@ -237,221 +272,244 @@ export class PayementComponent implements OnInit {
       }
 
       const data = await response.json();
-
-      // On remplit la liste complète
       this.cards = data.cards || [];
 
-      // On cherche la carte par défaut (flag isDefault depuis ton backend)
+      // Détermine la carte par défaut
       this.defaultCard = this.cards.find((card: any) => card.isDefault === true) || null;
 
-      // On initialise la carte sélectionnée par défaut
+      // Initialise la carte sélectionnée par défaut
       this.selectedCardId = this.defaultCard?.id || (this.cards.length > 0 ? this.cards[0].id : null);
 
-      console.log('Cartes chargées :', this.cards);
+      // Fallback si aucune carte "par défaut"
       if (!this.defaultCard && this.cards.length > 0) {
         this.defaultCard = this.cards[0];
       }
-      console.log('Carte par défaut :', this.defaultCard);
-    } catch (error) {
-      console.error('Erreur lors du chargement des cartes :', error);
-      alert('Une erreur est survenue lors du chargement de vos cartes bancaires.');
+    } catch (err) {
+      console.error('Erreur lors du chargement des cartes :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
     }
   }
 
+  // -------------------------------------------------------------
+  // 🏠 Modal d’adresse (adresse de facturation / prestation)
+  // -------------------------------------------------------------
   openAddressModal() {
     this.dialog.open(AddressModalComponent, {
       width: '400px',
-      data: {
-        user: this.me,
-      },
+      data: { user: this.me },
     });
   }
 
+  // -------------------------------------------------------------
+  // 🗑️ Supprimer une adresse du profil
+  // -------------------------------------------------------------
   removeAddress(index: number) {
     this.me.address.splice(index, 1);
-    this.userService.update(this.me).subscribe((result: any) => {
-      console.log(result);
-    }, (error: any) => {
-      console.log(error);
+    this.userService.update(this.me).subscribe({
+      next: (result: any) => {
+        console.log('Adresse supprimée, user mis à jour :', result);
+      },
+      error: (err: any) => {
+        console.error('Erreur lors de la suppression d’adresse :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
     });
   }
 
+  // -------------------------------------------------------------
+  // 📅 Formatage date (FR)
+  // -------------------------------------------------------------
   formatDate(dateString: string): string | null {
     const date = new Date(dateString);
     return this.datePipe.transform(date, 'EEEE d MMMM y', 'fr-FR');
   }
+
+  // -------------------------------------------------------------
+  // 🔼/🔽 Navigation d’étapes (UI)
+  // -------------------------------------------------------------
   addStep() {
     this.step += 1;
-    console.log(this.step);
+    console.log('Step ->', this.step);
   }
-
   removeStep() {
     this.step -= 1;
-    console.log(this.step);
+    console.log('Step ->', this.step);
   }
 
-  setDefaultCard(id: string) { }
-  removeCard(id: string) { }
+  // -------------------------------------------------------------
+  // ⭐ Gérer carte par défaut (placeholder conservés)
+  // -------------------------------------------------------------
+  setDefaultCard(_id: string) { /* TODO: implémentation future */ }
+  removeCard(_id: string) { /* TODO: implémentation future */ }
 
-
-  // Charger Stripe.js dynamiquement
+  // -------------------------------------------------------------
+  // ⚙️ Chargement dynamique Stripe.js (non utilisé ici, on garde)
+  // -------------------------------------------------------------
   private loadStripe(publicKey: string): Promise<any> {
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src = 'https://js.stripe.com/v3/';
-      script.onload = () => {
-        resolve((window as any).Stripe(publicKey));
-      };
-      script.onerror = () => {
-        reject('Erreur lors du chargement de Stripe.js');
-      };
+      script.onload = () => resolve((window as any).Stripe(publicKey));
+      script.onerror = () => reject('Erreur lors du chargement de Stripe.js');
       document.body.appendChild(script);
     });
   }
 
-  // Valider le paiement avec Stripe
+  // -------------------------------------------------------------
+  // ✅ Valide le paiement via Stripe (PaymentIntent)
+  // -------------------------------------------------------------
   async validate(): Promise<void> {
     this.loading = true;
-    const amount = Math.round(parseFloat(this.price) * 100); // Convertit en centimes (int)
-    const currency = 'eur'; // Devise
+    const amount = Math.round(parseFloat(this.price) * 100); // en centimes
+    const currency = 'eur';
 
-    // Créer une intention de paiement
-    this.stripeService.createPaymentIntent(amount, currency, this.stripeCustomerID!).subscribe(
-      async (response: any) => {
-        const { clientSecret } = response;
+    this.stripeService.createPaymentIntent(amount, currency, this.stripeCustomerID!).subscribe({
+      next: async (response: any) => {
+        try {
+          const { clientSecret } = response;
 
-        // Vérifier si une carte par défaut est disponible
-        if (!this.selectedCardId) {
-          alert('Veuillez ajouter ou sélectionner une carte pour effectuer le paiement.');
-          return;
-        }
+          // Vérifie qu'une carte a bien été sélectionnée
+          if (!this.selectedCardId) {
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+            this.loading = false;
+            return;
+          }
 
-        // Confirmer le paiement avec Stripe
-        const stripe = await loadStripe(environment.stripePublicKey);
-        const { error, paymentIntent } = await stripe!.confirmCardPayment(clientSecret, {
-          payment_method: this.selectedCardId,
-        });
+          // Confirme le paiement côté Stripe
+          const stripe = await loadStripe(environment.stripePublicKey);
+          const { error, paymentIntent } = await stripe!.confirmCardPayment(clientSecret, {
+            payment_method: this.selectedCardId,
+          });
 
-        if (error) {
+          if (error) {
+            console.error('Erreur de paiement :', error.message);
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+            this.loading = false;
+          } else if (paymentIntent.status === 'succeeded') {
+            // Paiement OK → on poursuit le flux (création booking, etc.)
+            this.bill!.paymentIntentId = paymentIntent.id;
+            this.saveBill();
+          } else {
+            // Statut inattendu → safe toast
+            console.warn('Statut PaymentIntent inattendu :', paymentIntent.status);
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+            this.loading = false;
+          }
+        } catch (err) {
+          console.error('Erreur interne lors de la confirmation du paiement :', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
           this.loading = false;
-          console.error('Erreur de paiement :', error.message);
-          alert('Le paiement a échoué.');
-        } else if (paymentIntent.status === 'succeeded') {
-          console.log('Paiement réussi !');
-          this.bill.paymentIntentId = paymentIntent.id;
-          // this.createSubscription();
-
-          // Tu peux stocker la souscription dans le bill si besoin
-          this.saveBill(); // ⬅️ Continue le flux habituel ici
         }
       },
-      (error) => {
-        console.error('Erreur lors de la création de l\'intention de paiement :', error);
-        this.router.navigate(
-          ['paiement-validation'],
-          { queryParams: { success: false, shopId: this.shop._id, paiement: false } }
-        );
+      error: (err) => {
+        console.error('Erreur lors de la création du PaymentIntent :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        // Redirection vers la page de validation (échec)
+        this.router.navigate(['paiement-validation'], {
+          queryParams: { success: false, shopId: this.shop?._id, paiement: false }
+        });
         this.loading = false;
       }
-    );
+    });
   }
 
+  // -------------------------------------------------------------
+  // 🧾 Construit et sauvegarde la "bill" (Booking côté backend)
+  // -------------------------------------------------------------
   saveBill() {
-    console.log('saveBill !');
-    console.log(this.bill);
-    this.bill.clientId = this.bill.client;
+    try {
+      this.bill!.clientId = this.bill!.client;
 
-    if (this.bill.client === this.me._id) {
-      this.bill.title = this.meSex + ' ' + this.me.firstname + ' ' + this.me.lastname;
-      this.bill.phoneNumber = this.me.phone;
-    } else {
-      this.me.proches.find((x: any) => {
-        if (x._id === this.bill.client) {
-          this.bill.title = this.meSex + ' ' + x.firstname + ' ' + x.lastname;
-          this.bill.clientId = this.me._id;
-          this.bill.phoneNumber = x.phone;
+      // Remplit les infos "client" selon si c’est moi ou un proche
+      if (this.bill!.client === this.me._id) {
+        this.bill!.title = `${this.meSex} ${this.me.firstname} ${this.me.lastname}`;
+        this.bill!.phoneNumber = this.me.phone;
+      } else {
+        this.me.proches?.find((x: any) => {
+          if (x._id === this.bill!.client) {
+            this.bill!.title = `${this.meSex} ${x.firstname} ${x.lastname}`;
+            this.bill!.clientId = this.me._id;
+            this.bill!.phoneNumber = x.phone;
+          }
+        });
+      }
+
+      // Format l’adresse (ID -> string lisible)
+      this.me.address?.find((x: any) => {
+        if (x._id === this.bill!.address) {
+          this.bill!.address = `${x.street}, ${x.code_postal}, ${x.city}, ${x.country}`;
         }
       });
+
+      // Dates de prestation (start/end) en ISO (locale)
+      this.bill!.start = this.convertToISO(this.startSlot!);
+      this.bill!.end = this.convertToISO(this.endSlot!);
+      this.bill!.date = this.dateSlot;
+
+      // Montants & métadonnées
+      this.bill!.shopEarnings = this.price;
+      this.bill!.price =
+        parseFloat(this.price) +
+        parseFloat(this.price) * this.adminSettings.commissionRate +
+        this.adminSettings.serviceFee;
+
+      this.bill!.orderDate = new Date();
+      this.bill!.status = 'pending';
+      this.bill!.color = this.itemToBuy2?.color;
+      this.bill!.shopId = this.shop._id;
+      this.bill!.establishmentName = this.shop.name;
+      this.bill!.serviceId = this.itemToBuy2?._id;
+      if (!this.bill!.image) this.bill!.image = "Pas d'image";
+
+      this.bill!.productName = this.itemToBuy2?.name;
+      this.bill!.userProId = this.shop.idUser;
+      this.bill!.commission = parseFloat(this.price) * this.adminSettings.commissionRate;
+      this.bill!.tva = this.bill!.price * this.adminSettings.taxRate;
+      this.bill!.price = this.bill!.price + this.bill!.tva;
+    } catch (err) {
+      console.error('Erreur lors de la préparation de la facture (bill) :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      this.loading = false;
+      return;
     }
 
-    this.me.address.find((x: any) => {
-      if (x._id === this.bill.address) {
-        this.bill.address = `${x.street}, ${x.code_postal}, ${x.city}, ${x.country}`;
-      }
-    });
-
-    console.log("this.dateSlot : " + this.dateSlot);
-    console.log("this.startSlot : " + this.startSlot);
-    this.bill.start = this.convertToISO(this.startSlot);
-    console.log("START date : " + this.bill.start);
-    console.log(this.date);
-    console.log(this.startSlot);
-    this.bill.end = this.convertToISO(this.endSlot);
-    console.log("END date : " + this.bill.end);
-    this.bill.date = this.dateSlot;
-
-    // Calcul du montant de base et attribution des commissions, TVA, etc.
-    this.bill.shopEarnings = this.price;
-    this.bill.price =
-      parseFloat(this.price) +
-      parseFloat(this.price) * this.adminSettings.commissionRate +
-      this.adminSettings.serviceFee;
-    this.bill.orderDate = new Date();
-    this.bill.status = 'pending';
-    this.bill.color = this.itemToBuy2.color;
-    this.bill.shopId = this.shop._id;
-    this.bill.establishmentName = this.shop.name;
-    this.bill.serviceId = this.itemToBuy2._id;
-    if (!this.bill.image) {
-      this.bill.image = "Pas d'image";
-    }
-    this.bill.productName = this.itemToBuy2.name;
-    this.bill.userProId = this.shop.idUser;
-    this.bill.commission = parseFloat(this.price) * this.adminSettings.commissionRate;
-    this.bill.tva = this.bill.price * this.adminSettings.taxRate;
-    this.bill.price = this.bill.price + this.bill.tva;
-
-    console.log(JSON.stringify(this.itemToBuy2));
-    console.log(JSON.stringify(this.bill));
-
-    // Création de la réservation (booking)
-
+    // Création du booking côté backend
     const sessionLangue = this.sessionService.getLang();
-    // Call the create method in the BookingService
-    this.bookingService.create(this.bill, sessionLangue!).subscribe({
+    this.bookingService.create(this.bill!, sessionLangue!).subscribe({
       next: (bookingResponse: any) => {
-        console.log("Booking created:", bookingResponse);
-        // Rediriger ou notifier l'utilisateur
-        // this.router.navigate(['home']);
-        this.router.navigate(
-          ['paiement-validation'],
-          { queryParams: { success: true, shopId: this.shop._id, paiement: true } }
-        );
+        console.log('Booking created:', bookingResponse);
+        // Redirection validation OK
+        this.router.navigate(['paiement-validation'], {
+          queryParams: { success: true, shopId: this.shop._id, paiement: true }
+        });
         this.loading = false;
       },
-      error: (error: any) => {
-        console.error("Erreur lors de la création de la réservation", error);
-        this.router.navigate(
-          ['paiement-validation'],
-          { queryParams: { success: false, shopId: this.shop._id, paiement: true } }
-        );
+      error: (err: any) => {
+        console.error('Erreur lors de la création de la réservation :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        // Redirection validation KO
+        this.router.navigate(['paiement-validation'], {
+          queryParams: { success: false, shopId: this.shop._id, paiement: true }
+        });
         this.loading = false;
       }
     });
   }
 
-  // Méthode pour calculer le montant
+  // -------------------------------------------------------------
+  // 🧮 Méthode utilitaire : calcul commission
+  // -------------------------------------------------------------
   calculateCommission(): number {
     const price = parseFloat(this.price);
     const commissionRate = parseFloat(this.adminSettings.commissionRate);
     return price * commissionRate;
   }
 
+  // -------------------------------------------------------------
+  // ⤴️ Retour à la page principale / shop
+  // -------------------------------------------------------------
   goBackToMain() {
-    let shopId;
-    if (localStorage.getItem('shopSelected')) {
-      shopId = localStorage.getItem('shopSelected');
-    }
+    let shopId = localStorage.getItem('shopSelected') || undefined;
     if (shopId) {
       this.router.navigate(['shop', shopId]);
     } else {
@@ -459,28 +517,37 @@ export class PayementComponent implements OnInit {
     }
   }
 
-  // date en france
+  // -------------------------------------------------------------
+  // 🇫🇷 Convertit une heure locale (string) en ISO local (sans TZ)
+  // -------------------------------------------------------------
   convertToISO(timeStr: string): string {
-    // Combine date and time into a single string
-    // Étape 1 : Combiner la date et l'heure
+    // Concatène la date brute de prestation + l’heure choisie
     const combined = this.prestationDateForBill + ' ' + timeStr;
-
-    // Create a Date object from the combined string (local time)
     const date = new Date(combined);
 
-    // Format to 'YYYY-MM-DDTHH:mm:ss' without the timezone conversion
+    // Formate en YYYY-MM-DDTHH:mm:ss (sans fuseau ajouté)
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth() is zero-indexed
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
-    const seconds = '00'; // You can adjust this to get actual seconds if needed
+    const seconds = '00';
 
     return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
   }
 
-  // Fonction pour ajouter des minutes à une date
+  // -------------------------------------------------------------
+  // ➕ Ajoute X minutes à une Date (helper)
+  // -------------------------------------------------------------
   addMinutes(date: Date, minutes: number): Date {
-    return new Date(date.getTime() + minutes * 60000); // 60000 ms = 1 minute
+    return new Date(date.getTime() + minutes * 60000);
+  }
+
+  // -------------------------------------------------------------
+  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // -------------------------------------------------------------
+  showCustomToast(message: string) {
+    // Message générique : "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨"
+    this.toastr.error(message);
   }
 }

@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "헤어디자이너",
+    "NAILTECHNICIAN": "네일 테크니션",
+    "MAKEUP": "메이크업 아티스트",
+    "WAXING": "에스테티션",
+    "FACIAL": "페이셜 케어",
+    "MASSAGE": "마사지사",
+    "EYELASH": "속눈썹 연장",
+    "EYEBROW": "눈썹",
+    "TANNING": "태닝",
+    "ACUPUNCTURE": "침술",
+    "OTHER": "기타"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "갤러리에서 사진이 삭제되었습니다",
+    "PHOTO_UPLOAD": "이미지가 성공적으로 업로드되었습니다",
+    "PARTIAL_REFUND_CONFIRM": "부분 환불이 확인되었습니다!",
+    "CODE_SAVED": "코드가 생성되었습니다.",
+    "USERCREATED": "사용자가 성공적으로 생성되었습니다. 확인 이메일이 전송되었습니다.",
+    "SUBSCRIBE_SUCCESS": "구독이 정상적으로 처리되었습니다.",
+    "EMAIL_VERIFIED": "계정이 활성화되었습니다 🎉 이제 로그인할 수 있습니다.",
+    "EMAIL_RESENT": "인증 이메일이 다시 전송되었습니다. 메일함을 확인하세요.",
+    "BOOKING_CREATED": "예약이 정상적으로 등록되었습니다.",
+    "PAYMENT_OK": "결제가 확인되었습니다.",
+    "REFUND_OK": "환불이 완료되었습니다.",
+    "USERUPDATED": "사용자 정보가 업데이트되었습니다.",
+    "SETTINGS_UPDATED": "설정이 업데이트되었습니다.",
+    "REVIEW_ADDED": "후기가 게시되었습니다 🎉",
+    "SHOPUPDATED": "매장이 업데이트되었습니다.",
+    "BOOKING_ACCEPTED": "예약이 승인되었습니다.",
+    "BOOKING_FINISHED": "예약이 완료되었습니다.",
+    "BOOKING_REFUSED": "예약이 거절되었습니다.",
+    "BOOKING_DELETED": "예약이 삭제되었습니다.",
+    "CODE_GENERATED": "코드가 생성되었습니다.",
+    "CODE_CONFIRMED": "코드가 확인되었습니다.",
+    "INVOICE_DOWNLOADED": "청구서를 다운로드했습니다.",
+    "MARKED_NO_SHOW_CLIENT": "고객이 노쇼로 표시되었습니다.",
+    "COMPANY_CREDITED": "회사 계정에 크레딧이 지급되었습니다.",
+    "MARKED_NO_SHOW_PRO": "제공자가 노쇼로 표시되었습니다.",
+    "EMPLOYEE_CREDITED": "직원 계정에 크레딧이 지급되었습니다.",
+    "NO_SHOW_PRO": "페널티 적용 및 환불 완료.",
+    "EMPLOYEE_DELETED": "직원이 삭제되었습니다.",
+    "SLOT_SELECTED": "시간대가 선택되었습니다",
+    "PASSWORD_RESET": "비밀번호가 재설정되었습니다.",
+    "INVOICE_GENERATED": "청구서가 생성되었습니다.",
+    "REVIEW_SAVED": "후기가 저장되었습니다. 감사합니다!",
+    "DEFAULT_PASSWORD_UPDATED": "기본 비밀번호가 업데이트되었습니다.",
+    "COMPANY_CREATED": "사업자 계정이 성공적으로 생성되었습니다."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "즐겨찾기를 관리하려면 로그인해 주세요.",
+    "INVALID_IMAGE": "유효하지 않은 이미지입니다.",
+    "NO_SLOTS": "이 서비스에 이용 가능한 시간대가 없습니다.",
+    "NO_SHOP_SELECTED": "선택된 매장이 없습니다.",
+    "NO_SERVICE_SELECTED": "선택된 서비스가 없습니다.",
+    "ORDER_ERROR": "주문 업데이트 중 오류가 발생했습니다.",
+    "CODE_ERROR": "코드 저장 중 오류가 발생했습니다.",
+    "INVOICE_GENERATED_ERROR": "청구서 생성 중 오류가 발생했습니다.",
+    "USERNOTCREATED": "사용자를 생성할 수 없습니다.",
+    "INSUFFICIENT_COMPANY_CREDIT": "크레딧을 부여하기에 회사 잔액이 부족합니다.",
+    "GENERIC_ERROR": "✨ 오잉… 오류가 발생했습니다. 다시 시도해 주세요 ✨",
+    "COMPANY_CREDITED": "회사 계정에 크레딧이 지급되었습니다.",
+    "LINK_INVALID_OR_MISSING": "링크가 잘못되었거나 누락되었습니다.",
+    "LINK_INVALID_OR_EXPIRED": "링크가 잘못되었거나 만료되었습니다.",
+    "EMAIL_NOT_FOUND": "사용자 이메일을 찾을 수 없습니다.",
+    "PAYMENT_FAILED": "결제에 실패했습니다.",
+    "BOOKING_FAILED": "예약 생성에 실패했습니다.",
+    "LOAD_CARDS_FAILED": "카드 불러오는 중 오류가 발생했습니다.",
+    "LOAD_SHOP_FAILED": "살롱을 불러오는 중 오류가 발생했습니다.",
+    "LOAD_PRODUCTS_FAILED": "서비스를 불러오는 중 오류가 발생했습니다.",
+    "INVALID_CODE": "입력한 코드가 유효하지 않습니다.",
+    "PASSWORD_CHANGED": "비밀번호가 업데이트되었습니다.",
+    "PASSWORDS_IDENTICAL": "새 비밀번호는 현재 비밀번호와 달라야 합니다.",
+    "INVALID_AMOUNT": "입력한 금액이 유효하지 않습니다.",
+    "INVALID_CURRENT_PASSWORD": "현재 비밀번호가 올바르지 않습니다.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "현재 비밀번호가 올바르지 않거나 오류가 발생했습니다.",
+    "PASSWORD_UPDATE_FAILED": "비밀번호 변경에 실패했습니다.",
+    "PASSWORD_UPDATE_GENERIC": "비밀번호 업데이트 중 오류가 발생했습니다.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "비밀번호가 일치하지 않거나 너무 짧습니다(최소 8자).",
+    "INVALID_PASSWORD": "비밀번호는 비워둘 수 없습니다.",
+    "PASSWORD_TOO_SHORT": "비밀번호는 최소 8자 이상이어야 합니다."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Stripe 설정이 누락되었습니다.",
+    "LOAD_FAILED": "Stripe를 불러올 수 없습니다",
+    "NOT_READY": "Stripe가 초기화되지 않았습니다",
+    "CONFIRM_FAILED": "카드 등록에 실패했습니다",
+    "CARD_SAVED": "카드가 성공적으로 저장되었습니다 ✅",
+    "PM_FAILED": "카드 생성에 실패했습니다",
+    "SI_FAILED": "카드 등록 준비를 할 수 없습니다",
+    "ATTACH_FAILED": "계정에 카드를 연결할 수 없습니다",
+    "SAVE_CARD": "카드 저장",
+    "ADD_CARD": "카드 추가"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "로그인이 필요합니다"
+  },
+  "COMMON": {
+    "LOADING": "로딩 중…",
+    "UNEXPECTED_ERROR": "예기치 않은 오류가 발생했습니다"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "검증 중",
+    "VALIDE": "활성화 링크를 확인하고 있습니다. 잠시만 기다려 주세요.",
+    "ACCOUNT": "계정이 활성화되었습니다",
+    "CONNECT": "로그인",
+    "OUPS": "이런",
+    "WRITE": "도움이 필요하신가요? 다음으로 문의하세요",
+    "RESEND": "활성화 이메일 다시 보내기"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "내 은행 정보",
+    "ADD_BANK_INFO": "내 은행 정보 추가",
+    "BANK_NAME": "은행명",
+    "HOLDER_NAME": "예금주",
+    "COUNTRY": "국가",
+    "SAVE": "저장"
+  },
+  "LOADER": {
+    "LOADING": "로딩 중…"
+  },
+  "SPONSORS": {
+    "TITLE": "스폰서",
+    "SPONSORISED": "스폰서 표시"
+  },
+  "TABS": {
+    "FINANCE": "재무 추적",
+    "GENERAL_INFO": "일반 정보",
+    "EMPLOYEES": "직원 관리",
+    "SERVICES": "서비스 관리",
+    "PHOTOS": "사진 갤러리",
+    "STATS": "통계",
+    "PARAM": "설정",
+    "SHOPS": "매장",
+    "USERS": "사용자",
+    "MESSAGE": "메시지"
+  },
+  "CARD": {
+    "ADD": "카드 추가",
+    "NO_IMAGE": "갤러리에 이미지가 없습니다.",
+    "SALON": "살롱이 성공적으로 업데이트되었습니다",
+    "ERROR1": "살롱 업데이트 중 오류",
+    "ERROR2": "사진 업데이트 중 오류",
+    "UPDATE": "살롱이 성공적으로 업데이트되었습니다"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "완료됨",
+    "ACCEPTEE": "승인됨",
+    "WAITING": "대기 중",
+    "CANCEL": "취소됨",
+    "DELETE": "삭제됨",
+    "REFUSED": "거절됨",
+    "NO_PRESTA": "제공자 부재",
+    "CLIENT_ABSENT": "고객 부재",
+    "ADRESSE": "주소",
+    "DATE": "날짜",
+    "TOTAL": "합계",
+    "FACTURE": "청구서",
+    "CANCELLED": "취소됨",
+    "DELETED": "삭제",
+    "AVIS": "후기",
+    "SUPPORT": "지원",
+    "CODE": "확인 코드",
+    "CODE_A_DONNER": "제공자에게 전달할 코드",
+    "PRESTA_ABSENT": "제공자 부재"
+  },
+  "SHOP_CARD": {
+    "AVIS": "매장 후기",
+    "COMMENT": "코멘트",
+    "NOTE": "평점",
+    "CLOSE": "닫기"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "갤러리에 이미지가 없습니다."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "주문을 평가하세요",
+    "DATE": "날짜",
+    "SERVICE": "서비스",
+    "AVIS": "당신의 후기",
+    "SEND": "보내기",
+    "PLACEHOLDER": "경험을 설명해주세요…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "집으로 불러보세요",
+    "KNOWMORE": "자세히 보기",
+    "PART1TITLE": "집에서 누리는 최고의 뷰티 서비스",
+    "PART1TEXT": "검증된 전문가가 직접 방문하여 필요와 취향에 맞춘 고품질 뷰티 케어를 제공합니다. 점심시간, 퇴근 후 저녁, 친구들과의 오후 등 언제든 특별한 웰빙 경험을 즐겨보세요.",
+    "PART2TITLE": "원하는 시간에 일하고, 맞춤 수익을",
+    "PART2TEXT": "본인의 페이스로 플랫폼의 요청을 수락하며 일정에 맞춰 수익을 창출하세요. 개인 장비를 사용하거나 izyGlam을 통해 전문 장비를 대여할 수도 있습니다.",
+    "PART3TITLE": "기업을 위한 새로운 뷰티 서비스",
+    "PART3TEXT": "Glam for Business는 모든 규모의 기업을 위해 고객과 직원의 뷰티 니즈를 관리하도록 설계된 플랫폼입니다. 직장 내, 기업 행사, 특별한 날에 맞춘 맞춤 케어를 제공합니다. 검증된 전문가가 맞춤형 서비스를 제공하기 위해 이동합니다.",
+    "APPTITLE": "앱이면 더 간편해요",
+    "DOWNLOADAPP1": "앱 다운로드",
+    "DOWNLOADAPP2": "뷰티 전문가용 앱 다운로드",
+    "SCANTODOWNLOAD": "스캔하여 다운로드",
+    "SIGNUP": "가입하기!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "동영상 재생 오류",
+    "AUTOPLAY_BLOCKED": "자동 재생이 차단되었습니다. 탭하여 재생하세요.",
+    "NAV_ERROR": "이동할 수 없습니다"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "izyGlam 앱과 사이트 이용 방법",
+    "HELPCENTER": "도움말 센터로 가기",
+    "BUSINESS": "비즈니스",
+    "ABOUT": "회사 소개",
+    "OURSERVICES": "우리의 서비스",
+    "PRESSAREA": "보도 자료실",
+    "INVESTORS": "투자자",
+    "CAREERS": "채용",
+    "AI": "인공지능",
+    "PRODUCTS": "제품",
+    "GLAM": "izyGlam과 함께 언제나 최상",
+    "RESERVED": "미리 예약하세요",
+    "GIFTCARDS": "기프트 카드",
+    "WORKWITHUS": "izyGlam과 함께하기",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "개인정보",
+    "ACCESS": "접근성",
+    "CONDITIONS": "이용약관",
+    "LANGUAGE": "언어",
+    "LOCALISATION": "위치",
+    "ALL_RIGHT": "판권 소유"
+  },
+  "COMING_SOON": {
+    "TITLE": "곧 찾아갑니다",
+    "TITLE-NOT-COMING": "아직 방문 계획이 없습니다",
+    "DAYS": "일",
+    "HOURS": "시간",
+    "MINUTES": "분",
+    "SECONDS": "초",
+    "TEXT": "집에서 즐기는 특별한 뷰티 경험을 제공하기 위해 열심히 준비 중입니다. 출시 소식을 받아보세요."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "이달의 혜택",
+    "DISCOVER": "izyGlam에서 발견하기",
+    "LIKED": "내 주변 인기",
+    "SMART": "똘똘한 선택",
+    "TOP10": "주간 TOP 10",
+    "SEARCHRESULT": "검색 결과",
+    "AVIS": "후기"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "헤어",
+    "MANUCURE": "매니큐어",
+    "VISAGE": "얼굴",
+    "MASSAGE": "마사지",
+    "MAQUILLAGE": "메이크업",
+    "EPILATION": "왁싱",
+    "BRONZAGE": "태닝",
+    "PARTUM": "산후 케어",
+    "NUTRITION": "영양",
+    "FITNESS": "피트니스",
+    "ACUPUNCTURE": "침술",
+    "STYLISME": "스타일링",
+    "YOGA": "릴랙스",
+    "DEVELOPPEMENT": "자기 성장",
+    "EYELASH": "속눈썹 연장"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "헤어디자이너",
+    "MANUCURE": "매니큐어 전문가",
+    "ESTETICIAN": "에스테티션",
+    "MASSAGE": "마사지사",
+    "MAQUILLAGE": "메이크업 아티스트",
+    "PEDICURE": "페디큐어 전문가",
+    "NUTRITION": "영양사",
+    "FITNESS": "코치"
+  },
+  "INTRO": {
+    "NORESULTS": "결과가 없습니다",
+    "START": "시작하기",
+    "SPECIALITY": "전문 분야?",
+    "WHERE": "어디서?",
+    "CONNEXION": "로그인",
+    "REGISTRATION": "가입"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "계정 관련 정보",
+    "MESSAGE": "내 메시지",
+    "MESSAGE_SUBTITLE": "진행 중인 대화 목록.",
+    "INFORMATION_SUBTITLE": "개인 정보를 쉽게 수정하세요.",
+    "SECURITY": "보안 및 언어",
+    "SECURITY_SUBTITLE": "비밀번호, 언어… 여기서 모두 관리돼요.",
+    "CONFIDENTIAL": "개인정보 및 데이터",
+    "CONFIDENTIAL_SUBTITLE": "당신의 데이터는 소중해요. 이렇게 보호해요.",
+    "DASHBOARD": "대시보드",
+    "DASHBOARD_SUBTITLE": "내 활동 데이터를 쉽게 관리하세요.",
+    "COMPANY": "내 기업 관리",
+    "COMPANY_SUBTITLE": "지난/예정/취소된 예약을 쉽게 관리하세요.",
+    "SHOP": "내 살롱 관리",
+    "SHOP_SUBTITLE": "살롱, 서비스, 재무를 관리하세요.",
+    "FINANCIAL": "재무 추적",
+    "ADMIN": "일반 관리",
+    "ADMIN_SUBTITLE": "이 걸작 전체를 손쉽게 관리하세요. 세상을 향해 전진!",
+    "CALENDAR": "일정",
+    "CALENDAR_SUBTITLE": "지난 예약과 예정 예약을 쉽게 관리하세요.",
+    "SELECT_SALON": "살롱 선택",
+    "NEW_SALON": "살롱 만들기",
+    "SHOP_TO_CREATE": "생성할 매장 유형",
+    "CANCEL": "취소",
+    "CREATE": "내 매장 만들기",
+    "INFO1": "다음 매장을 삭제하려고 합니다:",
+    "INFO2": "이 작업은 되돌릴 수 없습니다",
+    "SURE": "정말 계속하시겠습니까",
+    "DELETE": "삭제"
+  },
+  "PROFILE": {
+    "TITLE": "기본 정보",
+    "FIRSTNAME": "이름",
+    "LASTNAME": "성",
+    "PHONE": "전화번호",
+    "ADDRESS": "이메일 주소",
+    "CHANGE_USER": "사용자 수정",
+    "CANCEL": "취소",
+    "SUCCESS": "프로필이 성공적으로 수정되었습니다",
+    "UPDATE_ERROR": "비밀번호 업데이트 중 오류가 발생했습니다."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "비밀번호 변경",
+    "ACTUAL_PASSWORD": "현재 비밀번호",
+    "NEW_PASSWORD": "새 비밀번호",
+    "CONFIRMED_PASSWORD": "새 비밀번호 확인",
+    "CHANGE_PASSWORD": "비밀번호 변경",
+    "CHANGE_OK": "비밀번호가 성공적으로 변경되었습니다",
+    "CHANGE_LANGUE": "언어 변경",
+    "CHANGE_COUNTRY": "국가 변경",
+    "LANGUE": "언어",
+    "COUNTRY": "국가"
+  },
+  "PAYEMENT": {
+    "YOU": "회원님",
+    "HEADER_TITLE": "결제",
+    "SERVICE_TITLE": "서비스",
+    "SERVICE_NOTE": "비고:",
+    "ADDRESS_TITLE": "서비스 제공 주소",
+    "ADDRESS_RENDEZVOUS": "문 앞에서 만나기",
+    "ADDRESS_CHANGE": "다른 주소 선택",
+    "PAYMENT_SECTION_TITLE": "결제",
+    "PAYMENT_METHOD": "대표 카드",
+    "PAYMENT_EXPIRE": "만료",
+    "PAYMENT_NO_CARD": "대표 카드가 설정되지 않았습니다",
+    "PAYMENT_NO_CARD_DESC": "대표 결제 수단으로 사용할 카드를 추가하거나 선택해 주세요.",
+    "SUMMARY_SUBTOTAL": "소계",
+    "SUMMARY_SERVICE_FEE": "izyGlam 수수료",
+    "SUMMARY_DELIVERY_FEE": "서비스 요금",
+    "SUMMARY_TOTAL": "총합",
+    "TITLE": "온라인으로 예약하세요",
+    "FOR_WHO": "누구를 위한 예약인가요?",
+    "ADD_PROCHE": "가족/지인 추가",
+    "WHERE": "어디에서 서비스를 받으시겠어요?",
+    "SELECT_ADDRESS": "주소 선택",
+    "ADD_ADDRESS": "주소 추가",
+    "CARD_PAY": "신용/체크카드 결제",
+    "CARD_NUM": "카드 번호",
+    "CARD_NAME": "카드 소지자 이름",
+    "EXPIRATION": "만료일",
+    "CVV": "CVV",
+    "RDV": "예약 상세",
+    "RESUME": "예약 요약",
+    "DATE": "날짜",
+    "HOUR": "시간",
+    "PRESTA": "서비스",
+    "EXPIRE": "만료",
+    "DEFAULT": "기본값",
+    "NOCARD": "등록된 카드 없음",
+    "WITH": "담당",
+    "TOTAL": "결제 금액",
+    "ANNULER": "취소",
+    "RETOUR": "뒤로",
+    "CONTINUER": "계속",
+    "VALIDER": "확인",
+    "ADRESSE": "주소",
+    "LEGAL_TEXT_1": "주문 버튼을 클릭하면 izyGlam France SAS(ROS 841 983 828)와의 배송 서비스 계약에 동의하는 것입니다.",
+    "LEGAL_TEXT_2": "배송 서비스에 관한 청약철회권을 포기합니다. 소비자 분쟁 조정 기관을 여기에서 이용할 수 있습니다.",
+    "LEGAL_TEXT_3": "기사 도착 시 부재 중이면 문 앞에 주문을 두고 갑니다. 주문 완료 시점부터 책임은 회원님께 있습니다. 주류 등 제한 품목이 포함된 주문은 부재 시 매장으로 반송됩니다.",
+    "CLOSE_FORM": "양식 닫기",
+    "ADD_CARD": "카드 추가",
+    "TRAITEMENT": "처리 중"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "결제 확인",
+    "THANKS": "감사합니다! 예약이 정상적으로 접수되었습니다.",
+    "BACKHOME": "홈으로",
+    "PROBLEME": "예약 문제",
+    "PAIEMENT": "결제는 완료되었으나 예약을 확인하지 못했습니다.",
+    "THANKSCONTACT": "다음으로 지원팀에 문의해 주세요:",
+    "FAILED": "결제 실패",
+    "VALIDATE": "결제를 확인할 수 없습니다. 다시 시도해 주세요."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "독립 프로를 위한 izyGlam",
+    "STEP1": {
+      "TITLE": "고객이 주문합니다",
+      "TEXT": "고객이 회원님의 업체를 찾아 izyGlam 앱에서 주문합니다."
+    },
+    "STEP2": {
+      "TITLE": "예약을 수락합니다",
+      "TEXT": "예약을 수락하면 일정이 업데이트됩니다."
+    },
+    "STEP3": {
+      "TITLE": "예약 시간에",
+      "TEXT": "다가오는 예약을 미리 알려드리고, 각 고객 댁으로 이동 경로를 안내합니다."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "회사 계정에 크레딧 지급",
+    "SOLDE": "현재 잔액",
+    "CREDIT": "지급 금액",
+    "COMPANY": "회사 계정에 크레딧 지급",
+    "DEPENSE": "지출 내역",
+    "DATE": "날짜",
+    "COUNT": "금액",
+    "EMPLOYEE": "직원",
+    "DESCRIPTION": "설명"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "이미 파트너 또는 기업 계정이 있습니다!",
+    "NOT_CONNECTED": "살롱을 등록하려면 로그인해 주세요",
+    "TITLE": "지금 시작하세요!",
+    "TITLE2": "살롱을 만들어 봅시다!",
+    "NAME": "살롱 이름",
+    "ADDRESS": "사업장 주소",
+    "STREET": "도로명/번지",
+    "CITY": "도시",
+    "CODE_POSTAL_POSSIBLE": "서비스 가능 우편번호",
+    "CODE_POSTAL": "우편번호",
+    "COUNTRY": "국가",
+    "ADDRESSPLACEHOLDER": "예: 123, rue Principale",
+    "FLOOR": "층/스위트(선택)",
+    "BUSINESSTYPE": "업체 유형",
+    "FIRSTNAME": "이름",
+    "LASTNAME": "성",
+    "PASSWORD": "비밀번호",
+    "PASSWORDCONFIRMED": "비밀번호 확인",
+    "EMAIL": "이메일",
+    "PHONE": "휴대폰 번호",
+    "WHATSAPP": "WhatsApp 메시지 수신에 동의합니다",
+    "BUTTON": "매장 저장",
+    "SUCCESS": "매장이 성공적으로 생성되었습니다!",
+    "ERROR": "매장 생성 중 오류가 발생했습니다:",
+    "ERROR1": "업체명이 필요합니다.",
+    "ERROR2": "업체 주소가 필요합니다.",
+    "ERROR3": "업체 유형이 필요합니다.",
+    "ERROR4": "이름이 필요합니다.",
+    "CHOOSE_COUNTRY": "국가 선택",
+    "POSTAL_CODE": "우편번호",
+    "CHOOSE_CITY": "도시 선택",
+    "ERROR5": "성이 필요합니다.",
+    "ERROR6": "이메일이 필요합니다.",
+    "ERROR7": "휴대폰 번호가 필요합니다.",
+    "ERROR8": "WhatsApp 메시지 수신에 동의해야 합니다."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "주소 변경",
+    "FIND_SHOP": "매장 검색",
+    "CATEGORIES": "카테고리",
+    "OFFRE": "이달의 혜택",
+    "DISCOVER": "둘러보기",
+    "APPRECIATE": "인기",
+    "SMART": "똘똘한 선택",
+    "TOP10": "주간 TOP10",
+    "SEARCH_RESULT": "검색 결과",
+    "NOT_AVAILABLE": "아직 이 주소에서는 이용할 수 없어요",
+    "NEW_ADDRESS": "새 주소 추가",
+    "CHOOSE_ADDRESS": "주소 선택",
+    "CHOOSE_COUNTRY": "국가 선택",
+    "CHOOSE_CITY": "도시 선택",
+    "CHOOSE_ARRONDISSEMENT": "구/행정구역 선택",
+    "CANCEL": "취소",
+    "SAVE": "저장",
+    "CLOSE": "닫기"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "이름",
+    "CITY": "도시",
+    "NOTE": "평점",
+    "MIDDLE_PRICE": "평균 가격",
+    "PROMOTION": "프로모션",
+    "ACTIONS": "작업",
+    "MODIFIER": "매장 정보 수정",
+    "SHOP_NAME": "매장명",
+    "DESCRIPTION": "설명",
+    "PRINCIPALE": "대표 이미지",
+    "SHOP": "매장 유형",
+    "ARRONDISSEMENT": "행정구역",
+    "MINIMUM_DELAI": "최소 대기 시간",
+    "DISTANCE": "최대 거리(km)",
+    "EMPLACEMENT": "위치",
+    "HOURS_MORNING": "영업시간 - 오전",
+    "HOURS_AFTERNOON": "영업시간 - 오후",
+    "ACTIVE_PROMO": "프로모션 활성화",
+    "CANCEL": "취소",
+    "ENREGISTRER": "저장"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "비즈니스를 성장시키세요",
+    "TEXT": "izyGlam 앱 사용자 수천 명이 회원님의 지역에서 매장을 찾고 있을 수 있어요…",
+    "IMAGE": "image"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "왜 izyGlam인가요?",
+    "STEP1": {
+      "TITLE": "나만의 방식으로 일하기",
+      "TEXT": "일정을 자유롭게 구성하고 서비스를 유연하게 관리하세요. 필요에 맞춰 확장 가능한 플랫폼으로 활동을 극대화하세요."
+    },
+    "STEP2": {
+      "TITLE": "온라인 존재감 강화",
+      "TEXT": "앱에 포함된 마케팅 도구로 더 많은 고객을 유치하고 가시성을 높여 성과를 끌어올리세요."
+    },
+    "STEP3": {
+      "TITLE": "고객 충성도 강화",
+      "TEXT": "고객의 취향을 분석하고 후기에 응답하며, 멤버십 혜택을 제공해 오래가는 관계를 구축하세요."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "업무 관리를 간소화하세요",
+      "TEXT": "웰니스 전문가를 위한 올인원 솔루션, izyGlam으로 안심하고 활동을 관리하세요. 유연한 도구와 맞춤형 지원을 제공합니다."
+    },
+    "STEP2": {
+      "TITLE": "매출을 끌어올리세요",
+      "TEXT": "매일 수천 명이 가까운 뷰티 전문가를 찾고 있습니다. 지금이 신규 고객을 만날 기회입니다."
+    },
+    "STEP3": {
+      "TITLE": "고객 만족 보장",
+      "TEXT": "개인화된 경험을 제공하세요. 예약을 쉽게 관리하고 빠르게 소통하며 맞춤 서비스를 제공하세요. 고객은 원하는 곳과 시간에 케어를 받아 만족과 충성도가 높아집니다."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "귀사의 기업을 위한 izyGlam?",
+    "STEP1": {
+      "TITLE": "직원과 고객이 서비스를 예약",
+      "TEXT": "직원 또는 고객이 izyGlam 앱에서 원하는 웰니스 서비스를 선택합니다."
+    },
+    "STEP2": {
+      "TITLE": "지원 금액을 결정",
+      "TEXT": "직원과 고객 계정에 크레딧을 충전할 수 있습니다. 정기적 또는 일회성으로 설정할 수 있어요."
+    },
+    "STEP3": {
+      "TITLE": "서비스 제공",
+      "TEXT": "전문가가 직원의 집이나 사무실로 방문하여 예약된 서비스를 제공, 최적의 웰빙 경험을 보장합니다."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "기업 가치를 높이세요",
+    "TEXT": "수천 명의 사용자가 웰니스 서비스를 찾고 있습니다. 직원과 고객에게 근처 최고의 전문가를 만날 수 있는 특권을 제공하세요.",
+    "IMAGE": "image"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "왜 izyGlam인가요?",
+    "STEP1": {
+      "TITLE": "직원 리워드와 충성도 향상",
+      "TEXT": "월간 뷰티 예산을 제공하세요. 헤어, 에스테틱 등 다양한 전문가를 통해 만족도를 높이고 소속감을 강화하세요."
+    },
+    "STEP2": {
+      "TITLE": "브랜드 이미지 제고",
+      "TEXT": "고객/파트너 이벤트에 뷰티 서비스를 제공하거나, 로열티 프로그램에 통합하세요. 상황에 맞는 프리미엄 케어로 강한 인상을 남기세요."
+    },
+    "STEP3": {
+      "TITLE": "직장 내 웰빙 최적화",
+      "TEXT": "직원들이 직장 또는 가까운 곳에서 손쉽게 서비스를 이용하도록 지원하세요. 웰빙이 향상되면 동기와 팀 결속이 강화됩니다."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "팀의 웰빙 접근을 간소화",
+      "TEXT": "izyGlam으로 쉽고 유연하게 케어를 받을 수 있습니다. 뷰티 케어부터 피트니스까지 모두 한곳에서."
+    },
+    "STEP2": {
+      "TITLE": "고객을 위한 혁신적 혜택",
+      "TEXT": "이벤트나 로열티 프로그램에서 웰니스 서비스를 제공하세요. 특별한 배려로 고객 경험을 향상하세요."
+    },
+    "STEP3": {
+      "TITLE": "맞춤 웰빙, 언제 어디서나",
+      "TEXT": "선별된 전문가가 특정 니즈에 맞춰 고품질 서비스를 제공합니다. 만족을 보장하기 위해 개인화된 지원을 제공합니다."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "계정 관리",
+    "ORDERS": "지난 주문",
+    "FAVORITES": "즐겨찾기",
+    "HELP": "도움말",
+    "MY_ABO": "내 구독",
+    "PRICES": "요금제",
+    "FIDELITY": "적립 프로그램",
+    "LOGOUT": "로그아웃",
+    "YOUR_BEAUTY_SERVICES": "뷰티 서비스 제공하기",
+    "YOUR_COMPANY": "기업 등록"
+  },
+  "SUBTITLES": {
+    "HELP": "도움이 필요해? 이 페이지가 도와줄게."
+  },
+  "ORDERS": {
+    "TITLE": "내 주문",
+    "TITLE_SUBTITLE": "지난/예정/취소된 예약을 쉽게 관리하세요.",
+    "UPCOMING_SECTION": "📅 예정",
+    "NO_UPCOMING": "예정된 서비스가 없습니다.",
+    "PAST_SECTION": "✅ 완료",
+    "NO_PAST": "완료된 서비스가 없습니다.",
+    "ADDRESS": "주소",
+    "DATE": "날짜",
+    "TOTAL": "합계",
+    "ITEMS": "개 항목",
+    "DELETE": "삭제",
+    "VISIT": "방문하기",
+    "PRESTA_FOR": "서비스 대상",
+    "AT": "시간",
+    "ORDER_AGAIN": "다시 주문",
+    "INVOICE": "청구서 요청",
+    "REVIEW": "후기 남기기",
+    "CANCEL": "취소"
+  },
+  "FIDELITY": {
+    "TITLE": "내 즐겨찾기",
+    "AGAIN": "남은",
+    "AGAIN_SUBTITLE": "보상까지",
+    "TITLE_SUBTITLE": "선물을 잠금 해제하려면",
+    "DATE": "유효기간",
+    "HISTO": "내 케어 기록"
+  },
+  "FAVORITES": {
+    "TITLE": "내 즐겨찾기",
+    "TITLE_SUBTITLE": "찜한 살롱을 한눈에 확인하세요."
+  },
+  "SHOP": {
+    "MOVING_FEE": "서비스 요금:",
+    "DISTANCE": "최대 거리:",
+    "PAYEMENT": "카드 및 PayPal 결제 가능",
+    "PRESS_FOR_INFO": "시간, 정보 등을 보려면 탭하세요.",
+    "GALLERY": "이미지 갤러리",
+    "SEE_MORE": "더 보기",
+    "SEE_LESS": "접기"
+  },
+  "LOGIN": {
+    "TITLE": "로그인 정보를 입력하세요.",
+    "FORGET_PASSWORD": "비밀번호를 잊으셨나요?",
+    "CONTINUER": "계속",
+    "CONTINUE_WITH": "다음으로 계속",
+    "OR": "또는",
+    "QRCODE": "QR 코드로 로그인",
+    "CGU": "계속하면, 기재된 번호로 izyGlam 및 계열사의 전화/WhatsApp/문자(자동 발신 포함) 수신에 동의하게 됩니다.",
+    "PLACEHOLDER_EMAIL": "이메일 주소",
+    "PLACEHOLDER_PASSWORD": "비밀번호",
+    "PLACEHOLDER_PASSWORD_NEW": "새 비밀번호",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "비밀번호 확인",
+    "CHANGE_PASSWORD": "비밀번호 변경",
+    "REINIT": "재설정"
+  },
+  "SIGNUP": {
+    "GENRE": "성별",
+    "CHOOSE": "선택",
+    "SEX_MALE": "남성",
+    "SEX_FEMALE": "여성",
+    "TITLE": "개인 정보를 입력하세요.",
+    "CONTINUER": "계속",
+    "OR": "또는",
+    "QRCODE": "QR 코드로 로그인",
+    "CGU": "계속하면, 기재된 번호로 izyGlam 및 계열사의 전화/WhatsApp/문자(자동 발신 포함) 수신에 동의하게 됩니다.",
+    "PLACEHOLDER_FIRSTNAME": "이름",
+    "PLACEHOLDER_LASTNAME": "성",
+    "PLACEHOLDER_EMAIL": "이메일",
+    "PLACEHOLDER_EMAIL_REQUIRED": "이메일이 필요합니다",
+    "PLACEHOLDER_EMAIL_WRONG": "이메일 형식이 올바르지 않습니다",
+    "PLACEHOLDER_PHONE": "전화",
+    "PLACEHOLDER_PHONE_NUMBER": "전화번호",
+    "PLACEHOLDER_PASSWORD": "비밀번호",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "비밀번호 확인",
+    "COUNTRY": "국가"
+  },
+  "LANGUE": {
+    "FRANCAIS": "프랑스어",
+    "ANGLAIS": "영어",
+    "ESPAGNOL": "스페인어",
+    "NEERLANDAIS": "네덜란드어",
+    "ITALIEN": "이탈리아어",
+    "ALLEMAND": "독일어",
+    "PORTUGAIS": "포르투갈어",
+    "POLONAIS": "폴란드어",
+    "DANOIS": "덴마크어",
+    "FINNOIS": "핀란드어",
+    "SUEDOIS": "스웨덴어",
+    "ARABE": "아랍어",
+    "TURC": "터키어",
+    "CHINOIS": "중국어",
+    "RUSSE": "러시아어",
+    "PERSAN": "페르시아어",
+    "UKRAINIEN": "우크라이나어",
+    "ROUMAIN": "루마니아어",
+    "CATALAN": "카탈루냐어",
+    "BASQUE": "바스크어",
+    "GALICIEN": "갈리시아어",
+    "ALBANAIS": "알바니아어",
+    "KURDE": "쿠르드어",
+    "ESTONIEN": "에스토니아어",
+    "SOMALIEN": "소말리어",
+    "BIELORUSSE": "벨라루스어",
+    "JAPONAIS": "일본어",
+    "COREEN": "한국어",
+    "INDONESIEN": "인도네시아어",
+    "MALAIS": "말레이어",
+    "THAI": "태국어",
+    "VIETNAMIEN": "베트남어",
+    "TAGALOG": "타갈로그어",
+    "BENGALI": "벵골어"
+  },
+  "COUNTRY": {
+    "FRANCE": "프랑스",
+    "ALLEMAGNE": "독일",
+    "SPAIN": "스페인",
+    "ITALY": "이탈리아",
+    "DANEMARK": "덴마크",
+    "FINLAND": "핀란드",
+    "NETHERLAND": "네덜란드",
+    "POLAND": "폴란드",
+    "PORTUGAL": "포르투갈",
+    "SWEDEN": "스웨덴",
+    "CHINA": "중국",
+    "INDIA": "인도",
+    "JAPAN": "일본",
+    "SOUTH_KOREA": "대한민국",
+    "INDONESIA": "인도네시아",
+    "PHILIPPINES": "필리핀",
+    "THAILAND": "태국",
+    "VIETNAM": "베트남",
+    "MALAYSIA": "말레이시아",
+    "SINGAPOURE": "싱가포르",
+    "EMIRAT_ARABE": "아랍에미리트",
+    "SAUDI_ARABIA": "사우디아라비아"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "내 주소",
+    "ADDRESS_MODIFICATION": "주소 수정",
+    "STREET": "거리",
+    "CITY": "도시",
+    "CP": "우편번호",
+    "CREATE": "생성",
+    "BACK": "뒤로",
+    "CHANGE": "수정",
+    "CLOSE": "닫기"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "플랫폼 설정",
+    "COMMISSION": "수수료율(%)",
+    "0to100": "0에서 100 사이 값이 필요합니다",
+    "SERVICE": "서비스 수수료(€)",
+    "WEEKS": "표시할 주 수",
+    "SUP0": "0보다 큰 값이 필요합니다",
+    "LESS24": "24시간 이내 취소 수수료(%)",
+    "LESS48": "48시간 이내 취소 수수료(€)",
+    "DELAY": "최소 예약 마감(시간)",
+    "TVA": "부가세율(%)",
+    "ADS": "광고 활성화",
+    "COMPANY": "기업 거래 활성화",
+    "FIDELITY": "적립 기능 활성화",
+    "MULTI_SHOP": "멀티 매장 활성화",
+    "PROMO": "매장 프로모션 활성화",
+    "SPONSORS": "랜딩 페이지 스폰서 영역 활성화",
+    "SAVE": "저장"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "총 매장 수",
+    "ACT_SHOPS": "활성 매장 수",
+    "USERS": "총 사용자 수",
+    "NBR_USERS": "가입 사용자 수",
+    "CA_TOTAL": "총 매출",
+    "CA_GENERATED": "발생 매출",
+    "SHOPS_PERFO": "매장 성과",
+    "SHOP_NAME": "매장명",
+    "CITY": "도시",
+    "REVENUES": "수익",
+    "BOOKINGS": "예약 수",
+    "NOTE": "평균 평점",
+    "ACTIONS": "작업",
+    "DETAILS": "세부 정보",
+    "ADJUST": "조정",
+    "SHOP_ADJUST": "매장 조정",
+    "STILL_DEVELOPPED": "이 기능은 아직 개발 중입니다",
+    "CLOSE": "닫기"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "이벤트 상세",
+    "CLIENT": "고객",
+    "DEBUT": "시작",
+    "FIN": "종료",
+    "ADDRESS": "주소",
+    "PHONE": "전화",
+    "CANCEL": "취소",
+    "SAVE": "저장"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "이벤트 생성",
+    "COMING": "예정",
+    "PAST": "지난",
+    "CANCELLED": "취소됨",
+    "NO_CANCELLED": "취소된 주문이 없습니다."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "온라인 지원"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "직원 관리",
+    "NAME": "이름",
+    "EMAIL": "이메일",
+    "SOLDE": "계정 잔액",
+    "ACTIONS": "작업",
+    "DEFAULT_PASSWORD": "기본 비밀번호",
+    "REINITIALIZE_PASSWORD": "재설정을 위한 기본 비밀번호",
+    "CHANGE_PASSWORD": "비밀번호 변경"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "직원 계정 크레딧 지급",
+    "AMOUNT": "지급 금액",
+    "CANCEL": "취소",
+    "SAVE": "확인"
+  },
+  "DASHBOARD": {
+    "TOTAL": "총 예약",
+    "TOTAL_MONTH": "이번 달 예약",
+    "GENERATED": "발생 수익",
+    "MONTHLY": "이번 달 수익",
+    "AVG_NOTE": "평균 평점",
+    "BASED_ON": "기준:",
+    "REVIEWS": "개 후기",
+    "NEXT_APPOINTEMENT": "다가오는 예약",
+    "POPULAR_SERVICES": "인기 서비스",
+    "RESERVATION": "건 예약"
+  },
+  "FINANCE": {
+    "PROGRESS": "전월 대비 추이",
+    "PROGRESSION": "증감",
+    "TOTAL_GENERATED": "총 발생 매출",
+    "CA": "매출",
+    "COMMISSION_TAKEN": "차감된 수수료",
+    "COMMISSIONS": "수수료",
+    "NET_TO_PAY": "지급 순액",
+    "DISPO_AMOUNT": "사용 가능 금액",
+    "REQUEST_WITHDRAWAL": "이체 요청",
+    "TAKE": "출금 금액",
+    "TOTAL_EARNINGS": "순수익",
+    "TOTAL_BOOKINGS": "완료된 서비스",
+    "CANCELLED_BOOKINGS": "취소된 서비스",
+    "SERVICES_CANCELLED": "취소/거절된 예약",
+    "SERVICES_COMPLETED": "완료된 예약",
+    "AVG_PRICE": "평균 가격",
+    "PER_SERVICE": "서비스당",
+    "REVIEW_RATIO": "고객 후기",
+    "CLIENT_FEEDBACK": "피드백 비율",
+    "TOP_PRODUCTS": "베스트셀러 서비스",
+    "AVG_DURATION": "평균 소요시간",
+    "DURATION_PER_BOOKING": "예약당 시간",
+    "DETAILS": "은행 계좌 상세",
+    "ASK": "이체 요청",
+    "HISTORY": "거래 내역",
+    "DATE": "날짜",
+    "AMOUNT": "금액",
+    "COMMISSION": "수수료",
+    "STATUS": "상태"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "생성할 매장 유형을 선택하세요",
+    "CANCEL": "취소",
+    "CREATE": "확인"
+  },
+  "PROCHES": {
+    "TITLE": "내 가족/지인",
+    "UPDATE": "지인 정보 수정",
+    "FIRSTNAME": "이름",
+    "NAME": "성",
+    "EMAIL": "이메일",
+    "PHONE": "전화",
+    "CREATE": "생성",
+    "BACK": "뒤로",
+    "CHANGE": "수정",
+    "CLOSE": "닫기"
+  },
+  "RATING_MODAL": {
+    "TITLE": "후기 남기기",
+    "RATING": "평점",
+    "COMMENT": "코멘트",
+    "CLOSE": "닫기",
+    "SUBMIT": "제출"
+  },
+  "RDV_MODAL": {
+    "TITLE": "서비스 날짜를 선택하세요",
+    "CANCEL": "취소"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "서비스 생성",
+    "NAME": "이름",
+    "DESCRIPTION": "설명",
+    "COLOR": "색상",
+    "PRICE": "가격",
+    "TIME": "소요시간",
+    "IMAGE": "이미지",
+    "ACTIONS": "작업",
+    "MINUTES": "분",
+    "CHANGE": "수정",
+    "DELETE": "삭제",
+    "SERVICE_NAME": "서비스명",
+    "TIME_MINUTES": "소요시간(분)",
+    "PREST_IMAGE": "서비스 이미지",
+    "NO_PICS": "아직 사진이 없습니다",
+    "UPLOAD": "이미지 업로드",
+    "NEW_PIC": "새 이미지 미리보기",
+    "PRESTA_COLOR": "서비스 색상",
+    "CANCEL": "취소",
+    "SAVE": "저장",
+    "AVG_PRICE": "평균 요금",
+    "IMAGE_OK": "이미지가 성공적으로 업로드되었습니다",
+    "ERROR_IMAGE_LOAD": "이미지 업로드 중 오류",
+    "UPDATE_SUCCESS": "서비스가 성공적으로 업데이트되었습니다",
+    "ERROR_PRESTA": "서비스 업데이트 중 오류",
+    "PRESTA_UPDATED": "서비스가 성공적으로 업데이트되었습니다",
+    "PRESTA_ERROR": "서비스 업데이트 중 오류",
+    "PRESTA_SUCCESS": "서비스가 성공적으로 업데이트되었습니다",
+    "PHOTO_ERROR": "사진 업데이트 중 오류",
+    "PRESTA_DELETED": "서비스가 성공적으로 삭제되었습니다",
+    "PRESTA_DELETE_ERROR": "서비스 삭제 중 오류"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "매장 이미지",
+    "UPLOAD_IMAGE": "이미지 업로드",
+    "SNEEK_PIC": "이미지 미리보기",
+    "SHOP_NAME": "매장명",
+    "DESCRIPTION": "설명",
+    "DESC_INFO": "(최소 25자)",
+    "CITY": "도시",
+    "DISCRICT": "행정구역",
+    "LAT": "위도",
+    "LON": "경도",
+    "ZONE": "이동 가능 범위(km)",
+    "OPENNING": "영업시간",
+    "MORNING_OPEN": "오전 - 오픈",
+    "MORNING_CLOSE": "오전 - 마감",
+    "AFTERNOON_OPEN": "오후 - 오픈",
+    "AFTERNOON_CLOSE": "오후 - 마감",
+    "SAVE": "매장 저장",
+    "MONDAY": "월요일",
+    "TUESDAY": "화요일",
+    "WEDNESDAY": "수요일",
+    "THURSDAY": "목요일",
+    "FRIDAY": "금요일",
+    "SATURDAY": "토요일",
+    "SUNDAY": "일요일",
+    "CLOSED": "휴무",
+    "GENERATE_IMAGE": "이미지 생성",
+    "GENERATE_DESCRIPTION": "설명 생성",
+    "PHOTO": "허용/거절 사진 예시",
+    "CODE_POSTAUX": "서비스 가능 우편번호",
+    "EXEMPLE_LOCAL": "예: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "직원 추가",
+    "LOADING": "로딩 중",
+    "LIST": "직원 목록",
+    "ADD": "추가",
+    "EMAIL": "직원 이메일",
+    "FIRSTNAME": "이름",
+    "FAMILY_NAME": "성",
+    "PHONE": "전화",
+    "PASSWORD": "비밀번호",
+    "HAVE_TO": "모든 필드는 필수입니다.",
+    "EMAIL_ERROR": "유효하지 않은 이메일입니다.",
+    "EMPLOYEE_OK": "직원이 성공적으로 추가되었습니다.",
+    "ADD_EMPLOYEE_ERROR": "직원 추가 중 오류가 발생했습니다."
+  },
+  "AVIS": {
+    "TITLE": "우리 사용자들의 이야기",
+    "AVIS1": "처음엔 반신반의했는데… 대박! 집에서 받은 매니큐어가 완벽했어요. 금요일 밤 작은 루틴이 되었답니다.",
+    "AVIS2": "소파에 앉아서 3분 만에 페이셜을 예약했어요. 에스테티션이 섬세하고 배려 깊었고… 피부가 이렇게 좋아진 건 처음이에요.",
+    "AVIS3": "살롱보다 비쌀 줄 알았는데… 의외로 같은 가격, 아니면 더 저렴! 게다가 이동도 없었죠. 완전 만족!",
+    "AVIS4": "생일 전날, 급하게 브러싱이 필요했는데 2번 클릭으로 전문가를 찾았어요. 시간 엄수, 친절, 결과는 말해 뭐해요.",
+    "AVIS5": "워킹맘이라 바쁩니다. 아이들 재우고 예약할 수 있어서 너무 좋아요. 쉽고 빠르고 정말 최고!",
+    "AVIS6": "첫 세션부터 반했어요. 에스테티션이 바로 편하게 해주더라고요. 제대로 힐링했습니다. 다음 주 예약도 완료!"
+  },
+  "DOWNLOAD": {
+    "USERS": "만족한 사용자",
+    "SOCIAL": "이용 가능한 전문가",
+    "STORE": "App Store 및 Google Play에서"
+  },
+  "TARIF": {
+    "DISCOVER": "너에게 딱 맞는 플랜을 골라봐",
+    "DISCOVER2": "그리고 정상으로의 여정을 시작해",
+    "SOLUTIONS": "아름답고 강력하며 너를 위한 솔루션. 언제든 변경 가능해",
+    "TEST": "첫 번째 살롱은 평생 100% 무료. 스트레스 제로. 마법 같은 시작.",
+    "START_FREE": "내 첫 살롱 만들기",
+    "FREE": "수습",
+    "FREE_SUBTITLE": "첫 살롱으로 상승을 시작해",
+    "THEN": "그다음",
+    "MONTHLY": "월",
+    "FREE1": "활성 살롱 1개",
+    "FREE2": "무제한 예약 및 고객",
+    "FREE3": "서비스 및 일정 관리",
+    "FREE4": "개인 캘린더 동기화",
+    "FREE5": "안정적인 시작에 최적",
+    "FREE6": "무료 살롱 만들기",
+    "BASIC": "선정",
+    "BASIC_SUBTITLE": "잠재력을 열고 빛나기 시작해",
+    "BASIC1": "최대 3개 활성 살롱",
+    "BASIC2": "서비스·고객·예약의 완전한 관리",
+    "BASIC3": "우선 이메일 지원",
+    "BASIC4": "성장을 위한 독점 리소스 접근",
+    "BASIC5": "고객을 늘리고 싶은 프로에게 적합",
+    "BASIC6": "1개월 무료 체험",
+    "PREMIUM": "여왕",
+    "PREMIUM_SUBTITLE": "네 제국이 형성되고, 영향력이 커진다",
+    "PREMIUM1": "최대 10개 활성 살롱",
+    "PREMIUM2": "고급 성과 통계",
+    "PREMIUM3": "매출 증대를 위한 스마트 추천",
+    "PREMIUM4": "IzyGlam 플랫폼에서 가시성 강화",
+    "PREMIUM5": "우선 지원",
+    "PREMIUM6": "야심 찬 독립 프로를 위해",
+    "PREMIUM7": "여왕 플랜 받기",
+    "BUSINESS": "여신",
+    "BUSINESS_SUBTITLE": "네 왕좌를 차지하라, 여신이여",
+    "BUSINESS1": "맞춤형",
+    "BUSINESS2": "무제한 살롱",
+    "BUSINESS3": "전략적 1:1 컨설팅",
+    "BUSINESS4": "강화된 가시성과 매장 노출",
+    "BUSINESS5": "스케일업을 위한 맞춤 솔루션",
+    "BUSINESS6": "문의하기",
+    "COMPARE": "기능 비교",
+    "FONCTIONS": "기능",
+    "BUSINESS9": "활동 전반 관리",
+    "STUDIO_BASIC": "독점 리소스",
+    "STUDIO_ADVANCED": "통계 & 추천",
+    "ANALYSE": "성과 분석",
+    "BASICS": "기본",
+    "ADVANCE": "고급",
+    "PLANS": "활성 살롱 수",
+    "READY": "활동을 키울 준비됐어?",
+    "DISCOVERS": "IzyGlam 요금제 살펴보기"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "접근성 선언",
+      "TEXT": "izyGlam은 누구나 이용할 수 있도록 접근성을 보장하기 위해 노력합니다. 가능한 범위에서 WCAG 2.2 AA 수준 및 RGAA(프랑스) 정합을 목표로 합니다."
+    },
+    "SCOPE": {
+      "TITLE": "적용 범위",
+      "L1": "공식 웹사이트 및 정보 페이지.",
+      "L2": "고객/전문가용 웹 애플리케이션(대시보드).",
+      "L3": "모바일 앱(iOS/Android) 해당 시.",
+      "L4": "트랜잭션 이메일 및 도움말 센터.",
+      "L5": "고객 지원 도구."
+    },
+    "STATUS": {
+      "TITLE": "준수 상태",
+      "TEXT": "본 선언일 현재, izyGlam 인터페이스의 접근성은 WCAG 2.2 AA / RGAA에 부분 준수 상태입니다. 인터페이스를 지속적으로 개선하고 우선 과제를 수정 중입니다."
+    },
+    "PREPARATION": {
+      "TITLE": "선언 준비 방법",
+      "L1": "제품/UI 팀 자가 평가: HTML 시맨틱, ARIA 롤, 탭 순서.",
+      "L2": "수동 테스트: 키보드 내비게이션, 포커스 가시성, 200%+ 확대, 스크린리더.",
+      "L3": "도구 기반 테스트(샘플 화면 자동 감사).",
+      "L4": "지속적 검수(디자인 시스템, 재사용 가능한 접근성 컴포넌트)."
+    },
+    "FEATURES": {
+      "TITLE": "제공하는 접근성 기능",
+      "KEYBOARD": {
+        "TITLE": "키보드 내비게이션",
+        "L1": "전체 경로 키보드 조작(Tab, Shift+Tab, Enter, Space, Esc, 방향키).",
+        "L2": "일관되고 대비가 높은 포커스 표시.",
+        "L3": "헤더 건너뛰기 링크.",
+        "L4": "메뉴/모달/드롭다운의 키보드 조작(열기/닫기, 포커스 트랩, Esc로 닫기)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "스크린리더와 구조",
+        "L1": "제목 계층(h1→h6)과 랜드마크(header, nav, main, footer)로 시맨틱 구조화.",
+        "L2": "모든 필드/버튼에 명확한 라벨과 일관된 접근 가능한 이름.",
+        "L3": "aria-live 영역을 통한 상태 변화 알림(오류, 성공, 로딩).",
+        "L4": "정보성 이미지는 대체 텍스트 제공, 장식 이미지는 무시."
+      },
+      "CONTRAST": {
+        "TITLE": "대비, 색상, 확대",
+        "L1": "일반 텍스트 대비 ≥ 4.5:1, 큰 텍스트 대비 ≥ 3:1 목표.",
+        "L2": "200% 확대에서도 내용/기능 손실 없이 사용 가능.",
+        "L3": "색상만으로 정보 전달 금지."
+      },
+      "FORMS": {
+        "TITLE": "폼과 오류 메시지",
+        "L1": "label⇄input 연결, 필수 필드 표시.",
+        "L2": "필드 인근에 오류 표시 및 필요 시 요약 제공.",
+        "L3": "첫 오류 필드에 포커스 이동, 수정 가이드 제공."
+      },
+      "DYNAMIC": {
+        "TITLE": "동적 콘텐츠와 애니메이션",
+        "L1": "캐러셀/애니메이션 요소는 일시정지 가능, 방해 금지.",
+        "L2": "시스템의 ‘애니메이션 줄이기’ 선호 존중.",
+        "L3": "비침투적 모달, 키보드/외부 클릭으로 닫기 가능."
+      },
+      "MEDIA": {
+        "TITLE": "미디어",
+        "L1": "영상(해당 시) 자막/전사 제공.",
+        "L2": "오디오/비디오의 키보드 제어."
+      },
+      "MOBILE": {
+        "TITLE": "모바일",
+        "L1": "충분히 크고 간격 있는 터치 영역.",
+        "L2": "TalkBack(Android), VoiceOver(iOS)와 일관된 내비게이션."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "대상 환경 및 보조기술",
+      "L1": "Windows: NVDA(Chrome/Firefox), JAWS(Edge/Chrome).",
+      "L2": "macOS: VoiceOver(Safari).",
+      "L3": "iOS/iPadOS: VoiceOver(Safari/Chrome).",
+      "L4": "Android: TalkBack(Chrome).",
+      "L5": "최신 버전의 지원 브라우저."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "비접근(확인/가능성) 콘텐츠",
+      "TEXT": "노력에도 불구하고 일부는 미준수일 수 있습니다:",
+      "L1": "대체 텍스트가 없는 과거 이미지.",
+      "L2": "서드파티 제공 문서(PDF, 첨부) 완전 접근성 미보장.",
+      "L3": "과거 동영상의 자막/설명 부재.",
+      "L4": "서드파티 통합 컴포넌트(결제, 지도, 플레이어)의 한계.",
+      "MOTIVES": "사유: 타사 콘텐츠, 과도한 부담, 업데이트 진행 중 등."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "대체 수단 및 합리적 편의",
+      "TEXT": "접근 가능한 문서, 예약 지원 등 대체 형식이 필요하면 연락주세요. 동등한 해결책을 제공하기 위해 최선을 다하겠습니다."
+    },
+    "FEEDBACK": {
+      "TITLE": "피드백 및 지원",
+      "L1": "앱: 도움말 > 접근성.",
+      "L2A": "이메일:",
+      "L2B": "또는",
+      "L3": "화면/URL, 기기, 브라우저, 사용 스크린리더를 알려주세요."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "[accessibilite@izyglam.com](mailto:accessibilite@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "RECOURSE": {
+      "TITLE": "구제 절차(프랑스)",
+      "TEXT": "접근성 결함으로 콘텐츠/기능에 접근할 수 없고, 당사로부터 만족스러운 답변을 받지 못한 경우:",
+      "L1": "권리옹호관(Defenseur des droits) 또는 지역 대표에게 서면으로 요청할 수 있습니다.",
+      "L2": "해당 시 중재인에 신청할 수 있습니다.",
+      "MORE": "자세히 보기:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "지속적 개선",
+      "L1": "접근성 컴포넌트를 갖춘 디자인 시스템.",
+      "L2": "매 릴리즈마다 코드 리뷰와 접근성 테스트.",
+      "L3": "제품/지원팀의 정기 교육.",
+      "L4": "사용자 영향에 따른 수정 우선순위."
+    },
+    "DATE": {
+      "TITLE": "선언 일자 및 업데이트",
+      "TEXT": "2025년 12월 25일에 작성. 연 1회 이상 또는 주요 변경 시 업데이트됩니다."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "IzyGlam에서 어떻게 서비스를 예약하나요?",
+    "QUESTION2": "나에게 맞는 전문가를 고르는 방법은?",
+    "QUESTION3": "예약을 변경하거나 취소하려면?",
+    "QUESTION4": "주문을 어떻게 추적하나요?",
+    "QUESTION5": "어떤 결제 수단을 사용할 수 있나요?",
+    "QUESTION6": "주문이나 예약은 어떻게 추적하나요?",
+    "QUESTION7": "서비스 후 후기를 남길 수 있나요?",
+    "QUESTION8": "적립/프로모션은 어떻게 사용하나요?",
+    "QUESTION9": "주문에 문제가 생기면?",
+    "QUESTION10": "IzyGlam 팀에 어떻게 연락하나요?",
+    "QUESTION11": "취소/환불 정책은 어떻게 되나요?",
+    "QUESTION12": "다른 사람을 위해(선물/깜짝) 예약할 수 있나요?",
+    "QUESTION13": "IzyGlam 파트너 프로가 되려면?",
+    "QUESTION14": "IzyGlam에서 내 정보는 어떻게 보호되나요?",
+    "REPONSE1": "간단하고 빠릅니다. 가입 후 원하는 서비스를 고르고, 근처의 이용 가능한 전문가를 확인한 뒤 날짜와 시간을 선택하세요. \"예약\"을 눌러 완료하고 카드로 결제하면, 전문가가 수동으로 예약을 확인합니다. 거절 시 전액 환불됩니다.",
+    "REPONSE2": "각 전문가는 서비스, 요금, 작품 사진, 고객 후기가 포함된 상세 프로필을 보유합니다. 즐겨찾기에 추가해 쉽게 찾을 수도 있어요. 시간을 들여 비교하고 가장 잘 맞는 전문가를 선택하세요.",
+    "REPONSE3": "개인 공간에서 예약을 변경/취소할 수 있습니다. 서비스 24시간 전까지 무료 취소가 가능하며, 이후에는 수수료가 부과될 수 있습니다. 문제가 있으면 지원팀이 도와드립니다.",
+    "REPONSE4": "개인 공간의 \"내 예약\"에서 실시간 주문 상태, 취소/수정, 서비스 이력을 확인할 수 있습니다.",
+    "REPONSE5": "결제는 카드(Visa, MasterCard, American Express)로만 가능합니다. 현금 및 PayPal은 제공하지 않습니다. 안심하고 이용하세요.",
+    "REPONSE6": "예약이 확인되면 요약 이메일을 받습니다. 서비스 전 알림(이메일/푸시)도 발송됩니다. 개인 공간에서 상태를 확인할 수 있어요.",
+    "REPONSE7": "네. 서비스가 실제로 이루어진 후 후기를 남길 수 있습니다. 후기는 진정성을 보장하기 위해 수동으로 모더레이션됩니다. 전문가는 후기에 답글을 달거나 수정할 수 없습니다.",
+    "REPONSE8": "현재는 적립 프로그램과 프로모션 코드가 아직 제공되지 않습니다. 추후 단계에서 제공될 예정입니다.",
+    "REPONSE9": "\"문의\" 섹션이나 이메일로 바로 연락해 주세요. (참고 응답 시간) 24시간 내 답변을 드리고 최선의 해결을 돕겠습니다.",
+    "REPONSE10": "웹사이트/앱의 문의 양식을 통해 연락할 수 있습니다. 고객 지원은 월–토, 9시–18시에 운영됩니다. 예: [support@izyglam.com](mailto:support@izyglam.com)",
+    "REPONSE11": "예정 시각 24시간 전까지 무료 취소가 가능합니다. 이후에는 수수료가 부과될 수 있습니다. 전문가가 결제 후 예약을 거절하면 자동 환불됩니다. 자동 환불 시스템은 도입 중입니다.",
+    "REPONSE12": "현재 계정에서 다른 사람에게 바로 선물 예약은 할 수 없습니다. 다만, 전문가가 2인/가족 상품을 제공하는 경우 그 안에서 여러 명을 예약할 수 있습니다.",
+    "REPONSE13": "에스테티션, 헤어, 웰니스 전문가신가요? \"파트너 되기\" 페이지의 양식을 작성하세요. 팀이 신속히 연락드려 등록을 마무리합니다.",
+    "REPONSE14": "데이터 보안은 최우선입니다. GDPR을 준수합니다. 서비스에 필요한 최소한의 정보만 전문가에게 제공되며, 내장 메시지로 소통할 수 있습니다. 플랫폼 우회를 시도하는 행위는 모니터링됩니다."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "우리는 누구인가요?",
+      "TEXT": "본 개인정보 처리방침은 <strong>izyGlam</strong>(이하 “당사”, “우리” 또는 “플랫폼”)가 서비스(웹사이트, 웹앱, 모바일 앱, 이메일 및 지원) 이용 시 귀하의 개인정보를 어떻게 수집·사용·보관·공유·보호하는지 설명합니다. 아래 처리에 대해 당사는 <strong>처리책임자</strong>로서 활동합니다."
+    },
+    "SCOPE": {
+      "TITLE": "정책 범위",
+      "TEXT": "이 정책은 서비스를 예약하는 <strong>고객</strong>, izyGlam을 통해 서비스를 제공하는 <strong>전문가</strong>, 그리고 당사 인터페이스의 <strong>방문자</strong>에 적용됩니다."
+    },
+    "DATA": {
+      "TITLE": "수집되는 데이터",
+      "PROVIDED": {
+        "TITLE": "귀하가 제공하는 데이터",
+        "L1": "<strong>신원 & 연락처: </strong> 성명, 이메일, 전화, 주소(들), 사진/아바타.",
+        "L2": "<strong>계정: </strong> 식별자, 비밀번호(해시), 선호 설정, 언어.",
+        "L3": "<strong>예약: </strong> 선택한 서비스, 날짜/시간, 방문 주소, 메모, 첨부 파일.",
+        "L4": "<strong>결제: </strong> <em>결제 대행사(예: Stripe)를 통해</em> 처리 — 카드 정보는 저장하지 않습니다.",
+        "L5": "<strong>전문가: </strong> 공개 프로필, 서비스, 요금, 이동 가능 지역, 가능 시간, RIB/IBAN(보안), 요구 시 검증 서류.",
+        "L6": "<strong>지원: </strong> 메시지, 티켓, 필요 시 통화 녹음."
+      },
+      "AUTOMATIC": {
+        "TITLE": "자동으로 수집되는 데이터",
+        "L1": "<strong>기술 데이터: </strong> 기기 모델, OS, 브라우저, 해상도, 세션 ID.",
+        "L2": "<strong>로그: </strong> IP 주소, 타임스탬프, 오류 이벤트, 기능 사용.",
+        "L3": "<strong>위치: </strong> 대략적(IP) 또는 정확한(GPS, 명시적 동의 시) 위치.",
+        "L4": "<strong>쿠키 & SDK: </strong> 아래 섹션 참조."
+      },
+      "THIRD": {
+        "TITLE": "제3자로부터의 데이터",
+        "L1": "<strong>결제 대행사</strong>(결제 상태, 토큰).",
+        "L2": "<strong>애널리틱스/사기 방지 파트너</strong>(리스크 신호, 사용 집계).",
+        "L3": "<strong>통합 서비스</strong>(예: 커뮤니케이션, 지도, 클라우드 스토리지)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "목적 & 법적 근거",
+      "TEXT": "데이터는 다음 목적을 위해 처리됩니다:",
+      "L1": "<strong>서비스 제공</strong>(계정 생성, 예약, 매칭, 알림) — <em>계약 이행</em>.",
+      "L2": "<strong>결제 & 청구</strong> — <em>계약, 법적 의무</em>.",
+      "L3": "<strong>보안, 남용/사기 방지</strong> — <em>정당한 이익, 법적 의무</em>.",
+      "L4": "<strong>제품 개선, 통계</strong> — <em>정당한 이익</em>.",
+      "L5": "<strong>지원 & 품질</strong> — <em>계약, 정당한 이익</em>.",
+      "L6": "<strong>다이렉트 마케팅</strong>(이메일/앱) — <em>필요 시 동의</em>; 언제든 거부 가능.",
+      "L7": "<strong>법적 준수</strong>(회계, 당국 요청) — <em>법적 의무</em>."
+    },
+    "SHARING": {
+      "TITLE": "데이터 공유",
+      "L1": "<strong>전문가 / 고객</strong>: 서비스 제공에 필요한 정보(이름, 연락수단, 방문 주소, 예약 상세).",
+      "L2": "<strong>서비스 제공업체</strong>: 결제(예: Stripe), 호스팅/스토리지, 분석, 이메일/SMS 푸시, 지원, 필요 시 KYC. <em>필요 최소한 접근, GDPR 준수 계약</em>.",
+      "L3": "<strong>파트너</strong>: 특정 제안에 귀하가 동의한 경우.",
+      "L4": "<strong>당국</strong>: 법이 요구하거나 권리 보호를 위해."
+    },
+    "TRANSFERS": {
+      "TITLE": "EU/EEA 외 전송",
+      "TEXT": "적정성 결정이 없는 국가로 전송 시 <strong>표준 계약조항(SCC)</strong>을 사용하고 추가 조치를 적용합니다."
+    },
+    "RETENTION": {
+      "TITLE": "보관 기간",
+      "L1": "<strong>계정 & 신원</strong>: 계정 사용 기간 동안, 이후 <em>최종 활동 후 최대 3년</em>(영업) 또는 <em>회계/법적 의무를 위해 5~10년</em>.",
+      "L2": "<strong>예약/청구서</strong>: <em>10년</em>(법적 의무).",
+      "L3": "<strong>보안 로그</strong>: 중요도에 따라 <em>6~24개월</em>.",
+      "L4": "<strong>쿠키</strong>: 쿠키 섹션 참조.",
+      "NOTE": "기간 경과 후 데이터는 삭제 또는 익명화됩니다."
+    },
+    "COOKIES": {
+      "TITLE": "쿠키 & SDK",
+      "TEXT": "플랫폼 작동, 트래픽 측정, 사기 방지, 동의 시 개인화를 위해 쿠키/SDK를 사용합니다.",
+      "L1": "<strong>필수</strong>: 인증, 보안, 기술 선호.",
+      "L2": "<strong>트래픽 측정</strong>: 사용 통계 집계.",
+      "L3": "<strong>마케팅</strong>: 동의한 경우에만.",
+      "PREF": "배너 및 브라우저 설정에서 언제든 선호도를 관리할 수 있습니다."
+    },
+    "AUTOMATION": {
+      "TITLE": "자동화 의사결정 & 프로파일링",
+      "TEXT": "사기 위험, 전문가 가용성, 거리 등 자동 신호를 사용하여 작업 우선순위나 시간대를 제안할 수 있습니다. 법적 의무나 귀하의 명시적 동의가 없는 한, 법적 효과가 중대한 결정을 인간 개입 없이 내리지 않습니다."
+    },
+    "RIGHTS": {
+      "TITLE": "귀하의 권리(GDPR)",
+      "L1": "<strong>열람</strong>, <strong>정정</strong>, <strong>삭제</strong> 권리.",
+      "L2": "<strong>제한</strong> 및 <strong>이식성</strong> 권리.",
+      "L3": "정당한 이익 기반 처리에 대한 <strong>반대</strong> 권리.",
+      "L4": "언제든 <strong>동의 철회</strong> 권리.",
+      "L5": "CNIL에 <strong>불만 제기</strong> 권리.",
+      "CONTACT": "권리 행사를 위해 연락:",
+      "VERIFY": "신원 확인을 위해 추가 정보를 요청할 수 있습니다."
+    },
+    "SECURITY": {
+      "TITLE": "보안",
+      "TEXT": "전송 구간 암호화(TLS), 비밀번호 해시, 로깅/모니터링, 접근 제어, 백업, 코드 리뷰, 보안 테스트 등 적절한 기술/관리 조치를 시행합니다."
+    },
+    "MINORS": {
+      "TITLE": "미성년자 데이터",
+      "TEXT": "서비스는 15세 미만을 대상으로 하지 않습니다. 미성년자 계정이 확인되면 검증 후 삭제합니다."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "주요 하위처리자",
+      "TEXT": "호스팅, 결제, 이메일링, 분석, 스토리지 등의 핵심 하위처리자와 협력합니다. 최신 목록은 다음 주소로 요청 시 제공됩니다"
+    },
+    "CONTACT": {
+      "TITLE": "연락처 & DPO",
+      "PRIVACY_LABEL": "개인정보 문의",
+      "SUPPORT_LABEL": "지원",
+      "AUTHORITY_LABEL": "감독 기관",
+      "EMAIL_PRIVACY": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_PRIVACY_TEXT": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "CHANGES": {
+      "TITLE": "정책 변경",
+      "TEXT": "법적/기능적 변경을 반영하기 위해 본 정책을 업데이트할 수 있습니다. 중대한 변경 시 이메일 또는 앱을 통해 알려드립니다. 발효일: <strong>2025년 8월 11일</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "현지 조항",
+      "TEXT": "EU 내에 있는 경우, 데이터는 GDPR에 따라 처리됩니다. 국가/지역별 추가 조항이 적용될 수 있으며, 해당 시 고지됩니다."
+    },
+    "GLOSSARY": {
+      "TITLE": "용어집(발췌)",
+      "L1": "<strong>처리책임자</strong>: 처리 목적과 수단을 결정하는 주체.",
+      "L2": "<strong>하위처리자</strong>: 책임자를 대신하여 데이터를 처리하는 주체.",
+      "L3": "<strong>법적 근거</strong>: 처리를 정당화하는 근거(계약, 동의, 법적 의무, 정당한 이익).",
+      "L4": "<strong>쿠키/SDK</strong>: 서비스 제공, 측정, 개인화를 위해 사이트/앱이 사용하는 추적기."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "약관의 수락",
+      "TEXT": "izyGlam의 서비스(웹, 웹앱, 모바일 앱)를 이용하면 본 이용약관(“CGU”)에 동의하는 것입니다. 동의하지 않으면 플랫폼을 사용하지 마십시오."
+    },
+    "DEFINITIONS": {
+      "TITLE": "정의",
+      "L1": "<strong>고객</strong>: 플랫폼에서 서비스를 예약/결제하는 사람.",
+      "L2": "<strong>전문가</strong>: 플랫폼을 통해 서비스를 제공하는 사람.",
+      "L3": "<strong>서비스</strong>: 전문가가 제공하는 서비스(예: 방문 뷰티).",
+      "L4": "<strong>플랫폼</strong>: izyGlam이 운영하는 소프트웨어 인프라, 사이트, 앱."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "서비스와 izyGlam의 역할",
+      "TEXT": "izyGlam은 <strong>매칭 플랫폼</strong>입니다. 전문가는 제공 서비스(품질, 준법, 보험)에 대해 <strong>단독 책임</strong>을 집니다. 별도 명시가 없는 한, izyGlam은 판매자 또는 서비스 제공자가 아니며 이행 책임을 지지 않습니다."
+    },
+    "ACCOUNT": {
+      "TITLE": "계정과 자격",
+      "L1": "예약 또는 제공을 위해 가입이 필요합니다. 정확한 정보를 제공하고 최신으로 유지해야 합니다.",
+      "L2": "플랫폼 사용을 위해 최소 15세 이상이어야 합니다. 전문가는 합법적으로 영업할 수 있어야 합니다.",
+      "L3": "계정 자격 증명의 기밀 유지와 계정에서 이루어지는 활동에 대한 책임은 귀하에게 있습니다.",
+      "L4": "izyGlam은 CGU 위반이나 사기 위험 시 계정을 정지/해지할 수 있습니다."
+    },
+    "BOOKINGS": {
+      "TITLE": "예약과 계약 체결",
+      "L1": "서비스는 고객이 <strong>온라인으로 예약/결제</strong>합니다. 현금 지불은 없습니다.",
+      "L2": "결제 후 예약은 <strong>전문가의 승인</strong>에 따릅니다. 거절 시 고객은 <strong>전액 환불</strong>됩니다.",
+      "L3": "승인 시점에 고객과 전문가 간 서비스 계약이 성립합니다.",
+      "L4": "시간, 방문 주소, 특별 조건은 당사자들이 확인해야 합니다."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "요금, 구독, 결제",
+      "L1": "서비스 요금은 전문가가 자유롭게 정합니다. izyGlam은 <strong>플랫폼 수수료</strong>를 부과합니다.",
+      "L2": "전문가 구독(현재 예): <em>살롱 1개 평생 무료</em>; <em>Basic: 살롱 3개 – 월 99 €</em>; <em>Premium: 살롱 10개 – 월 499 €</em>; <em>이상: 별도 견적</em>.",
+      "L3": "결제는 <strong>카드 결제 전용</strong>(예: Stripe)입니다. <strong>현금 불가</strong>, 프로모션 코드 및 적립은 현재 미제공.",
+      "L4": "금액, 세금, 수수료는 확인 전 표시됩니다. 구독 조건은 변경될 수 있으며, 사전 고지합니다."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "취소, 환불, 노쇼",
+      "L1": "예정 <strong>24시간 전</strong>까지 무료 취소.",
+      "L2": "24시간 미만 시, 정책에 따른 <strong>수수료</strong> 부과 가능.",
+      "L3": "전문가가 결제 후 <strong>거절</strong>한 경우 100% 환불. 자동 환불은 도입 중이며, 필요 시 지원팀이 처리합니다.",
+      "L4": "<strong>노쇼</strong>(무통지 결석)는 수수료 또는 환불 불가의 사유가 될 수 있습니다."
+    },
+    "PAYOUTS": {
+      "TITLE": "전문가 지급",
+      "L1": "지급은 서비스 <strong>이행 확인</strong>(예: <em>확인 코드</em>) 시점에 이루어집니다.",
+      "L2": "전문가가 제공한 RIB/IBAN으로 이체됩니다. 정보의 정확성은 전문가 책임입니다.",
+      "L3": "지급 금액은 서비스 가격에서 수수료 및 해당 비용을 <em>차감한 후</em>의 금액입니다."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "당사자 책임",
+      "L1": "전문가는 서비스 적법성, 위생, 안전 등을 보장합니다.",
+      "L2": "고객은 정확한 정보(주소, 가능 시간, 출입 제한 등)를 제공하고 예약을 준수합니다.",
+      "L3": "izyGlam은 플랫폼과 도구(예약, 결제, 메시지)를 제공하지만 서비스 결과를 보증하지 않습니다."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "유효하지 않은 평점입니다.",
+      "TITLE": "후기와 평점",
+      "L1": "후기는 <strong>실제 수행된 서비스</strong>에 대해서만 남길 수 있습니다.",
+      "L2": "법령/약관 위반 내용 등은 <strong>모더레이션</strong>에 따라 삭제될 수 있습니다."
+    },
+    "PROHIBITED": {
+      "TITLE": "금지 행위",
+      "L1": "사기, 신원 도용, 플랫폼 우회, 플랫폼 외 거래 유도.",
+      "L2": "불법·명예훼손·차별·폭력적이거나 미풍양속에 반하는 콘텐츠.",
+      "L3": "침입, 서비스 거부 공격, 리버스 엔지니어링, 보안 우회.",
+      "L4": "타 사용자 개인정보의 무단 수집."
+    },
+    "IPR": {
+      "TITLE": "지식재산권",
+      "TEXT": "플랫폼의 콘텐츠, 상표, 요소(코드, 디자인, 텍스트, 로고, 이미지)는 보호됩니다. 명시적 허가 없이 복제·배포·개작을 금합니다. 전문가가 제공한 콘텐츠의 소유권은 전문가에게 있으며, 플랫폼 운영에 필요한 비독점 라이선스를 izyGlam에 부여합니다."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "서드파티 서비스",
+      "TEXT": "플랫폼은 서드파티 서비스(결제, 지도, 호스팅, 분석)를 통합할 수 있습니다. 해당 서비스의 약관이 적용됩니다. azyGlam은 이들의 중단/장애에 책임지지 않습니다."
+    },
+    "AVAILABILITY": {
+      "TITLE": "가용성, 점검, 업데이트",
+      "TEXT": "유지보수/개선을 위해 서비스의 전부/일부를 변경·중단·중지할 수 있습니다. 사용자 영향 최소화를 위해 합리적 노력을 기울입니다."
+    },
+    "LIABILITY": {
+      "TITLE": "책임 제한 및 면책",
+      "TEXT": "법이 허용하는 범위에서 izyGlam의 책임은 간접 손해(기회 상실, 매출 손실 등)를 제외한 직접 손해로 제한됩니다. 귀하는 본 약관 위반 또는 불법 사용으로부터 발생하는 모든 청구에 대해 izyGlam을 면책하는 데 동의합니다."
+    },
+    "TERMINATION": {
+      "TITLE": "해지 및 정지",
+      "TEXT": "언제든 계정을 삭제할 수 있습니다. CGU 위반, 사기, 남용 또는 법적 명령 시 접근을 정지/해지할 수 있습니다. 일부 의무(예: 미지급금, 책임 조항)는 해지 후에도 유효합니다."
+    },
+    "PRIVACY": {
+      "TITLE": "개인정보",
+      "TEXT": "개인정보 처리는 <strong>개인정보 처리방침</strong>에 따릅니다. 플랫폼을 사용하면 이에 동의하는 것입니다. GDPR 권리와 당사의 약속을 참고하세요."
+    },
+    "CHANGES": {
+      "TITLE": "약관 변경",
+      "TEXT": "법적·규제·기능적 사유로 본 약관을 변경할 수 있습니다. 중대한 변경 시 이메일 또는 앱을 통해 안내하고 최신 버전을 게시합니다."
+    },
+    "LAW": {
+      "TITLE": "준거법과 분쟁",
+      "TEXT": "본 CGU는 <strong>프랑스 법</strong>을 준거법으로 합니다. 소비자에게 더 유리한 강행 규정이 없는 한, 분쟁은 izyGlam 본사 소재지 관할 법원에 제기됩니다."
+    },
+    "CONTACT": {
+      "TITLE": "연락처",
+      "SUPPORT_LABEL": "지원",
+      "LEGAL_LABEL": "법무",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL": "[legal@izyglam.com](mailto:legal@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL_TEXT": "[legal@izyglam.com](mailto:legal@izyglam.com)"
+    },
+    "EFFECTIVE": {
+      "TITLE": "발효일",
+      "TEXT": "본 CGU는 <strong>2025년 12월 25일</strong>에 발효되며 이전 버전을 대체합니다."
+    }
+  }
+}

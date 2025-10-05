@@ -24,11 +24,11 @@
   <!-- Image et texte dynamique -->
   <div class="row margin-top-80 align-items-center">
     <div class="col-12 col-md-6 image-section text-center mb-4 mb-md-0">
-      <img [src]="currentStep.image" alt="image section" class="img-fluid" />
+      <img [src]="currentStep!.image" alt="image section" class="img-fluid" />
     </div>
     <div class="col-12 col-md-6 growth-section text-center text-md-start">
-      <h3>{{ currentStep.titleTranslate | translate }}</h3>
-      <p>{{ currentStep.textTranslate | translate }}</p>
+      <h3>{{ currentStep!.titleTranslate | translate }}</h3>
+      <p>{{ currentStep!.textTranslate | translate }}</p>
     </div>
   </div>
 

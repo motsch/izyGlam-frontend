@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "美容師",
+    "NAILTECHNICIAN": "マニキュア",
+    "MAKEUP": "メイクアップアーティスト",
+    "WAXING": "エステティシャン",
+    "FACIAL": "フェイシャルトリートメント",
+    "MASSAGE": "マッサージ師",
+    "EYELASH": "まつげエクステ",
+    "EYEBROW": "眉毛",
+    "TANNING": "タンニング",
+    "ACUPUNCTURE": "鍼",
+    "OTHER": "その他"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "ギャラリーから写真を削除しました",
+    "PHOTO_UPLOAD": "画像のアップロードに成功しました",
+    "PARTIAL_REFUND_CONFIRM": "一部返金を確定しました！",
+    "CODE_SAVED": "コードを生成しました。",
+    "USERCREATED": "ユーザーの作成に成功しました。確認メールを送信しました。",
+    "SUBSCRIBE_SUCCESS": "ご購読が正常に登録されました。",
+    "EMAIL_VERIFIED": "アカウントが有効化されました 🎉 いまログインできます。",
+    "EMAIL_RESENT": "確認メールを再送しました。メールボックスをご確認ください。",
+    "BOOKING_CREATED": "ご予約が正常に登録されました。",
+    "PAYMENT_OK": "支払いが承認されました。",
+    "REFUND_OK": "返金が完了しました。",
+    "USERUPDATED": "ユーザーを更新しました。",
+    "SETTINGS_UPDATED": "設定を更新しました。",
+    "REVIEW_ADDED": "口コミを公開しました 🎉",
+    "SHOPUPDATED": "店舗を更新しました。",
+    "BOOKING_ACCEPTED": "予約を承諾しました。",
+    "BOOKING_FINISHED": "予約が完了しました。",
+    "BOOKING_REFUSED": "予約を拒否しました。",
+    "BOOKING_DELETED": "予約を削除しました。",
+    "CODE_GENERATED": "コードを生成しました。",
+    "CODE_CONFIRMED": "コードを確認しました。",
+    "INVOICE_DOWNLOADED": "請求書をダウンロードしました。",
+    "MARKED_NO_SHOW_CLIENT": "クライアントを不在としてマークしました。",
+    "COMPANY_CREDITED": "企業アカウントに入金しました。",
+    "MARKED_NO_SHOW_PRO": "施術者を不在としてマークしました。",
+    "EMPLOYEE_CREDITED": "従業員アカウントに入金しました。",
+    "NO_SHOW_PRO": "ペナルティを適用し、返金を実施しました。",
+    "EMPLOYEE_DELETED": "従業員を削除しました。",
+    "SLOT_SELECTED": "時間枠を選択しました",
+    "PASSWORD_RESET": "パスワードを再設定しました。",
+    "INVOICE_GENERATED": "請求書を生成しました。",
+    "REVIEW_SAVED": "口コミを保存しました。ありがとうございます！",
+    "DEFAULT_PASSWORD_UPDATED": "デフォルトのパスワードを更新しました。",
+    "COMPANY_CREATED": "法人アカウントが正常に作成されました。"
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "お気に入りを管理するにはログインしてください。",
+    "INVALID_IMAGE": "無効な画像です。",
+    "NO_SLOTS": "このサービスに利用可能な時間枠がありません。",
+    "NO_SHOP_SELECTED": "店舗が選択されていません。",
+    "NO_SERVICE_SELECTED": "サービスが選択されていません。",
+    "ORDER_ERROR": "注文の更新中にエラーが発生しました。",
+    "CODE_ERROR": "コードの保存中にエラーが発生しました。",
+    "INVOICE_GENERATED_ERROR": "請求書の生成中にエラーが発生しました。",
+    "USERNOTCREATED": "ユーザーを作成できませんでした。",
+    "INSUFFICIENT_COMPANY_CREDIT": "この入金に対して企業残高が不足しています。",
+    "GENERIC_ERROR": "✨ おっと…エラーが発生しました。もう一度お試しください ✨",
+    "COMPANY_CREDITED": "企業アカウントに入金しました。",
+    "LINK_INVALID_OR_MISSING": "リンクが無効または不足しています。",
+    "LINK_INVALID_OR_EXPIRED": "リンクが無効または有効期限切れです。",
+    "EMAIL_NOT_FOUND": "ユーザーのメールが見つかりません。",
+    "PAYMENT_FAILED": "支払いに失敗しました。",
+    "BOOKING_FAILED": "予約の作成に失敗しました。",
+    "LOAD_CARDS_FAILED": "カードの読み込み中にエラーが発生しました。",
+    "LOAD_SHOP_FAILED": "店舗の読み込み中にエラーが発生しました。",
+    "LOAD_PRODUCTS_FAILED": "施術の読み込み中にエラーが発生しました。",
+    "INVALID_CODE": "入力されたコードは無効です。",
+    "PASSWORD_CHANGED": "パスワードを更新しました。",
+    "PASSWORDS_IDENTICAL": "新しいパスワードは現在のものと異なる必要があります。",
+    "INVALID_AMOUNT": "入力された金額は無効です。",
+    "INVALID_CURRENT_PASSWORD": "現在のパスワードが正しくありません。",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "現在のパスワードが誤っているか、エラーが発生しました。",
+    "PASSWORD_UPDATE_FAILED": "パスワードの変更に失敗しました。",
+    "PASSWORD_UPDATE_GENERIC": "パスワード更新中にエラーが発生しました。",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "パスワードが一致しないか短すぎます（最小 8 文字）。",
+    "INVALID_PASSWORD": "パスワードを空にはできません。",
+    "PASSWORD_TOO_SHORT": "パスワードは 8 文字以上にしてください。"
+  },
+  "STRIPE": {
+    "MISSING_PK": "Stripe の設定が不足しています。",
+    "LOAD_FAILED": "Stripe を読み込めませんでした",
+    "NOT_READY": "Stripe が初期化されていません",
+    "CONFIRM_FAILED": "カードの登録に失敗しました",
+    "CARD_SAVED": "カードを登録しました ✅",
+    "PM_FAILED": "カード作成に失敗しました",
+    "SI_FAILED": "カード登録の準備ができませんでした",
+    "ATTACH_FAILED": "カードをアカウントに紐づけできません",
+    "SAVE_CARD": "カードを保存",
+    "ADD_CARD": "カードを追加"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "ログインしてください"
+  },
+  "COMMON": {
+    "LOADING": "読み込み中…",
+    "UNEXPECTED_ERROR": "予期しないエラーが発生しました"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "確認中",
+    "VALIDE": "有効化リンクを検証しています。少々お待ちください。",
+    "ACCOUNT": "アカウントが有効化されました",
+    "CONNECT": "ログイン",
+    "OUPS": "おっと",
+    "WRITE": "お困りですか？ご連絡先：",
+    "RESEND": "有効化メールを再送"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "私の銀行情報",
+    "ADD_BANK_INFO": "銀行情報を追加",
+    "BANK_NAME": "銀行名",
+    "HOLDER_NAME": "口座名義人",
+    "COUNTRY": "国",
+    "SAVE": "保存"
+  },
+  "LOADER": {
+    "LOADING": "読み込み中…"
+  },
+  "SPONSORS": {
+    "TITLE": "スポンサー",
+    "SPONSORISED": "スポンサー提供"
+  },
+  "TABS": {
+    "FINANCE": "財務管理",
+    "GENERAL_INFO": "一般情報",
+    "EMPLOYEES": "従業員管理",
+    "SERVICES": "施術管理",
+    "PHOTOS": "写真ギャラリー",
+    "STATS": "統計",
+    "PARAM": "設定",
+    "SHOPS": "店舗一覧",
+    "USERS": "ユーザー",
+    "MESSAGE": "メッセージ"
+  },
+  "CARD": {
+    "ADD": "カードを追加",
+    "NO_IMAGE": "ギャラリーに画像がありません。",
+    "SALON": "サロンを正常に更新しました",
+    "ERROR1": "サロン更新中にエラーが発生しました",
+    "ERROR2": "写真更新中にエラーが発生しました",
+    "UPDATE": "サロンを更新しました"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "完了",
+    "ACCEPTEE": "承認済み",
+    "WAITING": "保留",
+    "CANCEL": "キャンセル済み",
+    "DELETE": "削除済み",
+    "REFUSED": "拒否",
+    "NO_PRESTA": "施術者不在",
+    "CLIENT_ABSENT": "クライアント不在",
+    "ADRESSE": "住所",
+    "DATE": "日付",
+    "TOTAL": "合計",
+    "FACTURE": "請求書",
+    "CANCELLED": "キャンセル済み",
+    "DELETED": "削除",
+    "AVIS": "口コミ",
+    "SUPPORT": "サポート",
+    "CODE": "確認コード",
+    "CODE_A_DONNER": "施術者に伝えるコード",
+    "PRESTA_ABSENT": "施術者不在"
+  },
+  "SHOP_CARD": {
+    "AVIS": "店舗の口コミ",
+    "COMMENT": "コメント",
+    "NOTE": "評価",
+    "CLOSE": "閉じる"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "ギャラリーに画像がありません。"
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "ご注文を評価する",
+    "DATE": "日付",
+    "SERVICE": "サービス",
+    "AVIS": "あなたの口コミ",
+    "SEND": "送信",
+    "PLACEHOLDER": "体験を記入してください…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "ご自宅までお届け",
+    "KNOWMORE": "詳しく見る",
+    "PART1TITLE": "自宅で受けられる上質な美容サービス",
+    "PART1TEXT": "資格を持つプロがご自宅に伺い、あなたのニーズとご希望に合わせた高品質のビューティーケアを提供します。昼休み、仕事帰りの夜、友人との午後など、いつでもどこでも特別なウェルビーイング体験を。",
+    "PART2TITLE": "好きな時に働き、思い通りの収入を",
+    "PART2TEXT": "ご自身のペースでプラットフォーム上の依頼を受け、スケジュールに合わせて収入を得られます。ご自身の機材を使うことも、izyGlam を通じてプロ機材をレンタルすることも可能です。",
+    "PART3TITLE": "企業向けに再発明されたビューティーサービス",
+    "PART3TEXT": "Glam for Business はあらゆる規模の企業向けプラットフォーム。社員やお客様の美容ニーズを一元管理できます。職場やイベント会場など、必要な場所にプロが出向き、最適なサービスを提供します。",
+    "APPTITLE": "アプリならもっと簡単",
+    "DOWNLOADAPP1": "アプリをダウンロード",
+    "DOWNLOADAPP2": "美容プロ向けアプリをダウンロード",
+    "SCANTODOWNLOAD": "スキャンしてダウンロード",
+    "SIGNUP": "今すぐ登録！"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "動画の再生エラー",
+    "AUTOPLAY_BLOCKED": "自動再生がブロックされました。タップして再生してください。",
+    "NAV_ERROR": "移動できません"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "izyGlam のアプリとサイトの使い方",
+    "HELPCENTER": "ヘルプセンターへ",
+    "BUSINESS": "企業",
+    "ABOUT": "概要",
+    "OURSERVICES": "サービス",
+    "PRESSAREA": "プレスルーム",
+    "INVESTORS": "投資家",
+    "CAREERS": "採用情報",
+    "AI": "人工知能",
+    "PRODUCTS": "製品",
+    "GLAM": "izyGlam でいつでもベストに",
+    "RESERVED": "事前予約",
+    "GIFTCARDS": "ギフトカード",
+    "WORKWITHUS": "izyGlam と働く",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "プライバシー",
+    "ACCESS": "アクセシビリティ",
+    "CONDITIONS": "利用規約",
+    "LANGUAGE": "言語",
+    "LOCALISATION": "地域",
+    "ALL_RIGHT": "All rights reserved"
+  },
+  "COMING_SOON": {
+    "TITLE": "近日公開",
+    "TITLE-NOT-COMING": "現時点で展開予定はありません",
+    "DAYS": "日",
+    "HOURS": "時間",
+    "MINUTES": "分",
+    "SECONDS": "秒",
+    "TEXT": "ご自宅で体験できるユニークなビューティーサービスをお届けするため鋭意準備中です。ローンチ情報をお見逃しなく。"
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "今だけのオファー",
+    "DISCOVER": "izyGlam のおすすめ",
+    "LIKED": "周辺で人気",
+    "SMART": "お得プラン",
+    "TOP10": "今週のトップ10",
+    "SEARCHRESULT": "検索結果",
+    "AVIS": "口コミ"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "ヘア",
+    "MANUCURE": "マニキュア",
+    "VISAGE": "フェイス",
+    "MASSAGE": "マッサージ",
+    "MAQUILLAGE": "メイク",
+    "EPILATION": "脱毛",
+    "BRONZAGE": "タンニング",
+    "PARTUM": "産後ケア",
+    "NUTRITION": "栄養",
+    "FITNESS": "フィットネス",
+    "ACUPUNCTURE": "鍼",
+    "STYLISME": "スタイリング",
+    "YOGA": "リラクゼーション",
+    "DEVELOPPEMENT": "自己啓発",
+    "EYELASH": "まつげエクステ"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "女性美容師",
+    "MANUCURE": "マニキュア担当",
+    "ESTETICIAN": "女性エステティシャン",
+    "MASSAGE": "女性マッサージ師",
+    "MAQUILLAGE": "女性メイクアップアーティスト",
+    "PEDICURE": "フットケア担当",
+    "NUTRITION": "栄養士",
+    "FITNESS": "コーチ"
+  },
+  "INTRO": {
+    "NORESULTS": "結果が見つかりません",
+    "START": "はじめる",
+    "SPECIALITY": "得意分野は？",
+    "WHERE": "どこで？",
+    "CONNEXION": "ログイン",
+    "REGISTRATION": "新規登録"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "アカウント情報",
+    "MESSAGE": "私のメッセージ",
+    "MESSAGE_SUBTITLE": "進行中の会話一覧。",
+    "INFORMATION_SUBTITLE": "プロフィール情報を簡単に編集。",
+    "SECURITY": "セキュリティと言語",
+    "SECURITY_SUBTITLE": "パスワードや言語など、ここで管理。",
+    "CONFIDENTIAL": "プライバシーとデータ",
+    "CONFIDENTIAL_SUBTITLE": "あなたのデータは大切。丁寧に扱います。",
+    "DASHBOARD": "ダッシュボード",
+    "DASHBOARD_SUBTITLE": "活動データをかんたん管理。",
+    "COMPANY": "企業管理",
+    "COMPANY_SUBTITLE": "過去／今後／キャンセル済みの予約を管理。",
+    "SHOP": "サロン管理",
+    "SHOP_SUBTITLE": "サロン、施術、財務を管理。",
+    "FINANCIAL": "財務管理",
+    "ADMIN": "全体管理",
+    "ADMIN_SUBTITLE": "この傑作を簡単管理。世界へ羽ばたこう！",
+    "CALENDAR": "カレンダー",
+    "CALENDAR_SUBTITLE": "過去や今後の予約を管理。",
+    "SELECT_SALON": "サロンを選択",
+    "NEW_SALON": "サロンを作成",
+    "SHOP_TO_CREATE": "作成する店舗タイプ",
+    "CANCEL": "キャンセル",
+    "CREATE": "私の店舗を作成",
+    "INFO1": "次の店舗を削除しようとしています：",
+    "INFO2": "この操作は元に戻せません",
+    "SURE": "本当に続行しますか",
+    "DELETE": "削除"
+  },
+  "PROFILE": {
+    "TITLE": "基本情報",
+    "FIRSTNAME": "名",
+    "LASTNAME": "姓",
+    "PHONE": "電話番号",
+    "ADDRESS": "メールアドレス",
+    "CHANGE_USER": "ユーザーを編集",
+    "CANCEL": "キャンセル",
+    "SUCCESS": "プロフィールを更新しました",
+    "UPDATE_ERROR": "パスワード更新中にエラーが発生しました。"
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "パスワードを変更",
+    "ACTUAL_PASSWORD": "現在のパスワード",
+    "NEW_PASSWORD": "新しいパスワード",
+    "CONFIRMED_PASSWORD": "新しいパスワードの確認",
+    "CHANGE_PASSWORD": "パスワードを変更",
+    "CHANGE_OK": "パスワードを変更しました",
+    "CHANGE_LANGUE": "言語を変更",
+    "CHANGE_COUNTRY": "国を変更",
+    "LANGUE": "言語",
+    "COUNTRY": "国"
+  },
+  "PAYEMENT": {
+    "YOU": "あなた",
+    "HEADER_TITLE": "支払い",
+    "SERVICE_TITLE": "サービス",
+    "SERVICE_NOTE": "注意：",
+    "ADDRESS_TITLE": "施術の住所",
+    "ADDRESS_RENDEZVOUS": "玄関先で待ち合わせ",
+    "ADDRESS_CHANGE": "別の住所を選択",
+    "PAYMENT_SECTION_TITLE": "お支払い",
+    "PAYMENT_METHOD": "メインカード",
+    "PAYMENT_EXPIRE": "有効期限",
+    "PAYMENT_NO_CARD": "メインカードが設定されていません",
+    "PAYMENT_NO_CARD_DESC": "メインの支払い方法としてカードを追加または選択してください。",
+    "SUMMARY_SUBTOTAL": "小計",
+    "SUMMARY_SERVICE_FEE": "izyGlam 手数料",
+    "SUMMARY_DELIVERY_FEE": "サービス料",
+    "SUMMARY_TOTAL": "合計",
+    "TITLE": "オンラインで予約しましょう",
+    "FOR_WHO": "この予約は誰のためですか？",
+    "ADD_PROCHE": "家族を追加",
+    "WHERE": "どこで施術を受けますか？",
+    "SELECT_ADDRESS": "住所を選択",
+    "ADD_ADDRESS": "住所を追加",
+    "CARD_PAY": "クレジットカード決済",
+    "CARD_NUM": "カード番号",
+    "CARD_NAME": "カード名義",
+    "EXPIRATION": "有効期限",
+    "CVV": "CVV",
+    "RDV": "予約の詳細",
+    "RESUME": "予約の概要",
+    "DATE": "日付",
+    "HOUR": "時間",
+    "PRESTA": "施術",
+    "EXPIRE": "有効期限",
+    "DEFAULT": "デフォルト",
+    "NOCARD": "登録済みカードはありません",
+    "WITH": "担当",
+    "TOTAL": "お支払い合計",
+    "ANNULER": "キャンセル",
+    "RETOUR": "戻る",
+    "CONTINUER": "続ける",
+    "VALIDER": "確定する",
+    "ADRESSE": "住所",
+    "LEGAL_TEXT_1": "注文ボタンをクリックすると、izyGlam France SAS（ROS 841 983 828）の配送サービス契約に同意したものとみなされます。",
+    "LEGAL_TEXT_2": "配送サービスに関する撤回権は放棄されます。消費者紛争の仲裁機関を利用することができます。",
+    "LEGAL_TEXT_3": "配達時にご不在の場合、配達員はご注文を玄関先に置きます。ご注文が配達された後は、その責任はお客様にあります。アルコール等の制限対象品を含む場合、ご不在時は店舗へ返送されます。",
+    "CLOSE_FORM": "フォームを閉じる",
+    "ADD_CARD": "カードを追加",
+    "TRAITEMENT": "処理中"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "支払いが承認されました",
+    "THANKS": "ありがとうございます！ご予約が確定しました。",
+    "BACKHOME": "ホームに戻る",
+    "PROBLEME": "予約の問題",
+    "PAIEMENT": "お支払いは完了しましたが、予約を確定できませんでした。",
+    "THANKSCONTACT": "サポートまでご連絡ください：",
+    "FAILED": "支払い失敗",
+    "VALIDATE": "支払いを確認できませんでした。もう一度お試しください。"
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "個人事業主のための izyGlam",
+    "STEP1": {
+      "TITLE": "お客様が注文",
+      "TEXT": "お客様はアプリであなたの店舗を見つけ、注文します。"
+    },
+    "STEP2": {
+      "TITLE": "予約を承諾",
+      "TEXT": "予約を承諾すると、あなたのカレンダーが更新されます。"
+    },
+    "STEP3": {
+      "TITLE": "予約当日",
+      "TEXT": "事前に予約の通知が届き、各お客様の元へ行くルートもご案内します。"
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "企業アカウントに入金",
+    "SOLDE": "現在の残高",
+    "CREDIT": "入金額",
+    "COMPANY": "企業アカウントに入金",
+    "DEPENSE": "支出管理",
+    "DATE": "日付",
+    "COUNT": "金額",
+    "EMPLOYEE": "従業員",
+    "DESCRIPTION": "説明"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "すでにパートナーまたは企業アカウントがあります！",
+    "NOT_CONNECTED": "サロンを登録するにはログインしてください",
+    "TITLE": "今すぐ始めよう！",
+    "TITLE2": "サロンを作りましょう！",
+    "NAME": "サロン名",
+    "ADDRESS": "事業所の住所",
+    "STREET": "丁目・番地",
+    "CITY": "市区町村",
+    "CODE_POSTAL_POSSIBLE": "対応する郵便番号",
+    "CODE_POSTAL": "郵便番号",
+    "COUNTRY": "国",
+    "ADDRESSPLACEHOLDER": "例）中央 1-2-3",
+    "FLOOR": "階／スイート（任意）",
+    "BUSINESSTYPE": "事業種別",
+    "FIRSTNAME": "名",
+    "LASTNAME": "姓",
+    "PASSWORD": "パスワード",
+    "PASSWORDCONFIRMED": "パスワード（確認）",
+    "EMAIL": "メールアドレス",
+    "PHONE": "携帯電話番号",
+    "WHATSAPP": "WhatsApp でのメッセージ受信に同意します",
+    "BUTTON": "店舗を登録",
+    "SUCCESS": "店舗を作成しました！",
+    "ERROR": "店舗作成中にエラーが発生しました：",
+    "ERROR1": "企業名は必須です。",
+    "ERROR2": "企業の住所は必須です。",
+    "ERROR3": "事業種別は必須です。",
+    "ERROR4": "名は必須です。",
+    "CHOOSE_COUNTRY": "国を選択",
+    "POSTAL_CODE": "郵便番号",
+    "CHOOSE_CITY": "都市を選択",
+    "ERROR5": "姓は必須です。",
+    "ERROR6": "メールは必須です。",
+    "ERROR7": "携帯電話番号は必須です。",
+    "ERROR8": "WhatsApp メッセージ受信への同意が必要です。"
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "住所を変更",
+    "FIND_SHOP": "店舗を検索",
+    "CATEGORIES": "カテゴリ",
+    "OFFRE": "今月のお得",
+    "DISCOVER": "おすすめ",
+    "APPRECIATE": "人気の店舗",
+    "SMART": "お得プラン",
+    "TOP10": "今週のトップ10",
+    "SEARCH_RESULT": "検索結果",
+    "NOT_AVAILABLE": "この住所ではまだご利用いただけません",
+    "NEW_ADDRESS": "新しい住所を追加",
+    "CHOOSE_ADDRESS": "住所を選択",
+    "CHOOSE_COUNTRY": "国を選択",
+    "CHOOSE_CITY": "都市を選択",
+    "CHOOSE_ARRONDISSEMENT": "区を選択",
+    "CANCEL": "キャンセル",
+    "SAVE": "保存",
+    "CLOSE": "閉じる"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "名称",
+    "CITY": "都市",
+    "NOTE": "評価",
+    "MIDDLE_PRICE": "平均価格",
+    "PROMOTION": "プロモーション",
+    "ACTIONS": "操作",
+    "MODIFIER": "店舗情報を編集",
+    "SHOP_NAME": "店舗名",
+    "DESCRIPTION": "説明",
+    "PRINCIPALE": "メイン画像",
+    "SHOP": "店舗タイプ",
+    "ARRONDISSEMENT": "区",
+    "MINIMUM_DELAI": "最短リードタイム",
+    "DISTANCE": "最大距離（km）",
+    "EMPLACEMENT": "場所",
+    "HOURS_MORNING": "営業時間 - 午前",
+    "HOURS_AFTERNOON": "営業時間 - 午後",
+    "ACTIVE_PROMO": "プロモを有効化",
+    "CANCEL": "キャンセル",
+    "ENREGISTRER": "保存"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "ビジネスを成長させましょう",
+    "TEXT": "izyGlam の何千ものユーザーが、あなたの地域で店舗を探しています…",
+    "IMAGE": "image"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "izyGlam を選ぶ理由",
+    "STEP1": {
+      "TITLE": "自分の条件で働く",
+      "TEXT": "スケジュールや施術を自由に管理。あなたのニーズに合う柔軟なプラットフォームで活動を最大化します。"
+    },
+    "STEP2": {
+      "TITLE": "オンラインでの存在感を強化",
+      "TEXT": "アプリに備わるマーケティングツールで集客力を高め、露出アップで成果を加速。"
+    },
+    "STEP3": {
+      "TITLE": "顧客をファンに",
+      "TEXT": "好みの分析や口コミ対応、ロイヤリティ特典で長期的な関係を築きましょう。"
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "運営管理をもっと簡単に",
+      "TEXT": "ウェルビーイングのプロ向けトータルソリューション、izyGlam。柔軟なツールとパーソナライズされた支援であらゆるニーズに対応。"
+    },
+    "STEP2": {
+      "TITLE": "売上を伸ばす",
+      "TEXT": "毎日、多くの人が近くの美容のプロを探しています。あなたの分野で新規顧客と出会うチャンスです。"
+    },
+    "STEP3": {
+      "TITLE": "顧客満足を保証",
+      "TEXT": "パーソナライズされた体験を提供。予約管理や迅速なコミュニケーションで、いつでもどこでも満足度とリピート率を向上。"
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "御社向け izyGlam",
+    "STEP1": {
+      "TITLE": "社員と顧客がサービスを予約",
+      "TEXT": "社員や顧客がアプリから適したウェルビーイング施術を選びます。"
+    },
+    "STEP2": {
+      "TITLE": "付与額を決定",
+      "TEXT": "社員や顧客のアカウントに入金できます。定期／都度のいずれにも対応。"
+    },
+    "STEP3": {
+      "TITLE": "施術の実施",
+      "TEXT": "当社の美容の専門家が社員の元または貴社オフィスに伺い、予約された施術を提供します。"
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "企業価値を高める",
+    "TEXT": "多くのユーザーがウェルビーイングサービスを探しています。社員や顧客に、近くの一流の美容専門家への優先アクセスを。",
+    "IMAGE": "image"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "izyGlam を選ぶ理由",
+    "STEP1": {
+      "TITLE": "社員のロイヤリティ向上",
+      "TEXT": "月額の美容予算を提供。美容師、エステティシャンなどが利用でき、満足度とエンゲージメントを高めます。"
+    },
+    "STEP2": {
+      "TITLE": "ブランドイメージを強化",
+      "TEXT": "顧客イベントやロイヤリティプログラムに美容サービスを。シーンに合わせた上質なケアで強く印象付けます。"
+    },
+    "STEP3": {
+      "TITLE": "働きやすさを最適化",
+      "TEXT": "職場や近隣で手軽にウェルビーイングサービスを。社員のモチベーションとチームの結束を高めます。"
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "社員のウェルビーイングを簡単に",
+      "TEXT": "美容からフィットネスまで、柔軟でシンプルなケアを。すべてが手のひらで完結します。"
+    },
+    "STEP2": {
+      "TITLE": "顧客への革新的な特典",
+      "TEXT": "イベントやロイヤリティ施策でウェルビーイング体験を提供。特別な心配りで関係を強化。"
+    },
+    "STEP3": {
+      "TITLE": "どこでも、いつでも、オーダーメイド",
+      "TEXT": "どこにいても高品質なサービスを。ニーズに合わせた専門家と伴走で満足を保証します。"
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "アカウント管理",
+    "ORDERS": "注文履歴",
+    "FAVORITES": "お気に入り",
+    "HELP": "ヘルプ",
+    "MY_ABO": "マイサブスクリプション",
+    "PRICES": "料金プラン",
+    "FIDELITY": "ロイヤリティプログラム",
+    "LOGOUT": "ログアウト",
+    "YOUR_BEAUTY_SERVICES": "あなたの美容サービスを出品",
+    "YOUR_COMPANY": "あなたの企業を登録"
+  },
+  "SUBTITLES": {
+    "HELP": "困ったらここをチェック！"
+  },
+  "ORDERS": {
+    "TITLE": "私の注文",
+    "TITLE_SUBTITLE": "過去・今後・キャンセル済みの予約をかんたん管理。",
+    "UPCOMING_SECTION": "📅 今後",
+    "NO_UPCOMING": "予定されている施術はありません。",
+    "PAST_SECTION": "✅ 過去",
+    "NO_PAST": "実施済みの施術はありません。",
+    "ADDRESS": "住所",
+    "DATE": "日付",
+    "TOTAL": "合計",
+    "ITEMS": "件",
+    "DELETE": "削除",
+    "VISIT": "訪問",
+    "PRESTA_FOR": "対象",
+    "AT": "場所",
+    "ORDER_AGAIN": "もう一度注文",
+    "INVOICE": "請求書を依頼",
+    "REVIEW": "口コミを投稿",
+    "CANCEL": "キャンセル"
+  },
+  "FIDELITY": {
+    "TITLE": "お気に入り",
+    "AGAIN": "あと",
+    "AGAIN_SUBTITLE": "でご褒美",
+    "TITLE_SUBTITLE": "ギフト解放まで",
+    "DATE": "有効期限",
+    "HISTO": "施術履歴"
+  },
+  "FAVORITES": {
+    "TITLE": "お気に入り",
+    "TITLE_SUBTITLE": "お気に入りサロンをすぐに見つけよう。"
+  },
+  "SHOP": {
+    "MOVING_FEE": "サービス料：",
+    "DISTANCE": "最大距離：",
+    "PAYEMENT": "クレジットカード・PayPal に対応",
+    "PRESS_FOR_INFO": "タップで営業時間・情報などを表示",
+    "GALLERY": "画像ギャラリー",
+    "SEE_MORE": "もっと見る",
+    "SEE_LESS": "閉じる"
+  },
+  "LOGIN": {
+    "TITLE": "ログイン情報を入力してください。",
+    "FORGET_PASSWORD": "パスワードをお忘れですか？",
+    "CONTINUER": "続行",
+    "CONTINUE_WITH": "次で続行",
+    "OR": "または",
+    "QRCODE": "QR コードでログイン",
+    "CGU": "続行すると、記載の番号あてに izyGlam および関連会社からの電話・WhatsApp・SMS（自動送信を含む）受信に同意したものとみなされます。",
+    "PLACEHOLDER_EMAIL": "メールアドレス",
+    "PLACEHOLDER_PASSWORD": "パスワード",
+    "PLACEHOLDER_PASSWORD_NEW": "新しいパスワード",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "パスワード確認",
+    "CHANGE_PASSWORD": "パスワードを変更",
+    "REINIT": "再設定"
+  },
+  "SIGNUP": {
+    "GENRE": "性別",
+    "CHOOSE": "選択",
+    "SEX_MALE": "男性",
+    "SEX_FEMALE": "女性",
+    "TITLE": "個人情報を入力してください。",
+    "CONTINUER": "続行",
+    "OR": "または",
+    "QRCODE": "QR コードでログイン",
+    "CGU": "続行すると、記載の番号あてに izyGlam および関連会社からの電話・WhatsApp・SMS（自動送信を含む）受信に同意したものとみなされます。",
+    "PLACEHOLDER_FIRSTNAME": "名",
+    "PLACEHOLDER_LASTNAME": "姓",
+    "PLACEHOLDER_EMAIL": "メール",
+    "PLACEHOLDER_EMAIL_REQUIRED": "メールは必須です",
+    "PLACEHOLDER_EMAIL_WRONG": "メール形式が無効です",
+    "PLACEHOLDER_PHONE": "電話",
+    "PLACEHOLDER_PHONE_NUMBER": "電話番号",
+    "PLACEHOLDER_PASSWORD": "パスワード",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "パスワード（確認）",
+    "COUNTRY": "国"
+  },
+  "LANGUE": {
+    "FRANCAIS": "フランス語",
+    "ANGLAIS": "英語",
+    "ESPAGNOL": "スペイン語",
+    "NEERLANDAIS": "オランダ語",
+    "ITALIEN": "イタリア語",
+    "ALLEMAND": "ドイツ語",
+    "PORTUGAIS": "ポルトガル語",
+    "POLONAIS": "ポーランド語",
+    "DANOIS": "デンマーク語",
+    "FINNOIS": "フィンランド語",
+    "SUEDOIS": "スウェーデン語",
+    "ARABE": "アラビア語",
+    "TURC": "トルコ語",
+    "CHINOIS": "中国語",
+    "RUSSE": "ロシア語",
+    "PERSAN": "ペルシア語",
+    "UKRAINIEN": "ウクライナ語",
+    "ROUMAIN": "ルーマニア語",
+    "CATALAN": "カタルーニャ語",
+    "BASQUE": "バスク語",
+    "GALICIEN": "ガリシア語",
+    "ALBANAIS": "アルバニア語",
+    "KURDE": "クルド語",
+    "ESTONIEN": "エストニア語",
+    "SOMALIEN": "ソマリ語",
+    "BIELORUSSE": "ベラルーシ語",
+    "JAPONAIS": "日本語",
+    "COREEN": "韓国語",
+    "INDONESIEN": "インドネシア語",
+    "MALAIS": "マレー語",
+    "THAI": "タイ語",
+    "VIETNAMIEN": "ベトナム語",
+    "TAGALOG": "タガログ語",
+    "BENGALI": "ベンガル語"
+  },
+  "COUNTRY": {
+    "FRANCE": "フランス",
+    "ALLEMAGNE": "ドイツ",
+    "SPAIN": "スペイン",
+    "ITALY": "イタリア",
+    "DANEMARK": "デンマーク",
+    "FINLAND": "フィンランド",
+    "NETHERLAND": "オランダ",
+    "POLAND": "ポーランド",
+    "PORTUGAL": "ポルトガル",
+    "SWEDEN": "スウェーデン",
+    "CHINA": "中国",
+    "INDIA": "インド",
+    "JAPAN": "日本",
+    "SOUTH_KOREA": "韓国",
+    "INDONESIA": "インドネシア",
+    "PHILIPPINES": "フィリピン",
+    "THAILAND": "タイ",
+    "VIETNAM": "ベトナム",
+    "MALAYSIA": "マレーシア",
+    "SINGAPOURE": "シンガポール",
+    "EMIRAT_ARABE": "アラブ首長国連邦",
+    "SAUDI_ARABIA": "サウジアラビア"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "私の住所",
+    "ADDRESS_MODIFICATION": "住所の変更",
+    "STREET": "丁目・番地",
+    "CITY": "市区町村",
+    "CP": "郵便番号",
+    "CREATE": "作成",
+    "BACK": "戻る",
+    "CHANGE": "変更",
+    "CLOSE": "閉じる"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "プラットフォーム設定",
+    "COMMISSION": "手数料率（％）",
+    "0to100": "0〜100 の値が必須",
+    "SERVICE": "サービス料（€）",
+    "WEEKS": "表示する週数",
+    "SUP0": "0 より大きい値が必須",
+    "LESS24": "24時間未満のキャンセル料（％）",
+    "LESS48": "48時間未満のキャンセル料（€）",
+    "DELAY": "最短予約時間（時間）",
+    "TVA": "付加価値税率（％）",
+    "ADS": "広告を有効化",
+    "COMPANY": "企業取引を有効化",
+    "FIDELITY": "ロイヤリティを有効化",
+    "MULTI_SHOP": "マルチ店舗を有効化",
+    "PROMO": "店舗プロモーションを有効化",
+    "SPONSORS": "ランディングのスポンサー枠を有効化",
+    "SAVE": "保存"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "店舗総数",
+    "ACT_SHOPS": "稼働中の店舗数",
+    "USERS": "ユーザー総数",
+    "NBR_USERS": "登録ユーザー数",
+    "CA_TOTAL": "売上合計",
+    "CA_GENERATED": "生成売上",
+    "SHOPS_PERFO": "店舗のパフォーマンス",
+    "SHOP_NAME": "店舗名",
+    "CITY": "都市",
+    "REVENUES": "収益",
+    "BOOKINGS": "予約数",
+    "NOTE": "平均評価",
+    "ACTIONS": "操作",
+    "DETAILS": "詳細",
+    "ADJUST": "調整",
+    "SHOP_ADJUST": "店舗を調整",
+    "STILL_DEVELOPPED": "この機能は開発中です",
+    "CLOSE": "閉じる"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "イベントの詳細",
+    "CLIENT": "クライアント",
+    "DEBUT": "開始",
+    "FIN": "終了",
+    "ADDRESS": "住所",
+    "PHONE": "電話",
+    "CANCEL": "キャンセル",
+    "SAVE": "保存"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "イベントを作成",
+    "COMING": "今後",
+    "PAST": "過去",
+    "CANCELLED": "キャンセル",
+    "NO_CANCELLED": "キャンセルされた注文はありません。"
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "オンラインサポート"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "従業員管理",
+    "NAME": "名前",
+    "EMAIL": "メール",
+    "SOLDE": "口座残高",
+    "ACTIONS": "操作",
+    "DEFAULT_PASSWORD": "デフォルトパスワード",
+    "REINITIALIZE_PASSWORD": "再設定用のデフォルトパスワード",
+    "CHANGE_PASSWORD": "パスワードを変更"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "従業員アカウントに入金",
+    "AMOUNT": "入金額",
+    "CANCEL": "キャンセル",
+    "SAVE": "確定"
+  },
+  "DASHBOARD": {
+    "TOTAL": "予約総数",
+    "TOTAL_MONTH": "今月の予約",
+    "GENERATED": "生成収益",
+    "MONTHLY": "今月の収益",
+    "AVG_NOTE": "平均評価",
+    "BASED_ON": "対象",
+    "REVIEWS": "件の口コミ",
+    "NEXT_APPOINTEMENT": "今後の予約",
+    "POPULAR_SERVICES": "人気のサービス",
+    "RESERVATION": "件の予約"
+  },
+  "FINANCE": {
+    "PROGRESS": "前月比の推移",
+    "PROGRESSION": "伸び率",
+    "TOTAL_GENERATED": "売上合計",
+    "CA": "売上高",
+    "COMMISSION_TAKEN": "差引手数料",
+    "COMMISSIONS": "手数料",
+    "NET_TO_PAY": "支払純額",
+    "DISPO_AMOUNT": "利用可能額",
+    "REQUEST_WITHDRAWAL": "振込を依頼",
+    "TAKE": "出金額",
+    "TOTAL_EARNINGS": "純収益",
+    "TOTAL_BOOKINGS": "完了施術数",
+    "CANCELLED_BOOKINGS": "キャンセル施術数",
+    "SERVICES_CANCELLED": "キャンセル・拒否された予約",
+    "SERVICES_COMPLETED": "完了した予約",
+    "AVG_PRICE": "平均価格",
+    "PER_SERVICE": "施術あたり",
+    "REVIEW_RATIO": "顧客レビュー",
+    "CLIENT_FEEDBACK": "フィードバック率",
+    "TOP_PRODUCTS": "売れ筋施術",
+    "AVG_DURATION": "平均時間",
+    "DURATION_PER_BOOKING": "予約あたりの時間",
+    "DETAILS": "銀行口座の詳細",
+    "ASK": "振込を依頼",
+    "HISTORY": "取引履歴",
+    "DATE": "日付",
+    "AMOUNT": "金額",
+    "COMMISSION": "手数料",
+    "STATUS": "ステータス"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "作成する店舗タイプを選択",
+    "CANCEL": "キャンセル",
+    "CREATE": "確定"
+  },
+  "PROCHES": {
+    "TITLE": "家族・知人",
+    "UPDATE": "知人情報の編集",
+    "FIRSTNAME": "名",
+    "NAME": "姓",
+    "EMAIL": "メール",
+    "PHONE": "電話",
+    "CREATE": "作成",
+    "BACK": "戻る",
+    "CHANGE": "変更",
+    "CLOSE": "閉じる"
+  },
+  "RATING_MODAL": {
+    "TITLE": "口コミを投稿",
+    "RATING": "評価",
+    "COMMENT": "コメント",
+    "CLOSE": "閉じる",
+    "SUBMIT": "送信"
+  },
+  "RDV_MODAL": {
+    "TITLE": "施術日を選択",
+    "CANCEL": "キャンセル"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "サービスを作成",
+    "NAME": "名称",
+    "DESCRIPTION": "説明",
+    "COLOR": "カラー",
+    "PRICE": "価格",
+    "TIME": "所要時間",
+    "IMAGE": "画像",
+    "ACTIONS": "操作",
+    "MINUTES": "分",
+    "CHANGE": "編集",
+    "DELETE": "削除",
+    "SERVICE_NAME": "サービス名",
+    "TIME_MINUTES": "所要時間（分）",
+    "PREST_IMAGE": "施術の画像",
+    "NO_PICS": "写真はまだありません",
+    "UPLOAD": "画像をアップロード",
+    "NEW_PIC": "新しい画像のプレビュー",
+    "PRESTA_COLOR": "施術カラー",
+    "CANCEL": "キャンセル",
+    "SAVE": "保存",
+    "AVG_PRICE": "平均料金",
+    "IMAGE_OK": "画像のアップロードに成功しました",
+    "ERROR_IMAGE_LOAD": "画像の読み込み中にエラーが発生しました",
+    "UPDATE_SUCCESS": "施術を更新しました",
+    "ERROR_PRESTA": "施術更新中にエラーが発生しました",
+    "PRESTA_UPDATED": "施術を更新しました",
+    "PRESTA_ERROR": "施術更新中にエラーが発生しました",
+    "PRESTA_SUCCESS": "施術を更新しました",
+    "PHOTO_ERROR": "写真更新中にエラーが発生しました",
+    "PRESTA_DELETED": "施術を削除しました",
+    "PRESTA_DELETE_ERROR": "施術削除中にエラーが発生しました"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "店舗画像",
+    "UPLOAD_IMAGE": "画像をアップロード",
+    "SNEEK_PIC": "画像プレビュー",
+    "SHOP_NAME": "店舗名",
+    "DESCRIPTION": "説明",
+    "DESC_INFO": "（25文字以上）",
+    "CITY": "都市",
+    "DISCRICT": "地区",
+    "LAT": "緯度",
+    "LON": "経度",
+    "ZONE": "出張可能エリア（km）",
+    "OPENNING": "営業時間",
+    "MORNING_OPEN": "午前 - 開店",
+    "MORNING_CLOSE": "午前 - 閉店",
+    "AFTERNOON_OPEN": "午後 - 開店",
+    "AFTERNOON_CLOSE": "午後 - 閉店",
+    "SAVE": "店舗を保存",
+    "MONDAY": "月曜",
+    "TUESDAY": "火曜",
+    "WEDNESDAY": "水曜",
+    "THURSDAY": "木曜",
+    "FRIDAY": "金曜",
+    "SATURDAY": "土曜",
+    "SUNDAY": "日曜",
+    "CLOSED": "休業",
+    "GENERATE_IMAGE": "画像を生成",
+    "GENERATE_DESCRIPTION": "説明を生成",
+    "PHOTO": "許可／不可の写真例",
+    "CODE_POSTAUX": "対応郵便番号",
+    "EXEMPLE_LOCAL": "例：75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "従業員を追加",
+    "LOADING": "読み込み中",
+    "LIST": "従業員一覧",
+    "ADD": "追加",
+    "EMAIL": "従業員のメール",
+    "FIRSTNAME": "名",
+    "FAMILY_NAME": "姓",
+    "PHONE": "電話",
+    "PASSWORD": "パスワード",
+    "HAVE_TO": "すべての項目は必須です。",
+    "EMAIL_ERROR": "メールが無効です。",
+    "EMPLOYEE_OK": "従業員を追加しました。",
+    "ADD_EMPLOYEE_ERROR": "従業員の追加中にエラーが発生しました。"
+  },
+  "AVIS": {
+    "TITLE": "ユーザーの声",
+    "AVIS1": "最初は半信半疑でしたが…結果は大満足！自宅でストレスなく完璧なマニキュア。金曜夜の小さなルーティンになりました。",
+    "AVIS2": "ソファに座ったまま 3 分でフェイシャルを予約。エステティシャンは優しく、丁寧…肌が史上最高に。",
+    "AVIS3": "サロンより高いかと思ったら…むしろ同じか安い！移動も不要。これは推せる。",
+    "AVIS4": "前日の誕生日にブローを急ぎで。2 クリックで空いてるプロを発見。時間厳守、フレンドリー、仕上がり最高。",
+    "AVIS5": "シングルマザーで時間がない私。子どもが寝た後に予約できるのが最高。簡単・早い・本当に便利。",
+    "AVIS6": "初回から感激。すぐにリラックスできる雰囲気で、しっかりケアしてくれました。翌週の予約もすでに完了！"
+  },
+  "DOWNLOAD": {
+    "USERS": "名の満足ユーザー",
+    "SOCIAL": "名の登録プロ",
+    "STORE": "App Store と Google Play で"
+  },
+  "TARIF": {
+    "DISCOVER": "あなたに合うプランを選ぼう",
+    "DISCOVER2": "そして頂点への一歩を踏み出そう",
+    "SOLUTIONS": "あなたにふさわしい、美しく強力であなたのためのソリューションを。いつでも変更可能。",
+    "TEST": "最初のサロンはずっと無料。心配無用。魔法みたいに。",
+    "START_FREE": "最初のサロンを作成",
+    "FREE": "見習い",
+    "FREE_SUBTITLE": "最初のサロンで一歩を踏み出そう",
+    "THEN": "その後",
+    "MONTHLY": "／月",
+    "FREE1": "稼働サロン 1 件",
+    "FREE2": "予約・顧客は無制限",
+    "FREE3": "施術とスケジュール管理",
+    "FREE4": "個人カレンダーと同期",
+    "FREE5": "安心してスタートするのに最適",
+    "FREE6": "無料サロンを作成",
+    "BASIC": "選ばれし者",
+    "BASIC_SUBTITLE": "可能性を解放し、輝きを放とう",
+    "BASIC1": "最大 3 サロン",
+    "BASIC2": "施術・顧客・予約をフル管理",
+    "BASIC3": "優先メールサポート",
+    "BASIC4": "事業成長のための限定リソース",
+    "BASIC5": "顧客拡大を目指すプロに最適",
+    "BASIC6": "1 か月の無料トライアル",
+    "PREMIUM": "女王",
+    "PREMIUM_SUBTITLE": "帝国が形に。影響力が拡大。",
+    "PREMIUM1": "最大 10 サロン",
+    "PREMIUM2": "高度なパフォーマンス統計",
+    "PREMIUM3": "売上アップのスマート提案",
+    "PREMIUM4": "IzyGlam 上での露出強化",
+    "PREMIUM5": "優先サポート",
+    "PREMIUM6": "野心的な個人事業主のために",
+    "PREMIUM7": "女王プランを入手",
+    "BUSINESS": "女神",
+    "BUSINESS_SUBTITLE": "玉座を手に入れよう、女神よ",
+    "BUSINESS1": "オーダーメイド",
+    "BUSINESS2": "サロン数は無制限",
+    "BUSINESS3": "戦略的な個別伴走",
+    "BUSINESS4": "露出強化と優先掲載",
+    "BUSINESS5": "スケールのための特別ソリューション",
+    "BUSINESS6": "お問い合わせ",
+    "COMPARE": "機能比較",
+    "FONCTIONS": "機能",
+    "BUSINESS9": "業務のフル管理",
+    "STUDIO_BASIC": "限定リソース",
+    "STUDIO_ADVANCED": "統計 & レコメンド",
+    "ANALYSE": "パフォーマンス分析",
+    "BASICS": "基本",
+    "ADVANCE": "高度",
+    "PLANS": "稼働サロン数",
+    "READY": "ビジネス成長の準備はいい？",
+    "DISCOVERS": "IzyGlam のプランを見る"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "アクセシビリティ宣言",
+      "TEXT": "izyGlam は誰もが利用しやすいサービスを目指しています。可能な限り WCAG 2.2 AA 準拠および RGAA（フランス）への整合を目標とします。"
+    },
+    "SCOPE": {
+      "TITLE": "対象範囲",
+      "L1": "公開 Web サイトおよび情報ページ。",
+      "L2": "顧客・プロ向け Web アプリ（ダッシュボード）。",
+      "L3": "モバイルアプリ（iOS/Android）該当時。",
+      "L4": "トランザクションメールとヘルプセンター。",
+      "L5": "カスタマーサポートツール。"
+    },
+    "STATUS": {
+      "TITLE": "適合状況",
+      "TEXT": "本宣言時点で、izyGlam のインターフェースは WCAG 2.2 AA／RGAA に部分適合です。継続的に改善し、優先事項から修正します。"
+    },
+    "PREPARATION": {
+      "TITLE": "宣言の作成方法",
+      "L1": "プロダクト／UI チームによる自己評価：HTML セマンティクス、ARIA ロール、タブ順序の確認。",
+      "L2": "手動テスト：キーボード操作、フォーカス可視化、200％以上のズーム、スクリーンリーダー。",
+      "L3": "自動化ツールによる監査（画面サンプル）。",
+      "L4": "継続的リリース時の受け入れ（アクセシブルなデザインシステム・再利用コンポーネント）。"
+    },
+    "FEATURES": {
+      "TITLE": "提供するアクセシビリティ機能",
+      "KEYBOARD": {
+        "TITLE": "キーボード操作",
+        "L1": "Tab、Shift+Tab、Enter、Space、Esc、矢印で一連の操作が可能。",
+        "L2": "一貫性がありコントラストの高いフォーカス表示。",
+        "L3": "ヘッダーを飛ばす「コンテンツへ移動」リンク。",
+        "L4": "メニュー／モーダル／ドロップダウンはキーボードで開閉・フォーカストラップ・Esc で閉じる。"
+      },
+      "SCREENREADERS": {
+        "TITLE": "スクリーンリーダーと構造",
+        "L1": "見出し階層（h1→h6）とランドマーク（header, nav, main, footer）。",
+        "L2": "全フィールド・ボタンに明確なラベル、一貫したアクセス可能名。",
+        "L3": "aria-live で状態変化（エラー・成功・読み込み）を通知。",
+        "L4": "情報画像には代替テキスト、装飾画像は無視。"
+      },
+      "CONTRAST": {
+        "TITLE": "コントラスト・色・拡大",
+        "L1": "通常テキスト ≥ 4.5:1／大きな文字 ≥ 3:1 を目標。",
+        "L2": "200％ズームでも機能や内容が失われない設計。",
+        "L3": "色のみに依存しない情報提示。"
+      },
+      "FORMS": {
+        "TITLE": "フォームとエラーメッセージ",
+        "L1": "label と input の関連付け、必須表示。",
+        "L2": "エラーは項目付近に表示し、必要に応じて要約。",
+        "L3": "最初のエラー項目へフォーカス、修正ガイダンスを提供。"
+      },
+      "DYNAMIC": {
+        "TITLE": "動的コンテンツとアニメーション",
+        "L1": "カルーセル等は一時停止可能で妨げない。",
+        "L2": "OS の「動きを減らす」設定を可能な限り尊重。",
+        "L3": "モーダルは侵襲的でなく、キーボード・外側クリックで閉じられる。"
+      },
+      "MEDIA": {
+        "TITLE": "メディア",
+        "L1": "動画（必要に応じて）は字幕や文字起こしを提供。",
+        "L2": "音声／動画はキーボード操作可能。"
+      },
+      "MOBILE": {
+        "TITLE": "モバイル",
+        "L1": "十分なタップ領域と間隔。",
+        "L2": "TalkBack（Android）、VoiceOver（iOS）での一貫したナビゲーション。"
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "想定環境・支援技術",
+      "L1": "Windows：NVDA（Chrome/Firefox）、JAWS（Edge/Chrome）。",
+      "L2": "macOS：VoiceOver（Safari）。",
+      "L3": "iOS/iPadOS：VoiceOver（Safari/Chrome）。",
+      "L4": "Android：TalkBack（Chrome）。",
+      "L5": "最新の対応ブラウザ。"
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "非適合（想定または確認済み）",
+      "TEXT": "尽力しているものの、以下が残る場合があります：",
+      "L1": "代替テキストのない古い画像。",
+      "L2": "第三者提供の文書（PDF、添付）の完全なアクセシブル対応不足。",
+      "L3": "古い動画の字幕／音声解説の欠如。",
+      "L4": "サードパーティコンポーネント（決済、地図、プレイヤー）の制約。",
+      "MOTIVES": "理由：第三者コンテンツ、過大な負担、更新作業中など。"
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "合理的配慮と代替案",
+      "TEXT": "代替形式（例：アクセシブル文書、予約支援）が必要な場合はご連絡ください。可能な限り同等の解決策を提供します。"
+    },
+    "FEEDBACK": {
+      "TITLE": "フィードバックとサポート",
+      "L1": "アプリ：ヘルプ ＞ アクセシビリティ。",
+      "L2A": "メール：",
+      "L2B": "または",
+      "L3": "画面／URL、端末、ブラウザ、利用スクリーンリーダー等をご記載ください。"
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "[accessibilite@izyglam.com](mailto:accessibilite@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "RECOURSE": {
+      "TITLE": "不服申立て手続き（フランス）",
+      "TEXT": "アクセシビリティ上の欠陥で利用できない内容・機能があり、当社から満足な回答が得られない場合：",
+      "L1": "各県の権利擁護機関（Défenseur des droits）へ文書提出、",
+      "L2": "または必要に応じて調停機関へ申立て。",
+      "MORE": "詳細：",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "継続的改善",
+      "L1": "アクセシブルなコンポーネントを備えたデザインシステム。",
+      "L2": "各リリースでのコードレビューとアクセシビリティテスト。",
+      "L3": "プロダクト／サポートチームへの定期トレーニング。",
+      "L4": "ユーザー影響に基づく優先度付け。"
+    },
+    "DATE": {
+      "TITLE": "宣言日と更新",
+      "TEXT": "本宣言は 2025 年 12 月 25 日に作成。年 1 回以上、または大きな変更時に更新します。"
+    }
+  },
+  "HELP": {
+    "QUESTION1": "IzyGlam で施術を予約するには？",
+    "QUESTION2": "自分に合うプロの選び方は？",
+    "QUESTION3": "予約の変更・キャンセル方法は？",
+    "QUESTION4": "注文の追跡方法は？",
+    "QUESTION5": "利用可能な支払い方法は？",
+    "QUESTION6": "注文や予約のステータス確認は？",
+    "QUESTION7": "施術後に口コミは投稿できますか？",
+    "QUESTION8": "ロイヤリティやプロモの使い方は？",
+    "QUESTION9": "注文に問題があった場合は？",
+    "QUESTION10": "IzyGlam の連絡方法は？",
+    "QUESTION11": "キャンセル／返金ポリシーは？",
+    "QUESTION12": "他の人（ギフト、サプライズ）のために予約できますか？",
+    "QUESTION13": "IzyGlam のパートナープロになるには？",
+    "QUESTION14": "IzyGlam で個人情報を守るには？",
+    "REPONSE1": "とても簡単・スピーディー。登録後、受けたいサービスを選び、近くのプロを見つけ、日時を選択。「予約」をクリックしてカード決済で完了。プロによる手動承認で確定します。拒否された場合は全額返金されます。",
+    "REPONSE2": "各プロのプロフィールには施術、料金、作品写真、口コミが掲載されています。お気に入り登録も可能。比較してあなたに最適なプロを選びましょう。",
+    "REPONSE3": "マイページから予約の変更やキャンセルが可能です。施術 24 時間前までは無料、それ以降は手数料が発生する場合があります。問題があればサポートへ。",
+    "REPONSE4": "マイページ ＞「私の予約」にアクセス。リアルタイムでの注文状況、キャンセル／変更、施術履歴を確認できます。",
+    "REPONSE5": "支払いはクレジットカード（Visa、MasterCard、American Express）のみ。現金や PayPal は現在未対応です。安心のセキュリティ対策を実施しています。",
+    "REPONSE6": "予約確定後、確認メールを送信します。施術前にリマインド（メールやプッシュ通知）も。マイページでもステータスを確認できます。",
+    "REPONSE7": "はい。施術完了後に口コミ投稿のご案内があります。口コミは手動で審査し、信頼性を確保しています。プロは返信・編集できません。",
+    "REPONSE8": "現在、ロイヤリティやプロモコードは未提供です。今後の機能追加を予定しています。",
+    "REPONSE9": "サイト／アプリの「お問い合わせ」またはメールからご連絡ください。原則 24 時間以内（目安）に対応し、最善の解決を図ります。",
+    "REPONSE10": "サイトまたはアプリの問い合わせフォームをご利用ください。カスタマーサポートは月〜土の 9:00〜18:00。例：[support@izyglam.com](mailto:support@izyglam.com)",
+    "REPONSE11": "施術 24 時間前までのキャンセルは無料。それ以降は手数料が発生する場合があります。プロに拒否された場合は全額自動返金。自動返金システムは段階的に展開中です。",
+    "REPONSE12": "現時点では自分以外の人へのギフト予約はできません。ただし、プロがデュオやファミリープランを提供している場合、その範囲で複数人分の予約が可能です。",
+    "REPONSE13": "エステティシャン、ヘアスタイリスト、ウェルビーイングのプロの方は、「パートナーになる」ページのフォームからお申し込みください。折り返しご連絡します。",
+    "REPONSE14": "データの安全性は最優先です。GDPR（一般データ保護規則）に準拠。施術に必要な情報のみプロが閲覧できます。必要に応じてアプリ内メッセージで連絡できますが、プラットフォーム外取引を促す行為は監視対象です。"
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "運営者について",
+      "TEXT": "本プライバシーポリシーは、<strong>izyGlam</strong>（以下「当社」または「プラットフォーム」）がサービス（Web サイト、Web アプリ、モバイルアプリ、メール、サポート）利用時にお客様の個人データをどのように収集・利用・保管・共有・保護するかを説明します。当社は下記の処理について<strong>データ管理者</strong>としての役割を担います。"
+    },
+    "SCOPE": {
+      "TITLE": "適用範囲",
+      "TEXT": "本ポリシーは、施術を予約する<strong>顧客</strong>、izyGlam を通じてサービスを提供する<strong>プロ</strong>、および当社インターフェースの<strong>訪問者</strong>に適用されます。"
+    },
+    "DATA": {
+      "TITLE": "収集するデータ",
+      "PROVIDED": {
+        "TITLE": "お客様が提供するデータ",
+        "L1": "<strong>氏名・連絡先：</strong>氏名、メール、電話、住所、写真／アバター。",
+        "L2": "<strong>アカウント：</strong>認証情報、パスワード（ハッシュ化）、設定、言語。",
+        "L3": "<strong>予約：</strong>選択サービス、日時、訪問先住所、メモ、添付。",
+        "L4": "<strong>決済：</strong><em>決済事業者（例：Stripe）</em>経由の情報 — カード情報は当社で保存しません。",
+        "L5": "<strong>プロ：</strong>公開プロフィール、施術、料金、対応エリア、空き状況、口座情報（安全に管理）、必要に応じた確認書類。",
+        "L6": "<strong>サポート：</strong>メッセージ、チケット、必要に応じて通話記録。"
+      },
+      "AUTOMATIC": {
+        "TITLE": "自動的に収集するデータ",
+        "L1": "<strong>技術情報：</strong>端末モデル、OS、ブラウザ、解像度、セッション ID。",
+        "L2": "<strong>ログ：</strong>IP、タイムスタンプ、エラーイベント、機能利用状況。",
+        "L3": "<strong>位置情報：</strong>概算位置（IP）または正確な位置（GPS、明示同意時）。",
+        "L4": "<strong>Cookie／SDK：</strong>下記セクション参照。"
+      },
+      "THIRD": {
+        "TITLE": "第三者から取得するデータ",
+        "L1": "<strong>決済事業者</strong>（支払い状況、トークン）。",
+        "L2": "<strong>分析／不正対策パートナー</strong>（リスク信号、利用集計）。",
+        "L3": "<strong>各種連携</strong>（通信、地図、クラウドストレージ等）。"
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "目的と法的根拠",
+      "TEXT": "当社は以下の目的でデータを処理します：",
+      "L1": "<strong>サービス提供</strong>（アカウント作成、予約、仲介、通知）— <em>契約履行</em>。",
+      "L2": "<strong>決済・請求</strong> — <em>契約、法的義務</em>。",
+      "L3": "<strong>安全・不正防止</strong> — <em>正当な利益、法的義務</em>。",
+      "L4": "<strong>製品改善・統計</strong> — <em>正当な利益</em>。",
+      "L5": "<strong>サポート・品質</strong> — <em>契約、正当な利益</em>。",
+      "L6": "<strong>ダイレクトマーケティング</strong>（メール／アプリ）— <em>必要に応じ同意</em>、いつでもオプトアウト可。",
+      "L7": "<strong>法令遵守</strong>（会計、当局要請）— <em>法的義務</em>。"
+    },
+    "SHARING": {
+      "TITLE": "データの共有",
+      "L1": "<strong>プロ／顧客間</strong>：施術に必要な情報（氏名、連絡手段、訪問先住所、予約詳細）。",
+      "L2": "<strong>委託先</strong>：決済（例：Stripe）、ホスティング／ストレージ、分析、メール／SMS／プッシュ、サポート、必要に応じ KYC。<em>必要最小限のアクセス、GDPR 準拠の契約</em>。",
+      "L3": "<strong>パートナー</strong>：特定のオファーに対し同意がある場合。",
+      "L4": "<strong>当局</strong>：法令上必要な場合や権利保護のため。"
+    },
+    "TRANSFERS": {
+      "TITLE": "EEA 域外移転",
+      "TEXT": "十分性認定のない国へ移転する場合、<strong>標準契約条項（SCC）</strong>等の措置を講じます。"
+    },
+    "RETENTION": {
+      "TITLE": "保存期間",
+      "L1": "<strong>アカウント・本人情報</strong>：利用中および最終活動後 <em>最大 3 年</em>（営業目的）、会計等は <em>5〜10 年</em>。",
+      "L2": "<strong>予約／請求書</strong>：<em>10 年</em>（法的義務）。",
+      "L3": "<strong>セキュリティログ</strong>：重要度により <em>6〜24 か月</em>。",
+      "L4": "<strong>Cookie</strong>：Cookie セクション参照。",
+      "NOTE": "期間満了後は削除または匿名化します。"
+    },
+    "COOKIES": {
+      "TITLE": "Cookie／SDK",
+      "TEXT": "サービス運用、計測、不正防止、および同意に基づくパーソナライズのために使用します。",
+      "L1": "<strong>必須</strong>：認証、セキュリティ、技術設定。",
+      "L2": "<strong>アナリティクス</strong>：利用統計の集計。",
+      "L3": "<strong>マーケティング</strong>：同意時のみ。",
+      "PREF": "バナーおよびブラウザ設定からいつでも管理できます。"
+    },
+    "AUTOMATION": {
+      "TITLE": "自動化された判断・プロファイリング",
+      "TEXT": "不正リスク、プロの空き、距離などの自動信号を用いて優先付けや候補提示を行う場合があります。法的又は明示の同意がない限り、法的効果を生む重要な決定は人の関与なく行いません。"
+    },
+    "RIGHTS": {
+      "TITLE": "お客様の権利（GDPR）",
+      "L1": "<strong>アクセス</strong>、<strong>訂正</strong>、<strong>削除</strong>の権利。",
+      "L2": "<strong>処理の制限</strong>および<strong>データ可搬性</strong>の権利。",
+      "L3": "<strong>正当な利益</strong>に基づく処理への<strong>異議</strong>。",
+      "L4": "<strong>同意の撤回</strong>。",
+      "L5": "監督機関（CNIL）への<strong>不服申立て</strong>。",
+      "CONTACT": "権利行使のご連絡先：",
+      "VERIFY": "本人確認のため追加情報をお願いする場合があります。"
+    },
+    "SECURITY": {
+      "TITLE": "セキュリティ",
+      "TEXT": "通信の暗号化（TLS）、パスワードのハッシュ化、ログ監視、アクセス制御、バックアップ、コードレビュー、セキュリティテスト等の対策を講じています。"
+    },
+    "MINORS": {
+      "TITLE": "未成年のデータ",
+      "TEXT": "当サービスは 15 歳未満を対象としていません。未成年のアカウントが判明した場合、確認後に削除します。"
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "主な委託先",
+      "TEXT": "ホスティング、決済、メール、分析、ストレージ等の重要な委託先と連携しています。最新リストはご請求により提供可能です："
+    },
+    "CONTACT": {
+      "TITLE": "連絡先 & DPO",
+      "PRIVACY_LABEL": "プライバシー窓口",
+      "SUPPORT_LABEL": "サポート",
+      "AUTHORITY_LABEL": "監督機関",
+      "EMAIL_PRIVACY": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_PRIVACY_TEXT": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "CHANGES": {
+      "TITLE": "本ポリシーの変更",
+      "TEXT": "法的・機能的変更を反映して更新する場合があります。重要な変更時はメールまたはアプリでお知らせします。発効日：<strong>2025年8月11日</strong>。"
+    },
+    "LOCAL": {
+      "TITLE": "地域別規定",
+      "TEXT": "EU に所在する場合、GDPR に従って処理します。国／地域ごとの追加規定は必要に応じて通知します。"
+    },
+    "GLOSSARY": {
+      "TITLE": "用語集（抜粋）",
+      "L1": "<strong>データ管理者</strong>：処理目的と手段を決定する主体。",
+      "L2": "<strong>受託者</strong>：管理者のためにデータを処理する主体。",
+      "L3": "<strong>法的根拠</strong>：処理を許容する根拠（契約、同意、法的義務、正当な利益）。",
+      "L4": "<strong>Cookie／SDK</strong>：サービス提供、計測、パーソナライズに用いるトラッカー。"
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "利用規約への同意",
+      "TEXT": "izyGlam のサービス（サイト、Web アプリ、モバイルアプリ）にアクセスすることで、本利用規約（「CGU」）に無条件で同意したものとみなされます。不同意の場合はご利用になれません。"
+    },
+    "DEFINITIONS": {
+      "TITLE": "定義",
+      "L1": "<strong>クライアント</strong>：プラットフォームで施術を予約／支払う者。",
+      "L2": "<strong>プロ</strong>：プラットフォームを通じて施術を提供する者。",
+      "L3": "<strong>施術</strong>：プロが提供するサービス（例：出張美容）。",
+      "L4": "<strong>プラットフォーム</strong>：izyGlam が運営するソフトウェア基盤、サイト、アプリ。"
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "サービスと izyGlam の役割",
+      "TEXT": "izyGlam は<strong>仲介プラットフォーム</strong>です。施術の品質・適法性・保険等の<strong>責任はプロ本人</strong>にあります。特段の記載がない限り、izyGlam は販売者でも施術提供者でもなく、履行責任を負いません。"
+    },
+    "ACCOUNT": {
+      "TITLE": "アカウントと利用資格",
+      "L1": "予約・出品には登録が必要です。正確な情報を提供し、最新の状態に保ってください。",
+      "L2": "利用には 15 歳以上である必要があります。プロは法的に業務を行えること。",
+      "L3": "認証情報の機密保持とアカウントから行われる行為はお客様の責任です。",
+      "L4": "規約違反や不正の恐れがある場合、アカウントを停止・解除することがあります。"
+    },
+    "BOOKINGS": {
+      "TITLE": "予約と契約の成立",
+      "L1": "施術は<strong>オンラインで予約・支払い</strong>ます。現地での現金支払いは不要です。",
+      "L2": "支払い後、<strong>プロの承認</strong>により予約が確定します。拒否された場合は<strong>全額返金</strong>します。",
+      "L3": "承認時にクライアントとプロの間で施術契約が成立します。",
+      "L4": "日時、訪問先住所、特記事項は双方で確認してください。"
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "料金、サブスク、支払い",
+      "L1": "施術料金はプロが自由に設定します。izyGlam は<strong>プラットフォーム手数料</strong>を適用します。",
+      "L2": "プロ向けサブスク（現行例）：<em>サロン 1 件は生涯無料</em>／<em>Basic：3 サロン – 月 99 €</em>／<em>Premium：10 サロン – 月 499 €</em>／<em>それ以上：見積</em>。",
+      "L3": "支払いは<strong>クレジットカードのみ</strong>（例：Stripe 経由）。<strong>現金</strong>、プロモコード、ロイヤリティは現時点でなし。",
+      "L4": "金額、税、手数料は確定前に表示します。サブスク条件は変更される場合があり、事前に通知します。"
+    },
+    "CANCELLATIONS": {
+      "TITLE": "キャンセル、返金、不在",
+      "L1": "施術予定の<strong>24 時間前</strong>まで無料でキャンセルできます。",
+      "L2": "24 時間未満の場合、<strong>手数料</strong>が発生する場合があります。",
+      "L3": "支払い後にプロが<strong>拒否</strong>した場合、クライアントには 100％を返金します。自動返金は展開中で、必要に応じてサポートが手続きします。",
+      "L4": "<strong>ノーショー</strong>（無断欠席）の場合、手数料や返金不可となることがあります。"
+    },
+    "PAYOUTS": {
+      "TITLE": "プロへの支払い",
+      "L1": "施術の<strong>実施確認</strong>時（例：<em>確認コード</em>による）にプロへの支払い手続きを開始します。",
+      "L2": "プロが提供した口座情報（RIB/IBAN）に振り込みます。情報の正確性はプロの責任です。",
+      "L3": "支払額は施術価格から手数料等を<em>差し引いた</em>金額です。"
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "各当事者の責任",
+      "L1": "プロは施術の適法性、衛生・安全、規制遵守に責任を負います。",
+      "L2": "クライアントは正確な情報（住所、在宅状況、入館条件など）を提供し、予約を遵守します。",
+      "L3": "izyGlam は予約・決済・メッセージ等のツールを提供しますが、施術結果を保証しません。"
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "無効な評価です。",
+      "TITLE": "口コミと評価",
+      "L1": "<strong>実際に施術を受けた後</strong>のみ口コミを投稿できます。",
+      "L2": "法律や本規約に反する内容は<strong>審査・削除</strong>される場合があります。"
+    },
+    "PROHIBITED": {
+      "TITLE": "禁止事項",
+      "L1": "不正、なりすまし、プラットフォーム回避、外部取引の誘導。",
+      "L2": "違法、名誉毀損、差別、暴力、風紀に反するコンテンツ。",
+      "L3": "侵入、DoS、リバースエンジニアリング、セキュリティ回避。",
+      "L4": "他ユーザーの個人データの無断収集。"
+    },
+    "IPR": {
+      "TITLE": "知的財産",
+      "TEXT": "プラットフォームのコンテンツ、商標、要素（コード、デザイン、テキスト、ロゴ、画像）は保護されています。明示の許可なく複製・配布・改変することはできません。プロが提供するコンテンツの所有権はプロに留まり、プラットフォーム運営に必要な非独占ライセンスを izyGlam に付与するものとします。"
+    },
+    "THIRD_PARTY": {
+      "TITLE": "サードパーティサービス",
+      "TEXT": "プラットフォームには第三者のサービス（決済、地図、ホスティング、分析）が統合されることがあります。各サービスの条件が適用されます。これらの中断・障害について当社は責任を負いません。"
+    },
+    "AVAILABILITY": {
+      "TITLE": "可用性・保守・更新",
+      "TEXT": "保守や改善のため、サービスの全部または一部を変更・一時停止・中断する場合があります。影響を最小化するよう努めます。"
+    },
+    "LIABILITY": {
+      "TITLE": "責任制限と補償",
+      "TEXT": "法の許す範囲で、当社の責任は直接損害に限定され、間接損害（機会損失、売上損失等）は除外されます。お客様は本規約違反または不正使用に起因する請求から当社を免責・補償するものとします。"
+    },
+    "TERMINATION": {
+      "TITLE": "解約・停止",
+      "TEXT": "お客様はいつでもアカウントを削除できます。規約違反、不正、乱用、法的要請によりアクセスを停止・解約する場合があります。支払義務や責任条項等は解約後も存続します。"
+    },
+    "PRIVACY": {
+      "TITLE": "個人データ",
+      "TEXT": "データ処理の詳細は<strong>プライバシーポリシー</strong>をご覧ください。プラットフォームの利用は同ポリシーへの同意を意味します。GDPR の権利や当社の取り組みもご確認ください。"
+    },
+    "CHANGES": {
+      "TITLE": "規約の変更",
+      "TEXT": "法的・機能的理由により本規約を変更することがあります。重要な変更時はメールまたはアプリで通知し、更新版を公開します。"
+    },
+    "LAW": {
+      "TITLE": "準拠法・紛争",
+      "TEXT": "本規約は<strong>フランス法</strong>に準拠します。消費者に有利な強行法規を除き、紛争は izyGlam 本社所在地の裁判所の専属管轄とします。"
+    },
+    "CONTACT": {
+      "TITLE": "連絡先",
+      "SUPPORT_LABEL": "サポート",
+      "LEGAL_LABEL": "法務",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL": "[legal@izyglam.com](mailto:legal@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL_TEXT": "[legal@izyglam.com](mailto:legal@izyglam.com)"
+    },
+    "EFFECTIVE": {
+      "TITLE": "発効日",
+      "TEXT": "本規約は<strong>2025年12月25日</strong>に発効し、以前のすべての版に取って代わります。"
+    }
+  }
+}

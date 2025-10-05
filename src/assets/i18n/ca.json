@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Perruquer(a)",
+    "NAILTECHNICIAN": "Manicura",
+    "MAKEUP": "Maquillador(a)",
+    "WAXING": "Esteticista",
+    "FACIAL": "Tractament facial",
+    "MASSAGE": "Massatgista",
+    "EYELASH": "Extensions de pestanyes",
+    "EYEBROW": "Celles",
+    "TANNING": "Bronzejat",
+    "ACUPUNCTURE": "Acupuntura",
+    "OTHER": "Altres"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Foto suprimida de la galeria",
+    "PHOTO_UPLOAD": "Imatge carregada correctament",
+    "PARTIAL_REFUND_CONFIRM": "Reemborsament parcial confirmat!",
+    "CODE_SAVED": "Codi generat.",
+    "USERCREATED": "Usuari creat correctament. S’ha enviat un correu de confirmació.",
+    "SUBSCRIBE_SUCCESS": "La teva subscripció s’ha enregistrat correctament.",
+    "EMAIL_VERIFIED": "El teu compte està activat 🎉 Ja et pots connectar.",
+    "EMAIL_RESENT": "S’ha reenviat el correu de verificació. Revisa la teva bústia.",
+    "BOOKING_CREATED": "La teva reserva s’ha enregistrat correctament.",
+    "PAYMENT_OK": "Pagament validat.",
+    "REFUND_OK": "Reemborsament efectuat.",
+    "USERUPDATED": "Usuari actualitzat.",
+    "SETTINGS_UPDATED": "Paràmetres actualitzats.",
+    "REVIEW_ADDED": "La teva ressenya s’ha publicat 🎉",
+    "SHOPUPDATED": "Botiga actualitzada.",
+    "BOOKING_ACCEPTED": "Reserva acceptada.",
+    "BOOKING_FINISHED": "Reserva finalitzada.",
+    "BOOKING_REFUSED": "Reserva refusada.",
+    "BOOKING_DELETED": "Reserva suprimida.",
+    "CODE_GENERATED": "Codi generat.",
+    "CODE_CONFIRMED": "Codi confirmat.",
+    "INVOICE_DOWNLOADED": "Factura descarregada.",
+    "MARKED_NO_SHOW_CLIENT": "Client marcat com a absent.",
+    "COMPANY_CREDITED": "S’ha abonat el compte de l’empresa.",
+    "MARKED_NO_SHOW_PRO": "Proveïdor marcat com a absent.",
+    "EMPLOYEE_CREDITED": "S’ha abonat el compte de l’empleat.",
+    "NO_SHOW_PRO": "Sanció aplicada i reemborsament efectuat.",
+    "EMPLOYEE_DELETED": "L’empleat s’ha suprimit.",
+    "SLOT_SELECTED": "Franja seleccionada",
+    "PASSWORD_RESET": "S’ha restablert la contrasenya.",
+    "INVOICE_GENERATED": "Factures generades.",
+    "REVIEW_SAVED": "Ressenya guardada, gràcies!",
+    "DEFAULT_PASSWORD_UPDATED": "S’ha actualitzat la contrasenya per defecte.",
+    "COMPANY_CREATED": "El teu compte professional s’ha creat correctament."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Inicia sessió per gestionar els teus favorits.",
+    "INVALID_IMAGE": "Imatge no vàlida.",
+    "NO_SLOTS": "No hi ha cap franja disponible per a aquest servei.",
+    "NO_SHOP_SELECTED": "No s’ha seleccionat cap botiga.",
+    "NO_SERVICE_SELECTED": "No s’ha seleccionat cap servei.",
+    "ORDER_ERROR": "Error en actualitzar la comanda.",
+    "CODE_ERROR": "Error en desar el codi.",
+    "INVOICE_GENERATED_ERROR": "Error en generar les factures.",
+    "USERNOTCREATED": "No s’ha pogut crear l’usuari.",
+    "INSUFFICIENT_COMPANY_CREDIT": "El saldo de l’empresa és insuficient per a aquest abonament.",
+    "GENERIC_ERROR": "✨ Ups… s’ha produït un error. Torna-ho a provar ✨",
+    "COMPANY_CREDITED": "S’ha abonat el compte de l’empresa.",
+    "LINK_INVALID_OR_MISSING": "Enllaç invàlid o inexistent.",
+    "LINK_INVALID_OR_EXPIRED": "Enllaç invàlid o caducat.",
+    "EMAIL_NOT_FOUND": "No s’ha trobat el correu de l’usuari.",
+    "PAYMENT_FAILED": "El pagament ha fallat.",
+    "BOOKING_FAILED": "No s’ha pogut crear la reserva.",
+    "LOAD_CARDS_FAILED": "S’ha produït un error en carregar les teves targetes.",
+    "LOAD_SHOP_FAILED": "S’ha produït un error en carregar el saló.",
+    "LOAD_PRODUCTS_FAILED": "S’ha produït un error en carregar les prestacions.",
+    "INVALID_CODE": "El codi introduït no és vàlid.",
+    "PASSWORD_CHANGED": "S’ha actualitzat la teva contrasenya.",
+    "PASSWORDS_IDENTICAL": "La nova contrasenya ha de ser diferent de l’actual.",
+    "INVALID_AMOUNT": "L’import introduït no és vàlid.",
+    "INVALID_CURRENT_PASSWORD": "La contrasenya actual és incorrecta.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "La contrasenya actual és errònia o s’ha produït un error.",
+    "PASSWORD_UPDATE_FAILED": "No s’ha pogut canviar la contrasenya.",
+    "PASSWORD_UPDATE_GENERIC": "S’ha produït un error en actualitzar la contrasenya.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Les contrasenyes no coincideixen o són massa curtes (mín. 8 caràcters).",
+    "INVALID_PASSWORD": "La contrasenya no pot estar buida.",
+    "PASSWORD_TOO_SHORT": "La contrasenya ha de tenir almenys 8 caràcters."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Falta la configuració de Stripe.",
+    "LOAD_FAILED": "No s’ha pogut carregar Stripe",
+    "NOT_READY": "Stripe no inicialitzat",
+    "CONFIRM_FAILED": "Error en desar la targeta",
+    "CARD_SAVED": "Targeta desada correctament ✅",
+    "PM_FAILED": "Error en crear la targeta",
+    "SI_FAILED": "No s’ha pogut preparar el registre de la targeta",
+    "ATTACH_FAILED": "No s’ha pogut vincular la targeta al compte",
+    "SAVE_CARD": "Desar la targeta",
+    "ADD_CARD": "Afegir targeta"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Si us plau, inicia sessió"
+  },
+  "COMMON": {
+    "LOADING": "Carregant…",
+    "UNEXPECTED_ERROR": "S’ha produït un error inesperat"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Verificació en curs",
+    "VALIDE": "Estem validant el teu enllaç d’activació. Només trigarà un instant.",
+    "ACCOUNT": "Compte activat",
+    "CONNECT": "Iniciar sessió",
+    "OUPS": "Ups",
+    "WRITE": "Necessites ajuda? Escriu-nos a",
+    "RESEND": "Reenviar el correu d’activació"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Les meves dades bancàries",
+    "ADD_BANK_INFO": "Afegir les meves dades bancàries",
+    "BANK_NAME": "Nom del banc",
+    "HOLDER_NAME": "Titular del compte",
+    "COUNTRY": "País",
+    "SAVE": "Desar"
+  },
+  "LOADER": {
+    "LOADING": "Carregant…"
+  },
+  "SPONSORS": {
+    "TITLE": "Els nostres patrocinadors",
+    "SPONSORISED": "Patrocinada"
+  },
+  "TABS": {
+    "FINANCE": "Seguiment financer",
+    "GENERAL_INFO": "Informació general",
+    "EMPLOYEES": "Gestió d’empleats",
+    "SERVICES": "Gestió de prestacions",
+    "PHOTOS": "Galeria de fotos",
+    "STATS": "Estadístiques",
+    "PARAM": "Paràmetres",
+    "SHOPS": "Les botigues",
+    "USERS": "Els usuaris",
+    "MESSAGE": "Missatgeria"
+  },
+  "CARD": {
+    "ADD": "Afegir la targeta",
+    "NO_IMAGE": "Cap imatge a la galeria.",
+    "SALON": "Saló actualitzat correctament",
+    "ERROR1": "Error en actualitzar el saló",
+    "ERROR2": "Error en actualitzar la foto",
+    "UPDATE": "Actualització del saló correcta"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Finalitzada",
+    "ACCEPTEE": "Acceptada",
+    "WAITING": "En espera",
+    "CANCEL": "Cancel·lada",
+    "DELETE": "Suprimida",
+    "REFUSED": "Refusada",
+    "NO_PRESTA": "Proveïdor absent",
+    "CLIENT_ABSENT": "Client absent",
+    "ADRESSE": "Adreça",
+    "DATE": "Data",
+    "TOTAL": "Total",
+    "FACTURE": "Factura",
+    "CANCELLED": "Cancel·lada",
+    "DELETED": "Suprimir",
+    "AVIS": "Ressenya",
+    "SUPPORT": "Suport",
+    "CODE": "Codi de confirmació",
+    "CODE_A_DONNER": "Codi a donar al proveïdor",
+    "PRESTA_ABSENT": "Proveïdor absent"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Ressenyes de la botiga",
+    "COMMENT": "Comentari",
+    "NOTE": "Nota",
+    "CLOSE": "Tancar"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Cap imatge a la galeria."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Valora la teva comanda",
+    "DATE": "Data",
+    "SERVICE": "Servei",
+    "AVIS": "La teva ressenya",
+    "SEND": "Enviar",
+    "PLACEHOLDER": "Descriu la teva experiència…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Fes-los venir a casa teva",
+    "KNOWMORE": "Més informació",
+    "PART1TITLE": "Gaudeix dels millors serveis d’estètica a domicili",
+    "PART1TEXT": "Els nostres professionals qualificats es desplacen a casa teva per oferir-te tractaments de bellesa de qualitat, adaptats a les teves necessitats i preferències. Viu una experiència única de benestar, sigui a l’hora de dinar, al vespre després de la feina o en una tarda amb amigues.",
+    "PART2TITLE": "Treballa quan vulguis, genera ingressos a mida",
+    "PART2TEXT": "Genera ingressos segons la teva pròpia agenda acceptant sol·licituds a la plataforma al teu ritme. Pots utilitzar el teu propi material o llogar-ne de professional a través d’izyGlam.",
+    "PART3TITLE": "Un servei de bellesa repensat per a empreses",
+    "PART3TEXT": "Glam for Business és una plataforma per a empreses de totes les mides, dissenyada per gestionar les necessitats estètiques dels teus clients i empleats. Ofereix tractaments personalitzats directament al lloc de treball, en esdeveniments corporatius o per a ocasions especials. Els nostres professionals qualificats es desplacen per oferir serveis adaptats a les teves necessitats.",
+    "APPTITLE": "Tot és més fàcil amb les apps",
+    "DOWNLOADAPP1": "Descarrega l’aplicació",
+    "DOWNLOADAPP2": "Descarrega l’app per a professionals de l’estètica",
+    "SCANTODOWNLOAD": "Escaneja per descarregar",
+    "SIGNUP": "Registra’t!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Error de reproducció del vídeo",
+    "AUTOPLAY_BLOCKED": "L’autoreproducció s’ha bloquejat. Prem per reproduir el vídeo.",
+    "NAV_ERROR": "No és possible la navegació"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Funcionament de les apps i webs d’izyGlam",
+    "HELPCENTER": "Accedeix al centre d’ajuda",
+    "BUSINESS": "Empresa",
+    "ABOUT": "Sobre nosaltres",
+    "OURSERVICES": "Els nostres serveis",
+    "PRESSAREA": "Premsa",
+    "INVESTORS": "Inversors",
+    "CAREERS": "Feina",
+    "AI": "Intel·ligència Artificial",
+    "PRODUCTS": "Productes",
+    "GLAM": "Sempre al top amb izyGlam",
+    "RESERVED": "Reserva amb antelació",
+    "GIFTCARDS": "Targetes regal",
+    "WORKWITHUS": "Treballa amb izyGlam",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Confidencialitat",
+    "ACCESS": "Accessibilitat",
+    "CONDITIONS": "Condicions",
+    "LANGUAGE": "Idioma",
+    "LOCALISATION": "Ubicació",
+    "ALL_RIGHT": "Tots els drets reservats"
+  },
+  "COMING_SOON": {
+    "TITLE": "Arribem aviat",
+    "TITLE-NOT-COMING": "Encara no tenim previst venir",
+    "DAYS": "Dies",
+    "HOURS": "Hores",
+    "MINUTES": "Minuts",
+    "SECONDS": "Segons",
+    "TEXT": "Treballem intensament per oferir-te una experiència única de bellesa a domicili. Mantén-te al corrent per saber quan llancem."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Ofertes del moment",
+    "DISCOVER": "Per descobrir a izyGlam",
+    "LIKED": "Els més ben valorats a prop",
+    "SMART": "Bones jugades",
+    "TOP10": "Top 10 de la setmana",
+    "SEARCHRESULT": "Resultats de la cerca",
+    "AVIS": "Ressenyes"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Perruqueria",
+    "MANUCURE": "Manicura",
+    "VISAGE": "Rostre",
+    "MASSAGE": "Massatge",
+    "MAQUILLAGE": "Maquillatge",
+    "EPILATION": "Depilació",
+    "BRONZAGE": "Bronzejat",
+    "PARTUM": "Postpart",
+    "NUTRITION": "Nutrició",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupuntura",
+    "STYLISME": "Estilisme",
+    "YOGA": "Relaxació",
+    "DEVELOPPEMENT": "Elevació",
+    "EYELASH": "Extensions de pestanyes"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Una perruquera",
+    "MANUCURE": "Una manicura",
+    "ESTETICIAN": "Una esteticista",
+    "MASSAGE": "Una massatgista",
+    "MAQUILLAGE": "Una maquilladora",
+    "PEDICURE": "Una pedicura",
+    "NUTRITION": "Una nutricionista",
+    "FITNESS": "Una coach"
+  },
+  "INTRO": {
+    "NORESULTS": "No s’ha trobat cap resultat",
+    "START": "Començar",
+    "SPECIALITY": "Especialitat?",
+    "WHERE": "On?",
+    "CONNEXION": "Inicia sessió",
+    "REGISTRATION": "Registre"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Informació del compte",
+    "MESSAGE": "Els meus missatges",
+    "MESSAGE_SUBTITLE": "Llista de les meves converses en curs.",
+    "INFORMATION_SUBTITLE": "Modifica les teves dades personals fàcilment.",
+    "SECURITY": "Seguretat i idioma",
+    "SECURITY_SUBTITLE": "Contrasenya, idioma… tot sota control aquí.",
+    "CONFIDENTIAL": "Privadesa i dades",
+    "CONFIDENTIAL_SUBTITLE": "Les teves dades són valuoses. Així les protegim.",
+    "DASHBOARD": "Panell de control",
+    "DASHBOARD_SUBTITLE": "Gestiona fàcilment les dades de la teva activitat.",
+    "COMPANY": "Gestió de la meva empresa",
+    "COMPANY_SUBTITLE": "Gestiona còmodament les teves cites passades, futures o cancel·lades.",
+    "SHOP": "Gestió del meu saló",
+    "SHOP_SUBTITLE": "Gestiona el teu saló, les prestacions i les finances.",
+    "FINANCIAL": "Seguiment financer",
+    "ADMIN": "Administració general",
+    "ADMIN_SUBTITLE": "Gestiona fàcilment tot aquest meravellós projecte. El món és teu, campiona!",
+    "CALENDAR": "Agenda",
+    "CALENDAR_SUBTITLE": "Gestiona fàcilment les teves cites passades o futures.",
+    "SELECT_SALON": "Selecciona un saló",
+    "NEW_SALON": "Crear un saló",
+    "SHOP_TO_CREATE": "Tipus de botiga a crear",
+    "CANCEL": "Cancel·lar",
+    "CREATE": "Crear la meva botiga",
+    "INFO1": "Estàs a punt de suprimir la teva botiga de",
+    "INFO2": "Aquesta acció és irreversible",
+    "SURE": "Segur que vols continuar",
+    "DELETE": "Suprimir"
+  },
+  "PROFILE": {
+    "TITLE": "Informació bàsica",
+    "FIRSTNAME": "Nom",
+    "LASTNAME": "Cognoms",
+    "PHONE": "Número de telèfon",
+    "ADDRESS": "Adreça de correu",
+    "CHANGE_USER": "Modificar l’usuari",
+    "CANCEL": "Cancel·lar",
+    "SUCCESS": "Perfil modificat correctament",
+    "UPDATE_ERROR": "S’ha produït un error en actualitzar la contrasenya."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Canviar la contrasenya",
+    "ACTUAL_PASSWORD": "Contrasenya actual",
+    "NEW_PASSWORD": "Contrasenya nova",
+    "CONFIRMED_PASSWORD": "Confirma la contrasenya nova",
+    "CHANGE_PASSWORD": "Canviar la contrasenya",
+    "CHANGE_OK": "Contrasenya canviada correctament",
+    "CHANGE_LANGUE": "Canviar l’idioma",
+    "CHANGE_COUNTRY": "Canviar el país",
+    "LANGUE": "Idioma",
+    "COUNTRY": "País"
+  },
+  "PAYEMENT": {
+    "YOU": "Tu",
+    "HEADER_TITLE": "Pagament",
+    "SERVICE_TITLE": "Servei",
+    "SERVICE_NOTE": "Nota:",
+    "ADDRESS_TITLE": "Adreça de la prestació",
+    "ADDRESS_RENDEZVOUS": "Cita davant de la meva porta",
+    "ADDRESS_CHANGE": "Seleccionar una altra adreça",
+    "PAYMENT_SECTION_TITLE": "Pagament",
+    "PAYMENT_METHOD": "Targeta principal",
+    "PAYMENT_EXPIRE": "Venç",
+    "PAYMENT_NO_CARD": "No hi ha cap targeta principal definida",
+    "PAYMENT_NO_CARD_DESC": "Si us plau, afegeix o selecciona una targeta com a mètode de pagament principal.",
+    "SUMMARY_SUBTOTAL": "Subtotal",
+    "SUMMARY_SERVICE_FEE": "Comissió izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Despeses de servei",
+    "SUMMARY_TOTAL": "Total",
+    "TITLE": "Reserva la teva cita en línia",
+    "FOR_WHO": "Per a qui reserves aquesta cita?",
+    "ADD_PROCHE": "Afegir un afí",
+    "WHERE": "On rebràs la cita?",
+    "SELECT_ADDRESS": "Selecciona una adreça",
+    "ADD_ADDRESS": "Afegir una adreça",
+    "CARD_PAY": "Pagament amb targeta bancària",
+    "CARD_NUM": "Número de la targeta",
+    "CARD_NAME": "Nom a la targeta",
+    "EXPIRATION": "Data de caducitat",
+    "CVV": "CVV",
+    "RDV": "La teva cita en detall",
+    "RESUME": "Resum de la cita",
+    "DATE": "Data",
+    "HOUR": "Hora",
+    "PRESTA": "Prestació",
+    "EXPIRE": "Venç",
+    "DEFAULT": "Per defecte",
+    "NOCARD": "Cap targeta desada",
+    "WITH": "Amb",
+    "TOTAL": "Total a pagar",
+    "ANNULER": "CANCEL·LAR",
+    "RETOUR": "ENRERE",
+    "CONTINUER": "CONTINUAR",
+    "VALIDER": "VALIDAR",
+    "ADRESSE": "Adreça",
+    "LEGAL_TEXT_1": "En fer clic per fer la comanda, acceptes el Contracte de serveis de lliurament amb izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Recordatori: renuncies al dret de desistiment per als serveis de lliurament. Pots recórrer a un mediador de consum aquí.",
+    "LEGAL_TEXT_3": "Si no ets a casa quan arribi el missatger, deixarà la comanda davant la porta. En fer una comanda, n’assumeixes tota la responsabilitat un cop lliurada. En cas d’absència, les comandes amb alcohol o articles restringits es retornaran directament a l’establiment.",
+    "CLOSE_FORM": "Tancar el formulari",
+    "ADD_CARD": "Afegir una targeta",
+    "TRAITEMENT": "Processament en curs"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Pagament validat",
+    "THANKS": "Gràcies! La teva reserva s’ha enregistrat correctament.",
+    "BACKHOME": "Tornar a l’inici",
+    "PROBLEME": "Problema amb la reserva",
+    "PAIEMENT": "El pagament s’ha carregat, però no s’ha pogut confirmar la reserva.",
+    "THANKSCONTACT": "Contacta amb el nostre suport a",
+    "FAILED": "Pagament fallit",
+    "VALIDATE": "No hem pogut validar el teu pagament. Torna-ho a provar."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam per a autònomes",
+    "STEP1": {
+      "TITLE": "Els clients fan la comanda",
+      "TEXT": "El client troba el teu establiment i fa la comanda a l’app izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Acceptes la reserva",
+      "TEXT": "Acceptes la reserva i s’actualitza la teva agenda."
+    },
+    "STEP3": {
+      "TITLE": "En el moment de la cita",
+      "TEXT": "T’avisem amb antelació de les reserves i t’orientem per arribar a cada client."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Abonar el compte de l’empresa",
+    "SOLDE": "Saldo actual",
+    "CREDIT": "Import a abonar",
+    "COMPANY": "Abonar el compte de l’empresa",
+    "DEPENSE": "Seguiment de despeses",
+    "DATE": "Data",
+    "COUNT": "Import",
+    "EMPLOYEE": "Empleat",
+    "DESCRIPTION": "Descripció"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Ja tens un compte de partner o d’empresa!",
+    "NOT_CONNECTED": "Inicia sessió per enregistrar un saló",
+    "TITLE": "Posa-t’hi!",
+    "TITLE2": "Creem un saló!",
+    "NAME": "Nom del teu saló",
+    "ADDRESS": "Adreça de la teva empresa",
+    "STREET": "Carrer",
+    "CITY": "Ciutat",
+    "CODE_POSTAL_POSSIBLE": "Codis postals atesos",
+    "CODE_POSTAL": "Codi postal",
+    "COUNTRY": "País",
+    "ADDRESSPLACEHOLDER": "Carrer Major, 123",
+    "FLOOR": "Pis/Suite (opcional)",
+    "BUSINESSTYPE": "Tipus d’empresa",
+    "FIRSTNAME": "Nom",
+    "LASTNAME": "Cognoms",
+    "PASSWORD": "Contrasenya",
+    "PASSWORDCONFIRMED": "Confirmació de contrasenya",
+    "EMAIL": "Correu electrònic",
+    "PHONE": "Mòbil",
+    "WHATSAPP": "Accepto rebre missatges per WhatsApp",
+    "BUTTON": "Enregistrar la botiga",
+    "SUCCESS": "La botiga s’ha creat correctament!",
+    "ERROR": "S’ha produït un error en crear la botiga:",
+    "ERROR1": "El nom de l’empresa és obligatori.",
+    "ERROR2": "L’adreça de l’empresa és obligatòria.",
+    "ERROR3": "El tipus d’empresa és obligatori.",
+    "ERROR4": "El nom és obligatori.",
+    "CHOOSE_COUNTRY": "Triar un país",
+    "POSTAL_CODE": "Codi postal",
+    "CHOOSE_CITY": "Triar una ciutat",
+    "ERROR5": "Els cognoms són obligatoris.",
+    "ERROR6": "El correu electrònic és obligatori.",
+    "ERROR7": "El número de mòbil és obligatori.",
+    "ERROR8": "Has d’acceptar rebre missatges per WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Modificar l’adreça",
+    "FIND_SHOP": "Cercar una botiga",
+    "CATEGORIES": "Categories",
+    "OFFRE": "Ofertes del moment",
+    "DISCOVER": "Per descobrir",
+    "APPRECIATE": "Els més apreciats",
+    "SMART": "Bones jugades",
+    "TOP10": "Top10 de la setmana",
+    "SEARCH_RESULT": "Resultats de cerca",
+    "NOT_AVAILABLE": "Encara no disponible en aquesta adreça",
+    "NEW_ADDRESS": "Afegir una nova adreça",
+    "CHOOSE_ADDRESS": "Tria una adreça",
+    "CHOOSE_COUNTRY": "Triar un país",
+    "CHOOSE_CITY": "Triar una ciutat",
+    "CHOOSE_ARRONDISSEMENT": "Triar un districte",
+    "CANCEL": "Cancel·lar",
+    "SAVE": "Desar",
+    "CLOSE": "Tancar"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Nom",
+    "CITY": "Ciutat",
+    "NOTE": "Nota",
+    "MIDDLE_PRICE": "Preu mitjà",
+    "PROMOTION": "Promoció",
+    "ACTIONS": "Accions",
+    "MODIFIER": "Modificar la informació de la botiga",
+    "SHOP_NAME": "Nom de la botiga",
+    "DESCRIPTION": "Descripció",
+    "PRINCIPALE": "Imatge principal",
+    "SHOP": "Tipus de botiga",
+    "ARRONDISSEMENT": "Districte",
+    "MINIMUM_DELAI": "Termini mínim",
+    "DISTANCE": "Distància màxima (km)",
+    "EMPLACEMENT": "Emplaçament",
+    "HOURS_MORNING": "Horari d’obertura - Matí",
+    "HOURS_AFTERNOON": "Horari d’obertura - Tarda",
+    "ACTIVE_PROMO": "Promo activa",
+    "CANCEL": "Cancel·lar",
+    "ENREGISTRER": "Desar"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Fes créixer el teu negoci",
+    "TEXT": "Milers d’usuaris de l’app izyGlam podrien buscar un establiment al teu sector…",
+    "IMAGE": "imatge"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Per què izyGlam?",
+    "STEP1": {
+      "TITLE": "Treballa a la teva manera",
+      "TEXT": "Organitza la teva agenda i gestiona les prestacions amb total llibertat. Gaudeix d’una plataforma flexible que s’adapta a les teves necessitats per maximitzar l’activitat."
+    },
+    "STEP2": {
+      "TITLE": "Enforteix la teva presència en línia",
+      "TEXT": "Atraeix més clients amb les eines de màrqueting integrades i impulsa els resultats amb més visibilitat."
+    },
+    "STEP3": {
+      "TITLE": "Fidelitza els teus clients",
+      "TEXT": "Construeix relacions duradores analitzant preferències, responent ressenyes i oferint avantatges de fidelitat."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Simplifica la gestió del teu negoci",
+      "TEXT": "Gestiona amb serenitat amb izyGlam, la solució integral per a professionals del benestar. Eines flexibles i acompanyament personalitzat."
+    },
+    "STEP2": {
+      "TITLE": "Impulsa les vendes",
+      "TEXT": "Cada dia, milers de persones utilitzen izyGlam per trobar experts en bellesa a prop. Aprofita l’oportunitat per arribar a nous clients."
+    },
+    "STEP3": {
+      "TITLE": "Satisfacció garantida",
+      "TEXT": "Amb izyGlam, ofereix una experiència personalitzada. Gestiona cites, comunica ràpid i adapta serveis. Clients satisfets i fidels."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam per a la teva empresa?",
+    "STEP1": {
+      "TITLE": "Els teus empleats i clients reserven serveis",
+      "TEXT": "Seleccionen les prestacions de benestar directament a l’app d’izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Decideixes l’import a assignar",
+      "TEXT": "Pots abonar comptes d’empleats i clients de forma periòdica o puntual."
+    },
+    "STEP3": {
+      "TITLE": "Es realitzen les prestacions",
+      "TEXT": "Els nostres experts es desplacen per oferir els serveis reservats, garantint una experiència òptima."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Valoritza la teva empresa",
+    "TEXT": "Milers d’usuaris busquen serveis de benestar. Ofereix als teus equips i clients accés als millors experts de bellesa a prop seu.",
+    "IMAGE": "imatge"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Per què izyGlam?",
+    "STEP1": {
+      "TITLE": "Fidelitza i recompensa els teus empleats",
+      "TEXT": "Proporciona un pressupost mensual de bellesa. Perruqueres, esteticistes i més, per millorar la satisfacció i el sentiment de pertinença."
+    },
+    "STEP2": {
+      "TITLE": "Millora la teva imatge de marca",
+      "TEXT": "Organitza esdeveniments de bellesa o integra serveis d’izyGlam en programes de fidelització. Marca la diferència amb cures de qualitat."
+    },
+    "STEP3": {
+      "TITLE": "Optimitza el benestar a la feina",
+      "TEXT": "Facilita l’accés a serveis de benestar al lloc de treball o a prop. Millora la motivació i la cohesió d’equip."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Simplifica el benestar per al teu equip",
+      "TEXT": "Amb izyGlam, ofereix una solució simple i flexible per cuidar-se: estètica o posada en forma, tot a l’abast."
+    },
+    "STEP2": {
+      "TITLE": "Avantatges innovadors per als clients",
+      "TEXT": "Enforteix la relació oferint prestacions de benestar en esdeveniments o programes de fidelitat."
+    },
+    "STEP3": {
+      "TITLE": "Benestar a mida, on i quan vulguis",
+      "TEXT": "Serveis de qualitat arreu, experts seleccionats i acompanyament personalitzat per garantir la satisfacció."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Gestionar el compte",
+    "ORDERS": "Comandes realitzades",
+    "FAVORITES": "Favorits",
+    "HELP": "Ajuda",
+    "MY_ABO": "La meva subscripció",
+    "PRICES": "Plans de preus",
+    "FIDELITY": "Programa de fidelitat",
+    "LOGOUT": "Tancar sessió",
+    "YOUR_BEAUTY_SERVICES": "Ofereix els teus serveis de bellesa",
+    "YOUR_COMPANY": "Enregistra la teva empresa"
+  },
+  "SUBTITLES": {
+    "HELP": "Necessites un cop de mà? Aquesta pàgina és per a tu."
+  },
+  "ORDERS": {
+    "TITLE": "Les meves comandes",
+    "TITLE_SUBTITLE": "Gestiona fàcilment les teves cites passades, futures o cancel·lades.",
+    "UPCOMING_SECTION": "📅 Properes",
+    "NO_UPCOMING": "No tens cap prestació planificada.",
+    "PAST_SECTION": "✅ Passades",
+    "NO_PAST": "No tens cap prestació realitzada.",
+    "ADDRESS": "Adreça",
+    "DATE": "Data",
+    "TOTAL": "Total",
+    "ITEMS": "articles",
+    "DELETE": "Suprimir",
+    "VISIT": "Visitar",
+    "PRESTA_FOR": "Prestació per a",
+    "AT": "a",
+    "ORDER_AGAIN": "Tornar a demanar",
+    "INVOICE": "Sol·licitar factura",
+    "REVIEW": "Deixa la teva opinió",
+    "CANCEL": "Cancel·lar"
+  },
+  "FIDELITY": {
+    "TITLE": "Els meus favorits",
+    "AGAIN": "Encara",
+    "AGAIN_SUBTITLE": "abans de la teva recompensa",
+    "TITLE_SUBTITLE": "per desbloquejar el teu regal",
+    "DATE": "Vàlid fins a",
+    "HISTO": "Historial dels meus tractaments"
+  },
+  "FAVORITES": {
+    "TITLE": "Els meus favorits",
+    "TITLE_SUBTITLE": "Torna als teus salons preferits d’un cop d’ull."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Despeses de servei:",
+    "DISTANCE": "Distància màx.:",
+    "PAYEMENT": "S’accepta pagament amb targeta i PayPal",
+    "PRESS_FOR_INFO": "Prem per consultar horaris, informació, etc.",
+    "GALLERY": "Galeria d’imatges",
+    "SEE_MORE": "Veure més",
+    "SEE_LESS": "Veure menys"
+  },
+  "LOGIN": {
+    "TITLE": "Introdueix les teves credencials d’inici de sessió.",
+    "FORGET_PASSWORD": "Has oblidat la contrasenya?",
+    "CONTINUER": "Continuar",
+    "CONTINUE_WITH": "Continuar amb",
+    "OR": "O",
+    "QRCODE": "Inicia sessió amb codi QR",
+    "CGU": "En continuar, acceptes rebre trucades, missatges de WhatsApp o SMS (incloent mètodes automàtics) d’izyGlam i afiliades al número indicat.",
+    "PLACEHOLDER_EMAIL": "Adreça de correu",
+    "PLACEHOLDER_PASSWORD": "Contrasenya",
+    "PLACEHOLDER_PASSWORD_NEW": "Contrasenya nova",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Confirmar contrasenya",
+    "CHANGE_PASSWORD": "Canvia la teva contrasenya",
+    "REINIT": "Restablir"
+  },
+  "SIGNUP": {
+    "GENRE": "Gènere",
+    "CHOOSE": "Triar",
+    "SEX_MALE": "Home",
+    "SEX_FEMALE": "Dona",
+    "TITLE": "Introdueix la teva informació personal.",
+    "CONTINUER": "Continuar",
+    "OR": "O",
+    "QRCODE": "Inicia sessió amb codi QR",
+    "CGU": "En continuar, acceptes rebre trucades, WhatsApp o SMS (incloent mètodes automàtics) d’izyGlam i afiliades al número indicat.",
+    "PLACEHOLDER_FIRSTNAME": "Nom",
+    "PLACEHOLDER_LASTNAME": "Cognoms",
+    "PLACEHOLDER_EMAIL": "Correu electrònic",
+    "PLACEHOLDER_EMAIL_REQUIRED": "Correu obligatori",
+    "PLACEHOLDER_EMAIL_WRONG": "Format de correu invàlid",
+    "PLACEHOLDER_PHONE": "Telèfon",
+    "PLACEHOLDER_PHONE_NUMBER": "Número de telèfon",
+    "PLACEHOLDER_PASSWORD": "Contrasenya",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Confirmació de contrasenya",
+    "COUNTRY": "País"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Francès",
+    "ANGLAIS": "Anglès",
+    "ESPAGNOL": "Espanyol",
+    "NEERLANDAIS": "Neerlandès",
+    "ITALIEN": "Italià",
+    "ALLEMAND": "Alemany",
+    "PORTUGAIS": "Portuguès",
+    "POLONAIS": "Polonès",
+    "DANOIS": "Danès",
+    "FINNOIS": "Finès",
+    "SUEDOIS": "Suec",
+    "ARABE": "Àrab",
+    "TURC": "Turc",
+    "CHINOIS": "Xinès",
+    "RUSSE": "Rus",
+    "PERSAN": "Persa",
+    "UKRAINIEN": "Ucraïnès",
+    "ROUMAIN": "Romanès",
+    "CATALAN": "Català",
+    "BASQUE": "Basc",
+    "GALICIEN": "Gallec",
+    "ALBANAIS": "Albanès",
+    "KURDE": "Kurd",
+    "ESTONIEN": "Estonià",
+    "SOMALIEN": "Somali",
+    "BIELORUSSE": "Bielorús",
+    "JAPONAIS": "Japonès",
+    "COREEN": "Coreà",
+    "INDONESIEN": "Indonesi",
+    "MALAIS": "Malai",
+    "THAI": "Thai",
+    "VIETNAMIEN": "Vietnamita",
+    "TAGALOG": "Tagal",
+    "BENGALI": "Bengalí"
+  },
+  "COUNTRY": {
+    "FRANCE": "França",
+    "ALLEMAGNE": "Alemanya",
+    "SPAIN": "Espanya",
+    "ITALY": "Itàlia",
+    "DANEMARK": "Dinamarca",
+    "FINLAND": "Finlàndia",
+    "NETHERLAND": "Països Baixos",
+    "POLAND": "Polònia",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Suècia",
+    "CHINA": "Xina",
+    "INDIA": "Índia",
+    "JAPAN": "Japó",
+    "SOUTH_KOREA": "Corea del Sud",
+    "INDONESIA": "Indonèsia",
+    "PHILIPPINES": "Filipines",
+    "THAILAND": "Tailàndia",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malàisia",
+    "SINGAPOURE": "Singapur",
+    "EMIRAT_ARABE": "Emirats Àrabs Units",
+    "SAUDI_ARABIA": "Aràbia Saudita"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Les meves adreces",
+    "ADDRESS_MODIFICATION": "Modificació d’adreça",
+    "STREET": "Carrer",
+    "CITY": "Ciutat",
+    "CP": "Codi postal",
+    "CREATE": "Crear",
+    "BACK": "Enrere",
+    "CHANGE": "Modificar",
+    "CLOSE": "Tancar"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Paràmetres de la plataforma",
+    "COMMISSION": "Taxa de comissió (%)",
+    "0to100": "Valor entre 0 i 100 obligatori",
+    "SERVICE": "Despeses de servei (€)",
+    "WEEKS": "Nombre de setmanes mostrades",
+    "SUP0": "Valor superior a 0 obligatori",
+    "LESS24": "Despeses de cancel·lació a menys de 24 h (%)",
+    "LESS48": "Despeses de cancel·lació a menys de 48 h (€)",
+    "DELAY": "Termini mínim de reserva (hores)",
+    "TVA": "Tipus d’IVA (%)",
+    "ADS": "Activar els anuncis",
+    "COMPANY": "Activar el comerç amb empreses",
+    "FIDELITY": "Activar la fidelització",
+    "MULTI_SHOP": "Activar el multi-botiga",
+    "PROMO": "Activar les promocions a la botiga",
+    "SPONSORS": "Activar l’apartat d’esponsors a la pàgina d’inici",
+    "SAVE": "Desar"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Total de botigues",
+    "ACT_SHOPS": "Nombre de botigues actives",
+    "USERS": "Total d’usuaris",
+    "NBR_USERS": "Nombre d’usuaris registrats",
+    "CA_TOTAL": "Xifra de negoci total",
+    "CA_GENERATED": "Xifra de negoci generada",
+    "SHOPS_PERFO": "Rendiment de les botigues",
+    "SHOP_NAME": "Nom de la botiga",
+    "CITY": "Ciutat",
+    "REVENUES": "Ingressos",
+    "BOOKINGS": "Nombre de reserves",
+    "NOTE": "Nota mitjana",
+    "ACTIONS": "Accions",
+    "DETAILS": "Detalls",
+    "ADJUST": "Ajustar",
+    "SHOP_ADJUST": "Ajustar la botiga",
+    "STILL_DEVELOPPED": "Aquesta funcionalitat encara està en desenvolupament",
+    "CLOSE": "Tancar"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Detalls de l’esdeveniment",
+    "CLIENT": "Client",
+    "DEBUT": "Inici",
+    "FIN": "Fi",
+    "ADDRESS": "Adreça",
+    "PHONE": "Telèfon",
+    "CANCEL": "Cancel·lar",
+    "SAVE": "Desar"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Crear un esdeveniment",
+    "COMING": "Properament",
+    "PAST": "Passades",
+    "CANCELLED": "Cancel·lades",
+    "NO_CANCELLED": "Cap comanda cancel·lada."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Assistència en línia"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Gestió dels empleats",
+    "NAME": "Nom",
+    "EMAIL": "Correu electrònic",
+    "SOLDE": "Saldo del compte",
+    "ACTIONS": "Accions",
+    "DEFAULT_PASSWORD": "Contrasenya predeterminada",
+    "REINITIALIZE_PASSWORD": "Contrasenya predeterminada per a reinicialització",
+    "CHANGE_PASSWORD": "Canviar la contrasenya"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Crèdit al compte de l’emplet",
+    "AMOUNT": "Import a acreditar",
+    "CANCEL": "Cancel·lar",
+    "SAVE": "Validar"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Total de reserves",
+    "TOTAL_MONTH": "Reserves aquest mes",
+    "GENERATED": "Ingressos generats",
+    "MONTHLY": "Ingressos aquest mes",
+    "AVG_NOTE": "Notes mitjanes",
+    "BASED_ON": "Basat en",
+    "REVIEWS": "opinions",
+    "NEXT_APPOINTEMENT": "Properes cites",
+    "POPULAR_SERVICES": "Serveis més populars",
+    "RESERVATION": "reserves"
+  },
+  "FINANCE": {
+    "PROGRESS": "Evolució des de M-1",
+    "PROGRESSION": "Progressió",
+    "TOTAL_GENERATED": "Total de xifra generada",
+    "CA": "Xifra de negoci",
+    "COMMISSION_TAKEN": "Comissió retinguda",
+    "COMMISSIONS": "Comissions",
+    "NET_TO_PAY": "Import net a abonar",
+    "DISPO_AMOUNT": "Import disponible",
+    "REQUEST_WITHDRAWAL": "Sol·licitar una transferència",
+    "TAKE": "Import a retirar",
+    "TOTAL_EARNINGS": "Ingressos nets",
+    "TOTAL_BOOKINGS": "Prestacions realitzades",
+    "CANCELLED_BOOKINGS": "Prestacions cancel·lades",
+    "SERVICES_CANCELLED": "Reserves cancel·lades o refusades",
+    "SERVICES_COMPLETED": "Reserves finalitzades",
+    "AVG_PRICE": "Preu mitjà",
+    "PER_SERVICE": "Per prestació",
+    "REVIEW_RATIO": "Opinions de clients",
+    "CLIENT_FEEDBACK": "Taxa de respostes",
+    "TOP_PRODUCTS": "Prestacions més venudes",
+    "AVG_DURATION": "Durada mitjana",
+    "DURATION_PER_BOOKING": "Temps per reserva",
+    "DETAILS": "Detalls del compte bancari",
+    "ASK": "Sol·licitar una transferència",
+    "HISTORY": "Historial de transaccions",
+    "DATE": "Data",
+    "AMOUNT": "Import",
+    "COMMISSION": "Comissió",
+    "STATUS": "Estat"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Seleccioneu el tipus de botiga a crear",
+    "CANCEL": "Cancel·lar",
+    "CREATE": "Validar"
+  },
+  "PROCHES": {
+    "TITLE": "Els meus pròxims",
+    "UPDATE": "Modificació d’un proper",
+    "FIRSTNAME": "Nom",
+    "NAME": "Cognoms",
+    "EMAIL": "Correu electrònic",
+    "PHONE": "Telèfon",
+    "CREATE": "Crear",
+    "BACK": "Enrere",
+    "CHANGE": "Modificar",
+    "CLOSE": "Tancar"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Deixa la teva opinió",
+    "RATING": "Nota",
+    "COMMENT": "Comentari",
+    "CLOSE": "Tancar",
+    "SUBMIT": "Enviar"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Trieu la data de la prestació",
+    "CANCEL": "Cancel·lar"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Crear un servei",
+    "NAME": "Nom",
+    "DESCRIPTION": "Descripció",
+    "COLOR": "Color",
+    "PRICE": "Preu",
+    "TIME": "Durada",
+    "IMAGE": "Imatge",
+    "ACTIONS": "Accions",
+    "MINUTES": "minuts",
+    "CHANGE": "Modificar",
+    "DELETE": "Suprimir",
+    "SERVICE_NAME": "Nom del servei",
+    "TIME_MINUTES": "Durada (en minuts)",
+    "PREST_IMAGE": "Imatge de la prestació",
+    "NO_PICS": "Encara no hi ha foto",
+    "UPLOAD": "Pujar una imatge",
+    "NEW_PIC": "Previsualització de la nova imatge",
+    "PRESTA_COLOR": "Color de la prestació",
+    "CANCEL": "Cancel·lar",
+    "SAVE": "Desar",
+    "AVG_PRICE": "Tarifa mitjana",
+    "IMAGE_OK": "Imatge carregada amb èxit",
+    "ERROR_IMAGE_LOAD": "Error en carregar la imatge",
+    "UPDATE_SUCCESS": "Prestació actualitzada amb èxit",
+    "ERROR_PRESTA": "Error en actualitzar la prestació",
+    "PRESTA_UPDATED": "Prestació actualitzada amb èxit",
+    "PRESTA_ERROR": "Error en actualitzar la prestació",
+    "PRESTA_SUCCESS": "Prestació actualitzada amb èxit",
+    "PHOTO_ERROR": "Error en actualitzar la foto",
+    "PRESTA_DELETED": "Prestació suprimida amb èxit",
+    "PRESTA_DELETE_ERROR": "Error en suprimir la prestació"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Imatge de la botiga",
+    "UPLOAD_IMAGE": "Pujar una imatge",
+    "SNEEK_PIC": "Previsualització de la imatge",
+    "SHOP_NAME": "Nom de la botiga",
+    "DESCRIPTION": "Descripció",
+    "DESC_INFO": "(mín. 25 caràcters)",
+    "CITY": "Ciutat",
+    "DISCRICT": "Districtes",
+    "LAT": "Latitud",
+    "LON": "Longitud",
+    "ZONE": "Zona de desplaçament (km)",
+    "OPENNING": "Horaris d’obertura",
+    "MORNING_OPEN": "Matí - Obertura",
+    "MORNING_CLOSE": "Matí - Tancament",
+    "AFTERNOON_OPEN": "Tarda - Obertura",
+    "AFTERNOON_CLOSE": "Tarda - Tancament",
+    "SAVE": "Desar la botiga",
+    "MONDAY": "Dilluns",
+    "TUESDAY": "Dimarts",
+    "WEDNESDAY": "Dimecres",
+    "THURSDAY": "Dijous",
+    "FRIDAY": "Divendres",
+    "SATURDAY": "Dissabte",
+    "SUNDAY": "Diumenge",
+    "CLOSED": "Tancat",
+    "GENERATE_IMAGE": "Generar la imatge",
+    "GENERATE_DESCRIPTION": "Generar la descripció",
+    "PHOTO": "Exemples de fotos acceptades / refusades",
+    "CODE_POSTAUX": "Codis postals servits",
+    "EXEMPLE_LOCAL": "Ex: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Afegir un empleat",
+    "LOADING": "Carregant",
+    "LIST": "Llista d’empleats",
+    "ADD": "Afegir",
+    "EMAIL": "Correu de l’empleat",
+    "FIRSTNAME": "Nom",
+    "FAMILY_NAME": "Cognoms",
+    "PHONE": "Telèfon",
+    "PASSWORD": "Contrasenya",
+    "HAVE_TO": "Tots els camps són obligatoris.",
+    "EMAIL_ERROR": "Correu electrònic invàlid.",
+    "EMPLOYEE_OK": "Empleat afegit amb èxit.",
+    "ADD_EMPLOYEE_ERROR": "Error en afegir l’empleat."
+  },
+  "AVIS": {
+    "TITLE": "EL QUE DIUEN ELS NOSTRES USUARIS",
+    "AVIS1": "Era escèptica al principi… i tanmateix! La meva manicura va ser impecable, a casa, sense estrès. S’ha convertit en el meu petit ritual dels divendres al vespre.",
+    "AVIS2": "Vaig reservar un tractament facial en 3 minuts, des del sofà. L’esteticista va ser dolça, atenta… i la meva pell mai no havia estat tan bonica.",
+    "AVIS3": "Pensava que seria més car que en un saló… sorpresa: el mateix preu, fins i tot menys! I no vaig haver de desplaçar-me. És un gran sí.",
+    "AVIS4": "Era la vigília d’un aniversari, volia un brushing exprés. Vaig trobar una professional disponible en 2 clics. Puntual, simpàtica i resultat espectacular.",
+    "AVIS5": "Sóc mare sola, no tinc temps d’anar amunt i avall. Aquí, reservo quan els nens dormen. És simple, ràpid i francament genial.",
+    "AVIS6": "Em va encantar la meva primera sessió. L’esteticista em va fer sentir còmoda de seguida. Em vaig sentir mimada. Ja he reservat per a la setmana vinent!"
+  },
+  "DOWNLOAD": {
+    "USERS": "usuaris satisfets",
+    "SOCIAL": "professionals disponibles",
+    "STORE": "a l’App Store i Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Tria el pla que s’adapta a tu",
+    "DISCOVER2": "i comença la teva ascensió cap al cim",
+    "SOLUTIONS": "Et mereixes una solució bonica, potent i pensada per a tu. Pots canviar d’opinió en qualsevol moment",
+    "TEST": "La teva primera botiga és 100 % gratuïta. Zero estrès. Només màgia.",
+    "START_FREE": "Crear la meva primera botiga",
+    "FREE": "Aprenenta",
+    "FREE_SUBTITLE": "Comença la teva ascensió amb la teva primera botiga",
+    "THEN": "després",
+    "MONTHLY": "mes",
+    "FREE1": "1 botiga activa",
+    "FREE2": "Nombre il·limitat de reserves i clients",
+    "FREE3": "Gestió de prestacions i planificació",
+    "FREE4": "Sincronització amb calendari personal",
+    "FREE5": "Perfecte per començar amb serenitat",
+    "FREE6": "Crear una botiga gratuïta",
+    "BASIC": "Elegida",
+    "BASIC_SUBTITLE": "Desbloqueja el teu potencial i comença a brillar",
+    "BASIC1": "Fins a 3 botigues actives",
+    "BASIC2": "Gestió completa de prestacions, clients i cites",
+    "BASIC3": "Suport per correu prioritari",
+    "BASIC4": "Accés a recursos exclusius per fer créixer el teu negoci",
+    "BASIC5": "Ideal per a professionals que volen ampliar la clientela",
+    "BASIC6": "Prova gratuïta d’1 mes",
+    "PREMIUM": "Reina",
+    "PREMIUM_SUBTITLE": "El teu imperi pren forma, la teva influència creix",
+    "PREMIUM1": "Fins a 10 botigues actives",
+    "PREMIUM2": "Accés a estadístiques avançades del teu rendiment",
+    "PREMIUM3": "Recomanacions intel·ligents per impulsar la teva facturació",
+    "PREMIUM4": "Visibilitat reforçada a la plataforma IzyGlam",
+    "PREMIUM5": "Suport prioritari",
+    "PREMIUM6": "Pensat per a autònomes amb ambició",
+    "PREMIUM7": "Obtenir Reina",
+    "BUSINESS": "Deessa",
+    "BUSINESS_SUBTITLE": "Reclama el teu tron, Deessa",
+    "BUSINESS1": "A mida",
+    "BUSINESS2": "Nombre il·limitat de botigues",
+    "BUSINESS3": "Acompanyament estratègic personalitzat",
+    "BUSINESS4": "Visibilitat impulsada i destacat de les teves botigues",
+    "BUSINESS5": "Solucions a mida per escalar el teu negoci",
+    "BUSINESS6": "Contacta’ns",
+    "COMPARE": "Comparativa de funcionalitats",
+    "FONCTIONS": "Funcionalitats",
+    "BUSINESS9": "Gestió completa de l’activitat",
+    "STUDIO_BASIC": "Recursos exclusius",
+    "STUDIO_ADVANCED": "Estadístiques i recomanacions",
+    "ANALYSE": "Anàlisi de rendiment",
+    "BASICS": "Clàssica",
+    "ADVANCE": "Avançada",
+    "PLANS": "Nombre de botigues actives",
+    "READY": "A punt per fer créixer la teva activitat?",
+    "DISCOVERS": "Descobrir les ofertes d’IzyGlam"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Declaració d’accessibilitat",
+      "TEXT": "izyGlam es compromet a fer accessibles els seus serveis al màxim de persones. El nostre objectiu és assolir el nivell de conformitat WCAG 2.2 nivell AA i alinear-nos amb el RGAA (França), en la mesura del possible."
+    },
+    "SCOPE": {
+      "TITLE": "Abast cobert",
+      "L1": "Lloc web públic i pàgines d’informació.",
+      "L2": "Aplicació web (tauler) destinada a clients i professionals.",
+      "L3": "Aplicació mòbil (iOS/Android) si escau.",
+      "L4": "Correus transaccionals i centre d’ajuda.",
+      "L5": "Eines de suport al client."
+    },
+    "STATUS": {
+      "TITLE": "Estat de conformitat",
+      "TEXT": "A la data d’aquesta declaració, l’accessibilitat de les interfícies d’izyGlam és parcialment conforme a WCAG 2.2 AA / RGAA. Millorem contínuament les nostres interfícies i corregim els desajustos prioritaris."
+    },
+    "PREPARATION": {
+      "TITLE": "Mètode de preparació de la declaració",
+      "L1": "Autoavaluacions de l’equip de producte/UI: revisió semàntica HTML, rols ARIA, ordre de tabulació.",
+      "L2": "Proves manuals: navegació amb teclat, focus visible, zoom 200 %+, lectors de pantalla.",
+      "L3": "Proves amb eines (auditoria automatitzada sobre mostres de pantalles).",
+      "L4": "Recette contínua en les actualitzacions (Design System, components reutilitzables accessibles)."
+    },
+    "FEATURES": {
+      "TITLE": "Funcionalitats d’accessibilitat disponibles",
+      "KEYBOARD": {
+        "TITLE": "Navegació amb teclat",
+        "L1": "Recorregut complet amb teclat (Tab, Shift+Tab, Intro, Espai, Esc, fletxes).",
+        "L2": "Indicador de focus visible, coherent i amb contrast.",
+        "L3": "Enllaços «Anar al contingut» per ignorar la capçalera.",
+        "L4": "Menús, modals i llistes desplegables controlables amb teclat (obrir/tancar, control del focus, tancament amb Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Lectors de pantalla i estructura",
+        "L1": "Estructura semàntica amb títols jerarquitzats (h1→h6) i fites (header, nav, main, footer).",
+        "L2": "Etiquetes explícites per a tots els camps i botons, noms accessibles coherents.",
+        "L3": "Anunci dels canvis d’estat mitjançant regions aria-live (errors, èxits, càrregues).",
+        "L4": "Imatges informatives amb atribut alt descriptiu; imatges decoratives ignorades."
+      },
+      "CONTRAST": {
+        "TITLE": "Contrast, colors i escala",
+        "L1": "Contrast objectiu ≥ 4.5:1 per a text normal i ≥ 3:1 per a text gran.",
+        "L2": "Interfície usable fins al 200 % de zoom sense pèrdua de contingut ni funcionalitat.",
+        "L3": "Cap informació transmesa només pel color."
+      },
+      "FORMS": {
+        "TITLE": "Formularis i missatges d’error",
+        "L1": "Associació label⇄input, indicació de camps obligatoris.",
+        "L2": "Errors mostrats prop del camp i, si cal, resumits.",
+        "L3": "Focus posicionat al primer camp en error, amb consells de correcció."
+      },
+      "DYNAMIC": {
+        "TITLE": "Continguts dinàmics i animacions",
+        "L1": "Carrusels/elements animats pausables i no bloquejants.",
+        "L2": "Respecte de la preferència del sistema «reduir animacions» quan sigui possible.",
+        "L3": "Modals no intrusius, tancables amb teclat i clic exterior."
+      },
+      "MEDIA": {
+        "TITLE": "Mitjans",
+        "L1": "Vídeos (si escau) amb subtítols i/o transcripcions.",
+        "L2": "Elements d’àudio/vídeo controlables amb teclat."
+      },
+      "MOBILE": {
+        "TITLE": "Mòbil",
+        "L1": "Zones tàctils prou grans i espaiades.",
+        "L2": "Navegació coherent amb TalkBack (Android) i VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Entorns i tecnologies d’assistència previstes",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Navegadors recents compatibles i actualitzats."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Continguts no accessibles (detectats o potencials)",
+      "TEXT": "Malgrat els esforços, alguns elements poden romandre en no conformitat:",
+      "L1": "Imatges antigues sense text alternatiu descriptiu.",
+      "L2": "Documents aportats per tercers (PDF, adjunts) no plenament accessibles.",
+      "L3": "Vídeos històrics sense subtítols/descripció.",
+      "L4": "Components integrats de tercers (pagament, cartografia, reproductors) amb limitacions pròpies.",
+      "MOTIVES": "Possibles motius: contingut de tercers, càrrega desproporcionada, actualització en curs."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatives i ajustos raonables",
+      "TEXT": "Si necessiteu un format alternatiu (p. ex. document accessible, ajuda amb la reserva), contacteu-nos. Farem el màxim per oferir una solució equivalent."
+    },
+    "FEEDBACK": {
+      "TITLE": "Retorn d’experiència i assistència",
+      "L1": "Per l’aplicació: secció Ajuda > Accessibilitat.",
+      "L2A": "Per correu:",
+      "L2B": "o",
+      "L3": "Indiqueu la pantalla/URL, el dispositiu, el navegador i, si escau, el lector de pantalla utilitzat."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Procediment de recurs (França)",
+      "TEXT": "Si detecteu una manca d’accessibilitat que impedeixi accedir a un contingut o funcionalitat, i no obteniu una resposta satisfactòria, podeu:",
+      "L1": "Escriure al Defensor dels drets o al seu delegat al vostre departament,",
+      "L2": "O recórrer al Mediador si escau.",
+      "MORE": "Més informació:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Millora contínua",
+      "L1": "Design System amb components accessibles.",
+      "L2": "Revisió de codi i proves d’accessibilitat en cada lliurament.",
+      "L3": "Formacions regulars dels equips de producte i suport.",
+      "L4": "Priorització de correccions segons l’impacte en l’usuari."
+    },
+    "DATE": {
+      "TITLE": "Data de la declaració i actualitzacions",
+      "TEXT": "Declaració establerta el 25 de desembre de 2025. S’actualitzarà, com a mínim, un cop l’any o quan hi hagi canvis majors."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Com reservar una prestació a IzyGlam?",
+    "QUESTION2": "Com triar el professional adequat per a mi?",
+    "QUESTION3": "Com modificar o cancel·lar la meva cita?",
+    "QUESTION4": "Com puc seguir la meva comanda?",
+    "QUESTION5": "Quins mitjans de pagament puc utilitzar?",
+    "QUESTION6": "Com seguir la meva comanda o reserva?",
+    "QUESTION7": "Puc deixar una opinió després de la meva prestació?",
+    "QUESTION8": "Com utilitzar les meves ofertes de fidelitat i promocions?",
+    "QUESTION9": "Què fer si tinc un problema amb la meva comanda?",
+    "QUESTION10": "Com contactar amb l’equip d’IzyGlam?",
+    "QUESTION11": "Com funciona la política de cancel·lació i reemborsament?",
+    "QUESTION12": "Puc reservar per a una altra persona (regal, sorpresa)?",
+    "QUESTION13": "Com esdevenir professional col·laborador a IzyGlam?",
+    "QUESTION14": "Com protegir les meves dades personals a IzyGlam?",
+    "REPONSE1": "És simple i ràpid. Un cop registrat/da, tria el servei que t’interessa, descobreix els professionals disponibles a prop teu i selecciona una data i hora. Fes clic a «Reservar» per finalitzar i procedeix al pagament amb targeta bancària. La teva reserva serà validada manualment pel professional. En cas de refusar-la, se’t reemborsarà íntegrament.",
+    "REPONSE2": "Cada professional té un perfil detallat amb prestacions, tarifes, fotos de treballs i opinions de clients. També pots afegir favorits per trobar-los fàcilment. Pren-te temps per comparar perfils i tria el que millor s’ajusti a les teves expectatives.",
+    "REPONSE3": "Pots modificar o cancel·lar la reserva des del teu espai personal. Les cancel·lacions són gratuïtes fins a 24 h abans de la prestació. A partir d’aquell moment, es poden aplicar despeses. Si tens algun problema, el nostre suport és a la teva disposició.",
+    "REPONSE4": "Inicia sessió al teu espai personal, secció «Les meves reserves». Hi trobaràs el seguiment en temps real de la teva comanda, la possibilitat de cancel·lar-la o modificar-la, així com l’historial de prestacions.",
+    "REPONSE5": "El pagament es fa exclusivament amb targeta (Visa, MasterCard, American Express). No oferim pagament en efectiu ni via PayPal. Tot és segur per garantir la teva tranquil·litat.",
+    "REPONSE6": "Un cop confirmada la reserva, rebràs un correu de resum. També t’enviarem un recordatori abans de la prestació (per correu i/o notificació push). Pots seguir l’estat des del teu espai personal.",
+    "REPONSE7": "Sí. Després de cada prestació realitzada, se’t convida a deixar una opinió sobre el professional. Les opinions es moderen manualment per garantir l’autenticitat. Els professionals no poden respondre ni modificar-les.",
+    "REPONSE8": "De moment, IzyGlam encara no ofereix programa de fidelitat ni codis promocionals. Aquestes funcionalitats estan previstes per a una fase posterior.",
+    "REPONSE9": "Pots contactar-nos directament des de l’apartat «Contacte» o per correu. Farem tot el possible per respondre’t en 24 h (termini indicatiu) i ajudar-te a resoldre el problema al més aviat possible.",
+    "REPONSE10": "Ens pots contactar mitjançant el formulari del web o l’aplicació. Hi ha atenció al client de dilluns a dissabte, de 9 a 18 h. Exemple de correu: support@izyglam.com",
+    "REPONSE11": "Pots cancel·lar la reserva sense càrrec fins a 24 h abans de l’hora prevista. Passat aquest termini, es poden aplicar despeses. Si el professional refusa la teva reserva, el reemborsament és automàtic. El sistema de reemborsament automàtic està en desplegament.",
+    "REPONSE12": "Encara no pots oferir una prestació a una altra persona des del teu compte. Tanmateix, si un professional proposa una fórmula duo o familiar, pots reservar per a diverses persones en aquest marc específic.",
+    "REPONSE13": "Ets esteticista, perruquera o professional del benestar? Pots unir-te a la comunitat IzyGlam omplint el formulari de la pàgina «Fer-se col·laborador». El nostre equip es posarà en contacte amb tu per finalitzar la inscripció.",
+    "REPONSE14": "La seguretat de les teves dades és la nostra prioritat. Respectem les obligacions del RGPD. Només la informació estrictament necessària per a la prestació és accessible als professionals. Hi ha una missatgeria integrada per comunicar si cal, però qualsevol comportament per esquivar la plataforma serà supervisat."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Qui som?",
+      "TEXT": "Aquesta Política de privacitat explica com <strong>izyGlam</strong> (d’ara endavant «nosaltres», «nostre» o «la Plataforma») recull, utilitza, conserva, comparteix i protegeix les vostres dades personals quan utilitzeu els nostres serveis (web, aplicació web, aplicació mòbil, correus i suport). Actuem com a <strong>responsable del tractament</strong> per als tractaments descrits a continuació."
+    },
+    "SCOPE": {
+      "TITLE": "Abast de la política",
+      "TEXT": "Aquesta política s’aplica als <strong>clients</strong> que reserven prestacions, als <strong>professionals</strong> que ofereixen serveis via izyGlam i als <strong>visitants</strong> de les nostres interfícies."
+    },
+    "DATA": {
+      "TITLE": "Dades recollides",
+      "PROVIDED": {
+        "TITLE": "Dades que proporcioneu",
+        "L1": "<strong>Identitat i contacte:</strong> nom, cognoms, correu, telèfon, adreça(es), foto/avatars.",
+        "L2": "<strong>Compte:</strong> credencials, contrasenyes (hashades), preferències, idioma.",
+        "L3": "<strong>Reserves:</strong> serveis triats, data/hora, adreces d’intervenció, notes, adjunts.",
+        "L4": "<strong>Pagament:</strong> informació de pagament <em>a través del nostre proveïdor (ex. Stripe)</em> — no emmagatzemem les dades de la targeta.",
+        "L5": "<strong>Professionals:</strong> perfil públic, prestacions, tarifes, zones d’intervenció, disponibilitat, IBAN (segur), documents de verificació si cal.",
+        "L6": "<strong>Suport:</strong> missatges, tiquets, enregistraments de trucades si escau."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Dades recollides automàticament",
+        "L1": "<strong>Dades tècniques:</strong> model del dispositiu, SO, navegador, resolucions, identificadors de sessió.",
+        "L2": "<strong>Registres:</strong> IP, marques de temps, esdeveniments d’error, ús de funcionalitats.",
+        "L3": "<strong>Ubicació:</strong> posició aproximada (IP) o precisa (GPS, amb el vostre consentiment).",
+        "L4": "<strong>Cookies i SDK:</strong> vegeu la secció dedicada."
+      },
+      "THIRD": {
+        "TITLE": "Dades obtingudes de tercers",
+        "L1": "<strong>Proveïdors de pagament</strong> (estats de pagament, tokens).",
+        "L2": "<strong>Socis d’analítica/antifrau</strong> (senyals de risc, agregats d’ús).",
+        "L3": "<strong>Integracions</strong> (p. ex. eines de comunicació, cartografia, emmagatzematge al núvol)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Finalitats i bases jurídiques",
+      "TEXT": "Tractem les dades per a les finalitats següents:",
+      "L1": "<strong>Prestar el servei</strong> (creació de compte, reserva, intermediació, notificacions) — <em>Base: execució del contracte</em>.",
+      "L2": "<strong>Pagament i facturació</strong> — <em>Contracte, obligació legal</em>.",
+      "L3": "<strong>Seguretat, prevenció d’abusos/frau</strong> — <em>Interès legítim, obligació legal</em>.",
+      "L4": "<strong>Millora del producte, estadístiques</strong> — <em>Interès legítim</em>.",
+      "L5": "<strong>Suport i qualitat</strong> — <em>Contracte, interès legítim</em>.",
+      "L6": "<strong>Màrqueting directe</strong> (correus/app) — <em>Consentiment quan calgui</em>; possibilitat d’opt-out en qualsevol moment.",
+      "L7": "<strong>Compliment legal</strong> (comptabilitat, requeriments d’autoritats) — <em>Obligació legal</em>."
+    },
+    "SHARING": {
+      "TITLE": "Compartició de dades",
+      "L1": "<strong>Professionals / Clients</strong>: informació necessària per a la prestació (nom, contacte, adreça d’intervenció, detalls de la reserva).",
+      "L2": "<strong>Proveïdors</strong>: pagament (ex. Stripe), allotjament/emmagatzematge, analítica, correu/SMS push, suport, KYC si escau. <em>Accés limitat al necessari, contractes conformes al RGPD.</em>",
+      "L3": "<strong>Sociis</strong>: si hi consentiu per a ofertes específiques.",
+      "L4": "<strong>Autoritats</strong>: quan la llei ho exigeixi o per defensar els nostres drets."
+    },
+    "TRANSFERS": {
+      "TITLE": "Transferències fora de la UE/EEE",
+      "TEXT": "Quan les dades es transfereixen a països sense decisió d’adequació, utilitzem <strong>clàusules contractuals tipus</strong> (CCT) i mesures complementàries."
+    },
+    "RETENTION": {
+      "TITLE": "Terminis de conservació",
+      "L1": "<strong>Compte i identitat</strong>: mentre s’utilitza el compte, i després <em>fins a 3 anys</em> des de l’última activitat (prospecció) o <em>5 a 10 anys</em> per obligacions comptables/legals.",
+      "L2": "<strong>Reserves/factures</strong>: <em>10 anys</em> (obligació legal).",
+      "L3": "<strong>Logs de seguretat</strong>: <em>6 a 24 mesos</em> segons criticitat.",
+      "L4": "<strong>Cookies</strong>: vegeu la secció Cookies.",
+      "NOTE": "Un cop superats els terminis, les dades s’eliminen o s’anonimitzen."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies i SDK",
+      "TEXT": "Utilitzem cookies/SDK per fer funcionar la Plataforma, mesurar l’audiència, prevenir el frau i, amb el vostre consentiment, personalitzar l’experiència.",
+      "L1": "<strong>Necessàries</strong>: autenticació, seguretat, preferències tècniques.",
+      "L2": "<strong>Mesura d’audiència</strong>: estadístiques d’ús agregades.",
+      "L3": "<strong>Màrqueting</strong>: només si ho accepteu.",
+      "PREF": "Podeu gestionar les preferències en qualsevol moment via el bàner i la configuració del navegador."
+    },
+    "AUTOMATION": {
+      "TITLE": "Decisions automatitzades i perfilatge",
+      "TEXT": "Podem utilitzar senyals automàtics (p. ex. risc de frau, disponibilitat del pro, distància) per prioritzar accions o proposar franges. No es pren cap decisió amb efectes jurídics significatius sense intervenció humana, excepte obligació legal o consentiment explícit."
+    },
+    "RIGHTS": {
+      "TITLE": "Els vostres drets (RGPD)",
+      "L1": "Dret d’<strong>accés</strong>, de <strong>rectificació</strong> i d’<strong>esborrament</strong>.",
+      "L2": "Dret a la <strong>limitació</strong> i a la <strong>portabilitat</strong>.",
+      "L3": "Dret d’<strong>oposició</strong> al tractament basat en l’interès legítim.",
+      "L4": "Dret a <strong>retirar el consentiment</strong> en qualsevol moment.",
+      "L5": "Dret a presentar una <strong>reclamació</strong> davant l’autoritat competent (CNIL).",
+      "CONTACT": "Per exercir els vostres drets, contacteu-nos:",
+      "VERIFY": "Podem sol·licitar informació addicional per verificar la vostra identitat."
+    },
+    "SECURITY": {
+      "TITLE": "Seguretat",
+      "TEXT": "Apliquem mesures tècniques i organitzatives adequades: xifrat en trànsit (TLS), hash de contrasenyes, registre i supervisió, control d’accés, còpies de seguretat, revisió de codi i proves de seguretat."
+    },
+    "MINORS": {
+      "TITLE": "Dades de menors",
+      "TEXT": "Els nostres serveis no s’adrecen a menors de 15 anys. Si s’identifica un compte de menor, el suprimirem després de la verificació."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Subencarregats principals",
+      "TEXT": "Treballem amb subencarregats essencials per a allotjament, pagament, emailing, analítica i emmagatzematge. Es pot facilitar una llista actualitzada sota demanda a"
+    },
+    "CONTACT": {
+      "TITLE": "Contacte i DPO",
+      "PRIVACY_LABEL": "Contacte privacitat",
+      "SUPPORT_LABEL": "Suport",
+      "AUTHORITY_LABEL": "Autoritat de control",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Modificacions d’aquesta política",
+      "TEXT": "Podem actualitzar aquesta política per reflectir canvis legals o funcionals. En cas de canvi significatiu, us informarem per correu o via l’aplicació. Data d’entrada en vigor: <strong>11 d’agost de 2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Disposicions locals",
+      "TEXT": "Si sou a la Unió Europea, les vostres dades es tracten conforme al RGPD. Es poden aplicar complements específics per país o regió i es comunicaran si escau."
+    },
+    "GLOSSARY": {
+      "TITLE": "Glossari (extracte)",
+      "L1": "<strong>Responsable del tractament</strong>: entitat que determina les finalitats i mitjans del tractament.",
+      "L2": "<strong>Encarregat del tractament</strong>: entitat que tracta dades per compte del responsable.",
+      "L3": "<strong>Base legal</strong>: fonament que autoritza el tractament (contracte, consentiment, obligació legal, interès legítim).",
+      "L4": "<strong>Cookies/SDK</strong>: traçadors utilitzats pel lloc/app per prestar, mesurar i personalitzar el servei."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Acceptació de les condicions",
+      "TEXT": "En accedint als serveis d’izyGlam (lloc web, aplicació web, aplicació mòbil), accepteu sense reserves les presents Condicions Generals d’Ús (« CGU »). Si no accepteu aquestes CGU, no heu d’utilitzar la Plataforma."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Definicions",
+      "L1": "<strong>Client</strong> : qualsevol persona que reservi i/o pagui una prestació a la Plataforma.",
+      "L2": "<strong>Professional</strong> : qualsevol persona que ofereixi prestacions a través de la Plataforma.",
+      "L3": "<strong>Prestació</strong> : servei ofert per un Professional (p. ex. bellesa a domicili).",
+      "L4": "<strong>Plataforma</strong> : la infraestructura de programari, els llocs i les aplicacions gestionats per izyGlam."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Serveis i paper d’izyGlam",
+      "TEXT": "izyGlam és una <strong>plataforma de posada en contacte</strong>. Els Professionals són <strong>els únics responsables</strong> de les prestacions que realitzen (qualitat, conformitat, assegurances). Excepte menció en contra, izyGlam no és ni venedor ni prestador d’aquests serveis i no n’assumeix la responsabilitat d’execució."
+    },
+    "ACCOUNT": {
+      "TITLE": "Compte i elegibilitat",
+      "L1": "El registre és obligatori per reservar o oferir una prestació. Us comprometeu a proporcionar informació exacta i a mantenir-la actualitzada.",
+      "L2": "Heu de tenir almenys 15 anys per utilitzar la Plataforma. Els Professionals han d’estar legalment habilitats per exercir.",
+      "L3": "Sou responsables de la confidencialitat dels vostres identificadors i de qualsevol activitat realitzada des del vostre compte.",
+      "L4": "izyGlam es reserva el dret de suspendre o rescindir un compte en cas d’incompliment de les CGU o de risc acreditat de frau."
+    },
+    "BOOKINGS": {
+      "TITLE": "Reserves i formació del contracte",
+      "L1": "Les prestacions són <strong>reservades i pagades en línia</strong> pel Client. No es deu cap import en efectiu al lloc.",
+      "L2": "La reserva està <strong>subjecta a validació per part del Professional</strong> després del pagament. En cas de rebuig, el Client és <strong>reemborsat íntegrament</strong>.",
+      "L3": "El contracte de prestació es conclou directament entre el Client i el Professional en el moment de l’acceptació.",
+      "L4": "Els horaris, les adreces d’intervenció i qualsevol condició particular han de ser verificats per les parts."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Tarifes, subscripcions i pagaments",
+      "L1": "Les tarifes de les prestacions són fixades lliurement pels Professionals. izyGlam aplica una <strong>comissió</strong> de plataforma.",
+      "L2": "Subscripcions per a Professionals (exemple actual): <em>1 saló gratuït de per vida</em> ; <em>Basic: 3 salons – 99 € / mes</em> ; <em>Premium: 10 salons – 499 € / mes</em> ; <em>més enllà: pressupost</em>.",
+      "L3": "Pagament <strong>només amb targeta bancària</strong> a través d’un proveïdor (p. ex. Stripe). <strong>Sense efectiu</strong>, ni codis promocionals ni programa de fidelitat en aquesta etapa.",
+      "L4": "Els imports, impostos i despeses aplicables s’indiquen abans de la validació. Les condicions de subscripció poden evolucionar; les modificacions es comunicaran prèviament."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Cancel·lació, reemborsament i absència",
+      "L1": "Cancel·lació gratuïta fins a <strong>24 h</strong> abans de l’hora prevista de la prestació.",
+      "L2": "A menys de 24 h, es poden aplicar <strong>despeses</strong> segons la política vigent.",
+      "L3": "En cas de <strong>rebuig</strong> per part del Professional després del pagament, el Client és reemborsat al 100 %. L’automatització dels reemborsaments és en desplegament; si escau, el suport iniciarà l’operació.",
+      "L4": "Els <strong>no-show</strong> (absència no comunicada) poden comportar despeses o la impossibilitat de reemborsament."
+    },
+    "PAYOUTS": {
+      "TITLE": "Pagaments als Professionals",
+      "L1": "L’abonament dels guanys al Professional es desencadena amb la <strong>confirmació de la realització</strong> de la prestació (p. ex. confirmació d’un <em>codi de validació</em>).",
+      "L2": "L’IBAN/RIB facilitat pel Professional s’utilitza per a la transferència. El Professional garanteix l’exactitud de la seva informació bancària.",
+      "L3": "Els imports abonats corresponen al preu de la prestació <em>deduïda</em> la comissió i les despeses aplicables."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Responsabilitats de les parts",
+      "L1": "Els Professionals garanteixen la conformitat dels seus serveis, el respecte de la normativa, la higiene i la seguretat.",
+      "L2": "Els Clients es comprometen a proporcionar informació exacta (adreça, disponibilitat, restriccions d’accés) i a respectar les cites.",
+      "L3": "izyGlam posa a disposició la Plataforma i eines (reserva, pagament, missatgeria) però no garanteix els resultats d’una prestació."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Puntuació invàlida.",
+      "TITLE": "Opinions i valoracions",
+      "L1": "Les opinions només es poden deixar <strong>després d’una prestació realment efectuada</strong>.",
+      "L2": "Les opinions poden estar subjectes a una <strong>moderació</strong> (p. ex. supressió de continguts contraris a la llei o a les presents CGU)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Comportaments prohibits",
+      "L1": "Frau, suplantació d’identitat, elusió de la Plataforma, incitació a transaccions fora de la Plataforma.",
+      "L2": "Continguts il·lícits, difamatoris, discriminatoris, violents o contraris als bons costums.",
+      "L3": "Intrusió, denegació de servei, enginyeria inversa, elusió de les mesures de seguretat.",
+      "L4": "Recollida no autoritzada de dades personals d’altres usuaris."
+    },
+    "IPR": {
+      "TITLE": "Propietat intel·lectual",
+      "TEXT": "Els continguts, marques i elements de la Plataforma (codi, disseny, textos, logotips, imatges) estan protegits. Excepte autorització expressa, qualsevol reproducció, distribució o adaptació és prohibida. Els continguts aportats pels Professionals continuen sent de la seva propietat; concedeixen a izyGlam una llicència no exclusiva necessària per a l’explotació de la Plataforma."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Serveis de tercers",
+      "TEXT": "La Plataforma pot integrar serveis de tercers (pagament, cartografia, allotjament, analítica). S’hi apliquen les seves condicions. izyGlam no és responsable de les interrupcions o fallades d’aquests serveis."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Disponibilitat, manteniment i actualitzacions",
+      "TEXT": "Podem modificar, suspendre o interrompre tot o part de la Plataforma per manteniment o millora. Fem esforços raonables per limitar l’impacte per als usuaris."
+    },
+    "LIABILITY": {
+      "TITLE": "Limitació de responsabilitat i indemnització",
+      "TEXT": "Dins els límits permesos per la llei, la responsabilitat d’izyGlam es limita als danys directes, amb exclusió dels danys indirectes (pèrdua d’oportunitat, pèrdua de facturació, etc.). Us comprometeu a indemnitzar izyGlam per qualsevol reclamació resultant d’un incompliment de les presents o d’un ús il·lícit de la Plataforma."
+    },
+    "TERMINATION": {
+      "TITLE": "Resolució i suspensió",
+      "TEXT": "Podeu suprimir el vostre compte en qualsevol moment. Podem suspendre o rescindir l’accés en cas d’incompliment de les CGU, frau, abús o per requeriment legal. Algunes obligacions (p. ex. pagament de les quantitats degudes, clàusules de responsabilitat) sobreviuen a la resolució."
+    },
+    "PRIVACY": {
+      "TITLE": "Dades personals",
+      "TEXT": "El tractament de les vostres dades es descriu a la nostra <strong>Política de privacitat</strong>. En utilitzar la Plataforma, accepteu aquesta política. Consulteu-la per conèixer els vostres drets RGPD i els nostres compromisos."
+    },
+    "CHANGES": {
+      "TITLE": "Modificacions de les CGU",
+      "TEXT": "Podem modificar aquestes CGU per motius legals, reguladors o funcionals. En cas de canvi significatiu, us en informarem per correu electrònic o a través de l’aplicació i publicarem la versió actualitzada."
+    },
+    "LAW": {
+      "TITLE": "Dret aplicable i litigis",
+      "TEXT": "Les presents CGU es regeixen pel <strong>dret francès</strong>. Qualsevol litigi serà portat davant els tribunals competents del lloc del domicili social d’izyGlam, sense perjudici de disposicions legals imperatives més favorables al consumidor."
+    },
+    "CONTACT": {
+      "TITLE": "Contacte",
+      "SUPPORT_LABEL": "Suport",
+      "LEGAL_LABEL": "Jurídic",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal@izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Data d’entrada en vigor",
+      "TEXT": "Les presentes CGU entren en vigor el <strong>25 de desembre de 2025</strong> i substitueixen qualsevol versió anterior."
+    }
+  }
+}

@@ -4,16 +4,24 @@ import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 import { loadStripe } from '@stripe/stripe-js';
 
+// ✅ Ajouts pour toasts + i18n (standard IzyGlam)
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-payement-pro',
   templateUrl: './payement-pro.component.html',
   styleUrls: ['./payement-pro.component.scss']
 })
 export class PayementProComponent implements OnInit {
-  abonnement!: string; // ou number selon ton besoin
+  // -----------------------------
+  // 🔹 Paramètre d’URL (type d’abonnement)
+  // -----------------------------
+  abonnement!: string; // 'elue' | 'reine' | 'deesse' (ou string libre selon ton besoin)
 
-
-
+  // -----------------------------
+  // 🔹 Données métier (gardées telles quelles)
+  // -----------------------------
   shop: any;
   startSlot: any | null;
   endSlot: any | null;
@@ -36,85 +44,108 @@ export class PayementProComponent implements OnInit {
   prestationDateForBill: string | undefined;
   cards: any[] = []; // Liste des cartes de l'utilisateur
   selectedCardId: string | null = null;
-  // allCards: any[] = []; // toutes les cartes Stripe enregistrées par l'utilisateur
+  // allCards: any[] = []; // toutes les cartes Stripe enregistrées par l'utilisateur (commenté d’origine)
   showAddCardForm = false;
 
+  // -----------------------------
+  // 🔹 Injection des services
+  // -----------------------------
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService,
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+    // ✅ Ajout IzyGlam
+    private toastr: ToastrService,
+    private translate: TranslateService
+  ) {}
 
+  // ---------------------------------------------------------
+  // ⏱️ ngOnInit : lit l’abonnement, vérifie / charge l’utilisateur & Stripe
+  // ---------------------------------------------------------
   ngOnInit(): void {
-    // Récupérer le paramètre d'URL
+    // 1) Récupérer le paramètre d'URL
     this.abonnement = this.route.snapshot.paramMap.get('abonnement')!;
     if (this.abonnement !== 'elue' && this.abonnement !== 'reine' && this.abonnement !== 'deesse') {
+      // Si abonnement invalide : retour à l’accueil
       this.router.navigate(['/main']);
+      return;
     }
-    // Si tu veux vérifier ce que tu as récupéré :
     console.log('Abonnement choisi :', this.abonnement);
 
+    // 2) Récupérer l’utilisateur courant, initialiser Stripe + cartes
+    this.userService.getMe().subscribe({
+      next: async (user: any) => {
+        try {
+          console.log('Utilisateur chargé :', user);
 
+          // Définition du civilité pour l’affichage
+          if (user.sex === 'male') {
+            this.meSex = 'M.';
+          }
 
-    this.userService.getMe().subscribe(async (user: any) => {
-      console.log(user);
+          // Stocke l’utilisateur
+          this.stripeCustomerID = user.customerId;
+          this.userId = user._id;
+          this.me = user;
+          this.me.initials = user.firstname.charAt(0) + user.lastname.charAt(0);
 
-      if (user.sex === 'male') {
-        this.meSex = 'M.';
-      }
-      this.stripeCustomerID = user.customerId;
-      this.userId = user._id;
-      this.me = user;
-      this.me.initials =
-        user.firstname.charAt(0) + user.lastname.charAt(0);
-      if (!this.bill) {
-        this.bill = {};
-      }
-      this.bill.image = this.itemToBuy2.image,
-        this.bill.client = this.me._id;
-      let addressTemp = this.me.address.find((x: any) => {
-        return x.main === true;
-      });
+          // Sécurise l'obj. bill
+          if (!this.bill) {
+            this.bill = {};
+          }
 
-      this.bill.address = addressTemp
-        ? addressTemp._id
-        : this.me.address[0]._id;
+          // Optionnel : image depuis itemToBuy2 (si existant)
+          this.bill.image = this.itemToBuy2?.image;
+          this.bill.client = this.me._id;
 
+          // Adresse principale (main === true) ou fallback première
+          const addressTemp = this.me.address?.find((x: any) => x.main === true);
+          this.bill.address = addressTemp ? addressTemp._id : this.me.address?.[0]?._id;
+          this.adressePrincipale = addressTemp || this.me.address?.[0];
 
-      this.adressePrincipale = addressTemp
-        ? addressTemp
-        : this.me.address[0];
+          // Charge Stripe (SDK)
+          this.stripePromise = loadStripe(environment.stripePublicKey);
+          if (!this.stripePromise) {
+            throw new Error('Clé publique Stripe manquante ou invalide.');
+          }
 
-      // Chargez Stripe dès le démarrage du composant
-      this.stripePromise = loadStripe(environment.stripePublicKey);
-      if (!this.stripePromise) {
-        throw new Error('Clé publique Stripe manquante ou invalide.');
-      }
+          // Validations rapides
+          if (!this.userId) {
+            throw new Error('Aucun userId trouvé. Veuillez vous connecter.');
+          }
 
-      // Récupérez l'utilisateur courant depuis votre backend
-      if (!this.userId) {
-        throw new Error('Aucun userId trouvé. Veuillez vous connecter.');
-      }
-
-      if (!this.stripeCustomerID) {
-        console.warn('Aucun customerId trouvé. Les cartes ne peuvent pas être chargées.');
-      } else {
-        // Chargez les cartes existantes avec le customerId
-        await this.loadCards();
+          // Charge les cartes enregistrées si on a un customerId Stripe
+          if (!this.stripeCustomerID) {
+            console.warn('Aucun customerId trouvé. Les cartes ne peuvent pas être chargées.');
+          } else {
+            await this.loadCards(); // gestion d’erreur à l’intérieur
+          }
+        } catch (err) {
+          console.error('Erreur lors de l’initialisation PayementPro :', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        }
+      },
+      error: (err) => {
+        console.error('Erreur lors de la récupération de l’utilisateur :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       }
     });
-    
   }
 
-
-
+  // -------------------------------------------------------------
+  // 🂡 Sélectionner une carte Stripe (UI)
+  // -------------------------------------------------------------
   selectCard(cardId: string) {
     this.selectedCardId = cardId;
   }
 
-  /*
-   * Charge la liste des cartes depuis le serveur.
-   */
+  // -------------------------------------------------------------
+  // 📇 Charge la liste des cartes Stripe depuis ton backend
+  // -------------------------------------------------------------
   async loadCards(): Promise<void> {
     try {
-      console.log('Chargement des cartes Stripe...');
+      console.log('Chargement des cartes Stripe…');
 
       const response = await fetch(`${environment.apiUrl}stripe/get-cards?customerId=${this.stripeCustomerID}`);
       if (!response.ok) {
@@ -135,19 +166,33 @@ export class PayementProComponent implements OnInit {
 
       console.log('Cartes chargées :', this.cards);
       console.log('Carte par défaut :', this.defaultCard);
-    } catch (error) {
-      console.error('Erreur lors du chargement des cartes :', error);
-      alert('Une erreur est survenue lors du chargement de vos cartes bancaires.');
+    } catch (err) {
+      console.error('Erreur lors du chargement des cartes :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
     }
   }
 
+  // -------------------------------------------------------------
+  // 💳 Aller à la page d’abonnement (navigation)
+  // -------------------------------------------------------------
   goToAbonnement() {
     this.router.navigate(['/prices']);
   }
 
-
-  onCardAdded(event: any) {
+  // -------------------------------------------------------------
+  // ➕ Callback quand une nouvelle carte a été ajoutée (UI)
+  // -------------------------------------------------------------
+  onCardAdded(_event: any) {
     this.showAddCardForm = false;
-    this.loadCards(); // recharge les cartes
+    // Recharge les cartes (gestion d’erreur dans loadCards)
+    this.loadCards();
+  }
+
+  // -------------------------------------------------------------
+  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // -------------------------------------------------------------
+  showCustomToast(message: string) {
+    // Ex : "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨"
+    this.toastr.error(message);
   }
 }

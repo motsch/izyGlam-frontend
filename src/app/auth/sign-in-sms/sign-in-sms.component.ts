@@ -38,7 +38,7 @@ export class SignInSmsComponent {
         private sessionService: SessionService,
         private toolsService: ToolsService,
         private router: Router
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.title.setTitle(this.route.snapshot.data['title']);

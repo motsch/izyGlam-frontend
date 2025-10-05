@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { SessionService } from './session.service';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -13,7 +13,13 @@ export class AuthenticationService {
     constructor(
         private http: HttpClient,
         private sessionService: SessionService
-    ) {}
+    ) { }
+
+    private getLang(): string {
+        // "fr-FR" -> "fr", fallback "en"
+        const raw = localStorage.getItem('langue') || navigator.language || 'en';
+        return raw.slice(0, 2).toLowerCase();
+    }
 
     /**
      * Permet de logger l'utilisateur (selectionne l'utilisateur ayant le bon mdp et email)
@@ -78,14 +84,18 @@ export class AuthenticationService {
         }
     }
 
+
+
     /**
      * Permet d'envoyer un email pour réinitialiser le mot de passe
      * @param email (l'email de l'utilisateur)
      */
     forgotPassword(email: string): Observable<any> {
+        const params = new HttpParams().set('lang', this.getLang());
         return this.http.post<any>(
-            environment.apiUrl + 'forgot-password',
-            { email }
+            `${environment.apiUrl}forgot-password`,
+            { email },             // ✅ body = { email }
+            { params }             // ✅ options = { params }
         );
     }
 

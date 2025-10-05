@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Tagapag-ayos ng buhok",
+    "NAILTECHNICIAN": "Manikyur",
+    "MAKEUP": "Make-up artist",
+    "WAXING": "Estetisyan",
+    "FACIAL": "Facial",
+    "MASSAGE": "Masahista",
+    "EYELASH": "Extension ng pilikmata",
+    "EYEBROW": "Kilay",
+    "TANNING": "Tanning",
+    "ACUPUNCTURE": "Acupuncture",
+    "OTHER": "Iba pa"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Na-delete ang larawan mula sa gallery",
+    "PHOTO_UPLOAD": "Matagumpay na na-upload ang larawan",
+    "PARTIAL_REFUND_CONFIRM": "Kumpirmado ang bahagyang refund!",
+    "CODE_SAVED": "Nagawa ang code.",
+    "USERCREATED": "Matagumpay na nagawa ang user. May ipinadalang e-mail ng kumpirmasyon sa iyo.",
+    "SUBSCRIBE_SUCCESS": "Nairehistro na ang iyong subscription.",
+    "EMAIL_VERIFIED": "Na-activate na ang iyong account 🎉 Maaari ka nang mag-login.",
+    "EMAIL_RESENT": "Muling ipinadala ang e-mail na beripikasyon. Suriin ang iyong inbox.",
+    "BOOKING_CREATED": "Matagumpay na naitala ang iyong reservation.",
+    "PAYMENT_OK": "Na-validate ang bayad.",
+    "REFUND_OK": "Naisagawa ang refund.",
+    "USERUPDATED": "Na-update ang user.",
+    "SETTINGS_UPDATED": "Na-update ang mga setting.",
+    "REVIEW_ADDED": "Na-publish ang iyong review 🎉",
+    "SHOPUPDATED": "Na-update ang salon.",
+    "BOOKING_ACCEPTED": "Tinanggap ang reservation.",
+    "BOOKING_FINISHED": "Tapos na ang reservation.",
+    "BOOKING_REFUSED": "Tinanggihan ang reservation.",
+    "BOOKING_DELETED": "Na-delete ang reservation.",
+    "CODE_GENERATED": "Nagawa ang code.",
+    "CODE_CONFIRMED": "Nakumpirma ang code.",
+    "INVOICE_DOWNLOADED": "Na-download ang invoice.",
+    "MARKED_NO_SHOW_CLIENT": "Minarkahang no-show ang kliyente.",
+    "COMPANY_CREDITED": "Nakreditan ang account ng kumpanya.",
+    "MARKED_NO_SHOW_PRO": "Minarkahang no-show ang provider.",
+    "EMPLOYEE_CREDITED": "Nakreditan ang account ng empleyado.",
+    "NO_SHOW_PRO": "Naipataw ang penalty at naisagawa ang refund.",
+    "EMPLOYEE_DELETED": "Na-delete ang empleyado.",
+    "SLOT_SELECTED": "Napiling oras/slot",
+    "PASSWORD_RESET": "Na-reset ang password.",
+    "INVOICE_GENERATED": "Nagawa ang mga invoice.",
+    "REVIEW_SAVED": "Na-save ang review, salamat!",
+    "DEFAULT_PASSWORD_UPDATED": "Na-update ang default na password.",
+    "COMPANY_CREATED": "Matagumpay na nagawa ang iyong professional na account."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Mag-login muna upang pamahalaan ang iyong mga paborito.",
+    "INVALID_IMAGE": "Di-wastong larawan.",
+    "NO_SLOTS": "Walang available na slot para sa serbisyong ito.",
+    "NO_SHOP_SELECTED": "Walang napiling boutique/salon.",
+    "NO_SERVICE_SELECTED": "Walang napiling serbisyo.",
+    "ORDER_ERROR": "Nagka-error habang ina-update ang order.",
+    "CODE_ERROR": "Nagka-error habang sine-save ang code.",
+    "INVOICE_GENERATED_ERROR": "Nagka-error sa pagbuo ng mga invoice.",
+    "USERNOTCREATED": "Hindi malikha ang user.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Hindi sapat ang balanse ng kumpanya para sa credit na ito.",
+    "GENERIC_ERROR": "✨ Oops… may naganap na error. Pakisubukang muli ✨",
+    "COMPANY_CREDITED": "Nakreditan ang account ng kumpanya.",
+    "LINK_INVALID_OR_MISSING": "Di-wastong link o nawawala.",
+    "LINK_INVALID_OR_EXPIRED": "Di-wastong link o paso na.",
+    "EMAIL_NOT_FOUND": "Hindi natagpuan ang e-mail ng user.",
+    "PAYMENT_FAILED": "Nabigo ang bayad.",
+    "BOOKING_FAILED": "Nabigo ang paglikha ng reservation.",
+    "LOAD_CARDS_FAILED": "Nagka-error habang naglo-load ng iyong mga card.",
+    "LOAD_SHOP_FAILED": "Nagka-error habang naglo-load ng salon.",
+    "LOAD_PRODUCTS_FAILED": "Nagka-error habang naglo-load ng mga serbisyo.",
+    "INVALID_CODE": "Di-wasto ang inilagay na code.",
+    "PASSWORD_CHANGED": "Na-update ang iyong password.",
+    "PASSWORDS_IDENTICAL": "Dapat naiiba ang bagong password sa kasalukuyan.",
+    "INVALID_AMOUNT": "Di-wasto ang halagang inilagay.",
+    "INVALID_CURRENT_PASSWORD": "Mali ang kasalukuyang password.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Mali ang kasalukuyang password o may naganap na error.",
+    "PASSWORD_UPDATE_FAILED": "Nabigo ang pag-update ng password.",
+    "PASSWORD_UPDATE_GENERIC": "Nagka-error habang ina-update ang password.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Hindi tugma ang mga password o masyadong maiksi (min. 8 character).",
+    "INVALID_PASSWORD": "Hindi puwedeng walang laman ang password.",
+    "PASSWORD_TOO_SHORT": "Dapat may hindi bababa sa 8 character ang password."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Kulanging configuration ng Stripe.",
+    "LOAD_FAILED": "Hindi na-load ang Stripe",
+    "NOT_READY": "Hindi naka-initialize ang Stripe",
+    "CONFIRM_FAILED": "Nabigo ang pag-save ng card",
+    "CARD_SAVED": "Matagumpay na na-save ang card ✅",
+    "PM_FAILED": "Nabigo ang paglikha ng card",
+    "SI_FAILED": "Hindi maihanda ang pag-save ng card",
+    "ATTACH_FAILED": "Hindi maiugnay ang card sa account",
+    "SAVE_CARD": "I-save ang card",
+    "ADD_CARD": "Magdagdag ng card"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Mangyaring mag-login"
+  },
+  "COMMON": {
+    "LOADING": "Naglo-load…",
+    "UNEXPECTED_ERROR": "May hindi inaasahang error"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Sinusuri…",
+    "VALIDE": "Tinitiyak namin ang iyong activation link. Sandali lang ito.",
+    "ACCOUNT": "Na-activate ang account",
+    "CONNECT": "Mag-login",
+    "OUPS": "Oops",
+    "WRITE": "Kailangan ng tulong? Sumulat sa amin sa",
+    "RESEND": "Muling ipadala ang e-mail ng activation"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Aking impormasyon sa bangko",
+    "ADD_BANK_INFO": "Idagdag ang aking impormasyon sa bangko",
+    "BANK_NAME": "Pangalan ng bangko",
+    "HOLDER_NAME": "May-ari ng account",
+    "COUNTRY": "Bansa",
+    "SAVE": "I-save"
+  },
+  "LOADER": {
+    "LOADING": "Naglo-load…"
+  },
+  "SPONSORS": {
+    "TITLE": "Aming mga Sponsor",
+    "SPONSORISED": "May sponsor"
+  },
+  "TABS": {
+    "FINANCE": "Pagsubaybay sa pananalapi",
+    "GENERAL_INFO": "Pangkalahatang impormasyon",
+    "EMPLOYEES": "Pamamahala ng empleyado",
+    "SERVICES": "Pamamahala ng serbisyo",
+    "PHOTOS": "Gallery ng mga larawan",
+    "STATS": "Istatistika",
+    "PARAM": "Mga setting",
+    "SHOPS": "Mga boutique/salon",
+    "USERS": "Mga user",
+    "MESSAGE": "Mensaheng sistema"
+  },
+  "CARD": {
+    "ADD": "Idagdag ang card",
+    "NO_IMAGE": "Walang larawan sa gallery.",
+    "SALON": "Matagumpay na na-update ang salon",
+    "ERROR1": "Error sa pag-update ng salon",
+    "ERROR2": "Error sa pag-update ng larawan",
+    "UPDATE": "Matagumpay na na-update ang salon"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Tapos na",
+    "ACCEPTEE": "Tinanggap",
+    "WAITING": "Nakahihintay",
+    "CANCEL": "Kanselado",
+    "DELETE": "Na-delete",
+    "REFUSED": "Tinanggihan",
+    "NO_PRESTA": "Walang dumating na provider",
+    "CLIENT_ABSENT": "Walang dumating na kliyente",
+    "ADRESSE": "Address",
+    "DATE": "Petsa",
+    "TOTAL": "Kabuuan",
+    "FACTURE": "Invoice",
+    "CANCELLED": "Kanselado",
+    "DELETED": "Tanggalin",
+    "AVIS": "Review",
+    "SUPPORT": "Suporta",
+    "CODE": "Code ng kumpirmasyon",
+    "CODE_A_DONNER": "Code na ibibigay sa provider",
+    "PRESTA_ABSENT": "Hindi dumating ang provider"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Mga review sa boutique/salon",
+    "COMMENT": "Komento",
+    "NOTE": "Rating",
+    "CLOSE": "Isara"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Walang larawan sa gallery."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "I-rate ang iyong order",
+    "DATE": "Petsa",
+    "SERVICE": "Serbisyo",
+    "AVIS": "Iyong review",
+    "SEND": "Ipadala",
+    "PLACEHOLDER": "Ilarawan ang iyong karanasan…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Ipa-deliver sa iyong bahay",
+    "KNOWMORE": "Alamin pa",
+    "PART1TITLE": "Sulitin ang pinakamahusay na home beauty services",
+    "PART1TEXT": "Ang aming kwalipikadong mga propesyonal ay pupunta sa iyong tahanan upang magbigay ng de-kalidad na pangangalaga, ayon sa iyong pangangailangan at kagustuhan. Damhin ang natatanging wellness experience—sa lunch break, pagkatapos ng trabaho, o sa hapon kasama ang mga kaibigan.",
+    "PART2TITLE": "Magtrabaho kung kailan mo gusto, kumita ayon sa sarili mong oras",
+    "PART2TEXT": "Kumita ayon sa sarili mong iskedyul sa pagtanggap ng mga booking sa bilis mo. Maaari mong gamitin ang sarili mong gamit o umarkila ng professional equipment sa pamamagitan ng izyGlam.",
+    "PART3TITLE": "Isang beauty service na idinisenyo para sa mga kumpanya",
+    "PART3TEXT": "Ang Glam for Business ay platform para sa lahat ng laki ng negosyo upang pamahalaan ang beauty needs ng iyong mga kliyente at empleyado. Mag-alok ng personalisadong care sa workplace, sa mga corporate event, o sa espesyal na okasyon. Pupunta ang aming mga propesyonal upang magbigay ng serbisyong akma sa iyong pangangailangan.",
+    "APPTITLE": "Mas simple gamit ang apps",
+    "DOWNLOADAPP1": "I-download ang app",
+    "DOWNLOADAPP2": "I-download ang app para sa beauty professionals",
+    "SCANTODOWNLOAD": "I-scan upang i-download",
+    "SIGNUP": "Mag-sign up!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Error sa pag-play ng video",
+    "AUTOPLAY_BLOCKED": "Na-block ang autoplay. I-tap para i-play ang video.",
+    "NAV_ERROR": "Hindi makapag-navigate"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Paano gumagana ang mga app at site ng izyGlam",
+    "HELPCENTER": "Pumunta sa help center",
+    "BUSINESS": "Negosyo",
+    "ABOUT": "Tungkol sa amin",
+    "OURSERVICES": "Aming mga serbisyo",
+    "PRESSAREA": "Para sa media",
+    "INVESTORS": "Mga investor",
+    "CAREERS": "Mga trabaho",
+    "AI": "Artificial Intelligence",
+    "PRODUCTS": "Mga produkto",
+    "GLAM": "Laging on point sa izyGlam",
+    "RESERVED": "Mag-reserba nang maaga",
+    "GIFTCARDS": "Gift cards",
+    "WORKWITHUS": "Makipagtrabaho sa izyGlam",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Pagkapribado",
+    "ACCESS": "Accessibility",
+    "CONDITIONS": "Mga kondisyon",
+    "LANGUAGE": "Wika",
+    "LOCALISATION": "Lokasyon",
+    "ALL_RIGHT": "Lahat ng karapatan ay nakalaan"
+  },
+  "COMING_SOON": {
+    "TITLE": "Malapit na kaming dumating",
+    "TITLE-NOT-COMING": "Wala pa kaming planong pumunta rito",
+    "DAYS": "Araw",
+    "HOURS": "Oras",
+    "MINUTES": "Minuto",
+    "SECONDS": "Segundo",
+    "TEXT": "Masigasig kaming nagtatrabaho para maghatid ng natatanging home beauty experience. Manatiling nakaabang para sa aming paglulunsad."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Mga alok ngayon",
+    "DISCOVER": "Tuklasin sa izyGlam",
+    "LIKED": "Pinaka-gusto sa paligid",
+    "SMART": "Matipid na plano",
+    "TOP10": "Top 10 ng linggo",
+    "SEARCHRESULT": "Mga resulta ng paghahanap",
+    "AVIS": "Mga review"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Gupit/Hairstyle",
+    "MANUCURE": "Manikyur",
+    "VISAGE": "Mukha",
+    "MASSAGE": "Masahe",
+    "MAQUILLAGE": "Make-up",
+    "EPILATION": "Waxing/Epilation",
+    "BRONZAGE": "Tanning",
+    "PARTUM": "Post-partum",
+    "NUTRITION": "Nutrisyon",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupuncture",
+    "STYLISME": "Styling",
+    "YOGA": "Pag-relax",
+    "DEVELOPPEMENT": "Pag-angat sa sarili",
+    "EYELASH": "Extension ng pilikmata"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Isang hairdresser",
+    "MANUCURE": "Isang manikyurista",
+    "ESTETICIAN": "Isang estetisyan",
+    "MASSAGE": "Isang masahista",
+    "MAQUILLAGE": "Isang make-up artist",
+    "PEDICURE": "Isang pedikyurista",
+    "NUTRITION": "Isang nutrisyunista",
+    "FITNESS": "Isang coach"
+  },
+  "INTRO": {
+    "NORESULTS": "Walang natagpuang resulta",
+    "START": "Magsimula",
+    "SPECIALITY": "Espesyalidad?",
+    "WHERE": "Saan?",
+    "CONNEXION": "Login",
+    "REGISTRATION": "Rehistrasyon"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Impormasyon ng account",
+    "MESSAGE": "Aking mga mensahe",
+    "MESSAGE_SUBTITLE": "Listahan ng aking kasalukuyang usapan.",
+    "INFORMATION_SUBTITLE": "I-edit ang iyong personal na impormasyon nang madali.",
+    "SECURITY": "Seguridad at wika",
+    "SECURITY_SUBTITLE": "Password, wika… kontrolado lahat dito.",
+    "CONFIDENTIAL": "Pagkapribado at datos",
+    "CONFIDENTIAL_SUBTITLE": "Mahalaga ang iyong datos. Narito kung paano namin inaalagaan ang mga ito.",
+    "DASHBOARD": "Dashboard",
+    "DASHBOARD_SUBTITLE": "Madaling pamahalaan ang datos ng iyong aktibidad.",
+    "COMPANY": "Pamamahala ng aking kumpanya",
+    "COMPANY_SUBTITLE": "Pamahalaan ang iyong mga appointment—nakaraan, paparating o kanselado.",
+    "SHOP": "Pamamahala ng aking salon",
+    "SHOP_SUBTITLE": "Pamahalaan ang iyong salon, serbisyo at pananalapi.",
+    "FINANCIAL": "Pagsubaybay sa pananalapi",
+    "ADMIN": "Pangkalahatang administrasyon",
+    "ADMIN_SUBTITLE": "Pamahalaan ang obra maestra—sa’yo ang mundo, kampeon!",
+    "CALENDAR": "Agen﻿da",
+    "CALENDAR_SUBTITLE": "Pamahalaan ang nakaraan at paparating na appointment.",
+    "SELECT_SALON": "Pumili ng salon",
+    "NEW_SALON": "Gumawa ng salon",
+    "SHOP_TO_CREATE": "Uri ng boutique na gagawin",
+    "CANCEL": "Kanselahin",
+    "CREATE": "Gawin ang aking boutique",
+    "INFO1": "Aalisin mo ang iyong boutique sa",
+    "INFO2": "Hindi na maibabalik ang aksyong ito",
+    "SURE": "Sigurado ka bang gusto mong magpatuloy",
+    "DELETE": "Tanggalin"
+  },
+  "PROFILE": {
+    "TITLE": "Pangunahing impormasyon",
+    "FIRSTNAME": "Pangalan",
+    "LASTNAME": "Apelyido",
+    "PHONE": "Numero ng telepono",
+    "ADDRESS": "E-mail address",
+    "CHANGE_USER": "Baguhin ang user",
+    "CANCEL": "Kanselahin",
+    "SUCCESS": "Matagumpay na na-update ang profile",
+    "UPDATE_ERROR": "Nagka-error habang ina-update ang password."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Palitan ang password",
+    "ACTUAL_PASSWORD": "Kasalukuyang password",
+    "NEW_PASSWORD": "Bagong password",
+    "CONFIRMED_PASSWORD": "Kumpirmahin ang bagong password",
+    "CHANGE_PASSWORD": "Palitan ang password",
+    "CHANGE_OK": "Matagumpay na napalitan ang password",
+    "CHANGE_LANGUE": "Palitan ang wika",
+    "CHANGE_COUNTRY": "Palitan ang bansa",
+    "LANGUE": "Wika",
+    "COUNTRY": "Bansa"
+  },
+  "PAYEMENT": {
+    "YOU": "Ikaw",
+    "HEADER_TITLE": "Bayad",
+    "SERVICE_TITLE": "Serbisyo",
+    "SERVICE_NOTE": "Tala:",
+    "ADDRESS_TITLE": "Address ng serbisyo",
+    "ADDRESS_RENDEZVOUS": "Magkita sa harap ng aking pinto",
+    "ADDRESS_CHANGE": "Pumili ng ibang address",
+    "PAYMENT_SECTION_TITLE": "Bayad",
+    "PAYMENT_METHOD": "Pangunahing card",
+    "PAYMENT_EXPIRE": "Mawawalan ng bisa",
+    "PAYMENT_NO_CARD": "Walang nakatakdang pangunahing card",
+    "PAYMENT_NO_CARD_DESC": "Magdagdag o pumili ng card bilang pangunahing paraan ng bayad.",
+    "SUMMARY_SUBTOTAL": "Subtotal",
+    "SUMMARY_SERVICE_FEE": "Komisyon ng izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Service fee",
+    "SUMMARY_TOTAL": "Kabuuan",
+    "TITLE": "Mag-book ng iyong appointment online",
+    "FOR_WHO": "Para kanino ang appointment na ito?",
+    "ADD_PROCHE": "Magdagdag ng kaanak",
+    "WHERE": "Saan gaganapin ang appointment?",
+    "SELECT_ADDRESS": "Pumili ng address",
+    "ADD_ADDRESS": "Magdagdag ng address",
+    "CARD_PAY": "Bayad gamit ang bank card",
+    "CARD_NUM": "Numero ng card",
+    "CARD_NAME": "Pangalan sa card",
+    "EXPIRATION": "Petsa ng pag-expire",
+    "CVV": "CVV",
+    "RDV": "Detalye ng iyong appointment",
+    "RESUME": "Buod ng appointment",
+    "DATE": "Petsa",
+    "HOUR": "Oras",
+    "PRESTA": "Serbisyo",
+    "EXPIRE": "Mawawalan ng bisa",
+    "DEFAULT": "Default",
+    "NOCARD": "Walang naitalang card",
+    "WITH": "Kasama si",
+    "TOTAL": "Kabuuang babayaran",
+    "ANNULER": "KANSELAHIN",
+    "RETOUR": "BUMALIK",
+    "CONTINUER": "MAGPATULOY",
+    "VALIDER": "KUMPIRMAHIN",
+    "ADRESSE": "Address",
+    "LEGAL_TEXT_1": "Sa pag-click ng button para isumite ang order, tinatanggap mo ang Kontrata sa delivery services sa izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Tinatanggihan mo ang karapatang bawiin para sa delivery services. Maaari kang dumulog sa mediator ng consumer dito.",
+    "LEGAL_TEXT_3": "Kung wala ka sa pagdating ng courier, iiwan niya ang iyong order sa harap ng pinto. Sa pag-order, tinatanggap mong ikaw ang may buong pananagutan pag naihatid na ito. Kung wala ka, ang mga order na may alak o restricted na item ay ibabalik sa establisimyento.",
+    "CLOSE_FORM": "Isara ang form",
+    "ADD_CARD": "Magdagdag ng card",
+    "TRAITEMENT": "Pinoproseso…"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Na-validate ang bayad",
+    "THANKS": "Salamat! Na-book na ang iyong reservation.",
+    "BACKHOME": "Bumalik sa home",
+    "PROBLEME": "Problema sa reservation",
+    "PAIEMENT": "Nakasingil na ang bayad, ngunit hindi nakumpirma ang reservation.",
+    "THANKSCONTACT": "Pakikontak ang aming support sa",
+    "FAILED": "Nabigo ang bayad",
+    "VALIDATE": "Hindi namin nakumpirma ang iyong bayad. Pakisubukang muli."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam para sa freelancers",
+    "STEP1": {
+      "TITLE": "Nagpapa-book ang mga kliyente",
+      "TEXT": "Natagpuan ng kliyente ang iyong negosyo at nag-book sa app ng izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Tinatanggap mo ang booking",
+      "TEXT": "Tinatanggap mo ang booking at naa-update ang iyong agenda."
+    },
+    "STEP3": {
+      "TITLE": "Sa oras ng appointment",
+      "TEXT": "Aagahan kang abisuhan sa paparating na bookings at gagabayan ka papunta sa bawat kliyente."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Kreditan ang account ng kumpanya",
+    "SOLDE": "Kasalukuyang balanse",
+    "CREDIT": "Halagang ikre-credit",
+    "COMPANY": "Kreditan ang account ng kumpanya",
+    "DEPENSE": "Pagsubaybay sa gastos",
+    "DATE": "Petsa",
+    "COUNT": "Halaga",
+    "EMPLOYEE": "Empleyado",
+    "DESCRIPTION": "Paglalarawan"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "May partner o business account ka na!",
+    "NOT_CONNECTED": "Mag-login upang magrehistro ng salon",
+    "TITLE": "Simulan mo na!",
+    "TITLE2": "Gumawa tayo ng salon!",
+    "NAME": "Pangalan ng iyong salon",
+    "ADDRESS": "Address ng iyong negosyo",
+    "STREET": "Kalsada",
+    "CITY": "Lungsod",
+    "CODE_POSTAL_POSSIBLE": "Sakop na postal code",
+    "CODE_POSTAL": "Postal code",
+    "COUNTRY": "Bansa",
+    "ADDRESSPLACEHOLDER": "123, Kalsada Principal",
+    "FLOOR": "Palapag/Suite (opsyonal)",
+    "BUSINESSTYPE": "Uri ng negosyo",
+    "FIRSTNAME": "Pangalan",
+    "LASTNAME": "Apelyido",
+    "PASSWORD": "Password",
+    "PASSWORDCONFIRMED": "Kumpirmasyon ng password",
+    "EMAIL": "E-mail",
+    "PHONE": "Mobile number",
+    "WHATSAPP": "Sumasang-ayon akong tumanggap ng mga mensahe sa WhatsApp",
+    "BUTTON": "Irehistro ang boutique",
+    "SUCCESS": "Matagumpay na nagawa ang boutique!",
+    "ERROR": "Nagka-error habang ginagawa ang boutique:",
+    "ERROR1": "Kinakailangan ang pangalan ng negosyo.",
+    "ERROR2": "Kinakailangan ang address ng negosyo.",
+    "ERROR3": "Kinakailangan ang uri ng negosyo.",
+    "ERROR4": "Kinakailangan ang pangalan.",
+    "CHOOSE_COUNTRY": "Pumili ng bansa",
+    "POSTAL_CODE": "Postal code",
+    "CHOOSE_CITY": "Pumili ng lungsod",
+    "ERROR5": "Kinakailangan ang apelyido.",
+    "ERROR6": "Kinakailangan ang e-mail.",
+    "ERROR7": "Kinakailangan ang mobile number.",
+    "ERROR8": "Dapat pumayag tumanggap ng WhatsApp messages."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Baguhin ang address",
+    "FIND_SHOP": "Maghanap ng boutique",
+    "CATEGORIES": "Mga kategorya",
+    "OFFRE": "Mga alok ngayon",
+    "DISCOVER": "Tuklasin",
+    "APPRECIATE": "Pinaka-gusto",
+    "SMART": "Matipid na plano",
+    "TOP10": "Top10 ng linggo",
+    "SEARCH_RESULT": "Mga resulta ng paghahanap",
+    "NOT_AVAILABLE": "Hindi pa available sa address na ito",
+    "NEW_ADDRESS": "Magdagdag ng bagong address",
+    "CHOOSE_ADDRESS": "Pumili ng address",
+    "CHOOSE_COUNTRY": "Pumili ng bansa",
+    "CHOOSE_CITY": "Pumili ng lungsod",
+    "CHOOSE_ARRONDISSEMENT": "Pumili ng distrito",
+    "CANCEL": "Kanselahin",
+    "SAVE": "I-save",
+    "CLOSE": "Isara"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Pangalan",
+    "CITY": "Lungsod",
+    "NOTE": "Rating",
+    "MIDDLE_PRICE": "Karaniwang presyo",
+    "PROMOTION": "Promosyon",
+    "ACTIONS": "Mga aksyon",
+    "MODIFIER": "I-edit ang impormasyon ng boutique",
+    "SHOP_NAME": "Pangalan ng boutique",
+    "DESCRIPTION": "Paglalarawan",
+    "PRINCIPALE": "Pangunahing larawan",
+    "SHOP": "Uri ng boutique",
+    "ARRONDISSEMENT": "Distrito",
+    "MINIMUM_DELAI": "Minimum na lead time",
+    "DISTANCE": "Pinakamaks. distansya (km)",
+    "EMPLACEMENT": "Lokasyon",
+    "HOURS_MORNING": "Oras ng bukas – Umaga",
+    "HOURS_AFTERNOON": "Oras ng bukas – Hapon",
+    "ACTIVE_PROMO": "Aktibong promo",
+    "CANCEL": "Kanselahin",
+    "ENREGISTRER": "I-save"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Palaguin ang iyong negosyo",
+    "TEXT": "Libo-libong user ng izyGlam ang naghahanap ng lugar sa iyong area…",
+    "IMAGE": "larawan"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Bakit izyGlam?",
+    "STEP1": {
+      "TITLE": "Trabahong ayon sa sarili mong kundisyon",
+      "TEXT": "Ayusin ang iskedyul at pamahalaan ang iyong mga serbisyo nang malaya. Sulitin ang flexible platform para i-maximize ang iyong kita."
+    },
+    "STEP2": {
+      "TITLE": "Palakasin ang online presence",
+      "TEXT": "Humakot ng mas maraming kliyente gamit ang marketing tools ng app at dagdagan ang visibility mo."
+    },
+    "STEP3": {
+      "TITLE": "Pasiyahin at pasikatin ang kliyente",
+      "TEXT": "Bumuo ng pangmatagalang relasyon sa pag-alam sa nais ng kliyente, pagresponde sa review, at pagbibigay ng loyalty perks."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Pinasimpleng pamamahala ng negosyo",
+      "TEXT": "Pamahalaan ang iyong aktibidad nang kampante gamit ang izyGlam—kumpletong solusyon para sa wellbeing pros. Flexible tools at personal na gabay para sa lahat ng pangangailangan."
+    },
+    "STEP2": {
+      "TITLE": "Dagdag-benta araw-araw",
+      "TEXT": "Araw-araw, libo-libong tao ang gumagamit ng izyGlam para maghanap ng beauty experts malapit sa kanila. Samantalahin ito."
+    },
+    "STEP3": {
+      "TITLE": "Garantisadong kasiyahan",
+      "TEXT": "Mag-alok ng personlisadong experience: madaling booking, mabilis na komunikasyon, serbisyong akma. Masaya at tapat na kliyente."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam para sa iyong kumpanya?",
+    "STEP1": {
+      "TITLE": "Nagbo-book ang iyong empleyado at kliyente",
+      "TEXT": "Direktang pumipili ng wellbeing services sa izyGlam app."
+    },
+    "STEP2": {
+      "TITLE": "Ikaw ang nagtatakda ng budget",
+      "TEXT": "Kaya mong i-credit ang account ng mga empleyado/kliyente—regular o minsanan."
+    },
+    "STEP3": {
+      "TITLE": "Naihatid ang mga serbisyo",
+      "TEXT": "Pupunta ang aming beauty experts sa inyong opisina o sa empleyado para sa naka-book na serbisyo."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Iangat ang iyong kumpanya",
+    "TEXT": "Libo-libong user ang naghahanap ng wellbeing services. Bigyan ang empleyado at kliyente ng priyoridad na access sa pinakamagagaling na experts malapit sa kanila.",
+    "IMAGE": "larawan"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Bakit izyGlam?",
+    "STEP1": {
+      "TITLE": "Pasiglahin at gantimpalaan ang mga empleyado",
+      "TEXT": "Magbigay ng buwanang beauty budget—may access sa mga coiffeuse, estetisyan at iba pa—para sa mas masayang team at mas matibay na belonging."
+    },
+    "STEP2": {
+      "TITLE": "Palakasin ang brand image",
+      "TEXT": "Magdaos ng beauty events para sa kliyente/partner o isama sa loyalty programs. Mag-iwan ng marka gamit ang high-end na care."
+    },
+    "STEP3": {
+      "TITLE": "I-optimize ang workplace wellbeing",
+      "TEXT": "Padaliin ang access sa services direkta sa trabaho o malapit dito. Mas alagang empleyado, mas motivated at magkakaisa."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Pinasimpleng access sa wellbeing",
+      "TEXT": "Bigyan ang team ng simple at flexible na paraan para alagaan ang sarili—esthetic care o fitness—lahat abot-kamay."
+    },
+    "STEP2": {
+      "TITLE": "Innovative na perks para sa kliyente",
+      "TEXT": "Palalimin ang relasyon sa pag-alok ng wellbeing sa events o loyalty programs. Ipakitang inaalagaan mo ang kanilang experience."
+    },
+    "STEP3": {
+      "TITLE": "Serbisyong sukat sa pangangailangan, saan at kailan man",
+      "TEXT": "Makakakuha ang empleyado at kliyente ng de-kalidad na serbisyo saanman, mula sa piling experts at may personal na gabay."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Pamamahala ng account",
+    "ORDERS": "Nakaraang order",
+    "FAVORITES": "Paborito",
+    "HELP": "Tulong",
+    "MY_ABO": "Aking subscription",
+    "PRICES": "Mga plano sa presyo",
+    "FIDELITY": "Loyalty program",
+    "LOGOUT": "Logout",
+    "YOUR_BEAUTY_SERVICES": "Ialok ang iyong beauty services",
+    "YOUR_COMPANY": "Irehistro ang iyong kumpanya"
+  },
+  "SUBTITLES": {
+    "HELP": "Kailangan ng tulong? Nandito ang pahinang ito para sa’yo."
+  },
+  "ORDERS": {
+    "TITLE": "Aking mga order",
+    "TITLE_SUBTITLE": "Madaling pamahalaan ang nakaraang, paparating, o kinanselang appointment.",
+    "UPCOMING_SECTION": "📅 Paparating",
+    "NO_UPCOMING": "Wala kang naka-schedule na serbisyo.",
+    "PAST_SECTION": "✅ Nakalipas",
+    "NO_PAST": "Wala ka pang natapos na serbisyo.",
+    "ADDRESS": "Address",
+    "DATE": "Petsa",
+    "TOTAL": "Kabuuan",
+    "ITEMS": "mga item",
+    "DELETE": "Tanggalin",
+    "VISIT": "Bisitahin",
+    "PRESTA_FOR": "Serbisyo para kay",
+    "AT": "sa",
+    "ORDER_AGAIN": "Umorder muli",
+    "INVOICE": "Humiling ng invoice",
+    "REVIEW": "Mag-iwan ng review",
+    "CANCEL": "Kanselahin"
+  },
+  "FIDELITY": {
+    "TITLE": "Aking mga paborito",
+    "AGAIN": "Ilan na lang",
+    "AGAIN_SUBTITLE": "bago sa iyong gantimpala",
+    "TITLE_SUBTITLE": "para ma-unlock ang regalo mo",
+    "DATE": "Balido hanggang",
+    "HISTO": "Kasaysayan ng aking care"
+  },
+  "FAVORITES": {
+    "TITLE": "Aking mga paborito",
+    "TITLE_SUBTITLE": "Hanapin agad ang iyong mga paboritong salon."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Service fee:",
+    "DISTANCE": "Max na distansya:",
+    "PAYEMENT": "Tumatanggap ng bayad sa card at PayPal",
+    "PRESS_FOR_INFO": "Pindutin para sa oras, impormasyon, atbp.",
+    "GALLERY": "Gallery ng larawan",
+    "SEE_MORE": "Tumingin pa",
+    "SEE_LESS": "Tumingin nang kaunti"
+  },
+  "LOGIN": {
+    "TITLE": "Ilagay ang iyong login credentials.",
+    "FORGET_PASSWORD": "Nakalimutan ang password?",
+    "CONTINUER": "Magpatuloy",
+    "CONTINUE_WITH": "Magpatuloy gamit ang",
+    "OR": "O",
+    "QRCODE": "Mag-login gamit ang QR code",
+    "CGU": "Sa pagpapatuloy, pumapayag kang makatanggap ng tawag, WhatsApp o SMS (kabilang ang awtomatiko) mula sa izyGlam at mga kaanib nito sa ibinigay na numero.",
+    "PLACEHOLDER_EMAIL": "E-mail address",
+    "PLACEHOLDER_PASSWORD": "Password",
+    "PLACEHOLDER_PASSWORD_NEW": "Bagong password",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Kumpirmahin ang password",
+    "CHANGE_PASSWORD": "Palitan ang password",
+    "REINIT": "I-reset"
+  },
+  "SIGNUP": {
+    "GENRE": "Kasarian",
+    "CHOOSE": "Pumili",
+    "SEX_MALE": "Lalaki",
+    "SEX_FEMALE": "Babae",
+    "TITLE": "Ilagay ang iyong personal na impormasyon.",
+    "CONTINUER": "Magpatuloy",
+    "OR": "O",
+    "QRCODE": "Mag-login gamit ang QR code",
+    "CGU": "Sa pagpapatuloy, pumapayag kang makatanggap ng tawag, WhatsApp o SMS (kabilang ang awtomatiko) mula sa izyGlam at mga kaanib nito sa ibinigay na numero.",
+    "PLACEHOLDER_FIRSTNAME": "Pangalan",
+    "PLACEHOLDER_LASTNAME": "Apelyido",
+    "PLACEHOLDER_EMAIL": "E-mail",
+    "PLACEHOLDER_EMAIL_REQUIRED": "Kinakailangan ang e-mail",
+    "PLACEHOLDER_EMAIL_WRONG": "Di-wasto ang format ng e-mail",
+    "PLACEHOLDER_PHONE": "Telepono",
+    "PLACEHOLDER_PHONE_NUMBER": "Numero ng telepono",
+    "PLACEHOLDER_PASSWORD": "Password",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Kumpirmasyon ng password",
+    "COUNTRY": "Bansa"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Pranses",
+    "ANGLAIS": "Ingles",
+    "ESPAGNOL": "Espanyol",
+    "NEERLANDAIS": "Dutch",
+    "ITALIEN": "Italyano",
+    "ALLEMAND": "Aleman",
+    "PORTUGAIS": "Portuges",
+    "POLONAIS": "Polako",
+    "DANOIS": "Danish",
+    "FINNOIS": "Finnish",
+    "SUEDOIS": "Swedish",
+    "ARABE": "Arabe",
+    "TURC": "Turko",
+    "CHINOIS": "Tsino",
+    "RUSSE": "Ruso",
+    "PERSAN": "Persian",
+    "UKRAINIEN": "Ukrainian",
+    "ROUMAIN": "Romanian",
+    "CATALAN": "Catalan",
+    "BASQUE": "Basque",
+    "GALICIEN": "Galician",
+    "ALBANAIS": "Albanian",
+    "KURDE": "Kurdish",
+    "ESTONIEN": "Estonian",
+    "SOMALIEN": "Somali",
+    "BIELORUSSE": "Belarusian",
+    "JAPONAIS": "Hapon",
+    "COREEN": "Koreano",
+    "INDONESIEN": "Indonesian",
+    "MALAIS": "Malay",
+    "THAI": "Thai",
+    "VIETNAMIEN": "Biyetnames",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bengali"
+  },
+  "COUNTRY": {
+    "FRANCE": "Pransya",
+    "ALLEMAGNE": "Alemanya",
+    "SPAIN": "Espanya",
+    "ITALY": "Italya",
+    "DANEMARK": "Denmark",
+    "FINLAND": "Finland",
+    "NETHERLAND": "Netherlands",
+    "POLAND": "Poland",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Sweden",
+    "CHINA": "Tsina",
+    "INDIA": "India",
+    "JAPAN": "Hapon",
+    "SOUTH_KOREA": "Timog Korea",
+    "INDONESIA": "Indonesia",
+    "PHILIPPINES": "Pilipinas",
+    "THAILAND": "Thailand",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malaysia",
+    "SINGAPOURE": "Singapore",
+    "EMIRAT_ARABE": "United Arab Emirates",
+    "SAUDI_ARABIA": "Saudi Arabia"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Aking mga address",
+    "ADDRESS_MODIFICATION": "Pagbabago ng address",
+    "STREET": "Kalsada",
+    "CITY": "Lungsod",
+    "CP": "Postal code",
+    "CREATE": "Gumawa",
+    "BACK": "Bumalik",
+    "CHANGE": "Baguhin",
+    "CLOSE": "Isara"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Mga setting ng platform",
+    "COMMISSION": "Rate ng komisyon (%)",
+    "0to100": "Kinakailangang halaga sa pagitan ng 0 at 100",
+    "SERVICE": "Service fee (€)",
+    "WEEKS": "Bilang ng linggong ipinapakita",
+    "SUP0": "Kinakailangang mas mataas sa 0",
+    "LESS24": "Fee sa pagkansela < 24h (%)",
+    "LESS48": "Fee sa pagkansela < 48h (€)",
+    "DELAY": "Minimum na oras bago mag-book (oras)",
+    "TVA": "VAT rate (%)",
+    "ADS": "I-activate ang ads",
+    "COMPANY": "I-activate ang business commerce",
+    "FIDELITY": "I-activate ang loyalty",
+    "MULTI_SHOP": "I-activate ang multi-boutique",
+    "PROMO": "I-activate ang promos sa boutique",
+    "SPONSORS": "I-activate ang sponsors sa landing page",
+    "SAVE": "I-save"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Kabuuang boutique",
+    "ACT_SHOPS": "Aktibong boutique",
+    "USERS": "Kabuuang user",
+    "NBR_USERS": "Bilang ng rehistradong user",
+    "CA_TOTAL": "Kabuuang kita",
+    "CA_GENERATED": "Nabuong kita",
+    "SHOPS_PERFO": "Performance ng mga boutique",
+    "SHOP_NAME": "Pangalan ng boutique",
+    "CITY": "Lungsod",
+    "REVENUES": "Kita",
+    "BOOKINGS": "Bilang ng booking",
+    "NOTE": "Average rating",
+    "ACTIONS": "Mga aksyon",
+    "DETAILS": "Detalye",
+    "ADJUST": "I-adjust",
+    "SHOP_ADJUST": "Ayusin ang boutique",
+    "STILL_DEVELOPPED": "Ginagawa pa ang feature na ito",
+    "CLOSE": "Isara"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Detalye ng event",
+    "CLIENT": "Kliyente",
+    "DEBUT": "Simula",
+    "FIN": "Tapos",
+    "ADDRESS": "Address",
+    "PHONE": "Telepono",
+    "CANCEL": "Kanselahin",
+    "SAVE": "I-save"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Gumawa ng event",
+    "COMING": "Paparating",
+    "PAST": "Nakalipas",
+    "CANCELLED": "Kinansela",
+    "NO_CANCELLED": "Walang kinanselang order."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Online na tulong"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Pamamahala ng empleyado",
+    "NAME": "Pangalan",
+    "EMAIL": "E-mail",
+    "SOLDE": "Balanse ng account",
+    "ACTIONS": "Mga aksyon",
+    "DEFAULT_PASSWORD": "Default na password",
+    "REINITIALIZE_PASSWORD": "Default password para sa reset",
+    "CHANGE_PASSWORD": "Palitan ang password"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Kreditan ang account ng empleyado",
+    "AMOUNT": "Halagang ikre-credit",
+    "CANCEL": "Kanselahin",
+    "SAVE": "Kumpirmahin"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Kabuuang booking",
+    "TOTAL_MONTH": "Booking ngayong buwan",
+    "GENERATED": "Nabuong kita",
+    "MONTHLY": "Kita ngayong buwan",
+    "AVG_NOTE": "Average na rating",
+    "BASED_ON": "Batay sa",
+    "REVIEWS": "mga review",
+    "NEXT_APPOINTEMENT": "Paparating na appointment",
+    "POPULAR_SERVICES": "Pinakasikat na serbisyo",
+    "RESERVATION": "mga booking"
+  },
+  "FINANCE": {
+    "PROGRESS": "Pagbabago mula M-1",
+    "PROGRESSION": "Pag-usad",
+    "TOTAL_GENERATED": "Kabuuang nabuong benta",
+    "CA": "Kita",
+    "COMMISSION_TAKEN": "Kinuhang komisyon",
+    "COMMISSIONS": "Mga komisyon",
+    "NET_TO_PAY": "Netong halagang ibabayad",
+    "DISPO_AMOUNT": "Magagamit na halaga",
+    "REQUEST_WITHDRAWAL": "Humiling ng payout",
+    "TAKE": "Halagang wiu-withdraw",
+    "TOTAL_EARNINGS": "Netong kita",
+    "TOTAL_BOOKINGS": "Naisagawang serbisyo",
+    "CANCELLED_BOOKINGS": "Kinanselang serbisyo",
+    "SERVICES_CANCELLED": "Kinansela o tinanggihang booking",
+    "SERVICES_COMPLETED": "Naitapos na booking",
+    "AVG_PRICE": "Karaniwang presyo",
+    "PER_SERVICE": "Bawat serbisyo",
+    "REVIEW_RATIO": "Mga review ng kliyente",
+    "CLIENT_FEEDBACK": "Rate ng feedback",
+    "TOP_PRODUCTS": "Pinakamabentang serbisyo",
+    "AVG_DURATION": "Karaniwang tagal",
+    "DURATION_PER_BOOKING": "Oras bawat booking",
+    "DETAILS": "Detalye ng bank account",
+    "ASK": "Humiling ng payout",
+    "HISTORY": "Kasaysayan ng transaksyon",
+    "DATE": "Petsa",
+    "AMOUNT": "Halaga",
+    "COMMISSION": "Komisyon",
+    "STATUS": "Status"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Piliin ang uri ng boutique na gagawin",
+    "CANCEL": "Kanselahin",
+    "CREATE": "Kumpirmahin"
+  },
+  "PROCHES": {
+    "TITLE": "Aking mga kaanak",
+    "UPDATE": "Pag-edit ng kaanak",
+    "FIRSTNAME": "Pangalan",
+    "NAME": "Apelyido",
+    "EMAIL": "E-mail",
+    "PHONE": "Telepono",
+    "CREATE": "Gumawa",
+    "BACK": "Bumalik",
+    "CHANGE": "Baguhin",
+    "CLOSE": "Isara"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Magbigay ng review",
+    "RATING": "Rating",
+    "COMMENT": "Komento",
+    "CLOSE": "Isara",
+    "SUBMIT": "Isumite"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Pumili ng petsa ng serbisyo",
+    "CANCEL": "Kanselahin"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Gumawa ng serbisyo",
+    "NAME": "Pangalan",
+    "DESCRIPTION": "Paglalarawan",
+    "COLOR": "Kulay",
+    "PRICE": "Presyo",
+    "TIME": "Tagal",
+    "IMAGE": "Larawan",
+    "ACTIONS": "Mga aksyon",
+    "MINUTES": "minuto",
+    "CHANGE": "Baguhin",
+    "DELETE": "Tanggalin",
+    "SERVICE_NAME": "Pangalan ng serbisyo",
+    "TIME_MINUTES": "Tagal (sa minuto)",
+    "PREST_IMAGE": "Larawan ng serbisyo",
+    "NO_PICS": "Wala pang larawan",
+    "UPLOAD": "Mag-upload ng larawan",
+    "NEW_PIC": "Preview ng bagong larawan",
+    "PRESTA_COLOR": "Kulay ng serbisyo",
+    "CANCEL": "Kanselahin",
+    "SAVE": "I-save",
+    "AVG_PRICE": "Karaniwang taripa",
+    "IMAGE_OK": "Matagumpay na na-upload ang larawan",
+    "ERROR_IMAGE_LOAD": "Error sa pag-upload ng larawan",
+    "UPDATE_SUCCESS": "Matagumpay na na-update ang serbisyo",
+    "ERROR_PRESTA": "Error sa pag-update ng serbisyo",
+    "PRESTA_UPDATED": "Matagumpay na na-update ang serbisyo",
+    "PRESTA_ERROR": "Error sa pag-update ng serbisyo",
+    "PRESTA_SUCCESS": "Matagumpay na na-update ang serbisyo",
+    "PHOTO_ERROR": "Error sa pag-update ng larawan",
+    "PRESTA_DELETED": "Matagumpay na na-delete ang serbisyo",
+    "PRESTA_DELETE_ERROR": "Error sa pagtanggal ng serbisyo"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Larawan ng boutique",
+    "UPLOAD_IMAGE": "Mag-upload ng larawan",
+    "SNEEK_PIC": "Preview ng larawan",
+    "SHOP_NAME": "Pangalan ng boutique",
+    "DESCRIPTION": "Paglalarawan",
+    "DESC_INFO": "(min. 25 character)",
+    "CITY": "Lungsod",
+    "DISCRICT": "Mga distrito",
+    "LAT": "Latitud",
+    "LON": "Longhitud",
+    "ZONE": "Saklaw ng pagbiyahe (km)",
+    "OPENNING": "Oras ng bukas",
+    "MORNING_OPEN": "Umaga - Bukas",
+    "MORNING_CLOSE": "Umaga - Sara",
+    "AFTERNOON_OPEN": "Hapon - Bukas",
+    "AFTERNOON_CLOSE": "Hapon - Sara",
+    "SAVE": "I-save ang boutique",
+    "MONDAY": "Lunes",
+    "TUESDAY": "Martes",
+    "WEDNESDAY": "Miyerkules",
+    "THURSDAY": "Huwebes",
+    "FRIDAY": "Biyernes",
+    "SATURDAY": "Sabado",
+    "SUNDAY": "Linggo",
+    "CLOSED": "Sarado",
+    "GENERATE_IMAGE": "Gumawa ng larawan",
+    "GENERATE_DESCRIPTION": "Gumawa ng paglalarawan",
+    "PHOTO": "Mga halimbawang larawang tinatanggap / tinatanggihan",
+    "CODE_POSTAUX": "Sakop na postal code",
+    "EXEMPLE_LOCAL": "Hal.: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Magdagdag ng empleyado",
+    "LOADING": "Naglo-load",
+    "LIST": "Listahan ng empleyado",
+    "ADD": "Idagdag",
+    "EMAIL": "E-mail ng empleyado",
+    "FIRSTNAME": "Pangalan",
+    "FAMILY_NAME": "Apelyido",
+    "PHONE": "Telepono",
+    "PASSWORD": "Password",
+    "HAVE_TO": "Lahat ng field ay kinakailangan.",
+    "EMAIL_ERROR": "Di-wastong e-mail.",
+    "EMPLOYEE_OK": "Matagumpay na nadagdag ang empleyado.",
+    "ADD_EMPLOYEE_ERROR": "Error sa pagdagdag ng empleyado."
+  },
+  "AVIS": {
+    "TITLE": "ANO ANG SABI NG AMING MGA USER",
+    "AVIS1": "Dati akong duda… pero grabe! Perpekto ang aking manikyur, sa bahay, walang stress. Naging Friday night ritual ko na.",
+    "AVIS2": "Nakapag-book ako ng facial sa loob ng 3 minuto, mula sa sofa. Maalalahanin ang estetisyan… at ang ganda ng balat ko ngayon.",
+    "AVIS3": "Akala ko mas mahal kaysa sa salon… sorpresa: kapareho o mas mura pa! At hindi ko na kinailangang bumiyahe. Solid yes.",
+    "AVIS4": "Bisperas ng birthday, gusto ko ng express na blow-dry. Nakahanap ako ng available na pro sa 2 click. Maaga, mabait at bongga ang resulta.",
+    "AVIS5": "Solo mom ako, wala nang oras bumiyahe. Dito, nagbo-book ako kapag tulog na ang mga bata. Simple, mabilis at ang saya.",
+    "AVIS6": "Sobrang nagustuhan ko ang unang session. Pinagaan agad ng estetisyan ang loob ko. Feeling spoiled ako. Nagpa-book na ulit ako para sa susunod na linggo!"
+  },
+  "DOWNLOAD": {
+    "USERS": "mga satisfied na user",
+    "SOCIAL": "mga available na propesyonal",
+    "STORE": "sa App Store at Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Piliin ang planong babagay sa’yo",
+    "DISCOVER2": "at simulan ang pag-akyat sa tugatog",
+    "SOLUTIONS": "Karapat-dapat ka sa solusyong maganda, makapangyarihan at para sa’yo. Maaari kang magbago ng isip anumang oras.",
+    "TEST": "Ang iyong unang salon ay 100% libre. Walang stress. Puro magic.",
+    "START_FREE": "Gumawa ng aking unang salon",
+    "FREE": "Baguhan",
+    "FREE_SUBTITLE": "Simulan ang pag-akyat gamit ang unang salon mo",
+    "THEN": "pagkatapos",
+    "MONTHLY": "buwan",
+    "FREE1": "1 aktibong salon",
+    "FREE2": "Walang limitasyon sa bookings at kliyente",
+    "FREE3": "Pamamahala ng serbisyo at iskedyul",
+    "FREE4": "Sync sa personal na kalendaryo",
+    "FREE5": "Perpekto para sa maayos na pagsisimula",
+    "FREE6": "Gumawa ng libreng salon",
+    "BASIC": "Napili",
+    "BASIC_SUBTITLE": "I-unlock ang potensyal mo at magsimulang kumislap",
+    "BASIC1": "Hanggang 3 aktibong salon",
+    "BASIC2": "Kumpletong pamamahala ng serbisyo, kliyente at bookings",
+    "BASIC3": "Prayoridad na e-mail support",
+    "BASIC4": "Access sa eksklusibong resources para palaguin ang negosyo",
+    "BASIC5": "Ideal para sa pros na nais palawakin ang client base",
+    "BASIC6": "1 buwang libreng trial",
+    "PREMIUM": "Reyna",
+    "PREMIUM_SUBTITLE": "Humuhubog ang iyong imperyo, lumalawak ang impluwensiya",
+    "PREMIUM1": "Hanggang 10 aktibong salon",
+    "PREMIUM2": "Access sa advanced performance stats",
+    "PREMIUM3": "Matalinong rekomendasyon para i-boost ang kita",
+    "PREMIUM4": "Mas mataas na visibility sa IzyGlam",
+    "PREMIUM5": "Prayoridad na support",
+    "PREMIUM6": "Dinisenyo para sa ambisyosang independiyente",
+    "PREMIUM7": "Kunin ang Reyna",
+    "BUSINESS": "Diyosa",
+    "BUSINESS_SUBTITLE": "Angkinin ang trono, Diyosa",
+    "BUSINESS1": "Custom",
+    "BUSINESS2": "Walang limitasyong bilang ng salon",
+    "BUSINESS3": "Personalized na strategic na paggabay",
+    "BUSINESS4": "Boosted na visibility at pag-feature ng iyong mga salon",
+    "BUSINESS5": "Mga solusyong sukat para mag-scale",
+    "BUSINESS6": "Makipag-ugnayan sa amin",
+    "COMPARE": "Paghahambing ng mga feature",
+    "FONCTIONS": "Mga feature",
+    "BUSINESS9": "Kumpletong pamamahala ng aktibidad",
+    "STUDIO_BASIC": "Eksklusibong resources",
+    "STUDIO_ADVANCED": "Istatistika at rekomendasyon",
+    "ANALYSE": "Pagsusuri ng performance",
+    "BASICS": "Basic",
+    "ADVANCE": "Advanced",
+    "PLANS": "Bilang ng aktibong salon",
+    "READY": "Handa ka na bang palaguin ang iyong negosyo?",
+    "DISCOVERS": "Tuklasin ang mga alok ng IzyGlam"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Pahayag sa Accessibility",
+      "TEXT": "Nakatuon ang izyGlam na gawing accessible ang mga serbisyo nito sa lahat. Target namin ang WCAG 2.2 AA at pag-align sa RGAA (France) hangga’t maaari."
+    },
+    "SCOPE": {
+      "TITLE": "Saklaw",
+      "L1": "Pampublikong website at impormasyon.",
+      "L2": "Web app (dashboard) para sa kliyente at propesyonal.",
+      "L3": "Mobile app (iOS/Android) kung mayroon.",
+      "L4": "Transactional e-mails at help center.",
+      "L5": "Mga tool sa customer support."
+    },
+    "STATUS": {
+      "TITLE": "Antas ng pagsunod",
+      "TEXT": "Sa petsa ng pahayag na ito, bahagi pa lang ang pagsunod sa WCAG 2.2 AA / RGAA. Patuloy kaming nagpapabuti at inuuna ang mahahalagang gap."
+    },
+    "PREPARATION": {
+      "TITLE": "Paraan ng paghahanda",
+      "L1": "Self-assessment ng product/UI team: semantic HTML, ARIA roles, tab order.",
+      "L2": "Manual tests: keyboard navigation, visible focus, 200%+ zoom, screen readers.",
+      "L3": "Tool-based tests (automated audit sa mga screen sample).",
+      "L4": "Continuous QA sa bawat release (Design System, accessible components)."
+    },
+    "FEATURES": {
+      "TITLE": "Mga available na accessibility feature",
+      "KEYBOARD": {
+        "TITLE": "Keyboard navigation",
+        "L1": "Kumpletong paglalakbay gamit ang keyboard (Tab, Shift+Tab, Enter, Space, Esc, arrow).",
+        "L2": "Kita at consistent na focus indicator.",
+        "L3": "“Laktawan sa nilalaman” na mga link.",
+        "L4": "Mga menu, modal at dropdown na maaaring kontrolin sa keyboard (bukas/sara, focus trap, Esc para isara)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Screen reader at estruktura",
+        "L1": "Semantic structure na may headings (h1→h6) at landmarks (header, nav, main, footer).",
+        "L2": "Malinaw na label sa lahat ng field at button, consistent accessible names.",
+        "L3": "Pag-anunsyo ng pagbabago ng estado sa aria-live regions (error, success, loading).",
+        "L4": "May alt sa impormasyong larawan; decorative na larawan ay ini-ignore."
+      },
+      "CONTRAST": {
+        "TITLE": "Contrast, kulay at scaling",
+        "L1": "Target na contrast ≥ 4.5:1 para sa normal na text at ≥ 3:1 para sa malaking text.",
+        "L2": "Gamitin hanggang 200% zoom nang walang pagkawala ng content o function.",
+        "L3": "Walang impormasyon na kulay lang ang basehan."
+      },
+      "FORMS": {
+        "TITLE": "Mga form at mensahe ng error",
+        "L1": "Label⇄input association, indikasyon ng required fields.",
+        "L2": "Errors malapit sa field at may buod kung kailangan.",
+        "L3": "Focus sa unang field na may error at may gabay sa pagwawasto."
+      },
+      "DYNAMIC": {
+        "TITLE": "Dynamic content at animasyon",
+        "L1": "Mga carousel/animasyon na maaaring i-pause at hindi nakakaabala.",
+        "L2": "Paggalang sa system preference na “reduce motion” kapag maaari.",
+        "L3": "Hindi agresibong modal, nasasara sa keyboard at click sa labas."
+      },
+      "MEDIA": {
+        "TITLE": "Media",
+        "L1": "May caption/transcript ang mga video (kung mayroon).",
+        "L2": "Kontrolado sa keyboard ang audio/video."
+      },
+      "MOBILE": {
+        "TITLE": "Mobile",
+        "L1": "Sapat ang laki at pagitan ng touch targets.",
+        "L2": "Navigation na kaayon ng TalkBack (Android) at VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Target na environment at assistive tech",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Suportadong mga modernong browser."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Mga hindi accessible (obserbado o potensyal)",
+      "TEXT": "Sa kabila ng pagsisikap, maaaring may ilang di-pagsunod:",
+      "L1": "Lumang larawan na walang deskriptibong alt.",
+      "L2": "Mga dokumento ng third party (PDF, attachment) na hindi ganap na accessible.",
+      "L3": "Lumang video na walang caption/description.",
+      "L4": "Embedded third-party components (bayad, mapa, player) na may limitasyon.",
+      "MOTIVES": "Posibleng dahilan: third-party content, labis na pasanin, update na isinasagawa."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatibo at makatuwirang ayos",
+      "TEXT": "Kung kailangan mo ng alternatibong format (hal. accessible doc, tulong sa booking), kontakin kami. Gagawin namin ang makakaya."
+    },
+    "FEEDBACK": {
+      "TITLE": "Feedback at tulong",
+      "L1": "Sa app: Help > Accessibility.",
+      "L2A": "Sa e-mail:",
+      "L2B": "o",
+      "L3": "Pakibigay ang screen/URL, device, browser at kung anong screen reader kung mayroon."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Proseso ng pagreklamo (France)",
+      "TEXT": "Kung may hadlang sa accessibility at wala kang nakuhang kasagutang nakalulugod, maaari mong:",
+      "L1": "Sumulat sa Défenseur des droits o kinatawan nito sa iyong departamento,",
+      "L2": "O dumulog sa Mediator kung naaangkop.",
+      "MORE": "Karagdagang impormasyon:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Tuloy-tuloy na pagpapabuti",
+      "L1": "Design System na may accessible na components.",
+      "L2": "Code review at accessibility test sa bawat release.",
+      "L3": "Regular na pagsasanay ng product at support teams.",
+      "L4": "Pag-prioritize ng fix base sa impact sa user."
+    },
+    "DATE": {
+      "TITLE": "Petsa ng pahayag at update",
+      "TEXT": "Pahayag na ginawa noong 25 Disyembre 2025. Ia-update ito hindi bababa sa taon-taon o kapag may malaking pagbabago."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Paano mag-book ng serbisyo sa IzyGlam?",
+    "QUESTION2": "Paano pumili ng tamang propesyonal para sa akin?",
+    "QUESTION3": "Paano babaguhin o kakanselahin ang aking appointment?",
+    "QUESTION4": "Paano ko masusubaybayan ang aking order?",
+    "QUESTION5": "Anong mga paraan ng bayad ang maaari kong gamitin?",
+    "QUESTION6": "Paano sundan ang aking order o booking?",
+    "QUESTION7": "Maaari ba akong mag-iwan ng review pagkatapos ng serbisyo?",
+    "QUESTION8": "Paano gamitin ang aking loyalty at promos?",
+    "QUESTION9": "Ano ang gagawin kung may problema sa aking order?",
+    "QUESTION10": "Paano makontak ang IzyGlam team?",
+    "QUESTION11": "Paano gumagana ang cancellation at refund policy?",
+    "QUESTION12": "Maaari ba akong mag-book para sa iba (regalo, sorpresa)?",
+    "QUESTION13": "Paano maging partner professional sa IzyGlam?",
+    "QUESTION14": "Paano protektahan ang aking personal na impormasyon sa IzyGlam?",
+    "REPONSE1": "Simple at mabilis. Kapag nakarehistro ka na, piliin ang serbisyong gusto mo, tingnan ang mga available na propesyonal malapit sa iyo, at piliin ang petsa at oras. I-click ang \"Mag-book\" para tapusin, at magbayad gamit ang bank card. Manu-manong iva-validate ng propesyonal ang iyong booking. Kapag tinanggihan, full refund ka.",
+    "REPONSE2": "May detalyadong profile ang bawat propesyonal: mga serbisyo, presyo, larawan at review. Maaari ka ring magdagdag ng paborito. Ihambing ang mga profile para makapili ng pinakababagay sa iyo.",
+    "REPONSE3": "Maaari mong baguhin o kanselahin ang booking mula sa iyong account. Libre ang cancellation hanggang 24h bago ang serbisyo. Lampas dito, maaaring may fee. Nandiyan ang support kung kailangan.",
+    "REPONSE4": "Mag-login sa iyong account, seksyong \"Aking mga booking\". Makikita mo ang real-time na status, at maaari kang magkansela/magbago at tingnan ang kasaysayan.",
+    "REPONSE5": "Eksklusibo ang bayad sa bank card (Visa, MasterCard, American Express). Wala pang cash o PayPal. Lahat ay secure.",
+    "REPONSE6": "Kapag nakumpirma ang booking, makakatanggap ka ng e-mail na buod. Magpapadala rin kami ng paalala bago ang serbisyo (e-mail at/o push). Masusubaybayan mo rin ito sa iyong account.",
+    "REPONSE7": "Oo. Pagkatapos ng bawat serbisyong naisagawa, iimbitahan kang mag-iwan ng review. Mano-manong mino-moderate ang mga review para sa pagiging totoo. Hindi maaaring baguhin o sagutin ng propesyonal ang mga ito.",
+    "REPONSE8": "Sa ngayon, wala pang loyalty program o promo codes ang IzyGlam. Naka-planong ilunsad sa susunod na yugto.",
+    "REPONSE9": "Kontakin kami direkta sa \"Contact\" o sa e-mail. Sisikapin naming sumagot sa loob ng 24h (tantya) at tulungan kang maresolba ang isyu.",
+    "REPONSE10": "Maaaring makipag-ugnayan sa contact form sa site o app. May support mula Lunes hanggang Sabado, 9am–6pm. Halimbawang e-mail: support@izyglam.com",
+    "REPONSE11": "Libre ang cancellation hanggang 24h bago ang oras. Pag lampas, maaaring may fee. Kapag tinanggihan ng propesyonal, awtomatikong refund. Ang full automation ay isinasagawa.",
+    "REPONSE12": "Hindi ka pa maaaring magregalo ng serbisyo mula sa iyong account. Pero kung may duo/pamilya na alok ang propesyonal, maaari kang mag-book para sa ilan.",
+    "REPONSE13": "Estetisyan, coiffeuse o wellbeing practitioner ka? Sumali sa komunidad sa pahinang \"Maging partner\". Kokontakin ka ng team para tapusin ang proseso.",
+    "REPONSE14": "Prayoridad ang seguridad ng iyong datos. Tinutupad namin ang GDPR. Tanging kinakailangang impormasyon lang ang nakikita ng propesyonal. May built-in na messaging, at binabantayan ang mga pagtatangkang umiwas sa platform."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Sino kami?",
+      "TEXT": "Ipinaliliwanag ng Patakarang ito ng Pagkapribado kung paano <strong>izyGlam</strong> (\"kami\", \"amin\" o \"ang Platforma\") nangongolekta, gumagamit, nag-iimbak, nagbabahagi at nagpoprotekta ng iyong personal na datos kapag ginagamit mo ang aming mga serbisyo (website, web app, mobile app, e-mail at support). Kami ang <strong>controller</strong> para sa mga pagproseso sa ibaba."
+    },
+    "SCOPE": {
+      "TITLE": "Saklaw ng patakaran",
+      "TEXT": "Nalalapat ito sa <strong>mga kliyente</strong> na nagre-reserba, <strong>mga propesyonal</strong> na nag-aalok ng serbisyo sa izyGlam, at <strong>mga bisita</strong> ng aming mga interface."
+    },
+    "DATA": {
+      "TITLE": "Nakokolektang datos",
+      "PROVIDED": {
+        "TITLE": "Datos na ibinibigay mo",
+        "L1": "<strong>Pagkakakilanlan at contact:</strong> pangalan, apelyido, e-mail, telepono, (mga) address, larawan/avatar.",
+        "L2": "<strong>Account:</strong> credentials, password (hashed), preferences, wika.",
+        "L3": "<strong>Booking:</strong> piniling serbisyo, petsa/oras, address ng serbisyo, tala, attachment.",
+        "L4": "<strong>Bayad:</strong> impormasyon ng bayad <em>sa aming provider (hal. Stripe)</em> — hindi namin iniimbak ang card data mo.",
+        "L5": "<strong>Propesyonal:</strong> public profile, serbisyo, presyo, sakop, availability, RIB/IBAN (secure), docs sa beripikasyon kung kailangan.",
+        "L6": "<strong>Support:</strong> mensahe, ticket, at recording ng tawag kung mayroon."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Awtomatikong datos",
+        "L1": "<strong>Teknikal:</strong> device model, OS, browser, resolution, session IDs.",
+        "L2": "<strong>Pag-log:</strong> IP, oras, error events, paggamit ng feature.",
+        "L3": "<strong>Lokasyon:</strong> approx (IP) o eksakto (GPS, may malinaw na pahintulot).",
+        "L4": "<strong>Cookies at SDK:</strong> tingnan ang seksyon sa ibaba."
+      },
+      "THIRD": {
+        "TITLE": "Datos mula sa third parties",
+        "L1": "<strong>Payment providers</strong> (status ng bayad, tokens).",
+        "L2": "<strong>Analytics/anti-fraud partners</strong> (risk signals, usage aggregates).",
+        "L3": "<strong>Integrations</strong> (hal. comms tools, maps, cloud storage)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Layunin at legal na base",
+      "TEXT": "Pinoproseso namin ang datos para sa:",
+      "L1": "<strong>Paghahatid ng serbisyo</strong> (account, booking, matchmaking, notification) — <em>Base: kontrata</em>.",
+      "L2": "<strong>Bayad at pagsingil</strong> — <em>Kontrata, obligasyong legal</em>.",
+      "L3": "<strong>Seguridad, paghadlang sa abuso/pandaraya</strong> — <em>Lehitimong interes, obligasyong legal</em>.",
+      "L4": "<strong>Pagpapabuti ng produkto, istatistika</strong> — <em>Lehitimong interes</em>.",
+      "L5": "<strong>Support at kalidad</strong> — <em>Kontrata, lehitimong interes</em>.",
+      "L6": "<strong>Direktang marketing</strong> (e-mail/app) — <em>Pahintulot kung kailangan</em>; maaaring mag-opt out anumang oras.",
+      "L7": "<strong>Pagsunod sa batas</strong> (accounting, kahilingan ng awtoridad) — <em>Obligasyong legal</em>."
+    },
+    "SHARING": {
+      "TITLE": "Pagbabahagi",
+      "L1": "<strong>Propesyonal / Kliyente</strong>: impormasyong kailangan para sa serbisyo (pangalan, contact, address, detalye ng booking).",
+      "L2": "<strong>Mga tagapag-serbisyo</strong>: bayad (hal. Stripe), hosting/storage, analytics, e-mail/SMS push, support, KYC kung kailangan. <em>Limitadong access at may GDPR contracts.</em>",
+      "L3": "<strong>Mga partner</strong>: kung may pahintulot para sa partikular na alok.",
+      "L4": "<strong>Awtoridad</strong>: kung hinihingi ng batas o para protektahan ang aming karapatan."
+    },
+    "TRANSFERS": {
+      "TITLE": "Transfer sa labas ng EU/EEE",
+      "TEXT": "Kapag walang adequacy decision, gumagamit kami ng <strong>Standard Contractual Clauses</strong> at karagdagang hakbang."
+    },
+    "RETENTION": {
+      "TITLE": "Tagal ng pag-iimbak",
+      "L1": "<strong>Account at pagkakakilanlan</strong>: habang ginagamit at <em>hanggang 3 taon</em> mula huling aktibidad (prospection) o <em>5–10 taon</em> para sa batas/akawnting.",
+      "L2": "<strong>Booking/invoice</strong>: <em>10 taon</em> (legal na obligasyon).",
+      "L3": "<strong>Security logs</strong>: <em>6–24 buwan</em> depende sa kritikalidad.",
+      "L4": "<strong>Cookies</strong>: tingnan ang seksyong Cookies.",
+      "NOTE": "Pag lampas, dine-delete o ina-anonymize ang datos."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies at SDK",
+      "TEXT": "Gumagamit kami ng cookies/SDK para patakbuhin ang Platform, sukatin ang audience, pigilan ang pandaraya at, may pahintulot mo, i-personalize ang karanasan.",
+      "L1": "<strong>Kailangan</strong>: auth, seguridad, teknikal na preferensya.",
+      "L2": "<strong>Audience measure</strong>: aggregated statistics.",
+      "L3": "<strong>Marketing</strong>: kung pinahihintulutan mo lamang.",
+      "PREF": "Maaaring pamahalaan ang preferensya sa banner at browser settings."
+    },
+    "AUTOMATION": {
+      "TITLE": "Automated decisions at profiling",
+      "TEXT": "Maaaring gumamit ng automatic signals (hal. fraud risk, availability, distansya) para unahin ang aksyon o magmungkahi ng slot. Walang desisyong may malaking legal effect na purely automated maliban kung may batas o malinaw na pahintulot."
+    },
+    "RIGHTS": {
+      "TITLE": "Iyong mga karapatan (GDPR)",
+      "L1": "Karapatang <strong>humingi ng access</strong>, <strong>pagwawasto</strong>, <strong>pagbura</strong>.",
+      "L2": "Karapatang <strong>limitahan</strong> at <strong>magpa-port</strong> ng datos.",
+      "L3": "Karapatang <strong>tumutol</strong> sa lehitimong interes.",
+      "L4": "Karapatang <strong>bawiin ang pahintulot</strong> anumang oras.",
+      "L5": "Karapatang magsampa ng <strong>reklamo</strong> sa CNIL.",
+      "CONTACT": "Para gamitin ang mga karapatang ito, kontakin kami sa:",
+      "VERIFY": "Maaari kaming humingi ng dagdag na impormasyon para sa beripikasyon."
+    },
+    "SECURITY": {
+      "TITLE": "Seguridad",
+      "TEXT": "Gumagamit kami ng angkop na teknikal/organisasyonal na hakbang: TLS, hashed passwords, logging/monitoring, access control, backup, code review at security tests."
+    },
+    "MINORS": {
+      "TITLE": "Datos ng menor de edad",
+      "TEXT": "Hindi para sa wala pang 15 taong gulang ang aming serbisyo. Kung may menor, ide-delete namin matapos i-verify."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Pangunahing sub-processor",
+      "TEXT": "Nakikipagtulungan kami sa mga sub-processor para sa hosting, bayad, e-mailing, analytics at storage. Maaaring humingi ng updated list sa"
+    },
+    "CONTACT": {
+      "TITLE": "Contact at DPO",
+      "PRIVACY_LABEL": "Contact sa pagkapribado",
+      "SUPPORT_LABEL": "Suporta",
+      "AUTHORITY_LABEL": "Awtoridad sa pangangasiwa",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Pagbabago ng patakarang ito",
+      "TEXT": "Maaari naming i-update ito ayon sa batas o features. Kapag malaking pagbabago, aabisuhan ka sa e-mail o sa app. Petsa ng bisa: <strong>11&nbsp;Agosto&nbsp;2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Lokal na probisyon",
+      "TEXT": "Kung nasa EU ka, pinoproseso ang iyong datos ayon sa GDPR. Maaaring may partikular na dagdag bawat bansa/rehiyon."
+    },
+    "GLOSSARY": {
+      "TITLE": "Glossary (buod)",
+      "L1": "<strong>Controller</strong>: entidad na tumutukoy sa layon at paraan ng pagproseso.",
+      "L2": "<strong>Processor</strong>: entidad na nagpoproseso para sa controller.",
+      "L3": "<strong>Legal na base</strong>: batayan ng pagproseso (kontrata, pahintulot, obligasyong legal, lehitimong interes).",
+      "L4": "<strong>Cookies/SDK</strong>: mga tracker para magbigay, sukatin at i-personalize ang serbisyo."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Pagtanggap sa mga kondisyon",
+      "TEXT": "Sa pag-access sa serbisyo ng izyGlam (site, web app, mobile app), tinatanggap mo ang Mga Tuntunin ng Paggamit. Kung hindi, huwag gamitin ang Platform."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Mga kahulugan",
+      "L1": "<strong>Kliyente</strong>: taong nagre-reserba/nagbabayad ng serbisyo sa Platform.",
+      "L2": "<strong>Propesyonal</strong>: taong nag-aalok ng serbisyo sa Platform.",
+      "L3": "<strong>Serbisyo</strong>: alok ng Propesyonal (hal. home beauty).",
+      "L4": "<strong>Platform</strong>: software, site at app na pinatatakbo ng izyGlam."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Serbisyo at papel ng izyGlam",
+      "TEXT": "Ang izyGlam ay <strong>platform ng pag-uugnay</strong>. <strong>Propesyonal</strong> ang responsable sa kalidad, pagsunod at insurance. Maliban kung tukoy, hindi nagbebenta o provider ang izyGlam at hindi responsable sa execution."
+    },
+    "ACCOUNT": {
+      "TITLE": "Account at pagiging karapat-dapat",
+      "L1": "Kailangan ang rehistro para mag-book o mag-alok. Dapat tama at napapanahon ang impormasyon.",
+      "L2": "Dapat ≥ 15 taong gulang. Dapat legal na kwalipikado ang Propesyonal.",
+      "L3": "Responsable ka sa iyong credential at lahat ng aktibidad sa account mo.",
+      "L4": "Maaaring isuspinde/resindihin ang account sa paglabag o panganib ng pandaraya."
+    },
+    "BOOKINGS": {
+      "TITLE": "Booking at pagbuo ng kontrata",
+      "L1": "Ang serbisyo ay <strong>online na nire-reserba at binabayaran</strong>. Walang cash on-site.",
+      "L2": "Ang booking ay <strong>subject sa pag-apruba ng Propesyonal</strong> matapos ang bayad. Kapag tinanggihan, <strong>100% refund</strong> ang Kliyente.",
+      "L3": "Ang kontrata ay direktang nabubuo sa pag-apruba.",
+      "L4": "Dapat kumpirmahin ng magkabilang panig ang oras, address at partikular na kondisyon."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Presyo, subscription at bayad",
+      "L1": "Malayang itinatakda ng Propesyonal ang presyo. May <strong>komisyon</strong> ang platform.",
+      "L2": "Hal. para sa Propesyonal: <em>1 salon libre habang-buhay</em>; <em>Basic: 3 salon – €99/buwan</em>; <em>Premium: 10 salon – €499/buwan</em>; <em>higit pa: quotation</em>.",
+      "L3": "Bayad <strong>card lang</strong> sa provider (hal. Stripe). <strong>Walang cash</strong>, walang promo code/loyalty sa ngayon.",
+      "L4": "Ipinapakita ang halaga, buwis at fee bago mag-validate. Maaaring magbago ang kondisyon; aabisuhan ka nang maaga."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Kanselasyon, refund at no-show",
+      "L1": "Libreng kanselasyon hanggang <strong>24h</strong> bago ang serbisyo.",
+      "L2": "Mas mababa sa 24h: maaaring may <strong>fee</strong> ayon sa polisiya.",
+      "L3": "Kapag <strong>tinanggihan</strong> pagkatapos magbayad, full refund. Naka-deploy ang automation; kung hindi pa, support ang gagawa.",
+      "L4": "Ang <strong>no-show</strong> ay maaaring magdulot ng fee o kawalan ng refund."
+    },
+    "PAYOUTS": {
+      "TITLE": "Payout sa Propesyonal",
+      "L1": "Nati-trigger ang payout sa <strong>kumpirmasyon ng pagganap</strong> (hal. <em>validation code</em>).",
+      "L2": "Gagamitin ang ibinigay na RIB/IBAN. Responsable ang Propesyonal sa katumpakan nito.",
+      "L3": "Ang ibabayad ay presyo <em>minus</em> komisyon at applicable na fee."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Responsibilidad",
+      "L1": "Tinitiyak ng Propesyonal ang pagsunod, kalinisan at kaligtasan.",
+      "L2": "Tinitiyak ng Kliyente ang tamang impormasyon (address, availability, access) at pagdalo.",
+      "L3": "Ibinibigay ng izyGlam ang Platform at mga tool (booking, bayad, mensahe) ngunit walang garantiya sa resulta."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Di-wastong rating.",
+      "TITLE": "Review at rating",
+      "L1": "Maaari lang mag-review <strong>pagkatapos ng aktwal na serbisyo</strong>.",
+      "L2": "Maaaring <strong>i-moderate</strong> ang review (hal. pag-alis ng ilegal/naglalabag)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Ipinagbabawal",
+      "L1": "Pandaraya, identity theft, pag-iwas sa Platform, paghimok sa off-platform na transaksyon.",
+      "L2": "Ilegal, mapanirang-puri, diskriminasyon, marahas o malaswang content.",
+      "L3": "Intrusion, DoS, reverse engineering, pag-iwas sa security.",
+      "L4": "Hindi awtorisadong pangongolekta ng personal na datos."
+    },
+    "IPR": {
+      "TITLE": "Karahapang-ari",
+      "TEXT": "Protektado ang content, marka at elemento (code, disenyo, teksto, logo, larawan). Bawal ang reproduksyon/distribusyon/adaptasyon nang walang pahintulot. Ang content ng Propesyonal ay kanila; nagbibigay sila sa izyGlam ng di-eksklusibong lisensiyang kailangan sa operasyon."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Third-party na serbisyo",
+      "TEXT": "Maaaring may third-party (bayad, mapa, hosting, analytics). Nalalapat ang kanilang kondisyon. Hindi responsable ang izyGlam sa pagkaantala o aberya nila."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Availability, maintenance at updates",
+      "TEXT": "Maaari naming baguhin, ihinto o ipagpaliban ang bahagi o kabuuan para sa maintenance o pagpapabuti. Sisikapin naming bawasan ang abala."
+    },
+    "LIABILITY": {
+      "TITLE": "Limitasyon ng pananagutan at indemnification",
+      "TEXT": "Hanggang sa pinapahintulutan ng batas, limitado sa direktang pinsala ang pananagutan ng izyGlam; hindi saklaw ang hindi direktang pinsala. Sumasang-ayon kang i-indemnify ang izyGlam sa paglabag o iligal na paggamit."
+    },
+    "TERMINATION": {
+      "TITLE": "Pagwawakas at suspensyon",
+      "TEXT": "Maaari mong burahin ang account anumang oras. Maaari naming isuspinde/ibawal sa paglabag, pandaraya, abuso o utos ng batas. Ang ilang obligasyon ay mananatili (hal. kabayaran, pananagutan)."
+    },
+    "PRIVACY": {
+      "TITLE": "Personal na datos",
+      "TEXT": "Ang pagproseso ay nasa aming <strong>Patakaran sa Pagkapribado</strong>. Sa paggamit, tinatanggap mo ito. Tingnan para sa iyong mga karapatang GDPR."
+    },
+    "CHANGES": {
+      "TITLE": "Pagbabago sa CGU",
+      "TEXT": "Maaari naming baguhin dahil sa batas, regulasyon o feature. Kapag mahalaga, aabisuhan ka sa e-mail o app at ipo-post ang update."
+    },
+    "LAW": {
+      "TITLE": "Batas at alitan",
+      "TEXT": "Saklaw ng <strong>batas ng Pransya</strong> ang CGU. Ang alitan ay dadalhin sa hukuman sa lokasyon ng punong-tanggapan ng izyGlam, nang may mga mas paborableng probisyon para sa consumer."
+    },
+    "CONTACT": {
+      "TITLE": "Contact",
+      "SUPPORT_LABEL": "Suporta",
+      "LEGAL_LABEL": "Legal",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Petsa ng bisa",
+      "TEXT": "Epektibo ang CGU simula <strong>25&nbsp;Disyembre&nbsp;2025</strong> at pumapalit sa naunang bersyon."
+    }
+  }
+}

@@ -6,6 +6,12 @@ import { environment } from 'src/environments/environment';
 export class UserService {
     constructor(private http: HttpClient) { }
 
+    private getLang(): string {
+        // "fr-FR" -> "fr", fallback "en"
+        const raw = localStorage.getItem('langue') || navigator.language || 'en';
+        return raw.slice(0, 2).toLowerCase();
+    }
+
     getUsersCount() {
         return this.http.get<number>(environment.apiUrl + 'users-count-all');
     }
@@ -46,7 +52,6 @@ export class UserService {
         return this.http.get<any>(environment.apiUrl + 'me');
     }
 
-
     // Ajoute une adresse pour un utilisateur donné
     addAddress(userId: string, address: any) {
         const url = environment.apiUrl + 'users/' + userId + '/address';
@@ -62,14 +67,10 @@ export class UserService {
         return this.http.post<any>(environment.apiUrl + 'users', user);
     }
 
-
-
-    /**
-     * Verifie le mail du user
-     * @param user (email et password)
-     */
+    /** Verifie le mail du user (création sans token) */
     createNoToken(user: any) {
-        return this.http.post<any>(environment.apiUrl + 'usersNoToken', user);
+        const params = new HttpParams().set('lang', this.getLang());
+        return this.http.post<any>(`${environment.apiUrl}usersNoToken`, user, { params });
     }
 
     /**
@@ -145,8 +146,10 @@ export class UserService {
 
     /** Vérifie l’email via token reçu par mail (GET /verify-email?token=...) */
     verifyEmail(token: string) {
-        const params = new HttpParams().set('token', token);
-        return this.http.get<any>(environment.apiUrl + 'verify-email', { params });
+        const params = new HttpParams()
+            .set('token', token)
+            .set('lang', this.getLang());
+        return this.http.get<any>(`${environment.apiUrl}verify-email`, { params });
     }
 
     /** Renvoyer l’email d’activation */

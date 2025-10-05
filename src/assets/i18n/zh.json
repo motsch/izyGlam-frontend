@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "理发师",
+    "NAILTECHNICIAN": "美甲师",
+    "MAKEUP": "化妆师",
+    "WAXING": "美容师（脱毛）",
+    "FACIAL": "面部护理",
+    "MASSAGE": "按摩师",
+    "EYELASH": "睫毛延长",
+    "EYEBROW": "眉形设计",
+    "TANNING": "美黑",
+    "ACUPUNCTURE": "针灸",
+    "OTHER": "其他"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "照片已从相册删除",
+    "PHOTO_UPLOAD": "图片上传成功",
+    "PARTIAL_REFUND_CONFIRM": "部分退款已确认！",
+    "CODE_SAVED": "验证码已生成。",
+    "USERCREATED": "用户创建成功。我们已向您发送确认邮件。",
+    "SUBSCRIBE_SUCCESS": "您的订阅已生效。",
+    "EMAIL_VERIFIED": "您的账户已激活 🎉 现在可以登录了。",
+    "EMAIL_RESENT": "验证邮件已重新发送。请检查您的邮箱。",
+    "BOOKING_CREATED": "您的预约已成功登记。",
+    "PAYMENT_OK": "付款已确认。",
+    "REFUND_OK": "退款已完成。",
+    "USERUPDATED": "用户已更新。",
+    "SETTINGS_UPDATED": "设置已更新。",
+    "REVIEW_ADDED": "您的评价已发布 🎉",
+    "SHOPUPDATED": "店铺已更新。",
+    "BOOKING_ACCEPTED": "预约已接受。",
+    "BOOKING_FINISHED": "预约已完成。",
+    "BOOKING_REFUSED": "预约已被拒绝。",
+    "BOOKING_DELETED": "预约已删除。",
+    "CODE_GENERATED": "验证码已生成。",
+    "CODE_CONFIRMED": "验证码已确认。",
+    "INVOICE_DOWNLOADED": "发票已下载。",
+    "MARKED_NO_SHOW_CLIENT": "已标记客户未到场。",
+    "COMPANY_CREDITED": "公司账户已入账。",
+    "MARKED_NO_SHOW_PRO": "已标记服务者未到场。",
+    "EMPLOYEE_CREDITED": "员工账户已入账。",
+    "NO_SHOW_PRO": "已应用罚金并完成退款。",
+    "EMPLOYEE_DELETED": "员工已删除。",
+    "SLOT_SELECTED": "已选择时段",
+    "PASSWORD_RESET": "密码已重置。",
+    "INVOICE_GENERATED": "发票已生成。",
+    "REVIEW_SAVED": "评价已保存，谢谢！",
+    "DEFAULT_PASSWORD_UPDATED": "默认密码已更新。",
+    "COMPANY_CREATED": "您的企业账户已创建。"
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "请登录以管理您的收藏。",
+    "INVALID_IMAGE": "无效图片。",
+    "NO_SLOTS": "此服务暂无可用时段。",
+    "NO_SHOP_SELECTED": "未选择店铺。",
+    "NO_SERVICE_SELECTED": "未选择服务。",
+    "ORDER_ERROR": "更新订单时出错。",
+    "CODE_ERROR": "保存验证码时出错。",
+    "INVOICE_GENERATED_ERROR": "生成发票时出错。",
+    "USERNOTCREATED": "无法创建用户。",
+    "INSUFFICIENT_COMPANY_CREDIT": "公司余额不足，无法入账。",
+    "GENERIC_ERROR": "✨ 哎呀…出错了。请重试 ✨",
+    "COMPANY_CREDITED": "公司账户已入账。",
+    "LINK_INVALID_OR_MISSING": "链接无效或缺失。",
+    "LINK_INVALID_OR_EXPIRED": "链接无效或已过期。",
+    "EMAIL_NOT_FOUND": "未找到该用户邮箱。",
+    "PAYMENT_FAILED": "支付失败。",
+    "BOOKING_FAILED": "创建预约失败。",
+    "LOAD_CARDS_FAILED": "加载您的银行卡时出错。",
+    "LOAD_SHOP_FAILED": "加载店铺时出错。",
+    "LOAD_PRODUCTS_FAILED": "加载服务时出错。",
+    "INVALID_CODE": "输入的验证码无效。",
+    "PASSWORD_CHANGED": "您的密码已更新。",
+    "PASSWORDS_IDENTICAL": "新密码必须不同于当前密码。",
+    "INVALID_AMOUNT": "输入金额无效。",
+    "INVALID_CURRENT_PASSWORD": "当前密码不正确。",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "当前密码错误或发生了其他错误。",
+    "PASSWORD_UPDATE_FAILED": "修改密码失败。",
+    "PASSWORD_UPDATE_GENERIC": "更新密码时发生错误。",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "两次密码不一致或过短（至少 8 个字符）。",
+    "INVALID_PASSWORD": "密码不能为空。",
+    "PASSWORD_TOO_SHORT": "密码至少需要 8 个字符。"
+  },
+  "STRIPE": {
+    "MISSING_PK": "缺少 Stripe 配置。",
+    "LOAD_FAILED": "无法加载 Stripe",
+    "NOT_READY": "Stripe 未初始化",
+    "CONFIRM_FAILED": "保存银行卡失败",
+    "CARD_SAVED": "银行卡保存成功 ✅",
+    "PM_FAILED": "创建支付方式失败",
+    "SI_FAILED": "无法准备保存银行卡",
+    "ATTACH_FAILED": "无法将银行卡关联到账户",
+    "SAVE_CARD": "保存银行卡",
+    "ADD_CARD": "添加银行卡"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "请登录"
+  },
+  "COMMON": {
+    "LOADING": "加载中…",
+    "UNEXPECTED_ERROR": "发生意外错误"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "正在验证",
+    "VALIDE": "我们正在验证您的激活链接。只需片刻。",
+    "ACCOUNT": "账户已激活",
+    "CONNECT": "登录",
+    "OUPS": "哎呀",
+    "WRITE": "需要帮助？请写信至",
+    "RESEND": "重新发送激活邮件"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "我的银行信息",
+    "ADD_BANK_INFO": "添加我的银行信息",
+    "BANK_NAME": "银行名称",
+    "HOLDER_NAME": "账户持有人",
+    "COUNTRY": "国家/地区",
+    "SAVE": "保存"
+  },
+  "LOADER": {
+    "LOADING": "加载中…"
+  },
+  "SPONSORS": {
+    "TITLE": "我们的赞助商",
+    "SPONSORISED": "赞助"
+  },
+  "TABS": {
+    "FINANCE": "财务跟踪",
+    "GENERAL_INFO": "基本信息",
+    "EMPLOYEES": "员工管理",
+    "SERVICES": "服务管理",
+    "PHOTOS": "照片图库",
+    "STATS": "统计",
+    "PARAM": "参数设置",
+    "SHOPS": "店铺",
+    "USERS": "用户",
+    "MESSAGE": "消息"
+  },
+  "CARD": {
+    "ADD": "添加银行卡",
+    "NO_IMAGE": "图库中没有图片。",
+    "SALON": "店铺更新成功",
+    "ERROR1": "更新店铺时出错",
+    "ERROR2": "更新照片时出错",
+    "UPDATE": "店铺已成功更新"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "已完成",
+    "ACCEPTEE": "已接受",
+    "WAITING": "待处理",
+    "CANCEL": "已取消",
+    "DELETE": "已删除",
+    "REFUSED": "已拒绝",
+    "NO_PRESTA": "服务者未到场",
+    "CLIENT_ABSENT": "客户未到场",
+    "ADRESSE": "地址",
+    "DATE": "日期",
+    "TOTAL": "合计",
+    "FACTURE": "发票",
+    "CANCELLED": "已取消",
+    "DELETED": "删除",
+    "AVIS": "评价",
+    "SUPPORT": "支持",
+    "CODE": "确认码",
+    "CODE_A_DONNER": "需提供给服务者的代码",
+    "PRESTA_ABSENT": "服务者未到场"
+  },
+  "SHOP_CARD": {
+    "AVIS": "店铺评价",
+    "COMMENT": "评论",
+    "NOTE": "评分",
+    "CLOSE": "关闭"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "图库中没有图片。"
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "为您的订单打分",
+    "DATE": "日期",
+    "SERVICE": "服务",
+    "AVIS": "您的评价",
+    "SEND": "发送",
+    "PLACEHOLDER": "描述您的体验…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "把服务带到你家",
+    "KNOWMORE": "了解更多",
+    "PART1TITLE": "在家享受优质美容服务",
+    "PART1TEXT": "我们的专业人士上门为您提供高质量的美容护理，贴合您的需求与喜好。无论是午休、下班后的夜晚，还是闺蜜下午茶，都能体验独特的身心愉悦。",
+    "PART2TITLE": "随心工作，自主创造收入",
+    "PART2TEXT": "按您的节奏在平台上接单，根据自己的时间安排创造收入。您可以使用自有设备，或选择通过 izyGlam 租用专业设备。",
+    "PART3TITLE": "为企业重塑的美护服务",
+    "PART3TEXT": "Glam for Business 是面向各类企业的平台，帮助管理客户与员工的美护需求。将个性化护理带到办公地点、企业活动或特别场合。我们的专业人士上门提供适配的服务。",
+    "APPTITLE": "用 App 更省心",
+    "DOWNLOADAPP1": "下载应用",
+    "DOWNLOADAPP2": "下载美业专业版应用",
+    "SCANTODOWNLOAD": "扫码下载",
+    "SIGNUP": "马上注册！"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "视频播放错误",
+    "AUTOPLAY_BLOCKED": "自动播放被阻止。点按以播放视频。",
+    "NAV_ERROR": "无法导航"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "izyGlam 应用与网站如何运作",
+    "HELPCENTER": "进入帮助中心",
+    "BUSINESS": "企业",
+    "ABOUT": "关于我们",
+    "OURSERVICES": "我们的服务",
+    "PRESSAREA": "媒体专区",
+    "INVESTORS": "投资者",
+    "CAREERS": "招聘",
+    "AI": "人工智能",
+    "PRODUCTS": "产品",
+    "GLAM": "与 izyGlam 时刻在线",
+    "RESERVED": "提前预订",
+    "GIFTCARDS": "礼品卡",
+    "WORKWITHUS": "与我们合作",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "隐私",
+    "ACCESS": "无障碍",
+    "CONDITIONS": "条款",
+    "LANGUAGE": "语言",
+    "LOCALISATION": "位置",
+    "ALL_RIGHT": "版权所有"
+  },
+  "COMING_SOON": {
+    "TITLE": "我们即将上线",
+    "TITLE-NOT-COMING": "暂未计划入驻该地区",
+    "DAYS": "天",
+    "HOURS": "小时",
+    "MINUTES": "分钟",
+    "SECONDS": "秒",
+    "TEXT": "我们正努力为您打造独特的上门美护体验。保持关注，第一时间获取上线通知。"
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "当下优惠",
+    "DISCOVER": "在 izyGlam 上发现",
+    "LIKED": "附近口碑之选",
+    "SMART": "精明之选",
+    "TOP10": "本周 Top 10",
+    "SEARCHRESULT": "搜索结果",
+    "AVIS": "评价"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "美发",
+    "MANUCURE": "美甲",
+    "VISAGE": "面部",
+    "MASSAGE": "按摩",
+    "MAQUILLAGE": "化妆",
+    "EPILATION": "脱毛",
+    "BRONZAGE": "美黑",
+    "PARTUM": "产后护理",
+    "NUTRITION": "营养",
+    "FITNESS": "健身",
+    "ACUPUNCTURE": "针灸",
+    "STYLISME": "造型",
+    "YOGA": "放松/瑜伽",
+    "DEVELOPPEMENT": "自我提升",
+    "EYELASH": "睫毛延长"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "一位女理发师",
+    "MANUCURE": "一位女美甲师",
+    "ESTETICIAN": "一位女美容师",
+    "MASSAGE": "一位女按摩师",
+    "MAQUILLAGE": "一位女化妆师",
+    "PEDICURE": "一位女足部护理师",
+    "NUTRITION": "一位女营养师",
+    "FITNESS": "一位女教练"
+  },
+  "INTRO": {
+    "NORESULTS": "未找到任何结果",
+    "START": "开始",
+    "SPECIALITY": "擅长？",
+    "WHERE": "在哪里？",
+    "CONNEXION": "登录",
+    "REGISTRATION": "注册"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "账户相关信息",
+    "MESSAGE": "我的消息",
+    "MESSAGE_SUBTITLE": "我正在进行的会话列表。",
+    "INFORMATION_SUBTITLE": "轻松修改你的个人信息。",
+    "SECURITY": "安全与语言",
+    "SECURITY_SUBTITLE": "密码、语言……都在这里掌控。",
+    "CONFIDENTIAL": "隐私与数据",
+    "CONFIDENTIAL_SUBTITLE": "你的数据很珍贵。我们会这样保护它。",
+    "DASHBOARD": "仪表盘",
+    "DASHBOARD_SUBTITLE": "轻松管理你的业务数据。",
+    "COMPANY": "我的企业管理",
+    "COMPANY_SUBTITLE": "轻松管理你已预约、待预约或已取消的日程。",
+    "SHOP": "我的店铺管理",
+    "SHOP_SUBTITLE": "管理你的店铺、服务与财务。",
+    "FINANCIAL": "财务跟踪",
+    "ADMIN": "综合管理",
+    "ADMIN_SUBTITLE": "轻松管理这项杰作的一切。冠军，世界属于你！",
+    "CALENDAR": "日程",
+    "CALENDAR_SUBTITLE": "轻松管理你已过或将来的预约。",
+    "SELECT_SALON": "选择一个店铺",
+    "NEW_SALON": "创建店铺",
+    "SHOP_TO_CREATE": "要创建的店铺类型",
+    "CANCEL": "取消",
+    "CREATE": "创建我的店铺",
+    "INFO1": "你将要删除位于",
+    "INFO2": "此操作不可逆",
+    "SURE": "确定要继续吗",
+    "DELETE": "删除"
+  },
+  "PROFILE": {
+    "TITLE": "基本信息",
+    "FIRSTNAME": "名字",
+    "LASTNAME": "姓氏",
+    "PHONE": "电话号码",
+    "ADDRESS": "电子邮箱",
+    "CHANGE_USER": "修改用户",
+    "CANCEL": "取消",
+    "SUCCESS": "资料修改成功",
+    "UPDATE_ERROR": "更新密码时发生错误。"
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "更改密码",
+    "ACTUAL_PASSWORD": "当前密码",
+    "NEW_PASSWORD": "新密码",
+    "CONFIRMED_PASSWORD": "确认新密码",
+    "CHANGE_PASSWORD": "更改密码",
+    "CHANGE_OK": "密码修改成功",
+    "CHANGE_LANGUE": "更改语言",
+    "CHANGE_COUNTRY": "更改国家/地区",
+    "LANGUE": "语言",
+    "COUNTRY": "国家/地区"
+  },
+  "PAYEMENT": {
+    "YOU": "您",
+    "HEADER_TITLE": "支付",
+    "SERVICE_TITLE": "服务",
+    "SERVICE_NOTE": "备注：",
+    "ADDRESS_TITLE": "服务地址",
+    "ADDRESS_RENDEZVOUS": "在我家门口会面",
+    "ADDRESS_CHANGE": "选择其他地址",
+    "PAYMENT_SECTION_TITLE": "付款",
+    "PAYMENT_METHOD": "主卡",
+    "PAYMENT_EXPIRE": "到期",
+    "PAYMENT_NO_CARD": "尚未设置主卡",
+    "PAYMENT_NO_CARD_DESC": "请添加或选择一张银行卡作为主支付方式。",
+    "SUMMARY_SUBTOTAL": "小计",
+    "SUMMARY_SERVICE_FEE": "izyGlam 平台佣金",
+    "SUMMARY_DELIVERY_FEE": "服务费",
+    "SUMMARY_TOTAL": "合计",
+    "TITLE": "在线预约",
+    "FOR_WHO": "此次预约为谁？",
+    "ADD_PROCHE": "添加亲友",
+    "WHERE": "您希望在哪儿接受服务？",
+    "SELECT_ADDRESS": "选择一个地址",
+    "ADD_ADDRESS": "添加地址",
+    "CARD_PAY": "银行卡支付",
+    "CARD_NUM": "卡号",
+    "CARD_NAME": "持卡人姓名",
+    "EXPIRATION": "到期日期",
+    "CVV": "CVV",
+    "RDV": "您的预约详情",
+    "RESUME": "预约摘要",
+    "DATE": "日期",
+    "HOUR": "时间",
+    "PRESTA": "服务",
+    "EXPIRE": "到期",
+    "DEFAULT": "默认",
+    "NOCARD": "暂无已保存的银行卡",
+    "WITH": "与",
+    "TOTAL": "应付总额",
+    "ANNULER": "取消",
+    "RETOUR": "返回",
+    "CONTINUER": "继续",
+    "VALIDER": "确认",
+    "ADRESSE": "地址",
+    "LEGAL_TEXT_1": "点击下单即表示您同意与 izyGlam France SAS（ROS 841 983 828）签订配送服务合同。",
+    "LEGAL_TEXT_2": "提醒：您放弃与配送服务相关的撤销权。您可在此处联系消费调解员。",
+    "LEGAL_TEXT_3": "若您在快递到达时不在，快递员会将订单放在门口。提交订单即表示一旦送达，您将承担全部责任。若您不在，含酒精或受限制的商品将被直接退回商家。",
+    "CLOSE_FORM": "关闭表单",
+    "ADD_CARD": "添加银行卡",
+    "TRAITEMENT": "处理中"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "支付已验证",
+    "THANKS": "谢谢！您的预约已成功记录。",
+    "BACKHOME": "返回首页",
+    "PROBLEME": "预约问题",
+    "PAIEMENT": "您的付款已扣款，但预约未能确认。",
+    "THANKSCONTACT": "请联系技术支持：",
+    "FAILED": "支付失败",
+    "VALIDATE": "我们未能验证您的支付。请重试。"
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "面向个体从业者的 izyGlam",
+    "STEP1": {
+      "TITLE": "客户下单",
+      "TEXT": "客户在 izyGlam 应用中找到您的商家并下单。"
+    },
+    "STEP2": {
+      "TITLE": "您接受预约",
+      "TEXT": "您接受预约后，日程会自动更新。"
+    },
+    "STEP3": {
+      "TITLE": "到预约时间",
+      "TEXT": "我们会提前提醒即将到来的预约，并为您指引每位客户的地址。"
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "为公司账户入账",
+    "SOLDE": "当前余额",
+    "CREDIT": "入账金额",
+    "COMPANY": "为公司账户入账",
+    "DEPENSE": "支出跟踪",
+    "DATE": "日期",
+    "COUNT": "金额",
+    "EMPLOYEE": "员工",
+    "DESCRIPTION": "说明"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "您已拥有合作伙伴或企业账户！",
+    "NOT_CONNECTED": "请登录以登记店铺",
+    "TITLE": "开始行动！",
+    "TITLE2": "让我们创建一个店铺！",
+    "NAME": "您的店铺名称",
+    "ADDRESS": "您的企业地址",
+    "STREET": "街道",
+    "CITY": "城市",
+    "CODE_POSTAL_POSSIBLE": "可服务邮编",
+    "CODE_POSTAL": "邮编",
+    "COUNTRY": "国家/地区",
+    "ADDRESSPLACEHOLDER": "示例：主街 123 号",
+    "FLOOR": "楼层/套间（可选）",
+    "BUSINESSTYPE": "企业类型",
+    "FIRSTNAME": "名字",
+    "LASTNAME": "姓氏",
+    "PASSWORD": "密码",
+    "PASSWORDCONFIRMED": "确认密码",
+    "EMAIL": "电子邮箱",
+    "PHONE": "手机号码",
+    "WHATSAPP": "我同意接收 WhatsApp 消息",
+    "BUTTON": "登记店铺",
+    "SUCCESS": "店铺创建成功！",
+    "ERROR": "创建店铺时发生错误：",
+    "ERROR1": "企业名称为必填项。",
+    "ERROR2": "企业地址为必填项。",
+    "ERROR3": "企业类型为必填项。",
+    "ERROR4": "名字为必填项。",
+    "CHOOSE_COUNTRY": "选择国家/地区",
+    "POSTAL_CODE": "邮编",
+    "CHOOSE_CITY": "选择城市",
+    "ERROR5": "姓氏为必填项。",
+    "ERROR6": "电子邮箱为必填项。",
+    "ERROR7": "手机号码为必填项。",
+    "ERROR8": "您必须同意接收 WhatsApp 消息。"
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "修改地址",
+    "FIND_SHOP": "搜索店铺",
+    "CATEGORIES": "分类",
+    "OFFRE": "当下优惠",
+    "DISCOVER": "去发现",
+    "APPRECIATE": "最受欢迎",
+    "SMART": "精明之选",
+    "TOP10": "本周 Top10",
+    "SEARCH_RESULT": "搜索结果",
+    "NOT_AVAILABLE": "该地址暂未开通服务",
+    "NEW_ADDRESS": "添加新地址",
+    "CHOOSE_ADDRESS": "选择一个地址",
+    "CHOOSE_COUNTRY": "选择国家/地区",
+    "CHOOSE_CITY": "选择城市",
+    "CHOOSE_ARRONDISSEMENT": "选择行政区",
+    "CANCEL": "取消",
+    "SAVE": "保存",
+    "CLOSE": "关闭"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "名称",
+    "CITY": "城市",
+    "NOTE": "评分",
+    "MIDDLE_PRICE": "平均价格",
+    "PROMOTION": "促销",
+    "ACTIONS": "操作",
+    "MODIFIER": "修改店铺信息",
+    "SHOP_NAME": "店铺名称",
+    "DESCRIPTION": "描述",
+    "PRINCIPALE": "主图",
+    "SHOP": "店铺类型",
+    "ARRONDISSEMENT": "行政区",
+    "MINIMUM_DELAI": "最短提前期",
+    "DISTANCE": "最大距离（公里）",
+    "EMPLACEMENT": "位置",
+    "HOURS_MORNING": "营业时间 - 上午",
+    "HOURS_AFTERNOON": "营业时间 - 下午",
+    "ACTIVE_PROMO": "启用促销",
+    "CANCEL": "取消",
+    "ENREGISTRER": "保存"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "拓展您的业务",
+    "TEXT": "成千上万的 izyGlam 用户可能在您的区域寻找优质服务…",
+    "IMAGE": "图片"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "为什么选择 izyGlam？",
+    "STEP1": {
+      "TITLE": "按你的方式工作",
+      "TEXT": "自由安排日程并管理你的服务。平台灵活，可根据你的需求最大化业务。"
+    },
+    "STEP2": {
+      "TITLE": "提升线上曝光",
+      "TEXT": "借助应用内营销工具吸引更多客户，并通过更高的可见度提升业绩。"
+    },
+    "STEP3": {
+      "TITLE": "沉淀忠实客户",
+      "TEXT": "分析客户偏好、回复评价、提供会员福利，发展长期关系。"
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "简化你的业务管理",
+      "TEXT": "借助 izyGlam，这个为健康美护专业人士打造的全能方案，轻松管理你的业务。提供灵活工具与个性化支持，满足一切需求。"
+    },
+    "STEP2": {
+      "TITLE": "提升销量",
+      "TEXT": "每天都有成千上万人使用 izyGlam 寻找附近美护专家。抓住机遇，触达你的新客户。"
+    },
+    "STEP3": {
+      "TITLE": "保障客户满意",
+      "TEXT": "通过 izyGlam，为客户提供个性化体验。轻松安排预约、快速沟通并提供贴合的服务。客户可随时随地享受护理，满意与忠诚度稳步提升。"
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "给你的企业用 izyGlam？",
+    "STEP1": {
+      "TITLE": "员工与客户预订服务",
+      "TEXT": "员工或客户可直接在 izyGlam 应用中选择适合的身心护理项目。"
+    },
+    "STEP2": {
+      "TITLE": "你决定补贴额度",
+      "TEXT": "你可以为员工与客户的账户充值，选择定期或一次性入账。"
+    },
+    "STEP3": {
+      "TITLE": "服务顺利完成",
+      "TEXT": "我们的美护专家上门到员工处或你的办公场所提供预约服务，确保最佳体验。"
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "为你的企业增值",
+    "TEXT": "成千上万的 izyGlam 用户正在寻找身心健康服务。为你的员工与客户提供通往身边顶级美护专家的优先通道。",
+    "IMAGE": "图片"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "为什么选择 izyGlam？",
+    "STEP1": {
+      "TITLE": "留住并奖励你的员工",
+      "TEXT": "为团队提供每月美护预算这一独特福利。美发师、美容师等触手可及，提升满意度与归属感。"
+    },
+    "STEP2": {
+      "TITLE": "提升品牌形象",
+      "TEXT": "为客户或合作伙伴举办美护活动，或把 izyGlam 服务融入你的会员项目。用高端、贴合场景的护理留下深刻印象。"
+    },
+    "STEP3": {
+      "TITLE": "优化职场福祉",
+      "TEXT": "让员工在办公地点或附近即可获得美护服务。关注他们的福祉，提升动力并增强团队凝聚力。"
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "为你的团队简化美护获取",
+      "TEXT": "通过 izyGlam，为同事提供简单灵活的自我关爱方案。无论是美容护理还是健身放松，一切触手可及。"
+    },
+    "STEP2": {
+      "TITLE": "为客户提供创新福利",
+      "TEXT": "在活动现场或会员体系中为客户提供美护服务，体现你对客户体验的重视。"
+    },
+    "STEP3": {
+      "TITLE": "随时随地，量身定制的美护",
+      "TEXT": "借助 izyGlam，你的员工与客户无论身在何处都能享受优质服务。精选专家满足其特定需求，并提供个性化支持以保证满意度。"
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "管理账户",
+    "ORDERS": "历史订单",
+    "FAVORITES": "收藏",
+    "HELP": "帮助",
+    "MY_ABO": "我的订阅",
+    "PRICES": "价格方案",
+    "FIDELITY": "忠诚计划",
+    "LOGOUT": "退出登录",
+    "YOUR_BEAUTY_SERVICES": "发布你的美护服务",
+    "YOUR_COMPANY": "登记你的企业"
+  },
+  "SUBTITLES": {
+    "HELP": "需要帮忙？这个页面就是你的好搭档。"
+  },
+  "ORDERS": {
+    "TITLE": "我的订单",
+    "TITLE_SUBTITLE": "轻松管理你已完成、即将进行或已取消的预约。",
+    "UPCOMING_SECTION": "📅 即将进行",
+    "NO_UPCOMING": "你没有计划中的服务。",
+    "PAST_SECTION": "✅ 已完成",
+    "NO_PAST": "你还没有已完成的服务。",
+    "ADDRESS": "地址",
+    "DATE": "日期",
+    "TOTAL": "合计",
+    "ITEMS": "项",
+    "DELETE": "删除",
+    "VISIT": "查看",
+    "PRESTA_FOR": "服务对象",
+    "AT": "于",
+    "ORDER_AGAIN": "再次下单",
+    "INVOICE": "申请发票",
+    "REVIEW": "发表评价",
+    "CANCEL": "取消"
+  },
+  "FIDELITY": {
+    "TITLE": "我的收藏",
+    "AGAIN": "还差",
+    "AGAIN_SUBTITLE": "即可获得奖励",
+    "TITLE_SUBTITLE": "来解锁你的礼物",
+    "DATE": "有效期至",
+    "HISTO": "我的护理历史"
+  },
+  "FAVORITES": {
+    "TITLE": "我的收藏",
+    "TITLE_SUBTITLE": "一眼找回你的心动店铺。"
+  },
+  "SHOP": {
+    "MOVING_FEE": "服务费：",
+    "DISTANCE": "最远距离：",
+    "PAYEMENT": "支持银行卡与 PayPal 支付",
+    "PRESS_FOR_INFO": "点按查看营业时间、信息等。",
+    "GALLERY": "图片库",
+    "SEE_MORE": "查看更多",
+    "SEE_LESS": "收起"
+  },
+  "LOGIN": {
+    "TITLE": "输入你的登录信息。",
+    "FORGET_PASSWORD": "忘记密码？",
+    "CONTINUER": "继续",
+    "CONTINUE_WITH": "继续使用",
+    "OR": "或",
+    "QRCODE": "用二维码登录",
+    "CGU": "继续即表示你同意 izyGlam 及其关联公司可使用自动方式拨打电话、发送 WhatsApp 或短信至你提供的号码。",
+    "PLACEHOLDER_EMAIL": "电子邮箱",
+    "PLACEHOLDER_PASSWORD": "密码",
+    "PLACEHOLDER_PASSWORD_NEW": "新密码",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "确认密码",
+    "CHANGE_PASSWORD": "修改你的密码",
+    "REINIT": "重置"
+  },
+  "SIGNUP": {
+    "GENRE": "性别",
+    "CHOOSE": "选择",
+    "SEX_MALE": "男",
+    "SEX_FEMALE": "女",
+    "TITLE": "输入你的个人信息。",
+    "CONTINUER": "继续",
+    "OR": "或",
+    "QRCODE": "用二维码登录",
+    "CGU": "继续即表示你同意 izyGlam 及其关联公司可使用自动方式拨打电话、发送 WhatsApp 或短信至你提供的号码。",
+    "PLACEHOLDER_FIRSTNAME": "名字",
+    "PLACEHOLDER_LASTNAME": "姓氏",
+    "PLACEHOLDER_EMAIL": "电子邮箱",
+    "PLACEHOLDER_EMAIL_REQUIRED": "邮箱为必填项",
+    "PLACEHOLDER_EMAIL_WRONG": "邮箱格式无效",
+    "PLACEHOLDER_PHONE": "电话",
+    "PLACEHOLDER_PHONE_NUMBER": "电话号码",
+    "PLACEHOLDER_PASSWORD": "密码",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "确认密码",
+    "COUNTRY": "国家/地区"
+  },
+  "LANGUE": {
+    "FRANCAIS": "法语",
+    "ANGLAIS": "英语",
+    "ESPAGNOL": "西班牙语",
+    "NEERLANDAIS": "荷兰语",
+    "ITALIEN": "意大利语",
+    "ALLEMAND": "德语",
+    "PORTUGAIS": "葡萄牙语",
+    "POLONAIS": "波兰语",
+    "DANOIS": "丹麦语",
+    "FINNOIS": "芬兰语",
+    "SUEDOIS": "瑞典语",
+    "ARABE": "阿拉伯语",
+    "TURC": "土耳其语",
+    "CHINOIS": "中文",
+    "RUSSE": "俄语",
+    "PERSAN": "波斯语",
+    "UKRAINIEN": "乌克兰语",
+    "ROUMAIN": "罗马尼亚语",
+    "CATALAN": "加泰罗尼亚语",
+    "BASQUE": "巴斯克语",
+    "GALICIEN": "加利西亚语",
+    "ALBANAIS": "阿尔巴尼亚语",
+    "KURDE": "库尔德语",
+    "ESTONIEN": "爱沙尼亚语",
+    "SOMALIEN": "索马里语",
+    "BIELORUSSE": "白俄罗斯语",
+    "JAPONAIS": "日语",
+    "COREEN": "韩语",
+    "INDONESIEN": "印度尼西亚语",
+    "MALAIS": "马来语",
+    "THAI": "泰语",
+    "VIETNAMIEN": "越南语",
+    "TAGALOG": "塔加洛语",
+    "BENGALI": "孟加拉语"
+  },
+  "COUNTRY": {
+    "FRANCE": "法国",
+    "ALLEMAGNE": "德国",
+    "SPAIN": "西班牙",
+    "ITALY": "意大利",
+    "DANEMARK": "丹麦",
+    "FINLAND": "芬兰",
+    "NETHERLAND": "荷兰",
+    "POLAND": "波兰",
+    "PORTUGAL": "葡萄牙",
+    "SWEDEN": "瑞典",
+    "CHINA": "中国",
+    "INDIA": "印度",
+    "JAPAN": "日本",
+    "SOUTH_KOREA": "韩国",
+    "INDONESIA": "印度尼西亚",
+    "PHILIPPINES": "菲律宾",
+    "THAILAND": "泰国",
+    "VIETNAM": "越南",
+    "MALAYSIA": "马来西亚",
+    "SINGAPOURE": "新加坡",
+    "EMIRAT_ARABE": "阿拉伯联合酋长国",
+    "SAUDI_ARABIA": "沙特阿拉伯"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "我的地址",
+    "ADDRESS_MODIFICATION": "地址修改",
+    "STREET": "街道",
+    "CITY": "城市",
+    "CP": "邮编",
+    "CREATE": "创建",
+    "BACK": "返回",
+    "CHANGE": "修改",
+    "CLOSE": "关闭"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "平台设置",
+    "COMMISSION": "平台佣金率（%）",
+    "0to100": "必须填写 0 到 100 之间的数值",
+    "SERVICE": "服务费（€）",
+    "WEEKS": "展示的周数",
+    "SUP0": "必须填写大于 0 的数值",
+    "LESS24": "少于 24 小时的取消费（%）",
+    "LESS48": "少于 48 小时的取消费（€）",
+    "DELAY": "最短预约提前时间（小时）",
+    "TVA": "增值税率（%）",
+    "ADS": "启用广告",
+    "COMPANY": "启用企业业务",
+    "FIDELITY": "启用忠诚计划",
+    "MULTI_SHOP": "启用多店铺",
+    "PROMO": "启用店内促销",
+    "SPONSORS": "在落地页启用赞助商区块",
+    "SAVE": "保存"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "店铺总数",
+    "ACT_SHOPS": "活跃店铺数量",
+    "USERS": "用户总数",
+    "NBR_USERS": "注册用户数",
+    "CA_TOTAL": "总营业额",
+    "CA_GENERATED": "已产生营业额",
+    "SHOPS_PERFO": "店铺表现",
+    "SHOP_NAME": "店铺名称",
+    "CITY": "城市",
+    "REVENUES": "收入",
+    "BOOKINGS": "预约数量",
+    "NOTE": "平均评分",
+    "ACTIONS": "操作",
+    "DETAILS": "详情",
+    "ADJUST": "调整",
+    "SHOP_ADJUST": "调整店铺",
+    "STILL_DEVELOPPED": "此功能仍在开发中",
+    "CLOSE": "关闭"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "事件详情",
+    "CLIENT": "客户",
+    "DEBUT": "开始",
+    "FIN": "结束",
+    "ADDRESS": "地址",
+    "PHONE": "电话",
+    "CANCEL": "取消",
+    "SAVE": "保存"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "创建事件",
+    "COMING": "即将进行",
+    "PAST": "已过去",
+    "CANCELLED": "已取消",
+    "NO_CANCELLED": "没有已取消的订单。"
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "在线客服"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "员工管理",
+    "NAME": "姓名",
+    "EMAIL": "电子邮箱",
+    "SOLDE": "账户余额",
+    "ACTIONS": "操作",
+    "DEFAULT_PASSWORD": "默认密码",
+    "REINITIALIZE_PASSWORD": "用于重置的默认密码",
+    "CHANGE_PASSWORD": "修改密码"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "为员工账户入账",
+    "AMOUNT": "入账金额",
+    "CANCEL": "取消",
+    "SAVE": "确认"
+  },
+  "DASHBOARD": {
+    "TOTAL": "预约总数",
+    "TOTAL_MONTH": "本月预约",
+    "GENERATED": "产生的收入",
+    "MONTHLY": "本月收入",
+    "AVG_NOTE": "平均评分",
+    "BASED_ON": "基于",
+    "REVIEWS": "条评价",
+    "NEXT_APPOINTEMENT": "下一次预约",
+    "POPULAR_SERVICES": "最受欢迎的服务",
+    "RESERVATION": "次预约"
+  },
+  "FINANCE": {
+    "PROGRESS": "较上月变化",
+    "PROGRESSION": "增长",
+    "TOTAL_GENERATED": "产生的总营业额",
+    "CA": "营业额",
+    "COMMISSION_TAKEN": "已扣平台佣金",
+    "COMMISSIONS": "佣金",
+    "NET_TO_PAY": "应支付净额",
+    "DISPO_AMOUNT": "可用金额",
+    "REQUEST_WITHDRAWAL": "申请转账",
+    "TAKE": "提现金额",
+    "TOTAL_EARNINGS": "净收入",
+    "TOTAL_BOOKINGS": "已完成服务",
+    "CANCELLED_BOOKINGS": "已取消服务",
+    "SERVICES_CANCELLED": "被取消或被拒的预约",
+    "SERVICES_COMPLETED": "已完成的预约",
+    "AVG_PRICE": "平均价格",
+    "PER_SERVICE": "每项服务",
+    "REVIEW_RATIO": "客户评价",
+    "CLIENT_FEEDBACK": "反馈率",
+    "TOP_PRODUCTS": "最畅销服务",
+    "AVG_DURATION": "平均时长",
+    "DURATION_PER_BOOKING": "单次预约耗时",
+    "DETAILS": "银行账户详情",
+    "ASK": "申请转账",
+    "HISTORY": "交易历史",
+    "DATE": "日期",
+    "AMOUNT": "金额",
+    "COMMISSION": "佣金",
+    "STATUS": "状态"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "选择要创建的店铺类型",
+    "CANCEL": "取消",
+    "CREATE": "确认"
+  },
+  "PROCHES": {
+    "TITLE": "我的亲友",
+    "UPDATE": "修改亲友信息",
+    "FIRSTNAME": "名字",
+    "NAME": "姓氏",
+    "EMAIL": "电子邮箱",
+    "PHONE": "电话",
+    "CREATE": "创建",
+    "BACK": "返回",
+    "CHANGE": "修改",
+    "CLOSE": "关闭"
+  },
+  "RATING_MODAL": {
+    "TITLE": "发表评价",
+    "RATING": "评分",
+    "COMMENT": "评论",
+    "CLOSE": "关闭",
+    "SUBMIT": "提交"
+  },
+  "RDV_MODAL": {
+    "TITLE": "选择服务日期",
+    "CANCEL": "取消"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "创建服务",
+    "NAME": "名称",
+    "DESCRIPTION": "描述",
+    "COLOR": "颜色",
+    "PRICE": "价格",
+    "TIME": "时长",
+    "IMAGE": "图片",
+    "ACTIONS": "操作",
+    "MINUTES": "分钟",
+    "CHANGE": "修改",
+    "DELETE": "删除",
+    "SERVICE_NAME": "服务名称",
+    "TIME_MINUTES": "时长（分钟）",
+    "PREST_IMAGE": "服务图片",
+    "NO_PICS": "尚无照片",
+    "UPLOAD": "上传图片",
+    "NEW_PIC": "新图片预览",
+    "PRESTA_COLOR": "服务颜色",
+    "CANCEL": "取消",
+    "SAVE": "保存",
+    "AVG_PRICE": "平均价格",
+    "IMAGE_OK": "图片上传成功",
+    "ERROR_IMAGE_LOAD": "图片上传时出错",
+    "UPDATE_SUCCESS": "服务更新成功",
+    "ERROR_PRESTA": "更新服务时出错",
+    "PRESTA_UPDATED": "服务更新成功",
+    "PRESTA_ERROR": "更新服务时出错",
+    "PRESTA_SUCCESS": "服务更新成功",
+    "PHOTO_ERROR": "更新照片时出错",
+    "PRESTA_DELETED": "服务删除成功",
+    "PRESTA_DELETE_ERROR": "删除服务时出错"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "店铺图片",
+    "UPLOAD_IMAGE": "上传图片",
+    "SNEEK_PIC": "图片预览",
+    "SHOP_NAME": "店铺名称",
+    "DESCRIPTION": "描述",
+    "DESC_INFO": "（至少 25 个字符）",
+    "CITY": "城市",
+    "DISCRICT": "行政区",
+    "LAT": "纬度",
+    "LON": "经度",
+    "ZONE": "上门范围（公里）",
+    "OPENNING": "营业时间",
+    "MORNING_OPEN": "上午 - 开门",
+    "MORNING_CLOSE": "上午 - 打烊",
+    "AFTERNOON_OPEN": "下午 - 开门",
+    "AFTERNOON_CLOSE": "下午 - 打烊",
+    "SAVE": "保存店铺",
+    "MONDAY": "周一",
+    "TUESDAY": "周二",
+    "WEDNESDAY": "周三",
+    "THURSDAY": "周四",
+    "FRIDAY": "周五",
+    "SATURDAY": "周六",
+    "SUNDAY": "周日",
+    "CLOSED": "休息",
+    "GENERATE_IMAGE": "生成图片",
+    "GENERATE_DESCRIPTION": "生成描述",
+    "PHOTO": "可接受/不可接受照片示例",
+    "CODE_POSTAUX": "可服务邮编",
+    "EXEMPLE_LOCAL": "例如：75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "添加员工",
+    "LOADING": "加载中",
+    "LIST": "员工列表",
+    "ADD": "添加",
+    "EMAIL": "员工邮箱",
+    "FIRSTNAME": "名字",
+    "FAMILY_NAME": "姓氏",
+    "PHONE": "电话",
+    "PASSWORD": "密码",
+    "HAVE_TO": "所有字段均为必填。",
+    "EMAIL_ERROR": "邮箱无效。",
+    "EMPLOYEE_OK": "员工添加成功。",
+    "ADD_EMPLOYEE_ERROR": "添加员工时出错。"
+  },
+  "AVIS": {
+    "TITLE": "用户怎么说",
+    "AVIS1": "一开始我还有点怀疑……但结果太惊喜！在家做的美甲完美又无压力。已经成了我周五晚的小仪式。",
+    "AVIS2": "我躺在沙发上 3 分钟就订好面部护理。美容师温柔、细心……我的皮肤从未这么好过。",
+    "AVIS3": "我以为会比店里贵……惊喜：同价，甚至更便宜！而且不用出门。强烈推荐。",
+    "AVIS4": "生日的前一晚，我想做个快速吹发。两次点击就找到有空的专业人士。准时、友好、效果超赞。",
+    "AVIS5": "我是单亲妈妈，没时间来回奔波。等孩子睡了我再预约。简单、快捷，真的太棒了。",
+    "AVIS6": "我非常喜欢第一次体验。美容师立刻让我放松。感觉被细心呵护。我已经预约了下周！"
+  },
+  "DOWNLOAD": {
+    "USERS": "位满意用户",
+    "SOCIAL": "位可用专业人士",
+    "STORE": "上架 App Store 与 Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "选择最适合你的方案",
+    "DISCOVER2": "开启攀登巅峰之旅",
+    "SOLUTIONS": "你值得拥有美观、强大、为你而生的方案。随时都能改变主意。",
+    "TEST": "你的第一个店铺永久免费。零压力，纯粹的魔法。",
+    "START_FREE": "创建我的第一个店铺",
+    "FREE": "学徒",
+    "FREE_SUBTITLE": "用你的第一个店铺开启上升期",
+    "THEN": "之后",
+    "MONTHLY": "月",
+    "FREE1": "1 个活跃店铺",
+    "FREE2": "不限预约与客户数量",
+    "FREE3": "服务与日程管理",
+    "FREE4": "个人日历同步",
+    "FREE5": "完美助你从容起步",
+    "FREE6": "创建免费店铺",
+    "BASIC": "优选",
+    "BASIC_SUBTITLE": "解锁潜力，开始闪耀",
+    "BASIC1": "最多 3 个活跃店铺",
+    "BASIC2": "完整管理服务、客户与预约",
+    "BASIC3": "优先邮箱支持",
+    "BASIC4": "获取独家资源助力业务成长",
+    "BASIC5": "适合想拓展客源的专业人士",
+    "BASIC6": "1 个月免费试用",
+    "PREMIUM": "女王",
+    "PREMIUM_SUBTITLE": "你的版图成形，影响力倍增",
+    "PREMIUM1": "最多 10 个活跃店铺",
+    "PREMIUM2": "访问高级业绩统计",
+    "PREMIUM3": "智能建议助你提升营收",
+    "PREMIUM4": "在 IzyGlam 平台获得强化曝光",
+    "PREMIUM5": "优先支持",
+    "PREMIUM6": "为有抱负的自由职业者而设",
+    "PREMIUM7": "获取女王方案",
+    "BUSINESS": "女神",
+    "BUSINESS_SUBTITLE": "加冕为王，女神",
+    "BUSINESS1": "定制化",
+    "BUSINESS2": "不限店铺数量",
+    "BUSINESS3": "个性化战略陪伴",
+    "BUSINESS4": "大幅提升曝光与店铺推荐",
+    "BUSINESS5": "助你规模化的定制解决方案",
+    "BUSINESS6": "联系我们",
+    "COMPARE": "功能对比",
+    "FONCTIONS": "功能",
+    "BUSINESS9": "完整业务管理",
+    "STUDIO_BASIC": "独家资源",
+    "STUDIO_ADVANCED": "统计与建议",
+    "ANALYSE": "业绩分析",
+    "BASICS": "基础",
+    "ADVANCE": "进阶",
+    "PLANS": "活跃店铺数量",
+    "READY": "准备好发展你的事业了吗？",
+    "DISCOVERS": "了解 IzyGlam 方案"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "无障碍声明",
+      "TEXT": "izyGlam 致力于让更多人可访问我们的服务。我们的目标是在可能范围内达到 WCAG 2.2 AA 级别，并与 RGAA（法国）保持一致。"
+    },
+    "SCOPE": {
+      "TITLE": "覆盖范围",
+      "L1": "公共网站与信息页面。",
+      "L2": "面向客户与专业人士的 Web 应用（控制台）。",
+      "L3": "移动应用（iOS/Android，如适用）。",
+      "L4": "事务性邮件与帮助中心。",
+      "L5": "客户支持工具。"
+    },
+    "STATUS": {
+      "TITLE": "符合性状态",
+      "TEXT": "截至本声明之日，izyGlam 界面的无障碍性部分符合 WCAG 2.2 AA / RGAA。我们持续改进界面并优先修复差距。"
+    },
+    "PREPARATION": {
+      "TITLE": "声明编制方法",
+      "L1": "产品/UI 团队自评：HTML 语义、ARIA 角色、Tab 顺序。",
+      "L2": "人工测试：键盘导航、可见焦点、200%+ 缩放、读屏软件。",
+      "L3": "工具测试（对页面样本进行自动化审计）。",
+      "L4": "持续发布验收（设计系统、可复用无障碍组件）。"
+    },
+    "FEATURES": {
+      "TITLE": "可用的无障碍功能",
+      "KEYBOARD": {
+        "TITLE": "键盘导航",
+        "L1": "全程键盘操作（Tab、Shift+Tab、回车、空格、Esc、方向键）。",
+        "L2": "一致、对比度高的可见焦点指示。",
+        "L3": "“跳到内容”链接以跳过页眉。",
+        "L4": "菜单、弹窗和下拉列表可键盘控制（开/关、焦点圈定、Esc 关闭）。"
+      },
+      "SCREENREADERS": {
+        "TITLE": "读屏与结构",
+        "L1": "语义化结构，标题分级（h1→h6）与地标（header、nav、main、footer）。",
+        "L2": "为所有字段与按钮提供清晰标签，名称一致可读。",
+        "L3": "通过 aria-live 区域播报状态变化（错误、成功、加载）。",
+        "L4": "信息性图片有替代文本，装饰性图片被忽略。"
+      },
+      "CONTRAST": {
+        "TITLE": "对比度、色彩与缩放",
+        "L1": "目标对比度：普通文本 ≥ 4.5:1；大字号文本 ≥ 3:1。",
+        "L2": "界面在 200% 缩放下依然可用且功能完整。",
+        "L3": "信息不只通过颜色传达。"
+      },
+      "FORMS": {
+        "TITLE": "表单与错误信息",
+        "L1": "label⇄input 关联，必填字段标示。",
+        "L2": "错误在字段附近提示，必要时提供汇总。",
+        "L3": "焦点定位到首个错误字段，并给出修正建议。"
+      },
+      "DYNAMIC": {
+        "TITLE": "动态内容与动画",
+        "L1": "轮播/动画元素可暂停且不阻塞。",
+        "L2": "尽可能遵循系统“减少动态效果”偏好。",
+        "L3": "弹窗不打扰，可用键盘和外部点击关闭。"
+      },
+      "MEDIA": {
+        "TITLE": "多媒体",
+        "L1": "视频（如有）配字幕和/或文本稿。",
+        "L2": "音视频元素可用键盘控制。"
+      },
+      "MOBILE": {
+        "TITLE": "移动端",
+        "L1": "触控区域足够大且间距合理。",
+        "L2": "兼容 TalkBack（Android）与 VoiceOver（iOS）的导航。"
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "目标环境与辅助技术",
+      "L1": "Windows：NVDA（Chrome/Firefox）、JAWS（Edge/Chrome）。",
+      "L2": "macOS：VoiceOver（Safari）。",
+      "L3": "iOS/iPadOS：VoiceOver（Safari/Chrome）。",
+      "L4": "Android：TalkBack（Chrome）。",
+      "L5": "支持并建议使用最新版本浏览器。"
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "不可访问内容（已知或潜在）",
+      "TEXT": "尽管我们努力改进，仍可能存在不符合项：",
+      "L1": "旧图片缺少描述性替代文本。",
+      "L2": "第三方提供的文档（PDF、附件）未完全无障碍。",
+      "L3": "历史视频缺少字幕/音频描述。",
+      "L4": "第三方嵌入组件（支付、地图、播放器）自身的限制。",
+      "MOTIVES": "可能原因：第三方内容、过高成本、更新进行中。"
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "替代方案与合理便利",
+      "TEXT": "如需替代格式（例如可访问文档、预约协助），请联系我们。我们会尽力提供等效方案。"
+    },
+    "FEEDBACK": {
+      "TITLE": "反馈与协助",
+      "L1": "在应用：帮助 > 无障碍。",
+      "L2A": "电子邮件：",
+      "L2B": "或",
+      "L3": "请注明屏幕/URL、设备、浏览器以及（如适用）使用的读屏软件。"
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "[accessibilite@izyglam.com](mailto:accessibilite@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "RECOURSE": {
+      "TITLE": "申诉程序（法国）",
+      "TEXT": "若你发现无障碍缺陷影响访问内容或功能，且未获得满意回复，可：",
+      "L1": "致信权利捍卫者（Défenseur des droits）或你所在省的代表，",
+      "L2": "或在适用情况下向调解员申诉。",
+      "MORE": "更多信息：",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "持续改进",
+      "L1": "使用含无障碍组件的设计系统。",
+      "L2": "每次上线前进行代码审查与无障碍测试。",
+      "L3": "定期为产品与支持团队进行培训。",
+      "L4": "按用户影响优先修复问题。"
+    },
+    "DATE": {
+      "TITLE": "声明日期与更新",
+      "TEXT": "声明于 2025 年 12 月 25 日发布。重大变更或至少每年更新一次。"
+    }
+  },
+  "HELP": {
+    "QUESTION1": "如何在 IzyGlam 上预约服务？",
+    "QUESTION2": "如何选择适合我的专业人士？",
+    "QUESTION3": "如何修改或取消预约？",
+    "QUESTION4": "如何跟踪我的订单？",
+    "QUESTION5": "我可以使用哪些支付方式？",
+    "QUESTION6": "如何跟踪我的订单或预约？",
+    "QUESTION7": "服务结束后我可以发表评论吗？",
+    "QUESTION8": "如何使用我的忠诚优惠和促销？",
+    "QUESTION9": "订单有问题我该怎么办？",
+    "QUESTION10": "如何联系 IzyGlam 团队？",
+    "QUESTION11": "取消与退款政策如何运作？",
+    "QUESTION12": "可以为他人预约（礼物、惊喜）吗？",
+    "QUESTION13": "如何成为 IzyGlam 合作专业人士？",
+    "QUESTION14": "如何在 IzyGlam 上保护我的个人信息？",
+    "REPONSE1": "简单又快速。注册后，选择你感兴趣的服务，查看你附近可预约的专业人士，选择日期和时间。点击“预约”完成操作，并用银行卡支付。随后专业人士会人工确认预约；若被拒绝，你将获全额退款。",
+    "REPONSE2": "每位专业人士都有详细资料：服务、价格、作品照片及客户评价。你也可以添加收藏以便快速找到。花些时间对比，选择最符合期待的那一位。",
+    "REPONSE3": "你可以在个人中心修改或取消预约。服务开始前 24 小时内可免费取消；超过时限可能会收取费用。如遇问题，我们的支持团队随时在这儿。",
+    "REPONSE4": "登录个人中心，进入“我的预约”。你可以实时查看订单状态、取消或修改，并查看历史记录。",
+    "REPONSE5": "目前仅支持银行卡支付（Visa、MasterCard、American Express）。暂不支持现金或 PayPal。我们提供安全保障，让你全程无忧。",
+    "REPONSE6": "预约确认后，你会收到确认邮件。我们也会在服务前发送提醒（邮件和/或推送）。你也可以在个人中心查看状态。",
+    "REPONSE7": "可以。每次服务完成后，你都可以对专业人士进行评价。我们会人工审核以确保真实性。专业人士无法回复或修改评价。",
+    "REPONSE8": "目前 IzyGlam 尚未提供忠诚计划或优惠码。这些功能将在后续阶段上线。",
+    "REPONSE9": "你可以通过“联系”页面或邮件联系我们。我们会尽最大努力（目标 24 小时内）回复并协助你尽快解决问题。",
+    "REPONSE10": "你可以通过网站或应用的联系表单与我们联系。客服时间为周一至周六，9:00–18:00。示例邮箱：[support@izyglam.com](mailto:support@izyglam.com)",
+    "REPONSE11": "你可在服务时间前 24 小时免费取消。超过该时限可能会收取费用。若被专业人士拒单，将自动退款。自动退款系统正在逐步上线。",
+    "REPONSE12": "暂时无法直接从你的账户为他人赠送服务。但若专业人士提供双人或家庭套餐，你可以在该场景下为多人预约。",
+    "REPONSE13": "你是美容师、理发师或身心健康从业者吗？可在“成为合作伙伴”页面提交表单加入 IzyGlam。我们的团队会尽快与你联系完成入驻。",
+    "REPONSE14": "你的数据安全是我们的首要任务。我们遵守 GDPR。仅向专业人士提供完成服务所必需的信息。内置消息可用于沟通，我们也会监测任何绕过平台的行为。"
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "我们是谁？",
+      "TEXT": "本《隐私政策》解释 <strong>izyGlam</strong>（以下简称“我们”“本平台”）在你使用我们的服务（网站、Web 应用、移动应用、邮件与支持）时如何收集、使用、保存、共享并保护你的个人数据。对于下述处理，我们作为<strong>数据控制者</strong>。"
+    },
+    "SCOPE": {
+      "TITLE": "政策范围",
+      "TEXT": "本政策适用于通过 izyGlam 预订服务的<strong>客户</strong>、通过 izyGlam 提供服务的<strong>专业人士</strong>，以及我们的<strong>访客</strong>。"
+    },
+    "DATA": {
+      "TITLE": "收集的数据",
+      "PROVIDED": {
+        "TITLE": "你提供的数据",
+        "L1": "<strong>身份与联系方式：</strong>姓名、邮箱、电话、地址、照片/头像。",
+        "L2": "<strong>账户：</strong>登录凭据、密码（哈希）、偏好、语言。",
+        "L3": "<strong>预约：</strong>选择的服务、日期/时间、上门地址、备注、附件。",
+        "L4": "<strong>支付：</strong>通过我们的服务商（如 Stripe）处理的支付信息——我们不存储你的卡片数据。",
+        "L5": "<strong>专业人士：</strong>公开资料、服务、价格、服务范围、可用时间、银行账户（安全保存）、必要时的核验文件。",
+        "L6": "<strong>支持：</strong>消息、工单，必要时通话录音。"
+      },
+      "AUTOMATIC": {
+        "TITLE": "自动收集的数据",
+        "L1": "<strong>技术数据：</strong>设备型号、系统、浏览器、分辨率、会话标识。",
+        "L2": "<strong>日志：</strong>IP、时间戳、错误事件、功能使用情况。",
+        "L3": "<strong>定位：</strong>大致位置（IP）或精确位置（GPS，经你明确同意）。",
+        "L4": "<strong>Cookies 与 SDK：</strong>详见下文。"
+      },
+      "THIRD": {
+        "TITLE": "第三方来源的数据",
+        "L1": "<strong>支付服务商</strong>（支付状态、令牌）。",
+        "L2": "<strong>分析/反欺诈合作方</strong>（风险信号、使用数据聚合）。",
+        "L3": "<strong>集成服务</strong>（如通信、地图、云存储）。"
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "目的与法律依据",
+      "TEXT": "我们出于以下目的处理数据：",
+      "L1": "<strong>提供服务</strong>（建号、预约、撮合、通知）—<em>合同履行</em>。",
+      "L2": "<strong>支付与结算</strong>—<em>合同、法定义务</em>。",
+      "L3": "<strong>安全、防滥用/欺诈</strong>—<em>合法利益、法定义务</em>。",
+      "L4": "<strong>产品改进、统计</strong>—<em>合法利益</em>。",
+      "L5": "<strong>支持与质量</strong>—<em>合同、合法利益</em>。",
+      "L6": "<strong>直销营销</strong>（邮件/应用）—<em>在需要时征得同意</em>；可随时退订。",
+      "L7": "<strong>法律合规</strong>（会计、监管机构要求）—<em>法定义务</em>。"
+    },
+    "SHARING": {
+      "TITLE": "数据共享",
+      "L1": "<strong>专业人士 / 客户</strong>：为完成服务所需的信息（姓名、联系方式、上门地址、预约详情）。",
+      "L2": "<strong>服务商</strong>：支付（如 Stripe）、托管/存储、分析、邮件/SMS 推送、支持、KYC（如需）。<em>仅授予必要访问，签署符合 GDPR 的合同。</em>",
+      "L3": "<strong>合作伙伴</strong>：经你同意，用于特定优惠。",
+      "L4": "<strong>监管机构</strong>：法律要求或为维护我们的权利。"
+    },
+    "TRANSFERS": {
+      "TITLE": "向欧盟/欧洲经济区外转移",
+      "TEXT": "当数据被转移至未获充分性决定的国家时，我们会使用<strong>标准合同条款</strong>（SCC）并采取补充措施。"
+    },
+    "RETENTION": {
+      "TITLE": "保存期限",
+      "L1": "<strong>账户与身份</strong>：账户使用期间；停用后用于营销最久 <em>3 年</em>，或因会计/法律义务保存 <em>5–10 年</em>。",
+      "L2": "<strong>预约/发票</strong>：<em>10 年</em>（法定义务）。",
+      "L3": "<strong>安全日志</strong>：<em>6–24 个月</em>，视重要性而定。",
+      "L4": "<strong>Cookies</strong>：见 Cookies 部分。",
+      "NOTE": "到期后，数据将被删除或匿名化。"
+    },
+    "COOKIES": {
+      "TITLE": "Cookies 与 SDK",
+      "TEXT": "我们使用 Cookies/SDK 以运行平台、统计受众、防止欺诈，并在你同意的情况下个性化体验。",
+      "L1": "<strong>必要</strong>：认证、安全、技术偏好。",
+      "L2": "<strong>受众测量</strong>：使用统计（聚合）。",
+      "L3": "<strong>营销</strong>：仅在你同意时启用。",
+      "PREF": "你可随时通过横幅及浏览器设置管理偏好。"
+    },
+    "AUTOMATION": {
+      "TITLE": "自动决策与画像",
+      "TEXT": "我们可能使用自动信号（如欺诈风险、专业人士可用性、距离）来优先处理或推荐时段。除法律义务或你明确同意外，不会进行对你产生法律或重大影响的纯自动化决策。"
+    },
+    "RIGHTS": {
+      "TITLE": "你的权利（GDPR）",
+      "L1": "有权<strong>访问</strong>、<strong>更正</strong>、<strong>删除</strong>。",
+      "L2": "有权<strong>限制处理</strong>与<strong>数据可携带</strong>。",
+      "L3": "有权<strong>反对</strong>基于合法利益的处理。",
+      "L4": "有权<strong>随时撤回同意</strong>。",
+      "L5": "有权向 <strong>CNIL</strong> 投诉。",
+      "CONTACT": "行使权利请联系：",
+      "VERIFY": "为验证身份，我们可能要求提供补充信息。"
+    },
+    "SECURITY": {
+      "TITLE": "安全性",
+      "TEXT": "我们实施适当的技术与组织措施：传输加密（TLS）、密码哈希、日志与监控、访问控制、备份、代码审查与安全测试。"
+    },
+    "MINORS": {
+      "TITLE": "未成年人数据",
+      "TEXT": "我们的服务不面向 15 岁以下人群。若识别到未成年账户，经核实后将予以删除。"
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "主要受托处理方",
+      "TEXT": "我们与用于托管、支付、邮件、分析与存储的关键受托方合作。最新列表可通过以下方式索取"
+    },
+    "CONTACT": {
+      "TITLE": "联系与数据保护官",
+      "PRIVACY_LABEL": "隐私联系",
+      "SUPPORT_LABEL": "支持",
+      "AUTHORITY_LABEL": "监管机构",
+      "EMAIL_PRIVACY": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_PRIVACY_TEXT": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "CHANGES": {
+      "TITLE": "本政策的变更",
+      "TEXT": "我们可能因法律或功能变化更新本政策。重大变更将通过邮件或应用通知生效日期：<strong>2025 年 8 月 11 日</strong>。"
+    },
+    "LOCAL": {
+      "TITLE": "本地条款",
+      "TEXT": "若你位于欧盟，你的数据将依据 GDPR 进行处理。按国家/地区的补充条款将视情况另行告知。"
+    },
+    "GLOSSARY": {
+      "TITLE": "术语表（节选）",
+      "L1": "<strong>数据控制者</strong>：决定处理目的与方式的实体。",
+      "L2": "<strong>受托处理者</strong>：代表控制者处理数据的实体。",
+      "L3": "<strong>法律依据</strong>：允许处理的法理基础（合同、同意、法定义务、合法利益）。",
+      "L4": "<strong>Cookies/SDK</strong>：网站/应用用于提供、衡量与个性化服务的追踪技术。"
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "条款接受",
+      "TEXT": "访问 izyGlam 的服务（网站、Web 应用、移动应用）即表示你无条件接受本《使用条款》（“CGU”）。若你不接受，请勿使用本平台。"
+    },
+    "DEFINITIONS": {
+      "TITLE": "定义",
+      "L1": "<strong>客户</strong>：在平台上预约和/或支付服务的任何人。",
+      "L2": "<strong>专业人士</strong>：通过平台提供服务的任何人。",
+      "L3": "<strong>服务</strong>：专业人士提供的服务（如上门美容）。",
+      "L4": "<strong>平台</strong>：由 izyGlam 运营的软件、网站与应用。"
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "服务与 izyGlam 的角色",
+      "TEXT": "izyGlam 是一个<strong>撮合平台</strong>。专业人士对其实施的服务负<strong>全部责任</strong>（质量、合规、保险）。除非另有说明，izyGlam 既非卖方也非服务提供者，对服务履行不承担责任。"
+    },
+    "ACCOUNT": {
+      "TITLE": "账户与资格",
+      "L1": "预约或提供服务需注册。你承诺提供准确信息并保持更新。",
+      "L2": "你必须年满 15 岁方可使用本平台。专业人士须具备合法执业资格。",
+      "L3": "你对凭据保密及账户下的一切活动负责。",
+      "L4": "若违反条款或存在明确欺诈风险，izyGlam 可暂停或终止账户。"
+    },
+    "BOOKINGS": {
+      "TITLE": "预约与合同成立",
+      "L1": "服务由客户<strong>在线预约并支付</strong>。现场无需支付现金。",
+      "L2": "预约在支付后需<strong>经专业人士确认</strong>。若被拒，客户<strong>全额退款</strong>。",
+      "L3": "专业服务合同在专业人士接受时直接于客户与专业人士之间成立。",
+      "L4": "双方应核对时间、上门地址及任何特殊条件。"
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "价格、订阅与支付",
+      "L1": "服务价格由专业人士自由设定。izyGlam 收取平台<strong>佣金</strong>。",
+      "L2": "专业人士订阅（当前示例）：<em>1 个店铺终身免费</em>；<em>Basic：3 个店铺 – 99 €/月</em>；<em>Premium：10 个店铺 – 499 €/月</em>；<em>更高规模：定制报价</em>。",
+      "L3": "仅<strong>银行卡</strong>支付（如 Stripe）。<strong>不支持现金</strong>，暂不支持优惠码或忠诚计划。",
+      "L4": "应付金额、税费在确认前展示。订阅条件可能调整；变更将提前告知。"
+    },
+    "CANCELLATIONS": {
+      "TITLE": "取消、退款与缺席",
+      "L1": "在预约时间前 <strong>24 小时</strong>可免费取消。",
+      "L2": "少于 24 小时，可能按政策收取<strong>费用</strong>。",
+      "L3": "若专业人士在支付后<strong>拒单</strong>，客户 100% 退款。自动退款正在部署中；必要时由支持发起操作。",
+      "L4": "<strong>未到场</strong>（未提前通知）可能产生费用或无法退款。"
+    },
+    "PAYOUTS": {
+      "TITLE": "向专业人士的结算",
+      "L1": "在<strong>确认服务完成</strong>后（如通过<em>验证码</em>确认）触发结算。",
+      "L2": "使用专业人士提供的银行账户进行转账。专业人士保证银行信息准确。",
+      "L3": "结算金额为服务价格<strong>扣除</strong>佣金与相关费用后的净额。"
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "双方责任",
+      "L1": "专业人士保证其服务合规，遵守法规与卫生安全要求。",
+      "L2": "客户承诺提供准确信息（地址、可用时间、出入限制）并按时赴约。",
+      "L3": "izyGlam 提供平台与工具（预约、支付、消息），但不保证服务结果。"
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "无效评分。",
+      "TITLE": "评价与评分",
+      "L1": "仅能在<strong>实际完成的服务</strong>后留下评价。",
+      "L2": "评价可能进行<strong>审核</strong>（如删除违法或违反本条款的内容）。"
+    },
+    "PROHIBITED": {
+      "TITLE": "禁止行为",
+      "L1": "欺诈、冒充、绕过平台、引导平台外交易。",
+      "L2": "非法、诽谤、歧视、暴力或不当内容。",
+      "L3": "入侵、拒绝服务、逆向工程、绕过安全措施。",
+      "L4": "未经许可收集他人个人数据。"
+    },
+    "IPR": {
+      "TITLE": "知识产权",
+      "TEXT": "平台的内容、商标与要素（代码、设计、文本、Logo、图片）受保护。除非明确授权，禁止复制、传播或改编。专业人士提供的内容仍归其所有；他们授予 izyGlam 非独占许可，以用于平台运营所需。"
+    },
+    "THIRD_PARTY": {
+      "TITLE": "第三方服务",
+      "TEXT": "平台可能集成第三方服务（支付、地图、托管、分析）。适用其各自条款。对于这些服务的中断或故障，izyGlam 不承担责任。"
+    },
+    "AVAILABILITY": {
+      "TITLE": "可用性、维护与更新",
+      "TEXT": "我们可能为维护或改进而修改、暂停或中断平台的全部或部分。我们将尽合理努力降低对用户的影响。"
+    },
+    "LIABILITY": {
+      "TITLE": "责任限制与赔偿",
+      "TEXT": "在法律允许范围内，izyGlam 仅对直接损失负责，不包括间接损失（机会损失、营业额损失等）。你同意就因你违反本条款或非法使用平台而引发的索赔对 izyGlam 进行赔偿。"
+    },
+    "TERMINATION": {
+      "TITLE": "终止与暂停",
+      "TEXT": "你可随时删除账户。若违反条款、欺诈、滥用或依法要求，我们可暂停或终止访问。某些义务（如应付金额、责任条款）在终止后仍然有效。"
+    },
+    "PRIVACY": {
+      "TITLE": "个人数据",
+      "TEXT": "你的数据处理详见我们的<strong>隐私政策</strong>。使用平台即表示你接受该政策。请查阅以了解你的 GDPR 权利与我们的承诺。"
+    },
+    "CHANGES": {
+      "TITLE": "条款变更",
+      "TEXT": "我们可能因法律、监管或功能原因修改本条款。重大变更将通过邮件或应用通知并发布新版。"
+    },
+    "LAW": {
+      "TITLE": "适用法与争议",
+      "TEXT": "本条款受<strong>法国法律</strong>管辖。任何争议由 izyGlam 注册地法院管辖，但若法律对消费者另有更有利的强制性规定，则从其规定。"
+    },
+    "CONTACT": {
+      "TITLE": "联系",
+      "SUPPORT_LABEL": "支持",
+      "LEGAL_LABEL": "法务",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL": "[legal@izyglam.com](mailto:legal@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL_TEXT": "[legal@izyglam.com](mailto:legal@izyglam.com)"
+    },
+    "EFFECTIVE": {
+      "TITLE": "生效日期",
+      "TEXT": "本条款自<strong>2025 年 12 月 25 日</strong>起生效，取代此前所有版本。"
+    }
+  }
+}

@@ -1,40 +1,118 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { RdvModalComponent } from '../rdv-modal/rdv-modal.component';
 
 @Component({
-    selector: 'app-shop-item-card',
-    templateUrl: './shop-item-card.component.html',
-    styleUrls: ['./shop-item-card.component.scss'],
+  selector: 'app-shop-item-card',
+  templateUrl: './shop-item-card.component.html',
+  styleUrls: ['./shop-item-card.component.scss'],
 })
 export class ShopItemCardComponent {
-    @Input() item: any;
-    imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
-    APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
+  /** Produit/Service affiché par la carte */
+  @Input() item: any;
 
-    constructor(
-        public dialog: MatDialog
-    ) { }
+  /** Bases d’URL d’images */
+  imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
+  APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
 
-    openDialog() {
-        localStorage.setItem('productToBuy', JSON.stringify(this.item))
-        this.dialog.open(RdvModalComponent);
-    }
+  constructor(
+    public dialog: MatDialog,
+    private toastr: ToastrService,
+    private translate: TranslateService
+  ) {}
 
-    calculateFinalPrice(basePrice: number): string {
-        const commissionRate = 0.10; // 10% de commission
-        const tvaRate = 0.20; // 20% de TVA
-
-        const priceWithCommission = basePrice * (1 + commissionRate);
-        const priceWithTva = priceWithCommission * (1 + tvaRate);
-
-        // On garde le résultat en string formaté avec 2 décimales
-        return priceWithTva.toFixed(2).replace('.', ',') + ' € TTC';
-    }
-    onImageError(event: Event) {
-        const imgElement = event.target as HTMLImageElement;
-        imgElement.src = this.APIimgStorageUrl + '/uploads/images/logo.png';
+  /**
+   * Ouvre la modale de prise de RDV pour l’item courant.
+   * - Stocke l’item dans le localStorage (consommé par la modale).
+   * - Gestion d’erreurs robuste + logs + toasts.
+   */
+  openDialog(): void {
+    try {
+      if (!this.item) {
+        console.warn('[ShopItemCard] openDialog: item is empty/null.');
+        this.showCustomToast(this.t('ERROR.GENERIC_ERROR'), 'error');
+        return;
       }
-      
+
+      // Sauvegarde l’item sélectionné pour que la modale puisse le lire
+      localStorage.setItem('productToBuy', JSON.stringify(this.item));
+
+      // Ouverture de la modale
+      this.dialog.open(RdvModalComponent);
+
+      // Toast léger d’info (optionnel)
+      // this.showCustomToast(this.t('SHOP_ITEM.OPEN_SLOT_MODAL'), 'success');
+    } catch (err) {
+      console.error('[ShopItemCard] openDialog ERROR:', err);
+      this.showCustomToast(this.t('ERROR.GENERIC_ERROR'), 'error');
+    }
+  }
+
+  /**
+   * Calcule un prix TTC affichable pour le client :
+   *  - commission 10%
+   *  - TVA 20%
+   * Retourne une string formatée "12,34 € TTC".
+   */
+  calculateFinalPrice(basePrice: number): string {
+    try {
+      const numericBase = Number(basePrice);
+      if (isNaN(numericBase) || numericBase < 0) {
+        console.warn('[ShopItemCard] calculateFinalPrice: invalid base price =>', basePrice);
+        return '0,00 € TTC';
+      }
+
+      const commissionRate = 0.10; // 10% de commission
+      const tvaRate = 0.20;        // 20% de TVA
+
+      const priceWithCommission = numericBase * (1 + commissionRate);
+      const priceWithTva = priceWithCommission * (1 + tvaRate);
+
+      // Format FR simple (2 décimales + virgule)
+      return priceWithTva.toFixed(2).replace('.', ',') + ' € TTC';
+    } catch (err) {
+      console.error('[ShopItemCard] calculateFinalPrice ERROR:', err);
+      return '0,00 € TTC';
+    }
+  }
+
+  /**
+   * Fallback d’image si l’URL échoue.
+   */
+  onImageError(event: Event): void {
+    try {
+      const imgElement = event.target as HTMLImageElement;
+      imgElement.src = this.APIimgStorageUrl + '/uploads/images/logo.png';
+    } catch (err) {
+      console.error('[ShopItemCard] onImageError ERROR:', err);
+    }
+  }
+
+  // -----------------------
+  // Helpers i18n + Toasts
+  // -----------------------
+
+  /** Raccourci i18n avec fallback sur la clé si manquante */
+  private t(key: string): string {
+    try {
+      const tr = this.translate.instant(key);
+      return tr && tr !== key ? tr : key;
+    } catch {
+      return key;
+    }
+  }
+
+  /** Toast centralisé, succès par défaut */
+  private showCustomToast(message: string, type: 'success' | 'error' = 'success'): void {
+    try {
+      if (type === 'success') this.toastr.success(message);
+      else this.toastr.error(message);
+    } catch (err) {
+      // On ne bloque pas l’UX si Toastr plante
+      console.warn('[ShopItemCard] showCustomToast WARN:', err, message);
+    }
+  }
 }

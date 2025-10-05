@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Ile-apaintzailea",
+    "NAILTECHNICIAN": "Manikura",
+    "MAKEUP": "Makillatzailea",
+    "WAXING": "Estetizista",
+    "FACIAL": "Aurpegi-tratamendua",
+    "MASSAGE": "Masajista",
+    "EYELASH": "Betileen luzapenak",
+    "EYEBROW": "Bekainak",
+    "TANNING": "Brontzea",
+    "ACUPUNCTURE": "Akupuntura",
+    "OTHER": "Bestelakoa"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Argazkia galeritik ezabatu da",
+    "PHOTO_UPLOAD": "Irudia ondo igo da",
+    "PARTIAL_REFUND_CONFIRM": "Itzulketa partziala berretsi da!",
+    "CODE_SAVED": "Koderik sortuta.",
+    "USERCREATED": "Erabiltzailea ondo sortu da. Berrespen-mezu bat bidali dizugu posta elektronikoz.",
+    "SUBSCRIBE_SUCCESS": "Zure harpidetza behar bezala erregistratu da.",
+    "EMAIL_VERIFIED": "Zure kontua aktibatuta dago 🎉 Orain saioa hasi dezakezu.",
+    "EMAIL_RESENT": "Berrespen-mezua berriro bidali da. Begiratu zure postontzia.",
+    "BOOKING_CREATED": "Zure erreserba behar bezala erregistratu da.",
+    "PAYMENT_OK": "Ordainketa balioztatu da.",
+    "REFUND_OK": "Itzulketa egin da.",
+    "USERUPDATED": "Erabiltzailea eguneratu da.",
+    "SETTINGS_UPDATED": "Ezarpenak eguneratu dira.",
+    "REVIEW_ADDED": "Zure iritzia argitaratu da 🎉",
+    "SHOPUPDATED": "Denda eguneratu da.",
+    "BOOKING_ACCEPTED": "Erreserba onartuta.",
+    "BOOKING_FINISHED": "Erreserba amaituta.",
+    "BOOKING_REFUSED": "Erreserba baztertuta.",
+    "BOOKING_DELETED": "Erreserba ezabatu da.",
+    "CODE_GENERATED": "Koderik sortuta.",
+    "CODE_CONFIRMED": "Koderik berretsita.",
+    "INVOICE_DOWNLOADED": "Faktura deskargatu da.",
+    "MARKED_NO_SHOW_CLIENT": "Bezeroa agertu ez dela markatuta.",
+    "COMPANY_CREDITED": "Enpresaren kontua kreditatu da.",
+    "MARKED_NO_SHOW_PRO": "Hornitzailea agertu ez dela markatuta.",
+    "EMPLOYEE_CREDITED": "Langilearen kontua kreditatu da.",
+    "NO_SHOW_PRO": "Zigorra aplikatuta eta itzulketa eginda.",
+    "EMPLOYEE_DELETED": "Langilea ezabatu da.",
+    "SLOT_SELECTED": "Tartea hautatuta",
+    "PASSWORD_RESET": "Pasahitza berrezarri da.",
+    "INVOICE_GENERATED": "Fakturak sortu dira.",
+    "REVIEW_SAVED": "Iritzia gorde da, eskerrik asko!",
+    "DEFAULT_PASSWORD_UPDATED": "Lehenetsitako pasahitza eguneratu da.",
+    "COMPANY_CREATED": "Zure enpresa-kontua ondo sortu da."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Saioa hasi behar duzu gogokoak kudeatzeko.",
+    "INVALID_IMAGE": "Irudi baliogabea.",
+    "NO_SLOTS": "Ez dago tarterik zerbitzu honetarako.",
+    "NO_SHOP_SELECTED": "Ez da dendik hautatu.",
+    "NO_SERVICE_SELECTED": "Ez da zerbitzurik hautatu.",
+    "ORDER_ERROR": "Errorea eskaera eguneratzean.",
+    "CODE_ERROR": "Errorea kodea gordetzean.",
+    "INVOICE_GENERATED_ERROR": "Errorea fakturak sortzean.",
+    "USERNOTCREATED": "Ezin izan da erabiltzailea sortu.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Enpresaren saldoa ez da nahikoa kreditu honetarako.",
+    "GENERIC_ERROR": "✨ Oops… akats bat sartu da. Saiatu berriro, mesedez ✨",
+    "COMPANY_CREDITED": "Enpresaren kontua kreditatu da.",
+    "LINK_INVALID_OR_MISSING": "Esteka baliogabea edo falta da.",
+    "LINK_INVALID_OR_EXPIRED": "Esteka baliogabea edo iraungita.",
+    "EMAIL_NOT_FOUND": "Erabiltzailearen e-posta ez da aurkitu.",
+    "PAYMENT_FAILED": "Ordainketak huts egin du.",
+    "BOOKING_FAILED": "Erreserba sortzeak huts egin du.",
+    "LOAD_CARDS_FAILED": "Errorea zure txartelak kargatzean.",
+    "LOAD_SHOP_FAILED": "Errorea saloia kargatzean.",
+    "LOAD_PRODUCTS_FAILED": "Errorea zerbitzuak kargatzean.",
+    "INVALID_CODE": "Sartutako kodea baliogabea da.",
+    "PASSWORD_CHANGED": "Zure pasahitza eguneratu da.",
+    "PASSWORDS_IDENTICAL": "Pasahitz berriak desberdina izan behar du oraingoarekiko.",
+    "INVALID_AMOUNT": "Sartutako zenbatekoa baliogabea da.",
+    "INVALID_CURRENT_PASSWORD": "Oraingo pasahitza okerra da.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Oraingo pasahitza okerra da edo errore bat gertatu da.",
+    "PASSWORD_UPDATE_FAILED": "Pasahitza aldatzeak huts egin du.",
+    "PASSWORD_UPDATE_GENERIC": "Errore bat gertatu da pasahitza eguneratzean.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Pasahitzak ez datoz bat edo laburregiak dira (gutx. 8 karaktere).",
+    "INVALID_PASSWORD": "Pasahitza ezin da hutsik egon.",
+    "PASSWORD_TOO_SHORT": "Pasahitzak gutxienez 8 karaktere izan behar ditu."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Stripe konfigurazioa falta da.",
+    "LOAD_FAILED": "Stripe ezin izan da kargatu",
+    "NOT_READY": "Stripe ez da hasieratu",
+    "CONFIRM_FAILED": "Txartela gordetzeak huts egin du",
+    "CARD_SAVED": "Txartela ondo gorde da ✅",
+    "PM_FAILED": "Txartela sortzeak huts egin du",
+    "SI_FAILED": "Ezin izan da txartela gordetzeko prestatu",
+    "ATTACH_FAILED": "Ezin izan da txartela kontuari erantsi",
+    "SAVE_CARD": "Gorde txartela",
+    "ADD_CARD": "Gehitu txartela"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Mesedez, hasi saioa"
+  },
+  "COMMON": {
+    "LOADING": "Kargatzen…",
+    "UNEXPECTED_ERROR": "Ustekabeko errore bat gertatu da"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Egiaztapena martxan",
+    "VALIDE": "Zure aktibazio-esteka egiaztatzen ari gara. Segundo batzuk besterik ez dira.",
+    "ACCOUNT": "Kontua aktibatuta",
+    "CONNECT": "Hasi saioa",
+    "OUPS": "Ene!",
+    "WRITE": "Laguntza behar? Idatzi hona:",
+    "RESEND": "Bidali berriro aktibazio-mezua"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Nire banku-datuak",
+    "ADD_BANK_INFO": "Gehitu nire banku-datuak",
+    "BANK_NAME": "Bankuaren izena",
+    "HOLDER_NAME": "Kontuaren titularra",
+    "COUNTRY": "Herrialdea",
+    "SAVE": "Gorde"
+  },
+  "LOADER": {
+    "LOADING": "Kargatzen…"
+  },
+  "SPONSORS": {
+    "TITLE": "Gure babesleak",
+    "SPONSORISED": "Babestua"
+  },
+  "TABS": {
+    "FINANCE": "Finantza jarraipena",
+    "GENERAL_INFO": "Informazio orokorra",
+    "EMPLOYEES": "Langileen kudeaketa",
+    "SERVICES": "Zerbitzuen kudeaketa",
+    "PHOTOS": "Argazki-galeria",
+    "STATS": "Estatistikak",
+    "PARAM": "Ezarpenak",
+    "SHOPS": "Dendak",
+    "USERS": "Erabiltzaileak",
+    "MESSAGE": "Mezularitza"
+  },
+  "CARD": {
+    "ADD": "Gehitu txartela",
+    "NO_IMAGE": "Ez dago irudirik galerian.",
+    "SALON": "Saloiak ondo eguneratu dira",
+    "ERROR1": "Errorea saloia eguneratzean",
+    "ERROR2": "Errorea argazkia eguneratzean",
+    "UPDATE": "Saloia arrakastaz eguneratu da"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Amaituta",
+    "ACCEPTEE": "Onartuta",
+    "WAITING": "Zain",
+    "CANCEL": "Bertan behera",
+    "DELETE": "Ezabatua",
+    "REFUSED": "Baztertua",
+    "NO_PRESTA": "Hornitzailea agertu ez da",
+    "CLIENT_ABSENT": "Bezeroa agertu ez da",
+    "ADRESSE": "Helbidea",
+    "DATE": "Data",
+    "TOTAL": "Guztira",
+    "FACTURE": "Faktura",
+    "CANCELLED": "Bertan behera",
+    "DELETED": "Ezabatu",
+    "AVIS": "Iritzia",
+    "SUPPORT": "Laguntza",
+    "CODE": "Berrespen-kodea",
+    "CODE_A_DONNER": "Eman beharreko kodea hornitzaileari",
+    "PRESTA_ABSENT": "Hornitzailea agertu ez da"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Dendaren iritziak",
+    "COMMENT": "Iruzkina",
+    "NOTE": "Puntuazioa",
+    "CLOSE": "Itxi"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Ez dago irudirik galerian."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Baloratu zure eskaera",
+    "DATE": "Data",
+    "SERVICE": "Zerbitzua",
+    "AVIS": "Zure iritzia",
+    "SEND": "Bidali",
+    "PLACEHOLDER": "Deskribatu zure esperientzia…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Ekar ezazu etxera",
+    "KNOWMORE": "Argibide gehiago",
+    "PART1TITLE": "Etxean gozatu edertasun-zerbitzu onenez",
+    "PART1TEXT": "Gure profesional kualifikatuek etxera joango dira kalitatezko edertasun-zaintzak eskaintzera, zure behar eta desioetara egokituak. Esperientzia paregabea bizi, bazkalorduan, lanaren ondoren edo lagunarteko arratsalde batean.",
+    "PART2TITLE": "Lan egin nahi duzunean, sortu diru-sarrerak zure erritmora",
+    "PART2TEXT": "Plataforman jasotako eskaerak zure erritmoan onartuz, diru-sarrerak sortu. Zure materiala erabil dezakezu edo material profesionala alokatu IzyGlam bidez.",
+    "PART3TITLE": "Edertasun-zerbitzuak enpresentzat berrasmatuak",
+    "PART3TEXT": "Glam for Business enpresa tamaina guztietarako plataforma da, zure bezero eta langileen edertasun-beharrak kudeatzeko pentsatua. Eska ezazu zaintza pertsonalizatua zuzenean lanlekuan, enpresa-ekitaldietan edo une berezietan. Gure profesional kualifikatuek zure beharretara egokitutako zerbitzuak eskainiko dituzte.",
+    "APPTITLE": "Aplikazioekin errazagoa da",
+    "DOWNLOADAPP1": "Deskargatu aplikazioa",
+    "DOWNLOADAPP2": "Deskargatu edertasun-profesionalentzako aplikazioa",
+    "SCANTODOWNLOAD": "Eskaneatu deskargatzeko",
+    "SIGNUP": "Eman izena!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Bideoa erreproduzitzean errorea",
+    "AUTOPLAY_BLOCKED": "Autoerreprodukzioa blokeatuta. Sakatu bideoa ikusteko.",
+    "NAV_ERROR": "Ezin da nabigatu"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "IzyGlam aplikazioen eta webguneen funtzionamendua",
+    "HELPCENTER": "Sarbidea laguntza zentrora",
+    "BUSINESS": "Enpresa",
+    "ABOUT": "Honi buruz",
+    "OURSERVICES": "Gure zerbitzuak",
+    "PRESSAREA": "Prentsa gunea",
+    "INVESTORS": "Inbertitzaileak",
+    "CAREERS": "Lan-eskaintzak",
+    "AI": "Adimen Artifiziala",
+    "PRODUCTS": "Produktak",
+    "GLAM": "IzyGlam-ekin beti ondo",
+    "RESERVED": "Erreserbatu aldez aurretik",
+    "GIFTCARDS": "Opari-txartelak",
+    "WORKWITHUS": "Lan egin IzyGlam-ekin",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Pribatutasuna",
+    "ACCESS": "Irisgarritasuna",
+    "CONDITIONS": "Baldintzak",
+    "LANGUAGE": "Hizkuntza",
+    "LOCALISATION": "Kokapena",
+    "ALL_RIGHT": "Eskubide guztiak erreserbatuta"
+  },
+  "COMING_SOON": {
+    "TITLE": "Laster iritsiko gara",
+    "TITLE-NOT-COMING": "Oraindik ez dugu etortzeko planik",
+    "DAYS": "Egun",
+    "HOURS": "Ordu",
+    "MINUTES": "Minutu",
+    "SECONDS": "Segundo",
+    "TEXT": "Gogor ari gara lanean etxeko edertasun-esperientzia paregabea eskaintzeko. Mantendu konektatuta gure abiaraztearen berri izateko."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Uneko eskaintzak",
+    "DISCOVER": "IzyGlam-en aurkitu",
+    "LIKED": "Inguruko gustukoenak",
+    "SMART": "Plan azkarrak",
+    "TOP10": "Asteko Top 10",
+    "SEARCHRESULT": "Bilaketaren emaitzak",
+    "AVIS": "Iritziak"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Ile-apainketa",
+    "MANUCURE": "Manikura",
+    "VISAGE": "Aurpegia",
+    "MASSAGE": "Masajea",
+    "MAQUILLAGE": "Makillajea",
+    "EPILATION": "Depilazioa",
+    "BRONZAGE": "Brontzea",
+    "PARTUM": "Erditu ondokoa",
+    "NUTRITION": "Nutrizioa",
+    "FITNESS": "Fitnessa",
+    "ACUPUNCTURE": "Akupuntura",
+    "STYLISME": "Styling-a",
+    "YOGA": "Erlaxazioa",
+    "DEVELOPPEMENT": "Gorakada",
+    "EYELASH": "Betile-luzapenak"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Ile-apaintzaile bat",
+    "MANUCURE": "Manikura bat",
+    "ESTETICIAN": "Estetizista bat",
+    "MASSAGE": "Masajista bat",
+    "MAQUILLAGE": "Makillatzaile bat",
+    "PEDICURE": "Pedikura bat",
+    "NUTRITION": "Nutrizionista bat",
+    "FITNESS": "Entrenatzaile bat"
+  },
+  "INTRO": {
+    "NORESULTS": "Ez da emaitzarik aurkitu",
+    "START": "Hasi",
+    "SPECIALITY": "Espezialitatea?",
+    "WHERE": "Non?",
+    "CONNEXION": "Saioa hasi",
+    "REGISTRATION": "Izen-ematea"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Kontuari buruzko informazioa",
+    "MESSAGE": "Nire mezuak",
+    "MESSAGE_SUBTITLE": "Nire abian diren elkarrizketen zerrenda.",
+    "INFORMATION_SUBTITLE": "Editatu zure datu pertsonalak erraz.",
+    "SECURITY": "Segurtasuna eta hizkuntza",
+    "SECURITY_SUBTITLE": "Pasahitza, hizkuntza… dena kontrolpean hemen.",
+    "CONFIDENTIAL": "Pribatutasuna eta datuak",
+    "CONFIDENTIAL_SUBTITLE": "Zure datuak baliotsuak dira. Hona hemen nola zaintzen ditugun.",
+    "DASHBOARD": "Arbela",
+    "DASHBOARD_SUBTITLE": "Kudeatu erraz zure jardueraren datuak.",
+    "COMPANY": "Nire enpresaren kudeaketa",
+    "COMPANY_SUBTITLE": "Kudeatu erraz zure hitzorduak (igaroak, datozenak edo bertan behera).",
+    "SHOP": "Nire saloiaren kudeaketa",
+    "SHOP_SUBTITLE": "Kudeatu zure saloia, zerbitzuak eta finantzak.",
+    "FINANCIAL": "Finantzen jarraipena",
+    "ADMIN": "Administrazio orokorra",
+    "ADMIN_SUBTITLE": "Kudeatu erraz obra honen guztia. Zure esku mundua, txapeldun!",
+    "CALENDAR": "Agenda",
+    "CALENDAR_SUBTITLE": "Kudeatu erraz zure hitzorduak (igaroak edo datozenak).",
+    "SELECT_SALON": "Hautatu saloi bat",
+    "NEW_SALON": "Sortu saloi bat",
+    "SHOP_TO_CREATE": "Sortzeko dendaren mota",
+    "CANCEL": "Utzi",
+    "CREATE": "Sortu nire denda",
+    "INFO1": "Zure denda ezabatzera zoaz:",
+    "INFO2": "Ekintza hau atzeraezina da",
+    "SURE": "Ziur jarraitu nahi duzula?",
+    "DELETE": "Ezabatu"
+  },
+  "PROFILE": {
+    "TITLE": "Oinarrizko informazioa",
+    "FIRSTNAME": "Izena",
+    "LASTNAME": "Abizena",
+    "PHONE": "Telefono-zenbakia",
+    "ADDRESS": "Helbide elektronikoa",
+    "CHANGE_USER": "Aldatu erabiltzailea",
+    "CANCEL": "Utzi",
+    "SUCCESS": "Profila ondo aldatu da",
+    "UPDATE_ERROR": "Errore bat gertatu da pasahitza eguneratzean."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Aldatu pasahitza",
+    "ACTUAL_PASSWORD": "Oraingo pasahitza",
+    "NEW_PASSWORD": "Pasahitz berria",
+    "CONFIRMED_PASSWORD": "Berretsi pasahitz berria",
+    "CHANGE_PASSWORD": "Aldatu pasahitza",
+    "CHANGE_OK": "Pasahitza behar bezala aldatu da",
+    "CHANGE_LANGUE": "Aldatu hizkuntza",
+    "CHANGE_COUNTRY": "Aldatu herrialdea",
+    "LANGUE": "Hizkuntza",
+    "COUNTRY": "Herrialdea"
+  },
+  "PAYEMENT": {
+    "YOU": "Zu",
+    "HEADER_TITLE": "Ordainketa",
+    "SERVICE_TITLE": "Zerbitzua",
+    "SERVICE_NOTE": "Oharra:",
+    "ADDRESS_TITLE": "Zerbitzuaren helbidea",
+    "ADDRESS_RENDEZVOUS": "Geratu nire ate aurrean",
+    "ADDRESS_CHANGE": "Hautatu beste helbide bat",
+    "PAYMENT_SECTION_TITLE": "Ordainketa",
+    "PAYMENT_METHOD": "Txartel nagusia",
+    "PAYMENT_EXPIRE": "Iraung.:",
+    "PAYMENT_NO_CARD": "Ez dago txartel nagusirik definituta",
+    "PAYMENT_NO_CARD_DESC": "Mesedez, gehitu edo hautatu txartel bat ordainketa-metodo nagusi gisa.",
+    "SUMMARY_SUBTOTAL": "Azpitotala",
+    "SUMMARY_SERVICE_FEE": "IzyGlam komisioa",
+    "SUMMARY_DELIVERY_FEE": "Zerbitzu-tasak",
+    "SUMMARY_TOTAL": "Guztira",
+    "TITLE": "Hartu zure hitzordua online",
+    "FOR_WHO": "Noren izenean hartzen duzu hitzordua?",
+    "ADD_PROCHE": "Gehitu gertukoa",
+    "WHERE": "Non jasoko duzu hitzordua?",
+    "SELECT_ADDRESS": "Hautatu helbide bat",
+    "ADD_ADDRESS": "Gehitu helbide bat",
+    "CARD_PAY": "Ordainketa kreditu-txartelarekin",
+    "CARD_NUM": "Txartel-zenbakia",
+    "CARD_NAME": "Izen-abizenak txartelean",
+    "EXPIRATION": "Iraungitze-data",
+    "CVV": "CVV",
+    "RDV": "Zure hitzorduaren xehetasunak",
+    "RESUME": "Hitzorduaren laburpena",
+    "DATE": "Data",
+    "HOUR": "Ordua",
+    "PRESTA": "Zerbitzua",
+    "EXPIRE": "Iraungitze-data",
+    "DEFAULT": "Lehenetsia",
+    "NOCARD": "Ez dago txartelik gordeta",
+    "WITH": "Honekin",
+    "TOTAL": "Ordaindu beharreko guztira",
+    "ANNULER": "UTZI",
+    "RETOUR": "ATZERA",
+    "CONTINUER": "JARRAITU",
+    "VALIDER": "BALIOZTU",
+    "ADRESSE": "Helbidea",
+    "LEGAL_TEXT_1": "Eskaera egiteko botoia sakatzean, izyGlam France SAS (ROS 841 983 828) enpresarekin banaketa-zerbitzuen kontratua onartzen duzu.",
+    "LEGAL_TEXT_2": "Gogorarazten dizugu banaketa-zerbitzuei dagokien atzera egiteko eskubideari uko egiten diozula. Kontsumo-arloko bitartekari batengana jo dezakezu hemen.",
+    "LEGAL_TEXT_3": "Banatzailea iristen denean ez bazaude, zure eskaera ate aurrean utziko du. Eskaera egiterakoan, bidalita dagoenean ardura osoa onartzen duzu. Ez bazaude, alkohol edo murrizketadun artikuluak dituzten eskaerak establezimendura itzuliko dira.",
+    "CLOSE_FORM": "Itxi inprimakia",
+    "ADD_CARD": "Gehitu txartela",
+    "TRAITEMENT": "Prozesatzen"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Ordainketa balioztatuta",
+    "THANKS": "Eskerrik asko! Zure erreserba behar bezala erregistratu da.",
+    "BACKHOME": "Itzuli hasierara",
+    "PROBLEME": "Erreserba-arazoa",
+    "PAIEMENT": "Zure ordainketa kargatu da, baina erreserba ezin izan da berretsi.",
+    "THANKSCONTACT": "Jar zaitez gure laguntza-taldearekin harremanetan helbide honetan:",
+    "FAILED": "Ordainketak huts egin du",
+    "VALIDATE": "Ezin izan dugu zure ordainketa balioztatu. Saiatu berriro."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "IzyGlam autonomoentzat",
+    "STEP1": {
+      "TITLE": "Bezeroek eskaerak egiten dituzte",
+      "TEXT": "Bezeroak zure establezimendua aurkitzen du eta eskaera egiten du IzyGlam aplikazioan."
+    },
+    "STEP2": {
+      "TITLE": "Zuk erreserba onartzen duzu",
+      "TEXT": "Erreserba onartzen duzu eta zure egutegia eguneratzen da."
+    },
+    "STEP3": {
+      "TITLE": "Hitzorduaren unean",
+      "TEXT": "Aldez aurretik jakinaraziko dizugu datozen erreserbez eta bezero bakoitzarengana gidatuko zaitugu."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Kreditatu enpresaren kontua",
+    "SOLDE": "Uneko saldoa",
+    "CREDIT": "Kreditatu beharreko zenbatekoa",
+    "COMPANY": "Kreditatu enpresaren kontua",
+    "DEPENSE": "Gastu jarraipena",
+    "DATE": "Data",
+    "COUNT": "Zenbatekoa",
+    "EMPLOYEE": "Langilea",
+    "DESCRIPTION": "Deskribapena"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Dagoeneko bazara bazkide edo enpresa-kontu baten jabe!",
+    "NOT_CONNECTED": "Mesedez, hasi saioa saloi bat erregistratzeko",
+    "TITLE": "Hasi bidea!",
+    "TITLE2": "Sortu dezagun saloi bat!",
+    "NAME": "Zure saloiaren izena",
+    "ADDRESS": "Zure enpresaren helbidea",
+    "STREET": "Kalea",
+    "CITY": "Hiria",
+    "CODE_POSTAL_POSSIBLE": "Zerbitzatutako posta-kodeak",
+    "CODE_POSTAL": "Posta-kodea",
+    "COUNTRY": "Herrialdea",
+    "ADDRESSPLACEHOLDER": "Adib.: Kale Nagusia 123",
+    "FLOOR": "Solairua/gelaxka (aukerakoa)",
+    "BUSINESSTYPE": "Enpresa mota",
+    "FIRSTNAME": "Izena",
+    "LASTNAME": "Abizena",
+    "PASSWORD": "Pasahitza",
+    "PASSWORDCONFIRMED": "Pasahitzaren baieztapena",
+    "EMAIL": "E-posta",
+    "PHONE": "Telefono mugikorra",
+    "WHATSAPP": "WhatsApp bidezko mezuak jasotzea onartzen dut",
+    "BUTTON": "Gorde denda",
+    "SUCCESS": "Denda ondo sortu da!",
+    "ERROR": "Errorea denda sortzean:",
+    "ERROR1": "Zure enpresaren izena derrigorrezkoa da.",
+    "ERROR2": "Zure enpresaren helbidea derrigorrezkoa da.",
+    "ERROR3": "Enpresa mota derrigorrezkoa da.",
+    "ERROR4": "Izena derrigorrezkoa da.",
+    "CHOOSE_COUNTRY": "Hautatu herrialdea",
+    "POSTAL_CODE": "Posta-kodea",
+    "CHOOSE_CITY": "Hautatu hiria",
+    "ERROR5": "Abizena derrigorrezkoa da.",
+    "ERROR6": "E-posta derrigorrezkoa da.",
+    "ERROR7": "Telefono mugikorra derrigorrezkoa da.",
+    "ERROR8": "WhatsApp mezuak jasotzea onartu behar duzu."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Aldatu helbidea",
+    "FIND_SHOP": "Bilatu denda",
+    "CATEGORIES": "Kategoriak",
+    "OFFRE": "Uneko eskaintzak",
+    "DISCOVER": "Aurkitu",
+    "APPRECIATE": "Gehien gustatuak",
+    "SMART": "Plan azkarrak",
+    "TOP10": "Asteko Top10",
+    "SEARCH_RESULT": "Bilaketaren emaitzak",
+    "NOT_AVAILABLE": "Oraindik ez dago helbide honetan eskuragarri",
+    "NEW_ADDRESS": "Gehitu helbide berria",
+    "CHOOSE_ADDRESS": "Aukeratu helbide bat",
+    "CHOOSE_COUNTRY": "Hautatu herrialdea",
+    "CHOOSE_CITY": "Hautatu hiria",
+    "CHOOSE_ARRONDISSEMENT": "Hautatu barrutia",
+    "CANCEL": "Utzi",
+    "SAVE": "Gorde",
+    "CLOSE": "Itxi"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Izena",
+    "CITY": "Hiria",
+    "NOTE": "Puntuazioa",
+    "MIDDLE_PRICE": "Batez besteko prezioa",
+    "PROMOTION": "Promozioa",
+    "ACTIONS": "Ekintzak",
+    "MODIFIER": "Aldatu dendaren informazioa",
+    "SHOP_NAME": "Dendaren izena",
+    "DESCRIPTION": "Deskribapena",
+    "PRINCIPALE": "Irudi nagusia",
+    "SHOP": "Denda mota",
+    "ARRONDISSEMENT": "Barrutia",
+    "MINIMUM_DELAI": "Gutxieneko epea",
+    "DISTANCE": "Gehieneko distantzia (km)",
+    "EMPLACEMENT": "Kokapena",
+    "HOURS_MORNING": "Irekitze orduak - Goiza",
+    "HOURS_AFTERNOON": "Irekitze orduak - Arratsaldea",
+    "ACTIVE_PROMO": "Promo aktiboa",
+    "CANCEL": "Utzi",
+    "ENREGISTRER": "Gorde"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Zabaldu zure jarduera",
+    "TEXT": "IzyGlam aplikazioaren milaka erabiltzailek zure eremuan zerbitzuak bila ditzakete…",
+    "IMAGE": "irudia"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Zergatik IzyGlam?",
+    "STEP1": {
+      "TITLE": "Lan egin zure baldintzetan",
+      "TEXT": "Antolatu zure egutegia eta kudeatu zure zerbitzuak askatasunez. Plataforma malgu batez baliatu zure jarduera maximizatzeko."
+    },
+    "STEP2": {
+      "TITLE": "Indartu zure presentzia digitalean",
+      "TEXT": "Ekarri bezero gehiago aplikazioan sartzen diren marketin-tresnei esker eta hobetu emaitzak ikusgarritasuna handituz."
+    },
+    "STEP3": {
+      "TITLE": "Fidelizatu zure bezeroak",
+      "TEXT": "Eraiki harreman iraunkorrak bezeroen lehentasunak aztertuz, iritziei erantzunez eta leialtasun-abantailak eskainiz."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Erraztu zure jardueraren kudeaketa",
+      "TEXT": "Kudeatu zure jarduera lasaitasunez IzyGlam-ekin, ongizate-profesionalentzako konponbide osoarekin. Baliatu tresna malguak eta laguntza pertsonalizatua zure behar guztietarako."
+    },
+    "STEP2": {
+      "TITLE": "Bultzatu salmentak",
+      "TEXT": "Egunero, milaka pertsonak erabiltzen dute IzyGlam inguruko edertasun-adituak aurkitzeko. Baliatu aukera hau zure arloko bezero berrietara iristeko."
+    },
+    "STEP3": {
+      "TITLE": "Bezeroen gogobetetasuna bermatuta",
+      "TEXT": "IzyGlam-ekin, eskaintzen diezu esperientzia pertsonalizatua zure bezeroei. Kudeatu erraz hitzorduak, komunikatu azkar eta eskaini egokitutako zerbitzuak. Zure bezeroek nahi dutenean eta nonahi jasoko dute zaintza, haien gogobetetasuna eta leialtasuna bermatuz."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "IzyGlam zure enpresarentzat?",
+    "STEP1": {
+      "TITLE": "Zure langileek eta bezeroek zerbitzuak erreserbatzen dituzte",
+      "TEXT": "Zure langileek edo bezeroek zuzenean aukeratzen dituzte ongizate-zerbitzuak IzyGlam aplikazioan."
+    },
+    "STEP2": {
+      "TITLE": "Esleitzeko zenbatekoa erabakitzen duzu",
+      "TEXT": "Zure esku dago zure langileen eta bezeroen kontuak kreditatzea. Aldizka edo unean uneko kredituak egin ditzakezu."
+    },
+    "STEP3": {
+      "TITLE": "Zerbitzuak gauzatzen dira",
+      "TEXT": "Gure edertasun-adituak joango dira zure langileengana edo egoitzara erreserbatutako zerbitzuak ematera, ongizate-esperientzia ezin hobea bermatuz."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Indartu zure enpresa",
+    "TEXT": "IzyGlam aplikazioaren milaka erabiltzailek ongizate-zerbitzuak bilatzen dituzte. Eska ezazu zure langile eta bezeroei sarbide pribilegiatua inguruko edertasun-aditu onenetara.",
+    "IMAGE": "irudia"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Zergatik IzyGlam?",
+    "STEP1": {
+      "TITLE": "Fidelizatu eta saritu zure langileak",
+      "TEXT": "Eskaini abantaila berezia zure taldeei: hileko edertasun-aurrekontua. Ile-apaintzaileak, estetizistak eta ongizate-aditu gehiago beren eskura, gogobetetasuna eta kidetasuna hobetzeko."
+    },
+    "STEP2": {
+      "TITLE": "Hobetu zure marka-irudia",
+      "TEXT": "Antolatu edertasun-ekitaldiak zure bezeroentzat edo bazkideentzat, edo integratu IzyGlam-eko zerbitzuak leialtasun-programetan. Utzi arrastoa kalitate goreneko zaintzekin."
+    },
+    "STEP3": {
+      "TITLE": "Optimizatu ongizatea lanean",
+      "TEXT": "Erraztu zure langileek ongizate-zerbitzuetarako sarbidea zuzenean lanlekutik edo ondotik. Haien ongizateaz arduratuz, motibazioa eta taldekideen kohesioa handituko dituzu."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Erraztu ongizaterako sarbidea zure taldeentzat",
+      "TEXT": "IzyGlam-ekin, eskaini irtenbide sinple eta malgua zaintzeko. Edertasun-zerbitzuak zein forma fisikoa, dena eskura."
+    },
+    "STEP2": {
+      "TITLE": "Eskaini bezeroei abantaila berritzaileak",
+      "TEXT": "Indartu harremanak bezeroekin ekitaldietan edo leialtasun-programetan ongizate-zerbitzuak eskainiz. Erakutsi haien esperientzia zaintzen duzula."
+    },
+    "STEP3": {
+      "TITLE": "Neurrira egindako ongizatea, non eta noiz nahi",
+      "TEXT": "IzyGlam-ekin, zure langile eta bezeroek kalitatezko zerbitzuak jaso ditzakete nonahi. Haien behar zehatzei egokitutako adituak eta laguntza pertsonalizatua, gogobetetasuna bermatzeko."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Kudeatu kontua",
+    "ORDERS": "Eginiko eskaerak",
+    "FAVORITES": "Gogokoak",
+    "HELP": "Laguntza",
+    "MY_ABO": "Nire harpidetza",
+    "PRICES": "Planak",
+    "FIDELITY": "Leialtasun-programa",
+    "LOGOUT": "Saioa itxi",
+    "YOUR_BEAUTY_SERVICES": "Eskaini zure edertasun-zerbitzuak",
+    "YOUR_COMPANY": "Erregistratu zure enpresa"
+  },
+  "SUBTITLES": {
+    "HELP": "Laguntza behar? Orri hau zuretzat da."
+  },
+  "ORDERS": {
+    "TITLE": "Nire eskaerak",
+    "TITLE_SUBTITLE": "Kudeatu erraz zure hitzorduak (igaroak, datozenak edo bertan behera).",
+    "UPCOMING_SECTION": "📅 Laster",
+    "NO_UPCOMING": "Ez duzu zerbitzurik planifikatuta.",
+    "PAST_SECTION": "✅ Eginak",
+    "NO_PAST": "Ez duzu egindako zerbitzurik.",
+    "ADDRESS": "Helbidea",
+    "DATE": "Data",
+    "TOTAL": "Guztira",
+    "ITEMS": "artikulu",
+    "DELETE": "Ezabatu",
+    "VISIT": "Bisitatu",
+    "PRESTA_FOR": "Zerbitzua norentzat",
+    "AT": "—",
+    "ORDER_AGAIN": "Eskatu berriro",
+    "INVOICE": "Eskatu faktura",
+    "REVIEW": "Eman zure iritzia",
+    "CANCEL": "Utzi"
+  },
+  "FIDELITY": {
+    "TITLE": "Nire gogokoak",
+    "AGAIN": "Oraindik",
+    "AGAIN_SUBTITLE": "zure saria lortu aurretik",
+    "TITLE_SUBTITLE": "zure oparia desblokeatzeko",
+    "DATE": "Baliozkoa — arte",
+    "HISTO": "Nire zaintzen historia"
+  },
+  "FAVORITES": {
+    "TITLE": "Nire gogokoak",
+    "TITLE_SUBTITLE": "Bilatu berehala zure gustuko saloiak."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Zerbitzu-tasak:",
+    "DISTANCE": "Gehieneko distantzia:",
+    "PAYEMENT": "Ordainketa txartelarekin eta PayPalekin onartua",
+    "PRESS_FOR_INFO": "Sakatu ordutegiak eta informazioa ikusteko.",
+    "GALLERY": "Irudi-galeria",
+    "SEE_MORE": "Ikusi gehiago",
+    "SEE_LESS": "Ikusi gutxiago"
+  },
+  "LOGIN": {
+    "TITLE": "Sartu zure saio-datuak.",
+    "FORGET_PASSWORD": "Ahaztu duzu pasahitza?",
+    "CONTINUER": "Jarraitu",
+    "CONTINUE_WITH": "Jarraitu honekin",
+    "OR": "Edo",
+    "QRCODE": "Hasi saioa QR kodearekin",
+    "CGU": "Jarraitzearen bidez, onartzen duzu IzyGlam eta bere filialek deiak, WhatsApp mezuak edo SMSak (automatizatuak izan daitezkeenak) bidaltzea emandako zenbakira.",
+    "PLACEHOLDER_EMAIL": "Helbide elektronikoa",
+    "PLACEHOLDER_PASSWORD": "Pasahitza",
+    "PLACEHOLDER_PASSWORD_NEW": "Pasahitz berria",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Berretsi pasahitza",
+    "CHANGE_PASSWORD": "Aldatu zure pasahitza",
+    "REINIT": "Berrezarri"
+  },
+  "SIGNUP": {
+    "GENRE": "Generoa",
+    "CHOOSE": "Hautatu",
+    "SEX_MALE": "Gizona",
+    "SEX_FEMALE": "Emakumea",
+    "TITLE": "Sartu zure datu pertsonalak.",
+    "CONTINUER": "Jarraitu",
+    "OR": "Edo",
+    "QRCODE": "Hasi saioa QR kodearekin",
+    "CGU": "Jarraitzearen bidez, onartzen duzu IzyGlam eta bere filialek deiak, WhatsApp mezuak edo SMSak (automatizatuak izan daitezkeenak) bidaltzea emandako zenbakira.",
+    "PLACEHOLDER_FIRSTNAME": "Izena",
+    "PLACEHOLDER_LASTNAME": "Abizena",
+    "PLACEHOLDER_EMAIL": "E-posta",
+    "PLACEHOLDER_EMAIL_REQUIRED": "E-posta beharrezkoa da",
+    "PLACEHOLDER_EMAIL_WRONG": "E-posta-formatu baliogabea",
+    "PLACEHOLDER_PHONE": "Telefonoa",
+    "PLACEHOLDER_PHONE_NUMBER": "Telefono-zenbakia",
+    "PLACEHOLDER_PASSWORD": "Pasahitza",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Pasahitzaren baieztapena",
+    "COUNTRY": "Herrialdea"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Frantsesa",
+    "ANGLAIS": "Ingelesa",
+    "ESPAGNOL": "Espainiera",
+    "NEERLANDAIS": "Nederlandera",
+    "ITALIEN": "Italiera",
+    "ALLEMAND": "Alemana",
+    "PORTUGAIS": "Portugesa",
+    "POLONAIS": "Poloniera",
+    "DANOIS": "Daniera",
+    "FINNOIS": "Finlandiera",
+    "SUEDOIS": "Suediera",
+    "ARABE": "Arabiera",
+    "TURC": "Turkiera",
+    "CHINOIS": "Txinera",
+    "RUSSE": "Errusiera",
+    "PERSAN": "Persiera",
+    "UKRAINIEN": "Ukrainera",
+    "ROUMAIN": "Errumaniera",
+    "CATALAN": "Katalana",
+    "BASQUE": "Euskara",
+    "GALICIEN": "Galiziera",
+    "ALBANAIS": "Albaniera",
+    "KURDE": "Kurdua",
+    "ESTONIEN": "Estoniera",
+    "SOMALIEN": "Somaliera",
+    "BIELORUSSE": "Bielorrusiera",
+    "JAPONAIS": "Japoniera",
+    "COREEN": "Koreera",
+    "INDONESIEN": "Indonesiera",
+    "MALAIS": "Malaysiera",
+    "THAI": "Thaiera",
+    "VIETNAMIEN": "Vietnamera",
+    "TAGALOG": "Tagaloa",
+    "BENGALI": "Bengalera"
+  },
+  "COUNTRY": {
+    "FRANCE": "Frantzia",
+    "ALLEMAGNE": "Alemania",
+    "SPAIN": "Espainia",
+    "ITALY": "Italia",
+    "DANEMARK": "Danimarka",
+    "FINLAND": "Finlandia",
+    "NETHERLAND": "Herbehereak",
+    "POLAND": "Polonia",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Suedia",
+    "CHINA": "Txina",
+    "INDIA": "India",
+    "JAPAN": "Japonia",
+    "SOUTH_KOREA": "Hego Korea",
+    "INDONESIA": "Indonesia",
+    "PHILIPPINES": "Filipinak",
+    "THAILAND": "Thailandia",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malaysia",
+    "SINGAPOURE": "Singapur",
+    "EMIRAT_ARABE": "Arabiar Emirerri Batuak",
+    "SAUDI_ARABIA": "Saudi Arabia"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Nire helbideak",
+    "ADDRESS_MODIFICATION": "Helbidea aldatzea",
+    "STREET": "Kalea",
+    "CITY": "Hiria",
+    "CP": "Posta-kodea",
+    "CREATE": "Sortu",
+    "BACK": "Itzuli",
+    "CHANGE": "Aldatu",
+    "CLOSE": "Itxi"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Plataformaren ezarpenak",
+    "COMMISSION": "Komisio-tasa (%)",
+    "0to100": "0 eta 100 arteko balioa derrigorrezkoa",
+    "SERVICE": "Zerbitzu-tasak (€)",
+    "WEEKS": "Erakutsitako aste kopurua",
+    "SUP0": "0 baino handiagoa den balioa derrigorrezkoa",
+    "LESS24": "24 ordu baino gutxiagoan ezeztatze-tasa (%)",
+    "LESS48": "48 ordu baino gutxiagoan ezeztatze-tasa (€)",
+    "DELAY": "Erreserben gutxieneko aurrerapena (ordu)",
+    "TVA": "BEZ tasa (%)",
+    "ADS": "Aktibatu iragarkiak",
+    "COMPANY": "Aktibatu enpresekin merkataritza",
+    "FIDELITY": "Aktibatu leialtasuna",
+    "MULTI_SHOP": "Aktibatu denda anitz",
+    "PROMO": "Aktibatu promozioak dendan",
+    "SPONSORS": "Aktibatu babesleen atala lurreratze-orrian",
+    "SAVE": "Gorde"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Denda kopuru osoa",
+    "ACT_SHOPS": "Denda aktibo kopurua",
+    "USERS": "Erabiltzaile kopuru osoa",
+    "NBR_USERS": "Izen-emanda dauden erabiltzaileak",
+    "CA_TOTAL": "Fakturazio osoa",
+    "CA_GENERATED": "Sortutako fakturazioa",
+    "SHOPS_PERFO": "Denden errendimendua",
+    "SHOP_NAME": "Dendaren izena",
+    "CITY": "Hiria",
+    "REVENUES": "Sarrerak",
+    "BOOKINGS": "Erreserba kopurua",
+    "NOTE": "Batez besteko nota",
+    "ACTIONS": "Ekintzak",
+    "DETAILS": "Xehetasunak",
+    "ADJUST": "Doitu",
+    "SHOP_ADJUST": "Denda doitzea",
+    "STILL_DEVELOPPED": "Funtzio hau oraindik garapen-fasean dago",
+    "CLOSE": "Itxi"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Gertaeraren xehetasunak",
+    "CLIENT": "Bezeroa",
+    "DEBUT": "Hasiera",
+    "FIN": "Amaiera",
+    "ADDRESS": "Helbidea",
+    "PHONE": "Telefonoa",
+    "CANCEL": "Utzi",
+    "SAVE": "Gorde"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Sortu gertaera",
+    "COMING": "Helduko direnak",
+    "PAST": "Igaroak",
+    "CANCELLED": "Bertan behera",
+    "NO_CANCELLED": "Ez dago bertan behera utzitako eskaerarik."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Lineako laguntza"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Langileen kudeaketa",
+    "NAME": "Izena",
+    "EMAIL": "E-posta",
+    "SOLDE": "Kontuaren saldoa",
+    "ACTIONS": "Ekintzak",
+    "DEFAULT_PASSWORD": "Lehenetsitako pasahitza",
+    "REINITIALIZE_PASSWORD": "Berrezartzeko lehenetsitako pasahitza",
+    "CHANGE_PASSWORD": "Aldatu pasahitza"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Langilearen kontua kreditatu",
+    "AMOUNT": "Kreditatzeko zenbatekoa",
+    "CANCEL": "Utzi",
+    "SAVE": "Balidatu"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Erreserba kopuru osoa",
+    "TOTAL_MONTH": "Hil honetan egindako erreserbak",
+    "GENERATED": "Sortutako sarrerak",
+    "MONTHLY": "Hil honetako sarrerak",
+    "AVG_NOTE": "Batez besteko notak",
+    "BASED_ON": "Honetan oinarrituta",
+    "REVIEWS": "iritzi",
+    "NEXT_APPOINTEMENT": "Hurrengo hitzorduak",
+    "POPULAR_SERVICES": "Zerbitzurik ezagunenak",
+    "RESERVATION": "erreserba"
+  },
+  "FINANCE": {
+    "PROGRESS": "Eboluzioa aurreko hilabetetik",
+    "PROGRESSION": "Aurrerapena",
+    "TOTAL_GENERATED": "Sortutako fakturazio osoa",
+    "CA": "Fakturazioa",
+    "COMMISSION_TAKEN": "Kobraatutako komisioa",
+    "COMMISSIONS": "Komisioak",
+    "NET_TO_PAY": "Ordainketa garbia",
+    "DISPO_AMOUNT": "Eskuragarri dagoen zenbatekoa",
+    "REQUEST_WITHDRAWAL": "Eskatu transferentzia",
+    "TAKE": "Atera beharreko zenbatekoa",
+    "TOTAL_EARNINGS": "Irabazi garbiak",
+    "TOTAL_BOOKINGS": "Egindako zerbitzuak",
+    "CANCELLED_BOOKINGS": "Bertan behera utzitako zerbitzuak",
+    "SERVICES_CANCELLED": "Ezeztatutako edo baztertutako erreserbak",
+    "SERVICES_COMPLETED": "Amaitutako erreserbak",
+    "AVG_PRICE": "Batez besteko prezioa",
+    "PER_SERVICE": "Zerbitzuka",
+    "REVIEW_RATIO": "Bezeroen iritziak",
+    "CLIENT_FEEDBACK": "Itzuleren tasa",
+    "TOP_PRODUCTS": "Salerosienak",
+    "AVG_DURATION": "Batez besteko iraupena",
+    "DURATION_PER_BOOKING": "Erreserba bakoitzeko denbora",
+    "DETAILS": "Banku-kontuaren xehetasunak",
+    "ASK": "Eskatu transferentzia",
+    "HISTORY": "Transakzioen historia",
+    "DATE": "Data",
+    "AMOUNT": "Zenbatekoa",
+    "COMMISSION": "Komisioa",
+    "STATUS": "Egoera"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Hautatu sortuko den dendaren mota",
+    "CANCEL": "Utzi",
+    "CREATE": "Balidatu"
+  },
+  "PROCHES": {
+    "TITLE": "Nire gertukoak",
+    "UPDATE": "Gertuko bat aldatzea",
+    "FIRSTNAME": "Izena",
+    "NAME": "Abizena",
+    "EMAIL": "E-posta",
+    "PHONE": "Telefonoa",
+    "CREATE": "Sortu",
+    "BACK": "Itzuli",
+    "CHANGE": "Aldatu",
+    "CLOSE": "Itxi"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Eman zure iritzia",
+    "RATING": "Puntuazioa",
+    "COMMENT": "Iruzkina",
+    "CLOSE": "Itxi",
+    "SUBMIT": "Bidali"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Aukeratu zerbitzuaren data",
+    "CANCEL": "Utzi"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Sortu zerbitzua",
+    "NAME": "Izena",
+    "DESCRIPTION": "Deskribapena",
+    "COLOR": "Kolorea",
+    "PRICE": "Prezioa",
+    "TIME": "Iraupena",
+    "IMAGE": "Irudia",
+    "ACTIONS": "Ekintzak",
+    "MINUTES": "minutu",
+    "CHANGE": "Aldatu",
+    "DELETE": "Ezabatu",
+    "SERVICE_NAME": "Zerbitzuaren izena",
+    "TIME_MINUTES": "Iraupena (minututan)",
+    "PREST_IMAGE": "Zerbitzuaren irudia",
+    "NO_PICS": "Oraindik ez dago argazkirik",
+    "UPLOAD": "Igo irudia",
+    "NEW_PIC": "Irudi berriaren aurrebista",
+    "PRESTA_COLOR": "Zerbitzuaren kolorea",
+    "CANCEL": "Utzi",
+    "SAVE": "Gorde",
+    "AVG_PRICE": "Batez besteko tarifa",
+    "IMAGE_OK": "Irudia ondo igo da",
+    "ERROR_IMAGE_LOAD": "Errorea irudia igotzean",
+    "UPDATE_SUCCESS": "Zerbitzua ondo eguneratu da",
+    "ERROR_PRESTA": "Errorea zerbitzua eguneratzean",
+    "PRESTA_UPDATED": "Zerbitzua ondo eguneratu da",
+    "PRESTA_ERROR": "Errorea zerbitzua eguneratzean",
+    "PRESTA_SUCCESS": "Zerbitzua ondo eguneratu da",
+    "PHOTO_ERROR": "Errorea argazkia eguneratzean",
+    "PRESTA_DELETED": "Zerbitzua ondo ezabatu da",
+    "PRESTA_DELETE_ERROR": "Errorea zerbitzua ezabatzean"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Dendaren irudia",
+    "UPLOAD_IMAGE": "Igo irudia",
+    "SNEEK_PIC": "Irudiaren aurrebista",
+    "SHOP_NAME": "Dendaren izena",
+    "DESCRIPTION": "Deskribapena",
+    "DESC_INFO": "(gutx. 25 karaktere)",
+    "CITY": "Hiria",
+    "DISCRICT": "Barrutiak",
+    "LAT": "Latitudea",
+    "LON": "Longitudea",
+    "ZONE": "Mugimendu-eremua (km)",
+    "OPENNING": "Irekitze ordutegiak",
+    "MORNING_OPEN": "Goiza - Irekiera",
+    "MORNING_CLOSE": "Goiza - Itxiera",
+    "AFTERNOON_OPEN": "Arratsaldea - Irekiera",
+    "AFTERNOON_CLOSE": "Arratsaldea - Itxiera",
+    "SAVE": "Gorde denda",
+    "MONDAY": "Astelehena",
+    "TUESDAY": "Asteartea",
+    "WEDNESDAY": "Asteazkena",
+    "THURSDAY": "Osteguna",
+    "FRIDAY": "Ostirala",
+    "SATURDAY": "Larunbata",
+    "SUNDAY": "Igandea",
+    "CLOSED": "Itxita",
+    "GENERATE_IMAGE": "Sortu irudia",
+    "GENERATE_DESCRIPTION": "Sortu deskribapena",
+    "PHOTO": "Onartutako / baztertutako argazkien adibideak",
+    "CODE_POSTAUX": "Zerbitzatutako posta-kodeak",
+    "EXEMPLE_LOCAL": "Adib.: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Gehitu langilea",
+    "LOADING": "Kargatzen",
+    "LIST": "Langileen zerrenda",
+    "ADD": "Gehitu",
+    "EMAIL": "Langilearen e-posta",
+    "FIRSTNAME": "Izena",
+    "FAMILY_NAME": "Abizena",
+    "PHONE": "Telefonoa",
+    "PASSWORD": "Pasahitza",
+    "HAVE_TO": "Eremu guztiak derrigorrezkoak dira.",
+    "EMAIL_ERROR": "E-posta baliogabea.",
+    "EMPLOYEE_OK": "Langilea ondo gehitu da.",
+    "ADD_EMPLOYEE_ERROR": "Errorea langilea gehitzean."
+  },
+  "AVIS": {
+    "TITLE": "ZER DIOTE GURE ERABILTZAILEEK",
+    "AVIS1": "Hasieran eszeptikoa nintzen… baina bai! Nire manikura ezin hobea izan zen, etxean eta estresik gabe. Orain, ostiral arratsaldeko errituala da.",
+    "AVIS2": "Aurpegi-tratamendu bat erreserbatu nuen 3 minututan, sofan eserita. Estetizista atsegina eta adi zegoen… eta nire azala inoiz baino hobea dago.",
+    "AVIS3": "Pentsatzen nuen saloian baino garestiagoa izango zela… sorpresa: prezio bera, eta batzuetan merkeago! Eta ez nuen mugitu behar. Baietz borobila.",
+    "AVIS4": "Urtebetetze baten bezperan zen, eta presazko brushing bat nahi nuen. Bi kliketan aurkitu nuen pro bat. Puntuala, atsegina eta emaitza ikusgarria.",
+    "AVIS5": "Ama bakarra naiz, ez dut denborarik bueltaka ibiltzeko. Hemen, umeak lotan daudenean erreserbatzen dut. Sinplea, azkarra eta benetan bikaina.",
+    "AVIS6": "Nire lehen saioa zoragarria izan zen. Estetizistak berehala lasaitu ninduen. Zaindua sentitu nintzen. Dagoeneko egin dut hurrengorako erreserba!"
+  },
+  "DOWNLOAD": {
+    "USERS": "erabiltzaile pozik",
+    "SOCIAL": "profesional erabilgarri",
+    "STORE": "App Store eta Google Playn"
+  },
+  "TARIF": {
+    "DISCOVER": "Aukeratu zurekin bat datorren plana",
+    "DISCOVER2": "eta hasi zure igoera gailurrerantz",
+    "SOLUTIONS": "Zuk merezi duzu irtenbide eder, indartsu eta zuretzat pentsatua. Iritzia edozein unetan alda dezakezu",
+    "TEST": "Zure lehen saloia %100 doan da. Estresik ez. Magia hutsa.",
+    "START_FREE": "Sortu nire lehen saloia",
+    "FREE": "Ikaslea",
+    "FREE_SUBTITLE": "Hasi zure igoera lehen saloiarekin",
+    "THEN": "ondoren",
+    "MONTHLY": "hilean",
+    "FREE1": "1 saloi aktibo",
+    "FREE2": "Erreserba eta bezero kopuru mugagabea",
+    "FREE3": "Zerbitzuen eta agendaren kudeaketa",
+    "FREE4": "Egutegi pertsonalaren sinkronizazioa",
+    "FREE5": "Primerakoa lasai hasteko",
+    "FREE6": "Sortu saloi doakoa",
+    "BASIC": "Hautatua",
+    "BASIC_SUBTITLE": "Ireki zure potentziala eta hasi distiratzen",
+    "BASIC1": "Gehienez 3 saloi aktibo",
+    "BASIC2": "Zerbitzuen, bezeroen eta hitzorduen kudeaketa osoa",
+    "BASIC3": "Lehentasunezko e-mail euskarria",
+    "BASIC4": "Baliabide esklusiboak zure jarduera hazteko",
+    "BASIC5": "Bezero-sarea handitu nahi duten profesionalentzat",
+    "BASIC6": "Hilabeteko doako proba",
+    "PREMIUM": "Erregina",
+    "PREMIUM_SUBTITLE": "Zure inperioa forma hartzen ari da, zure eragina hazten",
+    "PREMIUM1": "Gehienez 10 saloi aktibo",
+    "PREMIUM2": "Errendimendu estatistika aurreratuak",
+    "PREMIUM3": "Gomendio adimendunak zure fakturazioa handitzeko",
+    "PREMIUM4": "Ikusgarritasun handiagoa IzyGlam plataforman",
+    "PREMIUM5": "Lehentasunezko euskarria",
+    "PREMIUM6": "Asmo handiko autonomoentzat pentsatua",
+    "PREMIUM7": "Eskuratu Erregina",
+    "BUSINESS": "Jainkosa",
+    "BUSINESS_SUBTITLE": "Eskuratu zure tronua, Jainkosa",
+    "BUSINESS1": "Neurrira",
+    "BUSINESS2": "Saloi kopuru mugagabea",
+    "BUSINESS3": "Aholkularitza estrategiko pertsonalizatua",
+    "BUSINESS4": "Ikusgarritasun handitua eta zure saloien sustapena",
+    "BUSINESS5": "Neurrirako soluzioak zure jarduera eskalatzeko",
+    "BUSINESS6": "Jarri gurekin harremanetan",
+    "COMPARE": "Funtzionalitateen konparazioa",
+    "FONCTIONS": "Funtzionalitateak",
+    "BUSINESS9": "Jardueraren kudeaketa osoa",
+    "STUDIO_BASIC": "Baliabide esklusiboak",
+    "STUDIO_ADVANCED": "Estatistikak eta gomendioak",
+    "ANALYSE": "Errendimenduaren analisia",
+    "BASICS": "Klasikoa",
+    "ADVANCE": "Aurreratua",
+    "PLANS": "Saloi aktibo kopurua",
+    "READY": "Prest zure jarduera handitzeko?",
+    "DISCOVERS": "Ezagutu IzyGlam eskaintzak"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Irisgarritasun-adierazpena",
+      "TEXT": "IzyGlam-ek konpromisoa hartzen du zerbitzuak ahalik eta pertsona gehienei eskuragarri egiteko. Gure helburua WCAG 2.2 AA maila lortzea eta RGAA (Frantzia) gidalerroekin lerrokatzea da, ahal den neurrian."
+    },
+    "SCOPE": {
+      "TITLE": "Estaldura-perimetroa",
+      "L1": "Webgune publikoa eta informazio-orriak.",
+      "L2": "Aplikazio weba (arbela) bezero eta profesionalentzat.",
+      "L3": "Mugikorreko aplikazioa (iOS/Android) hala badagokio.",
+      "L4": "Transakzio e-postak eta laguntza-zentroa.",
+      "L5": "Bezeroarentzako arreta-tresnak."
+    },
+    "STATUS": {
+      "TITLE": "Bateragarritasun-egoera",
+      "TEXT": "Adierazpen hau egin den egunean, IzyGlam interfazeak partzialki bateragarriak dira WCAG 2.2 AA / RGAA arauekin. Etengabe hobetzen ari gara eta lehentasunezko hutsuneak zuzentzen."
+    },
+    "PREPARATION": {
+      "TITLE": "Adierazpena prestatzeko metodoa",
+      "L1": "Produktua/UI taldearen auto-ebaluazioak: HTML semantikoa, ARIA rolak, tabulazio-ordena.",
+      "L2": "Eskuzko probak: teklatu bidezko nabigazioa, ikusgai dagoen fokua, %200+ zooma, irakurgailuak.",
+      "L3": "Tresnatutako probak (ikuskapen automatizatua pantaila-laginetan).",
+      "L4": "Egiaztapen jarraitua eguneraketetan (Diseinu Sistema, osagai irisgarriak)."
+    },
+    "FEATURES": {
+      "TITLE": "Irisgarritasun-ezaugarriak",
+      "KEYBOARD": {
+        "TITLE": "Teklatu bidez nabigazioa",
+        "L1": "Ibilbide osoa teklatuarekin (Tab, Shift+Tab, Sartu, Zuriunea, Ihes, geziak).",
+        "L2": "Foku-adierazle ikusgai eta kontrastatua.",
+        "L3": "\"Joan edukira\" estekak goiburua saltatzeko.",
+        "L4": "Menuak, modalak eta goitibeherakoak teklatuarekin kontrolagarri (ireki/itxi, foku-trapaketa kontrolatua, Ihesekin ixtea)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Pantaila-irakurgailuak eta egitura",
+        "L1": "Egitura semantikoa hierarkizatutako izenburuekin (h1→h6) eta landmarkekin (header, nav, main, footer).",
+        "L2": "Etiketa esplizituak eremu eta botoi guztientzat; izen eskuragarri koherenteak.",
+        "L3": "Egoera-aldaketen iragarpena aria-live eremuetan (erroreak, arrakastak, kargak).",
+        "L4": "Irudi informatiboak alt deskriptiboarekin; apaingarriak ezkutatuta."
+      },
+      "CONTRAST": {
+        "TITLE": "Kontrasteak, koloreak eta eskalatzea",
+        "L1": "Helburua ≥ 4.5:1 testu arrunterako eta ≥ 3:1 testu handirako.",
+        "L2": "Interfazea erabilgarria %200 arteko zoomean edukirik edo funtziorik galdu gabe.",
+        "L3": "Ez da informazioa kolore hutsean oinarritzen."
+      },
+      "FORMS": {
+        "TITLE": "Inprimakiak eta errore-mezuak",
+        "L1": "Label⇄input lotura; derrigorrezko eremuen adierazpena.",
+        "L2": "Erroreak eremuaren ondoan eta, behar izanez gero, laburpen gisa.",
+        "L3": "Fokua lehen errorean kokatua; zuzenketa-aholkuak emanda."
+      },
+      "DYNAMIC": {
+        "TITLE": "Edukien dinamika eta animazioak",
+        "L1": "Karrouselak/animazioak pausagarriak eta ez blokeatzaileak.",
+        "L2": "Sistemaren \"animazioak murriztu\" hobespena errespetatzea ahal denean.",
+        "L3": "Modal ez-intrusiboak, teklatuarekin eta kanpo-klikarekin itxigarriak."
+      },
+      "MEDIA": {
+        "TITLE": "Multimedia",
+        "L1": "Bideoak (baldin badaude) azpitituluekin eta/edo transkripzioekin.",
+        "L2": "Audio/bideo elementuak teklatu bidez kontrolagarriak."
+      },
+      "MOBILE": {
+        "TITLE": "Mugikorra",
+        "L1": "Ukitzeko eremu handiak eta nahikoa tarte.",
+        "L2": "TalkBack (Android) eta VoiceOver (iOS) erabilerarekin koherentea."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Ingurune eta laguntza-teknologiak",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Nabigatzaile moderno eguneratuak onartuta."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Irisgaitzak (ikusiak edo posibleak)",
+      "TEXT": "Ahaleginak gorabehera, zenbait elementu oraindik ez dira erabat bateragarriak:",
+      "L1": "Alt deskribagarririk ez duten irudi zaharrak.",
+      "L2": "Hirugarrenen dokumentuak (PDF, eranskinak) guztiz irisgarriak ez izatea.",
+      "L3": "Bideo historikoak azpititulurik/descr. gabe.",
+      "L4": "Hirugarrenen osagaiak (ordainketa, mapak, erreproduzitzaileak) beren mugarekin.",
+      "MOTIVES": "Arrazoi posibleak: hirugarrenen edukia, karga neurrigabea, eguneratze prozesuan."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatibak eta egokitzapen arrazoizkoak",
+      "TEXT": "Formatu alternatiboren bat behar baduzu (adib. dokumentu irisgarria, erreserban laguntza), jarri gurekin harremanetan. Ahaleginak egingo ditugu baliokidea eskaintzeko."
+    },
+    "FEEDBACK": {
+      "TITLE": "Iruzkinak eta laguntza",
+      "L1": "Aplikazioan: Laguntza > Irisgarritasuna.",
+      "L2A": "E-postaz:",
+      "L2B": "edo",
+      "L3": "Mesedez, adierazi pantaila/URLa, gailua, nabigatzailea eta, hala badagokio, pantaila-irakurgailua."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Errekurtso-prozedura (Frantzia)",
+      "TEXT": "Irisgarritasun-akats batek eduki edo funtzionalitatera iristea eragozten badizu eta ez baduzu gure erantzun asegarri bat lortzen, egin dezakezu:",
+      "L1": "Idatzi Eskubideen Defendatzaileari edo bere ordezkariari zure departamenduan,",
+      "L2": "Edo bitartekariarengana jo, hala badagokio.",
+      "MORE": "Informazio gehiago:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Hobekuntza jarraitua",
+      "L1": "Diseinu Sistema osagai irisgarrietan oinarritua.",
+      "L2": "Kode-berrikuspena eta irisgarritasun-probak entrega bakoitzean.",
+      "L3": "Prestakuntza erregularra produktu eta laguntza-taldeentzat.",
+      "L4": "Zuzentzeen lehentasunketa eraginaren arabera."
+    },
+    "DATE": {
+      "TITLE": "Adierazpen data eta eguneratzeak",
+      "TEXT": "Adierazpena 2025eko abenduaren 25ean egin zen. Urtero behintzat eguneratuko da edo aldaketa nagusiak direnean."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Nola erreserbatu zerbitzua IzyGlam-en?",
+    "QUESTION2": "Nola aukeratu niretzat profesional egokia?",
+    "QUESTION3": "Nola aldatu edo ezeztatu nire hitzordua?",
+    "QUESTION4": "Nola jarrai dezaket nire eskaera?",
+    "QUESTION5": "Zein ordainketa-bide erabil ditzaket?",
+    "QUESTION6": "Nola jarraitu nire eskaera edo erreserba?",
+    "QUESTION7": "Eman al dezaket iritzia nire zerbitzuaren ondoren?",
+    "QUESTION8": "Nola erabili nire leialtasun-eskaintzak eta promozioak?",
+    "QUESTION9": "Zer egin behar dut nire eskaerarekin arazoa badut?",
+    "QUESTION10": "Nola jarri harremanetan IzyGlam taldearekin?",
+    "QUESTION11": "Nola funtzionatzen du ezeztapen eta itzulketen politikak?",
+    "QUESTION12": "Beste norbaitentzako erreserbatu al dezaket (oparia, sorpresa)?",
+    "QUESTION13": "Nola bihurtu IzyGlam-eko bazkide profesional?",
+    "QUESTION14": "Nola babestu nire informazio pertsonala IzyGlam-en?",
+    "REPONSE1": "Erraza eta azkarra da. Izen-emanda, aukeratu interesatzen zaizun zerbitzua, begiratu inguruko profesional eskuragarriak, eta hautatu data eta ordua. Egin klik \"Erreserbatu\" botoian amaitzeko eta ordaindu kreditu-txartelarekin. Zure erreserba eskuz balioztatuko du profesionalak. Baztertuz gero, %100ean itzuliko zaizu dirua.",
+    "REPONSE2": "Profesional bakoitzak profila du: zerbitzuak, tarifak, lanen argazkiak eta bezeroen iritziak. Gogokoetan ere gorde ditzakezu. Konparatu profilak behar duzunarekin bat datorrena aukeratzeko.",
+    "REPONSE3": "Zure guneetatik aldatu edo ezeztatu dezakezu erreserba. Ezeztatzeak doakoak dira 24 ordu lehenago arte. Hortik aurrera, tasak aplika daitezke. Arazoa baduzu, gure laguntza zure esku dago.",
+    "REPONSE4": "Sartu zure gunera, \"Nire erreserbak\" atalean. Han ikusiko duzu denbora errealeko jarraipena, ezeztatu edo aldatu ahal izango duzu, eta zure zerbitzuen historia kontsultatu.",
+    "REPONSE5": "Ordainketa esklusiboki kreditu-txartelarekin egiten da (Visa, MasterCard, American Express). Ez dugu onartzen eskudirua ezta PayPal ere. Segurtasun neurriak daude zure lasaitasunerako.",
+    "REPONSE6": "Zure erreserba balioztatzen denean, laburpen e-posta jasoko duzu. Gogorarazpen bat ere bidaliko dizugu zerbitzuaren aurretik (e-posta eta/edo push jakinarazpena). Zure guneetatik ere ikus dezakezu egoera.",
+    "REPONSE7": "Bai. Zerbitzua egin ondoren, gonbidatuko zaitugu profesionalari iritzia ematera. Iritziak eskuz moderatzen dira egiazkotasuna bermatzeko. Profesionalek ezin dute erantzun edo aldatu.",
+    "REPONSE8": "Oraingoz, IzyGlam-ek ez du oraindik leialtasun-programarik edo kode promozionalik. Funtzionalitate hauek etorkizunean aurreikusten dira.",
+    "REPONSE9": "Jarri gurekin harremanetan zuzenean \"Kontaktua\" ataletik edo e-postaz. Ahalik eta azkarren erantzungo dugu (orientagarri) eta arazoa konpontzen lagunduko dizugu.",
+    "REPONSE10": "Webguneko edo aplikazioko kontaktu-inprimakiaren bidez. Bezeroarentzako arreta astelehentik larunbatera, 9:00–18:00. Adibidez: support@izyglam.com",
+    "REPONSE11": "Zure erreserba doan ezeztatu dezakezu aurreikusitako ordutik 24 ordu lehenago arte. Hortik aurrera, tasak aplika daitezke. Profesionalak baztertzen badu, diru-itzulketa automatikoa da. Sistema automatikoa ezartzen ari gara.",
+    "REPONSE12": "Oraindik ezin duzu beste pertsona baterako zuzenean oparia erreserbatu. Hala ere, profesional batek bikote edo familia formulan eskaintzen badu, pertsona bat baino gehiagorentzat erreserbatu dezakezu testuinguru horretan.",
+    "REPONSE13": "Estetizista, ile-apaintzaile edo ongizate-praktikaria zara? Batu IzyGlam komunitatera \"Bazkide bihurtu\" orrian dagoen formularioa betez. Gure taldea laster jarriko da zurekin harremanetan izen-ematea amaitzeko.",
+    "REPONSE14": "Zure datuen segurtasuna gure lehentasuna da. RGPD betebeharrak errespetatzen ditugu. Zerbitzurako behar-beharrezkoak diren datuak soilik partekatzen dira profesionalekin. Barneko mezularitza dago beharrezkoa bada, baina plataforma saihesteko jokabideak gainbegiratuko dira."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Nortzuk gara?",
+      "TEXT": "Pribatutasun Politika honek azaltzen du <strong>IzyGlam</strong> plataformak («gu», «gure» edo «Plataforma») nola biltzen, erabiltzen, gordetzen, partekatzen eta babesten dituen zure datu pertsonalak gure zerbitzuak erabiltzen dituzunean (webgunea, web-aplikazioa, mugikor-aplikazioa, e-postak eta laguntza). <strong>Tratamenduaren arduradun</strong> gisa jokatzen dugu behean deskribatutako tratamenduetarako."
+    },
+    "SCOPE": {
+      "TITLE": "Politikaren esparrua",
+      "TEXT": "Politika hau aplikatzen zaie <strong>bezeroei</strong> (zerbitzuak erreserbatzen dituztenei), <strong>profesionalei</strong> (Plataforman zerbitzuak eskaintzen dituztenei) eta gure interfazeetako <strong>bisitariei</strong>."
+    },
+    "DATA": {
+      "TITLE": "Bildutako datuak",
+      "PROVIDED": {
+        "TITLE": "Zuk emandako datuak",
+        "L1": "<strong>Nortasuna eta kontaktua: </strong> izena, abizena, e-posta, telefonoa, helbidea(k), argazkiak/avatarrak.",
+        "L2": "<strong>Kontua: </strong> kredentzialak, pasahitzak (hash-atuak), hobespenak, hizkuntza.",
+        "L3": "<strong>Erreserbak: </strong> aukeratutako zerbitzuak, data/ordua, esku-hartze helbideak, oharrak, eranskinak.",
+        "L4": "<strong>Ordainketa: </strong> ordainketa-informazioa <em>gure hornitzailearen bidez (adib. Stripe)</em> — ez ditugu zure txartel-datuak gordetzen.",
+        "L5": "<strong>Profesionalak: </strong> profila, zerbitzuak, tarifak, zerbitzu-eremuak, eskuragarritasuna, IBAN (segurtatua), egiaztapen-dokumentuak hala eskatuz gero.",
+        "L6": "<strong>Laguntza: </strong> mezuak, tiket-ak, dei-grabazioak hala badagokio."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Automatikoki bildutako datuak",
+        "L1": "<strong>Datu teknikoak: </strong> gailu eredua, SE, nabigatzailea, bereizmenak, saio-identifikatzaileak.",
+        "L2": "<strong>Erregistroak: </strong> IP helbideak, denbora-zigiluak, errore gertaerak, funtzioen erabilera.",
+        "L3": "<strong>Kokapena: </strong> gutxi gorabeherakoa (IP) edo zehatza (GPS, zure baimen espresuarekin).",
+        "L4": "<strong>Cookieak eta SDKak: </strong> beheko atala ikusi."
+      },
+      "THIRD": {
+        "TITLE": "Hirugarrenen datuak",
+        "L1": "<strong>Ordainketa-hornitzaileak</strong> (ordainketa-egoerak, tokenak).",
+        "L2": "<strong>Analitika/iruzur aurkako bazkideak</strong> (arrisku-seinaleak, erabilera agregatuak).",
+        "L3": "<strong>Integrazioak</strong> (adib. komunikazioa, mapak, hodeiko biltegiratzea)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Helburuak eta oinarri legalak",
+      "TEXT": "Datuak honako hauetarako tratatzen ditugu:",
+      "L1": "<strong>Zerbitzua ematea</strong> (kontua sortzea, erreserba, harremana, jakinarazpenak) — <em>Oinarri legala: kontratua</em>.",
+      "L2": "<strong>Ordainketa eta fakturazioa</strong> — <em>Kontratua, legezko betebeharra</em>.",
+      "L3": "<strong>Segurtasuna, abusu/iruzurren prebentzioa</strong> — <em>Interes legitimoa, legezko betebeharra</em>.",
+      "L4": "<strong>Produktua hobetzea, estatistikak</strong> — <em>Interes legitimoa</em>.",
+      "L5": "<strong>Laguntza eta kalitatea</strong> — <em>Kontratua, interes legitimoa</em>.",
+      "L6": "<strong>Marketin zuzena</strong> (e-postak/aplikazioa) — <em>Baimena behar denean</em>; uko egin dezakezu edozein unetan.",
+      "L7": "<strong>Legezko betetzeak</strong> (kontabilitatea, agintarien eskaerak) — <em>Legezko betebeharra</em>."
+    },
+    "SHARING": {
+      "TITLE": "Datuen partekatzea",
+      "L1": "<strong>Profesionalak / Bezeroak</strong>: zerbitzurako beharrezko informazioa (izena, kontaktua, esku-hartze helbidea, erreserbaren xehetasunak).",
+      "L2": "<strong>Hornitzaileak</strong>: ordainketa (adib. Stripe), ostalaritza/biltegia, analitika, e-mail/SMS push, laguntza, KYC hala bada. <em>Sarbide mugatua eta RGPD kontratuak.</em>",
+      "L3": "<strong>Bazkideak</strong>: zure baimenarekin eskaintza espezifikoetarako.",
+      "L4": "<strong>Agintariak</strong>: legeak hala eskatzen duenean edo gure eskubideak defendatzeko."
+    },
+    "TRANSFERS": {
+      "TITLE": "EB/EEEtik kanpoko transferentziak",
+      "TEXT": "Adekutasun-erabakirik ez duten herrialdeetara datuak bidaltzean, <strong>kontratu-klausula estandarrak</strong> (SCC) erabiltzen ditugu eta neurri osagarriak aplikatzen ditugu."
+    },
+    "RETENTION": {
+      "TITLE": "Kontserbazio-epeak",
+      "L1": "<strong>Kontua eta nortasuna</strong>: kontua erabiltzen den bitartean, eta <em>3 urtera arte</em> azken jardueratik (prospekzioa) edo <em>5–10 urte</em> kontabilitate/lege betebeharrengatik.",
+      "L2": "<strong>Erreserbak/fakturak</strong>: <em>10 urte</em> (lege-betebeharra).",
+      "L3": "<strong>Segurtasun-erregistroak</strong>: <em>6–24 hilabete</em> kritizitatearen arabera.",
+      "L4": "<strong>Cookieak</strong>: Cookieen atala ikusi.",
+      "NOTE": "Epe horiez harago, datuak ezabatzen edo anonimizatzen dira."
+    },
+    "COOKIES": {
+      "TITLE": "Cookieak eta SDKak",
+      "TEXT": "Cookieak/SDKak erabiltzen ditugu Plataforma funtzionatzeko, audientzia neurtzeko, iruzurra prebenitzeko eta, zure baimenarekin, esperientzia pertsonalizatzeko.",
+      "L1": "<strong>Beharrezkoak</strong>: autentifikazioa, segurtasuna, hobespen teknikoak.",
+      "L2": "<strong>Audientzia-neurketa</strong>: erabilera estatistiko agregatuak.",
+      "L3": "<strong>Marketina</strong>: soilik onartzen baduzu.",
+      "PREF": "Zure hobespenak edonoiz kudea ditzakezu bandatik eta nabigatzailearen ezarpenetatik."
+    },
+    "AUTOMATION": {
+      "TITLE": "Erabaki automatizatuak eta profilatzea",
+      "TEXT": "Seinale automatikoak erabil ditzakegu (adib. iruzur-arriskua, profesionalaren erabilgarritasuna, distantzia) ekintzak lehenesteko edo tarteak proposatzeko. Ondorio juridiko esanguratsuak dituzten erabakirik ez da hartzen giza esku-hartzerik gabe, salbu eta lege-betebeharra dagoenean edo zure adostasun esplizitua ematen duzunean."
+    },
+    "RIGHTS": {
+      "TITLE": "Zure eskubideak (RGPD)",
+      "L1": "<strong>Sarbide</strong>, <strong>zuzenketa</strong> eta <strong>ezabaketa</strong> eskubidea.",
+      "L2": "<strong>Mugatzearen</strong> eta <strong>eramangarritasunaren</strong> eskubidea.",
+      "L3": "Interes legitimoan oinarritutako tratamenduari <strong>aurka egiteko</strong> eskubidea.",
+      "L4": "Zure <strong>baimena kentzeko</strong> eskubidea edozein unetan.",
+      "L5": " <strong>CNIL</strong> erakundearen aurrean <strong>kexa</strong> jartzeko eskubidea.",
+      "CONTACT": "Zure eskubideak erabiltzeko, jar zaitez gurekin harremanetan:",
+      "VERIFY": "Zure identitatea egiaztatzeko, baliteke informazio osagarria eskatzeko."
+    },
+    "SECURITY": {
+      "TITLE": "Segurtasuna",
+      "TEXT": "Neurri tekniko eta antolakuntza-neurri egokiak ezartzen ditugu: garraioan zifratzea (TLS), pasahitzen hash-a, erregistratzea eta gainbegiratzea, sarbide-kontrola, babeskopiak, kode-berrikuspena eta segurtasun-probak."
+    },
+    "MINORS": {
+      "TITLE": "Adingabeen datuak",
+      "TEXT": "Gure zerbitzuak ez daude 15 urtetik beherakoentzat zuzenduta. Adingabearen kontua identifikatzen bada, egiaztatu ondoren ezabatuko dugu."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Azpikontratista nagusiak",
+      "TEXT": "Ezinbesteko azpikontratzaileekin egiten dugu lan ostalaritza, ordainketa, e-posta bidalketa, analitika eta biltegiratzea bezalako jardueretarako. Eguneratutako zerrenda eskura daiteke eskatuta helbide honetan"
+    },
+    "CONTACT": {
+      "TITLE": "Kontaktua eta DPD",
+      "PRIVACY_LABEL": "Pribatutasun-kontaktua",
+      "SUPPORT_LABEL": "Laguntza",
+      "AUTHORITY_LABEL": "Kontrol-agintaritza",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Politika honen aldaketak",
+      "TEXT": "Politika hau eguneratu dezakegu lege- edo funtzio-eboluzioak islatzeko. Aldaketa esanguratsuen kasuan, e-postaz edo aplikazioaren bidez jakinaraziko dizugu. Indarrean sartzeko data: <strong>2025eko abuztuaren 11</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Xedapen lokalak",
+      "TEXT": "Europar Batasunean bazaude, zure datuak RGPDren arabera tratatzen dira. Herrialde edo eskualde bakoitzerako zehaztapen osagarriak aplika daitezke, eta, hala bada, jakinaraziko dizkizugu."
+    },
+    "GLOSSARY": {
+      "TITLE": "Glosarioa (hautaketa)",
+      "L1": "<strong>Tratamenduaren arduraduna</strong>: tratamenduaren helburuak eta bitartekoak zehazten dituen erakundea.",
+      "L2": "<strong>Azpikontratista</strong>: arduradunaren kontura datuak tratatzen dituen erakundea.",
+      "L3": "<strong>Oinarri juridikoa</strong>: tratamendua baimentzen duen oinarria (kontratua, baimena, betebehar legala, interes legitimoa).",
+      "L4": "<strong>Cookieak/SDK</strong>: zerbitzua emateko, neurtzeko eta pertsonalizatzeko webgune/appak erabiltzen dituen jarraipen-gailuak."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Baldintzen onarpena",
+      "TEXT": "izyGlam zerbitzuetara (gunea, web-aplikazioa, mugikor-aplikazioa) sartzean, erreserbarik gabe onartzen dituzu erabilera-baldintza orokor hauek (“CGU”). Baldintza hauek onartzen ez badituzu, ez duzu Plataformaren erabilerarik egin behar."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Definizioak",
+      "L1": "<strong>Bezeroa</strong>: Plataforman prestazioa erreserbatzen eta/edo ordaintzen duen pertsona oro.",
+      "L2": "<strong>Profesionala</strong>: Plataformaren bidez prestazioak eskaintzen dituen pertsona oro.",
+      "L3": "<strong>Prestazioa</strong>: Profesional batek eskaintzen duen zerbitzua (adib. etxeko edertasun-zerbitzuak).",
+      "L4": "<strong>Plataforma</strong>: izyGlamen esku dagoen azpiegitura, guneak eta aplikazioak."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Zerbitzuak eta izyGlamen rola",
+      "TEXT": "izyGlam <strong>harreman-plataforma</strong> bat da. Profesionalak dira beren prestazioen <strong>erantzukizun osoa</strong> dutenak (kalitatea, lege-betetzea, aseguruak). Bestela adierazi ezean, izyGlam ez da zerbitzu horien saltzailea ezta emalea ere, eta ez du exekuzioaren erantzukizunik hartzen."
+    },
+    "ACCOUNT": {
+      "TITLE": "Kontua eta hautagarritasuna",
+      "L1": "Izen-emateak beharrezkoa duzu prestazio bat erreserbatzeko edo eskaintzeko. Informazio zehatzak ematea eta eguneratuta mantentzea onartzen duzu.",
+      "L2": "Gutxienez 15 urte izan behar dituzu Plataforma erabiltzeko. Profesionalek legez jarduteko gaitasuna izan behar dute.",
+      "L3": "Zure kredentzialen konfidentzialtasunaren eta zure kontutik egindako jarduera oroaren erantzule zara.",
+      "L4": "izyGlam-ek kontua eteteko edo iraungitzeko eskubidea du CGUak hausten badira edo iruzur-arrisku frogatua badago."
+    },
+    "BOOKINGS": {
+      "TITLE": "Erreserbak eta kontratuaren eratzea",
+      "L1": "Prestazioak Bezeroak <strong>linean erreserbatu eta ordaintzen</strong> ditu. Ez da diru-kopururik ordaindu behar tokian bertan.",
+      "L2": "Erreserba <strong>Profesionalak balioztatu</strong> behar du ordainketaren ondoren. Ukatuz gero, Bezeroari <strong>%100ean itzuliko</strong> zaio.",
+      "L3": "Prestazio-kontratua zuzenean Bezeroaren eta Profesionalaren artean osatzen da onarpen unean.",
+      "L4": "Ordutegiak, jarduteko helbideak eta baldintza bereziak alderdien artean egiaztatu behar dira."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Tarifak, harpidetzak eta ordainketak",
+      "L1": "Prestazioen tarifak Profesionalek ezartzen dituzte askatasunez. izyGlam-ek <strong>plataformaren komisioa</strong> aplikatzen du.",
+      "L2": "Profesionalentzako harpidetzak (gaur egungo adibidea): <em>biziarteko doako 1 salon</em>; <em>Basic: 3 salon – 99 € / hil</em>; <em>Premium: 10 salon – 499 € / hil</em>; <em>horren gainetik: aurrekontua</em>.",
+      "L3": "Ordainketa <strong>txartel bidez soilik</strong> egiten da (adib. Stripe bidez). <strong>Ez da diru-efektiborik</strong>, ezta promo-koderik edo leialtasun-programarik oraingoz.",
+      "L4": "Aplikagarriak diren zenbatekoak, zergak eta tasak balidatu aurretik adierazten dira. Harpidetza-baldintzak alda daitezke; aldaketak aldez aurretik jakinaraziko dira."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Ezeztapena, itzulketa eta ez-agerpena",
+      "L1": "<strong>24 ordu</strong> baino lehen egindako ezeztapena doakoa da.",
+      "L2": "24 ordutik beherako ezeztapenetan, indarrean dagoen politikaren arabera <strong>tasak</strong> aplika daitezke.",
+      "L3": "Profesionalak <strong>ukatzen</strong> badu ordainketa egin ondoren, Bezeroari %100 itzuliko zaio. Itzulketen automatizazioa ezartzen ari gara; hala ez bada, laguntza-taldeak abiaraziko du eragiketa.",
+      "L4": "<strong>No-show</strong> kasuek (jakinarazi gabeko ez-agerpena) tasak eragin ditzakete edo itzulketa ezinezkoa bihurtu."
+    },
+    "PAYOUTS": {
+      "TITLE": "Profesionalei ordainketak",
+      "L1": "Irabazien ordainketa <strong>prestazioa egin dela berrestean</strong> abiarazten da (adib. <em>balioztapen-kodea</em> baieztatzea).",
+      "L2": "Profesionalak emandako RIB/IBANa erabiliko da transferentziarako. Profesionalak bere banku-datuen zehaztasuna bermatzen du.",
+      "L3": "Ordaindutako zenbatekoak prestazioaren prezioari dagozkio, <em>komisioa eta aplikagarriak diren tasak kenduta</em>."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Alderdien erantzukizunak",
+      "L1": "Profesionalek beren zerbitzuen lege-betetzea, higienea eta segurtasuna bermatzen dituzte.",
+      "L2": "Bezeroek informazio zehatza emateko konpromisoa hartzen dute (helbidea, erabilgarritasuna, sarbide-murrizketak) eta hitzorduak errespetatzekoa.",
+      "L3": "izyGlam-ek Plataforma eta tresnak eskaintzen ditu (erreserba, ordainketa, mezularitza), baina ez du prestazio baten emaitza bermatzen."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Balorazio baliogabea.",
+      "TITLE": "Iritziak eta balorazioak",
+      "L1": "Iritziak <strong>benetan egindako prestazio baten ondoren</strong> soilik utz daitezke.",
+      "L2": "Iritziak <strong>moderazioaren</strong> menpe egon daitezke (adib. legearen edo CGUen aurkako edukien ezabaketa)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Debekatutako jokabideak",
+      "L1": "Iruzurra, nortasun-uzurpazioa, Plataformaren saihestea, Plataformatik kanpoko transakzioetara bultzatzea.",
+      "L2": "Legez kanpoko, difamatorio, diskriminatzaile, bortitz edo ohitura onen aurkako edukiak.",
+      "L3": "Intrusioa, zerbitzua ukatzea (DoS), alderantzizko ingeniaritza, segurtasun-neurriak saihestea.",
+      "L4": "Beste erabiltzaileen datu pertsonalen baimenik gabeko bilketa."
+    },
+    "IPR": {
+      "TITLE": "Jabetza intelektuala",
+      "TEXT": "Plataformako edukiak, markak eta elementuak (kodea, diseinua, testuak, logotipoak, irudiak) babestuta daude. Baimen espliziturik gabe, debekatuta dago edozein erreprodukzio, banaketa edo moldaketa. Profesionalek emandako edukiak haien jabetza dira; izyGlam-i lizentzia ez-esklusiboa ematen diote Plataforma ustiatzeko behar den neurrian."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Hirugarrenen zerbitzuak",
+      "TEXT": "Plataformak hirugarrenen zerbitzuak integra ditzake (ordainketa, mapak, ostalaritza, analitika). Haien baldintzak aplikatuko dira. izyGlam ez da zerbitzu horien eten edo hutsegiteen erantzule."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Eskuragarritasuna, mantentzea eta eguneratzeak",
+      "TEXT": "Plataformaren zatiak aldatu, eten edo eten egin ditzakegu mantentze-lan edo hobekuntzetarako. Erabiltzaileenganako eragina mugatzeko ahalegin arrazoituak egiten ditugu."
+    },
+    "LIABILITY": {
+      "TITLE": "Erantzukizun-muga eta kalte-ordainak",
+      "TEXT": "Legeak baimentzen duen neurrian, izyGlamen erantzukizuna kalte zuzenetara mugatzen da, kalte zeharkakoak baztertuta (aukera-galera, fakturazio-galera, eta abar). Baldintza hauen urraketatik edo Plataformaren erabilera bidegabe/legez kanpotik eratorritako erreklamazioengatik izyGlami kalte-ordaina emateko konpromisoa hartzen duzu."
+    },
+    "TERMINATION": {
+      "TITLE": "Amaiera eta etetea",
+      "TEXT": "Zure kontua edozein unetan ezaba dezakezu. CGUen urraketa, iruzurra, abusua edo agindu judiziala dagoenean sarbidea eten edo amai dezakegu. Zenbait betebeharrek (adib. zor diren zenbatekoak, erantzukizun-klausulak) amaieraren ondoren ere indarrean jarraitzen dute."
+    },
+    "PRIVACY": {
+      "TITLE": "Datu pertsonalak",
+      "TEXT": "Zure datuen tratamendua gure <strong>Pribatutasun-politikan</strong> azaltzen da. Plataforma erabiltzean, politika hori onartzen duzu. Kontsultatu-ezazu DBEOri buruzko zure eskubideak eta gure konpromisoak ezagutzeko."
+    },
+    "CHANGES": {
+      "TITLE": "Baldintzen aldaketak",
+      "TEXT": "CGU hauek arrazoi legal, erregulazio edo funtzionalengatik alda ditzakegu. Aldaketa esanguratsuen kasuan, e-postaz edo aplikazioaren bidez jakinaraziko dizugu eta bertsio eguneratua argitaratuko dugu."
+    },
+    "LAW": {
+      "TITLE": "Aplikatu beharreko legea eta auziak",
+      "TEXT": "CGU hauek <strong>frantziar legearen</strong> menpe daude. Edozein auzi izyGlamen egoitzaren kokalekuko auzitegi eskudunen aurrean aurkeztuko da, kontsumitzailearentzat onuragarriagoak diren lege xedapenei kalterik egin gabe."
+    },
+    "CONTACT": {
+      "TITLE": "Harremana",
+      "SUPPORT_LABEL": "Laguntza",
+      "LEGAL_LABEL": "Legezkoa",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal@izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Indarrean jartzeko data",
+      "TEXT": "CGU hauek <strong>2025eko abenduaren 25ean</strong> sartzen dira indarrean eta aurreko bertsio guztiak ordezten dituzte."
+    }
+  }
+}

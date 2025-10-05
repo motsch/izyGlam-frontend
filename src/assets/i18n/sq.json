@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Parukier/e",
+    "NAILTECHNICIAN": "Manikyriste",
+    "MAKEUP": "Grimier/e",
+    "WAXING": "Estetist/e",
+    "FACIAL": "Trajtim fytyre",
+    "MASSAGE": "Masazhist/e",
+    "EYELASH": "Zgjatje qerpikësh",
+    "EYEBROW": "Vetulla",
+    "TANNING": "Nxirje",
+    "ACUPUNCTURE": "Akupunkturë",
+    "OTHER": "Tjetër"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Fotoja u fshi nga galeria",
+    "PHOTO_UPLOAD": "Imazhi u ngarkua me sukses",
+    "PARTIAL_REFUND_CONFIRM": "Rimbursimi i pjesshëm u konfirmua!",
+    "CODE_SAVED": "Kodi u gjenerua.",
+    "USERCREATED": "Përdoruesi u krijua me sukses. Një email konfirmimi ju është dërguar.",
+    "SUBSCRIBE_SUCCESS": "Abonimi juaj u regjistrua me sukses.",
+    "EMAIL_VERIFIED": "Llogaria juaj është aktivizuar 🎉 Tani mund të identifikoheni.",
+    "EMAIL_RESENT": "Email-i i verifikimit u ridërgua. Kontrolloni kutinë tuaj postare.",
+    "BOOKING_CREATED": "Rezervimi juaj u regjistrua me sukses.",
+    "PAYMENT_OK": "Pagesa u konfirmua.",
+    "REFUND_OK": "Rimbursimi u krye.",
+    "USERUPDATED": "Përdoruesi u përditësua.",
+    "SETTINGS_UPDATED": "Parametrat u përditësuan.",
+    "REVIEW_ADDED": "Vlerësimi juaj u publikua 🎉",
+    "SHOPUPDATED": "Dyqani u përditësua.",
+    "BOOKING_ACCEPTED": "Rezervimi u pranua.",
+    "BOOKING_FINISHED": "Rezervimi përfundoi.",
+    "BOOKING_REFUSED": "Rezervimi u refuzua.",
+    "BOOKING_DELETED": "Rezervimi u fshi.",
+    "CODE_GENERATED": "Kodi u gjenerua.",
+    "CODE_CONFIRMED": "Kodi u konfirmua.",
+    "INVOICE_DOWNLOADED": "Fatura u shkarkua.",
+    "MARKED_NO_SHOW_CLIENT": "Klienti u shënua si mungesë.",
+    "COMPANY_CREDITED": "Llogaria e kompanisë u kreditua.",
+    "MARKED_NO_SHOW_PRO": "Ofruesi u shënua i munguar.",
+    "EMPLOYEE_CREDITED": "Llogaria e punonjësit u kreditua.",
+    "NO_SHOW_PRO": "Penaliteti u zbatua dhe rimbursimi u krye.",
+    "EMPLOYEE_DELETED": "Punonjësi u fshi.",
+    "SLOT_SELECTED": "Orari u përzgjodh",
+    "PASSWORD_RESET": "Fjalëkalimi u rivendos.",
+    "INVOICE_GENERATED": "Faturat u gjeneruan.",
+    "REVIEW_SAVED": "Vlerësimi u ruajt, faleminderit!",
+    "DEFAULT_PASSWORD_UPDATED": "Fjalëkalimi i parazgjedhur u përditësua.",
+    "COMPANY_CREATED": "Llogaria juaj profesionale u krijua me sukses."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Ju lutemi identifikohuni për të menaxhuar të preferuarit.",
+    "INVALID_IMAGE": "Imazh i pavlefshëm.",
+    "NO_SLOTS": "Asnjë orar i disponueshëm për këtë shërbim.",
+    "NO_SHOP_SELECTED": "Asnjë dyqan i përzgjedhur.",
+    "NO_SERVICE_SELECTED": "Asnjë shërbim i përzgjedhur.",
+    "ORDER_ERROR": "Gabim gjatë përditësimit të porosisë.",
+    "CODE_ERROR": "Gabim gjatë ruajtjes së kodit.",
+    "INVOICE_GENERATED_ERROR": "Gabim gjatë gjenerimit të faturave.",
+    "USERNOTCREATED": "E pamundur të krijohet përdoruesi.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Bilanci i kompanisë është i pamjaftueshëm për këtë kreditim.",
+    "GENERIC_ERROR": "✨ Ups… ndodhi një gabim. Ju lutemi provoni sërish ✨",
+    "COMPANY_CREDITED": "Llogaria e kompanisë u kreditua.",
+    "LINK_INVALID_OR_MISSING": "Lidhje e pavlefshme ose mungon.",
+    "LINK_INVALID_OR_EXPIRED": "Lidhje e pavlefshme ose e skaduar.",
+    "EMAIL_NOT_FOUND": "Email i përdoruesit nuk u gjet.",
+    "PAYMENT_FAILED": "Pagesa dështoi.",
+    "BOOKING_FAILED": "Krijimi i rezervimit dështoi.",
+    "LOAD_CARDS_FAILED": "Ndodhi një gabim gjatë ngarkimit të kartave tuaja.",
+    "LOAD_SHOP_FAILED": "Ndodhi një gabim gjatë ngarkimit të sallonit.",
+    "LOAD_PRODUCTS_FAILED": "Ndodhi një gabim gjatë ngarkimit të shërbimeve.",
+    "INVALID_CODE": "Kodi i futur është i pavlefshëm.",
+    "PASSWORD_CHANGED": "Fjalëkalimi juaj u përditësua.",
+    "PASSWORDS_IDENTICAL": "Fjalëkalimi i ri duhet të jetë i ndryshëm nga aktuali.",
+    "INVALID_AMOUNT": "Shuma e futur është e pavlefshme.",
+    "INVALID_CURRENT_PASSWORD": "Fjalëkalimi aktual është i pasaktë.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Fjalëkalimi aktual është i pasaktë ose ndodhi një gabim.",
+    "PASSWORD_UPDATE_FAILED": "Përditësimi i fjalëkalimit dështoi.",
+    "PASSWORD_UPDATE_GENERIC": "Ndodhi një gabim gjatë përditësimit të fjalëkalimit.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Fjalëkalimet nuk përputhen ose janë shumë të shkurtra (min. 8 karaktere).",
+    "INVALID_PASSWORD": "Fjalëkalimi nuk mund të jetë bosh.",
+    "PASSWORD_TOO_SHORT": "Fjalëkalimi duhet të ketë të paktën 8 karaktere."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Mungon konfigurimi i Stripe.",
+    "LOAD_FAILED": "Stripe nuk u ngarkua",
+    "NOT_READY": "Stripe i pa-inicializuar",
+    "CONFIRM_FAILED": "Dështoi regjistrimi i kartës",
+    "CARD_SAVED": "Karta u regjistrua me sukses ✅",
+    "PM_FAILED": "Dështoi krijimi i mjetit të pagesës",
+    "SI_FAILED": "E pamundur të përgatitet regjistrimi i kartës",
+    "ATTACH_FAILED": "E pamundur të lidhet karta me llogarinë",
+    "SAVE_CARD": "Ruaj kartën",
+    "ADD_CARD": "Shto kartë"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Ju lutemi identifikohuni"
+  },
+  "COMMON": {
+    "LOADING": "Duke u ngarkuar…",
+    "UNEXPECTED_ERROR": "Ndodhi një gabim i papritur"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Verifikim në proces",
+    "VALIDE": "Po verifikojmë lidhjen tuaj të aktivizimit. Zgjat vetëm një çast.",
+    "ACCOUNT": "Llogaria u aktivizua",
+    "CONNECT": "Hyni",
+    "OUPS": "Ups",
+    "WRITE": "Keni nevojë për ndihmë? Na shkruani në",
+    "RESEND": "Ridërgo email-in e aktivizimit"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Të dhënat e mia bankare",
+    "ADD_BANK_INFO": "Shto të dhënat e mia bankare",
+    "BANK_NAME": "Emri i bankës",
+    "HOLDER_NAME": "Mbajtësi i llogarisë",
+    "COUNTRY": "Shteti",
+    "SAVE": "Ruaj"
+  },
+  "LOADER": {
+    "LOADING": "Duke u ngarkuar…"
+  },
+  "SPONSORS": {
+    "TITLE": "Sponsorët tanë",
+    "SPONSORISED": "E sponsorizuar"
+  },
+  "TABS": {
+    "FINANCE": "Ndjekja financiare",
+    "GENERAL_INFO": "Informacione të përgjithshme",
+    "EMPLOYEES": "Menaxhimi i punonjësve",
+    "SERVICES": "Menaxhimi i shërbimeve",
+    "PHOTOS": "Galeria e fotove",
+    "STATS": "Statistika",
+    "PARAM": "Parametrat",
+    "SHOPS": "Dyqanet",
+    "USERS": "Përdoruesit",
+    "MESSAGE": "Mesazhe"
+  },
+  "CARD": {
+    "ADD": "Shto kartën",
+    "NO_IMAGE": "Asnjë imazh në galeri.",
+    "SALON": "Salloni u përditësua me sukses",
+    "ERROR1": "Gabim gjatë përditësimit të sallonit",
+    "ERROR2": "Gabim gjatë përditësimit të fotos",
+    "UPDATE": "Salloni u përditësua me sukses"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Përfunduar",
+    "ACCEPTEE": "Pranuar",
+    "WAITING": "Në pritje",
+    "CANCEL": "Anuluar",
+    "DELETE": "Fshirë",
+    "REFUSED": "Refuzuar",
+    "NO_PRESTA": "Ofruesi mungon",
+    "CLIENT_ABSENT": "Klienti mungon",
+    "ADRESSE": "Adresa",
+    "DATE": "Data",
+    "TOTAL": "Totali",
+    "FACTURE": "Faturë",
+    "CANCELLED": "Anuluar",
+    "DELETED": "Fshi",
+    "AVIS": "Vlerësim",
+    "SUPPORT": "Suport",
+    "CODE": "Kodi i konfirmimit",
+    "CODE_A_DONNER": "Kod për t’ia dhënë ofruesit",
+    "PRESTA_ABSENT": "Ofruesi mungon"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Vlerësimet për dyqanin",
+    "COMMENT": "Koment",
+    "NOTE": "Notë",
+    "CLOSE": "Mbyll"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Asnjë imazh në galeri."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Vlerësoni porosinë tuaj",
+    "DATE": "Data",
+    "SERVICE": "Shërbimi",
+    "AVIS": "Mendimi juaj",
+    "SEND": "Dërgo",
+    "PLACEHOLDER": "Përshkruani përvojën tuaj…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Sillini tek shtëpia juaj",
+    "KNOWMORE": "Mëso më shumë",
+    "PART1TITLE": "Përfitoni nga shërbimet më të mira estetike në shtëpi",
+    "PART1TEXT": "Profesionalët tanë të kualifikuar vijnë tek ju për të ofruar trajtime cilësore bukurie, të përshtatura me nevojat dhe dëshirat tuaja. Përjetoni një eksperiencë unike mirëqenieje, gjatë pushimit të drekës, pas pune në mbrëmje apo në një pasdite mes mikeshash.",
+    "PART2TITLE": "Punoni kur të doni, gjeneroni të ardhura sipas ritmit tuaj",
+    "PART2TEXT": "Gjeneroni të ardhura sipas orarit tuaj duke pranuar kërkesat në platformë me ritmin tuaj. Mund të përdorni pajisjet tuaja ose të zgjidhni të merrni me qira pajisje profesionale përmes izyGlam.",
+    "PART3TITLE": "Shërbim bukurie i rikonceptuar për biznese",
+    "PART3TEXT": "Glam for Business është një platformë për ndërmarrje të çdo madhësie, e krijuar për të menaxhuar nevojat estetike të klientëve dhe punonjësve tuaj. Ofroni trajtime të personalizuara direkt në vendin e punës, gjatë eventeve apo rasteve të veçanta. Profesionistët tanë të kualifikuar vijnë për shërbime të përshtatura me nevojat tuaja.",
+    "APPTITLE": "Më e thjeshtë me aplikacionet",
+    "DOWNLOADAPP1": "Shkarko aplikacionin",
+    "DOWNLOADAPP2": "Shkarko aplikacionin për profesionistët e estetikës",
+    "SCANTODOWNLOAD": "Skano për të shkarkuar",
+    "SIGNUP": "Regjistrohu!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Gabim gjatë riprodhimit të videos",
+    "AUTOPLAY_BLOCKED": "Riprodhimi automatik u bllokua. Shtyp për ta luajtur videon.",
+    "NAV_ERROR": "Navigimi i pamundur"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Si funksionojnë aplikacionet dhe faqet e izyGlam",
+    "HELPCENTER": "Hyr në qendrën e ndihmës",
+    "BUSINESS": "Biznes",
+    "ABOUT": "Rreth nesh",
+    "OURSERVICES": "Shërbimet tona",
+    "PRESSAREA": "Për shtypin",
+    "INVESTORS": "Investitorët",
+    "CAREERS": "Punësime",
+    "AI": "Inteligjencë Artificiale",
+    "PRODUCTS": "Produkte",
+    "GLAM": "Gjithmonë në formë me izyGlam",
+    "RESERVED": "Rezervo përpara",
+    "GIFTCARDS": "Kartat dhuratë",
+    "WORKWITHUS": "Punoni me izyGlam",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Privatësia",
+    "ACCESS": "Aksesueshmëria",
+    "CONDITIONS": "Kushtet",
+    "LANGUAGE": "Gjuha",
+    "LOCALISATION": "Vendndodhja",
+    "ALL_RIGHT": "Të gjitha të drejtat e rezervuara"
+  },
+  "COMING_SOON": {
+    "TITLE": "Po vijmë së shpejti",
+    "TITLE-NOT-COMING": "Ende nuk kemi planifikuar të vijmë",
+    "DAYS": "Ditë",
+    "HOURS": "Orë",
+    "MINUTES": "Minuta",
+    "SECONDS": "Sekonda",
+    "TEXT": "Po punojmë fort për t’ju ofruar një përvojë unike bukurie në shtëpi. Qëndroni të lidhur për njoftimet e lançimit."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Oferta të momentit",
+    "DISCOVER": "Për t’u zbuluar në izyGlam",
+    "LIKED": "Më të pëlqyerat pranë jush",
+    "SMART": "Zgjedhjet e mençura",
+    "TOP10": "Top 10 i javës",
+    "SEARCHRESULT": "Rezultatet e kërkimit",
+    "AVIS": "Vlerësime"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Parukeri",
+    "MANUCURE": "Manikyr",
+    "VISAGE": "Fytyrë",
+    "MASSAGE": "Masazh",
+    "MAQUILLAGE": "Grim",
+    "EPILATION": "Depilim",
+    "BRONZAGE": "Nxirje",
+    "PARTUM": "Pas lindjes",
+    "NUTRITION": "Ushqyerje",
+    "FITNESS": "Fitnes",
+    "ACUPUNCTURE": "Akupunkturë",
+    "STYLISME": "Stilizim",
+    "YOGA": "Relaksim",
+    "DEVELOPPEMENT": "Zhvillim",
+    "EYELASH": "Zgjatje qerpikësh"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Një parukiere",
+    "MANUCURE": "Një manikyriste",
+    "ESTETICIAN": "Një estetiste",
+    "MASSAGE": "Një masazhiste",
+    "MAQUILLAGE": "Një grimere",
+    "PEDICURE": "Një pedikyriste",
+    "NUTRITION": "Një nutricioniste",
+    "FITNESS": "Një trajnere"
+  },
+  "INTRO": {
+    "NORESULTS": "Nuk u gjet asnjë rezultat",
+    "START": "Fillo",
+    "SPECIALITY": "Specialiteti?",
+    "WHERE": "Ku?",
+    "CONNEXION": "Hyrje",
+    "REGISTRATION": "Regjistrim"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Të dhënat e llogarisë",
+    "MESSAGE": "Mesazhet e mia",
+    "MESSAGE_SUBTITLE": "Lista e bisedave të mia aktive.",
+    "INFORMATION_SUBTITLE": "Ndrysho lehtësisht të dhënat e tua personale.",
+    "SECURITY": "Siguri dhe gjuhë",
+    "SECURITY_SUBTITLE": "Fjalëkalimi, gjuha… gjithçka nën kontroll këtu.",
+    "CONFIDENTIAL": "Privatësi dhe të dhëna",
+    "CONFIDENTIAL_SUBTITLE": "Të dhënat e tua janë të çmuara. Ja si kujdesemi për to.",
+    "DASHBOARD": "Pulti",
+    "DASHBOARD_SUBTITLE": "Menaxho lehtë të dhënat e aktivitetit tënd.",
+    "COMPANY": "Menaxhimi i kompanisë sime",
+    "COMPANY_SUBTITLE": "Menaxho lehtë takimet e kaluara, të ardhshme ose të anuluara.",
+    "SHOP": "Menaxhimi i sallonit tim",
+    "SHOP_SUBTITLE": "Menaxho sallonin, shërbimet dhe financat.",
+    "FINANCIAL": "Ndjekja financiare",
+    "ADMIN": "Administrim i përgjithshëm",
+    "ADMIN_SUBTITLE": "Menaxho me lehtësi këtë kryevepër. Bota është e jotja, kampione!",
+    "CALENDAR": "Agjenda",
+    "CALENDAR_SUBTITLE": "Menaxho lehtë takimet e kaluara ose të ardhshme.",
+    "SELECT_SALON": "Zgjidh një sallon",
+    "NEW_SALON": "Krijo sallon",
+    "SHOP_TO_CREATE": "Lloji i dyqanit për krijim",
+    "CANCEL": "Anulo",
+    "CREATE": "Krijo dyqanin tim",
+    "INFO1": "Jeni në prag të fshirjes së dyqanit tuaj të",
+    "INFO2": "Kjo veprim është i pakthyeshëm",
+    "SURE": "Jeni i sigurt që doni të vazhdoni",
+    "DELETE": "Fshi"
+  },
+  "PROFILE": {
+    "TITLE": "Informacione bazë",
+    "FIRSTNAME": "Emri",
+    "LASTNAME": "Mbiemri",
+    "PHONE": "Numri i telefonit",
+    "ADDRESS": "Adresa e email-it",
+    "CHANGE_USER": "Ndrysho përdoruesin",
+    "CANCEL": "Anulo",
+    "SUCCESS": "Profili u ndryshua me sukses",
+    "UPDATE_ERROR": "Ndodhi një gabim gjatë përditësimit të fjalëkalimit."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Ndrysho fjalëkalimin",
+    "ACTUAL_PASSWORD": "Fjalëkalimi aktual",
+    "NEW_PASSWORD": "Fjalëkalimi i ri",
+    "CONFIRMED_PASSWORD": "Konfirmo fjalëkalimin e ri",
+    "CHANGE_PASSWORD": "Ndrysho fjalëkalimin",
+    "CHANGE_OK": "Fjalëkalimi u ndryshua me sukses",
+    "CHANGE_LANGUE": "Ndrysho gjuhën",
+    "CHANGE_COUNTRY": "Ndrysho vendin",
+    "LANGUE": "Gjuha",
+    "COUNTRY": "Shteti"
+  },
+  "PAYEMENT": {
+    "YOU": "Ju",
+    "HEADER_TITLE": "Pagesa",
+    "SERVICE_TITLE": "Shërbimi",
+    "SERVICE_NOTE": "Shënim:",
+    "ADDRESS_TITLE": "Adresa e shërbimit",
+    "ADDRESS_RENDEZVOUS": "Takim para derës sime",
+    "ADDRESS_CHANGE": "Zgjidh një adresë tjetër",
+    "PAYMENT_SECTION_TITLE": "Pagesa",
+    "PAYMENT_METHOD": "Karta kryesore",
+    "PAYMENT_EXPIRE": "Skadon",
+    "PAYMENT_NO_CARD": "Asnjë kartë kryesore e caktuar",
+    "PAYMENT_NO_CARD_DESC": "Ju lutemi shtoni ose zgjidhni një kartë si metodë kryesore pagese.",
+    "SUMMARY_SUBTOTAL": "Nëntotal",
+    "SUMMARY_SERVICE_FEE": "Komisioni izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Tarifa e shërbimit",
+    "SUMMARY_TOTAL": "Totali",
+    "TITLE": "Caktoni takimin tuaj online",
+    "FOR_WHO": "Për kë po e merrni këtë takim?",
+    "ADD_PROCHE": "Shto një të afërm",
+    "WHERE": "Ku do ta zhvilloni takimin?",
+    "SELECT_ADDRESS": "Zgjidh një adresë",
+    "ADD_ADDRESS": "Shto një adresë",
+    "CARD_PAY": "Pagesë me kartë bankare",
+    "CARD_NUM": "Numri i kartës",
+    "CARD_NAME": "Emri në kartë",
+    "EXPIRATION": "Data e skadimit",
+    "CVV": "CVV",
+    "RDV": "Takimi juaj në detaje",
+    "RESUME": "Përmbledhje e takimit",
+    "DATE": "Data",
+    "HOUR": "Ora",
+    "PRESTA": "Shërbimi",
+    "EXPIRE": "Skadon",
+    "DEFAULT": "E parazgjedhur",
+    "NOCARD": "Asnjë kartë e regjistruar",
+    "WITH": "Me",
+    "TOTAL": "Totali për pagesë",
+    "ANNULER": "ANULO",
+    "RETOUR": "MË KTHE",
+    "CONTINUER": "VAZHD0",
+    "VALIDER": "KONFIRMO",
+    "ADRESSE": "Adresa",
+    "LEGAL_TEXT_1": "Duke klikuar për të bërë porosinë, pranoni Marrëveshjen e shërbimeve të dorëzimit me izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Heq dorë nga e drejta e tërheqjes për shërbimet e dorëzimit. Mund të përdorni një ndërmjetës të konsumatorit këtu.",
+    "LEGAL_TEXT_3": "Nëse nuk jeni në shtëpi kur vjen korrieri, porosia do të lihet para derës. Me vendosjen e porosisë, pranoni përgjegjësinë e plotë sapo të dorëzohet. Në mungesën tuaj, porositë me alkool apo artikuj të kufizuar kthehen drejtpërdrejt te subjekti.",
+    "CLOSE_FORM": "Mbyll formularin",
+    "ADD_CARD": "Shto një kartë",
+    "TRAITEMENT": "Përpunim në vazhdim"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Pagesa u verifikua",
+    "THANKS": "Faleminderit! Rezervimi juaj u regjistrua me sukses.",
+    "BACKHOME": "Kthehu në faqen kryesore",
+    "PROBLEME": "Problem me rezervimin",
+    "PAIEMENT": "Pagesa juaj u tërhoq, por rezervimi nuk mund të konfirmohej.",
+    "THANKSCONTACT": "Ju lutemi kontaktoni suportin tonë në",
+    "FAILED": "Pagesa dështoi",
+    "VALIDATE": "Nuk mundëm të verifikojmë pagesën tuaj. Ju lutemi provoni sërish."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam për të pavarurit",
+    "STEP1": {
+      "TITLE": "Klientët bëjnë porosi",
+      "TEXT": "Klienti gjen biznesin tuaj dhe porosit nga aplikacioni izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Ju pranoni rezervimin",
+      "TEXT": "Ju pranoni rezervimin dhe agjenda juaj përditësohet."
+    },
+    "STEP3": {
+      "TITLE": "Në kohën e takimit",
+      "TEXT": "Njoftoheni paraprakisht për rezervimet që vijnë dhe ju udhëheqim drejt çdo klienti."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Kredito llogarinë e kompanisë",
+    "SOLDE": "Bilanci aktual",
+    "CREDIT": "Shuma për t’u kredituar",
+    "COMPANY": "Kredito llogarinë e kompanisë",
+    "DEPENSE": "Ndjekja e shpenzimeve",
+    "DATE": "Data",
+    "COUNT": "Shuma",
+    "EMPLOYEE": "Punonjësi",
+    "DESCRIPTION": "Përshkrimi"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Keni tashmë një llogari partneri ose biznesi!",
+    "NOT_CONNECTED": "Ju lutemi identifikohuni për të regjistruar një sallon",
+    "TITLE": "Nisuni!",
+    "TITLE2": "Le të krijojmë një sallon!",
+    "NAME": "Emri i sallonit tuaj",
+    "ADDRESS": "Adresa e biznesit tuaj",
+    "STREET": "Rruga",
+    "CITY": "Qyteti",
+    "CODE_POSTAL_POSSIBLE": "Kodet postare të mbuluara",
+    "CODE_POSTAL": "Kodi postar",
+    "COUNTRY": "Shteti",
+    "ADDRESSPLACEHOLDER": "Rr. Kryesore 123",
+    "FLOOR": "Kati/Suita (opsionale)",
+    "BUSINESSTYPE": "Lloji i biznesit",
+    "FIRSTNAME": "Emri",
+    "LASTNAME": "Mbiemri",
+    "PASSWORD": "Fjalëkalimi",
+    "PASSWORDCONFIRMED": "Konfirmimi i fjalëkalimit",
+    "EMAIL": "E-mail",
+    "PHONE": "Numri i celularit",
+    "WHATSAPP": "Pranoj të marr mesazhe në WhatsApp",
+    "BUTTON": "Regjistro dyqanin",
+    "SUCCESS": "Dyqani u krijua me sukses!",
+    "ERROR": "Ndodhi një gabim gjatë krijimit të dyqanit:",
+    "ERROR1": "Emri i biznesit është i detyrueshëm.",
+    "ERROR2": "Adresa e biznesit është e detyrueshme.",
+    "ERROR3": "Lloji i biznesit është i detyrueshëm.",
+    "ERROR4": "Emri është i detyrueshëm.",
+    "CHOOSE_COUNTRY": "Zgjidh një shtet",
+    "POSTAL_CODE": "Kodi postar",
+    "CHOOSE_CITY": "Zgjidh një qytet",
+    "ERROR5": "Mbiemri është i detyrueshëm.",
+    "ERROR6": "E-mail është i detyrueshëm.",
+    "ERROR7": "Numri i celularit është i detyrueshëm.",
+    "ERROR8": "Duhet të pranoni të merrni mesazhe në WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Ndrysho adresën",
+    "FIND_SHOP": "Kërko një dyqan",
+    "CATEGORIES": "Kategoritë",
+    "OFFRE": "Oferta të momentit",
+    "DISCOVER": "Për t’u zbuluar",
+    "APPRECIATE": "Më të vlerësuarat",
+    "SMART": "Zgjedhjet e mençura",
+    "TOP10": "Top10 i javës",
+    "SEARCH_RESULT": "Rezultatet e kërkimit",
+    "NOT_AVAILABLE": "Ende jo i disponueshëm në këtë adresë",
+    "NEW_ADDRESS": "Shto një adresë të re",
+    "CHOOSE_ADDRESS": "Zgjidh një adresë",
+    "CHOOSE_COUNTRY": "Zgjidh një shtet",
+    "CHOOSE_CITY": "Zgjidh një qytet",
+    "CHOOSE_ARRONDISSEMENT": "Zgjidh një rreth",
+    "CANCEL": "Anulo",
+    "SAVE": "Ruaj",
+    "CLOSE": "Mbyll"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Emri",
+    "CITY": "Qyteti",
+    "NOTE": "Nota",
+    "MIDDLE_PRICE": "Çmimi mesatar",
+    "PROMOTION": "Promocion",
+    "ACTIONS": "Veprime",
+    "MODIFIER": "Ndrysho informacionet e dyqanit",
+    "SHOP_NAME": "Emri i dyqanit",
+    "DESCRIPTION": "Përshkrimi",
+    "PRINCIPALE": "Imazhi kryesor",
+    "SHOP": "Lloji i dyqanit",
+    "ARRONDISSEMENT": "Rrethi",
+    "MINIMUM_DELAI": "Afati minimal",
+    "DISTANCE": "Distanca maks. (km)",
+    "EMPLACEMENT": "Vendndodhja",
+    "HOURS_MORNING": "Orari i hapjes – Mëngjes",
+    "HOURS_AFTERNOON": "Orari i hapjes – Pasdite",
+    "ACTIVE_PROMO": "Promo aktive",
+    "CANCEL": "Anulo",
+    "ENREGISTRER": "Ruaj"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Zhvilloni aktivitetin tuaj",
+    "TEXT": "Mijëra përdorues të aplikacionit izyGlam mund të kërkojnë një sallon në zonën tuaj…",
+    "IMAGE": "imazh"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Pse izyGlam?",
+    "STEP1": {
+      "TITLE": "Punoni sipas kushteve tuaja",
+      "TEXT": "Organizoni orarin dhe menaxhoni shërbimet lirisht. Përfitoni nga një platformë fleksibël që i përshtatet nevojave tuaja për të maksimizuar aktivitetin."
+    },
+    "STEP2": {
+      "TITLE": "Forconi praninë tuaj online",
+      "TEXT": "Tërhiqni më shumë klientë falë mjeteve të marketingut të përfshira në aplikacion dhe rrisni rezultatet me dukshmëri më të lartë."
+    },
+    "STEP3": {
+      "TITLE": "Fidelizoni klientët",
+      "TEXT": "Zhvilloni marrëdhënie afatgjata duke analizuar preferencat e klientëve, duke iu përgjigjur vlerësimeve dhe duke ofruar përfitime besnikërie."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Thjeshtoni menaxhimin e aktivitetit tuaj",
+      "TEXT": "Menaxhoni me qetësi aktivitetin me izyGlam, zgjidhjen e plotë për profesionistët e mirëqenies. Përfitoni mjete fleksibël dhe shoqërim të personalizuar."
+    },
+    "STEP2": {
+      "TITLE": "Rritni shitjet",
+      "TEXT": "Çdo ditë, mijëra persona përdorin izyGlam për të gjetur ekspertë bukurie pranë tyre. Shfrytëzojeni këtë mundësi për klientë të rinj."
+    },
+    "STEP3": {
+      "TITLE": "Kënaqësi e garantuar e klientit",
+      "TEXT": "Me izyGlam, ofroni një përvojë të personalizuar: menaxhoni lehtë takimet, komunikoni shpejt dhe ofroni shërbime të përshtatura. Kjo garanton kënaqësi dhe besnikëri."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam për biznesin tuaj?",
+    "STEP1": {
+      "TITLE": "Punonjësit dhe klientët rezervojnë shërbime",
+      "TEXT": "Punonjësit ose klientët zgjedhin shërbimet e mirëqenies që u përshtaten drejtpërdrejt përmes aplikacionit izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Ju vendosni shumën për t’u alokuar",
+      "TEXT": "Kreditoni llogaritë e punonjësve dhe klientëve. Mund të zgjidhni kreditim periodik ose të njëhershëm."
+    },
+    "STEP3": {
+      "TITLE": "Shërbimet kryhen",
+      "TEXT": "Ekspertët tanë të bukurisë shkojnë tek punonjësit tuaj ose në ambientet tuaja për të ofruar shërbimet e rezervuara, duke siguruar një përvojë optimale."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Vlerësoni kompaninë tuaj",
+    "TEXT": "Mijëra përdorues kërkojnë shërbime mirëqenieje. Ofroni punonjësve dhe klientëve akses të privilegjuar te ekspertët më të mirë të bukurisë pranë tyre.",
+    "IMAGE": "imazh"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Pse izyGlam?",
+    "STEP1": {
+      "TITLE": "Fidelizoni dhe shpërblyeni punonjësit",
+      "TEXT": "Ofroni një përfitim unik me një buxhet mujor bukurie. Parukiere, estetiste dhe shumë ekspertë në dispozicion për të rritur kënaqësinë dhe përkatësinë ndaj kompanisë."
+    },
+    "STEP2": {
+      "TITLE": "Përmirësoni imazhin tuaj",
+      "TEXT": "Organizoni evente bukurie për klientët/partnerët ose integroni shërbimet e izyGlam në programet e besnikërisë. Lini gjurmë me trajtime cilësore, për çdo rast."
+    },
+    "STEP3": {
+      "TITLE": "Optimizoni mirëqenien në punë",
+      "TEXT": "Lehtësoni aksesin e punonjësve në shërbime mirëqenieje direkt në vendin e punës ose pranë tij. Kujdesi rrit motivimin dhe kohezionin e ekipeve."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Thjeshtoni aksesin në mirëqenie për ekipet",
+      "TEXT": "Me izyGlam, ofroni një zgjidhje të thjeshtë dhe fleksibël për t’u kujdesur për veten – nga estetika te ushtrimet e fitnesit."
+    },
+    "STEP2": {
+      "TITLE": "Ofroni përfitime novatore për klientët",
+      "TEXT": "Forconi marrëdhëniet duke ofruar shërbime mirëqenieje në evente ose në programet e besnikërisë. Tregoni kujdes me vëmendje unike."
+    },
+    "STEP3": {
+      "TITLE": "Mirëqenie me porosi, kudo dhe kurdo",
+      "TEXT": "Punonjësit dhe klientët përfitojnë shërbime cilësore kudo që janë. Ekspertë të përzgjedhur sipas nevojave dhe shoqërim për kënaqësi të garantuar."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Menaxho llogarinë",
+    "ORDERS": "Porositë e kryera",
+    "FAVORITES": "Të preferuarat",
+    "HELP": "Ndihmë",
+    "MY_ABO": "Abonimi im",
+    "PRICES": "Planet tarifore",
+    "FIDELITY": "Program besnikërie",
+    "LOGOUT": "Dil",
+    "YOUR_BEAUTY_SERVICES": "Ofroni shërbimet tuaja të bukurisë",
+    "YOUR_COMPANY": "Regjistro kompaninë tuaj"
+  },
+  "SUBTITLES": {
+    "HELP": "Do pak ndihmë? Kjo faqe është për ty."
+  },
+  "ORDERS": {
+    "TITLE": "Porositë e mia",
+    "TITLE_SUBTITLE": "Menaxho lehtë takimet e kaluara, të ardhshme ose të anuluara.",
+    "UPCOMING_SECTION": "📅 Në pritje",
+    "NO_UPCOMING": "Nuk keni asnjë shërbim të planifikuar.",
+    "PAST_SECTION": "✅ Të kryera",
+    "NO_PAST": "Nuk keni asnjë shërbim të realizuar.",
+    "ADDRESS": "Adresa",
+    "DATE": "Data",
+    "TOTAL": "Totali",
+    "ITEMS": "artikuj",
+    "DELETE": "Fshi",
+    "VISIT": "Vizito",
+    "PRESTA_FOR": "Shërbim për",
+    "AT": "në",
+    "ORDER_AGAIN": "Porosit sërish",
+    "INVOICE": "Kërko faturë",
+    "REVIEW": "Jep mendimin tuaj",
+    "CANCEL": "Anulo"
+  },
+  "FIDELITY": {
+    "TITLE": "Të preferuarat e mia",
+    "AGAIN": "Edhe",
+    "AGAIN_SUBTITLE": "para shpërblimit tënd",
+    "TITLE_SUBTITLE": "për të zhbllokuar dhuratën tënde",
+    "DATE": "E vlefshme deri më",
+    "HISTO": "Historiku i trajtimeve të mia"
+  },
+  "FAVORITES": {
+    "TITLE": "Të preferuarat e mia",
+    "TITLE_SUBTITLE": "Gjej sallonet e zemrës me një shikim."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Tarifa shërbimi:",
+    "DISTANCE": "Distanca maks:",
+    "PAYEMENT": "Pranohet pagesa me kartë dhe PayPal",
+    "PRESS_FOR_INFO": "Shtyp për oraret, informacionet, etj.",
+    "GALLERY": "Galeria e imazheve",
+    "SEE_MORE": "Shiko më shumë",
+    "SEE_LESS": "Shiko më pak"
+  },
+  "LOGIN": {
+    "TITLE": "Vendosni kredencialet e hyrjes.",
+    "FORGET_PASSWORD": "Keni harruar fjalëkalimin?",
+    "CONTINUER": "Vazhdo",
+    "CONTINUE_WITH": "Vazhdo me",
+    "OR": "Ose",
+    "QRCODE": "Hyni me kod QR",
+    "CGU": "Duke vazhduar, pranoni të merrni thirrje, mesazhe WhatsApp ose SMS (edhe me metoda automatike) nga izyGlam dhe shoqëritë e saj në numrin e dhënë.",
+    "PLACEHOLDER_EMAIL": "Adresa e email-it",
+    "PLACEHOLDER_PASSWORD": "Fjalëkalimi",
+    "PLACEHOLDER_PASSWORD_NEW": "Fjalëkalim i ri",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Konfirmo fjalëkalimin",
+    "CHANGE_PASSWORD": "Ndryshoni fjalëkalimin",
+    "REINIT": "Rivendos"
+  },
+  "SIGNUP": {
+    "GENRE": "Gjinia",
+    "CHOOSE": "Zgjidh",
+    "SEX_MALE": "Burrë",
+    "SEX_FEMALE": "Grua",
+    "TITLE": "Vendosni informacionet personale.",
+    "CONTINUER": "Vazhdo",
+    "OR": "Ose",
+    "QRCODE": "Hyni me kod QR",
+    "CGU": "Duke vazhduar, pranoni të merrni thirrje, mesazhe WhatsApp ose SMS (edhe me metoda automatike) nga izyGlam dhe shoqëritë e saj në numrin e dhënë.",
+    "PLACEHOLDER_FIRSTNAME": "Emri",
+    "PLACEHOLDER_LASTNAME": "Mbiemri",
+    "PLACEHOLDER_EMAIL": "Email",
+    "PLACEHOLDER_EMAIL_REQUIRED": "Email i detyrueshëm",
+    "PLACEHOLDER_EMAIL_WRONG": "Format i pavlefshëm email-i",
+    "PLACEHOLDER_PHONE": "Telefon",
+    "PLACEHOLDER_PHONE_NUMBER": "Numri i telefonit",
+    "PLACEHOLDER_PASSWORD": "Fjalëkalimi",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Konfirmimi i fjalëkalimit",
+    "COUNTRY": "Shteti"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Frëngjisht",
+    "ANGLAIS": "Anglisht",
+    "ESPAGNOL": "Spanisht",
+    "NEERLANDAIS": "Holandisht",
+    "ITALIEN": "Italisht",
+    "ALLEMAND": "Gjermanisht",
+    "PORTUGAIS": "Portugalisht",
+    "POLONAIS": "Polonisht",
+    "DANOIS": "Danisht",
+    "FINNOIS": "Finlandisht",
+    "SUEDOIS": "Suedisht",
+    "ARABE": "Arabisht",
+    "TURC": "Turqisht",
+    "CHINOIS": "Kinezisht",
+    "RUSSE": "Rusisht",
+    "PERSAN": "Persisht",
+    "UKRAINIEN": "Ukrainisht",
+    "ROUMAIN": "Rumanisht",
+    "CATALAN": "Katalanisht",
+    "BASQUE": "Baskisht",
+    "GALICIEN": "Galicisht",
+    "ALBANAIS": "Shqip",
+    "KURDE": "Kurdisht",
+    "ESTONIEN": "Estonisht",
+    "SOMALIEN": "Somalisht",
+    "BIELORUSSE": "Bjellorusisht",
+    "JAPONAIS": "Japonisht",
+    "COREEN": "Koreanisht",
+    "INDONESIEN": "Indonezisht",
+    "MALAIS": "Malajzisht",
+    "THAI": "Tajlandisht",
+    "VIETNAMIEN": "Vietnamezisht",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bengalisht"
+  },
+  "COUNTRY": {
+    "FRANCE": "Francë",
+    "ALLEMAGNE": "Gjermani",
+    "SPAIN": "Spanjë",
+    "ITALY": "Itali",
+    "DANEMARK": "Danimarkë",
+    "FINLAND": "Finlandë",
+    "NETHERLAND": "Holandë",
+    "POLAND": "Poloni",
+    "PORTUGAL": "Portugali",
+    "SWEDEN": "Suedi",
+    "CHINA": "Kinë",
+    "INDIA": "Indi",
+    "JAPAN": "Japoni",
+    "SOUTH_KOREA": "Koreja e Jugut",
+    "INDONESIA": "Indonezi",
+    "PHILIPPINES": "Filipine",
+    "THAILAND": "Tajlandë",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malajzi",
+    "SINGAPOURE": "Singapor",
+    "EMIRAT_ARABE": "Emiratet e Bashkuara Arabe",
+    "SAUDI_ARABIA": "Arabia Saudite"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Adresat e mia",
+    "ADDRESS_MODIFICATION": "Ndryshimi i adresës",
+    "STREET": "Rruga",
+    "CITY": "Qyteti",
+    "CP": "Kodi postar",
+    "CREATE": "Krijo",
+    "BACK": "Kthehu",
+    "CHANGE": "Ndrysho",
+    "CLOSE": "Mbyll"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Parametrat e platformës",
+    "COMMISSION": "Norma e komisionit (%)",
+    "0to100": "Vlerë e detyrueshme midis 0 dhe 100",
+    "SERVICE": "Tarifa e shërbimit (€)",
+    "WEEKS": "Numri i javëve të shfaqura",
+    "SUP0": "Vlerë e detyrueshme mbi 0",
+    "LESS24": "Tarifë anulimi brenda 24h (%)",
+    "LESS48": "Tarifë anulimi brenda 48h (€)",
+    "DELAY": "Afati minimal i rezervimit (orë)",
+    "TVA": "Norma e TVSH (%)",
+    "ADS": "Aktivo reklamat",
+    "COMPANY": "Aktivizo tregtinë me ndërmarrje",
+    "FIDELITY": "Aktivo besnikërinë",
+    "MULTI_SHOP": "Aktivo multi-dyqan",
+    "PROMO": "Aktivo promocionet në dyqan",
+    "SPONSORS": "Aktivo sponsorët në faqen hyrëse",
+    "SAVE": "Ruaj"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Totali i dyqaneve",
+    "ACT_SHOPS": "Dyqane aktive",
+    "USERS": "Totali i përdoruesve",
+    "NBR_USERS": "Numri i përdoruesve të regjistruar",
+    "CA_TOTAL": "Xhiroja totale",
+    "CA_GENERATED": "Xhiro e gjeneruar",
+    "SHOPS_PERFO": "Performanca e dyqaneve",
+    "SHOP_NAME": "Emri i dyqanit",
+    "CITY": "Qyteti",
+    "REVENUES": "Të ardhurat",
+    "BOOKINGS": "Numri i rezervimeve",
+    "NOTE": "Nota mesatare",
+    "ACTIONS": "Veprime",
+    "DETAILS": "Detaje",
+    "ADJUST": "Rregullo",
+    "SHOP_ADJUST": "Rregullo dyqanin",
+    "STILL_DEVELOPPED": "Kjo veçori është ende në zhvillim",
+    "CLOSE": "Mbyll"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Detajet e ngjarjes",
+    "CLIENT": "Klienti",
+    "DEBUT": "Fillimi",
+    "FIN": "Fundi",
+    "ADDRESS": "Adresa",
+    "PHONE": "Telefoni",
+    "CANCEL": "Anulo",
+    "SAVE": "Ruaj"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Krijo një ngjarje",
+    "COMING": "Në ardhje",
+    "PAST": "Të kaluara",
+    "CANCELLED": "Të anuluara",
+    "NO_CANCELLED": "Asnjë porosi e anuluar."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Asistencë online"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Menaxhimi i punonjësve",
+    "NAME": "Emri",
+    "EMAIL": "Email",
+    "SOLDE": "Bilanci i llogarisë",
+    "ACTIONS": "Veprime",
+    "DEFAULT_PASSWORD": "Fjalëkalim i parazgjedhur",
+    "REINITIALIZE_PASSWORD": "Fjalëkalim i parazgjedhur për rivendosje",
+    "CHANGE_PASSWORD": "Ndrysho fjalëkalimin"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Kredito llogarinë e punonjësit",
+    "AMOUNT": "Shuma për t’u kredituar",
+    "CANCEL": "Anulo",
+    "SAVE": "Vlerëso"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Totali i rezervimeve",
+    "TOTAL_MONTH": "Rezervime këtë muaj",
+    "GENERATED": "Të ardhura të gjeneruara",
+    "MONTHLY": "Të ardhura këtë muaj",
+    "AVG_NOTE": "Nota mesatare",
+    "BASED_ON": "Bazuar në",
+    "REVIEWS": "vlerësime",
+    "NEXT_APPOINTEMENT": "Takimet e ardhshme",
+    "POPULAR_SERVICES": "Shërbimet më popullore",
+    "RESERVATION": "rezervime"
+  },
+  "FINANCE": {
+    "PROGRESS": "Evolucioni që prej M-1",
+    "PROGRESSION": "Përparim",
+    "TOTAL_GENERATED": "Totali i gjeneruar",
+    "CA": "Xhiro",
+    "COMMISSION_TAKEN": "Komision i mbajtur",
+    "COMMISSIONS": "Komisione",
+    "NET_TO_PAY": "Neto për t’u derdhur",
+    "DISPO_AMOUNT": "Shuma e disponueshme",
+    "REQUEST_WITHDRAWAL": "Kërko transferim",
+    "TAKE": "Shuma për t’u tërhequr",
+    "TOTAL_EARNINGS": "Të ardhura neto",
+    "TOTAL_BOOKINGS": "Shërbime të kryera",
+    "CANCELLED_BOOKINGS": "Shërbime të anuluara",
+    "SERVICES_CANCELLED": "Rezervime të anuluara ose të refuzuara",
+    "SERVICES_COMPLETED": "Rezervime të finalizuara",
+    "AVG_PRICE": "Çmimi mesatar",
+    "PER_SERVICE": "Për shërbim",
+    "REVIEW_RATIO": "Vlerësimet e klientëve",
+    "CLIENT_FEEDBACK": "Norma e komenteve",
+    "TOP_PRODUCTS": "Shërbimet më të shitura",
+    "AVG_DURATION": "Kohëzgjatja mesatare",
+    "DURATION_PER_BOOKING": "Koha për rezervim",
+    "DETAILS": "Detajet e llogarisë bankare",
+    "ASK": "Kërko një transferim",
+    "HISTORY": "Historiku i transaksioneve",
+    "DATE": "Data",
+    "AMOUNT": "Shuma",
+    "COMMISSION": "Komisioni",
+    "STATUS": "Statusi"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Zgjidh llojin e dyqanit për krijim",
+    "CANCEL": "Anulo",
+    "CREATE": "Vlerëso"
+  },
+  "PROCHES": {
+    "TITLE": "Të afërmit e mi",
+    "UPDATE": "Ndryshimi i një të afërmi",
+    "FIRSTNAME": "Emri",
+    "NAME": "Mbiemri",
+    "EMAIL": "Email",
+    "PHONE": "Telefon",
+    "CREATE": "Krijo",
+    "BACK": "Kthehu",
+    "CHANGE": "Ndrysho",
+    "CLOSE": "Mbyll"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Jepni mendimin tuaj",
+    "RATING": "Nota",
+    "COMMENT": "Koment",
+    "CLOSE": "Mbyll",
+    "SUBMIT": "Dërgo"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Zgjidhni datën e shërbimit",
+    "CANCEL": "Anulo"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Krijo një shërbim",
+    "NAME": "Emri",
+    "DESCRIPTION": "Përshkrimi",
+    "COLOR": "Ngjyra",
+    "PRICE": "Çmimi",
+    "TIME": "Kohëzgjatja",
+    "IMAGE": "Imazh",
+    "ACTIONS": "Veprime",
+    "MINUTES": "minuta",
+    "CHANGE": "Ndrysho",
+    "DELETE": "Fshi",
+    "SERVICE_NAME": "Emri i shërbimit",
+    "TIME_MINUTES": "Kohëzgjatja (në minuta)",
+    "PREST_IMAGE": "Imazhi i shërbimit",
+    "NO_PICS": "Ende pa foto",
+    "UPLOAD": "Ngarko një imazh",
+    "NEW_PIC": "Paraparje e imazhit të ri",
+    "PRESTA_COLOR": "Ngjyra e shërbimit",
+    "CANCEL": "Anulo",
+    "SAVE": "Ruaj",
+    "AVG_PRICE": "Tarifa mesatare",
+    "IMAGE_OK": "Imazhi u ngarkua me sukses",
+    "ERROR_IMAGE_LOAD": "Gabim gjatë ngarkimit të imazhit",
+    "UPDATE_SUCCESS": "Shërbimi u përditësua me sukses",
+    "ERROR_PRESTA": "Gabim gjatë përditësimit të shërbimit",
+    "PRESTA_UPDATED": "Shërbimi u përditësua me sukses",
+    "PRESTA_ERROR": "Gabim gjatë përditësimit të shërbimit",
+    "PRESTA_SUCCESS": "Shërbimi u përditësua me sukses",
+    "PHOTO_ERROR": "Gabim gjatë përditësimit të fotos",
+    "PRESTA_DELETED": "Shërbimi u fshi me sukses",
+    "PRESTA_DELETE_ERROR": "Gabim gjatë fshirjes së shërbimit"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Imazhi i dyqanit",
+    "UPLOAD_IMAGE": "Ngarko një imazh",
+    "SNEEK_PIC": "Paraparje e imazhit",
+    "SHOP_NAME": "Emri i dyqanit",
+    "DESCRIPTION": "Përshkrimi",
+    "DESC_INFO": "(min. 25 karaktere)",
+    "CITY": "Qyteti",
+    "DISCRICT": "Rrethet",
+    "LAT": "Gjerësi gjeografike",
+    "LON": "Gjatësi gjeografike",
+    "ZONE": "Zona e lëvizjes (km)",
+    "OPENNING": "Orari i hapjes",
+    "MORNING_OPEN": "Mëngjes – Hapje",
+    "MORNING_CLOSE": "Mëngjes – Mbyllje",
+    "AFTERNOON_OPEN": "Pasdite – Hapje",
+    "AFTERNOON_CLOSE": "Pasdite – Mbyllje",
+    "SAVE": "Ruaj dyqanin",
+    "MONDAY": "E hënë",
+    "TUESDAY": "E martë",
+    "WEDNESDAY": "E mërkurë",
+    "THURSDAY": "E enjte",
+    "FRIDAY": "E premte",
+    "SATURDAY": "E shtunë",
+    "SUNDAY": "E diel",
+    "CLOSED": "Mbyllur",
+    "GENERATE_IMAGE": "Gjenero imazhin",
+    "GENERATE_DESCRIPTION": "Gjenero përshkrimin",
+    "PHOTO": "Shembuj fotosh të pranuara / të refuzuara",
+    "CODE_POSTAUX": "Kodet postare të shërbyera",
+    "EXEMPLE_LOCAL": "Shembull: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Shto një punonjës",
+    "LOADING": "Po ngarkohet",
+    "LIST": "Lista e punonjësve",
+    "ADD": "Shto",
+    "EMAIL": "Email i punonjësit",
+    "FIRSTNAME": "Emri",
+    "FAMILY_NAME": "Mbiemri",
+    "PHONE": "Telefoni",
+    "PASSWORD": "Fjalëkalimi",
+    "HAVE_TO": "Të gjitha fushat janë të detyrueshme.",
+    "EMAIL_ERROR": "Email i pavlefshëm.",
+    "EMPLOYEE_OK": "Punonjësi u shtua me sukses.",
+    "ADD_EMPLOYEE_ERROR": "Gabim gjatë shtimit të punonjësit."
+  },
+  "AVIS": {
+    "TITLE": "ÇFARË THONË PËRDORUESIT TANË",
+    "AVIS1": "Në fillim isha skeptike… dhe megjithatë! Manikyri im ishte i përsosur, në shtëpi, pa stres. U bë rituali im i së premtes mbrëma.",
+    "AVIS2": "Rezervova një trajtim fytyre për 3 minuta, nga divani. Estetistja ishte e butë, e vëmendshme… dhe lëkura ime s’ka qenë kurrë më e bukur.",
+    "AVIS3": "Mendova se do të ishte më e shtrenjtë se në sallon… surprizë: i njëjti çmim, madje më pak! Dhe nuk u desh të lëvizja. Po, patjetër.",
+    "AVIS4": "Ishte një ditë para ditëlindjes, doja një brushing express. Gjeta një pro të lirë me 2 klikime. Pikë, miqësore dhe rezultat fantastik.",
+    "AVIS5": "Jam nënë solo, s’kam kohë të vrapoj. Këtu rezervoj kur fëmijët flenë. Thjesht, shpejt dhe vërtet i mrekullueshëm.",
+    "AVIS6": "Më pëlqeu shumë seanca e parë. Estetistja më bëri të ndihem rehat menjëherë. U ndjeva e përkëdhelur. Rezervova sërish për javën tjetër!"
+  },
+  "DOWNLOAD": {
+    "USERS": "përdorues të kënaqur",
+    "SOCIAL": "profesionistë në dispozicion",
+    "STORE": "në App Store dhe Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Zgjidh planin që të përfaqëson",
+    "DISCOVER2": "dhe nis ngjitjen drejt majave",
+    "SOLUTIONS": "Meriton një zgjidhje të bukur, të fuqishme dhe të menduar për ty. Mund të ndryshosh mendje kur të duash",
+    "TEST": "Salloni yt i parë është 100% falas. Zero stres. Vetëm magji.",
+    "START_FREE": "Krijo sallonin tim të parë",
+    "FREE": "Nxënëse",
+    "FREE_SUBTITLE": "Nis ngjitjen me sallonin tënd të parë",
+    "THEN": "më pas",
+    "MONTHLY": "muaj",
+    "FREE1": "1 sallon aktiv",
+    "FREE2": "Rezervime dhe klientë të pakufizuar",
+    "FREE3": "Menaxhim i shërbimeve dhe orarit",
+    "FREE4": "Sinkronizim me kalendarin personal",
+    "FREE5": "Përsosur për fillim të qetë",
+    "FREE6": "Krijo sallon falas",
+    "BASIC": "E zgjedhur",
+    "BASIC_SUBTITLE": "Çliro potencialin dhe nis të rrezatosh",
+    "BASIC1": "Deri në 3 sallone aktive",
+    "BASIC2": "Menaxhim i plotë i shërbimeve, klientëve dhe takimeve",
+    "BASIC3": "Suport prioritar me email",
+    "BASIC4": "Akses te burime ekskluzive për rritje",
+    "BASIC5": "Ideale për pro që duan të zgjerojnë klientelën",
+    "BASIC6": "1 muaj provë falas",
+    "PREMIUM": "Mbretëreshë",
+    "PREMIUM_SUBTITLE": "Perandoria jote merr formë, ndikimi rritet",
+    "PREMIUM1": "Deri në 10 sallone aktive",
+    "PREMIUM2": "Akses në statistika të avancuara",
+    "PREMIUM3": "Rekomandime inteligjente për të rritur xhiron",
+    "PREMIUM4": "Dukshmëri e rritur në IzyGlam",
+    "PREMIUM5": "Suport prioritar",
+    "PREMIUM6": "E menduar për të pavarura ambicioze",
+    "PREMIUM7": "Merr Mbretëreshë",
+    "BUSINESS": "Perëndeshë",
+    "BUSINESS_SUBTITLE": "Kërko fronin tënd, Perëndeshë",
+    "BUSINESS1": "Me porosi",
+    "BUSINESS2": "Sallone pa limit",
+    "BUSINESS3": "Shqyrtim strategjik i personalizuar",
+    "BUSINESS4": "Dukshmëri e shtuar dhe promovim i salloneve",
+    "BUSINESS5": "Zgjidhje me porosi për të shkallëzuar",
+    "BUSINESS6": "Na kontakto",
+    "COMPARE": "Krahasim i veçorive",
+    "FONCTIONS": "Veçoritë",
+    "BUSINESS9": "Menaxhim i plotë i aktivitetit",
+    "STUDIO_BASIC": "Burime ekskluzive",
+    "STUDIO_ADVANCED": "Statistika & rekomandime",
+    "ANALYSE": "Analizë performance",
+    "BASICS": "Klasike",
+    "ADVANCE": "E avancuar",
+    "PLANS": "Numri i salloneve aktive",
+    "READY": "Gati ta rritësh aktivitetin?",
+    "DISCOVERS": "Zbulo ofertat e IzyGlam"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Deklaratë e aksesueshmërisë",
+      "TEXT": "izyGlam angazhohet të bëjë shërbimet e tij sa më të aksesueshme. Synimi ynë është WCAG 2.2 niveli AA dhe përputhja me RGAA (Francë), sa të jetë e mundur."
+    },
+    "SCOPE": {
+      "TITLE": "Përimetri i mbuluar",
+      "L1": "Uebsajti publik dhe faqet informuese.",
+      "L2": "Aplikacioni web (pulti) për klientë dhe profesionistë.",
+      "L3": "Aplikacioni mobil (iOS/Android) sipas rastit.",
+      "L4": "Email-e transaksionale dhe qendra e ndihmës.",
+      "L5": "Mjetet e suportit ndaj klientit."
+    },
+    "STATUS": {
+      "TITLE": "Statusi i përputhshmërisë",
+      "TEXT": "Në ditën e kësaj deklarate, aksesueshmëria e ndërfaqeve të izyGlam është pjesërisht e përputhshme me WCAG 2.2 AA / RGAA. Përmirësojmë vazhdimisht dhe korrigjojmë prioritare."
+    },
+    "PREPARATION": {
+      "TITLE": "Metoda e përgatitjes së deklaratës",
+      "L1": "Vetëvlerësime nga ekipi produkt/UI: rishikim semantik HTML, role ARIA, rend i tabulimit.",
+      "L2": "Teste manuale: navigim me tastierë, fokus i dukshëm, zmadhim 200%+, lexues ekrani.",
+      "L3": "Teste me mjete (auditim i automatizuar në mostra ekranesh).",
+      "L4": "Recetim i vazhdueshëm në dorëzime (Design System, komponente të aksesueshme)."
+    },
+    "FEATURES": {
+      "TITLE": "Veçoritë e aksesueshmërisë",
+      "KEYBOARD": {
+        "TITLE": "Navigim me tastierë",
+        "L1": "Shteg i plotë me tastierë (Tab, Shift+Tab, Enter, Space, Esc, shigjetat).",
+        "L2": "Tregues fokusi i dukshëm dhe me kontrast.",
+        "L3": "Lidhje “Kalo te përmbajtja” për të anashkaluar header-in.",
+        "L4": "Menu, modalë dhe dropdown të komandueshëm me tastierë (hapje/mbyllje, fokus i bllokuar kur duhet, mbyllje me Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Lexues ekrani dhe strukturë",
+        "L1": "Strukturë semantike me tituj hierarkikë (h1→h6) dhe orientues (header, nav, main, footer).",
+        "L2": "Etiketa të qarta për të gjitha fushat dhe butonat, emra të aksesueshëm koherentë.",
+        "L3": "Njoftim i ndryshimeve të gjendjes përmes zonave aria-live (gabime, suksese, ngarkesa).",
+        "L4": "Imazhet informative me atribut alt përshkrues, imazhet dekorative injorohen."
+      },
+      "CONTRAST": {
+        "TITLE": "Kontraste, ngjyra dhe shkallëzim",
+        "L1": "Kontrast i synuar ≥ 4.5:1 për tekst normal dhe ≥ 3:1 për tekst të madh.",
+        "L2": "Ndërfaqe e përdorshme deri në 200% zmadhim pa humbje përmbajtjeje/funksioni.",
+        "L3": "Asnjë informacion vetëm me ngjyrë."
+      },
+      "FORMS": {
+        "TITLE": "Formularë dhe mesazhe gabimesh",
+        "L1": "Lidhje label⇄input, tregues për fushat e detyrueshme.",
+        "L2": "Gabimet afër fushës dhe përmbledhje kur duhet.",
+        "L3": "Fokusi vendoset te fusha e parë me gabim, jepen këshilla korrigjimi."
+      },
+      "DYNAMIC": {
+        "TITLE": "Përmbajtje dinamike dhe animacione",
+        "L1": "Karusele/elemente të animuara të pauzueshme dhe jo bllokuese.",
+        "L2": "Respektohet preferenca e sistemit “reduce motion” kur është e mundur.",
+        "L3": "Modalë jo invazivë, mbyllje me tastierë dhe klik jashtë."
+      },
+      "MEDIA": {
+        "TITLE": "Media",
+        "L1": "Video (kur ka) me titra dhe/ose transkriptime.",
+        "L2": "Audio/video të komandueshme me tastierë."
+      },
+      "MOBILE": {
+        "TITLE": "Celular",
+        "L1": "Zona prekjeje mjaftueshëm të mëdha dhe të distancuara.",
+        "L2": "Navigim koherent me TalkBack (Android) dhe VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Mjediset dhe teknologjitë asistuese të synuara",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Shfletues modernë të përditësuar."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Përmbajtje jo e aksesueshme (e konstatuar ose e mundshme)",
+      "TEXT": "Pavarësisht përpjekjeve, disa elementë mund të mbeten jo në përputhje:",
+      "L1": "Imazhe të vjetra pa tekst alternativ përshkrues.",
+      "L2": "Dokumente nga palë të treta (PDF, bashkëngjitje) jo plotësisht të aksesueshme.",
+      "L3": "Video historike pa titra/përshkrim.",
+      "L4": "Komponentë të integruar të palëve të treta (pagesa, harta, player-a) me kufizimet e tyre.",
+      "MOTIVES": "Arsye të mundshme: përmbajtje palësh të treta, ngarkesë joproporcionale, përditësim në proces."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternativa dhe përshtatje të arsyeshme",
+      "TEXT": "Nëse ju nevojitet format alternativ (p.sh. dokument i aksesueshëm, ndihmë për rezervim), na kontaktoni. Do të ofrojmë zgjidhje ekuivalente."
+    },
+    "FEEDBACK": {
+      "TITLE": "Përvojë dhe asistencë",
+      "L1": "Nga aplikacioni: rubrika Ndihmë > Aksesueshmëri.",
+      "L2A": "Me email:",
+      "L2B": "ose",
+      "L3": "Ju lutemi specifikoni ekranin/URL-në, pajisjen, shfletuesin dhe, nëse ka, lexuesin e ekranit."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Procedurë ankese (Francë)",
+      "TEXT": "Nëse konstatoni një mangësi aksesueshmërie që ju pengon, dhe nuk merrni përgjigje të kënaqshme, mund të:",
+      "L1": "Shkruani te Mbrojtësi i të Drejtave ose te delegati i tij në departamentin tuaj,",
+      "L2": "Ose t’i drejtoheni Ndërmjetësit sipas rastit.",
+      "MORE": "Më shumë informacion:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Përmirësim i vazhdueshëm",
+      "L1": "Design System me komponentë të aksesueshëm.",
+      "L2": "Rishikim kodi dhe teste aksesueshmërie në çdo dorëzim.",
+      "L3": "Trajnime periodike për ekipet e produktit dhe suportit.",
+      "L4": "Prioritizim i korrigjimeve sipas ndikimit te përdoruesi."
+    },
+    "DATE": {
+      "TITLE": "Data e deklaratës dhe përditësime",
+      "TEXT": "Deklarata hartuar më 25 dhjetor 2025. Përditësohet të paktën një herë në vit ose në ndryshime të mëdha."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Si të rezervoj një shërbim në IzyGlam?",
+    "QUESTION2": "Si të zgjedh profesionistin e duhur për mua?",
+    "QUESTION3": "Si ta ndryshoj ose anuloj takimin?",
+    "QUESTION4": "Si mund ta ndjek porosinë time?",
+    "QUESTION5": "Çfarë mënyrash pagese mund të përdor?",
+    "QUESTION6": "Si të ndjek porosinë ose rezervimin tim?",
+    "QUESTION7": "A mund të lë një vlerësim pas shërbimit?",
+    "QUESTION8": "Si të përdor ofertat e besnikërisë dhe promocionet?",
+    "QUESTION9": "Çfarë të bëj nëse kam problem me porosinë?",
+    "QUESTION10": "Si të kontaktoj ekipin IzyGlam?",
+    "QUESTION11": "Si funksionon politika e anulimit dhe rimbursimit?",
+    "QUESTION12": "A mund të rezervoj për dikë tjetër (dhuratë, surprizë)?",
+    "QUESTION13": "Si të bëhem profesionist partner në IzyGlam?",
+    "QUESTION14": "Si t’i mbroj informacionet e mia personale në IzyGlam?",
+    "REPONSE1": "Është e thjeshtë dhe e shpejtë. Pasi të regjistrohesh, zgjidh shërbimin, shiko profesionistët pranë teje, zgjidh datën/horën. Kliko “Rezervo” dhe paguaj me kartë. Rezervimi verifikohet manualisht nga profesionisti. Nëse refuzohet, rimbursohesh plotësisht.",
+    "REPONSE2": "Çdo profesionist ka profil me shërbime, çmime, foto dhe vlerësime. Mund t’i shtosh te të preferuarit. Krahaso dhe zgjidh atë që të përshtatet më mirë.",
+    "REPONSE3": "Mund të ndryshosh ose anulosh nga hapësira jote personale. Anulimi falas deri në 24h para shërbimit. Pas kësaj, mund të ketë tarifa. Suporti ynë është në dispozicion.",
+    "REPONSE4": "Hyni te “Rezervimet e mia”. Do të gjeni gjurmimin në kohë reale, anulimin/ndryshimin dhe historikun e shërbimeve.",
+    "REPONSE5": "Pagesa bëhet vetëm me kartë (Visa, MasterCard, American Express). Nuk ofrojmë para në dorë as PayPal. Çdo gjë është e siguruar.",
+    "REPONSE6": "Pasi të konfirmohet rezervimi, merrni email përmbledhës dhe një rikujtues para shërbimit (email dhe/ose njoftim). Mund ta ndiqni edhe nga hapësira juaj.",
+    "REPONSE7": "Po. Pas çdo shërbimi, ftoheni të lini mendim. Vlerësimet moderohen manualisht për autenticitet. Profesionistët s’mund t’i ndryshojnë.",
+    "REPONSE8": "Aktualisht, IzyGlam nuk ka ende program besnikërie apo kode promo. Janë planifikuar për një fazë të ardhshme.",
+    "REPONSE9": "Na kontaktoni nga rubrika “Kontakt” ose me email. Ekipi ynë synon t’ju kthejë përgjigje brenda 24h (orientuese) dhe t’ju ndihmojë sa më shpejt.",
+    "REPONSE10": "Na gjeni përmes formularit në faqe ose aplikacion. Suporti: hënë–të shtunë, 9:00–18:00. Shembull email: support@izyglam.com",
+    "REPONSE11": "Mund të anuloni falas deri 24h para. Më pas, mund të ketë tarifa. Nëse profesionisti refuzon rezervimin pas pagesës, rimbursimi është automatik (sistemi i automatizuar është në zbatim).",
+    "REPONSE12": "Ende nuk mund të dhuroni një shërbim nga llogaria juaj. Por, nëse profesionisti ofron formulë duo ose familje, mund të rezervoni për disa persona.",
+    "REPONSE13": "Jeni estetiste, parukiere apo praktikues/e mirëqenieje? Bashkohuni me IzyGlam duke plotësuar formularin te “Bëhu partner”. Do t’ju kontaktojmë shpejt.",
+    "REPONSE14": "Siguria e të dhënave tuaja është prioritet. Respektojmë Rregulloren GDPR. Vetëm informacionet e domosdoshme u shfaqen profesionistëve. Mesazheria e integruar ndihmon komunikimin; shmangia e platformës monitorohet."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Kush jemi ne?",
+      "TEXT": "Kjo Politikë e privatësisë shpjegon se si <strong>izyGlam</strong> (“ne”, “tona”, “Platforma”) mbledh, përdor, ruan, ndan dhe mbron të dhënat tuaja personale kur përdorni shërbimet tona (faqe web, aplikacion web, aplikacion mobil, email-e dhe suport). Ne veprojmë si <strong>kontrollues i të dhënave</strong> për trajtimet e përshkruara më poshtë."
+    },
+    "SCOPE": {
+      "TITLE": "Fusha e zbatimit",
+      "TEXT": "Kjo politikë zbatohet për <strong>klientët</strong> që rezervojnë shërbime, <strong>profesionistët</strong> që ofrojnë shërbime përmes izyGlam dhe <strong>vizitorët</strong> e ndërfaqeve tona."
+    },
+    "DATA": {
+      "TITLE": "Të dhënat e mbledhura",
+      "PROVIDED": {
+        "TITLE": "Të dhëna që jepni ju",
+        "L1": "<strong>Identitet & kontakt:</strong> emër, mbiemër, email, telefon, adresë(at), foto/avatara.",
+        "L2": "<strong>Llogaria:</strong> kredenciale, fjalëkalime (të hash-uara), preferenca, gjuhë.",
+        "L3": "<strong>Rezervime:</strong> shërbimet e zgjedhura, data/ora, adresat e shërbimit, shënime, bashkëngjitje.",
+        "L4": "<strong>Pagesa:</strong> të dhëna pagese <em>përmes ofruesit (p.sh. Stripe)</em> — ne nuk ruajmë të dhënat e kartës suaj.",
+        "L5": "<strong>Profesionistët:</strong> profil publik, shërbime, çmime, zona shërbimi, disponueshmëri, IBAN (i siguruar), dokumente verifikimi kur kërkohet.",
+        "L6": "<strong>Suporti:</strong> mesazhe, tike­ta, regjistrime thirrjesh sipas rastit."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Të dhëna të mbledhura automatikisht",
+        "L1": "<strong>Të dhëna teknike:</strong> modeli i pajisjes, OS, shfletuesi, rezolucione, ID sesioni.",
+        "L2": "<strong>Log-imet:</strong> adresa IP, kohradata, ngjarje gabimesh, përdorimi i veçorive.",
+        "L3": "<strong>Vendndodhja:</strong> përafërsisht (IP) ose saktë (GPS, me pëlqimin tuaj).",
+        "L4": "<strong>Cookies & SDK:</strong> shihni seksionin përkatës më poshtë."
+      },
+      "THIRD": {
+        "TITLE": "Të dhëna nga palë të treta",
+        "L1": "<strong>Ofrues pagese</strong> (statuset e pagesës, token-e).",
+        "L2": "<strong>Partnerë analitikë/antifraudë</strong> (sinjale rreziku, statistika përdorimi).",
+        "L3": "<strong>Integrime</strong> (p.sh. komunikim, harta, ruajtje cloud)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Qëllimet & bazat ligjore",
+      "TEXT": "I trajtojmë të dhënat për këto qëllime:",
+      "L1": "<strong>Ofrimi i shërbimit</strong> (llogari, rezervim, ndërmjetësim, njoftime) — <em>Baza: kontrata</em>.",
+      "L2": "<strong>Pagesa & faturim</strong> — <em>Kontratë, detyrim ligjor</em>.",
+      "L3": "<strong>Siguri, parandalim abuzimesh/mashtrimi</strong> — <em>Interes i ligjshëm, detyrim ligjor</em>.",
+      "L4": "<strong>Përmirësim produkti, statistika</strong> — <em>Interes i ligjshëm</em>.",
+      "L5": "<strong>Suport & cilësi</strong> — <em>Kontratë, interes i ligjshëm</em>.",
+      "L6": "<strong>Marketing direkt</strong> (email/app) — <em>Pëlqim kur kërkohet</em>; mundësi çregjistrimi në çdo kohë.",
+      "L7": "<strong>Përputhshmëri ligjore</strong> (kontabilitet, kërkesa autoritetesh) — <em>Detyrim ligjor</em>."
+    },
+    "SHARING": {
+      "TITLE": "Ndarja e të dhënave",
+      "L1": "<strong>Profesionistë / Klientë</strong>: informacionet e nevojshme për shërbimin (emër, kontakt, adresë shërbimi, detaje rezervimi).",
+      "L2": "<strong>Ofrues</strong>: pagesa (p.sh. Stripe), hostim/ruajtje, analitika, email/SMS push, suport, KYC kur duhet. <em>Akses i kufizuar, kontrata në përputhje me GDPR.</em>",
+      "L3": "<strong>Partnerë</strong>: vetëm me pëlqimin tuaj për oferta specifike.",
+      "L4": "<strong>Autoritete</strong>: kur kërkohet me ligj ose për të mbrojtur të drejtat tona."
+    },
+    "TRANSFERS": {
+      "TITLE": "Transferta jashtë BE/EEE",
+      "TEXT": "Kur të dhënat transferohen në vende pa vendim adekuatësie, përdorim <strong>klauzola standarde kontraktuale</strong> dhe masa shtesë."
+    },
+    "RETENTION": {
+      "TITLE": "Afatet e ruajtjes",
+      "L1": "<strong>Llogari & identitet</strong>: gjatë përdorimit, pastaj <em>deri 3 vjet</em> pas aktivitetit të fundit (prospektim) ose <em>5–10 vjet</em> për detyrime ligjore.",
+      "L2": "<strong>Rezervime/fatura</strong>: <em>10 vjet</em> (detyrim ligjor).",
+      "L3": "<strong>Log-e sigurie</strong>: <em>6–24 muaj</em> sipas kritikës.",
+      "L4": "<strong>Cookies</strong>: shih seksionin Cookies.",
+      "NOTE": "Më pas, të dhënat fshihen ose anonimizohen."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies & SDK",
+      "TEXT": "Përdorim cookies/SDK për funksionim, matje audience, parandalim mashtrimi dhe, me pëlqimin tuaj, personalizim.",
+      "L1": "<strong>Të nevojshme</strong>: autentikim, siguri, preferenca teknike.",
+      "L2": "<strong>Matje audience</strong>: statistika të agreguara përdorimi.",
+      "L3": "<strong>Marketing</strong>: vetëm nëse pranoni.",
+      "PREF": "Menaxhoni preferencat në banderolë ose në shfletues."
+    },
+    "AUTOMATION": {
+      "TITLE": "Vendime të automatizuara & profilizim",
+      "TEXT": "Mund të përdorim sinjale automatike (p.sh. rrezik mashtrimi, disponueshmëri, distancë) për të prioritarizuar veprime ose për të propozuar orare. Nuk marrim vendime me pasoja ligjore të rëndësishme pa ndërhyrje njerëzore, veç kur kërkohet me ligj ose me pëlqimin tuaj."
+    },
+    "RIGHTS": {
+      "TITLE": "Të drejtat tuaja (GDPR)",
+      "L1": "E drejta e <strong>aksesit</strong>, <strong>korrigjimit</strong>, <strong>fshirjes</strong>.",
+      "L2": "E drejta për <strong>kufizim</strong> dhe <strong>portabilitet</strong>.",
+      "L3": "E drejta e <strong>kundërshtimit</strong> ndaj trajtimeve me bazë interesin e ligjshëm.",
+      "L4": "E drejta për të <strong>tërhequr pëlqimin</strong> në çdo kohë.",
+      "L5": "E drejta për të paraqitur një <strong>ankesë</strong> te autoriteti mbikëqyrës.",
+      "CONTACT": "Për të ushtruar të drejtat, na kontaktoni:",
+      "VERIFY": "Mund t’ju kërkojmë informacion shtesë për verifikim identiteti."
+    },
+    "SECURITY": {
+      "TITLE": "Siguria",
+      "TEXT": "Zbatojmë masa teknike dhe organizative: enkriptim në transit (TLS), hash-im fjalëkalimesh, log-im dhe monitorim, kontroll aksesesh, kopje rezervë, rishikim kodi dhe teste sigurie."
+    },
+    "MINORS": {
+      "TITLE": "Të dhënat e të miturve",
+      "TEXT": "Shërbimet tona nuk i adresohen personave nën 15 vjeç. Nëse identifikohet një llogari e mitur, do ta fshijmë pas verifikimit."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Nënkontraktorët kryesorë",
+      "TEXT": "Punojmë me nënkontraktorë thelbësorë për hostim, pagesë, email, analitika dhe ruajtje. Një listë e përditësuar mund të jepet me kërkesë te"
+    },
+    "CONTACT": {
+      "TITLE": "Kontakt & DPO",
+      "PRIVACY_LABEL": "Kontakt privatësie",
+      "SUPPORT_LABEL": "Suport",
+      "AUTHORITY_LABEL": "Autoritet mbikëqyrës",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Ndryshime në këtë politikë",
+      "TEXT": "Mund ta përditësojmë për përputhje ligjore ose funksionale. Në ndryshime të rëndësishme, do t’ju njoftojmë me email ose në aplikacion. Data e hyrjes në fuqi: <strong>11 gusht 2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Dispozita lokale",
+      "TEXT": "Nëse jeni në BE, të dhënat trajtohen sipas GDPR. Shtesa specifike sipas vendit/rajonit do të komunikohen kur të jetë e nevojshme."
+    },
+    "GLOSSARY": {
+      "TITLE": "Fjalorth (përzgjedhje)",
+      "L1": "<strong>Kontrollues i të dhënave</strong>: entiteti që përcakton qëllimet dhe mjetet e trajtimit.",
+      "L2": "<strong>Nënkontraktor</strong>: entiteti që trajton të dhëna për llogari të kontrolluesit.",
+      "L3": "<strong>Baza ligjore</strong>: themeli i lejueshmërisë së trajtimit (kontratë, pëlqim, detyrim ligjor, interes i ligjshëm).",
+      "L4": "<strong>Cookies/SDK</strong>: gjurmues të përdorur nga faqja/aplikacioni për të ofruar, matur dhe personalizuar shërbimin."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Pranimi i kushteve",
+      "TEXT": "Duke hyrë në shërbimet e izyGlam (faqe, aplikacion web, aplikacion mobil), pranoni pa rezerva këto Kushte të Përdorimit. Nëse nuk i pranoni, mos përdorni Platformën."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Përkufizime",
+      "L1": "<strong>Klient</strong>: person që rezervon dhe/ose paguan një shërbim në Platformë.",
+      "L2": "<strong>Profesionist</strong>: person që ofron shërbime përmes Platformës.",
+      "L3": "<strong>Shërbim</strong>: shërbim i ofruar nga Profesionisti (p.sh. bukuri në shtëpi).",
+      "L4": "<strong>Platformë</strong>: infrastruktura softuerike, faqet dhe aplikacionet e operuara nga izyGlam."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Shërbimet dhe roli i izyGlam",
+      "TEXT": "izyGlam është një <strong>platformë ndërmjetësimi</strong>. Profesionistët janë <strong>vetëm përgjegjës</strong> për shërbimet (cilësia, përputhshmëria, sigurimet). Përveç kur specifikohet ndryshe, izyGlam nuk është as shitës as ofrues i këtyre shërbimeve."
+    },
+    "ACCOUNT": {
+      "TITLE": "Llogaria dhe përshtatshmëria",
+      "L1": "Regjistrimi është i detyrueshëm për të rezervuar ose ofruar shërbime. Duhet të jepni informacion të saktë dhe ta përditësoni.",
+      "L2": "Duhet të jeni të paktën 15 vjeç. Profesionistët duhet të jenë të licencuar ligjërisht.",
+      "L3": "Jeni përgjegjës për konfidencialitetin e kredencialeve dhe aktivitetin nga llogaria juaj.",
+      "L4": "izyGlam mund të pezullojë/ndërpresë një llogari në rast shkeljesh ose rreziku mashtrimi."
+    },
+    "BOOKINGS": {
+      "TITLE": "Rezervime dhe formimi i kontratës",
+      "L1": "Shërbimet <strong>rezervohen dhe paguhen online</strong> nga Klienti. Nuk ka para në dorë në vend.",
+      "L2": "Rezervimi është <strong>subjekt i verifikimit nga Profesionisti</strong> pas pagesës. Në rast refuzimi, Klienti <strong>rimbursohet plotësisht</strong>.",
+      "L3": "Kontrata lidhet direkt mes Klientit dhe Profesionistit në momentin e pranimit.",
+      "L4": "Oraret, adresat dhe kushtet specifike duhen verifikuar nga palët."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Çmime, abonime dhe pagesa",
+      "L1": "Çmimet i caktojnë lirisht Profesionistët. izyGlam aplikon një <strong>komision</strong> platforme.",
+      "L2": "Abonime për Profesionistë (shembull): <em>1 sallon falas përherë</em>; <em>Basic: 3 sallone – 99 € / muaj</em>; <em>Premium: 10 sallone – 499 € / muaj</em>; <em>më tej: ofertë</em>.",
+      "L3": "Pagesa <strong>vetëm me kartë</strong> përmes ofruesit (p.sh. Stripe). <strong>Pa para në dorë</strong>, pa kod promo e program besnikërie në këtë fazë.",
+      "L4": "Shumat, taksat dhe tarifat shfaqen para konfirmimit. Kushtet e abonimit mund të ndryshojnë; ndryshimet do të komunikohen paraprakisht."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Anulim, rimbursim dhe mungesë",
+      "L1": "Anulim falas deri <strong>24h</strong> para orarit të shërbimit.",
+      "L2": "Më pak se 24h, mund të zbatohen <strong>tarifa</strong> sipas politikës.",
+      "L3": "Në rast <strong>refuzimi</strong> nga Profesionisti pas pagesës, Klienti rimbursohet 100%. Automatizimi i rimbursimeve është në zbatim; suporti do ta nxisë kur duhet.",
+      "L4": "<strong>Mosparaqitjet</strong> mund të sjellin tarifa ose pamundësi rimbursimi."
+    },
+    "PAYOUTS": {
+      "TITLE": "Pagesat për Profesionistët",
+      "L1": "Pagesa nis pas <strong>konfirmimit të realizimit</strong> (p.sh. me <em>kod verifikimi</em>).",
+      "L2": "IBAN i dhënë nga Profesionisti përdoret për transferim. Profesionisti garanton saktësinë.",
+      "L3": "Shumat e derdhura janë çmimi i shërbimit <em>minus</em> komisioni dhe tarifat."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Përgjegjësitë e palëve",
+      "L1": "Profesionistët sigurojnë përputhje, higjienë dhe siguri.",
+      "L2": "Klientët japin informacion të saktë (adresë, disponueshmëri, kufizime) dhe respektojnë takimet.",
+      "L3": "izyGlam ofron Platformën dhe mjetet (rezervim, pagesë, mesazhe) por nuk garanton rezultatin e shërbimit."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Notë e pavlefshme.",
+      "TITLE": "Vlerësime dhe nota",
+      "L1": "Vlerësimet lihen <strong>vetëm pas një shërbimi real</strong>.",
+      "L2": "Vlerësimet mund të moderohen (p.sh. heqje përmbajtjesh të paligjshme ose kundër kushteve)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Sjellje të ndaluara",
+      "L1": "Mashtrim, uzurpim identiteti, anashkalim i Platformës, nxitje transaksionesh jashtë saj.",
+      "L2": "Përmbajtje të paligjshme, shpifëse, diskriminuese, të dhunshme ose të pamoralshme.",
+      "L3": "Intruzion, sulm DoS, inxhinieri e kundërt, anashkalim masash sigurie.",
+      "L4": "Grumbullim i paautorizuar i të dhënave personale."
+    },
+    "IPR": {
+      "TITLE": "Pronësia intelektuale",
+      "TEXT": "Përmbajtjet, markat dhe elementët e Platformës (kod, dizajn, tekste, logo, imazhe) janë të mbrojtura. Pa leje, ndalohet riprodhimi/shpërndarja/adaptimi. Përmbajtjet e Profesionistëve mbeten pronë e tyre; ata i japin izyGlam një licencë jo ekskluzive për funksionimin e Platformës."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Shërbime të palëve të treta",
+      "TEXT": "Platforma mund të integrojë shërbime të palëve të treta (pagesa, harta, hostim, analitika). Kushtet e tyre zbatohen. izyGlam nuk është përgjegjës për ndërprerje ose dështime."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Disponueshmëri, mirëmbajtje dhe përditësime",
+      "TEXT": "Mund të modifikojmë, pezullojmë ose ndërpresim pjesë të Platformës për mirëmbajtje ose përmirësim. Përpiqemi të kufizojmë ndikimin te përdoruesit."
+    },
+    "LIABILITY": {
+      "TITLE": "Kufizim përgjegjësie dhe dëmshpërblim",
+      "TEXT": "Brenda kufijve të ligjit, përgjegjësia e izyGlam kufizohet te dëmet direkte, duke përjashtuar dëmet indirekte (humbje fitimi, etj.). Ju pranoni të dëmshpërblini izyGlam për çdo pretendim nga shkelje ose përdorim i paligjshëm."
+    },
+    "TERMINATION": {
+      "TITLE": "Ndërprerje dhe pezullim",
+      "TEXT": "Mund ta fshini llogarinë në çdo kohë. Ne mund të pezullojmë/ndërpresim aksesin në raste shkeljesh, mashtrimi, abuzimi ose urdhri ligjor. Disa detyrime (p.sh. pagesat, klauzolat e përgjegjësisë) mbeten në fuqi."
+    },
+    "PRIVACY": {
+      "TITLE": "Të dhënat personale",
+      "TEXT": "Trajtimi i të dhënave tuaja përshkruhet në <strong>Politikën e privatësisë</strong>. Duke përdorur Platformën, e pranoni. Shihni atje të drejtat GDPR dhe angazhimet tona."
+    },
+    "CHANGES": {
+      "TITLE": "Ndryshime të Kushteve",
+      "TEXT": "Mund t’i ndryshojmë për arsye ligjore, rregullatore ose funksionale. Në ndryshime të rëndësishme, do t’ju njoftojmë dhe do të publikojmë versionin e përditësuar."
+    },
+    "LAW": {
+      "TITLE": "Ligji i zbatueshëm dhe mosmarrëveshjet",
+      "TEXT": "Këto Kushte i nënshtrohen <strong>ligjit francez</strong>. Çdo mosmarrëveshje i kalon gjykatave kompetente në selinë e izyGlam, me përjashtim të dispozitave më të favorshme për konsumatorin."
+    },
+    "CONTACT": {
+      "TITLE": "Kontakt",
+      "SUPPORT_LABEL": "Suport",
+      "LEGAL_LABEL": "Juridik",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Data e hyrjes në fuqi",
+      "TEXT": "Këto Kushte hyjnë në fuqi më <strong>25 dhjetor 2025</strong> dhe zëvendësojnë çdo version të mëparshëm."
+    }
+  }
+}

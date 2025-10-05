@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-loader',
@@ -7,7 +6,6 @@ import { LoaderService } from '../../services/loader.service';
   styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {
-  loading$ = this.loaderService.loading$;
   icons = [
     { src: 'assets/images/icons/facebook.svg', alt: 'Facebook' },
     { src: 'assets/images/icons/instagram.svg', alt: 'Instagram' },
@@ -16,5 +14,5 @@ export class LoaderComponent {
     { src: 'assets/images/icons/tiktok.svg', alt: 'TikTok' },
   ];
   
-  constructor(private loaderService: LoaderService) {}
+  constructor() {}
 }

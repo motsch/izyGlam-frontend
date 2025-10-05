@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Şêvger",
+    "NAILTECHNICIAN": "Manîkûrist",
+    "MAKEUP": "Makîyajkar",
+    "WAXING": "Estetîkvan (epîlasyon)",
+    "FACIAL": "Parêzûna rûyê",
+    "MASSAGE": "Masajkar",
+    "EYELASH": "Dirêjkirina pilikên çavê",
+    "EYEBROW": "Lîstikên birûyan",
+    "TANNING": "Bronzkirin",
+    "ACUPUNCTURE": "Akûpûnktûr",
+    "OTHER": "Yên din"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Wêne ji galeriyê hat jêbirin",
+    "PHOTO_UPLOAD": "Wêne bi serkeftî barkir",
+    "PARTIAL_REFUND_CONFIRM": "Paşveguhartina qismî hate pejirandin!",
+    "CODE_SAVED": "Kod hate afirandin.",
+    "USERCREATED": "Bikarhêner bi serkeftî hate çêkirin. E-peyamê pejirandinê ji te re hat şandin.",
+    "SUBSCRIBE_SUCCESS": "Abonebûnê te bi serkeftî qeydkir.",
+    "EMAIL_VERIFIED": "Hesabê te hate çalakirin 🎉 Naha dikarî têkevinê.",
+    "EMAIL_RESENT": "E-peyamê pejirandinê careke din hat şandin. Tika ye e-peyamxaneya xwe binêre.",
+    "BOOKING_CREATED": "Rezervasyona te bi serkeftî hate tomar kirin.",
+    "PAYMENT_OK": "Edirêc (pere) hate pejirandin.",
+    "REFUND_OK": "Paşveguhartin hate kirin.",
+    "USERUPDATED": "Bikarhêner hate nûkirin.",
+    "SETTINGS_UPDATED": "Mîheng hatin nûkirin.",
+    "REVIEW_ADDED": "Raye te hate weşandin 🎉",
+    "SHOPUPDATED": "Dikan hate nûkirin.",
+    "BOOKING_ACCEPTED": "Rezervasyon hate pejirandin.",
+    "BOOKING_FINISHED": "Rezervasyon qediya.",
+    "BOOKING_REFUSED": "Rezervasyon hate red kirin.",
+    "BOOKING_DELETED": "Rezervasyon hate jêbirin.",
+    "CODE_GENERATED": "Kod hate afirandin.",
+    "CODE_CONFIRMED": "Kod hate pejirandin.",
+    "INVOICE_DOWNLOADED": "Fatura hate daxistin.",
+    "MARKED_NO_SHOW_CLIENT": "Mişterî wekî nehatî hate nîşankirin.",
+    "COMPANY_CREDITED": "Hesabê kampanyayê hate kredî kirin.",
+    "MARKED_NO_SHOW_PRO": "Pêşkêşkar wekî nehatî hate nîşankirin.",
+    "EMPLOYEE_CREDITED": "Hesabê karkerê hate kredî kirin.",
+    "NO_SHOW_PRO": "Ceza hate sepandin û paşveguhartin hate kirin.",
+    "EMPLOYEE_DELETED": "Karker hate jêbirin.",
+    "SLOT_SELECTED": "Demjimêr hat hilbijartin",
+    "PASSWORD_RESET": "Şîfre hate vegerandin (reset).",
+    "INVOICE_GENERATED": "Faturan hatin afirandin.",
+    "REVIEW_SAVED": "Raye te tomarkir, spas!",
+    "DEFAULT_PASSWORD_UPDATED": "Şîfreya standard hate nûkirin.",
+    "COMPANY_CREATED": "Hesabê karûbarî ya we bi serkeftî hate çêkirin."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Ji kerema xwe re têkevinê bikin da ku fêrîfiran (favorî) birêve bibin.",
+    "INVALID_IMAGE": "Wêne nederbasdar e.",
+    "NO_SLOTS": "Ji bo vê servîsê tu demjimêr tune.",
+    "NO_SHOP_SELECTED": "Tu dikan nehat hilbijartin.",
+    "NO_SERVICE_SELECTED": "Tu servîs nehat hilbijartin.",
+    "ORDER_ERROR": "Di nûvekirina fermana te de çewtî çêbû.",
+    "CODE_ERROR": "Di tomarkirina kodê de çewtî çêbû.",
+    "INVOICE_GENERATED_ERROR": "Di afirandina faturan de çewtî çêbû.",
+    "USERNOTCREATED": "Nikarin bikarhêner biafirînin.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Kredîya kampanyayê ji bo vê pêdiviyê têr nake.",
+    "GENERIC_ERROR": "✨ Ops… çewtiyek çêbû. Ji kerema xwe re dîsa biceribîne ✨",
+    "COMPANY_CREDITED": "Hesabê kampanyayê hate kredî kirin.",
+    "LINK_INVALID_OR_MISSING": "Link nederbasdar an winda ye.",
+    "LINK_INVALID_OR_EXPIRED": "Link nederbasdar e an demê wî qediya.",
+    "EMAIL_NOT_FOUND": "E-peyamê bikarhêner nehat dîtin.",
+    "PAYMENT_FAILED": "Tevdanê pereyê têk çû.",
+    "BOOKING_FAILED": "Çêkirina rezervasyonê têk çû.",
+    "LOAD_CARDS_FAILED": "Di barkirina kartên te de çewtî çêbû.",
+    "LOAD_SHOP_FAILED": "Di barkirina salonê de çewtî çêbû.",
+    "LOAD_PRODUCTS_FAILED": "Di barkirina xizmetan de çewtî çêbû.",
+    "INVALID_CODE": "Koda têketî nederbasdar e.",
+    "PASSWORD_CHANGED": "Şîfreya te hate nûkirin.",
+    "PASSWORDS_IDENTICAL": "Şîfreya nû divê ji şîfreya niha cuda be.",
+    "INVALID_AMOUNT": "Mîqdara têketî nederbasdar e.",
+    "INVALID_CURRENT_PASSWORD": "Şîfreya niha xelet e.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Şîfreya niha xelet e an çewtiyek çêbû.",
+    "PASSWORD_UPDATE_FAILED": "Guherandina şîfreyê têk çû.",
+    "PASSWORD_UPDATE_GENERIC": "Di nûvekirina şîfreyê de çewtî çêbû.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Şîfrekan li hev nahatin an zêde kîj in (herî kêm 8 tîp).",
+    "INVALID_PASSWORD": "Şîfre nikare vala be.",
+    "PASSWORD_TOO_SHORT": "Şîfre divê herî kêm 8 tîp hebe."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Mîhenga Stripe winda ye.",
+    "LOAD_FAILED": "Stripe nekarî barkirî bibe",
+    "NOT_READY": "Stripe nehate amadekirin",
+    "CONFIRM_FAILED": "Qeydkerina kartê têk çû",
+    "CARD_SAVED": "Kart bi serkeftî hate tomarkirin ✅",
+    "PM_FAILED": "Afirandina kartê têk çû",
+    "SI_FAILED": "Amadekirina qeydkerina kartê ne gengaz e",
+    "ATTACH_FAILED": "Nekarî kartê bi hesabê girêde bike",
+    "SAVE_CARD": "Kartê tomar bike",
+    "ADD_CARD": "Kartê zêde bike"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Ji kerema xwe re têkevinê bikin"
+  },
+  "COMMON": {
+    "LOADING": "Tê barkirin…",
+    "UNEXPECTED_ERROR": "Çewtiyek nehewldayî çêbû"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Pêşniyara pejirandinê tê kiriye",
+    "VALIDE": "Em lînkê çalakirinê te diapîvînin. Tenê çend çirkeyên kêm dike.",
+    "ACCOUNT": "Hesab hate çalakirin",
+    "CONNECT": "Têkeve",
+    "OUPS": "Ops",
+    "WRITE": "Pêwîstî bi alîkarî heye? Me binivîse li",
+    "RESEND": "E-peyamê çalakirinê ji nû ve bişîne"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Agahîyên bankê yên min",
+    "ADD_BANK_INFO": "Agahîyên bankê yên min zêde bike",
+    "BANK_NAME": "Navê bankê",
+    "HOLDER_NAME": "Xwediyê hesabê",
+    "COUNTRY": "Welat",
+    "SAVE": "Tomar bike"
+  },
+  "LOADER": {
+    "LOADING": "Tê barkirin…"
+  },
+  "SPONSORS": {
+    "TITLE": "Sponsorên me",
+    "SPONSORISED": "Bi sponsorî"
+  },
+  "TABS": {
+    "FINANCE": "Şopandina darayî",
+    "GENERAL_INFO": "Agahiyên giştî",
+    "EMPLOYEES": "Rêveberiya karkeran",
+    "SERVICES": "Rêveberiya servîsan",
+    "PHOTOS": "Galeriya wêneyan",
+    "STATS": "Statîstîk",
+    "PARAM": "Mîheng",
+    "SHOPS": "Dikan",
+    "USERS": "Bikarhêner",
+    "MESSAGE": "Peyam"
+  },
+  "CARD": {
+    "ADD": "Kartê zêde bike",
+    "NO_IMAGE": "Di galeriyê de tu wêne tuneye.",
+    "SALON": "Salon bi serkeftî hate nûkirin",
+    "ERROR1": "Di nûvekirina salonê de çewtî çêbû",
+    "ERROR2": "Di nûvekirina wêneyê de çewtî çêbû",
+    "UPDATE": "Salon bi serkeftî hate nûkirin"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Qediya",
+    "ACCEPTEE": "Pejirandî",
+    "WAITING": "Li benda",
+    "CANCEL": "Betal kirî",
+    "DELETE": "Jêbirî",
+    "REFUSED": "Red kirî",
+    "NO_PRESTA": "Pêşkêşkar nehat",
+    "CLIENT_ABSENT": "Mişterî nehat",
+    "ADRESSE": "Navnîşan",
+    "DATE": "Dîrok",
+    "TOTAL": "Hemû",
+    "FACTURE": "Fatura",
+    "CANCELLED": "Betal kirî",
+    "DELETED": "Jê bibe",
+    "AVIS": "Nîqaş/Review",
+    "SUPPORT": "Destek",
+    "CODE": "Koda pejirandinê",
+    "CODE_A_DONNER": "Kodê ku bidî pêşkêşkar",
+    "PRESTA_ABSENT": "Pêşkêşkar nehat"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Rayan li ser dikanê",
+    "COMMENT": "Şîrove",
+    "NOTE": "Not",
+    "CLOSE": "Girtin"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Di galeriyê de tu wêne tuneye."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Fermanê xwe benote",
+    "DATE": "Dîrok",
+    "SERVICE": "Servîs",
+    "AVIS": "Raya te",
+    "SEND": "Bişîne",
+    "PLACEHOLDER": "Tecrubeyê xwe rave…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Bixwazin li malê we were",
+    "KNOWMORE": "Zêdetir bizanî",
+    "PART1TITLE": "Ji xizmetên bedew ên salonê li malê xwe behre werin",
+    "PART1TEXT": "Pêşkeşkarên me yên profesyonel li te tên da ku xizmetên bedew û ya li hewceyên te bihêlin. Tecrubeya aram û xweşbûnê bihevin, her çi be – di demjimêra xwarinê de, piştî xebatê an di nîvrojekê hevaltiyê de.",
+    "PART2TITLE": "Wexta xwe hilbijêre, hêsan qazanc bîne",
+    "PART2TEXT": "Di pêlataforma de li gorî rîtma xwe daxwazan qebûl bike û di nêzîkî xwe de qazanc çêke. Dikare amûrên xwe bi kar bînî an ji aliyê izyGlam ve amûrên profesyonel bigirî.",
+    "PART3TITLE": "Xizmeta bedew ji bo karûbaran bi awayek nû",
+    "PART3TEXT": "Glam for Business pêlatformek e ji bo hemî gelekî mezin û biçûk, ku alîkar dibe ku pêdiviyên bedewî yên mişteriyan û karkeran rê ve bibe. Xizmetên taybetkirî rast li cîhê xebatê an bûyerên taybet re pêşkêş bikin.",
+    "APPTITLE": "Bi sepanan hêsantir e",
+    "DOWNLOADAPP1": "Sepanê daxîne",
+    "DOWNLOADAPP2": "Sepana pêşkêşkarên estetîkê daxîne",
+    "SCANTODOWNLOAD": "Ji bo daxistinê skan bike",
+    "SIGNUP": "Qeyd bibe!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Çewtiya lêxistina vîdyoyê",
+    "AUTOPLAY_BLOCKED": "Lêxistina bixweber hate astengkirin. Ji kerema xwe re bide vîdyoyê lêdan.",
+    "NAV_ERROR": "Nabê alîkarîya navîgasyonê"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Çawa sepan û malperên izyGlam dixebitin",
+    "HELPCENTER": "Bi navenda alîkariyê re girê bide",
+    "BUSINESS": "Karûbar",
+    "ABOUT": "Der barê me de",
+    "OURSERVICES": "Xizmetên me",
+    "PRESSAREA": "Qada rojnamegeriyê",
+    "INVESTORS": "Sarmayedaran",
+    "CAREERS": "Têklîfên karê",
+    "AI": "Zehnê Zêde (AI)",
+    "PRODUCTS": "Berhem",
+    "GLAM": "Her dem li ser xêz bi izyGlam",
+    "RESERVED": "Pêşwext rezervî bikin",
+    "GIFTCARDS": "Kartên diyarkirinê",
+    "WORKWITHUS": "Bi izyGlam re xebitînin",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Nepençavîtiyê",
+    "ACCESS": "Gihîştîbûn",
+    "CONDITIONS": "Merc",
+    "LANGUAGE": "Ziman",
+    "LOCALISATION": "Cih",
+    "ALL_RIGHT": "Hemû maf parastî ne"
+  },
+  "COMING_SOON": {
+    "TITLE": "Nêzîk dê bêne",
+    "TITLE-NOT-COMING": "Hîn demek ji bo amadanê me tune ye",
+    "DAYS": "Roj",
+    "HOURS": "Seet",
+    "MINUTES": "Xulek",
+    "SECONDS": "Çirke",
+    "TEXT": "Em bi hêz dixebitin da ku tecrubeyek taybet a bedewî li malê pêşkêş bikin. Bimîne bi girêdan da ku li ser destpêkê agahdar bibî."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Têklîfên niha",
+    "DISCOVER": "Di izyGlam de bifikî",
+    "LIKED": "Herî hêja li deverê",
+    "SMART": "Planên bala-zêde",
+    "TOP10": "Top 10 ya hefteyê",
+    "SEARCHRESULT": "Encamên lêgerînê",
+    "AVIS": "Rayan"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Şêvkirin",
+    "MANUCURE": "Manîkûr",
+    "VISAGE": "Rûy",
+    "MASSAGE": "Masaj",
+    "MAQUILLAGE": "Makîyaj",
+    "EPILATION": "Epilasyon",
+    "BRONZAGE": "Bronzkirin",
+    "PARTUM": "Pişt-por",
+    "NUTRITION": "Xwarin û teval",
+    "FITNESS": "Fîtnes",
+    "ACUPUNCTURE": "Akûpûnktûr",
+    "STYLISME": "Stîlîzm",
+    "YOGA": "Rahatbûn",
+    "DEVELOPPEMENT": "Bilindbûn",
+    "EYELASH": "Dirêjkirina pilikan"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Şêvgerêk",
+    "MANUCURE": "Manîkûrîstek",
+    "ESTETICIAN": "Estetîkvanek",
+    "MASSAGE": "Masajkarek",
+    "MAQUILLAGE": "Makîyajkarek",
+    "PEDICURE": "Pedîkûrîstek",
+    "NUTRITION": "Nûtrîsiyonîstek",
+    "FITNESS": "Koxê taybet"
+  },
+  "INTRO": {
+    "NORESULTS": "Tu encam nehat dîtin",
+    "START": "Dest pê bike",
+    "SPECIALITY": "Taybetmendî?",
+    "WHERE": "Li ku derê?",
+    "CONNEXION": "Têketin",
+    "REGISTRATION": "Qeydkirin"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Agahiyên hesabê",
+    "MESSAGE": "Peyaman min",
+    "MESSAGE_SUBTITLE": "Lîsteya gotûbêjên dimeşînin.",
+    "INFORMATION_SUBTITLE": "Agahiyên xwe bi hêsanî biguherîne.",
+    "SECURITY": "Ewlehî û ziman",
+    "SECURITY_SUBTITLE": "Şîfre, ziman… hemû li ser kontrolê ne.",
+    "CONFIDENTIAL": "Nepençavîtiyê û daneyên te",
+    "CONFIDENTIAL_SUBTITLE": "Daneyên te girîng in. Em çawa parastin dikin li vir bibîn.",
+    "DASHBOARD": "Panel",
+    "DASHBOARD_SUBTITLE": "Daneyên kargehê xwe bi hêsanî rê ve bibe.",
+    "COMPANY": "Rêveberiya şîrketê min",
+    "COMPANY_SUBTITLE": "Rezervasyonên derbasbûyî, bêyî an betal bi hêsanî birêve bibe.",
+    "SHOP": "Rêveberiya salonê min",
+    "SHOP_SUBTITLE": "Salona xwe, servîsan û darayî bi hêsanî birêve bibe.",
+    "FINANCIAL": "Şopandina darayî",
+    "ADMIN": "Rêveberiya giştî",
+    "ADMIN_SUBTITLE": "Hemû vê şahesêrê hêsan birêve bibe. Cîhan ji te re ye, şampîyon!",
+    "CALENDAR": "Salname",
+    "CALENDAR_SUBTITLE": "Randevûyên te yên derbasbûyî an bêyî bi hêsanî birêve bibe.",
+    "SELECT_SALON": "Salonê hilbijêre",
+    "NEW_SALON": "Salonê çêke",
+    "SHOP_TO_CREATE": "Cureyê dikanê ku were çêkirin",
+    "CANCEL": "Betal bike",
+    "CREATE": "Dikanê min çêke",
+    "INFO1": "Tu li ser jêbirina dikanê xwe ya",
+    "INFO2": "Ev çalakî veger nake",
+    "SURE": "Tu bawer î ku dixwazî bidomînî?",
+    "DELETE": "Jê bibe"
+  },
+  "PROFILE": {
+    "TITLE": "Agahiyên bingehîn",
+    "FIRSTNAME": "Nav",
+    "LASTNAME": "Paşnav",
+    "PHONE": "Jimarê telefonê",
+    "ADDRESS": "Navnîşana e-peyamê",
+    "CHANGE_USER": "Bikarhênerê biguherîne",
+    "CANCEL": "Betal bike",
+    "SUCCESS": "Profil bi serkeftî hate nûkirin",
+    "UPDATE_ERROR": "Di nûvekirina şîfreyê de çewtî çêbû."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Şîfre biguherîne",
+    "ACTUAL_PASSWORD": "Şîfreyê niha",
+    "NEW_PASSWORD": "Şîfreya nû",
+    "CONFIRMED_PASSWORD": "Şîfreya nû dubare bike",
+    "CHANGE_PASSWORD": "Şîfre biguherîne",
+    "CHANGE_OK": "Şîfre bi serkeftî hate guherandin",
+    "CHANGE_LANGUE": "Ziman biguherîne",
+    "CHANGE_COUNTRY": "Welat biguherîne",
+    "LANGUE": "Ziman",
+    "COUNTRY": "Welat"
+  },
+  "PAYEMENT": {
+    "YOU": "Tu",
+    "HEADER_TITLE": "Tevdan",
+    "SERVICE_TITLE": "Servîs",
+    "SERVICE_NOTE": "Not:",
+    "ADDRESS_TITLE": "Navnîşana xizmetê",
+    "ADDRESS_RENDEZVOUS": "Li ber deriyê min têkevî",
+    "ADDRESS_CHANGE": "Navnîşanekî din hilbijêre",
+    "PAYMENT_SECTION_TITLE": "Tevdan",
+    "PAYMENT_METHOD": "Karta sereke",
+    "PAYMENT_EXPIRE": "Dema qediya",
+    "PAYMENT_NO_CARD": "Tu karta sereke nehat destnîşankirin",
+    "PAYMENT_NO_CARD_DESC": "Ji kerema xwe re karta sereke zêde an hilbijêre.",
+    "SUMMARY_SUBTOTAL": "Bin-koma diravê",
+    "SUMMARY_SERVICE_FEE": "Komîsyona izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Xercên xizmetê",
+    "SUMMARY_TOTAL": "Hemû",
+    "TITLE": "Randevûya xwe serhêl bike",
+    "FOR_WHO": "Ji bo kî randevû digirî?",
+    "ADD_PROCHE": "Kesekî nêzîk zêde bike",
+    "WHERE": "Li ku derê randevû distînî?",
+    "SELECT_ADDRESS": "Navnîşanê hilbijêre",
+    "ADD_ADDRESS": "Navnîşan zêde bike",
+    "CARD_PAY": "Tevdan bi karta bankê",
+    "CARD_NUM": "Hejmara kartê",
+    "CARD_NAME": "Nav li ser kartê",
+    "EXPIRATION": "Dîroka dawîbûnê",
+    "CVV": "CVV",
+    "RDV": "Hûragahiyên randevûya te",
+    "RESUME": "Kurteya randevûyê",
+    "DATE": "Dîrok",
+    "HOUR": "Demjimêr",
+    "PRESTA": "Xizmet",
+    "EXPIRE": "Qediya",
+    "DEFAULT": "Standard",
+    "NOCARD": "Tu kart nehat tomarkirin",
+    "WITH": "Bi",
+    "TOTAL": "Hemû dirav",
+    "ANNULER": "BETAL",
+    "RETOUR": "VEGERÎN",
+    "CONTINUER": "BERDEWAM",
+    "VALIDER": "PEJIRANDIN",
+    "ADRESSE": "Navnîşan",
+    "LEGAL_TEXT_1": "Bi tikandina bişkoja fermanê, tu li peymana xizmetê şandina izyGlam France SAS (ROS 841 983 828) razî dibî.",
+    "LEGAL_TEXT_2": "Tu ji mafê vegerandinê yê li ser xizmetên şandinê destnîşan dibêjî. Dikarî bi navendê navbera xerîdar û firoşkar re têkilî bigirî li vir.",
+    "LEGAL_TEXT_3": "Heke tu li malê nebe dema gîhandinê, şandekar fermanê li ber deriyê didanîşe. Dema tu fermanê didî, tu berdestîya tevahî digirî piştî gîhandinê. Fermanên ku terxanên taybet hene (wekî alkol) dê vegerin nav dergehê.",
+    "CLOSE_FORM": "Forma bigire",
+    "ADD_CARD": "Kartekê zêde bike",
+    "TRAITEMENT": "Xebat tê kirin"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Paiement validé",
+    "THANKS": "Merci ! Votre réservation a bien été prise en compte.",
+    "BACKHOME": "Retour à l’accueil",
+    "PROBLEME": "Problème de réservation",
+    "PAIEMENT": "Votre paiement a bien été débité, mais la réservation n’a pas pu être confirmée.",
+    "THANKSCONTACT": "Merci de contacter notre support à",
+    "FAILED": "Paiement échoué",
+    "VALIDATE": "Nous n’avons pas pu valider votre paiement. Veuillez réessayer."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam ji bo serbestkaran",
+    "STEP1": {
+      "TITLE": "Mişterî fermana xwe dikin",
+      "TEXT": "Mişterî salona we dîtiye û di sepanê izyGlam de ferman dide."
+    },
+    "STEP2": {
+      "TITLE": "Tu rezervasyonê qebûl dikî",
+      "TEXT": "Tu rezervasyonê qebûl dikî û ajandaya te tê nûkirin."
+    },
+    "STEP3": {
+      "TITLE": "Demê randevûyê de",
+      "TEXT": "Tu berêber li ser rezervasyonên ê bêne agahdar dibe û em te rêberî dikin bo her mişterî."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Hesaba şîrketê bi kredî bike",
+    "SOLDE": "Balansa niha",
+    "CREDIT": "Mîqdara kredîkirinê",
+    "COMPANY": "Hesaba şîrketê bi kredî bike",
+    "DEPENSE": "Şopandina xercan",
+    "DATE": "Dîrok",
+    "COUNT": "Mîqdar",
+    "EMPLOYEE": "Karker",
+    "DESCRIPTION": "Danasîn"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Te jixwe hesabek hevkar an şîrketê heye!",
+    "NOT_CONNECTED": "Ji kerema xwe re têkevinê bikin ji bo tomarkirina salonê",
+    "TITLE": "Dest pê bike!",
+    "TITLE2": "Bibîn alejî: em salonek biafirînin!",
+    "NAME": "Navê salonê we",
+    "ADDRESS": "Navnîşana şîrketê we",
+    "STREET": "Kûçe",
+    "CITY": "Bajar",
+    "CODE_POSTAL_POSSIBLE": "Kodên postayê ku tê xizmetkirin",
+    "CODE_POSTAL": "Koda posteyê",
+    "COUNTRY": "Welat",
+    "ADDRESSPLACEHOLDER": "123, Kûçeya Serekî",
+    "FLOOR": "Qat/Sûît (ne pêdivî)",
+    "BUSINESSTYPE": "Cureyê şîrketê",
+    "FIRSTNAME": "Nav",
+    "LASTNAME": "Paşnav",
+    "PASSWORD": "Şîfre",
+    "PASSWORDCONFIRMED": "Piştrastkirina şîfreyê",
+    "EMAIL": "E-peyam",
+    "PHONE": "Hejmara telefonê destan",
+    "WHATSAPP": "Ez razî me ku peyamên li ser WhatsApp bistînim",
+    "BUTTON": "Dikanê tomar bike",
+    "SUCCESS": "Dikan bi serkeftî hate çêkirin!",
+    "ERROR": "Di afirandina dikanê de çewtiyek çêbû:",
+    "ERROR1": "Navê şîrketê we pêdivî ye.",
+    "ERROR2": "Navnîşana şîrketê we pêdivî ye.",
+    "ERROR3": "Cureyê şîrketê pêdivî ye.",
+    "ERROR4": "Nav pêdivî ye.",
+    "CHOOSE_COUNTRY": "Welatekî hilbijêre",
+    "POSTAL_CODE": "Koda posteyê",
+    "CHOOSE_CITY": "Bajarekî hilbijêre",
+    "ERROR5": "Paşnav pêdivî ye.",
+    "ERROR6": "E-peyam pêdivî ye.",
+    "ERROR7": "Hejmara telefonê destan pêdivî ye.",
+    "ERROR8": "Divê razî bî ku peyamên WhatsApp bistînî."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Navnîşan biguherîne",
+    "FIND_SHOP": "Dikanek bibîne",
+    "CATEGORIES": "Kategorî",
+    "OFFRE": "Pêşniyarên niha",
+    "DISCOVER": "Bifikîne",
+    "APPRECIATE": "Herî hêjeyên",
+    "SMART": "Planên bala-zêde",
+    "TOP10": "Top10 ya hefteyê",
+    "SEARCH_RESULT": "Encamên lêgerînê",
+    "NOT_AVAILABLE": "Hîn li vê navnîşanê ne berdest e",
+    "NEW_ADDRESS": "Navnîşanekî nû zêde bike",
+    "CHOOSE_ADDRESS": "Navnîşanekî hilbijêre",
+    "CHOOSE_COUNTRY": "Welatekî hilbijêre",
+    "CHOOSE_CITY": "Bajarekî hilbijêre",
+    "CHOOSE_ARRONDISSEMENT": "Herêmek hilbijêre",
+    "CANCEL": "Betal bike",
+    "SAVE": "Tomar bike",
+    "CLOSE": "Bigire"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Nav",
+    "CITY": "Bajar",
+    "NOTE": "Not",
+    "MIDDLE_PRICE": "Bihaya navîn",
+    "PROMOTION": "Promosyon",
+    "ACTIONS": "Çalakî",
+    "MODIFIER": "Agahiyên dikanê biguherîne",
+    "SHOP_NAME": "Navê dikanê",
+    "DESCRIPTION": "Danasîn",
+    "PRINCIPALE": "Wêneya sereke",
+    "SHOP": "Cureyê dikanê",
+    "ARRONDISSEMENT": "Herêm",
+    "MINIMUM_DELAI": "Derengiya herî kêm",
+    "DISTANCE": "Dûriya herî zêde (km)",
+    "EMPLACEMENT": "Cih",
+    "HOURS_MORNING": "Demên vekirinê - Sibeh",
+    "HOURS_AFTERNOON": "Demên vekirinê - Paşnîvro",
+    "ACTIVE_PROMO": "Promoyê çalak",
+    "CANCEL": "Betal bike",
+    "ENREGISTRER": "Tomar bike"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Biznesa xwe pêş bixe",
+    "TEXT": "Hazarên bikarhênerên sepanê izyGlam dibe ku li devera we restoranek bigerin…",
+    "IMAGE": "wêne"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Bo çi izyGlam?",
+    "STEP1": {
+      "TITLE": "Li gorî mercên xwe bixebitin",
+      "TEXT": "Demjimêrê xwe rêzkirin û xizmetên xwe bi serbesti rê ve bibe. Ji pêlatformek hewşyar û guherbar bihêzin ku li pêdiviyên we tê hevxistin da ku çalakiyê zêde bike."
+    },
+    "STEP2": {
+      "TITLE": "Dîmena xwe li ser torê bihêz bike",
+      "TEXT": "Bi amûrên marketîngê yên di sepanê de heye mişterî zêdetir bikişîne û bi berjêrandina dîtinbûnê encamên xwe bilind bikin."
+    },
+    "STEP3": {
+      "TITLE": "Mişteriyên xwe bikırseynînin",
+      "TEXT": "Pêşbîniyên mişteriyan veşêre, bersiva rayan bidin û feydeyên fidelîte pêşkêş bikin da têkildariya dirêjdem a baş pêk bibe."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Rêveberiya çalakiyê hêsan bike",
+      "TEXT": "Bi izyGlamê, çareseriya tevahî ji bo profesyonelên rastî-rawestiyanê pêk tê. Bi amûrên guherbar û piştgiriya taybet bi aramî karên xwe birêve bibin."
+    },
+    "STEP2": {
+      "TITLE": "Firotinên xwe bilind bikin",
+      "TEXT": "Her roj hezarên kes ji bo dîtina eksperên bedewî yên nêzîk xwe ji izyGlamê fêr dibin. Ev derdore bi kar bîne da ku mişteriyên nû bigihîjî."
+    },
+    "STEP3": {
+      "TITLE": "Teşebbusa mişterî bi pêşniyaran",
+      "TEXT": "Bi izyGlamê, tecrubeya taybet û kesane pêşkêş bikin. Randevû bi hêsanî birêve bibin, têkiliyê bilez bikin û xizmetên li hewceyên wan ve mîheng bikin."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam ji bo şîrketa we?",
+    "STEP1": {
+      "TITLE": "Karker û mişterîyên we servîs rezerv dikin",
+      "TEXT": "Karker an mişterîyên we xizmetên xweşbûnê yên li gorî xwe rasterast bi sepanê izyGlam dixwazin."
+    },
+    "STEP2": {
+      "TITLE": "Tu mîqdara berdestiyê diyar dikî",
+      "TEXT": "Tu dest bi destan heye ku hesabên karker û mişteriyan bikredînî. Dikare we yên van hesabên her gav an carekê kredî bikin."
+    },
+    "STEP3": {
+      "TITLE": "Xizmetan têne pêk anîn",
+      "TEXT": "Eksperên me yên bedewî li karkerên we an di navenda we de tên ku xizmetên rezervkirî pêşkêş bikin, tecrubeyek herî bilind pê ewle bikin."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Şîrketa xwe biharînin",
+    "TEXT": "Hazarên bikarhênerên izyGlam li xizmetên xweşbûnê lê digerin. Ji karker û mişteriyan we re gihîştina taybet bidin bo herî baş eksperên bedewî yên li nêzîk wan.",
+    "IMAGE": "wêne"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Bo çi izyGlam?",
+    "STEP1": {
+      "TITLE": "Karkerên xwe bikırseynînin û bi xelat bikin",
+      "TEXT": "Ji koma xwe re bi hejmara mehaneyek budceya bedewî pêşkêş bikin. Şêvger, estetîkvan û gelekî din li berdest in—ji bo tecrubeyek baştir û hisiya endamîtiyê yê bilindtir."
+    },
+    "STEP2": {
+      "TITLE": "Wêneyê marka yê xwe bilind bikin",
+      "TEXT": "Bo mişterî an hevkaran bûyerên bedewî rêxistin an jî xizmetên izyGlamê têkevê bernameyên fidelîteya we. Bi xizmetên bilind-asta xweşbûnê bifikirin ku bimeşînin bîra wan."
+    },
+    "STEP3": {
+      "TITLE": "Xweşbûnê li cihê karê baştir bikin",
+      "TEXT": "Gihîştina rast li cihê karê an nêzîkê bidin bo xizmetên xweşbûnê. Bi parastina xweşbûna wan, hîmotîvasyon û hevbendanî ya koma xwe zêde bikin."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Gihîştina xweşbûnê ji bo koma xwe hêsan bikin",
+      "TEXT": "Bi izyGlamê, ji hevkarên xwe re çareseriyek hêsan û guherbar pêşkêş bikin da xweşbûnê parastin. Ji estetîkê heta fîtnesê—hemû li dest e."
+    },
+    "STEP2": {
+      "TITLE": "Ji bo mişteriyan berfirehîyên nû pêşkêş bikin",
+      "TEXT": "Têkildariya xwe bi mişteriyan bi pêşkêşkirina xizmetên xweşbûnê di bûyeran de an di bernameyên fidelîte de bilind bikin."
+    },
+    "STEP3": {
+      "TITLE": "Xweşbûnek li gorî pêdivî, her der û her dem",
+      "TEXT": "Bi izyGlamê, karker û mişteriyên we dikarin li her cîhê xizmetên bilind-asta bistînin. Eksperên hilbijartî ji bo pêdiviyên taybet û piştgiriya kesane ji bo ewlekariya tecrubeyê."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Hesabê birêve bibe",
+    "ORDERS": "Fermanên borî",
+    "FAVORITES": "Favorî",
+    "HELP": "Alîkarî",
+    "MY_ABO": "Abonem",
+    "PRICES": "Planan bihayê",
+    "FIDELITY": "Bernameya fidelîte",
+    "LOGOUT": "Derketin",
+    "YOUR_BEAUTY_SERVICES": "Xizmetên bedewî yên xwe pêşkêş bike",
+    "YOUR_COMPANY": "Şîrketa xwe tomar bike"
+  },
+  "SUBTITLES": {
+    "HELP": "Pêdiviya alîkariyê heye? Ev rûpel bo te ye."
+  },
+  "ORDERS": {
+    "TITLE": "Fermanên min",
+    "TITLE_SUBTITLE": "Randevûyên xwe yên borî, ê bêne an betal bi hêsanî birêve bibe.",
+    "UPCOMING_SECTION": "📅 Ê bêne",
+    "NO_UPCOMING": "Tu xizmetek planekirî tune.",
+    "PAST_SECTION": "✅ Borî",
+    "NO_PAST": "Tu xizmetek qediya tune.",
+    "ADDRESS": "Navnîşan",
+    "DATE": "Dîrok",
+    "TOTAL": "Hemû",
+    "ITEMS": "tişt",
+    "DELETE": "Jê bibe",
+    "VISIT": "Serdane bike",
+    "PRESTA_FOR": "Xizmet ji bo",
+    "AT": "li",
+    "ORDER_AGAIN": "Dîsa ferman bike",
+    "INVOICE": "Fatura daxwaz bike",
+    "REVIEW": "Raya xwe bide",
+    "CANCEL": "Betal"
+  },
+  "FIDELITY": {
+    "TITLE": "Favoriyên min",
+    "AGAIN": "Hê jî",
+    "AGAIN_SUBTITLE": "berî xelatê te",
+    "TITLE_SUBTITLE": "ji bo vekirina diyarkirina xwe",
+    "DATE": "Derbasdar heya",
+    "HISTO": "Dîroka xizmetên min"
+  },
+  "FAVORITES": {
+    "TITLE": "Favoriyên min",
+    "TITLE_SUBTITLE": "Salonên ji dilê te yên xwe bi çavçawî bibîne."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Xercên xizmetê:",
+    "DISTANCE": "Dûriya max:",
+    "PAYEMENT": "Tevdan bi karta bankê û PayPal qebûl e",
+    "PRESS_FOR_INFO": "Ji bo saet, agahî hwd. bitikîne.",
+    "GALLERY": "Galeriya wêneyan",
+    "SEE_MORE": "Zêdetir bibîne",
+    "SEE_LESS": "Kêm bibîne"
+  },
+  "LOGIN": {
+    "TITLE": "Nasnavên têketinê binivîse.",
+    "FORGET_PASSWORD": "Şîfre ji bîr kirî?",
+    "CONTINUER": "Berdewamke",
+    "CONTINUE_WITH": "Berdewamke bi",
+    "OR": "An",
+    "QRCODE": "Bi QR-kodê têkeve",
+    "CGU": "Bi berdewamkirinê, tu razî dibî ku ji aliyê izyGlam û hevparên wê ve bang, peyamên WhatsApp an SMS (bi rêbazên otomatîk jî) bistînî li hejmara dayikbûyî.",
+    "PLACEHOLDER_EMAIL": "Navnîşana e-peyamê",
+    "PLACEHOLDER_PASSWORD": "Şîfre",
+    "PLACEHOLDER_PASSWORD_NEW": "Şîfreya nû",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Şîfreyê piştrast bike",
+    "CHANGE_PASSWORD": "Şîfreya xwe biguherîne",
+    "REINIT": "Vegerîne"
+  },
+  "SIGNUP": {
+    "GENRE": "Zayend",
+    "CHOOSE": "Hilbijêre",
+    "SEX_MALE": "Mêr",
+    "SEX_FEMALE": "Jin",
+    "TITLE": "Agahiyên kesane yên xwe binivîse.",
+    "CONTINUER": "Berdewamke",
+    "OR": "An",
+    "QRCODE": "Bi QR-kodê têkeve",
+    "CGU": "Bi berdewamkirinê, tu razî dibî ku bang, peyamên WhatsApp an SMS (bi rêbazên otomatîk jî) ji aliyê izyGlam û hevparên wê were şandin.",
+    "PLACEHOLDER_FIRSTNAME": "Nav",
+    "PLACEHOLDER_LASTNAME": "Paşnav",
+    "PLACEHOLDER_EMAIL": "E-peyam",
+    "PLACEHOLDER_EMAIL_REQUIRED": "E-peyam pêdivî ye",
+    "PLACEHOLDER_EMAIL_WRONG": "Formata e-peyamê nederbasdar e",
+    "PLACEHOLDER_PHONE": "Telefon",
+    "PLACEHOLDER_PHONE_NUMBER": "Hejmara telefonê",
+    "PLACEHOLDER_PASSWORD": "Şîfre",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Piştrastkirina şîfreyê",
+    "COUNTRY": "Welat"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Français",
+    "ANGLAIS": "Anglais",
+    "ESPAGNOL": "Espagnol",
+    "NEERLANDAIS": "Néerlandais",
+    "ITALIEN": "Italien",
+    "ALLEMAND": "Allemand",
+    "PORTUGAIS": "Portugais",
+    "POLONAIS": "Polonais",
+    "DANOIS": "Danois",
+    "FINNOIS": "Finnois",
+    "SUEDOIS": "Suédois",
+    "ARABE": "Arabe",
+    "TURC": "Turc",
+    "CHINOIS": "Chinois",
+    "RUSSE": "Russe",
+    "PERSAN": "Persan",
+    "UKRAINIEN": "Ukrainien",
+    "ROUMAIN": "Roumain",
+    "CATALAN": "Catalan",
+    "BASQUE": "Basque",
+    "GALICIEN": "Galicien",
+    "ALBANAIS": "Albanais",
+    "KURDE": "Kurde",
+    "ESTONIEN": "Estonien",
+    "SOMALIEN": "Somalien",
+    "BIELORUSSE": "Biélorusse",
+    "JAPONAIS": "Japonais",
+    "COREEN": "Coréen",
+    "INDONESIEN": "Indonésien",
+    "MALAIS": "Malais",
+    "THAI": "Thaï",
+    "VIETNAMIEN": "Vietnamien",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bengali"
+  },
+  "COUNTRY": {
+    "FRANCE": "France",
+    "ALLEMAGNE": "Allemagne",
+    "SPAIN": "Espagne",
+    "ITALY": "Italie",
+    "DANEMARK": "Danemark",
+    "FINLAND": "Finlande",
+    "NETHERLAND": "Pays-Bas",
+    "POLAND": "Pologne",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Suède",
+    "CHINA": "Chine",
+    "INDIA": "Inde",
+    "JAPAN": "Japon",
+    "SOUTH_KOREA": "Corée du Sud",
+    "INDONESIA": "Indonésie",
+    "PHILIPPINES": "Philippines",
+    "THAILAND": "Thaïlande",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malaisie",
+    "SINGAPOURE": "Singapour",
+    "EMIRAT_ARABE": "Émirats arabes unis",
+    "SAUDI_ARABIA": "Arabie saoudite"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Navnîşanên min",
+    "ADDRESS_MODIFICATION": "Guherandina navnîşanê",
+    "STREET": "Kûçe",
+    "CITY": "Bajar",
+    "CP": "Koda posteyê",
+    "CREATE": "Biafirîne",
+    "BACK": "Veger",
+    "CHANGE": "Biguherîne",
+    "CLOSE": "Bigire"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Mîhengên pêlatformê",
+    "COMMISSION": "Rêjeya komîsyonê (%)",
+    "0to100": "Nirxa di navbera 0 û 100 de pêdivî ye",
+    "SERVICE": "Xercên xizmetê (€)",
+    "WEEKS": "Hejmara hefteyan yên nîşandan",
+    "SUP0": "Divê nirx ji 0’ê mezintir be",
+    "LESS24": "Xerca betalê kêmtirî 24 saet (%)",
+    "LESS48": "Xerca betalê kêmtirî 48 saet (€)",
+    "DELAY": "Derengiya herî kêm a rezervasyonê (saet)",
+    "TVA": "Rêjeya TVA (%)",
+    "ADS": "Reklaman çalak bike",
+    "COMPANY": "Bazirganiyê bi şîrketan çalak bike",
+    "FIDELITY": "Fidelîte çalak bike",
+    "MULTI_SHOP": "Multi-dikan çalak bike",
+    "PROMO": "Promosyonên di dikanê de çalak bike",
+    "SPONSORS": "Beşa sponsor li rûpela xistinê çalak bike",
+    "SAVE": "Tomar bike"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Tevahiya dikanan",
+    "ACT_SHOPS": "Hejmara dikanên çalak",
+    "USERS": "Tevahiya bikarhêneran",
+    "NBR_USERS": "Hejmara bikarhênerên qeydkirî",
+    "CA_TOTAL": "Hemû hejmara firotanê",
+    "CA_GENERATED": "Hejmara firotanê ya çêbûyî",
+    "SHOPS_PERFO": "Performansa dikanan",
+    "SHOP_NAME": "Navê dikanê",
+    "CITY": "Bajar",
+    "REVENUES": "Hatina darayî",
+    "BOOKINGS": "Hejmara rezervasyonan",
+    "NOTE": "Nota navîn",
+    "ACTIONS": "Çalakî",
+    "DETAILS": "Hûragahî",
+    "ADJUST": "Mîheng bike",
+    "SHOP_ADJUST": "Dikanê mîheng bike",
+    "STILL_DEVELOPPED": "Ev taybetmendî hîn tê pêşvebirin",
+    "CLOSE": "Bigire"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Hûragahiyên bûyerê",
+    "CLIENT": "Mişterî",
+    "DEBUT": "Destpêk",
+    "FIN": "Dawî",
+    "ADDRESS": "Navnîşan",
+    "PHONE": "Telefon",
+    "CANCEL": "Betal",
+    "SAVE": "Tomar"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Bûyerek biafirîne",
+    "COMING": "Ê bêne",
+    "PAST": "Borî",
+    "CANCELLED": "Betal kirî",
+    "NO_CANCELLED": "Tu fermanê betalkirî tune."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Alîkariyê serhêl"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Rêveberiya karkeran",
+    "NAME": "Nav",
+    "EMAIL": "E-peyam",
+    "SOLDE": "Balansa hesabê",
+    "ACTIONS": "Çalakî",
+    "DEFAULT_PASSWORD": "Şîfreya standard",
+    "REINITIALIZE_PASSWORD": "Şîfreya standard ji bo vegerandinê",
+    "CHANGE_PASSWORD": "Şîfre biguherîne"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Hesaba karkerê bikredîne",
+    "AMOUNT": "Mîqdara kredîkirinê",
+    "CANCEL": "Betal",
+    "SAVE": "Piştrast bike"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Hemû rezervasyon",
+    "TOTAL_MONTH": "Rezervasyonên vê mehan",
+    "GENERATED": "Hatina darayî ya çêbûyî",
+    "MONTHLY": "Hatina darayî ya mehan",
+    "AVG_NOTE": "Nota navîn",
+    "BASED_ON": "Liser bingeha",
+    "REVIEWS": "rayan",
+    "NEXT_APPOINTEMENT": "Randevûyên nêzîk",
+    "POPULAR_SERVICES": "Xizmetên herî populer",
+    "RESERVATION": "rezervasyon"
+  },
+  "FINANCE": {
+    "PROGRESS": "Pêşketin ji M-1 ve",
+    "PROGRESSION": "Pêşveçûn",
+    "TOTAL_GENERATED": "Hemû hejmarek çêbûyî",
+    "CA": "Hejmara firotanê",
+    "COMMISSION_TAKEN": "Komîsyonê hate standin",
+    "COMMISSIONS": "Komîsyon",
+    "NET_TO_PAY": "Mîqdara xalis ji dayîn",
+    "DISPO_AMOUNT": "Mîqdara berdest",
+    "REQUEST_WITHDRAWAL": "Vireman daxwaz bike",
+    "TAKE": "Mîqdara ji berdanê",
+    "TOTAL_EARNINGS": "Hatina xalis",
+    "TOTAL_BOOKINGS": "Xizmetên pêkhatî",
+    "CANCELLED_BOOKINGS": "Xizmetên betal kirî",
+    "SERVICES_CANCELLED": "Rezervasyonên betal an red kirî",
+    "SERVICES_COMPLETED": "Rezervasyonên qedandî",
+    "AVG_PRICE": "Bihaya navîn",
+    "PER_SERVICE": "Bi xizmetê",
+    "REVIEW_RATIO": "Raya mişterî",
+    "CLIENT_FEEDBACK": "Rêjeya feedback",
+    "TOP_PRODUCTS": "Xizmetên herî firoşî",
+    "AVG_DURATION": "Demjimêra navîn",
+    "DURATION_PER_BOOKING": "Dem per rezervasyon",
+    "DETAILS": "Hûragahiyên hesabê bankê",
+    "ASK": "Vireman daxwaz bike",
+    "HISTORY": "Dîroka danûstandinan",
+    "DATE": "Dîrok",
+    "AMOUNT": "Mîqdar",
+    "COMMISSION": "Komîsyon",
+    "STATUS": "Rewş"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Cureyê dikanê ku bixwazî biafirînî hilbijêre",
+    "CANCEL": "Betal",
+    "CREATE": "Piştrast bike"
+  },
+  "PROCHES": {
+    "TITLE": "Nêzîkên min",
+    "UPDATE": "Guherandina kesekî nêzîk",
+    "FIRSTNAME": "Nav",
+    "NAME": "Paşnav",
+    "EMAIL": "E-peyam",
+    "PHONE": "Telefon",
+    "CREATE": "Biafirîne",
+    "BACK": "Veger",
+    "CHANGE": "Biguherîne",
+    "CLOSE": "Bigire"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Raya xwe bide",
+    "RATING": "Not",
+    "COMMENT": "Şîrove",
+    "CLOSE": "Bigire",
+    "SUBMIT": "Şandin"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Dîroka xizmetê hilbijêre",
+    "CANCEL": "Betal"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Xizmetek biafirîne",
+    "NAME": "Nav",
+    "DESCRIPTION": "Danasîn",
+    "COLOR": "Reng",
+    "PRICE": "Bihayê",
+    "TIME": "Dem",
+    "IMAGE": "Wêne",
+    "ACTIONS": "Çalakî",
+    "MINUTES": "xulek",
+    "CHANGE": "Biguherîne",
+    "DELETE": "Jê bibe",
+    "SERVICE_NAME": "Navê xizmetê",
+    "TIME_MINUTES": "Dem (di xulekên de)",
+    "PREST_IMAGE": "Wêneya xizmetê",
+    "NO_PICS": "Hêj tu wêne tune",
+    "UPLOAD": "Wêne bar bike",
+    "NEW_PIC": "Pêşdîtina wêneyê nû",
+    "PRESTA_COLOR": "Rengê xizmetê",
+    "CANCEL": "Betal",
+    "SAVE": "Tomar",
+    "AVG_PRICE": "Bihaya navîn",
+    "IMAGE_OK": "Wêne bi serkeftî hate barkirin",
+    "ERROR_IMAGE_LOAD": "Di barkirina wêneyê de çewtî çêbû",
+    "UPDATE_SUCCESS": "Xizmet bi serkeftî hate nûkirin",
+    "ERROR_PRESTA": "Di nûvekirina xizmetê de çewtî çêbû",
+    "PRESTA_UPDATED": "Xizmet bi serkeftî hate nûkirin",
+    "PRESTA_ERROR": "Di nûvekirina xizmetê de çewtî çêbû",
+    "PRESTA_SUCCESS": "Xizmet bi serkeftî hate nûkirin",
+    "PHOTO_ERROR": "Di nûvekirina wêneyê de çewtî çêbû",
+    "PRESTA_DELETED": "Xizmet bi serkeftî hate jêbirin",
+    "PRESTA_DELETE_ERROR": "Di jêbirina xizmetê de çewtî çêbû"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Wêneya dikanê",
+    "UPLOAD_IMAGE": "Wêne bar bike",
+    "SNEEK_PIC": "Pêşdîtina wêneyê",
+    "SHOP_NAME": "Navê dikanê",
+    "DESCRIPTION": "Danasîn",
+    "DESC_INFO": "(herî kêm 25 tîp)",
+    "CITY": "Bajar",
+    "DISCRICT": "Herêm (arrondissements)",
+    "LAT": "Latîtûd",
+    "LON": "Longîtûd",
+    "ZONE": "Qada tevgerê (km)",
+    "OPENNING": "Demên vekirinê",
+    "MORNING_OPEN": "Sibeh - Vekirin",
+    "MORNING_CLOSE": "Sibeh - Girtin",
+    "AFTERNOON_OPEN": "Paşnîvro - Vekirin",
+    "AFTERNOON_CLOSE": "Paşnîvro - Girtin",
+    "SAVE": "Dikanê tomar bike",
+    "MONDAY": "Duşem",
+    "TUESDAY": "Sêşem",
+    "WEDNESDAY": "Çarşem",
+    "THURSDAY": "Pêncşem",
+    "FRIDAY": "Înê",
+    "SATURDAY": "Şemî",
+    "SUNDAY": "Yekşem",
+    "CLOSED": "Girtî",
+    "GENERATE_IMAGE": "Wêne biafirîne",
+    "GENERATE_DESCRIPTION": "Danasîn biafirîne",
+    "PHOTO": "Mînakên wêneyên qebûlkirî / ne-qebûlkirî",
+    "CODE_POSTAUX": "Kodên postayê ku tê xizmetkirin",
+    "EXEMPLE_LOCAL": "Mînak: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Karkerekê zêde bike",
+    "LOADING": "Tê barkirin",
+    "LIST": "Lîsteya karkeran",
+    "ADD": "Zêde bike",
+    "EMAIL": "E-peyama karkerê",
+    "FIRSTNAME": "Nav",
+    "FAMILY_NAME": "Paşnav",
+    "PHONE": "Telefon",
+    "PASSWORD": "Şîfre",
+    "HAVE_TO": "Hemû qadên pêdivî ne.",
+    "EMAIL_ERROR": "E-peyam nederbasdar e.",
+    "EMPLOYEE_OK": "Karker bi serkeftî hate zêdekirin.",
+    "ADD_EMPLOYEE_ERROR": "Di zêdekirina karkerê de çewtî çêbû."
+  },
+  "AVIS": {
+    "TITLE": "EM ÇI DIBÊJIN BIKARHÊNERÊN ME",
+    "AVIS1": "Di destpêkê de bi dil dixem… lê bi rastî! Manîkûrê min bêkêmasî bû, li malê, bê stres. Ev roja înê ya min bû.",
+    "AVIS2": "Di sê xulekan de ji ser kanapeyê min xwedî parêzûna rûyê bûm. Estetîkvan nerm û guhdar bû… û rûya min qasî ku tu carî ne bû, baş bû.",
+    "AVIS3": "Hîsdikim lê zêdetir biha be ji salonê… lê şaşî: heman bihayê, an jî kêmtir! Hîç ne mecbûr bûm ku derkevim. Serê min rûmet.",
+    "AVIS4": "Pêşî rojê bûyerek ji bo rojbûnê bû, dixwestim brushingeke bilez. Bi 2 klik profesyonalek dîtim. Demdar, xweşik û encamê — cano!",
+    "AVIS5": "Ez dayikeke tenê me. Demê min kêm e. Li vir, dema zarok naz dikin ez rezerv dikin. Hêsan e, bilez e û rastî ecêb e.",
+    "AVIS6": "Rûniştina yekem a min hez kir. Estetîkvan zû min aram kir. Min hest kir ku tê parastin. Hefteya bê dawî jî dîsa rezerv kir!"
+  },
+  "DOWNLOAD": {
+    "USERS": "bikarhênerên kêfxweş",
+    "SOCIAL": "profesyonelên berdest",
+    "STORE": "li ser App Store û Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Plana xwe hilbijêre",
+    "DISCOVER2": "û dest bi hilketina xwe ber bi çiya bikin",
+    "SOLUTIONS": "Tu xwedî çareseriyek bedew û hêzdar yî ku ji bo te hatî afirandin. Dikare her dem ramanê xwe biguherînî.",
+    "TEST": "Salona yekem a te %100 belaş e. Stres sifir. Tenê sehr e.",
+    "START_FREE": "Salona yekem a min biafirînim",
+    "FREE": "Fêrî",
+    "FREE_SUBTITLE": "Bi salona yekem a xwe dest bi serhilketinê bike",
+    "THEN": "pêyî",
+    "MONTHLY": "meh",
+    "FREE1": "1 salonê çalak",
+    "FREE2": "Hejmara bêsînor a rezervasyon û mişterî",
+    "FREE3": "Rêveberiya xizmet û plan",
+    "FREE4": "Hevgrêdankirina salnameya kesane",
+    "FREE5": "Qenc e ji bo destpêkê bi aramî",
+    "FREE6": "Salonek belaş biafirîne",
+    "BASIC": "Hilbijartî",
+    "BASIC_SUBTITLE": "Qudreta xwe vekele û dest bi ronakbûnê bike",
+    "BASIC1": "Heta 3 salonên çalak",
+    "BASIC2": "Rêveberiya tevahî ya xizmet, mişterî û randevû",
+    "BASIC3": "Desteka e-peyamê ya pêşî",
+    "BASIC4": "Gihîştina çavkaniyên taybet ji bo pêşveçûna çalakiyê",
+    "BASIC5": "Bi taybetî ji bo profesyonelên dixwazin mişterî zêde bikin",
+    "BASIC6": "Ceribandina belaş ya 1 meh",
+    "PREMIUM": "Şêxa",
+    "PREMIUM_SUBTITLE": "Împaratoriya te dide xuyakirin, îtîbara te mezin dibe",
+    "PREMIUM1": "Heta 10 salonên çalak",
+    "PREMIUM2": "Gihîştina statîstîkên pêşketî li performansê",
+    "PREMIUM3": "Pêşniyarên jîr ji bo zêdekirina CA ya te",
+    "PREMIUM4": "Dîtinbûna bilez di pêlatforma IzyGlam de",
+    "PREMIUM5": "Destekê pêşî",
+    "PREMIUM6": "Ji bo serbestkarên hêvîdar hatî afirandin",
+    "PREMIUM7": "Bibe Şêxa",
+    "BUSINESS": "Îlahî",
+    "BUSINESS_SUBTITLE": "Taxtê xwe bixwaze, Îlahî",
+    "BUSINESS1": "Li gorî pêdivî",
+    "BUSINESS2": "Hejmara bêsînor a salonan",
+    "BUSINESS3": "Rêberiya stratejîk a kesane",
+    "BUSINESS4": "Dîtinbûna zêde û pêşxistin a salonên we",
+    "BUSINESS5": "Çareseriyên li gorî pîvan ji bo skalekirinê",
+    "BUSINESS6": "Pêwendî bikin",
+    "COMPARE": "Veberhênana taybetmendiyan",
+    "FONCTIONS": "Taybetmendî",
+    "BUSINESS9": "Rêveberiya tevahî ya çalakiyê",
+    "STUDIO_BASIC": "Çavkaniyên taybet",
+    "STUDIO_ADVANCED": "Statîstîk & pêşniyar",
+    "ANALYSE": "Analîza performansê",
+    "BASICS": "Klasîk",
+    "ADVANCE": "Pêşketî",
+    "PLANS": "Hejmara salonên çalak",
+    "READY": "Amadeyî ku çalakiyê xwe mezintir bikî?",
+    "DISCOVERS": "Pêşniyarên IzyGlam bibîne"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Daxuyaniya gihîştîbûnê",
+      "TEXT": "izyGlam xizmetên xwe ji gelek kesan re gihîştî dike. Armanca me ewe ku astê WCAG 2.2 AA bigihîjin û li RGAA (Fransa) bilîvin."
+    },
+    "SCOPE": {
+      "TITLE": "Qada girtî",
+      "L1": "Malpera giştî û rûpelên agahdariyê.",
+      "L2": "Sepana web (panel) ji bo mişteriyan û profesyonelan.",
+      "L3": "Sepana mobîl (iOS/Android) heke hebe.",
+      "L4": "E-peyamên danûstandinê û navenda alîkariyê.",
+      "L5": "Amûrên piştgiriya mişterî."
+    },
+    "STATUS": {
+      "TITLE": "Rewşa hevbeşiyê",
+      "TEXT": "Li roja vê daxuyaniyê, gihîştîbûna navrûyên izyGlam bi heman şert re tenê beşî ye li WCAG 2.2 AA / RGAA. Em bi domdarî navrûyan pêşve dibin û kêmasiyên girîng sererast dikin."
+    },
+    "PREPARATION": {
+      "TITLE": "Rêbaza amade kirina daxuyaniyê",
+      "L1": "Xwe-nehmînerî ji hêla tîma berhemê/UI ve: kontrola semantîk a HTML, rolên ARIA, rêza tabkirinê.",
+      "L2": "Testên destan: navîgasyona klavyeyê, fokusa dîtbar, zoom 200%+, xwînerên ekranê.",
+      "L3": "Testên bi amûran (audîtê otomatîk li ser mînakên ekranan).",
+      "L4": "Qebûlkirina berdewam dema ragihandinê (Design System, komponenên gihîştî)."
+    },
+    "FEATURES": {
+      "TITLE": "Taybetmendiyên gihîştîbûnê",
+      "KEYBOARD": {
+        "TITLE": "Navîgasyona klavyeyê",
+        "L1": "Riyek tevahî bi klavye (Tab, Shift+Tab, Enter, Space, Esc, tirşok).",
+        "L2": "Nîşankera fokusê yê dîtbar û bi kontrast.",
+        "L3": "Girêdanên \"Biçe naveroka navendî\" ji bo derbasbûna sernavê.",
+        "L4": "Menu, modal û lîsteyên daketinê bi klavye tê xebitandin (vekirin/girtin, girtina fokusê, girtin bi Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Xwînerên ekranê û çarçoveyê",
+        "L1": "Çarçoveya semantîk bi sernavên hierarşîk (h1→h6) û nîşanan (header, nav, main, footer).",
+        "L2": "Etîketên zelal ji bo hemû qadan û bişkokan, navên gihîştî hevgirtî.",
+        "L3": "Ragihandina guherandinan bi herêmên aria-live (xeletî, serketin, barkirin).",
+        "L4": "Wêneyên agahdar bi altê nîşankirî, wêneyên dekoratîf nehatine xwendin."
+      },
+      "CONTRAST": {
+        "TITLE": "Kontrast, reng û mezinbûn",
+        "L1": "Armanca kontrastê ≥ 4.5 : 1 ji bo nivîsa normal û ≥ 3 : 1 ji bo nivîsa mezin.",
+        "L2": "Navrûk heta 200% zoom bi bêdawîbûna naverokê an taybetmendiyan tê bikaranîn.",
+        "L3": "Agahdarî tenê bi rengê nayê pêşkêş kirin."
+      },
+      "FORMS": {
+        "TITLE": "Form û peyamên xeletî",
+        "L1": "Girêdana label⇄input, nîşandana qadên pêdivî.",
+        "L2": "Xeletiyan li nêzî ya qadê têne nîşandan û heke pêwîst be yekser têne xülasekirin.",
+        "L3": "Fokus li ser qada yekem a xelet tê danîn, rêwerzên çaretirşiyan têne pêşkêş kirin."
+      },
+      "DYNAMIC": {
+        "TITLE": "Naverokên dinamîk û anîmasyon",
+        "L1": "Karûsel/anîmasyonên hêsan-rawestin û nebendî.",
+        "L2": "Heke pêkan be, vebijêrkê ya pergalê \"animations binav bike\" tê hîşyar kirin.",
+        "L3": "Modalên nebendî, têkçe bi klavye û bi tikandina derve têne girtin."
+      },
+      "MEDIA": {
+        "TITLE": "Medya",
+        "L1": "Vîdyoyan (heke hebe) bi nivîskar/sernivîskar an transkripsiyon.",
+        "L2": "Audio/vîdyo bi klavye tê kontrol kirin."
+      },
+      "MOBILE": {
+        "TITLE": "Mobîl",
+        "L1": "Qada tikandina tûşan mezin û herî nêzîk ne.",
+        "L2": "Navîgasyon bi TalkBack (Android) û VoiceOver (iOS) re hevgirtî."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Jîngeh û teknolojiyên arîkar",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Gerokên nû ên piştgirîkirî û rojanekirî."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Naverokên ne-gihîştî (hate dîtin an têkildar)",
+      "TEXT": "Herçend em hewldidan, hîn jî hin hûrdetayan dikarin ne-hevbeş bimînin:",
+      "L1": "Wêneyên kevn bê nivîsa alternatîf a vekolînî.",
+      "L2": "Belgeyên ji aliyê sêyemîn ve (PDF, pêvek) ne-temam gihîştî.",
+      "L3": "Vîdyoyên kevn bê nivîskar/danasîn.",
+      "L4": "Komponenên têkevê yên sêyemîn (tevdan, nexşeyê, lêner) bi sînoran xwe.",
+      "MOTIVES": "Sedem: naveroka sêyemîn, barkirina giran, rojanekirinê di pêvajoyê de."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatîf û alîkarîya mîqâte",
+      "TEXT": "Heke pêdiviya formatekî alternatîf hebû (mînak: belgeya gihîştî, alîkariyê li rezervasyonê), bi me re têkilî bigire. Em ê hêvî li çareseriyek wekhev bikin."
+    },
+    "FEEDBACK": {
+      "TITLE": "Şîrove û alîkarî",
+      "L1": "Bi sepanê: beşa Alîkarî > Gihîştîbûn.",
+      "L2A": "Bi e-peyam:",
+      "L2B": "an",
+      "L3": "Ji kerema xwe re ekran/URL, cîhaz, gerok û heke hebe xwînera ekranê binvîse."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Rêbaza şikêyetê (Fransa)",
+      "TEXT": "Heke kêmasiyek gihîştîbûnê heye ku destûra te asteng dike, û ji me re bersiva kêfxweş nedîtî, dikarî:",
+      "L1": "Nivîsandina li Parastvanê mafan an wekîlê wî di qadê xwe de,",
+      "L2": "An heke pêkan be li Navbera navîn re binivîsî.",
+      "MORE": "Agahiyên zêdetir:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Pêşveçûna berdewam",
+      "L1": "Design System bi komponenên gihîştî.",
+      "L2": "Rewîtiya kodê û testên gihîştîbûnê di her şandinekê de.",
+      "L3": "Fêrbûna berdewam ji bo tîma berhemê û destekê.",
+      "L4": "Pêşîkirina sererastkirinê li gorî impact a bikarhêner."
+    },
+    "DATE": {
+      "TITLE": "Dîroka daxuyaniyê û rojanekirin",
+      "TEXT": "Daxuyaniyê 25 Kanûnê 2025 hate saz kirin. Her sal yek car an dema guhertinên mezin rojanê dibe."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Çawa li IzyGlamê xizmetek rezerv bikim?",
+    "QUESTION2": "Çawa profesyonelê rast ji bo xwe hilbijêrim?",
+    "QUESTION3": "Çawa randevûyê biguherînim an betal bikim?",
+    "QUESTION4": "Çawa dikarim fermana xwe bişopînim?",
+    "QUESTION5": "Kîjan awayên tevdanê dikarim bi kar bînim?",
+    "QUESTION6": "Çawa fermana an rezervasyona xwe bişopînim?",
+    "QUESTION7": "Dikarim piştî xizmetê raya xwe bihêlim?",
+    "QUESTION8": "Çawa fîdelîte û promosyonan bi kar bînim?",
+    "QUESTION9": "Heke pirsgirêk bi fermana min re hebû çi bikim?",
+    "QUESTION10": "Çawa bi tîma IzyGlam re têkilî bigirim?",
+    "QUESTION11": "Siyaseta betalê û paşveguhartinê çawa dixebite?",
+    "QUESTION12": "Ma dikarim ji bo kesekî din rezerv bikim (diyarkirin, şaşî)?",
+    "QUESTION13": "Çawa bibe profesyonelê hevkariyê li IzyGlamê?",
+    "QUESTION14": "Çawa agahiyên kesaneya xwe li IzyGlamê biparêzim?",
+    "REPONSE1": "Hêsan û bilez e. Dema qeydkirî bûyî, servîsa ku hez dikî hilbijêre, profesyonelên nêzîk bibîne, dîrok û demjimêr hilbijêre. Bi \"Rezervînin\" bitikîne û bi karta bankê pere bide. Pêşkêşkar bi destan rezervasyonê piştrast dike. Heke red bibe, %100 paşve tê dayîn.",
+    "REPONSE2": "Her profesyonel profîleka tije heye: xizmet, bihayê, wêne, rayan. Dikare favorkan zêde bikî. Profîlan bi hev re berpirsekî bike û yê herî li hewceyên te bibijêre.",
+    "REPONSE3": "Ji qada xwe ya kesane rezervasyonê biguherîne an betal bike. Betal kirin heta 24 saet berê xizmetê belaş e; ji wêyî pê re dibe xerc bê. Heke pirsgirêk hebû, destekê me amade ye.",
+    "REPONSE4": "Têkeve qada xwe, beşa \"Rezervasyonên min\". Li wir şopandina demdemî, betal/an guherandin û dîroka xizmetan dîtinê heye.",
+    "REPONSE5": "Tevdan tenê bi karta bankê (Visa, MasterCard, American Express) ye. Em pereya kaxiz an PayPal pêşkêş nakin. Hemû tişt ewle ye.",
+    "REPONSE6": "Dema rezervasyonê hate pejirandin, e-peyamekê yekser distînî. Pêşniyara bîranînê jî (e-peyam/push) tên. Ji qada xwe jî rewş bibîne.",
+    "REPONSE7": "Erê. Piştî her xizmetê ku qediya, tu tê daxwaz kirin ku raya xwe bihêlî. Rayan bi destan tên kontrole kirin. Profesyonel nikarin rayan bersiv bide an biguherînin.",
+    "REPONSE8": "Hê niha, IzyGlam bernameya fidelîte an koda promosyonê nîne. Ev taybetmendî dê di pêş demê de were zêdekirin.",
+    "REPONSE9": "Dikarî rasterast ji beşa \"Têkilî\" re an bi e-peyamê bi me re têkilî bigirî. Hedefa me ye ku di nav 24 saetan de (rêvebirinê) bersiv bidin û pirsgirêkê bi başî çareser bikin.",
+    "REPONSE10": "Bi forma têkilî ya li malperê/sepanê me re binivîse. Desteka mişterî ji Duşem heya Şemî, ji 9:00 heya 18:00 heye. Mînak e-peyamê: support@izyglam.com",
+    "REPONSE11": "Tu dikarî heta 24 saet berê demê pêşbîrê belaş betal bikî. Piştre dibe xerc bê. Heke pêşkêşkar rezervasyonê red kir, paşveguhartin otomatîk e (pergal li ser rê ye).",
+    "REPONSE12": "Hê niha nikarî ji nav hesabê xwe ji bo kesekî din pêşkêşek bidî. Lê heke profesyonel formûla du/zanînî pêşkêş dike, dikarî ji bo gelek kesan di heman çarçoveyê de rezerv bikî.",
+    "REPONSE13": "Ger estetîkvan, şêvger an pratîsyonekê xweşbûnê yî, dikarî bi tîmê IzyGlam re beşdar bî. Forma li rûpela \"Bibe hevkar\" dagirtin û em wê bi te re têkilî bigirin.",
+    "REPONSE14": "Ewlehîbûna daneyên te pêşiya me ye. Em rêbazên GDPRê rêz dikin. Tenê agahiyên pêwîst ji bo xizmetê bi profesyonelan têne parve kirin. Peyamgehê ya hundirîn heye, lê lêkolînên ji bo derbasbûna pêlatformê tên kontrol kirin."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Em kî ne?",
+      "TEXT": "Ev Siyaseta Nepençavîtiyê diyar dike ka <strong>izyGlam</strong> (li jêr \"em\", \"me\" an \"Pêlatform\") çawa dane yên te kişandî, bikar anî, tomarkirî, parvekirî û parastî dike dema ku tu xizmetên me bi kar tînî (malper, sepanê web, sepanê mobîl, e-peyam û destek). Em wekî <strong>berpirsa xebatkirinê</strong> dixebitin ji bo pêvajoyên li jêr."
+    },
+    "SCOPE": {
+      "TITLE": "Qada siyaseta me",
+      "TEXT": "Ev siyaset li <strong>mişteriyan</strong> (rezerv dikin), <strong>profesyonelan</strong> (xizmet pêşkêş dikin) û <strong>serdêran</strong> li navrûkên me tê sepandin."
+    },
+    "DATA": {
+      "TITLE": "Daneyên ku dihêlin",
+      "PROVIDED": {
+        "TITLE": "Daneyên ku tu didê",
+        "L1": "<strong>Nasname & têkilî:</strong> nav, paşnav, e-peyam, telefon, navnîşan(ên), wêne/avatar.",
+        "L2": "<strong>Hesab:</strong> nasnav, şîfre (bi hash), vebijêrk, ziman.",
+        "L3": "<strong>Rezervasyon:</strong> xizmetên hilbijartî, dîrok/demjimêr, navnîşana karîgerî, not, pêvek.",
+        "L4": "<strong>Tevdan:</strong> agahiyên tevdanê <em>bi rêya pêşkêşkera me (mînak Stripe)</em> — em daneya karta te tomarnakain.",
+        "L5": "<strong>Profesyonel:</strong> profîla giştî, xizmet, bihayê, qada karîgerî, berdestbûn, RIB/IBAN (ewle), belgeyên verastkirinê heke pêwîst be.",
+        "L6": "<strong>Destek:</strong> peyam, tîket, tomara bangên telefonê heke be."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Daneyên otomatîk",
+        "L1": "<strong>Teknîkî:</strong> modela cîhazê, pergal, gerok, çözûsyon, nasnavên danişînê.",
+        "L2": "<strong>Log:</strong> adresên IP, demnîşan, bûyerên xeletî, bikaranînên taybetmendî.",
+        "L3": "<strong>Cih:</strong> cihê nêzîk (IP) an rast (GPS, bi rizgariya te).",
+        "L4": "<strong>Cookies & SDK:</strong> beşa taybetî li jêr bibîne."
+      },
+      "THIRD": {
+        "TITLE": "Daneyên ji sêyemîn ve",
+        "L1": "<strong>Pêşkêşkera tevdanê</strong> (rewşa tevdanê, token).",
+        "L2": "<strong>Hevparên analîtîk/di-dijî firoşê</strong> (nîşaneyên rizîk, stendînên bikaranînê).",
+        "L3": "<strong>Yekbûnan</strong> (mînak: amûrên têkiliyê, nexşe, hilanîn)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Armanc û binerên qanûnî",
+      "TEXT": "Em daneyan ji bo van armancan dixebitin:",
+      "L1": "<strong>Pêşkêşkirina xizmetê</strong> (afirandina hesab, rezervasyon, têkiliya navbera kesan, agahdarî) — <em>Bingeh: peyman</em>.",
+      "L2": "<strong>Tevdan & faktûr</strong> — <em>Peyman, pêdiviya qanûnî</em>.",
+      "L3": "<strong>Ewlehî, piştgirî li dijî xapûr/firoş</strong> — <em>Bereserî, pêdiviya qanûnî</em>.",
+      "L4": "<strong>Pêşvebirina berhemê, statistîk</strong> — <em>Bereserî</em>.",
+      "L5": "<strong>Destek & kalite</strong> — <em>Peyman, bereserî</em>.",
+      "L6": "<strong>Marketinga rast</strong> (e-peyam/sepana mobîl) — <em>Bi rizgarîya te de</em>; dikarî her dem derkevî.",
+      "L7": "<strong>Hevbendiya qanûnî</strong> (hesebdariya darayî, daxwazên otorîteyan) — <em>Pêdiviya qanûnî</em>."
+    },
+    "SHARING": {
+      "TITLE": "Parvekirina daneyan",
+      "L1": "<strong>Profesyonel / Mişterî</strong>: agahiyên pêwîst ji bo xizmetê (nav, rêyê têkiliyê, navnîşana karîgerî, hûragahiyên rezervasyonê).",
+      "L2": "<strong>Pêşkêşkar</strong>: tevdan (mînak Stripe), hilanîn/hilandin, analîtîk, e-peyam/SMS, destek, KYC heke pêwîst be. <em>Gihîştinê tê sînorkirin, peymanên RGPD heye.</em>",
+      "L3": "<strong>Hevpar</strong>: heke tu razî bî ji bo pêşniyarên taybet.",
+      "L4": "<strong>Otorîte</strong>: dema qanûn pêwîst dike an ji bo parastina mafên me."
+    },
+    "TRANSFERS": {
+      "TITLE": "Veguhastinên derve ya YEK/EEE",
+      "TEXT": "Dema daneyên te were veguhastinê ber welatan bê biryara \"adequacy\", em <strong>şertên peymana standard</strong> bi kar tînin û rêbazên zêde diyar dikin."
+    },
+    "RETENTION": {
+      "TITLE": "Demê tomarkirinê",
+      "L1": "<strong>Hesab & nasname</strong>: heya bikaranînê, paşê <em>heta 3 sal</em> ji çalakiya dawî re (şopandin) an <em>5—10 sal</em> ji bo pêdiviyên darayî/qanûnî.",
+      "L2": "<strong>Rezervasyon/faktûr</strong>: <em>10 sal</em> (pêdiviya qanûnî).",
+      "L3": "<strong>Logên ewlehiyê</strong>: <em>6—24 meh</em> li gorî girîngî.",
+      "L4": "<strong>Cookie</strong>: beşa taybetî bibîne.",
+      "NOTE": "Paşê, daneyên têne jêbirin an nenaskirin."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies & SDK",
+      "TEXT": "Em cookie/SDK bi kar tînin ji bo xebitandina pêlatformê, pîvana sînor, dijî firoş, û bi rizgarîya te de kesanekirinê.",
+      "L1": "<strong>Pêdivî</strong>: nasîn, ewlehî, vebijêrkên teknîkî.",
+      "L2": "<strong>Pîvana sînor</strong>: statistîkên stendînê.",
+      "L3": "<strong>Marketing</strong>: tenê bi rizgarî.",
+      "PREF": "Tu dikarî vebijêrkên xwe her dem bi bandor û mîhengên gerokê biguherînî."
+    },
+    "AUTOMATION": {
+      "TITLE": "Biryaran otomatîk & profîlkirin",
+      "TEXT": "Dikarî nîşaneyên otomatîk (mînak rizgira firoşê, berdestbûna pro, dûrî) bi kar bînin ji bo pêşîkirina çalakiyan an pêşniyara demjimêr. Bêdengî biryarekî bi awayê qanûnî girîng nayê dayîn bê derbasbûna mirovî, heke qanûn pêwîst neke an tu rizgarkirî nede."
+    },
+    "RIGHTS": {
+      "TITLE": "Mafên te (RGPD)",
+      "L1": "Mafê <strong> gihîştinê </strong>, <strong> sererastkirinê </strong>, <strong> jêbirinê </strong>.",
+      "L2": "Mafê <strong> sînorkirinê </strong> û <strong> veguhezartinê </strong>.",
+      "L3": "Mafê <strong> dijminî </strong> li xebatkirinê ya li ser bereserî.",
+      "L4": "Mafê <strong> rakirina rizgarîyê </strong> her dem.",
+      "L5": "Mafê <strong> şikêyetê </strong> li CNIL.",
+      "CONTACT": "Ji bo bicîhkirina mafên xwe bi me re têkilî bigire:",
+      "VERIFY": "Dikarîn agahiyên din bipirsin ji bo verastkirina nasnameya te."
+    },
+    "SECURITY": {
+      "TITLE": "Ewlehî",
+      "TEXT": "Em rêbazên teknîkî û rêvebirî li pey rê dikin: şîfrandina di-rêya (TLS), hashkirina şîfreyê, log û şopandin, kontrola gihîştinê, hilanîn, rewtîna kodê û testên ewlehiyê."
+    },
+    "MINORS": {
+      "TITLE": "Daneya zarokan",
+      "TEXT": "Xizmetên me ji kesên jê < 15 sal e ne. Heke hesabeke zarok were nasandin, paş verastkirinê wê were jêbirin."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Binpêşkêşkarên sereke",
+      "TEXT": "Em bi binpêşkêşkarên bingehîn dixebitin ji bo hilanîn, tevdan, e-peyam, analîtîk û hilanîn. Lîsteya rojanekirî dikare li ser daxwaz were pêşkêş kirin li"
+    },
+    "CONTACT": {
+      "TITLE": "Têkilî & DPO",
+      "PRIVACY_LABEL": "Têkilî ya nepençavîtiyê",
+      "SUPPORT_LABEL": "Destek",
+      "AUTHORITY_LABEL": "Desteya kontrolê",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Guherandinên vê siyaseta",
+      "TEXT": "Dikarin vê siyasetê rojanekirin ji bo guherandina qanûn an fonksiyonel bikin. Deqek girîng be, em ê bi e-peyam an di sepanê de agahdar bikin. Dîroka xebitandinê: <strong>11&nbsp;Tebax&nbsp;2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Hokûmên herêmî",
+      "TEXT": "Heke li Yekîtiya Ewropayê tê de yî, daneyên te li gorî RGPD tên xebitandin. Dibe ku zêdekên taybet ên welat/herêm têne sepandin."
+    },
+    "GLOSSARY": {
+      "TITLE": "Lûget (kurt)",
+      "L1": "<strong>Berpirsa xebatkirinê</strong>: aliyekî ku armanc û rêbazên xebatkirinê diyar dike.",
+      "L2": "<strong>Binpêşkêşkar</strong>: aliyekî ku ji aliyê berpirsa xebatkirinê daneyan dixebite.",
+      "L3": "<strong>Binera qanûnî</strong>: bingehek ku xebatkirinê destûr dide (peyman, rizgarî, pêdiviya qanûnî, bereserî).",
+      "L4": "<strong>Cookies/SDK</strong>: şopkerên ku malper/sepan ji bo pêşkêşkirin, pîvan û kesanekirinê bi kar tîne."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Pejirandina mercan",
+      "TEXT": "Dema tu xizmetên izyGlamê (malper, sepanê web, sepanê mobîl) têk dikin, tu bê şert ev Mercên Giştî ên Bikaranînê (\"MGB\") qebûl dikin. Heke ev Merc qebûl nakî, nekarî Pêlatformê bi kar bînî."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Pênase",
+      "L1": "<strong>Mişterî</strong>: her kesê ku li ser Pêlatformê rezerv dike û/yan tevdan dike.",
+      "L2": "<strong>Profesyonel</strong>: her kesê ku li ser Pêlatformê xizmet pêşkêş dike.",
+      "L3": "<strong>Xizmet</strong>: servîsa ku ji aliyê Profesyonel ve tê pêşkêş kirin (mînak xizmetên bedewî li malê).",
+      "L4": "<strong>Pêlatform</strong>: pergala nivîsandî, malper û sepanên ji aliyê izyGlam ve hate xebitandin."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Xizmet û rola izyGlam",
+      "TEXT": "izyGlam <strong>pêlatforma têkiliyê</strong> ye. Profesyonel <strong>tenê bersivdar in</strong> ji bo xizmetên xwe (kalîte, peywendî, sigortayê). Heke nehat beyan kirin, izyGlam firoşkar an pêşkêşkarê rastî nake û bersiva pêkanînê naxwaze."
+    },
+    "ACCOUNT": {
+      "TITLE": "Hesab û lîyaqet",
+      "L1": "Ji bo rezerv an pêşkêşkirina xizmetê qeydkirin pêdivî ye. Tu söz didî ku agahiyên rast bidî û wan rojane bikî.",
+      "L2": "Divê herêm 15 salî be ku Pêlatformê bi kar bînî. Profesyonel divê mafî karê bi qanûnî hebin.",
+      "L3": "Tu bersivdar î ser nepeniya nasnavên xwe û hemû çalakiyan ji nav hesabê xwe ve.",
+      "L4": "izyGlam mafê xwe heye ku di rewşa şikestina MGB an rizgira firoşê de hesabê rawestîne an qedexe bike."
+    },
+    "BOOKINGS": {
+      "TITLE": "Rezervasyon û pêkhatina peymanê",
+      "L1": "Xizmet <strong>bi serhêlî online</strong> ji aliyê Mişterî ve tê rezerv kirin û pêdivî ye ku pereyê were dayîn. Li cîhê xizmetê pereya kaxiz tune.",
+      "L2": "Rezervasyon <strong>piştî tevdanê ji aliyê Profesyonel ve tê pejirandin</strong>. Heke were red kirin, Mişterî <strong>bi tevahî</strong> tê paşveguhartin.",
+      "L3": "Peymana xizmetê rast di demê pejirandina Profesyonel de di navbera Mişterî û Profesyonel de tê pêk anîn.",
+      "L4": "Dem, navnîşana karîgerî û şertên taybet divê ji aliyê parten heyî were verastkirin."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Bihayê, aboneman û tevdan",
+      "L1": "Bihayên xizmetê ji aliyê Profesyonelan têne diyar kirin. izyGlam <strong>komîsyonek pêlatformê</strong> dixebitîne.",
+      "L2": "Aboneman ji bo Profesyonelan (mînak niha): <em>1 salon belaş bi jiyan</em>; <em>Basic: 3 salon – 99 €/meh</em>; <em>Premium: 10 salon – 499 €/meh</em>; <em>ji jor: pêşniyar</em>.",
+      "L3": "Tevdan <strong>tenê bi karta bankê</strong> bi rêya pêşkêşkarê derveyî (mînak Stripe). <strong>Pereya kaxiz tune</strong>, koda promosyon û fidelîte hîn tune.",
+      "L4": "Mîqdar, bac û xercên têkildar berî pejirandinê tê nîşandan. Mercên abonemanê dikarin biguherin; guherandinên girîng berî demê têne agahdarkirin."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Betal, paşveguhartin û ne-amadekirî",
+      "L1": "Betalê belaş heya <strong>24 saet</strong> berê demê xizmetê.",
+      "L2": "Kêmtirî 24 saet, <strong>xerc</strong> dikarin were sepandin li gorî siyaseta rojane.",
+      "L3": "Heke <strong>red</strong> ji aliyê Profesyonel ve piştî tevdanê hebû, Mişterî 100% tê paşveguhartin. Otomatîkirina paşveguhartinê di pêvajoya îcadê de ye; heke pêwîst be, destekê dê pêvajoyê dest pê bike.",
+      "L4": "<strong>Ne-dîtin</strong> (ketina randevûyê bê agahdarkirin) dikare xercê bixîne an paşveguhartinê asteng bike."
+    },
+    "PAYOUTS": {
+      "TITLE": "Vireman ji bo Profesyonelan",
+      "L1": "Viremanê ji bo Profesyonel dema <strong>pejirandina pêkanînê</strong> tê xebitandin (mînak pejirandina <em>koda verastkirinê</em>).",
+      "L2": "RIB/IBAN ku ji aliyê Profesyonel ve hatî dayîn ji bo viremanê tê bi kar anîn. Profesyonel rastiya agahiyên xwe pê êdî dike.",
+      "L3": "Mîqdarên hatine veguhastin heman bihayê xizmetê ne <em>piştî standina komîsyon û xerc</em>."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Bersivdariya aliyên hevpar",
+      "L1": "Profesyonel ewlebendiya xizmetên xwe, rêbaza qanûnî, hifz û aramîyê dikin.",
+      "L2": "Mişterî agahiyên rast (navnîşan, berdestbûn, sînorkan gihîştinê) dide û randevû rêz dike.",
+      "L3": "izyGlam Pêlatform û amûr (rezerv, tevdan, peyaman) pêşkêş dike lê encamê xizmetê naewle dike."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Nota nederbasdar e.",
+      "TITLE": "Rayan û notandin",
+      "L1": "Rayan tenê <strong>piştî xizmetek rastî</strong> dikarin were danîn.",
+      "L2": "Rayan dikarin <strong>moderasyonê</strong> werin (mînak jêbirina naverokên li dijî qanûn an ev Merc)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Tevgerên qedexekirî",
+      "L1": "Xapûr, nasnavkêşî, derbasbûna Pêlatformê, teşwîqa danûstandinên derve.",
+      "L2": "Naverokên neqanûnî, şermezarî, cihênirî, tund an li dijî rêtî.",
+      "L3": "Têkevî, xizûnê xizmetê, enjîniyeriya paşde, derbasbûna tedbîrên ewlehiyê.",
+      "L4": "Kopînkirina daneyên kesane yên bikarhênerên din bê destûr."
+    },
+    "IPR": {
+      "TITLE": "Mafên mirovahiyê",
+      "TEXT": "Naverok, mark û hêmû parçeyên Pêlatformê (kod, dizayn, nivîs, logo, wêne) tên parastin. Bê destûrê, çapkêşîn, belavkirin an guhertin qedexe ye. Naverokên ji aliyê Profesyonelan hatîne dayîn xwe ne; wan ji izyGlam re lîsansê neyek-beş dikin ji bo xebitandina Pêlatformê."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Xizmetên sêyemîn",
+      "TEXT": "Pêlatform dikare xizmetên sêyemîn (tevdan, nexşe, hilanîn, analîtîk) têkevê bike. Mercên wan tên sepandin. izyGlam ne bersivdar e ji bo qutbûn an xeletiyên van xizmetan."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Berdestbûn, parastin û rojanekirin",
+      "TEXT": "Dikarîn ji bo parastin an baştirîna Pêlatformê beşek an tevahî rawestînin an biguherînin. Em hewl didin ku karê bikarhêneran kêm bibe."
+    },
+    "LIABILITY": {
+      "TITLE": "Sînorkirina bersivdarî û vegerandin",
+      "TEXT": "Li gorî qanûn, bersivdariya izyGlam bi tenê bo zararên rastîn tê sînorkirin; zararên ne-rastîn (mînak winda-bûna şans, winda-bûna darayî) nayên pêşxistin. Tu söz didî ku heke ev Mercî şikestin an Pêlatformê bi awayekî neqanûnî bikar anî, tu wê izyGlamê bigirî ji hemû daxwazên têkildar."
+    },
+    "TERMINATION": {
+      "TITLE": "Qedexe û rawestandin",
+      "TEXT": "Tu dikarî her dem hesabê xwe jê bî. Em dikarin dema şikestina MGB, xapûr, xerabî an bi fermana qanûnî gihîştin rawestînin an qedexe bikin. Hin merc (mînak dayîna hêman, bersivdarî) paşî jî heye."
+    },
+    "PRIVACY": {
+      "TITLE": "Daneyên kesane",
+      "TEXT": "Xebatkirina daneyên te di <strong>Siyaseta Nepençavîtiyê</strong> de hate şîrove kirin. Bi bikaranîna Pêlatformê, tu wê siyaseta me qebûl bikî. Li wir mafên xwe yên RGPD û peymanên me bibîne."
+    },
+    "CHANGES": {
+      "TITLE": "Guherandina MGB",
+      "TEXT": "Dikarin ev MGB li sedemên qanûnî, rêvebirî an fonksiyonel biguherînin. Deqek girîng be, em bi e-peyam an di sepanê de agahdar dikin û guhertoya nû belav dikin."
+    },
+    "LAW": {
+      "TITLE": "Qanûna sepandinê û niqaş",
+      "TEXT": "Ev MGB <strong>bi qanûna fransî</strong> tên rêvebirin. Her niqaş dê li dadgehên awartinê ya cihê serê şîrketa izyGlam were pêvajoyê, heke qanûnên xerîdar ên baştir hebe wan têne sepandin."
+    },
+    "CONTACT": {
+      "TITLE": "Têkilî",
+      "SUPPORT_LABEL": "Destek",
+      "LEGAL_LABEL": "Yasa",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Dîroka destpêkê",
+      "TEXT": "Ev MGB ji <strong>25&nbsp;Kanûnê&nbsp;2025</strong> ve têne sepandin û hemû guhertoyên berê diguherînin."
+    }
+  }
+}

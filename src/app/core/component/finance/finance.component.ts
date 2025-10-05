@@ -2,107 +2,172 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from '../../services/booking.service';
 import { UserService } from '../../services/user.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-    selector: 'app-finance',
-    templateUrl: './finance.component.html',
-    styleUrls: ['./finance.component.scss'],
+  selector: 'app-finance',
+  templateUrl: './finance.component.html',
+  styleUrls: ['./finance.component.scss'],
 })
 export class FinanceComponent implements OnInit {
-    @Input() myShopData: any = {};
-    shopCopyData: any = {};
-    @Input() me: any = {};
-    transactions: any[] = [];
-    withdrawalForm: FormGroup;
-    bankModalVisible = false;
-    totalRevenue = 0;
-    totalCommission = 0;
-    evolution = 0;
-    totalEarnings = 0;
-    totalBookings = 0;
-    cancelledBookings = 0;
-    avgPrice = 0;
-    reviewRatio = 0;
-    topProducts:any[] = [];
-    avgDuration = 0;
-    bank = {
-        iban: '',
-        bic: '',
-        bank_name: '',
-        holder_name: '',
-        country: ''
-    };
-    
-    constructor(private fb: FormBuilder, private bookingService: BookingService, private userService: UserService) {
-        this.withdrawalForm = this.fb.group({
-            amount: ['', [Validators.required, Validators.min(1)]],
-            accountDetails: ['', Validators.required],
-        });
+  /** Boutique sélectionnée (injectée par le parent) */
+  @Input() myShopData: any = {};
+  /** Copie locale (si besoin de modifier sans toucher l’input directement) */
+  shopCopyData: any = {};
+
+  /** Utilisateur courant (injecté par le parent) */
+  @Input() me: any = {};
+
+  /** Transactions (si tu souhaites les afficher plus tard) */
+  transactions: any[] = [];
+
+  /** Formulaire de demande de retrait */
+  withdrawalForm: FormGroup;
+
+  /** État de la modale d’infos bancaires */
+  bankModalVisible = false;
+
+  /** KPIs du dashboard finance */
+  totalRevenue = 0;
+  totalCommission = 0;
+  evolution = 0;
+  totalEarnings = 0;
+  totalBookings = 0;
+  cancelledBookings = 0;
+  avgPrice = 0;
+  reviewRatio = 0;
+  topProducts: any[] = [];
+  avgDuration = 0;
+
+  /** Coordonnées bancaires de l’utilisateur */
+  bank = {
+    iban: '',
+    bic: '',
+    bank_name: '',
+    holder_name: '',
+    country: ''
+  };
+
+  constructor(
+    private fb: FormBuilder,
+    private bookingService: BookingService,
+    private userService: UserService,
+    private translate: TranslateService,
+    private toastr: ToastrService
+  ) {
+    // Définition du formulaire de retrait (montant + compte)
+    this.withdrawalForm = this.fb.group({
+      amount: ['', [Validators.required, Validators.min(1)]],
+      accountDetails: ['', Validators.required],
+    });
+  }
+
+  // ---------------------------------------
+  // Cycle de vie
+  // ---------------------------------------
+
+  ngOnInit(): void {
+    // Marque la section active (pour ton menu latéral)
+    localStorage.setItem('menu-param', 'management');
+
+    // Sécurise l’accès aux infos bancaires (si me ou me.bank non défini)
+    this.bank = (this.me && this.me.bank) ? { ...this.me.bank } : { ...this.bank };
+
+    // Charge les stats si la boutique est connue au démarrage
+    if (this.myShopData && this.myShopData._id) {
+      this.loadDashboardStats(this.myShopData._id);
+    } else {
+      console.warn('FinanceComponent → myShopData est vide, en attente de ngOnChanges.');
+    }
+  }
+
+  /** Recharge les stats si l’@Input myShopData change (sélecteur de boutique côté parent) */
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['myShopData'] && changes['myShopData'].currentValue) {
+      this.shopCopyData = { ...this.myShopData };
+      if (this.myShopData?._id) {
+        this.loadDashboardStats(this.myShopData._id);
+      }
+    }
+  }
+
+  // ---------------------------------------
+  // Données / API
+  // ---------------------------------------
+
+  /** Récupère toutes les statistiques d’un shop */
+  private loadDashboardStats(shopId: string): void {
+    this.bookingService.getDashboardStats(shopId).subscribe({
+      next: (data: any) => {
+        // Hydrate toutes les métriques
+        this.totalRevenue = data?.totalRevenue ?? 0;
+        this.totalCommission = data?.totalCommission ?? 0;
+        this.evolution = data?.evolution ?? 0;
+        this.totalEarnings = data?.totalEarnings ?? 0;
+        this.totalBookings = data?.totalBookings ?? 0;
+        this.cancelledBookings = data?.cancelledBookings ?? 0;
+        this.avgPrice = data?.avgPrice ?? 0;
+        this.reviewRatio = data?.reviewRatio ?? 0;
+        this.topProducts = data?.topProducts ?? [];
+        this.avgDuration = data?.avgDuration ?? 0;
+      },
+      error: (err: any) => {
+        console.error('Erreur lors du chargement des stats finance :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), true);
+      }
+    });
+  }
+
+  // ---------------------------------------
+  // Modale d’infos bancaires
+  // ---------------------------------------
+
+  openBankModal(): void {
+    this.bankModalVisible = true;
+  }
+
+  closeBankModal(): void {
+    this.bankModalVisible = false;
+  }
+
+  /** Sauvegarde des informations bancaires de l’utilisateur */
+  saveBankInfo(): void {
+    // Merge dans me (backend attend probablement user complet)
+    if (!this.me) {
+      console.warn('Utilisateur non chargé, impossible de sauver les infos bancaires.');
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), true);
+      return;
     }
 
-    ngOnInit(): void {
-        localStorage.setItem("menu-param", 'management');
-        console.log('myShopData :', this.myShopData);
-        // Tu peux initialiser tes données ici si nécessaire
-        this.bank = this.me.bank;
+    this.me.bank = { ...this.bank };
 
-        this.bookingService.getDashboardStats(this.myShopData._id).subscribe((data) => {
-            console.log('Dashboard stats:', data);
-            this.totalRevenue = data.totalRevenue;
-            this.totalCommission = data.totalCommission;
-            this.evolution = data.evolution;
-            this.totalEarnings = data.totalEarnings;
-            this.totalBookings = data.totalBookings;
-            this.cancelledBookings = data.cancelledBookings;
-            this.avgPrice = data.avgPrice;
-            this.reviewRatio = data.reviewRatio;
-            this.topProducts = data.topProducts;
-            this.avgDuration = data.avgDuration;
-        });
-    }
+    this.userService.update(this.me).subscribe({
+      next: () => {
+        this.showCustomToast(this.translate.instant('SUCCESS.SUBSCRIBE_SUCCESS')); // message de succès existant côté i18n
+        this.closeBankModal();
+      },
+      error: (err: any) => {
+        console.error('Erreur lors de la mise à jour des infos bancaires :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), true);
+      }
+    });
+  }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['myShopData'] && changes['myShopData'].currentValue) {
-            this.shopCopyData = { ...this.myShopData }; // Met à jour la boutique affichée
-            
+  // ---------------------------------------
+  // Utilitaires UI
+  // ---------------------------------------
 
-        this.bookingService.getDashboardStats(this.myShopData._id).subscribe((data) => {
-            console.log('Dashboard stats:', data);
-            this.totalRevenue = data.totalRevenue;
-            this.totalCommission = data.totalCommission;
-            this.evolution = data.evolution;
-            this.totalEarnings = data.totalEarnings;
-            this.totalBookings = data.totalBookings;
-            this.cancelledBookings = data.cancelledBookings;
-            this.avgPrice = data.avgPrice;
-            this.reviewRatio = data.reviewRatio;
-            this.topProducts = data.topProducts;
-            this.avgDuration = data.avgDuration;
-        });
-        }
+  /**
+   * Affiche un toast uniforme IzyGlam
+   * @param message  texte déjà traduit (ou clé si tu préfères)
+   * @param isError  true → toast erreur | false → toast succès
+   */
+  private showCustomToast(message: string, isError: boolean = false): void {
+    if (isError) {
+      this.toastr.error(message);
+    } else {
+      this.toastr.success(message);
     }
-    openBankModal() {
-        this.bankModalVisible = true;
-    }
-
-    closeBankModal() {
-        this.bankModalVisible = false;
-    }
-
-    saveBankInfo() {
-        // 🔒 Appel backend à ajouter ici
-        console.log('Bank info:', this.bank);
-        this.me.bank = this.bank;
-        // Exemple de requête HTTP (remplace par ton UserService ou HttpClient)
-        this.userService.update(this.me).subscribe({
-            next: () => {
-                // toast de succès
-                this.closeBankModal();
-            },
-            error: (err: any) => {
-                // gestion d'erreur
-                console.error(err);
-            }
-        });
-    }
+  }
 }

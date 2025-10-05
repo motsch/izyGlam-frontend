@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { environment } from 'src/environments/environment';
 @Component({
-    selector: 'app-testimonial',
-    templateUrl: './testimonial.component.html',
-    styleUrls: ['./testimonial.component.scss'],
+  selector: 'app-testimonial',
+  templateUrl: './testimonial.component.html',
+  styleUrls: ['./testimonial.component.scss'],
 })
 export class TestimonialComponent implements OnInit {
   imgStorageUrl = environment.imgStorageUrl;
@@ -17,7 +17,7 @@ export class TestimonialComponent implements OnInit {
     { name: 'L’Oréal Pro', logo: 'sponsors/loreal.png', url: 'https://www.lorealprofessionnel.fr/' }
   ];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

@@ -1,33 +1,209 @@
 {
   "SHOPTYPE": {
     "HAIRDRESSER": "Fryzjer(ka)",
-    "NAILTECHNICIAN": "Technik paznokci",
-    "MAKEUP": "Makijażysta(ka)",
-    "WAXING": "Kosmetolog",
-    "FACIAL": "Zabieg na twarz",
-    "MASSAGE": "Masażysta(ka)",
+    "NAILTECHNICIAN": "Manikiurzystka",
+    "MAKEUP": "Wizażyst(k)a",
+    "WAXING": "Kosmetyczk(a)",
+    "FACIAL": "Pielęgnacja twarzy",
+    "MASSAGE": "Masażyst(k)a",
     "EYELASH": "Przedłużanie rzęs",
     "EYEBROW": "Brwi",
     "TANNING": "Opalanie",
     "ACUPUNCTURE": "Akupunktura",
     "OTHER": "Inne"
   },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Zdjęcie usunięte z galerii",
+    "PHOTO_UPLOAD": "Obraz pomyślnie przesłany",
+    "PARTIAL_REFUND_CONFIRM": "Częściowy zwrot potwierdzony!",
+    "CODE_SAVED": "Kod wygenerowany.",
+    "USERCREATED": "Użytkownik utworzony pomyślnie. Wysłaliśmy e-mail z potwierdzeniem.",
+    "SUBSCRIBE_SUCCESS": "Twoja subskrypcja została zarejestrowana.",
+    "EMAIL_VERIFIED": "Twoje konto jest aktywne 🎉 Możesz się teraz zalogować.",
+    "EMAIL_RESENT": "E-mail weryfikacyjny wysłany ponownie. Sprawdź swoją skrzynkę.",
+    "BOOKING_CREATED": "Twoja rezerwacja została zapisana.",
+    "PAYMENT_OK": "Płatność zatwierdzona.",
+    "REFUND_OK": "Zwrot zrealizowany.",
+    "USERUPDATED": "Użytkownik zaktualizowany.",
+    "SETTINGS_UPDATED": "Ustawienia zaktualizowane.",
+    "REVIEW_ADDED": "Twoja opinia została opublikowana 🎉",
+    "SHOPUPDATED": "Salon zaktualizowany.",
+    "BOOKING_ACCEPTED": "Rezerwacja zaakceptowana.",
+    "BOOKING_FINISHED": "Rezerwacja zakończona.",
+    "BOOKING_REFUSED": "Rezerwacja odrzucona.",
+    "BOOKING_DELETED": "Rezerwacja usunięta.",
+    "CODE_GENERATED": "Kod wygenerowany.",
+    "CODE_CONFIRMED": "Kod potwierdzony.",
+    "INVOICE_DOWNLOADED": "Faktura pobrana.",
+    "MARKED_NO_SHOW_CLIENT": "Klient oznaczony jako nieobecny.",
+    "COMPANY_CREDITED": "Konto firmy zostało zasilone.",
+    "MARKED_NO_SHOW_PRO": "Specjalista oznaczony jako nieobecny.",
+    "EMPLOYEE_CREDITED": "Konto pracownika zostało zasilone.",
+    "NO_SHOW_PRO": "Nałożono karę i dokonano zwrotu.",
+    "EMPLOYEE_DELETED": "Pracownik został usunięty.",
+    "SLOT_SELECTED": "Wybrano przedział czasowy",
+    "PASSWORD_RESET": "Hasło zostało zresetowane.",
+    "INVOICE_GENERATED": "Faktury wygenerowane.",
+    "REVIEW_SAVED": "Opinia zapisana, dziękujemy!",
+    "DEFAULT_PASSWORD_UPDATED": "Domyślne hasło zostało zaktualizowane.",
+    "COMPANY_CREATED": "Twoje konto firmowe zostało utworzone."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Zaloguj się, aby zarządzać ulubionymi.",
+    "INVALID_IMAGE": "Nieprawidłowy obraz.",
+    "NO_SLOTS": "Brak dostępnych terminów dla tej usługi.",
+    "NO_SHOP_SELECTED": "Nie wybrano salonu.",
+    "NO_SERVICE_SELECTED": "Nie wybrano usługi.",
+    "ORDER_ERROR": "Błąd podczas aktualizacji zamówienia.",
+    "CODE_ERROR": "Błąd podczas zapisu kodu.",
+    "INVOICE_GENERATED_ERROR": "Błąd podczas generowania faktur.",
+    "USERNOTCREATED": "Nie można utworzyć użytkownika.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Saldo firmy jest niewystarczające dla tego zasilenia.",
+    "GENERIC_ERROR": "✨ Ups… wystąpił błąd. Spróbuj ponownie ✨",
+    "COMPANY_CREDITED": "Konto firmy zostało zasilone.",
+    "LINK_INVALID_OR_MISSING": "Nieprawidłowy lub brakujący link.",
+    "LINK_INVALID_OR_EXPIRED": "Link nieprawidłowy lub wygasły.",
+    "EMAIL_NOT_FOUND": "E-mail użytkownika nie znaleziony.",
+    "PAYMENT_FAILED": "Płatność nie powiodła się.",
+    "BOOKING_FAILED": "Nie udało się utworzyć rezerwacji.",
+    "LOAD_CARDS_FAILED": "Wystąpił błąd podczas wczytywania Twoich kart.",
+    "LOAD_SHOP_FAILED": "Wystąpił błąd podczas wczytywania salonu.",
+    "LOAD_PRODUCTS_FAILED": "Wystąpił błąd podczas wczytywania usług.",
+    "INVALID_CODE": "Wprowadzony kod jest nieprawidłowy.",
+    "PASSWORD_CHANGED": "Twoje hasło zostało zaktualizowane.",
+    "PASSWORDS_IDENTICAL": "Nowe hasło musi różnić się od obecnego.",
+    "INVALID_AMOUNT": "Wprowadzona kwota jest nieprawidłowa.",
+    "INVALID_CURRENT_PASSWORD": "Obecne hasło jest nieprawidłowe.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Obecne hasło jest nieprawidłowe lub wystąpił błąd.",
+    "PASSWORD_UPDATE_FAILED": "Zmiana hasła nie powiodła się.",
+    "PASSWORD_UPDATE_GENERIC": "Wystąpił błąd podczas aktualizacji hasła.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Hasła nie zgadzają się lub są zbyt krótkie (min. 8 znaków).",
+    "INVALID_PASSWORD": "Hasło nie może być puste.",
+    "PASSWORD_TOO_SHORT": "Hasło musi zawierać co najmniej 8 znaków."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Brak konfiguracji Stripe.",
+    "LOAD_FAILED": "Nie udało się załadować Stripe",
+    "NOT_READY": "Stripe nie został zainicjalizowany",
+    "CONFIRM_FAILED": "Nie udało się zapisać karty",
+    "CARD_SAVED": "Karta zapisana pomyślnie ✅",
+    "PM_FAILED": "Nie udało się utworzyć karty",
+    "SI_FAILED": "Nie można przygotować zapisu karty",
+    "ATTACH_FAILED": "Nie można podpiąć karty do konta",
+    "SAVE_CARD": "Zapisz kartę",
+    "ADD_CARD": "Dodaj kartę"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Zaloguj się"
+  },
+  "COMMON": {
+    "LOADING": "Ładowanie…",
+    "UNEXPECTED_ERROR": "Wystąpił nieoczekiwany błąd"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Trwa weryfikacja",
+    "VALIDE": "Weryfikujemy Twój link aktywacyjny. To potrwa tylko chwilę.",
+    "ACCOUNT": "Konto aktywne",
+    "CONNECT": "Zaloguj się",
+    "OUPS": "Ups",
+    "WRITE": "Potrzebujesz pomocy? Napisz do nas na",
+    "RESEND": "Wyślij ponownie e-mail aktywacyjny"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Moje dane bankowe",
+    "ADD_BANK_INFO": "Dodaj moje dane bankowe",
+    "BANK_NAME": "Nazwa banku",
+    "HOLDER_NAME": "Właściciel konta",
+    "COUNTRY": "Kraj",
+    "SAVE": "Zapisz"
+  },
+  "LOADER": {
+    "LOADING": "Ładowanie…"
+  },
+  "SPONSORS": {
+    "TITLE": "Nasi Sponsorzy",
+    "SPONSORISED": "Sponsorowane"
+  },
+  "TABS": {
+    "FINANCE": "Monitoring finansów",
+    "GENERAL_INFO": "Informacje ogólne",
+    "EMPLOYEES": "Zarządzanie pracownikami",
+    "SERVICES": "Zarządzanie usługami",
+    "PHOTOS": "Galeria zdjęć",
+    "STATS": "Statystyki",
+    "PARAM": "Ustawienia",
+    "SHOPS": "Salony",
+    "USERS": "Użytkownicy",
+    "MESSAGE": "Wiadomości"
+  },
+  "CARD": {
+    "ADD": "Dodaj kartę",
+    "NO_IMAGE": "Brak obrazów w galerii.",
+    "SALON": "Salon zaktualizowany pomyślnie",
+    "ERROR1": "Błąd podczas aktualizacji salonu",
+    "ERROR2": "Błąd podczas aktualizacji zdjęcia",
+    "UPDATE": "Salon zaktualizowany pomyślnie"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Zakończona",
+    "ACCEPTEE": "Zaakceptowana",
+    "WAITING": "Oczekująca",
+    "CANCEL": "Anulowana",
+    "DELETE": "Usunięta",
+    "REFUSED": "Odrzucona",
+    "NO_PRESTA": "Specjalista nieobecny",
+    "CLIENT_ABSENT": "Klient nieobecny",
+    "ADRESSE": "Adres",
+    "DATE": "Data",
+    "TOTAL": "Suma",
+    "FACTURE": "Faktura",
+    "CANCELLED": "Anulowana",
+    "DELETED": "Usuń",
+    "AVIS": "Opinia",
+    "SUPPORT": "Wsparcie",
+    "CODE": "Kod potwierdzający",
+    "CODE_A_DONNER": "Kod do przekazania specjaliście",
+    "PRESTA_ABSENT": "Specjalista nieobecny"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Opinie o salonie",
+    "COMMENT": "Komentarz",
+    "NOTE": "Ocena",
+    "CLOSE": "Zamknij"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Brak obrazów w galerii."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Oceń swoje zamówienie",
+    "DATE": "Data",
+    "SERVICE": "Usługa",
+    "AVIS": "Twoja opinia",
+    "SEND": "Wyślij",
+    "PLACEHOLDER": "Opisz swoje doświadczenie…"
+  },
   "HOMEPAGE": {
-    "TITLERED": "Sprowadź ich do siebie",
+    "TITLERED": "Sprowadź usługi do domu",
     "KNOWMORE": "Dowiedz się więcej",
-    "PART1TITLE": "Ciesz się najlepszymi usługami kosmetycznymi w domu",
-    "PART1TEXT": "Nasi wykwalifikowani specjaliści przyjdą do Ciebie, aby zapewnić wysokiej jakości zabiegi kosmetyczne, dostosowane do Twoich potrzeb i pragnień. Doświadcz wyjątkowego relaksu, czy to podczas przerwy na lunch, po pracy wieczorem, czy podczas popołudnia z przyjaciółmi.",
-    "PART2TITLE": "Pracuj, kiedy chcesz, i generuj dochody na własnych warunkach",
-    "PART2TEXT": "Generuj dochody według własnego harmonogramu, akceptując zamówienia na platformie w swoim tempie. Możesz używać własnego sprzętu lub wybrać wynajem profesjonalnych narzędzi za pośrednictwem izyGlam.",
-    "PART3TITLE": "Usługa kosmetyczna zaprojektowana na nowo dla firm",
-    "PART3TEXT": "Glam for Business to platforma dedykowana dla firm każdej wielkości, stworzona z myślą o zarządzaniu potrzebami kosmetycznymi Twoich klientów i pracowników. Oferuj spersonalizowane zabiegi kosmetyczne bezpośrednio w miejscu pracy, podczas wydarzeń firmowych lub na specjalne okazje. Nasi wykwalifikowani profesjonaliści przyjeżdżają, aby zapewnić usługi dostosowane do Twoich potrzeb.",
-    "APPTITLE": "Łatwiej z aplikacjami",
+    "PART1TITLE": "Korzystaj z najlepszych usług kosmetycznych w domu",
+    "PART1TEXT": "Nasi wykwalifikowani profesjonaliści przyjadą do Ciebie, aby zapewnić wysokiej jakości zabiegi dopasowane do Twoich potrzeb i oczekiwań. Doświadcz wyjątkowego relaksu — w przerwie na lunch, po pracy wieczorem lub podczas popołudnia z przyjaciółkami.",
+    "PART2TITLE": "Pracuj kiedy chcesz, zarabiaj po swojemu",
+    "PART2TEXT": "Zarabiaj według własnego grafiku, przyjmując zlecenia na platformie we własnym tempie. Możesz używać własnego sprzętu lub wynająć profesjonalny przez izyGlam.",
+    "PART3TITLE": "Usługi beauty na nowo dla firm",
+    "PART3TEXT": "Glam for Business to platforma dla firm każdej wielkości, zaprojektowana do obsługi potrzeb estetycznych Twoich klientów i pracowników. Oferuj spersonalizowane zabiegi w miejscu pracy, podczas eventów czy specjalnych okazji. Nasi profesjonaliści dojeżdżają i świadczą usługi dopasowane do Twoich potrzeb.",
+    "APPTITLE": "Z aplikacjami jest prościej",
     "DOWNLOADAPP1": "Pobierz aplikację",
-    "DOWNLOADAPP2": "Pobierz aplikację dla profesjonalistów kosmetycznych",
-    "SCANTODOWNLOAD": "Zeskanuj, aby pobrać"
+    "DOWNLOADAPP2": "Pobierz aplikację dla profesjonalistów",
+    "SCANTODOWNLOAD": "Zeskanuj, aby pobrać",
+    "SIGNUP": "Zarejestruj się!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Błąd odtwarzania wideo",
+    "AUTOPLAY_BLOCKED": "Autoodtwarzanie zablokowane. Naciśnij, aby odtworzyć.",
+    "NAV_ERROR": "Nie można przejść"
   },
   "FOOTER": {
-    "HOWITWORKS": "Jak działają aplikacje i strony izyGlam",
+    "HOWITWORKS": "Jak działają aplikacje i serwisy izyGlam",
     "HELPCENTER": "Przejdź do centrum pomocy",
     "BUSINESS": "Firma",
     "ABOUT": "O nas",
@@ -37,31 +213,32 @@
     "CAREERS": "Oferty pracy",
     "AI": "Sztuczna inteligencja",
     "PRODUCTS": "Produkty",
-    "GLAM": "Zawsze na topie z izyGlam",
+    "GLAM": "Zawsze w formie z izyGlam",
     "RESERVED": "Rezerwuj z wyprzedzeniem",
     "GIFTCARDS": "Karty podarunkowe",
-    "WORKWITHUS": "Pracuj z izyGlam",
+    "WORKWITHUS": "Współpracuj z izyGlam",
     "GLAMFORBUSINESS": "Glam for Business",
-    "CONFIDENTIAL": "Poufność",
+    "CONFIDENTIAL": "Prywatność",
     "ACCESS": "Dostępność",
     "CONDITIONS": "Warunki",
     "LANGUAGE": "Język",
-    "LOCALISATION": "Lokalizacja"
+    "LOCALISATION": "Lokalizacja",
+    "ALL_RIGHT": "Wszelkie prawa zastrzeżone"
   },
   "COMING_SOON": {
-    "TITLE": "Niedługo będziemy",
-    "TITLE-NOT-COMING": "Jeszcze nie planujemy przyjścia",
+    "TITLE": "Wkrótce startujemy",
+    "TITLE-NOT-COMING": "Na razie nie planujemy uruchomienia",
     "DAYS": "Dni",
     "HOURS": "Godziny",
     "MINUTES": "Minuty",
     "SECONDS": "Sekundy",
-    "TEXT": "Pracujemy nad tym, aby dostarczyć Ci wyjątkowe doświadczenia kosmetyczne w domu. Bądź na bieżąco, aby dowiedzieć się o naszym starcie."
+    "TEXT": "Ciężko pracujemy, aby dostarczyć unikalne doświadczenie domowych usług beauty. Bądź na bieżąco, aby otrzymać informację o starcie."
   },
   "MAIN_PAGE": {
     "MOMENT": "Oferty na teraz",
     "DISCOVER": "Odkryj na izyGlam",
-    "LIKED": "Najbardziej lubiane w pobliżu",
-    "SMART": "Sprytne oferty",
+    "LIKED": "Najbardziej lubiane w okolicy",
+    "SMART": "Sprytne okazje",
     "TOP10": "Top 10 tygodnia",
     "SEARCHRESULT": "Wyniki wyszukiwania",
     "AVIS": "Opinie"
@@ -75,48 +252,59 @@
     "EPILATION": "Depilacja",
     "BRONZAGE": "Opalanie",
     "PARTUM": "Połóg",
-    "NUTRITION": "Odżywianie",
+    "NUTRITION": "Dietetyka",
     "FITNESS": "Fitness",
     "ACUPUNCTURE": "Akupunktura",
     "STYLISME": "Stylizacja",
-    "YOGA": "Relaksacja",
-    "DEVELOPPEMENT": "Rozwój osobisty"
+    "YOGA": "Relaks",
+    "DEVELOPPEMENT": "Rozwój",
+    "EYELASH": "Przedłużanie rzęs"
   },
   "MAIN_CATEGORY_INTRO": {
-    "COIFFURE": "Fryzjer(ka)",
-    "MANUCURE": "Manikiurzyst(k)a",
-    "ESTETICIAN": "Kosmetolog",
-    "MASSAGE": "Masażysta(ka)",
-    "MAQUILLAGE": "Makijażysta(ka)",
-    "PEDICURE": "Pedikiurzyst(k)a",
-    "NUTRITION": "Dietetyk",
-    "FITNESS": "Trener fitness"
+    "COIFFURE": "Fryzjerka",
+    "MANUCURE": "Manikiurzystka",
+    "ESTETICIAN": "Kosmetyczka",
+    "MASSAGE": "Masażystka",
+    "MAQUILLAGE": "Wizażystka",
+    "PEDICURE": "Pedicurzystka",
+    "NUTRITION": "Dietetyczka",
+    "FITNESS": "Trenerka"
   },
   "INTRO": {
-    "NORESULTS": "Nie znaleziono wyników",
-    "SEARCH": "Szukaj",
-    "SPECIALITY": "Specjalność?",
+    "NORESULTS": "Brak wyników",
+    "START": "Zaczynamy",
+    "SPECIALITY": "Specjalizacja?",
     "WHERE": "Gdzie?",
     "CONNEXION": "Logowanie",
     "REGISTRATION": "Rejestracja"
   },
   "PROFILE_MENU": {
     "INFORMATION": "Informacje o koncie",
+    "MESSAGE": "Moje wiadomości",
+    "MESSAGE_SUBTITLE": "Lista moich trwających rozmów.",
+    "INFORMATION_SUBTITLE": "Łatwo edytuj swoje dane osobowe.",
     "SECURITY": "Bezpieczeństwo i język",
-    "CONFIDENTIAL": "Poufność i dane",
+    "SECURITY_SUBTITLE": "Hasło, język… wszystko pod kontrolą.",
+    "CONFIDENTIAL": "Prywatność i dane",
+    "CONFIDENTIAL_SUBTITLE": "Twoje dane są cenne. Oto jak o nie dbamy.",
     "DASHBOARD": "Panel",
+    "DASHBOARD_SUBTITLE": "Łatwo zarządzaj danymi swojej działalności.",
     "COMPANY": "Zarządzanie moją firmą",
-    "SHOP": "Zarządzanie moimi salonami",
-    "FINANCIAL": "Śledzenie finansowe",
+    "COMPANY_SUBTITLE": "Zarządzaj wizytami: przeszłymi, przyszłymi lub anulowanymi.",
+    "SHOP": "Zarządzanie moim salonem",
+    "SHOP_SUBTITLE": "Zarządzaj salonem, usługami i finansami.",
+    "FINANCIAL": "Monitoring finansów",
     "ADMIN": "Administracja ogólna",
+    "ADMIN_SUBTITLE": "Zarządzaj całym tym arcydziełem. Świat należy do Ciebie!",
     "CALENDAR": "Kalendarz",
+    "CALENDAR_SUBTITLE": "Łatwo zarządzaj wizytami przeszłymi i przyszłymi.",
     "SELECT_SALON": "Wybierz salon",
-    "NEW_SALON": "Wybierz nowy salon",
-    "SHOP_TO_CREATE": "Typ sklepu do utworzenia",
+    "NEW_SALON": "Utwórz salon",
+    "SHOP_TO_CREATE": "Typ tworzonego salonu",
     "CANCEL": "Anuluj",
-    "CREATE": "Utwórz mój sklep",
-    "INFO1": "Zaraz usuniesz swój sklep z",
-    "INFO2": "Ta operacja jest nieodwracalna",
+    "CREATE": "Utwórz mój salon",
+    "INFO1": "Za chwilę usuniesz swój salon w",
+    "INFO2": "Tej operacji nie można cofnąć",
     "SURE": "Czy na pewno chcesz kontynuować",
     "DELETE": "Usuń"
   },
@@ -128,7 +316,8 @@
     "ADDRESS": "Adres e-mail",
     "CHANGE_USER": "Zmień użytkownika",
     "CANCEL": "Anuluj",
-    "SUCCESS": "Profil zaktualizowany pomyślnie"
+    "SUCCESS": "Profil zaktualizowany pomyślnie",
+    "UPDATE_ERROR": "Wystąpił błąd podczas aktualizacji hasła."
   },
   "SECURITY": {
     "CHANGE_PASSWORD_TITLE": "Zmień hasło",
@@ -136,266 +325,351 @@
     "NEW_PASSWORD": "Nowe hasło",
     "CONFIRMED_PASSWORD": "Potwierdź nowe hasło",
     "CHANGE_PASSWORD": "Zmień hasło",
-    "CHANGE_OK": "Hasło zostało pomyślnie zmienione",
+    "CHANGE_OK": "Hasło zmienione pomyślnie",
     "CHANGE_LANGUE": "Zmień język",
-    "LANGUE": "Język"
-  },
-  "CONFIDENTIAL": {
-    "INTRO": "Wstęp",
-    "INTRO_BIS": "Kiedy korzystasz z izyGlam, powierzasz nam swoje dane osobowe. Zobowiązujemy się chronić te informacje, honorując Twoje zaufanie. Niniejsza polityka prywatności opisuje, jakie dane osobowe („dane”) zbieramy, jak je wykorzystujemy i udostępniamy oraz Twoje wybory dotyczące tych danych. Zalecamy uważne przeczytanie tego dokumentu.",
-    "APPLICATION": "Zakres zastosowania",
-    "DECLARATION": "Niniejsze oświadczenie dotyczy użytkowników platformy izyGlam, która łączy osoby prywatne i firmy z niezależnymi specjalistami z branży kosmetycznej, takimi jak manikiurzyści, pedikiurzyści, makijażyści i fryzjerzy. Obejmuje wszystkie usługi oferowane przez izyGlam na całym świecie.",
-    "COLLECTE": "Zbieranie i wykorzystanie danych",
-    "DATA_GET": "Dane zbierane przez izyGlam",
-    "DATA_TAKEN": "izyGlam zbiera następujące dane",
-    "DATA_USED": "Dane dostarczone przez użytkowników",
-    "PERSONNAL": "Dane osobowe (imię i nazwisko, adres e-mail, numer telefonu), dane konta (dane logowania, hasła, preferencje usług kosmetycznych), informacje płatnicze (szczegóły karty kredytowej, informacje bankowe, historia transakcji)",
-    "CREATE_DATA": "Dane tworzone podczas korzystania z naszych usług",
-    "HISTORY": "Historia przeglądania, pliki cookie, adres IP, typ przeglądarki, system operacyjny, czas spędzony na platformie",
-    "RELATION": "Dane dotyczące połączeń",
-    "DETAILS": "Szczegóły dotyczące kontaktowanych specjalistów kosmetycznych, zamawianych usług, harmonogramów spotkań, wymienianej korespondencji",
-    "USED": "Wykorzystanie danych",
-    "USED_FOR": "izyGlam wykorzystuje dane do",
-    "BEST_SERVICES": "Świadczenia i ulepszania naszych usług, personalizowania doświadczeń i przetwarzania Twoich zamówień.",
-    "PARTICULIER": "Ułatwiania połączeń między osobami prywatnymi/firmami a niezależnymi specjalistami kosmetycznymi.",
-    "SEND": "Wysyłania informacji o naszych produktach, usługach, ofertach specjalnych i nowych funkcjach.",
-    "ASSURER": "Zapewnienia bezpieczeństwa naszych systemów i zapobiegania oszustwom.",
-    "EFFECTUER": "Przeprowadzania analiz w celu zrozumienia trendów użytkowania platformy.",
-    "PERSONNALISER": "Personalizowania Twojego doświadczenia na podstawie Twoich preferencji i historii użytkowania.",
-    "CHOICE": "Wybory i przejrzystość",
-    "RIGHT": "Twoje prawa",
-    "RGPD": "Zgodnie z RODO masz prawo do",
-    "PERSONNAL_DATA_ACCESS": "Uzyskania dostępu do swoich danych osobowych i zażądania ich kopii.",
-    "ASK_CORRECTION": "Zażądania korekty nieprawidłowych lub niekompletnych danych.",
-    "ASK_DELETE": "Zażądania usunięcia swoich danych („prawo do bycia zapomnianym”).",
-    "RESTREINDRE": "Ograniczenia lub sprzeciwienia się przetwarzaniu swoich danych.",
-    "ASK_PORTA": "Zażądania przeniesienia swoich danych do innej usługi.",
-    "CONSENT": "Wycofania zgody w dowolnym momencie, gdy przetwarzanie opiera się na zgodzie.",
-    "RECLAMATION": "Złożenia skargi do odpowiedniego organu nadzorczego, jeśli uważasz, że Twoje prawa nie są respektowane.",
-    "COOKIES": "Ustawienia prywatności i plików cookie",
-    "MANAGE_COOKIES_PREF": "Możesz zarządzać swoimi preferencjami dotyczącymi plików cookie za pośrednictwem ustawień przeglądarki lub narzędzia do zarządzania plikami cookie dostępnego na naszej stronie. W przyszłości izyGlam może używać innych technologii do śledzenia użytkowników.",
-    "SHARE_DATA": "Udostępnianie danych",
-    "WE_SHARE": "Udostępniamy Twoje dane osobowe wyłącznie zaufanym stronom trzecim, które są niezbędne do przetwarzania Twoich zamówień i świadczenia usług, takich jak",
-    "FOURNISSEUR_SERV": "Dostawcy usług płatniczych w celu bezpiecznego przetwarzania transakcji.",
-    "TRANSPORT": "Firmy kurierskie lub dostawcy w celu dostarczenia produktów, jeśli to konieczne.",
-    "MARKETING": "Dostawcy usług marketingowych i reklamowych, wyłącznie za Twoją zgodą.",
-    "HEALTHCARE": "Niezależni specjaliści kosmetyczni, z którymi umówiłeś się na wizytę za pośrednictwem platformy.",
-    "CLOUD": "Dostawcy usług chmurowych i hostingowych, aby zapewnić dostępność i bezpieczeństwo naszej platformy.",
-    "DATA_SAVED": "Przechowywanie danych",
-    "WE_SAVE": "Przechowujemy Twoje dane osobowe tylko przez czas niezbędny do realizacji celów, dla których zostały zebrane, w tym w celu spełnienia wszelkich wymogów prawnych, księgowych lub sprawozdawczych. Dane są zazwyczaj przechowywane przez okres od 3 do 6 miesięcy.",
-    "SECURITY": "Bezpieczeństwo danych",
-    "TECHNICAL": "Wdrażamy odpowiednie środki techniczne i organizacyjne, aby chronić Twoje dane osobowe przed utratą, niewłaściwym wykorzystaniem, nieautoryzowanym dostępem, ujawnieniem, zmianą lub zniszczeniem. Do tych środków należą szyfrowanie danych podczas przesyłania i w spoczynku, silna autoryzacja dostępu do wewnętrznych systemów oraz ciągłe monitorowanie zagrożeń i potencjalnych naruszeń bezpieczeństwa. Nie wdrożyliśmy jeszcze protokołów reagowania w przypadku naruszenia danych, ale jest to aspekt, który rozważamy na przyszłość.",
-    "INTERNATIONAL": "Międzynarodowe transfery danych",
-    "PERSONNAL_DATA": "Dane osobowe, które zbieramy, mogą być przekazywane i przechowywane w krajach spoza Europejskiego Obszaru Gospodarczego (EOG). Kiedy te transfery mają miejsce, upewniamy się, że są one przeprowadzane zgodnie z obowiązującymi przepisami, korzystając z mechanizmów, takich jak standardowe klauzule umowne zatwierdzone przez Komisję Europejską.",
-    "CONTACT": "Kontakt",
-    "QUESTION": "W przypadku pytań dotyczących naszej polityki prywatności lub w celu skorzystania ze swoich praw, skontaktuj się z nami pod adresem: userprotection@izyglam.com.",
-    "CHANGE_POLITIQUE": "Zmiany w tej polityce prywatności",
-    "RESERVES": "Zastrzegamy sobie prawo do zmiany tej polityki prywatności w dowolnym momencie. W przypadku znaczących zmian poinformujemy Cię o tym e-mailem. Zachęcamy do regularnego sprawdzania tej strony, aby być na bieżąco z aktualizacjami."
+    "CHANGE_COUNTRY": "Zmień kraj",
+    "LANGUE": "Język",
+    "COUNTRY": "Kraj"
   },
   "PAYEMENT": {
-    "TITLE": "Zarezerwuj swoją wizytę online",
+    "YOU": "Ty",
+    "HEADER_TITLE": "Płatność",
+    "SERVICE_TITLE": "Usługa",
+    "SERVICE_NOTE": "Uwaga:",
+    "ADDRESS_TITLE": "Adres wykonania usługi",
+    "ADDRESS_RENDEZVOUS": "Spotkanie pod moimi drzwiami",
+    "ADDRESS_CHANGE": "Wybierz inny adres",
+    "PAYMENT_SECTION_TITLE": "Płatność",
+    "PAYMENT_METHOD": "Główna karta",
+    "PAYMENT_EXPIRE": "Wygasa",
+    "PAYMENT_NO_CARD": "Nie ustawiono głównej karty",
+    "PAYMENT_NO_CARD_DESC": "Dodaj lub wybierz kartę jako główną metodę płatności.",
+    "SUMMARY_SUBTOTAL": "Suma częściowa",
+    "SUMMARY_SERVICE_FEE": "Prowizja izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Opłata serwisowa",
+    "SUMMARY_TOTAL": "Razem",
+    "TITLE": "Umów wizytę online",
     "FOR_WHO": "Dla kogo rezerwujesz tę wizytę?",
     "ADD_PROCHE": "Dodaj bliską osobę",
     "WHERE": "Gdzie odbędzie się wizyta?",
     "SELECT_ADDRESS": "Wybierz adres",
     "ADD_ADDRESS": "Dodaj adres",
-    "CARD_PAY": "Płatność kartą kredytową",
+    "CARD_PAY": "Płatność kartą",
     "CARD_NUM": "Numer karty",
     "CARD_NAME": "Imię i nazwisko na karcie",
     "EXPIRATION": "Data ważności",
     "CVV": "CVV",
-    "RDV": "Twoja wizyta w szczegółach",
+    "RDV": "Szczegóły Twojej wizyty",
     "RESUME": "Podsumowanie wizyty",
     "DATE": "Data",
     "HOUR": "Godzina",
     "PRESTA": "Usługa",
+    "EXPIRE": "Wygasa",
+    "DEFAULT": "Domyślna",
+    "NOCARD": "Brak zapisanych kart",
     "WITH": "Z",
-    "TOTAL": "Łączna kwota do zapłaty",
+    "TOTAL": "Do zapłaty",
     "ANNULER": "ANULUJ",
     "RETOUR": "WRÓĆ",
-    "CONTINUER": "KONTYNUUJ",
-    "VALIDER": "POTWIERDŹ"
+    "CONTINUER": "DALEJ",
+    "VALIDER": "ZATWIERDŹ",
+    "ADRESSE": "Adres",
+    "LEGAL_TEXT_1": "Klikając przycisk złożenia zamówienia, akceptujesz Umowę o usługi dostawy z izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Zrzekasz się prawa do odstąpienia w odniesieniu do usług dostawy. Możesz skorzystać z mediatora konsumenckiego tutaj.",
+    "LEGAL_TEXT_3": "Jeśli nie będzie Cię w domu w momencie przyjazdu kuriera, zostawi on zamówienie pod drzwiami. Składając zamówienie, bierzesz pełną odpowiedzialność po jego doręczeniu. W przypadku nieobecności zamówienia z alkoholem lub innymi towarami ograniczonymi zostaną zwrócone do lokalu.",
+    "CLOSE_FORM": "Zamknij formularz",
+    "ADD_CARD": "Dodaj kartę",
+    "TRAITEMENT": "Przetwarzanie w toku"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Płatność zatwierdzona",
+    "THANKS": "Dziękujemy! Twoja rezerwacja została przyjęta.",
+    "BACKHOME": "Powrót do strony głównej",
+    "PROBLEME": "Problem z rezerwacją",
+    "PAIEMENT": "Twoja płatność została pobrana, ale rezerwacji nie udało się potwierdzić.",
+    "THANKSCONTACT": "Skontaktuj się z naszym wsparciem pod",
+    "FAILED": "Płatność nieudana",
+    "VALIDATE": "Nie udało się zweryfikować płatności. Spróbuj ponownie."
   },
   "CREATION_SHOP_STEPS": {
-    "TITLE": "Jak działa izyGlam dla partnerów biznesowych",
+    "TITLE": "izyGlam dla niezależnych",
     "STEP1": {
       "TITLE": "Klienci składają zamówienia",
-      "TEXT": "Klient znajduje Twój biznes i składa zamówienie za pośrednictwem aplikacji izyGlam."
+      "TEXT": "Klient znajduje Twój salon i składa zamówienie w aplikacji izyGlam."
     },
     "STEP2": {
       "TITLE": "Akceptujesz rezerwację",
-      "TEXT": "Akceptujesz rezerwację, a Twój harmonogram jest aktualizowany."
+      "TEXT": "Akceptujesz rezerwację, a Twój kalendarz zostaje zaktualizowany."
     },
     "STEP3": {
       "TITLE": "W dniu wizyty",
-      "TEXT": "Zostaniesz powiadomiony z wyprzedzeniem o nadchodzących rezerwacjach, a my poprowadzimy Cię do każdego klienta."
+      "TEXT": "Z wyprzedzeniem otrzymujesz powiadomienia o nadchodzących wizytach i wskazówki dojazdu do każdego klienta."
     }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Zasil konto firmy",
+    "SOLDE": "Aktualne saldo",
+    "CREDIT": "Kwota zasilenia",
+    "COMPANY": "Zasil konto firmy",
+    "DEPENSE": "Monitor wydatków",
+    "DATE": "Data",
+    "COUNT": "Kwota",
+    "EMPLOYEE": "Pracownik",
+    "DESCRIPTION": "Opis"
   },
   "CREATION_SHOP": {
     "ALREDAY_SHOP": "Masz już konto partnera lub firmy!",
-    "NOT_CONNECTED": "Zaloguj się, aby zarejestrować sklep!",
-    "TITLE": "Zacznij teraz",
-    "NAME": "Nazwa Twojej firmy",
-    "ADDRESS": "Adres Twojej firmy",
+    "NOT_CONNECTED": "Zaloguj się, aby zapisać salon",
+    "TITLE": "Zacznij już dziś!",
+    "TITLE2": "Stwórzmy salon!",
+    "NAME": "Nazwa Twojego salonu",
+    "ADDRESS": "Adres firmy",
     "STREET": "Ulica",
     "CITY": "Miasto",
+    "CODE_POSTAL_POSSIBLE": "Obsługiwane kody pocztowe",
     "CODE_POSTAL": "Kod pocztowy",
     "COUNTRY": "Kraj",
-    "ADDRESSPLACEHOLDER": "123, Główna ulica",
-    "FLOOR": "Piętro/Suite (opcjonalnie)",
+    "ADDRESSPLACEHOLDER": "ul. Główna 123",
+    "FLOOR": "Piętro/Lokal (opcjonalnie)",
     "BUSINESSTYPE": "Rodzaj działalności",
     "FIRSTNAME": "Imię",
     "LASTNAME": "Nazwisko",
     "PASSWORD": "Hasło",
-    "PASSWORDCONFIRMED": "Potwierdź hasło",
+    "PASSWORDCONFIRMED": "Potwierdzenie hasła",
     "EMAIL": "E-mail",
     "PHONE": "Numer telefonu komórkowego",
-    "WHATSAPP": "Akceptuję otrzymywanie wiadomości na WhatsApp",
-    "BUTTON": "Zarejestruj sklep",
-    "SUCCESS": "Sklep został pomyślnie utworzony!",
-    "ERROR": "Wystąpił błąd podczas tworzenia sklepu:",
-    "ERROR1": "Nazwa Twojej firmy jest wymagana.",
-    "ERROR2": "Adres Twojej firmy jest wymagany.",
-    "ERROR3": "Rodzaj działalności jest wymagany.",
-    "ERROR4": "Imię jest wymagane.",
-    "ERROR5": "Nazwisko jest wymagane.",
-    "ERROR6": "E-mail jest wymagany.",
-    "ERROR7": "Numer telefonu komórkowego jest wymagany.",
-    "ERROR8": "Musisz zaakceptować otrzymywanie wiadomości na WhatsApp."
+    "WHATSAPP": "Zgadzam się na otrzymywanie wiadomości na WhatsApp",
+    "BUTTON": "Zapisz salon",
+    "SUCCESS": "Salon został utworzony!",
+    "ERROR": "Wystąpił błąd podczas tworzenia salonu:",
+    "ERROR1": "Nazwa firmy jest obowiązkowa.",
+    "ERROR2": "Adres firmy jest obowiązkowy.",
+    "ERROR3": "Rodzaj działalności jest obowiązkowy.",
+    "ERROR4": "Imię jest obowiązkowe.",
+    "CHOOSE_COUNTRY": "Wybierz kraj",
+    "POSTAL_CODE": "Kod pocztowy",
+    "CHOOSE_CITY": "Wybierz miasto",
+    "ERROR5": "Nazwisko jest obowiązkowe.",
+    "ERROR6": "E-mail jest obowiązkowy.",
+    "ERROR7": "Numer telefonu komórkowego jest obowiązkowy.",
+    "ERROR8": "Musisz wyrazić zgodę na otrzymywanie wiadomości na WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Zmień adres",
+    "FIND_SHOP": "Znajdź salon",
+    "CATEGORIES": "Kategorie",
+    "OFFRE": "Oferty na teraz",
+    "DISCOVER": "Odkryj",
+    "APPRECIATE": "Najbardziej lubiane",
+    "SMART": "Sprytne okazje",
+    "TOP10": "Top10 tygodnia",
+    "SEARCH_RESULT": "Wyniki wyszukiwania",
+    "NOT_AVAILABLE": "Jeszcze niedostępne pod tym adresem",
+    "NEW_ADDRESS": "Dodaj nowy adres",
+    "CHOOSE_ADDRESS": "Wybierz adres",
+    "CHOOSE_COUNTRY": "Wybierz kraj",
+    "CHOOSE_CITY": "Wybierz miasto",
+    "CHOOSE_ARRONDISSEMENT": "Wybierz dzielnicę",
+    "CANCEL": "Anuluj",
+    "SAVE": "Zapisz",
+    "CLOSE": "Zamknij"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Nazwa",
+    "CITY": "Miasto",
+    "NOTE": "Ocena",
+    "MIDDLE_PRICE": "Średnia cena",
+    "PROMOTION": "Promocja",
+    "ACTIONS": "Akcje",
+    "MODIFIER": "Edytuj informacje o salonie",
+    "SHOP_NAME": "Nazwa salonu",
+    "DESCRIPTION": "Opis",
+    "PRINCIPALE": "Główne zdjęcie",
+    "SHOP": "Typ salonu",
+    "ARRONDISSEMENT": "Dzielnica",
+    "MINIMUM_DELAI": "Minimalny czas",
+    "DISTANCE": "Maks. odległość (km)",
+    "EMPLACEMENT": "Lokalizacja",
+    "HOURS_MORNING": "Godziny otwarcia – Rano",
+    "HOURS_AFTERNOON": "Godziny otwarcia – Popołudnie",
+    "ACTIVE_PROMO": "Aktywna promocja",
+    "CANCEL": "Anuluj",
+    "ENREGISTRER": "Zapisz"
   },
   "CREATE_SHOP_INFO": {
     "TITLE": "Rozwijaj swój biznes",
-    "TEXT": "Tysiące użytkowników aplikacji izyGlam może szukać restauracji w Twojej okolicy...",
+    "TEXT": "Tysiące użytkowników aplikacji izyGlam może szukać salonu w Twojej okolicy…",
     "IMAGE": "obraz"
   },
   "CREATE_SHOP_STEPS": {
-    "TITLE": "Dlaczego warto wybrać izyGlam?",
+    "TITLE": "Dlaczego izyGlam?",
     "STEP1": {
-      "TITLE": "Pracuj na własnych warunkach",
-      "TEXT": "Zarządzaj swoim harmonogramem i obsługuj swoje usługi z pełną swobodą. Skorzystaj z elastycznej platformy, która dostosowuje się do Twoich potrzeb, aby maksymalnie zwiększyć swoją aktywność."
+      "TITLE": "Pracuj na własnych zasadach",
+      "TEXT": "Układaj swój harmonogram i zarządzaj usługami z pełną swobodą. Skorzystaj z elastycznej platformy, która dopasowuje się do Twoich potrzeb, aby maksymalizować wyniki."
     },
     "STEP2": {
-      "TITLE": "Wzmocnij swoją obecność online",
-      "TEXT": "Przyciągnij więcej klientów dzięki narzędziom marketingowym zawartym w aplikacji i popraw swoje wyniki dzięki zwiększonej widoczności."
+      "TITLE": "Wzmocnij obecność online",
+      "TEXT": "Przyciągaj więcej klientów dzięki narzędziom marketingowym w aplikacji i zwiększaj efekty dzięki większej widoczności."
     },
     "STEP3": {
-      "TITLE": "Buduj lojalność klientów",
-      "TEXT": "Nawiązuj długoterminowe relacje, analizując preferencje swoich klientów, odpowiadając na ich recenzje i oferując im korzyści z programów lojalnościowych."
+      "TITLE": "Zwiększ lojalność klientów",
+      "TEXT": "Buduj trwałe relacje, analizując preferencje klientów, odpowiadając na opinie i oferując benefity lojalnościowe."
     }
   },
   "INFO_SHOP_STEPS": {
     "STEP1": {
-      "TITLE": "Uprość zarządzanie swoim biznesem",
-      "TEXT": "Zarządzaj swoją działalnością bez stresu dzięki izyGlam, kompleksowemu rozwiązaniu dla profesjonalistów z branży wellness. Skorzystaj z elastycznych narzędzi i spersonalizowanego wsparcia, aby spełnić wszystkie swoje potrzeby."
+      "TITLE": "Uprość zarządzanie działalnością",
+      "TEXT": "Zarządzaj spokojnie dzięki izyGlam — kompletnemu rozwiązaniu dla profesjonalistów wellness. Korzystaj z elastycznych narzędzi i spersonalizowanego wsparcia."
     },
     "STEP2": {
       "TITLE": "Zwiększ sprzedaż",
-      "TEXT": "Każdego dnia tysiące osób korzysta z izyGlam, aby znaleźć ekspertów z branży beauty w swojej okolicy. Skorzystaj z tej okazji, aby dotrzeć do nowych klientów w swojej dziedzinie."
+      "TEXT": "Każdego dnia tysiące osób szuka ekspertów beauty w pobliżu. Wykorzystaj tę szansę, aby dotrzeć do nowych klientów."
     },
     "STEP3": {
-      "TITLE": "Gwarantowana satysfakcja klienta",
-      "TEXT": "Dzięki izyGlam oferuj swoim klientom spersonalizowane doświadczenie. Zarządzaj łatwo swoimi rezerwacjami, komunikuj się szybko i oferuj usługi dostosowane do ich potrzeb. Twoi klienci otrzymują zabiegi tam i kiedy chcą, co zapewnia ich zadowolenie i lojalność."
+      "TITLE": "Gwarancja satysfakcji klienta",
+      "TEXT": "Z izyGlam zapewnisz spersonalizowane doświadczenie. Łatwo zarządzaj wizytami, komunikacją i dopasowaniem usług — klienci będą zadowoleni i lojalni."
     }
   },
   "CREATION_COMPANY_STEPS": {
-    "TITLE": "Jak działa izyGlam dla Twojej firmy?",
+    "TITLE": "izyGlam dla Twojej firmy?",
     "STEP1": {
-      "TITLE": "Twoi pracownicy i klienci rezerwują usługi",
-      "TEXT": "Twoi pracownicy lub klienci wybierają odpowiednie dla nich usługi wellness bezpośrednio za pośrednictwem aplikacji izyGlam."
+      "TITLE": "Pracownicy i klienci rezerwują usługi",
+      "TEXT": "Pracownicy lub klienci wybierają odpowiednie zabiegi bezpośrednio w aplikacji izyGlam."
     },
     "STEP2": {
-      "TITLE": "Ty decydujesz o kwocie do przeznaczenia",
-      "TEXT": "Masz kontrolę nad zasileniem kont swoich pracowników i klientów. Możesz wybrać regularne lub jednorazowe zasilenie tych kont."
+      "TITLE": "Ustalasz budżet",
+      "TEXT": "Masz kontrolę nad zasilaniem kont pracowników i klientów — cyklicznie lub jednorazowo."
     },
     "STEP3": {
       "TITLE": "Usługi są realizowane",
-      "TEXT": "Nasi eksperci od urody odwiedzą Twoich pracowników lub przyjadą do Twoich lokali, aby wykonać zarezerwowane usługi, zapewniając optymalne doświadczenie wellness."
+      "TEXT": "Nasi eksperci beauty dojeżdżają do pracowników lub do siedziby firmy, zapewniając najwyższą jakość."
     }
   },
   "CREATE_COMPANY_INFO": {
-    "TITLE": "Podnieś wartość swojej firmy",
-    "TEXT": "Tysiące użytkowników aplikacji izyGlam szuka usług wellness. Oferuj swoim pracownikom i klientom dostęp do najlepszych ekspertów w dziedzinie urody w ich okolicy.",
+    "TITLE": "Wzmocnij swoją firmę",
+    "TEXT": "Tysiące użytkowników aplikacji izyGlam szuka usług wellness. Daj pracownikom i klientom uprzywilejowany dostęp do najlepszych ekspertów beauty w pobliżu.",
     "IMAGE": "obraz"
   },
   "CREATE_COMPANY_STEPS": {
-    "TITLE": "Dlaczego warto wybrać izyGlam dla swojej firmy?",
+    "TITLE": "Dlaczego izyGlam?",
     "STEP1": {
-      "TITLE": "Utrzymaj lojalność pracowników i nagradzaj ich",
-      "TEXT": "Zaoferuj swoim zespołom unikalną korzyść, dając im miesięczny budżet na zabiegi kosmetyczne. Fryzjerzy, kosmetyczki i wielu innych ekspertów od wellness są do ich dyspozycji, aby zwiększyć ich satysfakcję i wzmocnić ich poczucie przynależności do Twojej firmy."
+      "TITLE": "Nagradzaj i utrzymuj pracowników",
+      "TEXT": "Zapewnij unikalny benefit — miesięczny budżet beauty. Fryzjerki, kosmetyczki i inni eksperci do dyspozycji, by zwiększyć satysfakcję i zaangażowanie."
     },
     "STEP2": {
-      "TITLE": "Popraw wizerunek swojej marki",
-      "TEXT": "Zorganizuj wydarzenia kosmetyczne dla swoich klientów lub partnerów albo zintegrować usługi izyGlam w swoich programach lojalnościowych. Zadbaj o to, aby zrobić trwałe wrażenie dzięki wysokiej jakości zabiegom dostosowanym do każdej okazji."
+      "TITLE": "Wzmocnij wizerunek marki",
+      "TEXT": "Organizuj eventy beauty dla klientów/partnerów lub włącz usługi izyGlam do programów lojalnościowych. Zrób niezapomniane wrażenie."
     },
     "STEP3": {
-      "TITLE": "Optymalizuj dobrostan w miejscu pracy",
-      "TEXT": "Ułatwiaj swoim pracownikom dostęp do usług wellness bezpośrednio w miejscu pracy lub w jego pobliżu. Dbając o ich dobrostan, zwiększasz ich motywację i wzmacniasz spójność zespołu."
+      "TITLE": "Optymalizuj well-being w pracy",
+      "TEXT": "Ułatw dostęp do usług wellness w biurze lub w pobliżu. Dbając o dobrostan, zwiększasz motywację i spójność zespołu."
     }
   },
   "INFO_COMPANY_STEPS": {
     "STEP1": {
-      "TITLE": "Ułatw dostęp do usług wellness dla swoich zespołów",
-      "TEXT": "Dzięki izyGlam zaoferuj swoim pracownikom proste i elastyczne rozwiązanie do dbania o siebie. Niezależnie od tego, czy chodzi o zabiegi kosmetyczne, czy sesje fitness, wszystko jest w zasięgu ręki."
+      "TITLE": "Uprość dostęp do well-being dla zespołu",
+      "TEXT": "Z izyGlam pracownicy mają prosty i elastyczny sposób, by zadbać o siebie — od zabiegów estetycznych po treningi."
     },
     "STEP2": {
-      "TITLE": "Oferuj innowacyjne korzyści swoim klientom",
-      "TEXT": "Wzmocnij relacje z klientami, oferując usługi wellness na wydarzeniach lub jako część programów lojalnościowych. Pokaż im, że zależy Ci na ich doświadczeniu, oferując wyjątkowe usługi."
+      "TITLE": "Nowatorskie benefity dla klientów",
+      "TEXT": "Wzmacniaj relacje, oferując zabiegi podczas wydarzeń lub w ramach programów lojalnościowych."
     },
     "STEP3": {
-      "TITLE": "Spersonalizowane usługi wellness, gdziekolwiek i kiedykolwiek chcesz",
-      "TEXT": "Z izyGlam Twoi pracownicy i klienci mogą korzystać z wysokiej jakości usług, gdziekolwiek się znajdują. Wybrani eksperci dostosują się do ich specyficznych potrzeb, zapewniając im pełną satysfakcję dzięki spersonalizowanej obsłudze."
+      "TITLE": "Well-being na miarę, gdzie i kiedy chcesz",
+      "TEXT": "Twoi pracownicy i klienci skorzystają z jakościowych usług wszędzie — z dopasowaniem do ich potrzeb."
     }
   },
   "SIDEBAR": {
     "PROFILE": "Zarządzaj kontem",
-    "ORDERS": "Poprzednie zamówienia",
+    "ORDERS": "Zrealizowane zamówienia",
     "FAVORITES": "Ulubione",
     "HELP": "Pomoc",
-    "LOGOUT": "Wyloguj się",
-    "YOUR_BEAUTY_SERVICES": "Oferuj swoje usługi kosmetyczne",
+    "MY_ABO": "Moja subskrypcja",
+    "PRICES": "Plany cenowe",
+    "FIDELITY": "Program lojalnościowy",
+    "LOGOUT": "Wyloguj",
+    "YOUR_BEAUTY_SERVICES": "Oferuj swoje usługi beauty",
     "YOUR_COMPANY": "Zarejestruj swoją firmę"
   },
+  "SUBTITLES": {
+    "HELP": "Potrzebujesz pomocy? Ta strona jest dla Ciebie."
+  },
   "ORDERS": {
-    "TITLE": "Poprzednie zamówienia",
+    "TITLE": "Moje zamówienia",
+    "TITLE_SUBTITLE": "Łatwo zarządzaj wizytami: przeszłymi, przyszłymi lub anulowanymi.",
+    "UPCOMING_SECTION": "📅 Nadchodzące",
+    "NO_UPCOMING": "Nie masz zaplanowanych usług.",
+    "PAST_SECTION": "✅ Zrealizowane",
+    "NO_PAST": "Nie masz zrealizowanych usług.",
+    "ADDRESS": "Adres",
+    "DATE": "Data",
+    "TOTAL": "Suma",
+    "ITEMS": "pozycje",
+    "DELETE": "Usuń",
+    "VISIT": "Odwiedź",
     "PRESTA_FOR": "Usługa dla",
-    "AT": "w",
+    "AT": "o",
     "ORDER_AGAIN": "Zamów ponownie",
     "INVOICE": "Poproś o fakturę",
-    "REVIEW": "Wystaw opinię",
+    "REVIEW": "Dodaj opinię",
     "CANCEL": "Anuluj"
   },
+  "FIDELITY": {
+    "TITLE": "Moje ulubione",
+    "AGAIN": "Jeszcze",
+    "AGAIN_SUBTITLE": "do nagrody",
+    "TITLE_SUBTITLE": "aby odblokować prezent",
+    "DATE": "Ważne do",
+    "HISTO": "Historia moich zabiegów"
+  },
   "FAVORITES": {
-    "TITLE": "Moje ulubione"
+    "TITLE": "Ulubione",
+    "TITLE_SUBTITLE": "Twoje ulubione salony w zasięgu ręki."
   },
   "SHOP": {
-    "MOVING_FEE": "Opłata za dojazd:",
-    "DISTANCE": "Maksymalna odległość:",
-    "PAYEMENT": "Akceptowane płatności kartą i PayPal",
-    "PRESS_FOR_INFO": "Naciśnij, aby zobaczyć godziny otwarcia, informacje itp.",
-    "GALLERY": "Galeria obrazów"
+    "MOVING_FEE": "Opłata serwisowa:",
+    "DISTANCE": "Maks. dystans:",
+    "PAYEMENT": "Akceptujemy płatność kartą i PayPal",
+    "PRESS_FOR_INFO": "Naciśnij, aby zobaczyć godziny, informacje itd.",
+    "GALLERY": "Galeria obrazów",
+    "SEE_MORE": "Pokaż więcej",
+    "SEE_LESS": "Pokaż mniej"
   },
   "LOGIN": {
     "TITLE": "Wprowadź dane logowania.",
-    "FORGET_PASSWORD": "Zapomniałeś?",
+    "FORGET_PASSWORD": "Zapomniałeś hasła?",
     "CONTINUER": "Kontynuuj",
+    "CONTINUE_WITH": "Kontynuuj z",
     "OR": "Lub",
-    "QRCODE": "Zaloguj się za pomocą kodu QR",
-    "CGU": "Kontynuując, wyrażasz zgodę na otrzymywanie połączeń, wiadomości WhatsApp lub SMS-ów (w tym za pomocą zautomatyzowanych metod) od izyGlam i jego podmiotów powiązanych na podany numer.",
+    "QRCODE": "Zaloguj się kodem QR",
+    "CGU": "Kontynuując, zgadzasz się na połączenia, wiadomości WhatsApp lub SMS-y (również automatyczne) od izyGlam i spółek powiązanych na podany numer.",
     "PLACEHOLDER_EMAIL": "Adres e-mail",
-    "PLACEHOLDER_PASSWORD": "Hasło"
+    "PLACEHOLDER_PASSWORD": "Hasło",
+    "PLACEHOLDER_PASSWORD_NEW": "Nowe hasło",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Potwierdź hasło",
+    "CHANGE_PASSWORD": "Zmień swoje hasło",
+    "REINIT": "Zresetuj"
   },
   "SIGNUP": {
+    "GENRE": "Płeć",
+    "CHOOSE": "Wybierz",
+    "SEX_MALE": "Mężczyzna",
+    "SEX_FEMALE": "Kobieta",
     "TITLE": "Wprowadź swoje dane osobowe.",
     "CONTINUER": "Kontynuuj",
     "OR": "Lub",
-    "QRCODE": "Zaloguj się za pomocą kodu QR",
-    "CGU": "Kontynuując, wyrażasz zgodę na otrzymywanie połączeń, wiadomości WhatsApp lub SMS-ów (w tym za pomocą zautomatyzowanych metod) od izyGlam i jego podmiotów powiązanych na podany numer.",
+    "QRCODE": "Zaloguj się kodem QR",
+    "CGU": "Kontynuując, zgadzasz się na połączenia, wiadomości WhatsApp lub SMS-y (również automatyczne) od izyGlam i spółek powiązanych na podany numer.",
     "PLACEHOLDER_FIRSTNAME": "Imię",
     "PLACEHOLDER_LASTNAME": "Nazwisko",
     "PLACEHOLDER_EMAIL": "E-mail",
+    "PLACEHOLDER_EMAIL_REQUIRED": "E-mail wymagany",
+    "PLACEHOLDER_EMAIL_WRONG": "Nieprawidłowy format e-maila",
     "PLACEHOLDER_PHONE": "Telefon",
+    "PLACEHOLDER_PHONE_NUMBER": "Numer telefonu",
     "PLACEHOLDER_PASSWORD": "Hasło",
-    "PLACEHOLDER_PASSWORDCONFIRMED": "Potwierdź hasło"
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Potwierdzenie hasła",
+    "COUNTRY": "Kraj"
   },
   "LANGUE": {
     "FRANCAIS": "Francuski",
@@ -407,29 +681,95 @@
     "PORTUGAIS": "Portugalski",
     "POLONAIS": "Polski",
     "DANOIS": "Duński",
-    "FINLANDAIS": "Fiński",
-    "SUEDOIS": "Szwedzki"
+    "FINNOIS": "Fiński",
+    "SUEDOIS": "Szwedzki",
+    "ARABE": "Arabski",
+    "TURC": "Turecki",
+    "CHINOIS": "Chiński",
+    "RUSSE": "Rosyjski",
+    "PERSAN": "Perski",
+    "UKRAINIEN": "Ukraiński",
+    "ROUMAIN": "Rumuński",
+    "CATALAN": "Kataloński",
+    "BASQUE": "Baskijski",
+    "GALICIEN": "Galicyjski",
+    "ALBANAIS": "Albański",
+    "KURDE": "Kurdyjski",
+    "ESTONIEN": "Estoński",
+    "SOMALIEN": "Somalijski",
+    "BIELORUSSE": "Białoruski",
+    "JAPONAIS": "Japoński",
+    "COREEN": "Koreański",
+    "INDONESIEN": "Indonezyjski",
+    "MALAIS": "Malajski",
+    "THAI": "Tajski",
+    "VIETNAMIEN": "Wietnamski",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bengalski"
+  },
+  "COUNTRY": {
+    "FRANCE": "Francja",
+    "ALLEMAGNE": "Niemcy",
+    "SPAIN": "Hiszpania",
+    "ITALY": "Włochy",
+    "DANEMARK": "Dania",
+    "FINLAND": "Finlandia",
+    "NETHERLAND": "Niderlandy",
+    "POLAND": "Polska",
+    "PORTUGAL": "Portugalia",
+    "SWEDEN": "Szwecja",
+    "CHINA": "Chiny",
+    "INDIA": "Indie",
+    "JAPAN": "Japonia",
+    "SOUTH_KOREA": "Korea Południowa",
+    "INDONESIA": "Indonezja",
+    "PHILIPPINES": "Filipiny",
+    "THAILAND": "Tajlandia",
+    "VIETNAM": "Wietnam",
+    "MALAYSIA": "Malezja",
+    "SINGAPOURE": "Singapur",
+    "EMIRAT_ARABE": "Zjednoczone Emiraty Arabskie",
+    "SAUDI_ARABIA": "Arabia Saudyjska"
   },
   "ADDRESS_MODAL": {
     "ADDRESS": "Moje adresy",
-    "ADDRESS_MODIFICATION": "Modyfikacja adresu",
+    "ADDRESS_MODIFICATION": "Edycja adresu",
     "STREET": "Ulica",
     "CITY": "Miasto",
     "CP": "Kod pocztowy",
     "CREATE": "Utwórz",
     "BACK": "Powrót",
-    "CHANGE": "Zmień",
+    "CHANGE": "Edytuj",
     "CLOSE": "Zamknij"
   },
+  "ADMIN_PARAM": {
+    "TITLE": "Ustawienia platformy",
+    "COMMISSION": "Stawka prowizji (%)",
+    "0to100": "Wymagana wartość między 0 a 100",
+    "SERVICE": "Opłata serwisowa (€)",
+    "WEEKS": "Liczba wyświetlanych tygodni",
+    "SUP0": "Wymagana wartość większa niż 0",
+    "LESS24": "Opłata za anulowanie poniżej 24 h (%)",
+    "LESS48": "Opłata za anulowanie poniżej 48 h (€)",
+    "DELAY": "Minimalny czas rezerwacji (godz.)",
+    "TVA": "Stawka VAT (%)",
+    "ADS": "Włącz reklamy",
+    "COMPANY": "Włącz handel z firmami",
+    "FIDELITY": "Włącz lojalność",
+    "MULTI_SHOP": "Włącz multi-salon",
+    "PROMO": "Włącz promocje w salonie",
+    "SPONSORS": "Włącz sekcję sponsorów na stronie głównej",
+    "SAVE": "Zapisz"
+  },
   "ADMIN_PAGE": {
-    "ALL_SHOPS": "Łączna liczba sklepów",
-    "ACT_SHOPS": "Liczba aktywnych sklepów",
+    "ALL_SHOPS": "Łączna liczba salonów",
+    "ACT_SHOPS": "Aktywne salony",
     "USERS": "Łączna liczba użytkowników",
     "NBR_USERS": "Liczba zarejestrowanych użytkowników",
-    "CA_TOTAL": "Całkowite przychody",
+    "CA_TOTAL": "Łączne przychody",
     "CA_GENERATED": "Wygenerowane przychody",
-    "SHOPS_PERFO": "Wydajność sklepów",
-    "SHOP_NAME": "Nazwa sklepu",
+    "SHOPS_PERFO": "Wyniki salonów",
+    "SHOP_NAME": "Nazwa salonu",
     "CITY": "Miasto",
     "REVENUES": "Przychody",
     "BOOKINGS": "Liczba rezerwacji",
@@ -437,8 +777,8 @@
     "ACTIONS": "Akcje",
     "DETAILS": "Szczegóły",
     "ADJUST": "Dostosuj",
-    "SHOP_ADJUST": "Dostosuj sklep",
-    "STILL_DEVELOPPED": "Ta funkcja jest nadal w fazie rozwoju",
+    "SHOP_ADJUST": "Dostosuj salon",
+    "STILL_DEVELOPPED": "Ta funkcja jest w trakcie opracowywania",
     "CLOSE": "Zamknij"
   },
   "CALENDAR_MODAL": {
@@ -452,24 +792,28 @@
     "SAVE": "Zapisz"
   },
   "CALENDAR": {
-    "ADD_EVENT": "Utwórz wydarzenie"
+    "ADD_EVENT": "Utwórz wydarzenie",
+    "COMING": "Nadchodzące",
+    "PAST": "Przeszłe",
+    "CANCELLED": "Anulowane",
+    "NO_CANCELLED": "Brak anulowanych zamówień."
   },
   "CHAT": {
     "ONLINE_ASSISTANCE": "Pomoc online"
   },
   "COMPANY_MANAGEMENT": {
     "TITLE": "Zarządzanie pracownikami",
-    "NAME": "Imię",
+    "NAME": "Imię i nazwisko",
     "EMAIL": "E-mail",
     "SOLDE": "Saldo konta",
     "ACTIONS": "Akcje",
-    "DEFAULT_PASSWORD": "Domyślne hasło",
-    "REINITIALIZE_PASSWORD": "Domyślne hasło do resetowania",
+    "DEFAULT_PASSWORD": "Hasło domyślne",
+    "REINITIALIZE_PASSWORD": "Domyślne hasło do resetu",
     "CHANGE_PASSWORD": "Zmień hasło"
   },
   "EMPLOYEE_MANAGEMENT": {
-    "TITLE": "Doładuj konto pracownika",
-    "AMOUNT": "Kwota do doładowania",
+    "TITLE": "Zasil konto pracownika",
+    "AMOUNT": "Kwota zasilenia",
     "CANCEL": "Anuluj",
     "SAVE": "Zatwierdź"
   },
@@ -480,24 +824,36 @@
     "MONTHLY": "Przychody w tym miesiącu",
     "AVG_NOTE": "Średnie oceny",
     "BASED_ON": "Na podstawie",
-    "REVIEWS": "recenzji",
-    "NEXT_APPOINTEMENT": "Nadchodzące wizyty",
+    "REVIEWS": "opinii",
+    "NEXT_APPOINTEMENT": "Najbliższe wizyty",
     "POPULAR_SERVICES": "Najpopularniejsze usługi",
-    "RESERVATION": "rezerwacje"
+    "RESERVATION": "rezerwacji"
   },
   "FINANCE": {
-    "PROGRESS":"Ewolucja od M-1",
-    "PROGRESSION":"Progresja",
-    "TOTAL_GENERATED": "Łączne wygenerowane przychody",
+    "PROGRESS": "Zmiana względem M-1",
+    "PROGRESSION": "Progres",
+    "TOTAL_GENERATED": "Łącznie wygenerowano",
     "CA": "Przychody",
     "COMMISSION_TAKEN": "Pobrana prowizja",
     "COMMISSIONS": "Prowizje",
-    "NET_TO_PAY": "Kwota netto do zapłaty",
+    "NET_TO_PAY": "Kwota netto do wypłaty",
     "DISPO_AMOUNT": "Dostępna kwota",
-    "REQUEST_WITHDRAWAL": "Złóż wniosek o wypłatę",
+    "REQUEST_WITHDRAWAL": "Poproś o przelew",
     "TAKE": "Kwota do wypłaty",
+    "TOTAL_EARNINGS": "Zyski netto",
+    "TOTAL_BOOKINGS": "Zrealizowane usługi",
+    "CANCELLED_BOOKINGS": "Anulowane usługi",
+    "SERVICES_CANCELLED": "Rezerwacje anulowane lub odrzucone",
+    "SERVICES_COMPLETED": "Rezerwacje sfinalizowane",
+    "AVG_PRICE": "Średnia cena",
+    "PER_SERVICE": "Na usługę",
+    "REVIEW_RATIO": "Opinie klientów",
+    "CLIENT_FEEDBACK": "Wskaźnik opinii",
+    "TOP_PRODUCTS": "Najczęściej sprzedawane usługi",
+    "AVG_DURATION": "Średni czas",
+    "DURATION_PER_BOOKING": "Czas na rezerwację",
     "DETAILS": "Szczegóły konta bankowego",
-    "ASK": "Złóż wniosek o wypłatę",
+    "ASK": "Poproś o przelew",
     "HISTORY": "Historia transakcji",
     "DATE": "Data",
     "AMOUNT": "Kwota",
@@ -505,24 +861,24 @@
     "STATUS": "Status"
   },
   "NEW_SHOP_MODAL": {
-    "TITLE": "Wybierz rodzaj sklepu do utworzenia",
+    "TITLE": "Wybierz typ tworzonego salonu",
     "CANCEL": "Anuluj",
     "CREATE": "Zatwierdź"
   },
   "PROCHES": {
     "TITLE": "Moi bliscy",
-    "UPDATE": "Edycja bliskiego",
+    "UPDATE": "Edycja bliskiej osoby",
     "FIRSTNAME": "Imię",
     "NAME": "Nazwisko",
     "EMAIL": "E-mail",
     "PHONE": "Telefon",
     "CREATE": "Utwórz",
-    "BACK": "Wstecz",
-    "CHANGE": "Zmień",
+    "BACK": "Powrót",
+    "CHANGE": "Edytuj",
     "CLOSE": "Zamknij"
   },
   "RATING_MODAL": {
-    "TITLE": "Dodaj swoją opinię",
+    "TITLE": "Dodaj opinię",
     "RATING": "Ocena",
     "COMMENT": "Komentarz",
     "CLOSE": "Zamknij",
@@ -538,39 +894,535 @@
     "DESCRIPTION": "Opis",
     "COLOR": "Kolor",
     "PRICE": "Cena",
-    "TIME": "Czas trwania",
+    "TIME": "Czas",
     "IMAGE": "Obraz",
     "ACTIONS": "Akcje",
     "MINUTES": "minut",
-    "CHANGE": "Zmień",
+    "CHANGE": "Edytuj",
+    "DELETE": "Usuń",
     "SERVICE_NAME": "Nazwa usługi",
-    "TIME_MINUTES": "Czas trwania (w minutach)",
-    "PREST_IMAGE": "Obraz usługi",
-    "NO_PICS": "Brak zdjęcia",
+    "TIME_MINUTES": "Czas (w minutach)",
+    "PREST_IMAGE": "Zdjęcie usługi",
+    "NO_PICS": "Brak zdjęć",
     "UPLOAD": "Prześlij obraz",
     "NEW_PIC": "Podgląd nowego obrazu",
     "PRESTA_COLOR": "Kolor usługi",
     "CANCEL": "Anuluj",
     "SAVE": "Zapisz",
-    "AVG_PRICE": "Średnia cena"
+    "AVG_PRICE": "Średnia stawka",
+    "IMAGE_OK": "Obraz pomyślnie przesłany",
+    "ERROR_IMAGE_LOAD": "Błąd podczas przesyłania obrazu",
+    "UPDATE_SUCCESS": "Usługa zaktualizowana pomyślnie",
+    "ERROR_PRESTA": "Błąd podczas aktualizacji usługi",
+    "PRESTA_UPDATED": "Usługa zaktualizowana pomyślnie",
+    "PRESTA_ERROR": "Błąd podczas aktualizacji usługi",
+    "PRESTA_SUCCESS": "Usługa zaktualizowana pomyślnie",
+    "PHOTO_ERROR": "Błąd podczas aktualizacji zdjęcia",
+    "PRESTA_DELETED": "Usługa usunięta pomyślnie",
+    "PRESTA_DELETE_ERROR": "Błąd podczas usuwania usługi"
   },
   "SHOP_MANAGEMENT": {
-    "SHOP_IMAGE": "Obraz sklepu",
+    "SHOP_IMAGE": "Zdjęcie salonu",
     "UPLOAD_IMAGE": "Prześlij obraz",
     "SNEEK_PIC": "Podgląd obrazu",
-    "SHOP_NAME": "Nazwa sklepu",
+    "SHOP_NAME": "Nazwa salonu",
     "DESCRIPTION": "Opis",
     "DESC_INFO": "(min. 25 znaków)",
     "CITY": "Miasto",
-    "DISCRICT": "Dzielnica",
-    "LAT": "Szerokość geograficzna",
-    "LON": "Długość geograficzna",
-    "ZONE": "Obszar działania (km)",
+    "DISCRICT": "Dzielnice",
+    "LAT": "Szerokość geogr.",
+    "LON": "Długość geogr.",
+    "ZONE": "Strefa dojazdu (km)",
     "OPENNING": "Godziny otwarcia",
-    "MORNING_OPEN": "Rano - Otwarcie",
-    "MORNING_CLOSE": "Rano - Zamknięcie",
-    "AFTERNOON_OPEN": "Popołudnie - Otwarcie",
-    "AFTERNOON_CLOSE": "Popołudnie - Zamknięcie",
-    "SAVE": "Zapisz sklep"
+    "MORNING_OPEN": "Rano – Otwarcie",
+    "MORNING_CLOSE": "Rano – Zamknięcie",
+    "AFTERNOON_OPEN": "Popołudnie – Otwarcie",
+    "AFTERNOON_CLOSE": "Popołudnie – Zamknięcie",
+    "SAVE": "Zapisz salon",
+    "MONDAY": "Poniedziałek",
+    "TUESDAY": "Wtorek",
+    "WEDNESDAY": "Środa",
+    "THURSDAY": "Czwartek",
+    "FRIDAY": "Piątek",
+    "SATURDAY": "Sobota",
+    "SUNDAY": "Niedziela",
+    "CLOSED": "Zamknięte",
+    "GENERATE_IMAGE": "Wygeneruj obraz",
+    "GENERATE_DESCRIPTION": "Wygeneruj opis",
+    "PHOTO": "Przykłady zdjęć akceptowanych / odrzuconych",
+    "CODE_POSTAUX": "Obsługiwane kody pocztowe",
+    "EXEMPLE_LOCAL": "Np.: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Dodaj pracownika",
+    "LOADING": "Ładowanie",
+    "LIST": "Lista pracowników",
+    "ADD": "Dodaj",
+    "EMAIL": "E-mail pracownika",
+    "FIRSTNAME": "Imię",
+    "FAMILY_NAME": "Nazwisko",
+    "PHONE": "Telefon",
+    "PASSWORD": "Hasło",
+    "HAVE_TO": "Wszystkie pola są obowiązkowe.",
+    "EMAIL_ERROR": "Nieprawidłowy e-mail.",
+    "EMPLOYEE_OK": "Pracownik dodany pomyślnie.",
+    "ADD_EMPLOYEE_ERROR": "Błąd podczas dodawania pracownika."
+  },
+  "AVIS": {
+    "TITLE": "CO MÓWIĄ NASI UŻYTKOWNICY",
+    "AVIS1": "Na początku byłam sceptyczna… a jednak! Manicure perfekcyjny, w domu, bez stresu. To mój piątkowy rytuał.",
+    "AVIS2": "Zarezerwowałam zabieg na twarz w 3 minuty, z kanapy. Kosmetyczka była delikatna, uważna… a moja skóra nigdy nie wyglądała lepiej.",
+    "AVIS3": "Myślałam, że będzie drożej niż w salonie… niespodzianka: ta sama cena, a nawet mniej! I zero dojazdów. Wielkie tak.",
+    "AVIS4": "Dzień przed urodzinami chciałam szybki blow-dry. Znalazłam pro w 2 kliknięcia. Punktualna, miła i efekt wow.",
+    "AVIS5": "Jestem samotną mamą, nie mam czasu biegać. Tu rezerwuję, gdy dzieci śpią. Prosto, szybko i naprawdę świetnie.",
+    "AVIS6": "Uwielbiam swoją pierwszą sesję. Kosmetyczka od razu mnie uspokoiła. Czułam się rozpieszczona. Już mam kolejną wizytę!"
+  },
+  "DOWNLOAD": {
+    "USERS": "zadowolonych użytkowników",
+    "SOCIAL": "dostępnych profesjonalistów",
+    "STORE": "w App Store i Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Wybierz plan dla siebie",
+    "DISCOVER2": "i zacznij wspinaczkę na szczyt",
+    "SOLUTIONS": "Zasługujesz na piękne, mocne i skrojone dla Ciebie rozwiązanie. Możesz zmienić zdanie w każdej chwili",
+    "TEST": "Twój pierwszy salon jest w 100% darmowy. Zero stresu. Sama magia.",
+    "START_FREE": "Utwórz mój pierwszy salon",
+    "FREE": "Uczennica",
+    "FREE_SUBTITLE": "Rozpocznij wspinaczkę z pierwszym salonem",
+    "THEN": "następnie",
+    "MONTHLY": "mies.",
+    "FREE1": "1 aktywny salon",
+    "FREE2": "Nielimitowane rezerwacje i klienci",
+    "FREE3": "Zarządzanie usługami i grafikiem",
+    "FREE4": "Synchronizacja z kalendarzem osobistym",
+    "FREE5": "Idealne na spokojny start",
+    "FREE6": "Utwórz darmowy salon",
+    "BASIC": "Wybrana",
+    "BASIC_SUBTITLE": "Odblokuj potencjał i zacznij błyszczeć",
+    "BASIC1": "Do 3 aktywnych salonów",
+    "BASIC2": "Pełne zarządzanie usługami, klientami i wizytami",
+    "BASIC3": "Priorytetowe wsparcie e-mail",
+    "BASIC4": "Dostęp do ekskluzywnych materiałów rozwojowych",
+    "BASIC5": "Idealne dla chcących rozwinąć bazę klientów",
+    "BASIC6": "Miesiąc darmowego testu",
+    "PREMIUM": "Królowa",
+    "PREMIUM_SUBTITLE": "Twoje imperium rośnie, wpływ się zwiększa",
+    "PREMIUM1": "Do 10 aktywnych salonów",
+    "PREMIUM2": "Dostęp do zaawansowanych statystyk",
+    "PREMIUM3": "Inteligentne rekomendacje, by zwiększyć przychody",
+    "PREMIUM4": "Wzmocniona widoczność na IzyGlam",
+    "PREMIUM5": "Priorytetowe wsparcie",
+    "PREMIUM6": "Dla ambitnych niezależnych",
+    "PREMIUM7": "Zdobądź Królową",
+    "BUSINESS": "Bogini",
+    "BUSINESS_SUBTITLE": "Odbierz swój tron, Bogini",
+    "BUSINESS1": "Szyte na miarę",
+    "BUSINESS2": "Nielimitowana liczba salonów",
+    "BUSINESS3": "Spersonalizowane wsparcie strategiczne",
+    "BUSINESS4": "Wzmocniona ekspozycja Twoich salonów",
+    "BUSINESS5": "Rozwiązania, by skalować działalność",
+    "BUSINESS6": "Skontaktuj się z nami",
+    "COMPARE": "Porównanie funkcji",
+    "FONCTIONS": "Funkcje",
+    "BUSINESS9": "Pełne zarządzanie działalnością",
+    "STUDIO_BASIC": "Materiały ekskluzywne",
+    "STUDIO_ADVANCED": "Statystyki i rekomendacje",
+    "ANALYSE": "Analiza wyników",
+    "BASICS": "Klasyczne",
+    "ADVANCE": "Zaawansowane",
+    "PLANS": "Liczba aktywnych salonów",
+    "READY": "Gotowa rozwinąć działalność?",
+    "DISCOVERS": "Poznaj ofertę IzyGlam"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Oświadczenie o dostępności",
+      "TEXT": "izyGlam zobowiązuje się do zapewnienia dostępności usług dla jak najszerszej grupy. Naszym celem jest zgodność z WCAG 2.2 poziom AA oraz z RGAA (Francja), w miarę możliwości."
+    },
+    "SCOPE": {
+      "TITLE": "Zakres",
+      "L1": "Publiczna strona WWW i strony informacyjne.",
+      "L2": "Aplikacja web (panel) dla klientów i profesjonalistów.",
+      "L3": "Aplikacja mobilna (iOS/Android) — jeśli dotyczy.",
+      "L4": "E-maile transakcyjne i centrum pomocy.",
+      "L5": "Narzędzia wsparcia klienta."
+    },
+    "STATUS": {
+      "TITLE": "Status zgodności",
+      "TEXT": "Na dzień sporządzenia niniejszego oświadczenia dostępność interfejsów izyGlam jest częściowo zgodna z WCAG 2.2 AA / RGAA. Stale ulepszamy interfejsy i korygujemy najważniejsze niezgodności."
+    },
+    "PREPARATION": {
+      "TITLE": "Metoda przygotowania oświadczenia",
+      "L1": "Auto-oceny zespołu produkt/UI: semantyka HTML, role ARIA, kolejność tabulacji.",
+      "L2": "Testy manualne: nawigacja klawiaturą, widoczny fokus, powiększenie 200%+, czytniki ekranu.",
+      "L3": "Testy narzędziowe (audyt automatyczny próbek ekranów).",
+      "L4": "Ciągła weryfikacja przy aktualizacjach (Design System, dostępne komponenty)."
+    },
+    "FEATURES": {
+      "TITLE": "Dostępne funkcje dostępności",
+      "KEYBOARD": {
+        "TITLE": "Nawigacja klawiaturą",
+        "L1": "Pełny przebieg klawiaturą (Tab, Shift+Tab, Enter, Spacja, Esc, strzałki).",
+        "L2": "Spójny i kontrastowy wskaźnik fokusu.",
+        "L3": "Linki „Przejdź do treści”, by pominąć nagłówek.",
+        "L4": "Menu, modale i listy rozwijane obsługiwalne klawiaturą (otwieranie/zamykanie, kontrola fokusu, zamknięcie Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Czytniki ekranu i struktura",
+        "L1": "Struktura semantyczna z hierarchią nagłówków (h1→h6) i znacznikami (header, nav, main, footer).",
+        "L2": "Jasne etykiety pól i przycisków, spójne nazwy dostępowe.",
+        "L3": "Ogłaszanie zmian stanu poprzez regiony aria-live (błędy, sukcesy, ładowanie).",
+        "L4": "Obrazy informacyjne z opisowym alt, dekoracyjne pomijane."
+      },
+      "CONTRAST": {
+        "TITLE": "Kontrast, kolory i skalowanie",
+        "L1": "Docelowy kontrast ≥ 4.5:1 dla tekstu zwykłego i ≥ 3:1 dla dużego.",
+        "L2": "Interfejs użyteczny do 200% powiększenia bez utraty treści/funkcji.",
+        "L3": "Brak informacji przekazywanych wyłącznie kolorem."
+      },
+      "FORMS": {
+        "TITLE": "Formularze i błędy",
+        "L1": "Powiązanie label⇄input, oznaczenia pól wymaganych.",
+        "L2": "Błędy przy polu oraz ewentualne podsumowanie.",
+        "L3": "Fokus na pierwszym polu z błędem, wskazówki korekty."
+      },
+      "DYNAMIC": {
+        "TITLE": "Treści dynamiczne i animacje",
+        "L1": "Karuzele/animacje możliwe do wstrzymania i nieblokujące.",
+        "L2": "Szacunek dla preferencji systemowej „ogranicz animacje”, gdy możliwe.",
+        "L3": "Nienachalne modale, zamykane klawiaturą i kliknięciem poza."
+      },
+      "MEDIA": {
+        "TITLE": "Media",
+        "L1": "Wideo (jeśli dotyczy) z napisami i/lub transkrypcją.",
+        "L2": "Audio/wideo sterowalne klawiaturą."
+      },
+      "MOBILE": {
+        "TITLE": "Mobile",
+        "L1": "Wystarczająco duże i oddzielone strefy dotyku.",
+        "L2": "Spójna nawigacja z TalkBack (Android) i VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Docelowe środowiska i technologie asystujące",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Wspierane i aktualne przeglądarki."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Treści niedostępne (stwierdzone lub potencjalne)",
+      "TEXT": "Mimo wysiłków pewne elementy mogą pozostać niezgodne:",
+      "L1": "Starsze obrazy bez opisów alternatywnych.",
+      "L2": "Dokumenty stron trzecich (PDF, załączniki) nie w pełni dostępne.",
+      "L3": "Historyczne wideo bez napisów/opisów.",
+      "L4": "Osadzone komponenty z ograniczeniami (płatności, mapy, odtwarzacze).",
+      "MOTIVES": "Możliwe przyczyny: treści zewnętrzne, nadmierny koszt, trwająca aktualizacja."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatywy i racjonalne dostosowania",
+      "TEXT": "Potrzebujesz alternatywnego formatu (np. dokument dostępny, pomoc w rezerwacji)? Skontaktuj się z nami — zrobimy, co w naszej mocy."
+    },
+    "FEEDBACK": {
+      "TITLE": "Opinie i wsparcie",
+      "L1": "W aplikacji: Pomoc > Dostępność.",
+      "L2A": "E-mail:",
+      "L2B": "lub",
+      "L3": "Podaj ekran/URL, urządzenie, przeglądarkę i ewentualnie czytnik ekranu."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Procedura odwoławcza (Francja)",
+      "TEXT": "Jeśli stwierdzisz barierę dostępu i nie uzyskasz satysfakcjonującej odpowiedzi, możesz:",
+      "L1": "Napisać do Obrońcy Praw lub jego delegata w departamencie,",
+      "L2": "Lub zwrócić się do Mediatora, jeśli dotyczy.",
+      "MORE": "Więcej informacji:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Ciągłe doskonalenie",
+      "L1": "Design System z dostępnymi komponentami.",
+      "L2": "Przegląd kodu i testy dostępności przy każdej wersji.",
+      "L3": "Regularne szkolenia zespołów produkt i support.",
+      "L4": "Priorytetyzacja poprawek wg wpływu na użytkownika."
+    },
+    "DATE": {
+      "TITLE": "Data oświadczenia i aktualizacje",
+      "TEXT": "Oświadczenie sporządzono 25 grudnia 2025 r. Aktualizacja co najmniej raz w roku lub przy większych zmianach."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Jak zarezerwować usługę w IzyGlam?",
+    "QUESTION2": "Jak wybrać odpowiedniego specjalistę?",
+    "QUESTION3": "Jak zmienić lub anulować wizytę?",
+    "QUESTION4": "Jak śledzić moje zamówienie?",
+    "QUESTION5": "Jakie metody płatności mogę użyć?",
+    "QUESTION6": "Jak śledzić moje zamówienie lub rezerwację?",
+    "QUESTION7": "Czy mogę dodać opinię po usłudze?",
+    "QUESTION8": "Jak korzystać z lojalności i promocji?",
+    "QUESTION9": "Co zrobić w przypadku problemu z zamówieniem?",
+    "QUESTION10": "Jak skontaktować się z zespołem IzyGlam?",
+    "QUESTION11": "Jak działa polityka anulowania i zwrotów?",
+    "QUESTION12": "Czy mogę zarezerwować dla kogoś (prezent, niespodzianka)?",
+    "QUESTION13": "Jak zostać partnerem-profesjonalistą w IzyGlam?",
+    "QUESTION14": "Jak chronione są moje dane osobowe w IzyGlam?",
+    "REPONSE1": "To proste i szybkie. Po rejestracji wybierz usługę, poznaj dostępnych profesjonalistów w pobliżu, a następnie wybierz datę i godzinę. Kliknij „Zarezerwuj”, aby sfinalizować i opłać kartą. Twoja rezerwacja zostanie ręcznie potwierdzona przez profesjonalistę. W razie odmowy otrzymasz pełny zwrot.",
+    "REPONSE2": "Każdy specjalista ma szczegółowy profil z usługami, cenami, zdjęciami realizacji i opiniami klientów. Możesz też dodać ulubionych, aby szybko do nich wracać. Porównaj profile i wybierz najlepiej dopasowanego.",
+    "REPONSE3": "Możesz zmienić lub anulować rezerwację w swoim panelu. Anulowanie jest bezpłatne do 24 h przed usługą. Później mogą obowiązywać opłaty. W razie problemów skontaktuj się z naszym wsparciem.",
+    "REPONSE4": "Zaloguj się do panelu, sekcja „Moje rezerwacje”. Znajdziesz tam status w czasie rzeczywistym, możliwość anulowania/zmiany oraz historię usług.",
+    "REPONSE5": "Płatność odbywa się wyłącznie kartą (Visa, MasterCard, American Express). Nie oferujemy płatności gotówką ani przez PayPal. Wszystko jest bezpieczne.",
+    "REPONSE6": "Po potwierdzeniu rezerwacji otrzymasz e-mail podsumowujący. Przypomnimy Ci również przed wizytą (e-mail i/lub powiadomienie push). Status sprawdzisz także w panelu.",
+    "REPONSE7": "Tak. Po każdej zrealizowanej usłudze zaprosimy Cię do dodania opinii. Opinie są ręcznie moderowane. Profesjonaliści nie mogą odpowiadać ani ich modyfikować.",
+    "REPONSE8": "Na ten moment IzyGlam nie oferuje jeszcze programu lojalnościowego ani kodów promocyjnych. Funkcje są planowane w kolejnej fazie.",
+    "REPONSE9": "Skontaktuj się z nami przez zakładkę „Kontakt” lub e-mail. Dołożymy starań, by odpowiedzieć w ciągu 24 h (czas orientacyjny) i pomóc rozwiązać problem.",
+    "REPONSE10": "Skorzystaj z formularza kontaktowego na stronie lub w aplikacji. Wsparcie klienta dostępne od poniedziałku do soboty, 9:00–18:00. Przykładowy e-mail: support@izyglam.com",
+    "REPONSE11": "Możesz anulować bez opłat do 24 h przed planowaną godziną. Po tym czasie mogą obowiązywać opłaty. Jeśli specjalista odrzuci rezerwację po płatności, zwrot jest automatyczny. System automatycznych zwrotów jest wdrażany.",
+    "REPONSE12": "Na razie nie możesz jeszcze podarować usługi innej osobie z konta. Jeśli specjalista oferuje pakiet dla dwóch/rodzinny, możesz zarezerwować dla kilku osób w tej formule.",
+    "REPONSE13": "Jesteś kosmetyczką, fryzjerką lub praktykiem wellness? Dołącz do społeczności IzyGlam, wypełniając formularz na stronie „Zostań partnerem”. Skontaktujemy się, by dokończyć rejestrację.",
+    "REPONSE14": "Bezpieczeństwo Twoich danych to priorytet. Przestrzegamy RODO. Specjaliści widzą tylko informacje niezbędne do usługi. Wbudowany czat pozwala się komunikować, ale obchodzenie platformy będzie monitorowane."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Kim jesteśmy?",
+      "TEXT": "Niniejsza Polityka prywatności wyjaśnia, jak <strong>izyGlam</strong> („my”, „nasza” lub „Platforma”) zbiera, używa, przechowuje, udostępnia i chroni Twoje dane osobowe podczas korzystania z naszych usług (strona WWW, aplikacja web, aplikacja mobilna, e-maile i wsparcie). Działamy jako <strong>administrator danych</strong> dla opisanych poniżej operacji."
+    },
+    "SCOPE": {
+      "TITLE": "Zakres polityki",
+      "TEXT": "Polityka dotyczy <strong>klientów</strong> rezerwujących usługi, <strong>profesjonalistów</strong> oferujących usługi przez izyGlam oraz <strong>odwiedzających</strong> nasze interfejsy."
+    },
+    "DATA": {
+      "TITLE": "Zbierane dane",
+      "PROVIDED": {
+        "TITLE": "Dane, które podajesz",
+        "L1": "<strong>Tożsamość i kontakt:</strong> imię, nazwisko, e-mail, telefon, adres(y), zdjęcia/avatary.",
+        "L2": "<strong>Konto:</strong> identyfikatory, hasła (hashowane), preferencje, język.",
+        "L3": "<strong>Rezerwacje:</strong> wybrane usługi, data/godzina, adresy realizacji, notatki, załączniki.",
+        "L4": "<strong>Płatność:</strong> informacje płatnicze <em>przez dostawcę (np. Stripe)</em> — nie przechowujemy danych kart.",
+        "L5": "<strong>Profesjonaliści:</strong> profil publiczny, usługi, ceny, strefy dojazdu, dostępność, Rachunek/IBAN (bezpiecznie), dokumenty weryfikacyjne, jeśli wymagane.",
+        "L6": "<strong>Wsparcie:</strong> wiadomości, zgłoszenia, ewentualne nagrania rozmów."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Dane zbierane automatycznie",
+        "L1": "<strong>Dane techniczne:</strong> model urządzenia, system, przeglądarka, rozdzielczości, identyfikatory sesji.",
+        "L2": "<strong>Logi:</strong> adresy IP, znaczniki czasu, zdarzenia błędów, użycie funkcji.",
+        "L3": "<strong>Lokalizacja:</strong> przybliżona (IP) lub dokładna (GPS, za Twoją zgodą).",
+        "L4": "<strong>Cookies i SDK:</strong> zob. sekcja poniżej."
+      },
+      "THIRD": {
+        "TITLE": "Dane od podmiotów trzecich",
+        "L1": "<strong>Dostawcy płatności</strong> (statusy płatności, tokeny).",
+        "L2": "<strong>Partnerzy analityki/anty-fraudu</strong> (sygnały ryzyka, zagregowane użycie).",
+        "L3": "<strong>Integracje</strong> (np. komunikacja, mapy, chmura)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Cele i podstawy prawne",
+      "TEXT": "Przetwarzamy dane w następujących celach:",
+      "L1": "<strong>Świadczenie usługi</strong> (konto, rezerwacja, kojarzenie, powiadomienia) — <em>podstawa: wykonanie umowy</em>.",
+      "L2": "<strong>Płatności i rozliczenia</strong> — <em>umowa, obowiązek prawny</em>.",
+      "L3": "<strong>Bezpieczeństwo, zapobieganie nadużyciom/oszustwom</strong> — <em>uzasadniony interes, obowiązek prawny</em>.",
+      "L4": "<strong>Udoskonalanie produktu, statystyki</strong> — <em>uzasadniony interes</em>.",
+      "L5": "<strong>Wsparcie i jakość</strong> — <em>umowa, uzasadniony interes</em>.",
+      "L6": "<strong>Marketing bezpośredni</strong> (e-maile/aplikacja) — <em>zgoda, gdy wymagana</em>; możliwość rezygnacji w każdej chwili.",
+      "L7": "<strong>Zgodność z prawem</strong> (księgowość, żądania władz) — <em>obowiązek prawny</em>."
+    },
+    "SHARING": {
+      "TITLE": "Udostępnianie danych",
+      "L1": "<strong>Profesjonaliści / Klienci</strong>: informacje niezbędne do realizacji (imię, kontakt, adres, szczegóły rezerwacji).",
+      "L2": "<strong>Dostawcy</strong>: płatności (np. Stripe), hosting/przechowywanie, analityka, e-mail/SMS push, wsparcie, KYC jeśli dotyczy. <em>Dostęp ograniczony do niezbędnego minimum, umowy zgodne z RODO.</em>",
+      "L3": "<strong>Partnerzy</strong>: za Twoją zgodą dla konkretnych ofert.",
+      "L4": "<strong>Władze</strong>: gdy wymagane prawem lub do obrony naszych praw."
+    },
+    "TRANSFERS": {
+      "TITLE": "Transfery poza UE/EOG",
+      "TEXT": "Gdy dane trafiają do krajów bez decyzji adekwatności, stosujemy <strong>standardowe klauzule umowne</strong> (SCC) i środki uzupełniające."
+    },
+    "RETENTION": {
+      "TITLE": "Okresy przechowywania",
+      "L1": "<strong>Konto i tożsamość</strong>: przez okres korzystania, następnie <em>do 3 lat</em> od ostatniej aktywności (prospekcja) lub <em>5–10 lat</em> w celach księgowych/prawnych.",
+      "L2": "<strong>Rezerwacje/faktury</strong>: <em>10 lat</em> (obowiązek prawny).",
+      "L3": "<strong>Logi bezpieczeństwa</strong>: <em>6–24 miesiące</em> w zależności od krytyczności.",
+      "L4": "<strong>Cookies</strong>: zob. sekcja Cookies.",
+      "NOTE": "Po upływie terminów dane są usuwane lub anonimizowane."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies i SDK",
+      "TEXT": "Używamy cookies/SDK do działania Platformy, pomiaru ruchu, zapobiegania nadużyciom i — za Twoją zgodą — personalizacji.",
+      "L1": "<strong>Niezbędne</strong>: uwierzytelnianie, bezpieczeństwo, preferencje techniczne.",
+      "L2": "<strong>Pomiar</strong>: statystyki zagregowane.",
+      "L3": "<strong>Marketing</strong>: tylko jeśli zaakceptujesz.",
+      "PREF": "Preferencje możesz zmienić w każdej chwili w banerze i ustawieniach przeglądarki."
+    },
+    "AUTOMATION": {
+      "TITLE": "Decyzje automatyczne i profilowanie",
+      "TEXT": "Możemy używać sygnałów automatycznych (np. ryzyko oszustwa, dostępność, dystans), by priorytetyzować działania lub proponować terminy. Nie podejmujemy decyzji wywołujących istotne skutki prawne bez udziału człowieka, chyba że wymagane prawem lub za Twoją wyraźną zgodą."
+    },
+    "RIGHTS": {
+      "TITLE": "Twoje prawa (RODO)",
+      "L1": "Prawo dostępu, sprostowania, usunięcia.",
+      "L2": "Prawo do ograniczenia i przenoszenia.",
+      "L3": "Prawo sprzeciwu wobec przetwarzania na podstawie uzasadnionego interesu.",
+      "L4": "Prawo do wycofania zgody w każdej chwili.",
+      "L5": "Prawo złożenia skargi do UODO (CNIL we Francji).",
+      "CONTACT": "Aby skorzystać z praw, skontaktuj się z nami:",
+      "VERIFY": "Możemy poprosić o dodatkowe informacje w celu weryfikacji tożsamości."
+    },
+    "SECURITY": {
+      "TITLE": "Bezpieczeństwo",
+      "TEXT": "Stosujemy odpowiednie środki techniczne i organizacyjne: szyfrowanie w tranzycie (TLS), hashowanie haseł, logowanie i monitoring, kontrolę dostępu, kopie zapasowe, przegląd kodu i testy bezpieczeństwa."
+    },
+    "MINORS": {
+      "TITLE": "Dane nieletnich",
+      "TEXT": "Usługi nie są przeznaczone dla osób poniżej 15 lat. Jeśli wykryjemy konto nieletniego, po weryfikacji je usuniemy."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Główni podwykonawcy",
+      "TEXT": "Współpracujemy z kluczowymi podwykonawcami w zakresie hostingu, płatności, e-mailingu, analityki i przechowywania. Aktualną listę udostępnimy na żądanie pod"
+    },
+    "CONTACT": {
+      "TITLE": "Kontakt i IOD",
+      "PRIVACY_LABEL": "Kontakt ds. prywatności",
+      "SUPPORT_LABEL": "Wsparcie",
+      "AUTHORITY_LABEL": "Organ nadzorczy",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Zmiany polityki",
+      "TEXT": "Możemy aktualizować politykę w związku ze zmianami prawnymi lub funkcjonalnymi. O istotnych zmianach poinformujemy e-mailem lub w aplikacji. Data wejścia w życie: <strong>11&nbsp;sierpnia&nbsp;2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Postanowienia lokalne",
+      "TEXT": "Jeśli znajdujesz się w UE, dane są przetwarzane zgodnie z RODO. Dodatkowe zapisy krajowe/regionalne mogą mieć zastosowanie."
+    },
+    "GLOSSARY": {
+      "TITLE": "Słowniczek (wyciąg)",
+      "L1": "<strong>Administrator danych</strong>: podmiot określający cele i sposoby przetwarzania.",
+      "L2": "<strong>Podmiot przetwarzający</strong>: podmiot przetwarzający dane w imieniu administratora.",
+      "L3": "<strong>Podstawa prawna</strong>: fundament przetwarzania (umowa, zgoda, obowiązek prawny, uzasadniony interes).",
+      "L4": "<strong>Cookies/SDK</strong>: trackery używane przez serwis/aplikację do świadczenia, pomiaru i personalizacji."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Akceptacja warunków",
+      "TEXT": "Korzystając z usług izyGlam (strona, aplikacja web, aplikacja mobilna), akceptujesz bez zastrzeżeń niniejsze Warunki korzystania („CGU”). Jeśli ich nie akceptujesz, nie korzystaj z Platformy."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Definicje",
+      "L1": "<strong>Klient</strong>: osoba rezerwująca i/lub płacąca za usługę na Platformie.",
+      "L2": "<strong>Profesjonalista</strong>: osoba oferująca usługi przez Platformę.",
+      "L3": "<strong>Usługa</strong>: świadczenie oferowane przez Profesjonalistę (np. beauty w domu).",
+      "L4": "<strong>Platforma</strong>: oprogramowanie, serwisy i aplikacje prowadzone przez izyGlam."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Usługi i rola izyGlam",
+      "TEXT": "izyGlam to <strong>platforma pośrednicząca</strong>. Profesjonaliści są <strong>wyłącznie odpowiedzialni</strong> za wykonywane usługi (jakość, zgodność, ubezpieczenia). O ile nie wskazano inaczej, izyGlam nie jest sprzedawcą ani wykonawcą i nie ponosi odpowiedzialności za realizację."
+    },
+    "ACCOUNT": {
+      "TITLE": "Konto i kwalifikacja",
+      "L1": "Rejestracja jest wymagana, aby rezerwować lub oferować usługę. Zobowiązujesz się podawać prawdziwe dane i aktualizować je.",
+      "L2": "Musisz mieć co najmniej 15 lat. Profesjonaliści muszą być uprawnieni do wykonywania zawodu.",
+      "L3": "Odpowiadasz za poufność danych logowania i działania na koncie.",
+      "L4": "izyGlam może zawiesić lub rozwiązać konto w razie naruszeń warunków lub udowodnionego ryzyka oszustwa."
+    },
+    "BOOKINGS": {
+      "TITLE": "Rezerwacje i zawarcie umowy",
+      "L1": "Usługi są <strong>rezerwowane i opłacane online</strong> przez Klienta. Na miejscu nie płacisz gotówką.",
+      "L2": "Rezerwacja jest <strong>warunkowa</strong> potwierdzeniem przez Profesjonalistę po płatności. W razie odmowy Klient otrzymuje <strong>100% zwrotu</strong>.",
+      "L3": "Umowa o usługę zostaje zawarta bezpośrednio między Klientem a Profesjonalistą w momencie akceptacji.",
+      "L4": "Strony powinny zweryfikować godziny, adresy oraz warunki szczególne."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Ceny, subskrypcje i płatności",
+      "L1": "Ceny ustalają samodzielnie Profesjonaliści. izyGlam pobiera <strong>prowizję</strong> platformy.",
+      "L2": "Abonamenty dla Profesjonalistów (przykład obecny): <em>1 salon za darmo na zawsze</em>; <em>Basic: 3 salony – 99 € / mies.</em>; <em>Premium: 10 salonów – 499 € / mies.</em>; <em>powyżej: wycena</em>.",
+      "L3": "Płatność <strong>wyłącznie kartą</strong> przez dostawcę (np. Stripe). <strong>Brak gotówki</strong>, brak kodów promocyjnych i programu lojalnościowego na tym etapie.",
+      "L4": "Kwoty, podatki i opłaty są wskazane przed zatwierdzeniem. Warunki abonamentu mogą się zmieniać; o zmianach poinformujemy z wyprzedzeniem."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Anulowanie, zwroty i nieobecność",
+      "L1": "Bezpłatne anulowanie do <strong>24 h</strong> przed planowaną godziną.",
+      "L2": "Poniżej 24 h mogą obowiązywać <strong>opłaty</strong> zgodnie z polityką.",
+      "L3": "W przypadku <strong>odrzucenia</strong> przez Profesjonalistę po płatności Klient dostaje 100% zwrotu. Automatyzacja zwrotów jest wdrażana; w razie potrzeby wsparcie zainicjuje operację.",
+      "L4": "<strong>No-show</strong> (niezgłoszona nieobecność) może skutkować opłatami lub brakiem zwrotu."
+    },
+    "PAYOUTS": {
+      "TITLE": "Wypłaty dla Profesjonalistów",
+      "L1": "Wypłata następuje po <strong>potwierdzeniu realizacji</strong> usługi (np. potwierdzenie <em>kodem</em>).",
+      "L2": "Przelew realizowany jest na Rachunek/IBAN podany przez Profesjonalistę, który odpowiada za jego poprawność.",
+      "L3": "Kwota wypłaty to cena usługi <em>pomniejszona</em> o prowizję i opłaty."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Odpowiedzialność stron",
+      "L1": "Profesjonaliści zapewniają zgodność usług z prawem, higienę i bezpieczeństwo.",
+      "L2": "Klienci podają prawidłowe informacje (adres, dostępność, utrudnienia) i dotrzymują terminów.",
+      "L3": "izyGlam udostępnia Platformę i narzędzia (rezerwacja, płatność, wiadomości), ale nie gwarantuje rezultatów usługi."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Nieprawidłowa ocena.",
+      "TITLE": "Opinie i oceny",
+      "L1": "Opinie można zostawiać <strong>tylko po faktycznie wykonanej usłudze</strong>.",
+      "L2": "Opinie mogą podlegać <strong>moderacji</strong> (np. usunięcie treści niezgodnych z prawem lub warunkami)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Zachowania zabronione",
+      "L1": "Oszustwo, podszywanie się, obchodzenie Platformy, namawianie do transakcji poza nią.",
+      "L2": "Treści nielegalne, oszczercze, dyskryminujące, brutalne lub nieobyczajne.",
+      "L3": "Włamania, DoS, reverse engineering, obchodzenie zabezpieczeń.",
+      "L4": "Nieautoryzowane pozyskiwanie danych osobowych innych użytkowników."
+    },
+    "IPR": {
+      "TITLE": "Własność intelektualna",
+      "TEXT": "Treści, znaki i elementy Platformy (kod, design, teksty, logotypy, obrazy) są chronione. Bez zgody zabroniona jest reprodukcja, dystrybucja czy adaptacja. Treści dostarczone przez Profesjonalistów pozostają ich własnością; udzielają izyGlam niewyłącznej licencji koniecznej do działania Platformy."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Usługi zewnętrzne",
+      "TEXT": "Platforma może integrować usługi stron trzecich (płatności, mapy, hosting, analityka). Obowiązują ich warunki. izyGlam nie odpowiada za przerwy lub awarie tych usług."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Dostępność, utrzymanie i aktualizacje",
+      "TEXT": "Możemy modyfikować, zawieszać lub przerywać działanie Platformy z powodu utrzymania lub ulepszeń. Dokładamy starań, by ograniczyć wpływ na użytkowników."
+    },
+    "LIABILITY": {
+      "TITLE": "Ograniczenie odpowiedzialności i odszkodowanie",
+      "TEXT": "W granicach prawa odpowiedzialność izyGlam ogranicza się do szkód bezpośrednich, z wyłączeniem pośrednich (utrata korzyści, przychodu itd.). Zobowiązujesz się zwolnić izyGlam z roszczeń wynikających z naruszeń niniejszych warunków lub nielegalnego użycia Platformy."
+    },
+    "TERMINATION": {
+      "TITLE": "Rozwiązanie i zawieszenie",
+      "TEXT": "Możesz usunąć konto w dowolnej chwili. Możemy zawiesić lub zakończyć dostęp w razie naruszeń, oszustwa, nadużyć lub na mocy nakazu. Niektóre zobowiązania (np. płatności, odpowiedzialność) pozostają w mocy."
+    },
+    "PRIVACY": {
+      "TITLE": "Dane osobowe",
+      "TEXT": "Przetwarzanie danych opisuje nasza <strong>Polityka prywatności</strong>. Korzystając z Platformy, akceptujesz ją. Sprawdź swoje prawa RODO i nasze zobowiązania."
+    },
+    "CHANGES": {
+      "TITLE": "Zmiany Warunków",
+      "TEXT": "Możemy zmieniać Warunki z powodów prawnych, regulacyjnych lub funkcjonalnych. O istotnych zmianach powiadomimy e-mailem lub w aplikacji i opublikujemy zaktualizowaną wersję."
+    },
+    "LAW": {
+      "TITLE": "Prawo właściwe i spory",
+      "TEXT": "Warunki podlegają <strong>prawu francuskiemu</strong>. Spory rozstrzyga sąd właściwy dla siedziby izyGlam, z zastrzeżeniem korzystniejszych dla konsumenta przepisów bezwzględnie obowiązujących."
+    },
+    "CONTACT": {
+      "TITLE": "Kontakt",
+      "SUPPORT_LABEL": "Wsparcie",
+      "LEGAL_LABEL": "Dział prawny",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Data wejścia w życie",
+      "TEXT": "Niniejsze Warunki obowiązują od <strong>25&nbsp;grudnia&nbsp;2025</strong> i zastępują wcześniejsze wersje."
+    }
   }
 }

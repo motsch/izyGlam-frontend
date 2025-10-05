@@ -72,7 +72,7 @@ const routes: Routes = [
     },
     {
         path: 'verify-email', component: VerifyEmailComponent,
-        canActivate: [AuthGuard]
+        canActivate: [GuestGuard]
     },
     {
         path: 'paiement-validation',

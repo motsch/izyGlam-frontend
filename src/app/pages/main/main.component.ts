@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { SharedService } from 'src/app/core/services/shared.service';
@@ -13,6 +13,8 @@ import { Subject, Subscription } from 'rxjs';
 import { MqttService } from 'src/app/core/services/mqtt.service';
 import { VilleService } from 'src/app/core/services/ville.service';
 import { AdminService } from 'src/app/core/services/admin.service';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-main',
@@ -87,29 +89,41 @@ export class MainComponent implements OnInit, AfterViewInit {
     private router: Router,
     private advertisementService: AdvertisementService,
     private mqttService: MqttService,
+    private cd: ChangeDetectorRef,
+    private toastr: ToastrService,
+    private translate: TranslateService,
     private adminService: AdminService
   ) { }
 
+  // ---------------------------------------------------
+  // ⏱️ Initialisation : auth, paramètres, data, géoloc
+  // ---------------------------------------------------
   ngOnInit() {
     // 🔐 Redirection si non connecté
     if (!this.sessionService.isLoggedIn()) {
       this.router.navigate(['/login']);
       return;
     }
+
     this.loading = true;
+
     // 🔎 Recherche globale (non bloquante)
     this.subscription = this.searchSubject
       .pipe(debounceTime(300), distinctUntilChanged())
       .subscribe((query) => this.performSearch(query));
 
     // ⚙️ Paramètres plateforme
-    this.adminService.getAdminSettings().subscribe(
-      (data: any) => {
+    this.adminService.getAdminSettings().subscribe({
+      next: (data: any) => {
         this.pubActivated = data.pubActivated;
         this.promoActivated = data.promoActivated;
       },
-      (error: any) => console.error('Erreur lors de la récupération des paramètres', error)
-    );
+      error: (err) => {
+        console.error('Erreur lors de la récupération des paramètres :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
+    });
+
     // 🚀 On charge l’utilisateur + les shops PAR CODE POSTAL (indépendant de la géoloc)
     this.loadUserAndShops();
 
@@ -121,7 +135,9 @@ export class MainComponent implements OnInit, AfterViewInit {
     if (this.subscription) this.subscription.unsubscribe();
   }
 
-  // === GÉOLOCALISATION : détection non bloquante ===
+  // ================================================
+  // 🌍 GÉOLOCALISATION : détection non bloquante
+  // ================================================
   private async checkGeolocationAvailability() {
     try {
       // 1) Permissions API (si dispo) – rapide
@@ -186,6 +202,9 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
   // === FIN GÉOLOCALISATION ===
 
+  // ---------------------------------------------------
+  // 🔎 Recherche "live" (avec Subject + debounce)
+  // ---------------------------------------------------
   onSearchChange(query: string) {
     this.searchSubject.next(query);
   }
@@ -198,9 +217,20 @@ export class MainComponent implements OnInit, AfterViewInit {
     // 🔎 Toujours par code postal -> pas dépendant de la géoloc
     this.shopService
       .searchShopsWithServices(this.selectedPostalCode, query)
-      .subscribe((results) => (this.filteredSearchResults = results));
+      .subscribe({
+        next: (results) => {
+          this.filteredSearchResults = results;
+        },
+        error: (err) => {
+          console.error('Erreur lors de la recherche de shops avec services :', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        }
+      });
   }
 
+  // ---------------------------------------------------
+  // 🖱️ Drag-to-scroll sur les listes horizontales
+  // ---------------------------------------------------
   ngAfterViewInit(): void {
     const elements = document.querySelectorAll('.drag-scroll');
     elements.forEach((el) => {
@@ -237,6 +267,9 @@ export class MainComponent implements OnInit, AfterViewInit {
     });
   }
 
+  // ---------------------------------------------------
+  // 🔗 Navigation (lien interne ou externe)
+  // ---------------------------------------------------
   goTo(link: string) {
     if (link.startsWith('http://') || link.startsWith('https://')) {
       window.open(link, '_blank');
@@ -245,6 +278,9 @@ export class MainComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // ---------------------------------------------------
+  // 👤 Charge l’utilisateur puis ses shops (par CP)
+  // ---------------------------------------------------
   private loadUserAndShops() {
     this.userService.getMe().subscribe({
       next: (data: any) => {
@@ -269,14 +305,16 @@ export class MainComponent implements OnInit, AfterViewInit {
           }
 
           // Liste des CP dispos
-          this.availablePostalCodes = this.userAddresses.map((a: any) => a.code_postal).filter(Boolean);
+          this.availablePostalCodes = this.userAddresses
+            .map((a: any) => a.code_postal)
+            .filter(Boolean);
 
           // Force le CP courant si sélection valide
           if (this.selectedAddress?.code_postal) {
             this.selectedPostalCode = this.selectedAddress.code_postal;
           }
         } else {
-          // Aucun adresse en base => on reste sur le CP par défaut (75001)
+          // Aucune adresse en base => on reste sur le CP par défaut (75001)
           this.userAddresses = [];
           this.displayedAddresses = [];
         }
@@ -285,10 +323,16 @@ export class MainComponent implements OnInit, AfterViewInit {
         this.loadCategories();
         this.loadShops();
       },
-      error: (error: any) => console.log(error),
+      error: (err) => {
+        console.error('Erreur lors du chargement de l’utilisateur et des shops :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
     });
   }
 
+  // ---------------------------------------------------
+  // 🌍 Sélecteurs pays / ville / CP
+  // ---------------------------------------------------
   onCountryChange() {
     this.postalCode = '';
     this.availableCities = [];
@@ -297,27 +341,45 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   onPostalCodeEntered() {
     if (!this.postalCode || this.postalCode.length < 4) return;
+    this.villeService
+      .getByPostalCode(this.postalCode, this.selectedCountry)
+      .subscribe({
+        next: (cities: any[]) => {
+          this.availableCities = cities;
+          this.newAddress.code_postal = this.postalCode;
 
-    this.villeService.getByPostalCode(this.postalCode, this.selectedCountry).subscribe((cities: any[]) => {
-      this.availableCities = cities;
-      this.newAddress.code_postal = this.postalCode;
-
-      if (cities.length === 1) {
-        this.selectedCity = cities[0];
-      }
-    });
+          if (cities.length === 1) {
+            this.selectedCity = cities[0];
+          }
+        },
+        error: (err) => {
+          console.error('Erreur lors de la récupération des villes par code postal :', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        }
+      });
   }
 
+  // ---------------------------------------------------
+  // 🗂️ Catégories disponibles pour le CP sélectionné
+  // ---------------------------------------------------
   private loadCategories() {
     // On passe toujours par le code postal sélectionné (aucune dépendance à la géoloc)
-    this.categoryService.getAvailableCategories(undefined, undefined, [this.selectedPostalCode]).subscribe({
-      next: (data: any[]) => {
-        this.categoriesFilter = data.sort((a, b) => a.position - b.position);
-      },
-      error: (error: any) => console.log(error),
-    });
+    this.categoryService
+      .getAvailableCategories(undefined, undefined, [this.selectedPostalCode])
+      .subscribe({
+        next: (data: any[]) => {
+          this.categoriesFilter = data.sort((a, b) => a.position - b.position);
+        },
+        error: (err) => {
+          console.error('Erreur lors du chargement des catégories disponibles :', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        }
+      });
   }
 
+  // ---------------------------------------------------
+  // 🔍 Filtre local (par nom) sur la liste des shops
+  // ---------------------------------------------------
   filterShops() {
     const query = this.searchQuery.trim().toLowerCase();
     if (!query) {
@@ -333,48 +395,61 @@ export class MainComponent implements OnInit, AfterViewInit {
     return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
 
+  // ---------------------------------------------------
+  // 🏪 Charge les shops pour le CP sélectionné
+  // ---------------------------------------------------
   private loadShops() {
-    this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe(async (categories: any) => {
-      const favoriteShops = this.me.favoriteShops || [];
+    this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe({
+      next: async (categories: any) => {
+        const favoriteShops = this.me.favoriteShops || [];
 
-      this.shops = (categories.discover || []).map((shop: any) => ({
-        ...shop,
-        isFavorite: favoriteShops.includes(shop._id),
-      }));
-      // On map chaque catégorie et on ajoute isFavorite
-      this.filteredItemsAdecouvrir = (categories.discover || []).map((shop: any) => ({
-        ...shop,
-        isFavorite: favoriteShops.includes(shop._id),
-      }));
+        this.shops = (categories.discover || []).map((shop: any) => ({
+          ...shop,
+          isFavorite: favoriteShops.includes(shop._id),
+        }));
 
-      this.filteredItemsApprecier = (categories.appreciated || []).map((shop: any) => ({
-        ...shop,
-        isFavorite: favoriteShops.includes(shop._id),
-      }));
+        // On map chaque catégorie et on ajoute isFavorite
+        this.filteredItemsAdecouvrir = (categories.discover || []).map((shop: any) => ({
+          ...shop,
+          isFavorite: favoriteShops.includes(shop._id),
+        }));
 
-      this.filteredItemsMalin = (categories.smart || []).map((shop: any) => ({
-        ...shop,
-        isFavorite: favoriteShops.includes(shop._id),
-      }));
+        this.filteredItemsApprecier = (categories.appreciated || []).map((shop: any) => ({
+          ...shop,
+          isFavorite: favoriteShops.includes(shop._id),
+        }));
 
-      this.filteredItemsTop10 = (categories.top10 || []).map((shop: any) => ({
-        ...shop,
-        isFavorite: favoriteShops.includes(shop._id),
-      }));
+        this.filteredItemsMalin = (categories.smart || []).map((shop: any) => ({
+          ...shop,
+          isFavorite: favoriteShops.includes(shop._id),
+        }));
 
-      // Promo = tous shops avec promo active (peu importe la catégorie)
-      this.promotedShops = [
-        ...this.filteredItemsAdecouvrir,
-        ...this.filteredItemsApprecier,
-        ...this.filteredItemsMalin,
-        ...this.filteredItemsTop10,
-      ].filter((x: any) => x.promo?.active === true);
+        this.filteredItemsTop10 = (categories.top10 || []).map((shop: any) => ({
+          ...shop,
+          isFavorite: favoriteShops.includes(shop._id),
+        }));
 
-      this.loading = false;
+        // Promo = tous shops avec promo active (peu importe la catégorie)
+        this.promotedShops = [
+          ...this.filteredItemsAdecouvrir,
+          ...this.filteredItemsApprecier,
+          ...this.filteredItemsMalin,
+          ...this.filteredItemsTop10,
+        ].filter((x: any) => x.promo?.active === true);
+
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des shops par code postal :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        this.loading = false; // ✅ Évite le loader infini en cas d’erreur
+      }
     });
   }
 
-
+  // ---------------------------------------------------
+  // 🧭 Filtres de catégories (UI)
+  // ---------------------------------------------------
   filterByCategory(type: string, trad: string) {
     this.categoryTrad = trad;
     if (!this.filterClicked) {
@@ -398,6 +473,9 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.filteredItems = this.shops;
   }
 
+  // ---------------------------------------------------
+  // 🔄 Utilitaires
+  // ---------------------------------------------------
   shuffleArray<T>(array: T[]): T[] {
     let shuffledArray = array.slice();
     for (let i = shuffledArray.length - 1; i > 0; i--) {
@@ -407,14 +485,15 @@ export class MainComponent implements OnInit, AfterViewInit {
     return shuffledArray;
   }
 
+  // ---------------------------------------------------
+  // ↔️ Scroll horizontal des carrousels
+  // ---------------------------------------------------
   scrollLeft(type: string) {
     this.scrollBy(type, -this.calculateScrollAmount());
   }
-
   scrollRight(type: string) {
     this.scrollBy(type, this.calculateScrollAmount());
   }
-
   private scrollBy(type: string, amount: number) {
     const containerMap: { [key: string]: ElementRef | undefined } = {
       category: this.scrollContainerCategory,
@@ -433,20 +512,20 @@ export class MainComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
   private calculateScrollAmount(): number {
     return (300 + 20) * 4;
   }
 
+  // ---------------------------------------------------
+  // 🏠 Modal d’adresse (ouvrir/fermer/choisir)
+  // ---------------------------------------------------
   openAddressModal() {
     this.showAddressModal = true;
   }
-
   closeAddressModal() {
     this.showAddressModal = false;
     this.isAddingAddress = false;
   }
-
   selectPostalCode(address: any) {
     this.selectedAddress = address;
     this.selectedPostalCode = address.code_postal;
@@ -454,11 +533,13 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.loadShops();
     this.closeAddressModal();
   }
-
   isSameAddress(a: any, b: any): boolean {
     return a?.street === b?.street && a?.city === b?.city && a?.code_postal === b?.code_postal;
   }
 
+  // ---------------------------------------------------
+  // ➕ Ajout d’adresse (saisie puis enregistrement)
+  // ---------------------------------------------------
   toggleAddAddress() {
     this.isAddingAddress = !this.isAddingAddress;
   }
@@ -479,17 +560,24 @@ export class MainComponent implements OnInit, AfterViewInit {
       this.refreshDisplayedAddresses();
 
       // Appel API
-      this.userService.addAddress(this.me._id, addressToAdd).subscribe(
-        (result: any) => {
+      this.userService.addAddress(this.me._id, addressToAdd).subscribe({
+        next: (result: any) => {
           this.loadUser(); // recharge synchronisation
+
           // Si aucune adresse sélectionnée, on bascule sur celle qu’on vient d’ajouter
-          if (!this.selectedAddress) this.selectedAddress = addressToAdd;
+          if (!this.selectedAddress) {
+            this.selectedAddress = addressToAdd;
+          }
+
           this.selectedPostalCode = addressToAdd.code_postal;
           this.loadCategories();
           this.loadShops();
         },
-        (error: any) => console.log(error)
-      );
+        error: (err) => {
+          console.error('Erreur lors de l’ajout d’une nouvelle adresse :', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        }
+      });
 
       // Reset form
       this.newAddress = { street: '', code_postal: '', city: '', country: '' };
@@ -498,23 +586,29 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   loadUser() {
+    // ⚠️ Selon ton UserService, getMe() peut être un getter sync (cache) — on conserve le comportement d’origine
     this.me = this.userService.getMe();
     this.sharedService.updateMe(this.me);
   }
 
   removeAddress(index: number) {
     this.me.address.splice(index, 1);
-    this.userService.update(this.me).subscribe(
-      (result: any) => {
+
+    this.userService.update(this.me).subscribe({
+      next: (result: any) => {
         // Après suppression, on recalcule la liste visible et on garantit un CP sélectionné
         this.userAddresses = this.me.address || [];
         this.refreshDisplayedAddresses();
+
         if (!this.selectedAddress && this.displayedAddresses[0]) {
           this.selectPostalCode(this.displayedAddresses[0]);
         }
       },
-      (error: any) => console.log(error)
-    );
+      error: (err) => {
+        console.error('Erreur lors de la suppression d’une adresse :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
+    });
   }
 
   // -----------------------------------------
@@ -547,5 +641,14 @@ export class MainComponent implements OnInit, AfterViewInit {
       this.newAddress.code_postal = doc.code_postal;
     }
     this.newAddress.arrondissement = this.selectedArrondissement;
+  }
+
+  // ---------------------------------------------------
+  // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+  // ---------------------------------------------------
+  showCustomToast(message: string) {
+    // ⚠️ Standard IzyGlam : pour les erreurs, on utilise toastr.error
+    // Exemple clé i18n : this.translate.instant('ERROR.GENERIC_ERROR')
+    this.toastr.error(message);
   }
 }

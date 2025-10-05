@@ -3,185 +3,228 @@ import { ChatGptService } from '../../services/chat-gpt.service';
 import { Pipe, PipeTransform } from '@angular/core';
 import { Router } from '@angular/router';
 
+// ✅ IzyGlam: traductions & toasts
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
-    selector: 'app-chat-modal',
-    templateUrl: './chat-modal.component.html',
-    styleUrl: './chat-modal.component.scss',
+  selector: 'app-chat-modal',
+  templateUrl: './chat-modal.component.html',
+  styleUrl: './chat-modal.component.scss',
 })
 export class ChatModalComponent implements OnInit {
-    userMessage: string = '';
-    messages: { role: string; content: string }[] = [];
-    isThinking: boolean = false;
-    isTyping: boolean = false;
-    canSendMessage: boolean = true; // Variable pour contrôler si l'utilisateur peut envoyer un message
-    variableCopyMessage: string = '';
-    constructor(private chatService: ChatGptService, private router: Router) {}
+  // 🧑‍💬 Message en cours de saisie
+  userMessage: string = '';
 
-    ngOnInit(): void {
-        // Définir la taille de la zone de texte en fonction de la hauteur de la fenêtre
-        this.showWelcomeMessage();
+  // 🗂️ Historique des messages affichés dans la modale
+  messages: { role: string; content: string }[] = [];
+
+  // 🧠/⌨️ États UI simulant la réflexion et la frappe de l’assistant
+  isThinking: boolean = false;
+  isTyping: boolean = false;
+
+  // 🚦 Bloque l’envoi pendant traitement pour éviter le spam
+  canSendMessage: boolean = true;
+
+  // 🔁 Copie du dernier message envoyé (utilisé pour l’appel API)
+  variableCopyMessage: string = '';
+
+  constructor(
+    private chatService: ChatGptService,
+    private router: Router,
+
+    // ✅ IzyGlam
+    private translate: TranslateService,
+    private toastr: ToastrService
+  ) {}
+
+  // -----------------------------------------------------------
+  // ♻️ Init composant : message de bienvenue simulé
+  // -----------------------------------------------------------
+  ngOnInit(): void {
+    this.showWelcomeMessage();
+  }
+
+  // -----------------------------------------------------------
+  // 🙋‍♀️ Message de bienvenue avec délai de “réflexion” + “frappe”
+  // -----------------------------------------------------------
+  showWelcomeMessage() {
+    this.canSendMessage = false; // On désactive l’envoi durant l’animation
+    const thinkingTime = Math.random() * (3 - 1) + 1; // 1 à 3 sec
+
+    this.isThinking = true;
+    setTimeout(() => {
+      this.isThinking = false;
+      this.isTyping = true;
+
+      setTimeout(() => {
+        this.isTyping = false;
+
+        const welcomeMessage =
+          "Je suis Lizy, votre conseillére sur izyGlam. Comment puis-je vous aider aujourd'hui ? 😊";
+        this.messages.push({ role: 'assistant', content: welcomeMessage });
+
+        this.canSendMessage = true; // Réactivation
+      }, 2000); // 2s de frappes simulées
+    }, thinkingTime * 1000);
+  }
+
+  // -----------------------------------------------------------
+  // 📤 Envoi d’un message utilisateur + appel API
+  // -----------------------------------------------------------
+  sendMessage() {
+    // Ne rien faire si le champ est vide
+    if (!this.userMessage.trim()) return;
+
+    // Conserver une copie (évite race conditions si userMessage change)
+    this.variableCopyMessage = this.userMessage;
+
+    // Ajout du message utilisateur dans l’historique
+    this.messages.push({ role: 'user', content: this.userMessage });
+    this.userMessage = '';
+
+    // Empêche l’envoi tant que la réponse n’est pas reçue
+    this.canSendMessage = false;
+
+    // Phase de réflexion (UI)
+    this.isThinking = true;
+
+    // 🧹 Si l’historique devient trop long, on le purge partiellement
+    if (this.messages.length > 20) {
+      this.messages = this.cleanUpHistory(this.messages);
     }
 
-    // Afficher le message de bienvenue avec une simulation de réflexion et de frappe
-    showWelcomeMessage() {
-        this.canSendMessage = false; // Désactiver l'envoi de message pendant le message de bienvenue
+    // Délai aléatoire de réflexion (5 à 10 sec)
+    const thinkingTime = Math.random() * (10 - 5) + 5;
 
-        // Temps de réflexion avant que Lizy commence à taper (entre 1 et 3 secondes, modifiable)
-        const thinkingTime = Math.random() * (3 - 1) + 1;
+    setTimeout(() => {
+      // Passage en mode “frappe”
+      this.isThinking = false;
+      this.isTyping = true;
 
-        this.isThinking = true; // Lizy commence à réfléchir
-
-        setTimeout(() => {
-            this.isThinking = false; // Arrêter la réflexion
-            this.isTyping = true; // Lizy commence à taper
-
-            // Temps de frappe simulé avant l'affichage du message de bienvenue
-            setTimeout(() => {
-                this.isTyping = false; // Arrêter la frappe
-
-                // Ajouter le message de Lizy dans l'historique
-                const welcomeMessage = "Je suis Lizy, votre conseillére sur izyGlam. Comment puis-je vous aider aujourd'hui ? 😊";
-                this.messages.push({ role: 'assistant', content: welcomeMessage });
-
-                this.canSendMessage = true; // Réactiver l'envoi de messages après le message de bienvenue
-            }, 2000); // Simule un temps de frappe de 2 secondes (modifiable)
-        }, thinkingTime * 1000); // Temps de réflexion proportionnel avant de taper (min 1s, max 3s)
-    }
-
-    sendMessage() {
-        if (!this.userMessage.trim()) return; // Ne pas envoyer de message vide
-        this.variableCopyMessage = this.userMessage;
-
-        // Ajouter le message utilisateur dans l'historique
-        this.messages.push({ role: 'user', content: this.userMessage });
-        this.userMessage = '';
-
-        // Désactiver l'envoi de nouveaux messages tant que la réponse n'est pas reçue
-        this.canSendMessage = false;
-
-        // Commencer la phase de réflexion
-        this.isThinking = true;
-
-
-        // Nettoyer l'historique pour éviter qu'il ne devienne trop long
-        // Ajouter une condition pour ne faire le clean-up que si l'historique dépasse 20 messages
-        if (this.messages.length > 20) {
-          this.messages = this.cleanUpHistory(this.messages);
-        }
-        // Ajouter un délai avant que Lizy commence à "réfléchir" (aléatoire entre 5 et 10 secondes)
-        const thinkingTime = Math.random() * (10 - 5) + 5; // Min 5s, max 10s
-
-        setTimeout(() => {
-            // Passer de la réflexion à la frappe
-            this.isThinking = false;
-            this.isTyping = true;
-
-            // Appel à l'API avec le message et l'historique complet des messages
-            this.chatService
-                .sendMessage(this.variableCopyMessage, this.messages)
-                .subscribe(
-                    (response) => {
-                        // Extraire le paramètre 'navigateTo' du message
-                        const navigateTo = this.extractNavigateTo(
-                            response.message
-                        );
-
-                        // Si un 'navigateTo' est détecté, effectuer la navigation
-                        if (navigateTo) {
-                            this.navigateTo(navigateTo);
-                        }
-
-                        // Ajouter la réponse d'OpenAI dans l'historique (en retirant le JSON si présent)
-                        const cleanMessage = response.message.replace(
-                            /\{.*\}$/,
-                            ''
-                        ); // Supprimer le JSON s'il est à la fin
-                        this.messages.push({
-                            role: 'assistant',
-                            content: cleanMessage,
-                        });
-
-                        // Réactiver l'envoi de messages et masquer l'animation
-                        this.isTyping = false;
-                        this.canSendMessage = true;
-
-                        // Vider le champ de message utilisateur
-                        this.userMessage = '';
-                    },
-                    (error) => {
-                        console.error(
-                            'Erreur lors de la communication avec OpenAI',
-                            error
-                        );
-                        this.isTyping = false;
-                        this.canSendMessage = true;
-                    }
-                );
-        }, thinkingTime * 1000); // Temps de réflexion proportionnel avant de taper
-    }
-
-
-
-cleanUpHistory(messages: { role: string, content: string }[]): { role: string, content: string }[] {
-  if (messages.length < 10) return messages;
-  const numberToDelete = Math.floor(messages.length * 0.53);
-  const cleanedMessages = messages.slice(numberToDelete);
-  return cleanedMessages;
-}
-
-    onEnter(event: any): void {
-      // Utilisation de 'any' pour contourner le problème de typage
-      const keyboardEvent = event as KeyboardEvent; // Cast explicite en tant que KeyboardEvent
-      keyboardEvent.preventDefault(); // Empêche le saut de ligne
-    
-      if (this.canSendMessage && this.userMessage.trim()) {
-        this.sendMessage(); // Envoie le message
-        this.resetTextArea(); // Réinitialise la taille du textarea
-        this.userMessage = ''; // Efface le champ de texte après l'envoi
-      }
-    }
-    
-    resetTextArea(): void {
-      const textArea = document.querySelector('.chat-input') as HTMLTextAreaElement;
-      if (textArea) {
-        textArea.style.height = '40px'; // Retour à la taille initiale (ou ajuste la valeur selon la taille souhaitée)
-      }
-    }
-    
-    adjustTextArea(event: Event): void {
-      const target = event.target as HTMLTextAreaElement;
-      target.style.height = 'auto'; // Réinitialise la hauteur pour permettre le redimensionnement
-      target.style.height = `${target.scrollHeight}px`; // Ajuste la taille en fonction du contenu
-    }
-
-    // Fonction pour extraire le paramètre 'navigateTo' du message
-    extractNavigateTo(response: string): any {
-        console.log('Extracting navigateTo from response');
-        console.log(response);
-
-        // Trouver l'index de début de l'objet JSON
-        const jsonStartIndex = response.indexOf('{');
-        console.log(jsonStartIndex);
-
-        // Vérifier si un objet JSON existe à la fin du message
-        if (jsonStartIndex !== -1) {
-            const jsonString = response.substring(jsonStartIndex);
+      // 📡 Appel API: on envoie le message + l’historique
+      this.chatService
+        .sendMessage(this.variableCopyMessage, this.messages)
+        .subscribe({
+          next: (response) => {
             try {
-                const jsonObject = JSON.parse(jsonString);
-                return jsonObject.navigateTo; // Retourner la valeur de 'navigateTo'
-            } catch (e) {
-                console.error("Erreur lors de l'analyse du JSON", e);
+              // Tente d’extraire des instructions de navigation JSON en fin de message
+              const navigateTo = this.extractNavigateTo(response.message);
+              if (navigateTo) {
+                this.navigateTo(navigateTo);
+              }
+
+              // Nettoie le message de tout JSON éventuel collé à la fin
+              const cleanMessage = response.message.replace(/\{.*\}$/, '');
+
+              // Ajoute la réponse de l’assistant dans l’historique
+              this.messages.push({ role: 'assistant', content: cleanMessage });
+            } catch (err) {
+              console.error('Erreur de post-traitement de la réponse:', err);
+              this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+            } finally {
+              // Quoi qu’il arrive, on réactive l’envoi et on coupe l’animation de frappe
+              this.isTyping = false;
+              this.canSendMessage = true;
+              this.userMessage = '';
             }
-        }
+          },
+          error: (error) => {
+            console.error('Erreur lors de la communication avec OpenAI', error);
+            // ✅ Toast d’erreur IzyGlam générique
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
 
-        return null; // Retourner null si aucun JSON valide n'est trouvé
-    }
+            // Fin d’état de frappe / réactivation de l’envoi
+            this.isTyping = false;
+            this.canSendMessage = true;
+          },
+        });
+    }, thinkingTime * 1000);
+  }
 
-    // Fonction pour naviguer vers une autre page
-    navigateTo(navigateTo: any) {
-        console.log('Navigating to:', navigateTo);
-        if (navigateTo === 'createBoutique') {
-            this.router.navigate(['creation-shop']);
-        }
+  // -----------------------------------------------------------
+  // 🧹 Réduction de l’historique pour éviter la surcharge mémoire
+  // -----------------------------------------------------------
+  cleanUpHistory(
+    messages: { role: string; content: string }[]
+  ): { role: string; content: string }[] {
+    if (messages.length < 10) return messages;
+    const numberToDelete = Math.floor(messages.length * 0.53);
+    const cleanedMessages = messages.slice(numberToDelete);
+    return cleanedMessages;
+  }
+
+  // -----------------------------------------------------------
+  // ⏎ Envoi via Enter (comportement UX)
+  // -----------------------------------------------------------
+  onEnter(event: any): void {
+    const keyboardEvent = event as KeyboardEvent;
+    keyboardEvent.preventDefault(); // Empêche le retour à la ligne
+
+    if (this.canSendMessage && this.userMessage.trim()) {
+      this.sendMessage();
+      this.resetTextArea();
+      this.userMessage = '';
     }
+  }
+
+  // -----------------------------------------------------------
+  // 🧼 Reset visuel du textarea après envoi
+  // -----------------------------------------------------------
+  resetTextArea(): void {
+    const textArea = document.querySelector('.chat-input') as HTMLTextAreaElement;
+    if (textArea) {
+      textArea.style.height = '40px';
+    }
+  }
+
+  // -----------------------------------------------------------
+  // ↕️ Ajuste dynamiquement la hauteur du textarea
+  // -----------------------------------------------------------
+  adjustTextArea(event: Event): void {
+    const target = event.target as HTMLTextAreaElement;
+    target.style.height = 'auto';
+    target.style.height = `${target.scrollHeight}px`;
+  }
+
+  // -----------------------------------------------------------
+  // 🔎 Extrait un JSON final { "navigateTo": ... } si présent
+  // -----------------------------------------------------------
+  extractNavigateTo(response: string): any {
+    try {
+      // Cherche l’index du premier '{' à partir de la fin du message
+      const jsonStartIndex = response.indexOf('{');
+      if (jsonStartIndex === -1) return null;
+
+      const jsonString = response.substring(jsonStartIndex);
+      const jsonObject = JSON.parse(jsonString);
+      return jsonObject.navigateTo || null;
+    } catch (e) {
+      console.error("Erreur lors de l'analyse du JSON", e);
+      return null;
+    }
+  }
+
+  // -----------------------------------------------------------
+  // 🧭 Navigation pilotée par la réponse modèle
+  // -----------------------------------------------------------
+  navigateTo(navigateTo: any) {
+    try {
+      if (navigateTo === 'createBoutique') {
+        this.router.navigate(['creation-shop']);
+      }
+      // 👇 Tu pourras ajouter d’autres routes ici (ex: 'prices', 'profile-setup', etc.)
+    } catch (err) {
+      console.error('Erreur de navigation :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+    }
+  }
+
+  // -----------------------------------------------------------
+  // ✨ Toast d’erreur/notification stylisé IzyGlam
+  // -----------------------------------------------------------
+  private showCustomToast(message: string) {
+    // ℹ️ Convention: pour erreurs → error(); pour messages neutres → success() si besoin.
+    this.toastr.error(message);
+  }
 }

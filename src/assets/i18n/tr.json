@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Kuaför",
+    "NAILTECHNICIAN": "Manikür",
+    "MAKEUP": "Makyaj uzmanı",
+    "WAXING": "Estetisyen",
+    "FACIAL": "Yüz bakımı",
+    "MASSAGE": "Masaj terapisti",
+    "EYELASH": "Kirpik uzatma",
+    "EYEBROW": "Kaş",
+    "TANNING": "Bronzlaşma",
+    "ACUPUNCTURE": "Akupunktur",
+    "OTHER": "Diğer"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Fotoğraf galeriden silindi",
+    "PHOTO_UPLOAD": "Görsel başarıyla yüklendi",
+    "PARTIAL_REFUND_CONFIRM": "Kısmi iade onaylandı!",
+    "CODE_SAVED": "Kod oluşturuldu.",
+    "USERCREATED": "Kullanıcı başarıyla oluşturuldu. Bir doğrulama e-postası gönderildi.",
+    "SUBSCRIBE_SUCCESS": "Aboneliğiniz başarıyla alındı.",
+    "EMAIL_VERIFIED": "Hesabınız etkin 🎉 Artık giriş yapabilirsiniz.",
+    "EMAIL_RESENT": "Doğrulama e-postası yeniden gönderildi. Lütfen e-postanızı kontrol edin.",
+    "BOOKING_CREATED": "Rezervasyonunuz başarıyla kaydedildi.",
+    "PAYMENT_OK": "Ödeme onaylandı.",
+    "REFUND_OK": "İade gerçekleştirildi.",
+    "USERUPDATED": "Kullanıcı güncellendi.",
+    "SETTINGS_UPDATED": "Ayarlar güncellendi.",
+    "REVIEW_ADDED": "Yorumunuz yayınlandı 🎉",
+    "SHOPUPDATED": "Mağaza güncellendi.",
+    "BOOKING_ACCEPTED": "Rezervasyon kabul edildi.",
+    "BOOKING_FINISHED": "Rezervasyon tamamlandı.",
+    "BOOKING_REFUSED": "Rezervasyon reddedildi.",
+    "BOOKING_DELETED": "Rezervasyon silindi.",
+    "CODE_GENERATED": "Kod oluşturuldu.",
+    "CODE_CONFIRMED": "Kod doğrulandı.",
+    "INVOICE_DOWNLOADED": "Fatura indirildi.",
+    "MARKED_NO_SHOW_CLIENT": "Müşteri gelmedi olarak işaretlendi.",
+    "COMPANY_CREDITED": "Şirket hesabı kredilendirildi.",
+    "MARKED_NO_SHOW_PRO": "Hizmet sağlayıcı gelmedi olarak işaretlendi.",
+    "EMPLOYEE_CREDITED": "Çalışan hesabı kredilendirildi.",
+    "NO_SHOW_PRO": "Ceza uygulandı ve iade yapıldı.",
+    "EMPLOYEE_DELETED": "Çalışan silindi.",
+    "SLOT_SELECTED": "Zaman aralığı seçildi",
+    "PASSWORD_RESET": "Şifre sıfırlandı.",
+    "INVOICE_GENERATED": "Faturalar oluşturuldu.",
+    "REVIEW_SAVED": "Yorum kaydedildi, teşekkürler!",
+    "DEFAULT_PASSWORD_UPDATED": "Varsayılan şifre güncellendi.",
+    "COMPANY_CREATED": "Profesyonel hesabınız başarıyla oluşturuldu."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Favorilerinizi yönetmek için lütfen giriş yapın.",
+    "INVALID_IMAGE": "Geçersiz görsel.",
+    "NO_SLOTS": "Bu hizmet için uygun zaman aralığı yok.",
+    "NO_SHOP_SELECTED": "Hiçbir mağaza seçilmedi.",
+    "NO_SERVICE_SELECTED": "Hiçbir hizmet seçilmedi.",
+    "ORDER_ERROR": "Sipariş güncellenirken hata oluştu.",
+    "CODE_ERROR": "Kod kaydedilirken hata oluştu.",
+    "INVOICE_GENERATED_ERROR": "Faturalar oluşturulurken hata oluştu.",
+    "USERNOTCREATED": "Kullanıcı oluşturulamadı.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Şirket bakiyesi bu kredi için yetersiz.",
+    "GENERIC_ERROR": "✨ Hoppala… bir hata oluştu. Lütfen tekrar deneyin ✨",
+    "COMPANY_CREDITED": "Şirket hesabı kredilendirildi.",
+    "LINK_INVALID_OR_MISSING": "Bağlantı geçersiz veya eksik.",
+    "LINK_INVALID_OR_EXPIRED": "Bağlantı geçersiz veya süresi dolmuş.",
+    "EMAIL_NOT_FOUND": "Kullanıcı e-postası bulunamadı.",
+    "PAYMENT_FAILED": "Ödeme başarısız.",
+    "BOOKING_FAILED": "Rezervasyon oluşturma başarısız oldu.",
+    "LOAD_CARDS_FAILED": "Kartlarınız yüklenirken bir hata oluştu.",
+    "LOAD_SHOP_FAILED": "Salon yüklenirken bir hata oluştu.",
+    "LOAD_PRODUCTS_FAILED": "Hizmetler yüklenirken bir hata oluştu.",
+    "INVALID_CODE": "Girilen kod geçersiz.",
+    "PASSWORD_CHANGED": "Şifreniz güncellendi.",
+    "PASSWORDS_IDENTICAL": "Yeni şifre mevcut şifreden farklı olmalıdır.",
+    "INVALID_AMOUNT": "Girilen tutar geçersiz.",
+    "INVALID_CURRENT_PASSWORD": "Mevcut şifre yanlış.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Mevcut şifre hatalı veya bir hata oluştu.",
+    "PASSWORD_UPDATE_FAILED": "Şifre değiştirme başarısız oldu.",
+    "PASSWORD_UPDATE_GENERIC": "Şifre güncellenirken bir hata oluştu.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Şifreler uyuşmuyor veya çok kısa (min. 8 karakter).",
+    "INVALID_PASSWORD": "Şifre boş olamaz.",
+    "PASSWORD_TOO_SHORT": "Şifre en az 8 karakter olmalıdır."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Stripe yapılandırması eksik.",
+    "LOAD_FAILED": "Stripe yüklenemedi",
+    "NOT_READY": "Stripe başlatılmadı",
+    "CONFIRM_FAILED": "Kart kaydı başarısız",
+    "CARD_SAVED": "Kart başarıyla kaydedildi ✅",
+    "PM_FAILED": "Kart oluşturma başarısız",
+    "SI_FAILED": "Kart kaydı hazırlanamıyor",
+    "ATTACH_FAILED": "Kart hesaba eklenemiyor",
+    "SAVE_CARD": "Kartı kaydet",
+    "ADD_CARD": "Kart ekle"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Lütfen giriş yapın"
+  },
+  "COMMON": {
+    "LOADING": "Yükleniyor…",
+    "UNEXPECTED_ERROR": "Beklenmeyen bir hata oluştu"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Doğrulama sürüyor",
+    "VALIDE": "Etkinleştirme bağlantınızı doğruluyoruz. Sadece bir an sürecek.",
+    "ACCOUNT": "Hesap etkin",
+    "CONNECT": "Giriş yap",
+    "OUPS": "Hata",
+    "WRITE": "Yardıma mı ihtiyacınız var? Bize yazın:",
+    "RESEND": "Etkinleştirme e-postasını yeniden gönder"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Banka bilgilerim",
+    "ADD_BANK_INFO": "Banka bilgilerimi ekle",
+    "BANK_NAME": "Banka adı",
+    "HOLDER_NAME": "Hesap sahibi",
+    "COUNTRY": "Ülke",
+    "SAVE": "Kaydet"
+  },
+  "LOADER": {
+    "LOADING": "Yükleniyor…"
+  },
+  "SPONSORS": {
+    "TITLE": "Sponsorlarımız",
+    "SPONSORISED": "Sponsorluklu"
+  },
+  "TABS": {
+    "FINANCE": "Finans takibi",
+    "GENERAL_INFO": "Genel bilgiler",
+    "EMPLOYEES": "Çalışan yönetimi",
+    "SERVICES": "Hizmet yönetimi",
+    "PHOTOS": "Fotoğraf galerisi",
+    "STATS": "İstatistikler",
+    "PARAM": "Ayarlar",
+    "SHOPS": "Mağazalar",
+    "USERS": "Kullanıcılar",
+    "MESSAGE": "Mesajlaşma"
+  },
+  "CARD": {
+    "ADD": "Kart ekle",
+    "NO_IMAGE": "Galeride görsel yok.",
+    "SALON": "Salon başarıyla güncellendi",
+    "ERROR1": "Salon güncellenirken hata oluştu",
+    "ERROR2": "Fotoğraf güncellenirken hata oluştu",
+    "UPDATE": "Salon başarıyla güncellendi"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Tamamlandı",
+    "ACCEPTEE": "Kabul edildi",
+    "WAITING": "Beklemede",
+    "CANCEL": "İptal edildi",
+    "DELETE": "Silindi",
+    "REFUSED": "Reddedildi",
+    "NO_PRESTA": "Hizmet sağlayıcı gelmedi",
+    "CLIENT_ABSENT": "Müşteri gelmedi",
+    "ADRESSE": "Adres",
+    "DATE": "Tarih",
+    "TOTAL": "Toplam",
+    "FACTURE": "Fatura",
+    "CANCELLED": "İptal edildi",
+    "DELETED": "Sil",
+    "AVIS": "Yorum",
+    "SUPPORT": "Destek",
+    "CODE": "Onay kodu",
+    "CODE_A_DONNER": "Hizmet sağlayıcıya verilecek kod",
+    "PRESTA_ABSENT": "Hizmet sağlayıcı gelmedi"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Mağaza yorumları",
+    "COMMENT": "Yorum",
+    "NOTE": "Puan",
+    "CLOSE": "Kapat"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Galeride görsel yok."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Siparişinizi puanlayın",
+    "DATE": "Tarih",
+    "SERVICE": "Hizmet",
+    "AVIS": "Yorumunuz",
+    "SEND": "Gönder",
+    "PLACEHOLDER": "Deneyiminizi anlatın…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Evinize getirin",
+    "KNOWMORE": "Daha fazla bilgi",
+    "PART1TITLE": "Evinizde en iyi güzellik hizmetlerinin keyfini çıkarın",
+    "PART1TEXT": "Nitelikli profesyonellerimiz, ihtiyaç ve isteklerinize uygun kaliteli güzellik bakımlarını size getirmek için evinize gelir. İster öğle arasında, ister işten sonra akşam, ister arkadaşlarınızla bir öğleden sonra—benzersiz bir iyi hissetme deneyimi yaşayın.",
+    "PART2TITLE": "İstediğiniz zaman çalışın, size uyan gelir yaratın",
+    "PART2TEXT": "Platformdaki talepleri kendi temponuzda kabul ederek programınıza göre gelir elde edin. Kendi ekipmanınızı kullanabilir veya izyGlam üzerinden profesyonel ekipman kiralamayı seçebilirsiniz.",
+    "PART3TITLE": "İşletmeler için yeniden düşünülmüş güzellik hizmeti",
+    "PART3TEXT": "Glam for Business, her ölçekteki işletmelere yönelik bir platformdur; müşterilerinizin ve çalışanlarınızın güzellik ihtiyaçlarını yönetmek için tasarlanmıştır. İş yerinde, şirket etkinliklerinde veya özel günlerde kişiselleştirilmiş bakım hizmetleri sunun. Nitelikli profesyonellerimiz, ihtiyaçlarınıza uygun hizmetleri sağlamak için hareket eder.",
+    "APPTITLE": "Uygulamalarla daha kolay",
+    "DOWNLOADAPP1": "Uygulamayı indir",
+    "DOWNLOADAPP2": "Güzellik profesyonelleri için uygulamayı indir",
+    "SCANTODOWNLOAD": "İndirmek için tara",
+    "SIGNUP": "Hemen kaydol!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Video oynatma hatası",
+    "AUTOPLAY_BLOCKED": "Otomatik oynatma engellendi. Videoyu başlatmak için dokunun.",
+    "NAV_ERROR": "Gezinme mümkün değil"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "izyGlam uygulama ve sitelerinin çalışma şekli",
+    "HELPCENTER": "Yardım merkezine erişin",
+    "BUSINESS": "İşletme",
+    "ABOUT": "Hakkında",
+    "OURSERVICES": "Hizmetlerimiz",
+    "PRESSAREA": "Basın alanı",
+    "INVESTORS": "Yatırımcılar",
+    "CAREERS": "İş ilanları",
+    "AI": "Yapay Zekâ",
+    "PRODUCTS": "Ürünler",
+    "GLAM": "izyGlam ile her zaman zirvede",
+    "RESERVED": "Önceden rezervasyon yapın",
+    "GIFTCARDS": "Hediye kartları",
+    "WORKWITHUS": "izyGlam ile çalışın",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Gizlilik",
+    "ACCESS": "Erişilebilirlik",
+    "CONDITIONS": "Koşullar",
+    "LANGUAGE": "Dil",
+    "LOCALISATION": "Konum",
+    "ALL_RIGHT": "Tüm hakları saklıdır"
+  },
+  "COMING_SOON": {
+    "TITLE": "Yakında geliyoruz",
+    "TITLE-NOT-COMING": "Henüz gelmeyi planlamıyoruz",
+    "DAYS": "Gün",
+    "HOURS": "Saat",
+    "MINUTES": "Dakika",
+    "SECONDS": "Saniye",
+    "TEXT": "Evinizde benzersiz bir güzellik deneyimi sunmak için çok çalışıyoruz. Lansmanımızdan haberdar olmak için bağlantıda kalın."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Günün fırsatları",
+    "DISCOVER": "izyGlam’da keşfet",
+    "LIKED": "Yakındaki en beğenilenler",
+    "SMART": "Akıllı planlar",
+    "TOP10": "Haftanın Top 10’u",
+    "SEARCHRESULT": "Arama sonuçları",
+    "AVIS": "Yorumlar"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Kuaför",
+    "MANUCURE": "Manikür",
+    "VISAGE": "Yüz",
+    "MASSAGE": "Masaj",
+    "MAQUILLAGE": "Makyaj",
+    "EPILATION": "Epilasyon",
+    "BRONZAGE": "Bronzlaşma",
+    "PARTUM": "Doğum sonrası",
+    "NUTRITION": "Beslenme",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Akupunktur",
+    "STYLISME": "Stil danışmanlığı",
+    "YOGA": "Rahatlama",
+    "DEVELOPPEMENT": "Kişisel gelişim",
+    "EYELASH": "Kirpik uzatma"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Bir kuaför",
+    "MANUCURE": "Bir manikürcü",
+    "ESTETICIAN": "Bir estetisyen",
+    "MASSAGE": "Bir masöz/masör",
+    "MAQUILLAGE": "Bir makyaj uzmanı",
+    "PEDICURE": "Bir pedikürcü",
+    "NUTRITION": "Bir beslenme uzmanı",
+    "FITNESS": "Bir koç"
+  },
+  "INTRO": {
+    "NORESULTS": "Sonuç bulunamadı",
+    "START": "Başla",
+    "SPECIALITY": "Uzmanlık?",
+    "WHERE": "Nerede?",
+    "CONNEXION": "Giriş",
+    "REGISTRATION": "Kayıt"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Hesap bilgileri",
+    "MESSAGE": "Mesajlarım",
+    "MESSAGE_SUBTITLE": "Devam eden sohbetlerimin listesi.",
+    "INFORMATION_SUBTITLE": "Kişisel bilgilerini kolayca düzenle.",
+    "SECURITY": "Güvenlik ve dil",
+    "SECURITY_SUBTITLE": "Şifre, dil… her şey burada kontrol altında.",
+    "CONFIDENTIAL": "Gizlilik ve veriler",
+    "CONFIDENTIAL_SUBTITLE": "Verilerin değerli. Onlara nasıl baktığımız burada.",
+    "DASHBOARD": "Gösterge paneli",
+    "DASHBOARD_SUBTITLE": "Faaliyet verilerini kolayca yönet.",
+    "COMPANY": "Şirketimi yönet",
+    "COMPANY_SUBTITLE": "Geçmiş, yaklaşan veya iptal edilen randevularını kolayca yönet.",
+    "SHOP": "Salonumu yönet",
+    "SHOP_SUBTITLE": "Salonunu, hizmetlerini ve finansını yönet.",
+    "FINANCIAL": "Finans takibi",
+    "ADMIN": "Genel yönetim",
+    "ADMIN_SUBTITLE": "Bu şaheserin tamamını kolayca yönet. Dünya senin, şampiyon!",
+    "CALENDAR": "Ajanda",
+    "CALENDAR_SUBTITLE": "Geçmiş veya yaklaşan randevularını kolayca yönet.",
+    "SELECT_SALON": "Bir salon seçin",
+    "NEW_SALON": "Salon oluştur",
+    "SHOP_TO_CREATE": "Oluşturulacak mağaza türü",
+    "CANCEL": "İptal",
+    "CREATE": "Mağazamı oluştur",
+    "INFO1": "Şu mağazanızı silmek üzeresiniz:",
+    "INFO2": "Bu işlem geri alınamaz",
+    "SURE": "Devam etmek istediğinizden emin misiniz",
+    "DELETE": "Sil"
+  },
+  "PROFILE": {
+    "TITLE": "Temel bilgiler",
+    "FIRSTNAME": "Ad",
+    "LASTNAME": "Soyad",
+    "PHONE": "Telefon numarası",
+    "ADDRESS": "E-posta adresi",
+    "CHANGE_USER": "Kullanıcıyı değiştir",
+    "CANCEL": "İptal",
+    "SUCCESS": "Profil başarıyla güncellendi",
+    "UPDATE_ERROR": "Şifre güncellenirken bir hata oluştu."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Şifre değiştir",
+    "ACTUAL_PASSWORD": "Mevcut şifre",
+    "NEW_PASSWORD": "Yeni şifre",
+    "CONFIRMED_PASSWORD": "Yeni şifreyi onaylayın",
+    "CHANGE_PASSWORD": "Şifreyi değiştir",
+    "CHANGE_OK": "Şifre başarıyla değiştirildi",
+    "CHANGE_LANGUE": "Dili değiştir",
+    "CHANGE_COUNTRY": "Ülkeyi değiştir",
+    "LANGUE": "Dil",
+    "COUNTRY": "Ülke"
+  },
+  "PAYEMENT": {
+    "YOU": "Siz",
+    "HEADER_TITLE": "Ödeme",
+    "SERVICE_TITLE": "Hizmet",
+    "SERVICE_NOTE": "Not:",
+    "ADDRESS_TITLE": "Hizmet adresi",
+    "ADDRESS_RENDEZVOUS": "Kapımın önünde buluşalım",
+    "ADDRESS_CHANGE": "Başka bir adres seçin",
+    "PAYMENT_SECTION_TITLE": "Ödeme",
+    "PAYMENT_METHOD": "Ana kart",
+    "PAYMENT_EXPIRE": "Son kullanma",
+    "PAYMENT_NO_CARD": "Ana kart tanımlı değil",
+    "PAYMENT_NO_CARD_DESC": "Lütfen ana ödeme yöntemi olarak bir kart ekleyin veya seçin.",
+    "SUMMARY_SUBTOTAL": "Ara toplam",
+    "SUMMARY_SERVICE_FEE": "izyGlam komisyonu",
+    "SUMMARY_DELIVERY_FEE": "Hizmet ücreti",
+    "SUMMARY_TOTAL": "Toplam",
+    "TITLE": "Randevunuzu çevrimiçi alın",
+    "FOR_WHO": "Bu randevuyu kimin için alıyorsunuz?",
+    "ADD_PROCHE": "Yakın kişi ekle",
+    "WHERE": "Randevuyu nerede alacaksınız?",
+    "SELECT_ADDRESS": "Bir adres seçin",
+    "ADD_ADDRESS": "Adres ekle",
+    "CARD_PAY": "Banka kartı ile ödeme",
+    "CARD_NUM": "Kart numarası",
+    "CARD_NAME": "Kart üzerindeki ad",
+    "EXPIRATION": "Son kullanma tarihi",
+    "CVV": "CVV",
+    "RDV": "Randevunuzun detayları",
+    "RESUME": "Randevu özeti",
+    "DATE": "Tarih",
+    "HOUR": "Saat",
+    "PRESTA": "Hizmet",
+    "EXPIRE": "Son kullanma",
+    "DEFAULT": "Varsayılan",
+    "NOCARD": "Kayıtlı kart yok",
+    "WITH": "İle",
+    "TOTAL": "Ödenecek toplam",
+    "ANNULER": "İPTAL",
+    "RETOUR": "GERİ",
+    "CONTINUER": "DEVAM",
+    "VALIDER": "ONAYLA",
+    "ADRESSE": "Adres",
+    "LEGAL_TEXT_1": "Sipariş ver tuşuna tıklayarak, izyGlam France SAS (ROS 841 983 828) ile teslimat hizmetleri sözleşmesini kabul etmiş olursunuz.",
+    "LEGAL_TEXT_2": "Teslimat hizmetlerine yönelik cayma hakkınızdan feragat ettiğinizi hatırlatırız. Tüketici arabulucusuna başvurma imkânınız vardır.",
+    "LEGAL_TEXT_3": "Kurye geldiğinde orada değilseniz siparişiniz kapınızın önüne bırakılacaktır. Sipariş verdiğinizde, teslimattan sonra siparişin tüm sorumluluğunu üstlenmeyi kabul edersiniz. Alkol veya kısıtlı ürün içeren siparişler, yokluğunuzda doğrudan işletmeye iade edilecektir.",
+    "CLOSE_FORM": "Formu kapat",
+    "ADD_CARD": "Kart ekle",
+    "TRAITEMENT": "İşlem sürüyor"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Ödeme doğrulandı",
+    "THANKS": "Teşekkürler! Rezervasyonunuz başarıyla alındı.",
+    "BACKHOME": "Ana sayfaya dön",
+    "PROBLEME": "Rezervasyon sorunu",
+    "PAIEMENT": "Ödemeniz alındı, ancak rezervasyon onaylanamadı.",
+    "THANKSCONTACT": "Lütfen şu adresten destek ekibimizle iletişime geçin:",
+    "FAILED": "Ödeme başarısız",
+    "VALIDATE": "Ödemenizi doğrulayamadık. Lütfen tekrar deneyin."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "Bağımsızlar için izyGlam",
+    "STEP1": {
+      "TITLE": "Müşteriler sipariş verir",
+      "TEXT": "Müşteri işletmenizi bulur ve izyGlam uygulamasından sipariş verir."
+    },
+    "STEP2": {
+      "TITLE": "Rezervasyonu kabul edersiniz",
+      "TEXT": "Rezervasyonu kabul edersiniz ve ajandanız güncellenir."
+    },
+    "STEP3": {
+      "TITLE": "Randevu zamanı",
+      "TEXT": "Yaklaşan rezervasyonlar önceden bildirilir ve her müşteriye gitmeniz için sizi yönlendiririz."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Şirket hesabını kredilendir",
+    "SOLDE": "Mevcut bakiye",
+    "CREDIT": "Yüklenecek tutar",
+    "COMPANY": "Şirket hesabını kredilendir",
+    "DEPENSE": "Gider takibi",
+    "DATE": "Tarih",
+    "COUNT": "Tutar",
+    "EMPLOYEE": "Çalışan",
+    "DESCRIPTION": "Açıklama"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Zaten bir iş ortağı veya şirket hesabınız var!",
+    "NOT_CONNECTED": "Bir salon kaydetmek için lütfen giriş yapın",
+    "TITLE": "Hadi başlayalım!",
+    "TITLE2": "Bir salon oluşturalım!",
+    "NAME": "Salonunuzun adı",
+    "ADDRESS": "Şirket adresiniz",
+    "STREET": "Sokak",
+    "CITY": "Şehir",
+    "CODE_POSTAL_POSSIBLE": "Hizmet verilen posta kodları",
+    "CODE_POSTAL": "Posta kodu",
+    "COUNTRY": "Ülke",
+    "ADDRESSPLACEHOLDER": "Örn. Ana Cadde No:123",
+    "FLOOR": "Kat/Süit (isteğe bağlı)",
+    "BUSINESSTYPE": "İşletme türü",
+    "FIRSTNAME": "Ad",
+    "LASTNAME": "Soyad",
+    "PASSWORD": "Şifre",
+    "PASSWORDCONFIRMED": "Şifre onayı",
+    "EMAIL": "E-posta",
+    "PHONE": "Cep telefonu numarası",
+    "WHATSAPP": "WhatsApp üzerinden mesaj almayı kabul ediyorum",
+    "BUTTON": "Mağazayı kaydet",
+    "SUCCESS": "Mağaza başarıyla oluşturuldu!",
+    "ERROR": "Mağaza oluşturulurken bir hata oluştu:",
+    "ERROR1": "İşletme adı zorunludur.",
+    "ERROR2": "İşletme adresi zorunludur.",
+    "ERROR3": "İşletme türü zorunludur.",
+    "ERROR4": "Ad zorunludur.",
+    "CHOOSE_COUNTRY": "Bir ülke seçin",
+    "POSTAL_CODE": "Posta kodu",
+    "CHOOSE_CITY": "Bir şehir seçin",
+    "ERROR5": "Soyad zorunludur.",
+    "ERROR6": "E-posta zorunludur.",
+    "ERROR7": "Cep telefonu numarası zorunludur.",
+    "ERROR8": "WhatsApp üzerinden mesaj almayı kabul etmelisiniz."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Adresi değiştir",
+    "FIND_SHOP": "Mağaza ara",
+    "CATEGORIES": "Kategoriler",
+    "OFFRE": "Günün fırsatları",
+    "DISCOVER": "Keşfet",
+    "APPRECIATE": "En beğenilenler",
+    "SMART": "Akıllı planlar",
+    "TOP10": "Haftanın Top10’u",
+    "SEARCH_RESULT": "Arama sonuçları",
+    "NOT_AVAILABLE": "Bu adreste henüz mevcut değil",
+    "NEW_ADDRESS": "Yeni adres ekle",
+    "CHOOSE_ADDRESS": "Bir adres seç",
+    "CHOOSE_COUNTRY": "Bir ülke seç",
+    "CHOOSE_CITY": "Bir şehir seç",
+    "CHOOSE_ARRONDISSEMENT": "Bir ilçe seç",
+    "CANCEL": "İptal",
+    "SAVE": "Kaydet",
+    "CLOSE": "Kapat"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Ad",
+    "CITY": "Şehir",
+    "NOTE": "Puan",
+    "MIDDLE_PRICE": "Ortalama fiyat",
+    "PROMOTION": "Promosyon",
+    "ACTIONS": "İşlemler",
+    "MODIFIER": "Mağaza bilgilerini düzenle",
+    "SHOP_NAME": "Mağaza adı",
+    "DESCRIPTION": "Açıklama",
+    "PRINCIPALE": "Ana görsel",
+    "SHOP": "Mağaza türü",
+    "ARRONDISSEMENT": "İlçe",
+    "MINIMUM_DELAI": "Minimum süre",
+    "DISTANCE": "Maksimum mesafe (km)",
+    "EMPLACEMENT": "Konum",
+    "HOURS_MORNING": "Açılış saatleri - Sabah",
+    "HOURS_AFTERNOON": "Açılış saatleri - Öğleden sonra",
+    "ACTIVE_PROMO": "Aktif kampanya",
+    "CANCEL": "İptal",
+    "ENREGISTRER": "Kaydet"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "İşinizi büyütün",
+    "TEXT": "izyGlam uygulamasını kullanan binlerce kullanıcı, bölgenizde bir restoran arıyor olabilir…",
+    "IMAGE": "görsel"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Neden izyGlam?",
+    "STEP1": {
+      "TITLE": "Kendi şartlarınıza göre çalışın",
+      "TEXT": "Programınızı organize edin ve hizmetlerinizi özgürce yönetin. İhtiyaçlarınıza uyum sağlayan esnek bir platformla işinizi en üst düzeye çıkarın."
+    },
+    "STEP2": {
+      "TITLE": "Çevrim içi varlığınızı güçlendirin",
+      "TEXT": "Uygulamaya dahil pazarlama araçlarıyla daha fazla müşteri çekin ve artan görünürlükle sonuçlarınızı yükseltin."
+    },
+    "STEP3": {
+      "TITLE": "Müşterilerinizi sadıklaştırın",
+      "TEXT": "Müşteri tercihlerini analiz ederek, yorumlarına yanıt vererek ve sadakat avantajları sunarak kalıcı ilişkiler kurun."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "İşinizi yönetmeyi kolaylaştırın",
+      "TEXT": "izyGlam ile iyi yaşam profesyonelleri için eksiksiz bir çözümle işinizi huzurla yönetin. Esnek araçlar ve kişiselleştirilmiş destekten faydalanın."
+    },
+    "STEP2": {
+      "TITLE": "Satışlarınızı artırın",
+      "TEXT": "Her gün binlerce kişi, yakınındaki güzellik uzmanlarını bulmak için izyGlam’i kullanıyor. Bu fırsattan yararlanarak alanınızdaki yeni müşterilere ulaşın."
+    },
+    "STEP3": {
+      "TITLE": "Müşteri memnuniyeti garantisi",
+      "TEXT": "izyGlam ile müşterilerinize kişiselleştirilmiş bir deneyim sunun. Randevuları kolayca yönetin, hızlı iletişim kurun ve uygun hizmetler sağlayın."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "Şirketiniz için izyGlam?",
+    "STEP1": {
+      "TITLE": "Çalışanlarınız ve müşterileriniz hizmet rezervasyonu yapar",
+      "TEXT": "Çalışanlarınız veya müşterileriniz, izyGlam uygulaması üzerinden kendilerine uygun iyi yaşam hizmetlerini seçer."
+    },
+    "STEP2": {
+      "TITLE": "Ayrılacak tutarı siz belirlersiniz",
+      "TEXT": "Çalışanlarınızın ve müşterilerinizin hesaplarını kredilendirme kontrolü sizde. Dilerseniz periyodik, dilerseniz tek seferlik kredilendirme yapabilirsiniz."
+    },
+    "STEP3": {
+      "TITLE": "Hizmetler gerçekleştirilir",
+      "TEXT": "Güzellik uzmanlarımız, rezervasyonu yapılan hizmetleri çalışanlarınıza ya da ofisinizde sunar; optimum bir iyi yaşam deneyimi sağlar."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Şirketinizi güçlendirin",
+    "TEXT": "izyGlam uygulamasındaki binlerce kullanıcı iyi yaşam hizmetleri arıyor. Çalışanlarınız ve müşterilerinize, onlara en yakın en iyi güzellik uzmanlarına ayrıcalıklı erişim sunun.",
+    "IMAGE": "görsel"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Neden izyGlam?",
+    "STEP1": {
+      "TITLE": "Çalışanlarınızı sadıklaştırın ve ödüllendirin",
+      "TEXT": "Ekiplerinize aylık güzellik bütçesi sunarak benzersiz bir avantaj sağlayın. Kuaför, estetisyen ve daha birçok uzmanla memnuniyet ve aidiyeti güçlendirin."
+    },
+    "STEP2": {
+      "TITLE": "Marka imajınızı güçlendirin",
+      "TEXT": "Müşterileriniz veya iş ortaklarınız için güzellik etkinlikleri düzenleyin ya da izyGlam hizmetlerini sadakat programlarınıza entegre edin."
+    },
+    "STEP3": {
+      "TITLE": "İş yerinde iyi yaşamı optimize edin",
+      "TEXT": "Çalışanlarınızın, iş yerinde veya yakınında iyi yaşam hizmetlerine kolayca erişmesini sağlayın. Motivasyonu ve ekip uyumunu artırın."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Ekipleriniz için iyi yaşama erişimi kolaylaştırın",
+      "TEXT": "izyGlam ile çalışanlarınıza, kendilerine bakmaları için basit ve esnek bir çözüm sunun."
+    },
+    "STEP2": {
+      "TITLE": "Müşterilerinize yenilikçi avantajlar sunun",
+      "TEXT": "Etkinliklerinizde veya sadakat programlarınız kapsamında iyi yaşam hizmetleri sunarak ilişkilerinizi güçlendirin."
+    },
+    "STEP3": {
+      "TITLE": "İhtiyaca özel iyi yaşam, istediğiniz yerde ve zamanda",
+      "TEXT": "izyGlam ile çalışanlarınız ve müşterileriniz, bulundukları yerde kaliteli hizmetlerden yararlanabilir."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Hesabı yönet",
+    "ORDERS": "Geçmiş siparişler",
+    "FAVORITES": "Favoriler",
+    "HELP": "Yardım",
+    "MY_ABO": "Aboneliğim",
+    "PRICES": "Fiyat planları",
+    "FIDELITY": "Sadakat programı",
+    "LOGOUT": "Çıkış yap",
+    "YOUR_BEAUTY_SERVICES": "Güzellik hizmetlerinizi sunun",
+    "YOUR_COMPANY": "Şirketinizi kaydedin"
+  },
+  "SUBTITLES": {
+    "HELP": "Yardıma mı ihtiyacın var? Bu sayfa senin için burada."
+  },
+  "ORDERS": {
+    "TITLE": "Siparişlerim",
+    "TITLE_SUBTITLE": "Geçmiş, yaklaşan veya iptal edilen randevularını kolayca yönet.",
+    "UPCOMING_SECTION": "📅 Yaklaşanlar",
+    "NO_UPCOMING": "Planlanmış bir hizmetiniz yok.",
+    "PAST_SECTION": "✅ Geçmiş",
+    "NO_PAST": "Gerçekleştirilmiş bir hizmetiniz yok.",
+    "ADDRESS": "Adres",
+    "DATE": "Tarih",
+    "TOTAL": "Toplam",
+    "ITEMS": "ürün",
+    "DELETE": "Sil",
+    "VISIT": "Ziyaret et",
+    "PRESTA_FOR": "Hizmet alan",
+    "AT": "saat",
+    "ORDER_AGAIN": "Yeniden sipariş ver",
+    "INVOICE": "Fatura talep et",
+    "REVIEW": "Yorum yap",
+    "CANCEL": "İptal et"
+  },
+  "FIDELITY": {
+    "TITLE": "Favorilerim",
+    "AGAIN": "Kaldı",
+    "AGAIN_SUBTITLE": "ödülünden önce",
+    "TITLE_SUBTITLE": "hediyeni açmak için",
+    "DATE": "Geçerlilik tarihi",
+    "HISTO": "Bakım geçmişim"
+  },
+  "FAVORITES": {
+    "TITLE": "Favorilerim",
+    "TITLE_SUBTITLE": "Gözde salonlarını bir bakışta bul."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Hizmet ücreti:",
+    "DISTANCE": "Maks. mesafe:",
+    "PAYEMENT": "Kart ve PayPal ile ödeme kabul edilir",
+    "PRESS_FOR_INFO": "Saatler, bilgiler vb. için dokunun.",
+    "GALLERY": "Görsel galerisi",
+    "SEE_MORE": "Daha fazla göster",
+    "SEE_LESS": "Daha az göster"
+  },
+  "LOGIN": {
+    "TITLE": "Giriş bilgilerinizi girin.",
+    "FORGET_PASSWORD": "Şifrenizi mi unuttunuz?",
+    "CONTINUER": "Devam et",
+    "CONTINUE_WITH": "İle devam et",
+    "OR": "Veya",
+    "QRCODE": "QR kod ile giriş yapın",
+    "CGU": "Devam ederek, belirtilen numaraya izyGlam ve bağlı şirketleri tarafından (otomatik yöntemler dâhil) arama, WhatsApp mesajı veya SMS gönderilmesini kabul edersiniz.",
+    "PLACEHOLDER_EMAIL": "E-posta adresi",
+    "PLACEHOLDER_PASSWORD": "Şifre",
+    "PLACEHOLDER_PASSWORD_NEW": "Yeni şifre",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Şifreyi doğrula",
+    "CHANGE_PASSWORD": "Şifrenizi değiştirin",
+    "REINIT": "Sıfırla"
+  },
+  "SIGNUP": {
+    "GENRE": "Cinsiyet",
+    "CHOOSE": "Seç",
+    "SEX_MALE": "Erkek",
+    "SEX_FEMALE": "Kadın",
+    "TITLE": "Kişisel bilgilerinizi girin.",
+    "CONTINUER": "Devam et",
+    "OR": "Veya",
+    "QRCODE": "QR kod ile giriş yapın",
+    "CGU": "Devam ederek, belirtilen numaraya izyGlam ve bağlı şirketleri tarafından (otomatik yöntemler dâhil) arama, WhatsApp mesajı veya SMS gönderilmesini kabul edersiniz.",
+    "PLACEHOLDER_FIRSTNAME": "Ad",
+    "PLACEHOLDER_LASTNAME": "Soyad",
+    "PLACEHOLDER_EMAIL": "E-posta",
+    "PLACEHOLDER_EMAIL_REQUIRED": "E-posta gerekli",
+    "PLACEHOLDER_EMAIL_WRONG": "Geçersiz e-posta biçimi",
+    "PLACEHOLDER_PHONE": "Telefon",
+    "PLACEHOLDER_PHONE_NUMBER": "Telefon numarası",
+    "PLACEHOLDER_PASSWORD": "Şifre",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Şifre onayı",
+    "COUNTRY": "Ülke"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Fransızca",
+    "ANGLAIS": "İngilizce",
+    "ESPAGNOL": "İspanyolca",
+    "NEERLANDAIS": "Felemenkçe",
+    "ITALIEN": "İtalyanca",
+    "ALLEMAND": "Almanca",
+    "PORTUGAIS": "Portekizce",
+    "POLONAIS": "Lehçe",
+    "DANOIS": "Danca",
+    "FINNOIS": "Fince",
+    "SUEDOIS": "İsveççe",
+    "ARABE": "Arapça",
+    "TURC": "Türkçe",
+    "CHINOIS": "Çince",
+    "RUSSE": "Rusça",
+    "PERSAN": "Farsça",
+    "UKRAINIEN": "Ukraynaca",
+    "ROUMAIN": "Rumence",
+    "CATALAN": "Katalanca",
+    "BASQUE": "Baskça",
+    "GALICIEN": "Galiçyaca",
+    "ALBANAIS": "Arnavutça",
+    "KURDE": "Kürtçe",
+    "ESTONIEN": "Estonca",
+    "SOMALIEN": "Somalice",
+    "BIELORUSSE": "Beyaz Rusça",
+    "JAPONAIS": "Japonca",
+    "COREEN": "Korece",
+    "INDONESIEN": "Endonezce",
+    "MALAIS": "Malayca",
+    "THAI": "Tayca",
+    "VIETNAMIEN": "Vietnamca",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bengalce"
+  },
+  "COUNTRY": {
+    "FRANCE": "Fransa",
+    "ALLEMAGNE": "Almanya",
+    "SPAIN": "İspanya",
+    "ITALY": "İtalya",
+    "DANEMARK": "Danimarka",
+    "FINLAND": "Finlandiya",
+    "NETHERLAND": "Hollanda",
+    "POLAND": "Polonya",
+    "PORTUGAL": "Portekiz",
+    "SWEDEN": "İsveç",
+    "CHINA": "Çin",
+    "INDIA": "Hindistan",
+    "JAPAN": "Japonya",
+    "SOUTH_KOREA": "Güney Kore",
+    "INDONESIA": "Endonezya",
+    "PHILIPPINES": "Filipinler",
+    "THAILAND": "Tayland",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malezya",
+    "SINGAPOURE": "Singapur",
+    "EMIRAT_ARABE": "Birleşik Arap Emirlikleri",
+    "SAUDI_ARABIA": "Suudi Arabistan"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Adreslerim",
+    "ADDRESS_MODIFICATION": "Adres düzenleme",
+    "STREET": "Sokak",
+    "CITY": "Şehir",
+    "CP": "Posta kodu",
+    "CREATE": "Oluştur",
+    "BACK": "Geri",
+    "CHANGE": "Düzenle",
+    "CLOSE": "Kapat"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Platform ayarları",
+    "COMMISSION": "Komisyon oranı (%)",
+    "0to100": "0 ile 100 arasında değer zorunludur",
+    "SERVICE": "Hizmet ücreti (€)",
+    "WEEKS": "Gösterilen hafta sayısı",
+    "SUP0": "0’dan büyük değer zorunludur",
+    "LESS24": "24 saatten az iptal ücreti (%)",
+    "LESS48": "48 saatten az iptal ücreti (€)",
+    "DELAY": "Minimum rezervasyon süresi (saat)",
+    "TVA": "KDV oranı (%)",
+    "ADS": "Reklamları etkinleştir",
+    "COMPANY": "Şirketlerle ticareti etkinleştir",
+    "FIDELITY": "Sadakat programını etkinleştir",
+    "MULTI_SHOP": "Çoklu mağazayı etkinleştir",
+    "PROMO": "Mağazada promosyonları etkinleştir",
+    "SPONSORS": "Açılış sayfasında sponsorları etkinleştir",
+    "SAVE": "Kaydet"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Toplam mağaza",
+    "ACT_SHOPS": "Aktif mağaza sayısı",
+    "USERS": "Toplam kullanıcı",
+    "NBR_USERS": "Kayıtlı kullanıcı sayısı",
+    "CA_TOTAL": "Toplam ciro",
+    "CA_GENERATED": "Oluşturulan ciro",
+    "SHOPS_PERFO": "Mağaza performansları",
+    "SHOP_NAME": "Mağaza adı",
+    "CITY": "Şehir",
+    "REVENUES": "Gelirler",
+    "BOOKINGS": "Rezervasyon sayısı",
+    "NOTE": "Ortalama puan",
+    "ACTIONS": "İşlemler",
+    "DETAILS": "Detaylar",
+    "ADJUST": "Ayarlama",
+    "SHOP_ADJUST": "Mağazayı ayarla",
+    "STILL_DEVELOPPED": "Bu özellik hâlâ geliştirme aşamasında",
+    "CLOSE": "Kapat"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Etkinlik detayları",
+    "CLIENT": "Müşteri",
+    "DEBUT": "Başlangıç",
+    "FIN": "Bitiş",
+    "ADDRESS": "Adres",
+    "PHONE": "Telefon",
+    "CANCEL": "İptal",
+    "SAVE": "Kaydet"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Etkinlik oluştur",
+    "COMING": "Yaklaşanlar",
+    "PAST": "Geçmiş",
+    "CANCELLED": "İptaller",
+    "NO_CANCELLED": "İptal edilen sipariş yok."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Çevrim içi destek"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Çalışan yönetimi",
+    "NAME": "Ad",
+    "EMAIL": "E-posta",
+    "SOLDE": "Hesap bakiyesi",
+    "ACTIONS": "İşlemler",
+    "DEFAULT_PASSWORD": "Varsayılan şifre",
+    "REINITIALIZE_PASSWORD": "Sıfırlama için varsayılan şifre",
+    "CHANGE_PASSWORD": "Şifre değiştir"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Çalışan hesabını kredilendir",
+    "AMOUNT": "Yüklenecek tutar",
+    "CANCEL": "İptal",
+    "SAVE": "Onayla"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Toplam rezervasyon",
+    "TOTAL_MONTH": "Bu ayki rezervasyonlar",
+    "GENERATED": "Oluşturulan gelir",
+    "MONTHLY": "Bu ayki gelir",
+    "AVG_NOTE": "Ortalama puan",
+    "BASED_ON": "Dayanak:",
+    "REVIEWS": "yorum",
+    "NEXT_APPOINTEMENT": "Yaklaşan randevular",
+    "POPULAR_SERVICES": "En popüler hizmetler",
+    "RESERVATION": "rezervasyon"
+  },
+  "FINANCE": {
+    "PROGRESS": "Önceki aya göre değişim",
+    "PROGRESSION": "İlerleme",
+    "TOTAL_GENERATED": "Toplam oluşturulan ciro",
+    "CA": "Ciro",
+    "COMMISSION_TAKEN": "Alınan komisyon",
+    "COMMISSIONS": "Komisyonlar",
+    "NET_TO_PAY": "Ödenecek net tutar",
+    "DISPO_AMOUNT": "Kullanılabilir tutar",
+    "REQUEST_WITHDRAWAL": "Havale talep et",
+    "TAKE": "Çekilecek tutar",
+    "TOTAL_EARNINGS": "Net gelirler",
+    "TOTAL_BOOKINGS": "Gerçekleşen hizmetler",
+    "CANCELLED_BOOKINGS": "İptal edilen hizmetler",
+    "SERVICES_CANCELLED": "İptal edilen veya reddedilen rezervasyonlar",
+    "SERVICES_COMPLETED": "Tamamlanan rezervasyonlar",
+    "AVG_PRICE": "Ortalama fiyat",
+    "PER_SERVICE": "Hizmet başına",
+    "REVIEW_RATIO": "Müşteri yorumları",
+    "CLIENT_FEEDBACK": "Geri dönüş oranı",
+    "TOP_PRODUCTS": "En çok satan hizmetler",
+    "AVG_DURATION": "Ortalama süre",
+    "DURATION_PER_BOOKING": "Rezervasyon başına süre",
+    "DETAILS": "Banka hesap detayları",
+    "ASK": "Havale talep et",
+    "HISTORY": "İşlem geçmişi",
+    "DATE": "Tarih",
+    "AMOUNT": "Tutar",
+    "COMMISSION": "Komisyon",
+    "STATUS": "Durum"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Oluşturulacak mağaza türünü seçin",
+    "CANCEL": "İptal",
+    "CREATE": "Onayla"
+  },
+  "PROCHES": {
+    "TITLE": "Yakınlarım",
+    "UPDATE": "Yakın kişi düzenleme",
+    "FIRSTNAME": "Ad",
+    "NAME": "Soyad",
+    "EMAIL": "E-posta",
+    "PHONE": "Telefon",
+    "CREATE": "Oluştur",
+    "BACK": "Geri",
+    "CHANGE": "Düzenle",
+    "CLOSE": "Kapat"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Yorum yap",
+    "RATING": "Puan",
+    "COMMENT": "Yorum",
+    "CLOSE": "Kapat",
+    "SUBMIT": "Gönder"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Hizmet tarihini seçin",
+    "CANCEL": "İptal"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Hizmet oluştur",
+    "NAME": "Ad",
+    "DESCRIPTION": "Açıklama",
+    "COLOR": "Renk",
+    "PRICE": "Fiyat",
+    "TIME": "Süre",
+    "IMAGE": "Görsel",
+    "ACTIONS": "İşlemler",
+    "MINUTES": "dakika",
+    "CHANGE": "Düzenle",
+    "DELETE": "Sil",
+    "SERVICE_NAME": "Hizmet adı",
+    "TIME_MINUTES": "Süre (dakika)",
+    "PREST_IMAGE": "Hizmet görseli",
+    "NO_PICS": "Henüz fotoğraf yok",
+    "UPLOAD": "Görsel yükle",
+    "NEW_PIC": "Yeni görsel önizlemesi",
+    "PRESTA_COLOR": "Hizmet rengi",
+    "CANCEL": "İptal",
+    "SAVE": "Kaydet",
+    "AVG_PRICE": "Ortalama tarife",
+    "IMAGE_OK": "Görsel başarıyla yüklendi",
+    "ERROR_IMAGE_LOAD": "Görsel yüklenirken hata",
+    "UPDATE_SUCCESS": "Hizmet başarıyla güncellendi",
+    "ERROR_PRESTA": "Hizmet güncellenirken hata",
+    "PRESTA_UPDATED": "Hizmet başarıyla güncellendi",
+    "PRESTA_ERROR": "Hizmet güncellenirken hata",
+    "PRESTA_SUCCESS": "Hizmet başarıyla güncellendi",
+    "PHOTO_ERROR": "Fotoğraf güncellenirken hata",
+    "PRESTA_DELETED": "Hizmet başarıyla silindi",
+    "PRESTA_DELETE_ERROR": "Hizmet silinirken hata"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Mağaza görseli",
+    "UPLOAD_IMAGE": "Görsel yükle",
+    "SNEEK_PIC": "Görsel önizlemesi",
+    "SHOP_NAME": "Mağaza adı",
+    "DESCRIPTION": "Açıklama",
+    "DESC_INFO": "(min. 25 karakter)",
+    "CITY": "Şehir",
+    "DISCRICT": "İlçeler",
+    "LAT": "Enlem",
+    "LON": "Boylam",
+    "ZONE": "Hareket alanı (km)",
+    "OPENNING": "Açılış saatleri",
+    "MORNING_OPEN": "Sabah - Açılış",
+    "MORNING_CLOSE": "Sabah - Kapanış",
+    "AFTERNOON_OPEN": "Öğleden sonra - Açılış",
+    "AFTERNOON_CLOSE": "Öğleden sonra - Kapanış",
+    "SAVE": "Mağazayı kaydet",
+    "MONDAY": "Pazartesi",
+    "TUESDAY": "Salı",
+    "WEDNESDAY": "Çarşamba",
+    "THURSDAY": "Perşembe",
+    "FRIDAY": "Cuma",
+    "SATURDAY": "Cumartesi",
+    "SUNDAY": "Pazar",
+    "CLOSED": "Kapalı",
+    "GENERATE_IMAGE": "Görsel oluştur",
+    "GENERATE_DESCRIPTION": "Açıklama oluştur",
+    "PHOTO": "Kabul/ret edilen fotoğraf örnekleri",
+    "CODE_POSTAUX": "Hizmet verilen posta kodları",
+    "EXEMPLE_LOCAL": "Örn: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Çalışan ekle",
+    "LOADING": "Yükleniyor",
+    "LIST": "Çalışan listesi",
+    "ADD": "Ekle",
+    "EMAIL": "Çalışan e-postası",
+    "FIRSTNAME": "Ad",
+    "FAMILY_NAME": "Soyad",
+    "PHONE": "Telefon",
+    "PASSWORD": "Şifre",
+    "HAVE_TO": "Tüm alanlar zorunludur.",
+    "EMAIL_ERROR": "Geçersiz e-posta.",
+    "EMPLOYEE_OK": "Çalışan başarıyla eklendi.",
+    "ADD_EMPLOYEE_ERROR": "Çalışan eklenirken hata oluştu."
+  },
+  "AVIS": {
+    "TITLE": "KULLANICILARIMIZ NE DİYOR",
+    "AVIS1": "Başta şüpheliydim… ama sonuç harika! Evde, stressiz, kusursuz bir manikür. Cuma akşamı ritüelim oldu.",
+    "AVIS2": "Kanepemden 3 dakikada yüz bakımı rezervasyonu yaptım. Estetisyen nazik ve ilgiliydi… cildim hiç bu kadar iyi olmamıştı.",
+    "AVIS3": "Salondan daha pahalı olur sanıyordum… sürpriz: aynı fiyat, hatta daha uygun! Üstelik dışarı çıkmadım. Büyük bir evet.",
+    "AVIS4": "Doğum günü arifesinde hızlı bir fön istedim. 2 tıkta uygun bir profesyonel buldum. Dakikti, sempatikti ve sonuç harikaydı.",
+    "AVIS5": "Tek başına bir anneyim, koşturacak vaktim yok. Burada çocuklar uyurken rezervasyon yapıyorum. Basit, hızlı ve gerçekten şahane.",
+    "AVIS6": "İlk seansımı çok sevdim. Estetisyen hemen rahatlattı. Şımartılmış gibi hissettim. Gelecek hafta için şimdiden randevu aldım!"
+  },
+  "DOWNLOAD": {
+    "USERS": "memnun kullanıcı",
+    "SOCIAL": "mevcut profesyonel",
+    "STORE": "App Store ve Google Play’de"
+  },
+  "TARIF": {
+    "DISCOVER": "Sana uyan planı seç",
+    "DISCOVER2": "ve zirveye doğru yükselişini başlat",
+    "SOLUTIONS": "Güzel, güçlü ve senin için düşünülmüş bir çözüme layıksın. Fikrini istediğin zaman değiştirebilirsin",
+    "TEST": "İlk salonun %100 ücretsiz. Sıfır stres. Sadece sihir.",
+    "START_FREE": "İlk salonumu oluştur",
+    "FREE": "Çırak",
+    "FREE_SUBTITLE": "İlk salonunla yükselişine başla",
+    "THEN": "sonrası",
+    "MONTHLY": "ay",
+    "FREE1": "1 aktif salon",
+    "FREE2": "Sınırsız rezervasyon ve müşteri",
+    "FREE3": "Hizmet ve planlama yönetimi",
+    "FREE4": "Kişisel takvim senkronizasyonu",
+    "FREE5": "Sakin başlaman için mükemmel",
+    "FREE6": "Ücretsiz salon oluştur",
+    "BASIC": "Seçilmiş",
+    "BASIC_SUBTITLE": "Potansiyelini aç ve parlamaya başla",
+    "BASIC1": "En fazla 3 aktif salon",
+    "BASIC2": "Hizmet, müşteri ve randevu yönetimi",
+    "BASIC3": "Öncelikli e-posta desteği",
+    "BASIC4": "İşini büyütmen için özel kaynaklar",
+    "BASIC5": "Müşteri kitlesini geliştirmek isteyen profesyoneller için ideal",
+    "BASIC6": "1 ay ücretsiz deneme",
+    "PREMIUM": "Kraliçe",
+    "PREMIUM_SUBTITLE": "İmparatorluğun şekilleniyor, etkin artıyor",
+    "PREMIUM1": "En fazla 10 aktif salon",
+    "PREMIUM2": "Gelişmiş performans istatistiklerine erişim",
+    "PREMIUM3": "Ciroyu artırmak için akıllı öneriler",
+    "PREMIUM4": "IzyGlam platformunda artırılmış görünürlük",
+    "PREMIUM5": "Öncelikli destek",
+    "PREMIUM6": "Hırslı bağımsızlar için tasarlandı",
+    "PREMIUM7": "Kraliçe ol",
+    "BUSINESS": "Tanrıça",
+    "BUSINESS_SUBTITLE": "Tahtını talep et, Tanrıça",
+    "BUSINESS1": "İhtiyaca özel",
+    "BUSINESS2": "Sınırsız salon",
+    "BUSINESS3": "Kişiye özel stratejik danışmanlık",
+    "BUSINESS4": "Artırılmış görünürlük ve öne çıkarma",
+    "BUSINESS5": "İşini ölçeklendirmen için özel çözümler",
+    "BUSINESS6": "Bize ulaşın",
+    "COMPARE": "Özellik karşılaştırması",
+    "FONCTIONS": "Özellikler",
+    "BUSINESS9": "Faaliyetin tam yönetimi",
+    "STUDIO_BASIC": "Özel kaynaklar",
+    "STUDIO_ADVANCED": "İstatistikler ve öneriler",
+    "ANALYSE": "Performans analizi",
+    "BASICS": "Klasik",
+    "ADVANCE": "Gelişmiş",
+    "PLANS": "Aktif salon sayısı",
+    "READY": "İşini büyütmeye hazır mısın?",
+    "DISCOVERS": "IzyGlam tekliflerini keşfet"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Erişilebilirlik beyanı",
+      "TEXT": "izyGlam, hizmetlerini olabildiğince çok kişiye erişilebilir kılmayı taahhüt eder. Hedefimiz, mümkün olduğunca WCAG 2.2 AA seviyesine ulaşmak ve RGAA (Fransa) ile uyum sağlamaktır."
+    },
+    "SCOPE": {
+      "TITLE": "Kapsam",
+      "L1": "Genel web sitesi ve bilgilendirme sayfaları.",
+      "L2": "Müşteriler ve profesyoneller için web uygulaması (panel).",
+      "L3": "Mobil uygulama (iOS/Android) varsa.",
+      "L4": "İşlemsel e-postalar ve yardım merkezi.",
+      "L5": "Müşteri destek araçları."
+    },
+    "STATUS": {
+      "TITLE": "Uyumluluk durumu",
+      "TEXT": "Bu beyan tarihi itibarıyla, izyGlam arayüzlerinin erişilebilirliği WCAG 2.2 AA / RGAA ile kısmen uyumludur. Arayüzlerimizi sürekli iyileştiriyor ve öncelikli eksikleri gideriyoruz."
+    },
+    "PREPARATION": {
+      "TITLE": "Beyanın hazırlanma yöntemi",
+      "L1": "Ürün/UI ekibi tarafından öz değerlendirmeler: HTML semantiği, ARIA rolleri, sekme sırası.",
+      "L2": "Manuel testler: klavye ile gezinme, görünür odak, %200+ yakınlaştırma, ekran okuyucular.",
+      "L3": "Araç destekli testler (ekran örneklerinde otomatik denetim).",
+      "L4": "Sürekli teslimatta testler (tasarım sistemi, erişilebilir yeniden kullanılabilir bileşenler)."
+    },
+    "FEATURES": {
+      "TITLE": "Mevcut erişilebilirlik özellikleri",
+      "KEYBOARD": {
+        "TITLE": "Klavye ile gezinme",
+        "L1": "Tam klavye akışı (Tab, Shift+Tab, Enter, Space, Esc, oklar).",
+        "L2": "Tutarlı ve kontrastlı görünür odak göstergesi.",
+        "L3": "Üst bilgiyi atlamak için “İçeriğe geç” bağlantıları.",
+        "L4": "Menüler, modallar ve açılır listeler klavye ile yönetilebilir (aç/kapat, odak kapanı kontrolü, Esc ile kapatma)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Ekran okuyucular ve yapı",
+        "L1": "Başlık hiyerarşisi (h1→h6) ve landmark’lar (header, nav, main, footer).",
+        "L2": "Tüm alanlar ve butonlar için açıklayıcı etiketler, tutarlı erişilebilir adlar.",
+        "L3": "Durum değişikliklerinin aria-live bölgeleriyle duyurulması (hatalar, başarılar, yüklemeler).",
+        "L4": "Bilgilendirici görseller için açıklayıcı alt metin, dekoratif görsellerin yok sayılması."
+      },
+      "CONTRAST": {
+        "TITLE": "Kontrast, renkler ve ölçekleme",
+        "L1": "Normal metin için hedef kontrast ≥ 4.5:1, büyük metin için ≥ 3:1.",
+        "L2": "İçerik veya işlev kaybı olmadan %200’e kadar yakınlaştırma.",
+        "L3": "Bilgiler yalnızca renkle iletilmez."
+      },
+      "FORMS": {
+        "TITLE": "Formlar ve hata mesajları",
+        "L1": "Label⇄input ilişkilendirmesi, zorunlu alan göstergeleri.",
+        "L2": "Hataların alanın yakınında sunulması ve gerekirse özetlenmesi.",
+        "L3": "Odak ilk hatalı alana yerleştirilir, düzeltme ipuçları sağlanır."
+      },
+      "DYNAMIC": {
+        "TITLE": "Dinamik içerikler ve animasyonlar",
+        "L1": "Durdurulabilir ve engel olmayan karuseller/animasyonlar.",
+        "L2": "Mümkün olduğunda sistem tercihi “animasyonları azalt”a saygı.",
+        "L3": "Rahatsız etmeyen, klavye ve dış tıkla kapanan modallar."
+      },
+      "MEDIA": {
+        "TITLE": "Medya",
+        "L1": "Videolara (varsa) altyazı ve/veya döküm.",
+        "L2": "Ses/video öğeleri klavye ile kontrol edilebilir."
+      },
+      "MOBILE": {
+        "TITLE": "Mobil",
+        "L1": "Yeterince büyük ve aralıklı dokunma alanları.",
+        "L2": "TalkBack (Android) ve VoiceOver (iOS) ile tutarlı gezinme."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Hedef ortamlar ve yardımcı teknolojiler",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Güncel ve desteklenen modern tarayıcılar."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Erişilebilir olmayan içerikler (tespit edilen veya olası)",
+      "TEXT": "Çabalarımıza rağmen bazı unsurlar uyumsuz kalabilir:",
+      "L1": "Açıklayıcı alternatif metni olmayan eski görseller.",
+      "L2": "Üçüncü taraf dokümanları (PDF, ekler) tam erişilebilir değil.",
+      "L3": "Geçmiş videolar altyazı/açıklama olmadan.",
+      "L4": "Üçüncü taraf bileşenler (ödeme, harita, oynatıcılar) kaynaklı sınırlamalar.",
+      "MOTIVES": "Olası nedenler: üçüncü taraf içerik, orantısız yük, güncelleme süreci."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatifler ve makul düzenlemeler",
+      "TEXT": "Alternatif bir formata ihtiyaç duyuyorsanız (ör. erişilebilir doküman, rezervasyon desteği) bizimle iletişime geçin. Eşdeğer bir çözüm sunmak için elimizden geleni yapacağız."
+    },
+    "FEEDBACK": {
+      "TITLE": "Geri bildirim ve destek",
+      "L1": "Uygulama üzerinden: Yardım > Erişilebilirlik.",
+      "L2A": "E-posta ile:",
+      "L2B": "veya",
+      "L3": "Lütfen ekran/URL, cihaz, tarayıcı ve varsa kullanılan ekran okuyucuyu belirtin."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "[accessibilite@izyglam.com](mailto:accessibilite@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "RECOURSE": {
+      "TITLE": "Başvuru prosedürü (Fransa)",
+      "TEXT": "Bir içeriğe veya işleve erişmenizi engelleyen bir erişilebilirlik kusuru tespit eder ve bizden tatmin edici yanıt alamazsanız:",
+      "L1": "Ombudsmana veya ilinizdeki temsilcisine yazabilirsiniz,",
+      "L2": "Gerekiyorsa arabulucuya başvurabilirsiniz.",
+      "MORE": "Daha fazla bilgi:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Sürekli iyileştirme",
+      "L1": "Erişilebilir bileşenli Tasarım Sistemi.",
+      "L2": "Her sürümde kod incelemesi ve erişilebilirlik testleri.",
+      "L3": "Ürün ve destek ekiplerine düzenli eğitimler.",
+      "L4": "Kullanıcı etkisine göre düzeltmelerin önceliklendirilmesi."
+    },
+    "DATE": {
+      "TITLE": "Beyan tarihi ve güncellemeler",
+      "TEXT": "Beyan 25 Aralık 2025 tarihinde hazırlanmıştır. En az yılda bir veya büyük değişikliklerde güncellenecektir."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "IzyGlam’da nasıl hizmet rezervasyonu yaparım?",
+    "QUESTION2": "Benim için doğru profesyoneli nasıl seçerim?",
+    "QUESTION3": "Randevumu nasıl değiştirebilir veya iptal edebilirim?",
+    "QUESTION4": "Siparişimi nasıl takip edebilirim?",
+    "QUESTION5": "Hangi ödeme yöntemlerini kullanabilirim?",
+    "QUESTION6": "Siparişimi veya rezervasyonumu nasıl takip ederim?",
+    "QUESTION7": "Hizmetten sonra yorum bırakabilir miyim?",
+    "QUESTION8": "Sadakat ve promosyon tekliflerimi nasıl kullanırım?",
+    "QUESTION9": "Siparişimle ilgili sorun yaşarsam ne yapmalıyım?",
+    "QUESTION10": "IzyGlam ekibiyle nasıl iletişime geçerim?",
+    "QUESTION11": "İptal ve geri ödeme politikası nasıl çalışır?",
+    "QUESTION12": "Başka biri için (hediye, sürpriz) rezervasyon yapabilir miyim?",
+    "QUESTION13": "IzyGlam’da nasıl iş ortağı profesyonel olurum?",
+    "QUESTION14": "IzyGlam’da kişisel bilgilerimi nasıl korurum?",
+    "REPONSE1": "Basit ve hızlı. Kayıt olduktan sonra ilgilendiğin hizmeti seç, yakınındaki uygun profesyonelleri keşfet, ardından bir tarih ve saat belirle. “Rezervasyon yap”a tıkla ve kartla öde. Rezervasyonun profesyonel tarafından elle onaylanacaktır. Reddedilirse, tam geri ödeme alırsın.",
+    "REPONSE2": "Her profesyonelin hizmetleri, ücretleri, yaptığı işlerin fotoğrafları ve müşteri yorumlarıyla detaylı bir profili vardır. Favorilerine ekleyerek kolayca bulabilirsin. Profil karşılaştırması yaparak beklentilerine en uygun olanı seç.",
+    "REPONSE3": "Rezervasyonunu kişisel alanından değiştirebilir veya iptal edebilirsin. Randevudan 24 saat öncesine kadar iptaller ücretsizdir. Sonrasında ücret uygulanabilir. Sorun yaşarsan destek ekibimiz yardımcı olur.",
+    "REPONSE4": "Kişisel alanına girip “Rezervasyonlarım” bölümünden siparişinin durumunu gerçek zamanlı takip edebilir, iptal/değişiklik yapabilir ve geçmişini görebilirsin.",
+    "REPONSE5": "Ödeme yalnızca banka kartı (Visa, MasterCard, American Express) ile yapılır. Şu anda nakit veya PayPal yoktur. Güvenliğiniz için her şey korunur.",
+    "REPONSE6": "Rezervasyonun onaylandığında bir özet e-postası alırsın. Hizmetten önce (e-posta ve/veya itme bildirimiyle) hatırlatma da göndeririz. Durumu kişisel alanından da takip edebilirsin.",
+    "REPONSE7": "Evet. Her hizmetten sonra profesyonel hakkında yorum yapmaya davet edilirsin. Yorumlar özgünlük için manuel olarak moderasyonlanır. Profesyoneller yorumlara yanıt veremez veya onları değiştiremez.",
+    "REPONSE8": "Şimdilik IzyGlam’da sadakat programı veya promosyon kodu yok. Bu özellikler ileride planlanıyor.",
+    "REPONSE9": "“İletişim” bölümünden veya e-postayla bize ulaşabilirsin. Ekibimiz (bilgilendirici süre) 24 saat içinde yanıtlamak ve sorunu en kısa sürede çözmek için elinden geleni yapacaktır.",
+    "REPONSE10": "Sitedeki veya uygulamadaki iletişim formu üzerinden bize ulaşabilirsin. Müşteri desteği Pazartesi–Cumartesi, 09:00–18:00 arasında mevcuttur. Örnek e-posta: [support@izyglam.com](mailto:support@izyglam.com)",
+    "REPONSE11": "Planlanan saatten 24 saat öncesine kadar ücretsiz iptal mümkündür. Sonrasında ücret uygulanabilir. Profesyonel tarafından rezervasyonun reddedilirse otomatik geri ödeme yapılır. Otomatik geri ödeme sistemi devreye alınma aşamasındadır.",
+    "REPONSE12": "Hesabından şimdilik başka biri için hizmet hediye edemezsin. Ancak bir profesyonel çift/aile paketi sunuyorsa, bu kapsamda birden fazla kişi için rezervasyon yapabilirsin.",
+    "REPONSE13": "Estetisyen, kuaför veya iyi yaşam uygulayıcısı mısın? “İş ortağı ol” sayfasındaki formu doldurarak IzyGlam topluluğuna katılabilirsin. Ekibimiz kaydını tamamlamak için seninle iletişime geçecektir.",
+    "REPONSE14": "Veri güvenliğin önceliğimizdir. GDPR yükümlülüklerine uyarız. Profesyoneller yalnızca hizmet için kesinlikle gerekli bilgilere erişir. Gerekirse iletişim için entegre mesajlaşma vardır; platformu baypas etmeye yönelik davranışlar izlenir."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Biz kimiz?",
+      "TEXT": "Bu Gizlilik Politikası, <strong>izyGlam</strong>’ın (bundan sonra “biz”, “bize” veya “Platform” olarak anılacaktır) hizmetlerimizi (web sitesi, web uygulaması, mobil uygulama, e-postalar ve destek) kullanırken kişisel verilerinizi nasıl topladığını, kullandığını, sakladığını, paylaştığını ve koruduğunu açıklar. Aşağıda tanımlanan işlemler için <strong>veri sorumlusu</strong> olarak hareket ederiz."
+    },
+    "SCOPE": {
+      "TITLE": "Politikanın kapsamı",
+      "TEXT": "Bu politika, hizmet rezervasyonu yapan <strong>müşteriler</strong>, izyGlam üzerinden hizmet sunan <strong>profesyoneller</strong> ve arayüzlerimizi ziyaret eden <strong>ziyaretçiler</strong> için geçerlidir."
+    },
+    "DATA": {
+      "TITLE": "Toplanan veriler",
+      "PROVIDED": {
+        "TITLE": "Sağladığınız veriler",
+        "L1": "<strong>Kimlik ve iletişim: </strong> ad, soyad, e-posta, telefon, adres(ler), fotoğraf/avatarlAR.",
+        "L2": "<strong>Hesap: </strong> kimlik bilgileri, şifreler (hash’li), tercihler, dil.",
+        "L3": "<strong>Rezervasyonlar: </strong> seçilen hizmetler, tarih/saat, hizmet adresleri, notlar, ekler.",
+        "L4": "<strong>Ödeme: </strong> <em>sağlayıcımız (örn. Stripe) üzerinden</em> ödeme bilgileri — kart verilerinizi saklamayız.",
+        "L5": "<strong>Profesyoneller: </strong> herkese açık profil, hizmetler, ücretler, hareket alanı, uygunluk, IBAN (güvenli), gerekirse doğrulama belgeleri.",
+        "L6": "<strong>Destek: </strong> mesajlar, talepler, varsa çağrı kayıtları."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Otomatik toplanan veriler",
+        "L1": "<strong>Teknik veriler: </strong> cihaz modeli, işletim sistemi, tarayıcı, çözünürlükler, oturum kimlikleri.",
+        "L2": "<strong>Günlük: </strong> IP adresleri, zaman damgaları, hata olayları, özellik kullanımı.",
+        "L3": "<strong>Konum: </strong> yaklaşık konum (IP) veya kesin konum (GPS, açık onayınızla).",
+        "L4": "<strong>Çerezler ve SDK’lar: </strong> aşağıdaki bölüme bakın."
+      },
+      "THIRD": {
+        "TITLE": "Üçüncü taraflardan alınan veriler",
+        "L1": "<strong>Ödeme sağlayıcıları</strong> (ödeme durumları, belirteçler).",
+        "L2": "<strong>Analitik/sahtecilik önleme ortakları</strong> (risk sinyalleri, kullanım özetleri).",
+        "L3": "<strong>Entegrasyonlar</strong> (örn. iletişim araçları, haritalama, bulut depolama)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Amaçlar ve hukuki dayanaklar",
+      "TEXT": "Verileri şu amaçlarla işleriz:",
+      "L1": "<strong>Hizmeti sağlamak</strong> (hesap oluşturma, rezervasyon, eşleştirme, bildirimler) — <em>Dayanak: sözleşmenin ifası</em>.",
+      "L2": "<strong>Ödeme ve faturalama</strong> — <em>Sözleşme, yasal yükümlülük</em>.",
+      "L3": "<strong>Güvenlik, kötüye kullanım/dolandırıcılık önleme</strong> — <em>Meşru menfaat, yasal yükümlülük</em>.",
+      "L4": "<strong>Ürün iyileştirme, istatistik</strong> — <em>Meşru menfaat</em>.",
+      "L5": "<strong>Destek ve kalite</strong> — <em>Sözleşme, meşru menfaat</em>.",
+      "L6": "<strong>Doğrudan pazarlama</strong> (e-posta/uygulama) — <em>Gerektiğinde rıza</em>; istediğiniz zaman vazgeçebilirsiniz.",
+      "L7": "<strong>Yasal uyum</strong> (muhasebe, resmi talepler) — <em>Yasal yükümlülük</em>."
+    },
+    "SHARING": {
+      "TITLE": "Veri paylaşımı",
+      "L1": "<strong>Profesyoneller / Müşteriler</strong>: hizmet için gerekli bilgiler (ad, iletişim, hizmet adresi, rezervasyon detayları).",
+      "L2": "<strong>Hizmet sağlayıcılar</strong>: ödeme (örn. Stripe), barındırma/depolama, analitik, e-posta/SMS push, destek, gerekirse KYC. <em>Erişim gereği kadar ve GDPR uyumlu sözleşmelerle.</em>",
+      "L3": "<strong>İş ortakları</strong>: belirli tekliflere rıza gösterirseniz.",
+      "L4": "<strong>Resmi makamlar</strong>: yasa gerektirdiğinde veya haklarımızı savunmak için."
+    },
+    "TRANSFERS": {
+      "TITLE": "AB/AEA dışına aktarımlar",
+      "TEXT": "Yeterlilik kararı olmayan ülkelere veri aktarılırsa <strong>standart sözleşme maddeleri</strong> (SCC) ve tamamlayıcı önlemler kullanırız."
+    },
+    "RETENTION": {
+      "TITLE": "Saklama süreleri",
+      "L1": "<strong>Hesap ve kimlik</strong>: hesap kullanım süresince, ardından son aktiviteden <em>3 yıla</em> kadar (pazarlama) veya muhasebe/yasal yükümlülükler için <em>5–10 yıl</em>.",
+      "L2": "<strong>Rezervasyonlar/faturalar</strong>: <em>10 yıl</em> (yasal zorunluluk).",
+      "L3": "<strong>Güvenlik günlükleri</strong>: kritikliğe göre <em>6–24 ay</em>.",
+      "L4": "<strong>Çerezler</strong>: Çerezler bölümüne bakın.",
+      "NOTE": "Süreler sonunda veriler silinir veya anonimleştirilir."
+    },
+    "COOKIES": {
+      "TITLE": "Çerezler ve SDK’lar",
+      "TEXT": "Platformu çalıştırmak, ölçmek, sahteciliği önlemek ve rızanızla deneyimi kişiselleştirmek için çerez/SDK kullanırız.",
+      "L1": "<strong>Zorunlu</strong>: kimlik doğrulama, güvenlik, teknik tercihler.",
+      "L2": "<strong>Kitle ölçümü</strong>: toplu kullanım istatistikleri.",
+      "L3": "<strong>Pazarlama</strong>: yalnızca kabul ederseniz.",
+      "PREF": "Tercihlerinizi banner ve tarayıcı ayarlarından istediğiniz zaman yönetebilirsiniz."
+    },
+    "AUTOMATION": {
+      "TITLE": "Otomatik kararlar ve profilleme",
+      "TEXT": "İşleri önceliklendirmek veya zaman aralığı önermek için otomatik sinyaller (örn. sahtecilik riski, uygunluk, mesafe) kullanabiliriz. İnsan müdahalesi olmadan hukuki sonuçlar doğuran kararlar alınmaz; istisna yasal zorunluluk veya açık rızanızdır."
+    },
+    "RIGHTS": {
+      "TITLE": "Haklarınız (GDPR)",
+      "L1": "<strong>Erişim</strong>, <strong>düzeltme</strong>, <strong>silme</strong> hakkı.",
+      "L2": "<strong>Sınırlama</strong> ve <strong>taşınabilirlik</strong> hakkı.",
+      "L3": "Meşru menfaate dayalı işlemeye <strong>itiraz</strong> hakkı.",
+      "L4": "Rızanızı istediğiniz zaman <strong>geri çekme</strong> hakkı.",
+      "L5": "CNIL’e <strong>şikâyet</strong> hakkı.",
+      "CONTACT": "Haklarınızı kullanmak için bizimle iletişime geçin:",
+      "VERIFY": "Kimliğinizi doğrulamak için ek bilgi isteyebiliriz."
+    },
+    "SECURITY": {
+      "TITLE": "Güvenlik",
+      "TEXT": "Uygun teknik ve organizasyonel önlemler uygularız: aktarımda şifreleme (TLS), şifrelerin hash’lenmesi, günlükleme ve izleme, erişim kontrolü, yedekleme, kod incelemesi ve güvenlik testleri."
+    },
+    "MINORS": {
+      "TITLE": "Reşit olmayanların verileri",
+      "TEXT": "Hizmetlerimiz 15 yaş altına yönelik değildir. Bir reşit olmayan hesap tespit edilirse doğrulama sonrası sileriz."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Başlıca alt işlemciler",
+      "TEXT": "Barındırma, ödeme, e-posta, analitik ve depolama için temel alt yüklenicilerle çalışıyoruz. Güncel bir liste talep üzerine şu adresten sağlanabilir:"
+    },
+    "CONTACT": {
+      "TITLE": "İletişim ve DPO",
+      "PRIVACY_LABEL": "Gizlilik iletişimi",
+      "SUPPORT_LABEL": "Destek",
+      "AUTHORITY_LABEL": "Denetleyici otorite",
+      "EMAIL_PRIVACY": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_PRIVACY_TEXT": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "CHANGES": {
+      "TITLE": "Bu politikanın değişiklikleri",
+      "TEXT": "Yasal veya işlevsel gelişmeleri yansıtmak için bu politikayı güncelleyebiliriz. Önemli değişikliklerde e-posta veya uygulama üzerinden bilgilendireceğiz. Yürürlük tarihi: <strong>11 Ağustos 2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Yerel hükümler",
+      "TEXT": "AB içindeyseniz verileriniz GDPR’a uygun olarak işlenir. Ülkeye veya bölgeye özgü ek hükümler gerekirse bildirilecektir."
+    },
+    "GLOSSARY": {
+      "TITLE": "Sözlük (özet)",
+      "L1": "<strong>Veri sorumlusu</strong>: işlemenin amaç ve vasıtalarını belirleyen kişi/kuruluş.",
+      "L2": "<strong>Alt işlemci</strong>: veri sorumlusu adına veri işleyen kişi/kuruluş.",
+      "L3": "<strong>Hukuki dayanak</strong>: işlemenin dayandığı temel (sözleşme, rıza, yasal yükümlülük, meşru menfaat).",
+      "L4": "<strong>Çerezler/SDK</strong>: site/uygulama tarafından hizmeti sunmak, ölçmek ve kişiselleştirmek için kullanılan izleyiciler."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Koşulların kabulü",
+      "TEXT": "izyGlam hizmetlerine (site, web uygulaması, mobil uygulama) erişerek, işbu Kullanım Koşullarını (“CGU”) kayıtsız şartsız kabul etmiş olursunuz. Bu koşulları kabul etmiyorsanız Platformu kullanmamalısınız."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Tanımlar",
+      "L1": "<strong>Müşteri</strong>: Platformda bir hizmeti rezerve eden ve/veya ödeyen kişi.",
+      "L2": "<strong>Profesyonel</strong>: Platform aracılığıyla hizmet sunan kişi.",
+      "L3": "<strong>Hizmet</strong>: Profesyonel tarafından sunulan servis (örn. evde güzellik).",
+      "L4": "<strong>Platform</strong>: izyGlam tarafından işletilen yazılım altyapısı, siteler ve uygulamalar."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Hizmetler ve izyGlam’ın rolü",
+      "TEXT": "izyGlam bir <strong>aracılık platformudur</strong>. Profesyoneller sundukları hizmetlerden (kalite, uygunluk, sigorta) <strong>tek başlarına sorumludur</strong>. Aksi belirtilmedikçe, izyGlam bu hizmetlerin satıcısı veya sağlayıcısı değildir ve ifadan sorumluluk almaz."
+    },
+    "ACCOUNT": {
+      "TITLE": "Hesap ve uygunluk",
+      "L1": "Bir hizmeti rezerve etmek veya sunmak için kayıt zorunludur. Doğru bilgi vermeyi ve güncel tutmayı kabul edersiniz.",
+      "L2": "Platformu kullanmak için en az 15 yaşında olmalısınız. Profesyonellerin yasal olarak hizmet sunmaya yetkili olması gerekir.",
+      "L3": "Kimlik bilgilerinizin gizliliğinden ve hesabınızdan yapılan tüm faaliyetlerden siz sorumlusunuz.",
+      "L4": "izyGlam, CGU ihlali veya teyitli sahtecilik riskinde bir hesabı askıya alma veya sonlandırma hakkını saklı tutar."
+    },
+    "BOOKINGS": {
+      "TITLE": "Rezervasyon ve sözleşmenin kurulması",
+      "L1": "Hizmetler <strong>müşteri tarafından çevrimiçi rezerve edilir ve ödenir</strong>. Yerinde nakit ödeme yoktur.",
+      "L2": "Rezervasyon, <strong>ödemeden sonra Profesyonel tarafından onaya tabidir</strong>. Reddedilmesi hâlinde Müşteri <strong>tamamen iade edilir</strong>.",
+      "L3": "Hizmet sözleşmesi, Profesyonelin kabulü anında Müşteri ile Profesyonel arasında kurulur.",
+      "L4": "Saatler, hizmet adresleri ve özel koşullar taraflarca kontrol edilmelidir."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Ücretler, abonelikler ve ödemeler",
+      "L1": "Hizmet ücretleri Profesyoneller tarafından serbestçe belirlenir. izyGlam bir <strong>platform komisyonu</strong> uygular.",
+      "L2": "Profesyoneller için abonelikler (mevcut örnek): <em>1 salon ömür boyu ücretsiz</em>; <em>Basic: 3 salon – 99 €/ay</em>; <em>Premium: 10 salon – 499 €/ay</em>; <em>üstü: teklif</em>.",
+      "L3": "Ödeme <strong>yalnızca banka kartı</strong> ile sağlayıcı (örn. Stripe) üzerinden yapılır. <strong>Nakit yok</strong>, bu aşamada promosyon kodu veya sadakat programı yoktur.",
+      "L4": "Tutarlar, vergiler ve ücretler onaydan önce gösterilir. Abonelik koşulları değişebilir; değişiklikler önceden iletilecektir."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "İptal, iade ve gelmeme",
+      "L1": "Planlanan saatten <strong>24 saat</strong> öncesine kadar ücretsiz iptal.",
+      "L2": "24 saatten az kala yürürlükteki politikaya göre <strong>ücret</strong> uygulanabilir.",
+      "L3": "Ödemeden sonra Profesyonel tarafından <strong>reddedilirse</strong> Müşteri %100 iade edilir. Otomatik iade devreye alınmaktadır; gerektiğinde destek işlemi başlatır.",
+      "L4": "<strong>Gelmeme</strong> (habersiz) durumları ücret veya iadesizlikle sonuçlanabilir."
+    },
+    "PAYOUTS": {
+      "TITLE": "Profesyonellere ödemeler",
+      "L1": "Kazançların ödemesi, hizmetin <strong>gerçekleştiğinin</strong> doğrulanmasıyla tetiklenir (örn. bir <em>onay kodu</em> ile).",
+      "L2": "Profesyonel tarafından verilen IBAN havale için kullanılır. Profesyonel banka bilgilerinin doğruluğunu garanti eder.",
+      "L3": "Ödenen tutarlar, hizmet fiyatından <em>komisyon ve ilgili ücretler</em> düşülerek hesaplanır."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Tarafların sorumlulukları",
+      "L1": "Profesyoneller; hizmetlerinin uygunluğu, mevzuata uyum, hijyen ve güvenlikten sorumludur.",
+      "L2": "Müşteriler; doğru bilgi vermeyi (adres, müsaitlik, erişim koşulları) ve randevulara uymayı kabul eder.",
+      "L3": "izyGlam rezervasyon, ödeme ve mesajlaşma gibi araçları sağlar ancak bir hizmetin sonucunu garanti etmez."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Geçersiz puan.",
+      "TITLE": "Yorumlar ve puanlama",
+      "L1": "Yorumlar yalnızca <strong>gerçekleşmiş bir hizmetten sonra</strong> bırakılabilir.",
+      "L2": "Yorumlar <strong>moderasyona</strong> tabi olabilir (örn. hukuka veya bu CGU’ya aykırı içeriklerin kaldırılması)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Yasak davranışlar",
+      "L1": "Dolandırıcılık, kimlik hırsızlığı, Platformun baypas edilmesi, Platform dışı işlemlere teşvik.",
+      "L2": "Yasadışı, iftira niteliğinde, ayrımcı, şiddet içeren veya ahlaka aykırı içerikler.",
+      "L3": "İzinsiz erişim, hizmet engelleme, tersine mühendislik, güvenlik önlemlerinin aşılması.",
+      "L4": "Diğer kullanıcıların kişisel verilerinin yetkisiz toplanması."
+    },
+    "IPR": {
+      "TITLE": "Fikri mülkiyet",
+      "TEXT": "Platformun içerikleri, markaları ve unsurları (kod, tasarım, metinler, logolar, görseller) korunmaktadır. Açık izin olmadan çoğaltma, dağıtma veya uyarlama yasaktır. Profesyonellerin sağladığı içerikler onların mülkiyetinde kalır; izyGlam’a platformu işletmek için gerekli gayri münhasır lisans verirler."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Üçüncü taraf hizmetleri",
+      "TEXT": "Platform, üçüncü taraf hizmetleri (ödeme, harita, barındırma, analitik) entegre edebilir. Kendi koşulları geçerlidir. Bu hizmetlerin kesintileri veya arızalarından izyGlam sorumlu değildir."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Kullanılabilirlik, bakım ve güncellemeler",
+      "TEXT": "Bakım veya iyileştirme için Platformun tamamını veya bir kısmını değiştirebilir, askıya alabilir veya durdurabiliriz. Kullanıcı etkisini sınırlamak için makul çaba gösteririz."
+    },
+    "LIABILITY": {
+      "TITLE": "Sorumluluğun sınırlandırılması ve tazmin",
+      "TEXT": "Yasanın izin verdiği ölçüde, izyGlam’ın sorumluluğu dolaylı zararlar (fırsat kaybı, ciro kaybı vb.) hariç olmak üzere doğrudan zararlarla sınırlıdır. Bu koşulları ihlalinizden veya Platformun yasa dışı kullanımından doğan tüm taleplerde izyGlam’ı tazmin etmeyi kabul edersiniz."
+    },
+    "TERMINATION": {
+      "TITLE": "Fesih ve askıya alma",
+      "TEXT": "Hesabınızı dilediğiniz zaman silebilirsiniz. CGU ihlali, sahtecilik, kötüye kullanım veya yasal zorunluluk halinde erişimi askıya alabilir veya sonlandırabiliriz. Bazı yükümlülükler (örn. ödenecek tutarlar, sorumluluk hükümleri) fesih sonrasında da geçerlidir."
+    },
+    "PRIVACY": {
+      "TITLE": "Kişisel veriler",
+      "TEXT": "Verilerinizin işlenmesi <strong>Gizlilik Politikamızda</strong> açıklanır. Platformu kullanarak bu politikayı kabul edersiniz. GDPR haklarınızı ve taahhütlerimizi öğrenmek için lütfen inceleyin."
+    },
+    "CHANGES": {
+      "TITLE": "CGU değişiklikleri",
+      "TEXT": "Hukuki, düzenleyici veya işlevsel nedenlerle bu CGU’yu değiştirebiliriz. Önemli değişikliklerde e-posta veya uygulama üzerinden bilgilendirir, güncel sürümü yayınlarız."
+    },
+    "LAW": {
+      "TITLE": "Uygulanacak hukuk ve uyuşmazlıklar",
+      "TEXT": "Bu CGU <strong>Fransız hukukuna</strong> tabidir. Tüketici için daha uygun emredici hükümler saklı kalmak kaydıyla uyuşmazlıklar, izyGlam merkezinin bulunduğu yer mahkemelerine taşınır."
+    },
+    "CONTACT": {
+      "TITLE": "İletişim",
+      "SUPPORT_LABEL": "Destek",
+      "LEGAL_LABEL": "Hukuk",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL": "[legal@izyglam.com](mailto:legal@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL_TEXT": "[legal@izyglam.com](mailto:legal@izyglam.com)"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Yürürlük tarihi",
+      "TEXT": "Bu CGU <strong>25 Aralık 2025</strong> tarihinde yürürlüğe girer ve önceki tüm sürümlerin yerini alır."
+    }
+  }
+}

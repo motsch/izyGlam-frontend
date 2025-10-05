@@ -8,9 +8,9 @@ import { SeoService } from 'src/app/core/services/seo.service';
     styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-    settings:any = {};
+    settings: any = {};
     constructor(private seoService: SeoService,
-            private adminService: AdminService) {}
+        private adminService: AdminService) { }
 
     ngOnInit(): void {
         this.seoService.updateMeta('home');

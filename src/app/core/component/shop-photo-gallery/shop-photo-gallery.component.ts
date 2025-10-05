@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { ShopService } from '../../services/shop.service';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-shop-photo-gallery',
@@ -17,7 +18,8 @@ export class ShopPhotoGalleryComponent implements OnInit, OnChanges {
   galleryImages: string[] = []; // Stocke les images de la galerie
 
   constructor(private shopService: ShopService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+        private translate: TranslateService) { }
   ngOnInit() {
     localStorage.setItem("menu-param", 'management');
     // Rafraîchir la galerie
@@ -40,11 +42,11 @@ export class ShopPhotoGalleryComponent implements OnInit, OnChanges {
         console.log('Images uploadées avec succès:', response);
         // Rafraîchir la galerie après l'upload
         this.setGalleryImages();
-        this.showCustomToast('Images chargée avec succès');
+        this.showCustomToast(this.translate.instant('SUCCESS.PHOTO_UPLOAD'));
       },
       (error) => {
         console.error("Erreur lors de l'upload des images:", error);
-        this.showCustomToast('Erreur lors du chargement de l\'image');
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       }
     );
   }
@@ -68,7 +70,7 @@ export class ShopPhotoGalleryComponent implements OnInit, OnChanges {
           'Erreur lors du chargement des images de la galerie:',
           error
         );
-        this.showCustomToast('Erreur lors du chargement des images de la galerie');
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       }
     );
   }
@@ -90,11 +92,11 @@ export class ShopPhotoGalleryComponent implements OnInit, OnChanges {
         this.shopUpdated.emit(this.myShopData._id);
         console.log(data);
         console.log('Photo supprimée de la galerie');
-        this.showCustomToast('Photo supprimée de la galerie');
+        this.showCustomToast(this.translate.instant('SUCCESS.PHOTO_DELETE'));
       },
       error: (error) => {
         console.log('Error updating shop:', error);
-        this.showCustomToast('Erreur lors de la suppression de la photo');
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       },
     });
   }

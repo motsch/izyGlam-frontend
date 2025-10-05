@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Perruqueiro/a",
+    "NAILTECHNICIAN": "Manicurista",
+    "MAKEUP": "Maquillador/a",
+    "WAXING": "Esteticista",
+    "FACIAL": "Tratamento facial",
+    "MASSAGE": "Masaxista",
+    "EYELASH": "Extensións de pestanas",
+    "EYEBROW": "Cellas",
+    "TANNING": "Bronceado",
+    "ACUPUNCTURE": "Acupuntura",
+    "OTHER": "Outro"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Foto eliminada da galería",
+    "PHOTO_UPLOAD": "Imaxe cargada con éxito",
+    "PARTIAL_REFUND_CONFIRM": "Reembolso parcial confirmado!",
+    "CODE_SAVED": "Código xerado.",
+    "USERCREATED": "Usuario creado con éxito. Enviámosche un correo de confirmación.",
+    "SUBSCRIBE_SUCCESS": "A túa subscrición foi rexistrada correctamente.",
+    "EMAIL_VERIFIED": "A túa conta está activada 🎉 Agora podes iniciar sesión.",
+    "EMAIL_RESENT": "Correo de verificación reenviado. Revisa a túa caixa de entrada.",
+    "BOOKING_CREATED": "A túa reserva foi rexistrada correctamente.",
+    "PAYMENT_OK": "Pagamento validado.",
+    "REFUND_OK": "Reembolso efectuado.",
+    "USERUPDATED": "Usuario actualizado.",
+    "SETTINGS_UPDATED": "Axustes actualizados.",
+    "REVIEW_ADDED": "O teu comentario foi publicado 🎉",
+    "SHOPUPDATED": "Tenda actualizada.",
+    "BOOKING_ACCEPTED": "Reserva aceptada.",
+    "BOOKING_FINISHED": "Reserva rematada.",
+    "BOOKING_REFUSED": "Reserva rexeitada.",
+    "BOOKING_DELETED": "Reserva eliminada.",
+    "CODE_GENERATED": "Código xerado.",
+    "CODE_CONFIRMED": "Código confirmado.",
+    "INVOICE_DOWNLOADED": "Factura descargada.",
+    "MARKED_NO_SHOW_CLIENT": "Cliente marcado como ausente.",
+    "COMPANY_CREDITED": "A conta da empresa foi abonada.",
+    "MARKED_NO_SHOW_PRO": "Profesional marcado como ausente.",
+    "EMPLOYEE_CREDITED": "A conta do empregado foi abonada.",
+    "NO_SHOW_PRO": "Penalización aplicada e reembolso efectuado.",
+    "EMPLOYEE_DELETED": "O empregado foi eliminado.",
+    "SLOT_SELECTED": "Fuso horario seleccionado",
+    "PASSWORD_RESET": "O contrasinal foi restablecido.",
+    "INVOICE_GENERATED": "Facturas xeradas.",
+    "REVIEW_SAVED": "Opinión gardada, grazas!",
+    "DEFAULT_PASSWORD_UPDATED": "Actualizouse o contrasinal por defecto.",
+    "COMPANY_CREATED": "A túa conta profesional foi creada correctamente."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Inicia sesión para xestionar os teus favoritos.",
+    "INVALID_IMAGE": "Imaxe inválida.",
+    "NO_SLOTS": "Non hai franxas dispoñibles para este servizo.",
+    "NO_SHOP_SELECTED": "Non se seleccionou ningunha tenda.",
+    "NO_SERVICE_SELECTED": "Non se seleccionou ningún servizo.",
+    "ORDER_ERROR": "Erro ao actualizar o pedido.",
+    "CODE_ERROR": "Erro ao gardar o código.",
+    "INVOICE_GENERATED_ERROR": "Erro ao xerar as facturas.",
+    "USERNOTCREATED": "Non foi posible crear o usuario.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Saldo da empresa insuficiente para este aboamento.",
+    "GENERIC_ERROR": "✨ Ups… produciuse un erro. Téntao de novo, por favor ✨",
+    "COMPANY_CREDITED": "A conta da empresa foi abonada.",
+    "LINK_INVALID_OR_MISSING": "Ligazón inválida ou ausente.",
+    "LINK_INVALID_OR_EXPIRED": "Ligazón inválida ou caducada.",
+    "EMAIL_NOT_FOUND": "Non se atopou o correo do usuario.",
+    "PAYMENT_FAILED": "O pagamento fallou.",
+    "BOOKING_FAILED": "Produciuse un erro ao crear a reserva.",
+    "LOAD_CARDS_FAILED": "Produciuse un erro ao cargar as túas tarxetas.",
+    "LOAD_SHOP_FAILED": "Produciuse un erro ao cargar o salón.",
+    "LOAD_PRODUCTS_FAILED": "Produciuse un erro ao cargar as prestacións.",
+    "INVALID_CODE": "O código introducido é inválido.",
+    "PASSWORD_CHANGED": "O teu contrasinal foi actualizado.",
+    "PASSWORDS_IDENTICAL": "O novo contrasinal debe ser diferente do actual.",
+    "INVALID_AMOUNT": "O importe introducido é inválido.",
+    "INVALID_CURRENT_PASSWORD": "O contrasinal actual é incorrecto.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "O contrasinal actual é erróneo ou produciuse un erro.",
+    "PASSWORD_UPDATE_FAILED": "A modificación do contrasinal fallou.",
+    "PASSWORD_UPDATE_GENERIC": "Produciuse un erro ao actualizar o contrasinal.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Os contrasinais non coinciden ou son demasiado curtos (mín. 8 caracteres).",
+    "INVALID_PASSWORD": "O contrasinal non pode estar baleiro.",
+    "PASSWORD_TOO_SHORT": "O contrasinal debe ter polo menos 8 caracteres."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Falta a configuración de Stripe.",
+    "LOAD_FAILED": "Non se puido cargar Stripe",
+    "NOT_READY": "Stripe non inicializado",
+    "CONFIRM_FAILED": "Erro ao gardar a tarxeta",
+    "CARD_SAVED": "Tarxeta gardada con éxito ✅",
+    "PM_FAILED": "Erro ao crear a tarxeta",
+    "SI_FAILED": "Non se puido preparar o gardado da tarxeta",
+    "ATTACH_FAILED": "Non se puido asociar a tarxeta á conta",
+    "SAVE_CARD": "Gardar a tarxeta",
+    "ADD_CARD": "Engadir a tarxeta"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Inicia sesión, por favor"
+  },
+  "COMMON": {
+    "LOADING": "Cargando…",
+    "UNEXPECTED_ERROR": "Produciuse un erro inesperado"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Verificación en curso",
+    "VALIDE": "Estamos a validar a túa ligazón de activación. Só levará un intre.",
+    "ACCOUNT": "Conta activada",
+    "CONNECT": "Iniciar sesión",
+    "OUPS": "Ups",
+    "WRITE": "Precisas axuda? Escríbenos a",
+    "RESEND": "Reenviar o correo de activación"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "As miñas informacións bancarias",
+    "ADD_BANK_INFO": "Engadir as miñas informacións bancarias",
+    "BANK_NAME": "Nome do banco",
+    "HOLDER_NAME": "Titular da conta",
+    "COUNTRY": "País",
+    "SAVE": "Gardar"
+  },
+  "LOADER": {
+    "LOADING": "Cargando…"
+  },
+  "SPONSORS": {
+    "TITLE": "Os nosos patrocinadores",
+    "SPONSORISED": "Patrocinada"
+  },
+  "TABS": {
+    "FINANCE": "Seguimento financeiro",
+    "GENERAL_INFO": "Información xeral",
+    "EMPLOYEES": "Xestión de empregados",
+    "SERVICES": "Xestión das prestacións",
+    "PHOTOS": "Galería de fotos",
+    "STATS": "Estatísticas",
+    "PARAM": "Parámetros",
+    "SHOPS": "As tendas",
+    "USERS": "Os usuarios",
+    "MESSAGE": "Mensaxería"
+  },
+  "CARD": {
+    "ADD": "Engadir a tarxeta",
+    "NO_IMAGE": "Non hai imaxes na galería.",
+    "SALON": "Salón actualizado con éxito",
+    "ERROR1": "Erro ao actualizar o salón",
+    "ERROR2": "Erro ao actualizar a foto",
+    "UPDATE": "Actualización do salón correcta"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Rematada",
+    "ACCEPTEE": "Aceptada",
+    "WAITING": "En espera",
+    "CANCEL": "Anulada",
+    "DELETE": "Eliminada",
+    "REFUSED": "Rexeitada",
+    "NO_PRESTA": "Profesional ausente",
+    "CLIENT_ABSENT": "Cliente ausente",
+    "ADRESSE": "Enderezo",
+    "DATE": "Data",
+    "TOTAL": "Total",
+    "FACTURE": "Factura",
+    "CANCELLED": "Anulada",
+    "DELETED": "Eliminar",
+    "AVIS": "Opinión",
+    "SUPPORT": "Soporte",
+    "CODE": "Código de confirmación",
+    "CODE_A_DONNER": "Código para entregar ao profesional",
+    "PRESTA_ABSENT": "Profesional ausente"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Opinións sobre a tenda",
+    "COMMENT": "Comentario",
+    "NOTE": "Nota",
+    "CLOSE": "Pechar"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Non hai imaxes na galería."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Valora o teu pedido",
+    "DATE": "Data",
+    "SERVICE": "Servizo",
+    "AVIS": "A túa opinión",
+    "SEND": "Enviar",
+    "PLACEHOLDER": "Describe a túa experiencia…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Faino vir ata a túa casa",
+    "KNOWMORE": "Máis información",
+    "PART1TITLE": "Goza dos mellores servizos estéticos no fogar",
+    "PART1TEXT": "Os nosos profesionais desprazanse á túa casa para ofrecerche coidados de beleza de calidade, adaptados ás túas necesidades e gustos. Vive unha experiencia de benestar única, na pausa do xantar, despois do traballo ou nunha tarde entre amigas.",
+    "PART2TITLE": "Traballa cando queiras, xera ingresos á túa medida",
+    "PART2TEXT": "Xera ingresos ao teu ritmo aceptando solicitudes na plataforma. Podes usar o teu propio material ou alugar equipamento profesional a través de izyGlam.",
+    "PART3TITLE": "Un servizo de beleza repensado para as empresas",
+    "PART3TEXT": "Glam for Business é unha plataforma para empresas de todos os tamaños, deseñada para xestionar as necesidades estéticas dos teus clientes e empregados. Ofrece coidados personalizados no lugar de traballo, en eventos corporativos ou ocasións especiais. Os nosos profesionais desprázanse para prestar servizos adaptados ás túas necesidades.",
+    "APPTITLE": "É máis doado coas apps",
+    "DOWNLOADAPP1": "Descargar a aplicación",
+    "DOWNLOADAPP2": "Descargar a app para profesionais da estética",
+    "SCANTODOWNLOAD": "Escanea para descargar",
+    "SIGNUP": "Rexístrate!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Erro de reprodución do vídeo",
+    "AUTOPLAY_BLOCKED": "Reprodución automática bloqueada. Preme para reproducir.",
+    "NAV_ERROR": "Imposible navegar"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Como funcionan as apps e sitios de izyGlam",
+    "HELPCENTER": "Accede ao centro de axuda",
+    "BUSINESS": "Empresa",
+    "ABOUT": "Sobre nós",
+    "OURSERVICES": "Os nosos servizos",
+    "PRESSAREA": "Espazo de prensa",
+    "INVESTORS": "Investidores",
+    "CAREERS": "Ofertas de emprego",
+    "AI": "Intelixencia Artificial",
+    "PRODUCTS": "Produtos",
+    "GLAM": "Sempre no máis alto con izyGlam",
+    "RESERVED": "Reserva por adiantado",
+    "GIFTCARDS": "Tarxetas regalo",
+    "WORKWITHUS": "Traballa con izyGlam",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Privacidade",
+    "ACCESS": "Accesibilidade",
+    "CONDITIONS": "Condicións",
+    "LANGUAGE": "Lingua",
+    "LOCALISATION": "Localización",
+    "ALL_RIGHT": "Todos os dereitos reservados"
+  },
+  "COMING_SOON": {
+    "TITLE": "Chegamos en breve",
+    "TITLE-NOT-COMING": "Aínda non temos previsto ir",
+    "DAYS": "Días",
+    "HOURS": "Horas",
+    "MINUTES": "Minutos",
+    "SECONDS": "Segundos",
+    "TEXT": "Traballamos arreo para ofrecerche unha experiencia única de beleza no fogar. Mantente ao tanto para saber cando lanzamos."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Ofertas do momento",
+    "DISCOVER": "Para descubrir en izyGlam",
+    "LIKED": "Os máis apreciados preto de ti",
+    "SMART": "As mellores oportunidades",
+    "TOP10": "Top 10 da semana",
+    "SEARCHRESULT": "Resultados da busca",
+    "AVIS": "Opinións"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Perucaría",
+    "MANUCURE": "Manicura",
+    "VISAGE": "Rosto",
+    "MASSAGE": "Masaxe",
+    "MAQUILLAGE": "Maquillaxe",
+    "EPILATION": "Depilación",
+    "BRONZAGE": "Bronceado",
+    "PARTUM": "Posparto",
+    "NUTRITION": "Nutrición",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupuntura",
+    "STYLISME": "Estilismo",
+    "YOGA": "Relaxa-ción",
+    "DEVELOPPEMENT": "Elevación persoal",
+    "EYELASH": "Extensións de pestanas"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Unha perruqueira",
+    "MANUCURE": "Unha manicurista",
+    "ESTETICIAN": "Unha esteticista",
+    "MASSAGE": "Unha masaxista",
+    "MAQUILLAGE": "Unha maquilladora",
+    "PEDICURE": "Unha pedicura",
+    "NUTRITION": "Unha nutricionista",
+    "FITNESS": "Unha adestradora"
+  },
+  "INTRO": {
+    "NORESULTS": "Non se atoparon resultados",
+    "START": "Comezar",
+    "SPECIALITY": "Especialidade?",
+    "WHERE": "Onde?",
+    "CONNEXION": "Acceso",
+    "REGISTRATION": "Rexistro"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Información da conta",
+    "MESSAGE": "As miñas mensaxes",
+    "MESSAGE_SUBTITLE": "Lista das miñas conversas en curso.",
+    "INFORMATION_SUBTITLE": "Modifica os teus datos persoais facilmente.",
+    "SECURITY": "Seguridade e idioma",
+    "SECURITY_SUBTITLE": "Contrasinal, lingua… todo baixo control aquí.",
+    "CONFIDENTIAL": "Privacidade e datos",
+    "CONFIDENTIAL_SUBTITLE": "Os teus datos son valiosos. Así os coidamos.",
+    "DASHBOARD": "Cadro de mando",
+    "DASHBOARD_SUBTITLE": "Xestiona facilmente os datos da túa actividade.",
+    "COMPANY": "Xestión da miña empresa",
+    "COMPANY_SUBTITLE": "Xestiona facilmente as túas citas pasadas, vindeiras ou anuladas.",
+    "SHOP": "Xestión do meu salón",
+    "SHOP_SUBTITLE": "Xestiona o teu salón, prestacións e finanzas.",
+    "FINANCIAL": "Seguimento financeiro",
+    "ADMIN": "Administración xeral",
+    "ADMIN_SUBTITLE": "Xestiona sinxelo todo este prodixio. O mundo é teu, campioa!",
+    "CALENDAR": "Axenda",
+    "CALENDAR_SUBTITLE": "Xestiona facilmente as túas citas pasadas ou vindeiras.",
+    "SELECT_SALON": "Selecciona un salón",
+    "NEW_SALON": "Crear un salón",
+    "SHOP_TO_CREATE": "Tipo de tenda para crear",
+    "CANCEL": "Cancelar",
+    "CREATE": "Crear a miña tenda",
+    "INFO1": "Estás a piques de eliminar a túa tenda de",
+    "INFO2": "Esta acción é irreversible",
+    "SURE": "Seguro/a que queres continuar",
+    "DELETE": "Eliminar"
+  },
+  "PROFILE": {
+    "TITLE": "Información básica",
+    "FIRSTNAME": "Nome",
+    "LASTNAME": "Apelidos",
+    "PHONE": "Número de teléfono",
+    "ADDRESS": "Enderezo de correo",
+    "CHANGE_USER": "Modificar usuario",
+    "CANCEL": "Cancelar",
+    "SUCCESS": "Perfil modificado con éxito",
+    "UPDATE_ERROR": "Produciuse un erro ao actualizar o contrasinal."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Cambiar contrasinal",
+    "ACTUAL_PASSWORD": "Contrasinal actual",
+    "NEW_PASSWORD": "Novo contrasinal",
+    "CONFIRMED_PASSWORD": "Confirma o novo contrasinal",
+    "CHANGE_PASSWORD": "Cambiar o contrasinal",
+    "CHANGE_OK": "Contrasinal cambiado con éxito",
+    "CHANGE_LANGUE": "Cambiar a lingua",
+    "CHANGE_COUNTRY": "Cambiar o país",
+    "LANGUE": "Lingua",
+    "COUNTRY": "País"
+  },
+  "PAYEMENT": {
+    "YOU": "Ti",
+    "HEADER_TITLE": "Pagamento",
+    "SERVICE_TITLE": "Servizo",
+    "SERVICE_NOTE": "Nota:",
+    "ADDRESS_TITLE": "Enderezo da prestación",
+    "ADDRESS_RENDEZVOUS": "Cita diante da miña porta",
+    "ADDRESS_CHANGE": "Seleccionar outro enderezo",
+    "PAYMENT_SECTION_TITLE": "Pagamento",
+    "PAYMENT_METHOD": "Tarxeta principal",
+    "PAYMENT_EXPIRE": "Caduca",
+    "PAYMENT_NO_CARD": "Non hai tarxeta principal definida",
+    "PAYMENT_NO_CARD_DESC": "Engade ou selecciona unha tarxeta como método principal de pagamento.",
+    "SUMMARY_SUBTOTAL": "Subtotal",
+    "SUMMARY_SERVICE_FEE": "Comisión izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Gastos de servizo",
+    "SUMMARY_TOTAL": "Total",
+    "TITLE": "Reserva a túa cita en liña",
+    "FOR_WHO": "Para quen reservas esta cita?",
+    "ADD_PROCHE": "Engadir un achegado",
+    "WHERE": "Onde recibirás a cita?",
+    "SELECT_ADDRESS": "Selecciona un enderezo",
+    "ADD_ADDRESS": "Engadir un enderezo",
+    "CARD_PAY": "Pagamento con tarxeta bancaria",
+    "CARD_NUM": "Número da tarxeta",
+    "CARD_NAME": "Nome na tarxeta",
+    "EXPIRATION": "Data de caducidade",
+    "CVV": "CVV",
+    "RDV": "A túa cita en detalle",
+    "RESUME": "Resumo da cita",
+    "DATE": "Data",
+    "HOUR": "Hora",
+    "PRESTA": "Prestación",
+    "EXPIRE": "Caduca",
+    "DEFAULT": "Por defecto",
+    "NOCARD": "Non hai tarxetas gardadas",
+    "WITH": "Con",
+    "TOTAL": "Total a pagar",
+    "ANNULER": "CANCELAR",
+    "RETOUR": "ATRÁS",
+    "CONTINUER": "CONTINUAR",
+    "VALIDER": "VALIDAR",
+    "ADRESSE": "Enderezo",
+    "LEGAL_TEXT_1": "Ao premer no botón para realizar o pedido, aceptas o Contrato de servizos de entrega con izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Renuncias ao teu dereito de desistencia en relación co servizo de entrega. Podes acudir a un mediador de consumo aquí.",
+    "LEGAL_TEXT_3": "Se non estás cando chegue o repartidor, deixará o pedido diante da porta. Ao facer un pedido, aceptas a responsabilidade total unha vez entregado. En ausencia, os pedidos con alcohol ou artigos restrinxidos serán devoltos directamente ao establecemento.",
+    "CLOSE_FORM": "Pechar o formulario",
+    "ADD_CARD": "Engadir unha tarxeta",
+    "TRAITEMENT": "Procesamento en curso"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Pagamento validado",
+    "THANKS": "Grazas! A túa reserva foi rexistrada correctamente.",
+    "BACKHOME": "Volver ao inicio",
+    "PROBLEME": "Problema coa reserva",
+    "PAIEMENT": "O teu pagamento foi debitado, pero non se puido confirmar a reserva.",
+    "THANKSCONTACT": "Contacta co noso soporte en",
+    "FAILED": "Pagamento fallido",
+    "VALIDATE": "Non puidemos validar o teu pagamento. Téntao de novo."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam para autónomos",
+    "STEP1": {
+      "TITLE": "Os clientes fan o pedido",
+      "TEXT": "O cliente atopa o teu establecemento e realiza o pedido na app de izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Ti aceptas a reserva",
+      "TEXT": "Aceptas a reserva e a túa axenda actualízase."
+    },
+    "STEP3": {
+      "TITLE": "No momento da cita",
+      "TEXT": "Avisámoste con antelación das reservas e guiámoste para ir a cada cliente."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Abonar a conta da empresa",
+    "SOLDE": "Saldo actual",
+    "CREDIT": "Importe a abonar",
+    "COMPANY": "Abonar a conta da empresa",
+    "DEPENSE": "Seguimento de gastos",
+    "DATE": "Data",
+    "COUNT": "Importe",
+    "EMPLOYEE": "Empregado",
+    "DESCRIPTION": "Descrición"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Xa tes unha conta de socia ou de empresa!",
+    "NOT_CONNECTED": "Inicia sesión para rexistrar un salón",
+    "TITLE": "Anímate!",
+    "TITLE2": "Imos crear un salón!",
+    "NAME": "Nome do teu salón",
+    "ADDRESS": "Enderezo da túa empresa",
+    "STREET": "Rúa",
+    "CITY": "Cidade",
+    "CODE_POSTAL_POSSIBLE": "Códigos postais atendidos",
+    "CODE_POSTAL": "Código postal",
+    "COUNTRY": "País",
+    "ADDRESSPLACEHOLDER": "Rúa Principal, 123",
+    "FLOOR": "Andar/Suite (opcional)",
+    "BUSINESSTYPE": "Tipo de empresa",
+    "FIRSTNAME": "Nome",
+    "LASTNAME": "Apelidos",
+    "PASSWORD": "Contrasinal",
+    "PASSWORDCONFIRMED": "Confirmación do contrasinal",
+    "EMAIL": "Correo electrónico",
+    "PHONE": "Número de móbil",
+    "WHATSAPP": "Acepto recibir mensaxes por WhatsApp",
+    "BUTTON": "Gardar a tenda",
+    "SUCCESS": "A tenda creouse con éxito!",
+    "ERROR": "Produciuse un erro ao crear a tenda:",
+    "ERROR1": "O nome da túa empresa é obrigatorio.",
+    "ERROR2": "O enderezo da túa empresa é obrigatorio.",
+    "ERROR3": "O tipo de empresa é obrigatorio.",
+    "ERROR4": "O nome é obrigatorio.",
+    "CHOOSE_COUNTRY": "Elixir un país",
+    "POSTAL_CODE": "Código postal",
+    "CHOOSE_CITY": "Elixir unha cidade",
+    "ERROR5": "Os apelidos son obrigatorios.",
+    "ERROR6": "O correo é obrigatorio.",
+    "ERROR7": "O número de móbil é obrigatorio.",
+    "ERROR8": "Debes aceptar recibir mensaxes por WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Modificar o enderezo",
+    "FIND_SHOP": "Buscar unha tenda",
+    "CATEGORIES": "Categorías",
+    "OFFRE": "Ofertas do momento",
+    "DISCOVER": "Para descubrir",
+    "APPRECIATE": "Os máis apreciados",
+    "SMART": "Os plans listos",
+    "TOP10": "Top10 da semana",
+    "SEARCH_RESULT": "Resultados da busca",
+    "NOT_AVAILABLE": "Aínda non dispoñible neste enderezo",
+    "NEW_ADDRESS": "Engadir un novo enderezo",
+    "CHOOSE_ADDRESS": "Escolle un enderezo",
+    "CHOOSE_COUNTRY": "Elixir un país",
+    "CHOOSE_CITY": "Elixir unha cidade",
+    "CHOOSE_ARRONDISSEMENT": "Elixir distrito",
+    "CANCEL": "Cancelar",
+    "SAVE": "Gardar",
+    "CLOSE": "Pechar"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Nome",
+    "CITY": "Cidade",
+    "NOTE": "Nota",
+    "MIDDLE_PRICE": "Prezo medio",
+    "PROMOTION": "Promoción",
+    "ACTIONS": "Accións",
+    "MODIFIER": "Modificar a información da tenda",
+    "SHOP_NAME": "Nome da tenda",
+    "DESCRIPTION": "Descrición",
+    "PRINCIPALE": "Imaxe principal",
+    "SHOP": "Tipo de tenda",
+    "ARRONDISSEMENT": "Distrito",
+    "MINIMUM_DELAI": "Prazo mínimo",
+    "DISTANCE": "Distancia máxima (km)",
+    "EMPLACEMENT": "Localización",
+    "HOURS_MORNING": "Horario de mañá",
+    "HOURS_AFTERNOON": "Horario de tarde",
+    "ACTIVE_PROMO": "Promo activa",
+    "CANCEL": "Cancelar",
+    "ENREGISTRER": "Gardar"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Desenvolve o teu negocio",
+    "TEXT": "Milleiros de usuarios de izyGlam poden estar a buscar un establecemento no teu sector…",
+    "IMAGE": "imaxe"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Por que izyGlam?",
+    "STEP1": {
+      "TITLE": "Traballa coas túas propias condicións",
+      "TEXT": "Organiza o teu horario e xestiona as túas prestacións con liberdade. Goza dunha plataforma flexible que se adapta a ti para maximizar a actividade."
+    },
+    "STEP2": {
+      "TITLE": "Reforza a túa presenza en liña",
+      "TEXT": "Atrae máis clientes cos ferramentas de marketing integradas e gaña visibilidade para impulsar os resultados."
+    },
+    "STEP3": {
+      "TITLE": "Fideliza a túa clientela",
+      "TEXT": "Crea relacións duradeiras analizando preferencias, respondendo opinións e ofrecendo vantaxes de fidelidade."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Simplifica a xestión do teu negocio",
+      "TEXT": "Xestiona con serenidade grazas a izyGlam, a solución completa para profesionais do benestar. Goza de ferramentas flexibles e acompañamento personalizado."
+    },
+    "STEP2": {
+      "TITLE": "Impulsa as túas vendas",
+      "TEXT": "Cada día milleiros de persoas usan izyGlam para atopar expertas en beleza preto. Aproveita para chegar a novos clientes."
+    },
+    "STEP3": {
+      "TITLE": "Satisfacción garantida",
+      "TEXT": "Con izyGlam, ofrece unha experiencia personalizada. Xestiona citas, comunica axiña e adapta servizos. Clientes satisfeitos e fieis."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam para a túa empresa?",
+    "STEP1": {
+      "TITLE": "Empregados e clientes reservan servizos",
+      "TEXT": "Elixen as prestacións de benestar que lles conveñen directamente na app."
+    },
+    "STEP2": {
+      "TITLE": "Ti decides o importe a asignar",
+      "TEXT": "Podes abonar contas de empregados e clientes, periodicamente ou puntualmente."
+    },
+    "STEP3": {
+      "TITLE": "Realízanse as prestacións",
+      "TEXT": "As nosas profesionais desprázanse para ofrecer os servizos reservados, garantindo unha experiencia óptima."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Valoriza a túa empresa",
+    "TEXT": "Milleiros de usuarios buscan servizos de benestar. Ofrécelles acceso aos mellores expertos de beleza preto de eles.",
+    "IMAGE": "imaxe"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Por que izyGlam?",
+    "STEP1": {
+      "TITLE": "Fideliza e recompensa ao teu persoal",
+      "TEXT": "Ofrécelles un orzamento mensual de beleza: perruqueiras, esteticistas e máis profesionais para aumentar a súa satisfacción e pertenza."
+    },
+    "STEP2": {
+      "TITLE": "Mellora a imaxe de marca",
+      "TEXT": "Organiza eventos de beleza para clientes ou intégranos nos programas de fidelización. Impacto asegurado con coidados de alto nivel."
+    },
+    "STEP3": {
+      "TITLE": "Optimiza o benestar no traballo",
+      "TEXT": "Facilita o acceso a servizos de benestar no lugar de traballo ou preto. Mellora motivación e cohesión dos equipos."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Facilita o benestar ao teu equipo",
+      "TEXT": "Con izyGlam, ofrece unha solución sinxela e flexible para coidarse: estética ou fitness, todo a man."
+    },
+    "STEP2": {
+      "TITLE": "Vantaxes innovadoras para clientes",
+      "TEXT": "Refórzase a relación ofrecendo prestacións de benestar en eventos ou programas de fidelización."
+    },
+    "STEP3": {
+      "TITLE": "Benestar a medida, onde e cando queiras",
+      "TEXT": "Empregados e clientes poden gozar de servizos de calidade onde estean, con expertos seleccionados e acompañamento persoal."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Xestionar a conta",
+    "ORDERS": "Pedidos realizados",
+    "FAVORITES": "Favoritos",
+    "HELP": "Axuda",
+    "MY_ABO": "A miña subscrición",
+    "PRICES": "Plans de prezos",
+    "FIDELITY": "Programa de fidelidade",
+    "LOGOUT": "Pechar sesión",
+    "YOUR_BEAUTY_SERVICES": "Ofrece os teus servizos de beleza",
+    "YOUR_COMPANY": "Rexistra a túa empresa"
+  },
+  "SUBTITLES": {
+    "HELP": "Precisas unha man? Esta páxina é para ti."
+  },
+  "ORDERS": {
+    "TITLE": "Os meus pedidos",
+    "TITLE_SUBTITLE": "Xestiona doado as túas citas pasadas, vindeiras ou anuladas.",
+    "UPCOMING_SECTION": "📅 Vindeiras",
+    "NO_UPCOMING": "Non tes prestacións planificadas.",
+    "PAST_SECTION": "✅ Pasadas",
+    "NO_PAST": "Non tes prestacións realizadas.",
+    "ADDRESS": "Enderezo",
+    "DATE": "Data",
+    "TOTAL": "Total",
+    "ITEMS": "artigos",
+    "DELETE": "Eliminar",
+    "VISIT": "Visitar",
+    "PRESTA_FOR": "Prestación para",
+    "AT": "ás",
+    "ORDER_AGAIN": "Pedir de novo",
+    "INVOICE": "Solicitar factura",
+    "REVIEW": "Dar a túa opinión",
+    "CANCEL": "Cancelar"
+  },
+  "FIDELITY": {
+    "TITLE": "Os meus favoritos",
+    "AGAIN": "Aínda",
+    "AGAIN_SUBTITLE": "antes da túa recompensa",
+    "TITLE_SUBTITLE": "para desbloquear o teu agasallo",
+    "DATE": "Válido ata",
+    "HISTO": "Historial dos meus coidados"
+  },
+  "FAVORITES": {
+    "TITLE": "Os meus favoritos",
+    "TITLE_SUBTITLE": "Atopa os teus salóns favoritos dun golpe de vista."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Gastos de servizo:",
+    "DISTANCE": "Distancia máx.:",
+    "PAYEMENT": "Pago con tarxeta e PayPal aceptado",
+    "PRESS_FOR_INFO": "Preme para ver horarios, información, etc.",
+    "GALLERY": "Galería de imaxes",
+    "SEE_MORE": "Ver máis",
+    "SEE_LESS": "Ver menos"
+  },
+  "LOGIN": {
+    "TITLE": "Introduce as túas credenciais.",
+    "FORGET_PASSWORD": "Esqueciches o contrasinal?",
+    "CONTINUER": "Continuar",
+    "CONTINUE_WITH": "Continuar con",
+    "OR": "Ou",
+    "QRCODE": "Accede co código QR",
+    "CGU": "Ao continuar, aceptas recibir chamadas, mensaxes de WhatsApp ou SMS (incluídas automáticas) de izyGlam e afiliadas ao número indicado.",
+    "PLACEHOLDER_EMAIL": "Enderezo de correo",
+    "PLACEHOLDER_PASSWORD": "Contrasinal",
+    "PLACEHOLDER_PASSWORD_NEW": "Novo contrasinal",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Confirmar contrasinal",
+    "CHANGE_PASSWORD": "Modifica o teu contrasinal",
+    "REINIT": "Restablecer"
+  },
+  "SIGNUP": {
+    "GENRE": "Xénero",
+    "CHOOSE": "Escoller",
+    "SEX_MALE": "Home",
+    "SEX_FEMALE": "Muller",
+    "TITLE": "Introduce a túa información persoal.",
+    "CONTINUER": "Continuar",
+    "OR": "Ou",
+    "QRCODE": "Accede co código QR",
+    "CGU": "Ao continuar, aceptas recibir chamadas, mensaxes de WhatsApp ou SMS (incluídas automáticas) de izyGlam e afiliadas ao número indicado.",
+    "PLACEHOLDER_FIRSTNAME": "Nome",
+    "PLACEHOLDER_LASTNAME": "Apelidos",
+    "PLACEHOLDER_EMAIL": "Correo electrónico",
+    "PLACEHOLDER_EMAIL_REQUIRED": "Correo obrigatorio",
+    "PLACEHOLDER_EMAIL_WRONG": "Formato de correo inválido",
+    "PLACEHOLDER_PHONE": "Teléfono",
+    "PLACEHOLDER_PHONE_NUMBER": "Número de teléfono",
+    "PLACEHOLDER_PASSWORD": "Contrasinal",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Confirmación do contrasinal",
+    "COUNTRY": "País"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Francés",
+    "ANGLAIS": "Inglés",
+    "ESPAGNOL": "Español",
+    "NEERLANDAIS": "Neerlandés",
+    "ITALIEN": "Italiano",
+    "ALLEMAND": "Alemán",
+    "PORTUGAIS": "Portugués",
+    "POLONAIS": "Polaco",
+    "DANOIS": "Dinamarqués",
+    "FINNOIS": "Finés",
+    "SUEDOIS": "Sueco",
+    "ARABE": "Árabe",
+    "TURC": "Turco",
+    "CHINOIS": "Chinés",
+    "RUSSE": "Ruso",
+    "PERSAN": "Persa",
+    "UKRAINIEN": "Ucraíno",
+    "ROUMAIN": "Romanés",
+    "CATALAN": "Catalán",
+    "BASQUE": "Éuscaro",
+    "GALICIEN": "Galego",
+    "ALBANAIS": "Albanés",
+    "KURDE": "Kurdo",
+    "ESTONIEN": "Estoniano",
+    "SOMALIEN": "Somalí",
+    "BIELORUSSE": "Bielorruso",
+    "JAPONAIS": "Xaponés",
+    "COREEN": "Coreano",
+    "INDONESIEN": "Indonesio",
+    "MALAIS": "Malaio",
+    "THAI": "Tailandés",
+    "VIETNAMIEN": "Vietnamita",
+    "TAGALOG": "Tagalo",
+    "BENGALI": "Bengalí"
+  },
+  "COUNTRY": {
+    "FRANCE": "Francia",
+    "ALLEMAGNE": "Alemaña",
+    "SPAIN": "España",
+    "ITALY": "Italia",
+    "DANEMARK": "Dinamarca",
+    "FINLAND": "Finlandia",
+    "NETHERLAND": "Países Baixos",
+    "POLAND": "Polonia",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Suecia",
+    "CHINA": "China",
+    "INDIA": "India",
+    "JAPAN": "Xapón",
+    "SOUTH_KOREA": "Corea do Sur",
+    "INDONESIA": "Indonesia",
+    "PHILIPPINES": "Filipinas",
+    "THAILAND": "Tailandia",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Malaisia",
+    "SINGAPOURE": "Singapur",
+    "EMIRAT_ARABE": "Emiratos Árabes Unidos",
+    "SAUDI_ARABIA": "Arabia Saudita"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Os meus enderezos",
+    "ADDRESS_MODIFICATION": "Modificación de enderezo",
+    "STREET": "Rúa",
+    "CITY": "Cidade",
+    "CP": "Código postal",
+    "CREATE": "Crear",
+    "BACK": "Volver",
+    "CHANGE": "Modificar",
+    "CLOSE": "Pechar"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Parámetros da plataforma",
+    "COMMISSION": "Taxa de comisión (%)",
+    "0to100": "Valor entre 0 e 100 obrigatorio",
+    "SERVICE": "Gastos de servizo (€)",
+    "WEEKS": "Número de semanas amosadas",
+    "SUP0": "Valor superior a 0 obrigatorio",
+    "LESS24": "Gastos por cancelación a menos de 24 h (%)",
+    "LESS48": "Gastos por cancelación a menos de 48 h (€)",
+    "DELAY": "Prazo mínimo de reserva (horas)",
+    "TVA": "IVE (%)",
+    "ADS": "Activar anuncios",
+    "COMPANY": "Activar comercio con empresas",
+    "FIDELITY": "Activar fidelización",
+    "MULTI_SHOP": "Activar multi-tenda",
+    "PROMO": "Activar promocións en tenda",
+    "SPONSORS": "Activar sección de patrocinadores na landing",
+    "SAVE": "Gardar"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Total de tendas",
+    "ACT_SHOPS": "Tendas activas",
+    "USERS": "Total de usuarios",
+    "NBR_USERS": "Usuarios inscritos",
+    "CA_TOTAL": "Facturación total",
+    "CA_GENERATED": "Facturación xerada",
+    "SHOPS_PERFO": "Rendemento das tendas",
+    "SHOP_NAME": "Nome da tenda",
+    "CITY": "Cidade",
+    "REVENUES": "Ingresos",
+    "BOOKINGS": "Número de reservas",
+    "NOTE": "Nota media",
+    "ACTIONS": "Accións",
+    "DETAILS": "Detalles",
+    "ADJUST": "Axustar",
+    "SHOP_ADJUST": "Axustar a tenda",
+    "STILL_DEVELOPPED": "Funcionalidade aínda en desenvolvemento",
+    "CLOSE": "Pechar"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Detalles do evento",
+    "CLIENT": "Cliente",
+    "DEBUT": "Inicio",
+    "FIN": "Fin",
+    "ADDRESS": "Enderezo",
+    "PHONE": "Teléfono",
+    "CANCEL": "Cancelar",
+    "SAVE": "Gardar"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Crear evento",
+    "COMING": "Vindeiras",
+    "PAST": "Pasadas",
+    "CANCELLED": "Anuladas",
+    "NO_CANCELLED": "Non hai pedidos anulados."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Asistencia en liña"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Xestión de empregados",
+    "NAME": "Nome",
+    "EMAIL": "Correo electrónico",
+    "SOLDE": "Saldo da conta",
+    "ACTIONS": "Accións",
+    "DEFAULT_PASSWORD": "Contrasinal por defecto",
+    "REINITIALIZE_PASSWORD": "Contrasinal por defecto para restablecemento",
+    "CHANGE_PASSWORD": "Modificar contrasinal"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Abonar a conta do empregado",
+    "AMOUNT": "Importe a abonar",
+    "CANCEL": "Cancelar",
+    "SAVE": "Validar"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Total de reservas",
+    "TOTAL_MONTH": "Reservas este mes",
+    "GENERATED": "Ingresos xerados",
+    "MONTHLY": "Ingresos este mes",
+    "AVG_NOTE": "Notas medias",
+    "BASED_ON": "Baseado en",
+    "REVIEWS": "opinións",
+    "NEXT_APPOINTEMENT": "Vindeiras citas",
+    "POPULAR_SERVICES": "Servizos máis populares",
+    "RESERVATION": "reservas"
+  },
+  "FINANCE": {
+    "PROGRESS": "Evolución respecto a M-1",
+    "PROGRESSION": "Progresión",
+    "TOTAL_GENERATED": "Total facturado",
+    "CA": "Facturación",
+    "COMMISSION_TAKEN": "Comisión cobrada",
+    "COMMISSIONS": "Comisións",
+    "NET_TO_PAY": "Importe neto a transferir",
+    "DISPO_AMOUNT": "Importe dispoñible",
+    "REQUEST_WITHDRAWAL": "Solicitar transferencia",
+    "TAKE": "Importe a retirar",
+    "TOTAL_EARNINGS": "Ingresos netos",
+    "TOTAL_BOOKINGS": "Prestacións realizadas",
+    "CANCELLED_BOOKINGS": "Prestacións anuladas",
+    "SERVICES_CANCELLED": "Reservas anuladas ou rexeitadas",
+    "SERVICES_COMPLETED": "Reservas finalizadas",
+    "AVG_PRICE": "Prezo medio",
+    "PER_SERVICE": "Por prestación",
+    "REVIEW_RATIO": "Opinións de clientes",
+    "CLIENT_FEEDBACK": "Taxa de comentarios",
+    "TOP_PRODUCTS": "Prestacións máis vendidas",
+    "AVG_DURATION": "Duración media",
+    "DURATION_PER_BOOKING": "Tempo por reserva",
+    "DETAILS": "Detalles da conta bancaria",
+    "ASK": "Solicitar transferencia",
+    "HISTORY": "Historial de transaccións",
+    "DATE": "Data",
+    "AMOUNT": "Importe",
+    "COMMISSION": "Comisión",
+    "STATUS": "Estado"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Selecciona o tipo de tenda para crear",
+    "CANCEL": "Cancelar",
+    "CREATE": "Validar"
+  },
+  "PROCHES": {
+    "TITLE": "Os meus achegados",
+    "UPDATE": "Modificación dun achegado",
+    "FIRSTNAME": "Nome",
+    "NAME": "Apelidos",
+    "EMAIL": "Correo electrónico",
+    "PHONE": "Teléfono",
+    "CREATE": "Crear",
+    "BACK": "Volver",
+    "CHANGE": "Modificar",
+    "CLOSE": "Pechar"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Da a túa opinión",
+    "RATING": "Puntuación",
+    "COMMENT": "Comentario",
+    "CLOSE": "Pechar",
+    "SUBMIT": "Enviar"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Escolle a data da prestación",
+    "CANCEL": "Cancelar"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Crear un servizo",
+    "NAME": "Nome",
+    "DESCRIPTION": "Descrición",
+    "COLOR": "Cor",
+    "PRICE": "Prezo",
+    "TIME": "Duración",
+    "IMAGE": "Imaxe",
+    "ACTIONS": "Accións",
+    "MINUTES": "minutos",
+    "CHANGE": "Modificar",
+    "DELETE": "Eliminar",
+    "SERVICE_NAME": "Nome do servizo",
+    "TIME_MINUTES": "Duración (en minutos)",
+    "PREST_IMAGE": "Imaxe da prestación",
+    "NO_PICS": "Aínda sen foto",
+    "UPLOAD": "Cargar imaxe",
+    "NEW_PIC": "Previsualización da nova imaxe",
+    "PRESTA_COLOR": "Cor da prestación",
+    "CANCEL": "Cancelar",
+    "SAVE": "Gardar",
+    "AVG_PRICE": "Tarifa media",
+    "IMAGE_OK": "Imaxe cargada con éxito",
+    "ERROR_IMAGE_LOAD": "Erro ao cargar a imaxe",
+    "UPDATE_SUCCESS": "Prestación actualizada con éxito",
+    "ERROR_PRESTA": "Erro ao actualizar a prestación",
+    "PRESTA_UPDATED": "Prestación actualizada con éxito",
+    "PRESTA_ERROR": "Erro ao actualizar a prestación",
+    "PRESTA_SUCCESS": "Prestación actualizada con éxito",
+    "PHOTO_ERROR": "Erro ao actualizar a foto",
+    "PRESTA_DELETED": "Prestación eliminada con éxito",
+    "PRESTA_DELETE_ERROR": "Erro ao eliminar a prestación"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Imaxe da tenda",
+    "UPLOAD_IMAGE": "Cargar imaxe",
+    "SNEEK_PIC": "Vista previa da imaxe",
+    "SHOP_NAME": "Nome da tenda",
+    "DESCRIPTION": "Descrición",
+    "DESC_INFO": "(mín. 25 caracteres)",
+    "CITY": "Cidade",
+    "DISCRICT": "Distritos",
+    "LAT": "Latitude",
+    "LON": "Lonxitude",
+    "ZONE": "Zona de desprazamento (km)",
+    "OPENNING": "Horarios de apertura",
+    "MORNING_OPEN": "Mañá - Apertura",
+    "MORNING_CLOSE": "Mañá - Peche",
+    "AFTERNOON_OPEN": "Tarde - Apertura",
+    "AFTERNOON_CLOSE": "Tarde - Peche",
+    "SAVE": "Gardar a tenda",
+    "MONDAY": "Luns",
+    "TUESDAY": "Martes",
+    "WEDNESDAY": "Mércores",
+    "THURSDAY": "Xoves",
+    "FRIDAY": "Venres",
+    "SATURDAY": "Sábado",
+    "SUNDAY": "Domingo",
+    "CLOSED": "Pechado",
+    "GENERATE_IMAGE": "Xerar imaxe",
+    "GENERATE_DESCRIPTION": "Xerar descrición",
+    "PHOTO": "Exemplos de fotos aceptadas / rexeitadas",
+    "CODE_POSTAUX": "Códigos postais atendidos",
+    "EXEMPLE_LOCAL": "Ex.: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Engadir un empregado",
+    "LOADING": "Cargando",
+    "LIST": "Lista de empregados",
+    "ADD": "Engadir",
+    "EMAIL": "Correo do empregado",
+    "FIRSTNAME": "Nome",
+    "FAMILY_NAME": "Apelidos",
+    "PHONE": "Teléfono",
+    "PASSWORD": "Contrasinal",
+    "HAVE_TO": "Todos os campos son obrigatorios.",
+    "EMAIL_ERROR": "Correo inválido.",
+    "EMPLOYEE_OK": "Empregado engadido con éxito.",
+    "ADD_EMPLOYEE_ERROR": "Erro ao engadir o empregado."
+  },
+  "AVIS": {
+    "TITLE": "O QUE DIN OS NOSOS USUARIOS",
+    "AVIS1": "Era un pouco escéptica… e sorprendeume! A miña manicura quedou perfecta, na casa e sen estrés. Convertiuse no meu ritual dos venres á noite.",
+    "AVIS2": "Reservei un coidado facial en 3 minutos, desde o sofá. A esteticista foi doce, atenta… e a miña pel nunca estivo tan ben.",
+    "AVIS3": "Pensaba que sería máis caro ca nun salón… sorpresa: mesmo prezo, ou menos! E sen desprazarme. Un gran si.",
+    "AVIS4": "Véspera dun aniversario, quería un brushing exprés. Atopei unha pro dispo en 2 clics. Puntual, simpática e resultado xenial.",
+    "AVIS5": "Son nai soa e non teño tempo. Aquí podo reservar cando os nenos dormen. Sinxelo, rápido e realmente xenial.",
+    "AVIS6": "Encantoume a primeira sesión. A esteticista fíxome sentir cómoda de inmediato. Sentinme coidada. Xa reservei para a semana que vén!"
+  },
+  "DOWNLOAD": {
+    "USERS": "usuarios satisfeitos",
+    "SOCIAL": "profesionais dispoñibles",
+    "STORE": "en App Store e Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Escolle o plan que vai contigo",
+    "DISCOVER2": "e comeza a túa ascensión aos cumios",
+    "SOLUTIONS": "Mereces unha solución fermosa, poderosa e pensada para ti. Podes cambiar de opinión en calquera momento",
+    "TEST": "O teu primeiro salón é 100 % de balde. Sen estrés. Só maxia.",
+    "START_FREE": "Crear o meu primeiro salón",
+    "FREE": "Aprendiz",
+    "FREE_SUBTITLE": "Comeza a ascensión co teu primeiro salón",
+    "THEN": "despois",
+    "MONTHLY": "mes",
+    "FREE1": "1 salón activo",
+    "FREE2": "Reservas e clientes ilimitados",
+    "FREE3": "Xestión de prestacións e planificación",
+    "FREE4": "Sincronización co calendario persoal",
+    "FREE5": "Perfecto para comezar con calma",
+    "FREE6": "Crear un salón de balde",
+    "BASIC": "Elixida",
+    "BASIC_SUBTITLE": "Desbloquea o teu potencial e comeza a brillar",
+    "BASIC1": "Ata 3 salóns activos",
+    "BASIC2": "Xestión completa de prestacións, clientes e citas",
+    "BASIC3": "Soporte por correo prioritario",
+    "BASIC4": "Acceso a recursos exclusivos para facer medrar a túa actividade",
+    "BASIC5": "Ideal para profesionais que queren desenvolver clientela",
+    "BASIC6": "Proba gratis de 1 mes",
+    "PREMIUM": "Raíña",
+    "PREMIUM_SUBTITLE": "O teu imperio toma forma, a túa influencia medra",
+    "PREMIUM1": "Ata 10 salóns activos",
+    "PREMIUM2": "Acceso a estatísticas avanzadas de rendemento",
+    "PREMIUM3": "Recomendacións intelixentes para impulsar a túa facturación",
+    "PREMIUM4": "Maior visibilidade na plataforma IzyGlam",
+    "PREMIUM5": "Soporte prioritario",
+    "PREMIUM6": "Pensado para autónomas ambiciosas",
+    "PREMIUM7": "Obter Raíña",
+    "BUSINESS": "Deusa",
+    "BUSINESS_SUBTITLE": "Reclama o teu trono, Deusa",
+    "BUSINESS1": "Á medida",
+    "BUSINESS2": "Salóns ilimitados",
+    "BUSINESS3": "Acompañamento estratéxico personalizado",
+    "BUSINESS4": "Visibilidade impulsada e destaque dos teus salóns",
+    "BUSINESS5": "Solucións á medida para escalar a túa actividade",
+    "BUSINESS6": "Contactar connosco",
+    "COMPARE": "Comparativa de funcionalidades",
+    "FONCTIONS": "Funcionalidades",
+    "BUSINESS9": "Xestión completa da actividade",
+    "STUDIO_BASIC": "Recursos exclusivos",
+    "STUDIO_ADVANCED": "Estatísticas e recomendacións",
+    "ANALYSE": "Análise de rendemento",
+    "BASICS": "Clásica",
+    "ADVANCE": "Avanzada",
+    "PLANS": "Número de salóns activos",
+    "READY": "Lista para facer medrar a túa actividade?",
+    "DISCOVERS": "Descubrir as ofertas de IzyGlam"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Declaración de accesibilidade",
+      "TEXT": "izyGlam comprométese a facer accesibles os seus servizos ao maior número de persoas. O noso obxectivo é acadar a conformidade WCAG 2.2 nivel AA e aliñarnos co RGAA (Francia), na medida do posible."
+    },
+    "SCOPE": {
+      "TITLE": "Ámbito cuberto",
+      "L1": "Sitio web público e páxinas informativas.",
+      "L2": "Aplicación web (panel) para clientes e profesionais.",
+      "L3": "Aplicación móbil (iOS/Android) se procede.",
+      "L4": "Correos transaccionais e centro de axuda.",
+      "L5": "Ferramentas de soporte ao cliente."
+    },
+    "STATUS": {
+      "TITLE": "Estado de conformidade",
+      "TEXT": "Na data desta declaración, a accesibilidade das interfaces de izyGlam é parcialmente conforme coas WCAG 2.2 AA / RGAA. Melloramos continuamente e corriximos as desviacións prioritarias."
+    },
+    "PREPARATION": {
+      "TITLE": "Método de preparación da declaración",
+      "L1": "Autoavaliacións do equipo de produto/UI: revisión semántica HTML, roles ARIA, orde de tabulación.",
+      "L2": "Probas manuais: navegación con teclado, foco visible, zoom 200 %+, lectores de pantalla.",
+      "L3": "Probas con ferramentas (auditoría automatizada en mostras de pantallas).",
+      "L4": "Receta continua nas actualizacións (Design System, compoñentes reutilizables accesibles)."
+    },
+    "FEATURES": {
+      "TITLE": "Funcionalidades de accesibilidade dispoñibles",
+      "KEYBOARD": {
+        "TITLE": "Navegación co teclado",
+        "L1": "Percorrido completo co teclado (Tab, Shift+Tab, Intro, Espazo, Esc, frechas).",
+        "L2": "Indicador de foco visible coherente e con contraste.",
+        "L3": "Ligazóns «Ir ao contido» para saltar a cabeceira.",
+        "L4": "Menús, modais e despregables manexables co teclado (abrir/pechar, atrapado de foco controlado, peche con Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Lectores de pantalla e estrutura",
+        "L1": "Estrutura semántica con títulos xerárquicos (h1→h6) e rexións (header, nav, main, footer).",
+        "L2": "Etiquetas explícitas para todos os campos e botóns, nomes accesibles coherentes.",
+        "L3": "Anuncio de cambios de estado mediante rexións aria-live (erros, éxitos, cargas).",
+        "L4": "Imaxes informativas con atributo alt descritivo; imaxes decorativas ignoradas."
+      },
+      "CONTRAST": {
+        "TITLE": "Contrastes, cores e escalado",
+        "L1": "Contraste obxectivo ≥ 4.5:1 para texto normal e ≥ 3:1 para texto grande.",
+        "L2": "Interface usable ata o 200 % de zoom sen perda de contido nin funcionalidade.",
+        "L3": "Ningunha información transmitida só coa cor."
+      },
+      "FORMS": {
+        "TITLE": "Formularios e mensaxes de erro",
+        "L1": "Asociación label⇄input, indicación de campos obrigatorios.",
+        "L2": "Erros preto do campo e recapitulados se é necesario.",
+        "L3": "Foco no primeiro campo en erro, consellos de corrección fornecidos."
+      },
+      "DYNAMIC": {
+        "TITLE": "Contidos dinámicos e animacións",
+        "L1": "Carretes/elementos animados pausables e non bloqueantes.",
+        "L2": "Respecto da preferencia do sistema «reducir animacións» cando sexa posible.",
+        "L3": "Modais non intrusivos, pechables co teclado e clic exterior."
+      },
+      "MEDIA": {
+        "TITLE": "Medios",
+        "L1": "Vídeos (se os hai) con subtítulos e/ou transcricións.",
+        "L2": "Elementos de audio/vídeo controlables co teclado."
+      },
+      "MOBILE": {
+        "TITLE": "Móbil",
+        "L1": "Zonas táctiles grandes e espazadas.",
+        "L2": "Navegación coherente con TalkBack (Android) e VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Entornos e tecnoloxías de asistencia obxectivo",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Navegadores recentes compatibles e actualizados."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Contidos non accesibles (detectados ou potenciais)",
+      "TEXT": "A pesar dos esforzos, algúns elementos poden seguir sen conformidade:",
+      "L1": "Imaxes antigas sen texto alternativo descritivo.",
+      "L2": "Documentos de terceiros (PDF, anexos) non plenamente accesibles.",
+      "L3": "Vídeos históricos sen subtítulos/descrición.",
+      "L4": "Compoñentes de terceiros (pagamento, mapas, reprodutores) con límites propios.",
+      "MOTIVES": "Posibles motivos: contido de terceiros, carga disproporcionada, actualización en curso."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternativas e axustes razoables",
+      "TEXT": "Se precisas un formato alternativo (ex. documento accesible, axuda coa reserva), contáctanos. Faremos o máximo para ofrecer unha solución equivalente."
+    },
+    "FEEDBACK": {
+      "TITLE": "Opinión e asistencia",
+      "L1": "Na app: sección Axuda > Accesibilidade.",
+      "L2A": "Por correo:",
+      "L2B": "ou",
+      "L3": "Indica a pantalla/URL, dispositivo, navegador e, de ser o caso, lector de pantalla utilizado."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
+    },
+    "RECOURSE": {
+      "TITLE": "Procedemento de recurso (Francia)",
+      "TEXT": "Se detectas un defecto de accesibilidade que che impide acceder a un contido ou función, e non obtés resposta satisfactoria, podes:",
+      "L1": "Escribir ao Defensor dos Dereitos ou ao seu delegado no teu departamento,",
+      "L2": "Ou acudir ao Mediador se procede.",
+      "MORE": "Máis información:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Mellora continua",
+      "L1": "Design System con compoñentes accesibles.",
+      "L2": "Revisión de código e probas de accesibilidade en cada entrega.",
+      "L3": "Formacións regulares dos equipos de produto e soporte.",
+      "L4": "Priorización de correccións segundo o impacto no usuario."
+    },
+    "DATE": {
+      "TITLE": "Data da declaración e actualizacións",
+      "TEXT": "Declaración do 25 de decembro de 2025. Actualizarase polo menos unha vez ao ano ou ante cambios maiores."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Como reservar unha prestación en IzyGlam?",
+    "QUESTION2": "Como elixir o profesional axeitado para min?",
+    "QUESTION3": "Como modificar ou cancelar a miña cita?",
+    "QUESTION4": "Como podo seguir o meu pedido?",
+    "QUESTION5": "Que medios de pagamento podo usar?",
+    "QUESTION6": "Como seguir o meu pedido ou reserva?",
+    "QUESTION7": "Podo deixar unha opinión despois da prestación?",
+    "QUESTION8": "Como usar as miñas ofertas de fidelidade e promocións?",
+    "QUESTION9": "Que facer se teño un problema co meu pedido?",
+    "QUESTION10": "Como contactar co equipo de IzyGlam?",
+    "QUESTION11": "Como funciona a política de cancelación e reembolso?",
+    "QUESTION12": "Podo reservar para outra persoa (agasallo, sorpresa)?",
+    "QUESTION13": "Como facerse profesional asociado en IzyGlam?",
+    "QUESTION14": "Como protexer a miña información persoal en IzyGlam?",
+    "REPONSE1": "É sinxelo e rápido. Unha vez rexistrada, escolle o servizo que che interese, descubre as profesionais dispoñibles preto de ti e selecciona data e hora. Preme en \"Reservar\" para rematar e paga con tarxeta bancaria. O profesional validará manualmente a túa reserva. En caso de rexeitamento, reembólsase integramente.",
+    "REPONSE2": "Cada profesional ten un perfil detallado coas súas prestacións, tarifas, fotos e opinións. Tamén podes engadir favoritos. Tómate o tempo de comparar para elixir quen mellor se adapte ao que buscas.",
+    "REPONSE3": "Podes modificar ou cancelar a túa reserva desde o teu espazo persoal. As cancelacións son gratuítas ata 24 h antes. Pasado ese prazo, poden aplicarse gastos. Se tes un problema, o noso soporte está para axudarche.",
+    "REPONSE4": "Accede ao teu espazo persoal, sección \"As miñas reservas\". Verás o seguimento en tempo real, poderás cancelar ou modificar e consultar o historial.",
+    "REPONSE5": "O pagamento faise exclusivamente con tarxeta (Visa, MasterCard, American Express). Non ofrecemos pago en efectivo nin PayPal. Todo está securizado para a túa tranquilidade.",
+    "REPONSE6": "Cando se confirme a túa reserva, recibirás un correo de resumo. Tamén che enviaremos un recordatorio antes da prestación (correo e/ou notificación push). Podes seguir o estado desde o teu espazo persoal.",
+    "REPONSE7": "Si. Despois de cada prestación realizada, convidámoste a deixar unha opinión. As opinións modéranse manualmente para garantir a súa autenticidade. Os profesionais non poden modificar nin responder ás opinións.",
+    "REPONSE8": "Polo de agora, IzyGlam aínda non ofrece programa de fidelidade nin códigos promocionais. Están previstos para unha fase posterior.",
+    "REPONSE9": "Podes contactar connosco desde a sección \"Contacto\" ou por correo. O noso equipo fará o posible por responderche nas 24 h (prazo orientativo) e axudarche a resolver o problema.",
+    "REPONSE10": "Podes escribirnos a través do formulario do sitio ou da app. O soporte ao cliente está dispoñible de luns a sábado, de 9:00 a 18:00. Exemplo de correo: support@izyglam.com",
+    "REPONSE11": "Podes cancelar sen gastos ata 24 h antes da hora prevista. Pasado ese prazo poden aplicarse gastos. Se o profesional rexeita a reserva despois do pagamento, o reembolso é automático. A automatización está en despregue.",
+    "REPONSE12": "Aínda non podes regalar unha prestación a outra persoa desde a túa conta. Porén, se un profesional ofrece fórmula dúo ou familia, poderás reservar para varias persoas nese marco.",
+    "REPONSE13": "Es esteticista, perruqueira ou profesional do benestar? Únete á comunidade IzyGlam cubrindo o formulario en \"Facerse socia\". Contactarémoste axiña para finalizar o rexistro.",
+    "REPONSE14": "A seguridade dos teus datos é prioritaria. Respectamos o RGPD. Só a información estritamente necesaria para a prestación é accesible aos profesionais. Hai mensaxería integrada para comunicar se fai falla, e calquera intento de saltarse a plataforma será supervisado."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Quen somos?",
+      "TEXT": "Esta Política de Privacidade explica como <strong>izyGlam</strong> (\"nós\", \"nosa\" ou \"a Plataforma\") recolle, usa, conserva, comparte e protexe os teus datos persoais ao usar os nosos servizos (sitio web, app web, app móbil, correos e soporte). Actuamos como <strong>responsable do tratamento</strong> para os tratamentos descritos."
+    },
+    "SCOPE": {
+      "TITLE": "Ámbito da política",
+      "TEXT": "Aplica a <strong>clientes</strong> que reservan prestacións, <strong>profesionais</strong> que ofrecen servizos en izyGlam, e <strong>visitantes</strong> das nosas interfaces."
+    },
+    "DATA": {
+      "TITLE": "Datos recollidos",
+      "PROVIDED": {
+        "TITLE": "Datos que nos proporcionas",
+        "L1": "<strong>Identidade e contacto:</strong> nome, apelidos, correo, teléfono, enderezos, foto/avatares.",
+        "L2": "<strong>Conta:</strong> credenciais, contrasinais (hash), preferencias, lingua.",
+        "L3": "<strong>Reservas:</strong> servizos elixidos, data/hora, enderezos, notas, anexos.",
+        "L4": "<strong>Pagamento:</strong> información de pago <em>vía provedor (ex. Stripe)</em> — non almacenamos os datos da túa tarxeta.",
+        "L5": "<strong>Profesionais:</strong> perfil público, prestacións, tarifas, zonas, dispoñibilidade, IBAN (seguro), documentos de verificación se se require.",
+        "L6": "<strong>Soporte:</strong> mensaxes, tickets, gravacións de chamadas se procede."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Datos recollidos automaticamente",
+        "L1": "<strong>Datos técnicos:</strong> modelo do dispositivo, SO, navegador, resolucións, identificadores de sesión.",
+        "L2": "<strong>Rexistros:</strong> IPs, marcas de tempo, eventos de erro, uso de funcionalidades.",
+        "L3": "<strong>Localización:</strong> posición aproximada (IP) ou precisa (GPS, co teu acordo).",
+        "L4": "<strong>Cookies e SDK:</strong> ver a sección dedicada."
+      },
+      "THIRD": {
+        "TITLE": "Datos de terceiros",
+        "L1": "<strong>Provedores de pagamento</strong> (estados de pago, tokens).",
+        "L2": "<strong>Partners de analítica/antifraude</strong> (sinais de risco, agregados de uso).",
+        "L3": "<strong>Integracións</strong> (ex. comunicación, mapas, almacenamento na nube)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Finalidades e bases legais",
+      "TEXT": "Tratamos os datos para:",
+      "L1": "<strong>Prestar o servizo</strong> (crear conta, reservar, poñer en contacto, notificacións) — <em>Base: execución do contrato</em>.",
+      "L2": "<strong>Pagos e facturación</strong> — <em>Contrato, obriga legal</em>.",
+      "L3": "<strong>Seguridade, prevención de abusos/fraude</strong> — <em>Interese lexítimo, obriga legal</em>.",
+      "L4": "<strong>Mellora do produto, estatísticas</strong> — <em>Interese lexítimo</em>.",
+      "L5": "<strong>Soporte e calidade</strong> — <em>Contrato, interese lexítimo</em>.",
+      "L6": "<strong>Marketing directo</strong> (correos/app) — <em>Consentimento cando proceda</em>; posibilidade de opt-out en calquera momento.",
+      "L7": "<strong>Conformidade legal</strong> (contabilidade, requirimentos) — <em>Obriga legal</em>."
+    },
+    "SHARING": {
+      "TITLE": "Compartición de datos",
+      "L1": "<strong>Profesionais / Clientes</strong>: información necesaria para a prestación (nome, contacto, enderezo, detalles da reserva).",
+      "L2": "<strong>Provedores</strong>: pago (ex. Stripe), hospedaxe/almacenamento, analítica, correo/SMS push, soporte, KYC se procede. <em>Acceso limitado ao necesario, contratos conformes ao RGPD.</em>",
+      "L3": "<strong>Partners</strong>: co teu consentimento para ofertas específicas.",
+      "L4": "<strong>Autoridades</strong>: cando o esixe a lei ou para defender os nosos dereitos."
+    },
+    "TRANSFERS": {
+      "TITLE": "Transferencias fóra da UE/EEE",
+      "TEXT": "Cando os datos se transfiren a países sen decisión de adecuación, utilizamos <strong> cláusulas contractuais tipo</strong> (CCT) e medidas complementarias."
+    },
+    "RETENTION": {
+      "TITLE": "Prazo de conservación",
+      "L1": "<strong>Conta e identidade</strong>: mentres uses a conta e <em>ata 3 anos</em> despois da última actividade (pros-peción) ou <em>5–10 anos</em> por obrigas legais.",
+      "L2": "<strong>Reservas/facturas</strong>: <em>10 anos</em> (obriga legal).",
+      "L3": "<strong>Logs de seguridade</strong>: <em>6–24 meses</em> segundo criticidade.",
+      "L4": "<strong>Cookies</strong>: ver sección de cookies.",
+      "NOTE": "Despois, os datos elimínanse ou anonímizanse."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies e SDK",
+      "TEXT": "Usamos cookies/SDK para operar, medir audiencia, previr fraude e, co teu consentimento, personalizar a experiencia.",
+      "L1": "<strong>Necesarias</strong>: autenticación, seguridade, preferencias técnicas.",
+      "L2": "<strong>Medición</strong>: estatísticas agregadas de uso.",
+      "L3": "<strong>Marketing</strong>: só se o aceptas.",
+      "PREF": "Podes xestionar preferencias no banner e na configuración do navegador."
+    },
+    "AUTOMATION": {
+      "TITLE": "Decisións automatizadas e perfilado",
+      "TEXT": "Podemos usar sinais automáticos (ex. risco de fraude, dispoñibilidade, distancia) para priorizar accións ou propoñer ocos. Non se toman decisións con efectos xurídicos significativos sen intervención humana, salvo obriga legal ou consentimento explícito."
+    },
+    "RIGHTS": {
+      "TITLE": "Os teus dereitos (RGPD)",
+      "L1": "Dereito de <strong>acceso</strong>, <strong>rectificación</strong> e <strong>supresión</strong>.",
+      "L2": "Dereito á <strong>limitación</strong> e <strong>portabilidade</strong>.",
+      "L3": "Dereito de <strong>oposición</strong> ao tratamento por interese lexítimo.",
+      "L4": "Dereito a <strong>retirar o consentimento</strong> en calquera momento.",
+      "L5": "Dereito a presentar unha <strong>reclamación</strong> ante a CNIL.",
+      "CONTACT": "Para exercer os teus dereitos, contáctanos:",
+      "VERIFY": "Podemos solicitar información adicional para verificar a túa identidade."
+    },
+    "SECURITY": {
+      "TITLE": "Seguridade",
+      "TEXT": "Aplicamos medidas técnicas e organizativas axeitadas: cifrado en tránsito (TLS), hash de contrasinais, rexistro e supervisión, control de accesos, copias de seguridade, revisión de código e probas de seguridade."
+    },
+    "MINORS": {
+      "TITLE": "Datos de menores",
+      "TEXT": "Os servizos non van dirixidos a menores de 15 anos. Se se identifica unha conta de menor, eliminarase tras verificación."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Subencargados principais",
+      "TEXT": "Traballamos con subencargados esenciais para hospedaxe, pagamento, correo, analítica e almacenamento. Podemos fornecer unha lista actualizada por petición en"
+    },
+    "CONTACT": {
+      "TITLE": "Contacto e DPO",
+      "PRIVACY_LABEL": "Contacto de privacidade",
+      "SUPPORT_LABEL": "Soporte",
+      "AUTHORITY_LABEL": "Autoridade de control",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
+    },
+    "CHANGES": {
+      "TITLE": "Cambios nesta política",
+      "TEXT": "Podemos actualizala para reflectir cambios legais ou funcionais. En caso de cambio significativo, informarémoste por correo ou na app. Data de entrada en vigor: <strong>11&nbsp;de agosto de&nbsp;2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Disposicións locais",
+      "TEXT": "Se estás na UE, os teus datos trátanse conforme ao RGPD. Poderán aplicarse complementos específicos por país ou rexión."
+    },
+    "GLOSSARY": {
+      "TITLE": "Glosario (extracto)",
+      "L1": "<strong>Responsable do tratamento</strong>: quen determina finalidades e medios do tratamento.",
+      "L2": "<strong>Encargado do tratamento</strong>: quen trata datos por conta do responsable.",
+      "L3": "<strong>Base legal</strong>: fundamento que autoriza o tratamento (contrato, consentimento, obriga legal, interese lexítimo).",
+      "L4": "<strong>Cookies/SDK</strong>: trazadores usados polo sitio/app para prestar, medir e personalizar o servizo."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Aceptación das condicións",
+      "TEXT": "Ao acceder aos servizos de izyGlam (sitio, app web, app móbil) aceptas sen reservas estas Condicións Xerais de Uso («CGU»). Se non as aceptas, non debes usar a Plataforma."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Definicións",
+      "L1": "<strong>Cliente</strong>: persoa que reserva e/ou paga unha prestación na Plataforma.",
+      "L2": "<strong>Profesional</strong>: persoa que ofrece prestacións vía Plataforma.",
+      "L3": "<strong>Prestación</strong>: servizo ofrecido por un Profesional (ex. beleza a domicilio).",
+      "L4": "<strong>Plataforma</strong>: software, sitios e apps explotados por izyGlam."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Servizos e papel de izyGlam",
+      "TEXT": "izyGlam é unha <strong>plataforma de posta en contacto</strong>. Os Profesionais son <strong>os únicos responsables</strong> das prestacións (calidade, conformidade, seguros). Agás que se indique o contrario, izyGlam non é vendedora nin prestadora e non asume responsabilidade de execución."
+    },
+    "ACCOUNT": {
+      "TITLE": "Conta e elixibilidade",
+      "L1": "O rexistro é obrigatorio para reservar ou ofrecer prestacións. Comprométeste a fornecer información exacta e actualizada.",
+      "L2": "Debes ter polo menos 15 anos. Os Profesionais deben estar legalmente habilitados.",
+      "L3": "Es responsable da confidencialidade das túas credenciais e de toda actividade na túa conta.",
+      "L4": "izyGlam pode suspender ou pechar contas por violación das CGU ou risco de fraude."
+    },
+    "BOOKINGS": {
+      "TITLE": "Reservas e formación do contrato",
+      "L1": "As prestacións <strong>resérvanse e páganse en liña</strong>. Non se debe diñeiro en efectivo no lugar.",
+      "L2": "A reserva <strong>está suxeita á validación do Profesional</strong> despois do pago. En caso de rexeitamento, o Cliente é <strong>reembolsado ao 100 %</strong>.",
+      "L3": "O contrato de prestación conclúese directamente entre Cliente e Profesional no momento da aceptación.",
+      "L4": "Os horarios, enderezos e condicións particulares deben ser verificados polas partes."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Tarifas, subscricións e pagamentos",
+      "L1": "Os prezos das prestacións son fixados libremente polos Profesionais. izyGlam aplica unha <strong>comisión</strong> de plataforma.",
+      "L2": "Subscricións para Profesionais (exemplo actual): <em>1 salón gratis para sempre</em>; <em>Básico: 3 salóns – 99 € / mes</em>; <em>Premium: 10 salóns – 499 € / mes</em>; <em>superior: orzamento</em>.",
+      "L3": "Pagamento <strong>só con tarxeta</strong> a través dun provedor (ex. Stripe). <strong>Sen efectivo</strong>, sen códigos promo nin programa de fidelidade por agora.",
+      "L4": "Os importes, impostos e gastos indícanse antes da validación. As condicións de subscrición poden evolucionar; comunicarémolas con antelación."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Cancelación, reembolso e ausencia",
+      "L1": "Cancelación gratuíta ata <strong>24 h</strong> antes da hora prevista.",
+      "L2": "A menos de 24 h, poderían aplicarse <strong>gastos</strong> segundo a política vixente.",
+      "L3": "En caso de <strong>rexeitamento</strong> do Profesional despois do pago, o Cliente é reembolsado ao 100 %. A automatización dos reembolsos está en despregue; se procede, o soporte iniciará a operación.",
+      "L4": "Os <strong>no-show</strong> (ausencias non comunicadas) poden implicar gastos ou non reembolso."
+    },
+    "PAYOUTS": {
+      "TITLE": "Pagamentos aos Profesionais",
+      "L1": "O pagamento ao Profesional desencadéase coa <strong>confirmación da realización</strong> da prestación (ex. confirmación dun <em>código</em>).",
+      "L2": "O IBAN fornecido polo Profesional utilízase para a transferencia. O Profesional garante a exactitude dos datos bancarios.",
+      "L3": "Os importes correspóndense co prezo <em>descontada</em> a comisión e os gastos aplicables."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Responsabilidades",
+      "L1": "Os Profesionais aseguran a conformidade, normativa, hixiene e seguridade.",
+      "L2": "Os Clientes comprométense a fornecer datos exactos (enderezo, dispoñibilidade, restricións de acceso) e a respectar as citas.",
+      "L3": "izyGlam fornece a Plataforma e ferramentas (reserva, pagamento, mensaxería) pero non garante resultados dunha prestación."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Puntuación inválida.",
+      "TITLE": "Opinións e valoracións",
+      "L1": "As opinións só poden deixarse <strong>tras unha prestación realmente realizada</strong>.",
+      "L2": "As opinións poden ser <strong>moderadas</strong> (ex. eliminación de contidos ilícitos ou contrarios ás CGU)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Comportamentos prohibidos",
+      "L1": "Fraude, suplantación, desintermediación, incitación a transaccións fóra da Plataforma.",
+      "L2": "Contidos ilícitos, difamatorios, discriminatorios, violentos ou contrarios aos bos costumes.",
+      "L3": "Intrusión, denegación de servizo, enxeñería inversa, elusión de medidas de seguridade.",
+      "L4": "Recollida non autorizada de datos persoais doutros usuarios."
+    },
+    "IPR": {
+      "TITLE": "Propiedade intelectual",
+      "TEXT": "Os contidos, marcas e elementos da Plataforma (código, deseño, textos, logotipos, imaxes) están protexidos. Agás autorización expresa, está prohibida a reprodución, distribución ou adaptación. Os contidos fornecidos polos Profesionais seguen a ser da súa propiedade; conceden a izyGlam unha licenza non exclusiva necesaria para operar a Plataforma."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Servizos de terceiros",
+      "TEXT": "A Plataforma pode integrar servizos de terceiros (pagamento, mapas, hospedaxe, analítica). Rexen as súas condicións. izyGlam non responde das paradas ou fallos destes servizos."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Dispoñibilidade, mantemento e actualizacións",
+      "TEXT": "Podemos modificar, suspender ou interromper a Plataforma para mantemento ou mellora. Faremos esforzos razoables para limitar o impacto."
+    },
+    "LIABILITY": {
+      "TITLE": "Limitación de responsabilidade e indemnización",
+      "TEXT": "Nos límites da lei, a responsabilidade de izyGlam limítase aos danos directos, excluíndo danos indirectos (perda de oportunidade, facturación, etc.). Comprométeste a indemnizar a izyGlam por calquera reclamación derivada dunha violación destas condicións ou dun uso ilícito."
+    },
+    "TERMINATION": {
+      "TITLE": "Resolución e suspensión",
+      "TEXT": "Podes eliminar a túa conta cando queiras. Podemos suspender ou pechar o acceso por violación das CGU, fraude, abuso ou por requirimento legal. Certas obrigas (ex. pagamentos debidos, cláusulas de responsabilidade) sobreviven á resolución."
+    },
+    "PRIVACY": {
+      "TITLE": "Datos persoais",
+      "TEXT": "O tratamento dos teus datos descríbese na nosa <strong>Política de Privacidade</strong>. Ao usar a Plataforma, aceptas esa política. Consulta os teus dereitos RGPD e os nosos compromisos."
+    },
+    "CHANGES": {
+      "TITLE": "Modificacións das CGU",
+      "TEXT": "Podemos modificalas por razóns legais, regulamentarias ou funcionais. En caso de cambios significativos, informarémoste por correo ou na app e publicaremos a nova versión."
+    },
+    "LAW": {
+      "TITLE": "Lei aplicable e litixios",
+      "TEXT": "Estas CGU réxense polo <strong>dereito francés</strong>. Calquera litixio someterase aos tribunais competentes do domicilio de izyGlam, agás disposicións imperativas máis favorables ao consumidor."
+    },
+    "CONTACT": {
+      "TITLE": "Contacto",
+      "SUPPORT_LABEL": "Soporte",
+      "LEGAL_LABEL": "Xurídico",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Data de entrada en vigor",
+      "TEXT": "Estas CGU entran en vigor o <strong>25&nbsp;de decembro de&nbsp;2025</strong> e substitúen calquera versión anterior."
+    }
+  }
+}

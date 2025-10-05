@@ -1,70 +1,247 @@
 {
   "SHOPTYPE": {
-    "HAIRDRESSER": "Kapper",
-    "NAILTECHNICIAN": "Nageltechnicus",
-    "MAKEUP": "Visagist",
-    "WAXING": "Schoonheidsspecialist",
+    "HAIRDRESSER": "Kapper/kapster",
+    "NAILTECHNICIAN": "Nagelstylist(e)",
+    "MAKEUP": "Visagist(e)",
+    "WAXING": "Schoonheidsspecialist(e)",
     "FACIAL": "Gezichtsbehandeling",
-    "MASSAGE": "Masseur",
-    "EYELASH": "Wimperverlenging",
+    "MASSAGE": "Masseur/masseuse",
+    "EYELASH": "Wimperextensions",
     "EYEBROW": "Wenkbrauwen",
-    "TANNING": "Bruiningsbehandeling",
+    "TANNING": "Bruinen",
     "ACUPUNCTURE": "Acupunctuur",
     "OTHER": "Overig"
   },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Foto uit de galerij verwijderd",
+    "PHOTO_UPLOAD": "Afbeelding succesvol geüpload",
+    "PARTIAL_REFUND_CONFIRM": "Gedeeltelijke terugbetaling bevestigd!",
+    "CODE_SAVED": "Code gegenereerd.",
+    "USERCREATED": "Gebruiker succesvol aangemaakt. Er is een bevestigingsmail naar u verzonden.",
+    "SUBSCRIBE_SUCCESS": "Uw abonnement is succesvol geregistreerd.",
+    "EMAIL_VERIFIED": "Uw account is geactiveerd 🎉 U kunt nu inloggen.",
+    "EMAIL_RESENT": "Bevestigingsmail opnieuw verzonden. Controleer uw inbox.",
+    "BOOKING_CREATED": "Uw reservering is succesvol geregistreerd.",
+    "PAYMENT_OK": "Betaling bevestigd.",
+    "REFUND_OK": "Terugbetaling uitgevoerd.",
+    "USERUPDATED": "Gebruiker bijgewerkt.",
+    "SETTINGS_UPDATED": "Instellingen bijgewerkt.",
+    "REVIEW_ADDED": "Uw beoordeling is gepubliceerd 🎉",
+    "SHOPUPDATED": "Winkel bijgewerkt.",
+    "BOOKING_ACCEPTED": "Reservering geaccepteerd.",
+    "BOOKING_FINISHED": "Reservering afgerond.",
+    "BOOKING_REFUSED": "Reservering geweigerd.",
+    "BOOKING_DELETED": "Reservering verwijderd.",
+    "CODE_GENERATED": "Code gegenereerd.",
+    "CODE_CONFIRMED": "Code bevestigd.",
+    "INVOICE_DOWNLOADED": "Factuur gedownload.",
+    "MARKED_NO_SHOW_CLIENT": "Klant als afwezig gemarkeerd.",
+    "COMPANY_CREDITED": "De bedrijfsrekening is gecrediteerd.",
+    "MARKED_NO_SHOW_PRO": "Dienstverlener als afwezig gemarkeerd.",
+    "EMPLOYEE_CREDITED": "De rekening van de werknemer is gecrediteerd.",
+    "NO_SHOW_PRO": "Boete toegepast & terugbetaling uitgevoerd.",
+    "EMPLOYEE_DELETED": "Werknemer is verwijderd.",
+    "SLOT_SELECTED": "Tijdslot geselecteerd",
+    "PASSWORD_RESET": "Het wachtwoord is opnieuw ingesteld.",
+    "INVOICE_GENERATED": "Facturen gegenereerd.",
+    "REVIEW_SAVED": "Beoordeling opgeslagen, bedankt!",
+    "DEFAULT_PASSWORD_UPDATED": "Standaardwachtwoord is bijgewerkt.",
+    "COMPANY_CREATED": "Uw zakelijke account is succesvol aangemaakt."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Log in om uw favorieten te beheren.",
+    "INVALID_IMAGE": "Ongeldige afbeelding.",
+    "NO_SLOTS": "Geen beschikbare tijdsloten voor deze dienst.",
+    "NO_SHOP_SELECTED": "Geen winkel geselecteerd.",
+    "NO_SERVICE_SELECTED": "Geen dienst geselecteerd.",
+    "ORDER_ERROR": "Fout bij het bijwerken van de bestelling.",
+    "CODE_ERROR": "Fout bij het opslaan van de code.",
+    "INVOICE_GENERATED_ERROR": "Fout bij het genereren van de facturen.",
+    "USERNOTCREATED": "Gebruiker kan niet worden aangemaakt.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Onvoldoende saldo op de bedrijfsrekening voor deze creditering.",
+    "GENERIC_ERROR": "✨ Oeps… er is een fout opgetreden. Probeer het opnieuw ✨",
+    "COMPANY_CREDITED": "De bedrijfsrekening is gecrediteerd.",
+    "LINK_INVALID_OR_MISSING": "Ongeldige of ontbrekende link.",
+    "LINK_INVALID_OR_EXPIRED": "Ongeldige of verlopen link.",
+    "EMAIL_NOT_FOUND": "E-mailadres van gebruiker niet gevonden.",
+    "PAYMENT_FAILED": "Betaling mislukt.",
+    "BOOKING_FAILED": "Aanmaken van de reservering is mislukt.",
+    "LOAD_CARDS_FAILED": "Er is een fout opgetreden bij het laden van uw kaarten.",
+    "LOAD_SHOP_FAILED": "Er is een fout opgetreden bij het laden van de salon.",
+    "LOAD_PRODUCTS_FAILED": "Er is een fout opgetreden bij het laden van de diensten.",
+    "INVALID_CODE": "De ingevoerde code is ongeldig.",
+    "PASSWORD_CHANGED": "Uw wachtwoord is bijgewerkt.",
+    "PASSWORDS_IDENTICAL": "Het nieuwe wachtwoord moet anders zijn dan het huidige.",
+    "INVALID_AMOUNT": "Het ingevoerde bedrag is ongeldig.",
+    "INVALID_CURRENT_PASSWORD": "Het huidige wachtwoord is onjuist.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Het huidige wachtwoord is onjuist of er is een fout opgetreden.",
+    "PASSWORD_UPDATE_FAILED": "Bijwerken van het wachtwoord is mislukt.",
+    "PASSWORD_UPDATE_GENERIC": "Er is een fout opgetreden bij het bijwerken van het wachtwoord.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Wachtwoorden komen niet overeen of zijn te kort (min. 8 tekens).",
+    "INVALID_PASSWORD": "Het wachtwoord mag niet leeg zijn.",
+    "PASSWORD_TOO_SHORT": "Het wachtwoord moet minstens 8 tekens bevatten."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Stripe-configuratie ontbreekt.",
+    "LOAD_FAILED": "Stripe kon niet worden geladen",
+    "NOT_READY": "Stripe niet geïnitialiseerd",
+    "CONFIRM_FAILED": "Opslaan van de kaart mislukt",
+    "CARD_SAVED": "Kaart succesvol opgeslagen ✅",
+    "PM_FAILED": "Aanmaken van de kaart mislukt",
+    "SI_FAILED": "Kan het opslaan van de kaart niet voorbereiden",
+    "ATTACH_FAILED": "Kan de kaart niet aan het account koppelen",
+    "SAVE_CARD": "Kaart opslaan",
+    "ADD_CARD": "Kaart toevoegen"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Log in alstublieft"
+  },
+  "COMMON": {
+    "LOADING": "Laden…",
+    "UNEXPECTED_ERROR": "Er is een onverwachte fout opgetreden"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Bezig met verifiëren",
+    "VALIDE": "We valideren uw activatielink. Dit duurt maar even.",
+    "ACCOUNT": "Account geactiveerd",
+    "CONNECT": "Inloggen",
+    "OUPS": "Oeps",
+    "WRITE": "Hulp nodig? Schrijf ons op",
+    "RESEND": "Activatiemail opnieuw sturen"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Mijn bankgegevens",
+    "ADD_BANK_INFO": "Mijn bankgegevens toevoegen",
+    "BANK_NAME": "Naam van de bank",
+    "HOLDER_NAME": "Rekeninghouder",
+    "COUNTRY": "Land",
+    "SAVE": "Opslaan"
+  },
+  "LOADER": {
+    "LOADING": "Laden…"
+  },
+  "SPONSORS": {
+    "TITLE": "Onze sponsors",
+    "SPONSORISED": "Gesponsord"
+  },
+  "TABS": {
+    "FINANCE": "Financiële opvolging",
+    "GENERAL_INFO": "Algemene informatie",
+    "EMPLOYEES": "Beheer medewerkers",
+    "SERVICES": "Beheer diensten",
+    "PHOTOS": "Fotogalerij",
+    "STATS": "Statistieken",
+    "PARAM": "Instellingen",
+    "SHOPS": "Winkels",
+    "USERS": "Gebruikers",
+    "MESSAGE": "Berichten"
+  },
+  "CARD": {
+    "ADD": "Kaart toevoegen",
+    "NO_IMAGE": "Geen afbeeldingen in de galerij.",
+    "SALON": "Salon succesvol bijgewerkt",
+    "ERROR1": "Fout bij het bijwerken van de salon",
+    "ERROR2": "Fout bij het bijwerken van de foto",
+    "UPDATE": "Salon succesvol bijgewerkt"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "Voltooid",
+    "ACCEPTEE": "Geaccepteerd",
+    "WAITING": "In afwachting",
+    "CANCEL": "Geannuleerd",
+    "DELETE": "Verwijderd",
+    "REFUSED": "Geweigerd",
+    "NO_PRESTA": "Dienstverlener afwezig",
+    "CLIENT_ABSENT": "Klant afwezig",
+    "ADRESSE": "Adres",
+    "DATE": "Datum",
+    "TOTAL": "Totaal",
+    "FACTURE": "Factuur",
+    "CANCELLED": "Geannuleerd",
+    "DELETED": "Verwijderen",
+    "AVIS": "Beoordeling",
+    "SUPPORT": "Support",
+    "CODE": "Bevestigingscode",
+    "CODE_A_DONNER": "Code om aan de dienstverlener te geven",
+    "PRESTA_ABSENT": "Dienstverlener afwezig"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Winkelbeoordelingen",
+    "COMMENT": "Opmerking",
+    "NOTE": "Score",
+    "CLOSE": "Sluiten"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Geen afbeeldingen in de galerij."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Beoordeel uw bestelling",
+    "DATE": "Datum",
+    "SERVICE": "Dienst",
+    "AVIS": "Uw beoordeling",
+    "SEND": "Verzenden",
+    "PLACEHOLDER": "Beschrijf uw ervaring…"
+  },
   "HOMEPAGE": {
-    "TITLERED": "Laat ze naar je toe komen",
-    "KNOWMORE": "Meer informatie",
-    "PART1TITLE": "Geniet van de beste schoonheidsdiensten bij je thuis",
-    "PART1TEXT": "Onze gekwalificeerde professionals komen naar je toe om je hoogwaardige schoonheidsbehandelingen aan te bieden, aangepast aan jouw behoeften en wensen. Beleef een unieke wellness-ervaring, of het nu tijdens je lunchpauze is, na het werk 's avonds, of voor een middag met vrienden.",
-    "PART2TITLE": "Werk wanneer je wilt, genereer aangepaste inkomsten",
-    "PART2TEXT": "Genereer inkomsten volgens je eigen schema door verzoeken op het platform te accepteren in je eigen tempo. Je kunt je eigen apparatuur gebruiken of ervoor kiezen om professionele apparatuur te huren via izyGlam.",
-    "PART3TITLE": "Een opnieuw uitgedachte schoonheidsservice voor bedrijven",
-    "PART3TEXT": "Glam for Business is een platform voor bedrijven van alle groottes, ontworpen om te voldoen aan de schoonheidsbehoeften van jouw klanten en werknemers. Bied gepersonaliseerde schoonheidsbehandelingen direct op de werkplek, tijdens bedrijfsevenementen of voor speciale gelegenheden. Onze gekwalificeerde professionals komen langs om diensten te leveren die aan jouw behoeften voldoen.",
+    "TITLERED": "Laat het bij u thuis komen",
+    "KNOWMORE": "Meer weten",
+    "PART1TITLE": "Geniet van de beste schoonheidsservices aan huis",
+    "PART1TEXT": "Onze gekwalificeerde professionals komen bij u thuis voor kwaliteitsvolle schoonheidsbehandelingen, afgestemd op uw behoeften en wensen. Ervaar uniek welzijn, tijdens uw lunchpauze, na het werk of op een gezellige middag met vriendinnen.",
+    "PART2TITLE": "Werk wanneer u wilt, verdien op uw maat",
+    "PART2TEXT": "Verdien inkomsten volgens uw eigen schema door in uw tempo aanvragen op het platform te accepteren. U kunt uw eigen materiaal gebruiken of professioneel materiaal huren via izyGlam.",
+    "PART3TITLE": "Een heruitgevonden beautyservice voor bedrijven",
+    "PART3TEXT": "Glam for Business is een platform voor bedrijven van elke omvang, ontworpen om de esthetische behoeften van uw klanten en medewerkers te beheren. Bied gepersonaliseerde schoonheidsbehandelingen op de werkplek, tijdens bedrijfsevenementen of voor speciale gelegenheden. Onze gekwalificeerde professionals komen ter plaatse voor diensten op maat.",
     "APPTITLE": "Het is makkelijker met de apps",
-    "DOWNLOADAPP1": "Download de izyGlam-app",
-    "DOWNLOADAPP2": "Download de app voor schoonheidsspecialisten",
-    "SCANTODOWNLOAD": "Scan om te downloaden"
+    "DOWNLOADAPP1": "Download de app",
+    "DOWNLOADAPP2": "Download de app voor beautyprofessionals",
+    "SCANTODOWNLOAD": "Scan om te downloaden",
+    "SIGNUP": "Schrijf u in!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Fout bij het afspelen van de video",
+    "AUTOPLAY_BLOCKED": "Automatisch afspelen geblokkeerd. Tik om de video te starten.",
+    "NAV_ERROR": "Navigeren niet mogelijk"
   },
   "FOOTER": {
-    "HOWITWORKS": "Hoe de izyGlam-apps en websites werken",
+    "HOWITWORKS": "Hoe de apps en sites van izyGlam werken",
     "HELPCENTER": "Ga naar het helpcentrum",
     "BUSINESS": "Bedrijf",
-    "ABOUT": "Over ons",
+    "ABOUT": "Over",
     "OURSERVICES": "Onze diensten",
     "PRESSAREA": "Persruimte",
     "INVESTORS": "Investeerders",
     "CAREERS": "Vacatures",
-    "AI": "Kunstmatige Intelligentie",
+    "AI": "Kunstmatige intelligentie",
     "PRODUCTS": "Producten",
-    "GLAM": "Altijd op je best met izyGlam",
-    "RESERVED": "Reserveer van tevoren",
+    "GLAM": "Altijd on point met izyGlam",
+    "RESERVED": "Reserveer vooruit",
     "GIFTCARDS": "Cadeaubonnen",
     "WORKWITHUS": "Werk met izyGlam",
     "GLAMFORBUSINESS": "Glam for Business",
-    "CONFIDENTIAL": "Vertrouwelijkheid",
+    "CONFIDENTIAL": "Privacy",
     "ACCESS": "Toegankelijkheid",
     "CONDITIONS": "Voorwaarden",
     "LANGUAGE": "Taal",
-    "LOCALISATION": "Locatie"
+    "LOCALISATION": "Locatie",
+    "ALL_RIGHT": "Alle rechten voorbehouden"
   },
   "COMING_SOON": {
-    "TITLE": "We komen binnenkort",
+    "TITLE": "We komen er binnenkort aan",
     "TITLE-NOT-COMING": "We hebben nog geen plannen om te komen",
     "DAYS": "Dagen",
     "HOURS": "Uren",
     "MINUTES": "Minuten",
     "SECONDS": "Seconden",
-    "TEXT": "We werken hard om je een unieke schoonheidsbeleving aan huis te bieden. Blijf verbonden om op de hoogte te worden gehouden van onze lancering."
+    "TEXT": "We werken hard om u een unieke beauty-ervaring aan huis te bieden. Blijf op de hoogte van onze lancering."
   },
   "MAIN_PAGE": {
-    "MOMENT": "Actuele aanbiedingen",
+    "MOMENT": "Aanbiedingen van het moment",
     "DISCOVER": "Ontdek op izyGlam",
     "LIKED": "Meest geliefd in de buurt",
     "SMART": "Slimme deals",
     "TOP10": "Top 10 van de week",
     "SEARCHRESULT": "Zoekresultaten",
-    "AVIS": "Recensies"
+    "AVIS": "Beoordelingen"
   },
   "MAIN_CATEGORY": {
     "COIFFURE": "Kapsels",
@@ -73,50 +250,61 @@
     "MASSAGE": "Massage",
     "MAQUILLAGE": "Make-up",
     "EPILATION": "Ontharing",
-    "BRONZAGE": "Bruining",
+    "BRONZAGE": "Bruinen",
     "PARTUM": "Postpartum",
     "NUTRITION": "Voeding",
     "FITNESS": "Fitness",
     "ACUPUNCTURE": "Acupunctuur",
-    "STYLISME": "Stijladvies",
+    "STYLISME": "Styling",
     "YOGA": "Ontspanning",
-    "DEVELOPPEMENT": "Persoonlijke ontwikkeling"
+    "DEVELOPPEMENT": "Ontplooiing",
+    "EYELASH": "Wimperextensions"
   },
   "MAIN_CATEGORY_INTRO": {
-    "COIFFURE": "Een kapper",
+    "COIFFURE": "Een kapster",
     "MANUCURE": "Een manicure",
-    "ESTETICIAN": "Een schoonheidsspecialist",
-    "MASSAGE": "Een masseur",
-    "MAQUILLAGE": "Een visagist",
+    "ESTETICIAN": "Een schoonheidsspecialiste",
+    "MASSAGE": "Een masseuse",
+    "MAQUILLAGE": "Een visagiste",
     "PEDICURE": "Een pedicure",
     "NUTRITION": "Een voedingsdeskundige",
-    "FITNESS": "Een fitnesscoach"
+    "FITNESS": "Een coach"
   },
   "INTRO": {
     "NORESULTS": "Geen resultaten gevonden",
-    "SEARCH": "Zoeken",
+    "START": "Starten",
     "SPECIALITY": "Specialiteit?",
     "WHERE": "Waar?",
     "CONNEXION": "Inloggen",
-    "REGISTRATION": "Registreren"
+    "REGISTRATION": "Registratie"
   },
   "PROFILE_MENU": {
-    "INFORMATION": "Accountgegevens",
+    "INFORMATION": "Accountinformatie",
+    "MESSAGE": "Mijn berichten",
+    "MESSAGE_SUBTITLE": "De lijst met mijn lopende gesprekken.",
+    "INFORMATION_SUBTITLE": "Pas je persoonlijke gegevens eenvoudig aan.",
     "SECURITY": "Beveiliging en taal",
-    "CONFIDENTIAL": "Vertrouwelijkheid en gegevens",
+    "SECURITY_SUBTITLE": "Wachtwoord, taal… alles onder controle.",
+    "CONFIDENTIAL": "Privacy en gegevens",
+    "CONFIDENTIAL_SUBTITLE": "Je gegevens zijn waardevol. Zo zorgen we ervoor.",
     "DASHBOARD": "Dashboard",
+    "DASHBOARD_SUBTITLE": "Beheer eenvoudig de gegevens van je activiteit.",
     "COMPANY": "Mijn bedrijf beheren",
-    "SHOP": "Mijn winkels beheren",
-    "FINANCIAL": "Financieel overzicht",
+    "COMPANY_SUBTITLE": "Beheer eenvoudig je afspraken: verleden, toekomst of geannuleerd.",
+    "SHOP": "Mijn salon beheren",
+    "SHOP_SUBTITLE": "Beheer je salon, je diensten en je financiën.",
+    "FINANCIAL": "Financiële opvolging",
     "ADMIN": "Algemene administratie",
+    "ADMIN_SUBTITLE": "Beheer eenvoudig dit meesterwerk. De wereld is van jou, kampioen!",
     "CALENDAR": "Agenda",
+    "CALENDAR_SUBTITLE": "Beheer eenvoudig je afspraken, verleden of toekomst.",
     "SELECT_SALON": "Selecteer een salon",
-    "NEW_SALON": "Selecteer een nieuwe salon",
+    "NEW_SALON": "Een salon aanmaken",
     "SHOP_TO_CREATE": "Type winkel om te creëren",
     "CANCEL": "Annuleren",
-    "CREATE": "Mijn winkel creëren",
-    "INFO1": "Je staat op het punt om je winkel te verwijderen van",
-    "INFO2": "Deze actie kan niet ongedaan worden gemaakt",
+    "CREATE": "Mijn winkel aanmaken",
+    "INFO1": "Je staat op het punt je winkel te verwijderen in",
+    "INFO2": "Deze actie is onomkeerbaar",
     "SURE": "Weet je zeker dat je wilt doorgaan",
     "DELETE": "Verwijderen"
   },
@@ -128,274 +316,360 @@
     "ADDRESS": "E-mailadres",
     "CHANGE_USER": "Gebruiker wijzigen",
     "CANCEL": "Annuleren",
-    "SUCCESS": "Profiel succesvol bijgewerkt"
+    "SUCCESS": "Profiel succesvol gewijzigd",
+    "UPDATE_ERROR": "Er is een fout opgetreden bij het bijwerken van het wachtwoord."
   },
   "SECURITY": {
     "CHANGE_PASSWORD_TITLE": "Wachtwoord wijzigen",
     "ACTUAL_PASSWORD": "Huidig wachtwoord",
     "NEW_PASSWORD": "Nieuw wachtwoord",
-    "CONFIRMED_PASSWORD": "Bevestig nieuw wachtwoord",
+    "CONFIRMED_PASSWORD": "Bevestig het nieuwe wachtwoord",
     "CHANGE_PASSWORD": "Wachtwoord wijzigen",
     "CHANGE_OK": "Wachtwoord succesvol gewijzigd",
     "CHANGE_LANGUE": "Taal wijzigen",
-    "LANGUE": "Taal"
-  },
-  "CONFIDENTIAL": {
-    "INTRO": "Introductie",
-    "INTRO_BIS": "Wanneer je izyGlam gebruikt, vertrouw je ons je persoonlijke gegevens toe. We zetten ons in om je vertrouwen te waarborgen door je informatie te beschermen. Deze privacyverklaring beschrijft de persoonlijke gegevens ('gegevens') die we verzamelen, hoe we deze gebruiken en delen, en je keuzes hierover. We raden je aan dit document zorgvuldig te lezen.",
-    "APPLICATION": "Toepassingsgebied",
-    "DECLARATION": "Deze verklaring is van toepassing op gebruikers van het izyGlam-platform, dat particulieren en bedrijven verbindt met zelfstandige schoonheidsspecialisten zoals manicuristen, pedicures, visagisten en kappers. Het dekt alle diensten die izyGlam wereldwijd aanbiedt.",
-    "COLLECTE": "Verzameling en gebruik van gegevens",
-    "DATA_GET": "Gegevens verzameld door izyGlam",
-    "DATA_TAKEN": "izyGlam verzamelt de volgende gegevens",
-    "DATA_USED": "Gegevens verstrekt door gebruikers",
-    "PERSONNAL": "Persoonlijke informatie (naam, e-mailadres, telefoonnummer), accountgegevens (inloggegevens, wachtwoorden, voorkeuren voor schoonheidsdiensten), betalingsinformatie (creditcardgegevens, bankinformatie, transactiegeschiedenis)",
-    "CREATE_DATA": "Gegevens gecreëerd tijdens het gebruik van onze diensten",
-    "HISTORY": "Browsegeschiedenis, cookies, IP-adres, browsertype, besturingssysteem, tijd doorgebracht op het platform",
-    "RELATION": "Verbindingsgegevens",
-    "DETAILS": "Details over gecontacteerde schoonheidsspecialisten, gevraagde diensten, afspraken en uitgewisselde communicatie",
-    "USED": "Gebruik van gegevens",
-    "USED_FOR": "izyGlam gebruikt de gegevens om",
-    "BEST_SERVICES": "Onze diensten te leveren en te verbeteren, je ervaring te personaliseren en je bestellingen te verwerken.",
-    "PARTICULIER": "De verbinding tussen particulieren/bedrijven en zelfstandige schoonheidsspecialisten te vergemakkelijken.",
-    "SEND": "Je informatie te sturen over onze producten, diensten, speciale aanbiedingen en nieuwe functies.",
-    "ASSURER": "De veiligheid van onze systemen te waarborgen en fraude te voorkomen.",
-    "EFFECTUER": "Analyses uit te voeren om de gebruikstrends van het platform te begrijpen.",
-    "PERSONNALISER": "Je ervaring te personaliseren op basis van je voorkeuren en gebruiksgeschiedenis.",
-    "CHOICE": "Keuzes en transparantie",
-    "RIGHT": "Je rechten",
-    "RGPD": "Volgens de AVG heb je het recht om",
-    "PERSONNAL_DATA_ACCESS": "Toegang te krijgen tot je persoonlijke gegevens en een kopie ervan te vragen.",
-    "ASK_CORRECTION": "Correctie van onjuiste of onvolledige gegevens te vragen.",
-    "ASK_DELETE": "Verwijdering van je gegevens te vragen ('recht om vergeten te worden').",
-    "RESTREINDRE": "De verwerking van je gegevens te beperken of hiertegen bezwaar te maken.",
-    "ASK_PORTA": "De overdraagbaarheid van je gegevens naar een andere dienst te vragen.",
-    "CONSENT": "Je toestemming op elk moment in te trekken wanneer de verwerking is gebaseerd op toestemming.",
-    "RECLAMATION": "Een klacht in te dienen bij een bevoegde toezichthoudende autoriteit als je vindt dat je rechten niet worden gerespecteerd.",
-    "COOKIES": "Privacy-instellingen en cookies",
-    "MANAGE_COOKIES_PREF": "Je kunt je cookie-voorkeuren beheren via de instellingen van je browser of een cookiebeheerhulpmiddel dat op onze site beschikbaar is. In de toekomst kan izyGlam ook andere technologieën gebruiken voor het volgen van gebruikers.",
-    "SHARE_DATA": "Gegevens delen",
-    "WE_SHARE": "We delen je persoonlijke gegevens alleen met vertrouwde derden, die nodig zijn voor het verwerken van je bestellingen en het leveren van diensten zoals",
-    "FOURNISSEUR_SERV": "Betaaldienstverleners voor de veilige verwerking van transacties.",
-    "TRANSPORT": "Vervoersbedrijven of koeriers voor de levering van producten, indien van toepassing.",
-    "MARKETING": "Marketing- en reclameproviders, alleen met je toestemming.",
-    "HEALTHCARE": "Zelfstandige schoonheidsspecialisten met wie je via het platform een afspraak hebt gemaakt.",
-    "CLOUD": "Cloud- en hostingproviders om de beschikbaarheid en veiligheid van ons platform te waarborgen.",
-    "DATA_SAVED": "Gegevensbewaring",
-    "WE_SAVE": "We bewaren je persoonlijke gegevens alleen zolang als nodig is om de doeleinden te bereiken waarvoor ze zijn verzameld, inclusief het voldoen aan wettelijke, boekhoudkundige of rapportagevereisten. De gegevens worden doorgaans 3 tot 6 maanden bewaard.",
-    "SECURITY": "Gegevensbeveiliging",
-    "TECHNICAL": "We implementeren passende technische en organisatorische maatregelen om je persoonlijke gegevens te beschermen tegen verlies, misbruik, ongeautoriseerde toegang, openbaarmaking, wijziging of vernietiging. Onder deze maatregelen vallen de versleuteling van gegevens tijdens transport en in rust, sterke authenticatie voor toegang tot interne systemen en voortdurende monitoring van bedreigingen en mogelijke beveiligingsinbreuken. We hebben nog geen protocollen geïmplementeerd voor het reageren op datalekken, maar dit is iets wat we in de toekomst overwegen.",
-    "INTERNATIONAL": "Internationale gegevensoverdrachten",
-    "PERSONNAL_DATA": "De persoonlijke gegevens die we verzamelen, kunnen worden overgedragen en opgeslagen in landen buiten de Europese Economische Ruimte (EER). Wanneer deze overdrachten plaatsvinden, zorgen we ervoor dat ze worden uitgevoerd in overeenstemming met de toepasselijke regelgeving door gebruik te maken van mechanismen zoals de door de Europese Commissie goedgekeurde standaardcontractbepalingen.",
-    "CONTACT": "Contact",
-    "QUESTION": "Voor vragen over ons privacybeleid of om je rechten uit te oefenen, neem contact met ons op via: userprotection@izyglam.com.",
-    "CHANGE_POLITIQUE": "Wijzigingen in dit privacybeleid",
-    "RESERVES": "We behouden ons het recht voor om dit privacybeleid op elk moment te wijzigen. In geval van significante wijzigingen zullen we je via e-mail op de hoogte stellen. We raden je aan deze pagina regelmatig te raadplegen om op de hoogte te blijven van updates."
+    "CHANGE_COUNTRY": "Land wijzigen",
+    "LANGUE": "Taal",
+    "COUNTRY": "Land"
   },
   "PAYEMENT": {
-    "TITLE": "Boek je afspraak online",
-    "FOR_WHO": "Voor wie boek je deze afspraak?",
-    "ADD_PROCHE": "Voeg een familielid toe",
-    "WHERE": "Waar ontvang je de afspraak?",
+    "YOU": "U",
+    "HEADER_TITLE": "Betaling",
+    "SERVICE_TITLE": "Dienst",
+    "SERVICE_NOTE": "Opmerking:",
+    "ADDRESS_TITLE": "Adres van de dienst",
+    "ADDRESS_RENDEZVOUS": "Ontmoet voor mijn deur",
+    "ADDRESS_CHANGE": "Een ander adres selecteren",
+    "PAYMENT_SECTION_TITLE": "Betaling",
+    "PAYMENT_METHOD": "Hoofdkaart",
+    "PAYMENT_EXPIRE": "Verloopt",
+    "PAYMENT_NO_CARD": "Geen hoofdkaart ingesteld",
+    "PAYMENT_NO_CARD_DESC": "Voeg een kaart toe of selecteer er een als hoofd-betaalmethode.",
+    "SUMMARY_SUBTOTAL": "Subtotaal",
+    "SUMMARY_SERVICE_FEE": "izyGlam-commissie",
+    "SUMMARY_DELIVERY_FEE": "Servicekosten",
+    "SUMMARY_TOTAL": "Totaal",
+    "TITLE": "Maak uw afspraak online",
+    "FOR_WHO": "Voor wie maakt u deze afspraak?",
+    "ADD_PROCHE": "Naaste toevoegen",
+    "WHERE": "Waar ontvangt u de afspraak?",
     "SELECT_ADDRESS": "Selecteer een adres",
-    "ADD_ADDRESS": "Voeg een adres toe",
-    "CARD_PAY": "Betaling met creditcard",
+    "ADD_ADDRESS": "Adres toevoegen",
+    "CARD_PAY": "Betaling per bankkaart",
     "CARD_NUM": "Kaartnummer",
     "CARD_NAME": "Naam op de kaart",
     "EXPIRATION": "Vervaldatum",
     "CVV": "CVV",
-    "RDV": "Je afspraak in detail",
+    "RDV": "Uw afspraak in detail",
     "RESUME": "Samenvatting van de afspraak",
     "DATE": "Datum",
-    "HOUR": "Tijdstip",
+    "HOUR": "Tijd",
     "PRESTA": "Dienst",
+    "EXPIRE": "Verloopt",
+    "DEFAULT": "Standaard",
+    "NOCARD": "Geen kaart opgeslagen",
     "WITH": "Met",
-    "TOTAL": "Te betalen totaal",
-    "ANNULER": "ANNULEER",
+    "TOTAL": "Totaal te betalen",
+    "ANNULER": "ANNULEREN",
     "RETOUR": "TERUG",
-    "CONTINUER": "GA DOOR",
-    "VALIDER": "BEVESTIG"
+    "CONTINUER": "DOORGAAN",
+    "VALIDER": "BEVESTIGEN",
+    "ADRESSE": "Adres",
+    "LEGAL_TEXT_1": "Door op de knop te klikken om uw bestelling te plaatsen, gaat u akkoord met het contract voor bezorgdiensten met izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "U ziet af van uw herroepingsrecht met betrekking tot bezorgdiensten. U kunt hier een beroep doen op een consumentenbemiddelaar.",
+    "LEGAL_TEXT_3": "Als u niet aanwezig bent bij aankomst van de koerier, wordt uw bestelling voor de deur achtergelaten. Door te bestellen aanvaardt u de volledige verantwoordelijkheid zodra deze is geleverd. Bestellingen met alcohol of andere beperkte artikelen worden bij afwezigheid rechtstreeks aan de zaak geretourneerd.",
+    "CLOSE_FORM": "Formulier sluiten",
+    "ADD_CARD": "Kaart toevoegen",
+    "TRAITEMENT": "Bezig met verwerken"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Betaling gevalideerd",
+    "THANKS": "Bedankt! Uw reservering is bevestigd.",
+    "BACKHOME": "Terug naar start",
+    "PROBLEME": "Probleem met reservering",
+    "PAIEMENT": "Uw betaling is afgeschreven, maar de reservering kon niet worden bevestigd.",
+    "THANKSCONTACT": "Neem contact op met onze support op",
+    "FAILED": "Betaling mislukt",
+    "VALIDATE": "We konden uw betaling niet valideren. Probeer het opnieuw."
   },
   "CREATION_SHOP_STEPS": {
-    "TITLE": "Hoe werkt izyGlam voor partnerbedrijven",
+    "TITLE": "izyGlam voor zelfstandigen",
     "STEP1": {
       "TITLE": "Klanten plaatsen bestellingen",
-      "TEXT": "De klant vindt jouw bedrijf en plaatst een bestelling via de izyGlam-app."
+      "TEXT": "De klant vindt uw zaak en bestelt via de izyGlam-app."
     },
     "STEP2": {
-      "TITLE": "Je accepteert de reservering",
-      "TEXT": "Je accepteert de reservering en jouw agenda wordt bijgewerkt."
+      "TITLE": "U accepteert de reservering",
+      "TEXT": "U accepteert de reservering en uw agenda wordt bijgewerkt."
     },
     "STEP3": {
       "TITLE": "Op het moment van de afspraak",
-      "TEXT": "Je wordt van tevoren geïnformeerd over aankomende reserveringen en wij begeleiden je naar elke klant."
+      "TEXT": "U wordt vooraf op de hoogte gebracht van aankomende afspraken en we begeleiden u naar elke klant."
     }
   },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Bedrijfsrekening crediteren",
+    "SOLDE": "Huidig saldo",
+    "CREDIT": "Te crediteren bedrag",
+    "COMPANY": "Bedrijfsrekening crediteren",
+    "DEPENSE": "Uitgavenoverzicht",
+    "DATE": "Datum",
+    "COUNT": "Bedrag",
+    "EMPLOYEE": "Werknemer",
+    "DESCRIPTION": "Beschrijving"
+  },
   "CREATION_SHOP": {
-    "ALREDAY_SHOP": "Je hebt al een partner- of bedrijfsaccount!",
-    "NOT_CONNECTED": "Log in om een winkel te registreren!",
-    "TITLE": "Begin nu",
-    "NAME": "Naam van je bedrijf",
-    "ADDRESS": "Adres van je bedrijf",
+    "ALREDAY_SHOP": "U heeft al een partner- of bedrijfsaccount!",
+    "NOT_CONNECTED": "Log in om een salon op te slaan",
+    "TITLE": "Aan de slag!",
+    "TITLE2": "Laten we een salon maken!",
+    "NAME": "Naam van uw salon",
+    "ADDRESS": "Adres van uw bedrijf",
     "STREET": "Straat",
     "CITY": "Stad",
+    "CODE_POSTAL_POSSIBLE": "Postcodes die worden bediend",
     "CODE_POSTAL": "Postcode",
     "COUNTRY": "Land",
-    "ADDRESSPLACEHOLDER": "123, Hoofdstraat",
+    "ADDRESSPLACEHOLDER": "Hoofdstraat 123",
     "FLOOR": "Verdieping/Suite (optioneel)",
     "BUSINESSTYPE": "Type bedrijf",
     "FIRSTNAME": "Voornaam",
     "LASTNAME": "Achternaam",
     "PASSWORD": "Wachtwoord",
-    "PASSWORDCONFIRMED": "Bevestig wachtwoord",
+    "PASSWORDCONFIRMED": "Wachtwoordbevestiging",
     "EMAIL": "E-mail",
-    "PHONE": "Mobiel nummer",
+    "PHONE": "Mobiel telefoonnummer",
     "WHATSAPP": "Ik ga akkoord met het ontvangen van berichten via WhatsApp",
-    "BUTTON": "Registreer de winkel",
+    "BUTTON": "Winkel opslaan",
     "SUCCESS": "De winkel is succesvol aangemaakt!",
     "ERROR": "Er is een fout opgetreden bij het aanmaken van de winkel:",
-    "ERROR1": "De naam van je bedrijf is verplicht.",
-    "ERROR2": "Het adres van je bedrijf is verplicht.",
+    "ERROR1": "De naam van uw bedrijf is verplicht.",
+    "ERROR2": "Het adres van uw bedrijf is verplicht.",
     "ERROR3": "Het type bedrijf is verplicht.",
     "ERROR4": "Voornaam is verplicht.",
+    "CHOOSE_COUNTRY": "Kies een land",
+    "POSTAL_CODE": "Postcode",
+    "CHOOSE_CITY": "Kies een stad",
     "ERROR5": "Achternaam is verplicht.",
     "ERROR6": "E-mail is verplicht.",
-    "ERROR7": "Mobiel nummer is verplicht.",
-    "ERROR8": "Je moet akkoord gaan met het ontvangen van berichten via WhatsApp."
+    "ERROR7": "Mobiel telefoonnummer is verplicht.",
+    "ERROR8": "U moet akkoord gaan met het ontvangen van berichten via WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Adres wijzigen",
+    "FIND_SHOP": "Een winkel zoeken",
+    "CATEGORIES": "Categorieën",
+    "OFFRE": "Aanbiedingen van het moment",
+    "DISCOVER": "Ontdekken",
+    "APPRECIATE": "Meest gewaardeerd",
+    "SMART": "Slimme deals",
+    "TOP10": "Top 10 van de week",
+    "SEARCH_RESULT": "Zoekresultaten",
+    "NOT_AVAILABLE": "Nog niet beschikbaar op dit adres",
+    "NEW_ADDRESS": "Nieuw adres toevoegen",
+    "CHOOSE_ADDRESS": "Kies een adres",
+    "CHOOSE_COUNTRY": "Kies een land",
+    "CHOOSE_CITY": "Kies een stad",
+    "CHOOSE_ARRONDISSEMENT": "Kies een arrondissement",
+    "CANCEL": "Annuleren",
+    "SAVE": "Opslaan",
+    "CLOSE": "Sluiten"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Naam",
+    "CITY": "Stad",
+    "NOTE": "Score",
+    "MIDDLE_PRICE": "Gemiddelde prijs",
+    "PROMOTION": "Promotie",
+    "ACTIONS": "Acties",
+    "MODIFIER": "Winkelinformatie bewerken",
+    "SHOP_NAME": "Naam van de winkel",
+    "DESCRIPTION": "Beschrijving",
+    "PRINCIPALE": "Hoofdafbeelding",
+    "SHOP": "Type winkel",
+    "ARRONDISSEMENT": "Arrondissement",
+    "MINIMUM_DELAI": "Minimale termijn",
+    "DISTANCE": "Maximale afstand (km)",
+    "EMPLACEMENT": "Locatie",
+    "HOURS_MORNING": "Openingstijden - Ochtend",
+    "HOURS_AFTERNOON": "Openingstijden - Namiddag",
+    "ACTIVE_PROMO": "Actieve promo",
+    "CANCEL": "Annuleren",
+    "ENREGISTRER": "Opslaan"
   },
   "CREATE_SHOP_INFO": {
-    "TITLE": "Laat je bedrijf groeien",
-    "TEXT": "Duizenden gebruikers van de izyGlam-app kunnen op zoek zijn naar een restaurant in jouw buurt...",
+    "TITLE": "Ontwikkel uw activiteit",
+    "TEXT": "Duizenden gebruikers van de izyGlam-app zoeken mogelijk naar een zaak in uw sector…",
     "IMAGE": "afbeelding"
   },
   "CREATE_SHOP_STEPS": {
-    "TITLE": "Waarom kiezen voor izyGlam?",
+    "TITLE": "Waarom izyGlam?",
     "STEP1": {
-      "TITLE": "Werk volgens je eigen voorwaarden",
-      "TEXT": "Beheer je agenda en regel je diensten met volledige vrijheid. Geniet van een flexibel platform dat zich aanpast aan jouw behoeften om je activiteiten te maximaliseren."
+      "TITLE": "Werk op uw eigen voorwaarden",
+      "TEXT": "Organiseer uw agenda en beheer uw diensten in alle vrijheid. Profiteer van een flexibel platform dat zich aanpast aan uw behoeften om uw activiteit te maximaliseren."
     },
     "STEP2": {
-      "TITLE": "Versterk je online aanwezigheid",
-      "TEXT": "Trek meer klanten aan met de marketingtools die in de app zijn opgenomen en verhoog je resultaten met een grotere zichtbaarheid."
+      "TITLE": "Versterk uw online aanwezigheid",
+      "TEXT": "Trek meer klanten aan met de marketingtools in de app en boost uw resultaten met grotere zichtbaarheid."
     },
     "STEP3": {
-      "TITLE": "Bouw klantloyaliteit op",
-      "TEXT": "Ontwikkel langdurige relaties door de voorkeuren van je klanten te analyseren, te reageren op hun beoordelingen en hen loyaliteitsvoordelen te bieden."
+      "TITLE": "Bind uw klanten",
+      "TEXT": "Bouw duurzame relaties op door voorkeuren te analyseren, op beoordelingen te reageren en loyaliteitsvoordelen te bieden."
     }
   },
   "INFO_SHOP_STEPS": {
     "STEP1": {
-      "TITLE": "Vereenvoudig het beheer van je bedrijf",
-      "TEXT": "Beheer je bedrijf zonder zorgen dankzij izyGlam, de complete oplossing voor wellness-professionals. Profiteer van flexibele tools en persoonlijke ondersteuning om aan al je behoeften te voldoen."
+      "TITLE": "Vereenvoudig het beheer van uw activiteit",
+      "TEXT": "Beheer uw activiteit met een gerust hart dankzij izyGlam, de complete oplossing voor welzijnsprofessionals. Profiteer van flexibele tools en persoonlijke begeleiding."
     },
     "STEP2": {
-      "TITLE": "Verhoog je omzet",
-      "TEXT": "Elke dag gebruiken duizenden mensen izyGlam om beauty-experts in hun buurt te vinden. Grijp deze kans om nieuwe klanten in jouw vakgebied te bereiken."
+      "TITLE": "Boost uw verkoop",
+      "TEXT": "Dagelijks gebruiken duizenden mensen izyGlam om beauty-experts in de buurt te vinden. Profiteer van deze kans om nieuwe klanten te bereiken."
     },
     "STEP3": {
       "TITLE": "Gegarandeerde klanttevredenheid",
-      "TEXT": "Met izyGlam bied je je klanten een gepersonaliseerde ervaring. Beheer eenvoudig je afspraken, communiceer snel en bied op maat gemaakte diensten aan. Je klanten ontvangen behandelingen waar en wanneer ze dat willen, wat hun tevredenheid en loyaliteit garandeert."
+      "TEXT": "Bied met izyGlam een gepersonaliseerde ervaring. Beheer afspraken eenvoudig, communiceer snel en bied passende diensten. Klanten krijgen zorg waar en wanneer ze willen, wat zorgt voor tevredenheid en loyaliteit."
     }
   },
   "CREATION_COMPANY_STEPS": {
-    "TITLE": "Hoe werkt izyGlam voor jouw bedrijf?",
+    "TITLE": "izyGlam voor uw bedrijf?",
     "STEP1": {
-      "TITLE": "Je medewerkers en klanten boeken diensten",
-      "TEXT": "Je medewerkers of klanten selecteren de wellness-diensten die het beste bij hen passen rechtstreeks via de izyGlam-app."
+      "TITLE": "Uw medewerkers en klanten boeken diensten",
+      "TEXT": "Zij selecteren welness-diensten die bij hen passen rechtstreeks via de izyGlam-app."
     },
     "STEP2": {
-      "TITLE": "Jij bepaalt het te besteden bedrag",
-      "TEXT": "Je hebt de controle om de accounts van je medewerkers en klanten te crediteren. Je kunt ervoor kiezen om deze accounts regelmatig of eenmalig te crediteren."
+      "TITLE": "U bepaalt een te alloceren bedrag",
+      "TEXT": "U heeft de controle om rekeningen van medewerkers en klanten te crediteren, periodiek of eenmalig."
     },
     "STEP3": {
       "TITLE": "De diensten worden uitgevoerd",
-      "TEXT": "Onze beauty-experts komen naar je medewerkers of naar je vestiging om de gereserveerde diensten te leveren, wat zorgt voor een optimale wellness-ervaring."
+      "TEXT": "Onze beauty-experts komen bij uw medewerkers of op locatie om de geboekte diensten te leveren, voor een optimale ervaring."
     }
   },
   "CREATE_COMPANY_INFO": {
-    "TITLE": "Geef waarde aan je bedrijf",
-    "TEXT": "Duizenden gebruikers van de izyGlam-app zijn op zoek naar wellness-diensten. Bied je medewerkers en klanten exclusieve toegang tot de beste beauty-experts in hun omgeving.",
+    "TITLE": "Verhoog de waarde van uw bedrijf",
+    "TEXT": "Duizenden gebruikers zijn op zoek naar welzijnsdiensten. Bied uw medewerkers en klanten toegang tot de beste beauty-experts in de buurt.",
     "IMAGE": "afbeelding"
   },
   "CREATE_COMPANY_STEPS": {
-    "TITLE": "Waarom kiezen voor izyGlam voor je bedrijf?",
+    "TITLE": "Waarom izyGlam?",
     "STEP1": {
-      "TITLE": "Behoud en beloon je medewerkers",
-      "TEXT": "Bied je teams een uniek voordeel door ze een maandelijks beautybudget te geven. Kappers, schoonheidsspecialisten en vele andere wellness-experts staan tot hun beschikking om hun tevredenheid te verhogen en hun gevoel van verbondenheid met je bedrijf te versterken."
+      "TITLE": "Bind en beloon uw medewerkers",
+      "TEXT": "Bied een uniek voordeel met een maandelijks beautybudget. Kappers, schoonheidsspecialisten en andere experts staan klaar om tevredenheid en betrokkenheid te verhogen."
     },
     "STEP2": {
-      "TITLE": "Verbeter je merkimago",
-      "TEXT": "Organiseer beauty-evenementen voor je klanten of partners, of integreer de diensten van izyGlam in je loyaliteitsprogramma's. Zorg ervoor dat je een blijvende indruk maakt met hoogwaardige behandelingen, aangepast aan elke gelegenheid."
+      "TITLE": "Verbeter uw merkbeeld",
+      "TEXT": "Organiseer beauty-events voor klanten of partners, of integreer izyGlam in uw loyaliteitsprogramma’s. Maak indruk met hoogwaardige, passende zorg."
     },
     "STEP3": {
-      "TITLE": "Optimaliseer welzijn op de werkplek",
-      "TEXT": "Maak het je medewerkers gemakkelijk om toegang te krijgen tot wellness-diensten direct op de werkplek of in de buurt. Door te zorgen voor hun welzijn verhoog je hun motivatie en versterk je de teamcohesie."
+      "TITLE": "Optimaliseer welzijn op het werk",
+      "TEXT": "Maak toegang tot welzijnsdiensten op of nabij de werkplek eenvoudig. Door voor hun welzijn te zorgen, vergroot u motivatie en teamcohesie."
     }
   },
   "INFO_COMPANY_STEPS": {
     "STEP1": {
-      "TITLE": "Vereenvoudig de toegang tot welzijn voor je teams",
-      "TEXT": "Met izyGlam bied je je medewerkers een eenvoudige en flexibele oplossing om voor zichzelf te zorgen. Of het nu gaat om schoonheidsbehandelingen of fitnesssessies, alles is binnen handbereik."
+      "TITLE": "Vereenvoudig toegang tot welzijn voor uw teams",
+      "TEXT": "Met izyGlam biedt u een eenvoudige, flexibele oplossing voor zelfzorg—van esthetiek tot fitness—alles binnen handbereik."
     },
     "STEP2": {
-      "TITLE": "Bied innovatieve voordelen aan je klanten",
-      "TEXT": "Versterk je relaties met je klanten door welzijnsdiensten aan te bieden tijdens evenementen of als onderdeel van je loyaliteitsprogramma's. Laat hen zien dat je om hun ervaring geeft met unieke diensten."
+      "TITLE": "Bied innovatieve voordelen aan uw klanten",
+      "TEXT": "Versterk relaties door welzijnsdiensten te bieden tijdens events of via loyaliteitsprogramma’s. Toon uw zorg met bijzondere attenties."
     },
     "STEP3": {
-      "TITLE": "Op maat gemaakt welzijn, waar en wanneer je wilt",
-      "TEXT": "Met izyGlam kunnen je medewerkers en klanten genieten van kwaliteitsdiensten, waar ze zich ook bevinden. Geselecteerde experts voldoen aan hun specifieke behoeften met een gepersonaliseerde service die hun tevredenheid garandeert."
+      "TITLE": "Welzijn op maat, waar en wanneer u wilt",
+      "TEXT": "Uw medewerkers en klanten profiteren van kwaliteitsdiensten, waar ze ook zijn. Geselecteerde experts en persoonlijke begeleiding garanderen tevredenheid."
     }
   },
   "SIDEBAR": {
     "PROFILE": "Account beheren",
-    "ORDERS": "Eerdere bestellingen",
+    "ORDERS": "Afgelopen bestellingen",
     "FAVORITES": "Favorieten",
     "HELP": "Hulp",
+    "MY_ABO": "Mijn abonnement",
+    "PRICES": "Tarieven",
+    "FIDELITY": "Loyaliteitsprogramma",
     "LOGOUT": "Uitloggen",
-    "YOUR_BEAUTY_SERVICES": "Bied je schoonheidsdiensten aan",
-    "YOUR_COMPANY": "Registreer je bedrijf"
+    "YOUR_BEAUTY_SERVICES": "Bied uw beautydiensten aan",
+    "YOUR_COMPANY": "Registreer uw bedrijf"
+  },
+  "SUBTITLES": {
+    "HELP": "Hulp nodig? Deze pagina is er voor jou."
   },
   "ORDERS": {
-    "TITLE": "Eerdere bestellingen",
+    "TITLE": "Mijn bestellingen",
+    "TITLE_SUBTITLE": "Beheer gemakkelijk je afspraken: verleden, toekomst of geannuleerd.",
+    "UPCOMING_SECTION": "📅 Komend",
+    "NO_UPCOMING": "U heeft geen geplande diensten.",
+    "PAST_SECTION": "✅ Afgerond",
+    "NO_PAST": "U heeft geen uitgevoerde diensten.",
+    "ADDRESS": "Adres",
+    "DATE": "Datum",
+    "TOTAL": "Totaal",
+    "ITEMS": "artikelen",
+    "DELETE": "Verwijderen",
+    "VISIT": "Bezoeken",
     "PRESTA_FOR": "Dienst voor",
-    "AT": "bij",
+    "AT": "om",
     "ORDER_AGAIN": "Opnieuw bestellen",
     "INVOICE": "Factuur aanvragen",
-    "REVIEW": "Geef je beoordeling",
+    "REVIEW": "Geef uw mening",
     "CANCEL": "Annuleren"
   },
+  "FIDELITY": {
+    "TITLE": "Mijn favorieten",
+    "AGAIN": "Nog",
+    "AGAIN_SUBTITLE": "voor je beloning",
+    "TITLE_SUBTITLE": "om je cadeau te ontgrendelen",
+    "DATE": "Geldig tot",
+    "HISTO": "Historiek van mijn behandelingen"
+  },
   "FAVORITES": {
-    "TITLE": "Mijn favorieten"
+    "TITLE": "Mijn favorieten",
+    "TITLE_SUBTITLE": "Vind je favoriete salons in één oogopslag."
   },
   "SHOP": {
-    "MOVING_FEE": "Verplaatsingskosten:",
-    "DISTANCE": "Maximale afstand:",
-    "PAYEMENT": "Betaling met creditcard en PayPal geaccepteerd",
-    "PRESS_FOR_INFO": "Druk om de openingstijden, informatie, enz. te bekijken",
-    "GALLERY": "Afbeeldingengalerij"
+    "MOVING_FEE": "Servicekosten:",
+    "DISTANCE": "Max. afstand:",
+    "PAYEMENT": "Betaling met bankkaart en PayPal geaccepteerd",
+    "PRESS_FOR_INFO": "Tik om openingstijden, info, enz. te bekijken.",
+    "GALLERY": "Beeldgalerij",
+    "SEE_MORE": "Meer bekijken",
+    "SEE_LESS": "Minder weergeven"
   },
   "LOGIN": {
-    "TITLE": "Voer je inloggegevens in.",
-    "FORGET_PASSWORD": "Vergeten?",
+    "TITLE": "Voer uw inloggegevens in.",
+    "FORGET_PASSWORD": "Wachtwoord vergeten?",
     "CONTINUER": "Doorgaan",
+    "CONTINUE_WITH": "Doorgaan met",
     "OR": "Of",
     "QRCODE": "Log in met QR-code",
-    "CGU": "Door verder te gaan, ga je ermee akkoord om oproepen, WhatsApp-berichten of sms'jes (inclusief via geautomatiseerde methoden) te ontvangen van izyGlam en zijn gelieerde bedrijven op het opgegeven nummer.",
+    "CGU": "Door door te gaan gaat u akkoord met het ontvangen van oproepen, WhatsApp-berichten of sms (waaronder automatische methoden) van izyGlam en haar gelieerde ondernemingen op het opgegeven nummer.",
     "PLACEHOLDER_EMAIL": "E-mailadres",
-    "PLACEHOLDER_PASSWORD": "Wachtwoord"
+    "PLACEHOLDER_PASSWORD": "Wachtwoord",
+    "PLACEHOLDER_PASSWORD_NEW": "Nieuw wachtwoord",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Wachtwoord bevestigen",
+    "CHANGE_PASSWORD": "Wijzig uw wachtwoord",
+    "REINIT": "Resetten"
   },
   "SIGNUP": {
-    "TITLE": "Voer je persoonlijke gegevens in.",
+    "GENRE": "Geslacht",
+    "CHOOSE": "Kiezen",
+    "SEX_MALE": "Man",
+    "SEX_FEMALE": "Vrouw",
+    "TITLE": "Voer uw persoonlijke gegevens in.",
     "CONTINUER": "Doorgaan",
     "OR": "Of",
     "QRCODE": "Log in met QR-code",
-    "CGU": "Door verder te gaan, ga je ermee akkoord om oproepen, WhatsApp-berichten of sms'jes (inclusief via geautomatiseerde methoden) te ontvangen van izyGlam en zijn gelieerde bedrijven op het opgegeven nummer.",
+    "CGU": "Door door te gaan gaat u akkoord met het ontvangen van oproepen, WhatsApp-berichten of sms (waaronder automatische methoden) van izyGlam en haar gelieerde ondernemingen op het opgegeven nummer.",
     "PLACEHOLDER_FIRSTNAME": "Voornaam",
     "PLACEHOLDER_LASTNAME": "Achternaam",
     "PLACEHOLDER_EMAIL": "E-mail",
+    "PLACEHOLDER_EMAIL_REQUIRED": "E-mail verplicht",
+    "PLACEHOLDER_EMAIL_WRONG": "Ongeldig e-mailformaat",
     "PLACEHOLDER_PHONE": "Telefoon",
+    "PLACEHOLDER_PHONE_NUMBER": "Telefoonnummer",
     "PLACEHOLDER_PASSWORD": "Wachtwoord",
-    "PLACEHOLDER_PASSWORDCONFIRMED": "Bevestig wachtwoord"
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Wachtwoordbevestiging",
+    "COUNTRY": "Land"
   },
   "LANGUE": {
     "FRANCAIS": "Frans",
@@ -407,8 +681,55 @@
     "PORTUGAIS": "Portugees",
     "POLONAIS": "Pools",
     "DANOIS": "Deens",
-    "FINLANDAIS": "Fins",
-    "SUEDOIS": "Zweeds"
+    "FINNOIS": "Fins",
+    "SUEDOIS": "Zweeds",
+    "ARABE": "Arabisch",
+    "TURC": "Turks",
+    "CHINOIS": "Chinees",
+    "RUSSE": "Russisch",
+    "PERSAN": "Perzisch",
+    "UKRAINIEN": "Oekraïens",
+    "ROUMAIN": "Roemeens",
+    "CATALAN": "Catalaans",
+    "BASQUE": "Baskisch",
+    "GALICIEN": "Galicisch",
+    "ALBANAIS": "Albanees",
+    "KURDE": "Koerdisch",
+    "ESTONIEN": "Ests",
+    "SOMALIEN": "Somalisch",
+    "BIELORUSSE": "Wit-Russisch",
+    "JAPONAIS": "Japans",
+    "COREEN": "Koreaans",
+    "INDONESIEN": "Indonesisch",
+    "MALAIS": "Maleis",
+    "THAI": "Thais",
+    "VIETNAMIEN": "Vietnamees",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bengaals"
+  },
+  "COUNTRY": {
+    "FRANCE": "Frankrijk",
+    "ALLEMAGNE": "Duitsland",
+    "SPAIN": "Spanje",
+    "ITALY": "Italië",
+    "DANEMARK": "Denemarken",
+    "FINLAND": "Finland",
+    "NETHERLAND": "Nederland",
+    "POLAND": "Polen",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Zweden",
+    "CHINA": "China",
+    "INDIA": "India",
+    "JAPAN": "Japan",
+    "SOUTH_KOREA": "Zuid-Korea",
+    "INDONESIA": "Indonesië",
+    "PHILIPPINES": "Filipijnen",
+    "THAILAND": "Thailand",
+    "VIETNAM": "Vietnam",
+    "MALAYSIA": "Maleisië",
+    "SINGAPOURE": "Singapore",
+    "EMIRAT_ARABE": "Verenigde Arabische Emiraten",
+    "SAUDI_ARABIA": "Saoedi-Arabië"
   },
   "ADDRESS_MODAL": {
     "ADDRESS": "Mijn adressen",
@@ -421,6 +742,25 @@
     "CHANGE": "Wijzigen",
     "CLOSE": "Sluiten"
   },
+  "ADMIN_PARAM": {
+    "TITLE": "Platforminstellingen",
+    "COMMISSION": "Commissietarief (%)",
+    "0to100": "Verplichte waarde tussen 0 en 100",
+    "SERVICE": "Servicekosten (€)",
+    "WEEKS": "Aantal weergegeven weken",
+    "SUP0": "Waarde groter dan 0 vereist",
+    "LESS24": "Annuleringskosten minder dan 24 uur (%)",
+    "LESS48": "Annuleringskosten minder dan 48 uur (€)",
+    "DELAY": "Minimale reserveringstermijn (uren)",
+    "TVA": "Btw-tarief (%)",
+    "ADS": "Advertenties inschakelen",
+    "COMPANY": "Zakelijke functie inschakelen",
+    "FIDELITY": "Loyaliteit inschakelen",
+    "MULTI_SHOP": "Multi-winkel inschakelen",
+    "PROMO": "Promoties in winkels inschakelen",
+    "SPONSORS": "Sponsorblok op landingspagina inschakelen",
+    "SAVE": "Opslaan"
+  },
   "ADMIN_PAGE": {
     "ALL_SHOPS": "Totaal aantal winkels",
     "ACT_SHOPS": "Aantal actieve winkels",
@@ -429,22 +769,22 @@
     "CA_TOTAL": "Totale omzet",
     "CA_GENERATED": "Gegenereerde omzet",
     "SHOPS_PERFO": "Winkelprestaties",
-    "SHOP_NAME": "Winkelnaam",
+    "SHOP_NAME": "Naam van de winkel",
     "CITY": "Stad",
     "REVENUES": "Inkomsten",
-    "BOOKINGS": "Aantal boekingen",
-    "NOTE": "Gemiddelde beoordeling",
+    "BOOKINGS": "Aantal reserveringen",
+    "NOTE": "Gemiddelde score",
     "ACTIONS": "Acties",
     "DETAILS": "Details",
     "ADJUST": "Aanpassen",
     "SHOP_ADJUST": "Winkel aanpassen",
-    "STILL_DEVELOPPED": "Deze functie is nog in ontwikkeling",
+    "STILL_DEVELOPPED": "Deze functionaliteit is nog in ontwikkeling",
     "CLOSE": "Sluiten"
   },
   "CALENDAR_MODAL": {
-    "TITLE": "Evenementdetails",
+    "TITLE": "Details van het evenement",
     "CLIENT": "Klant",
-    "DEBUT": "Start",
+    "DEBUT": "Begin",
     "FIN": "Einde",
     "ADDRESS": "Adres",
     "PHONE": "Telefoon",
@@ -452,13 +792,17 @@
     "SAVE": "Opslaan"
   },
   "CALENDAR": {
-    "ADD_EVENT": "Evenement maken"
+    "ADD_EVENT": "Evenement aanmaken",
+    "COMING": "Komend",
+    "PAST": "Verleden",
+    "CANCELLED": "Geannuleerd",
+    "NO_CANCELLED": "Geen geannuleerde bestellingen."
   },
   "CHAT": {
     "ONLINE_ASSISTANCE": "Online ondersteuning"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Werknemersbeheer",
+    "TITLE": "Medewerkersbeheer",
     "NAME": "Naam",
     "EMAIL": "E-mail",
     "SOLDE": "Rekeningsaldo",
@@ -468,62 +812,74 @@
     "CHANGE_PASSWORD": "Wachtwoord wijzigen"
   },
   "EMPLOYEE_MANAGEMENT": {
-    "TITLE": "Werknemersaccount crediteren",
+    "TITLE": "Rekening van werknemer crediteren",
     "AMOUNT": "Te crediteren bedrag",
     "CANCEL": "Annuleren",
     "SAVE": "Bevestigen"
   },
   "DASHBOARD": {
-    "TOTAL": "Totaal aantal boekingen",
-    "TOTAL_MONTH": "Boekingen deze maand",
+    "TOTAL": "Totaal aantal reserveringen",
+    "TOTAL_MONTH": "Reserveringen deze maand",
     "GENERATED": "Gegenereerde inkomsten",
     "MONTHLY": "Inkomsten deze maand",
-    "AVG_NOTE": "Gemiddelde beoordelingen",
+    "AVG_NOTE": "Gemiddelde scores",
     "BASED_ON": "Gebaseerd op",
     "REVIEWS": "beoordelingen",
     "NEXT_APPOINTEMENT": "Volgende afspraken",
     "POPULAR_SERVICES": "Populairste diensten",
-    "RESERVATION": "boekingen"
+    "RESERVATION": "reserveringen"
   },
   "FINANCE": {
-    "PROGRESS":"Evolutie sinds M-1",
-    "PROGRESSION":"Progressie",
+    "PROGRESS": "Ontwikkeling sinds M-1",
+    "PROGRESSION": "Vooruitgang",
     "TOTAL_GENERATED": "Totaal gegenereerde omzet",
     "CA": "Omzet",
     "COMMISSION_TAKEN": "Ingehouden commissie",
     "COMMISSIONS": "Commissies",
-    "NET_TO_PAY": "Netto te betalen bedrag",
+    "NET_TO_PAY": "Netto te storten",
     "DISPO_AMOUNT": "Beschikbaar bedrag",
-    "REQUEST_WITHDRAWAL": "Uitbetaling aanvragen",
+    "REQUEST_WITHDRAWAL": "Overschrijving aanvragen",
     "TAKE": "Op te nemen bedrag",
+    "TOTAL_EARNINGS": "Netto-inkomsten",
+    "TOTAL_BOOKINGS": "Uitgevoerde diensten",
+    "CANCELLED_BOOKINGS": "Geannuleerde diensten",
+    "SERVICES_CANCELLED": "Geannuleerde of geweigerde reserveringen",
+    "SERVICES_COMPLETED": "Afgeronde reserveringen",
+    "AVG_PRICE": "Gemiddelde prijs",
+    "PER_SERVICE": "Per dienst",
+    "REVIEW_RATIO": "Klantbeoordelingen",
+    "CLIENT_FEEDBACK": "Terugkeerratio",
+    "TOP_PRODUCTS": "Best verkopende diensten",
+    "AVG_DURATION": "Gemiddelde duur",
+    "DURATION_PER_BOOKING": "Tijd per reservering",
     "DETAILS": "Bankgegevens",
-    "ASK": "Uitbetaling aanvragen",
-    "HISTORY": "Transactiegeschiedenis",
+    "ASK": "Overschrijving aanvragen",
+    "HISTORY": "Transactiehistorie",
     "DATE": "Datum",
     "AMOUNT": "Bedrag",
     "COMMISSION": "Commissie",
     "STATUS": "Status"
   },
   "NEW_SHOP_MODAL": {
-    "TITLE": "Selecteer het type winkel om te maken",
+    "TITLE": "Selecteer het type winkel om te creëren",
     "CANCEL": "Annuleren",
     "CREATE": "Bevestigen"
   },
   "PROCHES": {
     "TITLE": "Mijn naasten",
-    "UPDATE": "Naaste bewerken",
+    "UPDATE": "Wijziging van een naaste",
     "FIRSTNAME": "Voornaam",
     "NAME": "Achternaam",
     "EMAIL": "E-mail",
     "PHONE": "Telefoon",
-    "CREATE": "Maken",
+    "CREATE": "Aanmaken",
     "BACK": "Terug",
     "CHANGE": "Wijzigen",
     "CLOSE": "Sluiten"
   },
   "RATING_MODAL": {
-    "TITLE": "Geef je beoordeling",
-    "RATING": "Beoordeling",
+    "TITLE": "Geef uw mening",
+    "RATING": "Score",
     "COMMENT": "Opmerking",
     "CLOSE": "Sluiten",
     "SUBMIT": "Verzenden"
@@ -533,7 +889,7 @@
     "CANCEL": "Annuleren"
   },
   "SHOP_ARTICLES_MANAGEMENT": {
-    "CREATE_BUTTON": "Maak een dienst",
+    "CREATE_BUTTON": "Een dienst aanmaken",
     "NAME": "Naam",
     "DESCRIPTION": "Beschrijving",
     "COLOR": "Kleur",
@@ -543,34 +899,530 @@
     "ACTIONS": "Acties",
     "MINUTES": "minuten",
     "CHANGE": "Wijzigen",
+    "DELETE": "Verwijderen",
     "SERVICE_NAME": "Naam van de dienst",
     "TIME_MINUTES": "Duur (in minuten)",
     "PREST_IMAGE": "Afbeelding van de dienst",
-    "NO_PICS": "Nog geen afbeelding",
-    "UPLOAD": "Upload een afbeelding",
+    "NO_PICS": "Nog geen foto",
+    "UPLOAD": "Afbeelding uploaden",
     "NEW_PIC": "Voorbeeld van de nieuwe afbeelding",
     "PRESTA_COLOR": "Kleur van de dienst",
     "CANCEL": "Annuleren",
     "SAVE": "Opslaan",
-    "AVG_PRICE": "Gemiddelde prijs"
+    "AVG_PRICE": "Gemiddeld tarief",
+    "IMAGE_OK": "Afbeelding succesvol geüpload",
+    "ERROR_IMAGE_LOAD": "Fout bij het uploaden van de afbeelding",
+    "UPDATE_SUCCESS": "Dienst succesvol bijgewerkt",
+    "ERROR_PRESTA": "Fout bij het bijwerken van de dienst",
+    "PRESTA_UPDATED": "Dienst succesvol bijgewerkt",
+    "PRESTA_ERROR": "Fout bij het bijwerken van de dienst",
+    "PRESTA_SUCCESS": "Dienst succesvol bijgewerkt",
+    "PHOTO_ERROR": "Fout bij het bijwerken van de foto",
+    "PRESTA_DELETED": "Dienst succesvol verwijderd",
+    "PRESTA_DELETE_ERROR": "Fout bij het verwijderen van de dienst"
   },
   "SHOP_MANAGEMENT": {
-    "SHOP_IMAGE": "Winkelafbeelding",
-    "UPLOAD_IMAGE": "Upload een afbeelding",
+    "SHOP_IMAGE": "Afbeelding van de winkel",
+    "UPLOAD_IMAGE": "Afbeelding uploaden",
     "SNEEK_PIC": "Voorbeeld van de afbeelding",
     "SHOP_NAME": "Naam van de winkel",
     "DESCRIPTION": "Beschrijving",
     "DESC_INFO": "(min. 25 tekens)",
     "CITY": "Stad",
-    "DISCRICT": "District",
+    "DISCRICT": "Arrondissementen",
     "LAT": "Breedtegraad",
     "LON": "Lengtegraad",
-    "ZONE": "Serviceregio (km)",
+    "ZONE": "Reiszone (km)",
     "OPENNING": "Openingstijden",
     "MORNING_OPEN": "Ochtend - Open",
     "MORNING_CLOSE": "Ochtend - Sluit",
-    "AFTERNOON_OPEN": "Middag - Open",
-    "AFTERNOON_CLOSE": "Middag - Sluit",
-    "SAVE": "Winkel opslaan"
+    "AFTERNOON_OPEN": "Namiddag - Open",
+    "AFTERNOON_CLOSE": "Namiddag - Sluit",
+    "SAVE": "Winkel opslaan",
+    "MONDAY": "Maandag",
+    "TUESDAY": "Dinsdag",
+    "WEDNESDAY": "Woensdag",
+    "THURSDAY": "Donderdag",
+    "FRIDAY": "Vrijdag",
+    "SATURDAY": "Zaterdag",
+    "SUNDAY": "Zondag",
+    "CLOSED": "Gesloten",
+    "GENERATE_IMAGE": "Afbeelding genereren",
+    "GENERATE_DESCRIPTION": "Beschrijving genereren",
+    "PHOTO": "Voorbeelden van geaccepteerde / geweigerde foto’s",
+    "CODE_POSTAUX": "Postcodes die worden bediend",
+    "EXEMPLE_LOCAL": "Bijv.: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Werknemer toevoegen",
+    "LOADING": "Laden",
+    "LIST": "Lijst van werknemers",
+    "ADD": "Toevoegen",
+    "EMAIL": "E-mail van de werknemer",
+    "FIRSTNAME": "Voornaam",
+    "FAMILY_NAME": "Achternaam",
+    "PHONE": "Telefoon",
+    "PASSWORD": "Wachtwoord",
+    "HAVE_TO": "Alle velden zijn verplicht.",
+    "EMAIL_ERROR": "Ongeldig e-mailadres.",
+    "EMPLOYEE_OK": "Werknemer succesvol toegevoegd.",
+    "ADD_EMPLOYEE_ERROR": "Fout bij het toevoegen van de werknemer."
+  },
+  "AVIS": {
+    "TITLE": "DIT ZEGGEN ONZE GEBRUIKERS",
+    "AVIS1": "Ik was eerst sceptisch… en toch! Mijn manicure was perfect, thuis, zonder stress. Het is mijn vrijdagavondritueel geworden.",
+    "AVIS2": "Ik boekte een gezichtsbehandeling in 3 minuten, vanaf mijn bank. De specialist was zacht en luisterde… mijn huid heeft er nog nooit zo goed uitgezien.",
+    "AVIS3": "Ik dacht dat het duurder zou zijn dan in de salon… verrassing: dezelfde prijs, zelfs minder! En ik hoefde niet te reizen. Een grote yes.",
+    "AVIS4": "De dag voor een verjaardag wilde ik een snelle brushing. Ik vond in 2 klikken een pro. Stipt, vriendelijk en topresultaat.",
+    "AVIS5": "Ik ben alleenstaande moeder, ik heb geen tijd om overal heen te rennen. Nu boek ik als de kinderen slapen. Simpel, snel en echt geweldig.",
+    "AVIS6": "Ik vond mijn eerste sessie geweldig. De schoonheidsspecialiste stelde me meteen op mijn gemak. Ik voelde me verwend. Ik heb al opnieuw geboekt voor volgende week!"
+  },
+  "DOWNLOAD": {
+    "USERS": "tevreden gebruikers",
+    "SOCIAL": "beschikbare professionals",
+    "STORE": "op App Store en Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Kies het plan dat bij je past",
+    "DISCOVER2": "en begin je klim naar de top",
+    "SOLUTIONS": "Je verdient een mooie, krachtige oplossing die voor jou is ontworpen. Je kunt op elk moment van gedachten veranderen",
+    "TEST": "Je eerste salon is 100% gratis. Nul stress. Pure magie.",
+    "START_FREE": "Mijn eerste salon maken",
+    "FREE": "Leerling",
+    "FREE_SUBTITLE": "Begin je klim met je eerste salon",
+    "THEN": "daarna",
+    "MONTHLY": "maand",
+    "FREE1": "1 actieve salon",
+    "FREE2": "Onbeperkt aantal reserveringen en klanten",
+    "FREE3": "Beheer van diensten en planning",
+    "FREE4": "Synchronisatie persoonlijke kalender",
+    "FREE5": "Perfect om rustig te starten",
+    "FREE6": "Gratis salon maken",
+    "BASIC": "Verkozen",
+    "BASIC_SUBTITLE": "Ontgrendel je potentieel en begin te stralen",
+    "BASIC1": "Tot 3 actieve salons",
+    "BASIC2": "Volledig beheer van diensten, klanten en afspraken",
+    "BASIC3": "Prioritaire e-mailsupport",
+    "BASIC4": "Toegang tot exclusieve resources om je activiteit te laten groeien",
+    "BASIC5": "Ideaal voor pro’s die hun klantenkring willen uitbreiden",
+    "BASIC6": "1 maand gratis proef",
+    "PREMIUM": "Koningin",
+    "PREMIUM_SUBTITLE": "Je imperium krijgt vorm, je invloed groeit",
+    "PREMIUM1": "Tot 10 actieve salons",
+    "PREMIUM2": "Toegang tot geavanceerde statistieken over je prestaties",
+    "PREMIUM3": "Slimme aanbevelingen om je omzet te boosten",
+    "PREMIUM4": "Extra zichtbaarheid op het IzyGlam-platform",
+    "PREMIUM5": "Prioritaire support",
+    "PREMIUM6": "Ontworpen voor ambitieuze zelfstandigen",
+    "PREMIUM7": "Koningin verkrijgen",
+    "BUSINESS": "Godin",
+    "BUSINESS_SUBTITLE": "Eis je troon op, Godin",
+    "BUSINESS1": "Maatwerk",
+    "BUSINESS2": "Onbeperkt aantal salons",
+    "BUSINESS3": "Persoonlijke strategische ondersteuning",
+    "BUSINESS4": "Verhoogde zichtbaarheid en uitlichting van je salons",
+    "BUSINESS5": "Maatoplossingen om je activiteit te schalen",
+    "BUSINESS6": "Contacteer ons",
+    "COMPARE": "Functie-vergelijking",
+    "FONCTIONS": "Functionaliteiten",
+    "BUSINESS9": "Volledig activiteitbeheer",
+    "STUDIO_BASIC": "Exclusieve resources",
+    "STUDIO_ADVANCED": "Statistieken & aanbevelingen",
+    "ANALYSE": "Prestatieanalyse",
+    "BASICS": "Klassiek",
+    "ADVANCE": "Geavanceerd",
+    "PLANS": "Aantal actieve salons",
+    "READY": "Klaar om je activiteit te laten groeien?",
+    "DISCOVERS": "Ontdek de IzyGlam-aanbiedingen"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Toegankelijkheidsverklaring",
+      "TEXT": "izyGlam zet zich in om haar diensten voor iedereen toegankelijk te maken. Ons doel is WCAG 2.2 niveau AA te behalen en ons zoveel mogelijk te aligneren op de RGAA (Frankrijk)."
+    },
+    "SCOPE": {
+      "TITLE": "Gedekt toepassingsgebied",
+      "L1": "Publieke website en informatiepagina’s.",
+      "L2": "Webapp (dashboard) voor klanten en professionals.",
+      "L3": "Mobiele app (iOS/Android) indien van toepassing.",
+      "L4": "Transactionele e-mails en helpcentrum.",
+      "L5": "Klantenondersteunings-tools."
+    },
+    "STATUS": {
+      "TITLE": "Conformiteitsstatus",
+      "TEXT": "Op de datum van deze verklaring is de toegankelijkheid van de izyGlam-interfaces gedeeltelijk conform met WCAG 2.2 AA / RGAA. We verbeteren continu en corrigeren prioritaire afwijkingen."
+    },
+    "PREPARATION": {
+      "TITLE": "Methode voor het opstellen van de verklaring",
+      "L1": "Zelfevaluaties door het product/UI-team: semantische HTML-review, ARIA-rollen, tabvolgorde.",
+      "L2": "Handmatige tests: toetsenbordnavigatie, zichtbare focus, 200%+ zoom, schermlezers.",
+      "L3": "Gereedschapstests (geautomatiseerde audit op schermsteekproeven).",
+      "L4": "Continue acceptatie bij updates (Design System, herbruikbare toegankelijke componenten)."
+    },
+    "FEATURES": {
+      "TITLE": "Beschikbare toegankelijkheidsfuncties",
+      "KEYBOARD": {
+        "TITLE": "Toetsenbordnavigatie",
+        "L1": "Volledig toetsenbordpad (Tab, Shift+Tab, Enter, Spatie, Esc, pijlen).",
+        "L2": "Consistente, contrastrijke focusindicator.",
+        "L3": "‘Ga naar inhoud’-links om de header over te slaan.",
+        "L4": "Menu’s, modals en dropdowns bedienbaar met toetsenbord (openen/sluiten, focustrap beheerst, sluiten met Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Schermlezers en structuur",
+        "L1": "Semantische structuur met koppen (h1→h6) en landmarks (header, nav, main, footer).",
+        "L2": "Duidelijke labels voor alle velden en knoppen, consistente toegankelijke namen.",
+        "L3": "Aankondiging van statuswijzigingen via aria-live-regio’s (fouten, successen, laden).",
+        "L4": "Informatieve afbeeldingen met beschrijvend alt-attribuut, decoratieve afbeeldingen genegeerd."
+      },
+      "CONTRAST": {
+        "TITLE": "Contrast, kleuren en schalen",
+        "L1": "Doelcontrast ≥ 4.5:1 voor normale tekst en ≥ 3:1 voor grote tekst.",
+        "L2": "Interface bruikbaar tot 200% zoom zonder verlies van inhoud of functionaliteit.",
+        "L3": "Geen informatie uitsluitend via kleur."
+      },
+      "FORMS": {
+        "TITLE": "Formulieren en foutmeldingen",
+        "L1": "Koppeling label⇄input, aanduiding verplichte velden.",
+        "L2": "Fouten weergegeven bij het veld en samengevat indien nodig.",
+        "L3": "Focus geplaatst op het eerste foutveld, met corrigeertips."
+      },
+      "DYNAMIC": {
+        "TITLE": "Dynamische content en animaties",
+        "L1": "Carrousels/animaties pauzeerbaar en niet blokkerend.",
+        "L2": "Respecteer systeemvoorkeur ‘verminder animaties’ waar mogelijk.",
+        "L3": "Niet-intrusieve modals, sluitbaar via toetsenbord en klik buiten."
+      },
+      "MEDIA": {
+        "TITLE": "Media",
+        "L1": "Video’s (indien van toepassing) met ondertitels en/of transcripties.",
+        "L2": "Audio/video-elementen bedienbaar met toetsenbord."
+      },
+      "MOBILE": {
+        "TITLE": "Mobiel",
+        "L1": "Voldoende grote en gespreide aanrakingzones.",
+        "L2": "Consistente navigatie met TalkBack (Android) en VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Omgevingen en ondersteunende technologieën",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Recente, ondersteunde en up-to-date browsers."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Niet-toegankelijke inhoud (vastgesteld of potentieel)",
+      "TEXT": "Ondanks onze inspanningen kunnen sommige elementen niet conform zijn:",
+      "L1": "Oudere afbeeldingen zonder beschrijvende alt-tekst.",
+      "L2": "Door derden aangeleverde documenten (PDF, bijlagen) niet volledig toegankelijk.",
+      "L3": "Historische video’s zonder ondertitels/beschrijving.",
+      "L4": "Ingebedde componenten van derden (betaling, kaarten, spelers) met eigen beperkingen.",
+      "MOTIVES": "Mogelijke redenen: inhoud van derden, onevenredige last, lopende update."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Alternatieven en redelijke aanpassingen",
+      "TEXT": "Heeft u een alternatief formaat nodig (bijv. toegankelijk document, hulp bij reserveren)? Neem contact met ons op. We doen ons best om een gelijkwaardige oplossing te bieden."
+    },
+    "FEEDBACK": {
+      "TITLE": "Feedback en ondersteuning",
+      "L1": "Via de app: sectie Hulp > Toegankelijkheid.",
+      "L2A": "Per e-mail:",
+      "L2B": "of",
+      "L3": "Vermeld scherm/URL, apparaat, browser en eventuele schermlezer."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "[accessibilite@izyglam.com](mailto:accessibilite@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "RECOURSE": {
+      "TITLE": "Beroepsprocedure (Frankrijk)",
+      "TEXT": "Als u een toegankelijkheidsgebrek vaststelt dat toegang verhindert en u geen bevredigend antwoord krijgt, kunt u:",
+      "L1": "Schrijven naar de Défenseur des droits of zijn/haar vertegenwoordiger in uw departement,",
+      "L2": "Of de mediator inschakelen indien van toepassing.",
+      "MORE": "Meer informatie:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Continue verbetering",
+      "L1": "Design System met toegankelijke componenten.",
+      "L2": "Code-review en toegankelijkheidstests bij elke release.",
+      "L3": "Regelmatige trainingen voor product- en supportteams.",
+      "L4": "Prioritering van fixes op basis van gebruikersimpact."
+    },
+    "DATE": {
+      "TITLE": "Datum van verklaring en updates",
+      "TEXT": "Verklaring opgesteld op 25 december 2025. Wordt minimaal jaarlijks of bij majeure wijzigingen bijgewerkt."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Hoe boek ik een dienst op IzyGlam?",
+    "QUESTION2": "Hoe kies ik de juiste professional voor mij?",
+    "QUESTION3": "Hoe wijzig of annuleer ik mijn afspraak?",
+    "QUESTION4": "Hoe kan ik mijn bestelling volgen?",
+    "QUESTION5": "Welke betaalmethoden kan ik gebruiken?",
+    "QUESTION6": "Hoe volg ik mijn bestelling of reservering?",
+    "QUESTION7": "Kan ik een beoordeling achterlaten na mijn dienst?",
+    "QUESTION8": "Hoe gebruik ik mijn loyaliteitsaanbiedingen en promoties?",
+    "QUESTION9": "Wat moet ik doen als ik een probleem heb met mijn bestelling?",
+    "QUESTION10": "Hoe neem ik contact op met het IzyGlam-team?",
+    "QUESTION11": "Hoe werkt de annulerings- en terugbetalingspolicy?",
+    "QUESTION12": "Kan ik voor iemand anders boeken (cadeau, verrassing)?",
+    "QUESTION13": "Hoe word ik partnerprofessional op IzyGlam?",
+    "QUESTION14": "Hoe bescherm ik mijn persoonlijke gegevens op IzyGlam?",
+    "REPONSE1": "Het is simpel en snel. Na registratie kiest u de gewenste dienst, bekijkt u beschikbare professionals bij u in de buurt en selecteert u een datum en tijd. Klik op \"Boeken\" om af te ronden en betaal met bankkaart. Uw reservering wordt daarna handmatig gevalideerd door de professional. Bij weigering wordt u volledig terugbetaald.",
+    "REPONSE2": "Elke professional heeft een uitgebreid profiel met diensten, prijzen, foto’s en klantbeoordelingen. U kunt favorieten toevoegen om ze snel terug te vinden. Neem de tijd om profielen te vergelijken en kies wat het beste bij u past.",
+    "REPONSE3": "U kunt uw reservering wijzigen of annuleren in uw persoonlijke ruimte. Annuleren is gratis tot 24 uur voor de dienst. Daarna kunnen kosten worden aangerekend. Neem bij problemen contact op met onze support.",
+    "REPONSE4": "Log in en ga naar \"Mijn reserveringen\". U vindt daar realtime tracking, de mogelijkheid om te annuleren of te wijzigen, en de historiek van uw diensten.",
+    "REPONSE5": "Betalen gebeurt uitsluitend met bankkaart (Visa, MasterCard, American Express). We bieden geen contante betaling of PayPal aan. Alles is beveiligd voor uw gemoedsrust.",
+    "REPONSE6": "Zodra uw reservering is bevestigd, ontvangt u een bevestigingsmail. We sturen ook een herinnering voor de dienst (per e-mail en/of push). U kunt de status ook volgen in uw persoonlijke ruimte.",
+    "REPONSE7": "Ja. Na elke uitgevoerde dienst wordt u uitgenodigd om een beoordeling achter te laten. Beoordelingen worden handmatig gemodereerd om authenticiteit te garanderen. Professionals kunnen beoordelingen niet beantwoorden of wijzigen.",
+    "REPONSE8": "Voorlopig biedt IzyGlam nog geen loyaliteitsprogramma of promotiecodes. Deze functies staan gepland voor een latere fase.",
+    "REPONSE9": "U kunt ons rechtstreeks contacteren via de sectie \"Contact\" of per e-mail. We doen ons best om (indicatief) binnen 24 uur te reageren en u te helpen het probleem snel op te lossen.",
+    "REPONSE10": "U bereikt ons via het contactformulier op de site of in de app. Klantenservice is beschikbaar van maandag tot zaterdag, 9.00–18.00 uur. Voorbeeld e-mail: [support@izyglam.com](mailto:support@izyglam.com)",
+    "REPONSE11": "U kunt tot 24 uur voor de geplande tijd kosteloos annuleren. Daarna kunnen kosten worden aangerekend. Als uw reservering door de professional wordt geweigerd, is de terugbetaling automatisch. Het systeem voor automatische terugbetalingen is in uitrol.",
+    "REPONSE12": "U kunt nog geen dienst cadeau doen vanuit uw account. Als een professional echter een duo- of gezinsformule aanbiedt, kunt u in dat kader voor meerdere personen boeken.",
+    "REPONSE13": "Bent u schoonheidsspecialiste, kapster of welzijnsprofessional? Word onderdeel van de IzyGlam-community door het formulier op de pagina \"Partner worden\" in te vullen. Ons team neemt snel contact met u op om de inschrijving te voltooien.",
+    "REPONSE14": "De veiligheid van uw gegevens is onze prioriteit. We respecteren de AVG-verplichtingen. Alleen strikt noodzakelijke informatie is zichtbaar voor professionals. Een ingebouwde chat laat u communiceren indien nodig, maar het omzeilen van het platform wordt gemonitord."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Wie zijn wij?",
+      "TEXT": "Dit Privacybeleid legt uit hoe <strong>izyGlam</strong> (hierna \"wij\", \"ons\" of \"het Platform\") uw persoonsgegevens verzamelt, gebruikt, bewaart, deelt en beschermt wanneer u onze diensten gebruikt (website, webapp, mobiele app, e-mails en support). Wij treden op als <strong>verwerkingsverantwoordelijke</strong> voor de hieronder beschreven verwerkingen."
+    },
+    "SCOPE": {
+      "TITLE": "Reikwijdte van het beleid",
+      "TEXT": "Dit beleid is van toepassing op <strong>klanten</strong> die diensten boeken, <strong>professionals</strong> die via izyGlam diensten aanbieden, en <strong>bezoekers</strong> van onze interfaces."
+    },
+    "DATA": {
+      "TITLE": "Verzamelde gegevens",
+      "PROVIDED": {
+        "TITLE": "Gegevens die u verstrekt",
+        "L1": "<strong>Identiteit & contact: </strong> naam, voornaam, e-mail, telefoon, adres(sen), foto/avatars.",
+        "L2": "<strong>Account: </strong> inloggegevens, wachtwoorden (gehasht), voorkeuren, taal.",
+        "L3": "<strong>Reserveringen: </strong> gekozen diensten, datum/tijd, uitvoeringsadressen, notities, bijlagen.",
+        "L4": "<strong>Betaling: </strong> betalingsinformatie <em>via onze aanbieder (bijv. Stripe)</em> — wij slaan uw kaartgegevens niet op.",
+        "L5": "<strong>Professionals: </strong> openbaar profiel, diensten, tarieven, werkgebied, beschikbaarheid, IBAN (beveiligd), verificatiedocumenten indien vereist.",
+        "L6": "<strong>Support: </strong> berichten, tickets, eventuele gespreksopnames."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Automatisch verzamelde gegevens",
+        "L1": "<strong>Technisch: </strong> apparaattype, OS, browser, resoluties, sessie-ID’s.",
+        "L2": "<strong>Logging: </strong> IP-adressen, tijdstempels, foutgebeurtenissen, featuregebruik.",
+        "L3": "<strong>Locatie: </strong> benaderd (IP) of precies (GPS, met uw expliciete toestemming).",
+        "L4": "<strong>Cookies & SDK’s: </strong> zie sectie hieronder."
+      },
+      "THIRD": {
+        "TITLE": "Gegevens verkregen van derden",
+        "L1": "<strong>Betaalaanbieders</strong> (betalingsstatus, tokens).",
+        "L2": "<strong>Analytics/anti-fraude partners</strong> (risicosignalen, gebruiksaggregaten).",
+        "L3": "<strong>Integraties</strong> (bijv. communicatie, kaarten, cloudopslag)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Doeleinden & rechtsgrond",
+      "TEXT": "Wij verwerken gegevens voor de volgende doeleinden:",
+      "L1": "<strong>Dienstverlening</strong> (account, reservering, matchen, notificaties) — <em>Grondslag: uitvoering van de overeenkomst</em>.",
+      "L2": "<strong>Betaling & facturatie</strong> — <em>Overeenkomst, wettelijke verplichting</em>.",
+      "L3": "<strong>Beveiliging, misbruik/fraude-preventie</strong> — <em>Gerechtvaardigd belang, wettelijke verplichting</em>.",
+      "L4": "<strong>Productverbetering, statistiek</strong> — <em>Gerechtvaardigd belang</em>.",
+      "L5": "<strong>Support & kwaliteit</strong> — <em>Overeenkomst, gerechtvaardigd belang</em>.",
+      "L6": "<strong>Direct marketing</strong> (e-mail/app) — <em>Toestemming waar vereist</em>; u kunt op elk moment uitschrijven.",
+      "L7": "<strong>Wettelijke naleving</strong> (boekhouding, verzoeken autoriteiten) — <em>Wettelijke verplichting</em>."
+    },
+    "SHARING": {
+      "TITLE": "Gegevensdeling",
+      "L1": "<strong>Professionals / Klanten</strong>: voor de uitvoering noodzakelijke info (naam, contactmiddel, uitvoeringsadres, reserveringsdetails).",
+      "L2": "<strong>Dienstverleners</strong>: betaling (bijv. Stripe), hosting/opslag, analytics, e-mail/SMS push, support, KYC indien nodig. <em>Beperkte toegang, AVG-conforme contracten.</em>",
+      "L3": "<strong>Partners</strong>: met uw toestemming voor specifieke aanbiedingen.",
+      "L4": "<strong>Autoriteiten</strong>: waar wettelijk vereist of ter verdediging van onze rechten."
+    },
+    "TRANSFERS": {
+      "TITLE": "Doorgiften buiten EU/EER",
+      "TEXT": "Bij doorgifte naar landen zonder adequaatheidsbesluit gebruiken wij <strong>standaardcontractbepalingen</strong> (SCC) en aanvullende maatregelen."
+    },
+    "RETENTION": {
+      "TITLE": "Bewaartermijnen",
+      "L1": "<strong>Account & identiteit</strong>: tijdens gebruik van het account, vervolgens <em>tot 3 jaar</em> na laatste activiteit (prospectie) of <em>5–10 jaar</em> voor boekhoud-/wettelijke verplichtingen.",
+      "L2": "<strong>Reserveringen/facturen</strong>: <em>10 jaar</em> (wettelijke verplichting).",
+      "L3": "<strong>Beveiligingslogs</strong>: <em>6–24 maanden</em> volgens kriticiteit.",
+      "L4": "<strong>Cookies</strong>: zie sectie Cookies.",
+      "NOTE": "Daarna worden gegevens verwijderd of geanonimiseerd."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies & SDK’s",
+      "TEXT": "We gebruiken cookies/SDK’s om het platform te laten werken, publiek te meten, fraude te voorkomen en—met uw toestemming—de ervaring te personaliseren.",
+      "L1": "<strong>Noodzakelijk</strong>: authenticatie, beveiliging, technische voorkeuren.",
+      "L2": "<strong>Publieksmeting</strong>: geaggregeerde gebruiksstatistieken.",
+      "L3": "<strong>Marketing</strong>: alleen als u het accepteert.",
+      "PREF": "U kunt uw voorkeuren op elk moment beheren via de banner en de instellingen van uw browser."
+    },
+    "AUTOMATION": {
+      "TITLE": "Geautomatiseerde beslissingen & profilering",
+      "TEXT": "We kunnen automatische signalen gebruiken (bijv. frauderisico, beschikbaarheid pro, afstand) om acties te prioriteren of tijdsloten te suggereren. Er worden geen beslissingen met aanzienlijke juridische effecten genomen zonder menselijke tussenkomst, behalve waar wettelijk verplicht of met uw expliciete toestemming."
+    },
+    "RIGHTS": {
+      "TITLE": "Uw rechten (AVG)",
+      "L1": "Recht op <strong>inzage</strong>, <strong>rectificatie</strong>, <strong>verwijdering</strong>.",
+      "L2": "Recht op <strong>beperking</strong> en <strong>overdraagbaarheid</strong>.",
+      "L3": "Recht van <strong>bezwaar</strong> tegen verwerking op basis van gerechtvaardigd belang.",
+      "L4": "Recht om <strong>uw toestemming in te trekken</strong>.",
+      "L5": "Recht om een <strong>klacht</strong> in te dienen bij de CNIL.",
+      "CONTACT": "Om uw rechten uit te oefenen, neem contact met ons op:",
+      "VERIFY": "We kunnen extra informatie vragen om uw identiteit te verifiëren."
+    },
+    "SECURITY": {
+      "TITLE": "Beveiliging",
+      "TEXT": "We nemen passende technische en organisatorische maatregelen: versleuteling in transit (TLS), hashing van wachtwoorden, logging en monitoring, toegangscontrole, back-ups, code-review en securitytests."
+    },
+    "MINORS": {
+      "TITLE": "Gegevens van minderjarigen",
+      "TEXT": "Onze diensten zijn niet gericht op personen jonger dan 15 jaar. Als een minderjarige account wordt geïdentificeerd, verwijderen we die na verificatie."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Belangrijkste verwerkers",
+      "TEXT": "We werken met essentiële verwerkers voor hosting, betalingen, e-mailing, analytics en opslag. Een actuele lijst is op verzoek beschikbaar via"
+    },
+    "CONTACT": {
+      "TITLE": "Contact & DPO",
+      "PRIVACY_LABEL": "Privacycontact",
+      "SUPPORT_LABEL": "Support",
+      "AUTHORITY_LABEL": "Toezichthouder",
+      "EMAIL_PRIVACY": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_PRIVACY_TEXT": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "CHANGES": {
+      "TITLE": "Wijzigingen in dit beleid",
+      "TEXT": "We kunnen dit beleid bijwerken om wettelijke of functionele evoluties te weerspiegelen. Bij significante wijzigingen informeren we u per e-mail of via de app. Ingangsdatum: <strong>11 augustus 2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Lokale bepalingen",
+      "TEXT": "Als u zich in de Europese Unie bevindt, worden uw gegevens verwerkt overeenkomstig de AVG. Aanvullingen per land of regio kunnen gelden en worden zo nodig gedeeld."
+    },
+    "GLOSSARY": {
+      "TITLE": "Begrippenlijst (uittreksel)",
+      "L1": "<strong>Verwerkingsverantwoordelijke</strong>: entiteit die doelen en middelen van verwerking bepaalt.",
+      "L2": "<strong>Verwerker</strong>: entiteit die gegevens verwerkt namens de verantwoordelijke.",
+      "L3": "<strong>Rechtsgrond</strong>: basis die verwerking toestaat (overeenkomst, toestemming, wettelijke plicht, gerechtvaardigd belang).",
+      "L4": "<strong>Cookies/SDK’s</strong>: trackers gebruikt door site/app om te leveren, meten en personaliseren."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Aanvaarding van de voorwaarden",
+      "TEXT": "Door toegang te krijgen tot de diensten van izyGlam (site, webapp, mobiele app) aanvaardt u zonder voorbehoud deze Algemene Gebruiksvoorwaarden (\"AGV\"). Als u deze AGV niet aanvaardt, mag u het Platform niet gebruiken."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Definities",
+      "L1": "<strong>Klant</strong>: elke persoon die een dienst op het Platform boekt en/of betaalt.",
+      "L2": "<strong>Professional</strong>: elke persoon die via het Platform diensten aanbiedt.",
+      "L3": "<strong>Dienst</strong>: door een Professional aangeboden service (bijv. beauty aan huis).",
+      "L4": "<strong>Platform</strong>: de software-infrastructuur, sites en apps die door izyGlam worden geëxploiteerd."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Diensten en rol van izyGlam",
+      "TEXT": "izyGlam is een <strong>matchmakingplatform</strong>. Professionals zijn <strong>als enige verantwoordelijk</strong> voor de door hen geleverde diensten (kwaliteit, conformiteit, verzekeringen). Tenzij anders vermeld is izyGlam noch verkoper noch uitvoerder en niet verantwoordelijk voor de uitvoering."
+    },
+    "ACCOUNT": {
+      "TITLE": "Account en geschiktheid",
+      "L1": "Registratie is verplicht om te boeken of diensten aan te bieden. U verbindt zich tot het verstrekken van juiste informatie en het up-to-date houden daarvan.",
+      "L2": "U moet minstens 15 jaar oud zijn om het Platform te gebruiken. Professionals moeten wettelijk bevoegd zijn om te werken.",
+      "L3": "U bent verantwoordelijk voor de vertrouwelijkheid van uw inloggegevens en alle activiteiten vanaf uw account.",
+      "L4": "izyGlam kan een account opschorten of beëindigen bij schending van de AGV of bewezen frauderisico."
+    },
+    "BOOKINGS": {
+      "TITLE": "Reserveringen en totstandkoming van het contract",
+      "L1": "Diensten worden <strong>online geboekt en betaald</strong> door de Klant. Er is geen contante betaling ter plaatse verschuldigd.",
+      "L2": "De reservering is <strong>onder voorbehoud van validatie door de Professional</strong> na betaling. Bij weigering wordt de Klant <strong>volledig terugbetaald</strong>.",
+      "L3": "De dienstverleningsovereenkomst wordt rechtstreeks gesloten tussen Klant en Professional op het moment van acceptatie.",
+      "L4": "Tijden, uitvoeringsadressen en bijzondere voorwaarden moeten door de partijen worden gecontroleerd."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Tarieven, abonnementen en betalingen",
+      "L1": "De tarieven van diensten worden vrij bepaald door de Professionals. izyGlam past een <strong>platformcommissie</strong> toe.",
+      "L2": "Abonnementen voor Professionals (huidig voorbeeld): <em>1 salon levenslang gratis</em>; <em>Basic: 3 salons – € 99 / maand</em>; <em>Premium: 10 salons – € 499 / maand</em>; <em>daarboven: offerte</em>.",
+      "L3": "Betaling <strong>alleen per bankkaart</strong> via een aanbieder (bijv. Stripe). <strong>Geen contant</strong>, geen promotiecode of loyaliteitsprogramma op dit moment.",
+      "L4": "Bedragen, belastingen en toepasselijke kosten worden vóór bevestiging vermeld. Abonnementsvoorwaarden kunnen evolueren; wijzigingen worden vooraf gecommuniceerd."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Annulering, terugbetaling en afwezigheid",
+      "L1": "Gratis annuleren tot <strong>24 uur</strong> vóór de geplande diensttijd.",
+      "L2": "Binnen 24 uur kunnen <strong>kosten</strong> worden aangerekend volgens het geldende beleid.",
+      "L3": "Bij <strong>weigering</strong> door de Professional na betaling wordt de Klant 100% terugbetaald. Automatisering van terugbetalingen is in uitrol; indien nodig initieert support de handeling.",
+      "L4": "<strong>No-shows</strong> (niet tijdig gemelde afwezigheid) kunnen kosten of het uitblijven van terugbetaling tot gevolg hebben."
+    },
+    "PAYOUTS": {
+      "TITLE": "Uitbetalingen aan Professionals",
+      "L1": "Uitbetaling aan de Professional wordt geactiveerd na <strong>bevestiging van uitvoering</strong> (bijv. bevestiging met een <em>validatiecode</em>).",
+      "L2": "Het door de Professional verstrekte IBAN wordt gebruikt voor de overschrijving. De Professional garandeert de juistheid van bankgegevens.",
+      "L3": "Uitbetaalde bedragen komen overeen met de prijs van de dienst <em>na aftrek</em> van commissie en toepasselijke kosten."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Verantwoordelijkheden van partijen",
+      "L1": "Professionals garanderen de conformiteit van hun diensten, naleving van regelgeving, hygiëne en veiligheid.",
+      "L2": "Klanten verstrekken juiste informatie (adres, beschikbaarheid, toegangsbeperkingen) en respecteren afspraken.",
+      "L3": "izyGlam biedt het Platform en tools (reservering, betaling, berichten) maar garandeert geen resultaten van een dienst."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Ongeldige score.",
+      "TITLE": "Beoordelingen en ratings",
+      "L1": "Beoordelingen kunnen <strong>alleen na een werkelijk uitgevoerde dienst</strong> worden achtergelaten.",
+      "L2": "Beoordelingen kunnen <strong>gemodereerd</strong> worden (bijv. verwijdering van onwettige of tegen deze AGV strijdige inhoud)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Verboden gedrag",
+      "L1": "Fraude, identiteitsdiefstal, omzeilen van het Platform, aanzetten tot transacties buiten het Platform.",
+      "L2": "Onwettige, lasterlijke, discriminerende, gewelddadige of onzedelijke inhoud.",
+      "L3": "Inbraak, denial of service, reverse engineering, omzeilen van beveiligingsmaatregelen.",
+      "L4": "Ongeautoriseerde verzameling van persoonsgegevens van andere gebruikers."
+    },
+    "IPR": {
+      "TITLE": "Intellectuele eigendom",
+      "TEXT": "De inhoud, merken en elementen van het Platform (code, design, teksten, logo’s, afbeeldingen) zijn beschermd. Zonder uitdrukkelijke toestemming is elke reproductie, distributie of aanpassing verboden. Door Professionals aangeleverde inhoud blijft hun eigendom; zij verlenen izyGlam een niet-exclusieve licentie die nodig is voor exploitatie van het Platform."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Diensten van derden",
+      "TEXT": "Het Platform kan diensten van derden integreren (betaling, kaarten, hosting, analytics). Hun voorwaarden zijn van toepassing. izyGlam is niet verantwoordelijk voor onderbrekingen of storingen van deze diensten."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Beschikbaarheid, onderhoud en updates",
+      "TEXT": "We kunnen het Platform geheel of gedeeltelijk wijzigen, onderbreken of stopzetten voor onderhoud of verbetering. We doen redelijke inspanningen om impact voor gebruikers te beperken."
+    },
+    "LIABILITY": {
+      "TITLE": "Aansprakelijkheidsbeperking en vrijwaring",
+      "TEXT": "Binnen de wettelijk toegestane grenzen is de aansprakelijkheid van izyGlam beperkt tot directe schade, met uitsluiting van indirecte schade (verlies van kans, omzetverlies, enz.). U vrijwaart izyGlam voor claims die voortvloeien uit een schending van deze voorwaarden of onrechtmatig gebruik van het Platform."
+    },
+    "TERMINATION": {
+      "TITLE": "Beëindiging en opschorting",
+      "TEXT": "U kunt uw account op elk moment verwijderen. We kunnen toegang opschorten of beëindigen bij schending van de AGV, fraude, misbruik of op gerechtelijk bevel. Bepaalde verplichtingen (bijv. betaling, aansprakelijkheid) blijven van kracht na beëindiging."
+    },
+    "PRIVACY": {
+      "TITLE": "Persoonsgegevens",
+      "TEXT": "De verwerking van uw gegevens wordt beschreven in ons <strong>Privacybeleid</strong>. Door het Platform te gebruiken, aanvaardt u dit beleid. Raadpleeg het om uw AVG-rechten en onze toezeggingen te kennen."
+    },
+    "CHANGES": {
+      "TITLE": "Wijzigingen van de AGV",
+      "TEXT": "We kunnen deze AGV wijzigen om wettelijke, regelgevende of functionele redenen. Bij significante wijzigingen informeren we u per e-mail of via de app en publiceren we de bijgewerkte versie."
+    },
+    "LAW": {
+      "TITLE": "Toepasselijk recht en geschillen",
+      "TEXT": "Deze AGV vallen onder <strong>Frans recht</strong>. Elk geschil wordt voorgelegd aan de bevoegde rechtbanken van de vestigingsplaats van izyGlam, onder voorbehoud van dwingender gunstige consumentenregels."
+    },
+    "CONTACT": {
+      "TITLE": "Contact",
+      "SUPPORT_LABEL": "Support",
+      "LEGAL_LABEL": "Juridisch",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL": "[legal@izyglam.com](mailto:legal@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL_TEXT": "[legal@izyglam.com](mailto:legal@izyglam.com)"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Ingangsdatum",
+      "TEXT": "Deze AGV treden in werking op <strong>25 december 2025</strong> en vervangen alle eerdere versies."
+    }
   }
 }

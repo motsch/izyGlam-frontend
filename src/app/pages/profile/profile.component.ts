@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/core/services/category.service';
@@ -7,38 +7,57 @@ import { CompanyService } from 'src/app/core/services/company.service';
 import { ProductService } from 'src/app/core/services/product.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { UserService } from 'src/app/core/services/user.service';
-import { ServiceTemplateService } from 'src/app/core/services/productTemplate.service';
-import { environment } from 'src/environments/environment';
 import { ShopTemplateService } from 'src/app/core/services/shop-template.service';
 import { forkJoin } from 'rxjs';
 import { ChatModalComponent } from 'src/app/core/component/chat-modal/chat-modal.component';
 import { CreateShopComponent } from 'src/app/core/component/create-shop/create-shop.component';
 import { AdminService } from 'src/app/core/services/admin.service';
+
+// ✅ Ajouts IzyGlam pour toasts + i18n
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-profile',
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+    // -------------------------------
+    // 🔹 État UI
+    // -------------------------------
     modalOpen = false;
     modalDeleteShopOpen = false;
-    selected: any = {};
     dropdownOpen = false;
     dropdownOpenNewShop = false;
+    activeSection: string = 'account-info'; // Section active par défaut
+
+    // -------------------------------
+    // 🔹 Données
+    // -------------------------------
+    selected: any = {};
     shops: any[] = [];
     me: any = {};
     myCompany: any = {};
     myArticlesData: any[] = [];
     myShopData: any = {};
     employees: any[] = [];
-    profileForm: FormGroup | undefined;
-    imagePreview: string | undefined;
-    activeSection: string = 'account-info'; // Par défaut, la section active est "account-info"
-    userChangeSuccess: boolean = false;
-    userChangeError: string = '';
     categories: any[] = [];
     selectedCategory: any = null;
+
+    // -------------------------------
+    // 🔹 Formulaire profil
+    // -------------------------------
+    profileForm: FormGroup | undefined;
+    imagePreview: string | undefined;
+
+    // -------------------------------
+    // 🔹 Flags & paramètres
+    // -------------------------------
+    userChangeSuccess: boolean = false;
+    userChangeError: string = '';
     multiShopsActivated = false;
+
     constructor(
         private eRef: ElementRef,
         private userService: UserService,
@@ -49,37 +68,54 @@ export class ProfileComponent implements OnInit {
         public dialog: MatDialog,
         private categoryService: CategoryService,
         private shopTemplateService: ShopTemplateService,
-        private adminService: AdminService
+        private adminService: AdminService,
+
+        // ✅ Ajouts IzyGlam
+        private toastr: ToastrService,
+        private translate: TranslateService
     ) { }
 
+    // -------------------------------------------------
+    // ⏱️ ngOnInit : paramètres, section active, données
+    // -------------------------------------------------
     ngOnInit() {
+        // 1) Charge les paramètres d’admin (ex: multi-shops)
         this.adminService.getAdminSettings().subscribe({
             next: (data: any) => {
                 this.multiShopsActivated = data.multiShopsActivated;
             },
-            error: (error) => console.log(error),
+            error: (err) => {
+                console.error('Erreur lors du chargement des paramètres admin :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+            },
         });
-        let section = localStorage.getItem('menu-param');
+
+        // 2) Restaure la section active depuis le localStorage
+        const section = localStorage.getItem('menu-param');
         if (section && section !== undefined && section !== '') {
             this.activeSection = section;
-            // localStorage.setItem('activeMenu', section);
         } else {
-            // Charger la section active depuis le localStorage
-            let activeSection = 'account-info';
+            const activeSection = 'account-info';
             localStorage.setItem('menu-param', activeSection);
         }
+
+        // 3) Démarre le chargement des données (user + shops)
         this.initData();
     }
 
+    // -------------------------------------------------
+    // 🔁 Charge l’utilisateur puis ses shops (selon le rôle)
+    // -------------------------------------------------
     initData() {
         this.userService.getMe().subscribe({
             next: (me: any) => {
                 this.me = me;
 
-                let companyId = me.companyId;
-                console.log("ROLE : " + me.role)
+                const companyId = me.companyId;
+                console.log('ROLE : ' + me.role);
+
                 if (me.role === 'boss') {
-                    // 👑 Patron → on récupère tous les salons de ses employés
+                    // 👑 Patron : récupère ses shops + ses employés
                     forkJoin({
                         shops: this.shopService.getShopsByBoss(),
                         employees: this.userService.getMyEmployees(),
@@ -89,10 +125,13 @@ export class ProfileComponent implements OnInit {
                             this.employees = results.employees;
                             this.handleShopsLoad();
                         },
-                        error: (error) => console.log(error),
+                        error: (err) => {
+                            console.error('Erreur lors du chargement shops/employés (boss) :', err);
+                            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                        },
                     });
                 } else {
-                    // 👨‍🔧 Employé classique
+                    // 👨‍🔧 Employé : récupère ses shops
                     forkJoin({
                         shops: this.shopService.getShopsByUserId(me._id),
                         // company: this.companyService.getById(companyId),
@@ -100,26 +139,34 @@ export class ProfileComponent implements OnInit {
                     }).subscribe({
                         next: (results: any) => {
                             this.shops = results.shops;
-                            console.log("SHOP !!!!  : " + JSON.stringify(this.shops));
+                            console.log('SHOP !!!!  : ' + JSON.stringify(this.shops));
                             // this.myCompany = results.company;
-                            // console.log("COMPANY !!!!  : " + JSON.stringify(this.myCompany));
                             // this.employees = results.companyUsers;
-                            // console.log("EMPLOYEE !!!!  : " + JSON.stringify(this.employees));
                             this.handleShopsLoad();
                         },
-                        error: (error) => console.log(error),
+                        error: (err) => {
+                            console.error('Erreur lors du chargement shops utilisateur :', err);
+                            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                        },
                     });
                 }
             },
-            error: (error) => console.log(error),
+            error: (err) => {
+                console.error('Erreur lors du chargement utilisateur :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+            },
         });
     }
 
+    // -------------------------------------------------
+    // 🧭 Après chargement des shops : init catégories + produits
+    // -------------------------------------------------
     handleShopsLoad() {
         if (this.shops && this.shops.length > 0) {
             this.selected = this.shops[0];
             this.myShopData = this.shops[0];
 
+            // Récupère les catégories non encore utilisées par les shops
             const shopFilters = this.shops.map((shop) => shop.type);
             this.categoryService.getAll().subscribe({
                 next: (categories: any[]) => {
@@ -128,20 +175,35 @@ export class ProfileComponent implements OnInit {
                     );
                     this.selectedCategory = this.categories[0];
                 },
+                error: (err) => {
+                    console.error('Erreur lors du chargement des catégories :', err);
+                    this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                }
             });
 
+            // Récupère les produits du premier shop
             this.productService
                 .getProductsByShop(this.shops[0]._id)
-                .subscribe((products: any[]) => {
-                    this.myArticlesData = products;
+                .subscribe({
+                    next: (products: any[]) => {
+                        this.myArticlesData = products;
+                    },
+                    error: (err) => {
+                        console.error('Erreur lors du chargement des produits du shop :', err);
+                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                    }
                 });
 
+            // Charge les données détaillées du shop pour d’autres zones (service interne)
             this.shopService.loadShopData(this.shops[0]._id);
         }
     }
 
+    // -------------------------------------------------
+    // 💬 Ouvrir la fenêtre de chat (support/assistance)
+    // -------------------------------------------------
     openChat(): void {
-        const dialogRef = this.dialog.open(ChatModalComponent, {
+        this.dialog.open(ChatModalComponent, {
             width: '400px',
             height: '600px',
             position: { bottom: '20px', right: '20px' },
@@ -149,80 +211,105 @@ export class ProfileComponent implements OnInit {
         });
     }
 
+    // -------------------------------------------------
+    // ➕ Ouvrir la modal de création de shop
+    // -------------------------------------------------
     openCreateShopModal() {
         const dialogRef = this.dialog.open(CreateShopComponent, {
             width: '600px',
         });
 
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                console.log('Résultat retourné :', result);
-                // Recharge tes shops ici si besoin (ex: tu appelles une méthode pour recharger la liste)
-                this.initData();
+        dialogRef.afterClosed().subscribe({
+            next: (result) => {
+                if (result) {
+                    console.log('Résultat retourné :', result);
+                    // Recharge les shops si nécessaire
+                    this.initData();
+                }
+            },
+            error: (err) => {
+                console.error('Erreur lors de la fermeture de la modal CreateShop :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
             }
         });
     }
 
+    // -------------------------------------------------
+    // 🔁 Rafraîchit la liste des articles après MAJ
+    // -------------------------------------------------
     onArticleUpdated() {
         this.productService.getProductsByShop(this.myShopData._id).subscribe({
             next: (data: any[]) => {
-                console.log('totototo');
-                console.log(data);
+                console.log('Articles mis à jour :', data);
                 this.myArticlesData = data;
-                // this.articlesCopyData = [...data];
             },
-            error: (error: any) => {
-                console.log(error);
+            error: (err: any) => {
+                console.error('Erreur lors du rechargement des articles :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
             },
         });
     }
+
+    // -------------------------------------------------
+    // 🏪 Après mise à jour d’un shop : recharge ses données locales
+    // -------------------------------------------------
     onShopUpdated(shopId: string): void {
-        // Recharger les données du shop mis à jour
+        // Recharge le cache interne du service
         this.shopService.loadShopData(shopId);
 
         console.log('Shop mis à jour :', shopId);
-        // Optionnel : mettre à jour `myShopData` si nécessaire
+
+        // Recharge les infos détaillées du shop
         this.shopService.getById(shopId).subscribe({
             next: (shopData: any) => {
                 this.myShopData = shopData;
                 this.onArticleUpdated();
-                console.log('Shop mis à jour et rechargé :', this.myShopData);
+                console.log('Shop rechargé :', this.myShopData);
             },
-            error: (error: any) => {
-                console.log('Erreur lors du rechargement du shop :', error);
+            error: (err: any) => {
+                console.error('Erreur lors du rechargement du shop :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
             },
         });
     }
 
+    // -------------------------------------------------
+    // ✅ Soumission du formulaire de profil (placeholder)
+    // -------------------------------------------------
     onSubmit() {
         if (this.profileForm!.valid) {
-            // Process form data (e.g., send to backend)
-            console.log(this.profileForm!.value);
+            console.log('Profil soumis :', this.profileForm!.value);
         } else {
-            // Handle form validation errors
-            console.log('Form is invalid');
+            console.warn('Form is invalid');
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
         }
     }
 
+    // -------------------------------------------------
+    // 🖼️ Gestion upload image de profil (prévisualisation)
+    // -------------------------------------------------
     onFileChange(event: any) {
         const file = event.target.files[0];
         if (file) {
-            this.profileForm!.patchValue({
-                profileImage: file,
-            });
-            this.previewImage(file); // Preview the selected image
+            this.profileForm!.patchValue({ profileImage: file });
+            this.previewImage(file); // Preview
         }
     }
 
+    // -------------------------------------------------
+    // 🧭 Navigation dans les sections du profil
+    // -------------------------------------------------
     setActiveSection(section: string): void {
         this.activeSection = section;
         localStorage.setItem('menu-param', section);
     }
-
     isSectionActive(section: string): boolean {
         return this.activeSection === section;
     }
 
+    // -------------------------------------------------
+    // 👁️ Prévisualisation d’image
+    // -------------------------------------------------
     previewImage(file: File) {
         const reader = new FileReader();
         reader.readAsDataURL(file);
@@ -231,163 +318,212 @@ export class ProfileComponent implements OnInit {
         };
     }
 
+    // -------------------------------------------------
+    // 🚀 Raccourci création de shop
+    // -------------------------------------------------
     goToCreationShop() {
         this.router.navigate(['/creation-shop']);
     }
 
+    // -------------------------------------------------
+    // 🔀 Changer de shop (sélection)
+    // -------------------------------------------------
     selectShop(shop: any) {
         this.myArticlesData = [];
-        console.log(shop);
+        console.log('Shop sélectionné :', shop);
         this.selected = shop;
+
         if (this.dropdownOpen) {
             this.toggleDropdown();
         }
+
+        // Recharge le shop sélectionné
         this.shopService.getById(shop._id).subscribe({
-            next: (shop: any) => {
-                this.myShopData = shop;
-                console.log('totototo : ' + JSON.stringify(this.myShopData));
+            next: (shopData: any) => {
+                this.myShopData = shopData;
+                console.log('Données shop : ', JSON.stringify(this.myShopData));
+
+                // Recharge ses produits
                 this.productService.getProductsByShop(shop._id).subscribe({
                     next: (data: any[]) => {
-                        console.log('totototo');
-                        console.log(data);
+                        console.log('Produits du shop :', data);
                         this.myArticlesData = data;
-                        // this.articlesCopyData = [...data];
                     },
-                    error: (error: any) => {
-                        console.log(error);
+                    error: (err: any) => {
+                        console.error('Erreur lors du chargement des produits du shop :', err);
+                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                     },
                 });
             },
-            error: (error: any) => {
-                console.log(error);
+            error: (err: any) => {
+                console.error('Erreur lors du chargement du shop sélectionné :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
             },
         });
+
         this.dropdownOpen = false;
     }
 
+    // -------------------------------------------------
+    // 🗂️ Choisir un type de shop à créer (catégorie)
+    // -------------------------------------------------
     selectShopToCreate(type: any) {
-        console.log(type);
+        console.log('Type de shop choisi :', type);
         this.selectedCategory = type;
         this.dropdownOpenNewShop = false;
     }
 
+    // -------------------------------------------------
+    // ⬇️/⬆️ Gestion des dropdowns
+    // -------------------------------------------------
     toggleDropdown() {
         this.dropdownOpen = !this.dropdownOpen;
     }
     toggleDropdown2() {
         this.dropdownOpenNewShop = !this.dropdownOpenNewShop;
     }
+
+    // -------------------------------------------------
+    // ❌ Fermeture de la modale de suppression
+    // -------------------------------------------------
     closeModalDeleteShop() {
         this.modalDeleteShopOpen = false;
     }
+    // -------------------------------------------------
+    // 🗑️ Ouvrir la modale de suppression
+    // -------------------------------------------------
     deletShop() {
         this.modalDeleteShopOpen = true;
     }
 
-    // Écouter les clics en dehors de la zone de la dropdown
+    // -------------------------------------------------
+    // 🖱️ Ferme le dropdown au clic extérieur
+    // -------------------------------------------------
     @HostListener('document:click', ['$event'])
     onClickOutside(event: MouseEvent) {
         const dropdownElement = document.querySelector('.rosy-select');
         if (dropdownElement && !dropdownElement.contains(event.target as Node)) {
             if (this.dropdownOpen) {
-                this.toggleDropdown(); // Ferme le dropdown si un clic en dehors
+                this.toggleDropdown(); // Ferme le dropdown si clic en dehors
             }
         }
     }
+
+    // -------------------------------------------------
+    // 🔥 Supprime tous les produits d’un shop puis le shop
+    // -------------------------------------------------
     deleteConfirm() {
-        /** D'abord faire un delete sur les products du shop */
+        // 1) Supprime tous les produits du shop
         this.productService.deleteAllByShopId(this.myShopData._id).subscribe({
             next: (data: any) => {
-                console.log(data);
+                console.log('Produits supprimés :', data);
 
-                /** Puis faire un delete sur le shop */
+                // 2) Supprime ensuite le shop
                 this.shopService.delete(this.myShopData._id).subscribe({
-                    next: (data: any) => {
-                        console.log(data);
+                    next: (res: any) => {
+                        console.log('Shop supprimé :', res);
                         this.shops = this.shops.filter((x: any) => x._id !== this.myShopData._id);
-                        this.ngOnInit();
+                        this.ngOnInit(); // Recharge la page pour refléter l’état
                     },
-                    error: (error: any) => {
-                        console.log(error);
+                    error: (err: any) => {
+                        console.error('Erreur lors de la suppression du shop :', err);
+                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                     },
                 });
             },
-            error: (error: any) => {
-                console.log(error);
+            error: (err: any) => {
+                console.error('Erreur lors de la suppression des produits du shop :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
             },
         });
     }
 
+    // -------------------------------------------------
+    // ❌ Ferme la modale générique
+    // -------------------------------------------------
     closeModal(): void {
         this.modalOpen = false;
     }
 
+    // -------------------------------------------------
+    // 🏗️ Création d’un shop + services depuis un template
+    // -------------------------------------------------
     createShop(): any {
-        console.log(JSON.stringify(this.selectedCategory));
-        let type = this.selectedCategory.filter;
+        console.log('Catégorie sélectionnée :', JSON.stringify(this.selectedCategory));
+
+        const type = this.selectedCategory.filter;
+
+        // 1) Récupère les services "template" de la catégorie choisie
         this.shopTemplateService.getServiceTemplatesByCategory(type).subscribe({
             next: (data: any[]) => {
-                let servicesToCreate = data;
-                let newShopToCreate: any = {};
-                newShopToCreate.name =
-                    this.me.firstname + ' ' + this.me.lastname.charAt(0) + '.';
+                const servicesToCreate = data;
 
-                let categoryToSelect = this.selectedCategory;
-                let description = categoryToSelect.descriptionTrad;
-                console.log('description =>' + description);
+                // 2) Compose l’objet "shop" à créer
+                const newShopToCreate: any = {};
+                newShopToCreate.name = this.me.firstname + ' ' + this.me.lastname.charAt(0) + '.';
+
+                const categoryToSelect = this.selectedCategory;
+                const description = categoryToSelect.descriptionTrad;
+                console.log('description => ' + description);
                 newShopToCreate.description = description;
-                newShopToCreate.location = {
-                    latitude: 48.6298,
-                    longitude: 2.4407,
-                };
+
+                newShopToCreate.location = { latitude: 48.6298, longitude: 2.4407 };
                 newShopToCreate.image = 'image';
                 newShopToCreate.note = '5';
                 newShopToCreate.type = type;
                 newShopToCreate.ville = 'Paris';
                 newShopToCreate.maxDistance = 15;
                 newShopToCreate.idUser = this.me._id;
-                newShopToCreate.promo = {};
-                newShopToCreate.promo.active = false;
-                newShopToCreate.promo.type = '1';
-                newShopToCreate.hours = {};
+                newShopToCreate.promo = { active: false, type: '1' };
                 newShopToCreate.trad = categoryToSelect.trad;
-                newShopToCreate.hours.morning = {};
-                newShopToCreate.hours.morning.start = '09:00';
-                newShopToCreate.hours.morning.end = '12:00';
-                newShopToCreate.hours.afternoon = {};
-                newShopToCreate.hours.afternoon.start = '13:00';
-                newShopToCreate.hours.afternoon.end = '18:00';
+                newShopToCreate.hours = {
+                    morning: { start: '09:00', end: '12:00' },
+                    afternoon: { start: '13:00', end: '18:00' }
+                };
+
+                // 3) Crée le shop, puis les produits liés
                 this.shopService.create(newShopToCreate).subscribe({
-                    next: (data: any) => {
-                        console.log(data);
-                        for (let elem of servicesToCreate) {
-                            elem.shopId = data._id;
+                    next: (created: any) => {
+                        console.log('Shop créé :', created);
+
+                        // Affecte le shopId à chaque service avant création multiple
+                        for (const elem of servicesToCreate) {
+                            elem.shopId = created._id;
                         }
-                        this.productService
-                            .createMultiple(servicesToCreate)
-                            .subscribe({
-                                next: (data: any) => {
-                                    console.log(data);
-                                    return data;
-                                },
-                                error: (error: any) => {
-                                    console.log(error);
-                                    return error;
-                                },
-                            });
-                        // return data;
+
+                        this.productService.createMultiple(servicesToCreate).subscribe({
+                            next: (res: any) => {
+                                console.log('Services créés :', res);
+                                return res;
+                            },
+                            error: (err: any) => {
+                                console.error('Erreur lors de la création multiple de services :', err);
+                                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                                return err;
+                            },
+                        });
                     },
-                    error: (error: any) => {
-                        console.log('Error : ' + JSON.stringify(error));
-                        console.log(error);
-                        return error;
+                    error: (err: any) => {
+                        console.error('Erreur lors de la création du shop :', err);
+                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                        return err;
                     },
                 });
             },
-            error: (error: any) => {
-                console.log(error);
-                return error;
+            error: (err: any) => {
+                console.error('Erreur lors du chargement des templates de services :', err);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                return err;
             },
         });
+    }
+
+    // -------------------------------------------------
+    // ✨ Toast d’erreur stylisé IzyGlam (centralisé)
+    // -------------------------------------------------
+    private showCustomToast(message: string) {
+        // Exemple de message dans fr.json :
+        // "ERROR": { "GENERIC_ERROR": "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨" }
+        this.toastr.error(message);
     }
 }

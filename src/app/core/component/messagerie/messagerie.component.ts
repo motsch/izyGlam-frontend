@@ -1,74 +1,108 @@
-import { ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, AfterViewInit, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  Input,
+  OnChanges,
+  SimpleChanges
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MqttService } from '../../services/mqtt.service';
 import { ConversationService } from '../../services/conversation.service';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-messagerie',
   templateUrl: './messagerie.component.html',
   styleUrls: ['./messagerie.component.scss']
 })
-export class MessagerieComponent implements OnInit, AfterViewInit, OnDestroy {
+export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
+  /** Conteneur DOM du flux de messages pour gérer l’auto-scroll bottom */
   @ViewChild('chatMessages', { static: false }) chatMessages!: ElementRef<HTMLDivElement>;
-  @Output() me: any;
+  /** Utilisateur courant injecté par le parent */
+  @Input() me: any;
 
-  private backButtonSub!: Subscription;
+  /** Abonnement global MQTT (on garde 1 seule sub et on la nettoie au destroy) */
   private mqttSub!: Subscription;
 
+  /** UI state : panneau des conversations (mobile/étroit) */
   isConversationListOpen = true;
+
+  /** Contexte utilisateur / langue */
   currentUserId: string = '';
   currentLang: string = (localStorage.getItem('langue') || 'fr').replace(/"/g, '');
 
+  /** Nouveau message saisi + adresse email pour créer une conversation */
   newMessage = '';
   newConversationEmail = '';
 
+  /** Liste de conversations et conversation sélectionnée */
   conversations: any[] = [];
   selectedConversation: any;
 
+  /** Flag pour désactiver le bouton “envoyer” pendant un POST */
   isSending = false;
 
-  // Bandeau Support (aperçu + heure + badge)
+  /** Bandeau “Support” (aperçu + horodatage + badge non lus) */
   supportUnreadCount = 0;
   supportPreview = '';
   supportPreviewTime = '';
 
-  // anti-doublons optimistes
+  /** Anti-doublons (optimistic UI) – indexation par clientId */
   private optimisticIndex: Record<string, { convId: string; createdAt: number; content: string }> = {};
 
   constructor(
     private conversationService: ConversationService,
     private mqttService: MqttService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private toastr: ToastrService,
+    private translate: TranslateService
   ) { }
 
-  // ===== Utils =====
+  // =========================
+  // Helpers d’identification
+  // =========================
+
+  /** Optimise *ngFor sur conversations */
   trackByConvId = (_: number, c: any) => c?._id;
 
-  // TrackBy messages : clientId > _id > createdAt
+  /** Optimise *ngFor sur messages */
   trackByMessage = (_: number, m: any) => m?.clientId || m?._id || m?.createdAt || _;
 
+  /** Détecte la conversation “Support” (convention côté backend) */
   private isSupport = (conv: any) => !!conv && (conv.name || '').toLowerCase() === 'support';
 
+  /** Génère un identifiant client pour déduper un message optimiste vs. réponse serveur */
   private makeClientId(): string {
-    if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
-      return (crypto as any).randomUUID();
-    }
+    try {
+      if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
+        return (crypto as any).randomUUID();
+      }
+    } catch { /* pas critique, on fallback */ }
     return 'cid_' + Date.now() + '_' + Math.random().toString(16).slice(2);
   }
 
+  /** Heuristique “même message” (pour éviter doublons via MQTT & REST) */
   private isSameMessage(a: any, b: any): boolean {
     if (!a || !b) return false;
     if (a.sender !== b.sender) return false;
     if ((a.content || '').trim() !== (b.content || '').trim()) return false;
     const ta = new Date(a.createdAt || Date.now()).getTime();
     const tb = new Date(b.createdAt || Date.now()).getTime();
-    return Math.abs(ta - tb) <= 5000;
+    return Math.abs(ta - tb) <= 5000; // ±5s tolérance
   }
 
+  /** Upsert d’un message (par clientId ou heuristique) dans une conversation */
   private upsertIncomingMessage(conv: any, incoming: any) {
     if (!conv) return;
     conv.messages ??= [];
 
+    // 1) Clé client → remplacement
     if (incoming.clientId) {
       const byClientId = conv.messages.findIndex((m: any) => m.clientId && m.clientId === incoming.clientId);
       if (byClientId !== -1) {
@@ -76,111 +110,166 @@ export class MessagerieComponent implements OnInit, AfterViewInit, OnDestroy {
         return;
       }
     }
+
+    // 2) Heuristique “même message”
     const idxSimilar = conv.messages.findIndex((m: any) => this.isSameMessage(m, incoming));
     if (idxSimilar !== -1) {
       conv.messages[idxSimilar] = { ...conv.messages[idxSimilar], ...incoming };
       return;
     }
+
+    // 3) Ajout
     conv.messages.push(incoming);
   }
 
-  // ===== Lifecycle =====
+  // ==============
+  // Lifecycle
+  // ==============
+
   ngOnInit() {
-    this.currentUserId = this.me?._id || '';
-    this.loadConversations();
+    try {
+      // Récupère l’id utilisateur dès que possible (si “me” est déjà injecté à l’init)
+      this.currentUserId = this.me?._id || '';
 
-    // 🔌 WS global → MAJ live
-    this.mqttSub = this.mqttService.subscribe().subscribe((payload: any) => {
-      try {
-        const { topic, message } = payload;
-        if (!topic?.startsWith('conversation/')) return;
+      // Charge la liste des conversations
+      this.loadConversations();
 
-        const convId = topic.split('/')[1];
+      // Abonnement global MQTT : réception des nouveaux messages
+      this.mqttSub = this.mqttService.subscribe().subscribe((payload: any) => {
+        try {
+          const { topic, message } = payload || {};
+          if (!topic?.startsWith('conversation/')) return;
+          const convId = topic.split('/')[1];
 
-        // 1) chat ouvert
-        if (this.selectedConversation?._id === convId) {
-          this.selectedConversation.messages ??= [];
-          this.upsertIncomingMessage(this.selectedConversation, message);
-          this.scrollToBottom();
-        }
-
-        // 2) liste : upsert + remonter en haut + badge
-        const idx = this.conversations.findIndex(c => c._id === convId);
-        if (idx !== -1) {
-          const updated = this.conversations[idx];
-          updated.messages ??= [];
-          this.upsertIncomingMessage(updated, message);
-
-          // remonter en haut
-          this.conversations.splice(idx, 1);
-          this.conversations = [updated, ...this.conversations];
-
-          // badge si pas la conv ouverte
-          if (!this.selectedConversation || this.selectedConversation._id !== convId) {
-            updated.unreadCount = (updated.unreadCount || 0) + 1;
+          // 1) Si la conv ouverte reçoit un message : upsert + scroll si proche du bas
+          if (this.selectedConversation?._id === convId) {
+            this.selectedConversation.messages ??= [];
+            this.upsertIncomingMessage(this.selectedConversation, message);
+            if (this.isUserNearBottom()) this.scrollToBottom();
           }
 
-          // si c'est la conv support → MAJ du bandeau
-          if (this.isSupport(updated)) {
-            this.updateSupportPreviewFromConv(updated);
+          // 2) Met à jour la conv correspondante dans la liste et remonte-la en tête
+          const idx = this.conversations.findIndex(c => c._id === convId);
+          if (idx !== -1) {
+            const updated = { ...this.conversations[idx] };
+            updated.messages ??= [];
+            this.upsertIncomingMessage(updated, message);
+
+            // Remonter en haut
+            this.conversations.splice(idx, 1);
+            this.conversations = [updated, ...this.conversations];
+
+            // Badge si conv non ouverte
             if (!this.selectedConversation || this.selectedConversation._id !== convId) {
-              this.supportUnreadCount = (this.supportUnreadCount || 0) + 1;
+              updated.unreadCount = (updated.unreadCount || 0) + 1;
+            }
+
+            // Bandeau support
+            if (this.isSupport(updated)) {
+              this.updateSupportPreviewFromConv(updated);
+              if (!this.selectedConversation || this.selectedConversation._id !== convId) {
+                this.supportUnreadCount = (this.supportUnreadCount || 0) + 1;
+              }
             }
           }
-        }
-        if (this.isUserNearBottom()) {
-          this.scrollToBottom();
-        }
 
-        this.cdRef.detectChanges();
-      } catch (err) {
-        console.error('Erreur parsing WS:', err, payload);
+          this.cdRef.detectChanges();
+        } catch (err) {
+          console.error('[MQTT] Erreur lors du traitement du payload :', err, payload);
+        }
+      });
+    } catch (e) {
+      console.error('[Init] Erreur inattendue :', e);
+      this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+    }
+  }
+
+  /** Si l’@Input me change après l’init (parent async), on resynchronise l’id */
+  ngOnChanges(changes: SimpleChanges): void {
+    try {
+      if (changes['me'] && changes['me'].currentValue) {
+        this.currentUserId = this.me?._id || '';
+        // Si on n’a pas encore chargé de conversations (ex: init très tôt)
+        if (!this.conversations || this.conversations.length === 0) {
+          this.loadConversations();
+        }
       }
-    });
+    } catch (e) {
+      console.error('[OnChanges] Erreur :', e);
+    }
   }
 
   ngAfterViewInit() {
+    // Petit délai pour laisser Angular finir le rendu
     this.scrollToBottom();
   }
 
   ngOnDestroy() {
-    if (this.backButtonSub) this.backButtonSub.unsubscribe();
-    if (this.mqttSub) this.mqttSub.unsubscribe();
+    try {
+      if (this.mqttSub) this.mqttSub.unsubscribe();
+    } catch (e) {
+      console.warn('[Destroy] Problème lors de l’unsubscribe MQTT :', e);
+    }
   }
 
-  // ===== Data =====
+  // =========================
+  // Chargement des données
+  // =========================
+
+  /** Charge toutes les conversations (et s’abonne en MQTT à chacune d’elles) */
   loadConversations() {
-    this.conversationService.getAllConversations().subscribe({
-      next: (data: any) => {
-        this.conversations = (data || []).map((c: any) => ({
-          ...c,
-          messages: Array.isArray(c.messages) ? c.messages : [],
-          unreadCount: 0
-        }));
+    try {
+      this.conversationService.getAllConversations().subscribe({
+        next: (data: any) => {
+          try {
+            this.conversations = (data || []).map((c: any) => ({
+              ...c,
+              messages: Array.isArray(c.messages) ? c.messages : [],
+              unreadCount: 0
+            }));
 
-        // Abonner WS sur toutes celles qu'on a
-        this.conversations.forEach(c => this.mqttService.subscribeToConversation(c._id));
+            // Abonnement WS sur chaque conv (pour recevoir les messages ciblés)
+            this.conversations.forEach(c => {
+              try {
+                if (c?._id) this.mqttService.subscribeToConversation(c._id);
+              } catch (e) {
+                console.warn('[MQTT] Abonnement conversation échoué :', c?._id, e);
+              }
+            });
 
-        // Préparer le bandeau support si déjà là
-        const sc = this.conversations.find(this.isSupport);
-        if (sc) {
-          this.updateSupportPreviewFromConv(sc);
-        } else {
-          this.supportPreview = this.translateSupportDefault();
-          this.supportPreviewTime = '';
-          this.supportUnreadCount = 0;
+            // Prépare le bandeau Support si déjà existant
+            const sc = this.conversations.find(this.isSupport);
+            if (sc) {
+              this.updateSupportPreviewFromConv(sc);
+            } else {
+              this.supportPreview = this.translateSupportDefault();
+              this.supportPreviewTime = '';
+              this.supportUnreadCount = 0;
+            }
+
+            // Sélection auto d’une conv si aucune n’est ouverte
+            if (!this.selectedConversation && this.conversations.length > 0) {
+              this.selectConversation(this.conversations[0]);
+            }
+
+            setTimeout(() => this.scrollToBottom(), 50);
+          } catch (e) {
+            console.error('[loadConversations] Traitement des données :', e);
+            this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+          }
+        },
+        error: (err: any) => {
+          console.error('[loadConversations] Erreur HTTP :', err);
+          this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
         }
-
-        // Sélection automatique si rien n'est ouvert
-        if (!this.selectedConversation && this.conversations.length > 0) {
-          this.selectConversation(this.conversations[0]);
-        }
-
-        setTimeout(() => this.scrollToBottom(), 50);
-      },
-      error: (err: any) => console.error(err),
-    });
+      });
+    } catch (e) {
+      console.error('[loadConversations] Erreur inattendue :', e);
+      this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+    }
   }
+
+  /** Détermine si l’utilisateur est “proche” du bas (pour autoscroll smart) */
   private isUserNearBottom(): boolean {
     if (!this.chatMessages) return false;
     const el = this.chatMessages.nativeElement;
@@ -188,183 +277,258 @@ export class MessagerieComponent implements OnInit, AfterViewInit, OnDestroy {
     return el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
   }
 
+  /** Récupère (ou crée) la conversation avec le support, l’ouvre et reset les badges */
   getOrCreateSupportConversation() {
-    this.conversationService.getOrCreateSupportConversation(this.currentLang, this.currentUserId).subscribe({
-      next: (conv: any) => {
-        // injecter/actualiser dans la liste
-        const idx = this.conversations.findIndex(c => c._id === conv._id);
-        if (idx === -1) {
-          this.conversations = [{ ...conv, messages: conv.messages || [], unreadCount: 0 }, ...this.conversations];
-        } else {
-          const merged = { ...this.conversations[idx], ...conv, messages: conv.messages || [] };
-          this.conversations.splice(idx, 1);
-          this.conversations = [merged, ...this.conversations];
+    try {
+      this.conversationService.getOrCreateSupportConversation(this.currentLang, this.currentUserId).subscribe({
+        next: (conv: any) => {
+          try {
+            // Injecte/actualise dans la liste
+            const idx = this.conversations.findIndex(c => c._id === conv._id);
+            if (idx === -1) {
+              this.conversations = [{ ...conv, messages: conv.messages || [], unreadCount: 0 }, ...this.conversations];
+            } else {
+              const merged = { ...this.conversations[idx], ...conv, messages: conv.messages || [] };
+              this.conversations.splice(idx, 1);
+              this.conversations = [merged, ...this.conversations];
+            }
+
+            // Abonnement WS dédié
+            if (conv?._id) this.mqttService.subscribeToConversation(conv._id);
+
+            // Ouvrir la conv Support
+            this.selectConversation(conv);
+
+            // Reset bandeau Support
+            this.supportUnreadCount = 0;
+            const sc = this.conversations.find(c => c._id === conv._id);
+            if (sc) this.updateSupportPreviewFromConv(sc);
+
+            this.showCustomToast(this.translate.instant('SUCCESS.SUBSCRIBE_SUCCESS') || 'Opération réussie.', 'success');
+          } catch (e) {
+            console.error('[getOrCreateSupportConversation] Traitement :', e);
+            this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+          }
+        },
+        error: (err: any) => {
+          console.error('[Support] get/create error :', err);
+          this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
         }
-
-        // WS sub
-        this.mqttService.subscribeToConversation(conv._id);
-
-        // ouvrir
-        this.selectConversation(conv);
-
-        // reset badge bandeau
-        this.supportUnreadCount = 0;
-        const sc = this.conversations.find(c => c._id === conv._id);
-        if (sc) this.updateSupportPreviewFromConv(sc);
-      },
-      error: (err: any) => console.error('[Support] get/create error:', err),
-    });
-  }
-
-  selectConversation(conversation: any) {
-    this.selectedConversation = conversation;
-    this.isConversationListOpen = false;
-
-    this.mqttService.subscribeToConversation(conversation._id);
-
-    this.conversationService.getConversationById(conversation._id).subscribe({
-      next: (conv: any) => {
-        this.selectedConversation = { ...conv, messages: conv.messages || [] };
-
-        // reset non lus
-        const found = this.conversations.find(c => c._id === conversation._id);
-        if (found) found.unreadCount = 0;
-
-        // si support → reset bandeau + aperçu
-        if (this.isSupport(this.selectedConversation)) {
-          this.supportUnreadCount = 0;
-          this.updateSupportPreviewFromConv(this.selectedConversation);
-        }
-
-        setTimeout(() => this.scrollToBottom(), 50);
-      },
-      error: (err: any) => console.error(err),
-    });
-  }
-
-  createConversationByEmail() {
-    const email = this.newConversationEmail.trim();
-    if (!email) return;
-
-    if (!this.me || !this.me.email) {
-      console.warn('Utilisateur non chargé.');
-      return;
+      });
+    } catch (e) {
+      console.error('[getOrCreateSupportConversation] Erreur inattendue :', e);
+      this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
     }
-
-    this.conversationService.getByEmail(email, this.me.email).subscribe({
-      next: (conversation: any) => {
-        if (!this.conversations.find((c) => c._id === conversation._id)) {
-          this.conversations = [{ ...conversation, unreadCount: 0, messages: conversation.messages || [] }, ...this.conversations];
-          this.mqttService.subscribeToConversation(conversation._id);
-        }
-        this.selectConversation(conversation);
-        this.newConversationEmail = '';
-      },
-      error: (err: any) => {
-        console.error(err);
-        alert('Erreur lors de la création/récupération de la conversation');
-      },
-    });
   }
 
+  /** Ouvre une conversation, récupère ses messages frais en base et reset les non-lus */
+  selectConversation(conversation: any) {
+    try {
+      if (!conversation?._id) return;
+
+      this.selectedConversation = conversation;
+      this.isConversationListOpen = false;
+
+      // S’abonner WS pour cette conv (au cas où)
+      this.mqttService.subscribeToConversation(conversation._id);
+
+      // Récupérer la conv “fraîche” depuis l’API
+      this.conversationService.getConversationById(conversation._id).subscribe({
+        next: (conv: any) => {
+          try {
+            this.selectedConversation = { ...conv, messages: conv.messages || [] };
+
+            // Reset badge non-lus côté liste
+            const found = this.conversations.find(c => c._id === conversation._id);
+            if (found) found.unreadCount = 0;
+
+            // Update bandeau support si besoin
+            if (this.isSupport(this.selectedConversation)) {
+              this.supportUnreadCount = 0;
+              this.updateSupportPreviewFromConv(this.selectedConversation);
+            }
+
+            setTimeout(() => this.scrollToBottom(), 50);
+          } catch (e) {
+            console.error('[selectConversation] Traitement :', e);
+            this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+          }
+        },
+        error: (err: any) => {
+          console.error('[selectConversation] Erreur HTTP :', err);
+          this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+        }
+      });
+    } catch (e) {
+      console.error('[selectConversation] Erreur inattendue :', e);
+      this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+    }
+  }
+
+  /** Crée (ou récupère) une conversation par email de destinataire */
+  createConversationByEmail() {
+    try {
+      const email = (this.newConversationEmail || '').trim();
+      if (!email) return;
+
+      // Validation email simple (évite des 400 évidents)
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        this.showCustomToast('ERROR.GENERIC_ERROR', 'error'); // remplace par une clé dédiée si tu en as une
+        return;
+      }
+
+      if (!this.me || !this.me.email) {
+        console.warn('[createConversationByEmail] Utilisateur non chargé.');
+        this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+        return;
+      }
+
+      this.conversationService.getByEmail(email, this.me.email).subscribe({
+        next: (conversation: any) => {
+          try {
+            // Injecte en tête si absente
+            if (!this.conversations.find((c) => c._id === conversation._id)) {
+              this.conversations = [{ ...conversation, unreadCount: 0, messages: conversation.messages || [] }, ...this.conversations];
+              if (conversation?._id) this.mqttService.subscribeToConversation(conversation._id);
+            }
+            this.selectConversation(conversation);
+            this.newConversationEmail = '';
+            this.showCustomToast(this.translate.instant('SUCCESS.SUBSCRIBE_SUCCESS') || 'Conversation prête.', 'success');
+          } catch (e) {
+            console.error('[createConversationByEmail] Traitement :', e);
+            this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+          }
+        },
+        error: (err: any) => {
+          console.error('[createConversationByEmail] Erreur HTTP :', err);
+          this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+        }
+      });
+    } catch (e) {
+      console.error('[createConversationByEmail] Erreur inattendue :', e);
+      this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+    }
+  }
+
+  /** Bascule la liste (mobile) */
   toggleConversationList() {
     this.isConversationListOpen = !this.isConversationListOpen;
   }
 
+  /** Pull-to-refresh (mobile) */
   refreshPage(event: any) {
     this.loadConversations();
     setTimeout(() => event?.target?.complete?.(), 300);
   }
 
-  // ===== Chat =====
+  // =========================
+  // Envoi de messages
+  // =========================
 
+  /** Envoie un message avec “UI optimiste” + dédup via clientId */
   sendMessage() {
-    const trimmed = (this.newMessage || '').trim();
-    if (!trimmed || !this.selectedConversation?._id) return;
+    try {
+      const trimmed = (this.newMessage || '').trim();
+      if (!trimmed || !this.selectedConversation?._id) return;
+      this.isSending = true;
 
-    this.isSending = true;
-
-    // clientId pour dédup
-    const clientId = this.makeClientId();
-
-    // optimiste
-    const optimistic = {
-      clientId,
-      _id: undefined,
-      sender: this.currentUserId,
-      content: trimmed,
-      messageType: 'text',
-      createdAt: new Date().toISOString(),
-      __optimistic: true
-    };
-
-    this.selectedConversation.messages ??= [];
-    this.selectedConversation.messages.push(optimistic);
-    this.scrollToBottom();
-
-    const isSupportConv = this.isSupport(this.selectedConversation);
-
-    const onOk = (saved: any) => {
-      // remplace optimiste si présent
-      const msgs = this.selectedConversation.messages || [];
-      const idx = msgs.findIndex((m: any) => m.clientId === clientId);
-      if (idx !== -1) {
-        this.selectedConversation.messages[idx] = { ...msgs[idx], ...saved, clientId };
-      }
-
-      this.newMessage = '';
-      this.isSending = false;
-
-      // réduit textarea
-      const el = (this.chatMessages?.nativeElement?.parentElement?.querySelector('.message-input .input')) as HTMLTextAreaElement | null;
-      if (el) this.resetTextarea(el);
-
-      // MAJ liste + remonter en haut
-      const listIdx = this.conversations.findIndex(c => c._id === this.selectedConversation._id);
-      if (listIdx !== -1) {
-        const cpy = this.conversations[listIdx];
-        cpy.messages ??= [];
-        this.upsertIncomingMessage(cpy, saved);
-        this.conversations.splice(listIdx, 1);
-        this.conversations = [cpy, ...this.conversations];
-
-        if (this.isSupport(cpy)) {
-          this.updateSupportPreviewFromConv(cpy);
-        }
-      }
-
-      setTimeout(() => this.scrollToBottom(), 0);
-    };
-
-    const onErr = (err: any) => {
-      console.error(err);
-      const msgs = this.selectedConversation.messages || [];
-      const idx = msgs.findIndex((m: any) => m.clientId === clientId);
-      if (idx !== -1) this.selectedConversation.messages[idx].__failed = true;
-      this.isSending = false;
-    };
-
-    if (isSupportConv) {
-      this.conversationService.sendMessageToSupport({
-        conversationId: this.selectedConversation._id,
-        content: trimmed,
-        messageType: 'text',
+      // 1) Prépare un message optimiste
+      const clientId = this.makeClientId();
+      const optimistic = {
         clientId,
-        language: this.currentLang
-      }).subscribe({ next: onOk, error: onErr });
-    } else {
-      this.conversationService.addMessage(this.selectedConversation._id, {
+        _id: undefined,
         sender: this.currentUserId,
         content: trimmed,
         messageType: 'text',
-        clientId
-      }).subscribe({ next: onOk, error: onErr });
-    }
+        createdAt: new Date().toISOString(),
+        __optimistic: true
+      };
 
-    this.newMessage = '';
+      // 2) Affiche immédiatement (optimiste)
+      this.selectedConversation.messages ??= [];
+      this.selectedConversation.messages.push(optimistic);
+      this.scrollToBottom();
+
+      const isSupportConv = this.isSupport(this.selectedConversation);
+
+      // Callback succès
+      const onOk = (saved: any) => {
+        try {
+          // Remplace le message optimiste par la version “serveur”
+          const msgs = this.selectedConversation.messages || [];
+          const idx = msgs.findIndex((m: any) => m.clientId === clientId);
+          if (idx !== -1) {
+            this.selectedConversation.messages[idx] = { ...msgs[idx], ...saved, clientId };
+          }
+
+          // Nettoyage UI + textarea
+          this.newMessage = '';
+          this.isSending = false;
+          const el = (this.chatMessages?.nativeElement?.parentElement?.querySelector('.message-input .input')) as HTMLTextAreaElement | null;
+          if (el) this.resetTextarea(el);
+
+          // Met à jour la conversation dans la liste et remonte-la
+          const listIdx = this.conversations.findIndex(c => c._id === this.selectedConversation._id);
+          if (listIdx !== -1) {
+            const cpy = { ...this.conversations[listIdx] };
+            cpy.messages ??= [];
+            this.upsertIncomingMessage(cpy, saved);
+            this.conversations.splice(listIdx, 1);
+            this.conversations = [cpy, ...this.conversations];
+
+            if (this.isSupport(cpy)) this.updateSupportPreviewFromConv(cpy);
+          }
+
+          this.showCustomToast(this.translate.instant('SUCCESS.MESSAGE_SENT') || 'Message envoyé.', 'success');
+          setTimeout(() => this.scrollToBottom(), 0);
+        } catch (e) {
+          console.error('[sendMessage:onOk] Traitement :', e);
+          this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+        }
+      };
+
+      // Callback erreur
+      const onErr = (err: any) => {
+        console.error('[sendMessage] Erreur HTTP :', err);
+        const msgs = this.selectedConversation.messages || [];
+        const idx = msgs.findIndex((m: any) => m.clientId === clientId);
+        if (idx !== -1) this.selectedConversation.messages[idx].__failed = true;
+        this.isSending = false;
+        this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+      };
+
+      // 3) Envoi côté serveur (Support vs. Direct)
+      if (isSupportConv) {
+        this.conversationService
+          .sendMessageToSupport({
+            conversationId: this.selectedConversation._id,
+            content: trimmed,
+            messageType: 'text',
+            clientId,
+            language: this.currentLang
+          })
+          .subscribe({ next: onOk, error: onErr });
+      } else {
+        this.conversationService
+          .addMessage(this.selectedConversation._id, {
+            sender: this.currentUserId,
+            content: trimmed,
+            messageType: 'text',
+            clientId
+          })
+          .subscribe({ next: onOk, error: onErr });
+      }
+
+      this.newMessage = '';
+    } catch (e) {
+      console.error('[sendMessage] Erreur inattendue :', e);
+      this.isSending = false;
+      this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+    }
   }
 
-  // Enter pour envoyer, Shift+Enter pour nouvelle ligne
+  /** Entrée pour envoyer ; Shift+Entrée pour nouvelle ligne */
   onKeydown(event: KeyboardEvent) {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
@@ -372,7 +536,7 @@ export class MessagerieComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  // Auto-resize du textarea à l’input
+  /** Auto-resize du textarea, limite hauteur max */
   autoResize(el: HTMLTextAreaElement) {
     el.style.height = 'auto';
     const max = 160; // ~5-6 lignes max
@@ -380,23 +544,32 @@ export class MessagerieComponent implements OnInit, AfterViewInit, OnDestroy {
     el.style.height = h + 'px';
     el.style.overflowY = el.scrollHeight > max ? 'auto' : 'hidden';
   }
+
+  /** Reset du textarea après envoi */
   private resetTextarea(el: HTMLTextAreaElement) {
     el.value = '';
     el.style.height = 'auto';
     el.style.overflowY = 'hidden';
   }
 
+  // =========================
+  // Affichage / Scroll
+  // =========================
+
+  /** Scroll bottom avec petit délai (laisse le DOM se peindre) */
   scrollToBottom() {
     try {
       if (!this.chatMessages) return;
       const el = this.chatMessages.nativeElement;
-      setTimeout(() => {
-        el.scrollTop = el.scrollHeight;
-      }, 0); // ✅ petit délai pour laisser Angular finir le render
-    } catch { }
+      setTimeout(() => { el.scrollTop = el.scrollHeight; }, 0);
+    } catch (e) {
+      // Pas bloquant (par exemple si l’élément n’existe pas encore)
+    }
   }
 
-  // ===== Helpers affichage =====
+  // =========================
+  // Helpers visuels / labels
+  // =========================
 
   getConversationName(conversation: any): string {
     if (!conversation) return '';
@@ -434,7 +607,7 @@ export class MessagerieComponent implements OnInit, AfterViewInit, OnDestroy {
     return other?.profileImage || 'assets/images/default.jpeg';
   }
 
-  // Bandeau support
+  /** Met à jour l’aperçu “Support” (texte + heure) */
   private updateSupportPreviewFromConv(conv: any) {
     if (!conv?.messages?.length) {
       this.supportPreview = this.translateSupportDefault();
@@ -443,15 +616,42 @@ export class MessagerieComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     const last = conv.messages[conv.messages.length - 1];
     this.supportPreview = last?.content || this.translateSupportDefault();
-    this.supportPreviewTime = new Date(last.createdAt)
-      .toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    this.supportPreviewTime = new Date(last.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 
+  /** Message par défaut pour le bandeau support (clé i18n à brancher si dispo) */
   translateSupportDefault() {
     return 'Votre service client à portée de main';
   }
 
   openSettings() {
     console.log('⚙️ Ouverture des paramètres...');
+  }
+
+  // =========================
+  // Toasts centralisés
+  // =========================
+
+  /**
+   * Affiche un toast de succès/erreur avec i18n.
+   * @param keyOrMessage clé i18n (‘ERROR.GENERIC_ERROR’) ou message brut
+   * @param type 'success' | 'error'
+   */
+  private showCustomToast(keyOrMessage: string, type: 'success' | 'error' = 'success') {
+    try {
+      // On tente la traduction — si la clé n’existe pas, instant renverra la clé → on fallback user-friendly
+      const translated = this.translate.instant(keyOrMessage);
+      const message = translated && translated !== keyOrMessage ? translated : keyOrMessage;
+
+      if (type === 'success') {
+        this.toastr.success(message);
+      } else {
+        this.toastr.error(message);
+      }
+    } catch (e) {
+      // En cas de souci i18n, on n’empêche pas l’affichage
+      if (type === 'success') this.toastr.success(keyOrMessage);
+      else this.toastr.error(keyOrMessage);
+    }
   }
 }

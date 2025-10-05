@@ -1,11 +1,19 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import moment from 'moment';
+import { Router } from '@angular/router';
+
+import { environment } from 'src/environments/environment';
+
+// Services métier
 import { BookingService } from '../../services/booking.service';
 import { FinancialService } from '../../services/financial.service';
-import { environment } from 'src/environments/environment';
 import { TransactionService } from '../../services/transaction.service';
 import { StripeService } from '../../services/stripe.service';
-import { Router } from '@angular/router';
+
+// Notifications / i18n
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-order-card',
   standalone: false,
@@ -13,273 +21,365 @@ import { Router } from '@angular/router';
   styleUrl: './order-card.component.scss'
 })
 export class OrderCardComponent {
+  // === Constantes / Inputs / Outputs ==========================
   APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
+  imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
+  apiImageUrl = environment.APIimgStorageUrl;
+
   @Input() order: any;
   @Input() index: number = 0;
   @Input() imageLoaded: boolean = false;
-  @Input() isWithinDisplayTime: boolean = false;
-  @Input() isAfterGracePeriod: boolean = false;
-  @Input() availableActions: string[] = [];
+  @Input() isWithinDisplayTime: boolean = false; // ⬅ affichage du code confidentiel
+  @Input() isAfterGracePeriod: boolean = false;  // ⬅ expiration du délai
+  @Input() availableActions: string[] = [];      // ⬅ actions filtrées par parent
+
   @Output() onDownloadInvoice = new EventEmitter<any>();
   @Output() onUpdateNeeded = new EventEmitter<any>();
   @Output() modalReview = new EventEmitter<any>();
-  apiImageUrl = environment.APIimgStorageUrl;
+
   confirmCodeInput: string = '';
-  imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
-  storedLangue = (localStorage.getItem('langue') || '').replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
 
-  constructor(private stripeService: StripeService, private router: Router, private transactionService: TransactionService, private bookingService: BookingService, private financialService: FinancialService) { }
+  // Langue stockée (2 lettres) pour les appels backend
+  storedLangue = (localStorage.getItem('langue') || '')
+    .replace(/^"(.*)"$/, '$1')
+    .trim()
+    .slice(0, 2)
+    .toLowerCase();
 
+  constructor(
+    private stripeService: StripeService,
+    private router: Router,
+    private transactionService: TransactionService,
+    private bookingService: BookingService,
+    private financialService: FinancialService,
+    private toastr: ToastrService,
+    private translate: TranslateService
+  ) { }
+
+  // ============================================================
+  // ===============  Actions principales (CRUD)  ===============
+  // ============================================================
+
+  /**
+   * Suppression (côté client) d’un booking :
+   * - Passe le statut en 'deleted'
+   * - Déclenche un remboursement complet (>24h) ou partiel (<24h) via FinancialService
+   * - Emet un événement vers le parent pour rafraîchir la liste
+   */
   deleteBooking(order: any) {
-    console.log("Booking to delete:", JSON.stringify(order));
-    // Mise à jour du statut du booking
-    this.bookingService.updateBookingStatus(order._id, 'deleted', this.storedLangue).subscribe({
-      next: (response: any) => {
-        console.log("Booking update response:", JSON.stringify(response));
-        console.log("DELETE OK");
-        const bookingStart = moment(order.start);
-        const now = moment();
-        const diffHours = bookingStart.diff(now, 'hours');
-        console.log(`Différence en heures entre maintenant et le début du booking : ${diffHours}`);
-        if (diffHours >= 24) {
-          console.log("Suppression > 24h avant la prestation : remboursement complet du client.");
-          this.financialService.processRefund(order._id, "customer-cancel-greater-than-24").subscribe({
-            next: (refundResponse: any) => {
-              console.log("Remboursement complet effectué via FinancialService:", refundResponse);
-            },
-            error: (refundError: any) => {
-              console.error("Erreur lors du remboursement complet:", refundError);
-            }
-          });
-        } else {
-          console.log("Suppression < 24h avant la prestation : remboursement partiel (50%).");
-          if (window.confirm("Attention, si vous continuez, vous ne serez remboursé qu'à 50% du montant payé. Voulez-vous confirmer ?")) {
-            this.financialService.processRefund(order._id, "customer-cancel-less-than-24").subscribe({
-              next: (refundResponse: any) => {
-                console.log("Remboursement partiel effectué via FinancialService:", refundResponse);
-              },
-              error: (refundError: any) => {
-                console.error("Erreur lors du remboursement partiel:", refundError);
+    try {
+      if (!order?._id) return;
+
+      console.log('[OrderCard] deleteBooking →', order?._id);
+      this.bookingService.updateBookingStatus(order._id, 'deleted', this.storedLangue).subscribe({
+        next: (response: any) => {
+          try {
+            console.log('[OrderCard] Booking deleted OK:', response);
+
+            const bookingStart = moment(order.start);
+            const now = moment();
+            const diffHours = bookingStart.diff(now, 'hours');
+            console.log(`[OrderCard] Hours until start: ${diffHours}`);
+
+            if (diffHours >= 24) {
+              // ➜ Remboursement complet
+              this.financialService.processRefund(order._id, 'customer-cancel-greater-than-24').subscribe({
+                next: (refundResponse: any) => {
+                  console.log('[OrderCard] Refund full OK:', refundResponse);
+                  this.showCustomToast(this.translate.instant('SUCCESS.REFUND_OK') || 'Remboursement effectué.', 'success');
+                  this.onUpdateNeeded.emit(order); // ⬅ informer le parent de rafraîchir
+                },
+                error: (refundError: any) => {
+                  console.error('[OrderCard] Refund full ERROR:', refundError);
+                  this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR') || 'Erreur de remboursement.', 'error');
+                }
+              });
+            } else {
+              // ➜ Remboursement partiel, confirmation côté UI
+              // (Tu peux translater ce confirm si besoin)
+              if (window.confirm("Attention, si vous continuez, vous ne serez remboursé qu'à 50% du montant payé. Voulez-vous confirmer ?")) {
+                this.financialService.processRefund(order._id, 'customer-cancel-less-than-24').subscribe({
+                  next: (refundResponse: any) => {
+                    console.log('[OrderCard] Refund partial OK:', refundResponse);
+                    this.showCustomToast(this.translate.instant('SUCCESS.REFUND_OK') || 'Remboursement effectué.', 'success');
+                    this.onUpdateNeeded.emit(order);
+                  },
+                  error: (refundError: any) => {
+                    console.error('[OrderCard] Refund partial ERROR:', refundError);
+                    this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR') || 'Erreur de remboursement.', 'error');
+                  }
+                });
+              } else {
+                console.log('[OrderCard] Partial refund cancelled by user.');
               }
-            });
-          } else {
-            console.log("Annulation de l'opération par le client.");
+            }
+          } catch (e) {
+            console.error('[OrderCard] deleteBooking(next) processing error:', e);
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
           }
+        },
+        error: (error: any) => {
+          console.error('[OrderCard] deleteBooking ERROR:', error);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
         }
-      },
-      error: (error: any) => {
-        console.error("Erreur lors de la mise à jour du booking :", JSON.stringify(error));
-        console.log("DELETE FAILED");
-      }
-    });
-  }
-
-  onImageLoad(orderId: string) {
-    // this.imageLoaded[orderId] = true;
-    // this.cdr.detectChanges();
-    console.log("Image Loaded UPDATED: ", JSON.stringify(this.imageLoaded));
-  }
-
-  goToShop(order: any) {
-    console.log(order);
-    // go to shop/:order.shopId
-    this.router.navigate(['shop/' + order.shopId]); // Navigation programmée vers la page du shop
-    // this.router.navigate(['shop'], { state: { booking: order } });
+      });
+    } catch (e) {
+      console.error('[OrderCard] deleteBooking try/catch ERROR:', e);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+    }
   }
 
   /**
-   * Génère un code aléatoire à 6 chiffres pour le booking.
+   * Annulation via bouton "Annuler" (cas UX distinct, même logique que delete).
+   * Laisse un hook d’UI différent si tu veux des textes / toasts différents.
    */
-  generateCode(booking: any) {
-    booking.generatedCode = Math.floor(100000 + Math.random() * 900000);
-    console.log(`Code généré pour le booking ${booking._id}: ${booking.generatedCode}`);
-    // Optionnel : appeler un service pour sauvegarder ce code dans la base de données
-    this.bookingService.update(booking)
-      .subscribe(response => {
-        console.log(JSON.stringify(response));
-        console.log("Generated code saved");
-      }, error => {
-        console.log(JSON.stringify(error));
-        console.log("ACCEPTED FAILED");
-      });
-  }
+  cancelBooking(order: any) {
+    try {
+      if (!order?._id) return;
 
-  markPrestataireAbsent(order: any) {
-    console.log('Prestataire absent pour la commande', order);
-    console.log("Booking to no-show-pro : " + JSON.stringify(order));
+      console.log('[OrderCard] cancelBooking →', order?._id);
+      this.bookingService.updateBookingStatus(order._id, 'deleted', this.storedLangue).subscribe({
+        next: (response: any) => {
+          try {
+            console.log('[OrderCard] cancelBooking OK:', response);
 
-    // Mise à jour du statut du booking en "no-show-pro"
-    this.bookingService.updateBookingStatus(order._id, 'no-show-pro', this.storedLangue)
-      .subscribe(response => {
-        console.log("Booking no-show-pro response :", JSON.stringify(response));
+            const bookingStart = moment(order.start);
+            const now = moment();
+            const diffHours = bookingStart.diff(now, 'hours');
+            console.log(`[OrderCard] Hours until start: ${diffHours}`);
 
-        // Remboursement complet du client via Stripe
-        this.stripeService.refundPayment(order.paymentIntentId).subscribe({
-          next: (refundResponse: any) => {
-            console.log("Remboursement complet réussi via Stripe :", refundResponse);
-
-            // Mise à jour de la transaction initiale associée au booking pour indiquer le remboursement
-            this.transactionService.getAll().subscribe((transactions: any[]) => {
-              const matchingTransactions = transactions.filter(tx => tx.idBooking === order._id);
-              console.log("Transactions trouvées pour ce booking :", matchingTransactions);
-              if (matchingTransactions.length > 0) {
-                matchingTransactions.forEach((tx: any) => {
-                  tx.status = "refunded"; // ou "cancelled" selon votre convention
-                  this.transactionService.update(tx).subscribe(
-                    updatedTx => {
-                      console.log("Transaction mise à jour pour remboursement :", JSON.stringify(updatedTx));
-                    },
-                    error => {
-                      console.error("Erreur lors de la mise à jour de la transaction :", JSON.stringify(error));
-                    }
-                  );
-                });
-              } else {
-                console.warn("Aucune transaction trouvée pour ce booking.");
-              }
-            }, error => {
-              console.error("Erreur lors de la récupération des transactions :", JSON.stringify(error));
-            });
-
-            // Calcul de la pénalité à appliquer au prestataire
-            const totalAmount = parseFloat(order.price); // Montant total payé par le client
-            const commission = order.commission ? parseFloat(order.commission) : 0;
-            const additionalPenalty = totalAmount * 0.1; // Pénalité additionnelle de 10% du montant total
-            const totalPenalty = commission + additionalPenalty;
-
-            // Création d'une transaction de type "debit" pour pénaliser le prestataire
-            const penaltyTransactionPayload = {
-              userProId: order.userProId,
-              type: "debit",
-              amount: totalPenalty,
-              description: "Pénalité pour no-show-pro : commission + 10% additionnels",
-              status: "completed",
-              idBooking: order._id,
-            };
-
-            this.transactionService.create(penaltyTransactionPayload).subscribe({
-              next: (penaltyResponse: any) => {
-                console.log("Transaction de pénalité créée pour le prestataire :", penaltyResponse);
-
-                // Création d'une transaction complémentaire pour créditer la plateforme
-                const platformTransactionPayload = {
-                  userProId: 'platform', // Identifiant spécifique pour la plateforme
-                  type: "credit",
-                  amount: totalPenalty,
-                  description: "Crédit de pénalité suite à no-show-pro (commission + 10% additionnels)",
-                  status: "completed",
-                  idBooking: order._id,
-                };
-
-                this.transactionService.create(platformTransactionPayload).subscribe({
-                  next: (platformTxResponse: any) => {
-                    console.log("Transaction de crédit créée pour la plateforme :", platformTxResponse);
+            if (diffHours >= 24) {
+              // Remboursement complet
+              this.financialService.processRefund(order._id, 'customer-cancel-greater-than-24').subscribe({
+                next: (refundResponse: any) => {
+                  console.log('[OrderCard] cancelBooking full refund OK:', refundResponse);
+                  this.showCustomToast(this.translate.instant('SUCCESS.REFUND_OK') || 'Remboursement effectué.', 'success');
+                  this.onUpdateNeeded.emit(order);
+                },
+                error: (refundError: any) => {
+                  console.error('[OrderCard] cancelBooking full refund ERROR:', refundError);
+                  this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR') || 'Erreur de remboursement.', 'error');
+                }
+              });
+            } else {
+              // Remboursement partiel
+              if (window.confirm("Attention, si vous continuez, vous ne serez remboursé qu'à 50% du montant payé. Voulez-vous confirmer ?")) {
+                this.financialService.processRefund(order._id, 'customer-cancel-less-than-24').subscribe({
+                  next: (refundResponse: any) => {
+                    console.log('[OrderCard] cancelBooking partial refund OK:', refundResponse);
+                    this.showCustomToast(this.translate.instant('SUCCESS.REFUND_OK') || 'Remboursement effectué.', 'success');
+                    this.onUpdateNeeded.emit(order);
                   },
-                  error: (platformTxError: any) => {
-                    console.error("Erreur lors de la création de la transaction pour la plateforme :", platformTxError);
+                  error: (refundError: any) => {
+                    console.error('[OrderCard] cancelBooking partial refund ERROR:', refundError);
+                    this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR') || 'Erreur de remboursement.', 'error');
                   }
                 });
-              },
-              error: (penaltyError: any) => {
-                console.error("Erreur lors de la création de la transaction de pénalité pour le prestataire :", penaltyError);
+              } else {
+                console.log('[OrderCard] cancelBooking partial refund cancelled by user.');
               }
-            });
-          },
-          error: (refundError: any) => {
-            console.error("Erreur lors du remboursement complet :", refundError);
+            }
+          } catch (e) {
+            console.error('[OrderCard] cancelBooking(next) processing error:', e);
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
           }
-        });
-
-        // Optionnel : basculer l'affichage ou rediriger l'utilisateur
-        // this.switchUserOrPro();
-      }, error => {
-        console.error("Erreur lors de la mise à jour du booking :", JSON.stringify(error));
-        console.log("no-show-pro FAILED");
+        },
+        error: (error: any) => {
+          console.error('[OrderCard] cancelBooking ERROR:', error);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+        }
       });
+    } catch (e) {
+      console.error('[OrderCard] cancelBooking try/catch ERROR:', e);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+    }
   }
+
+  /**
+   * Génère un code confidentiel à 6 chiffres et le sauvegarde dans le booking.
+   */
+  generateCode(booking: any) {
+    try {
+      if (!booking?._id) return;
+      booking.generatedCode = Math.floor(100000 + Math.random() * 900000);
+      console.log(`[OrderCard] Code generated for ${booking._id}: ${booking.generatedCode}`);
+
+      this.bookingService.update(booking).subscribe({
+        next: (response: any) => {
+          console.log('[OrderCard] Code saved OK:', response);
+          this.showCustomToast(this.translate.instant('SUCCESS.CODE_SAVED') || 'Code généré.', 'success');
+        },
+        error: (err: any) => {
+          console.error('[OrderCard] Code save ERROR:', err);
+          this.showCustomToast(this.translate.instant('ERROR.CODE_ERROR') || 'Erreur lors de la sauvegarde du code.', 'error');
+        }
+      });
+    } catch (e) {
+      console.error('[OrderCard] generateCode try/catch ERROR:', e);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+    }
+  }
+
+  /**
+   * Marque le prestataire comme absent (no-show-pro)
+   * - Update statut
+   * - Remboursement Stripe du client
+   * - MAJ des transactions (refunded)
+   * - Pénalité : commission + 10% du total, débit prestataire + crédit plateforme
+   */
+  markPrestataireAbsent(order: any) {
+    try {
+      if (!order?._id) return;
+
+      console.log('[OrderCard] no-show-pro →', order?._id);
+      this.bookingService.updateBookingStatus(order._id, 'no-show-pro', this.storedLangue).subscribe({
+        next: () => {
+          // 1) Remboursement Stripe intégral du client
+          this.stripeService.refundPayment(order.paymentIntentId).subscribe({
+            next: (refundResponse: any) => {
+              console.log('[OrderCard] Stripe refund OK:', refundResponse);
+
+              // 2) MAJ transaction(s) associée(s) en "refunded"
+              this.transactionService.getAll().subscribe({
+                next: (transactions: any[]) => {
+                  try {
+                    const matching = transactions.filter(tx => tx.idBooking === order._id);
+                    if (matching.length > 0) {
+                      matching.forEach((tx: any) => {
+                        tx.status = 'refunded';
+                        this.transactionService.update(tx).subscribe({
+                          next: (updatedTx) => console.log('[OrderCard] Tx updated as refunded:', updatedTx),
+                          error: (err) => console.error('[OrderCard] Tx update ERROR:', err)
+                        });
+                      });
+                    } else {
+                      console.warn('[OrderCard] No transaction found for this booking.');
+                    }
+                  } catch (e) {
+                    console.error('[OrderCard] process transactions error:', e);
+                  }
+                },
+                error: (err) => {
+                  console.error('[OrderCard] getAll transactions ERROR:', err);
+                }
+              });
+
+              // 3) Pénalité : commission + 10% du total
+              const totalAmount = parseFloat(order.price || 0);
+              const commission = order.commission ? parseFloat(order.commission) : 0;
+              const additionalPenalty = totalAmount * 0.1; // 10%
+              const totalPenalty = commission + additionalPenalty;
+
+              // 3a) Débit prestataire
+              const penaltyTransactionPayload = {
+                userProId: order.userProId,
+                type: 'debit',
+                amount: totalPenalty,
+                description: 'Pénalité no-show-pro : commission + 10%',
+                status: 'completed',
+                idBooking: order._id
+              };
+              this.transactionService.create(penaltyTransactionPayload).subscribe({
+                next: () => {
+                  // 3b) Crédit plateforme
+                  const platformTransactionPayload = {
+                    userProId: 'platform',
+                    type: 'credit',
+                    amount: totalPenalty,
+                    description: 'Crédit pénalité no-show-pro',
+                    status: 'completed',
+                    idBooking: order._id
+                  };
+                  this.transactionService.create(platformTransactionPayload).subscribe({
+                    next: () => {
+                      this.showCustomToast(this.translate.instant('SUCCESS.NO_SHOW_PRO') || 'Pénalité appliquée & remboursement effectué.', 'success');
+                    },
+                    error: (platformTxError: any) => {
+                      console.error('[OrderCard] Platform tx create ERROR:', platformTxError);
+                      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+                    }
+                  });
+                },
+                error: (penaltyError: any) => {
+                  console.error('[OrderCard] Penalty tx create ERROR:', penaltyError);
+                  this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+                }
+              });
+            },
+            error: (refundError: any) => {
+              console.error('[OrderCard] Stripe refund ERROR:', refundError);
+              this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+            }
+          });
+        },
+        error: (err: any) => {
+          console.error('[OrderCard] no-show-pro status update ERROR:', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+        }
+      });
+    } catch (e) {
+      console.error('[OrderCard] markPrestataireAbsent try/catch ERROR:', e);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
+    }
+  }
+
+  // ============================================================
+  // =======================  UI helpers  =======================
+  // ============================================================
+
+  onImageLoad(_orderId: string) {
+    // hook visuel si tu veux marquer le skeleton comme "loaded"
+    console.log('[OrderCard] image loaded');
+  }
+
+  goToShop(order: any) {
+    try {
+      if (!order?.shopId) return;
+      this.router.navigate(['shop/' + order.shopId]);
+    } catch (e) {
+      console.error('[OrderCard] goToShop ERROR:', e);
+    }
+  }
+
   formatPrice(price: any): string {
     const numericPrice = parseFloat(price);
-
-    if (isNaN(numericPrice)) {
-      return '0.00 €';
-    }
-
+    if (isNaN(numericPrice)) return '0.00 €';
     return numericPrice.toFixed(2);
   }
 
-
-  cancelBooking(order: any) {
-    console.log('Annulation de la commande :', order);
-    // Tu peux ici émettre un EventEmitter si besoin
-    console.log("Booking to delete:", JSON.stringify(order));
-
-    // Mise à jour du statut du booking
-    this.bookingService.updateBookingStatus(order._id, 'deleted', this.storedLangue).subscribe({
-      next: (response: any) => {
-        console.log("Booking update response:", JSON.stringify(response));
-        console.log("DELETE OK");
-
-        // Calcul de la différence en heures entre maintenant et le début du booking
-        const bookingStart = moment(order.start);
-        const now = moment();
-        const diffHours = bookingStart.diff(now, 'hours');
-        console.log(`Différence en heures entre maintenant et le début du booking : ${diffHours}`);
-
-        if (diffHours >= 24) {
-          console.log("Suppression > 24h avant la prestation : remboursement complet du client.");
-          // Appel du FinancialService pour un remboursement complet
-          this.financialService.processRefund(order._id, "customer-cancel-greater-than-24").subscribe({
-            next: (refundResponse: any) => {
-              console.log("Remboursement complet effectué via FinancialService:", refundResponse);
-              // this.switchUserOrPro();
-              // TODO F6 : Update invoice
-              this.onUpdateNeeded.emit(order);
-            },
-            error: (refundError: any) => {
-              console.error("Erreur lors du remboursement complet:", refundError);
-            }
-          });
-        } else {
-          console.log("Suppression < 24h avant la prestation : remboursement partiel (50%).");
-          if (window.confirm("Attention, si vous continuez, vous ne serez remboursé qu'à 50% du montant payé. Voulez-vous confirmer ?")) {
-            // Appel du FinancialService pour un remboursement partiel
-            this.financialService.processRefund(order._id, "customer-cancel-less-than-24").subscribe({
-              next: (refundResponse: any) => {
-                console.log("Remboursement partiel effectué via FinancialService:", refundResponse);
-                // this.switchUserOrPro();
-                // TODO F6 : Update invoice
-                this.onUpdateNeeded.emit(order);
-              },
-              error: (refundError: any) => {
-                console.error("Erreur lors du remboursement partiel:", refundError);
-              }
-            });
-          } else {
-            console.log("Annulation de l'opération par le client.");
-          }
-        }
-      },
-      error: (error: any) => {
-        console.error("Erreur lors de la mise à jour du booking :", JSON.stringify(error));
-        console.log("DELETE FAILED");
-      }
-    });
-  }
-
   contactSupport(order: any) {
-    console.log('Contacter le support pour :', order);
-    // Rediriger ou ouvrir un système de ticket / chat
+    // Hook pour ouvrir le chat support pré-rempli, ou router vers /support
+    console.log('[OrderCard] contactSupport →', order?._id);
   }
 
   reviewBooking(order: any) {
+    // Ouvre la modale d’avis (parent)
     this.modalReview.emit(order);
-    // this.selectedBooking = order;
-    // this.showReviewModal = true;
   }
 
   closeReviewModal() {
+    // Ferme la modale d’avis (parent)
     this.modalReview.emit();
-    // this.showReviewModal = false;
-    // this.selectedBooking = null;
+  }
+
+  // ============================================================
+  // =======================  Toast helper  =====================
+  // ============================================================
+
+  /**
+   * Affiche un toast i18n (clé ou message brut).
+   * @param keyOrMessage Clé i18n (p.ex. 'ERROR.GENERIC_ERROR') ou message direct
+   * @param type 'success' | 'error'
+   */
+  private showCustomToast(keyOrMessage: string, type: 'success' | 'error' = 'success') {
+    try {
+      const translated = this.translate.instant(keyOrMessage);
+      const message = translated && translated !== keyOrMessage ? translated : keyOrMessage;
+      if (type === 'success') this.toastr.success(message);
+      else this.toastr.error(message);
+    } catch {
+      if (type === 'success') this.toastr.success(keyOrMessage);
+      else this.toastr.error(keyOrMessage);
+    }
   }
 }

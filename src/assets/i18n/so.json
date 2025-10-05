@@ -1,0 +1,1428 @@
+{
+  "SHOPTYPE": {
+    "HAIRDRESSER": "Timo-jare/yaqaan",
+    "NAILTECHNICIAN": "Qurxinta cidiyaha",
+    "MAKEUP": "Qurxiyeya(albaab)",
+    "WAXING": "Khadamka/Esthetician",
+    "FACIAL": "Daryeel wejiga",
+    "MASSAGE": "Duugis",
+    "EYELASH": "Dharbaaxo (extension) indho",
+    "EYEBROW": "Sunniyaha",
+    "TANNING": "Maariin/maqaarka madoobayn",
+    "ACUPUNCTURE": "Cirbaha dhaqanka (Acupuncture)",
+    "OTHER": "Kale"
+  },
+  "SUCCESS": {
+    "PHOTO_DELETE": "Sawir laga tiray galeriga",
+    "PHOTO_UPLOAD": "Sawirka si guul leh ayaa loo raray",
+    "PARTIAL_REFUND_CONFIRM": "Lacag-celin qayb ah waa la xaqiijiyay!",
+    "CODE_SAVED": "Koodh la keydiyay.",
+    "USERCREATED": "Isticmaalaha si guul leh ayaa loo abuuray. E-mail xaqiijin ah ayaa laguu soo diray.",
+    "SUBSCRIBE_SUCCESS": "Diiwaangelintaada waa la xaqiijiyay.",
+    "EMAIL_VERIFIED": "Akaawnkaaga waa la hawlgeliyay 🎉 Hadda waad gali kartaa.",
+    "EMAIL_RESENT": "E-mailka xaqiijinta ayaa dib loo diray. Fadlan hubi sanduuqaaga.",
+    "BOOKING_CREATED": "Ballantaada si guul leh ayaa loo diiwaan geliyay.",
+    "PAYMENT_OK": "Bixinta waa la xaqiijiyay.",
+    "REFUND_OK": "Lacag-celin waa la sameeyay.",
+    "USERUPDATED": "Isticmaalaha waa la cusboonaysiiyay.",
+    "SETTINGS_UPDATED": "Dejimaha waa la cusboonaysiiyay.",
+    "REVIEW_ADDED": "Faalladaada waa la daabacay 🎉",
+    "SHOPUPDATED": "Dukaanka waa la cusboonaysiiyay.",
+    "BOOKING_ACCEPTED": "Ballan waa la aqbalay.",
+    "BOOKING_FINISHED": "Ballan waa la dhammaystiray.",
+    "BOOKING_REFUSED": "Ballan waa la diiday.",
+    "BOOKING_DELETED": "Ballan waa la tirtiray.",
+    "CODE_GENERATED": "Koodh la sameeyay.",
+    "CODE_CONFIRMED": "Koodh la xaqiijiyay.",
+    "INVOICE_DOWNLOADED": "Faktuur waa la soo dejiyay.",
+    "MARKED_NO_SHOW_CLIENT": "Macmiil lagu calaamadeeyay inuusan iman.",
+    "COMPANY_CREDITED": "Koontada shirkadda waa la kabay.",
+    "MARKED_NO_SHOW_PRO": "Adeeg-bixiye aan soo muuqan.",
+    "EMPLOYEE_CREDITED": "Koontada shaqaalaha waa la kabay.",
+    "NO_SHOW_PRO": "Ganaax la saaray & lacag-celin la sameeyay.",
+    "EMPLOYEE_DELETED": "Shaqaale waa la tirtiray.",
+    "SLOT_SELECTED": "Waqti ayaa la doortay",
+    "PASSWORD_RESET": "Ereyga sirta ah waa la dejiyay.",
+    "INVOICE_GENERATED": "Fakthuuro waa la abuuray.",
+    "REVIEW_SAVED": "Faallo waa la kaydiyay, mahadsanid!",
+    "DEFAULT_PASSWORD_UPDATED": "Ereyga sirta ah ee aasaasiga ah waa la cusboonaysiiyay.",
+    "COMPANY_CREATED": "Koontadaada ganacsi si guul leh ayaa loo abuuray."
+  },
+  "ERROR": {
+    "LOGIN_REQUIRED": "Fadlan gal si aad u maamusho kuwa aad jeceshahay.",
+    "INVALID_IMAGE": "Sawir aan sax ahayn.",
+    "NO_SLOTS": "Waqtiyo banaan kuma jiraan adeeggan.",
+    "NO_SHOP_SELECTED": "Dukaan lama doortin.",
+    "NO_SERVICE_SELECTED": "Adeeg lama doortin.",
+    "ORDER_ERROR": "Khalad ayaa dhacay marka la cusboonaysiinayo dalabka.",
+    "CODE_ERROR": "Khalad ayaa dhacay marka la kaydinayo koodhka.",
+    "INVOICE_GENERATED_ERROR": "Khalad abuurista fakthuuro.",
+    "USERNOTCREATED": "Lama abuurin isticmaale.",
+    "INSUFFICIENT_COMPANY_CREDIT": "Lacagta shirkaddu kuma filna kabkan.",
+    "GENERIC_ERROR": "✨ Hooy… khalad ayaa dhacay. Fadlan isku day mar kale ✨",
+    "COMPANY_CREDITED": "Koontada shirkadda waa la kabay.",
+    "LINK_INVALID_OR_MISSING": "Xiriir aan sax ahayn ama maqan.",
+    "LINK_INVALID_OR_EXPIRED": "Xiriir aan sax ahayn ama dhacay.",
+    "EMAIL_NOT_FOUND": "E-mailka isticmaalaha lama helin.",
+    "PAYMENT_FAILED": "Bixintu way fashilantay.",
+    "BOOKING_FAILED": "Abuurista ballanta way fashilantay.",
+    "LOAD_CARDS_FAILED": "Khalad ayaa dhacay marka la rarayo kaararkaaga.",
+    "LOAD_SHOP_FAILED": "Khalad ayaa dhacay marka la rarayo saloonka.",
+    "LOAD_PRODUCTS_FAILED": "Khalad ayaa dhacay marka la rarayo adeegyada.",
+    "INVALID_CODE": "Koodhka aad gelisay sax ma aha.",
+    "PASSWORD_CHANGED": "Ereyga sirta ah waa la cusboonaysiiyay.",
+    "PASSWORDS_IDENTICAL": "Ereyga sirta cusub waa inuu ka duwan yahay kan hadda.",
+    "INVALID_AMOUNT": "Lacag aan sax ahayn.",
+    "INVALID_CURRENT_PASSWORD": "Ereyga sirta hadda waa qalad.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "Ereyga sirta hadda waa qalad ama khalad kale ayaa dhacay.",
+    "PASSWORD_UPDATE_FAILED": "Cusboonaysiinta erayga sirta way fashilantay.",
+    "PASSWORD_UPDATE_GENERIC": "Khalad ayaa dhacay inta la cusboonaysiinayo erayga sirta.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "Ereyada sirta ah isma waafaqaan ama aad bay u gaaban yihiin (ugu yaraan 8 xaraf).",
+    "INVALID_PASSWORD": "Ereyga sirta lama daayo.",
+    "PASSWORD_TOO_SHORT": "Ereyga sirta ah waa inuu ahaadaa ugu yaraan 8 xaraf."
+  },
+  "STRIPE": {
+    "MISSING_PK": "Habayn Stripe maqan.",
+    "LOAD_FAILED": "Stripe lama rarri karin",
+    "NOT_READY": "Stripe lama hawlgelin",
+    "CONFIRM_FAILED": "Diiwaangelinta kaarka way fashilantay",
+    "CARD_SAVED": "Kaar si guul leh ayaa loo keydiyay ✅",
+    "PM_FAILED": "Abuurista kaarka way fashilantay",
+    "SI_FAILED": "Lama diyaarin karin diiwaangelinta kaarka",
+    "ATTACH_FAILED": "Kaarka lama xiriirin karo akoonka",
+    "SAVE_CARD": "Kaydi kaarka",
+    "ADD_CARD": "Ku dar kaarka"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "Fadlan gal"
+  },
+  "COMMON": {
+    "LOADING": "Socoto…",
+    "UNEXPECTED_ERROR": "Khalad lama filaan ah ayaa dhacay"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "Hubin socota",
+    "VALIDE": "Waxaan xaqiijinaynaa xiriirkaaga kicinta. Waxay qaadanaysaa ilbidhiqsiyo yar.",
+    "ACCOUNT": "Akoon la kiciyay",
+    "CONNECT": "Gal",
+    "OUPS": "Hooy",
+    "WRITE": "Caawin u baahan tahay? Noo qor",
+    "RESEND": "Dib u dir e-mailka kicinta"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "Xogtayda bangiga",
+    "ADD_BANK_INFO": "Ku dar xogtayda bangiga",
+    "BANK_NAME": "Magaca bangiga",
+    "HOLDER_NAME": "Magaca ku qoran koontada",
+    "COUNTRY": "Waddan",
+    "SAVE": "Kaydi"
+  },
+  "LOADER": {
+    "LOADING": "Socoto…"
+  },
+  "SPONSORS": {
+    "TITLE": "Taageerayaasheena",
+    "SPONSORISED": "La kafaalo-qaaday"
+  },
+  "TABS": {
+    "FINANCE": "Dabagal maaliyadeed",
+    "GENERAL_INFO": "Macluumaad guud",
+    "EMPLOYEES": "Maareynta shaqaalaha",
+    "SERVICES": "Maareynta adeegyada",
+    "PHOTOS": "Galeriga sawirrada",
+    "STATS": "Tirada/Statistikada",
+    "PARAM": "Dejinta",
+    "SHOPS": "Dukaamada",
+    "USERS": "Isticmaalayaasha",
+    "MESSAGE": "Farriimaha"
+  },
+  "CARD": {
+    "ADD": "Ku dar kaarka",
+    "NO_IMAGE": "Galeriga sawir ma jiro.",
+    "SALON": "Saloon si guul leh ayaa loo cusboonaysiiyay",
+    "ERROR1": "Khalad cusboonaysiinta saloonka",
+    "ERROR2": "Khalad cusboonaysiinta sawirka",
+    "UPDATE": "Saloon si guul leh ayaa loo cusboonaysiiyay"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "La dhammeeyay",
+    "ACCEPTEE": "La aqbalay",
+    "WAITING": "Sugaya",
+    "CANCEL": "La joojiyay",
+    "DELETE": "La tirtiray",
+    "REFUSED": "La diiday",
+    "NO_PRESTA": "Adeeg-bixiye ma imaan",
+    "CLIENT_ABSENT": "Macmiil ma imaan",
+    "ADRESSE": "Cinwaan",
+    "DATE": "Taariikh",
+    "TOTAL": "Wadar",
+    "FACTURE": "Faktuur",
+    "CANCELLED": "La joojiyay",
+    "DELETED": "Tirtir",
+    "AVIS": "Faallo",
+    "SUPPORT": "Taageero",
+    "CODE": "Koodh xaqiijin",
+    "CODE_A_DONNER": "Koodhka la siinayo adeeg-bixiyaha",
+    "PRESTA_ABSENT": "Adeeg-bixiye ma imaan"
+  },
+  "SHOP_CARD": {
+    "AVIS": "Faallooyinka dukaanka",
+    "COMMENT": "Faallo",
+    "NOTE": "Darajo",
+    "CLOSE": "Xir"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "Galeriga sawir ma jiro."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "Ku qiimee dalabkaaga",
+    "DATE": "Taariikh",
+    "SERVICE": "Adeeg",
+    "AVIS": "Faalladaada",
+    "SEND": "Dir",
+    "PLACEHOLDER": "Sharax khibraddaada…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "Keen adeegga gurigaaga",
+    "KNOWMORE": "Ogow dheeraad",
+    "PART1TITLE": "Ka faa’iidayso adeegyada quruxda ee guriga",
+    "PART1TEXT": "Khabiiradeenna tababaran ayaa kuu imanaya si ay kuu siiyaan daryeel qurux tayo leh, oo la jaanqaada baahidaada iyo rabitaankaaga. Ku raaxayso khibrad gaar ah—qadada, fiidkii shaqada ka dib, ama galab asxaab la joogto.",
+    "PART2TITLE": "Ka shaqee goorta aad rabto, kasbasho dabacsan",
+    "PART2TEXT": "Kasbo dakhli si waafaqsan jadwalkaga adigoo aqbalaya dalabyo ku habboon. Waxaad adeegsan kartaa qalabkaaga ama waxaad ka kireysan kartaa qalab xirfadeed via izyGlam.",
+    "PART3TITLE": "Adeeg qurux oo loo habeeyay shirkadaha",
+    "PART3TEXT": "Glam for Business waa madal loogu talagalay shirkado dhan walba, si ay u maareeyaan baahiyaha quruxda ee macaamiisha iyo shaqaalaha. Adeegyo gaar ah si toos ah goobta shaqada, munaasabado, ama dhacdooyin khaas ah.",
+    "APPTITLE": "Wax walba way fudud yihiin marka la adeegsado app-yada",
+    "DOWNLOADAPP1": "Soo dejiso app-ka",
+    "DOWNLOADAPP2": "Soo dejiso app-ka xirfadlayaasha quruxda",
+    "SCANTODOWNLOAD": "U sawir si aad u soo dejisato",
+    "SIGNUP": "Is diiwaangeli!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "Khalad ciyaarista muuqaalka",
+    "AUTOPLAY_BLOCKED": "Ciyaar toos ah waa la xanibay. Taabo si aad u bilowdo.",
+    "NAV_ERROR": "Ma suurtagashay in la dhex maro"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "Sida ay u shaqeeyaan app-yada iyo bogagga izyGlam",
+    "HELPCENTER": "Geli xarunta caawinta",
+    "BUSINESS": "Ganacsi",
+    "ABOUT": "Ku saabsan",
+    "OURSERVICES": "Adeegyadeenna",
+    "PRESSAREA": "Warfaafinta",
+    "INVESTORS": "Maalgashadeyaasha",
+    "CAREERS": "Shaqooyin",
+    "AI": "Sirdoonka Macmalka",
+    "PRODUCTS": "Alaabaha",
+    "GLAM": "Had iyo jeer u bilicsan izyGlam",
+    "RESERVED": "Horay u qabsasho",
+    "GIFTCARDS": "Kaadhadhka hadiyadda",
+    "WORKWITHUS": "La shaqee izyGlam",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "Qarsoodi",
+    "ACCESS": "Helitaan",
+    "CONDITIONS": "Shuruudaha",
+    "LANGUAGE": "Luqad",
+    "LOCALISATION": "Goob",
+    "ALL_RIGHT": "Dhammaan xuquuqdu way xafidan yihiin"
+  },
+  "COMING_SOON": {
+    "TITLE": "Waxaan soo dhow nahay",
+    "TITLE-NOT-COMING": "Weli qorshe kama lihin inaan nimaadno",
+    "DAYS": "Maalmo",
+    "HOURS": "Saacado",
+    "MINUTES": "Daqiiqado",
+    "SECONDS": "Ilbiriqsi",
+    "TEXT": "Waxaan si adag uga shaqaynaynaa inaan ku siino khibrad qurux guriyeed gaar ah. La soco si aad u hesho wargelin marka aan bilowno."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "Heshiisyada hadda",
+    "DISCOVER": "Wax ka ogow izyGlam",
+    "LIKED": "Kuwa ugu jecel agagaarka",
+    "SMART": "Qorsheyaal xariif ah",
+    "TOP10": "10-ka ugu sarreeya todobaadkan",
+    "SEARCHRESULT": "Natiijooyinka raadinta",
+    "AVIS": "Faallooyin"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Timo-jare",
+    "MANUCURE": "Manicure",
+    "VISAGE": "Wejiga",
+    "MASSAGE": "Duugis",
+    "MAQUILLAGE": "Qurxin",
+    "EPILATION": "Timaha saarista",
+    "BRONZAGE": "Madoobaynta maqaarka",
+    "PARTUM": "Daryeelka dhalmada kadib",
+    "NUTRITION": "Nafaqo",
+    "FITNESS": "Jimicsi",
+    "ACUPUNCTURE": "Acupuncture",
+    "STYLISME": "Styling",
+    "YOGA": "Nasasho/Yoga",
+    "DEVELOPPEMENT": "Kobcin",
+    "EYELASH": "Dharbaaxo indho"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "Timo-jare",
+    "MANUCURE": "Manicure",
+    "ESTETICIAN": "Esthetician",
+    "MASSAGE": "Masaajiiste",
+    "MAQUILLAGE": "Qurxiyad",
+    "PEDICURE": "Pedicure",
+    "NUTRITION": "Nafaqo-yaqaan",
+    "FITNESS": "Macallin jimicsi"
+  },
+  "INTRO": {
+    "NORESULTS": "Natiijo lama helin",
+    "START": "Bilow",
+    "SPECIALITY": "Takhasus?",
+    "WHERE": "Xaggee?",
+    "CONNEXION": "Gelid",
+    "REGISTRATION": "Diiwaangelin"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "Macluumaadka akoonka",
+    "MESSAGE": "Fariimahayga",
+    "MESSAGE_SUBTITLE": "Liiska wada sheekaysiyada socda.",
+    "INFORMATION_SUBTITLE": "Si fudud u beddel xogtaada gaarka ah.",
+    "SECURITY": "Amniga & luqadda",
+    "SECURITY_SUBTITLE": "Erey sir, luqad… wax walba halkan ka maamul.",
+    "CONFIDENTIAL": "Qarsoodi & xog",
+    "CONFIDENTIAL_SUBTITLE": "Xogtaadu waa qaali. Sidaan u ilaalino halkan ka ogow.",
+    "DASHBOARD": "Miiska koontaroolka",
+    "DASHBOARD_SUBTITLE": "Si fudud u maamul xogta ganacsigaaga.",
+    "COMPANY": "Maareynta shirkaddayda",
+    "COMPANY_SUBTITLE": "Si fudud u maamul ballamaha la soo dhaafay, kuwa imanaya ama la joojiyay.",
+    "SHOP": "Maareynta saloonkayga",
+    "SHOP_SUBTITLE": "Maamul saloonka, adeegyada iyo maaliyadda.",
+    "FINANCIAL": "Dabagal maaliyadeed",
+    "ADMIN": "Maamulka guud",
+    "ADMIN_SUBTITLE": "Si fudud u maamul dhammaan shaqadan. Adigu guuleyste baad tahay!",
+    "CALENDAR": "Ajande",
+    "CALENDAR_SUBTITLE": "Maamul ballamaha hore & kuwa imanaya.",
+    "SELECT_SALON": "Dooro saloon",
+    "NEW_SALON": "Abuur saloon",
+    "SHOP_TO_CREATE": "Nooca dukaanka la abuurayo",
+    "CANCEL": "Jooji",
+    "CREATE": "Abuur dukaankayga",
+    "INFO1": "Waxaad ku dhowdahay tirtirka dukaankaaga ee",
+    "INFO2": "Tallaabadani lama celin karo",
+    "SURE": "Ma hubtaa inaad sii wadi rabto",
+    "DELETE": "Tirtir"
+  },
+  "PROFILE": {
+    "TITLE": "Xog aasaasi ah",
+    "FIRSTNAME": "Magaca hore",
+    "LASTNAME": "Magaca dambe",
+    "PHONE": "Lambarka telefoonka",
+    "ADDRESS": "Cinwaanka e-mailka",
+    "CHANGE_USER": "Beddel isticmaale",
+    "CANCEL": "Jooji",
+    "SUCCESS": "Profile si guul leh ayaa loo beddelay",
+    "UPDATE_ERROR": "Khalad ayaa dhacay inta la cusboonaysiinayay erayga sirta."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "Beddel erayga sirta",
+    "ACTUAL_PASSWORD": "Ereyga sirta hadda",
+    "NEW_PASSWORD": "Erey sir cusub",
+    "CONFIRMED_PASSWORD": "Xaqiiji erayga sirta cusub",
+    "CHANGE_PASSWORD": "Beddel erayga sirta",
+    "CHANGE_OK": "Ereyga sirta si guul leh ayaa loo beddelay",
+    "CHANGE_LANGUE": "Beddel luqadda",
+    "CHANGE_COUNTRY": "Beddel waddanka",
+    "LANGUE": "Luqad",
+    "COUNTRY": "Waddan"
+  },
+  "PAYEMENT": {
+    "YOU": "Adiga",
+    "HEADER_TITLE": "Bixin",
+    "SERVICE_TITLE": "Adeeg",
+    "SERVICE_NOTE": "Qoraal:",
+    "ADDRESS_TITLE": "Cinwaanka adeegga",
+    "ADDRESS_RENDEZVOUS": "Kulan albaabka gurigayga",
+    "ADDRESS_CHANGE": "Dooro cinwaan kale",
+    "PAYMENT_SECTION_TITLE": "Bixin",
+    "PAYMENT_METHOD": "Kaararka ugu weyn",
+    "PAYMENT_EXPIRE": "Dhacaya",
+    "PAYMENT_NO_CARD": "Kaar ugu weyn lama dejin",
+    "PAYMENT_NO_CARD_DESC": "Fadlan ku dar ama dooro kaar sida hab bixin weyn.",
+    "SUMMARY_SUBTOTAL": "Hoosaad",
+    "SUMMARY_SERVICE_FEE": "Komishanka izyGlam",
+    "SUMMARY_DELIVERY_FEE": "Kharashka adeegga",
+    "SUMMARY_TOTAL": "Wadarta",
+    "TITLE": "Ku qabsato ballantaada onlayn",
+    "FOR_WHO": "Qofkee ayaad ballan uga qaadaysaa?",
+    "ADD_PROCHE": "Ku dar qof qaraabo ah",
+    "WHERE": "Xaggee lagu qabanayaa ballanta?",
+    "SELECT_ADDRESS": "Dooro cinwaan",
+    "ADD_ADDRESS": "Ku dar cinwaan",
+    "CARD_PAY": "Bixin kaar bangi",
+    "CARD_NUM": "Lambarka kaarka",
+    "CARD_NAME": "Magaca ku yaal kaarka",
+    "EXPIRATION": "Taariikhda dhacitaanka",
+    "CVV": "CVV",
+    "RDV": "Faahfaahinta ballantaada",
+    "RESUME": "Soo koobid ballan",
+    "DATE": "Taariikh",
+    "HOUR": "Saacad",
+    "PRESTA": "Adeeg",
+    "EXPIRE": "Dhacaya",
+    "DEFAULT": "Aasaasi",
+    "NOCARD": "Kaar lama keydin",
+    "WITH": "La",
+    "TOTAL": "Wadarta la bixinayo",
+    "ANNULER": "JOOJI",
+    "RETOUR": "DIB U NOQO",
+    "CONTINUER": "SII WAD",
+    "VALIDER": "XAQIIJI",
+    "ADRESSE": "Cinwaan",
+    "LEGAL_TEXT_1": "Adigoo gujinaya badhanka dalbashada, waxaad aqbalaysaa Heshiiska adeegga gaarsiinta ee izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "Waxaad ka tanaasushay xaqa ka noqoshada ee khuseeya adeegyada gaarsiinta. Waxaad heli kartaa dhexdhexaadiye macaamiil halkan.",
+    "LEGAL_TEXT_3": "Haddii aadan joogin marka geytuhu yimaado, wuxuu dhigaya dalabkaaga hortiisa albaabka. Markaad dalbato, waad qaadaysaa masuuliyadda marka la geeyo. Dalabka khamriga ama alaabooyinka la xadidayo lama dhigi doono; waxaa toos loogu celinayaa goobta.",
+    "CLOSE_FORM": "Xir foomka",
+    "ADD_CARD": "Ku dar kaar",
+    "TRAITEMENT": "Hawlgal soconaya"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "Bixin la xaqiijiyay",
+    "THANKS": "Mahadsanid! Ballantaada waa la diiwaangaliyay.",
+    "BACKHOME": "Ku noqo bogga hore",
+    "PROBLEME": "Dhibaatada ballan",
+    "PAIEMENT": "Lacagta waa la qaaday, balse ballanka lama xaqiijin.",
+    "THANKSCONTACT": "Fadlan la xiriir taageeradayada:",
+    "FAILED": "Bixin fashilantay",
+    "VALIDATE": "Ma awoodin inaan xaqiijino bixintaada. Fadlan isku day mar kale."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam ee madax-bannaanayaasha",
+    "STEP1": {
+      "TITLE": "Macaamiishu way dalbanayaan",
+      "TEXT": "Macmiilku wuxuu helaa goobtaada wuxuuna dalbanayaa app-ka izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Waxaad aqbashaa ballanta",
+      "TEXT": "Waxaad aqbashaa ballanta, jadwalkana si toos ah ayaa loo cusboonaysiiyaa."
+    },
+    "STEP3": {
+      "TITLE": "Marka ballantu timaaddo",
+      "TEXT": "Waxaad heli doontaa digniino hore iyo tilmaamo lagu gaari karo macmiil kasta."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "Ku kab koontada shirkadda",
+    "SOLDE": "Hadhaaga hadda",
+    "CREDIT": "Lacagta la kabayo",
+    "COMPANY": "Ku kab koontada shirkadda",
+    "DEPENSE": "Dabagal kharashaad",
+    "DATE": "Taariikh",
+    "COUNT": "Lacag",
+    "EMPLOYEE": "Shaqaale",
+    "DESCRIPTION": "Sharaxaad"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "Waxaad horey u leedahay koonto lammaane ama shirkad!",
+    "NOT_CONNECTED": "Fadlan gal si aad u kaydiso saloon",
+    "TITLE": "Bilow hadda!",
+    "TITLE2": "Aan abuurno saloon!",
+    "NAME": "Magaca saloonkaaga",
+    "ADDRESS": "Cinwaanka shirkaddaada",
+    "STREET": "Waddo",
+    "CITY": "Magaalo",
+    "CODE_POSTAL_POSSIBLE": "Koodhadhka boostada ee la daboolo",
+    "CODE_POSTAL": "Koodh boosto",
+    "COUNTRY": "Waddan",
+    "ADDRESSPLACEHOLDER": "123, Waddada Dhexe",
+    "FLOOR": "Dabaq/Qol (ikhtiyaari)",
+    "BUSINESSTYPE": "Nooca ganacsiga",
+    "FIRSTNAME": "Magaca hore",
+    "LASTNAME": "Magaca dambe",
+    "PASSWORD": "Erey sir",
+    "PASSWORDCONFIRMED": "Xaqiijinta erayga sirta",
+    "EMAIL": "E-mail",
+    "PHONE": "Telefoon gacanta",
+    "WHATSAPP": "Waxaan aqbalayaa farriimaha WhatsApp",
+    "BUTTON": "Kaydi dukaanka",
+    "SUCCESS": "Dukaanka si guul leh ayaa loo abuuray!",
+    "ERROR": "Khalad ayaa dhacay inta la abuurayay dukaanka:",
+    "ERROR1": "Magaca ganacsiga waa qasab.",
+    "ERROR2": "Cinwaanka ganacsiga waa qasab.",
+    "ERROR3": "Nooca ganacsiga waa qasab.",
+    "ERROR4": "Magaca hore waa qasab.",
+    "CHOOSE_COUNTRY": "Dooro waddan",
+    "POSTAL_CODE": "Koodh boosto",
+    "CHOOSE_CITY": "Dooro magaalo",
+    "ERROR5": "Magaca dambe waa qasab.",
+    "ERROR6": "E-mail waa qasab.",
+    "ERROR7": "Telefoonka gacanta waa qasab.",
+    "ERROR8": "Waa inaad aqbashaa farriimaha WhatsApp."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "Beddel cinwaanka",
+    "FIND_SHOP": "Raadi dukaan",
+    "CATEGORIES": "Qeybaha",
+    "OFFRE": "Heshiisyada hadda",
+    "DISCOVER": "Wax ka ogow",
+    "APPRECIATE": "Kuwa ugu jecel",
+    "SMART": "Qorsheyaal xariif ah",
+    "TOP10": "Top10 todobaadka",
+    "SEARCH_RESULT": "Natiijooyinka raadinta",
+    "NOT_AVAILABLE": "Weli lama heli karo cinwaankan",
+    "NEW_ADDRESS": "Ku dar cinwaan cusub",
+    "CHOOSE_ADDRESS": "Dooro cinwaan",
+    "CHOOSE_COUNTRY": "Dooro waddan",
+    "CHOOSE_CITY": "Dooro magaalo",
+    "CHOOSE_ARRONDISSEMENT": "Dooro degmo",
+    "CANCEL": "Jooji",
+    "SAVE": "Kaydi",
+    "CLOSE": "Xir"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "Magac",
+    "CITY": "Magaalo",
+    "NOTE": "Darajo",
+    "MIDDLE_PRICE": "Qiime celcelis",
+    "PROMOTION": "Dhimis",
+    "ACTIONS": "Ficillo",
+    "MODIFIER": "Beddel xogta dukaanka",
+    "SHOP_NAME": "Magaca dukaanka",
+    "DESCRIPTION": "Sharaxaad",
+    "PRINCIPALE": "Sawirka ugu weyn",
+    "SHOP": "Nooca dukaanka",
+    "ARRONDISSEMENT": "Degmo",
+    "MINIMUM_DELAI": "Dib u dhac ugu yar",
+    "DISTANCE": "Masaafada ugu badan (km)",
+    "EMPLACEMENT": "Goob",
+    "HOURS_MORNING": "Saacadaha furitaanka – Subax",
+    "HOURS_AFTERNOON": "Saacadaha furitaanka – Galab",
+    "ACTIVE_PROMO": "Dhimis firfircoon",
+    "CANCEL": "Jooji",
+    "ENREGISTRER": "Kaydi"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "Kobci ganacsigaaga",
+    "TEXT": "Kumannaanka isticmaalayaal izyGlam ah ayaa u baahan goob cunto… (u qaabee ganacsigaaga!)",
+    "IMAGE": "sawir"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "Maxaa loogu doortaa izyGlam?",
+    "STEP1": {
+      "TITLE": "Ka shaqee shuruudahaaga",
+      "TEXT": "U habeey jadwalkaaga oo si xor ah u maamul adeegyadaada. Ka faa’iidayso madal dabacsan oo la jaanqaada baahidaada."
+    },
+    "STEP2": {
+      "TITLE": "Xoojiso joogitaanka onlaynka",
+      "TEXT": "Soo jiid macaamiil badan adoo adeegsanaya qalabka suuqgeynta ee app-ka iyo muuqaal korodhsan."
+    },
+    "STEP3": {
+      "TITLE": "Daacad-geli macaamiisha",
+      "TEXT": "Samee xiriirro waara adigoo falanqaynaya doorbidka, uga jawaabaya faallooyinka, oo siinaya faa’iidooyin daacadnimo."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "Sahlidda maareynta ganacsigaaga",
+      "TEXT": "IzyGlam waxa ay bixisaa xal dhamaystiran oo loogu talagalay xirfadlayaasha daryeelka. Qalab dabacsan + taageero shakhsiyeed."
+    },
+    "STEP2": {
+      "TITLE": "Kordhi iibkaaga",
+      "TEXT": "Maalin kasta, kumannaan qof ayaa adeegsada izyGlam si ay u helaan khubaro qurux. Ka faa’iidayso fursaddan."
+    },
+    "STEP3": {
+      "TITLE": "Qanacsanaan la hubo",
+      "TEXT": "Bixi khibrad gaar ah: maamul ballamaha, la xiriir si degdeg ah, oo u adeeg si habboon. Macaamiishu waxay helayaan daryeel meel kasta, wakhti kasta."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam shirkaddaada?",
+    "STEP1": {
+      "TITLE": "Shaqaalaha iyo macaamiishu way qabsanayaan adeegyo",
+      "TEXT": "Waxay si toos ah uga xulanayaan app-ka izyGlam."
+    },
+    "STEP2": {
+      "TITLE": "Adigu ayaad go’aamisaa miisaaniyadda",
+      "TEXT": "Waxaad kabtaa koontooyinka shaqaalaha/macaamiisha—joogto ama hal mar."
+    },
+    "STEP3": {
+      "TITLE": "Adeegyada waa la fulinayaa",
+      "TEXT": "Khabiiradeenna ayaa u taga shaqaalahaaga ama xafiiska si ay u qabtaan adeegyada la dalbaday."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "Qiimee shirkaddaada",
+    "TEXT": "Kumannaanka isticmaaleyaal ayaa raadinaya adeegyo daryeel. Sii kooxahaaga iyo macaamiishaada helitaan gaar ah khubaro degaankooda ah.",
+    "IMAGE": "sawir"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "Maxaa loogu doortaa izyGlam?",
+    "STEP1": {
+      "TITLE": "Daacad-gelin & abaalmarin shaqaalaha",
+      "TEXT": "Siiyo miisaaniyad bil kasta oo qurux ah. Timo-jare, esthetician iwm — si loo kordhiyo qanacsanaanta iyo ka go’naanshaha."
+    },
+    "STEP2": {
+      "TITLE": "Kordhi sumcadda astaanta",
+      "TEXT": "Samee dhacdooyin qurux ama ku dar adeegyada barnaamijyada daacadnimada. Ka tag xusuus wanaagsan."
+    },
+    "STEP3": {
+      "TITLE": "Hagaaji fayo-qabka shaqada",
+      "TEXT": "Ka dhig adeeggu mid la heli karo goobta shaqada ama meel u dhow. Tani waxay kobcisaa dhiirigelinta iyo wadajirka."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "Sahlidda fayo-qabka kooxahaaga",
+      "TEXT": "IzyGlam waxay bixisaa xal fudud oo dabacsan—qurux iyo tababar jimicsi—dhammaan hal meel."
+    },
+    "STEP2": {
+      "TITLE": "Sii macaamiisha faa’iidooyin cusub",
+      "TEXT": "Xooji xiriirka adigoo bixinaya adeegyo daryeel dhacdooyinka ama daacadnimada."
+    },
+    "STEP3": {
+      "TITLE": "Daryeel la habeeyay, meel kasta",
+      "TEXT": "Shaqaalaha iyo macaamiisha waxay helayaan adeegyo tayo leh meel kasta; khubaro la soo xulay iyo taageero shakhsiyeed."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "Maamul akoonka",
+    "ORDERS": "Dalabyo la soo dhaafay",
+    "FAVORITES": "Kuwa la jecel yahay",
+    "HELP": "Caawin",
+    "MY_ABO": "Isdiiwaangelintayda",
+    "PRICES": "Qorshayaal qiime",
+    "FIDELITY": "Barnaamij daacadnimo",
+    "LOGOUT": "Ka bax",
+    "YOUR_BEAUTY_SERVICES": "Soo bandhig adeegyadaada quruxda",
+    "YOUR_COMPANY": "Diiwaangeli shirkaddaada"
+  },
+  "SUBTITLES": {
+    "HELP": "Caawin u baahan? Boggan ayaa kuu jira."
+  },
+  "ORDERS": {
+    "TITLE": "Dalabkayga",
+    "TITLE_SUBTITLE": "Si fudud u maamul ballamaha hore, imanaya, ama la joojiyay.",
+    "UPCOMING_SECTION": "📅 Soo socda",
+    "NO_UPCOMING": "Ballan qorshaysan ma lihid.",
+    "PAST_SECTION": "✅ La qabtay",
+    "NO_PAST": "Ballan la fuliyay ma lihid.",
+    "ADDRESS": "Cinwaan",
+    "DATE": "Taariikh",
+    "TOTAL": "Wadar",
+    "ITEMS": "shayaal",
+    "DELETE": "Tirtir",
+    "VISIT": "Booqo",
+    "PRESTA_FOR": "Adeeg loogu talagalay",
+    "AT": "saacadda",
+    "ORDER_AGAIN": "Dib u dalbo",
+    "INVOICE": "Codso faktuur",
+    "REVIEW": "Bixi faallo",
+    "CANCEL": "Jooji"
+  },
+  "FIDELITY": {
+    "TITLE": "Kuwa aan jeclahay",
+    "AGAIN": "Harsan",
+    "AGAIN_SUBTITLE": "ka hor intaadan helin abaalmarinta",
+    "TITLE_SUBTITLE": "si aad u furto hadiyaddaada",
+    "DATE": "Wuxuu dhacayaa",
+    "HISTO": "Taariikhda adeeggeygii"
+  },
+  "FAVORITES": {
+    "TITLE": "Kuwa aan jeclahay",
+    "TITLE_SUBTITLE": "Si degdeg ah u hel saloonyadaad jeceshahay."
+  },
+  "SHOP": {
+    "MOVING_FEE": "Kharashka adeegga:",
+    "DISTANCE": "Masaafada ugu badan:",
+    "PAYEMENT": "Kaar & PayPal waa la aqbalaa",
+    "PRESS_FOR_INFO": "Guji si aad u aragto saacadaha, macluumaadka, iwm.",
+    "GALLERY": "Galeriga sawirrada",
+    "SEE_MORE": "Muuji dheeraad",
+    "SEE_LESS": "Muuji wax yar"
+  },
+  "LOGIN": {
+    "TITLE": "Geli aqoonsigaaga.",
+    "FORGET_PASSWORD": "Ereyga sirta ma illoowday?",
+    "CONTINUER": "Sii wad",
+    "CONTINUE_WITH": "Sii wad adoo adeegsanaya",
+    "OR": "Ama",
+    "QRCODE": "Ku gal koodh QR",
+    "CGU": "Adigoo sii wadanaya, waxaad aqbalaysaa wicitaanno, WhatsApp, ama farriimo SMS (oo ay ku jiri karaan habab toos ah) oo ka imanaya izyGlam iyo shirkadaha la xiriira lambarka aad bixisay.",
+    "PLACEHOLDER_EMAIL": "Cinwaan e-mail",
+    "PLACEHOLDER_PASSWORD": "Erey sir",
+    "PLACEHOLDER_PASSWORD_NEW": "Erey sir cusub",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "Xaqiiji erayga sirta",
+    "CHANGE_PASSWORD": "Beddel erayga sirta",
+    "REINIT": "Dib u daji"
+  },
+  "SIGNUP": {
+    "GENRE": "Jinsi",
+    "CHOOSE": "Dooro",
+    "SEX_MALE": "Lab",
+    "SEX_FEMALE": "Dheddig",
+    "TITLE": "Geli xogtaada shaqsiga ah.",
+    "CONTINUER": "Sii wad",
+    "OR": "Ama",
+    "QRCODE": "Ku gal koodh QR",
+    "CGU": "Adigoo sii wadanaya, waxaad aqbalaysaa wicitaanno, WhatsApp, ama SMS ka iman kara izyGlam iyo kuwa la xiriira.",
+    "PLACEHOLDER_FIRSTNAME": "Magaca hore",
+    "PLACEHOLDER_LASTNAME": "Magaca dambe",
+    "PLACEHOLDER_EMAIL": "E-mail",
+    "PLACEHOLDER_EMAIL_REQUIRED": "E-mail waa qasab",
+    "PLACEHOLDER_EMAIL_WRONG": "Qaabka e-mailka ma saxna",
+    "PLACEHOLDER_PHONE": "Telefoon",
+    "PLACEHOLDER_PHONE_NUMBER": "Lambarka telefoonka",
+    "PLACEHOLDER_PASSWORD": "Erey sir",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "Xaqiijin eray sir",
+    "COUNTRY": "Waddan"
+  },
+  "LANGUE": {
+    "FRANCAIS": "Faransiis",
+    "ANGLAIS": "Ingiriisi",
+    "ESPAGNOL": "Isbaanish",
+    "NEERLANDAIS": "Holandays",
+    "ITALIEN": "Talyaani",
+    "ALLEMAND": "Jarmal",
+    "PORTUGAIS": "Boortaqiis",
+    "POLONAIS": "Boolish",
+    "DANOIS": "Danish",
+    "FINNOIS": "Finnish",
+    "SUEDOIS": "Iswiidhish",
+    "ARABE": "Carabi",
+    "TURC": "Turkish",
+    "CHINOIS": "Shiinees",
+    "RUSSE": "Ruush",
+    "PERSAN": "Faarisi",
+    "UKRAINIEN": "Yukreeniyaan",
+    "ROUMAIN": "Romaani",
+    "CATALAN": "Kaatalaan",
+    "BASQUE": "Baasq",
+    "GALICIEN": "Galiisiyaan",
+    "ALBANAIS": "Albaaniyaan",
+    "KURDE": "Kurdi",
+    "ESTONIEN": "Istooniyaan",
+    "SOMALIEN": "Somali",
+    "BIELORUSSE": "Belarus",
+    "JAPONAIS": "Jabaaniis",
+    "COREEN": "Kuuriyaan",
+    "INDONESIEN": "Indoneesiyaan",
+    "MALAIS": "Malay",
+    "THAI": "Taay",
+    "VIETNAMIEN": "Fiyetnaam",
+    "TAGALOG": "Tagalog",
+    "BENGALI": "Bangaali"
+  },
+  "COUNTRY": {
+    "FRANCE": "Faransiis",
+    "ALLEMAGNE": "Jarmal",
+    "SPAIN": "Isbaanish",
+    "ITALY": "Talyaani",
+    "DANEMARK": "Denmark",
+    "FINLAND": "Finland",
+    "NETHERLAND": "Netherlands",
+    "POLAND": "Poland",
+    "PORTUGAL": "Portugal",
+    "SWEDEN": "Sweden",
+    "CHINA": "Shiinaha",
+    "INDIA": "Hindiya",
+    "JAPAN": "Japan",
+    "SOUTH_KOREA": "Koonfur Kuuriya",
+    "INDONESIA": "Indonesia",
+    "PHILIPPINES": "Filibiin",
+    "THAILAND": "Tayland",
+    "VIETNAM": "Fiyetnaam",
+    "MALAYSIA": "Malaysia",
+    "SINGAPOURE": "Singaboor",
+    "EMIRAT_ARABE": "Imaaraadka Carabta",
+    "SAUDI_ARABIA": "Sacuudi Carabiya"
+  },
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Cinwaanadayda",
+    "ADDRESS_MODIFICATION": "Beddelidda cinwaan",
+    "STREET": "Waddo",
+    "CITY": "Magaalo",
+    "CP": "Koodh boosto",
+    "CREATE": "Abuur",
+    "BACK": "Dib u noqo",
+    "CHANGE": "Beddel",
+    "CLOSE": "Xir"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "Dejimaha madasha",
+    "COMMISSION": "Heerka komishanka (%)",
+    "0to100": "Qiime u dhexeeya 0 iyo 100 waa qasab",
+    "SERVICE": "Kharashka adeegga (€)",
+    "WEEKS": "Tirada toddobaadyada la muujinayo",
+    "SUP0": "Qiime ka weyn 0 waa qasab",
+    "LESS24": "Kharashka joojinta < 24 saac (%)",
+    "LESS48": "Kharashka joojinta < 48 saac (€)",
+    "DELAY": "Dib u dhac min. ee ballan (saacado)",
+    "TVA": "Heerka VAT (%)",
+    "ADS": "Daar xayaysiisyada",
+    "COMPANY": "Daar ganacsiga shirkadaha",
+    "FIDELITY": "Daar daacadnimada",
+    "MULTI_SHOP": "Daar multi-dukaan",
+    "PROMO": "Daar dhimisyo dukaanka",
+    "SPONSORS": "Daar qaybta kafaalo-qaadka bogga degitaanka",
+    "SAVE": "Kaydi"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "Wadarta dukaamada",
+    "ACT_SHOPS": "Dukaamada firfircoon",
+    "USERS": "Wadarta isticmaalayaasha",
+    "NBR_USERS": "Isticmaaleyaal is diiwaangeliyay",
+    "CA_TOTAL": "Wadarta dakhliga",
+    "CA_GENERATED": "Dakhli la sameeyay",
+    "SHOPS_PERFO": "Waxqabadka dukaamada",
+    "SHOP_NAME": "Magaca dukaanka",
+    "CITY": "Magaalo",
+    "REVENUES": "Dakhli",
+    "BOOKINGS": "Tirada ballamaha",
+    "NOTE": "Darajo celcelis",
+    "ACTIONS": "Ficillo",
+    "DETAILS": "Faahfaahin",
+    "ADJUST": "Hagaaji",
+    "SHOP_ADJUST": "Hagaaji dukaanka",
+    "STILL_DEVELOPPED": "Hawlgalkaan weli wuu horumar ku jiraa",
+    "CLOSE": "Xir"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "Faahfaahinta dhacdada",
+    "CLIENT": "Macmiil",
+    "DEBUT": "Bilow",
+    "FIN": "Dhamaad",
+    "ADDRESS": "Cinwaan",
+    "PHONE": "Telefoon",
+    "CANCEL": "Jooji",
+    "SAVE": "Kaydi"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "Abuur dhacdo",
+    "COMING": "Soo socda",
+    "PAST": "La soo dhaafay",
+    "CANCELLED": "La joojiyay",
+    "NO_CANCELLED": "Dalab la joojiyay ma jiro."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "Caawinta tooska ah"
+  },
+  "COMPANY_MANAGEMENT": {
+    "TITLE": "Maareynta shaqaalaha",
+    "NAME": "Magac",
+    "EMAIL": "E-mail",
+    "SOLDE": "Hadhaaga koontada",
+    "ACTIONS": "Ficillo",
+    "DEFAULT_PASSWORD": "Erey sir aasaasi ah",
+    "REINITIALIZE_PASSWORD": "Erey sir aasaasi ah oo dib u dejin",
+    "CHANGE_PASSWORD": "Beddel erayga sirta"
+  },
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "Ku kab koontada shaqaalaha",
+    "AMOUNT": "Lacag la kabayo",
+    "CANCEL": "Jooji",
+    "SAVE": "Xaqiiji"
+  },
+  "DASHBOARD": {
+    "TOTAL": "Wadarta ballamaha",
+    "TOTAL_MONTH": "Ballamaha bisha",
+    "GENERATED": "Dakhli la sameeyay",
+    "MONTHLY": "Dakhli bishiisa",
+    "AVG_NOTE": "Darajooyin celcelis",
+    "BASED_ON": "Ku saleysan",
+    "REVIEWS": "faallo",
+    "NEXT_APPOINTEMENT": "Ballamaha soo socda",
+    "POPULAR_SERVICES": "Adeegyada ugu caansan",
+    "RESERVATION": "ballan"
+  },
+  "FINANCE": {
+    "PROGRESS": "Isbeddel tan & bishii hore",
+    "PROGRESSION": "Horumar",
+    "TOTAL_GENERATED": "Wadarta dakhli la sameeyay",
+    "CA": "Dakhli",
+    "COMMISSION_TAKEN": "Komishan la jaray",
+    "COMMISSIONS": "Komishannada",
+    "NET_TO_PAY": "Lacag saafi ah oo la bixinayo",
+    "DISPO_AMOUNT": "Lacag la heli karo",
+    "REQUEST_WITHDRAWAL": "Codso wareejin",
+    "TAKE": "Lacag laga saarayo",
+    "TOTAL_EARNINGS": "Dakhli saafi",
+    "TOTAL_BOOKINGS": "Adeegyo la qabtay",
+    "CANCELLED_BOOKINGS": "Adeegyo la joojiyay",
+    "SERVICES_CANCELLED": "Ballamo la joojiyay ama la diiday",
+    "SERVICES_COMPLETED": "Ballamo la dhammeeyay",
+    "AVG_PRICE": "Qiime celcelis",
+    "PER_SERVICE": "Adeegkiiba",
+    "REVIEW_RATIO": "Faallooyinka macaamiisha",
+    "CLIENT_FEEDBACK": "Heerka jawaab celin",
+    "TOP_PRODUCTS": "Adeegyada ugu iibka badan",
+    "AVG_DURATION": "Muddada celcelis",
+    "DURATION_PER_BOOKING": "Waqti ballankiiba",
+    "DETAILS": "Faahfaahinta koontada bangiga",
+    "ASK": "Codso wareejin",
+    "HISTORY": "Taariikhda macaamil",
+    "DATE": "Taariikh",
+    "AMOUNT": "Lacag",
+    "COMMISSION": "Komishan",
+    "STATUS": "Xaalad"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "Dooro nooca dukaanka la abuurayo",
+    "CANCEL": "Jooji",
+    "CREATE": "Xaqiiji"
+  },
+  "PROCHES": {
+    "TITLE": "Qaraabadayda",
+    "UPDATE": "Beddel qof qaraabo ah",
+    "FIRSTNAME": "Magaca hore",
+    "NAME": "Magaca dambe",
+    "EMAIL": "E-mail",
+    "PHONE": "Telefoon",
+    "CREATE": "Abuur",
+    "BACK": "Dib u noqo",
+    "CHANGE": "Beddel",
+    "CLOSE": "Xir"
+  },
+  "RATING_MODAL": {
+    "TITLE": "Bixi faallo",
+    "RATING": "Darajo",
+    "COMMENT": "Faallo",
+    "CLOSE": "Xir",
+    "SUBMIT": "Gudbi"
+  },
+  "RDV_MODAL": {
+    "TITLE": "Dooro taariikhda adeegga",
+    "CANCEL": "Jooji"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "Abuur adeeg",
+    "NAME": "Magac",
+    "DESCRIPTION": "Sharaxaad",
+    "COLOR": "Midab",
+    "PRICE": "Qiime",
+    "TIME": "Muddada",
+    "IMAGE": "Sawir",
+    "ACTIONS": "Ficillo",
+    "MINUTES": "daqiiqo",
+    "CHANGE": "Beddel",
+    "DELETE": "Tirtir",
+    "SERVICE_NAME": "Magaca adeegga",
+    "TIME_MINUTES": "Muddada (daqiiqo)",
+    "PREST_IMAGE": "Sawirka adeegga",
+    "NO_PICS": "Sawir weli ma jiro",
+    "UPLOAD": "Soo rar sawir",
+    "NEW_PIC": "Horgal sawirka cusub",
+    "PRESTA_COLOR": "Midabka adeegga",
+    "CANCEL": "Jooji",
+    "SAVE": "Kaydi",
+    "AVG_PRICE": "Qiime celcelis",
+    "IMAGE_OK": "Sawir si guul leh ayaa loo raray",
+    "ERROR_IMAGE_LOAD": "Khalad rarista sawirka",
+    "UPDATE_SUCCESS": "Adeeg si guul leh ayaa loo cusboonaysiiyay",
+    "ERROR_PRESTA": "Khalad cusboonaysiinta adeegga",
+    "PRESTA_UPDATED": "Adeeg si guul leh ayaa loo cusboonaysiiyay",
+    "PRESTA_ERROR": "Khalad cusboonaysiinta adeegga",
+    "PRESTA_SUCCESS": "Adeeg si guul leh ayaa loo cusboonaysiiyay",
+    "PHOTO_ERROR": "Khalad cusboonaysiinta sawirka",
+    "PRESTA_DELETED": "Adeeg si guul leh ayaa loo tirtiray",
+    "PRESTA_DELETE_ERROR": "Khalad tirtirka adeegga"
+  },
+  "SHOP_MANAGEMENT": {
+    "SHOP_IMAGE": "Sawirka dukaanka",
+    "UPLOAD_IMAGE": "Soo rar sawir",
+    "SNEEK_PIC": "Horgal sawir",
+    "SHOP_NAME": "Magaca dukaanka",
+    "DESCRIPTION": "Sharaxaad",
+    "DESC_INFO": "(ugu yaraan 25 xaraf)",
+    "CITY": "Magaalo",
+    "DISCRICT": "Degmooyin",
+    "LAT": "Ballac juqraafi (Lat.)",
+    "LON": "Dheerer juqraafi (Lon.)",
+    "ZONE": "Aagga safarka (km)",
+    "OPENNING": "Saacadaha furitaanka",
+    "MORNING_OPEN": "Subax – Furid",
+    "MORNING_CLOSE": "Subax – Xirid",
+    "AFTERNOON_OPEN": "Galab – Furid",
+    "AFTERNOON_CLOSE": "Galab – Xirid",
+    "SAVE": "Kaydi dukaanka",
+    "MONDAY": "Isniin",
+    "TUESDAY": "Talaado",
+    "WEDNESDAY": "Arbaco",
+    "THURSDAY": "Khamiis",
+    "FRIDAY": "Jimco",
+    "SATURDAY": "Sabti",
+    "SUNDAY": "Axad",
+    "CLOSED": "Xiran",
+    "GENERATE_IMAGE": "Soo saar sawir",
+    "GENERATE_DESCRIPTION": "Soo saar sharaxaad",
+    "PHOTO": "Tusaalooyin sawirro la aqbalo/la diido",
+    "CODE_POSTAUX": "Koodhadhka boostada ee la daboolo",
+    "EXEMPLE_LOCAL": "Tusaale: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "Ku dar shaqaale",
+    "LOADING": "Socoto",
+    "LIST": "Liiska shaqaalaha",
+    "ADD": "Ku dar",
+    "EMAIL": "E-mailka shaqaalaha",
+    "FIRSTNAME": "Magaca hore",
+    "FAMILY_NAME": "Magaca qoyska",
+    "PHONE": "Telefoon",
+    "PASSWORD": "Erey sir",
+    "HAVE_TO": "Dhammaan beeraha waa qasab.",
+    "EMAIL_ERROR": "E-mail aan sax ahayn.",
+    "EMPLOYEE_OK": "Shaqaale si guul leh ayaa loo daray.",
+    "ADD_EMPLOYEE_ERROR": "Khalad ku darista shaqaalaha."
+  },
+  "AVIS": {
+    "TITLE": "MAXAA KU YIRAHA ISTICMAALAYAASHA",
+    "AVIS1": "Markii hore waan shaki qabay… hase yeeshee! Manicure-kaygu wuu cajiibnaa, gurigayga, dhibaato la’aan. Wuxuu noqday caadadayda Jimcaha fiidkii.",
+    "AVIS2": "Saddex daqiiqo gudaheed baan uga dalbaday daryeel wejiga fadhiga sariirta. Esthetician-ku aad buu u dabacsanaa, dhegaysan… maqaarkayguna weligiis sidan uma fiicnayn.",
+    "AVIS3": "Waxaan moodayay inuu ka qaalisan yahay saloon… la yaab: isla qiime, xataa mararka qaar ka jaban! Manaan u baahnayn inaan baxo. Waa haa weyn.",
+    "AVIS4": "Habeenkii ka hor dhalasho, waxaan rabay brushing degdeg ah. Laba guji ayaan ku helay qof diyaar ah. Waqtiyeyn, wacan, natiijo qurux badan.",
+    "AVIS5": "Waxaan ahay hooyo kali ah, waqti uma hayo orod. Halkan, markay carruurtu seexdaan ayaan ballansadaa. Way fududdahay, degdeg ah, runtii way fiican tahay.",
+    "AVIS6": "Fadhigeygii koowaad waan jeclaaday. Esthetician-ku waxay igu abuurtay raaxo isla markiiba. Waxaan dareemayay in la daryeelay. Hore baan u ballansaday usbuuca dambe!"
+  },
+  "DOWNLOAD": {
+    "USERS": "isticmaaleyaal qanacsan",
+    "SOCIAL": "xirfadlayaal diyaar ah",
+    "STORE": "App Store & Google Play"
+  },
+  "TARIF": {
+    "DISCOVER": "Dooro qorshaha kugu habboon",
+    "DISCOVER2": "oo bilow koritaankaaga",
+    "SOLUTIONS": "Waxaad mudan tahay xal qurux badan oo awood leh oo adiga kuu fekeran. Mar kasta waad beddeli kartaa fikradda.",
+    "TEST": "Saloonkaaga koowaad waa 100% bilaash. Walwal la’aan. Sixir keliya.",
+    "START_FREE": "Abuur saloonkayga koowaad",
+    "FREE": "Tababare",
+    "FREE_SUBTITLE": "Bilow koritaankaaga saloonka koowaad",
+    "THEN": "ka dib",
+    "MONTHLY": "bilkiiba",
+    "FREE1": "1 saloon firfircoon",
+    "FREE2": "Ballamo & macaamiil aan xad lahayn",
+    "FREE3": "Maareynta adeegyo & jadwal",
+    "FREE4": "Isku xirka ajande shaqsi",
+    "FREE5": "Ku habboon bilow deggan",
+    "FREE6": "Abuur saloon bilaash",
+    "BASIC": "Dooran",
+    "BASIC_SUBTITLE": "Fur kartidaada oo bilow iftiin",
+    "BASIC1": "Ilaa 3 saloon firfircoon",
+    "BASIC2": "Maamul dhamaystiran adeegyo, macaamiil & ballamo",
+    "BASIC3": "Taageero e-mail mudnaan leh",
+    "BASIC4": "Hel ilo gaar ah si aad u kobciso ganacsiga",
+    "BASIC5": "Ku habboon kuwa doonaya inay kobciyaan macaamiisha",
+    "BASIC6": "Hal bil tijaabo bilaash ah",
+    "PREMIUM": "Boqorad",
+    "PREMIUM_SUBTITLE": "Boqortooyadaadu way samaysmayaan, saamayntuna way kordhaysaa",
+    "PREMIUM1": "Ilaa 10 saloon firfircoon",
+    "PREMIUM2": "Hel tirakoobyo horumarsan",
+    "PREMIUM3": "Talooyin c intelligent si loo kordhiyo dakhli",
+    "PREMIUM4": "Muuqaal kordhay gudaha IzyGlam",
+    "PREMIUM5": "Taageero mudnaan leh",
+    "PREMIUM6": "Loogu talagalay madax-bannaanayaasha hamiga leh",
+    "PREMIUM7": "Hel Boqorad",
+    "BUSINESS": "Ilaahad",
+    "BUSINESS_SUBTITLE": "Dalbo carshigaaga, Ilaahad",
+    "BUSINESS1": "La habeeyay",
+    "BUSINESS2": "Saloon aan xad lahayn",
+    "BUSINESS3": "La-talin istaraatiiji shakhsi ah",
+    "BUSINESS4": "Muuqaal iyo hormarin dukaamadaada",
+    "BUSINESS5": "Xalal gaar ah si aad u ballaariso",
+    "BUSINESS6": "Nala soo xiriir",
+    "COMPARE": "Isbarbardhig astaamaha",
+    "FONCTIONS": "Astaamaha",
+    "BUSINESS9": "Maamul buuxa hawsha",
+    "STUDIO_BASIC": "Khayraad gaar ah",
+    "STUDIO_ADVANCED": "Tirakoob & talooyin",
+    "ANALYSE": "Falanqayn waxqabad",
+    "BASICS": "Aasaasi",
+    "ADVANCE": "Horumarsan",
+    "PLANS": "Tirada saloonyada firfircoon",
+    "READY": "Diyaar ma u tahay inaad kobciso ganacsiga?",
+    "DISCOVERS": "Ogow dalabyada IzyGlam"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "Bayaan helitaan",
+      "TEXT": "izyGlam waxay ka go’an tahay in adeeggeedu u furnaado dhammaan. Ujeeddadeennu waa WCAG 2.2 AA iyo waafaqid RGAA (France) intii suurtagal ah."
+    },
+    "SCOPE": {
+      "TITLE": "Baaxadda ku jirta",
+      "L1": "Website guud & bogag macluumaad.",
+      "L2": "App web (dashboard) ee macaamiisha & xirfadlayaasha.",
+      "L3": "App mobile (iOS/Android) haddii ay jirto.",
+      "L4": "E-maillo shaqo & xarunta caawinta.",
+      "L5": "Qalabka taageerada macaamiisha."
+    },
+    "STATUS": {
+      "TITLE": "Xaalad waafaqid",
+      "TEXT": "Waqtiga bayaankan, helitaanka izyGlam waa qayb ahaan waafaqsan WCAG 2.2 AA / RGAA. Si joogto ah ayaanu u hagaajinayna."
+    },
+    "PREPARATION": {
+      "TITLE": "Habka diyaarinta bayaanka",
+      "L1": "Is-qiimayn kooxda Product/UI: HTML semantic, ARIA, tartiibka Tab.",
+      "L2": "Tijaabooyin gacanta: kiiboodh, muuqaalka focus, zoom 200%+, akhristayaasha shaashadda.",
+      "L3": "Tijaabooyin qalabaysan (audiit otomaatig ah).",
+      "L4": "Qaabeyn joogto ah marka la sii daayo (Design System, qaybaha la isticmaalayo)."
+    },
+    "FEATURES": {
+      "TITLE": "Astaamaha helitaanka",
+      "KEYBOARD": {
+        "TITLE": "Marin kiiboodh",
+        "L1": "Dhammaan socodka (Tab, Shift+Tab, Enter, Space, Esc, fallaaro).",
+        "L2": "Focus muuqda oo joogto ah.",
+        "L3": "Isku xidh “U bood nuxurka”.",
+        "L4": "Menus & modal-lo la maamuli karo kiiboodhka (fur/xir, focus trap la maareeyay, Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "Akhristayaasha shaashadda & qaabdhismeed",
+        "L1": "H1→H6 iyo landmarks (header, nav, main, footer).",
+        "L2": "Calaamado cad oo inputs & buttons.",
+        "L3": "Is-beddelada waxaa lagu sheegaa aria-live.",
+        "L4": "Sawirrada macluumaadka leh alt, kuwa qurxinta la iska indho-tiro."
+      },
+      "CONTRAST": {
+        "TITLE": "Isbarbar-dhig, midab & cabbir",
+        "L1": "Isbarbardhig ≥ 4.5:1 (qoraal caadi), ≥ 3:1 (qoraal weyn).",
+        "L2": "Ilaa 200% zoom iyadoon wax lumayn.",
+        "L3": "Macluumaad kaliya midab kuma xirna."
+      },
+      "FORMS": {
+        "TITLE": "Foomamka & fariimaha khaladka",
+        "L1": "Isku xidh label⇄input, tilmaam qasab.",
+        "L2": "Khaladaad agta input-ka iyo kooban haddii loo baahdo.",
+        "L3": "Focus lagu saaro beerta khaladka koowaad."
+      },
+      "DYNAMIC": {
+        "TITLE": "Nuxur firfircoon & animations",
+        "L1": "Carousels la hakiyo oo aan carqaladayn.",
+        "L2": "Ixtiraam ‘reduce motion’ nidaamka.",
+        "L3": "Modal-lo aan faragelin, la xirayo kiiboodh/click banaanka."
+      },
+      "MEDIA": {
+        "TITLE": "Warbaahin",
+        "L1": "Muuqaallo leh subtitles/transcripts.",
+        "L2": "Audio/video kiiboodh lagu maamulo."
+      },
+      "MOBILE": {
+        "TITLE": "Moobil",
+        "L1": "Aagagga taabashada waaweyn & kala fog.",
+        "L2": "La jaanqaad TalkBack (Android) & VoiceOver (iOS)."
+      }
+    },
+    "ENVIRONMENTS": {
+      "TITLE": "Deegaanka & teknoolojiyada caawisa",
+      "L1": "Windows: NVDA (Chrome/Firefox), JAWS (Edge/Chrome).",
+      "L2": "macOS: VoiceOver (Safari).",
+      "L3": "iOS/iPadOS: VoiceOver (Safari/Chrome).",
+      "L4": "Android: TalkBack (Chrome).",
+      "L5": "Baarayaal casri ah oo cusboon."
+    },
+    "NONACCESSIBLE": {
+      "TITLE": "Nuxur aan weli la heli karin",
+      "TEXT": "Inkasta oo dadaal, qaar waxay weli noqon karaan aan waafaqsanayn:",
+      "L1": "Sawirro duug ah oo aan alt lahayn.",
+      "L2": "Dukumiintiyada dhinac saddexaad (PDF, lifaaqyo) oo aan si buuxda u marin.",
+      "L3": "Muuqaallo duug ah oo aan lahayn subtitles/description.",
+      "L4": "Qaybo dhinac saddexaad (bixin, khariidad, player) oo leh xaddidaadkooda.",
+      "MOTIVES": "Sababaha: nuxur dhinac saddexaad, culays aan macquul ahayn, cusboonaysiin socota."
+    },
+    "ACCOMMODATIONS": {
+      "TITLE": "Beddel & habayn macquul ah",
+      "TEXT": "Haddii aad u baahan tahay qaab kale (dukumiinti la heli karo, caawin ballan), nala soo xidhiidh. Waxaan sameyn doonnaa xalka u dhigma."
+    },
+    "FEEDBACK": {
+      "TITLE": "Ra’yi-celin & caawin",
+      "L1": "Gudaha app-ka: Caawin > Helitaan.",
+      "L2A": "E-mail:",
+      "L2B": "ama",
+      "L3": "Fadlan sheeg shaashadda/URL, qalabka, browser-ka, iyo akhristaha shaashadda haddii jira."
+    },
+    "CONTACT": {
+      "EMAIL_ACCESS": "[accessibilite@izyglam.com](mailto:accessibilite@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "RECOURSE": {
+      "TITLE": "Habka racfaanka (France)",
+      "TEXT": "Haddii aad aragto cilad helitaan oo kuu diidaya nuxur ama hawl, oo aadan helin jawaab ku qancisa, waad:",
+      "L1": "Qori kartaa Défenseur des droits ama wakiilkiisa gobolkaaga,",
+      "L2": "Ama la xiriir dhexdhexaadiyaha haddii ay khusayso.",
+      "MORE": "Macluumaad dheeri ah:",
+      "LINK": "defenseurdesdroits.fr"
+    },
+    "CONTINUOUS": {
+      "TITLE": "Horumarin joogto ah",
+      "L1": "Design System leh qaybo la heli karo.",
+      "L2": "Kormeer code & tijaabooyin helitaan mar kasta oo la sii daayo.",
+      "L3": "Tababaro joogto ah kooxaha product & support.",
+      "L4": "Mudnaanta sixitaanka iyadoo la eegayo saameynta."
+    },
+    "DATE": {
+      "TITLE": "Taariikhda bayaanka & cusboonaysiinta",
+      "TEXT": "Bayaanka waxaa la diyaariyey 25 December 2025. Ugu yaraan sanadkiiba mar ayaa la cusboonaysiin doonaa ama marka isbeddello waaweyn dhacaan."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "Sideen ugu ballansadaa adeeg IzyGlam?",
+    "QUESTION2": "Sideen u doortaa xirfadle iigu habboon?",
+    "QUESTION3": "Sideen u beddelaa ama u joojiyaa ballankayga?",
+    "QUESTION4": "Sideen u raacaa dalabkayga?",
+    "QUESTION5": "Maxay yihiin hababka bixinta?",
+    "QUESTION6": "Sideen u raacaa dalabkayga/ballankayga?",
+    "QUESTION7": "Ma ka tagi karaa faallo ka dib adeegga?",
+    "QUESTION8": "Sideen u isticmaalaa daacadnimo & dhimisyo?",
+    "QUESTION9": "Maxaan sameeyaa haddii ay dhibaato timaado?",
+    "QUESTION10": "Sideen ula xiriiraa kooxda IzyGlam?",
+    "QUESTION11": "Sidee u shaqeeyaa siyaasadda kansalka & lacag-celinta?",
+    "QUESTION12": "Ma u ballansan karaa qof kale (hadiyad, yaab)?",
+    "QUESTION13": "Sideen ku noqdaa xirfadle lammaane IzyGlam?",
+    "QUESTION14": "Sidee loo ilaaliyaa xogtayda IzyGlam?",
+    "REPONSE1": "Way fududahay oo degdeg. Marka aad is diiwaangeliso, dooro adeegga aad rabto, ka hel xirfadlayaal agagaarkaaga, ka dibna dooro taariikh iyo saacad. Riix \"Ballan\" si aad u dhamaystirto, ka bixi kaarka bangiga. Xirfadluhu gacanta ayuu u xaqiijin doonaa ballanka. Haddii la diido, si buuxda ayaa laguu soo celiyaa.",
+    "REPONSE2": "Xirfadle kasta wuxuu leeyahay profile faahfaahsan: adeegyo, qiime, sawirro shaqo & faallooyin. Waxaad ku dari kartaa kuwa aad jeceshahay. Is barbar dhig profiles si aad u doorato kan kugu habboon.",
+    "REPONSE3": "Waxaad ku beddeli/joojin kartaa ballankaaga goobtaada shakhsiga. Kansalku waa bilaash ilaa 24 saac ka hor. Ka dib, kharash ayaa jiri kara. Haddii ay dhibaato timaado, taageeradayadu way ku caawin doonaan.",
+    "REPONSE4": "Gali goobtaada, qaybta \"Ballamadayda\". Halkaas waxaad ka arkaysaa raadraaca waqtiga-dhabta, kansal/beddel, iyo taariikhda adeegyada.",
+    "REPONSE5": "Bixintu waxaa lagu sameeyaa kaliya kaar (Visa, MasterCard, American Express). Ma aqbalno lacag caddaan ah ama PayPal. Ammaan buuxa.",
+    "REPONSE6": "Marka ballanka la xaqiijiyo, waxaad heli doontaa e-mail soo koobid. Waxaan sidoo kale kuu soo diri doonaa xusuusin (e-mail iyo/ama push). Xaaladda waxaad ka arki kartaa goobtaada.",
+    "REPONSE7": "Haa. Kadib adeeg kasta, waxaa lagu weydiinayaa faallo. Faallooyinka waxaa gacanta u habeeya kooxda si loo xaqiijiyo runnimada. Xirfadlayaashu ma beddeli karaan mana ka jawaabi karaan.",
+    "REPONSE8": "Waqtigan, IzyGlam wali ma laha barnaamij daacadnimo ama koodhadh dhimis. Waxay ku jirtaa qorshaha mustaqbalka.",
+    "REPONSE9": "Nala soo xiriir qaybta \"Xiriir\" ama e-mail. Kooxdeennu waxay ku dadaali doonaan inay kuugu jawaabaan 24 saac gudaheed (qiyaas) oo ay xalliyaan dhibaatada sida ugu dhaqsaha badan.",
+    "REPONSE10": "Nala soo xidhiidh foomka bogga ama app-ka. Taageero macaamiil ayaa diyaar ah Isniin–Sabti, 9–18. Tusaale e-mail: [support@izyglam.com](mailto:support@izyglam.com)",
+    "REPONSE11": "Waxaad kansali kartaa bilaash ilaa 24 saac ka hor. Ka dib, kharash ayaa jiri kara. Haddii xirfadluhu diido ka dib bixinta, lacag-celin 100% ah. Nidaamka otomaatigga ah weli wuu socdaa.",
+    "REPONSE12": "Weli si toos ah uguma hadiyayn kartid qof kale. Si kastaba, haddii xirfadle uu bixiyo duo/qoys, waxaad ballansan kartaa dhowr qof.",
+    "REPONSE13": "Adigu ma tahay esthetician, timo-jare ama xirfadle fayo-qabka? Ku biir bulshada IzyGlam adigoo buuxinaya foomka \"Noqo lammaane\". Kooxdu way kula soo xirmi doonaan si ay u dhammaystiraan diiwaangelinta.",
+    "REPONSE14": "Amniga xogtaadu waa mudnaanteena. Waxaan u hoggaansanaa GDPR. Kaliya xogta lagama maarmaanka u ah adeegga ayaa la siinayaa xirfadlaha. Farriimo ku dhex jira app-ka ayaa kuu oggolaanaya isgaarsiin ammaan ah; isku dayga hareer-marinta madasha waa la daba geli doonaa."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "Yaan nahay?",
+      "TEXT": "Siyaasaddan Qarsoodigu waxay sharxaysaa sida <strong>izyGlam</strong> (\"annaga\", \"annaga/keenna\" ama \"Madalka\") u ururiso, u isticmaasho, u kaydiso, u wadaagto uguna ilaaliso xogtaada gaarka ah marka aad adeegsanayso adeeggeyaga (web, app web, app mobile, e-mail & support). Waxaan u shaqaynaa sidii <strong>mas’uulka ka ah xog-maalgelinta</strong> ee hawlaha hoos ku qoran."
+    },
+    "SCOPE": {
+      "TITLE": "Baaxadda siyaasadda",
+      "TEXT": "Waxay khusaysaa <strong>macaamiisha</strong> adeeg qabsada, <strong>xirfadlayaasha</strong> adeegyo ku bixiya izyGlam, iyo <strong>booqdayaasha</strong> is-dhexgalkeena."
+    },
+    "DATA": {
+      "TITLE": "Xogta la ururiyo",
+      "PROVIDED": {
+        "TITLE": "Xog aad bixiso",
+        "L1": "<strong>Aqoonsi & xiriir:</strong> magac, e-mail, telefoon, cinwaan(yada), sawir/avatars.",
+        "L2": "<strong>Akoon:</strong> aqoonsiyo, erayo sir (hash), doorbidyo, luqad.",
+        "L3": "<strong>Ballamo:</strong> adeegyo la doortay, taariikh/saacad, cinwaanno adeeg, qoraallo, lifaaqyo.",
+        "L4": "<strong>Bixin:</strong> xogta bixinta <em>via bixiye (tusaale Stripe)</em> — annagu ma hayno xogta kaarkaaga.",
+        "L5": "<strong>Xirfadlayaal:</strong> profile dadweyne, adeegyo, qiime, aagag, helitaan, RIB/IBAN (amniga), dukumiinti xaqiijin haddii loo baahdo.",
+        "L6": "<strong>Taageero:</strong> farriimo, tigidhyo, duubisyo wicitaan haddii ay jiraan."
+      },
+      "AUTOMATIC": {
+        "TITLE": "Xog si toos ah loo ururiyo",
+        "L1": "<strong>Farsamo:</strong> qalab, OS, browser, xalal, aqoonsi kalfadhi.",
+        "L2": "<strong>Log:</strong> IP, taariikhdhacyo, dhacdooyin khalad, isticmaal-hawleedyo.",
+        "L3": "<strong>Goob:</strong> meel qiyaas ah (IP) ama sax (GPS — oggolaansho cad).",
+        "L4": "<strong>Cookies & SDK:</strong> eeg qaybta hoose."
+      },
+      "THIRD": {
+        "TITLE": "Xog dhinac saddexaad",
+        "L1": "<strong>Bixiyeyaasha lacag-bixinta</strong> (xaaladaha bixin, tokens).",
+        "L2": "<strong>La-hawlgalayaasha analytics/khiyaano-ka-hortag</strong> (sinnaayo khatar, tirakoobyo).",
+        "L3": "<strong>Isku-xidhyo</strong> (isgaarsiin, khariidad, kaydin daruur)."
+      }
+    },
+    "PURPOSES": {
+      "TITLE": "Ujeeddooyin & saldhig sharci",
+      "TEXT": "Waxaan u shaqeyneynaa ujeeddooyinkan:",
+      "L1": "<strong>Bixinta adeegga</strong> (akoontiga, ballan, is-dhexgal, ogeysiisyo) — <em>Saldhig: qandaraas</em>.",
+      "L2": "<strong>Bixin & xisaab</strong> — <em>Qandaraas, waajib sharci</em>.",
+      "L3": "<strong>Amni & ka hortag khiyaano</strong> — <em>Dano sharci, waajib sharci</em>.",
+      "L4": "<strong>Hagaajin & tirakoob</strong> — <em>Dano sharci</em>.",
+      "L5": "<strong>Taageero & tayo</strong> — <em>Qandaraas, dano sharci</em>.",
+      "L6": "<strong>Suuqgeyn toos ah</strong> (e-mail/app) — <em>Oggolaansho marka loo baahdo</em>; waad ka bixi kartaa mar kasta.",
+      "L7": "<strong>Waafaqid sharci</strong> (xisaab, codsiyada hay’adaha) — <em>Waajib sharci</em>."
+    },
+    "SHARING": {
+      "TITLE": "La wadaagista xogta",
+      "L1": "<strong>Xirfadlayaal / Macaamiil</strong>: xog lagama maarmaan u ah adeegga (magac, xiriir, cinwaan, faahfaahin ballan).",
+      "L2": "<strong>Bixiyeyaasha</strong>: bixin (Stripe), martigelin/kaydin, analytics, e-mail/SMS push, support, KYC. <em>Helitaan xadidan, qandaraasyo GDPR-waafaqsan.</em>",
+      "L3": "<strong>Lammaane</strong>: haddii aad oggolaato dalabyo gaar ah.",
+      "L4": "<strong>Hay’ado</strong>: marka sharcigu dalbado ama si aan u difaacno xuquuqdeena."
+    },
+    "TRANSFERS": {
+      "TITLE": "Gudbinta xogta ka baxsan EU/EEA",
+      "TEXT": "Marka xog loogudbiyo dalal aan lahayn go’aan iswaafaqid, waxaan isticmaalnaa <strong>qodobbada qandaraaska caadiga ah</strong> iyo tallaabooyin dheeraad ah."
+    },
+    "RETENTION": {
+      "TITLE": "Muddooyinka haynta",
+      "L1": "<strong>Akoon & aqoonsi</strong>: inta la adeegsanayo, dabadeed <em>ilaa 3 sano</em> (soo xidhiidh) ama <em>5–10 sano</em> (xisaab/waajibyo).",
+      "L2": "<strong>Ballamo/fakthuuro</strong>: <em>10 sano</em> (waajib sharci).",
+      "L3": "<strong>Log-yada amniga</strong>: <em>6–24 bilood</em> iyadoo ku xiran muhiimadda.",
+      "L4": "<strong>Cookies</strong>: eeg qaybta Cookies.",
+      "NOTE": "Ka dib, xogtu waa la tirtiraa ama la magac-la’aan yeelaa."
+    },
+    "COOKIES": {
+      "TITLE": "Cookies & SDK",
+      "TEXT": "Waxaan adeegsanaynaa cookies/SDK si aan u shaqaysiino madasha, u cabbirno isticmaalka, uga hortagno khiyaano, isla markaana—ogolaanshahaaga—u shakhsiyeeyno khibradda.",
+      "L1": "<strong>Lagama maarmaan</strong>: aqoonsi, amni, doorbidyo farsamo.",
+      "L2": "<strong>Cabbirid</strong>: tirakoobyo isku-gayn.",
+      "L3": "<strong>Suuqgeyn</strong>: keliya haddii aad oggolaato.",
+      "PREF": "Doorbidyadaada waxaad maamuli kartaa mar kasta adigoo adeegsanaya barxadda ogolaanshaha & dejinta browser-ka."
+    },
+    "AUTOMATION": {
+      "TITLE": "Go’aanno otomaatig & profayl",
+      "TEXT": "Waxaan adeegsan karnaa calaamado otomaatig ah (khiyaano-khatar, helitaan xirfadle, masaafad) si aan u mudnaanta siino ama u soo jeedino waqtiyo. Go’aan saamayn sharciga leh lama qaato la’aanteed qof bini’aadam ah, ilaa sharci dalbado ama oggolaansho cad jirto."
+    },
+    "RIGHTS": {
+      "TITLE": "Xuquuqdaada (GDPR)",
+      "L1": "Xuquuq <strong>gelid</strong>, <strong>sixid</strong>, <strong>tirtirid</strong>.",
+      "L2": "Xuquuq <strong>xaddidid</strong> & <strong>ku wareejin</strong>.",
+      "L3": "Xuquuq <strong>ka hortag</strong> marka saldhiggu yahay dano sharci.",
+      "L4": "Xuquuq <strong>ka noqosho oggolaansho</strong> wakhti kasta.",
+      "L5": "Xuquuq inaad <strong>u dacwooto</strong> CNIL.",
+      "CONTACT": "Si aad u adeegsatid xuquuqda, nala soo xiriir:",
+      "VERIFY": "Waxaan codsan karnaa xog dheeraad ah si aan u xaqiijino aqoonsigaaga."
+    },
+    "SECURITY": {
+      "TITLE": "Amniga",
+      "TEXT": "Waxaan adeegsanaynaa tallaabooyin farsamo & hab-maamuus: TLS, hash-gareynta erayo sir, log & kormeer, xaddididda helitaanka, kaydin, kormeer code & tijaabooyin amni."
+    },
+    "MINORS": {
+      "TITLE": "Xogta carruurta",
+      "TEXT": "Adeeggeennu kuma jihaysna dadka ka yar 15. Haddii aan helno akoon yar, ka dib xaqiijin waan tirtireynaa."
+    },
+    "SUBPROCESSORS": {
+      "TITLE": "Hoos-qandaraaslayaal waaweyn",
+      "TEXT": "Waxaan la shaqeynaa martigelin, bixin, e-mailing, analytics, kaydin. Liis la cusboonayn karo waxaa lagu heli karaa codsi u dir"
+    },
+    "CONTACT": {
+      "TITLE": "Xiriir & DPO",
+      "PRIVACY_LABEL": "Xiriir qarsoodi",
+      "SUPPORT_LABEL": "Taageero",
+      "AUTHORITY_LABEL": "Hay’ad kormeer",
+      "EMAIL_PRIVACY": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_PRIVACY_TEXT": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)"
+    },
+    "CHANGES": {
+      "TITLE": "Isbeddelka siyaasaddan",
+      "TEXT": "Waxaan cusboonaysiin karnaa si waafaqsan isbeddel sharci ama hawleed. Haddii isbeddel weyn dhaco, waxaan kuu sheegi doonnaa e-mail ama app. Taariikhda dhaqan galka: <strong>11 Ogoosto 2025</strong>."
+    },
+    "LOCAL": {
+      "TITLE": "Qodobo maxalli ah",
+      "TEXT": "Haddii aad ku sugan tahay EU, xogtaada GDPR ayay waafaqsan tahay. Dhammaystiryo gaar ah waddan/degmo ayaa lagu dari karaa."
+    },
+    "GLOSSARY": {
+      "TITLE": "Qaamuus (kooban)",
+      "L1": "<strong>Mas’uulka xogta</strong>: hay’adda go’aamisa ujeeddooyinka & hababka shaqo.",
+      "L2": "<strong>Hoos-qandaraasle</strong>: hay’ad u shaqaysa magaca mas’uulka.",
+      "L3": "<strong>Saldhig sharci</strong>: sababta sharciga (qandaraas, oggolaansho, waajib sharci, dano sharci).",
+      "L4": "<strong>Cookies/SDK</strong>: raadraacyo lagu isticmaalo site/app si loo bixiyo, loo qiyaaso, loona shakhsiyeeyo adeegga."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "Aqbalidda shuruudaha",
+      "TEXT": "Adigoo galaya adeegyada izyGlam (web, app web, app mobile), waxaad si buuxda u aqbalaysaa Shuruudaha Isticmaalka (“CGU”). Haddii aadan aqbalin, ha isticmaalin Madasha."
+    },
+    "DEFINITIONS": {
+      "TITLE": "Qeexitaanno",
+      "L1": "<strong>Macmiil</strong>: qof kasta oo ballansada/ka bixiya adeeg Madasha.",
+      "L2": "<strong>Xirfadle</strong>: qof kasta oo adeeg ku bixiya Madasha.",
+      "L3": "<strong>Adeeg</strong>: adeeg uu bixiyo Xirfadle (tusaale qurux guri).",
+      "L4": "<strong>Madal</strong>: kaabayaasha software-ka, bogagga & app-yada ay maamusho izyGlam."
+    },
+    "SERVICE_ROLE": {
+      "TITLE": "Adeegyada & doorka izyGlam",
+      "TEXT": "izyGlam waa <strong>madax-dhaxaad</strong>. Xirfadlayaashu waa <strong>mas’uul keliya</strong> tayada, waafaqidda, caymiska. IzyGlam caadiyan ma aha iibiyaha ama fuliyaha, mas’uuliyadda fulintana ma qaado."
+    },
+    "ACCOUNT": {
+      "TITLE": "Akoon & u-qalmaansho",
+      "L1": "Diiwaangelin ayaa qasab u ah ballan ama bixinta adeeg. Waxaad ballan qaadayaa xog sax ah oo la cusboonaysiinayo.",
+      "L2": "Waa inaad ka weyn tahay 15 sano si aad u isticmaasho Madasha. Xirfadlayaal waa in sharci ahaan u qalmaan shaqadooda.",
+      "L3": "Adiga ayaa mas’uul ka ah qarsoodiga aqoonsiyadaada iyo wax kasta oo akoonkaaga laga sameeyo.",
+      "L4": "izyGlam waxay xaq u leedahay joojin/ka jaris akoon marka la jabiyo shuruudaha ama khatar khiyaano jirto."
+    },
+    "BOOKINGS": {
+      "TITLE": "Ballamo & samaysanka qandaraaska",
+      "L1": "Adeegyada waxaa <strong>lagu ballansadaa lana bixiyaa onlayn</strong>. Lacag caddaan ah laguma bixiyo goobta.",
+      "L2": "Ballanku wuxuu <strong>u baahan yahay xaqiijin Xirfadle</strong> kadib bixinta. Haddii la diido, Macmiilku <strong>100% ayuu u helayaa lacag-celin</strong>.",
+      "L3": "Qandaraaska adeegga wuxuu si toos ah uga dhexeeyaa Macmiilka & Xirfadlaha marka la aqbalo.",
+      "L4": "Saacadaha, cinwaanada adeegga iyo shuruudaha gaarka ah waa in labada dhinac hubiyaan."
+    },
+    "PRICES_PAYMENTS": {
+      "TITLE": "Qiimayaal, isdiiwaangelin & bixin",
+      "L1": "Qiimaha adeegyada waxaa dejinaya Xirfadlayaal. izyGlam waxay qaadataa <strong>komishan</strong> madal.",
+      "L2": "Isdiiwaangelin Xirfadlayaal ( tusaale hadda ): <em>1 saloon bilaash nolosha</em>; <em>Basic: 3 saloon – 99 € / bil</em>; <em>Premium: 10 saloon – 499 € / bil</em>; <em>ka badan: xigasho</em>.",
+      "L3": "Bixin <strong>kaar bangi kaliya</strong> (tusaale Stripe). <strong>Lama aqbalo caddaan</strong>, koodh dhimis ama daacadnimo weli ma jiro.",
+      "L4": "Lacag, canshuur & kharashyo waxaa lagu muujinayaa ka hor xaqiijinta. Shuruudaha isdiiwaangelinta way is beddeli karaan; isbeddellada hore ayaa lagu sii sheegi doonaa."
+    },
+    "CANCELLATIONS": {
+      "TITLE": "Kansal, lacag-celin & imaatin la’aan",
+      "L1": "Kansal bilaash ah ilaa <strong>24 saac</strong> ka hor.",
+      "L2": "Ka yar 24 saac, <strong>kharashyo</strong> ayaa dhaqan geli kara.",
+      "L3": "Haddii <strong>xirfadlaha diido</strong> kadib bixinta, Macmiilku wuxuu helayaa 100% lacag-celin. Otomaatiggu wuu socda; haddii kale support ayaa bilaabaya.",
+      "L4": "<strong>No-show</strong> waxay keeni karaan kharashyo ama in aan lacag-celin la helin."
+    },
+    "PAYOUTS": {
+      "TITLE": "Lacag bixinta Xirfadlayaasha",
+      "L1": "Lacag bixintu waxay kicisaa marka <strong>adeegga la xaqiijiyo</strong> (tusaale <em>koodh xaqiijin</em>).",
+      "L2": "RIB/IBAN uu bixiyay Xirfadlaha ayaa loo adeegsadaa wareejinta. Xirfadluhu wuxuu dammaanad qaadayaa saxnaanta xogta bangiga.",
+      "L3": "Lacagta la bixiyo = qiimaha adeegga <em>ka dib marka laga jaro</em> komishan & kharashyo."
+    },
+    "RESPONSIBILITIES": {
+      "TITLE": "Mas’uuliyadaha",
+      "L1": "Xirfadlayaal: waafaqid sharci, nadaafad, amni & tayo.",
+      "L2": "Macaamiil: bixinta xog sax ah (cinwaan, helitaan, xaddidaadyo) & ixtiraamid ballan.",
+      "L3": "izyGlam: waxay bixinaysaa madal & qalab (ballan, bixin, farriin) — natiijo adeeg lama dammaanad qaado."
+    },
+    "REVIEWS": {
+      "INVALID_RATING": "Darajo aan sax ahayn.",
+      "TITLE": "Faallooyin & qiimeyn",
+      "L1": "Faallo waxaa lagu bixiyaa <strong>kaliya kadib adeeg dhab ah</strong>.",
+      "L2": "Faallooyinka waxaa <strong>la habeeyaa</strong> (tusaale: ka saar wax sharci jabinaya ama ka soo horjeeda CGU)."
+    },
+    "PROHIBITED": {
+      "TITLE": "Dhaqamo la mamnuucay",
+      "L1": "Khiyaano, magac-bixid been, hareer-marin Madal, ku dhiirrigelin heshiisyo ka baxsan Madal.",
+      "L2": "Nuxur sharci-daro, aflagaado, takoorka, rabshad, anshax xumo.",
+      "L3": "Weerar, DoS, injineernimo rogaal-celis, hareer-marin tallaabooyin amni.",
+      "L4": "Ururin aan la oggolayn oo xog shaqsi ah."
+    },
+    "IPR": {
+      "TITLE": "Hantida aqooneed",
+      "TEXT": "Nuxurka, calaamadaha & walxaha Madasha (code, naqshad, qoraal, logos, sawirro) waa la ilaaliyo. Iyada oo aan oggolaansho, soo saarid/ qaybin/ habayn waa mamnuuc. Nuxurka ay bixiyaan Xirfadlayaashu waa hantidooda; waxay siisaan izyGlam rukhsad aan gaar ahayn oo lagama maarmaan u ah hawlgalka Madasha."
+    },
+    "THIRD_PARTY": {
+      "TITLE": "Adeegyo dhinac saddexaad",
+      "TEXT": "Madalka waxa uu ku dhex dari karaa adeegyo (bixin, khariidad, martigelin, analytics). Shuruudahooda ayaa khuseeya. izyGlam mas’uul kama aha hakadkooda ama ciladahooda."
+    },
+    "AVAILABILITY": {
+      "TITLE": "Helitaan, dayactir & cusboonaysiin",
+      "TEXT": "Waxaan beddeli/ joojin/ hakinin karnaa qayb ka mid ah Madasha si dayactir/horumarin. Waxaan ku dadaalaynaa inaan yareyno saameynta."
+    },
+    "LIABILITY": {
+      "TITLE": "Xaddidaadda mas’uuliyadda & magdhow",
+      "TEXT": "Xadka sharcigu oggol yahay, mas’uuliyadda izyGlam waxay ku egtahay khasaare toos ah; khasaare dadban (fursad lumin, dakhli iwm) lama daboolo. Waxaad ku ballanqaadaysaa inaad magdhowdo izyGlam haddii aad jabiso shuruudaha ama adeegsiga sharci-darro."
+    },
+    "TERMINATION": {
+      "TITLE": "Joojin & ka jaris",
+      "TEXT": "Waxaad tirtiri kartaa akoonkaaga mar kasta. Waxaan joojin karnaa helitaanka haddii la jabiyo CGU, khiyaano, ama ammar sharci. Qaar ka mid ah qodobbada (tusaale: lacagaha, mas’uuliyad) way sii jiraan kadib joojinta."
+    },
+    "PRIVACY": {
+      "TITLE": "Xog shaqsi",
+      "TEXT": "Farsamaynta xogtaada waxaa lagu qeexay <strong>Siyaasaddeenna Qarsoodiga</strong>. Isticmaalka Madalka waxaad aqbalaysaa siyaasaddaas. Ka fiirso xuquuqda GDPR & ballanqaadyadeenna."
+    },
+    "CHANGES": {
+      "TITLE": "Isbeddelka CGU",
+      "TEXT": "Waxaan beddeli karnaa CGU sababo sharci, qorshe ama farsamo. Haddii isbeddel weyn dhaco, waxaan kugu soo wargelin doonnaa e-mail ama app, waxaanan daabici doonnaa nooca cusub."
+    },
+    "LAW": {
+      "TITLE": "Sharciga khuseeya & khilaafaadka",
+      "TEXT": "CGU waxaa maamula <strong>sharciga Faransiiska</strong>. Khilaaf kasta waxaa loo gudbinayaa maxkamadaha fadhigooda ay ku taallo izyGlam, haddii aanay jirin qodobo macmiil u roon oo khasab ah."
+    },
+    "CONTACT": {
+      "TITLE": "Xiriir",
+      "SUPPORT_LABEL": "Taageero",
+      "LEGAL_LABEL": "Sharci",
+      "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL": "[legal@izyglam.com](mailto:legal@izyglam.com)",
+      "EMAIL_SUPPORT_TEXT": "[support@izyglam.com](mailto:support@izyglam.com)",
+      "EMAIL_LEGAL_TEXT": "[legal@izyglam.com](mailto:legal@izyglam.com)"
+    },
+    "EFFECTIVE": {
+      "TITLE": "Taariikhda dhaqan-galka",
+      "TEXT": "CGU waxay dhaqan gashay <strong>25 December 2025</strong> waxayna beddeshay noocyadii hore."
+    }
+  }
+}

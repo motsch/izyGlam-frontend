@@ -18,7 +18,7 @@ export class VerifSmsCodeComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private sessionService: SessionService,
         private router: Router
-    ) {}
+    ) { }
     ngOnInit(): void {
         console.log('VerifSmsCodeComponent initialized...');
 

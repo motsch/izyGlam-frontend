@@ -1,150 +1,277 @@
-import { Component, ElementRef, EventEmitter, Output, AfterViewInit, Input } from '@angular/core';
-import { loadStripe, Stripe, StripeCardElement } from '@stripe/stripe-js';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  AfterViewInit,
+  OnDestroy,
+  Input,
+  ViewChild,
+} from '@angular/core';
+import { loadStripe, Stripe, StripeCardElement, StripeElements } from '@stripe/stripe-js';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-stripe-card-form',
   templateUrl: './stripe-card-form.component.html',
-  styleUrls: ['./stripe-card-form.component.scss']
+  styleUrls: ['./stripe-card-form.component.scss'],
 })
-export class StripeCardFormComponent implements AfterViewInit {
+export class StripeCardFormComponent implements AfterViewInit, OnDestroy {
+  /** Événement émis quand une carte est ajoutée avec succès (pour forcer un refresh parent) */
   @Output() cardAdded = new EventEmitter<void>();
+  /** ID utilisateur nécessaire côté backend pour attacher la PM au customer */
   @Input() userId!: string;
 
+  /** Référence DOM du conteneur d’Elements (évite les soucis d’ID dupliqués) */
+  @ViewChild('cardElement', { static: true }) cardElementRef!: ElementRef<HTMLDivElement>;
+
+  // ---- Stripe state
   private stripe: Stripe | null = null;
+  private elements!: StripeElements;
   private card!: StripeCardElement;
 
+  // ---- UI state
+  isLoading = false;
+  cardError = '';
+
+  constructor(private toastr: ToastrService, private translate: TranslateService) {}
+
+  // =========================================================
+  // Lifecycle
+  // =========================================================
   async ngAfterViewInit() {
-    this.stripe = await loadStripe(environment.stripePublicKey);
-    if (!this.stripe) {
-      console.error('Stripe n’a pas pu être chargé.');
-      return;
+    try {
+      // 1) Sécurité basique : clé publique présente ?
+      if (!environment?.stripePublicKey) {
+        console.error('[StripeCardForm] Missing stripePublicKey in environment');
+        this.showCustomToast(this.t('STRIPE.MISSING_PK') || 'Configuration Stripe manquante', 'error');
+        return;
+      }
+
+      // 2) Chargement Stripe.js
+      this.stripe = await loadStripe(environment.stripePublicKey);
+      if (!this.stripe) {
+        console.error('[StripeCardForm] Stripe failed to load');
+        this.showCustomToast(this.t('STRIPE.LOAD_FAILED') || 'Stripe n’a pas pu être chargé', 'error');
+        return;
+      }
+
+      // 3) Création d’Elements + CardElement et montage dans le container
+      this.elements = this.stripe.elements();
+      this.card = this.elements.create('card', {
+        // tu peux personnaliser le style ici si besoin
+        hidePostalCode: true,
+      });
+      this.card.mount(this.cardElementRef.nativeElement);
+
+      // 4) Écoute des erreurs de validation côté front (immédiates)
+      this.card.on('change', (event) => {
+        this.cardError = event.error?.message || '';
+      });
+
+      console.log('[StripeCardForm] Stripe Elements mounted');
+    } catch (err) {
+      console.error('[StripeCardForm] ngAfterViewInit error:', err);
+      this.showCustomToast(this.t('COMMON.UNEXPECTED_ERROR') || 'Une erreur inattendue est survenue', 'error');
     }
-    const elements = this.stripe.elements();
-    this.card = elements.create('card');
-    this.card.mount('#card-element');
   }
 
+  ngOnDestroy(): void {
+    // Nettoyage : démonter l’élément pour éviter les fuites mémoire lors de la destruction du composant
+    try {
+      if (this.card) this.card.unmount();
+    } catch (err) {
+      console.warn('[StripeCardForm] ngOnDestroy warning:', err);
+    }
+  }
+
+  // =========================================================
+  // Soumission (Option A : SetupIntent) — recommandé pour “enregistrer une carte”
+  // =========================================================
   async handleFormSubmit(event: Event) {
     event.preventDefault();
 
-    // 💡 Option A : tu as déjà créé un SetupIntent sur ton backend
-    const setupIntentClientSecret = await this.getSetupIntentSecretFromBackend();
-    if (!this.stripe) {
-      console.log("Stripe pas possible !");
+    if (!this.stripe || !this.card) {
+      this.showCustomToast(this.t('STRIPE.NOT_READY') || 'Stripe non initialisé', 'error');
       return;
     }
-    const { setupIntent, error } = await this.stripe.confirmCardSetup(setupIntentClientSecret, {
-      payment_method: {
-        card: this.card
+    if (!this.userId) {
+      this.showCustomToast(this.t('AUTH.LOGIN_REQUIRED') || 'Veuillez vous connecter', 'error');
+      return;
+    }
+
+    this.isLoading = true;
+    this.cardError = '';
+
+    try {
+      // 1) Demander au backend la création d’un SetupIntent
+      const clientSecret = await this.getSetupIntentSecretFromBackend(this.userId);
+      if (!clientSecret) {
+        throw new Error('No client secret returned by backend');
       }
-    });
 
-    if (error) {
-      alert(error.message);
+      // 2) Confirmer côté client avec la carte collectée par Elements
+      const { setupIntent, error } = await this.stripe.confirmCardSetup(clientSecret, {
+        payment_method: {
+          card: this.card,
+          // 🔎 Ajoute des détails de facturation si tu les as (name/email du user)
+        },
+      });
+
+      if (error) {
+        console.error('[StripeCardForm] confirmCardSetup error:', error);
+        this.cardError = error.message || '';
+        this.showCustomToast(this.cardError || this.t('STRIPE.CONFIRM_FAILED') || 'Échec de l’enregistrement de la carte', 'error');
+        this.isLoading = false;
+        return;
+      }
+
+      // 3) Attacher la PM au customer côté backend (persisté chez toi)
+      const pmId = setupIntent?.payment_method as string;
+      await this.attachCardToCustomer(pmId, this.userId);
+
+      // 4) Notifier + event parent
+      this.showCustomToast(this.t('STRIPE.CARD_SAVED') || 'Carte enregistrée avec succès ✅', 'success');
+      this.cardAdded.emit();
+    } catch (err) {
+      console.error('[StripeCardForm] handleFormSubmit error:', err);
+      this.showCustomToast(this.t('COMMON.UNEXPECTED_ERROR') || 'Une erreur inattendue est survenue', 'error');
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  // =========================================================
+  // Alternative (Option B) : créer une PaymentMethod directement puis la sauvegarder
+  // =========================================================
+  async addCard() {
+    if (!this.stripe || !this.card) {
+      this.showCustomToast(this.t('STRIPE.NOT_READY') || 'Stripe non initialisé', 'error');
+      return;
+    }
+    if (!this.userId) {
+      this.showCustomToast(this.t('AUTH.LOGIN_REQUIRED') || 'Veuillez vous connecter', 'error');
       return;
     }
 
-    console.log('Carte enregistrée avec succès :', setupIntent);
+    this.isLoading = true;
+    this.cardError = '';
 
-    // Tu peux maintenant envoyer l’ID de la méthode de paiement à ton backend
-    await this.attachCardToCustomer(setupIntent.payment_method as string);
+    try {
+      // 1) Créer une PaymentMethod à partir d’Elements
+      const { paymentMethod, error } = await this.stripe.createPaymentMethod({
+        type: 'card',
+        card: this.card,
+        // billing_details: { name: 'John Doe', email: 'john@doe.com' }, // si tu as ces infos
+      });
 
-    this.cardAdded.emit(); // pour recharger les cartes côté parent
+      if (error || !paymentMethod) {
+        console.error('[StripeCardForm] createPaymentMethod error:', error);
+        this.cardError = error?.message || '';
+        this.showCustomToast(this.cardError || this.t('STRIPE.PM_FAILED') || 'Échec de création de la carte', 'error');
+        this.isLoading = false;
+        return;
+      }
+
+      // 2) Persister/attacher côté backend (crée / attache au customer, sauvegarde en BDD)
+      await this.saveCardOnServer(paymentMethod.id, this.userId);
+
+      this.showCustomToast(this.t('STRIPE.CARD_SAVED') || 'Carte enregistrée avec succès ✅', 'success');
+      this.cardAdded.emit();
+    } catch (err) {
+      console.error('[StripeCardForm] addCard error:', err);
+      this.showCustomToast(this.t('COMMON.UNEXPECTED_ERROR') || 'Une erreur inattendue est survenue', 'error');
+    } finally {
+      this.isLoading = false;
+    }
   }
 
-  async getSetupIntentSecretFromBackend(): Promise<string> {
-    const res = await fetch('/api/stripe/create-setup-intent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
+  // =========================================================
+  // Backend calls
+  // =========================================================
 
-    const data = await res.json();
-    return data.clientSecret;
-  }
-
-  async attachCardToCustomer(paymentMethodId: string): Promise<void> {
-    await fetch('/api/stripe/attach-card', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ paymentMethodId })
-    });
+  /**
+   * Demande au backend un SetupIntent pour l’utilisateur.
+   * Le backend doit renvoyer { clientSecret }.
+   */
+  private async getSetupIntentSecretFromBackend(userId: string): Promise<string> {
+    try {
+      const res = await fetch(`${environment.apiUrl}stripe/create-setup-intent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      return data?.clientSecret || '';
+    } catch (err) {
+      console.error('[StripeCardForm] getSetupIntentSecretFromBackend error:', err);
+      this.showCustomToast(this.t('STRIPE.SI_FAILED') || 'Impossible de préparer l’enregistrement de la carte', 'error');
+      return '';
+    }
   }
 
   /**
-   * Enregistre une méthode de paiement sur le serveur.
-   * @param paymentMethodId - ID de la méthode de paiement.
-   * @param userId - ID de l'utilisateur.
+   * Attache la PaymentMethod à ton customer et la persiste en BDD.
    */
-  async saveCardOnServer(paymentMethodId: string, userId: string): Promise<void> {
+  private async attachCardToCustomer(paymentMethodId: string, userId: string): Promise<void> {
     try {
-      console.log('Enregistrement de la carte sur le serveur...');
-      const response = await fetch(`${environment.apiUrl}stripe/save-card`, {
+      const res = await fetch(`${environment.apiUrl}stripe/attach-card`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ paymentMethodId, userId }),
       });
-
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(`Échec de l'enregistrement de la carte : ${errorMessage}`);
-      }
-
-      const data = await response.json();
-      console.log('CustomerId mis à jour avec succès :', data.customerId);
-    } catch (error) {
-      console.error('Erreur lors de l\'enregistrement de la carte sur le serveur :', error);
-      throw error;
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    } catch (err) {
+      console.error('[StripeCardForm] attachCardToCustomer error:', err);
+      this.showCustomToast(this.t('STRIPE.ATTACH_FAILED') || 'Impossible d’attacher la carte au compte', 'error');
+      throw err;
     }
   }
 
   /**
-   * Ajoute une nouvelle carte via Stripe Elements.
+   * Sauvegarde côté serveur (variante pour Option B).
    */
-  async addCard() {
+  private async saveCardOnServer(paymentMethodId: string, userId: string): Promise<void> {
     try {
-      console.log('Ajout de carte en cours...');
-      if (!this.stripe) {
-        throw new Error('Stripe n\'est pas initialisé.');
-      }
-
-      // Collecte les détails de facturation
-      const billingDetails = {
-        name: 'Nom de l\'utilisateur',
-        email: 'email@example.com',
-      };
-
-      // Crée une méthode de paiement avec Stripe Elements
-      const { paymentMethod, error } = await this.stripe.createPaymentMethod({
-        type: 'card',
-        card: this.card,
-        billing_details: billingDetails,
+      const res = await fetch(`${environment.apiUrl}stripe/save-card`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paymentMethodId, userId }),
       });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      console.log('[StripeCardForm] saveCardOnServer ok, customerId:', data?.customerId);
+    } catch (err) {
+      console.error('[StripeCardForm] saveCardOnServer error:', err);
+      this.showCustomToast(this.t('STRIPE.SAVE_FAILED') || 'Échec de l’enregistrement de la carte', 'error');
+      throw err;
+    }
+  }
 
-      if (error) {
-        // this.showCustomToast('Erreur lors de la création de la méthode de paiement');
-        console.error('Erreur lors de la création de la méthode de paiement :', error);
-        return;
-      }
+  // =========================================================
+  // Helpers (toasts + i18n)
+  // =========================================================
 
-      // Récupérez l'ID de l'utilisateur depuis le localStorage
-      if (!this.userId) {
-        // this.showCustomToast('Aucun userId trouvé. Veuillez vous connecter');
-        throw new Error('Aucun userId trouvé. Veuillez vous connecter.');
-      }
+  /** i18n safe */
+  private t(key: string): string {
+    try {
+      const value = this.translate.instant(key);
+      return value && value !== key ? value : key;
+    } catch {
+      return key;
+    }
+  }
 
-      // Enregistrez la méthode de paiement sur votre serveur avec userId
-      await this.saveCardOnServer(paymentMethod.id, this.userId);
-
-      // Fermez la modal après avoir ajouté la carte
-      // this.closeAddCardModal();
-
-      this.cardAdded.emit(); // pour recharger les cartes côté parent
-     
-      // this.showCustomToast('Carte ajoutée avec succès !');
-    } catch (error) {
-      console.error('Erreur lors de l\'ajout de la carte :', error);
-      // this.showCustomToast('Une erreur est survenue lors de l\'ajout de la carte');
+  /** Toast centralisé */
+  private showCustomToast(message: string, type: 'success' | 'error' = 'success'): void {
+    try {
+      if (type === 'success') this.toastr.success(message);
+      else this.toastr.error(message);
+    } catch (err) {
+      console.warn('[StripeCardForm] showCustomToast warn:', err, message);
     }
   }
 }
