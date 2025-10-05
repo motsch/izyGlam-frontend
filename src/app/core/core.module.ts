@@ -77,6 +77,7 @@ import { HorizontalShopListComponent } from './component/horizontal-shop-list/ho
 import { HorizontalPubListComponent } from './component/horizontal-pub-list/horizontal-pub-list.component';
 import { CalendarComponent } from './component/calendar/calendar.component';
 import { OrderCardComponent } from './component/order-card/order-card.component';
+import { ReviewsModalComponent } from './component/reviews-modal/reviews-modal.component';
 import { ReviewModalComponent } from './component/review-modal/review-modal.component';
 import { CreateShopInfoComponent } from './component/create-shop-info/create-shop-info.component';
 import { ShopEmployeesComponent } from './component/shop-employees/shop-employees.component';
@@ -198,6 +199,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         HorizontalPubListComponent,
         OrderCardComponent,
         ReviewModalComponent,
+        ReviewsModalComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     exports: [
@@ -248,6 +250,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         HorizontalPubListComponent,
         OrderCardComponent,
         ReviewModalComponent,
+        ReviewsModalComponent
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })

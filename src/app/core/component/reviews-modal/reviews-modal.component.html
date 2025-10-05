@@ -1,0 +1,31 @@
+<!-- Affiché seulement si un shop est présent -->
+<div
+  class="global-modal"
+  *ngIf="modal.current.shop as shop"
+  (click)="closeBackdrop($event)"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="global-modal__dialog" (click)="stop($event)">
+    <div class="global-modal__header">
+      <h3 class="global-modal__title">{{ 'SHOP_CARD.AVIS' | translate }}: {{ shop.name }}</h3>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.close()"></button>
+    </div>
+
+    <div class="global-modal__body">
+      <div class="review" *ngFor="let review of shop.reviews">
+        <label>{{ 'SHOP_CARD.COMMENT' | translate }}:</label>
+        <div class="review__content">{{ review.comment }}</div>
+
+        <label>{{ 'SHOP_CARD.NOTE' | translate }}:</label>
+        <div class="review__content">{{ review.rating }}</div>
+      </div>
+    </div>
+
+    <div class="global-modal__footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.close()">
+        {{ 'SHOP_CARD.CLOSE' | translate }}
+      </button>
+    </div>
+  </div>
+</div>

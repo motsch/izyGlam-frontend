@@ -1,0 +1,96 @@
+/* Backdrop plein écran + centrage */
+.global-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000; /* au-dessus de tout */
+}
+
+/* Boîte de dialogue */
+.global-modal__dialog {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 16px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  z-index: 10001;
+}
+
+/* Header */
+.global-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+
+  .global-modal__title {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #4b4b4b;
+  }
+
+  .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #888;
+    cursor: pointer;
+
+    &:hover { color: #333; }
+  }
+}
+
+/* Corps */
+.global-modal__body {
+  padding: 20px;
+
+  .review {
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+
+    label {
+      display: inline-block;
+      font-weight: 600;
+      color: #555;
+      font-size: 0.92em;
+    }
+
+    .review__content {
+      margin-top: 4px;
+      color: #333;
+      line-height: 1.45;
+    }
+  }
+}
+
+/* Pied */
+.global-modal__footer {
+  padding: 14px 20px 20px;
+  display: flex;
+  justify-content: center;
+
+  .btn.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: 600;
+
+    &:hover { background-color: #5a6268; }
+  }
+}
+
+/* Quand la modale est ouverte, on neutralise les transforms des cartes/containers si besoin */
+.modal-open .profile-card:hover { transform: none !important; }
+/* Si tu utilises un slider/grille avec transform, ajoute son sélecteur ici :
+.modal-open .swiper, .modal-open .swiper-wrapper, .modal-open .shops-track { transform: none !important; }
+*/

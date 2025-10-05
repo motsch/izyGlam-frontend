@@ -3,6 +3,8 @@
   <router-outlet></router-outlet>
 </div>
 
+<!-- Modale globale, RENDUE UNE SEULE FOIS -->
+<app-reviews-modal></app-reviews-modal>
 <!-- Si l'utilisateur est connecté -->
 <mat-drawer-container class="example-container" *ngIf="sessionService.isLoggedIn()">
   <!-- Drawer latéral gauche -->

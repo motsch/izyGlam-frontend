@@ -1,8 +1,11 @@
+/********  TITRES  ********/
 h3 {
   font-size: 18px;
 }
 
+/********  CARTE PROFIL  ********/
 .profile-card {
+  /* Surtout pas de z-index:0 ici -> crée un stacking context */
   width: 200px;
   border: none;
   border-radius: 5px;
@@ -10,7 +13,7 @@ h3 {
   position: relative;
   overflow: hidden;
   text-align: center;
-  /* Assure que le contenu est centré */
+
   &:hover {
     transform: scale(1.03);
     cursor: pointer;
@@ -20,11 +23,14 @@ h3 {
 .image-container {
   position: relative;
   width: 160px;
-  /* Ajustez selon vos besoins */
   height: 160px;
-  /* Rendre la hauteur et la largeur égales pour garder une forme ronde */
   margin: 0 auto;
-  /* Centrer l'image dans la carte */
+}
+
+.image-wrapper {
+  position: relative;
+  width: 165px;
+  height: 165px;
 }
 
 .main-image,
@@ -33,7 +39,13 @@ h3 {
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  /* Assure que l'image est toujours ronde */
+}
+
+.main-image {
+  position: relative;
+  /* pas de z-index:0 -> sinon stacking context */
+  width: 165px;
+  height: 165px;
 }
 
 .overlay-image {
@@ -44,22 +56,21 @@ h3 {
   height: 100%;
   border-radius: 50%;
   z-index: 3;
-  pointer-events: none; // évite de bloquer les clics sur l’image principale
+  pointer-events: none;
 }
-
 
 .profile-card img {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  /* Applique une bordure arrondie */
 }
 
 .profile-info {
   margin-top: 15px;
 }
 
+/********  COEUR  ********/
 .heart-icon {
-  z-index: 3;
+  z-index: 4;
   position: absolute;
   bottom: 30px;
   right: 27px;
@@ -67,24 +78,95 @@ h3 {
   color: rgb(85, 85, 85);
   cursor: pointer;
   transition: color 0.3s ease;
+
+  &.favorite {
+    color: red;
+  }
 }
 
-.heart-icon.favorite {
-  color: red;
+/********  SKELETON LOADER  ********/
+.shop-card-wrapper {
+  position: relative;
+  width: 160px;
+  margin-right: 16px;
+  flex-shrink: 0;
+
+  app-round-shop-card {
+    display: block;
+    position: relative;
+    z-index: 1;
+
+    &:not(.hidden-until-loaded) {
+      opacity: 1;
+    }
+  }
 }
 
+.shop-skeleton-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #f8cfdc 25%, #ffe1ec 50%, #f8cfdc 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease-in-out infinite;
+  z-index: 1;
+}
 
-/********          MODAL          ********/
-.custom-modal-width {
-  max-width: 600px;
+.hidden-until-loaded {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/********  MODAL (centrée + backdrop + top absolu)  ********/
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none; /* piloté par [style.display] */
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 10000 !important; /* au-dessus de tout */
+}
+
+.modal.show {
+  display: flex;
+}
+
+/* La fenêtre elle-même au-dessus */
+.modal-dialog,
+.modal-content {
+  position: relative;
+  z-index: 10001 !important;
+}
+
+.custom-modal-width,
+.modal-dialog {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 16px;
 }
 
 .modal-content {
   border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
   border: none;
+  background: #fff;
 }
 
+/* En-tête */
 .modal-header {
   background-color: #f8f9fa;
   border-bottom: none;
@@ -105,6 +187,7 @@ h3 {
     border: none;
     font-size: 1.5em;
     color: #999;
+    cursor: pointer;
 
     &:hover {
       color: #333;
@@ -112,6 +195,7 @@ h3 {
   }
 }
 
+/* Corps */
 .modal-body {
   padding: 20px;
 
@@ -135,6 +219,7 @@ h3 {
   }
 }
 
+/* Pied */
 .modal-footer {
   padding: 15px;
   border-top: none;
@@ -154,84 +239,17 @@ h3 {
   }
 }
 
-
-
-.shop-skeleton-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 165px;
-  height: 165px; // hauteur réelle de ta carte
-  border-radius: 50%;
-  background: linear-gradient(90deg, #f8cfdc 25%, #ffe1ec 50%, #f8cfdc 75%);
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.4s ease-in-out infinite;
-  z-index: 1;
+/* ————— Quand la modale est ouverte —————
+   On neutralise les transforms qui créent des stacking contexts au-dessus du fixed */
+.modal-open .profile-card:hover {
+  transform: none !important;
 }
 
-@keyframes skeleton-loading {
-  0% {
-    background-position: 200% 0;
-  }
-
-  100% {
-    background-position: -200% 0;
-  }
+/* Si tu as des carousels/sliders qui utilisent transform, commente/décommente ci-dessous :
+.modal-open .swiper,
+.modal-open .swiper-wrapper,
+.modal-open .carousel,
+.modal-open .shops-track {
+  transform: none !important;
 }
-
-.shop-card-wrapper {
-  position: relative;
-  width: 160px; // adapte à ta largeur réelle
-  margin-right: 16px;
-  flex-shrink: 0;
-}
-
-.hidden-until-loaded {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease-in-out;
-}
-
-.shop-card-wrapper app-round-shop-card {
-  display: block;
-  z-index: 2;
-  position: relative;
-}
-
-.shop-card-wrapper app-round-shop-card:not(.hidden-until-loaded) {
-  opacity: 1;
-}
-
-.image-wrapper {
-  position: relative;
-  width: 165px;
-  height: 165px;
-}
-
-.shop-skeleton-card {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 165px;
-  height: 165px;
-  border-radius: 50%;
-  background: linear-gradient(90deg, #f8cfdc 25%, #ffe1ec 50%, #f8cfdc 75%);
-  background-size: 200% 100%;
-  animation: skeleton-loading 1.4s ease-in-out infinite;
-  z-index: 1;
-}
-
-.hidden-until-loaded {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease-in-out;
-}
-
-.main-image {
-  position: relative;
-  z-index: 2;
-  width: 165px;
-  height: 165px;
-  object-fit: cover;
-  border-radius: 50%;
-}
+*/
