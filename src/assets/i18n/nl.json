@@ -1438,5 +1438,36 @@
       "TITLE": "Ingangsdatum",
       "TEXT": "Deze AGV treden in werking op <strong>25 december 2025</strong> en vervangen alle eerdere versies."
     }
+  },
+  "invoice": {
+    "TITLE": "Invois",
+    "SELLER": "Penjual",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, Avenue Voltaire{{linebreak}}75000 Paris, Perancis",
+    "CLIENT": "Pelanggan",
+    "UNKNOWN_CLIENT": "Pelanggan tidak diketahui",
+    "BILLING_DATE": "Tarikh bil:",
+    "NUMBER": "Nombor invois:",
+    "DUE_DATE": "Tarikh akhir bayaran:",
+    "DUE_IMMEDIATE": "Serta-merta",
+    "PAYMENT_STATUS": "Status pembayaran:",
+    "SERVICE_DATE": "Tarikh perkhidmatan:",
+    "DESCRIPTION": "Keterangan",
+    "QTY": "Kuantiti",
+    "UNIT": "Unit",
+    "UNIT_PRICE_HT": "Harga seunit (tidak termasuk cukai)",
+    "VAT_RATE": "VAT %",
+    "TOTAL_VAT": "Jumlah VAT",
+    "TOTAL_TTC": "Jumlah (termasuk cukai)",
+    "DEFAULT_ITEM": "Perkhidmatan ditempah",
+    "SERVICE_UNIT": "perkhidmatan",
+    "IG_COMMISSION": "Komisen izyGlam",
+    "SERVICE_FEES": "Yuran perkhidmatan",
+    "VAT_STATE": "VAT (Negeri)",
+    "TOTAL_HT": "Jumlah kecil (tanpa cukai)",
+    "VAT": "VAT",
+    "FOOTER_LINE1": "izyGlam - Kecantikan & Kesejahteraan di Rumah",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Tidak ditentukan",
+    "INVALID_DATE": "Tarikh tidak sah"
   }
 }

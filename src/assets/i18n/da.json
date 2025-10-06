@@ -1438,5 +1438,36 @@
       "TITLE": "Ikrafttrædelsesdato",
       "TEXT": "Disse vilkår træder i kraft den <strong>25. december 2025</strong> og erstatter alle tidligere versioner."
     }
+  },
+  "invoice": {
+    "TITLE": "Faktura",
+    "SELLER": "Sælger",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Voltaire Allé 22{{linebreak}}75000 Paris, Frankrig",
+    "CLIENT": "Kunde",
+    "UNKNOWN_CLIENT": "Ukendt kunde",
+    "BILLING_DATE": "Fakturadato:",
+    "NUMBER": "Fakturanummer:",
+    "DUE_DATE": "Forfaldsdato:",
+    "DUE_IMMEDIATE": "Straks",
+    "PAYMENT_STATUS": "Betalingsstatus:",
+    "SERVICE_DATE": "Servicedato:",
+    "DESCRIPTION": "Beskrivelse",
+    "QTY": "Antal",
+    "UNIT": "Enhed",
+    "UNIT_PRICE_HT": "Enhedspris (ekskl. moms)",
+    "VAT_RATE": "Moms %",
+    "TOTAL_VAT": "Samlet moms",
+    "TOTAL_TTC": "Total (inkl. moms)",
+    "DEFAULT_ITEM": "Booket service",
+    "SERVICE_UNIT": "service",
+    "IG_COMMISSION": "izyGlam-provision",
+    "SERVICE_FEES": "Servicegebyrer",
+    "VAT_STATE": "Moms (stat)",
+    "TOTAL_HT": "Delsum (ekskl. moms)",
+    "VAT": "Moms",
+    "FOOTER_LINE1": "izyGlam - Skønhed & velvære derhjemme",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Udefineret",
+    "INVALID_DATE": "Ugyldig dato"
   }
 }

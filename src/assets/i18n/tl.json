@@ -1438,5 +1438,36 @@
       "TITLE": "Petsa ng bisa",
       "TEXT": "Epektibo ang CGU simula <strong>25&nbsp;Disyembre&nbsp;2025</strong> at pumapalit sa naunang bersyon."
     }
+  },
+  "invoice": {
+    "TITLE": "Invoice",
+    "SELLER": "Nagbebenta",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, Voltaire Avenue{{linebreak}}75000 Paris, France",
+    "CLIENT": "Kustomer",
+    "UNKNOWN_CLIENT": "Hindi kilalang kustomer",
+    "BILLING_DATE": "Petsa ng pagsingil:",
+    "NUMBER": "Numero ng invoice:",
+    "DUE_DATE": "Petsa ng dapat bayaran:",
+    "DUE_IMMEDIATE": "Agad-agad",
+    "PAYMENT_STATUS": "Katayuan ng bayad:",
+    "SERVICE_DATE": "Petsa ng serbisyo:",
+    "DESCRIPTION": "Deskripsyon",
+    "QTY": "Dami",
+    "UNIT": "Yunit",
+    "UNIT_PRICE_HT": "Presyo bawat yunit (walang buwis)",
+    "VAT_RATE": "VAT %",
+    "TOTAL_VAT": "Kabuuang VAT",
+    "TOTAL_TTC": "Kabuuan (may buwis)",
+    "DEFAULT_ITEM": "Nareserbang serbisyo",
+    "SERVICE_UNIT": "serbisyo",
+    "IG_COMMISSION": "Komisyon ng izyGlam",
+    "SERVICE_FEES": "Bayarin sa serbisyo",
+    "VAT_STATE": "VAT (State)",
+    "TOTAL_HT": "Subtotal (walang buwis)",
+    "VAT": "VAT",
+    "FOOTER_LINE1": "izyGlam - Beauty & Wellness sa Tahanan",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Hindi tukoy",
+    "INVALID_DATE": "Di-wastong petsa"
   }
 }

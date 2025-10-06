@@ -1438,5 +1438,36 @@
       "TITLE": "Data intrării în vigoare",
       "TEXT": "Prezentele CGU intră în vigoare la <strong>25&nbsp;decembrie&nbsp;2025</strong> și înlocuiesc orice versiune anterioară."
     }
+  },
+  "invoice": {
+    "TITLE": "Factură",
+    "SELLER": "Vânzător",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Bd. Voltaire 22{{linebreak}}75000 Paris, Franța",
+    "CLIENT": "Client",
+    "UNKNOWN_CLIENT": "Client necunoscut",
+    "BILLING_DATE": "Data facturării:",
+    "NUMBER": "Număr factură:",
+    "DUE_DATE": "Data scadenței:",
+    "DUE_IMMEDIATE": "Imediat",
+    "PAYMENT_STATUS": "Stare plată:",
+    "SERVICE_DATE": "Data serviciului:",
+    "DESCRIPTION": "Descriere",
+    "QTY": "Cantitate",
+    "UNIT": "Unitate",
+    "UNIT_PRICE_HT": "Preț unitar (fără TVA)",
+    "VAT_RATE": "TVA %",
+    "TOTAL_VAT": "TVA total",
+    "TOTAL_TTC": "Total (cu TVA)",
+    "DEFAULT_ITEM": "Serviciu rezervat",
+    "SERVICE_UNIT": "serviciu",
+    "IG_COMMISSION": "Comision izyGlam",
+    "SERVICE_FEES": "Taxe de serviciu",
+    "VAT_STATE": "TVA (Stat)",
+    "TOTAL_HT": "Subtotal (fără TVA)",
+    "VAT": "TVA",
+    "FOOTER_LINE1": "izyGlam - Frumusețe și wellbeing la domiciliu",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Nedefinit",
+    "INVALID_DATE": "Dată invalidă"
   }
 }

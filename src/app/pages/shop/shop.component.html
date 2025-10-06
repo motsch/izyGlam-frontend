@@ -25,7 +25,10 @@
 
               </div>
             </div>
-
+            <div class="margin-top-20">
+              <div *ngIf="adminSettings.commissionRate > 0">{{"PAYEMENT.SUMMARY_SERVICE_FEE" | translate}} : {{ adminSettings.commissionRate * 100 }}%</div>
+              <div *ngIf="adminSettings.serviceFee > 0">{{"PAYEMENT.SUMMARY_DELIVERY_FEE" | translate}} : {{ adminSettings.serviceFee }}€</div>
+            </div>
             <div class="description-wrapper">
               <div class="description-text">
                 {{ shopInfo.description }}

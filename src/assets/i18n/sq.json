@@ -1438,5 +1438,36 @@
       "TITLE": "Data e hyrjes në fuqi",
       "TEXT": "Këto Kushte hyjnë në fuqi më <strong>25 dhjetor 2025</strong> dhe zëvendësojnë çdo version të mëparshëm."
     }
+  },
+  "invoice": {
+    "TITLE": "Fatuur",
+    "SELLER": "Iibiye",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, Voltaire Avenue{{linebreak}}75000 Paris, Faransiis",
+    "CLIENT": "Macmiil",
+    "UNKNOWN_CLIENT": "Macmiil aan la garanayn",
+    "BILLING_DATE": "Taariikhda biilasha:",
+    "NUMBER": "Lambarka fatuurka:",
+    "DUE_DATE": "Taariikhda bixinta:",
+    "DUE_IMMEDIATE": "Degdeg",
+    "PAYMENT_STATUS": "Xaaladda lacag bixinta:",
+    "SERVICE_DATE": "Taariikhda adeegga:",
+    "DESCRIPTION": "Sharaxaad",
+    "QTY": "Tiro",
+    "UNIT": "Qeyb",
+    "UNIT_PRICE_HT": "Qiimaha cutubka (canshuur la’aan)",
+    "VAT_RATE": "VAT %",
+    "TOTAL_VAT": "Wadar VAT",
+    "TOTAL_TTC": "Wadar (canshuur ku jirto)",
+    "DEFAULT_ITEM": "Adeeg la ballansaday",
+    "SERVICE_UNIT": "adeeg",
+    "IG_COMMISSION": "Komishanka izyGlam",
+    "SERVICE_FEES": "Kharashaadka adeegga",
+    "VAT_STATE": "VAT (gobol)",
+    "TOTAL_HT": "Isugeyn hoose (canshuur la’aan)",
+    "VAT": "VAT",
+    "FOOTER_LINE1": "izyGlam - Qurux & fayoobaansho guriga",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Aan la cayimin",
+    "INVALID_DATE": "Taariikh aan sax ahayn"
   }
 }

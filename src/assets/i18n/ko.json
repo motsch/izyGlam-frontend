@@ -1438,5 +1438,36 @@
       "TITLE": "발효일",
       "TEXT": "본 CGU는 <strong>2025년 12월 25일</strong>에 발효되며 이전 버전을 대체합니다."
     }
+  },
+  "invoice": {
+    "TITLE": "송장",
+    "SELLER": "판매자",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}볼테르 애비뉴 22{{linebreak}}75000 파리, 프랑스",
+    "CLIENT": "고객",
+    "UNKNOWN_CLIENT": "알 수 없는 고객",
+    "BILLING_DATE": "청구일:",
+    "NUMBER": "송장 번호:",
+    "DUE_DATE": "결제 기한:",
+    "DUE_IMMEDIATE": "즉시",
+    "PAYMENT_STATUS": "결제 상태:",
+    "SERVICE_DATE": "서비스 일자:",
+    "DESCRIPTION": "설명",
+    "QTY": "수량",
+    "UNIT": "단위",
+    "UNIT_PRICE_HT": "단가(세금 별도)",
+    "VAT_RATE": "부가세 %",
+    "TOTAL_VAT": "부가세 합계",
+    "TOTAL_TTC": "합계(세금 포함)",
+    "DEFAULT_ITEM": "예약된 서비스",
+    "SERVICE_UNIT": "서비스",
+    "IG_COMMISSION": "izyGlam 수수료",
+    "SERVICE_FEES": "서비스 수수료",
+    "VAT_STATE": "부가세(주)",
+    "TOTAL_HT": "소계(세금 별도)",
+    "VAT": "부가세",
+    "FOOTER_LINE1": "izyGlam - 집에서 즐기는 뷰티 & 웰니스",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "정의되지 않음",
+    "INVALID_DATE": "유효하지 않은 날짜"
   }
 }

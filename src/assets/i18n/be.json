@@ -1438,5 +1438,36 @@
       "TITLE": "Дата ўступлення ў сілу",
       "TEXT": "Гэтыя АУК уступаюць у сілу <strong>25&nbsp;снежня&nbsp;2025</strong> і заменяць усе папярэднія версіі."
     }
+  },
+  "invoice": {
+    "TITLE": "Рахунак-фактура",
+    "SELLER": "Прадавец",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, праспект Вольтэра{{linebreak}}75000 Парыж, Францыя",
+    "CLIENT": "Кліент",
+    "UNKNOWN_CLIENT": "Невядомы кліент",
+    "BILLING_DATE": "Дата выстаўлення:",
+    "NUMBER": "Нумар рахунку:",
+    "DUE_DATE": "Тэрмін аплаты:",
+    "DUE_IMMEDIATE": "Адразу",
+    "PAYMENT_STATUS": "Статус аплаты:",
+    "SERVICE_DATE": "Дата паслугі:",
+    "DESCRIPTION": "Апісанне",
+    "QTY": "Колькасць",
+    "UNIT": "Адзінка",
+    "UNIT_PRICE_HT": "Кошт за адзінку (без падатку)",
+    "VAT_RATE": "ПДВ %",
+    "TOTAL_VAT": "Усяго ПДВ",
+    "TOTAL_TTC": "Усяго (з падаткам)",
+    "DEFAULT_ITEM": "Забраніраваная паслуга",
+    "SERVICE_UNIT": "паслуга",
+    "IG_COMMISSION": "Камісія izyGlam",
+    "SERVICE_FEES": "Плата за сэрвіс",
+    "VAT_STATE": "ПДВ (штат)",
+    "TOTAL_HT": "Прамежкавы вынік (без падатку)",
+    "VAT": "ПДВ",
+    "FOOTER_LINE1": "izyGlam - Прыгажосць і дабрабыт дома",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Не вызначана",
+    "INVALID_DATE": "Няправільная дата"
   }
 }

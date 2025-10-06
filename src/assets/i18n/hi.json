@@ -1438,5 +1438,36 @@
       "TITLE": "प्रभावी तिथि",
       "TEXT": "ये CGU <strong>25 दिसंबर 2025</strong> से प्रभावी हैं और किसी भी पूर्व संस्करण को प्रतिस्थापित करती हैं।"
     }
+  },
+  "invoice": {
+    "TITLE": "चालान",
+    "SELLER": "विक्रेता",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, वोल्तेयर एवेन्यू{{linebreak}}75000 पेरिस, फ्रांस",
+    "CLIENT": "ग्राहक",
+    "UNKNOWN_CLIENT": "अज्ञात ग्राहक",
+    "BILLING_DATE": "बिलिंग तिथि:",
+    "NUMBER": "चालान संख्या:",
+    "DUE_DATE": "देय तिथि:",
+    "DUE_IMMEDIATE": "तत्काल",
+    "PAYMENT_STATUS": "भुगतान स्थिति:",
+    "SERVICE_DATE": "सेवा तिथि:",
+    "DESCRIPTION": "विवरण",
+    "QTY": "मात्रा",
+    "UNIT": "इकाई",
+    "UNIT_PRICE_HT": "इकाई मूल्य (कर रहित)",
+    "VAT_RATE": "वैट %",
+    "TOTAL_VAT": "कुल वैट",
+    "TOTAL_TTC": "कुल (कर सहित)",
+    "DEFAULT_ITEM": "बुक की गई सेवा",
+    "SERVICE_UNIT": "सेवा",
+    "IG_COMMISSION": "izyGlam कमीशन",
+    "SERVICE_FEES": "सेवा शुल्क",
+    "VAT_STATE": "वैट (राज्य)",
+    "TOTAL_HT": "उप-योग (कर रहित)",
+    "VAT": "वैट",
+    "FOOTER_LINE1": "izyGlam - घर पर सौंदर्य और वेलनेस",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "अपरिभाषित",
+    "INVALID_DATE": "अमान्य तिथि"
   }
 }

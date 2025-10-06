@@ -1438,5 +1438,36 @@
       "TITLE": "Ngày hiệu lực",
       "TEXT": "Điều khoản này có hiệu lực từ <strong>25 tháng 12 2025</strong> và thay thế mọi phiên bản trước."
     }
+  },
+  "invoice": {
+    "TITLE": "Hóa đơn",
+    "SELLER": "Người bán",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, Đại lộ Voltaire{{linebreak}}75000 Paris, Pháp",
+    "CLIENT": "Khách hàng",
+    "UNKNOWN_CLIENT": "Khách hàng không xác định",
+    "BILLING_DATE": "Ngày lập hóa đơn:",
+    "NUMBER": "Số hóa đơn:",
+    "DUE_DATE": "Hạn thanh toán:",
+    "DUE_IMMEDIATE": "Ngay lập tức",
+    "PAYMENT_STATUS": "Trạng thái thanh toán:",
+    "SERVICE_DATE": "Ngày cung cấp dịch vụ:",
+    "DESCRIPTION": "Mô tả",
+    "QTY": "Số lượng",
+    "UNIT": "Đơn vị",
+    "UNIT_PRICE_HT": "Đơn giá (chưa thuế)",
+    "VAT_RATE": "VAT %",
+    "TOTAL_VAT": "Tổng VAT",
+    "TOTAL_TTC": "Tổng cộng (đã gồm thuế)",
+    "DEFAULT_ITEM": "Dịch vụ đã đặt",
+    "SERVICE_UNIT": "dịch vụ",
+    "IG_COMMISSION": "Hoa hồng izyGlam",
+    "SERVICE_FEES": "Phí dịch vụ",
+    "VAT_STATE": "VAT (Bang)",
+    "TOTAL_HT": "Tạm tính (chưa thuế)",
+    "VAT": "VAT",
+    "FOOTER_LINE1": "izyGlam - Làm đẹp & chăm sóc tại nhà",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Không xác định",
+    "INVALID_DATE": "Ngày không hợp lệ"
   }
 }

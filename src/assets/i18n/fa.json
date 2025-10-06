@@ -1438,5 +1438,36 @@
       "TITLE": "تاریخ اجرا",
       "TEXT": "این CGU از <strong>۲۵ دسامبر ۲۰۲۵</strong> لازم‌الاجراست و همهٔ نسخه‌های پیشین را جایگزین می‌کند."
     }
+  },
+  "invoice": {
+    "TITLE": "فاکتور",
+    "SELLER": "فروشنده",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}خیابان ولتر ۲۲{{linebreak}}۷۵۰۰۰ پاریس، فرانسه",
+    "CLIENT": "مشتری",
+    "UNKNOWN_CLIENT": "مشتری نامشخص",
+    "BILLING_DATE": "تاریخ صدور:",
+    "NUMBER": "شماره فاکتور:",
+    "DUE_DATE": "تاریخ سررسید:",
+    "DUE_IMMEDIATE": "فوری",
+    "PAYMENT_STATUS": "وضعیت پرداخت:",
+    "SERVICE_DATE": "تاریخ خدمت:",
+    "DESCRIPTION": "توضیحات",
+    "QTY": "تعداد",
+    "UNIT": "واحد",
+    "UNIT_PRICE_HT": "قیمت واحد (بدون مالیات)",
+    "VAT_RATE": "٪ مالیات بر ارزش افزوده",
+    "TOTAL_VAT": "جمع مالیات بر ارزش افزوده",
+    "TOTAL_TTC": "جمع کل (با مالیات)",
+    "DEFAULT_ITEM": "خدمت رزروشده",
+    "SERVICE_UNIT": "خدمت",
+    "IG_COMMISSION": "کارمزد izyGlam",
+    "SERVICE_FEES": "هزینه‌های خدمات",
+    "VAT_STATE": "مالیات بر ارزش افزوده (ایالت)",
+    "TOTAL_HT": "جمع جزء (بدون مالیات)",
+    "VAT": "مالیات بر ارزش افزوده",
+    "FOOTER_LINE1": "izyGlam - زیبایی و تندرستی در خانه",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "نامشخص",
+    "INVALID_DATE": "تاریخ نامعتبر"
   }
 }

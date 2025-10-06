@@ -1438,5 +1438,36 @@
       "TITLE": "Дата набуття чинності",
       "TEXT": "Ці ЗУК набувають чинності <strong>25 грудня 2025</strong> і замінюють усі попередні версії."
     }
+  },
+  "invoice": {
+    "TITLE": "Рахунок",
+    "SELLER": "Продавець",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}просп. Вольтера, 22{{linebreak}}75000 Париж, Франція",
+    "CLIENT": "Клієнт",
+    "UNKNOWN_CLIENT": "Невідомий клієнт",
+    "BILLING_DATE": "Дата виставлення:",
+    "NUMBER": "Номер рахунка:",
+    "DUE_DATE": "Строк оплати:",
+    "DUE_IMMEDIATE": "Негайно",
+    "PAYMENT_STATUS": "Статус оплати:",
+    "SERVICE_DATE": "Дата послуги:",
+    "DESCRIPTION": "Опис",
+    "QTY": "Кількість",
+    "UNIT": "Одиниця",
+    "UNIT_PRICE_HT": "Ціна за од. (без податку)",
+    "VAT_RATE": "ПДВ %",
+    "TOTAL_VAT": "Разом ПДВ",
+    "TOTAL_TTC": "Всього (з податком)",
+    "DEFAULT_ITEM": "Заброньована послуга",
+    "SERVICE_UNIT": "послуга",
+    "IG_COMMISSION": "Комісія izyGlam",
+    "SERVICE_FEES": "Плата за сервіс",
+    "VAT_STATE": "ПДВ (штат)",
+    "TOTAL_HT": "Проміжний підсумок (без податку)",
+    "VAT": "ПДВ",
+    "FOOTER_LINE1": "izyGlam — Краса та велнес вдома",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Невизначено",
+    "INVALID_DATE": "Некоректна дата"
   }
 }

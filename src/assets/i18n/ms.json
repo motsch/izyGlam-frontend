@@ -1438,5 +1438,36 @@
       "TITLE": "Tarikh kuat kuasa",
       "TEXT": "CGU ini berkuat kuasa pada <strong>25 Disember 2025</strong> dan menggantikan semua versi terdahulu."
     }
+  },
+  "invoice": {
+    "TITLE": "Faktûr",
+    "SELLER": "Firoşkar",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, Koçeka Voltaire{{linebreak}}75000 Parîs, Fransa",
+    "CLIENT": "Mişterî",
+    "UNKNOWN_CLIENT": "Mişterî nenas",
+    "BILLING_DATE": "Dema faktûrkirinê:",
+    "NUMBER": "Hejmara faktûrê:",
+    "DUE_DATE": "Dema dawî ya dayînê:",
+    "DUE_IMMEDIATE": "Demdemî",
+    "PAYMENT_STATUS": "Rewşa dayînê:",
+    "SERVICE_DATE": "Dema xizmetê:",
+    "DESCRIPTION": "Danasîn",
+    "QTY": "Jimarî",
+    "UNIT": "Yekî",
+    "UNIT_PRICE_HT": "Biya yekî (bê bacê)",
+    "VAT_RATE": "TVA %",
+    "TOTAL_VAT": "Tevahiya TVA",
+    "TOTAL_TTC": "Tevahî (bi bacê)",
+    "DEFAULT_ITEM": "Xizmeta rezervêkirî",
+    "SERVICE_UNIT": "xizmet",
+    "IG_COMMISSION": "Komîsyona izyGlam",
+    "SERVICE_FEES": "Xercên xizmetê",
+    "VAT_STATE": "TVA (dewlet)",
+    "TOTAL_HT": "Koma jêr (bê bacê)",
+    "VAT": "TVA",
+    "FOOTER_LINE1": "izyGlam - Bedewî û tendurustî li malê",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Nediarkirî",
+    "INVALID_DATE": "Dîroka nederbasdar"
   }
 }

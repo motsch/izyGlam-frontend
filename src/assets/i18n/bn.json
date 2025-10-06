@@ -1438,5 +1438,36 @@
       "TITLE": "কার্যকরতার তারিখ",
       "TEXT": "এই CGU <strong>২৫&nbsp;ডিসেম্বর&nbsp;২০২৫</strong> থেকে কার্যকর এবং পূর্ববর্তী সব সংস্করণ প্রতিস্থাপন করবে।"
     }
+  },
+  "invoice": {
+    "TITLE": "ইনভয়েস",
+    "SELLER": "বিক্রেতা",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}২২, ভোলতেয়ার অ্যাভিনিউ{{linebreak}}৭৫০০০ প্যারিস, ফ্রান্স",
+    "CLIENT": "গ্রাহক",
+    "UNKNOWN_CLIENT": "অজানা গ্রাহক",
+    "BILLING_DATE": "বিলিং তারিখ:",
+    "NUMBER": "ইনভয়েস নম্বর:",
+    "DUE_DATE": "পরিশোধের সময়সীমা:",
+    "DUE_IMMEDIATE": "তৎক্ষণাৎ",
+    "PAYMENT_STATUS": "পেমেন্ট অবস্থা:",
+    "SERVICE_DATE": "সেবার তারিখ:",
+    "DESCRIPTION": "বিবরণ",
+    "QTY": "পরিমাণ",
+    "UNIT": "একক",
+    "UNIT_PRICE_HT": "একক মূল্য (কর ব্যতীত)",
+    "VAT_RATE": "ভ্যাট %",
+    "TOTAL_VAT": "মোট ভ্যাট",
+    "TOTAL_TTC": "মোট (করের সঙ্গে)",
+    "DEFAULT_ITEM": "বুক করা পরিষেবা",
+    "SERVICE_UNIT": "সেবা",
+    "IG_COMMISSION": "izyGlam কমিশন",
+    "SERVICE_FEES": "সেবা ফি",
+    "VAT_STATE": "ভ্যাট (রাজ্য)",
+    "TOTAL_HT": "আংশিক মোট (কর ব্যতীত)",
+    "VAT": "ভ্যাট",
+    "FOOTER_LINE1": "izyGlam - ঘরে বসে সৌন্দর্য ও সুস্থতা",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "অনির্ধারিত",
+    "INVALID_DATE": "অবৈধ তারিখ"
   }
 }

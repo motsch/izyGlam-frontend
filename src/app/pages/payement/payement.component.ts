@@ -54,7 +54,11 @@ export class PayementComponent implements OnInit {
   date: string | null = '';
   imgStorageUrl: string = environment.APIimgStorageUrl;
   me: any = {};
-  price: string = '';
+
+  // ⚠️ Prix manipulés en number (plus en string)
+  price: number = 0;       // Prix "produit" (gains shop avant commission/TVA)
+  finalPrice: number = 0;  // Total TTC à payer
+
   itemToBuy2: any | null;
   adminSettings: any = {};
   meSex: string = 'Mme.';
@@ -87,7 +91,7 @@ export class PayementComponent implements OnInit {
     // ✅ Injections ajoutées pour les toasts + i18n
     private toastr: ToastrService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   // ---------------------------------------------------------
   // ⏱️ ngOnInit : charge paramètres, shop, user, cartes Stripe
@@ -110,11 +114,22 @@ export class PayementComponent implements OnInit {
           this.dateSlot = this.itemToBuy.date;
 
           this.itemToBuy2 = JSON.parse(localStorage.getItem('productToBuy') || 'null');
-          if (this.itemToBuy2 && this.itemToBuy2.price) {
-            // Calcule le prix final avec commission + TVA
-            const commissionRate = this.adminSettings?.commissionRate || 0;
-            const taxRate = this.adminSettings?.taxRate || 0;
-            this.price = this.calculateFinalPrice(this.itemToBuy2.price, commissionRate, taxRate).toString();
+
+          // Init prix produit (gains shop "brut produit")
+          this.price = Number(this.itemToBuy2?.price ?? 0);
+
+          if (this.itemToBuy2 && this.itemToBuy2.price != null) {
+            // Calcule le prix final avec commission + TVA (normalisés)
+            const commissionRate = this.toRate(this.adminSettings?.commissionRate);
+            const serviceFee = Number(this.adminSettings?.serviceFee ?? 0);
+            const taxRate = this.toRate(this.adminSettings?.taxRate);
+
+            this.finalPrice = this.calculateFinalPrice(
+              Number(this.itemToBuy2.price),
+              commissionRate,
+              serviceFee,
+              taxRate
+            );
           }
         } catch (err) {
           console.error('Erreur de parsing localStorage (panier) :', err);
@@ -195,37 +210,21 @@ export class PayementComponent implements OnInit {
     });
   }
 
-  // ----------------------------------------------------------------
-  // 🔁 Lance une souscription Stripe (si ton produit le nécessite)
-  // ----------------------------------------------------------------
-  createSubscription(): void {
-    const payload = {
-      userId: this.userId!,
-      paymentMethodId: this.selectedCardId!,
-      subscriptionId: this.itemToBuy2?.subscriptionId, // ⚠️ Doit être présent dans productToBuy
-    };
-
-    this.subscriptionService.startSubscription(payload).subscribe({
-      next: (response) => {
-        console.log('Souscription Stripe créée :', response);
-        // Stocke l’id de souscription dans le bill si besoin
-        this.bill!.stripeSubscriptionId = response.subscription.id;
-        this.saveBill(); // enchaîne le flux habituel
-      },
-      error: (err) => {
-        console.error('Erreur lors de la souscription :', err);
-        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-      },
-    });
-  }
-
   // -------------------------------------------------------------
   // 💶 Calcule le prix final (commission + TVA) arrondi à 2 déc.
   // -------------------------------------------------------------
-  calculateFinalPrice(productPrice: number, commissionRate: number, taxRate: number): number {
-    const priceWithCommission = productPrice + (productPrice * commissionRate);
+  calculateFinalPrice(productPrice: number, commissionRate: number, serviceFee: number, taxRate: number): number {
+    const priceWithCommission = productPrice + (productPrice * commissionRate) + serviceFee;
     const finalPrice = priceWithCommission + (priceWithCommission * taxRate);
     return parseFloat(finalPrice.toFixed(2));
+  }
+
+  // -------------------------------------------------------------
+  // Normalise un taux venant de la DB (15 -> 0.15 ; 0.15 -> 0.15)
+  // -------------------------------------------------------------
+  private toRate(v: any): number {
+    const n = Number(v ?? 0);
+    return n > 1 ? n / 100 : n;
   }
 
   // -------------------------------------------------------------
@@ -236,6 +235,13 @@ export class PayementComponent implements OnInit {
       width: '400px',
       data: { user: this.me },
     });
+  }
+
+  // -------------------------------------------------------------
+  // 🂡 Sélectionne une carte Stripe par ID
+  // -------------------------------------------------------------
+  selectCard(cardId: string) {
+    this.selectedCardId = cardId;
   }
 
   // -------------------------------------------------------------
@@ -251,13 +257,6 @@ export class PayementComponent implements OnInit {
   onCardAdded(_event: any) {
     this.showAddCardForm = false;
     this.loadCards(); // recharge les cartes (gestion d’erreur à l’intérieur)
-  }
-
-  // -------------------------------------------------------------
-  // 🂡 Sélectionne une carte Stripe par ID
-  // -------------------------------------------------------------
-  selectCard(cardId: string) {
-    this.selectedCardId = cardId;
   }
 
   // -------------------------------------------------------------
@@ -356,11 +355,35 @@ export class PayementComponent implements OnInit {
   }
 
   // -------------------------------------------------------------
+  // 🔁 Lance une souscription Stripe (si ton produit le nécessite)
+  // -------------------------------------------------------------
+  createSubscription(): void {
+    const payload = {
+      userId: this.userId!,
+      paymentMethodId: this.selectedCardId!,
+      subscriptionId: this.itemToBuy2?.subscriptionId, // ⚠️ Doit être présent dans productToBuy
+    };
+
+    this.subscriptionService.startSubscription(payload).subscribe({
+      next: (response) => {
+        console.log('Souscription Stripe créée :', response);
+        // Stocke l’id de souscription dans le bill si besoin
+        this.bill!.stripeSubscriptionId = response.subscription.id;
+        this.saveBill(); // enchaîne le flux habituel
+      },
+      error: (err) => {
+        console.error('Erreur lors de la souscription :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      },
+    });
+  }
+
+  // -------------------------------------------------------------
   // ✅ Valide le paiement via Stripe (PaymentIntent)
   // -------------------------------------------------------------
   async validate(): Promise<void> {
     this.loading = true;
-    const amount = Math.round(parseFloat(this.price) * 100); // en centimes
+    const amount = Math.round(this.finalPrice * 100); // en centimes
     const currency = 'eur';
 
     this.stripeService.createPaymentIntent(amount, currency, this.stripeCustomerID!).subscribe({
@@ -446,13 +469,21 @@ export class PayementComponent implements OnInit {
       this.bill!.end = this.convertToISO(this.endSlot!);
       this.bill!.date = this.dateSlot;
 
-      // Montants & métadonnées
-      this.bill!.shopEarnings = this.price;
-      this.bill!.price =
-        parseFloat(this.price) +
-        parseFloat(this.price) * this.adminSettings.commissionRate +
-        this.adminSettings.serviceFee;
+      // --- Montants & métadonnées (calcul unique, pas de double-comptage) ---
+      const productPrice = Number(this.itemToBuy2?.price ?? 0); // prix "catalogue"
+      const commissionRate = this.toRate(this.adminSettings?.commissionRate);
+      const taxRate = this.toRate(this.adminSettings?.taxRate);
+      const serviceFee = Number(this.adminSettings?.serviceFee ?? 0);
 
+      const commission = productPrice * commissionRate;
+      const baseHT = productPrice + commission + serviceFee; // base taxable
+      const tva = baseHT * taxRate;
+      const totalTTC = parseFloat((baseHT + tva).toFixed(2));
+
+      // Ce que gagne la boutique (ajuste si besoin de net-versé)
+      this.bill!.shopEarnings = productPrice;
+
+      this.bill!.price = totalTTC;                 // TOTAL TTC (une seule fois)
       this.bill!.orderDate = new Date();
       this.bill!.status = 'pending';
       this.bill!.color = this.itemToBuy2?.color;
@@ -463,9 +494,11 @@ export class PayementComponent implements OnInit {
 
       this.bill!.productName = this.itemToBuy2?.name;
       this.bill!.userProId = this.shop.idUser;
-      this.bill!.commission = parseFloat(this.price) * this.adminSettings.commissionRate;
-      this.bill!.tva = this.bill!.price * this.adminSettings.taxRate;
-      this.bill!.price = this.bill!.price + this.bill!.tva;
+
+      // Détails de coûts (pour transparence/analytics)
+      this.bill!.serviceFee = serviceFee;
+      this.bill!.commission = parseFloat(commission.toFixed(2));
+      this.bill!.tva = parseFloat(tva.toFixed(2));
     } catch (err) {
       console.error('Erreur lors de la préparation de la facture (bill) :', err);
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
@@ -497,12 +530,11 @@ export class PayementComponent implements OnInit {
   }
 
   // -------------------------------------------------------------
-  // 🧮 Méthode utilitaire : calcul commission
+  // 🧮 Méthode utilitaire : calcul commission (utilise taux normalisé)
   // -------------------------------------------------------------
   calculateCommission(): number {
-    const price = parseFloat(this.price);
-    const commissionRate = parseFloat(this.adminSettings.commissionRate);
-    return price * commissionRate;
+    const commissionRate = this.toRate(this.adminSettings?.commissionRate);
+    return Number(this.price) * commissionRate;
   }
 
   // -------------------------------------------------------------

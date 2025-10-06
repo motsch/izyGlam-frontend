@@ -1438,5 +1438,36 @@
       "TITLE": "生效日期",
       "TEXT": "本条款自<strong>2025 年 12 月 25 日</strong>起生效，取代此前所有版本。"
     }
+  },
+  "invoice": {
+    "TITLE": "发票",
+    "SELLER": "卖方",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}伏尔泰大道22号{{linebreak}}法国巴黎 75000",
+    "CLIENT": "客户",
+    "UNKNOWN_CLIENT": "未知客户",
+    "BILLING_DATE": "开票日期：",
+    "NUMBER": "发票号码：",
+    "DUE_DATE": "到期日：",
+    "DUE_IMMEDIATE": "立即",
+    "PAYMENT_STATUS": "付款状态：",
+    "SERVICE_DATE": "服务日期：",
+    "DESCRIPTION": "描述",
+    "QTY": "数量",
+    "UNIT": "单位",
+    "UNIT_PRICE_HT": "单价（不含税）",
+    "VAT_RATE": "增值税率",
+    "TOTAL_VAT": "增值税合计",
+    "TOTAL_TTC": "含税总计",
+    "DEFAULT_ITEM": "预订的服务",
+    "SERVICE_UNIT": "服务",
+    "IG_COMMISSION": "izyGlam 佣金",
+    "SERVICE_FEES": "服务费",
+    "VAT_STATE": "增值税（州）",
+    "TOTAL_HT": "小计（不含税）",
+    "VAT": "增值税",
+    "FOOTER_LINE1": "izyGlam - 上门美容与健康",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "未定义",
+    "INVALID_DATE": "日期无效"
   }
 }

@@ -1438,5 +1438,36 @@
       "TITLE": "Effective Date",
       "TEXT": "These Terms take effect on <strong>25&nbsp;December&nbsp;2025</strong> and replace any prior version."
     }
+  },
+  "invoice": {
+    "TITLE": "Invoice",
+    "SELLER": "Seller",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, Voltaire Avenue{{linebreak}}75000 Paris, France",
+    "CLIENT": "Customer",
+    "UNKNOWN_CLIENT": "Unknown customer",
+    "BILLING_DATE": "Billing date:",
+    "NUMBER": "Invoice number:",
+    "DUE_DATE": "Due date:",
+    "DUE_IMMEDIATE": "Immediate",
+    "PAYMENT_STATUS": "Payment status:",
+    "SERVICE_DATE": "Service date:",
+    "DESCRIPTION": "Description",
+    "QTY": "Quantity",
+    "UNIT": "Unit",
+    "UNIT_PRICE_HT": "Unit price (excl. tax)",
+    "VAT_RATE": "VAT %",
+    "TOTAL_VAT": "Total VAT",
+    "TOTAL_TTC": "Total (incl. tax)",
+    "DEFAULT_ITEM": "Booked service",
+    "SERVICE_UNIT": "service",
+    "IG_COMMISSION": "izyGlam commission",
+    "SERVICE_FEES": "Service fees",
+    "VAT_STATE": "VAT (State)",
+    "TOTAL_HT": "Subtotal (excl. tax)",
+    "VAT": "VAT",
+    "FOOTER_LINE1": "izyGlam - Beauty & Wellness at Home",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Undefined",
+    "INVALID_DATE": "Invalid date"
   }
 }

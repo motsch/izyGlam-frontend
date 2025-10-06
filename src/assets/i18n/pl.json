@@ -1438,5 +1438,36 @@
       "TITLE": "Data wejścia w życie",
       "TEXT": "Niniejsze Warunki obowiązują od <strong>25&nbsp;grudnia&nbsp;2025</strong> i zastępują wcześniejsze wersje."
     }
+  },
+  "invoice": {
+    "TITLE": "Factuur",
+    "SELLER": "Verkoper",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Voltairelaan 22{{linebreak}}75000 Parijs, Frankrijk",
+    "CLIENT": "Klant",
+    "UNKNOWN_CLIENT": "Onbekende klant",
+    "BILLING_DATE": "Factuurdatum:",
+    "NUMBER": "Factuurnummer:",
+    "DUE_DATE": "Vervaldatum:",
+    "DUE_IMMEDIATE": "Onmiddellijk",
+    "PAYMENT_STATUS": "Betaalstatus:",
+    "SERVICE_DATE": "Servicedatum:",
+    "DESCRIPTION": "Omschrijving",
+    "QTY": "Aantal",
+    "UNIT": "Eenheid",
+    "UNIT_PRICE_HT": "Eenheidsprijs (excl. btw)",
+    "VAT_RATE": "Btw-%",
+    "TOTAL_VAT": "Totaal btw",
+    "TOTAL_TTC": "Totaal (incl. btw)",
+    "DEFAULT_ITEM": "Geboekte service",
+    "SERVICE_UNIT": "service",
+    "IG_COMMISSION": "izyGlam-commissie",
+    "SERVICE_FEES": "Servicekosten",
+    "VAT_STATE": "Btw (staat)",
+    "TOTAL_HT": "Subtotaal (excl. btw)",
+    "VAT": "Btw",
+    "FOOTER_LINE1": "izyGlam - Beauty & Wellness aan huis",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Onbepaald",
+    "INVALID_DATE": "Ongeldige datum"
   }
 }

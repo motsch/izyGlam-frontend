@@ -1,28 +1,46 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { RdvModalComponent } from '../rdv-modal/rdv-modal.component';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-shop-item-card',
   templateUrl: './shop-item-card.component.html',
   styleUrls: ['./shop-item-card.component.scss'],
 })
-export class ShopItemCardComponent {
+export class ShopItemCardComponent implements OnInit {
   /** Produit/Service affiché par la carte */
   @Input() item: any;
 
   /** Bases d’URL d’images */
   imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
   APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
+  commissionRate: number = 0;
+  serviceFee: number = 0;
 
   constructor(
     public dialog: MatDialog,
     private toastr: ToastrService,
-    private translate: TranslateService
-  ) {}
+    private translate: TranslateService,
+    private adminService: AdminService
+  ) { }
+
+  ngOnInit(): void {
+    this.adminService.getAdminSettings().subscribe({
+      next: (data: any) => {
+        // 1) Paramètres admin (commission, TVA, etc.)
+        this.commissionRate = data?.commissionRate || 0;
+        this.serviceFee = data.serviceFee || 0;
+      },
+      error: (err: any) => {
+        console.error('Erreur lors du chargement des paramètres admin :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
+    });
+  }
 
   /**
    * Ouvre la modale de prise de RDV pour l’item courant.
@@ -65,10 +83,8 @@ export class ShopItemCardComponent {
         return '0,00 € TTC';
       }
 
-      const commissionRate = 0.10; // 10% de commission
       const tvaRate = 0.20;        // 20% de TVA
-
-      const priceWithCommission = numericBase * (1 + commissionRate);
+      const priceWithCommission = (numericBase * (1 + this.commissionRate)) + this.serviceFee;
       const priceWithTva = priceWithCommission * (1 + tvaRate);
 
       // Format FR simple (2 décimales + virgule)

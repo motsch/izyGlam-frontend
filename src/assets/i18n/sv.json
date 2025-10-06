@@ -1438,5 +1438,36 @@
       "TITLE": "Ikraftträdande",
       "TEXT": "Dessa villkor träder i kraft <strong>25&nbsp;december&nbsp;2025</strong> och ersätter alla tidigare versioner."
     }
+  },
+  "invoice": {
+    "TITLE": "Faktura",
+    "SELLER": "Säljare",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Voltaireavenyn 22{{linebreak}}75000 Paris, Frankrike",
+    "CLIENT": "Kund",
+    "UNKNOWN_CLIENT": "Okänd kund",
+    "BILLING_DATE": "Fakturadatum:",
+    "NUMBER": "Fakturanummer:",
+    "DUE_DATE": "Förfallodatum:",
+    "DUE_IMMEDIATE": "Omgående",
+    "PAYMENT_STATUS": "Betalstatus:",
+    "SERVICE_DATE": "Servicedatum:",
+    "DESCRIPTION": "Beskrivning",
+    "QTY": "Antal",
+    "UNIT": "Enhet",
+    "UNIT_PRICE_HT": "Enhetspris (exkl. moms)",
+    "VAT_RATE": "Moms %",
+    "TOTAL_VAT": "Total moms",
+    "TOTAL_TTC": "Totalt (inkl. moms)",
+    "DEFAULT_ITEM": "Bokad tjänst",
+    "SERVICE_UNIT": "tjänst",
+    "IG_COMMISSION": "izyGlam-provision",
+    "SERVICE_FEES": "Serviceavgifter",
+    "VAT_STATE": "Moms (stat)",
+    "TOTAL_HT": "Delsumma (exkl. moms)",
+    "VAT": "Moms",
+    "FOOTER_LINE1": "izyGlam - Skönhet & välmående hemma",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Odefinierat",
+    "INVALID_DATE": "Ogiltigt datum"
   }
 }

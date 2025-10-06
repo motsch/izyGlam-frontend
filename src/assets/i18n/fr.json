@@ -1438,5 +1438,36 @@
       "TITLE": "Date d’effet",
       "TEXT": "Les présentes CGU entrent en vigueur le <strong>25&nbsp;décembre&nbsp;2025</strong> et remplacent toute version antérieure."
     }
+  },
+  "invoice": {
+    "TITLE": "Facture",
+    "SELLER": "Vendeur",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22, avenue Voltaire{{linebreak}}75000 Paris, France",
+    "CLIENT": "Client",
+    "UNKNOWN_CLIENT": "Client inconnu",
+    "BILLING_DATE": "Date de facturation :",
+    "NUMBER": "Numéro de facture :",
+    "DUE_DATE": "Date d’échéance :",
+    "DUE_IMMEDIATE": "Immédiate",
+    "PAYMENT_STATUS": "Statut du paiement :",
+    "SERVICE_DATE": "Date de la prestation :",
+    "DESCRIPTION": "Description",
+    "QTY": "Quantité",
+    "UNIT": "Unité",
+    "UNIT_PRICE_HT": "Prix unitaire (HT)",
+    "VAT_RATE": "TVA %",
+    "TOTAL_VAT": "TVA totale",
+    "TOTAL_TTC": "Total (TTC)",
+    "DEFAULT_ITEM": "Prestation réservée",
+    "SERVICE_UNIT": "prestation",
+    "IG_COMMISSION": "Commission izyGlam",
+    "SERVICE_FEES": "Frais de service",
+    "VAT_STATE": "TVA (État)",
+    "TOTAL_HT": "Sous-total (HT)",
+    "VAT": "TVA",
+    "FOOTER_LINE1": "izyGlam - Beauté & Bien-être à domicile",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Indéfini",
+    "INVALID_DATE": "Date invalide"
   }
 }

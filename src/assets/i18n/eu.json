@@ -1438,5 +1438,36 @@
       "TITLE": "Indarrean jartzeko data",
       "TEXT": "CGU hauek <strong>2025eko abenduaren 25ean</strong> sartzen dira indarrean eta aurreko bertsio guztiak ordezten dituzte."
     }
+  },
+  "invoice": {
+    "TITLE": "Faktura",
+    "SELLER": "Saltzailea",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Voltaire etorb. 22{{linebreak}}75000 Paris, Frantzia",
+    "CLIENT": "Bezeroa",
+    "UNKNOWN_CLIENT": "Bezero ezezaguna",
+    "BILLING_DATE": "Fakturazio data:",
+    "NUMBER": "Faktura zenbakia:",
+    "DUE_DATE": "Epemuga:",
+    "DUE_IMMEDIATE": "Berehala",
+    "PAYMENT_STATUS": "Ordainketa egoera:",
+    "SERVICE_DATE": "Zerbitzuaren data:",
+    "DESCRIPTION": "Deskribapena",
+    "QTY": "Kantitatea",
+    "UNIT": "Unitatea",
+    "UNIT_PRICE_HT": "Unitateko prezioa (zerga gabe)",
+    "VAT_RATE": "BEZ %",
+    "TOTAL_VAT": "GUZTIRA BEZ",
+    "TOTAL_TTC": "GUZTIRA (zergak barne)",
+    "DEFAULT_ITEM": "Erreserbatutako zerbitzua",
+    "SERVICE_UNIT": "zerbitzua",
+    "IG_COMMISSION": "izyGlam komisioa",
+    "SERVICE_FEES": "Zerbitzu tasak",
+    "VAT_STATE": "BEZ (Estatua)",
+    "TOTAL_HT": "Azpitotala (zerga gabe)",
+    "VAT": "BEZ",
+    "FOOTER_LINE1": "izyGlam - Edertasuna eta ongizatea etxean",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Zehaztu gabe",
+    "INVALID_DATE": "Baliogabeko data"
   }
 }

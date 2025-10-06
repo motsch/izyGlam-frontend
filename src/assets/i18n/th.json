@@ -1438,5 +1438,36 @@
       "TITLE": "วันที่มีผล",
       "TEXT": "CGU นี้มีผลตั้งแต่<strong>25&nbsp;ธันวาคม&nbsp;2025</strong> และแทนที่ฉบับก่อนหน้า"
     }
+  },
+  "invoice": {
+    "TITLE": "ใบแจ้งหนี้",
+    "SELLER": "ผู้ขาย",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}ถนนโวลแตร์ 22{{linebreak}}75000 ปารีส ประเทศฝรั่งเศส",
+    "CLIENT": "ลูกค้า",
+    "UNKNOWN_CLIENT": "ลูกค้าไม่ทราบชื่อ",
+    "BILLING_DATE": "วันที่ออกบิล:",
+    "NUMBER": "เลขที่ใบแจ้งหนี้:",
+    "DUE_DATE": "กำหนดชำระ:",
+    "DUE_IMMEDIATE": "ทันที",
+    "PAYMENT_STATUS": "สถานะการชำระเงิน:",
+    "SERVICE_DATE": "วันที่ให้บริการ:",
+    "DESCRIPTION": "รายละเอียด",
+    "QTY": "จำนวน",
+    "UNIT": "หน่วย",
+    "UNIT_PRICE_HT": "ราคาต่อหน่วย (ไม่รวมภาษี)",
+    "VAT_RATE": "ภาษีมูลค่าเพิ่ม %",
+    "TOTAL_VAT": "ภาษีมูลค่าเพิ่มรวม",
+    "TOTAL_TTC": "ยอดรวม (รวมภาษี)",
+    "DEFAULT_ITEM": "บริการที่จอง",
+    "SERVICE_UNIT": "บริการ",
+    "IG_COMMISSION": "ค่าคอมมิชชั่นของ izyGlam",
+    "SERVICE_FEES": "ค่าบริการ",
+    "VAT_STATE": "ภาษีมูลค่าเพิ่ม (รัฐ)",
+    "TOTAL_HT": "ยอดย่อย (ไม่รวมภาษี)",
+    "VAT": "ภาษีมูลค่าเพิ่ม",
+    "FOOTER_LINE1": "izyGlam - ความงามและสุขภาพถึงบ้าน",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "ยังไม่กำหนด",
+    "INVALID_DATE": "วันที่ไม่ถูกต้อง"
   }
 }

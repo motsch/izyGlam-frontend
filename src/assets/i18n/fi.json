@@ -1438,5 +1438,36 @@
       "TITLE": "Voimaantulopäivä",
       "TEXT": "Nämä ehdot ovat voimassa <strong>25. joulukuuta 2025</strong> alkaen ja korvaavat aiemmat versiot."
     }
+  },
+  "invoice": {
+    "TITLE": "Lasku",
+    "SELLER": "Myyjä",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Voltaire-katu 22{{linebreak}}75000 Pariisi, Ranska",
+    "CLIENT": "Asiakas",
+    "UNKNOWN_CLIENT": "Tuntematon asiakas",
+    "BILLING_DATE": "Laskutuspäivä:",
+    "NUMBER": "Laskunumero:",
+    "DUE_DATE": "Eräpäivä:",
+    "DUE_IMMEDIATE": "Heti",
+    "PAYMENT_STATUS": "Maksun tila:",
+    "SERVICE_DATE": "Palvelun päivämäärä:",
+    "DESCRIPTION": "Kuvaus",
+    "QTY": "Määrä",
+    "UNIT": "Yksikkö",
+    "UNIT_PRICE_HT": "Yksikköhinta (alv 0 %)",
+    "VAT_RATE": "ALV %",
+    "TOTAL_VAT": "ALV yhteensä",
+    "TOTAL_TTC": "Yhteensä (sis. alv)",
+    "DEFAULT_ITEM": "Varattu palvelu",
+    "SERVICE_UNIT": "palvelu",
+    "IG_COMMISSION": "izyGlam-provisio",
+    "SERVICE_FEES": "Palvelumaksut",
+    "VAT_STATE": "ALV (osavaltio)",
+    "TOTAL_HT": "Välisumma (alv 0 %)",
+    "VAT": "ALV",
+    "FOOTER_LINE1": "izyGlam - Kauneus ja hyvinvointi kotiin",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Määrittelemätön",
+    "INVALID_DATE": "Virheellinen päivämäärä"
   }
 }

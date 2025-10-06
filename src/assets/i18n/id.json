@@ -1438,5 +1438,36 @@
       "TITLE": "Tanggal berlaku",
       "TEXT": "CGU ini berlaku mulai <strong>25 Desember 2025</strong> dan menggantikan semua versi sebelumnya."
     }
+  },
+  "invoice": {
+    "TITLE": "Faktur",
+    "SELLER": "Penjual",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Jln. Voltaire No.22{{linebreak}}75000 Paris, Prancis",
+    "CLIENT": "Pelanggan",
+    "UNKNOWN_CLIENT": "Pelanggan tidak diketahui",
+    "BILLING_DATE": "Tanggal penagihan:",
+    "NUMBER": "Nomor faktur:",
+    "DUE_DATE": "Tanggal jatuh tempo:",
+    "DUE_IMMEDIATE": "Segera",
+    "PAYMENT_STATUS": "Status pembayaran:",
+    "SERVICE_DATE": "Tanggal layanan:",
+    "DESCRIPTION": "Deskripsi",
+    "QTY": "Kuantitas",
+    "UNIT": "Satuan",
+    "UNIT_PRICE_HT": "Harga satuan (belum pajak)",
+    "VAT_RATE": "PPN %",
+    "TOTAL_VAT": "Total PPN",
+    "TOTAL_TTC": "Total (termasuk pajak)",
+    "DEFAULT_ITEM": "Layanan yang dipesan",
+    "SERVICE_UNIT": "layanan",
+    "IG_COMMISSION": "Komisi izyGlam",
+    "SERVICE_FEES": "Biaya layanan",
+    "VAT_STATE": "PPN (Negara Bagian)",
+    "TOTAL_HT": "Subtotal (belum pajak)",
+    "VAT": "PPN",
+    "FOOTER_LINE1": "izyGlam - Kecantikan & Kebugaran di Rumah",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Tidak ditentukan",
+    "INVALID_DATE": "Tanggal tidak valid"
   }
 }

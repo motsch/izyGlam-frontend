@@ -1438,5 +1438,36 @@
       "TITLE": "Taariikhda dhaqan-galka",
       "TEXT": "CGU waxay dhaqan gashay <strong>25 December 2025</strong> waxayna beddeshay noocyadii hore."
     }
+  },
+  "invoice": {
+    "TITLE": "Счёт-фактура",
+    "SELLER": "Продавец",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}проспект Вольтера, 22{{linebreak}}75000 Париж, Франция",
+    "CLIENT": "Клиент",
+    "UNKNOWN_CLIENT": "Неизвестный клиент",
+    "BILLING_DATE": "Дата выставления:",
+    "NUMBER": "Номер счёта:",
+    "DUE_DATE": "Срок оплаты:",
+    "DUE_IMMEDIATE": "Немедленно",
+    "PAYMENT_STATUS": "Статус платежа:",
+    "SERVICE_DATE": "Дата услуги:",
+    "DESCRIPTION": "Описание",
+    "QTY": "Кол-во",
+    "UNIT": "Ед. изм.",
+    "UNIT_PRICE_HT": "Цена за ед. (без налога)",
+    "VAT_RATE": "НДС %",
+    "TOTAL_VAT": "Всего НДС",
+    "TOTAL_TTC": "Итого (с налогом)",
+    "DEFAULT_ITEM": "Забронированная услуга",
+    "SERVICE_UNIT": "услуга",
+    "IG_COMMISSION": "Комиссия izyGlam",
+    "SERVICE_FEES": "Сервисный сбор",
+    "VAT_STATE": "НДС (штат)",
+    "TOTAL_HT": "Промежуточный итог (без налога)",
+    "VAT": "НДС",
+    "FOOTER_LINE1": "izyGlam — Красота и здоровье на дому",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Неопределено",
+    "INVALID_DATE": "Недействительная дата"
   }
 }

@@ -1438,5 +1438,36 @@
       "TITLE": "Inkrafttreten",
       "TEXT": "Diese ANB treten am <strong>25.&nbsp;Dezember&nbsp;2025</strong> in Kraft und ersetzen alle früheren Versionen."
     }
+  },
+  "invoice": {
+    "TITLE": "Rechnung",
+    "SELLER": "Verkäufer",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Voltaire Allee 22{{linebreak}}75000 Paris, Frankreich",
+    "CLIENT": "Kunde",
+    "UNKNOWN_CLIENT": "Unbekannter Kunde",
+    "BILLING_DATE": "Rechnungsdatum:",
+    "NUMBER": "Rechnungsnummer:",
+    "DUE_DATE": "Fälligkeitsdatum:",
+    "DUE_IMMEDIATE": "Sofort",
+    "PAYMENT_STATUS": "Zahlungsstatus:",
+    "SERVICE_DATE": "Leistungsdatum:",
+    "DESCRIPTION": "Beschreibung",
+    "QTY": "Menge",
+    "UNIT": "Einheit",
+    "UNIT_PRICE_HT": "Einzelpreis (o. MwSt.)",
+    "VAT_RATE": "MwSt.-Satz",
+    "TOTAL_VAT": "Gesamt-MwSt.",
+    "TOTAL_TTC": "Gesamt (inkl. MwSt.)",
+    "DEFAULT_ITEM": "Gebuchter Service",
+    "SERVICE_UNIT": "Leistung",
+    "IG_COMMISSION": "izyGlam-Provision",
+    "SERVICE_FEES": "Servicegebühren",
+    "VAT_STATE": "MwSt. (Bundesstaat)",
+    "TOTAL_HT": "Zwischensumme (o. MwSt.)",
+    "VAT": "MwSt.",
+    "FOOTER_LINE1": "izyGlam - Schönheit & Wellness zu Hause",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Nicht definiert",
+    "INVALID_DATE": "Ungültiges Datum"
   }
 }

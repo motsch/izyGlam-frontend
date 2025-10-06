@@ -122,7 +122,9 @@
                   <li><strong>{{ 'PAYEMENT.PRESTA' | translate }} :</strong> {{ itemToBuy2.name }}</li>
                   <li><strong>{{ 'PAYEMENT.WITH' | translate }} :</strong> {{ shop?.name }}, {{ shop?.trad | translate
                     }}</li>
-                  <li><strong>{{ 'PAYEMENT.TOTAL' | translate }} :</strong> {{ price  }} €</li>
+                  <li><strong>{{ 'PAYEMENT.TOTAL' | translate }} :</strong>
+                    {{ finalPrice | currency:'EUR':'symbol':'1.2-2':'fr-FR' }}
+                  </li>
                 </ul>
               </div>
             </div>

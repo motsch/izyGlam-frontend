@@ -1438,5 +1438,36 @@
             "TITLE": "تاريخ السريان",
             "TEXT": "تدخل هذه الشروط حيّز التنفيذ في <strong>25&nbsp;ديسمبر&nbsp;2025</strong> وتُلغي أي إصدار سابق."
         }
+    },
+    "invoice": {
+        "TITLE": "فاتورة",
+        "SELLER": "البائع",
+        "SELLER_ADDRESS": "izyGlam{{linebreak}}22، شارع فولتير{{linebreak}}75000 باريس، فرنسا",
+        "CLIENT": "العميل",
+        "UNKNOWN_CLIENT": "عميل غير معروف",
+        "BILLING_DATE": "تاريخ الفوترة:",
+        "NUMBER": "رقم الفاتورة:",
+        "DUE_DATE": "تاريخ الاستحقاق:",
+        "DUE_IMMEDIATE": "فوري",
+        "PAYMENT_STATUS": "حالة الدفع:",
+        "SERVICE_DATE": "تاريخ الخدمة:",
+        "DESCRIPTION": "الوصف",
+        "QTY": "الكمية",
+        "UNIT": "الوحدة",
+        "UNIT_PRICE_HT": "سعر الوحدة (بدون ضريبة)",
+        "VAT_RATE": "٪ ضريبة القيمة المضافة",
+        "TOTAL_VAT": "إجمالي ضريبة القيمة المضافة",
+        "TOTAL_TTC": "الإجمالي (شامل الضريبة)",
+        "DEFAULT_ITEM": "خدمة محجوزة",
+        "SERVICE_UNIT": "خدمة",
+        "IG_COMMISSION": "عمولة izyGlam",
+        "SERVICE_FEES": "رسوم الخدمة",
+        "VAT_STATE": "ضريبة القيمة المضافة (الولاية)",
+        "TOTAL_HT": "الإجمالي الفرعي (بدون ضريبة)",
+        "VAT": "ضريبة القيمة المضافة",
+        "FOOTER_LINE1": "izyGlam - الجمال والعافية في المنزل",
+        "FOOTER_LINE2": "www.izyglam.com",
+        "UNDEFINED": "غير معرّف",
+        "INVALID_DATE": "تاريخ غير صالح"
     }
 }

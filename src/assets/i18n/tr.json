@@ -1438,5 +1438,36 @@
       "TITLE": "Yürürlük tarihi",
       "TEXT": "Bu CGU <strong>25 Aralık 2025</strong> tarihinde yürürlüğe girer ve önceki tüm sürümlerin yerini alır."
     }
+  },
+  "invoice": {
+    "TITLE": "Fatura",
+    "SELLER": "Satıcı",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}Voltaire Caddesi 22{{linebreak}}75000 Paris, Fransa",
+    "CLIENT": "Müşteri",
+    "UNKNOWN_CLIENT": "Bilinmeyen müşteri",
+    "BILLING_DATE": "Faturalama tarihi:",
+    "NUMBER": "Fatura numarası:",
+    "DUE_DATE": "Vade tarihi:",
+    "DUE_IMMEDIATE": "Hemen",
+    "PAYMENT_STATUS": "Ödeme durumu:",
+    "SERVICE_DATE": "Hizmet tarihi:",
+    "DESCRIPTION": "Açıklama",
+    "QTY": "Miktar",
+    "UNIT": "Birim",
+    "UNIT_PRICE_HT": "Birim fiyat (vergisiz)",
+    "VAT_RATE": "KDV %",
+    "TOTAL_VAT": "Toplam KDV",
+    "TOTAL_TTC": "Toplam (vergiler dahil)",
+    "DEFAULT_ITEM": "Rezerve edilen hizmet",
+    "SERVICE_UNIT": "hizmet",
+    "IG_COMMISSION": "izyGlam komisyonu",
+    "SERVICE_FEES": "Hizmet ücretleri",
+    "VAT_STATE": "KDV (eyalet)",
+    "TOTAL_HT": "Ara toplam (vergisiz)",
+    "VAT": "KDV",
+    "FOOTER_LINE1": "izyGlam - Evde Güzellik ve Wellness",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "Tanımsız",
+    "INVALID_DATE": "Geçersiz tarih"
   }
 }
