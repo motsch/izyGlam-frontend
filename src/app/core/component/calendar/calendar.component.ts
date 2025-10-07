@@ -780,11 +780,11 @@ export class CalendarComponent implements OnInit {
     const actionsPerStatus: { [key: string]: string[] } = {
       pending: ['invoice', 'cancel'],
       accepted: ['cancel', 'invoice'],
-      refused: ['delete', 'invoice'],
-      cancelled: ['delete', 'invoice'],
-      finished: ['invoice', 'review', 'delete'],
-      'no-show-client': ['invoice', 'delete', 'support'],
-      'no-show-pro': ['invoice', 'delete', 'support'],
+      refused: ['invoice'],
+      cancelled: ['invoice'],
+      finished: ['invoice', 'review'],
+      'no-show-client': ['invoice', 'support'],
+      'no-show-pro': ['invoice', 'support'],
     };
 
     return actionsPerStatus[status] || [];
