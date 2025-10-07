@@ -97,18 +97,14 @@
           <path
             d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
         </svg>
-
         <h2 class="na-title">
           {{ 'MAIN.NOT_AVAILABLE' | translate }}
         </h2>
-
         <p class="na-subtitle">
-          {{ 'MAIN.NOT_AVAILABLE_SUB' | translate }}
+          {{ 'ERROR.NOT_AVAILABLE' | translate }}
         </p>
       </section>
     </div>
-
-
   </div> <!-- /izy-content -->
 
   <!-- MODAL d'adresses -->
@@ -118,12 +114,10 @@
       <button class="close-button" (click)="closeAddressModal()">
         <mat-icon>close</mat-icon>
       </button>
-
       <!-- Titre dynamique -->
       <h3 class="modal-title">
         {{ isAddingAddress ? ('MAIN.NEW_ADDRESS' | translate) : ('MAIN.CHOOSE_ADDRESS' | translate) }}
       </h3>
-
       <!-- Liste des adresses si on n'ajoute pas -->
       <ul class="address-list" *ngIf="!isAddingAddress">
         <li *ngFor="let address of displayedAddresses; index as i" class="address-item"
@@ -134,12 +128,10 @@
           </div>
           <button type="button" class="delete-btn" (click)="removeAddress(i)">🗑️</button>
         </li>
-
         <li class="add-address-btn" (click)="toggleAddAddress()">
           ➕ {{ "MAIN.NEW_ADDRESS" | translate }}
         </li>
       </ul>
-
       <!-- Formulaire d'ajout d'adresse -->
       <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form">
         <!-- 1. Choix du pays
@@ -148,27 +140,21 @@
           <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
         </select>-->
         <input type="text" [value]="selectedCountry?.translation | translate" disabled />
-
-
         <!-- 2. Code postal -->
         <input type="text" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
           (change)="onPostalCodeEntered()" required maxlength="10" />
-
         <!-- 3. Villes correspondant au code postal -->
         <select [(ngModel)]="selectedCity" name="city" required [disabled]="!selectedCity">
           <option value="">-- {{ "MAIN.CHOOSE_CITY" | translate }} --</option>
           <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
         </select>
-
         <!-- 4. Arrondissements -->
         <select *ngIf="availableArrondissements.length > 1" [(ngModel)]="selectedArrondissement" name="arrondissement">
           <option value="">-- {{ "MAIN.CHOOSE_ARRONDISSEMENT" | translate }} --</option>
           <option *ngFor="let arr of availableArrondissements" [value]="arr">{{ arr }}</option>
         </select>
-
         <!-- 5. Rue -->
         <input type="text" [(ngModel)]="newAddress.street" name="street" placeholder="Rue" required />
-
         <!-- 6. Boutons -->
         <div class="form-buttons margin-bottom-20">
           <button type="button" class="cancel-btn" (click)="toggleAddAddress()">{{ "MAIN.CANCEL" | translate }}</button>
