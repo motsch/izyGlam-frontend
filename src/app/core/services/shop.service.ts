@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -11,7 +11,11 @@ export class ShopService {
     private shopDataSubject = new BehaviorSubject<any>(null);
     constructor(private http: HttpClient) { }
 
-
+    private getLang(): string {
+        // "fr-FR" -> "fr", fallback "en"
+        const raw = localStorage.getItem('langue') || navigator.language || 'en';
+        return raw.slice(0, 2).toLowerCase();
+    }
 
     getShopsCount() {
         return this.http.get<number>(environment.apiUrl + 'shops-count-all');
@@ -199,26 +203,36 @@ export class ShopService {
         return R * c;
     }
 
+    
+
+    /**
+     * Génère une description professionnelle pour le produit
+     * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
+     * @param description Une description éventuelle saisie par l'utilisateur
+     */
     generateIzyGlamProductDescription(product?: any) {
+        const params = new HttpParams().set('lang', this.getLang());
         return this.http.post<{ data: any }>(
             `${environment.apiUrl}product-description`,
-            { product }
+            { product },
+            { params } // <-- IMPORTANT
         );
     }
 
     /**
- * Génère une description professionnelle à partir du type de salon et d'une description utilisateur (facultative)
- * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
- * @param userDescription Une description éventuelle saisie par l'utilisateur
- */
+     * Génère une description professionnelle à partir du type de salon et d'une description utilisateur (facultative)
+     * @param type Le type de salon (ex : 'coiffure', 'massage', etc.)
+     * @param description Une description éventuelle saisie par l'utilisateur
+     */
     generateIzyGlamShopDescription(type: string, description?: string): Observable<string> {
+        const params = new HttpParams().set('lang', this.getLang());
         return this.http.post<{ formattedDescription: string }>(
             `${environment.apiUrl}shop-description`,
-            { type, description }
-        ).pipe(
-            map(response => response.formattedDescription)
-        );
+            { type, description },
+            { params } // <-- IMPORTANT
+        ).pipe(map(response => response.formattedDescription));
     }
+
 
     /**
  * Génère une illustration professionnelle à partir du nom de la prestation et une description utilisateur (facultative)

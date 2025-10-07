@@ -83,9 +83,7 @@ export class AuthenticationService {
             return true;
         }
     }
-
-
-
+    
     /**
      * Permet d'envoyer un email pour réinitialiser le mot de passe
      * @param email (l'email de l'utilisateur)
