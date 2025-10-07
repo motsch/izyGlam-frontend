@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Votre compte professionnel a bien été créé."
   },
   "ERROR": {
+    "NO_CITIES": "Code postal sans correspondance",
+    "NOT_AVAILABLE": "Nous ne sommes pas encore disponible à cet endroit. N'hésitez pas à repasser d'ici quelques mois !",
     "LOGIN_REQUIRED": "Veuillez vous connecter pour gérer vos favoris.",
     "INVALID_IMAGE": "Image invalide.",
     "NO_SLOTS": "Aucun créneau disponible pour ce service.",

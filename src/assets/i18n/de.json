@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Ihr Unternehmenskonto wurde erfolgreich erstellt."
   },
   "ERROR": {
+    "NO_CITIES": "Postnummer uden match",
+    "NOT_AVAILABLE": "Vi er endnu ikke tilgængelige på dette sted. Kig gerne forbi igen om et par måneder!",
     "LOGIN_REQUIRED": "Bitte melden Sie sich an, um Ihre Favoriten zu verwalten.",
     "INVALID_IMAGE": "Ungültiges Bild.",
     "NO_SLOTS": "Für diesen Service sind keine Zeitfenster verfügbar.",

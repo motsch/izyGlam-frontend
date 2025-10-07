@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "A sua conta profissional foi criada com sucesso."
   },
   "ERROR": {
+    "NO_CITIES": "Código postal sem correspondência",
+    "NOT_AVAILABLE": "Ainda não estamos disponíveis neste local. Volte a verificar dentro de alguns meses!",
     "LOGIN_REQUIRED": "Inicie sessão para gerir os seus favoritos.",
     "INVALID_IMAGE": "Imagem inválida.",
     "NO_SLOTS": "Nenhum intervalo disponível para este serviço.",

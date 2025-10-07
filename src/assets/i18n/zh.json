@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "您的企业账户已创建。"
   },
   "ERROR": {
+    "NO_CITIES": "未找到匹配的邮政编码",
+    "NOT_AVAILABLE": "该地点暂未开通服务。欢迎几个月后再来查看！",
     "LOGIN_REQUIRED": "请登录以管理您的收藏。",
     "INVALID_IMAGE": "无效图片。",
     "NO_SLOTS": "此服务暂无可用时段。",

@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Your business account has been created."
   },
   "ERROR": {
+    "NO_CITIES": "Postleitzahl ohne Treffer",
+    "NOT_AVAILABLE": "Wir sind an diesem Ort noch nicht verfügbar. Schau in ein paar Monaten gern wieder vorbei!",
     "LOGIN_REQUIRED": "Please log in to manage your favorites.",
     "INVALID_IMAGE": "Invalid image.",
     "NO_SLOTS": "No time slots available for this service.",

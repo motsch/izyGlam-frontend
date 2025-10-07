@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Akaun profesional anda telah dicipta."
   },
   "ERROR": {
+    "NO_CITIES": "Poskod tiada padanan",
+    "NOT_AVAILABLE": "Kami belum tersedia di lokasi ini. Sila semak semula dalam beberapa bulan!",
     "LOGIN_REQUIRED": "Sila log masuk untuk mengurus kegemaran anda.",
     "INVALID_IMAGE": "Imej tidak sah.",
     "NO_SLOTS": "Tiada slot tersedia untuk perkhidmatan ini.",

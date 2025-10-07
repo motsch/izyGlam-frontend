@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Llogaria juaj profesionale u krijua me sukses."
   },
   "ERROR": {
+    "NO_CITIES": "Kod postar pa përputhje",
+    "NOT_AVAILABLE": "Nuk jemi ende të disponueshëm në këtë zonë. Ju lutemi kontrolloni përsëri pas disa muajsh!",
     "LOGIN_REQUIRED": "Ju lutemi identifikohuni për të menaxhuar të preferuarit.",
     "INVALID_IMAGE": "Imazh i pavlefshëm.",
     "NO_SLOTS": "Asnjë orar i disponueshëm për këtë shërbim.",

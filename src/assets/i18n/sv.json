@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Ditt företagskonto har skapats."
   },
   "ERROR": {
+    "NO_CITIES": "Postnummer utan träff",
+    "NOT_AVAILABLE": "Vi är ännu inte tillgängliga på denna plats. Titta gärna tillbaka om några månader!",
     "LOGIN_REQUIRED": "Logga in för att hantera dina favoriter.",
     "INVALID_IMAGE": "Ogiltig bild.",
     "NO_SLOTS": "Inga lediga tider för denna tjänst.",

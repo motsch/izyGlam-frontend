@@ -118,15 +118,14 @@ export class ShopService {
         );
     }
 
-
-    getShopsByPostalCodes(codes: string[]): Observable<any[]> {
-        // On transforme le tableau ["75001","75002"] en "75001,75002"
-        const codesParam = codes.join(',');
-        // On construit l’URL
-        const url = `${environment.apiUrl}shop/delivery?codes=${codesParam}`;
-        return this.http.get<any[]>(url);
+    getShopsByPostalCodes(codes: string[], country?: string): Observable<any[]> {
+        let params = new HttpParams().set('codes', codes.join(','));
+        if (country) {
+            params = params.set('country', country);
+        }
+        const url = `${environment.apiUrl}shop/delivery`;
+        return this.http.get<any[]>(url, { params });
     }
-
 
     getShopsByPostalCodesAll(codes: string[]): Observable<any[]> {
         // On transforme le tableau ["75001","75002"] en "75001,75002"
@@ -203,7 +202,7 @@ export class ShopService {
         return R * c;
     }
 
-    
+
 
     /**
      * Génère une description professionnelle pour le produit

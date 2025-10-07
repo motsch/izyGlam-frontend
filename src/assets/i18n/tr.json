@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Profesyonel hesabınız başarıyla oluşturuldu."
   },
   "ERROR": {
+    "NO_CITIES": "Walang tumutugmang postal code",
+    "NOT_AVAILABLE": "Hindi pa kami available sa lokasyong ito. Pakisuri muli pagkalipas ng ilang buwan!",
     "LOGIN_REQUIRED": "Favorilerinizi yönetmek için lütfen giriş yapın.",
     "INVALID_IMAGE": "Geçersiz görsel.",
     "NO_SLOTS": "Bu hizmet için uygun zaman aralığı yok.",

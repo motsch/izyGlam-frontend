@@ -254,6 +254,17 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     localStorage.setItem('pays', country.name); // on stocke name pour cohérence backend
     this.sessionService.setCountry(country.name);
     this.loadLanguagesForCountry(country.name);
+    // Exemple dans ton composant (ts)
+    this.userService.updateCountry(this.me._id, country.name).subscribe({
+      next: (res) => {
+      },
+      error: (err) => {
+        console.error('Erreur lors de la mise à jour du country', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      },
+    });
+
+
   }
 
   // ------------------------------------------------------

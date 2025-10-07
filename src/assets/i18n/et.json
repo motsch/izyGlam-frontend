@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Teie ettevõttekonto on loodud."
   },
   "ERROR": {
+    "NO_CITIES": "Código postal sin coincidencias",
+    "NOT_AVAILABLE": "Aún no estamos disponibles en este lugar. ¡Vuelve a intentarlo en unos meses!",
     "LOGIN_REQUIRED": "Logige sisse, et hallata oma lemmikuid.",
     "INVALID_IMAGE": "Vigane pilt.",
     "NO_SLOTS": "Selle teenuse jaoks pole ühtegi vaba aega.",

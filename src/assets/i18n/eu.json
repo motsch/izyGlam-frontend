@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Zure enpresa-kontua ondo sortu da."
   },
   "ERROR": {
+    "NO_CITIES": "Sihtnumbert ei leitud",
+    "NOT_AVAILABLE": "Me pole selles asukohas veel saadaval. Palun vaadake mõne kuu pärast uuesti!",
     "LOGIN_REQUIRED": "Saioa hasi behar duzu gogokoak kudeatzeko.",
     "INVALID_IMAGE": "Irudi baliogabea.",
     "NO_SLOTS": "Ez dago tarterik zerbitzu honetarako.",

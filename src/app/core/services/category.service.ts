@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CategoryService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   // Créer une nouvelle catégorie
   create(category: any): Observable<any> {
@@ -36,19 +36,20 @@ export class CategoryService {
   }
 
   // Récupérer les catégories disponibles en fonction des shops filtrés par géolocalisation ou codes postaux
-  getAvailableCategories(lat?: number, lon?: number, codes?: string[]): Observable<any[]> {
-    let url = `${environment.apiUrl}category/available?`;
+  getAvailableCategories(lat?: number, lon?: number, codes?: string[], country?: string): Observable<any[]> {
+    let params = new HttpParams();
 
-    // On ajoute lat/lon si fournis
-    if (lat && lon) {
-      url += `lat=${lat}&lon=${lon}`;
+    if (lat != null && lon != null) {
+      params = params.set('lat', String(lat)).set('lon', String(lon));
     }
-
-    // On ajoute codes si fournis
     if (codes && codes.length > 0) {
-      url += `codes=${codes.join(',')}`;
+      params = params.set('codes', codes.join(','));
+    }
+    if (country) {
+      params = params.set('country', country);
     }
 
-    return this.http.get<any[]>(url);
+    const url = `${environment.apiUrl}category/available`;
+    return this.http.get<any[]>(url, { params });
   }
 }

@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Uw zakelijke account is succesvol aangemaakt."
   },
   "ERROR": {
+    "NO_CITIES": "Poskod tiada padanan",
+    "NOT_AVAILABLE": "Kami belum tersedia di lokasi ini. Sila semak semula dalam beberapa bulan!",
     "LOGIN_REQUIRED": "Log in om uw favorieten te beheren.",
     "INVALID_IMAGE": "Ongeldige afbeelding.",
     "NO_SLOTS": "Geen beschikbare tijdsloten voor deze dienst.",

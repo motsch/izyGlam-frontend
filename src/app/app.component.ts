@@ -89,10 +89,9 @@ export class AppComponent implements OnInit, AfterViewInit, AfterViewChecked {
         translate.setDefaultLang(sessionLangue ? sessionLangue : 'fr');
 
         // Initialisation de `me` depuis SessionService
-        const user = this.sessionService.getCurrentUser();
-        if (user) {
+        this.userService.getMe().subscribe(user => {
             this.me = user;
-        }
+        });
     }
     ngAfterViewInit(): void {
         if (this.drawer) {

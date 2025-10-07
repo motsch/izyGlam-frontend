@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "El teu compte professional s’ha creat correctament."
   },
   "ERROR": {
+    "NO_CITIES": "Codi postal sense coincidències",
+    "NOT_AVAILABLE": "Encara no estem disponibles en aquest lloc. Torna a provar d’aquí a uns mesos!",
     "LOGIN_REQUIRED": "Inicia sessió per gestionar els teus favorits.",
     "INVALID_IMAGE": "Imatge no vàlida.",
     "NO_SLOTS": "No hi ha cap franja disponible per a aquest servei.",

@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Tài khoản doanh nghiệp của bạn đã được tạo."
   },
   "ERROR": {
+    "NO_CITIES": "Không tìm thấy mã bưu chính phù hợp",
+    "NOT_AVAILABLE": "Chúng tôi chưa khả dụng tại khu vực này. Vui lòng quay lại kiểm tra sau vài tháng!",
     "LOGIN_REQUIRED": "Vui lòng đăng nhập để quản lý mục yêu thích.",
     "INVALID_IMAGE": "Hình ảnh không hợp lệ.",
     "NO_SLOTS": "Không có khung giờ nào cho dịch vụ này.",

@@ -12,6 +12,18 @@ export class UserService {
         return raw.slice(0, 2).toLowerCase();
     }
 
+    /**
+     * Met à jour le pays (country) du user
+     * @param userId ID du user à mettre à jour
+     * @param country pays (string)
+     */
+    updateCountry(userId: string, country: string) {
+        return this.http.put<any>(
+            `${environment.apiUrl}users-country-update/${userId}`,
+            { country }
+        );
+    }
+
     getUsersCount() {
         return this.http.get<number>(environment.apiUrl + 'users-count-all');
     }

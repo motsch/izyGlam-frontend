@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Hesabê karûbarî ya we bi serkeftî hate çêkirin."
   },
   "ERROR": {
+    "NO_CITIES": "Koda postê bê hevgirtin",
+    "NOT_AVAILABLE": "Em hîn li vî ciyê berdest nîn. Ji kerema xwe piştî çend mehê dîsa kontrol bikin!",
     "LOGIN_REQUIRED": "Ji kerema xwe re têkevinê bikin da ku fêrîfiran (favorî) birêve bibin.",
     "INVALID_IMAGE": "Wêne nederbasdar e.",
     "NO_SLOTS": "Ji bo vê servîsê tu demjimêr tune.",

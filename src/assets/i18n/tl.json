@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Matagumpay na nagawa ang iyong professional na account."
   },
   "ERROR": {
+    "NO_CITIES": "Walang tumutugmang postal code",
+    "NOT_AVAILABLE": "Hindi pa kami available sa lokasyong ito. Pakisuri muli pagkalipas ng ilang buwan!",
     "LOGIN_REQUIRED": "Mag-login muna upang pamahalaan ang iyong mga paborito.",
     "INVALID_IMAGE": "Di-wastong larawan.",
     "NO_SLOTS": "Walang available na slot para sa serbisyong ito.",

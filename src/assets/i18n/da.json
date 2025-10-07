@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Din virksomhedskonto er oprettet."
   },
   "ERROR": {
+    "NO_CITIES": "Codi postal sense coincidències",
+    "NOT_AVAILABLE": "Encara no estem disponibles en aquest lloc. Torna a provar d’aquí a uns mesos!",
     "LOGIN_REQUIRED": "Log ind for at administrere dine favoritter.",
     "INVALID_IMAGE": "Ugyldigt billede.",
     "NO_SLOTS": "Ingen ledige tidsrum for denne service.",

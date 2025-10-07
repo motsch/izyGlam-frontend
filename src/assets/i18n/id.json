@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Akun profesional Anda berhasil dibuat."
   },
   "ERROR": {
+    "NO_CITIES": "Kode pos tidak ditemukan",
+    "NOT_AVAILABLE": "Kami belum tersedia di lokasi ini. Silakan cek kembali dalam beberapa bulan!",
     "LOGIN_REQUIRED": "Silakan masuk untuk mengelola favorit Anda.",
     "INVALID_IMAGE": "Gambar tidak valid.",
     "NO_SLOTS": "Tidak ada slot yang tersedia untuk layanan ini.",

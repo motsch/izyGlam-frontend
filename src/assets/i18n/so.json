@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Koontadaada ganacsi si guul leh ayaa loo abuuray."
   },
   "ERROR": {
+    "NO_CITIES": "Lambarka boostada lama helin",
+    "NOT_AVAILABLE": "Weli kuma furney goobtan. Fadlan ku soo noqo dhowr bilood gudahood!",
     "LOGIN_REQUIRED": "Fadlan gal si aad u maamusho kuwa aad jeceshahay.",
     "INVALID_IMAGE": "Sawir aan sax ahayn.",
     "NO_SLOTS": "Waqtiyo banaan kuma jiraan adeeggan.",

@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Tu cuenta profesional ha sido creada correctamente."
   },
   "ERROR": {
+    "NO_CITIES": "Postal code not found",
+    "NOT_AVAILABLE": "We’re not available at this location yet. Please check back in a few months!",
     "LOGIN_REQUIRED": "Inicia sesión para gestionar tus favoritos.",
     "INVALID_IMAGE": "Imagen inválida.",
     "NO_SLOTS": "No hay franjas disponibles para este servicio.",

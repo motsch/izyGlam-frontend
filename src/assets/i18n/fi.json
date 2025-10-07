@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Yritystilisi on luotu onnistuneesti."
   },
   "ERROR": {
+    "NO_CITIES": "Postinumeroa ei löytynyt",
+    "NOT_AVAILABLE": "Emme vielä ole saatavilla tässä sijainnissa. Tarkista uudelleen muutaman kuukauden kuluttua!",
     "LOGIN_REQUIRED": "Kirjaudu sisään hallitaksesi suosikkejasi.",
     "INVALID_IMAGE": "Virheellinen kuva.",
     "NO_SLOTS": "Tälle palvelulle ei ole vapaita aikoja.",

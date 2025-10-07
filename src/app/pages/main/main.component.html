@@ -7,7 +7,7 @@
 
   <!-- SECTION ADRESSE & RECHERCHE -->
   <div class="address-search-wrapper margin-top-60">
-    <div class="address-search-row">
+    <div class="address-search-row" *ngIf="categoriesFilter.length > 0">
       <button class="address-button-pretty" (click)="openAddressModal()">
         <i class="icon-location">📍</i>
         {{ selectedPostalCode }} <span class="light-text">— {{ "MAIN.CHANGE_ADDRESS" | translate }}</span>
@@ -85,17 +85,29 @@
     </div>
 
     <!-- SECTION : PAS DISPONIBLE -->
-    <!-- SECTION : PAS DISPONIBLE -->
-    <div class="horizontal-section-wrapper" *ngIf="
+    <div class="horizontal-section-wrapper not-available" *ngIf="
     (filteredItemsAdecouvrir?.length || 0) +
     (filteredItemsApprecier?.length || 0) +
     (filteredItemsMalin?.length || 0) +
     (filteredItemsTop10?.length || 0) === 0
   ">
-      <div class="section-header">
-        <div class="not-disponible">{{ "MAIN.NOT_AVAILABLE" | translate }}</div>
-      </div>
+      <section class="na-card" role="status" aria-live="polite">
+        <!-- Icône localisation (SVG, pas de dépendance externe) -->
+        <svg class="na-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
+        </svg>
+
+        <h2 class="na-title">
+          {{ 'MAIN.NOT_AVAILABLE' | translate }}
+        </h2>
+
+        <p class="na-subtitle">
+          {{ 'MAIN.NOT_AVAILABLE_SUB' | translate }}
+        </p>
+      </section>
     </div>
+
 
   </div> <!-- /izy-content -->
 
@@ -130,19 +142,20 @@
 
       <!-- Formulaire d'ajout d'adresse -->
       <form *ngIf="isAddingAddress" (ngSubmit)="saveAddress()" class="address-form">
-        <!-- 1. Choix du pays -->
-        <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
+        <!-- 1. Choix du pays
+        <select [(ngModel)]="selectedCountry.name" name="country" (change)="onCountryChange()" required>
           <option value="">-- {{ "MAIN.CHOOSE_COUNTRY" | translate }} --</option>
           <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
-        </select>
-        <input *ngIf="availableCountries.length === 1" type="hidden" name="country" [(ngModel)]="selectedCountry" />
+        </select>-->
+        <input type="text" [value]="selectedCountry?.translation | translate" disabled />
+
 
         <!-- 2. Code postal -->
         <input type="text" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
           (change)="onPostalCodeEntered()" required maxlength="10" />
 
         <!-- 3. Villes correspondant au code postal -->
-        <select [(ngModel)]="selectedCity" name="city" required>
+        <select [(ngModel)]="selectedCity" name="city" required [disabled]="!selectedCity">
           <option value="">-- {{ "MAIN.CHOOSE_CITY" | translate }} --</option>
           <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
         </select>
@@ -171,6 +184,6 @@
 
 
 <div class="loader-overlay" *ngIf="loading">
-   <div class="spinner"></div>
-   <p>{{ 'PAYEMENT.TRAITEMENT' | translate }}...</p>
+  <div class="spinner"></div>
+  <p>{{ 'PAYEMENT.TRAITEMENT' | translate }}...</p>
 </div>

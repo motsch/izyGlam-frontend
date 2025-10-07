@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Contul dvs. de companie a fost creat."
   },
   "ERROR": {
+    "NO_CITIES": "Cod poștal fără corespondent",
+    "NOT_AVAILABLE": "Încă nu suntem disponibili în această zonă. Revenți peste câteva luni!",
     "LOGIN_REQUIRED": "Conectați-vă pentru a vă gestiona favoritele.",
     "INVALID_IMAGE": "Imagine invalidă.",
     "NO_SLOTS": "Niciun interval disponibil pentru acest serviciu.",

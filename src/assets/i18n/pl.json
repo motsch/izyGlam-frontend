@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Twoje konto firmowe zostało utworzone."
   },
   "ERROR": {
+    "NO_CITIES": "Kod pocztowy bez dopasowania",
+    "NOT_AVAILABLE": "Nie działamy jeszcze w tej lokalizacji. Sprawdź ponownie za kilka miesięcy!",
     "LOGIN_REQUIRED": "Zaloguj się, aby zarządzać ulubionymi.",
     "INVALID_IMAGE": "Nieprawidłowy obraz.",
     "NO_SLOTS": "Brak dostępnych terminów dla tej usługi.",

@@ -49,6 +49,8 @@
     "COMPANY_CREATED": "Il tuo account professionale è stato creato correttamente."
   },
   "ERROR": {
+    "NO_CITIES": "CAP senza corrispondenze",
+    "NOT_AVAILABLE": "Non siamo ancora disponibili in questa zona. Riprova tra qualche mese!",
     "LOGIN_REQUIRED": "Accedi per gestire i tuoi preferiti.",
     "INVALID_IMAGE": "Immagine non valida.",
     "NO_SLOTS": "Nessuna fascia oraria disponibile per questo servizio.",

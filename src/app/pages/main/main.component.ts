@@ -15,6 +15,7 @@ import { VilleService } from 'src/app/core/services/ville.service';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { CountryService } from 'src/app/core/services/country.service';
 
 @Component({
   selector: 'app-main',
@@ -45,6 +46,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   searchQuery: string = '';
   searchActive: boolean = false;
   filteredSearchResults: any[] = [];
+  countries: any[] = [];
 
   // Sélection adresse / code postal
   selectedPostalCode: string = '75001';
@@ -59,7 +61,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   availableArrondissements: string[] = []; // liste filtrée d'arrondissements (name) pour une ville
   isAddingAddress = false;
   newAddress: any = {};
-  selectedCountry = 'France';
+  selectedCountry: any = {};
   selectedCity: any = '';
   selectedArrondissement = '';
   availableCountries = ['France'];
@@ -92,6 +94,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     private cd: ChangeDetectorRef,
     private toastr: ToastrService,
     private translate: TranslateService,
+    private countryService: CountryService,
     private adminService: AdminService
   ) { }
 
@@ -285,7 +288,10 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.userService.getMe().subscribe({
       next: (data: any) => {
         this.me = data;
-        this.sharedService.updateMe(data);
+        this.getCountries();
+        console.log("MON USER FROM HELL");
+        console.log(data);
+        // this.selectedCountry = this.findCountryByNameOrTranslation(data.country) || this.countries[0] || null;
 
         // Nettoyage localStorage
         localStorage.removeItem('shopSelected');
@@ -330,6 +336,14 @@ export class MainComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /** 🔎 Recherche pays par name ou par translation (insensible à la casse) */
+  private findCountryByNameOrTranslation(raw: string): any | undefined {
+    const norm = raw.trim().toLowerCase();
+    return this.countries.find(
+      (c) => c.name?.toLowerCase() === norm || c.translation?.toLowerCase() === norm
+    );
+  }
+
   // ---------------------------------------------------
   // 🌍 Sélecteurs pays / ville / CP
   // ---------------------------------------------------
@@ -339,10 +353,46 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.selectedCity = {};
   }
 
+
+  // ------------------------------------------------------
+  // 🗺️ Charger les pays actifs, sélectionner le pays stocké, charger ses langues
+  // ------------------------------------------------------
+  getCountries(): void {
+    this.countryService.getAll({ active: true }).subscribe({
+      next: (countries: any[]) => {
+        this.countries = countries || [];
+        this.availableCountries = countries;
+        // Lecture du localStorage (on stocke le *name* du pays)
+        let storedCountry = (this.me.country || '').replace(/^"(.*)"$/, '$1').trim();
+        if (!storedCountry) storedCountry = 'France';
+
+        // On tente de retrouver par name ou translation (case-insensitive)
+        this.selectedCountry = this.findCountryByNameOrTranslation(storedCountry);
+        console.log("selectedCountry : " + JSON.stringify(this.selectedCountry))
+        // Fallback France / 1er pays dispo
+        if (!this.selectedCountry) {
+          this.selectedCountry =
+            this.findCountryByNameOrTranslation('France') || this.countries[0] || null;
+        }
+
+        // Appliquer côté session + charger les langues
+        if (this.selectedCountry) {
+          this.sessionService.setCountry(this.selectedCountry.name);
+        } else {
+          console.error('Country not found for name:', storedCountry);
+        }
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des pays', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      },
+    });
+  }
+
   onPostalCodeEntered() {
     if (!this.postalCode || this.postalCode.length < 4) return;
     this.villeService
-      .getByPostalCode(this.postalCode, this.selectedCountry)
+      .getByPostalCode(this.postalCode, this.me.country)
       .subscribe({
         next: (cities: any[]) => {
           this.availableCities = cities;
@@ -350,6 +400,8 @@ export class MainComponent implements OnInit, AfterViewInit {
 
           if (cities.length === 1) {
             this.selectedCity = cities[0];
+          } else if (cities.length === 0) {
+        this.showCustomToast(this.translate.instant('ERROR.NO_CITIES'));
           }
         },
         error: (err) => {
@@ -365,7 +417,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   private loadCategories() {
     // On passe toujours par le code postal sélectionné (aucune dépendance à la géoloc)
     this.categoryService
-      .getAvailableCategories(undefined, undefined, [this.selectedPostalCode])
+      .getAvailableCategories(undefined, undefined, [this.selectedPostalCode], this.me.country)
       .subscribe({
         next: (data: any[]) => {
           this.categoriesFilter = data.sort((a, b) => a.position - b.position);
@@ -399,7 +451,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   // 🏪 Charge les shops pour le CP sélectionné
   // ---------------------------------------------------
   private loadShops() {
-    this.shopService.getShopsByPostalCodes([this.selectedPostalCode]).subscribe({
+    this.shopService.getShopsByPostalCodes([this.selectedPostalCode], this.me.country).subscribe({
       next: async (categories: any) => {
         const favoriteShops = this.me.favoriteShops || [];
 
@@ -550,7 +602,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
     // Assigne city et country aux nouvelles valeurs sélectionnées
     this.newAddress.city = this.selectedCity.nom;
-    this.newAddress.country = this.selectedCountry;
+    this.newAddress.country = this.selectedCountry.name;
 
     if (this.newAddress.street && this.newAddress.code_postal && this.newAddress.city && this.newAddress.country) {
       const addressToAdd = { ...this.newAddress };
@@ -616,7 +668,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   // -----------------------------------------
   onCityChange() {
     const filteredByCity = this.allCitiesData.filter(
-      v => v.pays === this.selectedCountry && v.city === this.selectedCity.nom
+      v => v.pays === this.selectedCountry.name && v.city === this.selectedCity.nom
     );
     if (filteredByCity.length > 1) {
       this.availableArrondissements = [...new Set(filteredByCity.map(v => v.name))];
@@ -633,7 +685,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   onArrondissementChange() {
     const doc = this.allCitiesData.find(
       v =>
-        v.pays === this.selectedCountry &&
+        v.pays === this.selectedCountry.name &&
         v.city === this.selectedCity.nom &&
         v.name === this.selectedArrondissement
     );
