@@ -69,8 +69,7 @@
             {{ 'SIGNUP.COUNTRY' | translate }}
             <select [(ngModel)]="user.country" name="country" #country="ngModel" required>
                <option value="" disabled selected hidden>-- {{ 'SIGNUP.CHOOSE' | translate }} --</option>
-               <option value="France">{{ 'COUNTRY.FRANCE' | translate }}</option>
-               <option value="Allemagne">{{ 'COUNTRY.ALLEMAGNE' | translate }}</option>
+               <option *ngFor="let country of countries" [value]="country.name">{{ country.translation | translate }}</option>
             </select>
             <div *ngIf="error.country" class="error">{{error.country}}</div>
          </div>

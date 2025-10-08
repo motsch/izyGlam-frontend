@@ -44,8 +44,8 @@
                 <label for="country">{{ "CREATION_SHOP.COUNTRY" | translate }}</label>
                 <select [disabled]="availableCountries.length === 1" [(ngModel)]="selectedCountry" name="country"
                   (change)="onCountryChange()" required>
-                  <option *ngFor="let country of availableCountries" [value]="country">
-                    {{ country }}
+                  <option *ngFor="let country of availableCountries" [value]="country.name">
+                    {{ country.translation | translate }}
                   </option>
                 </select>
                 <input *ngIf="availableCountries.length === 1" type="hidden" name="country"

@@ -12,6 +12,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // ✅izyGlam: traductions & toasts
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { CountryService } from '../../services/country.service';
 
 @Component({
     selector: 'app-create-shop',
@@ -52,13 +53,14 @@ export class CreateShopComponent implements OnInit {
     selectedCountry = 'France';
     selectedCity: any = {};
     selectedArrondissement = '';
-    availableCountries = ['France'];
+    availableCountries:any[] = [];
     availableCities: any[] = [];
     postalCode: string = '';
 
     constructor(
         private userService: UserService,
         private shopService: ShopService,
+        private countryService: CountryService,
         private productService: ProductService,
         private router: Router,
         private villeService: VilleService,
@@ -109,6 +111,16 @@ export class CreateShopComponent implements OnInit {
                 },
             });
         }
+
+        // 3) Récupération des pays activés
+        this.countryService.getAll({ active: true }).subscribe({
+            next: (countries: any[]) => {
+                this.availableCountries = countries;
+            },
+            error: (err) => {
+                console.error('Erreur lors du chargement des pays :', err);
+            }
+        });
     }
 
     // ----------------------------------------

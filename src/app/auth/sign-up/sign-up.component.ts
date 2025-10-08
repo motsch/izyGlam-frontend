@@ -11,6 +11,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 import { v4 as uuidv4 } from 'uuid'; // Assure-toi d'avoir installé `uuid`
 import { FormControl } from '@angular/forms';
+import { CountryService } from 'src/app/core/services/country.service';
 
 @Component({
     selector: 'app-sign-up',
@@ -19,6 +20,7 @@ import { FormControl } from '@angular/forms';
 })
 
 export class SignUpComponent implements OnInit {
+    countries: any[] = [];
     error: any = {};
     passwordConfirmed!: ElementRef;
     isPasswordVisible: boolean = false;
@@ -62,6 +64,7 @@ export class SignUpComponent implements OnInit {
         private emitterService: EmitterService,
         private _snackBar: MatSnackBar,
         private router: Router,
+        private countryService: CountryService,
         private seoService: SeoService
     ) { }
 
@@ -89,6 +92,14 @@ export class SignUpComponent implements OnInit {
         });
         this.user.sex = 'female';
         this.user.country = 'France';
+        this.countryService.getAll({ active: true }).subscribe({
+            next: (countries: any[]) => {
+                this.countries = countries;
+            },
+            error: (err) => {
+                console.error('Erreur lors du chargement des pays :', err);
+            }
+        });
     }
 
     togglePasswordVisibility(): void {
