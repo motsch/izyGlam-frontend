@@ -13,6 +13,8 @@
     "OTHER": "Bestelakoa"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salong eemaldatud lemmikutest",
+    "FAVORITE_REMOVED": "Salong eemaldatud lemmikutest",
     "PHOTO_DELETE": "Argazkia galeritik ezabatu da",
     "PHOTO_UPLOAD": "Irudia ondo igo da",
     "PARTIAL_REFUND_CONFIRM": "Itzulketa partziala berretsi da!",
@@ -180,6 +182,12 @@
     "CODE": "Berrespen-kodea",
     "CODE_A_DONNER": "Eman beharreko kodea hornitzaileari",
     "PRESTA_ABSENT": "Hornitzailea agertu ez da"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Iritziak",
+    "ANON": "Bezeroa",
+    "EMPTY_TITLE": "Oraindik ez dago iritzirik",
+    "EMPTY_SUB": "Izan lehena zure esperientzia partekatzen."
   },
   "SHOP_CARD": {
     "AVIS": "Dendaren iritziak",

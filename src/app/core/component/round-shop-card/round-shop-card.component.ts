@@ -105,11 +105,13 @@ export class RoundShopCardComponent {
 
   // ======================= Images =======================
   onImageLoad(shopId: string) {
+    console.log("ON IMAGE LOAD");
     this.loadedShops[shopId] = true;
     this.skeleton = false;
   }
 
   onImageError(shopId: string) {
+    console.log("ON ERROR");
     this.loadedShops[shopId] = false;
   }
 

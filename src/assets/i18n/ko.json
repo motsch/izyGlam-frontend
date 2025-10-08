@@ -13,6 +13,8 @@
     "OTHER": "기타"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "살롱이 즐겨찾기에 추가되었습니다",
+    "FAVORITE_REMOVED": "살롱이 즐겨찾기에서 제거되었습니다",
     "PHOTO_DELETE": "갤러리에서 사진이 삭제되었습니다",
     "PHOTO_UPLOAD": "이미지가 성공적으로 업로드되었습니다",
     "PARTIAL_REFUND_CONFIRM": "부분 환불이 확인되었습니다!",
@@ -180,6 +182,12 @@
     "CODE": "확인 코드",
     "CODE_A_DONNER": "제공자에게 전달할 코드",
     "PRESTA_ABSENT": "제공자 부재"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "리뷰",
+    "ANON": "고객",
+    "EMPTY_TITLE": "아직 리뷰가 없습니다",
+    "EMPTY_SUB": "가장 먼저 경험을 공유해 보세요."
   },
   "SHOP_CARD": {
     "AVIS": "매장 후기",

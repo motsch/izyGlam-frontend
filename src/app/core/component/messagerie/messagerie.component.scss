@@ -1,5 +1,3 @@
-
-
 /* --- Layout global --- */
 .header.translucent {
   background: linear-gradient(90deg, #ffb6d5, #ffd1e6);
@@ -99,16 +97,6 @@
   color: #6b7280;
 }
 
-@media (max-width: 768px) {
-  .conversation-list {
-    position: absolute;
-    top: 0; bottom: 0; left: 0;
-    z-index: 20;
-    transform: translateX(-100%);
-  }
-  .conversation-list.open { transform: translateX(0); }
-}
-
 /* --- Chat box --- */
 .chat-box {
   flex: 1;
@@ -134,7 +122,7 @@
   letter-spacing: 0.2px;
 }
 .chat-header .toggle-conversation-list {
-  display: inline-flex;
+  display: none; /* visible seulement en mobile */
   align-items: center;
   justify-content: center;
   width: 36px; height: 36px;
@@ -142,6 +130,7 @@
   border: 1px solid #eee;
   background: #fff;
   cursor: pointer;
+  font-size: 18px;
 }
 
 /* --- Messages - zone scrollable --- */
@@ -167,7 +156,7 @@
 /* Bulles façon iOS/WhatsApp */
 .bubble {
   position: relative;
-  min-width: 80px;              /* ✅ largeur mini */
+  min-width: 80px;              /* largeur mini */
   max-width: 75%;
   padding: 10px 12px 16px;
   border-radius: 18px;
@@ -176,7 +165,7 @@
   line-height: 1.4;
   white-space: pre-wrap;
   word-break: break-word;
-  margin: 0 6px;                /* ✅ petite marge horizontale */
+  margin: 0 6px;                /* petite marge horizontale */
 }
 
 /* Reçus (gauche) */
@@ -185,7 +174,7 @@
   color: #1f2937;
   border: 1px solid #eee;
   border-bottom-left-radius: 6px;
-  margin-left: 8px;             /* ✅ espace avec le bord gauche */
+  margin-left: 8px;
   margin-right: auto;
 }
 
@@ -194,7 +183,7 @@
   background: linear-gradient(180deg, #ffb6d5, #ffd1e6);
   color: #fff;
   border-bottom-right-radius: 6px;
-  margin-right: 8px;            /* ✅ espace avec le bord droit */
+  margin-right: 8px;
   margin-left: auto;
 }
 
@@ -210,16 +199,16 @@
 
 /* --- Input toujours visible en bas --- */
 .message-input {
-  flex-shrink: 0;               /* ✅ empêche la réduction */
+  flex-shrink: 0;               /* empêche la réduction */
   display: flex;
   gap: 10px;
   padding: 10px 12px;
   border-top: 1px solid #eee;
   background: #fff;
   align-items: flex-end;
-  position: sticky;             /* ✅ reste collée en bas */
+  position: sticky;             /* reste collée en bas */
   bottom: 0;
-  z-index: 10;                  /* ✅ par-dessus le scroll */
+  z-index: 10;                  /* par-dessus le scroll */
   padding-bottom: calc(10px + env(safe-area-inset-bottom, 0));
 }
 
@@ -260,3 +249,52 @@
 .send-button:hover { background: #e63978 !important; }
 .send-button:active { transform: scale(0.96); }
 .send-button.sending { opacity: 0.6; cursor: not-allowed; }
+
+/* ---------- Backdrop mobile + panneau coulissant ---------- */
+.backdrop {
+  display: none; /* visible uniquement sur mobile */
+}
+
+/* --- Mobile only --- */
+@media (max-width: 768px) {
+  .conversation-list {
+    position: absolute;
+    top: 0; bottom: 0; left: 0;
+    z-index: 20;
+    transform: translateX(-100%);  /* fermée par défaut */
+    transition: transform 0.25s ease;
+    width: 82vw;
+    max-width: 340px;
+  }
+  .conversation-list.open {
+    transform: translateX(0);
+  }
+
+  .chat-header .toggle-conversation-list {
+    display: inline-flex;        /* bouton visible en mobile */
+  }
+
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.28);
+    z-index: 15;                 /* sous la liste (20), au-dessus du chat */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .conversation-list.open + .backdrop {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* --- Desktop : la liste reste visible --- */
+@media (min-width: 769px) {
+  .conversation-list {
+    transform: none !important;
+    position: relative;
+    width: 300px;
+  }
+}

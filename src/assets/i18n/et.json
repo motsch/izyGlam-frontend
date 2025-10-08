@@ -13,6 +13,8 @@
     "OTHER": "Muu"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salong lisatud lemmikutesse",
+    "FAVORITE_REMOVED": "Salong eemaldatud lemmikutest",
     "PHOTO_DELETE": "Foto eemaldati galeriist",
     "PHOTO_UPLOAD": "Pilt on edukalt üles laaditud",
     "PARTIAL_REFUND_CONFIRM": "Osaline tagasimakse kinnitatud!",
@@ -180,6 +182,12 @@
     "CODE": "Kinnituskood",
     "CODE_A_DONNER": "Kood, mille annate teenusepakkujale",
     "PRESTA_ABSENT": "Teenusepakkuja puudus"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Arvustused",
+    "ANON": "Klient",
+    "EMPTY_TITLE": "Arvustusi veel pole",
+    "EMPTY_SUB": "Jaga oma kogemust esimesena."
   },
   "SHOP_CARD": {
     "AVIS": "Poe arvustused",

@@ -13,6 +13,8 @@
     "OTHER": "Altres"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Saló afegit als preferits",
+    "FAVORITE_REMOVED": "Saló eliminat dels preferits",
     "PHOTO_DELETE": "Foto suprimida de la galeria",
     "PHOTO_UPLOAD": "Imatge carregada correctament",
     "PARTIAL_REFUND_CONFIRM": "Reemborsament parcial confirmat!",
@@ -180,6 +182,12 @@
     "CODE": "Codi de confirmació",
     "CODE_A_DONNER": "Codi a donar al proveïdor",
     "PRESTA_ABSENT": "Proveïdor absent"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Ressenyes",
+    "ANON": "Client",
+    "EMPTY_TITLE": "Encara no hi ha ressenyes",
+    "EMPTY_SUB": "Sigues la primera persona a compartir la teva experiència."
   },
   "SHOP_CARD": {
     "AVIS": "Ressenyes de la botiga",

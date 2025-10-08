@@ -13,6 +13,8 @@
     "OTHER": "Annat"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salong tillagd i favoriter",
+    "FAVORITE_REMOVED": "Salong borttagen från favoriter",
     "PHOTO_DELETE": "Foto borttaget från galleriet",
     "PHOTO_UPLOAD": "Bild uppladdad",
     "PARTIAL_REFUND_CONFIRM": "Delåterbetalning bekräftad!",
@@ -180,6 +182,12 @@
     "CODE": "Bekräftelsekod",
     "CODE_A_DONNER": "Kod att ge till utföraren",
     "PRESTA_ABSENT": "Utförare frånvarande"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Omdömen",
+    "ANON": "Kund",
+    "EMPTY_TITLE": "Inga omdömen ännu",
+    "EMPTY_SUB": "Var först med att dela din upplevelse."
   },
   "SHOP_CARD": {
     "AVIS": "Omdömen om butiken",

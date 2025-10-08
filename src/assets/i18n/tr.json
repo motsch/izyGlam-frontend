@@ -13,6 +13,8 @@
     "OTHER": "Diğer"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon favorilere eklendi",
+    "FAVORITE_REMOVED": "Salon favorilerden kaldırıldı",
     "PHOTO_DELETE": "Fotoğraf galeriden silindi",
     "PHOTO_UPLOAD": "Görsel başarıyla yüklendi",
     "PARTIAL_REFUND_CONFIRM": "Kısmi iade onaylandı!",
@@ -180,6 +182,12 @@
     "CODE": "Onay kodu",
     "CODE_A_DONNER": "Hizmet sağlayıcıya verilecek kod",
     "PRESTA_ABSENT": "Hizmet sağlayıcı gelmedi"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Yorumlar",
+    "ANON": "Müşteri",
+    "EMPTY_TITLE": "Henüz yorum yok",
+    "EMPTY_SUB": "Deneyimini paylaşan ilk kişi ol."
   },
   "SHOP_CARD": {
     "AVIS": "Mağaza yorumları",

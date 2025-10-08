@@ -7,13 +7,13 @@
 
   <!-- SECTION ADRESSE & RECHERCHE -->
   <div class="address-search-wrapper margin-top-60">
-    <div class="address-search-row" *ngIf="categoriesFilter.length > 0">
+    <div class="address-search-row">
       <button class="address-button-pretty" (click)="openAddressModal()">
         <i class="icon-location">📍</i>
         {{ selectedPostalCode }} <span class="light-text">— {{ "MAIN.CHANGE_ADDRESS" | translate }}</span>
       </button>
       <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
-        [placeholder]="('MAIN.FIND_SHOP' | translate)" class="pretty-search-bar" />
+        [placeholder]="('MAIN.FIND_SHOP' | translate)" class="pretty-search-bar"  *ngIf="shops.length > 0"/>
     </div>
   </div>
 

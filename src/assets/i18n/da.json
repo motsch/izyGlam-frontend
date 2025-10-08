@@ -13,6 +13,8 @@
     "OTHER": "Andet"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon tilføjet til favoritter",
+    "FAVORITE_REMOVED": "Salon fjernet fra favoritter",
     "PHOTO_DELETE": "Foto fjernet fra galleriet",
     "PHOTO_UPLOAD": "Billede uploadet med succes",
     "PARTIAL_REFUND_CONFIRM": "Delvis tilbagebetaling bekræftet!",
@@ -180,6 +182,12 @@
     "CODE": "Bekræftelseskode",
     "CODE_A_DONNER": "Kode der skal gives til udbyderen",
     "PRESTA_ABSENT": "Udbyder udeblevet"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Anmeldelser",
+    "ANON": "Kunde",
+    "EMPTY_TITLE": "Ingen anmeldelser endnu",
+    "EMPTY_SUB": "Vær den første til at dele din oplevelse."
   },
   "SHOP_CARD": {
     "AVIS": "Anmeldelser af butikken",

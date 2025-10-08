@@ -7,7 +7,7 @@ import { ReviewsModalService } from '../../services/reviews-modal.service';
   styleUrls: ['./reviews-modal.component.scss'],
 })
 export class ReviewsModalComponent {
-  constructor(public modal: ReviewsModalService) {}
+  constructor(public modal: ReviewsModalService) { }
 
   closeBackdrop(e: MouseEvent) {
     e.stopPropagation();
@@ -15,4 +15,11 @@ export class ReviewsModalComponent {
   }
 
   stop(e: MouseEvent) { e.stopPropagation(); }
+
+  percentFromRating(rating?: number, max = 5): number {
+    const v = Number(rating ?? 0);
+    const clamped = Math.max(0, Math.min(max, v));
+    return (clamped / max) * 100;
+  }
+
 }

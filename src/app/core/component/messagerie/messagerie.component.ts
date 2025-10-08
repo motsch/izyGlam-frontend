@@ -8,7 +8,8 @@ import {
   ViewChild,
   Input,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  HostListener
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MqttService } from '../../services/mqtt.service';
@@ -122,9 +123,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
     conv.messages.push(incoming);
   }
 
-  // ==============
-  // Lifecycle
-  // ==============
+  // ============== Lifecycle ==============
 
   ngOnInit() {
     try {
@@ -639,7 +638,6 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
    */
   private showCustomToast(keyOrMessage: string, type: 'success' | 'error' = 'success') {
     try {
-      // On tente la traduction — si la clé n’existe pas, instant renverra la clé → on fallback user-friendly
       const translated = this.translate.instant(keyOrMessage);
       const message = translated && translated !== keyOrMessage ? translated : keyOrMessage;
 
@@ -649,9 +647,14 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
         this.toastr.error(message);
       }
     } catch (e) {
-      // En cas de souci i18n, on n’empêche pas l’affichage
       if (type === 'success') this.toastr.success(keyOrMessage);
       else this.toastr.error(keyOrMessage);
     }
+  }
+
+  // ============== Accessibilité (optionnel mais cool) ==============
+  @HostListener('document:keydown.escape')
+  onEscape() {
+    if (this.isConversationListOpen) this.isConversationListOpen = false;
   }
 }

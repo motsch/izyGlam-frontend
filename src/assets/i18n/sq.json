@@ -13,6 +13,8 @@
     "OTHER": "Tjetër"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Saloni u shtua te të preferuarat",
+    "FAVORITE_REMOVED": "Saloni u hoq nga të preferuarat",
     "PHOTO_DELETE": "Fotoja u fshi nga galeria",
     "PHOTO_UPLOAD": "Imazhi u ngarkua me sukses",
     "PARTIAL_REFUND_CONFIRM": "Rimbursimi i pjesshëm u konfirmua!",
@@ -180,6 +182,12 @@
     "CODE": "Kodi i konfirmimit",
     "CODE_A_DONNER": "Kod për t’ia dhënë ofruesit",
     "PRESTA_ABSENT": "Ofruesi mungon"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Vlerësime",
+    "ANON": "Klient",
+    "EMPTY_TITLE": "Ende nuk ka vlerësime",
+    "EMPTY_SUB": "Ji personi i parë që ndan përvojën tënde."
   },
   "SHOP_CARD": {
     "AVIS": "Vlerësimet për dyqanin",

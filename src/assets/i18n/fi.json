@@ -13,6 +13,8 @@
     "OTHER": "Muu"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salonki lisätty suosikkeihin",
+    "FAVORITE_REMOVED": "Salonki poistettu suosikeista",
     "PHOTO_DELETE": "Kuva poistettu galleriasta",
     "PHOTO_UPLOAD": "Kuva ladattu onnistuneesti",
     "PARTIAL_REFUND_CONFIRM": "Osittainen palautus vahvistettu!",
@@ -180,6 +182,12 @@
     "CODE": "Vahvistuskoodi",
     "CODE_A_DONNER": "Koodi annettavaksi palveluntarjoajalle",
     "PRESTA_ABSENT": "Palveluntarjoaja poissa"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Arvostelut",
+    "ANON": "Asiakas",
+    "EMPTY_TITLE": "Ei vielä arvosteluja",
+    "EMPTY_SUB": "Ole ensimmäinen, joka jakaa kokemuksesi."
   },
   "SHOP_CARD": {
     "AVIS": "Liikkeen arviot",

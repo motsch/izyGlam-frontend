@@ -76,8 +76,25 @@
     </ng-container>
   </div>
 
+  <!-- 🔥 Backdrop mobile pour fermer en touchant à côté -->
+  <div class="backdrop" *ngIf="isConversationListOpen" (click)="isConversationListOpen = false"></div>
+
   <!-- Zone de chat -->
   <div class="chat-box" *ngIf="selectedConversation">
+    <!-- 🔥 Header compact avec bouton menu (affiché seulement sur mobile) -->
+    <div class="chat-header">
+      <button
+        class="toggle-conversation-list"
+        (click)="toggleConversationList()"
+        aria-label="Ouvrir la liste des conversations"
+        [attr.aria-expanded]="isConversationListOpen"
+        type="button">
+        ☰
+      </button>
+
+      <h2>{{ getConversationName(selectedConversation) }}</h2>
+    </div>
+
     <!-- Messages - zone scrollable -->
     <div class="chat-messages" #chatMessages>
       <ng-container *ngFor="let message of selectedConversation?.messages; trackBy: trackByMessage">

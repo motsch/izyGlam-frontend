@@ -13,6 +13,8 @@
     "OTHER": "Outro"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salón engadido aos favoritos",
+    "FAVORITE_REMOVED": "Salón eliminado dos favoritos",
     "PHOTO_DELETE": "Foto eliminada da galería",
     "PHOTO_UPLOAD": "Imaxe cargada con éxito",
     "PARTIAL_REFUND_CONFIRM": "Reembolso parcial confirmado!",
@@ -180,6 +182,12 @@
     "CODE": "Código de confirmación",
     "CODE_A_DONNER": "Código para entregar ao profesional",
     "PRESTA_ABSENT": "Profesional ausente"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Opinións",
+    "ANON": "Cliente",
+    "EMPTY_TITLE": "Aínda non hai opinións",
+    "EMPTY_SUB": "Sé a primeira persoa en compartir a túa experiencia."
   },
   "SHOP_CARD": {
     "AVIS": "Opinións sobre a tenda",

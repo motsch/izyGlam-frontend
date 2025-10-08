@@ -13,6 +13,8 @@
         "OTHER": "أخرى"
     },
     "SUCCESS": {
+        "FAVORITE_ADDED": "تمت إضافة الصالون إلى المفضلة",
+        "FAVORITE_REMOVED": "تمت إضافة الصالون إلى المفضلة",
         "PHOTO_DELETE": "تم حذف الصورة من المعرض",
         "PHOTO_UPLOAD": "تم رفع الصورة بنجاح",
         "PARTIAL_REFUND_CONFIRM": "تم تأكيد الاسترداد الجزئي!",
@@ -180,6 +182,12 @@
         "CODE": "رمز التأكيد",
         "CODE_A_DONNER": "الرمز الذي سيُسلّم للمقدّم",
         "PRESTA_ABSENT": "المقدّم غائب"
+    },
+    "REVIEWS_MODAL": {
+        "REVIEWS": "التقييمات",
+        "ANON": "عميل",
+        "EMPTY_TITLE": "لا توجد مراجعات بعد",
+        "EMPTY_SUB": "كن أول من يشارك تجربتك."
     },
     "SHOP_CARD": {
         "AVIS": "آراء حول المتجر",

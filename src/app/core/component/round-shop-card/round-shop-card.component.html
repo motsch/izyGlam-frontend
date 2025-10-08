@@ -5,23 +5,13 @@
       <div class="shop-skeleton-card" *ngIf="!loadedShops[shop._id]"></div>
 
       <!-- Image principale -->
-      <img
-        *ngIf="shop.image"
-        class="main-image"
-        [src]="imgStorageUrl + 'uploads/images/' + shop.image"
-        (load)="onImageLoad(shop._id)"
-        (error)="onImageError(shop._id)"
-        alt="profile image"
-        [ngClass]="{ 'hidden-until-loaded': !loadedShops[shop._id] }"
-      />
+      <img *ngIf="shop.image" class="main-image" [src]="imgStorageUrl + 'uploads/images/' + shop.image"
+        (load)="onImageLoad(shop._id)" (error)="onImageError(shop._id)" alt="profile image"
+        [ngClass]="{ 'hidden-until-loaded': !loadedShops[shop._id] }" />
 
       <!-- Overlay promo -->
-      <img
-        *ngIf="promoVisible && shop.promo?.active && shop.promo?.type"
-        class="overlay-image"
-        [src]="imgStorageUrl + 'uploads/images/promo' + shop.promo.type + '.png'"
-        alt="overlay image"
-      />
+      <img *ngIf="promoVisible && shop.promo?.active && shop.promo?.type" class="overlay-image"
+        [src]="imgStorageUrl + 'uploads/images/promo' + shop.promo.type + '.png'" alt="overlay image" />
     </div>
   </div>
 
@@ -29,28 +19,18 @@
     <h3 (click)="toShopPage(shop._id)">{{ shop.name }}</h3>
     <p>{{ shop.trad | translate }}, {{ shop.ville }}</p>
     <p (click)="openModal()">
-      <i class="star-icon"></i>{{ shop.note }} ({{ shop.reviews.length }} {{ 'MAIN_PAGE.AVIS' | translate }})
+      <i class="star-icon"></i>{{ shop.note }} ({{ shop.reviews ? shop.reviews.length : 0 }} {{ 'MAIN_PAGE.AVIS' | translate }})
     </p>
   </div>
 
   <!-- Coeur -->
-  <i
-    *ngIf="sessionService.isLoggedIn()"
-    class="fa fa-heart heart-icon"
-    [ngClass]="{ favorite: shop.isFavorite }"
-    (click)="toggleFavorite()"
-  ></i>
+  <i *ngIf="sessionService.isLoggedIn()" class="fa fa-heart heart-icon" [ngClass]="{ favorite: shop.isFavorite }"
+    (click)="toggleFavorite()"></i>
 </div>
 
 <!-- Modal -->
-<div
-  class="modal"
-  role="dialog"
-  aria-modal="true"
-  [class.show]="modalOpen"
-  [style.display]="modalOpen ? 'flex' : 'none'"
-  (click)="closeModal()"
->
+<div class="modal" role="dialog" aria-modal="true" [class.show]="modalOpen"
+  [style.display]="modalOpen ? 'flex' : 'none'" (click)="closeModal()">
   <div class="modal-dialog custom-modal-width" (click)="$event.stopPropagation()">
     <div class="modal-content">
       <div class="modal-header">

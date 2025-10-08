@@ -13,6 +13,8 @@
     "OTHER": "Overig"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon toegevoegd aan favorieten",
+    "FAVORITE_REMOVED": "Salon uit favorieten verwijderd",
     "PHOTO_DELETE": "Foto uit de galerij verwijderd",
     "PHOTO_UPLOAD": "Afbeelding succesvol geüpload",
     "PARTIAL_REFUND_CONFIRM": "Gedeeltelijke terugbetaling bevestigd!",
@@ -180,6 +182,12 @@
     "CODE": "Bevestigingscode",
     "CODE_A_DONNER": "Code om aan de dienstverlener te geven",
     "PRESTA_ABSENT": "Dienstverlener afwezig"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Beoordelingen",
+    "ANON": "Klant",
+    "EMPTY_TITLE": "Nog geen beoordelingen",
+    "EMPTY_SUB": "Wees de eerste die je ervaring deelt."
   },
   "SHOP_CARD": {
     "AVIS": "Winkelbeoordelingen",

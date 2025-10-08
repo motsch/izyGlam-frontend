@@ -13,6 +13,8 @@
     "OTHER": "Other"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon added to favorites",
+    "FAVORITE_REMOVED": "Salon added to favorites",
     "PHOTO_DELETE": "Photo removed from gallery",
     "PHOTO_UPLOAD": "Image uploaded successfully",
     "PARTIAL_REFUND_CONFIRM": "Partial refund confirmed!",
@@ -180,6 +182,12 @@
     "CODE": "Confirmation code",
     "CODE_A_DONNER": "Code to give to the provider",
     "PRESTA_ABSENT": "Provider absent"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Reviews",
+    "ANON": "Customer",
+    "EMPTY_TITLE": "No reviews yet",
+    "EMPTY_SUB": "Be the first to share your experience."
   },
   "SHOP_CARD": {
     "AVIS": "Shop reviews",

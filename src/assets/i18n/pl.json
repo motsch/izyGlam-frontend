@@ -13,6 +13,8 @@
     "OTHER": "Inne"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon dodany do ulubionych",
+    "FAVORITE_REMOVED": "Salon usunięty z ulubionych",
     "PHOTO_DELETE": "Zdjęcie usunięte z galerii",
     "PHOTO_UPLOAD": "Obraz pomyślnie przesłany",
     "PARTIAL_REFUND_CONFIRM": "Częściowy zwrot potwierdzony!",
@@ -180,6 +182,12 @@
     "CODE": "Kod potwierdzający",
     "CODE_A_DONNER": "Kod do przekazania specjaliście",
     "PRESTA_ABSENT": "Specjalista nieobecny"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Opinie",
+    "ANON": "Klient",
+    "EMPTY_TITLE": "Brak opinii",
+    "EMPTY_SUB": "Bądź pierwszą osobą, która podzieli się swoim doświadczeniem."
   },
   "SHOP_CARD": {
     "AVIS": "Opinie o salonie",

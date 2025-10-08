@@ -13,6 +13,8 @@
     "OTHER": "Otro"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salón añadido a favoritos",
+    "FAVORITE_REMOVED": "Salón eliminado de favoritos",
     "PHOTO_DELETE": "Foto eliminada de la galería",
     "PHOTO_UPLOAD": "Imagen cargada con éxito",
     "PARTIAL_REFUND_CONFIRM": "¡Reembolso parcial confirmado!",
@@ -180,6 +182,12 @@
     "CODE": "Código de confirmación",
     "CODE_A_DONNER": "Código a entregar al profesional",
     "PRESTA_ABSENT": "Profesional ausente"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Reseñas",
+    "ANON": "Cliente",
+    "EMPTY_TITLE": "Aún no hay reseñas",
+    "EMPTY_SUB": "Sé la primera persona en compartir tu experiencia."
   },
   "SHOP_CARD": {
     "AVIS": "Opiniones sobre la tienda",

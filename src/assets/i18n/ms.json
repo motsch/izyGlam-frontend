@@ -13,6 +13,8 @@
     "OTHER": "Lain-lain"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon ditambah ke kegemaran",
+    "FAVORITE_REMOVED": "Salon dibuang daripada kegemaran",
     "PHOTO_DELETE": "Foto dipadam daripada galeri",
     "PHOTO_UPLOAD": "Imej berjaya dimuat naik",
     "PARTIAL_REFUND_CONFIRM": "Bayaran balik sebahagian disahkan!",
@@ -180,6 +182,12 @@
     "CODE": "Kod pengesahan",
     "CODE_A_DONNER": "Kod untuk diberikan kepada penyedia",
     "PRESTA_ABSENT": "Penyedia tidak hadir"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Ulasan",
+    "ANON": "Pelanggan",
+    "EMPTY_TITLE": "Belum ada ulasan",
+    "EMPTY_SUB": "Jadilah orang pertama berkongsi pengalaman anda."
   },
   "SHOP_CARD": {
     "AVIS": "Ulasan tentang butik",

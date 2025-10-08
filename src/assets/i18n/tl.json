@@ -13,6 +13,8 @@
     "OTHER": "Iba pa"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Nadagdag ang salon sa mga paborito",
+    "FAVORITE_REMOVED": "Inalis ang salon mula sa mga paborito",
     "PHOTO_DELETE": "Na-delete ang larawan mula sa gallery",
     "PHOTO_UPLOAD": "Matagumpay na na-upload ang larawan",
     "PARTIAL_REFUND_CONFIRM": "Kumpirmado ang bahagyang refund!",
@@ -180,6 +182,12 @@
     "CODE": "Code ng kumpirmasyon",
     "CODE_A_DONNER": "Code na ibibigay sa provider",
     "PRESTA_ABSENT": "Hindi dumating ang provider"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Mga pagsusuri",
+    "ANON": "Kliyente",
+    "EMPTY_TITLE": "Wala pang mga pagsusuri",
+    "EMPTY_SUB": "Maging unang magbahagi ng iyong karanasan."
   },
   "SHOP_CARD": {
     "AVIS": "Mga review sa boutique/salon",

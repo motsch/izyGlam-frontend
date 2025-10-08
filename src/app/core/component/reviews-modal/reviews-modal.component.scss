@@ -1,96 +1,303 @@
-/* Backdrop plein écran + centrage */
-.global-modal {
+/* ---------- Variables thème (tu peux ajuster) ---------- */
+:root {
+  --ig-surface: rgba(255,255,255,0.92);
+  --ig-surface-dark: rgba(22,22,24,0.82);
+  --ig-border: 0,0,0; /* utilisé avec alpha */
+  --ig-text: #0b0b0c;
+  --ig-text-sub: #6e6e73;
+  --ig-rose: #e2a5b5; /* rose izyGlam doux */
+  --ig-radius-2xl: 24px;
+}
+
+/* ---------- Backdrop ---------- */
+.ig-modal-backdrop {
   position: fixed;
   inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 3vw, 24px);
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px) saturate(130%);
+  z-index: 10000;
+  animation: ig-fade-in 180ms ease-out both;
+}
+
+/* ---------- Dialog ---------- */
+.ig-modal {
+  width: min(820px, 96vw);
+  max-height: min(86vh, 1000px);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.45);
-  z-index: 10000; /* au-dessus de tout */
+  flex-direction: column;
+  background: var(--ig-surface);
+  border: 1px solid rgba(var(--ig-border), 0.08);
+  border-radius: var(--ig-radius-2xl);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px) saturate(160%);
+  overflow: hidden;
+  animation: ig-scale-in 220ms cubic-bezier(.2,.6,.2,1) both;
 }
 
-/* Boîte de dialogue */
-.global-modal__dialog {
-  position: relative;
-  width: 100%;
-  max-width: 700px;
-  margin: 0 16px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-  z-index: 10001;
-}
-
-/* Header */
-.global-modal__header {
+/* ---------- Header ---------- */
+.ig-modal__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
-  background: #f8f9fa;
-  border-bottom: 1px solid #eee;
+  padding: clamp(16px, 2vw, 22px) clamp(18px, 2.4vw, 28px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.55));
+  border-bottom: 1px solid rgba(var(--ig-border), 0.06);
+}
 
-  .global-modal__title {
-    margin: 0;
-    font-size: 1.4rem;
-    color: #4b4b4b;
+.ig-modal__title-wrap {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.ig-badge-pin {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fdf2f6, #fbe7ef);
+  border: 1px solid rgba(226,165,181,0.35);
+  box-shadow: 0 4px 12px rgba(226,165,181,0.25);
+  svg { width: 20px; height: 20px; fill: var(--ig-rose); }
+  grid-row: 1 / span 2;
+}
+
+.ig-modal__title {
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 600;
+  letter-spacing: .2px;
+  color: var(--ig-text);
+}
+
+.ig-modal__meta {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--ig-text-sub);
+  font-size: 0.95rem;
+}
+
+/* Bouton close */
+.ig-btn-close {
+  inline-size: 36px; block-size: 36px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(var(--ig-border), 0.08);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease;
+  svg { width: 18px; height: 18px; fill: #78787e; }
+  &:hover { transform: translateY(-1px); background: rgba(255,255,255,0.9); }
+  &:active { transform: translateY(0); }
+}
+
+/* ---------- Body ---------- */
+.ig-modal__body {
+  padding: clamp(14px, 2.2vw, 22px) clamp(18px, 2.4vw, 28px);
+  overflow: auto;
+}
+
+.ig-review {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  background: rgba(245,245,247,0.85);
+  border: 1px solid rgba(var(--ig-border), 0.06);
+}
+
+.ig-review__icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: linear-gradient(180deg, #fff, #f6f6f6);
+  border: 1px solid rgba(var(--ig-border), 0.06);
+  svg { width: 22px; height: 22px; fill: var(--ig-rose); opacity: .9; }
+}
+
+.ig-review__content { min-width: 0; }
+
+.ig-review__top {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 6px;
+}
+
+.ig-review__author {
+  font-weight: 600; color: var(--ig-text);
+  font-size: 1rem; letter-spacing: .2px;
+}
+
+/* ⭐️ Étoile + note collées (pour chaque avis) */
+.ig-review__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;                 /* espace court : “collé mais lisible” */
+  font-weight: 600;
+  color: var(--ig-text);
+}
+.ig-star {
+  width: 16px;
+  height: 16px;
+  fill: var(--ig-rose);
+  opacity: .95;
+}
+.ig-note {
+  font-size: 0.95rem;
+  color: var(--ig-text);
+  letter-spacing: .2px;
+}
+
+.ig-review__text {
+  margin: 0;
+  color: var(--ig-text-sub);
+  line-height: 1.55;
+  white-space: pre-wrap;
+}
+
+/* ---------- Empty state (lisibilité ++, sans rien casser) ---------- */
+.ig-modal__empty {
+  width: min(720px, 92%);
+  margin: clamp(16px, 3vw, 24px) auto;
+  padding: clamp(20px, 3vw, 28px);
+  background: rgba(255, 255, 255, 0.92);              /* carte claire “glass” */
+  border: 1px solid rgba(var(--ig-border), 0.08);
+  border-radius: var(--ig-radius-2xl);
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  text-align: center;
+  backdrop-filter: blur(10px) saturate(140%);
+
+  /* meilleure présence visuelle */
+  min-height: 24vh;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+}
+
+.ig-empty__icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 12px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffffff, #f6f6f6);
+  border: 1px solid rgba(var(--ig-border), 0.06);
+  svg { width: 30px; height: 30px; fill: var(--ig-rose); }
+}
+
+.ig-empty__title {
+  margin: 6px 0 6px;
+  font-size: clamp(18px, 2vw, 20px);
+  font-weight: 700;
+  color: var(--ig-text);
+  letter-spacing: .2px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);         /* +contraste */
+}
+
+.ig-empty__subtitle {
+  margin: 0;
+  color: #4b4b4b;                                     /* un peu + sombre que --ig-text-sub */
+  opacity: .95;
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+
+/* ---------- Footer ---------- */
+.ig-modal__footer {
+  padding: 14px clamp(18px, 2.4vw, 28px) clamp(18px, 2.6vw, 28px);
+  display: flex; justify-content: center;
+  border-top: 1px solid rgba(var(--ig-border), 0.06);
+  background: linear-gradient(0deg, rgba(255,255,255,0.7), rgba(255, 255, 255, 0.50));
+}
+
+.ig-btn {
+  appearance: none; border: 0; cursor: pointer;
+  border-radius: 14px; font-weight: 600;
+  padding: 12px 20px; line-height: 1;
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.ig-btn--primary {
+  background: linear-gradient(180deg, #ffdbe7, #f7c7d9);
+  color: #3a3a3c;
+  box-shadow: 0 8px 20px rgba(226,165,181,0.35);
+  border: 1px solid rgba(226,165,181,0.45);
+}
+.ig-btn--primary:hover { transform: translateY(-1px); filter: saturate(110%); }
+.ig-btn--primary:active { transform: translateY(0); }
+
+/* ---------- Stars (SVG mask pour rendu net) ---------- */
+/* conservé pour l’agrégat 5★ éventuel dans le header */
+.ig-stars {
+  --size: 18px;
+  position: relative; display: inline-block;
+  inline-size: calc(var(--size) * 5); block-size: var(--size);
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 120 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23E5E5EA'%3E%3Cpath d='M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/g%3E%3C/svg%3E") left/contain no-repeat;
+  border-radius: 4px;
+}
+.ig-stars__fill {
+  position: absolute; inset: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 120 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23E2A5B5'%3E%3Cpath d='M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/g%3E%3C/svg%3E") left/contain no-repeat;
+  clip-path: inset(0 0 0 0 round 4px);
+}
+
+/* ---------- Animations ---------- */
+@keyframes ig-fade-in { from {opacity: 0} to {opacity: 1} }
+@keyframes ig-scale-in {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+/* ---------- Dark mode ---------- */
+@media (prefers-color-scheme: dark) {
+  .ig-modal-backdrop {
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px) saturate(140%);
   }
+  .ig-modal {
+    background: var(--ig-surface-dark);
+    border-color: rgba(255,255,255,0.08);
+    box-shadow: 0 18px 60px rgba(0,0,0,0.55);
+  }
+  .ig-modal__header,
+  .ig-modal__footer {
+    background: linear-gradient(180deg, rgba(24,24,26,0.6), rgba(24,24,26,0.3));
+    border-color: rgba(255,255,255,0.08);
+  }
+  .ig-modal__title { color: #f5f5f7; }
+  .ig-modal__meta, .ig-review__text { color: #a1a1a6; }
+  .ig-review { background: rgba(32,32,34,0.6); border-color: rgba(255,255,255,0.06); }
+  .ig-review__author { color: #f2f2f3; }
+  .ig-btn-close { background: rgba(38,38,40,0.6); border-color: rgba(255,255,255,0.06); }
+  .ig-review__rating .ig-note { color: #f5f5f7; }
+  .ig-star { fill: #e7b7c6; }
 
-  .btn-close {
-    background: none;
-    border: none;
-    font-size: 1.4rem;
-    color: #888;
-    cursor: pointer;
-
-    &:hover { color: #333; }
+  /* Empty state — contraste fort en sombre */
+  .ig-modal__empty {
+    background: rgba(24,24,26,0.82);
+    border-color: rgba(255,255,255,0.10);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+  }
+  .ig-empty__title {
+    color: #f5f5f7;
+    text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  }
+  .ig-empty__subtitle {
+    color: #c7c7cc;
+    text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  }
+  .ig-empty__icon {
+    background: linear-gradient(180deg, #2a2a2c, #242426);
+    border-color: rgba(255,255,255,0.08);
   }
 }
 
-/* Corps */
-.global-modal__body {
-  padding: 20px;
-
-  .review {
-    background: #f5f5f5;
-    border-radius: 8px;
-    padding: 14px;
-    margin-bottom: 12px;
-
-    label {
-      display: inline-block;
-      font-weight: 600;
-      color: #555;
-      font-size: 0.92em;
-    }
-
-    .review__content {
-      margin-top: 4px;
-      color: #333;
-      line-height: 1.45;
-    }
-  }
-}
-
-/* Pied */
-.global-modal__footer {
-  padding: 14px 20px 20px;
-  display: flex;
-  justify-content: center;
-
-  .btn.btn-secondary {
-    background-color: #6c757d;
-    color: #fff;
-    border-radius: 6px;
-    padding: 10px 20px;
-    font-weight: 600;
-
-    &:hover { background-color: #5a6268; }
-  }
-}
-
-/* Quand la modale est ouverte, on neutralise les transforms des cartes/containers si besoin */
-.modal-open .profile-card:hover { transform: none !important; }
-/* Si tu utilises un slider/grille avec transform, ajoute son sélecteur ici :
-.modal-open .swiper, .modal-open .swiper-wrapper, .modal-open .shops-track { transform: none !important; }
-*/
+/* ---------- Scroll lock optionnel ---------- */
+body.modal-open { overflow: hidden; }

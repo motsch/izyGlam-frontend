@@ -13,6 +13,8 @@
     "OTHER": "Altul"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon adăugat la favorite",
+    "FAVORITE_REMOVED": "Salon eliminat din favorite",
     "PHOTO_DELETE": "Fotografie ștearsă din galerie",
     "PHOTO_UPLOAD": "Imagine încărcată cu succes",
     "PARTIAL_REFUND_CONFIRM": "Ramburs parțial confirmat!",
@@ -180,6 +182,12 @@
     "CODE": "Cod de confirmare",
     "CODE_A_DONNER": "Cod de dat prestatorului",
     "PRESTA_ABSENT": "Prestator absent"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Recenzii",
+    "ANON": "Client",
+    "EMPTY_TITLE": "Nu există încă recenzii",
+    "EMPTY_SUB": "Fii prima persoană care își împărtășește experiența."
   },
   "SHOP_CARD": {
     "AVIS": "Recenzii despre magazin",

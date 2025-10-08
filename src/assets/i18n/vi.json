@@ -13,6 +13,8 @@
     "OTHER": "Khác"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Đã thêm salon vào mục yêu thích",
+    "FAVORITE_REMOVED": "Đã xóa salon khỏi mục yêu thích",
     "PHOTO_DELETE": "Ảnh đã được xóa khỏi thư viện",
     "PHOTO_UPLOAD": "Tải ảnh thành công",
     "PARTIAL_REFUND_CONFIRM": "Xác nhận hoàn tiền một phần!",
@@ -180,6 +182,12 @@
     "CODE": "Mã xác nhận",
     "CODE_A_DONNER": "Mã đưa cho nhà cung cấp",
     "PRESTA_ABSENT": "Nhà cung cấp vắng mặt"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Đánh giá",
+    "ANON": "Khách hàng",
+    "EMPTY_TITLE": "Chưa có đánh giá nào",
+    "EMPTY_SUB": "Hãy là người đầu tiên chia sẻ trải nghiệm của bạn."
   },
   "SHOP_CARD": {
     "AVIS": "Đánh giá về cửa hàng",

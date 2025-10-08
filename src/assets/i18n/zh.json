@@ -13,6 +13,8 @@
     "OTHER": "其他"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "沙龙已添加到收藏",
+    "FAVORITE_REMOVED": "沙龙已从收藏中移除",
     "PHOTO_DELETE": "照片已从相册删除",
     "PHOTO_UPLOAD": "图片上传成功",
     "PARTIAL_REFUND_CONFIRM": "部分退款已确认！",
@@ -180,6 +182,12 @@
     "CODE": "确认码",
     "CODE_A_DONNER": "需提供给服务者的代码",
     "PRESTA_ABSENT": "服务者未到场"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "评价",
+    "ANON": "客户",
+    "EMPTY_TITLE": "暂无评价",
+    "EMPTY_SUB": "成为第一个分享你体验的人吧。"
   },
   "SHOP_CARD": {
     "AVIS": "店铺评价",

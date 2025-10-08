@@ -13,6 +13,8 @@
     "OTHER": "Yên din"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon li favorîyan hate zêdekirin",
+    "FAVORITE_REMOVED": "Salon ji favorîyan hate rakirin",
     "PHOTO_DELETE": "Wêne ji galeriyê hat jêbirin",
     "PHOTO_UPLOAD": "Wêne bi serkeftî barkir",
     "PARTIAL_REFUND_CONFIRM": "Paşveguhartina qismî hate pejirandin!",
@@ -180,6 +182,12 @@
     "CODE": "Koda pejirandinê",
     "CODE_A_DONNER": "Kodê ku bidî pêşkêşkar",
     "PRESTA_ABSENT": "Pêşkêşkar nehat"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Nirxandinan",
+    "ANON": "Mişterî",
+    "EMPTY_TITLE": "Hêç nirxandinê hîn tuneye",
+    "EMPTY_SUB": "Yekem kes bibe ku tecrûbeyê xwe parve dike."
   },
   "SHOP_CARD": {
     "AVIS": "Rayan li ser dikanê",

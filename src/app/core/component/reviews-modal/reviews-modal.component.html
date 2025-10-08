@@ -1,31 +1,84 @@
-<!-- Affiché seulement si un shop est présent -->
+<!-- MODAL AVIS — izyGlam / Apple-like -->
 <div
-  class="global-modal"
+  class="ig-modal-backdrop"
   *ngIf="modal.current.shop as shop"
   (click)="closeBackdrop($event)"
   role="dialog"
   aria-modal="true"
 >
-  <div class="global-modal__dialog" (click)="stop($event)">
-    <div class="global-modal__header">
-      <h3 class="global-modal__title">{{ 'SHOP_CARD.AVIS' | translate }}: {{ shop.name }}</h3>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.close()"></button>
-    </div>
-
-    <div class="global-modal__body">
-      <div class="review" *ngFor="let review of shop.reviews">
-        <label>{{ 'SHOP_CARD.COMMENT' | translate }}:</label>
-        <div class="review__content">{{ review.comment }}</div>
-
-        <label>{{ 'SHOP_CARD.NOTE' | translate }}:</label>
-        <div class="review__content">{{ review.rating }}</div>
+  <div class="ig-modal" (click)="stop($event)" role="document" tabindex="-1">
+    <!-- Header -->
+    <header class="ig-modal__header">
+      <div class="ig-modal__title-wrap">
+        <div class="ig-badge-pin" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg>
+        </div>
+        <h3 class="ig-modal__title">
+          {{ 'SHOP_CARD.AVIS' | translate }} · {{ shop.name }}
+        </h3>
+        <div class="ig-modal__meta">
+          <!-- Tu gardes ceci si tu veux afficher un agrégat 5★ plus tard -->
+          <span class="ig-stars" *ngIf="shop.rating">
+            <!-- ex: tu peux remettre une fill ici si nécessaire -->
+            <!-- <span class="ig-stars__fill" [style.width.%]="shop.rating | ratingPercent"></span> -->
+          </span>
+          <span class="ig-count" *ngIf="shop.reviews?.length">
+            ({{ shop.reviews.length }} {{ 'REVIEWS_MODAL.REVIEWS' | translate }})
+          </span>
+        </div>
       </div>
-    </div>
 
-    <div class="global-modal__footer">
-      <button type="button" class="btn btn-secondary" (click)="modal.close()">
+      <button type="button" class="ig-btn-close" aria-label="Close" (click)="modal.close()">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.3 5.7a1 1 0 0 0-1.4-1.4L12 9.17 7.1 4.3A1 1 0 1 0 5.7 5.7L10.6 10.6 5.7 15.5a1 1 0 1 0 1.4 1.4L12 12l4.9 4.9a1 1 0 0 0 1.4-1.4l-4.9-4.9 4.9-4.9Z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Body -->
+    <section class="ig-modal__body" *ngIf="shop.reviews && shop.reviews.length > 0">
+      <article class="ig-review" *ngFor="let review of shop.reviews">
+        <div class="ig-review__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 4h10a2 2 0 0 1 2 2v9.5a1.5 1.5 0 0 1-1.5 1.5H12l-4.5 3V6a2 2 0 0 1 2-2Z"/></svg>
+        </div>
+
+        <div class="ig-review__content">
+          <div class="ig-review__top">
+            <div class="ig-review__author">
+              {{ review.user?.name || ('REVIEWS_MODAL.ANON' | translate) }}
+            </div>
+
+            <!-- ⭐️ NOUVEAU : étoile + note côte à côte -->
+            <div class="ig-review__rating" *ngIf="review.rating">
+              <svg class="ig-star" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              </svg>
+              <span class="ig-note">{{ review.rating | number:'1.0-1' }}</span>
+            </div>
+            <!-- /NOUVEAU -->
+          </div>
+
+          <p class="ig-review__text">
+            {{ review.comment }}
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Empty state -->
+    <section class="ig-modal__empty" *ngIf="!shop.reviews || shop.reviews.length === 0">
+      <div class="ig-empty__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11.5A1.5 1.5 0 0 1 18.5 19H9l-4 3v-3H6a2 2 0 0 1-2-2V6Z"/></svg>
+      </div>
+      <h4 class="ig-empty__title">{{ 'REVIEWS_MODAL.EMPTY_TITLE' | translate }}</h4>
+      <p class="ig-empty__subtitle">{{ 'REVIEWS_MODAL.EMPTY_SUB' | translate }}</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="ig-modal__footer">
+      <button type="button" class="ig-btn ig-btn--primary" (click)="modal.close()">
         {{ 'SHOP_CARD.CLOSE' | translate }}
       </button>
-    </div>
+    </footer>
   </div>
 </div>

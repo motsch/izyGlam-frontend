@@ -13,6 +13,8 @@
     "OTHER": "その他"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "サロンをお気に入りに追加しました",
+    "FAVORITE_REMOVED": "サロンをお気に入りから削除しました",
     "PHOTO_DELETE": "ギャラリーから写真を削除しました",
     "PHOTO_UPLOAD": "画像のアップロードに成功しました",
     "PARTIAL_REFUND_CONFIRM": "一部返金を確定しました！",
@@ -180,6 +182,12 @@
     "CODE": "確認コード",
     "CODE_A_DONNER": "施術者に伝えるコード",
     "PRESTA_ABSENT": "施術者不在"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "レビュー",
+    "ANON": "お客様",
+    "EMPTY_TITLE": "まだレビューはありません",
+    "EMPTY_SUB": "最初に体験を共有しましょう。"
   },
   "SHOP_CARD": {
     "AVIS": "店舗の口コミ",

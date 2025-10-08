@@ -13,6 +13,8 @@
     "OTHER": "Lainnya"
   },
   "SUCCESS": {
+    "FAVORITE_ADDED": "Salon ditambahkan ke favorit",
+    "FAVORITE_REMOVED": "Salon dihapus dari favorit",
     "PHOTO_DELETE": "Foto dihapus dari galeri",
     "PHOTO_UPLOAD": "Gambar berhasil diunggah",
     "PARTIAL_REFUND_CONFIRM": "Pengembalian dana sebagian dikonfirmasi!",
@@ -180,6 +182,12 @@
     "CODE": "Kode konfirmasi",
     "CODE_A_DONNER": "Kode untuk diberikan kepada penyedia",
     "PRESTA_ABSENT": "Penyedia tidak hadir"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "Ulasan",
+    "ANON": "Pelanggan",
+    "EMPTY_TITLE": "Belum ada ulasan",
+    "EMPTY_SUB": "Jadilah orang pertama yang berbagi pengalamanmu."
   },
   "SHOP_CARD": {
     "AVIS": "Ulasan tentang toko",
