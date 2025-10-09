@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Pumili ng distrito",
     "CANCEL": "Kanselahin",
     "SAVE": "I-save",
-    "CLOSE": "Isara"
+    "CLOSE": "Isara",
+    "ALL": "Directory ng talento",
+    "ALL2": "Kumpletong listahan ng available na propesyonal",
+    "DISCOVER2": "Mga paborito namin sa ngayon",
+    "APPRECIATE2": "Mga talentong inendorso ng komunidad",
+    "SMART2": "Smart na serbisyo, walang kompromiso",
+    "TOP102": "Mga dapat-tingnan ngayong linggo",
+    "CATEGORIES2": "I-browse ang aming mga kategorya ng beauty at wellness"
   },
   "ADMIN_SHOP": {
     "NAME": "Pangalan",

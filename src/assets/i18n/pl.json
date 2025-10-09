@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Wybierz dzielnicę",
     "CANCEL": "Anuluj",
     "SAVE": "Zapisz",
-    "CLOSE": "Zamknij"
+    "CLOSE": "Zamknij",
+    "ALL": "Katalog talentów",
+    "ALL2": "Pełna lista dostępnych specjalistów",
+    "DISCOVER2": "Nasze ulubione w tym momencie",
+    "APPRECIATE2": "Talenty polecane przez społeczność",
+    "SMART2": "Sprytne usługi, bez kompromisów",
+    "TOP102": "Najważniejsze w tym tygodniu",
+    "CATEGORIES2": "Przeglądaj nasze kategorie urody i wellness"
   },
   "ADMIN_SHOP": {
     "NAME": "Nazwa",

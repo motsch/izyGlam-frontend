@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Pilih distrik",
     "CANCEL": "Batalkan",
     "SAVE": "Simpan",
-    "CLOSE": "Tutup"
+    "CLOSE": "Tutup",
+    "ALL": "Direktori talenta",
+    "ALL2": "Daftar lengkap profesional yang tersedia",
+    "DISCOVER2": "Favorit kami saat ini",
+    "APPRECIATE2": "Talenta yang didukung komunitas",
+    "SMART2": "Layanan cerdas, tanpa kompromi",
+    "TOP102": "Pilihan wajib pekan ini",
+    "CATEGORIES2": "Jelajahi kategori kecantikan dan kebugaran kami"
   },
   "ADMIN_SHOP": {
     "NAME": "Nama",

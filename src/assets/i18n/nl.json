@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Kies een arrondissement",
     "CANCEL": "Annuleren",
     "SAVE": "Opslaan",
-    "CLOSE": "Sluiten"
+    "CLOSE": "Sluiten",
+    "ALL": "Talentengids",
+    "ALL2": "Complete lijst van beschikbare professionals",
+    "DISCOVER2": "Onze favorieten van het moment",
+    "APPRECIATE2": "Door de community gewaardeerde talenten",
+    "SMART2": "Slimme services, zonder compromis",
+    "TOP102": "De aanraders van de week",
+    "CATEGORIES2": "Blader door onze beauty- en wellnesscategorieën"
   },
   "ADMIN_SHOP": {
     "NAME": "Naam",

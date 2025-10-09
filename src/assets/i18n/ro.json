@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Alege un arondisment",
     "CANCEL": "Anulează",
     "SAVE": "Salvează",
-    "CLOSE": "Închide"
+    "CLOSE": "Închide",
+    "ALL": "Catalogul de talente",
+    "ALL2": "Lista completă a profesioniștilor disponibili",
+    "DISCOVER2": "Preferatele noastre din acest moment",
+    "APPRECIATE2": "Talente apreciate de comunitate",
+    "SMART2": "Servicii inteligente, fără compromisuri",
+    "TOP102": "De nelipsit în această săptămână",
+    "CATEGORIES2": "Răsfoiește categoriile noastre de frumusețe și wellness"
   },
   "ADMIN_SHOP": {
     "NAME": "Nume",

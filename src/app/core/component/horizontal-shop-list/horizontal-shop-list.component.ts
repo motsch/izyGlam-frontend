@@ -18,6 +18,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./horizontal-shop-list.component.scss']
 })
 export class HorizontalShopListComponent implements OnChanges, OnDestroy {
+  @Input() subtitle: string = '';
   /** Titre affiché au-dessus du carrousel */
   @Input() title: string = '';
   /** Liste des shops à afficher */

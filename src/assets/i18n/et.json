@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Vali linnaosa",
     "CANCEL": "Tühista",
     "SAVE": "Salvesta",
-    "CLOSE": "Sulge"
+    "CLOSE": "Sulge",
+    "ALL": "Talendikataloog",
+    "ALL2": "Saadaval olevate spetsialistide täielik nimekiri",
+    "DISCOVER2": "Meie hetke lemmikud",
+    "APPRECIATE2": "Kogukonna heaks kiidetud talendid",
+    "SMART2": "Targad teenused, kompromissideta",
+    "TOP102": "Nädala tähtsaimad",
+    "CATEGORIES2": "Sirvi meie ilu- ja heaolukategooriaid"
   },
   "ADMIN_SHOP": {
     "NAME": "Nimi",

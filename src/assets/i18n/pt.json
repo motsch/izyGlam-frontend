@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Escolher um bairro",
     "CANCEL": "Cancelar",
     "SAVE": "Guardar",
-    "CLOSE": "Fechar"
+    "CLOSE": "Fechar",
+    "ALL": "Diretório de talentos",
+    "ALL2": "Lista completa de profissionais disponíveis",
+    "DISCOVER2": "Nossos favoritos do momento",
+    "APPRECIATE2": "Talentos aprovados pela comunidade",
+    "SMART2": "Serviços inteligentes, sem compromissos",
+    "TOP102": "Imperdíveis da semana",
+    "CATEGORIES2": "Explore nossas categorias de beleza e bem-estar"
   },
   "ADMIN_SHOP": {
     "NAME": "Nome",

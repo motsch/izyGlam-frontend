@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Bezirk wählen",
     "CANCEL": "Abbrechen",
     "SAVE": "Speichern",
-    "CLOSE": "Schließen"
+    "CLOSE": "Schließen",
+    "ALL": "Talentverzeichnis",
+    "ALL2": "Vollständige Liste der verfügbaren Profis",
+    "DISCOVER2": "Unsere Favoriten gerade",
+    "APPRECIATE2": "Von der Community geschätzte Talente",
+    "SMART2": "Kluge Leistungen ohne Kompromisse",
+    "TOP102": "Die Highlights der Woche",
+    "CATEGORIES2": "Stöbern Sie in unseren Kategorien für Beauty und Wohlbefinden"
   },
   "ADMIN_SHOP": {
     "NAME": "Name",

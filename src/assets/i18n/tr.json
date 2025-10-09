@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Bir ilçe seç",
     "CANCEL": "İptal",
     "SAVE": "Kaydet",
-    "CLOSE": "Kapat"
+    "CLOSE": "Kapat",
+    "ALL": "Yetenek rehberi",
+    "ALL2": "Mevcut profesyonellerin tam listesi",
+    "DISCOVER2": "Şu anki favorilerimiz",
+    "APPRECIATE2": "Topluluk tarafından beğenilen yetenekler",
+    "SMART2": "Akıllı hizmetler, tavizsiz",
+    "TOP102": "Haftanın olmazsa olmazları",
+    "CATEGORIES2": "Güzellik ve iyi yaşam kategorilerimizi keşfedin"
   },
   "ADMIN_SHOP": {
     "NAME": "Ad",

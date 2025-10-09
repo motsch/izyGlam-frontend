@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Chọn quận",
     "CANCEL": "Hủy",
     "SAVE": "Lưu",
-    "CLOSE": "Đóng"
+    "CLOSE": "Đóng",
+    "ALL": "Danh bạ tài năng",
+    "ALL2": "Danh sách đầy đủ chuyên gia hiện có",
+    "DISCOVER2": "Những lựa chọn yêu thích hiện tại của chúng tôi",
+    "APPRECIATE2": "Tài năng được cộng đồng đánh giá cao",
+    "SMART2": "Dịch vụ thông minh, không thỏa hiệp",
+    "TOP102": "Điểm nổi bật trong tuần",
+    "CATEGORIES2": "Khám phá các danh mục làm đẹp và chăm sóc sức khỏe của chúng tôi"
   },
   "ADMIN_SHOP": {
     "NAME": "Tên",

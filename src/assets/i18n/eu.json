@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Hautatu barrutia",
     "CANCEL": "Utzi",
     "SAVE": "Gorde",
-    "CLOSE": "Itxi"
+    "CLOSE": "Itxi",
+    "ALL": "Talentuen katalogoa",
+    "ALL2": "Eskuragarri dauden profesionalen zerrenda osoa",
+    "DISCOVER2": "Gure une honetako gogokoenak",
+    "APPRECIATE2": "Komunitateak onetsitako talentuak",
+    "SMART2": "Zerbitzu adimendunak, konpromisorik gabe",
+    "TOP102": "Asteko ezinbestekoak",
+    "CATEGORIES2": "Arakatu gure edertasun eta ongizate kategoriak"
   },
   "ADMIN_SHOP": {
     "NAME": "Izena",

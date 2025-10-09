@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Herêmek hilbijêre",
     "CANCEL": "Betal bike",
     "SAVE": "Tomar bike",
-    "CLOSE": "Bigire"
+    "CLOSE": "Bigire",
+    "ALL": "Lîsteya henêrî",
+    "ALL2": "Lîsteya tevahî ya profesyonelan yên berdest",
+    "DISCOVER2": "Bijartekên me yên niha",
+    "APPRECIATE2": "Henêrên ji aliyê civakê pejirandî",
+    "SMART2": "Xizmetên zîrek, bêkoletî",
+    "TOP102": "Girîngên hefteyê",
+    "CATEGORIES2": "Kategoriyên bedewî û tenduristî yên me bigerîne"
   },
   "ADMIN_SHOP": {
     "NAME": "Nav",

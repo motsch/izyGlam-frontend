@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "区を選択",
     "CANCEL": "キャンセル",
     "SAVE": "保存",
-    "CLOSE": "閉じる"
+    "CLOSE": "閉じる",
+    "ALL": "タレント名鑑",
+    "ALL2": "利用可能なプロの全リスト",
+    "DISCOVER2": "いまのイチオシ",
+    "APPRECIATE2": "コミュニティが支持するタレント",
+    "SMART2": "スマートなサービス、妥協なし",
+    "TOP102": "今週の必見",
+    "CATEGORIES2": "ビューティー＆ウェルネスのカテゴリをチェック"
   },
   "ADMIN_SHOP": {
     "NAME": "名称",

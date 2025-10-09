@@ -10,7 +10,13 @@
     "EYEBROW": "Ögonbryn",
     "TANNING": "Brun utan sol",
     "ACUPUNCTURE": "Akupunktur",
-    "OTHER": "Annat"
+    "OTHER": "Annat",
+    "ALL": "Talangkatalogen",
+    "ALL2": "Komplett lista över tillgängliga proffs",
+    "DISCOVER2": "Våra favoriter just nu",
+    "APPRECIATE2": "Talanger hyllade av communityn",
+    "SMART2": "Smarta tjänster utan kompromisser",
+    "TOP102": "Veckans måsten"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salong tillagd i favoriter",
@@ -496,7 +502,8 @@
     "CHOOSE_ARRONDISSEMENT": "Välj en stadsdel",
     "CANCEL": "Avbryt",
     "SAVE": "Spara",
-    "CLOSE": "Stäng"
+    "CLOSE": "Stäng",
+    "CATEGORIES2": "Bläddra bland våra kategorier för skönhet och välbefinnande"
   },
   "ADMIN_SHOP": {
     "NAME": "Namn",

@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Valitse kaupunginosa",
     "CANCEL": "Peruuta",
     "SAVE": "Tallenna",
-    "CLOSE": "Sulje"
+    "CLOSE": "Sulje",
+    "ALL": "Talenttihakemisto",
+    "ALL2": "Kaikki saatavilla olevat ammattilaiset",
+    "DISCOVER2": "Suosikkimme juuri nyt",
+    "APPRECIATE2": "Yhteisön suosittelemat kyvyt",
+    "SMART2": "Älykkäät palvelut, tinkimättä",
+    "TOP102": "Viikon kohokohdat",
+    "CATEGORIES2": "Selaa kauneus- ja hyvinvointikategorioitamme"
   },
   "ADMIN_SHOP": {
     "NAME": "Nimi",

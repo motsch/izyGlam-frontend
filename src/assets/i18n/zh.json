@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "选择行政区",
     "CANCEL": "取消",
     "SAVE": "保存",
-    "CLOSE": "关闭"
+    "CLOSE": "关闭",
+    "ALL": "人才名录",
+    "ALL2": "可用专业人士完整列表",
+    "DISCOVER2": "我们的当下精选",
+    "APPRECIATE2": "社区推崇的人才",
+    "SMART2": "智能服务，毫不妥协",
+    "TOP102": "本周必看精选",
+    "CATEGORIES2": "浏览我们的美妆与身心健康分类"
   },
   "ADMIN_SHOP": {
     "NAME": "名称",

@@ -10,7 +10,13 @@
     "EYEBROW": "Kening",
     "TANNING": "Pewarnaan kulit",
     "ACUPUNCTURE": "Akupunktur",
-    "OTHER": "Lain-lain"
+    "OTHER": "Lain-lain",
+    "ALL": "Direktori bakat",
+    "ALL2": "Senarai penuh profesional yang tersedia",
+    "DISCOVER2": "Pilihan kegemaran kami sekarang",
+    "APPRECIATE2": "Bakat yang disokong komuniti",
+    "SMART2": "Perkhidmatan pintar, tanpa kompromi",
+    "TOP102": "Pilihan wajib minggu ini"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon ditambah ke kegemaran",
@@ -496,7 +502,8 @@
     "CHOOSE_ARRONDISSEMENT": "Pilih daerah",
     "CANCEL": "Batal",
     "SAVE": "Simpan",
-    "CLOSE": "Tutup"
+    "CLOSE": "Tutup",
+    "CATEGORIES2": "Terokai kategori kecantikan dan kesejahteraan kami"
   },
   "ADMIN_SHOP": {
     "NAME": "Nama",

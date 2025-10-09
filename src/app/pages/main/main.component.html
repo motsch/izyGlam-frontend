@@ -13,7 +13,7 @@
         {{ selectedPostalCode }} <span class="light-text">— {{ "MAIN.CHANGE_ADDRESS" | translate }}</span>
       </button>
       <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
-        [placeholder]="('MAIN.FIND_SHOP' | translate)" class="pretty-search-bar"  *ngIf="shops.length > 0"/>
+        [placeholder]="('MAIN.FIND_SHOP' | translate)" class="pretty-search-bar" *ngIf="shops.length > 0" />
     </div>
   </div>
 
@@ -23,6 +23,7 @@
     <div class="horizontal-section-wrapper margin-top-40" *ngIf="categoriesFilter.length > 0">
       <div class="section-header">
         <h3>{{ "MAIN.CATEGORIES" | translate }}</h3>
+      <h6>{{ "MAIN.CATEGORIES2" | translate }}</h6>
       </div>
       <div class="horizontal-scroll-wrapper">
         <div class="scrollable-category-list drag-scroll" appDragScroll>
@@ -47,21 +48,29 @@
       [pubIndexe]="'0'"></app-horizontal-shop-list>-->
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsAdecouvrir.length > 0"
-      [title]="('MAIN.DISCOVER' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsAdecouvrir" [me]="me"
+      [title]="('MAIN.DISCOVER' | translate)" [subtitle]="('MAIN.DISCOVER2' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsAdecouvrir" [me]="me"
       [pubIndexe]="'1'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsApprecier.length > 0"
-      [title]="('MAIN.APPRECIATE' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsApprecier" [me]="me"
+      [title]="('MAIN.APPRECIATE' | translate)" [subtitle]="('MAIN.APPRECIATE2' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsApprecier" [me]="me"
       [pubIndexe]="'2'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsMalin.length > 0"
-      [title]="('MAIN.SMART' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsMalin" [me]="me"
+      [title]="('MAIN.SMART' | translate)" [subtitle]="('MAIN.SMART2' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsMalin" [me]="me"
       [pubIndexe]="'3'"></app-horizontal-shop-list>
 
     <app-horizontal-shop-list *ngIf="!filterClicked && searchQuery.length === 0 && filteredItemsTop10.length > 0"
-      [title]="('MAIN.TOP10' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsTop10" [me]="me"
+      [title]="('MAIN.TOP10' | translate)" [subtitle]="('MAIN.TOP102' | translate)" [pubActivated]="pubActivated" [shops]="filteredItemsTop10" [me]="me"
       [pubIndexe]="'4'"></app-horizontal-shop-list>
 
+    <div *ngIf="!filterClicked && searchQuery.length === 0 && shops.length > 0" class="padding-top-10 section-header">
+      <h3>{{ "MAIN.ALL" | translate }}</h3>
+      <h6>{{ "MAIN.ALL2" | translate }}</h6>
+      <div class="shop-card-container">
+        <app-round-shop-card *ngFor="let item of shops" [shop]="item" [me]="me"
+          [promoVisible]="item.promo.active" class="card"></app-round-shop-card>
+      </div>
+    </div>
     <!-- SECTION : RÉSULTATS DE RECHERCHE FILTRÉE -->
     <div *ngIf="filterClicked" class="padding-top-10 section-header">
       <h3>{{ categoryTrad | translate }}</h3>

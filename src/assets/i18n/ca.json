@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Triar un districte",
     "CANCEL": "Cancel·lar",
     "SAVE": "Desar",
-    "CLOSE": "Tancar"
+    "CLOSE": "Tancar",
+    "ALL": "Directori de talents",
+    "ALL2": "La llista completa de professionals disponibles",
+    "DISCOVER2": "Els nostres favorits del moment",
+    "APPRECIATE2": "Talents avalats per la comunitat",
+    "SMART2": "Serveis intel·ligents, sense concessions",
+    "TOP102": "Els imprescindibles de la setmana",
+    "CATEGORIES2": "Explora les nostres categories de bellesa i benestar"
   },
   "ADMIN_SHOP": {
     "NAME": "Nom",

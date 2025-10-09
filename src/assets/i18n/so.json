@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Dooro degmo",
     "CANCEL": "Jooji",
     "SAVE": "Kaydi",
-    "CLOSE": "Xir"
+    "CLOSE": "Xir",
+    "ALL": "Buugga hibada",
+    "ALL2": "Liiska buuxa ee xirfadlayaasha la heli karo",
+    "DISCOVER2": "Kuwa aan hadda jecelnahay",
+    "APPRECIATE2": "Hibooyinka ay bulshada taageertay",
+    "SMART2": "Adeegyo caqli badan, tanaasul la’aan",
+    "TOP102": "Kuwa ugu muhiimsan usbuucan",
+    "CATEGORIES2": "Daalaco qaybaha quruxda iyo fayo-qabka ee naga jira"
   },
   "ADMIN_SHOP": {
     "NAME": "Magac",

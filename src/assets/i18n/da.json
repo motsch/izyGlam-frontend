@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Vælg et arrondissement",
     "CANCEL": "Annuller",
     "SAVE": "Gem",
-    "CLOSE": "Luk"
+    "CLOSE": "Luk",
+    "ALL": "Talentkatalogen",
+    "ALL2": "Den komplette liste over tilgængelige professionelle",
+    "DISCOVER2": "Vores favoritter lige nu",
+    "APPRECIATE2": "Talenter anbefalet af fællesskabet",
+    "SMART2": "Smarte ydelser uden kompromiser",
+    "TOP102": "Ugens højdepunkter",
+    "CATEGORIES2": "Gennemse vores kategorier inden for skønhed og velvære"
   },
   "ADMIN_SHOP": {
     "NAME": "Navn",

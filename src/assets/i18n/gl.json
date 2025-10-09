@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Elixir distrito",
     "CANCEL": "Cancelar",
     "SAVE": "Gardar",
-    "CLOSE": "Pechar"
+    "CLOSE": "Pechar",
+    "ALL": "Directorio de talentos",
+    "ALL2": "Lista completa de profesionais dispoñibles",
+    "DISCOVER2": "Os nosos favoritos do momento",
+    "APPRECIATE2": "Talentos apoiados pola comunidade",
+    "SMART2": "Servizos intelixentes, sen concesións",
+    "TOP102": "Os imprescindibles da semana",
+    "CATEGORIES2": "Explora as nosas categorías de beleza e benestar"
   },
   "ADMIN_SHOP": {
     "NAME": "Nome",

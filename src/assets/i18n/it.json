@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Scegli una circoscrizione",
     "CANCEL": "Annulla",
     "SAVE": "Salva",
-    "CLOSE": "Chiudi"
+    "CLOSE": "Chiudi",
+    "ALL": "Elenco dei talenti",
+    "ALL2": "L’elenco completo dei professionisti disponibili",
+    "DISCOVER2": "I nostri preferiti del momento",
+    "APPRECIATE2": "Talenti apprezzati dalla community",
+    "SMART2": "Servizi smart, senza compromessi",
+    "TOP102": "Gli imperdibili della settimana",
+    "CATEGORIES2": "Jelajahi kategori kecantikan dan kebugaran kami"
   },
   "ADMIN_SHOP": {
     "NAME": "Nome",

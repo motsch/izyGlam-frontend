@@ -10,7 +10,13 @@
     "EYEBROW": "Vetulla",
     "TANNING": "Nxirje",
     "ACUPUNCTURE": "Akupunkturë",
-    "OTHER": "Tjetër"
+    "OTHER": "Tjetër",
+    "ALL": "Regjistri i talenteve",
+    "ALL2": "Lista e plotë e profesionistëve të disponueshëm",
+    "DISCOVER2": "Të preferuarit tanë të momentit",
+    "APPRECIATE2": "Talente të vlerësuara nga komuniteti",
+    "SMART2": "Shërbime të zgjuara, pa kompromise",
+    "TOP102": "Të domosdoshmet e javës"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Saloni u shtua te të preferuarat",
@@ -496,7 +502,8 @@
     "CHOOSE_ARRONDISSEMENT": "Zgjidh një rreth",
     "CANCEL": "Anulo",
     "SAVE": "Ruaj",
-    "CLOSE": "Mbyll"
+    "CLOSE": "Mbyll",
+    "CATEGORIES2": "Shfleto kategoritë tona të bukurisë dhe mirëqenies"
   },
   "ADMIN_SHOP": {
     "NAME": "Emri",

@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "구/행정구역 선택",
     "CANCEL": "취소",
     "SAVE": "저장",
-    "CLOSE": "닫기"
+    "CLOSE": "닫기",
+    "ALL": "인재 명록",
+    "ALL2": "이용 가능한 전문가 전체 목록",
+    "DISCOVER2": "요즘 우리의 픽",
+    "APPRECIATE2": "커뮤니티가 인정한 인재",
+    "SMART2": "스마트한 서비스, 타협 없음",
+    "TOP102": "이번 주의 필수 추천",
+    "CATEGORIES2": "뷰티·웰니스 카테고리를 둘러보세요"
   },
   "ADMIN_SHOP": {
     "NAME": "이름",

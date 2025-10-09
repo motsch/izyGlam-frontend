@@ -496,7 +496,14 @@
     "CHOOSE_ARRONDISSEMENT": "Choisir un arrondissement",
     "CANCEL": "Annuler",
     "SAVE": "Enregistrer",
-    "CLOSE": "Fermer"
+    "CLOSE": "Fermer",
+    "ALL": "Le carnet des talents",
+    "ALL2": "La liste complète des professionnels disponibles",
+    "DISCOVER2": "Nos coups de cœur du moment",
+    "APPRECIATE2": "Les talents plébiscités par la communauté",
+    "SMART2": "Des prestations futées, sans compromis",
+    "TOP102": "Les incontournables de la semaine",
+    "CATEGORIES2": "Parcourez nos catégories beauté et bien-être"
   },
   "ADMIN_SHOP": {
     "NAME": "Nom",
