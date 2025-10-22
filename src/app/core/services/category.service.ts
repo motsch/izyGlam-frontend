@@ -12,44 +12,46 @@ export class CategoryService {
 
   // Créer une nouvelle catégorie
   create(category: any): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/category`, category);
+    return this.http.post<any>(`${environment.apiUrl}category`, category);
   }
 
+  updatePositions(categories: any[]): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/update-positions`, { categories });
+  }
   // Récupérer toutes les catégories
   getAll(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiUrl}/category`);
+    return this.http.get<any[]>(`${environment.apiUrl}category`);
   }
 
   // Récupérer une catégorie par ID
   getById(id: string): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/category/${id}`);
+    return this.http.get<any>(`${environment.apiUrl}category/${id}`);
   }
 
   // Mettre à jour une catégorie par ID
   updateById(id: string, category: any): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}/category/${id}`, category);
+    return this.http.put<any>(`${environment.apiUrl}category/${id}`, category);
   }
 
   // Supprimer une catégorie par ID
   deleteById(id: string): Observable<any> {
-    return this.http.delete<any>(`${environment.apiUrl}/category/${id}`);
+    return this.http.delete<any>(`${environment.apiUrl}category/${id}`);
   }
 
   // Récupérer les catégories disponibles en fonction des shops filtrés par géolocalisation ou codes postaux
-  getAvailableCategories(lat?: number, lon?: number, codes?: string[], country?: string): Observable<any[]> {
-    let params = new HttpParams();
+  getAvailableCategories(lat?: number, lon?: number, codes?: string[]): Observable<any[]> {
+    let url = `${environment.apiUrl}category/available?`;
 
-    if (lat != null && lon != null) {
-      params = params.set('lat', String(lat)).set('lon', String(lon));
+    // On ajoute lat/lon si fournis
+    if (lat && lon) {
+      url += `lat=${lat}&lon=${lon}`;
     }
+
+    // On ajoute codes si fournis
     if (codes && codes.length > 0) {
-      params = params.set('codes', codes.join(','));
-    }
-    if (country) {
-      params = params.set('country', country);
+      url += `codes=${codes.join(',')}`;
     }
 
-    const url = `${environment.apiUrl}category/available`;
-    return this.http.get<any[]>(url, { params });
+    return this.http.get<any[]>(url);
   }
 }
