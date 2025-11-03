@@ -1,24 +1,24 @@
 <div class="main-section">
    <div class="container custom-container">
-      <div class="row">
+      <div class="row align-items-center">
          <div class="col-md-6 hero-image">
+            <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/illustration.png'"
+               alt="Illustration de présentation" class="hero-media" />
 
-            <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/illustration.png'" alt="top1"
-               class="" />
-            <video #videoElementHow *ngIf="paramVideo" #videoElementIntro autoplay muted playsinline loop
-               style="border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)">
+            <video *ngIf="paramVideo" #videoElementHow class="hero-media hero-video" autoplay muted playsinline loop>
                <source [src]="aPIimgStorageUrl + '/uploads/images/front/illustration.mp4'" type="video/mp4" />
                Votre navigateur ne supporte pas la balise vidéo.
             </video>
-            <!--<img [src]="imgStorageUrl+'intro.png'" alt="Travaillez pour des particuliers">-->
          </div>
+
          <div class="col-md-6 content">
             <h1>{{ 'HOMEPAGE.PART1TITLE' | translate }}</h1>
             <p>{{ 'HOMEPAGE.PART1TEXT' | translate }}</p>
-            <button type="submit" class="btn submit" (click)="goTo('sign-up')">{{ 'HOMEPAGE.SIGNUP' | translate
-               }}</button>
+
+            <button type="button" class="btn submit" (click)="goTo('sign-up')" aria-label="Créer un compte">
+               {{ 'HOMEPAGE.SIGNUP' | translate }}
+            </button>
          </div>
       </div>
-
    </div>
 </div>

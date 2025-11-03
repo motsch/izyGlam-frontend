@@ -1,36 +1,38 @@
-<section class="slide-bg" id="home">
+<section class="intro-hero slide-bg" id="home">
   <div class="container custom-container">
-    <div class="row">
+    <div class="row align-items-center intro-grid">
 
-      <!-- IMAGE EN PREMIER (PC: à droite grâce à l’ordre visuel) -->
-      <div class="col-xl-5 col-12 home-right">
-        <div class="mobile-slid">
-          <img *ngIf="!paramVideo" [src]="imgStorageUrl + 'intro.png'" alt="illustration" class="img-fluid" />
+      <!-- MEDIA : image/vidéo (mobile: en haut | ≥md: à droite) -->
+      <div class="col-12 col-md-6 home-media">
+        <div class="media-box">
+          <img *ngIf="!paramVideo" [src]="imgStorageUrl + 'intro.png'" alt="illustration" class="hero-media" />
 
           <div *ngIf="paramVideo" class="video-wrapper">
-            <video #videoElementIntro autoplay muted playsinline loop>
+            <video #videoElementIntro class="hero-media" autoplay muted playsinline loop>
               <source [src]="aPIimgStorageUrl + '/uploads/images/front/intro.mp4'" type="video/mp4" />
               Votre navigateur ne supporte pas la balise vidéo.
             </video>
           </div>
         </div>
-
       </div>
 
-      <!-- TEXTE RESPONSIVE (DUPLIQUÉ POUR MOBILE) -->
-      <div class="col-xl-7 col-12 slide-content" *ngIf="!isSmallScreen">
+      <!-- CONTENU : un seul bloc texte pour tous les écrans -->
+      <div class="col-12 col-md-6 intro-content">
         <div class="slide-text-container">
-          <h1>
-            {{ "HOMEPAGE.TITLERED" | translate }}
-            <div class="main-title">
+
+          <h1 class="page-title">
+            <span class="title-red">{{ "HOMEPAGE.TITLERED" | translate }}</span>
+          </h1>
+
+          <div class="main-title">
+            <div class="text-wrapper" aria-live="polite">
               <ng-container *ngIf="textVisible">
                 <span class="animated-text" [@slideFadeInOut] [attr.data-key]="currentKey">
                   {{ currentProposition | translate }}
                 </span>
               </ng-container>
             </div>
-
-          </h1>
+          </div>
 
           <div class="search-container">
             <form>
@@ -42,31 +44,7 @@
               {{ "INTRO.NORESULTS" | translate }}
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- TEXTE MOBILE UNIQUEMENT -->
-      <div class="col-12 slide-content" *ngIf="isSmallScreen">
-        <div class="slide-text-container">
-          <h1>
-            {{ "HOMEPAGE.TITLERED" | translate }}
-            <div class="main-title">
-              <ng-container *ngIf="textVisible">
-                <span class="animated-text" [@slideFadeInOut] [attr.data-key]="currentKey">
-                  {{ currentProposition | translate }}
-                </span>
-              </ng-container>
-            </div>
-
-          </h1>
-
-          <div class="search-container">
-            <form>
-              <button class="search-button" (click)="onButtonClick()">
-                {{ "INTRO.START" | translate }}
-              </button>
-            </form>
-          </div>
         </div>
       </div>
 

@@ -1,10 +1,8 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
 import {
   AfterViewInit,
-  ChangeDetectorRef,
   Component,
   ElementRef,
-  OnInit,
+  OnDestroy,
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
@@ -15,57 +13,46 @@ import { environment } from 'src/environments/environment';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss'],
 })
-export class AboutComponent implements AfterViewInit {
-  isSmallScreen: boolean = false;
-  @ViewChild('videoElementAbout') videoElement!: ElementRef<HTMLVideoElement>;
-  aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
-  playbackRate: number = 1; // Vitesse de lecture
-  intervalId!: any; // ID de setInterval pour le retour en arrière
+export class AboutComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('videoElementAbout') videoElement?: ElementRef<HTMLVideoElement>;
+
+  /** Base URL des médias (sans slash final) */
+  aPIimgStorageUrl = (environment.APIimgStorageUrl || '').replace(/\/$/, '');
+
+  /** Vitesse de lecture de la vidéo */
+  playbackRate = 1;
+
+  /** Active/désactive le mode vidéo (fallback image si false) */
   paramVideo = true;
-  constructor(private router: Router, private breakpointObserver: BreakpointObserver,
-    private cdr: ChangeDetectorRef) { }
+
+  constructor(private router: Router) {}
 
   goTo(name: string) {
-    console.log(name);
     this.router.navigate(['/' + name]);
   }
 
   ngAfterViewInit(): void {
-    this.breakpointObserver
-      .observe(['(max-width: 766px)'])
-      .subscribe(result => {
-        this.isSmallScreen = result.matches;
-        console.log('Small screen:', this.isSmallScreen);
-        this.cdr.detectChanges();
-      });
-    if (this.paramVideo) {
-      const video = this.videoElement.nativeElement;
+    // Manipuler la vidéo uniquement si elle est rendue
+    if (!this.paramVideo || !this.videoElement?.nativeElement) return;
 
-      // Configurer la vitesse de lecture
-      video.playbackRate = this.playbackRate;
-      // Assurez-vous que la vidéo est en mode muet
-      video.muted = true;
-
-      // Tenter de lire la vidéo automatiquement
-      video.play()
-        .then(() => {
-          console.log('Vidéo lancée automatiquement.');
-        })
-        .catch((err) => {
-          console.error('Erreur lors de la lecture automatique :', err);
-        });
-    }
-  }
-
-  handlePlaybackDirection(video: HTMLVideoElement): void {
-    // Reprendre la lecture normale en avant
+    const video = this.videoElement.nativeElement;
+    video.muted = true;         // requis pour l'autoplay mobile
     video.playbackRate = this.playbackRate;
-    video.play();
+
+    Promise.resolve()
+      .then(() => video.play())
+      .catch((err) => {
+        // Pas bloquant, mais utile en dev
+        console.warn('Lecture auto impossible :', err);
+      });
   }
 
   ngOnDestroy(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId); // Nettoyer l'intervalle si le composant est détruit
+    const video = this.videoElement?.nativeElement;
+    if (video && !video.paused) {
+      try {
+        video.pause();
+      } catch {}
     }
   }
 }

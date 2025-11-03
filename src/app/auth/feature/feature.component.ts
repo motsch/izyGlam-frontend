@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -7,51 +13,45 @@ import { environment } from 'src/environments/environment';
   templateUrl: './feature.component.html',
   styleUrls: ['./feature.component.scss'],
 })
-export class FeatureComponent implements AfterViewInit {
-  @ViewChild('videoElementFeature') videoElement!: ElementRef<HTMLVideoElement>;
-  imgStorageUrl: string = environment.imgStorageUrl;
-  aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
-  paramVideo = true;
-  playbackRate: number = 1; // Vitesse de lecture
-  intervalId!: any; // ID de setInterval pour le retour en arrière
+export class FeatureComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('videoElementFeature') videoElement?: ElementRef<HTMLVideoElement>;
 
-  constructor(private router: Router) { }
+  /** Base URL médias (sans slash final) */
+  aPIimgStorageUrl = (environment.APIimgStorageUrl || '').replace(/\/$/, '');
+
+  /** Active/désactive la vidéo (fallback image sinon) */
+  paramVideo = true;
+
+  /** Vitesse de lecture vidéo */
+  playbackRate = 1;
+
+  constructor(private router: Router) {}
 
   goTo(name: string) {
-    console.log(name);
     this.router.navigate(['/' + name]);
-
   }
 
   ngAfterViewInit(): void {
-    if (this.paramVideo) {
-      const video = this.videoElement.nativeElement;
-  
-      // Configurer la vitesse de lecture
-      video.playbackRate = this.playbackRate;
-      // Assurez-vous que la vidéo est en mode muet
-      video.muted = true;
-  
-      // Tenter de lire la vidéo automatiquement
-      video.play()
-        .then(() => {
-          console.log('Vidéo lancée automatiquement.');
-        })
-        .catch((err) => {
-          console.error('Erreur lors de la lecture automatique :', err);
-        });
-    }
-  }
+    if (!this.paramVideo || !this.videoElement?.nativeElement) return;
 
-  handlePlaybackDirection(video: HTMLVideoElement): void {
-    // Reprendre la lecture normale en avant
+    const video = this.videoElement.nativeElement;
+    video.muted = true; // requis pour autoplay mobile
     video.playbackRate = this.playbackRate;
-    video.play();
+
+    Promise.resolve()
+      .then(() => video.play())
+      .catch((err) => {
+        // Non bloquant : certains navigateurs peuvent refuser
+        console.warn('Lecture auto impossible :', err);
+      });
   }
 
   ngOnDestroy(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId); // Nettoyer l'intervalle si le composant est détruit
+    const video = this.videoElement?.nativeElement;
+    if (video && !video.paused) {
+      try {
+        video.pause();
+      } catch {}
     }
   }
 }

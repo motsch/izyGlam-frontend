@@ -1,20 +1,26 @@
 <div class="main-section">
    <div class="container custom-container">
-      <div class="row">
+      <div class="row align-items-center feature-grid">
+         <!-- Média (image/vidéo) -->
          <div class="col-md-6 hero-image">
-            <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/company.png'"  alt="Services de beauté pour entreprises"
-               class="" />
+            <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/company.png'"
+               alt="Services de beauté pour entreprises" class="hero-media" />
 
-            <video #videoElementFeature *ngIf="paramVideo" #videoElementIntro autoplay muted playsinline loop
-               style="border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)">
-               <source  [src]="aPIimgStorageUrl + '/uploads/images/front/company.mp4'" type="video/mp4" />
+            <video *ngIf="paramVideo" #videoElementFeature class="hero-media hero-video" autoplay muted playsinline
+               loop>
+               <source [src]="aPIimgStorageUrl + '/uploads/images/front/company.mp4'" type="video/mp4" />
                Votre navigateur ne supporte pas la balise vidéo.
             </video>
          </div>
+
+         <!-- Contenu -->
          <div class="col-md-6 content">
-            <h1>{{'HOMEPAGE.PART3TITLE' | translate}}</h1>
-            <p>{{'HOMEPAGE.PART3TEXT' | translate}}</p>
-            <button type="submit" class="btn submit" (click)="goTo('creation-company')">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
+            <h1>{{ 'HOMEPAGE.PART3TITLE' | translate }}</h1>
+            <p>{{ 'HOMEPAGE.PART3TEXT' | translate }}</p>
+            <button type="button" class="btn submit" (click)="goTo('creation-company')"
+               aria-label="En savoir plus sur l'offre entreprise">
+               {{ 'HOMEPAGE.KNOWMORE' | translate }}
+            </button>
          </div>
       </div>
    </div>

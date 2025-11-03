@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,30 +15,29 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   animations: [
     trigger('slideFadeInOut', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px) scale(0.95)' }),
-        animate('500ms ease-out', style({ opacity: 1, transform: 'translateY(0) scale(1)' }))
+        style({ opacity: 0, transform: 'translateY(30%)' }),
+        animate('700ms ease-out', style({ opacity: 1, transform: 'translateY(0%)' }))
       ]),
       transition(':leave', [
-        animate('500ms ease-in', style({ opacity: 0, transform: 'translateY(-20px) scale(0.95)' }))
+        animate('700ms ease-in', style({ opacity: 0, transform: 'translateY(-30%)' }))
       ])
     ])
   ]
-
-
-
 })
-export class IntroComponent implements OnInit {
-  @ViewChild('videoElementIntro') videoElement!: ElementRef<HTMLVideoElement>;
+export class IntroComponent implements OnInit, AfterViewInit {
+  @ViewChild('videoElementIntro') videoElement?: ElementRef<HTMLVideoElement>;
+
   paramVideo = true;
   search: any = {};
   control = new FormControl();
   control2 = new FormControl();
-  isSmallScreen: boolean = false;
+  isSmallScreen = false; // peut rester, même si non requis pour l’ordre
+
   options: string[] = ['Esthéticienne', 'Masseuse', 'Manucure', 'Pédicure', 'Maquilleuse', 'Coiffeuse'];
   optionsCities: string[] = [
-    'Paris 1', 'Paris 2', 'Paris 3', 'Paris 4', 'Paris 5', 'Paris 6', 'Paris 7', 'Paris 8',
-    'Paris 9', 'Paris 10', 'Paris 11', 'Paris 12', 'Paris 13', 'Paris 14', 'Paris 15',
-    'Paris 16', 'Paris 17', 'Paris 18', 'Paris 19', 'Paris 20'
+    'Paris 1','Paris 2','Paris 3','Paris 4','Paris 5','Paris 6','Paris 7','Paris 8',
+    'Paris 9','Paris 10','Paris 11','Paris 12','Paris 13','Paris 14','Paris 15',
+    'Paris 16','Paris 17','Paris 18','Paris 19','Paris 20'
   ];
 
   filteredStreets!: Observable<string[]>;
@@ -46,33 +45,33 @@ export class IntroComponent implements OnInit {
 
   aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
   imgStorageUrl: string = environment.imgStorageUrl;
+
   propositions: string[] = [
     'MAIN_CATEGORY_INTRO.COIFFURE', 'MAIN_CATEGORY_INTRO.MANUCURE', 'MAIN_CATEGORY_INTRO.ESTETICIAN',
     'MAIN_CATEGORY_INTRO.MASSAGE', 'MAIN_CATEGORY_INTRO.MAQUILLAGE', 'MAIN_CATEGORY_INTRO.PEDICURE',
     'MAIN_CATEGORY_INTRO.NUTRITION', 'MAIN_CATEGORY_INTRO.FITNESS'
   ];
-  currentProposition: string = this.propositions[0];
-  previousProposition: string = this.propositions[0];
-  propositionIndex: number = 0;
+  currentProposition = this.propositions[0];
+  previousProposition = this.propositions[0];
+  propositionIndex = 0;
   currentKey = 0;
-  playbackRate: number = 0.9; // Vitesse de lecture
+  playbackRate = 0.9; // Vitesse de lecture
   textVisible = true;
 
   streetError = false;
   locationError = false;
 
-  specialityTranslation: string = 'INTRO.SPECIALITY';
-  whereTranslation: string = 'INTRO.WHERE';
+  specialityTranslation = 'INTRO.SPECIALITY';
+  whereTranslation = 'INTRO.WHERE';
 
   constructor(
     private translate: TranslateService,
     private router: Router,
-    private breakpointObserver: BreakpointObserver) {
-    this.currentProposition = this.propositions[0];
-    this.previousProposition = this.propositions[0];
-  }
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
+    // Tu peux garder cet observer si tu en as besoin ailleurs
     this.breakpointObserver
       .observe(['(max-width: 991.98px)'])
       .subscribe(result => {
@@ -95,33 +94,22 @@ export class IntroComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value, this.optionsCities))
     );
-
   }
 
-
-
   ngAfterViewInit(): void {
-    if (this.paramVideo) {
-      const video = this.videoElement.nativeElement;
+    if (!this.paramVideo || !this.videoElement?.nativeElement) return;
 
-      // Configurer la vitesse de lecture
-      video.playbackRate = this.playbackRate;
-      // Assurez-vous que la vidéo est en mode muet
-      video.muted = true;
+    const video = this.videoElement.nativeElement;
+    video.playbackRate = this.playbackRate;
+    video.muted = true;
 
-      // Tenter de lire la vidéo automatiquement
-      video.play()
-        .then(() => {
-          console.log('Vidéo lancée automatiquement.');
-        })
-        .catch((err) => {
-          console.error('Erreur lors de la lecture automatique :', err);
-        });
-    }
+    video.play().catch((err) => {
+      console.error('Erreur lors de la lecture automatique :', err);
+    });
   }
 
   private _filter(value: string, options: string[]): string[] {
-    const filterValue = value.toLowerCase();
+    const filterValue = (value || '').toLowerCase();
     const filtered = options.filter(option => option.toLowerCase().includes(filterValue));
     if (options === this.options) this.streetError = filtered.length === 0;
     else this.locationError = filtered.length === 0;
@@ -130,20 +118,15 @@ export class IntroComponent implements OnInit {
 
   startRotatingPropositions(): void {
     setInterval(() => {
-      // Masquer le texte actuel (déclenche l'animation :leave)
-      this.textVisible = false;
-
-      // Attendre que l'animation :leave se termine (ex: 500ms)
+      this.textVisible = false; // déclenche :leave
       setTimeout(() => {
         this.propositionIndex = (this.propositionIndex + 1) % this.propositions.length;
         this.currentProposition = this.propositions[this.propositionIndex];
-        this.currentKey++; // pas indispensable ici mais bon pour debug
-        this.textVisible = true; // relancer l'affichage (déclenche l'animation :enter)
-      }, 500);
-    }, 3000); // intervalle plus lent pour laisser respirer l’anim
+        this.currentKey++; // force un nouvel élément pour :enter
+        this.textVisible = true; // déclenche :enter
+      }, 700);
+    }, 3000);
   }
-
-
 
   onButtonClick(): void {
     this.router.navigate(['/sign-in']);

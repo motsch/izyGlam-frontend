@@ -1,132 +1,141 @@
+:host {
+  display: block;
+}
+
+/* Section globale */
 .main-section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 40px;
-  /* Ajusté pour correspondre à l'espacement de l'exemple izyGlam */
+  padding: 40px 0;
+  /* cohérent avec les autres sections */
+  background: transparent;
 }
 
-.hero-image img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
+/* Grille : contrôle de l'ordre responsive pour éviter toute duplication */
+.feature-grid {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.content h1 {
-  font-size: 32px;
-  /* Augmenté pour correspondre à la taille de police de l'exemple izyGlam */
-  font-weight: bold;
-  /* Assurez-vous que le titre est en gras */
-  color: #000;
-  /* Couleur noire pour correspondre au style izyGlam */
-  margin-bottom: 20px;
-  /* Ajouté pour espacement */
-}
-
-.content p {
-  color: #000;
-  /* Couleur noire pour correspondre au style izyGlam */
-  line-height: 1.5;
-  font-size: 18px;
-  /* Augmenté pour correspondre à la taille de police de l'exemple izyGlam */
-  margin-bottom: 30px;
-  /* Ajouté pour espacement */
-}
-
-
-
-button {
-  background-color: #000;
-  color: white;
-  border: none;
-  padding: 15px 30px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #333;
+/* Desktop/tablette : texte à droite du média */
+@media (min-width: 769px) {
+  .feature-grid .hero-image {
+    order: 1;
   }
 
-  &:disabled {
-    background-color: #999;
-    color: #ccc;
-    cursor: not-allowed;
-    opacity: 0.7;
+  .feature-grid .content {
+    order: 2;
   }
 }
 
-button:hover {
-  transform: scale(1.06);
+/* Mobile : média en haut, texte en dessous */
+@media (max-width: 768px) {
+  .feature-grid .hero-image {
+    order: 1;
+  }
+
+  .feature-grid .content {
+    order: 2;
+  }
 }
 
-img {
-  border-radius: 20px;
-  /* Vous pouvez ajuster cette valeur pour obtenir l'arrondi souhaité */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Légère ombre portée pour l'effet de profondeur */
+/* Colonne média */
+.hero-image {
+  text-align: left;
+
+  .hero-media {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }
 
+/* Colonne texte */
+.content {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    word-break: break-word;
+    hyphens: auto;
+    color: #000;
+    margin: 0 0 20px 0;
+    text-align: left;
+      font-weight: 600;
+  }
+
+  p {
+    color: #000;
+    line-height: 1.5;
+    font-size: 18px;
+    margin: 0 0 30px 0;
+  }
+
+  .btn.submit {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+
+    &:hover {
+      background-color: #333;
+      transform: scale(1.04);
+    }
+
+    &:disabled {
+      background-color: #999;
+      color: #ccc;
+      cursor: not-allowed;
+      opacity: 0.7;
+      transform: none;
+    }
+  }
+}
+
+/* Responsive affinages */
 @media (max-width: 768px) {
   .main-section {
-    flex-direction: column;
-    padding: 20px 15px;
+    padding: 20px 0;
   }
 
   .hero-image {
     margin-bottom: 20px;
     text-align: center;
+
+    .hero-media {
+      max-width: 100%;
+      height: auto;
+    }
   }
 
-  .hero-image img,
-  .hero-image video {
-    max-width: 100%;
-    height: auto;
-  }
+  .content {
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 0 1rem;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
 
-  .content h1 {
-    font-size: 24px;
-    /* Réduction de la taille du titre */
-    margin-bottom: 15px;
-  }
+    p {
+      font-size: 16px;
+      line-height: 1.4;
+      margin: 0 0 20px 0;
+      text-align: center;
+      padding: 0 1rem;
+    }
 
-  .content p {
-    font-size: 16px;
-    /* Texte un peu plus petit */
-    margin-bottom: 20px;
-    /* Moins d'espacement */
-    line-height: 1.4;
-  }
-
-  button {
-    width: 100%;
-    /* Pour occuper tout l’espace, optionnel */
-    padding: 12px 20px;
-    font-size: 15px;
-  }
-}
-
-
-
-h1 {
-  font-size: 2rem;
-  /* taille raisonnable pour mobile */
-  line-height: 1.2;
-  /* évite les sauts de ligne trop espacés */
-  word-break: break-word;
-  /* casse les longs mots si besoin */
-  hyphens: auto;
-  /* ajoute des tirets si nécessaire pour couper proprement */
-  text-align: left;
-
-  @media (max-width: 768px) {
-    font-size: 1.5rem;
-    /* plus petit sur mobile */
-    text-align: center;
-    /* si tu veux centrer le texte sur mobile */
-    padding: 0 1rem;
-    /* un peu de marge interne */
+    .btn.submit {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 15px;
+    }
   }
 }

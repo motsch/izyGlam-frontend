@@ -8,7 +8,7 @@
 <!-- Si l'utilisateur est connecté -->
 <mat-drawer-container class="example-container" *ngIf="sessionService.isLoggedIn()">
   <!-- Drawer latéral gauche -->
-  <mat-drawer #drawer *ngIf="me" mode="over" class="drawer-content" (closedStart)="closeDrawer()">
+  <mat-drawer #drawer appRegisterDrawer mode="over" class="drawer-content" (closedStart)="closeDrawer()">
     <div class="drawer-inner">
 
       <!-- Bouton de fermeture -->
@@ -20,7 +20,7 @@
       <div class="profile-section">
         <img [src]="imgStorageUrl + 'default.jpeg'" class="profile-pic" alt="Profile Picture" />
         <div>
-          <p class="profile-name">{{ me.firstname }} {{ me.lastname }}</p>
+          <p class="profile-name" *ngIf="me$ | async as me">{{ me.firstname }} {{ me.lastname }}</p>
           <a class="manage-account" (click)="goTo('profile')">
             {{ "SIDEBAR.PROFILE" | translate }}
           </a>

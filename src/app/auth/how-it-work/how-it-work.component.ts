@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -7,50 +13,56 @@ import { environment } from 'src/environments/environment';
   templateUrl: './how-it-work.component.html',
   styleUrls: ['./how-it-work.component.scss'],
 })
-export class HowItWorkComponent implements AfterViewInit {
-  @ViewChild('videoElementHow') videoElement!: ElementRef<HTMLVideoElement>;
-  aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
-  playbackRate: number = 0.9; // Vitesse de lecture
-  intervalId!: any; // ID de setInterval pour le retour en 
+export class HowItWorkComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('videoElementHow') videoElement?: ElementRef<HTMLVideoElement>;
+
+  /** Base URL des médias (sans slash final) */
+  aPIimgStorageUrl = (environment.APIimgStorageUrl || '').replace(/\/$/, '');
+
+  /** Vitesse de lecture de la vidéo */
+  playbackRate = 0.9;
+
+  /** Active/désactive le mode vidéo (fallback image si false) */
   paramVideo = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   goTo(name: string) {
-    console.log(name);
     this.router.navigate(['/' + name]);
-
   }
 
   ngAfterViewInit(): void {
-    if (this.paramVideo) {
-      const video = this.videoElement.nativeElement;
-  
-      // Configurer la vitesse de lecture
-      video.playbackRate = this.playbackRate;
-      // Assurez-vous que la vidéo est en mode muet
-      video.muted = true;
-  
-      // Tenter de lire la vidéo automatiquement
-      video.play()
-        .then(() => {
-          console.log('Vidéo lancée automatiquement.');
-        })
-        .catch((err) => {
-          console.error('Erreur lors de la lecture automatique :', err);
-        });
-    }
+    // On ne manipule la vidéo que si elle est affichée
+    if (!this.paramVideo || !this.videoElement?.nativeElement) return;
+
+    const video = this.videoElement.nativeElement;
+
+    // Sécurités lecture auto
+    video.muted = true;
+    video.playbackRate = this.playbackRate;
+
+    // Tentative de lecture auto (certains navigateurs exigent muted+playsinline)
+    Promise.resolve()
+      .then(() => video.play())
+      .catch((err) => {
+        // Silencieux, mais log utile en dev
+        console.warn('Lecture auto impossible :', err);
+      });
   }
 
-
+  /** Hook si un jour tu veux contrôler la direction/lecture */
   handlePlaybackDirection(video: HTMLVideoElement): void {
     video.playbackRate = this.playbackRate;
-    video.play();
+    video.play().catch(() => {});
   }
 
   ngOnDestroy(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId); // Nettoyer l'intervalle si le composant est détruit
+    // Rien à nettoyer pour l’instant, mais on stoppe proprement la vidéo si nécessaire
+    const video = this.videoElement?.nativeElement;
+    if (video && !video.paused) {
+      try {
+        video.pause();
+      } catch {}
     }
   }
 }

@@ -1,27 +1,25 @@
 <div class="main-section">
    <div class="container custom-container">
-      <div class="row">
-         <div class="col-md-6 content" *ngIf="!isSmallScreen">
-            <h1>{{'HOMEPAGE.PART2TITLE' | translate}}</h1>
-            <p>{{'HOMEPAGE.PART2TEXT' | translate}}</p>
-            <button type="submit" class="btn submit margin-bottom-50"
-               (click)="goTo('creation-shop')">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
-         </div>
+      <div class="row align-items-center about-grid">
+         <!-- Media (image/vidéo) -->
          <div class="col-md-6 hero-image">
             <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/pro.png'"
-               alt="Tavaillez quand vous voulez" class="" />
+               alt="Travaillez quand vous voulez" class="hero-media" />
 
-            <video #videoElementAbout *ngIf="paramVideo" #videoElementIntro autoplay muted playsinline loop
-               style="border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)">
-               <source   [src]="aPIimgStorageUrl + '/uploads/images/front/pro.mp4'" type="video/mp4" />
+            <video *ngIf="paramVideo" #videoElementAbout class="hero-media hero-video" autoplay muted playsinline loop>
+               <source [src]="aPIimgStorageUrl + '/uploads/images/front/pro.mp4'" type="video/mp4" />
                Votre navigateur ne supporte pas la balise vidéo.
             </video>
          </div>
-         <div class="col-md-6 content" *ngIf="isSmallScreen">
-            <h1>{{'HOMEPAGE.PART2TITLE' | translate}}</h1>
-            <p>{{'HOMEPAGE.PART2TEXT' | translate}}</p>
-            <button type="submit" class="btn submit margin-bottom-50"
-               (click)="goTo('creation-shop')">{{'HOMEPAGE.KNOWMORE' | translate}}</button>
+
+         <!-- Contenu texte -->
+         <div class="col-md-6 content">
+            <h1>{{ 'HOMEPAGE.PART2TITLE' | translate }}</h1>
+            <p>{{ 'HOMEPAGE.PART2TEXT' | translate }}</p>
+            <button type="button" class="btn submit margin-bottom-50" (click)="goTo('creation-shop')"
+               aria-label="En savoir plus">
+               {{ 'HOMEPAGE.KNOWMORE' | translate }}
+            </button>
          </div>
       </div>
    </div>

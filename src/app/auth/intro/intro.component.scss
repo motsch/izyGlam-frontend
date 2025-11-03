@@ -1,213 +1,237 @@
-.slide-bg {
+/* =========================
+   HERO INTRO (HTML fourni)
+   Compatible .slide-bg (fond rose via $bg_gradiant)
+   - AUCUN background défini ici
+   - Ordre responsive stable (media au-dessus en mobile, à droite en ≥ md)
+   - Pas de "glitch" au resize
+   ========================= */
+
+.intro-hero {
+  /* Padding par défaut si on n’utilise PAS .slide-bg sur la section.
+     Quand .slide-bg est présent, on harmonise plus bas. */
   padding: 80px 0;
 
   .container {
     padding: 0 15px;
   }
 
-  .row {
+  /* Grille + ordre responsive */
+  .intro-grid {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
   }
 
-  .home-right {
+  /* Ordre par défaut (mobile & tablettes) : MEDIA d'abord, TEXTE ensuite */
+  .home-media { order: 1; }
+  .intro-content { order: 2; }
+
+  /* ≥ md : TEXTE à gauche, MEDIA à droite */
+  @media (min-width: 768px) {
+    .intro-content { order: 1; }
+    .home-media   { order: 2; }
+  }
+
+  /* --- MEDIA --- */
+  .media-box {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    .mobile-slid img {
-      max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      animation: fadeInUp 1.2s ease-out;
-    }
-  }
-
-  .slide-text-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     width: 100%;
-
-    h1 {
-      font-size: 2.0rem;
-      font-weight: 700;
-      color: #A43A4A;
-      margin-bottom: 10px;
-    }
-
-    .main-title {
-      font-size: 2rem;
-      color: #fff;
-
-      .animated-text {
-        display: inline-block;
-        animation: fadeInUp 0.8s ease-out;
-      }
-    }
-
-    .search-container {
-      margin-top: 20px;
-      width: 100%;
-      max-width: 400px;
-
-      form {
-        display: flex;
-        flex-direction: column;
-
-        .location-input {
-          border: none;
-          border-radius: 20px;
-          padding: 12px 20px;
-          font-size: 16px;
-          margin-bottom: 10px;
-          outline: none;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-button {
-          background-color: #A43A4A;
-          color: white;
-          border: none;
-          padding: 14px;
-          font-size: 16px;
-          font-weight: 500;
-          border-radius: 20px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        }
-
-        .search-button:hover {
-          background-color: #A43A4A;
-          transform: scale(1.028);
-        }
-      }
-
-      .error-message {
-        color: red;
-        font-size: 0.9em;
-        margin-top: 5px;
-      }
-    }
   }
 
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 991.98px) {
-    .home-right {
-      margin-bottom: 20px;
-      .mobile-slid {
-        display: flex;
-        justify-content: center;
-        img {
-          width: 80%;
-          max-width: 300px;
-        }
-      }
-    }
-  }
-
-  .location-input::placeholder {
-    color: #999;
-  }
-
-  .old-proposition {
-    display: none !important;
-    opacity: 0;
-    height: 0;
-    overflow: hidden;
-  }
-}
-
-
-
-.hero-image img,
-.hero-image video {
-  max-width: 100%;
-  height: auto;
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1; /* carré parfait */
-  overflow: hidden;
-  border-radius: 20px;
-}
-
-.video-wrapper video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 20px;
-
-  // format par défaut : paysage
-  video {
+  /* L’espace du média est réservé pour éviter tout “saut” au chargement */
+  .video-wrapper,
+  .hero-media {
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    max-width: 640px; /* ajuste selon ton design */
     border-radius: 20px;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   }
-}
 
-@media (max-width: 768px) {
-  .video-wrapper {
-    aspect-ratio: 1 / 1; // carré sur mobile
+  /* Image */
+  .hero-media {
     height: auto;
+    animation: fadeInUp 1.2s ease-out;
+  }
 
-    video {
+  /* Vidéo dans un conteneur à ratio fixe */
+  .video-wrapper {
+    position: relative;
+    aspect-ratio: 1 / 1; /* carré par défaut (mobile) */
+    overflow: hidden;
+
+    video.hero-media {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 20px;
     }
   }
 
-  .mobile-slid {
-    width: 100%;
+  /* Sur écrans plus larges, ratio plus panoramique si souhaité */
+  @media (min-width: 992px) {
+    .video-wrapper { aspect-ratio: 1 / 1; }
+  }
+
+  /* Affinages responsive du bloc media */
+  @media (max-width: 991.98px) {
+    .home-media {
+      margin-bottom: 20px;
+
+      .hero-media {
+        width: 100%;
+      }
+    }
+  }
+
+  /* --- TEXTE & CTA --- */
+  .slide-text-container {
     display: flex;
+    flex-direction: column;
+    align-items: center; /* passe à flex-start si tu veux aligner à gauche en desktop */
     justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Titres */
+  .page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #A43A4A;
+    margin: 0 0 10px;
+    line-height: 1.1;
+  }
+
+  .title-red {
+    color: #A43A4A;
+    display: inline-block;
+    white-space: nowrap; /* évite les retours à la ligne “bizarres” */
+  }
+
+  .main-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  /* Conteneur d'animation du sous-titre (stabilise la hauteur) */
+  .text-wrapper {
+    position: relative;
+    height: 2.5rem; /* ajuste selon ta typo */
+    display: flex;
     align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .animated-text {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: opacity, transform; /* l’animation Angular fait le reste */
+  }
+
+  /* Formulaire/CTA */
+  .search-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      .search-button {
+        background-color: #A43A4A;
+        color: #fff;
+        border: none;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 500;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+
+        &:hover {
+          background-color: #A43A4A; /* même teinte, léger effet de scale */
+          transform: scale(1.028);
+        }
+
+        &:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+          transform: none;
+        }
+      }
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+  }
+
+  /* Keyframe douce pour l’arrivée de l’image */
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* h1 globaux (compat), mais le sizing principal reste .page-title */
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    word-break: break-word;
+    hyphens: auto;
+    text-align: left;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
   }
 }
 
+/* =========================
+   INTÉGRATION AVEC .slide-bg
+   (fond + hauteur + paddings déjà définis dans style.scss)
+   ========================= */
 
-h1 {
-  font-size: 2rem; /* taille raisonnable pour mobile */
-  line-height: 1.2; /* évite les sauts de ligne trop espacés */
-  word-break: break-word; /* casse les longs mots si besoin */
-  hyphens: auto; /* ajoute des tirets si nécessaire pour couper proprement */
-  text-align: left;
+/* Quand la section a les deux classes
+   <section class="intro-hero slide-bg" ...>
+   on laisse .slide-bg gérer le fond/hauteur/paddings */
+.intro-hero.slide-bg {
+  /* On ne définit PAS de background ici ! */
+  /* Harmonise les espacements pour matcher ton style.scss */
+  padding-top: 80px;   /* .slide-bg le met déjà : redondant mais sûr */
+  padding-bottom: 0;   /* idem */
+  min-height: 100vh;   /* .slide-bg -> height: 100vh ; on évite de le casser */
 
-  @media (max-width: 768px) {
-    font-size: 1.5rem; /* plus petit sur mobile */
-    text-align: center; /* si tu veux centrer le texte sur mobile */
-    padding: 0 1rem; /* un peu de marge interne */
+  /* Propager la hauteur aux enfants pour centrer verticalement comme dans ton style.scss */
+  .container,
+  .intro-grid {
+    height: 100%;
+  }
+
+  /* Reproduit l’alignement vertical de l’ancien .home-right */
+  .home-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
   }
 }
 
-.animated-text {
-  display: inline-block;
-  min-height: 2rem;
-  white-space: nowrap;
-  will-change: opacity, transform;
+/* (Optionnel) Si tu veux que le texte soit aligné à gauche en desktop tout en restant centré sur mobile :
+@media (min-width: 768px) {
+  .intro-hero .slide-text-container {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
+*/

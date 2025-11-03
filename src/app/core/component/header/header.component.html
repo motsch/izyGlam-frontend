@@ -43,8 +43,6 @@
   <!-- Connected Menu -->
   <div class="container-fluid" *ngIf="sessionService.getCurrentUser()">
     <div class="d-flex align-items-center justify-content-between flex-nowrap w-100 flex-wrap-mobile-fix">
-
-      
       <div class="col-auto">
         <a (click)="openDrawer()">
           <img class="menuBurger" [src]="imgStorageUrl + 'menuBurger.png'" alt="logo" />

@@ -16,6 +16,7 @@ import { AdminService } from 'src/app/core/services/admin.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { CountryService } from 'src/app/core/services/country.service';
+import { DrawerService } from 'src/app/core/services/drawer.service';
 
 @Component({
   selector: 'app-main',
@@ -73,6 +74,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   private searchSubject = new Subject<string>();
   private subscription!: Subscription;
   loading = false;
+  count = 0
 
   @ViewChild('scrollContainerCategory') private scrollContainerCategory?: ElementRef;
   @ViewChild('scrollContainerDiscover') private scrollContainerDiscover?: ElementRef;
@@ -95,7 +97,8 @@ export class MainComponent implements OnInit, AfterViewInit {
     private toastr: ToastrService,
     private translate: TranslateService,
     private countryService: CountryService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private drawerService: DrawerService
   ) { }
 
   // ---------------------------------------------------
@@ -107,7 +110,6 @@ export class MainComponent implements OnInit, AfterViewInit {
       this.router.navigate(['/login']);
       return;
     }
-
     this.loading = true;
 
     // 🔎 Recherche globale (non bloquante)
@@ -288,6 +290,9 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.userService.getMe().subscribe({
       next: (data: any) => {
         this.me = data;
+
+
+        this.sharedService.updateMe(this.me);
         this.getCountries();
         console.log("MON USER FROM HELL");
         console.log(data);
@@ -401,7 +406,7 @@ export class MainComponent implements OnInit, AfterViewInit {
           if (cities.length === 1) {
             this.selectedCity = cities[0];
           } else if (cities.length === 0) {
-        this.showCustomToast(this.translate.instant('ERROR.NO_CITIES'));
+            this.showCustomToast(this.translate.instant('ERROR.NO_CITIES'));
           }
         },
         error: (err) => {
