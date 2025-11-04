@@ -1,6 +1,7 @@
 <div class="card-form">
   <form (submit)="handleFormSubmit($event)" class="card-form-container">
-    <div id="card-element" class="card-element margin-top-20"></div>
+    <!-- on garde l'id si tu en as besoin ailleurs, mais on AJOUTE #cardElement -->
+    <div #cardElement id="cardElement" class="card-element margin-top-20"></div>
 
     <div class="btn-add-card-wrapper">
       <button type="submit" class="btn-add-card">

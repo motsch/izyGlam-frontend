@@ -86,7 +86,8 @@
                 </div>
 
                 <button class="btn btn-outline-secondary mt-3" (click)="showAddCardForm = !showAddCardForm">
-                  <i class="fa fa-plus"></i> {{ showAddCardForm ? ('BUTTON.CLOSE_FORM' | translate) : ('BUTTON.ADD_CARD' | translate) }}
+                  <i *ngIf="!showAddCardForm" class="fa fa-plus"></i><i *ngIf="showAddCardForm" class="fa fa-minus"></i>
+                  {{ showAddCardForm ? ('PAYEMENT.CLOSE_FORM' | translate) : ('PAYEMENT.ADD_CARD' | translate) }}
                 </button>
 
                 <div *ngIf="showAddCardForm" class="mt-3">
@@ -102,7 +103,8 @@
             <div class="appointment-right">
               <!-- Infos du shop -->
               <div class="doctor-info">
-                <img [src]="imgStorageUrl + 'uploads/images/' + shop.image" [alt]="shop?.name" class="doctor-avatar" />
+                <img *ngIf="shop && shop.image" [src]="imgStorageUrl + 'uploads/images/' + shop.image" [alt]="shop?.name"
+                  class="doctor-avatar" />
                 <div class="doctor-details">
                   <p class="shop-name">{{ shop?.name }}</p>
                   <p class="shop-trad">{{ shop?.trad | translate }}</p>
@@ -119,7 +121,7 @@
                 <ul class="summary-list">
                   <li><strong>{{ 'PAYEMENT.DATE' | translate }} :</strong> {{ dateSlot }}</li>
                   <li><strong>{{ 'PAYEMENT.HOUR' | translate }} :</strong> {{ startSlot }}</li>
-                  <li><strong>{{ 'PAYEMENT.PRESTA' | translate }} :</strong> {{ itemToBuy2.name }}</li>
+                  <li *ngIf="itemToBuy2 && itemToBuy2.name"><strong>{{ 'PAYEMENT.PRESTA' | translate }} :</strong> {{ itemToBuy2.name }}</li>
                   <li><strong>{{ 'PAYEMENT.WITH' | translate }} :</strong> {{ shop?.name }}, {{ shop?.trad | translate
                     }}</li>
                   <li><strong>{{ 'PAYEMENT.TOTAL' | translate }} :</strong>
