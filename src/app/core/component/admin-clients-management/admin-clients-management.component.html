@@ -57,13 +57,13 @@
         </button>
         <button
           class="btn ban-button"
-          [ngClass]="user.isBlocked ? 'unlocked' : 'locked'"
+          [ngClass]="user.active ? 'unlocked' : 'locked'"
           mat-raised-button
           color="warn"
           (click)="toggleBlockUser(user)"
         >
-          <i *ngIf="!user.isBlocked" class="fa fa-ban"></i>
-          <i *ngIf="user.isBlocked" class="fa fa-check"></i>
+          <i *ngIf="user.active" class="fa fa-ban"></i>
+          <i *ngIf="!user.active" class="fa fa-check"></i>
         </button>
       </td>
     </ng-container>

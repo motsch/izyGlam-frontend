@@ -9,9 +9,9 @@
         <li [ngClass]="{ active: isSectionActive('security') }" (click)="setActiveSection('security')">
           {{ "PROFILE_MENU.SECURITY" | translate }}
         </li>
-        <li [ngClass]="{ active: isSectionActive('message') }" (click)="setActiveSection('message')">
+        <!--<li [ngClass]="{ active: isSectionActive('message') }" (click)="setActiveSection('message')">
           {{ "PROFILE_MENU.MESSAGE" | translate }}
-        </li>
+        </li>-->
         <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
           [ngClass]="{ active: isSectionActive('management') }" (click)="setActiveSection('management')">
           {{ "PROFILE_MENU.SHOP" | translate }}
@@ -54,13 +54,13 @@
         </div>
         <app-change-password [me]="me"></app-change-password>
       </div>
-      <div *ngIf="isSectionActive('message')" id="message">
+      <!--<div *ngIf="isSectionActive('message')" id="message">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.MESSAGE" | translate }}</h1>
           <p class="page-subtitle">{{ "PROFILE_MENU.MESSAGE_SUBTITLE" | translate }}</p>
         </div>
         <app-messagerie></app-messagerie>
-      </div>
+      </div>-->
       <div *ngIf="isSectionActive('privacy')" id="privacy-content">
         <div class="page-title-wrapper">
           <h1 class="page-title">{{ "PROFILE_MENU.CONFIDENTIAL" | translate }}</h1>

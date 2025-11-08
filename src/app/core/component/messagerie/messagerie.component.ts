@@ -134,9 +134,40 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
       this.loadConversations();
 
       // Abonnement global MQTT : réception des nouveaux messages
-      this.mqttSub = this.mqttService.subscribe().subscribe((payload: any) => {
+      this.mqttSub = this.mqttService.subscribe().subscribe((payloaded: any) => {
         try {
+
+
+          // 1) Parse robuste (string → objet). Gère même le double encodage éventuel.
+          let payload: any = payloaded;
+          if (typeof payload === 'string') {
+            try { payload = JSON.parse(payload); } catch { /* on laisse tel quel */ }
+          }
+          // Parfois certains back envoient { topic, message: "..." } (stringifiée à l’intérieur)
+          if (payload && typeof payload.message === 'string') {
+            try { payload.message = JSON.parse(payload.message); } catch { /* noop */ }
+          }
+
+          // 2) Extraction défensive
+          const topic2: string | undefined = payload?.topic;
+          const message2: any = payload?.message;
+
+          // 3) Logs utiles
+          console.log('[WS] brut:', payloaded);
+          console.log('[WS] payload objet:', payload);
+          console.log('[WS] topic:', topic2);
+
+
+
+
+
+
+
+
+
           const { topic, message } = payload || {};
+          const toto = payload.message.content;
+          console.log("message : " + JSON.stringify(toto));
           if (!topic?.startsWith('conversation/')) return;
           const convId = topic.split('/')[1];
 
@@ -174,7 +205,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
 
           this.cdRef.detectChanges();
         } catch (err) {
-          console.error('[MQTT] Erreur lors du traitement du payload :', err, payload);
+          console.error('[MQTT] Erreur lors du traitement du payload :', err, payloaded);
         }
       });
     } catch (e) {
@@ -502,6 +533,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
         this.conversationService
           .sendMessageToSupport({
             conversationId: this.selectedConversation._id,
+            sender: this.currentUserId,
             content: trimmed,
             messageType: 'text',
             clientId,
@@ -511,7 +543,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
       } else {
         this.conversationService
           .addMessage(this.selectedConversation._id, {
-            sender: this.currentUserId,
+            sender: this.me._id,
             content: trimmed,
             messageType: 'text',
             clientId

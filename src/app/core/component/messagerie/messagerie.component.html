@@ -38,7 +38,7 @@
     <!-- Liste quand on a des conversations -->
     <ng-container *ngIf="conversations.length > 0">
 
-      <!-- Bandeau Support -->
+      <!-- Bandeau Support
       <div class="conversation-item" (click)="getOrCreateSupportConversation()">
         <div class="conversation-content">
           <img src="assets/images/default2.jpeg" class="profile-pic" alt="Service Client">
@@ -51,7 +51,7 @@
           </div>
           <span class="message-time">{{ supportPreviewTime }}</span>
         </div>
-      </div>
+      </div> -->
 
       <!-- Conversations utilisateur -->
       <div *ngFor="let conversation of conversations; trackBy: trackByConvId"

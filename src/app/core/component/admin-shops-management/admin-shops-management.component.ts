@@ -40,7 +40,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     // ✅izyGlam
     private toastr: ToastrService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   // ------------------------------------------------------
   // ⏱️ Chargement initial
@@ -136,6 +136,34 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     });
   }
 
+
+
+  // ------------------------------------------------------
+  // 🚫 Bloquer / Débloquer un shop
+  // ------------------------------------------------------
+  toggleBlockUser(shop: any) {
+    const updated = { ...shop, active: !shop.active };
+
+    this.shopService.update(updated).subscribe({
+      next: (data: any) => {
+        // MAJ locale de la ligne pour reflecter l’état
+        const idx = this.shops.findIndex(u => u._id === updated._id);
+        if (idx > -1) {
+          this.shops[idx] = data;
+          this.dataSource.data = [...this.shops];
+        }
+
+        this.toastr.success(
+          this.translate.instant('SUCCESS.USERUPDATED') || 'Shops mis à jour.'
+        );
+      },
+      error: (err) => {
+        console.error('Erreur lors du blocage/déblocage shop :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
+    });
+  }
+
   // ------------------------------------------------------
   // 💾 Sauvegarder les modifications de la modale
   // ------------------------------------------------------
@@ -185,8 +213,8 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   // ------------------------------------------------------
   // Placeholders conservés (aucune suppression)
   // ------------------------------------------------------
-  saveService() {}
-  onFileSelected(event: any): void {}
+  saveService() { }
+  onFileSelected(event: any): void { }
 
   // ------------------------------------------------------
   // ✨ Toast d’erreur styliséizyGlam (centralisé)

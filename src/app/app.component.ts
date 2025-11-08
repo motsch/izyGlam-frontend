@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
   imgStorageUrl: string = environment.imgStorageUrl;
   aPIimgStorageUrl: string = environment.APIimgStorageUrl;
   backgroundImages = "";
+  lang = 'fr';
   me: any = {};
   imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
@@ -46,9 +47,9 @@ export class AppComponent implements OnInit {
     private geoLocationService: GeoLocationService
   ) {
     translate.addLangs([
-      'ar','be','bn','ca','da','de','en','es','et','eu','fa','fi','fr','gl','hi',
-      'id','it','ja','ko','ku','ms','nl','pl','pt','ro','ru','so','sq','sv','th',
-      'tl','tr','uk','vi','zh'
+      'ar', 'be', 'bn', 'ca', 'da', 'de', 'en', 'es', 'et', 'eu', 'fa', 'fi', 'fr', 'gl', 'hi',
+      'id', 'it', 'ja', 'ko', 'ku', 'ms', 'nl', 'pl', 'pt', 'ro', 'ru', 'so', 'sq', 'sv', 'th',
+      'tl', 'tr', 'uk', 'vi', 'zh'
     ]);
 
     const sessionLangue = this.sessionService.getLang();
@@ -60,6 +61,12 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    let langTemp = localStorage.getItem('langue');
+    if (langTemp) {
+      this.lang = langTemp;
+    } else if(langTemp != 'fr' && langTemp != 'en' && langTemp !== 'es') {
+      this.lang = 'en'
+    }
     // si tu veux une valeur initiale depuis la session au boot :
     const bootMe = this.sessionService.getCurrentUser();
     if (bootMe) this.sharedService.updateMe(bootMe);
