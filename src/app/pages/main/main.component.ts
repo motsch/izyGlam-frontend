@@ -71,6 +71,8 @@ export class MainComponent implements OnInit, AfterViewInit {
   pubActivated: boolean = false;
   promoActivated: boolean = false;
 
+  private shopsSub?: Subscription;
+  private shopsReqId = 0;
   private searchSubject = new Subject<string>();
   private subscription!: Subscription;
   loading = false;
@@ -290,8 +292,6 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.userService.getMe().subscribe({
       next: (data: any) => {
         this.me = data;
-
-
         this.sharedService.updateMe(this.me);
         this.getCountries();
         console.log("MON USER FROM HELL");
@@ -456,53 +456,63 @@ export class MainComponent implements OnInit, AfterViewInit {
   // 🏪 Charge les shops pour le CP sélectionné
   // ---------------------------------------------------
   private loadShops() {
-    this.shopService.getShopsByPostalCodes([this.selectedPostalCode], this.me.country).subscribe({
-      next: async (categories: any) => {
-        const favoriteShops = this.me.favoriteShops || [];
+    // Annule l'abonnement précédent (évite les chevauchements)
+    this.shopsSub?.unsubscribe();
 
-        this.shops = (categories.discover || []).map((shop: any) => ({
-          ...shop,
-          isFavorite: favoriteShops.includes(shop._id),
-        }));
+    // ID de requête pour ignorer les réponses obsolètes
+    const reqId = ++this.shopsReqId;
 
-        // On map chaque catégorie et on ajoute isFavorite
-        this.filteredItemsAdecouvrir = (categories.discover || []).map((shop: any) => ({
-          ...shop,
-          isFavorite: favoriteShops.includes(shop._id),
-        }));
+    this.loading = true;
 
-        this.filteredItemsApprecier = (categories.appreciated || []).map((shop: any) => ({
-          ...shop,
-          isFavorite: favoriteShops.includes(shop._id),
-        }));
+    this.cancelFilter();
+    this.categoryTrad = '';
+    // Reset immédiat (évite affichage d'anciennes données)
+    this.shops = [];
+    this.filteredItemsAdecouvrir = [];
+    this.filteredItemsApprecier = [];
+    this.filteredItemsMalin = [];
+    this.filteredItemsTop10 = [];
+    this.promotedShops = [];
 
-        this.filteredItemsMalin = (categories.smart || []).map((shop: any) => ({
-          ...shop,
-          isFavorite: favoriteShops.includes(shop._id),
-        }));
+    this.shopsSub = this.shopService
+      .getShopsByPostalCodes([this.selectedPostalCode], this.me.country)
+      .subscribe({
+        next: (categories: any) => {
+          // Si une requête plus récente a démarré, on ignore cette réponse
+          if (reqId !== this.shopsReqId) return;
 
-        this.filteredItemsTop10 = (categories.top10 || []).map((shop: any) => ({
-          ...shop,
-          isFavorite: favoriteShops.includes(shop._id),
-        }));
+          const favoriteShops = this.me.favoriteShops || [];
 
-        // Promo = tous shops avec promo active (peu importe la catégorie)
-        this.promotedShops = [
-          ...this.filteredItemsAdecouvrir,
-          ...this.filteredItemsApprecier,
-          ...this.filteredItemsMalin,
-          ...this.filteredItemsTop10,
-        ].filter((x: any) => x.promo?.active === true);
+          const adecouvrir = (categories.discover || []).map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
+          const apprecier = (categories.appreciated || []).map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
+          const malin = (categories.smart || []).map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
+          const top10 = (categories.top10 || []).map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
 
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Erreur lors du chargement des shops par code postal :', err);
-        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        this.loading = false; // ✅ Évite le loader infini en cas d’erreur
-      }
-    });
+          // ✅ Mets à jour les tableaux d’entrées des carrousels
+          this.filteredItemsAdecouvrir = adecouvrir;
+          this.filteredItemsApprecier = apprecier;
+          this.filteredItemsMalin = malin;
+          this.filteredItemsTop10 = top10;
+
+          // ✅ La section "ALL" doit contenir TOUTES les catégories (pas seulement discover)
+          this.shops = [...adecouvrir, ...apprecier, ...malin, ...top10];
+
+          // ✅ Toutes les promos, peu importe la catégorie
+          this.promotedShops = this.shops.filter((x: any) => x.promo?.active === true);
+
+          this.loading = false;
+          // Si tes enfants utilisent OnPush :
+          // this.cd.markForCheck();
+        },
+        error: (err) => {
+          if (reqId !== this.shopsReqId) return; // on ignore si obsolète
+          console.error('Erreur lors du chargement des shops par code postal :', err);
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+          this.loading = false;
+        }
+      });
   }
+
 
   // ---------------------------------------------------
   // 🧭 Filtres de catégories (UI)
@@ -542,6 +552,28 @@ export class MainComponent implements OnInit, AfterViewInit {
     return shuffledArray;
   }
 
+
+  // -------------------------------------------------
+  // Scroll horizontal
+  // -------------------------------------------------
+  scrollLeftCategory(): void {
+    try {
+      const container = this.scrollContainerCategory?.nativeElement;
+      container?.scrollBy({ left: -300, behavior: 'smooth' });
+    } catch (err) {
+      console.error('Erreur scrollLeft:', err);
+    }
+  }
+
+  scrollRightCategory(): void {
+    try {
+      const container = this.scrollContainerCategory?.nativeElement;
+      container?.scrollBy({ left: 300, behavior: 'smooth' });
+    } catch (err) {
+      console.error('Erreur scrollRight:', err);
+    }
+  }
+
   // ---------------------------------------------------
   // ↔️ Scroll horizontal des carrousels
   // ---------------------------------------------------
@@ -579,10 +611,12 @@ export class MainComponent implements OnInit, AfterViewInit {
   openAddressModal() {
     this.showAddressModal = true;
   }
+
   closeAddressModal() {
     this.showAddressModal = false;
     this.isAddingAddress = false;
   }
+
   selectPostalCode(address: any) {
     this.selectedAddress = address;
     this.selectedPostalCode = address.code_postal;
