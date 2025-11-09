@@ -15,11 +15,32 @@
       <p>{{ "ORDERS.NO_UPCOMING" | translate }}</p>
     </div>
 
-    <ng-container *ngFor="let order of upcomingOrders">
-      <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
-        [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
-        (onDownloadInvoice)="downloadInvoice(order)" (onUpdateNeeded)="onUpdateAsked()"></app-order-card>
+    <!-- Groupes par jour -->
+    <!-- ⬇️ À VENIR : remplace le bloc *ngFor existant par ceci -->
+    <ng-container *ngFor="let group of upcomingGrouped; trackBy: trackByDate">
+      <section class="date-group" [attr.data-date]="group.date | date:'yyyy-MM-dd'">
+        <header class="date-header" role="heading" aria-level="3">
+          <span class="line" aria-hidden="true"></span>
+          <span class="date-chip">
+            <span class="weekday">{{ group.date | date:'EEEE' }}</span>
+            <span class="dot">•</span>
+            <span class="day">{{ group.date | date:'d' }}</span>
+            <span class="month-year">{{ group.date | date:'MMMM y' }}</span>
+          </span>
+          <span class="line" aria-hidden="true"></span>
+        </header>
+
+        <div class="date-list">
+          <ng-container *ngFor="let order of group.items; trackBy: trackById">
+            <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
+              [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
+              (onDownloadInvoice)="downloadInvoice(order)" (onUpdateNeeded)="onUpdateAsked()">
+            </app-order-card>
+          </ng-container>
+        </div>
+      </section>
     </ng-container>
+
   </div>
 
   <!-- SECTION PASSÉES -->
@@ -28,26 +49,67 @@
       <p>{{ "ORDERS.NO_PAST" | translate }}</p>
     </div>
 
-    <ng-container *ngFor="let order of pastOrders">
-      <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
-        [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
-        (onDownloadInvoice)="downloadInvoice(order)" (onUpdateNeeded)="onUpdateAsked()"
-        (modalReview)="openModal(order)"></app-order-card>
+    <!-- ⬇️ PASSÉES -->
+    <ng-container *ngFor="let group of pastGrouped; trackBy: trackByDate">
+      <section class="date-group" [attr.data-date]="group.date | date:'yyyy-MM-dd'">
+        <header class="date-header" role="heading" aria-level="3">
+          <span class="line" aria-hidden="true"></span>
+          <span class="date-chip">
+            <span class="weekday">{{ group.date | date:'EEEE' }}</span>
+            <span class="dot">•</span>
+            <span class="day">{{ group.date | date:'d' }}</span>
+            <span class="month-year">{{ group.date | date:'MMMM y' }}</span>
+          </span>
+          <span class="line" aria-hidden="true"></span>
+        </header>
+
+        <div class="date-list">
+          <ng-container *ngFor="let order of group.items; trackBy: trackById">
+            <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
+              [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
+              (onDownloadInvoice)="downloadInvoice(order)" (onUpdateNeeded)="onUpdateAsked()"
+              (modalReview)="openModal(order)">
+            </app-order-card>
+          </ng-container>
+        </div>
+      </section>
     </ng-container>
+
   </div>
 
   <!-- SECTION ANNULÉES -->
   <div class="orders-section" *ngIf="selectedOrderType === 'cancelled'">
     <div *ngIf="cancelledOrders.length === 0" class="empty-state">
-      <p>{{"CALENDAR.NO_CANCELLED" | translate }}</p>
+      <p>{{ "CALENDAR.NO_CANCELLED" | translate }}</p>
     </div>
 
-    <ng-container *ngFor="let order of cancelledOrders">
-      <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
-        [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
-        (onUpdateNeeded)="onUpdateAsked()"></app-order-card>
+    <!-- ⬇️ ANNULÉES -->
+    <ng-container *ngFor="let group of cancelledGrouped; trackBy: trackByDate">
+      <section class="date-group" [attr.data-date]="group.date | date:'yyyy-MM-dd'">
+        <header class="date-header" role="heading" aria-level="3">
+          <span class="line" aria-hidden="true"></span>
+          <span class="date-chip">
+            <span class="weekday">{{ group.date | date:'EEEE' }}</span>
+            <span class="dot">•</span>
+            <span class="day">{{ group.date | date:'d' }}</span>
+            <span class="month-year">{{ group.date | date:'MMMM y' }}</span>
+          </span>
+          <span class="line" aria-hidden="true"></span>
+        </header>
+
+        <div class="date-list">
+          <ng-container *ngFor="let order of group.items; trackBy: trackById">
+            <app-order-card *ngIf="order.status !== 'deleted'" [order]="order" [selectionUser]="selectionUser"
+              [imageLoaded]="imageLoaded[order._id]" [availableActions]="getAvailableActions(order)"
+              (onUpdateNeeded)="onUpdateAsked()">
+            </app-order-card>
+          </ng-container>
+        </div>
+      </section>
     </ng-container>
+
   </div>
+
 
   <div style="height: 80px;"></div>
 </div>

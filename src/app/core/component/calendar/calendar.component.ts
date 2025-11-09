@@ -84,6 +84,84 @@ export class CalendarComponent implements OnInit {
     this.selectedBooking = null;
   }
 
+
+  // ====== À ADAPTER ICI SI BESOIN ======
+  /** Dis-moi comment récupérer la date de la commande. */
+  private getOrderDate(order: any): Date {
+    return new Date(order.start);  // cohérent avec processOrders()
+  }
+
+  // =====================================
+
+  /** Ramène une Date à minuit (début de journée) */
+  private startOfDay(d: Date): Date {
+    const nd = new Date(d);
+    nd.setHours(0, 0, 0, 0);
+    return nd;
+  }
+
+  /** Clé de groupage YYYY-MM-DD */
+  private toDateKey(d: Date): string {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
+
+  /** Groupe un tableau de commandes par jour et trie le tout chronologiquement */
+  private groupOrders(orders: any[], ascending = true): any[] {
+    const map = new Map<string, { date: Date; items: any[] }>();
+
+    for (const o of orders) {
+      const d = this.startOfDay(this.getOrderDate(o));
+      const key = this.toDateKey(d);
+      const bucket = map.get(key);
+      if (bucket) {
+        bucket.items.push(o);
+      } else {
+        map.set(key, { date: d, items: [o] });
+      }
+    }
+
+    // Tri des items à l’intérieur de chaque jour
+    const groups: any[] = Array.from(map.entries()).map(
+      ([dateKey, { date, items }]) => ({
+        dateKey,
+        date,
+        items: items.sort(
+          (a, b) =>
+            this.getOrderDate(a).getTime() - this.getOrderDate(b).getTime()
+        ),
+      })
+    );
+
+    // Tri des jours (chronologique)
+    groups.sort((a, b) =>
+      ascending
+        ? a.date.getTime() - b.date.getTime()
+        : b.date.getTime() - a.date.getTime()
+    );
+
+    return groups;
+  }
+
+  // Getters pratiques : à chaque changement de tes tableaux, le groupage est à jour
+  get upcomingGrouped(): any[] {
+    // à venir -> ordre croissant
+    return this.groupOrders(this.upcomingOrders, true);
+  }
+  get pastGrouped(): any[] {
+    // passées -> garde aussi croissant (change à false si tu préfères récentes d’abord)
+    return this.groupOrders(this.pastOrders, true);
+  }
+  get cancelledGrouped(): any[] {
+    return this.groupOrders(this.cancelledOrders, true);
+  }
+
+  // trackBy pour performance
+  trackById = (_: number, o: any) => o?._id ?? o?.id ?? _;
+  trackByDate = (_: number, g: any) => g.dateKey;
+
   // ------------------------------------------------------
   // 🔄 Initialisation des commandes
   // ------------------------------------------------------
@@ -133,7 +211,7 @@ export class CalendarComponent implements OnInit {
           console.log('Booking accepted response:', JSON.stringify(response));
           this.toastr.success(
             this.translate.instant('SUCCESS.BOOKING_ACCEPTED') ||
-              'Réservation acceptée.'
+            'Réservation acceptée.'
           );
           this.switchUserOrPro();
         },
@@ -194,7 +272,7 @@ export class CalendarComponent implements OnInit {
                 );
                 this.toastr.success(
                   this.translate.instant('SUCCESS.BOOKING_REFUSED') ||
-                    'Réservation refusée.'
+                  'Réservation refusée.'
                 );
                 this.switchUserOrPro();
               },
@@ -313,7 +391,7 @@ export class CalendarComponent implements OnInit {
       this.invoiceService.downloadInvoice(order);
       this.toastr.success(
         this.translate.instant('SUCCESS.INVOICE_DOWNLOADED') ||
-          'Facture téléchargée.'
+        'Facture téléchargée.'
       );
     } catch (error) {
       console.error('❌ Erreur downloadInvoice :', error);
@@ -337,7 +415,7 @@ export class CalendarComponent implements OnInit {
           console.log('Code confirmé pour booking', booking._id);
           this.toastr.success(
             this.translate.instant('SUCCESS.CODE_CONFIRMED') ||
-              'Code confirmé.'
+            'Code confirmé.'
           );
         } else {
           console.log('Code invalide pour booking', booking._id);
@@ -365,7 +443,7 @@ export class CalendarComponent implements OnInit {
           console.log('Booking finished response :', JSON.stringify(response));
           this.toastr.success(
             this.translate.instant('SUCCESS.BOOKING_FINISHED') ||
-              'Réservation terminée.'
+            'Réservation terminée.'
           );
           this.switchUserOrPro();
         },
@@ -436,7 +514,7 @@ export class CalendarComponent implements OnInit {
 
           this.toastr.success(
             this.translate.instant('SUCCESS.MARKED_NO_SHOW_CLIENT') ||
-              'Client marqué absent.'
+            'Client marqué absent.'
           );
           this.switchUserOrPro();
         },
@@ -483,7 +561,7 @@ export class CalendarComponent implements OnInit {
                   );
                   this.toastr.success(
                     this.translate.instant('SUCCESS.BOOKING_DELETED') ||
-                      'Réservation supprimée.'
+                    'Réservation supprimée.'
                   );
                   this.switchUserOrPro();
                 },
@@ -511,7 +589,7 @@ export class CalendarComponent implements OnInit {
                     );
                     this.toastr.success(
                       this.translate.instant('SUCCESS.BOOKING_DELETED') ||
-                        'Réservation supprimée.'
+                      'Réservation supprimée.'
                     );
                     this.switchUserOrPro();
                   },
@@ -680,7 +758,7 @@ export class CalendarComponent implements OnInit {
                       );
                       this.toastr.success(
                         this.translate.instant('SUCCESS.MARKED_NO_SHOW_PRO') ||
-                          'Prestataire marqué absent.'
+                        'Prestataire marqué absent.'
                       );
                     },
                     error: (platformTxError: any) => {
@@ -736,7 +814,7 @@ export class CalendarComponent implements OnInit {
         console.log('Code généré sauvegardé :', JSON.stringify(response));
         this.toastr.success(
           this.translate.instant('SUCCESS.CODE_GENERATED') ||
-            'Code généré.'
+          'Code généré.'
         );
         this.switchUserOrPro();
       },
