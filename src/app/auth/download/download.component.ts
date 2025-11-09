@@ -8,8 +8,16 @@ import { environment } from 'src/environments/environment';
 })
 export class DownloadComponent implements OnInit {
     imgStorageUrl: string = environment.imgStorageUrl;
+    lang = 'fr';
 
-    constructor() {}
+    constructor() { }
 
-    ngOnInit() {}
+    ngOnInit() {
+        let langTemp = localStorage.getItem('langue');
+        if (langTemp) {
+            this.lang = langTemp;
+        } else if (langTemp != 'fr' && langTemp != 'en' && langTemp !== 'es') {
+            this.lang = 'en'
+        }
+    }
 }

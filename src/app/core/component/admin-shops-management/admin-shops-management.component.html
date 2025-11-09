@@ -55,6 +55,16 @@
         >
           <i class="fa fa-pencil"></i>
         </button>
+        <button
+          class="btn ban-button"
+          [ngClass]="shop.active ? 'unlocked' : 'locked'"
+          mat-raised-button
+          color="warn"
+          (click)="toggleBlockUser(shop)"
+        >
+          <i *ngIf="shop.active" class="fa fa-ban"></i>
+          <i *ngIf="!shop.active" class="fa fa-check"></i>
+        </button>
       </td>
     </ng-container>
 

@@ -35,7 +35,7 @@ export class AdminClientsManagementComponent implements OnInit, AfterViewInit {
 
   // Recherche globale
   searchTerm: string = '';
-  roles: string[] = ['user', 'entreprise', 'professionnel', 'admin'];
+  roles: string[] = ['user', 'entreprise', 'professionnel', 'admin', 'boss'];
 
   constructor(
     private userService: UserService,
@@ -139,31 +139,26 @@ export class AdminClientsManagementComponent implements OnInit, AfterViewInit {
   // 🚫 Bloquer / Débloquer un utilisateur
   // ------------------------------------------------------
   toggleBlockUser(user: any) {
-    const action = user.isBlocked ? 'Débloquer' : 'Bloquer';
-    if (confirm(`${action} cet utilisateur ?`)) {
-      const updated = { ...user, isBlocked: !user.isBlocked };
+    const updated = { ...user, active: !user.active };
 
-      this.userService.update(updated).subscribe({
-        next: (data: any) => {
-          console.log(`Utilisateur ${updated.isBlocked ? 'bloqué' : 'débloqué'} :`, data);
-
-          // MAJ locale de la ligne pour reflecter l’état
-          const idx = this.users.findIndex(u => u._id === updated._id);
-          if (idx > -1) {
-            this.users[idx] = data;
-            this.dataSource.data = [...this.users];
-          }
-
-          this.toastr.success(
-            this.translate.instant('SUCCESS.USERUPDATED') || 'Utilisateur mis à jour.'
-          );
-        },
-        error: (err) => {
-          console.error('Erreur lors du blocage/déblocage utilisateur :', err);
-          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+    this.userService.update(updated).subscribe({
+      next: (data: any) => {
+        // MAJ locale de la ligne pour reflecter l’état
+        const idx = this.users.findIndex(u => u._id === updated._id);
+        if (idx > -1) {
+          this.users[idx] = data;
+          this.dataSource.data = [...this.users];
         }
-      });
-    }
+
+        this.toastr.success(
+          this.translate.instant('SUCCESS.USERUPDATED') || 'Utilisateur mis à jour.'
+        );
+      },
+      error: (err) => {
+        console.error('Erreur lors du blocage/déblocage utilisateur :', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
+    });
   }
 
   // ------------------------------------------------------
@@ -172,7 +167,7 @@ export class AdminClientsManagementComponent implements OnInit, AfterViewInit {
   closeModal() {
     this.modalOpen = false;
   }
-  
+
   // ------------------------------------------------------
   // 💾 Sauvegarder les changements du formulaire modal
   // ------------------------------------------------------
