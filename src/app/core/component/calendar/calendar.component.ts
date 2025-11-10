@@ -9,8 +9,6 @@ import { FinancialService } from '../../services/financial.service';
 import { TransactionService } from '../../services/transaction.service';
 import { UserService } from '../../services/user.service';
 import { InvoiceService } from '../../services/invoice.service';
-
-// ✅ AjoutsizyGlam : toasts
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -31,7 +29,7 @@ export class CalendarComponent implements OnInit {
   orders: any[] = [];
   selectedOrderType: 'upcoming' | 'past' | 'cancelled' = 'upcoming';
   imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
-  imageLoaded: { [key: string]: boolean } = {}; // Suivi du chargement des images
+  imageLoaded: { [key: string]: boolean } = {};
   availableActions: string[] = [];
   showReviewModal = false;
   selectedBooking: any = null;
@@ -52,12 +50,21 @@ export class CalendarComponent implements OnInit {
     private stripeService: StripeService,
     private transactionService: TransactionService,
     private financialService: FinancialService,
-
-    // ✅izyGlam
     private toastr: ToastrService
   ) {
-    // Définir la langue par défaut
-    this.translate.setDefaultLang('en');
+    // ⬇️ Par défaut FR
+    this.translate.setDefaultLang('fr');
+
+    // ⬇️ Utilise la langue stockée si présente (fr/en)
+    const lang = this.storedLangue === 'en' ? 'en' : 'fr';
+    this.translate.use(lang);
+  }
+
+  // ⬇️ Getter utilisé par le DatePipe (4ᵉ param `locale`)
+  get currentLocale(): string {
+    const raw = localStorage.getItem('langue') || 'fr';
+    const lang = raw.replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
+    return lang === 'en' ? 'en-US' : 'fr-FR';
   }
 
   // ------------------------------------------------------
@@ -84,14 +91,10 @@ export class CalendarComponent implements OnInit {
     this.selectedBooking = null;
   }
 
-
-  // ====== À ADAPTER ICI SI BESOIN ======
-  /** Dis-moi comment récupérer la date de la commande. */
+  /** Renvoie la Date de la commande */
   private getOrderDate(order: any): Date {
-    return new Date(order.start);  // cohérent avec processOrders()
+    return new Date(order.start);
   }
-
-  // =====================================
 
   /** Ramène une Date à minuit (début de journée) */
   private startOfDay(d: Date): Date {
@@ -123,42 +126,29 @@ export class CalendarComponent implements OnInit {
       }
     }
 
-    // Tri des items à l’intérieur de chaque jour
     const groups: any[] = Array.from(map.entries()).map(
       ([dateKey, { date, items }]) => ({
         dateKey,
         date,
         items: items.sort(
-          (a, b) =>
-            this.getOrderDate(a).getTime() - this.getOrderDate(b).getTime()
+          (a, b) => this.getOrderDate(a).getTime() - this.getOrderDate(b).getTime()
         ),
       })
     );
 
-    // Tri des jours (chronologique)
     groups.sort((a, b) =>
-      ascending
-        ? a.date.getTime() - b.date.getTime()
-        : b.date.getTime() - a.date.getTime()
+      ascending ? a.date.getTime() - b.date.getTime() : b.date.getTime() - a.date.getTime()
     );
 
     return groups;
   }
 
-  // Getters pratiques : à chaque changement de tes tableaux, le groupage est à jour
-  get upcomingGrouped(): any[] {
-    // à venir -> ordre croissant
-    return this.groupOrders(this.upcomingOrders, true);
-  }
-  get pastGrouped(): any[] {
-    // passées -> garde aussi croissant (change à false si tu préfères récentes d’abord)
-    return this.groupOrders(this.pastOrders, true);
-  }
-  get cancelledGrouped(): any[] {
-    return this.groupOrders(this.cancelledOrders, true);
-  }
+  // Getters pratiques
+  get upcomingGrouped(): any[] { return this.groupOrders(this.upcomingOrders, true); }
+  get pastGrouped(): any[] { return this.groupOrders(this.pastOrders, true); }
+  get cancelledGrouped(): any[] { return this.groupOrders(this.cancelledOrders, true); }
 
-  // trackBy pour performance
+  // trackBy
   trackById = (_: number, o: any) => o?._id ?? o?.id ?? _;
   trackByDate = (_: number, g: any) => g.dateKey;
 
@@ -210,8 +200,7 @@ export class CalendarComponent implements OnInit {
         (response) => {
           console.log('Booking accepted response:', JSON.stringify(response));
           this.toastr.success(
-            this.translate.instant('SUCCESS.BOOKING_ACCEPTED') ||
-            'Réservation acceptée.'
+            this.translate.instant('SUCCESS.BOOKING_ACCEPTED') || 'Réservation acceptée.'
           );
           this.switchUserOrPro();
         },
@@ -266,32 +255,20 @@ export class CalendarComponent implements OnInit {
             .processRefund(order._id, 'provider-cancel')
             .subscribe({
               next: (refundResponse: any) => {
-                console.log(
-                  'Remboursement (provider-cancel) via FinancialService :',
-                  refundResponse
-                );
+                console.log('Remboursement (provider-cancel) via FinancialService :', refundResponse);
                 this.toastr.success(
-                  this.translate.instant('SUCCESS.BOOKING_REFUSED') ||
-                  'Réservation refusée.'
+                  this.translate.instant('SUCCESS.BOOKING_REFUSED') || 'Réservation refusée.'
                 );
                 this.switchUserOrPro();
               },
               error: (refundError: any) => {
-                console.error(
-                  'Erreur remboursement FinancialService :',
-                  refundError
-                );
-                this.showCustomToast(
-                  this.translate.instant('ERROR.GENERIC_ERROR')
-                );
+                console.error('Erreur remboursement FinancialService :', refundError);
+                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
               },
             });
         },
         error: (error: any) => {
-          console.error(
-            'Erreur lors de la mise à jour du booking (refused) :',
-            JSON.stringify(error)
-          );
+          console.error('Erreur lors de la mise à jour du booking (refused) :', JSON.stringify(error));
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
         },
       });
@@ -301,12 +278,13 @@ export class CalendarComponent implements OnInit {
   // 🧮 Tri des commandes (à venir / passées / annulées)
   // ------------------------------------------------------
   processOrders(bookings: any[]) {
-    const today = new Date().toLocaleDateString();
+    const today = new Date().toLocaleDateString(this.currentLocale);
 
     // Mise à jour des propriétés de date et initialisation du chargement des images
     bookings.forEach((order) => {
-      order.orderDate = new Date(order.start).toLocaleDateString();
-      order.orderTime = new Date(order.start).toLocaleTimeString();
+      const d = new Date(order.start);
+      order.orderDate = d.toLocaleDateString(this.currentLocale);
+      order.orderTime = d.toLocaleTimeString(this.currentLocale);
       if (order._id) {
         this.imageLoaded[order._id] = false;
       }
@@ -314,16 +292,11 @@ export class CalendarComponent implements OnInit {
 
     const upcomingStatuses = ['pending', 'accepted'];
     const pastStatuses = ['finished'];
-    const cancelStatuses = [
-      'deleted',
-      'refused',
-      'no-show-client',
-      'no-show-pro',
-    ];
+    const cancelStatuses = ['deleted', 'refused', 'no-show-client', 'no-show-pro'];
 
     // Commandes annulées
     this.cancelledOrders = bookings.filter((order) => {
-      if (new Date(order.start).toLocaleDateString() === today) {
+      if (new Date(order.start).toLocaleDateString(this.currentLocale) === today) {
         return cancelStatuses.includes(order.status);
       }
       return cancelStatuses.includes(order.status);
@@ -331,7 +304,7 @@ export class CalendarComponent implements OnInit {
 
     // Commandes à venir
     this.upcomingOrders = bookings.filter((order) => {
-      if (new Date(order.start).toLocaleDateString() === today) {
+      if (new Date(order.start).toLocaleDateString(this.currentLocale) === today) {
         return upcomingStatuses.includes(order.status);
       }
       return new Date(order.end) > new Date() && upcomingStatuses.includes(order.status);
@@ -339,7 +312,7 @@ export class CalendarComponent implements OnInit {
 
     // Commandes passées
     this.pastOrders = bookings.filter((order) => {
-      if (new Date(order.start).toLocaleDateString() === today) {
+      if (new Date(order.start).toLocaleDateString(this.currentLocale) === today) {
         return pastStatuses.includes(order.status);
       }
       return new Date(order.end) <= new Date() && pastStatuses.includes(order.status);
@@ -390,8 +363,7 @@ export class CalendarComponent implements OnInit {
     try {
       this.invoiceService.downloadInvoice(order);
       this.toastr.success(
-        this.translate.instant('SUCCESS.INVOICE_DOWNLOADED') ||
-        'Facture téléchargée.'
+        this.translate.instant('SUCCESS.INVOICE_DOWNLOADED') || 'Facture téléchargée.'
       );
     } catch (error) {
       console.error('❌ Erreur downloadInvoice :', error);
@@ -413,15 +385,10 @@ export class CalendarComponent implements OnInit {
         if (response.confirmed) {
           booking.proCodeConfirmed = true;
           console.log('Code confirmé pour booking', booking._id);
-          this.toastr.success(
-            this.translate.instant('SUCCESS.CODE_CONFIRMED') ||
-            'Code confirmé.'
-          );
+          this.toastr.success(this.translate.instant('SUCCESS.CODE_CONFIRMED') || 'Code confirmé.');
         } else {
           console.log('Code invalide pour booking', booking._id);
-          this.showCustomToast(
-            this.translate.instant('ERROR.INVALID_CODE') || 'Code invalide.'
-          );
+          this.showCustomToast(this.translate.instant('ERROR.INVALID_CODE') || 'Code invalide.');
         }
       },
       (error) => {
@@ -442,8 +409,7 @@ export class CalendarComponent implements OnInit {
         (response) => {
           console.log('Booking finished response :', JSON.stringify(response));
           this.toastr.success(
-            this.translate.instant('SUCCESS.BOOKING_FINISHED') ||
-            'Réservation terminée.'
+            this.translate.instant('SUCCESS.BOOKING_FINISHED') || 'Réservation terminée.'
           );
           this.switchUserOrPro();
         },
@@ -463,39 +429,22 @@ export class CalendarComponent implements OnInit {
       .updateBookingStatus(order._id, 'no-show-client', this.storedLangue)
       .subscribe(
         (response) => {
-          console.log(
-            'Booking no-show-client response :',
-            JSON.stringify(response)
-          );
+          console.log('Booking no-show-client response :', JSON.stringify(response));
 
-          // Mise à jour des transactions liées
           this.transactionService.getAll().subscribe(
             (transactions: any[]) => {
-              const matchingTransactions = transactions.filter(
-                (tx) => tx.idBooking === order._id
-              );
-              console.log(
-                'Transactions trouvées pour ce booking :',
-                matchingTransactions
-              );
+              const matchingTransactions = transactions.filter((tx) => tx.idBooking === order._id);
+              console.log('Transactions trouvées pour ce booking :', matchingTransactions);
               if (matchingTransactions.length > 0) {
                 matchingTransactions.forEach((tx: any) => {
                   tx.status = 'completed';
                   this.transactionService.update(tx).subscribe(
                     (updatedTx) => {
-                      console.log(
-                        'Transaction mise à jour (no-show-client) :',
-                        JSON.stringify(updatedTx)
-                      );
+                      console.log('Transaction mise à jour (no-show-client) :', JSON.stringify(updatedTx));
                     },
                     (error) => {
-                      console.error(
-                        'Erreur MAJ transaction (no-show-client) :',
-                        JSON.stringify(error)
-                      );
-                      this.showCustomToast(
-                        this.translate.instant('ERROR.GENERIC_ERROR')
-                      );
+                      console.error('Erreur MAJ transaction (no-show-client) :', JSON.stringify(error));
+                      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                     }
                   );
                 });
@@ -504,25 +453,18 @@ export class CalendarComponent implements OnInit {
               }
             },
             (error) => {
-              console.error(
-                'Erreur lors de la récupération des transactions :',
-                JSON.stringify(error)
-              );
+              console.error('Erreur lors de la récupération des transactions :', JSON.stringify(error));
               this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
             }
           );
 
           this.toastr.success(
-            this.translate.instant('SUCCESS.MARKED_NO_SHOW_CLIENT') ||
-            'Client marqué absent.'
+            this.translate.instant('SUCCESS.MARKED_NO_SHOW_CLIENT') || 'Client marqué absent.'
           );
           this.switchUserOrPro();
         },
         (error) => {
-          console.error(
-            'Erreur MAJ booking (no-show-client) :',
-            JSON.stringify(error)
-          );
+          console.error('Erreur MAJ booking (no-show-client) :', JSON.stringify(error));
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
         }
       );
@@ -541,39 +483,28 @@ export class CalendarComponent implements OnInit {
           console.log('Booking update response:', JSON.stringify(response));
           console.log('DELETE OK');
 
-          // Différence en heures (moment.js)
           const bookingStart = moment(order.start);
           const now = moment();
           const diffHours = bookingStart.diff(now, 'hours');
-          console.log(
-            `Différence en heures entre maintenant et le début du booking : ${diffHours}`
-          );
+          console.log(`Différence en heures entre maintenant et le début du booking : ${diffHours}`);
 
           if (diffHours >= 24) {
-            // Remboursement complet
             this.financialService
               .processRefund(order._id, 'customer-cancel-greater-than-24')
               .subscribe({
                 next: (refundResponse: any) => {
-                  console.log(
-                    'Remboursement complet via FinancialService:',
-                    refundResponse
-                  );
+                  console.log('Remboursement complet via FinancialService:', refundResponse);
                   this.toastr.success(
-                    this.translate.instant('SUCCESS.BOOKING_DELETED') ||
-                    'Réservation supprimée.'
+                    this.translate.instant('SUCCESS.BOOKING_DELETED') || 'Réservation supprimée.'
                   );
                   this.switchUserOrPro();
                 },
                 error: (refundError: any) => {
                   console.error('Erreur remboursement complet:', refundError);
-                  this.showCustomToast(
-                    this.translate.instant('ERROR.GENERIC_ERROR')
-                  );
+                  this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                 },
               });
           } else {
-            // Confirmation remboursement partiel
             if (
               window.confirm(
                 "Attention, si vous continuez, vous ne serez remboursé qu'à 50% du montant payé. Voulez-vous confirmer ?"
@@ -583,24 +514,15 @@ export class CalendarComponent implements OnInit {
                 .processRefund(order._id, 'customer-cancel-less-than-24')
                 .subscribe({
                   next: (refundResponse: any) => {
-                    console.log(
-                      'Remboursement partiel via FinancialService:',
-                      refundResponse
-                    );
+                    console.log('Remboursement partiel via FinancialService:', refundResponse);
                     this.toastr.success(
-                      this.translate.instant('SUCCESS.BOOKING_DELETED') ||
-                      'Réservation supprimée.'
+                      this.translate.instant('SUCCESS.BOOKING_DELETED') || 'Réservation supprimée.'
                     );
                     this.switchUserOrPro();
                   },
                   error: (refundError: any) => {
-                    console.error(
-                      'Erreur remboursement partiel:',
-                      refundError
-                    );
-                    this.showCustomToast(
-                      this.translate.instant('ERROR.GENERIC_ERROR')
-                    );
+                    console.error('Erreur remboursement partiel:', refundError);
+                    this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                   },
                 });
             } else {
@@ -609,10 +531,7 @@ export class CalendarComponent implements OnInit {
           }
         },
         error: (error: any) => {
-          console.error(
-            'Erreur lors de la mise à jour du booking (deleted) :',
-            JSON.stringify(error)
-          );
+          console.error('Erreur lors de la mise à jour du booking (deleted) :', JSON.stringify(error));
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
         },
       });
@@ -659,47 +578,26 @@ export class CalendarComponent implements OnInit {
       .updateBookingStatus(order._id, 'no-show-pro', this.storedLangue)
       .subscribe(
         (response) => {
-          console.log(
-            'Booking no-show-pro response :',
-            JSON.stringify(response)
-          );
+          console.log('Booking no-show-pro response :', JSON.stringify(response));
 
-          // Remboursement Stripe
           this.stripeService.refundPayment(order.paymentIntentId).subscribe({
             next: (refundResponse: any) => {
-              console.log(
-                'Remboursement complet réussi via Stripe :',
-                refundResponse
-              );
+              console.log('Remboursement complet réussi via Stripe :', refundResponse);
 
-              // MAJ des transactions → statut refunded
               this.transactionService.getAll().subscribe(
                 (transactions: any[]) => {
-                  const matchingTransactions = transactions.filter(
-                    (tx) => tx.idBooking === order._id
-                  );
-                  console.log(
-                    'Transactions trouvées pour ce booking :',
-                    matchingTransactions
-                  );
+                  const matchingTransactions = transactions.filter((tx) => tx.idBooking === order._id);
+                  console.log('Transactions trouvées pour ce booking :', matchingTransactions);
                   if (matchingTransactions.length > 0) {
                     matchingTransactions.forEach((tx: any) => {
                       tx.status = 'refunded';
                       this.transactionService.update(tx).subscribe(
                         (updatedTx) => {
-                          console.log(
-                            'Transaction MAJ pour remboursement :',
-                            JSON.stringify(updatedTx)
-                          );
+                          console.log('Transaction MAJ pour remboursement :', JSON.stringify(updatedTx));
                         },
                         (error) => {
-                          console.error(
-                            'Erreur MAJ transaction (refund) :',
-                            JSON.stringify(error)
-                          );
-                          this.showCustomToast(
-                            this.translate.instant('ERROR.GENERIC_ERROR')
-                          );
+                          console.error('Erreur MAJ transaction (refund) :', JSON.stringify(error));
+                          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                         }
                       );
                     });
@@ -708,15 +606,11 @@ export class CalendarComponent implements OnInit {
                   }
                 },
                 (error) => {
-                  console.error(
-                    'Erreur récupération des transactions :',
-                    JSON.stringify(error)
-                  );
+                  console.error('Erreur récupération des transactions :', JSON.stringify(error));
                   this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                 }
               );
 
-              // Pénalité additionnelle (commission + 10%)
               const totalAmount = parseFloat(order.price);
               const commission = order.commission ? parseFloat(order.commission) : 0;
               const additionalPenalty = totalAmount * 0.1;
@@ -726,57 +620,39 @@ export class CalendarComponent implements OnInit {
                 userProId: order.userProId,
                 type: 'debit',
                 amount: totalPenalty,
-                description:
-                  'Pénalité pour no-show-pro : commission + 10% additionnels',
+                description: 'Pénalité pour no-show-pro : commission + 10% additionnels',
                 status: 'completed',
                 idBooking: order._id,
               };
 
               this.transactionService.create(penaltyTransactionPayload).subscribe({
                 next: (penaltyResponse: any) => {
-                  console.log(
-                    'Transaction de pénalité créée pour le prestataire :',
-                    penaltyResponse
-                  );
+                  console.log('Transaction de pénalité créée pour le prestataire :', penaltyResponse);
 
-                  // Crédit plateforme
                   const platformTransactionPayload = {
                     userProId: 'platform',
                     type: 'credit',
                     amount: totalPenalty,
-                    description:
-                      'Crédit de pénalité suite à no-show-pro (commission + 10% additionnels)',
+                    description: 'Crédit de pénalité suite à no-show-pro (commission + 10% additionnels)',
                     status: 'completed',
                     idBooking: order._id,
                   };
 
                   this.transactionService.create(platformTransactionPayload).subscribe({
                     next: (platformTxResponse: any) => {
-                      console.log(
-                        'Transaction de crédit pour la plateforme :',
-                        platformTxResponse
-                      );
+                      console.log('Transaction de crédit pour la plateforme :', platformTxResponse);
                       this.toastr.success(
-                        this.translate.instant('SUCCESS.MARKED_NO_SHOW_PRO') ||
-                        'Prestataire marqué absent.'
+                        this.translate.instant('SUCCESS.MARKED_NO_SHOW_PRO') || 'Prestataire marqué absent.'
                       );
                     },
                     error: (platformTxError: any) => {
-                      console.error(
-                        'Erreur création transaction plateforme :',
-                        platformTxError
-                      );
-                      this.showCustomToast(
-                        this.translate.instant('ERROR.GENERIC_ERROR')
-                      );
+                      console.error('Erreur création transaction plateforme :', platformTxError);
+                      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                     },
                   });
                 },
                 error: (penaltyError: any) => {
-                  console.error(
-                    'Erreur création transaction pénalité :',
-                    penaltyError
-                  );
+                  console.error('Erreur création transaction pénalité :', penaltyError);
                   this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                 },
               });
@@ -787,14 +663,10 @@ export class CalendarComponent implements OnInit {
             },
           });
 
-          // Rafraîchir la vue
           this.switchUserOrPro();
         },
         (error) => {
-          console.error(
-            'Erreur MAJ booking (no-show-pro) :',
-            JSON.stringify(error)
-          );
+          console.error('Erreur MAJ booking (no-show-pro) :', JSON.stringify(error));
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
         }
       );
@@ -805,17 +677,12 @@ export class CalendarComponent implements OnInit {
   // ------------------------------------------------------
   generateCode(booking: any) {
     booking.generatedCode = Math.floor(100000 + Math.random() * 900000);
-    console.log(
-      `Code généré pour le booking ${booking._id}: ${booking.generatedCode}`
-    );
+    console.log(`Code généré pour le booking ${booking._id}: ${booking.generatedCode}`);
 
     this.bookingService.update(booking).subscribe(
       (response) => {
         console.log('Code généré sauvegardé :', JSON.stringify(response));
-        this.toastr.success(
-          this.translate.instant('SUCCESS.CODE_GENERATED') ||
-          'Code généré.'
-        );
+        this.toastr.success(this.translate.instant('SUCCESS.CODE_GENERATED') || 'Code généré.');
         this.switchUserOrPro();
       },
       (error) => {
@@ -830,22 +697,14 @@ export class CalendarComponent implements OnInit {
   // ------------------------------------------------------
   getStatusLabel(status: string): string {
     switch (status) {
-      case 'pending':
-        return '⏳ En attente';
-      case 'accepted':
-        return '✅ Confirmée';
-      case 'refused':
-        return '❌ Refusée';
-      case 'cancelled':
-        return '❌ Annulée';
-      case 'finished':
-        return '✅ Terminée';
-      case 'no-show-client':
-        return '🚫 Client absent';
-      case 'no-show-pro':
-        return '🚫 Pro absent';
-      default:
-        return status;
+      case 'pending': return '⏳ En attente';
+      case 'accepted': return '✅ Confirmée';
+      case 'refused': return '❌ Refusée';
+      case 'cancelled': return '❌ Annulée';
+      case 'finished': return '✅ Terminée';
+      case 'no-show-client': return '🚫 Client absent';
+      case 'no-show-pro': return '🚫 Pro absent';
+      default: return status;
     }
   }
 
@@ -854,7 +713,6 @@ export class CalendarComponent implements OnInit {
   // ------------------------------------------------------
   getAvailableActions(order: any): string[] {
     const status = order?.status;
-
     const actionsPerStatus: { [key: string]: string[] } = {
       pending: ['invoice', 'cancel'],
       accepted: ['cancel', 'invoice'],
@@ -864,7 +722,6 @@ export class CalendarComponent implements OnInit {
       'no-show-client': ['invoice', 'support'],
       'no-show-pro': ['invoice', 'support'],
     };
-
     return actionsPerStatus[status] || [];
   }
 
@@ -880,10 +737,9 @@ export class CalendarComponent implements OnInit {
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur styliséizyGlam (centralisé)
+  // ✨ Toast d’erreur centralisé
   // ------------------------------------------------------
   private showCustomToast(message: string) {
-    // Standard : erreurs → toastr.error
     this.toastr.error(message);
   }
 }

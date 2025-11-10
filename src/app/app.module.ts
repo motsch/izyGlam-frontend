@@ -45,6 +45,17 @@ import { WebSocketService } from './core/services/websocket.service';
 import { MQTT_SERVICE_OPTIONS, MqttModule } from 'ngx-mqtt';
 import { ToastrModule } from 'ngx-toastr';
 import { RegisterDrawerDirective } from './core/directives/register-drawer.directive';
+import localeEn from '@angular/common/locales/en';
+
+registerLocaleData(localeFr, 'fr-FR');
+registerLocaleData(localeEn, 'en-US');
+
+// ⬇️ EN par défaut, sauf si localStorage.langue = 'fr'
+export function defaultLocaleFactory(): string {
+  const raw = localStorage.getItem('langue') || 'en';
+  const lang = raw.replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
+  return lang === 'fr' ? 'fr-FR' : 'en-US';
+}
 
 @NgModule({
     declarations: [AppComponent, RegisterDrawerDirective, DragScrollDirective],

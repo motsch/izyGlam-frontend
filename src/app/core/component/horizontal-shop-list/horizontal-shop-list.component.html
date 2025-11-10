@@ -3,27 +3,49 @@
     <h3>{{ title }}</h3>
     <h6>{{ subtitle }}</h6>
   </div>
+
   <div class="horizontal-scroll-buttons">
     <button class="scroll-button left" (click)="scrollLeft()">&#10094;</button>
     <button class="scroll-button right" (click)="scrollRight()">&#10095;</button>
   </div>
+
   <div class="horizontal-scroll-wrapper">
     <div #scrollContainerAds class="scrollable-shop-list" appDragScroll>
       <ng-container *ngFor="let item of displayItems">
         <!-- Shop -->
-        <div class="shop-card-wrapper track-card" [ngClass]="!pubActivated ? 'margin-left-50' : ''"
-          *ngIf="item.type === 'shop'" [attr.data-pub-id]="item.data._id" data-type="shop">
-          <app-round-shop-card [shop]="item.data" [me]="me" [promoVisible]="item.data.promo?.active"
-            (loaded)="onShopLoaded(item.data._id)"></app-round-shop-card>
+        <div
+          class="shop-card-wrapper track-card"
+          [ngClass]="!pubActivated ? 'margin-left-50' : ''"
+          *ngIf="item.type === 'shop'"
+          [attr.data-pub-id]="item.data._id"
+          data-type="shop"
+        >
+          <app-round-shop-card
+            [shop]="item.data"
+            [me]="me"
+            [promoVisible]="item.data?.promo?.active"
+            (loaded)="onShopLoaded(item.data._id)"
+          ></app-round-shop-card>
         </div>
+
         <!-- Pub -->
-        <div class="shop-card-wrapper margin-right-50 margin-left-10 pub-card track-card"
-          *ngIf="pubActivated && item.type === 'ad'" [attr.data-pub-id]="item.data._id" data-type="ad">
-          <a [href]="item.data.lien" target="_blank">
-            <img [src]="imgStorageUrl + 'uploads/images/pub/' + item.data.image" alt="Publicité" class="shop-ad-banner"
-              (click)="onAdClick(item.data)" />
+        <div
+          class="shop-card-wrapper pub-card track-card"
+          *ngIf="pubActivated && item.type === 'ad'"
+          [attr.data-pub-id]="item.data._id"
+          data-type="pub"
+        >
+          <a [href]="item.data?.lien" target="_blank" rel="noopener">
+            <img
+              [src]="imgStorageUrl + 'uploads/images/pub/' + item.data?.image"
+              alt="Publicité"
+              class="shop-ad-banner"
+              (click)="onAdClick(item.data)"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
-          <div class="margin-left-20">{{"SPONSORS.SPONSORISED" | translate}}</div>
+          <div class="sponsored-label">{{ 'SPONSORS.SPONSORISED' | translate }}</div>
         </div>
       </ng-container>
     </div>
