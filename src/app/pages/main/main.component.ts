@@ -452,8 +452,20 @@ export class MainComponent implements OnInit, AfterViewInit {
     return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   }
 
+  // Helper générique : garde un seul shop par _id (le dernier rencontré "gagne")
+  private uniqById<T extends { _id?: string }>(items: T[]): T[] {
+    const map = new Map<string, T>();
+    for (const it of items || []) {
+      if (!it || !it._id) continue;
+      // Si le même _id revient avec des props différentes, on fusionne en
+      // privilégiant les dernières valeurs (celles de la catégorie la plus récente).
+      map.set(it._id, { ...(map.get(it._id) || {}), ...it });
+    }
+    return Array.from(map.values());
+  }
+
   // ---------------------------------------------------
-  // 🏪 Charge les shops pour le CP sélectionné
+  // 🏪 Charge les shops pour le CP sélectionné (sans doublons)
   // ---------------------------------------------------
   private loadShops() {
     // Annule l'abonnement précédent (évite les chevauchements)
@@ -478,40 +490,52 @@ export class MainComponent implements OnInit, AfterViewInit {
       .getShopsByPostalCodes([this.selectedPostalCode], this.me.country)
       .subscribe({
         next: (categories: any) => {
-          // Si une requête plus récente a démarré, on ignore cette réponse
           if (reqId !== this.shopsReqId) return;
 
-          const favoriteShops = this.me.favoriteShops || [];
+          const favoriteShops: string[] = this.me.favoriteShops || [];
 
-          const adecouvrir = (categories.discover || []).map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
-          const apprecier = (categories.appreciated || []).map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
-          const malin = (categories.smart || []).map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
-          const top10 = (categories.top10 || []).map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
+          // Petit utilitaire pour mapper le flag favori après déduplication
+          const mapIsFavorite = (arr: any[]) =>
+            arr.map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
 
-          // ✅ Mets à jour les tableaux d’entrées des carrousels
+          // 1) Dédup par catégorie
+          const adecouvrir = mapIsFavorite(this.uniqById(categories?.discover || []));
+          const apprecier = mapIsFavorite(this.uniqById(categories?.appreciated || []));
+          const malin = mapIsFavorite(this.uniqById(categories?.smart || []));
+          const top10 = mapIsFavorite(this.uniqById(categories?.top10 || []));
+
+          // ✅ Mets à jour les tableaux d’entrées des carrousels (dédupliqués)
           this.filteredItemsAdecouvrir = adecouvrir;
           this.filteredItemsApprecier = apprecier;
           this.filteredItemsMalin = malin;
           this.filteredItemsTop10 = top10;
 
-          // ✅ La section "ALL" doit contenir TOUTES les catégories (pas seulement discover)
-          this.shops = [...adecouvrir, ...apprecier, ...malin, ...top10];
+          // 2) Construit "ALL" puis dédup globalement
+          this.shops = this.uniqById([
+            ...adecouvrir,
+            ...apprecier,
+            ...malin,
+            ...top10,
+          ]);
 
-          // ✅ Toutes les promos, peu importe la catégorie
-          this.promotedShops = this.shops.filter((x: any) => x.promo?.active === true);
+          // 3) Promos sans doublons
+          this.promotedShops = this.uniqById(
+            this.shops.filter((x: any) => x?.promo?.active === true)
+          );
 
           this.loading = false;
           // Si tes enfants utilisent OnPush :
           // this.cd.markForCheck();
         },
         error: (err) => {
-          if (reqId !== this.shopsReqId) return; // on ignore si obsolète
+          if (reqId !== this.shopsReqId) return;
           console.error('Erreur lors du chargement des shops par code postal :', err);
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
           this.loading = false;
         }
       });
   }
+
 
 
   // ---------------------------------------------------
