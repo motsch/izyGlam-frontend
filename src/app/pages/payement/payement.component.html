@@ -36,7 +36,7 @@
                   <label class="address-label">
                     <input type="radio" [(ngModel)]="bill.address" name="address" [value]="address._id" />
                     <div class="address-text">
-                      <strong>Adresse {{ i + 1 }}</strong><br />
+                      <strong>{{"ADDRESS_MODAL.ADRESSE" | translate}} {{ i + 1 }}</strong><br />
                       {{ address.street }}, {{ address.city }}
                     </div>
                   </label>

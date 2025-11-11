@@ -76,18 +76,29 @@
 }
 
 .avatar {
+  --size: 48px;
+  /* ajuste la taille ici */
   background-color: #ff4081;
   color: #ffffff;
-  width: 48px;
-  height: 48px;
+
+  inline-size: var(--size);
+  /* largeur logique */
+  aspect-ratio: 1 / 1;
+  /* carré => cercle avec border-radius */
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  display: grid;
+  /* centrage du texte */
+  place-items: center;
+
   font-weight: 600;
   font-size: 18px;
   margin-right: 16px;
+
+  flex: 0 0 auto;
+  /* NE PAS se faire écraser en flex */
 }
+
 
 .name {
   font-size: 17px;
@@ -214,8 +225,8 @@
 input[type="radio"] {
   margin-left: 20px;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 12px !important;
+  height: 12px !important;
   border: 2px solid #d1d1d6;
   border-radius: 50%;
   background: white;
@@ -473,6 +484,7 @@ input[type="radio"]:checked {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

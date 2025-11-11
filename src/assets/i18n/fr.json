@@ -777,7 +777,10 @@
     "SAUDI_ARABIA": "Arabie saoudite"
   },
   "ADDRESS_MODAL": {
+    "CHOOSE_COUNTRY": "Choisissez un pays",
+    "CHOOSE_CITY": "Choisissez une ville",
     "ADDRESS": "Mes adresses",
+    "COUNTRY": "Pays",
     "ADDRESS_MODIFICATION": "Modification d'adresse",
     "STREET": "Rue",
     "CITY": "Ville",

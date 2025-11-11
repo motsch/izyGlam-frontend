@@ -55,8 +55,8 @@ export class AddressModalComponent implements AfterViewChecked, OnInit {
 
   // 🌍 Sélecteurs pays/ville/CP
   selectedCountry = 'France';
-  selectedCity: any | undefined = undefined;
-  availableCountries = ['France'];
+  selectedCity: any = {};
+  availableCountries = ['France']
   availableCities: any[] = [];
   postalCode: string = '';
 
