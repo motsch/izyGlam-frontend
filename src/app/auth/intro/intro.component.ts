@@ -55,7 +55,7 @@ export class IntroComponent implements OnInit, AfterViewInit {
   previousProposition = this.propositions[0];
   propositionIndex = 0;
   currentKey = 0;
-  playbackRate = 0.9; // Vitesse de lecture
+  playbackRate = 1; // Vitesse de lecture
   textVisible = true;
 
   streetError = false;
