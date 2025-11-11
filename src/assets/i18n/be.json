@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Мае адрасы",
+    "ADDRESS_MODIFICATION": "Змяненне адраса",
+    "STREET": "Вуліца",
+    "CITY": "Горад",
+    "CP": "Паштовы індэкс",
+    "CREATE": "Стварыць",
+    "BACK": "Назад",
+    "CHANGE": "Змяніць",
+    "CLOSE": "Закрыць"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Цырульнік",
-    "NAILTECHNICIAN": "Майстар манікюру",
+    "NAILTECHNICIAN": "Майстар па манікюры",
     "MAKEUP": "Візажыст",
-    "WAXING": "Касметолаг (ваксінг)",
-    "FACIAL": "Дагляд за тварам",
+    "WAXING": "Касметолаг па эпіляцыі",
+    "FACIAL": "Дагляд твару",
     "MASSAGE": "Масажыст",
-    "EYELASH": "Нарашчванне вейкаў",
-    "EYEBROW": "Бровы",
-    "TANNING": "Загар",
-    "ACUPUNCTURE": "Акупунктура",
-    "OTHER": "Іншае"
+    "EYELASH": "Майстар па нарошчванні вейкаў",
+    "EYEBROW": "Дыетолаг",
+    "TANNING": "Засмага",
+    "BARBER": "Барбер",
+    "ACUPUNCTURE": "Акупунктурыст",
+    "OTHER": "Іншае",
+    "COIFFURE": "Прычоска",
+    "MANUCURE": "Манікюр",
+    "VISAGE": "Твар",
+    "MAQUILLAGE": "Макіяж",
+    "EPILATION": "Эпіляцыя",
+    "BRONZAGE": "Засмага",
+    "PARTUM": "Пасля родаў",
+    "NUTRITION": "Харчаванне",
+    "FITNESS": "Фітнес",
+    "STYLISME": "Стыль",
+    "YOGA": "Рэлаксацыя",
+    "DEVELOPPEMENT": "Самаразвіццё"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Салон дададзены ў абранае",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Сінгапур",
     "EMIRAT_ARABE": "Аб’яднаныя Арабскія Эміраты",
     "SAUDI_ARABIA": "Саудаўская Аравія"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Мае адрасы",
-    "ADDRESS_MODIFICATION": "Змена адраса",
-    "STREET": "Вуліца",
-    "CITY": "Горад",
-    "CP": "Паштовы індэкс",
-    "CREATE": "Стварыць",
-    "BACK": "Назад",
-    "CHANGE": "Змяніць",
-    "CLOSE": "Закрыць"
   },
   "ADMIN_PARAM": {
     "TITLE": "Налады платформы",

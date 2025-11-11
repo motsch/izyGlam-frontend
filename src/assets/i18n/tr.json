@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Adreslerim",
+    "ADDRESS_MODIFICATION": "Adres değişikliği",
+    "STREET": "Sokak",
+    "CITY": "Şehir",
+    "CP": "Posta kodu",
+    "CREATE": "Oluştur",
+    "BACK": "Geri",
+    "CHANGE": "Değiştir",
+    "CLOSE": "Kapat"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Kuaför",
-    "NAILTECHNICIAN": "Manikür",
-    "MAKEUP": "Makyaj uzmanı",
-    "WAXING": "Estetisyen",
-    "FACIAL": "Yüz bakımı",
-    "MASSAGE": "Masaj terapisti",
-    "EYELASH": "Kirpik uzatma",
-    "EYEBROW": "Kaş",
-    "TANNING": "Bronzlaşma",
-    "ACUPUNCTURE": "Akupunktur",
-    "OTHER": "Diğer"
+    "NAILTECHNICIAN": "Tırnak teknisyeni",
+    "MAKEUP": "Makyaj sanatçısı",
+    "WAXING": "Ağda uzmanı",
+    "FACIAL": "Yüz bakımı uzmanı",
+    "MASSAGE": "Masöz / Masör",
+    "EYELASH": "Kirpik uzatma uzmanı",
+    "EYEBROW": "Beslenme uzmanı",
+    "TANNING": "Bronzlaşma uzmanı",
+    "BARBER": "Berber",
+    "ACUPUNCTURE": "Akupunktur uzmanı",
+    "OTHER": "Diğer",
+    "COIFFURE": "Saç tasarımı",
+    "MANUCURE": "Manikür",
+    "VISAGE": "Yüz bakımı",
+    "MAQUILLAGE": "Makyaj",
+    "EPILATION": "Epilasyon",
+    "BRONZAGE": "Bronzlaşma",
+    "PARTUM": "Doğum sonrası bakım",
+    "NUTRITION": "Beslenme",
+    "FITNESS": "Spor / Fitness",
+    "STYLISME": "Stil / Moda tasarımı",
+    "YOGA": "Rahatlama / Yoga",
+    "DEVELOPPEMENT": "Kişisel gelişim"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon favorilere eklendi",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapur",
     "EMIRAT_ARABE": "Birleşik Arap Emirlikleri",
     "SAUDI_ARABIA": "Suudi Arabistan"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Adreslerim",
-    "ADDRESS_MODIFICATION": "Adres düzenleme",
-    "STREET": "Sokak",
-    "CITY": "Şehir",
-    "CP": "Posta kodu",
-    "CREATE": "Oluştur",
-    "BACK": "Geri",
-    "CHANGE": "Düzenle",
-    "CLOSE": "Kapat"
   },
   "ADMIN_PARAM": {
     "TITLE": "Platform ayarları",

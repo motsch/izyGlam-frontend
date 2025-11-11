@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Osoitteeni",
+    "ADDRESS_MODIFICATION": "Osoitteen muokkaus",
+    "STREET": "Katu",
+    "CITY": "Kaupunki",
+    "CP": "Postinumero",
+    "CREATE": "Luo",
+    "BACK": "Takaisin",
+    "CHANGE": "Muokkaa",
+    "CLOSE": "Sulje"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Kampaaja",
-    "NAILTECHNICIAN": "Manikyyri",
-    "MAKEUP": "Meikkaaja",
-    "WAXING": "Kosmetologi",
+    "NAILTECHNICIAN": "Kynsiteknikko",
+    "MAKEUP": "Meikkitaiteilija",
+    "WAXING": "Vahausasiantuntija",
     "FACIAL": "Kasvohoito",
     "MASSAGE": "Hieroja",
-    "EYELASH": "Ripsienpidennykset",
-    "EYEBROW": "Kulmat",
-    "TANNING": "Rusketus",
-    "ACUPUNCTURE": "Akupunktio",
-    "OTHER": "Muu"
+    "EYELASH": "Ripsienpidennysekspertti",
+    "EYEBROW": "Ravitsemusterapeutti",
+    "TANNING": "Ruskettumisen asiantuntija",
+    "BARBER": "Parturi",
+    "ACUPUNCTURE": "Akupunktiohoitaja",
+    "OTHER": "Muu",
+    "COIFFURE": "Kampaustyö",
+    "MANUCURE": "Manikyyri",
+    "VISAGE": "Kasvohoito",
+    "MAQUILLAGE": "Meikki",
+    "EPILATION": "Karvanpoisto",
+    "BRONZAGE": "Ruskettuminen",
+    "PARTUM": "Synnytyksen jälkeinen hoito",
+    "NUTRITION": "Ravitsemus",
+    "FITNESS": "Kuntoilu",
+    "STYLISME": "Stailaus",
+    "YOGA": "Rentoutus",
+    "DEVELOPPEMENT": "Itsensä kehittäminen"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salonki lisätty suosikkeihin",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapore",
     "EMIRAT_ARABE": "Arabiemiirikunnat",
     "SAUDI_ARABIA": "Saudi-Arabia"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Osoitteeni",
-    "ADDRESS_MODIFICATION": "Osoitteen muokkaus",
-    "STREET": "Katu",
-    "CITY": "Kaupunki",
-    "CP": "Postinumero",
-    "CREATE": "Luo",
-    "BACK": "Takaisin",
-    "CHANGE": "Muokkaa",
-    "CLOSE": "Sulje"
   },
   "ADMIN_PARAM": {
     "TITLE": "Alustan asetukset",

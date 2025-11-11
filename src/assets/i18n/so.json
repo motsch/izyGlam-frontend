@@ -1,17 +1,42 @@
 {
-  "SHOPTYPE": {
-    "HAIRDRESSER": "Timo-jare/yaqaan",
-    "NAILTECHNICIAN": "Qurxinta cidiyaha",
-    "MAKEUP": "Qurxiyeya(albaab)",
-    "WAXING": "Khadamka/Esthetician",
-    "FACIAL": "Daryeel wejiga",
-    "MASSAGE": "Duugis",
-    "EYELASH": "Dharbaaxo (extension) indho",
-    "EYEBROW": "Sunniyaha",
-    "TANNING": "Maariin/maqaarka madoobayn",
-    "ACUPUNCTURE": "Cirbaha dhaqanka (Acupuncture)",
-    "OTHER": "Kale"
-  },
+  "ADDRESS_MODAL": {
+  "ADDRESS": "Cinwaanadayda",
+  "ADDRESS_MODIFICATION": "Beddelka cinwaanka",
+  "STREET": "Waddo",
+  "CITY": "Magaalo",
+  "CP": "Koodhka boostada",
+  "CREATE": "Abuur",
+  "BACK": "Dib u noqo",
+  "CHANGE": "Beddel",
+  "CLOSE": "Xir"
+},
+
+"SHOPTYPE": {
+  "HAIRDRESSER": "Timo-jare / Qurxiye",
+  "NAILTECHNICIAN": "Khabiirka cidiyaha",
+  "MAKEUP": "Fanaanadda qurxinta wajiga",
+  "WAXING": "Khabiirka timaha bixinta (waxing)",
+  "FACIAL": "Daryeelka wejiga",
+  "MASSAGE": "Daaweyaha duugista",
+  "EYELASH": "Khabiirka indho-beelka (eyelash)",
+  "EYEBROW": "Nafaqeeye / Cunto-yaqaan",
+  "TANNING": "Khabiirka midabaynta maqaarka (tanning)",
+  "BARBER": "Timo-jare",
+  "ACUPUNCTURE": "Khabiirka cirbad-daweynta (acupuncture)",
+  "OTHER": "Kale",
+  "COIFFURE": "Timo-qurxin",
+  "MANUCURE": "Manikyuure",
+  "VISAGE": "Daryeelka wejiga",
+  "MAQUILLAGE": "Qurxin",
+  "EPILATION": "Timo saarid",
+  "BRONZAGE": "Midabaynta maqaarka",
+  "PARTUM": "Daryeelka dhalmada kadib",
+  "NUTRITION": "Nafaqo",
+  "FITNESS": "Jimicsi",
+  "STYLISME": "Qaabeyn / Naqshadeyn",
+  "YOGA": "Nasasho / Yoga",
+  "DEVELOPPEMENT": "Horumarinta nafta"
+},
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon waxaa lagu daray kuwa la jecel yahay",
     "FAVORITE_REMOVED": "Salon ayaa laga saaray kuwa la jecel yahay",
@@ -761,17 +786,6 @@
     "SINGAPOURE": "Singaboor",
     "EMIRAT_ARABE": "Imaaraadka Carabta",
     "SAUDI_ARABIA": "Sacuudi Carabiya"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Cinwaanadayda",
-    "ADDRESS_MODIFICATION": "Beddelidda cinwaan",
-    "STREET": "Waddo",
-    "CITY": "Magaalo",
-    "CP": "Koodh boosto",
-    "CREATE": "Abuur",
-    "BACK": "Dib u noqo",
-    "CHANGE": "Beddel",
-    "CLOSE": "Xir"
   },
   "ADMIN_PARAM": {
     "TITLE": "Dejimaha madasha",

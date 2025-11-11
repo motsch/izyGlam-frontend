@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "آدرس‌های من",
+    "ADDRESS_MODIFICATION": "ویرایش آدرس",
+    "STREET": "خیابان",
+    "CITY": "شهر",
+    "CP": "کد پستی",
+    "CREATE": "ایجاد",
+    "BACK": "بازگشت",
+    "CHANGE": "تغییر",
+    "CLOSE": "بستن"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "آرایشگر",
-    "NAILTECHNICIAN": "مانیکور",
-    "MAKEUP": "آرایشگر (میکاپ)",
-    "WAXING": "متخصص زیبایی (اپیلاسیون)",
-    "FACIAL": "مراقبت صورت",
+    "NAILTECHNICIAN": "متخصص ناخن",
+    "MAKEUP": "آرایشگر صورت",
+    "WAXING": "متخصص اپیلاسیون",
+    "FACIAL": "متخصص مراقبت از پوست",
     "MASSAGE": "ماساژور",
-    "EYELASH": "اکستنشن مژه",
-    "EYEBROW": "ابرو",
-    "TANNING": "برنزه",
-    "ACUPUNCTURE": "طب سوزنی",
-    "OTHER": "سایر"
+    "EYELASH": "متخصص اکستنشن مژه",
+    "EYEBROW": "متخصص تغذیه",
+    "TANNING": "متخصص برنزه‌کردن",
+    "BARBER": "اصلاح‌گر (باربر)",
+    "ACUPUNCTURE": "متخصص طب سوزنی",
+    "OTHER": "سایر موارد",
+    "COIFFURE": "آرایش مو",
+    "MANUCURE": "مانیکور",
+    "VISAGE": "مراقبت از صورت",
+    "MAQUILLAGE": "آرایش",
+    "EPILATION": "اپیلاسیون",
+    "BRONZAGE": "برنزه‌کردن",
+    "PARTUM": "مراقبت پس از زایمان",
+    "NUTRITION": "تغذیه",
+    "FITNESS": "تناسب اندام",
+    "STYLISME": "استایل / طراحی مد",
+    "YOGA": "آرامش / یوگا",
+    "DEVELOPPEMENT": "رشد فردی"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "سالن به علاقه‌مندی‌ها اضافه شد",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "سنگاپور",
     "EMIRAT_ARABE": "امارات متحدهٔ عربی",
     "SAUDI_ARABIA": "عربستان سعودی"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "آدرس‌های من",
-    "ADDRESS_MODIFICATION": "ویرایش آدرس",
-    "STREET": "خیابان",
-    "CITY": "شهر",
-    "CP": "کد پستی",
-    "CREATE": "ایجاد",
-    "BACK": "بازگشت",
-    "CHANGE": "ویرایش",
-    "CLOSE": "بستن"
   },
   "ADMIN_PARAM": {
     "TITLE": "تنظیمات پلتفرم",

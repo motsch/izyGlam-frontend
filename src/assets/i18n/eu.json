@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Nire helbideak",
+    "ADDRESS_MODIFICATION": "Helbidea aldatzea",
+    "STREET": "Kalea",
+    "CITY": "Hiria",
+    "CP": "Posta kodea",
+    "CREATE": "Sortu",
+    "BACK": "Atzera",
+    "CHANGE": "Aldatu",
+    "CLOSE": "Itxi"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Ile-apaintzailea",
-    "NAILTECHNICIAN": "Manikura",
+    "NAILTECHNICIAN": "Iltze-teknikaria",
     "MAKEUP": "Makillatzailea",
-    "WAXING": "Estetizista",
+    "WAXING": "Depilazio espezialista",
     "FACIAL": "Aurpegi-tratamendua",
     "MASSAGE": "Masajista",
-    "EYELASH": "Betileen luzapenak",
-    "EYEBROW": "Bekainak",
-    "TANNING": "Brontzea",
-    "ACUPUNCTURE": "Akupuntura",
-    "OTHER": "Bestelakoa"
+    "EYELASH": "Begi-mihia aditua",
+    "EYEBROW": "Nutrizionista",
+    "TANNING": "Azal-moreztatze espezialista",
+    "BARBER": "Ile-mozgailua / Barberoa",
+    "ACUPUNCTURE": "Akupuntore",
+    "OTHER": "Beste batzuk",
+    "COIFFURE": "Ile-apainketa",
+    "MANUCURE": "Manikura",
+    "VISAGE": "Aurpegiko zaintza",
+    "MAQUILLAGE": "Makillajea",
+    "EPILATION": "Ilea kentzea",
+    "BRONZAGE": "Moreztatzea",
+    "PARTUM": "Erditze osteko arreta",
+    "NUTRITION": "Elikadura",
+    "FITNESS": "Fitness / ariketa fisikoa",
+    "STYLISME": "Estilismoa",
+    "YOGA": "Erlaxazioa",
+    "DEVELOPPEMENT": "Auto-garapena"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salong eemaldatud lemmikutest",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapur",
     "EMIRAT_ARABE": "Arabiar Emirerri Batuak",
     "SAUDI_ARABIA": "Saudi Arabia"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Nire helbideak",
-    "ADDRESS_MODIFICATION": "Helbidea aldatzea",
-    "STREET": "Kalea",
-    "CITY": "Hiria",
-    "CP": "Posta-kodea",
-    "CREATE": "Sortu",
-    "BACK": "Itzuli",
-    "CHANGE": "Aldatu",
-    "CLOSE": "Itxi"
   },
   "ADMIN_PARAM": {
     "TITLE": "Plataformaren ezarpenak",

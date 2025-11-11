@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "내 주소",
+    "ADDRESS_MODIFICATION": "주소 수정",
+    "STREET": "거리",
+    "CITY": "도시",
+    "CP": "우편번호",
+    "CREATE": "생성",
+    "BACK": "뒤로가기",
+    "CHANGE": "변경",
+    "CLOSE": "닫기"
+  },
   "SHOPTYPE": {
-    "HAIRDRESSER": "헤어디자이너",
-    "NAILTECHNICIAN": "네일 테크니션",
+    "HAIRDRESSER": "미용사",
+    "NAILTECHNICIAN": "네일 전문가",
     "MAKEUP": "메이크업 아티스트",
-    "WAXING": "에스테티션",
-    "FACIAL": "페이셜 케어",
-    "MASSAGE": "마사지사",
-    "EYELASH": "속눈썹 연장",
-    "EYEBROW": "눈썹",
-    "TANNING": "태닝",
-    "ACUPUNCTURE": "침술",
-    "OTHER": "기타"
+    "WAXING": "왁싱 전문가",
+    "FACIAL": "페이셜 전문가",
+    "MASSAGE": "마사지 치료사",
+    "EYELASH": "속눈썹 연장 전문가",
+    "EYEBROW": "영양사",
+    "TANNING": "태닝 전문가",
+    "BARBER": "이발사",
+    "ACUPUNCTURE": "침술사",
+    "OTHER": "기타",
+    "COIFFURE": "헤어 스타일링",
+    "MANUCURE": "매니큐어",
+    "VISAGE": "페이셜 케어",
+    "MAQUILLAGE": "메이크업",
+    "EPILATION": "제모",
+    "BRONZAGE": "태닝",
+    "PARTUM": "산후 관리",
+    "NUTRITION": "영양",
+    "FITNESS": "피트니스",
+    "STYLISME": "스타일링",
+    "YOGA": "릴랙스 / 요가",
+    "DEVELOPPEMENT": "자기 개발"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "살롱이 즐겨찾기에 추가되었습니다",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "싱가포르",
     "EMIRAT_ARABE": "아랍에미리트",
     "SAUDI_ARABIA": "사우디아라비아"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "내 주소",
-    "ADDRESS_MODIFICATION": "주소 수정",
-    "STREET": "거리",
-    "CITY": "도시",
-    "CP": "우편번호",
-    "CREATE": "생성",
-    "BACK": "뒤로",
-    "CHANGE": "수정",
-    "CLOSE": "닫기"
   },
   "ADMIN_PARAM": {
     "TITLE": "플랫폼 설정",

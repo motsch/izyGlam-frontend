@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Aking mga address",
+    "ADDRESS_MODIFICATION": "Pagbabago ng address",
+    "STREET": "Kalsada",
+    "CITY": "Lungsod",
+    "CP": "Postal code",
+    "CREATE": "Lumikha",
+    "BACK": "Bumalik",
+    "CHANGE": "Baguhin",
+    "CLOSE": "Isara"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Tagapag-ayos ng buhok",
-    "NAILTECHNICIAN": "Manikyur",
+    "NAILTECHNICIAN": "Eksperto sa kuko",
     "MAKEUP": "Make-up artist",
-    "WAXING": "Estetisyan",
-    "FACIAL": "Facial",
-    "MASSAGE": "Masahista",
-    "EYELASH": "Extension ng pilikmata",
-    "EYEBROW": "Kilay",
-    "TANNING": "Tanning",
-    "ACUPUNCTURE": "Acupuncture",
-    "OTHER": "Iba pa"
+    "WAXING": "Espesyalista sa waxing",
+    "FACIAL": "Espesyalista sa facial",
+    "MASSAGE": "Masahe / Therapist",
+    "EYELASH": "Eksperto sa pilikmata",
+    "EYEBROW": "Nutrisyunista",
+    "TANNING": "Espesyalista sa pagpapaitim ng balat",
+    "BARBER": "Barbero",
+    "ACUPUNCTURE": "Acupuncturist",
+    "OTHER": "Iba pa",
+    "COIFFURE": "Ayos ng buhok",
+    "MANUCURE": "Manikyur",
+    "VISAGE": "Pangangalaga sa mukha",
+    "MAQUILLAGE": "Pagme-make-up",
+    "EPILATION": "Pag-aalis ng buhok",
+    "BRONZAGE": "Pagpapaitim ng balat",
+    "PARTUM": "Pangangalaga pagkatapos manganak",
+    "NUTRITION": "Nutrisyon",
+    "FITNESS": "Ehersisyo / Kalusugan",
+    "STYLISME": "Pag-istilo / Fashion",
+    "YOGA": "Pagpapahinga / Yoga",
+    "DEVELOPPEMENT": "Pagpapaunlad ng sarili"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Nadagdag ang salon sa mga paborito",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapore",
     "EMIRAT_ARABE": "United Arab Emirates",
     "SAUDI_ARABIA": "Saudi Arabia"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Aking mga address",
-    "ADDRESS_MODIFICATION": "Pagbabago ng address",
-    "STREET": "Kalsada",
-    "CITY": "Lungsod",
-    "CP": "Postal code",
-    "CREATE": "Gumawa",
-    "BACK": "Bumalik",
-    "CHANGE": "Baguhin",
-    "CLOSE": "Isara"
   },
   "ADMIN_PARAM": {
     "TITLE": "Mga setting ng platform",

@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Мої адреси",
+    "ADDRESS_MODIFICATION": "Зміна адреси",
+    "STREET": "Вулиця",
+    "CITY": "Місто",
+    "CP": "Поштовий індекс",
+    "CREATE": "Створити",
+    "BACK": "Назад",
+    "CHANGE": "Змінити",
+    "CLOSE": "Закрити"
+  },
   "SHOPTYPE": {
-    "HAIRDRESSER": "Перукар(ка)",
+    "HAIRDRESSER": "Перукар",
     "NAILTECHNICIAN": "Майстер манікюру",
-    "MAKEUP": "Візажист(ка)",
-    "WAXING": "Косметолог(иня)",
+    "MAKEUP": "Візажист",
+    "WAXING": "Фахівець з депіляції",
     "FACIAL": "Догляд за обличчям",
-    "MASSAGE": "Масажист(ка)",
-    "EYELASH": "Нарощування вій",
-    "EYEBROW": "Брови",
-    "TANNING": "Засмага",
-    "ACUPUNCTURE": "Акупунктура",
-    "OTHER": "Інше"
+    "MASSAGE": "Масажист",
+    "EYELASH": "Майстер з нарощування вій",
+    "EYEBROW": "Дієтолог",
+    "TANNING": "Фахівець із засмаги",
+    "BARBER": "Барбер",
+    "ACUPUNCTURE": "Акупунктурист",
+    "OTHER": "Інше",
+    "COIFFURE": "Зачіска / Укладка волосся",
+    "MANUCURE": "Манікюр",
+    "VISAGE": "Догляд за обличчям",
+    "MAQUILLAGE": "Макіяж",
+    "EPILATION": "Епіляція",
+    "BRONZAGE": "Засмага",
+    "PARTUM": "Догляд після пологів",
+    "NUTRITION": "Харчування",
+    "FITNESS": "Фітнес",
+    "STYLISME": "Стиль / Стайлінг",
+    "YOGA": "Розслаблення / Йога",
+    "DEVELOPPEMENT": "Особистісний розвиток"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Салон додано до обраного",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Сінгапур",
     "EMIRAT_ARABE": "Об’єднані Арабські Емірати",
     "SAUDI_ARABIA": "Саудівська Аравія"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Мої адреси",
-    "ADDRESS_MODIFICATION": "Зміна адреси",
-    "STREET": "Вулиця",
-    "CITY": "Місто",
-    "CP": "Поштовий індекс",
-    "CREATE": "Створити",
-    "BACK": "Назад",
-    "CHANGE": "Змінити",
-    "CLOSE": "Закрити"
   },
   "ADMIN_PARAM": {
     "TITLE": "Параметри платформи",

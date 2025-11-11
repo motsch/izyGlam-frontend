@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "私の住所",
+    "ADDRESS_MODIFICATION": "住所の変更",
+    "STREET": "通り",
+    "CITY": "市区町村",
+    "CP": "郵便番号",
+    "CREATE": "作成",
+    "BACK": "戻る",
+    "CHANGE": "変更",
+    "CLOSE": "閉じる"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "美容師",
-    "NAILTECHNICIAN": "マニキュア",
+    "NAILTECHNICIAN": "ネイル技術者",
     "MAKEUP": "メイクアップアーティスト",
-    "WAXING": "エステティシャン",
+    "WAXING": "ワックス脱毛スペシャリスト",
     "FACIAL": "フェイシャルトリートメント",
-    "MASSAGE": "マッサージ師",
-    "EYELASH": "まつげエクステ",
-    "EYEBROW": "眉毛",
-    "TANNING": "タンニング",
-    "ACUPUNCTURE": "鍼",
-    "OTHER": "その他"
+    "MASSAGE": "マッサージセラピスト",
+    "EYELASH": "まつげエクステ専門家",
+    "EYEBROW": "栄養士",
+    "TANNING": "日焼け（タンニング）スペシャリスト",
+    "BARBER": "理容師",
+    "ACUPUNCTURE": "鍼灸師",
+    "OTHER": "その他",
+    "COIFFURE": "ヘアスタイリング",
+    "MANUCURE": "マニキュア",
+    "VISAGE": "フェイシャルケア",
+    "MAQUILLAGE": "メイクアップ",
+    "EPILATION": "脱毛",
+    "BRONZAGE": "日焼け",
+    "PARTUM": "産後ケア",
+    "NUTRITION": "栄養",
+    "FITNESS": "フィットネス",
+    "STYLISME": "スタイリング",
+    "YOGA": "リラクゼーション / ヨガ",
+    "DEVELOPPEMENT": "自己成長"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "サロンをお気に入りに追加しました",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "シンガポール",
     "EMIRAT_ARABE": "アラブ首長国連邦",
     "SAUDI_ARABIA": "サウジアラビア"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "私の住所",
-    "ADDRESS_MODIFICATION": "住所の変更",
-    "STREET": "丁目・番地",
-    "CITY": "市区町村",
-    "CP": "郵便番号",
-    "CREATE": "作成",
-    "BACK": "戻る",
-    "CHANGE": "変更",
-    "CLOSE": "閉じる"
   },
   "ADMIN_PARAM": {
     "TITLE": "プラットフォーム設定",

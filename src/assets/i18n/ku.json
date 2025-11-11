@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Navnîşanên min",
+    "ADDRESS_MODIFICATION": "Guhertina navnîşanê",
+    "STREET": "Kolan",
+    "CITY": "Bajar",
+    "CP": "Koda postê",
+    "CREATE": "Afirandin",
+    "BACK": "Paş",
+    "CHANGE": "Guhartin",
+    "CLOSE": "Girtin"
+  },
   "SHOPTYPE": {
-    "HAIRDRESSER": "Şêvger",
-    "NAILTECHNICIAN": "Manîkûrist",
-    "MAKEUP": "Makîyajkar",
-    "WAXING": "Estetîkvan (epîlasyon)",
-    "FACIAL": "Parêzûna rûyê",
+    "HAIRDRESSER": "Qeşmker",
+    "NAILTECHNICIAN": "Teknisyena lepanan",
+    "MAKEUP": "Makiyajkar",
+    "WAXING": "Taybetkarê waxê",
+    "FACIAL": "Şexsa xizmeta rûyê",
     "MASSAGE": "Masajkar",
-    "EYELASH": "Dirêjkirina pilikên çavê",
-    "EYEBROW": "Lîstikên birûyan",
-    "TANNING": "Bronzkirin",
-    "ACUPUNCTURE": "Akûpûnktûr",
-    "OTHER": "Yên din"
+    "EYELASH": "Taybetkarê pilên çavê",
+    "EYEBROW": "Xwarinşinas / Nûtrîsyonkar",
+    "TANNING": "Taybetkarê ronahbûnê / bronzebûnê",
+    "BARBER": "Derzî / Berber",
+    "ACUPUNCTURE": "Taybetkarê akûpunkterê",
+    "OTHER": "Yên din",
+    "COIFFURE": "Qeşmkirin",
+    "MANUCURE": "Manîkûr",
+    "VISAGE": "Parastina rûyê",
+    "MAQUILLAGE": "Makîyaj",
+    "EPILATION": "Jêbirina porê",
+    "BRONZAGE": "Bronzebûn",
+    "PARTUM": "Parastina piştî porodê",
+    "NUTRITION": "Xwarin / Nûtrîsyon",
+    "FITNESS": "Fitness",
+    "STYLISME": "Stîl / Stîlîzm",
+    "YOGA": "Aramî / Yoga",
+    "DEVELOPPEMENT": "Pêşketina xwe"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon li favorîyan hate zêdekirin",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapour",
     "EMIRAT_ARABE": "Émirats arabes unis",
     "SAUDI_ARABIA": "Arabie saoudite"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Navnîşanên min",
-    "ADDRESS_MODIFICATION": "Guherandina navnîşanê",
-    "STREET": "Kûçe",
-    "CITY": "Bajar",
-    "CP": "Koda posteyê",
-    "CREATE": "Biafirîne",
-    "BACK": "Veger",
-    "CHANGE": "Biguherîne",
-    "CLOSE": "Bigire"
   },
   "ADMIN_PARAM": {
     "TITLE": "Mîhengên pêlatformê",

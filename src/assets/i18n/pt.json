@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Os meus endereços",
+    "ADDRESS_MODIFICATION": "Alteração de endereço",
+    "STREET": "Rua",
+    "CITY": "Cidade",
+    "CP": "Código postal",
+    "CREATE": "Criar",
+    "BACK": "Voltar",
+    "CHANGE": "Alterar",
+    "CLOSE": "Fechar"
+  },
   "SHOPTYPE": {
-    "HAIRDRESSER": "Cabeleireiro(a)",
-    "NAILTECHNICIAN": "Manicure",
-    "MAKEUP": "Maquilhador(a)",
-    "WAXING": "Esteticista",
+    "HAIRDRESSER": "Cabeleireiro/a",
+    "NAILTECHNICIAN": "Técnico/a de unhas",
+    "MAKEUP": "Maquilhador/a",
+    "WAXING": "Esteticista (depilação)",
     "FACIAL": "Tratamento facial",
     "MASSAGE": "Massagista",
-    "EYELASH": "Extensões de pestanas",
-    "EYEBROW": "Sobrancelhas",
-    "TANNING": "Bronzeamento",
-    "ACUPUNCTURE": "Acupunctura",
-    "OTHER": "Outro"
+    "EYELASH": "Especialista em pestanas",
+    "EYEBROW": "Nutricionista",
+    "TANNING": "Especialista em bronzeamento",
+    "BARBER": "Barbeiro",
+    "ACUPUNCTURE": "Acupuntor/a",
+    "OTHER": "Outro",
+    "COIFFURE": "Cabeleireiro",
+    "MANUCURE": "Manicure",
+    "VISAGE": "Cuidados faciais",
+    "MAQUILLAGE": "Maquilhagem",
+    "EPILATION": "Depilação",
+    "BRONZAGE": "Bronzeamento",
+    "PARTUM": "Cuidados pós-parto",
+    "NUTRITION": "Nutrição",
+    "FITNESS": "Fitness",
+    "STYLISME": "Estilo / Styling",
+    "YOGA": "Relaxamento / Yoga",
+    "DEVELOPPEMENT": "Desenvolvimento pessoal"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salão adicionado aos favoritos",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapura",
     "EMIRAT_ARABE": "Emirados Árabes Unidos",
     "SAUDI_ARABIA": "Arábia Saudita"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "As minhas moradas",
-    "ADDRESS_MODIFICATION": "Alteração de morada",
-    "STREET": "Rua",
-    "CITY": "Cidade",
-    "CP": "Código postal",
-    "CREATE": "Criar",
-    "BACK": "Voltar",
-    "CHANGE": "Alterar",
-    "CLOSE": "Fechar"
   },
   "ADMIN_PARAM": {
     "TITLE": "Definições da plataforma",

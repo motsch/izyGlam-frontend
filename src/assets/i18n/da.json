@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Mine adresser",
+    "ADDRESS_MODIFICATION": "Redigér adresse",
+    "STREET": "Gade",
+    "CITY": "By",
+    "CP": "Postnummer",
+    "CREATE": "Opret",
+    "BACK": "Tilbage",
+    "CHANGE": "Rediger",
+    "CLOSE": "Luk"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Frisør",
-    "NAILTECHNICIAN": "Manikyre",
+    "NAILTECHNICIAN": "Negletekniker",
     "MAKEUP": "Makeupartist",
-    "WAXING": "Kosmetolog",
+    "WAXING": "Voksbehandling",
     "FACIAL": "Ansigtsbehandling",
     "MASSAGE": "Massør",
-    "EYELASH": "Øjenvippe-extensions",
-    "EYEBROW": "Øjenbryn",
-    "TANNING": "Spraytan",
-    "ACUPUNCTURE": "Akupunktur",
-    "OTHER": "Andet"
+    "EYELASH": "Øjenvippespecialist",
+    "EYEBROW": "Ernæringsekspert",
+    "TANNING": "Spraytan / Bruning",
+    "BARBER": "Barber",
+    "ACUPUNCTURE": "Akupunktør",
+    "OTHER": "Andet",
+    "COIFFURE": "Frisering",
+    "MANUCURE": "Manicure",
+    "VISAGE": "Ansigt",
+    "MAQUILLAGE": "Makeup",
+    "EPILATION": "Hårfjerning",
+    "BRONZAGE": "Bruning",
+    "PARTUM": "Efterfødsel",
+    "NUTRITION": "Ernæring",
+    "FITNESS": "Fitness",
+    "STYLISME": "Styling",
+    "YOGA": "Afslapning",
+    "DEVELOPPEMENT": "Personlig udvikling"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon tilføjet til favoritter",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapore",
     "EMIRAT_ARABE": "De Forenede Arabiske Emirater",
     "SAUDI_ARABIA": "Saudi-Arabien"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Mine adresser",
-    "ADDRESS_MODIFICATION": "Redigér adresse",
-    "STREET": "Gade",
-    "CITY": "By",
-    "CP": "Postnummer",
-    "CREATE": "Opret",
-    "BACK": "Tilbage",
-    "CHANGE": "Redigér",
-    "CLOSE": "Luk"
   },
   "ADMIN_PARAM": {
     "TITLE": "Platformindstillinger",

@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "আমার ঠিকানাগুলি",
+    "ADDRESS_MODIFICATION": "ঠিকানা পরিবর্তন",
+    "STREET": "রাস্তা",
+    "CITY": "শহর",
+    "CP": "পোস্ট কোড",
+    "CREATE": "তৈরি করুন",
+    "BACK": "ফিরে যান",
+    "CHANGE": "পরিবর্তন করুন",
+    "CLOSE": "বন্ধ করুন"
+  },
   "SHOPTYPE": {
-    "HAIRDRESSER": "হেয়ারড্রেসার",
-    "NAILTECHNICIAN": "ম্যানিকিউর",
-    "MAKEUP": "মেকআপ আর্টিস্ট",
-    "WAXING": "এস্থেটিশিয়ান",
-    "FACIAL": "ফেসিয়াল সেবা",
+    "HAIRDRESSER": "চুলের স্টাইলিস্ট",
+    "NAILTECHNICIAN": "নখের বিশেষজ্ঞ",
+    "MAKEUP": "মেকআপ শিল্পী",
+    "WAXING": "ওয়াক্সিং বিশেষজ্ঞ",
+    "FACIAL": "ফেসিয়াল বিশেষজ্ঞ",
     "MASSAGE": "ম্যাসাজ থেরাপিস্ট",
-    "EYELASH": "আইল্যাশ এক্সটেনশন",
-    "EYEBROW": "ভ্রু",
-    "TANNING": "ট্যানিং",
-    "ACUPUNCTURE": "অ্যাকুপাংচার",
-    "OTHER": "অন্যান্য"
+    "EYELASH": "আইল্যাশ এক্সটেনশন বিশেষজ্ঞ",
+    "EYEBROW": "পুষ্টিবিদ",
+    "TANNING": "ট্যানিং বিশেষজ্ঞ",
+    "BARBER": "নরসুন্দর",
+    "ACUPUNCTURE": "অ্যাকুপাংচার বিশেষজ্ঞ",
+    "OTHER": "অন্যান্য",
+    "COIFFURE": "চুলের সাজসজ্জা",
+    "MANUCURE": "ম্যানিকিউর",
+    "VISAGE": "মুখের যত্ন",
+    "MAQUILLAGE": "মেকআপ",
+    "EPILATION": "লোম অপসারণ",
+    "BRONZAGE": "ট্যানিং",
+    "PARTUM": "প্রসব পরবর্তী যত্ন",
+    "NUTRITION": "পুষ্টি",
+    "FITNESS": "ফিটনেস",
+    "STYLISME": "স্টাইলিং",
+    "YOGA": "রিল্যাক্সেশন",
+    "DEVELOPPEMENT": "আত্মউন্নয়ন"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "সালন প্রিয় তালিকায় যোগ করা হয়েছে",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "সিঙ্গাপুর",
     "EMIRAT_ARABE": "সংযুক্ত আরব আমিরাত",
     "SAUDI_ARABIA": "সৌদি আরব"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "আমার ঠিকানাসমূহ",
-    "ADDRESS_MODIFICATION": "ঠিকানা পরিবর্তন",
-    "STREET": "রাস্তা",
-    "CITY": "শহর",
-    "CP": "পোস্টকোড",
-    "CREATE": "তৈরি করুন",
-    "BACK": "ফিরে যান",
-    "CHANGE": "পরিবর্তন",
-    "CLOSE": "বন্ধ করুন"
   },
   "ADMIN_PARAM": {
     "TITLE": "প্ল্যাটফর্ম সেটিংস",

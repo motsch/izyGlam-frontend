@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "I miei indirizzi",
+    "ADDRESS_MODIFICATION": "Modifica dell’indirizzo",
+    "STREET": "Via",
+    "CITY": "Città",
+    "CP": "CAP",
+    "CREATE": "Crea",
+    "BACK": "Indietro",
+    "CHANGE": "Modifica",
+    "CLOSE": "Chiudi"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Parrucchiere/a",
-    "NAILTECHNICIAN": "Manicure",
+    "NAILTECHNICIAN": "Onicotecnica / Tecnico delle unghie",
     "MAKEUP": "Truccatore/truccatrice",
-    "WAXING": "Estetista",
+    "WAXING": "Estetista (ceretta)",
     "FACIAL": "Trattamento viso",
-    "MASSAGE": "Massaggiatore/massaggiatrice",
-    "EYELASH": "Extension ciglia",
-    "EYEBROW": "Sopracciglia",
-    "TANNING": "Abbronzatura",
-    "ACUPUNCTURE": "Agopuntura",
-    "OTHER": "Altro"
+    "MASSAGE": "Massaggiatore/trice",
+    "EYELASH": "Specialista ciglia",
+    "EYEBROW": "Nutrizionista",
+    "TANNING": "Specialista abbronzatura",
+    "BARBER": "Barbiere",
+    "ACUPUNCTURE": "Agopuntore",
+    "OTHER": "Altro",
+    "COIFFURE": "Acconciatura",
+    "MANUCURE": "Manicure",
+    "VISAGE": "Cura del viso",
+    "MAQUILLAGE": "Trucco",
+    "EPILATION": "Depilazione",
+    "BRONZAGE": "Abbronzatura",
+    "PARTUM": "Post parto",
+    "NUTRITION": "Nutrizione",
+    "FITNESS": "Fitness",
+    "STYLISME": "Stile / styling",
+    "YOGA": "Rilassamento / yoga",
+    "DEVELOPPEMENT": "Crescita personale"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salone aggiunto ai preferiti",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapore",
     "EMIRAT_ARABE": "Emirati Arabi Uniti",
     "SAUDI_ARABIA": "Arabia Saudita"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "I miei indirizzi",
-    "ADDRESS_MODIFICATION": "Modifica indirizzo",
-    "STREET": "Via",
-    "CITY": "Città",
-    "CP": "CAP",
-    "CREATE": "Crea",
-    "BACK": "Indietro",
-    "CHANGE": "Modifica",
-    "CLOSE": "Chiudi"
   },
   "ADMIN_PARAM": {
     "TITLE": "Impostazioni della piattaforma",

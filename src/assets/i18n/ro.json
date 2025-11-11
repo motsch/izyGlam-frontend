@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Adresele mele",
+    "ADDRESS_MODIFICATION": "Modificarea adresei",
+    "STREET": "Stradă",
+    "CITY": "Oraș",
+    "CP": "Cod poștal",
+    "CREATE": "Creează",
+    "BACK": "Înapoi",
+    "CHANGE": "Modifică",
+    "CLOSE": "Închide"
+  },
   "SHOPTYPE": {
-    "HAIRDRESSER": "Coafor",
-    "NAILTECHNICIAN": "Manichiură",
+    "HAIRDRESSER": "Frizer / Cofeor",
+    "NAILTECHNICIAN": "Tehnician unghii",
     "MAKEUP": "Make-up artist",
-    "WAXING": "Cosmetician(ă)",
-    "FACIAL": "Îngrijire facială",
-    "MASSAGE": "Maseur(ă)",
-    "EYELASH": "Extensii de gene",
-    "EYEBROW": "Sprâncene",
-    "TANNING": "Bronzare",
-    "ACUPUNCTURE": "Acupunctură",
-    "OTHER": "Altul"
+    "WAXING": "Specialist epilare",
+    "FACIAL": "Tratament facial",
+    "MASSAGE": "Maseur / Maseuză",
+    "EYELASH": "Specialist extensii gene",
+    "EYEBROW": "Nutriționist",
+    "TANNING": "Specialist bronzare",
+    "BARBER": "Bărbier / Barber",
+    "ACUPUNCTURE": "Acupunctor",
+    "OTHER": "Altele",
+    "COIFFURE": "Coafură",
+    "MANUCURE": "Manichiură",
+    "VISAGE": "Îngrijire facială",
+    "MAQUILLAGE": "Machiaj",
+    "EPILATION": "Epilare",
+    "BRONZAGE": "Bronzare",
+    "PARTUM": "Îngrijire postnatală",
+    "NUTRITION": "Nutriție",
+    "FITNESS": "Fitness",
+    "STYLISME": "Stilism",
+    "YOGA": "Relaxare / Yoga",
+    "DEVELOPPEMENT": "Dezvoltare personală"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon adăugat la favorite",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapore",
     "EMIRAT_ARABE": "Emiratele Arabe Unite",
     "SAUDI_ARABIA": "Arabia Saudită"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Adresele mele",
-    "ADDRESS_MODIFICATION": "Modificare adresă",
-    "STREET": "Stradă",
-    "CITY": "Oraș",
-    "CP": "Cod poștal",
-    "CREATE": "Creează",
-    "BACK": "Înapoi",
-    "CHANGE": "Modifică",
-    "CLOSE": "Închide"
   },
   "ADMIN_PARAM": {
     "TITLE": "Setările platformei",

@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "我的地址",
+    "ADDRESS_MODIFICATION": "修改地址",
+    "STREET": "街道",
+    "CITY": "城市",
+    "CP": "邮政编码",
+    "CREATE": "创建",
+    "BACK": "返回",
+    "CHANGE": "修改",
+    "CLOSE": "关闭"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "理发师",
     "NAILTECHNICIAN": "美甲师",
     "MAKEUP": "化妆师",
-    "WAXING": "美容师（脱毛）",
-    "FACIAL": "面部护理",
+    "WAXING": "脱毛专家",
+    "FACIAL": "面部护理专家",
     "MASSAGE": "按摩师",
-    "EYELASH": "睫毛延长",
-    "EYEBROW": "眉形设计",
-    "TANNING": "美黑",
-    "ACUPUNCTURE": "针灸",
-    "OTHER": "其他"
+    "EYELASH": "睫毛延长专家",
+    "EYEBROW": "营养师",
+    "TANNING": "美黑专家",
+    "BARBER": "理发师 / 男士理容师",
+    "ACUPUNCTURE": "针灸师",
+    "OTHER": "其他",
+    "COIFFURE": "发型设计",
+    "MANUCURE": "美甲",
+    "VISAGE": "面部护理",
+    "MAQUILLAGE": "化妆",
+    "EPILATION": "脱毛",
+    "BRONZAGE": "美黑",
+    "PARTUM": "产后护理",
+    "NUTRITION": "营养",
+    "FITNESS": "健身",
+    "STYLISME": "造型 / 时尚设计",
+    "YOGA": "放松 / 瑜伽",
+    "DEVELOPPEMENT": "个人成长"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "沙龙已添加到收藏",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "新加坡",
     "EMIRAT_ARABE": "阿拉伯联合酋长国",
     "SAUDI_ARABIA": "沙特阿拉伯"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "我的地址",
-    "ADDRESS_MODIFICATION": "地址修改",
-    "STREET": "街道",
-    "CITY": "城市",
-    "CP": "邮编",
-    "CREATE": "创建",
-    "BACK": "返回",
-    "CHANGE": "修改",
-    "CLOSE": "关闭"
   },
   "ADMIN_PARAM": {
     "TITLE": "平台设置",

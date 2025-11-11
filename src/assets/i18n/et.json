@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Minu aadressid",
+    "ADDRESS_MODIFICATION": "Aadressi muutmine",
+    "STREET": "Tänav",
+    "CITY": "Linn",
+    "CP": "Postiindeks",
+    "CREATE": "Loo",
+    "BACK": "Tagasi",
+    "CHANGE": "Muuda",
+    "CLOSE": "Sulge"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Juuksur",
-    "NAILTECHNICIAN": "Maniküür",
+    "NAILTECHNICIAN": "Küünte tehnik",
     "MAKEUP": "Meigikunstnik",
-    "WAXING": "Kosmeetik",
+    "WAXING": "Vahatamise spetsialist",
     "FACIAL": "Näohooldus",
     "MASSAGE": "Massöör",
-    "EYELASH": "Ripsmepikendused",
-    "EYEBROW": "Kulmud",
-    "TANNING": "Päevitus",
-    "ACUPUNCTURE": "Nõelravi",
-    "OTHER": "Muu"
+    "EYELASH": "Ripsmete spetsialist",
+    "EYEBROW": "Toitumisspetsialist",
+    "TANNING": "Jumestaja / päevituse spetsialist",
+    "BARBER": "Habemeajaja",
+    "ACUPUNCTURE": "Nõelraviterapeut",
+    "OTHER": "Muu",
+    "COIFFURE": "Soeng",
+    "MANUCURE": "Maniküür",
+    "VISAGE": "Näohooldus",
+    "MAQUILLAGE": "Meik",
+    "EPILATION": "Karvaeemaldus",
+    "BRONZAGE": "Päevitus",
+    "PARTUM": "Sünnitusjärgne hooldus",
+    "NUTRITION": "Toitumine",
+    "FITNESS": "Treening / fitness",
+    "STYLISME": "Stiil / kujundus",
+    "YOGA": "Lõõgastus",
+    "DEVELOPPEMENT": "Eneseareng"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salong lisatud lemmikutesse",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapur",
     "EMIRAT_ARABE": "Araabia Ühendemiraadid",
     "SAUDI_ARABIA": "Saudi Araabia"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Minu aadressid",
-    "ADDRESS_MODIFICATION": "Aadressi muutmine",
-    "STREET": "Tänav",
-    "CITY": "Linn",
-    "CP": "Sihtnumber",
-    "CREATE": "Loo",
-    "BACK": "Tagasi",
-    "CHANGE": "Muuda",
-    "CLOSE": "Sulge"
   },
   "ADMIN_PARAM": {
     "TITLE": "Platvormi seaded",

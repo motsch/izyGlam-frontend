@@ -1,16 +1,40 @@
 {
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Meine Adressen",
+    "ADDRESS_MODIFICATION": "Adressänderung",
+    "STREET": "Straße",
+    "CITY": "Stadt",
+    "CP": "Postleitzahl",
+    "CREATE": "Erstellen",
+    "BACK": "Zurück",
+    "CHANGE": "Ändern",
+    "CLOSE": "Schließen"
+  },
   "SHOPTYPE": {
-    "HAIRDRESSER": "Friseur(in)",
-    "NAILTECHNICIAN": "Nageldesigner(in)",
-    "MAKEUP": "Visagist(in)",
-    "WAXING": "Kosmetiker(in)",
+    "HAIRDRESSER": "Friseur/in",
+    "NAILTECHNICIAN": "Nageldesigner/in",
+    "MAKEUP": "Visagist/in",
+    "WAXING": "Kosmetiker/in (Enthaarung)",
     "FACIAL": "Gesichtsbehandlung",
-    "MASSAGE": "Masseur(in)",
-    "EYELASH": "Wimpernverlängerungen",
-    "EYEBROW": "Augenbrauen",
-    "TANNING": "Bräunung",
-    "ACUPUNCTURE": "Akupunktur",
-    "OTHER": "Sonstiges"
+    "MASSAGE": "Masseur/in",
+    "EYELASH": "Wimpernstylist/in",
+    "EYEBROW": "Ernährungsberater/in",
+    "TANNING": "Bräunungsspezialist/in",
+    "BARBER": "Barbier",
+    "ACUPUNCTURE": "Akupunkteur/in",
+    "OTHER": "Sonstiges",
+    "COIFFURE": "Frisur",
+    "MANUCURE": "Maniküre",
+    "VISAGE": "Gesichtspflege",
+    "MAQUILLAGE": "Make-up",
+    "EPILATION": "Haarentfernung",
+    "BRONZAGE": "Bräunung",
+    "PARTUM": "Nach der Geburt",
+    "NUTRITION": "Ernährung",
+    "FITNESS": "Fitness",
+    "STYLISME": "Styling",
+    "YOGA": "Entspannung",
+    "DEVELOPPEMENT": "Persönlichkeitsentwicklung"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon zu Favoriten hinzugefügt",
@@ -761,17 +785,6 @@
     "SINGAPOURE": "Singapur",
     "EMIRAT_ARABE": "Vereinigte Arabische Emirate",
     "SAUDI_ARABIA": "Saudi-Arabien"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Meine Adressen",
-    "ADDRESS_MODIFICATION": "Adressänderung",
-    "STREET": "Straße",
-    "CITY": "Stadt",
-    "CP": "Postleitzahl",
-    "CREATE": "Erstellen",
-    "BACK": "Zurück",
-    "CHANGE": "Ändern",
-    "CLOSE": "Schließen"
   },
   "ADMIN_PARAM": {
     "TITLE": "Plattform-Einstellungen",
