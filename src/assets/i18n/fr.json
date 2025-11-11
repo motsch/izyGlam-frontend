@@ -1,4 +1,16 @@
 {
+  
+  "ADDRESS_MODAL": {
+    "ADDRESS": "Mes adresses",
+    "ADDRESS_MODIFICATION": "Modification d'adresse",
+    "STREET": "Rue",
+    "CITY": "Ville",
+    "CP": "Code Postal",
+    "CREATE": "Créer",
+    "BACK": "Retour",
+    "CHANGE": "Modifier",
+    "CLOSE": "Fermer"
+  },
   "SHOPTYPE": {
     "HAIRDRESSER": "Coiffeur(se)",
     "NAILTECHNICIAN": "Manucure",
@@ -775,17 +787,6 @@
     "SINGAPOURE": "Singapour",
     "EMIRAT_ARABE": "Émirats arabes unis",
     "SAUDI_ARABIA": "Arabie saoudite"
-  },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Mes adresses",
-    "ADDRESS_MODIFICATION": "Modification d'adresse",
-    "STREET": "Rue",
-    "CITY": "Ville",
-    "CP": "Code Postal",
-    "CREATE": "Créer",
-    "BACK": "Retour",
-    "CHANGE": "Modifier",
-    "CLOSE": "Fermer"
   },
   "ADMIN_PARAM": {
     "TITLE": "Paramètres de la plateforme",
