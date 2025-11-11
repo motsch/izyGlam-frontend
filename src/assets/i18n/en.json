@@ -786,17 +786,6 @@
     "EMIRAT_ARABE": "United Arab Emirates",
     "SAUDI_ARABIA": "Saudi Arabia"
   },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "My addresses",
-    "ADDRESS_MODIFICATION": "Address update",
-    "STREET": "Street",
-    "CITY": "City",
-    "CP": "Postal code",
-    "CREATE": "Create",
-    "BACK": "Back",
-    "CHANGE": "Edit",
-    "CLOSE": "Close"
-  },
   "ADMIN_PARAM": {
     "TITLE": "Platform settings",
     "COMMISSION": "Commission rate (%)",

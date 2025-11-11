@@ -786,17 +786,6 @@
     "EMIRAT_ARABE": "Verenigde Arabische Emiraten",
     "SAUDI_ARABIA": "Saoedi-Arabië"
   },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Mijn adressen",
-    "ADDRESS_MODIFICATION": "Adreswijziging",
-    "STREET": "Straat",
-    "CITY": "Stad",
-    "CP": "Postcode",
-    "CREATE": "Aanmaken",
-    "BACK": "Terug",
-    "CHANGE": "Wijzigen",
-    "CLOSE": "Sluiten"
-  },
   "ADMIN_PARAM": {
     "TITLE": "Platforminstellingen",
     "COMMISSION": "Commissietarief (%)",

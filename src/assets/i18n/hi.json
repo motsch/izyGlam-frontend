@@ -786,17 +786,6 @@
     "EMIRAT_ARABE": "संयुक्त अरब अमीरात",
     "SAUDI_ARABIA": "सऊदी अरब"
   },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "मेरे पते",
-    "ADDRESS_MODIFICATION": "पता संशोधन",
-    "STREET": "सड़क",
-    "CITY": "शहर",
-    "CP": "पिन कोड",
-    "CREATE": "बनाएँ",
-    "BACK": "वापस",
-    "CHANGE": "संपादित करें",
-    "CLOSE": "बंद करें"
-  },
   "ADMIN_PARAM": {
     "TITLE": "प्लेटफ़ॉर्म सेटिंग्स",
     "COMMISSION": "कमीशन दर (%)",

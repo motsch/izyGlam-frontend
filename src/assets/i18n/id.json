@@ -786,17 +786,6 @@
     "EMIRAT_ARABE": "Uni Emirat Arab",
     "SAUDI_ARABIA": "Arab Saudi"
   },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Alamatku",
-    "ADDRESS_MODIFICATION": "Perubahan alamat",
-    "STREET": "Jalan",
-    "CITY": "Kota",
-    "CP": "Kode pos",
-    "CREATE": "Buat",
-    "BACK": "Kembali",
-    "CHANGE": "Ubah",
-    "CLOSE": "Tutup"
-  },
   "ADMIN_PARAM": {
     "TITLE": "Pengaturan platform",
     "COMMISSION": "Tarif komisi (%)",

@@ -786,17 +786,6 @@
     "EMIRAT_ARABE": "Các Tiểu vương quốc Ả Rập Thống nhất",
     "SAUDI_ARABIA": "Ả Rập Xê Út"
   },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Địa chỉ của tôi",
-    "ADDRESS_MODIFICATION": "Chỉnh sửa địa chỉ",
-    "STREET": "Đường",
-    "CITY": "Thành phố",
-    "CP": "Mã bưu chính",
-    "CREATE": "Tạo",
-    "BACK": "Quay lại",
-    "CHANGE": "Chỉnh sửa",
-    "CLOSE": "Đóng"
-  },
   "ADMIN_PARAM": {
     "TITLE": "Thiết lập nền tảng",
     "COMMISSION": "Tỷ lệ hoa hồng (%)",

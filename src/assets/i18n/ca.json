@@ -786,17 +786,6 @@
     "EMIRAT_ARABE": "Emirats Àrabs Units",
     "SAUDI_ARABIA": "Aràbia Saudita"
   },
-  "ADDRESS_MODAL": {
-    "ADDRESS": "Les meves adreces",
-    "ADDRESS_MODIFICATION": "Modificació d’adreça",
-    "STREET": "Carrer",
-    "CITY": "Ciutat",
-    "CP": "Codi postal",
-    "CREATE": "Crear",
-    "BACK": "Enrere",
-    "CHANGE": "Modificar",
-    "CLOSE": "Tancar"
-  },
   "ADMIN_PARAM": {
     "TITLE": "Paràmetres de la plataforma",
     "COMMISSION": "Taxa de comissió (%)",
