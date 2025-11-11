@@ -17,7 +17,9 @@ export class DownloadComponent implements OnInit {
         if (langTemp) {
             this.lang = langTemp;
         } else if (langTemp != 'fr' && langTemp != 'en' && langTemp !== 'es') {
-            this.lang = 'en'
+            this.lang = 'en';
+        } else {
+            this.lang = 'fr';
         }
     }
 }
