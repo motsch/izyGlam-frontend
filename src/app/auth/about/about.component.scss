@@ -138,3 +138,23 @@
     }
   }
 }
+
+
+
+/* Vidéo toujours carrée et rognée au centre */
+.hero-image .hero-video {
+  /* dimensionnement */
+  width: 100%;
+  max-width: 600px;        /* garde le même max que l'image, ajuste si besoin */
+  aspect-ratio: 1 / 1;     /* carré garanti */
+
+  /* rognage */
+  object-fit: cover;       /* remplit le carré, rogne l'excédent */
+  object-position: center; /* rogne centré */
+
+  /* rendu */
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #000;        /* évite un flash blanc au chargement */
+}
