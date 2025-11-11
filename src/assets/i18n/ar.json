@@ -1,16 +1,40 @@
 {
+    "ADDRESS_MODAL": {
+        "ADDRESS": "عناويني",
+        "ADDRESS_MODIFICATION": "تعديل العنوان",
+        "STREET": "الشارع",
+        "CITY": "المدينة",
+        "CP": "الرمز البريدي",
+        "CREATE": "إنشاء",
+        "BACK": "رجوع",
+        "CHANGE": "تعديل",
+        "CLOSE": "إغلاق"
+    },
     "SHOPTYPE": {
-        "HAIRDRESSER": "مصفف/ـة شعر",
-        "NAILTECHNICIAN": "تقنية أظافر",
-        "MAKEUP": "خبير/ة مكياج",
-        "WAXING": "أخصائي/ة تجميل",
+        "HAIRDRESSER": "مصفف شعر",
+        "NAILTECHNICIAN": "فني أظافر",
+        "MAKEUP": "خبير تجميل",
+        "WAXING": "اختصاصي إزالة الشعر",
         "FACIAL": "عناية بالوجه",
-        "MASSAGE": "مدلك/ـة",
-        "EYELASH": "وصلات رموش",
-        "EYEBROW": "حواجب",
-        "TANNING": "تسمير",
-        "ACUPUNCTURE": "وخز بالإبر",
-        "OTHER": "أخرى"
+        "MASSAGE": "مدلك",
+        "EYELASH": "خبير رموش",
+        "EYEBROW": "خبير تغذية",
+        "TANNING": "تسمير البشرة",
+        "BARBER": "حلاق",
+        "ACUPUNCTURE": "اختصاصي وخز بالإبر",
+        "OTHER": "أخرى",
+        "COIFFURE": "تصفيف الشعر",
+        "MANUCURE": "عناية بالأظافر",
+        "VISAGE": "عناية بالوجه",
+        "MAQUILLAGE": "تجميل",
+        "EPILATION": "إزالة الشعر",
+        "BRONZAGE": "تسمير",
+        "PARTUM": "ما بعد الولادة",
+        "NUTRITION": "تغذية",
+        "FITNESS": "لياقة بدنية",
+        "STYLISME": "تنسيق الأزياء",
+        "YOGA": "استرخاء",
+        "DEVELOPPEMENT": "تطوير الذات"
     },
     "SUCCESS": {
         "FAVORITE_ADDED": "تمت إضافة الصالون إلى المفضلة",
@@ -761,17 +785,6 @@
         "SINGAPOURE": "سنغافورة",
         "EMIRAT_ARABE": "الإمارات العربية المتحدة",
         "SAUDI_ARABIA": "المملكة العربية السعودية"
-    },
-    "ADDRESS_MODAL": {
-        "ADDRESS": "عناويني",
-        "ADDRESS_MODIFICATION": "تعديل العنوان",
-        "STREET": "الشارع",
-        "CITY": "المدينة",
-        "CP": "الرمز البريدي",
-        "CREATE": "إنشاء",
-        "BACK": "رجوع",
-        "CHANGE": "تعديل",
-        "CLOSE": "إغلاق"
     },
     "ADMIN_PARAM": {
         "TITLE": "إعدادات المنصّة",
