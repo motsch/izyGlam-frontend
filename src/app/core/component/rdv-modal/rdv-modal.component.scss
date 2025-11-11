@@ -1,3 +1,4 @@
+/* ---------- Titres & layout internes ---------- */
 .modal-title {
   font-size: 1.2em;
   font-weight: bold;
@@ -117,6 +118,7 @@
   background-color: #fff;
 }
 
+/* Bouton CTA rose */
 .btn.qr {
   background-color: #ffe6ea;
   color: #d40055;
@@ -136,7 +138,7 @@
   color: #b00040;
 }
 
-/* Responsive full-width uniquement sur petit écran */
+/* Responsive full-width uniquement sur petit écran (pour ce bouton) */
 @media (max-width: 600px) {
   .btn.qr {
     width: 100%;
@@ -145,6 +147,7 @@
   }
 }
 
+/* Bloc image + texte */
 .service-info {
   text-align: center;
   margin-bottom: 20px;
@@ -180,7 +183,6 @@
       opacity: 0;
       transform: translateY(-10px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);
@@ -193,31 +195,27 @@
   align-items: center;
   margin: 0 16px;
   gap: 16px;
-  /* petit espace entre image et texte */
 }
 
 .service-image-wrapper {
   flex-shrink: 0;
-  /* Ne pas réduire l'image */
 }
 
 .service-image {
   width: 100px;
-  /* largeur fixe, ajustable selon ton design */
   height: 100px;
-  /* hauteur fixe pour garder un beau carré */
   object-fit: cover;
   border-radius: 8px;
 }
 
 .service-info {
   flex: 1;
-  /* le texte prend tout l'espace restant */
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+/* Bouton X */
 .close-button {
   position: absolute;
   top: 15px;
@@ -240,25 +238,50 @@
   color: #b00040;
 }
 
-
-.btn.qr {
-  background-color: #ffe6f0;
-  color: #ff4081;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.btn.qr:hover {
-  background-color: #ffd6e6;
-  color: #d40055;
-}
+/* Conteneur Material pour garder de la place au X */
 .mat-dialog-container {
-  position: relative; /* Nécessaire pour que le bouton "X" soit bien positionné */
-  padding-top: 50px; /* Laisse un peu d’espace pour le bouton de fermeture */
+  position: relative;
+  padding-top: 50px;
+}
+
+/* ---------- OVERRIDES MOBILE : Élargir la modale avec faible marge ---------- */
+/* IMPORTANT : ces règles supposent que tu ouvres la modale avec panelClass: 'rdv-modal'
+   this.dialog.open(RdvModalComponent, { panelClass: 'rdv-modal', ... })
+   Ces styles doivent être dans styles.scss (global), pas dans le SCSS du composant. */
+
+@media (max-width: 600px) {
+  /* Étire la pane presque à la largeur d’écran */
+  .cdk-overlay-pane.rdv-modal {
+    width: calc(100vw - 24px) !important;     /* 12px de marge à gauche/droite */
+    max-width: calc(100vw - 24px) !important;
+    margin: 0 auto !important;
+  }
+
+  /* Forcer la surface Material (MDC et legacy) à occuper toute la pane */
+  .rdv-modal .mat-mdc-dialog-container,
+  .rdv-modal .mat-dialog-container,
+  .rdv-modal .mdc-dialog__surface {
+    width: 100% !important;
+    max-width: none !important;
+    border-radius: 16px !important;
+  }
+
+  /* Ne plus plafonner le contenu interne sur mobile */
+  .rdv-modal .modal-content {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  /* Ajuste légèrement les marges internes pour respirer */
+  .rdv-modal .service-container {
+    margin: 0 12px;
+  }
+
+  /* Garde le bouton X bien dans le coin quand la modale s’élargit */
+  .rdv-modal .close-button {
+    right: 12px;
+    top: 12px;
+  }
 }

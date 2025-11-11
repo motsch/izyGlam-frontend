@@ -24,39 +24,39 @@
 
           <!-- 1. Pays -->
           <div class="form-group">
-            <label for="country">Pays</label>
+            <label for="country">{{"ADDRESS_MODAL.COUNTRY" | translate}}</label>
             <select id="country" [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
-              <option value="">-- Choisissez un pays --</option>
+              <option value="">-- {{ "ADDRESS_MODAL.CHOOSE_COUNTRY" | translate }} --</option>
               <option *ngFor="let country of availableCountries" [value]="country">{{ country }}</option>
             </select>
           </div>
-        
+
           <!-- 2. Code Postal -->
           <div class="form-group">
-            <label for="postalCode">Code postal</label>
-            <input type="text" id="postalCode" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
-              (change)="onPostalCodeEntered()" required maxlength="10" />
+            <label for="postalCode">{{"ADDRESS_MODAL.CP" | translate}}</label>
+            <input disabled *ngIf="availableCities.length === 0" type="text" id="city" name="city"
+              [value]="selectedCity?.name" placeholder="Ville" />
           </div>
-        
+
           <!-- 3. Ville -->
           <div class="form-group">
-            <label for="city">Ville</label>
+            <label for="city">{{"ADDRESS_MODAL.CITY" | translate}}</label>
             <select *ngIf="availableCities.length > 0" id="city" [(ngModel)]="selectedCity" name="city" required>
-              <option value="">-- Choisissez une ville --</option>
+              <option value="">-- {{ "ADDRESS_MODAL.CHOOSE_CITY" | translate }} --</option>
               <option *ngFor="let city of availableCities" [value]="city">{{ city.nom }}</option>
             </select>
-            <input *ngIf="availableCities.length === 0" type="text" id="city" name="city" [(ngModel)]="selectedCity"
-              placeholder="Ville" />
+            <input disabled *ngIf="availableCities.length === 0" type="text" id="city" name="city"
+              value="selectedCity.name" [(ngModel)]="selectedCity" placeholder="Ville" />
           </div>
-        
+
           <!-- 4. Rue -->
           <div class="form-group">
-            <label for="street">Rue</label>
+            <label for="street">{{"ADDRESS_MODAL.STREET" | translate}}</label>
             <input type="text" id="street" [(ngModel)]="newAddress.street" name="street" placeholder="Rue" required />
           </div>
-        
+
         </form>
-        
+
       </div>
     </span>
   </div>
