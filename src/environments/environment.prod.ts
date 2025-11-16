@@ -24,7 +24,8 @@ export const environment = {
   BLUESKY_REDIRECT_URI: 'none',
   X_APP_ID: 'VOTRE_APP_ID_TWITTER',
   X_REDIRECT_URI: 'https://izyglam.com/x-login',
-
+  App_Android: "https://play.google.com/store/apps/details?id=com.izyglam.client",
+  App_iOS: "",
   stripePublicKey: 'pk_test_51NG9rzEDs001iAIL6R6k2IMnLte54Cs3Iihtv9cC95dDobeYSiqPeBpRgZgyRFbyyUhkYzRoG3AI2Wb738MYSRVk00mFFBaVSy', // Remplacez par votre clé publique
 
 };

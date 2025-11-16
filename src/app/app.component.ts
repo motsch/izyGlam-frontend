@@ -32,7 +32,8 @@ export class AppComponent implements OnInit {
   lang = 'fr';
   me: any = {};
   imageNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-
+  android = environment.App_Android;
+  iOS = environment.App_iOS;
   constructor(
     private sharedService: SharedService,
     public translate: TranslateService,
@@ -64,7 +65,7 @@ export class AppComponent implements OnInit {
     let langTemp = localStorage.getItem('langue');
     if (langTemp) {
       this.lang = langTemp;
-    } else if(langTemp != 'fr' && langTemp != 'en' && langTemp !== 'es') {
+    } else if (langTemp != 'fr' && langTemp != 'en' && langTemp !== 'es') {
       this.lang = 'en'
     }
     // si tu veux une valeur initiale depuis la session au boot :

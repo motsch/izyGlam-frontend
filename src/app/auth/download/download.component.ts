@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 export class DownloadComponent implements OnInit {
     imgStorageUrl: string = environment.imgStorageUrl;
     lang = 'fr';
+    android = environment.App_Android;
+    iOS = environment.App_iOS;
 
     constructor() { }
 
