@@ -20,7 +20,7 @@ export class HowItWorkComponent implements AfterViewInit, OnDestroy {
   aPIimgStorageUrl = (environment.APIimgStorageUrl || '').replace(/\/$/, '');
 
   /** Vitesse de lecture de la vidéo */
-  playbackRate = 0.9;
+  playbackRate = 1;
 
   /** Active/désactive le mode vidéo (fallback image si false) */
   paramVideo = true;

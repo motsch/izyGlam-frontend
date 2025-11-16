@@ -62,11 +62,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    let langTemp = localStorage.getItem('langue');
-    if (langTemp) {
+    const langTemp = localStorage.getItem('langue');
+    if (langTemp === 'fr' || langTemp === 'en' || langTemp === 'es') {
+      // valeur valide trouvée en localStorage
       this.lang = langTemp;
-    } else if (langTemp != 'fr' && langTemp != 'en' && langTemp !== 'es') {
-      this.lang = 'en'
+    } else {
+      // rien ou valeur invalide → on force la langue par défaut
+      this.lang = 'fr'; // ou 'en' si tu veux l’anglais par défaut
+      localStorage.setItem('langue', this.lang);
     }
     // si tu veux une valeur initiale depuis la session au boot :
     const bootMe = this.sessionService.getCurrentUser();
