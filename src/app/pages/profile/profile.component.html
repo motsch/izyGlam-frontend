@@ -26,7 +26,7 @@
           {{ "PROFILE_MENU.DASHBOARD" | translate }}
         </li>
         -->
-        <li *ngIf="me.role === 'entreprise'" [ngClass]="{ active: isSectionActive('company') }"
+        <li *ngIf="me.role === 'boss'" [ngClass]="{ active: isSectionActive('company') }"
           (click)="setActiveSection('company')">
           {{ "PROFILE_MENU.COMPANY" | translate }}
         </li>
@@ -89,14 +89,7 @@
           <h1 class="page-title">{{ "PROFILE_MENU.COMPANY" | translate }}</h1>
           <p class="page-subtitle">{{ "PROFILE_MENU.COMPANY_SUBTITLE" | translate }}</p>
         </div>
-        <mat-tab-group class="custom-tab-group" mat-stretch-tabs="false" mat-align-tabs="start">
-          <mat-tab label="Employés affiliés">
-            <app-company-management [myCompany]="myCompany" [employees]="employees"></app-company-management>
-          </mat-tab>
-          <mat-tab label="Sécurité">
-            <app-company-set-default-password [myCompany]="myCompany"></app-company-set-default-password>
-          </mat-tab>
-        </mat-tab-group>
+        <app-company-management [companyId]="me.companyId"></app-company-management>
       </div>
       <div *ngIf="isSectionActive('management')" id="management-content">
         <div class="page-title-wrapper">
@@ -187,6 +180,9 @@
           </mat-tab>
           <mat-tab [label]="'TABS.SHOPS' | translate">
             <app-admin-shops-management></app-admin-shops-management>
+          </mat-tab>
+          <mat-tab label="Les entreprises">
+            <app-admin-company-management></app-admin-company-management>
           </mat-tab>
           <mat-tab [label]="'TABS.USERS' | translate">
             <app-admin-clients-management></app-admin-clients-management>

@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Online ondersteuning"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Medewerkersbeheer",
-    "NAME": "Naam",
-    "EMAIL": "E-mail",
-    "SOLDE": "Rekeningsaldo",
-    "ACTIONS": "Acties",
-    "DEFAULT_PASSWORD": "Standaardwachtwoord",
-    "REINITIALIZE_PASSWORD": "Standaardwachtwoord voor reset",
-    "CHANGE_PASSWORD": "Wachtwoord wijzigen"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Rekening van werknemer crediteren",

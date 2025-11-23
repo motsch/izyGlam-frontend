@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Онлайн-поддержка"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Управление сотрудниками",
-    "NAME": "Имя",
-    "EMAIL": "E-mail",
-    "SOLDE": "Баланс счёта",
-    "ACTIONS": "Действия",
-    "DEFAULT_PASSWORD": "Пароль по умолчанию",
-    "REINITIALIZE_PASSWORD": "Пароль по умолчанию для сброса",
-    "CHANGE_PASSWORD": "Изменить пароль"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Пополнить счёт сотрудника",

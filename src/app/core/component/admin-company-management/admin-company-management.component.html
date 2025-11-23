@@ -1,0 +1,514 @@
+<div class="admin-company-wrapper">
+  <!-- COMPANY_MANAGEMENT.texte -->
+  <!-- Header -->
+  <div class="admin-company-header">
+    <h1>Entreprises</h1>
+    <p>Gère facilement tes clients entreprise et leurs collaborateurs.</p>
+  </div>
+
+  <!-- Liste des entreprises -->
+  <div class="card company-list-card">
+    <div class="card-header">
+      <div class="card-header-left">
+        <h2>Portefeuille entreprises</h2>
+        <span class="subtitle">
+          {{ companies.length }} entreprise{{ companies.length > 1 ? 's' : '' }}
+        </span>
+      </div>
+
+      <button
+        type="button"
+        class="btn-primary-outline"
+        (click)="openCompanyModal()"
+      >
+        + Ajouter une entreprise
+      </button>
+    </div>
+
+    <div class="card-body">
+      <div *ngIf="loadingCompanies" class="loading-state">
+        <div class="spinner"></div>
+        <span>Chargement des entreprises...</span>
+      </div>
+
+      <div *ngIf="!loadingCompanies && companies.length === 0" class="empty-state">
+        <p>Aucune entreprise pour le moment.</p>
+      </div>
+
+      <div class="company-list" *ngIf="!loadingCompanies && companies.length > 0">
+        <div
+          class="company-row"
+          *ngFor="let company of companies"
+        >
+          <!-- Ligne principale entreprise -->
+          <div
+            class="company-main"
+            (click)="toggleCompany(company)"
+            [class.expanded]="expandedCompanyId === company._id"
+          >
+            <div class="company-info">
+              <div class="company-text">
+                <div class="company-name">
+                  {{ company.name }}
+                </div>
+                <div class="company-meta">
+                  <span>{{ getCompanyCity(company) }}</span>
+                  <span class="dot">•</span>
+                  <span>{{ company.industry }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="company-stats">
+              <div class="stat">
+                <span class="stat-label">Employés</span>
+                <span class="stat-value">
+                  {{ company.employeesCount || (companyEmployees[company._id]?.length || 0) }}
+                </span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Crédit</span>
+                <span class="stat-value">
+                  {{ company.credit | number:'1.0-0' }} €
+                </span>
+              </div>
+              <div class="stat" *ngIf="company.contractAmount">
+                <span class="stat-label">Contrat</span>
+                <span class="stat-value">
+                  {{ company.contractAmount | number:'1.0-0' }} €
+                </span>
+              </div>
+            </div>
+
+            <button class="toggle-btn" type="button">
+              <span
+                class="chevron"
+                [class.open]="expandedCompanyId === company._id"
+              ></span>
+            </button>
+          </div>
+
+          <!-- Volet employés -->
+          <div
+            class="company-panel"
+            [class.open]="expandedCompanyId === company._id"
+          >
+            <div class="company-panel-inner">
+              <div class="company-panel-actions">
+                <button
+                  type="button"
+                  class="btn-outline-small"
+                  (click)="openEmployeeCreateModal(company, $event)"
+                >
+                  + Ajouter un employé
+                </button>
+              </div>
+
+              <div *ngIf="loadingEmployees[company._id]" class="loading-state small">
+                <div class="spinner small"></div>
+                <span>Chargement des employés...</span>
+              </div>
+
+              <div
+                *ngIf="!loadingEmployees[company._id] && (!companyEmployees[company._id] || companyEmployees[company._id].length === 0)"
+                class="empty-state small"
+              >
+                <p>Aucun employé lié à cette entreprise.</p>
+              </div>
+
+              <div
+                class="employee-list"
+                *ngIf="!loadingEmployees[company._id] && companyEmployees[company._id]?.length"
+              >
+                <div
+                  class="employee-card"
+                  *ngFor="let employee of companyEmployees[company._id]"
+                  (click)="openEmployeeModal(employee)"
+                >
+                  <div class="employee-avatar">
+                    <span>{{ getInitials(employee) }}</span>
+                  </div>
+                  <div class="employee-info">
+                    <div class="employee-name">
+                      {{ employee.firstname }} {{ employee.lastname }}
+                    </div>
+                    <div class="employee-meta">
+                      <span>{{ employee.email }}</span>
+                    </div>
+                    <div class="employee-meta secondary">
+                      <span>Crédit : {{ employee.credit || 0 }} €</span>
+                      <span class="dot">•</span>
+                      <span>
+                        {{ employee.totalBookings || 0 }}
+                        réservation{{ (employee.totalBookings || 0) > 1 ? 's' : '' }}
+                      </span>
+                    </div>
+                  </div>
+                  <div class="employee-cta">
+                    <button
+                      type="button"
+                      class="btn-outline"
+                      (click)="openEmployeeModal(employee); $event.stopPropagation()"
+                    >
+                      Voir les bookings
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- /company-row -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal création entreprise -->
+  <div class="modal-backdrop" *ngIf="companyCreateModalOpen">
+    <div class="modal modal-small">
+      <form (ngSubmit)="submitCompany()" #companyForm="ngForm" class="modal-form">
+        <div class="modal-header">
+          <div class="modal-title">
+            <div class="modal-title-text">
+              <h3>Ajouter une entreprise</h3>
+              <p>Crée un nouveau client entreprise.</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            (click)="closeCompanyModal()"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-row">
+            <label for="company-name">Nom de l'entreprise</label>
+            <input
+              id="company-name"
+              type="text"
+              name="name"
+              [(ngModel)]="newCompany.name"
+              required
+            />
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="company-siret">SIRET</label>
+              <input
+                id="company-siret"
+                type="text"
+                name="siret"
+                [(ngModel)]="newCompany.siret"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <label for="company-industry">Secteur</label>
+              <input
+                id="company-industry"
+                type="text"
+                name="industry"
+                [(ngModel)]="newCompany.industry"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="company-email">Email</label>
+              <input
+                id="company-email"
+                type="email"
+                name="email"
+                [(ngModel)]="newCompany.email"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <label for="company-phone">Téléphone</label>
+              <input
+                id="company-phone"
+                type="tel"
+                name="phone"
+                [(ngModel)]="newCompany.phone"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="company-address">Adresse</label>
+            <input
+              id="company-address"
+              type="text"
+              name="address"
+              [(ngModel)]="newCompany.address"
+              required
+            />
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="company-credit">Crédit initial (€)</label>
+              <input
+                id="company-credit"
+                type="number"
+                name="credit"
+                min="0"
+                [(ngModel)]="newCompany.credit"
+              />
+            </div>
+            <div class="form-row">
+              <label for="company-website">Site web (optionnel)</label>
+              <input
+                id="company-website"
+                type="text"
+                name="website"
+                [(ngModel)]="newCompany.website"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn-secondary"
+            (click)="closeCompanyModal()"
+          >
+            Annuler
+          </button>
+          <button
+            type="submit"
+            class="btn-primary"
+            [disabled]="creatingCompany || !companyForm.form.valid"
+          >
+            <span *ngIf="!creatingCompany">Enregistrer</span>
+            <span *ngIf="creatingCompany">Enregistrement...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal création employé -->
+  <div class="modal-backdrop" *ngIf="employeeCreateModalOpen">
+    <div class="modal modal-small">
+      <form (ngSubmit)="submitEmployee()" #employeeForm="ngForm" class="modal-form">
+        <div class="modal-header">
+          <div class="modal-title">
+            <div class="modal-title-text">
+              <h3>Ajouter un employé</h3>
+              <p *ngIf="employeeCompanyContext">
+                {{ employeeCompanyContext.name }}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            (click)="closeEmployeeCreateModal()"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="employee-firstname">Prénom</label>
+              <input
+                id="employee-firstname"
+                type="text"
+                name="firstname"
+                [(ngModel)]="newEmployee.firstname"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <label for="employee-lastname">Nom</label>
+              <input
+                id="employee-lastname"
+                type="text"
+                name="lastname"
+                [(ngModel)]="newEmployee.lastname"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="employee-email">Email</label>
+              <input
+                id="employee-email"
+                type="email"
+                name="email"
+                [(ngModel)]="newEmployee.email"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <label for="employee-phone">Téléphone</label>
+              <input
+                id="employee-phone"
+                type="tel"
+                name="phone"
+                [(ngModel)]="newEmployee.phone"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="employee-sex">Sexe</label>
+              <select
+                id="employee-sex"
+                name="sex"
+                [(ngModel)]="newEmployee.sex"
+                required
+              >
+                <option value="female">Femme</option>
+                <option value="male">Homme</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="employee-credit">Crédit (€)</label>
+              <input
+                id="employee-credit"
+                type="number"
+                name="credit"
+                min="0"
+                [(ngModel)]="newEmployee.credit"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn-secondary"
+            (click)="closeEmployeeCreateModal()"
+          >
+            Annuler
+          </button>
+          <button
+            type="submit"
+            class="btn-primary"
+            [disabled]="creatingEmployee || !employeeForm.form.valid"
+          >
+            <span *ngIf="!creatingEmployee">Enregistrer</span>
+            <span *ngIf="creatingEmployee">Enregistrement...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal employé : bookings -->
+  <div class="modal-backdrop" *ngIf="employeeModalOpen">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">
+          <div class="modal-avatar" *ngIf="selectedEmployee">
+            {{ getInitials(selectedEmployee) }}
+          </div>
+          <div class="modal-title-text" *ngIf="selectedEmployee">
+            <h3>{{ selectedEmployee.firstname }} {{ selectedEmployee.lastname }}</h3>
+            <p>{{ selectedEmployee.email }}</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="icon-button"
+          (click)="closeEmployeeModal()"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="employee-summary" *ngIf="selectedEmployee">
+          <div class="summary-item">
+            <span class="label">Crédit</span>
+            <span class="value">{{ selectedEmployee.credit || 0 }} €</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Total bookings</span>
+            <span class="value">
+              {{ selectedEmployee.totalBookings || employeeBookings.length }}
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="loadingBookings" class="loading-state">
+          <div class="spinner"></div>
+          <span>Chargement des bookings...</span>
+        </div>
+
+        <div
+          *ngIf="!loadingBookings && employeeBookings.length === 0"
+          class="empty-state"
+        >
+          <p>Aucun booking pour cet employé.</p>
+        </div>
+
+        <div
+          class="booking-table-wrapper"
+          *ngIf="!loadingBookings && employeeBookings.length > 0"
+        >
+          <table class="booking-table">
+            <colgroup>
+              <col class="col-date" />
+              <col class="col-service" />
+              <col class="col-establishment" />
+              <col class="col-status" />
+              <col class="col-price" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Prestation</th>
+                <th>Établissement</th>
+                <th>Statut</th>
+                <th>Prix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let booking of employeeBookings">
+                <td>
+                  {{ booking.start | date:'dd/MM/yyyy HH:mm' }}
+                </td>
+                <td>
+                  <span class="main">{{ booking.productName }}</span>
+                </td>
+                <td>{{ booking.establishmentName }}</td>
+                <td>
+                  <span class="status-pill" [ngClass]="booking.status">
+                    {{ getStatusLabel(booking.status) }}
+                  </span>
+                </td>
+                <td class="price-cell">
+                  {{ booking.price || '0' }} €
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-primary" (click)="closeEmployeeModal()">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -36,7 +36,7 @@ export class BookingService {
      * Permet de récupérer un user par son id
      * @param id (id du user)
      */
-    getBookingByClient(_id: number) {
+    getBookingByClient(_id: string) {
         return this.http.get<any>(environment.apiUrl + 'booking-by-client/' + _id);
     }
 

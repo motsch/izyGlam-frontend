@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "온라인 지원"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "직원 관리",
-    "NAME": "이름",
-    "EMAIL": "이메일",
-    "SOLDE": "계정 잔액",
-    "ACTIONS": "작업",
-    "DEFAULT_PASSWORD": "기본 비밀번호",
-    "REINITIALIZE_PASSWORD": "재설정을 위한 기본 비밀번호",
-    "CHANGE_PASSWORD": "비밀번호 변경"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "직원 계정 크레딧 지급",

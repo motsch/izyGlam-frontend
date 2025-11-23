@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "پشتیبانی آنلاین"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "مدیریت کارکنان",
-    "NAME": "نام",
-    "EMAIL": "ایمیل",
-    "SOLDE": "ماندهٔ حساب",
-    "ACTIONS": "اقدامات",
-    "DEFAULT_PASSWORD": "رمز عبور پیش‌فرض",
-    "REINITIALIZE_PASSWORD": "رمز عبور پیش‌فرض برای بازنشانی",
-    "CHANGE_PASSWORD": "تغییر رمز عبور"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "شارژ حساب کارمند",

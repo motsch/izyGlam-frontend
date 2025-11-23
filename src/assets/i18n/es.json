@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Asistencia en línea"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Gestión de empleados",
-    "NAME": "Nombre",
-    "EMAIL": "E-mail",
-    "SOLDE": "Saldo de la cuenta",
-    "ACTIONS": "Acciones",
-    "DEFAULT_PASSWORD": "Contraseña predeterminada",
-    "REINITIALIZE_PASSWORD": "Contraseña predeterminada para restablecimiento",
-    "CHANGE_PASSWORD": "Cambiar contraseña"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Acreditar la cuenta del empleado",

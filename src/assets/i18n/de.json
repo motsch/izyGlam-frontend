@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Online-Support"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Mitarbeiterverwaltung",
-    "NAME": "Name",
-    "EMAIL": "E-Mail",
-    "SOLDE": "Kontostand",
-    "ACTIONS": "Aktionen",
-    "DEFAULT_PASSWORD": "Standardpasswort",
-    "REINITIALIZE_PASSWORD": "Standardpasswort zur Zurücksetzung",
-    "CHANGE_PASSWORD": "Passwort ändern"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Mitarbeiterkonto aufladen",

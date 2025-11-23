@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Assistenza online"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Gestione dipendenti",
-    "NAME": "Nome",
-    "EMAIL": "E-mail",
-    "SOLDE": "Saldo del conto",
-    "ACTIONS": "Azioni",
-    "DEFAULT_PASSWORD": "Password predefinita",
-    "REINITIALIZE_PASSWORD": "Password predefinita per reimpostazione",
-    "CHANGE_PASSWORD": "Modifica password"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Accredita il conto del dipendente",

@@ -840,14 +840,6 @@
     "ONLINE_ASSISTANCE": "Bantuan dalam talian"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Pengurusan pekerja",
-    "NAME": "Nama",
-    "EMAIL": "E-mel",
-    "SOLDE": "Baki akaun",
-    "ACTIONS": "Tindakan",
-    "DEFAULT_PASSWORD": "Kata laluan lalai",
-    "REINITIALIZE_PASSWORD": "Kata laluan lalai untuk tetapan semula",
-    "CHANGE_PASSWORD": "Ubah kata laluan"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Kreditkan akaun pekerja",

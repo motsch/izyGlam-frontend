@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Assistência online"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Gestão de colaboradores",
-    "NAME": "Nome",
-    "EMAIL": "E-mail",
-    "SOLDE": "Saldo da conta",
-    "ACTIONS": "Ações",
-    "DEFAULT_PASSWORD": "Palavra-passe predefinida",
-    "REINITIALIZE_PASSWORD": "Palavra-passe predefinida para reposição",
-    "CHANGE_PASSWORD": "Alterar palavra-passe"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Creditar a conta do colaborador",

@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Online support"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Medarbejderadministration",
-    "NAME": "Navn",
-    "EMAIL": "E-mail",
-    "SOLDE": "Kontosaldo",
-    "ACTIONS": "Handlinger",
-    "DEFAULT_PASSWORD": "Standardadgangskode",
-    "REINITIALIZE_PASSWORD": "Standardadgangskode til nulstilling",
-    "CHANGE_PASSWORD": "Skift adgangskode"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Kreditér medarbejderens konto",

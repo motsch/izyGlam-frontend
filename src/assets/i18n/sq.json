@@ -840,14 +840,6 @@
     "ONLINE_ASSISTANCE": "Asistencë online"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Menaxhimi i punonjësve",
-    "NAME": "Emri",
-    "EMAIL": "Email",
-    "SOLDE": "Bilanci i llogarisë",
-    "ACTIONS": "Veprime",
-    "DEFAULT_PASSWORD": "Fjalëkalim i parazgjedhur",
-    "REINITIALIZE_PASSWORD": "Fjalëkalim i parazgjedhur për rivendosje",
-    "CHANGE_PASSWORD": "Ndrysho fjalëkalimin"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Kredito llogarinë e punonjësit",

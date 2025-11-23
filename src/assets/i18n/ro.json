@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Asistență online"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Gestionarea angajaților",
-    "NAME": "Nume",
-    "EMAIL": "E-mail",
-    "SOLDE": "Soldul contului",
-    "ACTIONS": "Acțiuni",
-    "DEFAULT_PASSWORD": "Parolă implicită",
-    "REINITIALIZE_PASSWORD": "Parolă implicită pentru resetare",
-    "CHANGE_PASSWORD": "Schimbă parola"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Creditează contul angajatului",

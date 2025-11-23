@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Çevrim içi destek"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Çalışan yönetimi",
-    "NAME": "Ad",
-    "EMAIL": "E-posta",
-    "SOLDE": "Hesap bakiyesi",
-    "ACTIONS": "İşlemler",
-    "DEFAULT_PASSWORD": "Varsayılan şifre",
-    "REINITIALIZE_PASSWORD": "Sıfırlama için varsayılan şifre",
-    "CHANGE_PASSWORD": "Şifre değiştir"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Çalışan hesabını kredilendir",

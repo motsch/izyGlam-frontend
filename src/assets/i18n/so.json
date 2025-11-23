@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Caawinta tooska ah"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Maareynta shaqaalaha",
-    "NAME": "Magac",
-    "EMAIL": "E-mail",
-    "SOLDE": "Hadhaaga koontada",
-    "ACTIONS": "Ficillo",
-    "DEFAULT_PASSWORD": "Erey sir aasaasi ah",
-    "REINITIALIZE_PASSWORD": "Erey sir aasaasi ah oo dib u dejin",
-    "CHANGE_PASSWORD": "Beddel erayga sirta"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Ku kab koontada shaqaalaha",

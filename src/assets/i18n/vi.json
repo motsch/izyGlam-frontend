@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Hỗ trợ trực tuyến"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Quản lý nhân viên",
-    "NAME": "Tên",
-    "EMAIL": "E-mail",
-    "SOLDE": "Số dư tài khoản",
-    "ACTIONS": "Thao tác",
-    "DEFAULT_PASSWORD": "Mật khẩu mặc định",
-    "REINITIALIZE_PASSWORD": "Mật khẩu mặc định để đặt lại",
-    "CHANGE_PASSWORD": "Đổi mật khẩu"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Ghi có vào tài khoản nhân viên",

@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Asistencia en liña"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Xestión de empregados",
-    "NAME": "Nome",
-    "EMAIL": "Correo electrónico",
-    "SOLDE": "Saldo da conta",
-    "ACTIONS": "Accións",
-    "DEFAULT_PASSWORD": "Contrasinal por defecto",
-    "REINITIALIZE_PASSWORD": "Contrasinal por defecto para restablecemento",
-    "CHANGE_PASSWORD": "Modificar contrasinal"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Abonar a conta do empregado",

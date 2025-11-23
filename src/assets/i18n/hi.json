@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "ऑनलाइन सहायता"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "कर्मचारी प्रबंधन",
-    "NAME": "नाम",
-    "EMAIL": "ई-मेल",
-    "SOLDE": "खाते का शेष",
-    "ACTIONS": "क्रियाएँ",
-    "DEFAULT_PASSWORD": "डिफ़ॉल्ट पासवर्ड",
-    "REINITIALIZE_PASSWORD": "रीसेट के लिए डिफ़ॉल्ट पासवर्ड",
-    "CHANGE_PASSWORD": "पासवर्ड बदलें"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "कर्मचारी खाते में क्रेडिट करें",

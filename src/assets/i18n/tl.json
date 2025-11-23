@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Online na tulong"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Pamamahala ng empleyado",
-    "NAME": "Pangalan",
-    "EMAIL": "E-mail",
-    "SOLDE": "Balanse ng account",
-    "ACTIONS": "Mga aksyon",
-    "DEFAULT_PASSWORD": "Default na password",
-    "REINITIALIZE_PASSWORD": "Default password para sa reset",
-    "CHANGE_PASSWORD": "Palitan ang password"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Kreditan ang account ng empleyado",

@@ -840,14 +840,6 @@
     "ONLINE_ASSISTANCE": "Onlinesupport"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Personalhantering",
-    "NAME": "Namn",
-    "EMAIL": "E-post",
-    "SOLDE": "Kontosaldo",
-    "ACTIONS": "Åtgärder",
-    "DEFAULT_PASSWORD": "Standardlösenord",
-    "REINITIALIZE_PASSWORD": "Standardlösenord för återställning",
-    "CHANGE_PASSWORD": "Byt lösenord"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Kreditera den anställdes konto",

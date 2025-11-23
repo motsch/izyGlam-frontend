@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "在线客服"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "员工管理",
-    "NAME": "姓名",
-    "EMAIL": "电子邮箱",
-    "SOLDE": "账户余额",
-    "ACTIONS": "操作",
-    "DEFAULT_PASSWORD": "默认密码",
-    "REINITIALIZE_PASSWORD": "用于重置的默认密码",
-    "CHANGE_PASSWORD": "修改密码"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "为员工账户入账",

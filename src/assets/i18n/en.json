@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Online assistance"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Employee management",
-    "NAME": "Name",
-    "EMAIL": "Email",
-    "SOLDE": "Account balance",
-    "ACTIONS": "Actions",
-    "DEFAULT_PASSWORD": "Default password",
-    "REINITIALIZE_PASSWORD": "Default password for reset",
-    "CHANGE_PASSWORD": "Change password"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Credit the employee account",

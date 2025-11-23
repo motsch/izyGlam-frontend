@@ -1,65 +1,403 @@
-<div class="form">
-  <div class="row">
-    <!-- Section Gestion des employés -->
-    <div class="col-12">
-      <div class="margin-top-50">
-        <h2>{{ "COMPANY_MANAGEMENT.TITLE" | translate }}</h2>
+<div class="company-admin-wrapper" *ngIf="company">
+  <!-- Header -->
+  <div class="company-admin-header">
+    <div>
+      <h1>{{ company.name }}</h1>
+      <p>Gère tes collaborateurs et la répartition du crédit beauté.</p>
+    </div>
+  </div>
+
+  <!-- Statistiques / Crédit entreprise -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">Crédit total entreprise</div>
+
+      <div class="stat-edit-wrapper" *ngIf="!editingCompanyCredit">
+        <div class="stat-value">
+          {{ totalCompanyCredit | number: '1.0-0' }} €
+        </div>
         <button
-          class="btn btn-primary action-btn float-end"
-          (click)="createEmployee()"
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          matTooltip="Créer un employé"
+          type="button"
+          class="btn-link"
+          (click)="startEditCompanyCredit()"
         >
-          <i class="fa fa-plus"></i>
+          Modifier
         </button>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>{{ "COMPANY_MANAGEMENT.NAME" | translate }}</th>
-              <th>{{ "COMPANY_MANAGEMENT.EMAIL" | translate }}</th>
-              <th>{{ "COMPANY_MANAGEMENT.SOLDE" | translate }}</th>
-              <th>{{ "COMPANY_MANAGEMENT.ACTIONS" | translate }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let employee of employees">
-              <td>{{ employee.firstname }} {{ employee.lastname }}</td>
-              <td>{{ employee.email }}</td>
-              <td>{{ employee.credit | currency : "EUR" }}</td>
-              <td class="action-buttons">
-                <button
-                  class="btn btn-secondary action-btn"
-                  (click)="creditEmployee(employee)"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  matTooltip="Créditer le compte"
-                >
-                  <i class="fa fa-plus"></i>
-                </button>
-                <button
-                  class="btn btn-warning action-btn"
-                  (click)="resetPassword(employee)"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  matTooltip="Réinitialiser le mot de passe"
-                >
-                  <i class="fa fa-key"></i>
-                </button>
-                <button
-                  class="btn btn-danger action-btn"
-                  (click)="deleteEmployee(employee)"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  matTooltip="Supprimer le compte"
-                >
-                  <i class="fa fa-trash"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      </div>
+
+      <div class="stat-edit-wrapper" *ngIf="editingCompanyCredit">
+        <input
+          type="number"
+          [ngModel]="editedCompanyCredit"
+          (ngModelChange)="editedCompanyCredit = $event"
+          min="0"
+        />
+        <div class="stat-edit-actions">
+          <button
+            type="button"
+            class="btn-secondary small"
+            (click)="cancelEditCompanyCredit()"
+          >
+            Annuler
+          </button>
+          <button
+            type="button"
+            class="btn-primary small"
+            [disabled]="savingCompanyCredit"
+            (click)="saveCompanyCredit()"
+          >
+            <span *ngIf="!savingCompanyCredit">Enregistrer</span>
+            <span *ngIf="savingCompanyCredit">Enregistrement...</span>
+          </button>
+        </div>
       </div>
     </div>
+
+    <div class="stat-card">
+      <div class="stat-label">Crédit alloué aux employés</div>
+      <div class="stat-value">
+        {{ totalAllocatedCredit | number: '1.0-0' }} €
+      </div>
+      <div class="stat-sub">
+        <span
+          [class.negative]="remainingCredit < 0"
+          [class.positive]="remainingCredit >= 0"
+        >
+          Reste à allouer :
+          {{ remainingCredit | number: '1.0-0' }} €
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Liste des employés -->
+  <div class="card employee-list-card">
+    <div class="card-header">
+      <div class="card-header-left">
+        <h2>Collaborateurs</h2>
+        <span class="subtitle">
+          {{ employees.length }} employé{{ employees.length > 1 ? 's' : '' }}
+        </span>
+      </div>
+
+      <button
+        type="button"
+        class="btn-primary-outline"
+        (click)="openEmployeeCreateModal()"
+      >
+        + Ajouter un employé
+      </button>
+    </div>
+
+    <div class="card-body">
+      <div *ngIf="loadingEmployees" class="loading-state">
+        <div class="spinner"></div>
+        <span>Chargement des employés...</span>
+      </div>
+
+      <div
+        *ngIf="!loadingEmployees && employees.length === 0"
+        class="empty-state"
+      >
+        <p>Aucun employé pour le moment.</p>
+      </div>
+
+      <div class="employee-list" *ngIf="!loadingEmployees && employees.length">
+        <div
+          class="employee-row"
+          *ngFor="let employee of employees"
+          (click)="openEmployeeModal(employee)"
+        >
+          <div class="employee-main">
+            <div class="employee-info">
+              <div class="employee-avatar">
+                {{ getInitials(employee) }}
+              </div>
+              <div>
+                <div class="employee-name">
+                  {{ employee.firstname }} {{ employee.lastname }}
+                </div>
+                <div class="employee-meta">
+                  {{ employee.email }}
+                </div>
+                <div class="employee-meta secondary">
+                  {{ employee.totalBookings || 0 }}
+                  réservation{{ (employee.totalBookings || 0) > 1 ? 's' : '' }}
+                </div>
+              </div>
+            </div>
+
+            <div class="employee-credit">
+              <label>Crédit</label>
+              <div class="credit-input-wrapper">
+                <input
+                  type="number"
+                  [ngModel]="employee.credit"
+                  (ngModelChange)="onEmployeeCreditChange(employee, $event)"
+                  min="0"
+                  (click)="$event.stopPropagation()"
+                />
+                <span>€</span>
+              </div>
+              <button
+                type="button"
+                class="btn-outline-small"
+                (click)="saveEmployeeCredit(employee, $event)"
+              >
+                Mettre à jour
+              </button>
+            </div>
+
+            <div class="employee-actions">
+              <button
+                type="button"
+                class="btn-ghost"
+                (click)="resetEmployeePassword(employee, $event)"
+              >
+                Réinit. mot de passe
+              </button>
+              <button
+                type="button"
+                class="btn-ghost danger"
+                (click)="deactivateEmployee(employee, $event)"
+              >
+                Désactiver
+              </button>
+              <button
+                type="button"
+                class="btn-outline"
+                (click)="openEmployeeModal(employee); $event.stopPropagation()"
+              >
+                Voir les bookings
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal création employé -->
+  <div class="modal-backdrop" *ngIf="employeeCreateModalOpen">
+    <div class="modal modal-small">
+      <form (ngSubmit)="submitEmployee()" class="modal-form">
+        <div class="modal-header">
+          <div class="modal-title">
+            <div class="modal-title-text">
+              <h3>Ajouter un employé</h3>
+              <p>Crée un nouveau collaborateur pour l'entreprise.</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="icon-button"
+            (click)="closeEmployeeCreateModal()"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="employee-firstname">Prénom</label>
+              <input
+                id="employee-firstname"
+                type="text"
+                name="firstname"
+                [(ngModel)]="newEmployee.firstname"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <label for="employee-lastname">Nom</label>
+              <input
+                id="employee-lastname"
+                type="text"
+                name="lastname"
+                [(ngModel)]="newEmployee.lastname"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="employee-email">Email</label>
+              <input
+                id="employee-email"
+                type="email"
+                name="email"
+                [(ngModel)]="newEmployee.email"
+                required
+              />
+            </div>
+            <div class="form-row">
+              <label for="employee-phone">Téléphone</label>
+              <input
+                id="employee-phone"
+                type="tel"
+                name="phone"
+                [(ngModel)]="newEmployee.phone"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row-inline">
+            <div class="form-row">
+              <label for="employee-sex">Sexe</label>
+              <select
+                id="employee-sex"
+                name="sex"
+                [(ngModel)]="newEmployee.sex"
+                required
+              >
+                <option value="female">Femme</option>
+                <option value="male">Homme</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="employee-credit">Crédit initial (€)</label>
+              <input
+                id="employee-credit"
+                type="number"
+                name="credit"
+                min="0"
+                [(ngModel)]="newEmployee.credit"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn-secondary"
+            (click)="closeEmployeeCreateModal()"
+          >
+            Annuler
+          </button>
+          <button
+            type="submit"
+            class="btn-primary"
+            [disabled]="creatingEmployee"
+          >
+            <span *ngIf="!creatingEmployee">Enregistrer</span>
+            <span *ngIf="creatingEmployee">Enregistrement...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal employé : bookings -->
+  <div class="modal-backdrop" *ngIf="employeeModalOpen">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">
+          <div class="modal-avatar" *ngIf="selectedEmployee">
+            {{ getInitials(selectedEmployee) }}
+          </div>
+          <div class="modal-title-text" *ngIf="selectedEmployee">
+            <h3>
+              {{ selectedEmployee.firstname }} {{ selectedEmployee.lastname }}
+            </h3>
+            <p>{{ selectedEmployee.email }}</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="icon-button"
+          (click)="closeEmployeeModal()"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="employee-summary" *ngIf="selectedEmployee">
+          <div class="summary-item">
+            <span class="label">Crédit</span>
+            <span class="value">{{ selectedEmployee.credit || 0 }} €</span>
+          </div>
+          <div class="summary-item">
+            <span class="label">Total bookings</span>
+            <span class="value">
+              {{ selectedEmployee.totalBookings || employeeBookings.length }}
+            </span>
+          </div>
+        </div>
+
+        <div *ngIf="loadingBookings" class="loading-state">
+          <div class="spinner"></div>
+          <span>Chargement des bookings...</span>
+        </div>
+
+        <div
+          *ngIf="!loadingBookings && employeeBookings.length === 0"
+          class="empty-state"
+        >
+          <p>Aucun booking pour cet employé.</p>
+        </div>
+
+        <div
+          class="booking-table-wrapper"
+          *ngIf="!loadingBookings && employeeBookings.length > 0"
+        >
+          <table class="booking-table">
+            <colgroup>
+              <col class="col-date" />
+              <col class="col-service" />
+              <col class="col-establishment" />
+              <col class="col-status" />
+              <col class="col-price" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Prestation</th>
+                <th>Établissement</th>
+                <th>Statut</th>
+                <th>Prix</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let booking of employeeBookings">
+                <td>
+                  {{ booking.start | date: 'dd/MM/yyyy HH:mm' }}
+                </td>
+                <td>
+                  <span class="main">{{ booking.productName }}</span>
+                </td>
+                <td>{{ booking.establishmentName }}</td>
+                <td>
+                  <span class="status-pill" [ngClass]="booking.status">
+                    {{ getStatusLabel(booking.status) }}
+                  </span>
+                </td>
+                <td class="price-cell">
+                  {{ booking.price || '0' }} €
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-primary" (click)="closeEmployeeModal()">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cas où la company n'est pas encore chargée -->
+<div class="company-admin-wrapper" *ngIf="!company && loadingCompany">
+  <div class="loading-state">
+    <div class="spinner"></div>
+    <span>Chargement de l'entreprise...</span>
   </div>
 </div>

@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "オンラインサポート"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "従業員管理",
-    "NAME": "名前",
-    "EMAIL": "メール",
-    "SOLDE": "口座残高",
-    "ACTIONS": "操作",
-    "DEFAULT_PASSWORD": "デフォルトパスワード",
-    "REINITIALIZE_PASSWORD": "再設定用のデフォルトパスワード",
-    "CHANGE_PASSWORD": "パスワードを変更"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "従業員アカウントに入金",

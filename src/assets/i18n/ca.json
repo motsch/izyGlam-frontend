@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Assistència en línia"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Gestió dels empleats",
-    "NAME": "Nom",
-    "EMAIL": "Correu electrònic",
-    "SOLDE": "Saldo del compte",
-    "ACTIONS": "Accions",
-    "DEFAULT_PASSWORD": "Contrasenya predeterminada",
-    "REINITIALIZE_PASSWORD": "Contrasenya predeterminada per a reinicialització",
-    "CHANGE_PASSWORD": "Canviar la contrasenya"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Crèdit al compte de l’emplet",

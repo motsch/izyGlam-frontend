@@ -87,6 +87,7 @@ import { AccessibilityPolicyComponent } from './component/accessibility-policy/a
 import { TermsPolicyComponent } from './component/terms-policy/terms-policy.component';
 import { MessagerieComponent } from './component/messagerie/messagerie.component';
 import { LocaleDatePipe } from './pipe/locale-date.pipe';
+import { AdminCompanyManagementComponent } from './component/admin-company-management/admin-company-management.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -155,6 +156,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         FooterComponent,
         StripeCardFormComponent,
         CompanyManagementComponent,
+        AdminCompanyManagementComponent,
         ShopCardComponent,
         ShopItemCardComponent,
         AddressModalComponent,
@@ -225,6 +227,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopArticlesManagementComponent,
         HeaderComponent,
         FooterComponent,
+        AdminCompanyManagementComponent,
         CompanySetDefaultPasswordComponent,
         ShopCardComponent,
         ShopItemCardComponent,

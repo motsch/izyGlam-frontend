@@ -1,19 +1,12 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { UserService } from '../../services/user.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CreditEmployeeModalComponent } from '../credit-employee-modal/credit-employee-modal.component';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input,
+  SimpleChanges,
+} from '@angular/core';
 import { CompanyService } from '../../services/company.service';
-
-// ✅izyGlam: traductions & toasts
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
-
-interface Invoice {
-  date: Date;
-  amount: number;
-  employee: any;
-  description: string;
-}
+import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-company-management',
@@ -21,199 +14,297 @@ interface Invoice {
   styleUrls: ['./company-management.component.scss'],
 })
 export class CompanyManagementComponent implements OnInit, OnChanges {
-  // 🔌 Données reçues du parent
-  @Input() myCompany: any = {};
-  @Input() employees: any[] = [];
+  /**
+   * Id de la company en cours.
+   * 👉 Tu peux le passer depuis le parent ou le récupérer
+   * via ton AuthService et le setter ici plus tard.
+   */
+  @Input() companyId: string | null = null;
 
-  // 🧾 Copie locale pour manipuler sans muter directement l’@Input
-  myCompanyCopy: any = {};
+  company: any | null = null;
+  loadingCompany = false;
 
-  // 📑 Démo de liste de “factures” si besoin d’affichage
-  invoices: Invoice[] = [];
+  employees: any[] = [];
+  loadingEmployees = false;
+
+  // Stats crédits
+  get totalCompanyCredit(): number {
+    return this.company?.credit || 0;
+  }
+
+  get totalAllocatedCredit(): number {
+    return this.employees.reduce(
+      (sum, e: any) => sum + (Number(e.credit) || 0),
+      0
+    );
+  }
+
+  get remainingCredit(): number {
+    return this.totalCompanyCredit - this.totalAllocatedCredit;
+  }
+
+  // Modal employés / bookings
+  employeeModalOpen = false;
+  selectedEmployee: any | null = null;
+  employeeBookings: any[] = [];
+  loadingBookings = false;
+
+  // Modal création employé
+  employeeCreateModalOpen = false;
+  creatingEmployee = false;
+  newEmployee: any = {
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone: '',
+    sex: 'female',
+    credit: 0,
+  };
+
+  // Edition crédit entreprise
+  editingCompanyCredit = false;
+  editedCompanyCredit: number | null = null;
+  savingCompanyCredit = false;
 
   constructor(
-    private userService: UserService,
-    private modalService: NgbModal,
-
-    // (non utilisé ici mais gardé si besoin d’API côté entreprise)
     private companyService: CompanyService,
+    private bookingService: BookingService
+  ) {}
 
-    // ✅izyGlam
-    private translate: TranslateService,
-    private toastr: ToastrService
-  ) { }
-
-  // ------------------------------------------------------------
-  // ⏱️ Cycle de vie
-  // ------------------------------------------------------------
   ngOnInit(): void {
-    try {
-      localStorage.setItem('menu-param', 'company');
+    this.tryInit();
+  }
 
-      // Si les inputs sont déjà fournis à l'init
-      this.updateCompany();
-      this.updateEmployees();
-    } catch (err) {
-      console.error('Erreur pendant ngOnInit CompanyManagementComponent :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['companyId'] && !changes['companyId'].firstChange) {
+      this.tryInit();
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    try {
-      // Mise à jour si la société change
-      if (changes['myCompany'] && changes['myCompany'].currentValue) {
-        this.updateCompany();
-      }
-      // Mise à jour si la liste d’employés change
-      if (changes['employees'] && changes['employees'].currentValue) {
-        this.updateEmployees();
-      }
-    } catch (err) {
-      console.error('Erreur pendant ngOnChanges CompanyManagementComponent :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+  private tryInit(): void {
+    // Si pas encore d'id, on ne fait rien (tu pourras brancher ton Auth ici)
+    if (!this.companyId) {
+      return;
     }
+    this.loadCompany();
+    this.loadEmployees();
   }
 
-  // ------------------------------------------------------------
-  // 🏢 MAJ données entreprise (copie locale)
-  // ------------------------------------------------------------
-  private updateCompany(): void {
-    try {
-      console.log('CompanyManagementComponent.myCompany', this.myCompany);
-      this.myCompanyCopy = { ...this.myCompany };
+  // --- Chargement company + employés ---
 
-      // Garde-fou sur le crédit pour éviter NaN
-      if (typeof this.myCompanyCopy.credit !== 'number') {
-        const parsed = Number(this.myCompanyCopy.credit);
-        this.myCompanyCopy.credit = isNaN(parsed) ? 0 : parsed;
-      }
-    } catch (err) {
-      console.error('Erreur updateCompany :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-    }
+  loadCompany(): void {
+    if (!this.companyId) return;
+
+    this.loadingCompany = true;
+    this.companyService.getById(this.companyId).subscribe({
+      next: (company: any) => {
+        this.company = company;
+        this.loadingCompany = false;
+      },
+      error: (err: any) => {
+        console.error('Erreur lors du chargement de la company', err);
+        this.loadingCompany = false;
+      },
+    });
   }
 
-  // ------------------------------------------------------------
-  // 👥 MAJ liste employé·e·s (on garde ton comportement)
-  // ⚠️ Note: le code d’origine remplaçait myCompanyCopy par employees,
-  // je conserve le comportement pour ne rien casser.
-  // ------------------------------------------------------------
-  private updateEmployees(): void {
-    try {
-      console.log('CompanyManagementComponent.employees', this.employees);
-      this.myCompanyCopy = { ...this.employees };
-    } catch (err) {
-      console.error('Erreur updateEmployees :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-    }
+  loadEmployees(): void {
+    if (!this.companyId) return;
+
+    this.loadingEmployees = true;
+    this.companyService.getCompanyEmployees(this.companyId).subscribe({
+      next: (employees: any[]) => {
+        this.employees = employees;
+        this.loadingEmployees = false;
+      },
+      error: (err: any) => {
+        console.error('Erreur lors du chargement des employés', err);
+        this.loadingEmployees = false;
+      },
+    });
   }
 
-  // ------------------------------------------------------------
-  // ➕ Créer un employé (placeholder)
-  // ------------------------------------------------------------
-  createEmployee(): void {
-    try {
-      console.log('Créer un nouvel employé');
-      // Ici tu brancheras ton flux de création (modale, formulaire, etc.)
-    } catch (err) {
-      console.error('Erreur createEmployee :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-    }
+  // --- Crédit entreprise ---
+
+  startEditCompanyCredit(): void {
+    if (!this.company) return;
+    this.editedCompanyCredit = this.company.credit || 0;
+    this.editingCompanyCredit = true;
   }
 
-  // ------------------------------------------------------------
-  // 💳 Créditer un employé via modale
-  // ------------------------------------------------------------
-  creditEmployee(employee: any): void {
-    try {
-      const modalRef = this.modalService.open(CreditEmployeeModalComponent);
-      modalRef.componentInstance.employee = employee;
+  cancelEditCompanyCredit(): void {
+    this.editingCompanyCredit = false;
+    this.editedCompanyCredit = null;
+  }
 
-      modalRef.result.then(
-        (result) => {
-          // Le résultat contient le montant à créditer
-          if (result > 0) {
-            const employeeCurrentCredit = Number(employee?.credit) || 0;
-            const companyCurrentCredit = Number(this.myCompany?.credit) || 0;
+  saveCompanyCredit(): void {
+    if (!this.company || this.editedCompanyCredit == null) return;
+    if (!this.companyId) return;
 
-            // Garde: ne pas passer sous zéro si tu veux l’empêcher
-            if (companyCurrentCredit < result) {
-              this.showCustomToast(this.translate.instant('ERROR.INSUFFICIENT_COMPANY_CREDIT'));
-              return;
-            }
+    this.savingCompanyCredit = true;
 
-            employee.credit = employeeCurrentCredit + Number(result);
-            this.myCompany.credit = companyCurrentCredit - Number(result);
+    const payload = { ...this.company, credit: this.editedCompanyCredit };
 
-            // ✅ Optionnel: toast succès
-            this.toastr.success(this.translate.instant('SUCCESS.EMPLOYEE_CREDITED'));
-          }
-        },
-        (reason) => {
-          console.log('Modal dismissed: ', reason);
+    // 👉 Ici on passe par CompanyService.update
+    this.companyService.update(payload).subscribe({
+      next: (updated: any) => {
+        this.company = updated;
+        this.savingCompanyCredit = false;
+        this.editingCompanyCredit = false;
+      },
+      error: (err: any) => {
+        console.error('Erreur lors de la mise à jour du crédit entreprise', err);
+        this.savingCompanyCredit = false;
+      },
+    });
+  }
+
+  // --- Gestion crédits des employés ---
+
+  onEmployeeCreditChange(emp: any, value: string): void {
+    const num = Number(value);
+    if (isNaN(num) || num < 0) return;
+    emp.credit = num;
+  }
+
+  saveEmployeeCredit(emp: any, event?: Event): void {
+    if (event) {
+      event.stopPropagation();
+    }
+
+    // 👉 Ici on pourrait appeler une route PUT /users/:id
+    // Pour l'instant on log + TODO pour que tu puisses brancher ton backend
+    console.log('TODO: appeler API update user credit', {
+      userId: emp._id,
+      credit: emp.credit,
+    });
+  }
+
+  // --- Modal création employé ---
+
+  openEmployeeCreateModal(): void {
+    this.resetNewEmployee();
+    this.employeeCreateModalOpen = true;
+  }
+
+  closeEmployeeCreateModal(): void {
+    this.employeeCreateModalOpen = false;
+  }
+
+  resetNewEmployee(): void {
+    this.newEmployee = {
+      firstname: '',
+      lastname: '',
+      email: '',
+      phone: '',
+      sex: 'female',
+      credit: 0,
+    };
+  }
+
+  submitEmployee(): void {
+    if (!this.companyId) return;
+    if (this.creatingEmployee) return;
+
+    this.creatingEmployee = true;
+
+    const payload = {
+      ...this.newEmployee,
+      companyId: this.companyId,
+      role: 'user', // ou "entreprise" selon ton modèle
+    };
+
+    console.log('TODO: créer employé via API', payload);
+    // 👉 tu pourras remplacer ce console.log par un vrai appel
+    // ex: this.userService.create(payload).subscribe(...)
+
+    // pour l’instant, on simule le push local
+    const fakeEmployee = {
+      _id: 'temp-' + Date.now(),
+      ...payload,
+      totalBookings: 0,
+    };
+    this.employees = [fakeEmployee, ...this.employees];
+
+    this.creatingEmployee = false;
+    this.closeEmployeeCreateModal();
+  }
+
+  // --- Modal employé / bookings ---
+
+  openEmployeeModal(employee: any): void {
+    this.selectedEmployee = employee;
+    this.employeeModalOpen = true;
+    this.loadEmployeeBookings(employee._id);
+  }
+
+  closeEmployeeModal(): void {
+    this.employeeModalOpen = false;
+    this.selectedEmployee = null;
+    this.employeeBookings = [];
+  }
+
+  loadEmployeeBookings(employeeId: string): void {
+    this.loadingBookings = true;
+    this.bookingService.getBookingByClient(employeeId).subscribe({
+      next: (bookings: any[]) => {
+        this.employeeBookings = bookings;
+        this.loadingBookings = false;
+
+        // On garde le total à jour pour l'affichage
+        if (this.selectedEmployee) {
+          this.selectedEmployee = {
+            ...this.selectedEmployee,
+            totalBookings: bookings.length,
+          };
         }
-      );
-    } catch (err) {
-      console.error('Erreur creditEmployee :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-    }
+      },
+      error: (err: any) => {
+        console.error('Erreur lors du chargement des bookings', err);
+        this.loadingBookings = false;
+      },
+    });
   }
 
-  // ------------------------------------------------------------
-  // 🔑 Réinitialiser le mot de passe d’un employé
-  // ------------------------------------------------------------
-  resetPassword(employee: any): void {
-    try {
-      console.log('Réinitialiser le mot de passe pour', employee?.name);
+  // --- Actions diverses sur employé ---
 
-      // Définit le mot de passe au mot de passe par défaut de l’entreprise
-      employee.password = this.myCompany?.defaultPassword;
-
-      this.userService.updatePassword(employee).subscribe({
-        next: (data: any) => {
-          console.log('Mot de passe réinitialisé:', data);
-          // ✅ Optionnel: toast succès
-          // this.toastr.success(this.translate.instant('SUCCESS.PASSWORD_RESET'));
-        },
-        error: (error: any) => {
-          console.error('Erreur lors de la réinitialisation du mot de passe:', error);
-          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        },
-      });
-    } catch (err) {
-      console.error('Erreur resetPassword :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+  resetEmployeePassword(emp: any, event?: Event): void {
+    if (event) {
+      event.stopPropagation();
     }
+
+    console.log('TODO: reset mot de passe pour', emp._id);
+    // 👉 tu pourras ici appeler une route dédiée type POST /users/:id/reset-password
   }
 
-  // ------------------------------------------------------------
-  // 🗑️ Supprimer un employé
-  // ------------------------------------------------------------
-  deleteEmployee(employee: any): void {
-    try {
-      this.userService.delete(employee?._id).subscribe({
-        next: (data: any) => {
-          console.log('Employé supprimé :', employee?.name, data);
-          this.employees = this.employees.filter((e) => e._id !== employee._id);
-          // ✅ Optionnel: toast succès
-          // this.toastr.success(this.translate.instant('SUCCESS.EMPLOYEE_DELETED'));
-        },
-        error: (error: any) => {
-          console.error('Erreur lors de la suppression de l’employé :', error);
-          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        },
-      });
-    } catch (err) {
-      console.error('Erreur deleteEmployee :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+  deactivateEmployee(emp: any, event?: Event): void {
+    if (event) {
+      event.stopPropagation();
     }
+
+    console.log('TODO: désactiver employé', emp._id);
+    // 👉 même principe : tu ajouteras une route backend
   }
 
-  // ------------------------------------------------------------
-  // ✨ ToastizyGlam centralisé
-  // ------------------------------------------------------------
-  private showCustomToast(message: string) {
-    this.toastr.error(message);
+  // --- Helpers display ---
+
+  getInitials(employee: any): string {
+    const f = employee.firstname?.charAt(0) || '';
+    const l = employee.lastname?.charAt(0) || '';
+    return (f + l).toUpperCase();
+  }
+
+  getStatusLabel(status: string): string {
+    const map: any = {
+      pending: 'En attente',
+      refused: 'Refusée',
+      accepted: 'Acceptée',
+      deleted: 'Supprimée',
+      cancelled: 'Annulée',
+      finished: 'Terminée',
+      'no-show-client': 'No show client',
+      'no-show-pro': 'No show pro',
+    };
+    return map[status] || status;
   }
 }

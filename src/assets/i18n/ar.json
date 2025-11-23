@@ -846,14 +846,6 @@
         "ONLINE_ASSISTANCE": "مساعدة عبر الإنترنت"
     },
     "COMPANY_MANAGEMENT": {
-        "TITLE": "إدارة الموظفين",
-        "NAME": "الاسم",
-        "EMAIL": "البريد الإلكتروني",
-        "SOLDE": "رصيد الحساب",
-        "ACTIONS": "إجراءات",
-        "DEFAULT_PASSWORD": "كلمة المرور الافتراضية",
-        "REINITIALIZE_PASSWORD": "كلمة المرور الافتراضية لإعادة التعيين",
-        "CHANGE_PASSWORD": "تعديل كلمة المرور"
     },
     "EMPLOYEE_MANAGEMENT": {
         "TITLE": "شحن رصيد الموظف",

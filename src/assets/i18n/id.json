@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Bantuan online"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Manajemen karyawan",
-    "NAME": "Nama",
-    "EMAIL": "Email",
-    "SOLDE": "Saldo akun",
-    "ACTIONS": "Aksi",
-    "DEFAULT_PASSWORD": "Kata sandi default",
-    "REINITIALIZE_PASSWORD": "Kata sandi default untuk reset",
-    "CHANGE_PASSWORD": "Ubah kata sandi"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Kreditkan akun karyawan",

@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "บริการช่วยเหลือออนไลน์"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "การจัดการพนักงาน",
-    "NAME": "ชื่อ",
-    "EMAIL": "อีเมล",
-    "SOLDE": "ยอดคงเหลือบัญชี",
-    "ACTIONS": "การดำเนินการ",
-    "DEFAULT_PASSWORD": "รหัสผ่านเริ่มต้น",
-    "REINITIALIZE_PASSWORD": "รหัสผ่านเริ่มต้นสำหรับรีเซ็ต",
-    "CHANGE_PASSWORD": "เปลี่ยนรหัสผ่าน"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "เติมเงินให้บัญชีพนักงาน",

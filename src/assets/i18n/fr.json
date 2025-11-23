@@ -848,14 +848,6 @@
     "ONLINE_ASSISTANCE": "Assistance en ligne"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Gestion des employés",
-    "NAME": "Nom",
-    "EMAIL": "Email",
-    "SOLDE": "Solde du compte",
-    "ACTIONS": "Actions",
-    "DEFAULT_PASSWORD": "Mot de passe par défaut",
-    "REINITIALIZE_PASSWORD": "Mot de passe par défaut pour réinitialisation",
-    "CHANGE_PASSWORD": "Modifier le mot de passe"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Créditer le compte de l'employé",

@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "অনলাইন সহায়তা"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "কর্মচারী ব্যবস্থাপনা",
-    "NAME": "নাম",
-    "EMAIL": "ইমেল",
-    "SOLDE": "অ্যাকাউন্ট ব্যালেন্স",
-    "ACTIONS": "অ্যাকশন",
-    "DEFAULT_PASSWORD": "ডিফল্ট পাসওয়ার্ড",
-    "REINITIALIZE_PASSWORD": "রিসেটের জন্য ডিফল্ট পাসওয়ার্ড",
-    "CHANGE_PASSWORD": "পাসওয়ার্ড পরিবর্তন"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "কর্মচারীর অ্যাকাউন্টে ক্রেডিট দিন",

@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Анлайн-падтрымка"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Кіраванне супрацоўнікамі",
-    "NAME": "Імя",
-    "EMAIL": "E-mail",
-    "SOLDE": "Баланс рахунку",
-    "ACTIONS": "Дзеянні",
-    "DEFAULT_PASSWORD": "Пароль па змаўчанні",
-    "REINITIALIZE_PASSWORD": "Пароль па змаўчанні для скіду",
-    "CHANGE_PASSWORD": "Змяніць пароль"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Папоўніць рахунак супрацоўніка",

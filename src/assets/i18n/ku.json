@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Alîkariyê serhêl"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Rêveberiya karkeran",
-    "NAME": "Nav",
-    "EMAIL": "E-peyam",
-    "SOLDE": "Balansa hesabê",
-    "ACTIONS": "Çalakî",
-    "DEFAULT_PASSWORD": "Şîfreya standard",
-    "REINITIALIZE_PASSWORD": "Şîfreya standard ji bo vegerandinê",
-    "CHANGE_PASSWORD": "Şîfre biguherîne"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Hesaba karkerê bikredîne",

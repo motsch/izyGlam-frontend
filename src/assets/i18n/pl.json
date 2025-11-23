@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Pomoc online"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Zarządzanie pracownikami",
-    "NAME": "Imię i nazwisko",
-    "EMAIL": "E-mail",
-    "SOLDE": "Saldo konta",
-    "ACTIONS": "Akcje",
-    "DEFAULT_PASSWORD": "Hasło domyślne",
-    "REINITIALIZE_PASSWORD": "Domyślne hasło do resetu",
-    "CHANGE_PASSWORD": "Zmień hasło"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Zasil konto pracownika",

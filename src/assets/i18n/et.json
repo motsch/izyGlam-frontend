@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Veebitugi"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Töötajate haldus",
-    "NAME": "Nimi",
-    "EMAIL": "E-post",
-    "SOLDE": "Konto jääk",
-    "ACTIONS": "Tegevused",
-    "DEFAULT_PASSWORD": "Vaikimisi parool",
-    "REINITIALIZE_PASSWORD": "Vaikimisi parool lähtestamiseks",
-    "CHANGE_PASSWORD": "Muuda parooli"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Krediteeri töötaja kontot",

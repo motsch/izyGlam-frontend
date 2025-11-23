@@ -55,4 +55,25 @@ export class CompanyService {
     getByIndustry(industry: string): Observable<any[]> {
         return this.http.get<any[]>(`${environment.apiUrl}companies/industry/${industry}`);
     }
+
+        /**
+     * Récupérer tous les employés d'une entreprise
+     * @param companyId (ID de l'entreprise)
+     */
+    getCompanyEmployees(companyId: string): Observable<any[]> {
+        return this.http.get<any[]>(
+            `${environment.apiUrl}company/${companyId}/employees`
+        );
+    }
+
+    /**
+     * Récupérer tous les bookings d'un employé
+     * @param employeeId (ID de l'employé)
+     */
+    getEmployeeBookings(employeeId: string): Observable<any[]> {
+        return this.http.get<any[]>(
+            `${environment.apiUrl}company/employee/${employeeId}/bookings`
+        );
+    }
+
 }

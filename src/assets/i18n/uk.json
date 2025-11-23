@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Онлайн-підтримка"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Керування співробітниками",
-    "NAME": "Ім’я",
-    "EMAIL": "Е-пошта",
-    "SOLDE": "Баланс рахунку",
-    "ACTIONS": "Дії",
-    "DEFAULT_PASSWORD": "Пароль за замовчуванням",
-    "REINITIALIZE_PASSWORD": "Пароль за замовчуванням для скидання",
-    "CHANGE_PASSWORD": "Змінити пароль"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Поповнити рахунок співробітника",

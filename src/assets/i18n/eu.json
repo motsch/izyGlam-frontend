@@ -846,14 +846,6 @@
     "ONLINE_ASSISTANCE": "Lineako laguntza"
   },
   "COMPANY_MANAGEMENT": {
-    "TITLE": "Langileen kudeaketa",
-    "NAME": "Izena",
-    "EMAIL": "E-posta",
-    "SOLDE": "Kontuaren saldoa",
-    "ACTIONS": "Ekintzak",
-    "DEFAULT_PASSWORD": "Lehenetsitako pasahitza",
-    "REINITIALIZE_PASSWORD": "Berrezartzeko lehenetsitako pasahitza",
-    "CHANGE_PASSWORD": "Aldatu pasahitza"
   },
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Langilearen kontua kreditatu",
