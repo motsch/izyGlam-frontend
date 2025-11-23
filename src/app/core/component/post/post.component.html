@@ -1,0 +1,335 @@
+<div class="container">
+  <div class="main-container">
+    <div class="sidebar">
+      <div class="tab-selector">
+        <div>Mes postes :</div>
+        <button class="tab-button instagram" (click)="selectPlatform('Instagram')"
+          [ngClass]="{ 'big-button': selectedPlatform === 'Instagram' }">
+          {{ "CATEGORY.INSTAGRAM" | translate }}
+        </button>
+        <button class="tab-button linkedin" (click)="selectPlatform('LinkedIn')"
+          [ngClass]="{ 'big-button': selectedPlatform === 'LinkedIn' }">
+          {{ "CATEGORY.LINKEDIN" | translate }}
+        </button>
+        <div class="margin-top-15">Audit :</div>
+        <button class="tab-button izyglow4" (click)="selectAuditType('audit')"
+          [ngClass]="{ 'big-button': selectedAdsType === 'audit' }">
+          Commencer
+        </button>
+        <div class="margin-top-15">Commentaires :</div>
+        <button class="tab-button izyglow1" (click)="selectComsType()"
+          [ngClass]="{ 'big-button': selectedAdsType === 'coms' }">
+          Gérer
+        </button>
+        <!--
+        <div class="margin-top-15">Publicités :</div>
+        <button class="tab-button izyglow2" (click)="selectAdsType('pubs')"
+          [ngClass]="{ 'big-button': selectedAdsType === 'pubs' }">
+          Campagnes
+        </button>
+        <div class="margin-top-15">UGC :</div>
+        <button class="tab-button izyglow3" (click)="selectUGCType('ugc')"
+          [ngClass]="{ 'big-button': selectedAdsType === 'ugc' }">
+          Gestion
+        </button>-->
+      </div>
+    </div>
+
+    <div class="content-area" *ngIf="filteredPosts.length > 0 && contentType === 'posts'">
+      <div class="post-container" *ngFor="let post of filteredPosts; let i = index">
+        <div class="post-card" [ngClass]="selectedPlatform.toLowerCase()">
+          <div class="post-content">
+            <h5 class="post-day">
+              {{ "POST.CONTENT_FOR" | translate }} {{ selectedPlatform }}:
+            </h5>
+            <div class="post-image-container margin-top-20" *ngIf="post.content.image_prompt">
+              <div class="image-wrapper">
+                <div class="post-image">
+                  <ng-container *ngIf="post.imageUrl; else noImageTemplate">
+                    <ng-container *ngIf="isImage(post.imageUrl); else videoTemplate">
+                      <img [src]="aPIimgStorageUrl + post.imageUrl" [alt]="'POST.POST_IMAGE' | translate"
+                        class="media-element" />
+                    </ng-container>
+                    <ng-template #videoTemplate>
+                      <video controls muted autoplay loop class="media-element">
+                        <source [src]="aPIimgStorageUrl + post.imageUrl" type="video/mp4" />
+                        {{ "POST.NO_VIDEO" | translate }}.
+                      </video>
+                    </ng-template>
+                  </ng-container>
+                  <ng-template #noImageTemplate>
+                    <img src="assets/images/default-image.png" [alt]="'POST.NO_IMAGE' | translate"
+                      class="media-element" />
+                  </ng-template>
+                </div>
+
+                <!-- Boutons sous l'image -->
+                <div class="image-actions">
+                  <button [disabled]="buttonsDisabled" (click)="regenerateImage(post)" class="icon-button"
+                    [title]="'POST.REGENERATE' | translate">
+                    <!-- Si buttonsDisabled est à true, on affiche un spinner, sinon on affiche l'icone -->
+                    <span *ngIf="!buttonsDisabled" class="margin-top-5">
+                      <span class="material-icons">refresh</span>
+                    </span>
+                    <span *ngIf="buttonsDisabled">
+                      <i class="fa fa-spinner fa-spin"></i>
+                    </span>
+                  </button>
+                  <input type="file" #fileInput (change)="onFileSelected($event, post)" style="display: none" />
+                  <button (click)="openFileSelector()" class="icon-button" [title]="'POST.REPLACE_IMAGE' | translate">
+                    <span class="material-icons">file_upload</span>
+                  </button>
+                  <button (click)="regenerateImage(post)" class="icon-button" [title]="'POST.CREATE_VIDEO' | translate">
+                    <i class="fa fa-film"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="image-details">
+                <p class="image-info">
+                  {{ "POST.IMAGE_CARACTER" | translate }} :
+                </p>
+                <ul>
+                  <li>
+                    <strong>{{ "POST.IMAGE_STYLE" | translate }} :</strong>
+                    {{ post.content.image_prompt.style_keywords.join(", ") }}
+                  </li>
+                  <li>
+                    <strong>{{ "POST.PHOTO_MATERIAL" | translate }} :</strong>
+                    {{ post.content.image_prompt.camera }}
+                  </li>
+                  <li>
+                    <strong>{{ "POST.PHOTO_OBJECTIF" | translate }} :</strong>
+                    {{ post.content.image_prompt.lens }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h5 class="post-day">
+              {{ "POST.CONTENT_TYPE" | translate }} : {{ post.content.type }}
+            </h5>
+
+            <p *ngIf="!post.edit" class="post-caption">
+              {{ post.content.caption }}
+            </p>
+
+            <textarea *ngIf="post.edit" [(ngModel)]="post.contentToUpdate"
+              [placeholder]="'POST.DESCRIBE_YOUR_ACTIVITY' | translate" class="introduction-textarea">
+            </textarea>
+            <div class="action-buttons">
+              <button *ngIf="post.edit" (click)="closeEditContentManually(post)" class="red-button"
+                [title]="'POST.CHANGE_MANUALLY' | translate">
+                <span class="material-icons">cancel</span>
+              </button>
+              <button (click)="editContentManually(post)" class="icon-button"
+                [title]="'POST.CHANGE_MANUALLY' | translate">
+                <span class="material-icons">edit</span>
+              </button>
+              <button [disabled]="buttonsDisabled" (click)="correctContentAuto(post)" class="icon-button"
+                [title]="'POST.CORRECT_SENTENCE' | translate">
+                <!-- Si buttonsDisabled est à true, on affiche un spinner, sinon on affiche l'icone -->
+                <span *ngIf="!buttonsDisabled" class="margin-top-5">
+                  <span class="material-icons">build</span>
+                </span>
+                <span *ngIf="buttonsDisabled">
+                  <i class="fa fa-spinner fa-spin"></i>
+                </span>
+              </button>
+              <button [disabled]="buttonsDisabled" (click)="changeOnePostAuto(post)" class="icon-button"
+                [title]="'POST.CHANGE_POST' | translate">
+                <!-- Si buttonsDisabled est à true, on affiche un spinner, sinon on affiche l'icone -->
+                <span *ngIf="!buttonsDisabled" class="margin-top-5">
+                  <span class="material-icons">auto_fix_high</span>
+                </span>
+                <span *ngIf="buttonsDisabled">
+                  <i class="fa fa-spinner fa-spin"></i>
+                </span>
+              </button>
+              <button (click)="generateContentByAI(post)" class="icon-button" [title]="'POST.PUBLISH' | translate">
+                <i class="fa fa-paper-plane"></i>
+              </button>
+            </div>
+
+            <div class="hashtags-container">
+              <div *ngFor="let hashtag of post.content.hashtags; let i = index" class="hashtag">
+                {{ hashtag }}
+                <span class="remove-icon" (click)="removeHashtag(post, i)">✖</span>
+              </div>
+            </div>
+            <div class="suggestion" *ngIf="randomTip">
+              <p>
+                {{ "POST.TRY" | translate }} : {{ tips[i].trad | translate }} 😍
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="contentType === 'pubs'" class="ads-area">
+      <div class="post-container" *ngFor="let campagne of campagnes; let i = index">
+        <div class="post-card" [ngClass]="selectedPlatform.toLowerCase()">
+          <div class="post-content">
+            <h5 class="post-day">
+              {{ "PUB.CONTENT_FOR" | translate }} {{ campagne.platform }}:
+            </h5>
+
+            <div class="post-image-container margin-top-20">
+              <div class="image-wrapper">
+                <div class="post-image">
+                  <ng-container *ngIf="campagne.imageUrl; else noImageTemplate">
+                    <ng-container *ngIf="isImage(campagne.imageUrl); else videoTemplate">
+                      <img [src]="aPIimgStorageUrl + campagne.imageUrl" [alt]="'POST.POST_IMAGE' | translate"
+                        class="media-element" />
+                    </ng-container>
+                    <ng-template #videoTemplate>
+                      <video controls muted autoplay loop class="media-element">
+                        <source [src]="aPIimgStorageUrl + campagne.imageUrl" type="video/mp4" />
+                        {{ "POST.NO_VIDEO" | translate }}.
+                      </video>
+                    </ng-template>
+                  </ng-container>
+                  <ng-template #noImageTemplate>
+                    <img src="assets/images/default-image.png" [alt]="'POST.NO_IMAGE' | translate"
+                      class="media-element" />
+                  </ng-template>
+                </div>
+
+                <!-- Boutons sous l'image -->
+                <div class="image-actions">
+                  <button [disabled]="buttonsDisabled" (click)="regenerateImage(campagne)" class="icon-button"
+                    [title]="'POST.REGENERATE' | translate">
+                    <!-- Si buttonsDisabled est à true, on affiche un spinner, sinon on affiche l'icone -->
+                    <span *ngIf="!buttonsDisabled" class="margin-top-5">
+                      <span class="material-icons">refresh</span>
+                    </span>
+                    <span *ngIf="buttonsDisabled">
+                      <i class="fa fa-spinner fa-spin"></i>
+                    </span>
+                  </button>
+                  <input type="file" #fileInput (change)="onFileSelected($event, campagne)" style="display: none" />
+                  <button (click)="openFileSelector()" class="icon-button" [title]="'POST.REPLACE_IMAGE' | translate">
+                    <span class="material-icons">file_upload</span>
+                  </button>
+                  <button (click)="regenerateImage(campagne)" class="icon-button"
+                    [title]="'POST.CREATE_VIDEO' | translate">
+                    <i class="fa fa-film"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="image-details">
+                <p class="image-info">
+                  {{ "PUB.PUB_CARACTER" | translate }} :
+                </p>
+                <ul>
+                  <li>
+                    <strong>{{ "PUB.FORMAT" | translate }} :</strong>
+                    {{ campagne.format }}
+                  </li>
+                  <li>
+                    <strong>{{ "PUB.TARGET" | translate }} :</strong>
+                    {{ campagne.audienceTarget }}
+                  </li>
+                  <li>
+                    <strong>{{ "PUB.BUDGET" | translate }} :</strong>
+                    {{ campagne.budget }}
+                  </li>
+                  <li>
+                    <strong>{{ "PUB.STARTDATE" | translate }} :</strong>
+                    {{ campagne.startDate | date: 'dd/MM/yyyy' }}
+                  </li>
+                  <li>
+                    <strong>{{ "PUB.ENDDATE" | translate }} :</strong>
+                    {{ campagne.endDate | date: 'dd/MM/yyyy' }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="suggestion" *ngIf="randomTip">
+              <p>
+                {{ "POST.TRY" | translate }} : {{ tips[i].trad | translate }} 😍
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="contentType === 'audit'" class="audit-area">
+      <div class="audit-header">
+        <h2>Audit de vos réseaux sociaux</h2>
+        <p>Sélectionnez une plateforme et téléversez les captures nécessaires pour optimiser vos profils.</p>
+      </div>
+    
+      <!-- Sélecteur de plateformes -->
+      <div class="platform-selector">
+        <button
+          *ngFor="let platform of platforms"
+          class="platform-button"
+          [ngClass]="{'active': selectedPlatformForAudit === platform.name.toLowerCase()}"
+          (click)="selectPlatformForAudit(platform.name.toLowerCase())"
+        >
+          {{ platform.name }}
+        </button>
+      </div>
+      <!-- Formulaire d'audit -->
+      <div class="audit-form" *ngIf="selectedPlatformForAudit">
+        <h3>Audit {{ selectedPlatformForAudit | titlecase }}</h3>
+        <p>{{ platformDescriptions[selectedPlatformForAudit] }}</p>
+        <form>
+          <label for="upload-files">Téléversez vos captures :</label>
+          <input id="upload-files" type="file" accept="image/*" multiple (change)="handleFileUpload($event)" />
+          <button type="button" class="submit-button" (click)="launchAudit()">Lancer l'audit</button>
+        </form>
+      </div>
+    </div>
+    
+    
+    
+
+    <div class="content-area" *ngIf="filteredPosts.length === 0 && contentType === 'posts'">
+      <div class="test-f6">Aucun post de généré pour cette plateforme</div>
+    </div>
+    <div class="sidebar" *ngIf="contentType === 'posts'">
+      <div class="tab-selector">
+        <button [disabled]="buttonsDisabled || addPostButtonDisabled" class="tab-button"
+          [ngClass]="selectedPlatform.toLowerCase()" (click)="connectToPlatform(selectedPlatform)">
+          <span *ngIf="!buttonsDisabled">
+            Connecter {{selectedPlatform}}
+          </span>
+          <span *ngIf="buttonsDisabled">
+            <i class="fa fa-spinner fa-spin"></i>
+          </span>
+        </button>
+        <button [disabled]="buttonsDisabled || addPostButtonDisabled" class="tab-button"
+          [ngClass]="selectedPlatform.toLowerCase()" (click)="createNewPost()">
+          <span *ngIf="!buttonsDisabled">
+            {{ "POST.ADD_POST" | translate }}
+          </span>
+          <span *ngIf="buttonsDisabled">
+            <i class="fa fa-spinner fa-spin"></i>
+          </span>
+        </button>
+        <button  style="width: 100% !important;" [disabled]="buttonsDisabled" class="tab-button" [ngClass]="selectedPlatform.toLowerCase()"
+          (click)="generateAllImages()">
+          <span *ngIf="!buttonsDisabled">
+            {{ "POST.GENRATE_IMAGES" | translate }}
+          </span>
+          <span *ngIf="buttonsDisabled">
+            <i class="fa fa-spinner fa-spin"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="sidebar" *ngIf="contentType === 'pubs'">
+      <div class="tab-selector">
+        <button class="tab-button izyglow2" (click)="createNewAd()">
+          <span>
+            Créer publicité
+          </span>
+          <span *ngIf="buttonsDisabled || addPostButtonDisabled">
+            <i class="fa fa-spinner fa-spin"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

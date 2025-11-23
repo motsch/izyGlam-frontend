@@ -88,6 +88,8 @@ import { TermsPolicyComponent } from './component/terms-policy/terms-policy.comp
 import { MessagerieComponent } from './component/messagerie/messagerie.component';
 import { LocaleDatePipe } from './pipe/locale-date.pipe';
 import { AdminCompanyManagementComponent } from './component/admin-company-management/admin-company-management.component';
+import { PostService } from './services/post.service';
+import { PostComponent } from './component/post/post.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -201,6 +203,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         HorizontalPubListComponent,
         OrderCardComponent,
         ReviewModalComponent,
+        PostComponent,
         ReviewsModalComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -218,6 +221,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ChangePasswordComponent,
         ConfidentialPolicyComponent,
         AccessibilityPolicyComponent,
+        PostComponent,
         ModalYesNoComponent,
         OrderItemComponent,
         CompanyManagementComponent,
