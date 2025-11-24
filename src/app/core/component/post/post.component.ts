@@ -30,20 +30,20 @@ export class PostComponent implements OnInit {
     randomTip: any = null;
     contentType: string = 'posts';
     // pub
-  campagnes:any[] = [];
-  //audit
-  platforms = [
-    { name: 'Instagram', icon: 'assets/icons/instagram-icon.svg' },
-    { name: 'LinkedIn', icon: 'assets/icons/linkedin-icon.svg' },
-  ];
-  
-  selectedPlatformForAudit: string | null = null;
-  
-  platformDescriptions: { [key: string]: string } = {
-    instagram: 'Téléversez une capture de votre page de profil Instagram pour obtenir des suggestions d\'amélioration.',
-    linkedin: 'Téléversez les captures de vos sections importantes (titre, résumé, expériences) pour obtenir des suggestions d\'amélioration.',
-  };
-    
+    campagnes: any[] = [];
+    //audit
+    platforms = [
+        { name: 'Instagram', icon: 'assets/icons/instagram-icon.svg' },
+        { name: 'LinkedIn', icon: 'assets/icons/linkedin-icon.svg' },
+    ];
+
+    selectedPlatformForAudit: string | null = null;
+
+    platformDescriptions: { [key: string]: string } = {
+        instagram: 'Téléversez une capture de votre page de profil Instagram pour obtenir des suggestions d\'amélioration.',
+        linkedin: 'Téléversez les captures de vos sections importantes (titre, résumé, expériences) pour obtenir des suggestions d\'amélioration.',
+    };
+
 
     constructor(
         private postService: PostService,
@@ -77,7 +77,7 @@ export class PostComponent implements OnInit {
             });
         }
     }
-    
+
     shuffleArray(array: any[]): any[] {
         const shuffled = [...array]; // Crée une copie du tableau pour éviter de modifier l'original
         for (let i = shuffled.length - 1; i > 0; i--) {
@@ -90,10 +90,10 @@ export class PostComponent implements OnInit {
         }
         return shuffled;
     }
-    
+
     connectToPlatform(platform: string): void {
         let oauthUrl = '';
-    
+
         switch (platform.toLowerCase()) {
             case 'instagram':
                 const instagramScopes = encodeURIComponent(
@@ -103,16 +103,16 @@ export class PostComponent implements OnInit {
                 break;
             case 'linkedin':
                 oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${environment.LINKEDIN_APP_ID}&redirect_uri=${encodeURIComponent(environment.LINKEDIN_REDIRECT_URI)}&state=${platform}&scope=openid%20profile%20email%20w_member_social`;
-                break;    
+                break;
             default:
                 this.openSnackBar(`Plateforme ${platform} non prise en charge.`);
                 return;
         }
-    
+
         // Redirection vers la page d'autorisation de la plateforme
         window.location.href = oauthUrl;
     }
-    
+
 
     openSnackBar(phrase: string) {
         // const uploadTranslation = this.translate.instant("ALERT.CLOSE");
@@ -159,6 +159,7 @@ export class PostComponent implements OnInit {
                         content: JSON.parse(post.content), // Conversion en JSON
                     };
                 });
+                this.regenerateImages(this.posts);
                 if (!this.selectedPlatform) {
                     this.selectPlatform('Facebook');
                 }
@@ -372,6 +373,57 @@ export class PostComponent implements OnInit {
         });
     }
 
+    regenerateImages(posts: any[]) {
+        if (!posts || posts.length === 0) {
+            return;
+        }
+
+        this.buttonsDisabled = true;
+        // this.loaderService.show(); // si tu veux remettre le loader
+
+        const postIds = posts.map((p) => p._id);
+
+        this.postService.sendPromptsToAiImage(postIds).subscribe({
+            next: (response) => {
+                console.log('Résultat génération multiple :', response);
+
+                // Si tu veux mettre à jour les posts en local sans recharger toute la liste
+                if (response?.results && Array.isArray(response.results)) {
+                    response.results.forEach((result: any) => {
+                        if (result.success && result.imageUrl) {
+                            const foundPost = this.posts?.find(
+                                (p: any) => p._id === result.postId
+                            );
+                            if (foundPost) {
+                                foundPost.imageUrl = result.imageUrl;
+                            }
+                        } else {
+                            console.warn(
+                                `Échec de génération pour le post ${result.postId} :`,
+                                result.error
+                            );
+                        }
+                    });
+                }
+
+                // Si tu préfères forcer un refresh complet comme pour la version single :
+                this.getAllPosts(this.me);
+
+                this.buttonsDisabled = false;
+                // this.loaderService.hide();
+            },
+            error: (error) => {
+                console.error(
+                    "Erreur lors de la génération des images :",
+                    error
+                );
+                this.buttonsDisabled = false;
+                // this.loaderService.hide();
+            },
+        });
+    }
+
+
     uploadNewImage(post: any) {
         // Logic to allow user to upload their own image
     }
@@ -394,13 +446,13 @@ export class PostComponent implements OnInit {
         // this.filterPosts();
         // this.tips = this.shuffleArray(this.tips);
     }
-    selectAuditType(type: string){
+    selectAuditType(type: string) {
         console.log(`Selection de la plateforme : ${type}`);
         this.contentType = 'audit';
         this.selectedAdsType = type;
         this.selectedPlatform = '';
     }
-    selectUGCType(type: string){
+    selectUGCType(type: string) {
         console.log(`Selection de la plateforme : ${type}`);
         this.contentType = 'ugc';
         this.selectedAdsType = type;
@@ -457,13 +509,13 @@ export class PostComponent implements OnInit {
         const popupHeight = 600;
         const left = window.screenX + (window.innerWidth - popupWidth) / 2;
         const top = window.screenY + (window.innerHeight - popupHeight) / 2;
-    
+
         const popup = window.open(
             '',
             'Bluesky Login',
             `width=${popupWidth},height=${popupHeight},top=${top},left=${left}`
         );
-    
+
         if (popup) {
             const htmlContent = `
                 <!DOCTYPE html>
@@ -582,39 +634,39 @@ export class PostComponent implements OnInit {
 
 
     /** PUB */
-    
-  getAdByUserId() {
-    this.adService.getByUserId(this.me._id).subscribe({
-      next: (data: any[]) => {
-        console.log(data);
-        this.campagnes = data;
-      },
-      error: (error: any) => {
-        console.log(error);
-      },
-    })
-  }
 
-  createNewAd() {
-    console.log("CREATE PUB")
-  }
-    
-
-  /** AUDIT */
-  selectPlatformForAudit(platform: string): void {
-    console.log(platform)
-    this.selectedPlatformForAudit = platform;
-  }
-  
-  handleFileUpload(event: any): void {
-    const files = event.target.files;
-    console.log('Fichiers téléversés pour', this.selectedPlatformForAudit, files);
-  }
-  
-  launchAudit(): void {
-    if (this.selectedPlatformForAudit) {
-      console.log(`Audit lancé pour ${this.selectedPlatformForAudit}`);
-      // Ajoutez ici votre logique d'analyse
+    getAdByUserId() {
+        this.adService.getByUserId(this.me._id).subscribe({
+            next: (data: any[]) => {
+                console.log(data);
+                this.campagnes = data;
+            },
+            error: (error: any) => {
+                console.log(error);
+            },
+        })
     }
-  }
+
+    createNewAd() {
+        console.log("CREATE PUB")
+    }
+
+
+    /** AUDIT */
+    selectPlatformForAudit(platform: string): void {
+        console.log(platform)
+        this.selectedPlatformForAudit = platform;
+    }
+
+    handleFileUpload(event: any): void {
+        const files = event.target.files;
+        console.log('Fichiers téléversés pour', this.selectedPlatformForAudit, files);
+    }
+
+    launchAudit(): void {
+        if (this.selectedPlatformForAudit) {
+            console.log(`Audit lancé pour ${this.selectedPlatformForAudit}`);
+            // Ajoutez ici votre logique d'analyse
+        }
+    }
 }

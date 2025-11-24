@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root',
 })
 export class PostService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     /**
      * Récupère ou génère les posts pour le mois en cours
@@ -21,7 +21,7 @@ export class PostService {
     /**
      * Récupère ou génère les posts pour le mois en cours
      */
-    updateOnePostFromAi(userId: string, postId:string): Observable<any[]> {
+    updateOnePostFromAi(userId: string, postId: string): Observable<any[]> {
         return this.http.get<any[]>(
             `${environment.apiUrl}posts-update-one/${userId}/${postId}`
         );
@@ -67,20 +67,34 @@ export class PostService {
     improveInstagramPost(post: any, platform: string, userId: string): Observable<any> {
         return this.http.post<any>(
             `${environment.apiUrl}posts/improve-instagram-post/${post._id}`,
-            { text: post.content.caption, platform: platform, userId: userId, type: post.content.type  }
+            { text: post.content.caption, platform: platform, userId: userId, type: post.content.type }
         );
     }
 
     /**
-     * Envoie un prompt à Midjourney pour générer une image
-     * @param prompt Le texte du prompt pour Midjourney
-     * @returns Observable avec la réponse de Midjourney
+     * Génère une image IA pour un seul post
+     * @param postId ID du post
+     * @returns Observable avec la réponse du backend
      */
     sendPromptToAiImage(postId: string): Observable<any> {
         return this.http.get<any>(
             `${environment.apiUrl}posts-ai-image/${postId}`
         );
     }
+
+    /**
+     * Génère des images IA pour plusieurs posts
+     * @param postIds Tableau d'IDs de posts
+     * @returns Observable avec la réponse du backend
+     */
+    sendPromptsToAiImage(postIds: string[]): Observable<any> {
+        return this.http.post<any>(
+            `${environment.apiUrl}posts-multiple-ai-image`,
+            { postIds } // body JSON : { postIds: [...] }
+        );
+    }
+
+
 
     updatePostImageUrl(postId: string, imageUrl: string): Observable<any> {
         return this.http.put<any>(
