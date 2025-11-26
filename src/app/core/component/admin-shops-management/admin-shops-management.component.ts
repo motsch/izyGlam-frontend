@@ -1,17 +1,18 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 import { ShopService } from '../../services/shop.service';
 import { environment } from 'src/environments/environment';
 
-// ✅ AjoutsizyGlam : toasts + i18n
+// ✅ Toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-admin-shops-management',
   templateUrl: './admin-shops-management.component.html',
-  styleUrls: ['./admin-shops-management.component.scss']
+  styleUrls: ['./admin-shops-management.component.scss'],
 })
 export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   // -----------------------------
@@ -21,23 +22,47 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   modalOpen = false;
   shop: any = {}; // shop en édition dans la modale
 
-  displayedColumns: string[] = ['name', 'ville', 'note', 'averagePrice', 'promo', 'actions'];
+  displayedColumns: string[] = [
+    'image',
+    'name',
+    'ville',
+    'note',
+    'averagePrice',
+    'promo',
+    'actions',
+  ];
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
   searchTerm: string = '';
 
-  // Upload (placeholders si tu ajoutes la fonctionnalité plus tard)
+  // Upload
   imageUsed: string | null = null;
   imagePreview: string | null = null;
 
-  // CDN images utile au template
-  imgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
+  // CDN images utile au template (on enlève un éventuel trailing slash)
+  imgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '') + '/';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  // Pour certaines validations / compatibilité avec ton autre composant
+  days: string[] = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
+  ];
+  selectedFile: File | null = null; // Fichier sélectionné
+  shopCopyData: any | null = null; // (utilisé dans validateForm ci-dessous)
+  formModified = false;
+  formValid = false;
+
+  loading = false;
 
   constructor(
     private shopService: ShopService,
-
-    // ✅izyGlam
     private toastr: ToastrService,
     private translate: TranslateService
   ) { }
@@ -68,36 +93,39 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
       const f = normalize(filter);
 
-      return [
-        data.name,
-        data.ville,
-        data.note,          // peut être number → toString() dans normalize
-        data.averagePrice   // idem
-      ].some((field) => normalize(field).includes(f));
+      return [data.name, data.ville, data.note, data.averagePrice].some(
+        (field) => normalize(field).includes(f)
+      );
     };
 
-    // Charge toutes les boutiques
+    // Charge la liste
+    this.loadShops();
+  }
+
+  /** Recharge toute la liste des shops (utilisé au init + après IA) */
+  private loadShops(): void {
     this.shopService.getAll().subscribe({
       next: (data: any[]) => {
         console.log('Shops:', data);
         this.shops = data;
         this.dataSource.data = this.shops;
 
-        // Si le paginator est déjà là (rare en OnInit), on l’associe
         if (this.paginator) this.dataSource.paginator = this.paginator;
+        if (this.sort) this.dataSource.sort = this.sort;
       },
       error: (error: any) => {
         console.error('Erreur lors du chargement des boutiques :', error);
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-      }
+      },
     });
   }
 
   // ------------------------------------------------------
-  // 🔗 Branchement du paginator après rendu de vue
+  // 🔗 Branchement du paginator / sort après rendu de vue
   // ------------------------------------------------------
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   // ------------------------------------------------------
@@ -109,34 +137,36 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
   // ------------------------------------------------------
   // 🎯 Activer / désactiver la promo d’un shop
-  // (on persiste aussi côté API)
   // ------------------------------------------------------
   togglePromo(shop: any) {
-    const updated = { ...shop, promo: { ...shop.promo, active: !shop.promo?.active } };
+    const updated = {
+      ...shop,
+      promo: { ...shop.promo, active: !shop.promo?.active },
+    };
 
     this.shopService.update(updated).subscribe({
       next: (saved: any) => {
-        console.log(`Promotion toggled for ${saved.name}: ${saved?.promo?.active}`);
+        console.log(
+          `Promotion toggled for ${saved.name}: ${saved?.promo?.active}`
+        );
 
-        // MAJ locale
-        const idx = this.shops.findIndex(s => s._id === saved._id);
+        const idx = this.shops.findIndex((s) => s._id === saved._id);
         if (idx > -1) {
           this.shops[idx] = saved;
           this.dataSource.data = [...this.shops];
         }
 
         this.toastr.success(
-          this.translate.instant('SUCCESS.SHOPUPDATED') || 'Boutique mise à jour.'
+          this.translate.instant('SUCCESS.SHOPUPDATED') ||
+          'Boutique mise à jour.'
         );
       },
       error: (err) => {
         console.error('Erreur lors de la mise à jour de la promotion :', err);
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-      }
+      },
     });
   }
-
-
 
   // ------------------------------------------------------
   // 🚫 Bloquer / Débloquer un shop
@@ -146,8 +176,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
     this.shopService.update(updated).subscribe({
       next: (data: any) => {
-        // MAJ locale de la ligne pour reflecter l’état
-        const idx = this.shops.findIndex(u => u._id === updated._id);
+        const idx = this.shops.findIndex((u) => u._id === updated._id);
         if (idx > -1) {
           this.shops[idx] = data;
           this.dataSource.data = [...this.shops];
@@ -160,7 +189,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
       error: (err) => {
         console.error('Erreur lors du blocage/déblocage shop :', err);
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-      }
+      },
     });
   }
 
@@ -170,27 +199,73 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   saveShop() {
     console.log(`Editing shop: ${this.shop?.name}`);
 
-    this.shopService.update(this.shop).subscribe({
+    // 🔁 On transforme les heures "simples" de la modale
+    //     -> structure complète par jour avant envoi
+    const payload = this.buildShopPayloadForSave();
+
+    this.shopService.update(payload).subscribe({
       next: (data: any) => {
         console.log('Shop updated:', data);
         this.modalOpen = false;
 
-        // MAJ locale
-        const idx = this.shops.findIndex(s => s._id === data._id);
+        const idx = this.shops.findIndex((s) => s._id === data._id);
         if (idx > -1) {
           this.shops[idx] = data;
           this.dataSource.data = [...this.shops];
         }
 
         this.toastr.success(
-          this.translate.instant('SUCCESS.SHOPUPDATED') || 'Boutique mise à jour.'
+          this.translate.instant('SUCCESS.SHOPUPDATED') ||
+          'Boutique mise à jour.'
         );
       },
       error: (error: any) => {
         console.error('Erreur lors de la sauvegarde de la boutique :', error);
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-      }
+      },
     });
+  }
+
+  /**
+   * Construit le payload à envoyer à l’API :
+   * - reconstruit hours pour toute la semaine
+   * - supprime les champs internes (_fullHoursWeek)
+   */
+  private buildShopPayloadForSave(): any {
+    const clone = JSON.parse(JSON.stringify(this.shop || {}));
+
+    const simpleHours = clone?.hours || {};
+    const fullWeekOriginal = clone?._fullHoursWeek || {};
+
+    if (simpleHours?.morning && simpleHours?.afternoon) {
+      const base = {
+        morning: {
+          start: simpleHours.morning.start || '',
+          end: simpleHours.morning.end || '',
+        },
+        afternoon: {
+          start: simpleHours.afternoon.start || '',
+          end: simpleHours.afternoon.end || '',
+        },
+      };
+
+      const result: any = { ...fullWeekOriginal };
+
+      this.days.forEach((day) => {
+        const existing = result[day] || {};
+        result[day] = {
+          morning: { ...base.morning },
+          afternoon: { ...base.afternoon },
+          closed:
+            typeof existing.closed === 'boolean' ? existing.closed : false,
+        };
+      });
+
+      clone.hours = result;
+    }
+
+    delete clone._fullHoursWeek;
+    return clone;
   }
 
   // ------------------------------------------------------
@@ -198,8 +273,56 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   // ------------------------------------------------------
   editShop(shop: any) {
     console.log(`Editing shop: ${shop.name}`);
-    // Clone pour éviter d’éditer la référence dans le tableau tant que non sauvegardé
-    this.shop = JSON.parse(JSON.stringify(shop));
+
+    // Clone profond pour ne pas modifier la liste tant qu’on n’a pas cliqué sur "Enregistrer"
+    const clone = JSON.parse(JSON.stringify(shop || {}));
+
+    // ---- Gestion spéciale des horaires ----
+    const hours = clone.hours || {};
+    clone._fullHoursWeek = hours; // on garde la version complète pour la sauvegarde
+
+    // On choisit un jour de référence (monday sinon le premier trouvé)
+    let ref: any = null;
+    if (hours.monday) {
+      ref = hours.monday;
+    } else {
+      for (const d of this.days) {
+        if (hours[d]) {
+          ref = hours[d];
+          break;
+        }
+      }
+    }
+
+    // Si on a trouvé un jour de référence avec morning/afternoon → on alimente la structure simple
+    if (ref && ref.morning && ref.afternoon) {
+      clone.hours = {
+        morning: {
+          start: ref.morning.start || '',
+          end: ref.morning.end || '',
+        },
+        afternoon: {
+          start: ref.afternoon.start || '',
+          end: ref.afternoon.end || '',
+        },
+      };
+    } else {
+      // Sinon, on s’assure d’avoir au moins la structure attendue par le template
+      clone.hours = clone.hours || {};
+      clone.hours.morning = clone.hours.morning || { start: '', end: '' };
+      clone.hours.afternoon = clone.hours.afternoon || { start: '', end: '' };
+    }
+
+    this.shop = clone;
+
+    // Image preview
+    this.imagePreview = this.shop.image
+      ? this.imgStorageUrl + this.shop.image
+      : null;
+
+    // Pour la validation réutilisée (compat ShopManagement)
+    this.shopCopyData = { ...this.shop };
+
     this.modalOpen = true;
   }
 
@@ -211,16 +334,148 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   }
 
   // ------------------------------------------------------
-  // Placeholders conservés (aucune suppression)
+  // 📷 Traitement IA de la photo existante du shop
   // ------------------------------------------------------
-  saveService() { }
-  onFileSelected(event: any): void { }
+  changePhotoByAI(shop: any): void {
+    if (!shop?._id) {
+      console.warn('[AdminShops] changePhotoByAI: shopId manquant');
+      return;
+    }
+    this.loading = true;
+
+    // Flag de chargement pour désactiver le bouton IA + afficher le spinner
+    shop._aiLoading = true;
+
+    this.shopService.processShopImage(shop._id).subscribe({
+      next: (res: any) => {
+        shop._aiLoading = false;
+        this.loading = false;
+
+        if (res?.image) {
+          // On met à jour l'image dans la ligne du tableau (optimiste)
+          shop.image = res.image;
+
+          // Et si la modale est ouverte sur ce shop, on sync aussi this.shop
+          if (this.shop && this.shop._id === shop._id) {
+            this.shop.image = res.image;
+            this.imagePreview =
+              this.imgStorageUrl + 'uploads/images/' + res.image;
+          }
+        }
+
+        // Rechargement propre de toute la liste (pour être 100% synchro avec le backend)
+        this.loadShops();
+
+        this.toastr.success(
+          this.translate.instant('SUCCESS.IMAGE_PROCESSED') ||
+          'Image mise à jour.'
+        );
+      },
+      error: (error) => {
+        this.loading = false;
+        shop._aiLoading = false;
+        console.error('Erreur lors du traitement de l’image IA :', error);
+        this.showCustomToast(
+          this.translate.instant('ERROR.GENERIC_ERROR')
+        );
+      },
+    });
+  }
+
+  // Upload "simple" (utilisé par ton HTML actuel)
+  onFileSelected(event: any): void {
+    try {
+      const file: File = event?.target?.files?.[0];
+      if (!file) return;
+
+      this.selectedFile = file;
+
+      // Aperçu immédiat
+      const reader = new FileReader();
+      reader.onload = () => (this.imagePreview = reader.result as string);
+      reader.readAsDataURL(file);
+
+      this.markFormModified();
+    } catch (err) {
+      console.error('[ShopManagement] onFileSelected error:', err);
+    }
+  }
+
+  /**
+   * Marque le formulaire comme modifié, revalide et (dans ton cas) déclenche une sauvegarde.
+   */
+  markFormModified(): void {
+    try {
+      this.formModified = true;
+      this.validateForm();
+      // Si tu ne veux pas de save auto, commente cette ligne :
+      // this.saveShop();
+    } catch (err) {
+      console.error('[ShopManagement] markFormModified error:', err);
+    }
+  }
+
+  /**
+   * Validation très simple, inspirée de ton autre composant
+   */
+  validateForm(): void {
+    try {
+      if (!this.shopCopyData) {
+        this.formValid = false;
+        return;
+      }
+
+      const descriptionValid =
+        !!this.shopCopyData.description &&
+        this.shopCopyData.description.length >= 25;
+
+      const cityValid =
+        !!this.shopCopyData.ville && !!this.shopCopyData.district;
+
+      const maxDistanceValid =
+        this.shopCopyData.maxDistance &&
+        Number(this.shopCopyData.maxDistance) > 0;
+
+      const hours = this.shopCopyData.hours || {};
+      const allDaysValid = this.days.every((d) => {
+        const data = hours[d];
+        if (!data) return true; // ici on est plus permissif
+        if (data.closed) return true;
+        return !!(
+          data.morning?.start &&
+          data.morning?.end &&
+          data.afternoon?.start &&
+          data.afternoon?.end
+        );
+      });
+
+      this.formValid =
+        descriptionValid && cityValid && maxDistanceValid && allDaysValid;
+    } catch (err) {
+      console.error('[ShopManagement] validateForm error:', err);
+      this.formValid = false;
+    }
+  }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur styliséizyGlam (centralisé)
+  // 🖼️ Fallback si l’image ne charge pas (table)
+  // ------------------------------------------------------
+  onImageError(shop: any): void {
+    if (!shop) {
+      return;
+    }
+    shop.image = 'default.png';
+  }
+
+  // ------------------------------------------------------
+  // Placeholders conservés
+  // ------------------------------------------------------
+  saveService() { }
+
+  // ------------------------------------------------------
+  // ✨ Toast d’erreur stylisé
   // ------------------------------------------------------
   private showCustomToast(message: string) {
-    // Standard : erreurs → toastr.error
     this.toastr.error(message);
   }
 }

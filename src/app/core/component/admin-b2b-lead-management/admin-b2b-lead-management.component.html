@@ -1,0 +1,154 @@
+<div class="b2b-leads-page">
+  <h1 class="page-title">Leads entreprises</h1>
+  <p class="page-subtitle">
+    Suis tes leads B2B, ajoute des notes et enrichis les emails en un clic.
+  </p>
+
+  <div class="toolbar">
+    <div class="search-wrapper">
+      <input type="text" placeholder="Rechercher une entreprise, une ville, un site..." [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange($event)" />
+    </div>
+
+    <div class="toolbar-right">
+      <div class="filter-chip-group">
+        <button class="chip" [class.chip--active]="filterHasEmail === 'all'" (click)="onFilterHasEmailChange('all')">
+          Tous
+        </button>
+        <button class="chip" [class.chip--active]="filterHasEmail === 'yes'" (click)="onFilterHasEmailChange('yes')">
+          Avec email
+        </button>
+        <button class="chip" [class.chip--active]="filterHasEmail === 'no'" (click)="onFilterHasEmailChange('no')">
+          Sans email
+        </button>
+      </div>
+
+      <button class="primary-btn" (click)="triggerEnrichment()" [disabled]="enriching">
+        <span class="loader" *ngIf="enriching"></span>
+        <span *ngIf="!enriching">🔍 Enrichir les emails</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="header-count">
+        {{ filteredLeads.length }} lead{{ filteredLeads.length > 1 ? "s" : "" }}
+      </span>
+      <span *ngIf="loading" class="header-loading">Chargement...</span>
+    </div>
+
+    <div class="table">
+      <div class="table-header">
+        <div class="col col-company">Entreprise</div>
+        <div class="col col-city">Ville</div>
+        <div class="col col-email">Email</div>
+        <div class="col col-status">Statut</div>
+        <div class="col col-notes">Notes</div>
+        <div class="col col-actions">Actions</div>
+      </div>
+
+      <div class="table-row" *ngFor="let lead of filteredLeads" (mouseleave)="hideEmailsPopover()">
+        <div class="col col-company">
+          <div class="company-main">
+            <div class="avatar">
+              <span>
+                {{
+                lead.companyName
+                ? lead.companyName.charAt(0).toUpperCase()
+                : "?"
+                }}
+              </span>
+            </div>
+            <div class="company-text">
+              <div class="company-name">{{ lead.companyName }}</div>
+              <div class="company-sub">
+                <span *ngIf="lead.website">
+                  <a [href]="lead.website" target="_blank" rel="noopener">
+                    {{ lead.website }}
+                  </a>
+                </span>
+                <span *ngIf="lead.contactPhone">
+                  • {{ lead.contactPhone }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-city">
+          <div class="city-main">
+            <span class="city-name">{{ lead.city || "—" }}</span>
+            <span class="city-sub" *ngIf="lead.postalCode">
+              {{ lead.postalCode }}
+            </span>
+          </div>
+        </div>
+
+        <!-- EMAIL + POPOVER -->
+        <div class="col col-email">
+          <div class="email-wrapper">
+            <div class="email-badge" [class.email-badge--empty]="!lead.contactEmail">
+              <span *ngIf="lead.contactEmail; else noEmail" style="cursor: pointer" (click)="showEmailsPopover(lead)">
+                {{ lead.contactEmail }}
+              </span>
+              <ng-template #noEmail>
+                <span class="no-email-text">Aucun email</span>
+              </ng-template>
+            </div>
+
+            <div *ngIf="lead.extraEmails?.length" class="extra-email-count" style="cursor: pointer" (click)="showEmailsPopover(lead)">
+              +{{ lead.extraEmails.length }}
+              email{{ lead.extraEmails.length > 1 ? "s" : "" }}
+
+              <!-- Popover liste d'emails -->
+              <div class="email-popover" *ngIf="hoveredLeadId === lead._id">
+                <div class="email-popover-item email-popover-item--primary" *ngIf="lead.contactEmail">
+                  {{ lead.contactEmail }}
+                  <span class="email-label">Principal</span>
+                </div>
+
+                <div class="email-popover-item" *ngFor="let e of lead.extraEmails">
+                  {{ e }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-status">
+          <span class="status-pill" [ngClass]="{
+              'status-pill--new': lead.status === 'new',
+              'status-pill--drip': lead.status === 'in_drip',
+              'status-pill--meeting': lead.status === 'meeting_scheduled',
+              'status-pill--won': lead.status === 'won',
+              'status-pill--lost': lead.status === 'lost'
+            }">
+            {{ getStatusLabel(lead) }}
+          </span>
+
+          <div class="contact-flag" *ngIf="hasBeenContacted(lead)">
+            Contacté le
+            {{ lead.lastContactAt | date: "shortDate" }}
+          </div>
+        </div>
+
+        <div class="col col-notes">
+          <textarea [(ngModel)]="lead.notes" (blur)="saveNotes(lead)" placeholder="Ajouter un commentaire..."
+            [disabled]="savingId === lead._id"></textarea>
+        </div>
+
+        <div class="col col-actions">
+          <button class="icon-btn" [class.icon-btn--success]="hasBeenContacted(lead)" (click)="markContacted(lead)"
+            [disabled]="savingId === lead._id" title="Marquer comme contacté">
+            ✔
+          </button>
+        </div>
+      </div>
+
+      <div class="table-empty" *ngIf="!loading && filteredLeads.length === 0">
+        Aucun lead à afficher pour le moment.
+      </div>
+    </div>
+  </div>
+</div>

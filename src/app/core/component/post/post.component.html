@@ -3,14 +3,15 @@
     <div class="sidebar">
       <div class="tab-selector">
         <div>Mes postes :</div>
-        <button class="tab-button instagram" (click)="selectPlatform('Instagram')"
-          [ngClass]="{ 'big-button': selectedPlatform === 'Instagram' }">
-          {{ "CATEGORY.INSTAGRAM" | translate }}
-        </button>
         <button class="tab-button linkedin" (click)="selectPlatform('LinkedIn')"
           [ngClass]="{ 'big-button': selectedPlatform === 'LinkedIn' }">
           {{ "CATEGORY.LINKEDIN" | translate }}
         </button>
+        <button class="tab-button instagram" (click)="selectPlatform('Instagram')"
+          [ngClass]="{ 'big-button': selectedPlatform === 'Instagram' }">
+          {{ "CATEGORY.INSTAGRAM" | translate }}
+        </button>
+        <!--
         <div class="margin-top-15">Audit :</div>
         <button class="tab-button izyglow4" (click)="selectAuditType('audit')"
           [ngClass]="{ 'big-button': selectedAdsType === 'audit' }">
@@ -21,7 +22,6 @@
           [ngClass]="{ 'big-button': selectedAdsType === 'coms' }">
           Gérer
         </button>
-        <!--
         <div class="margin-top-15">Publicités :</div>
         <button class="tab-button izyglow2" (click)="selectAdsType('pubs')"
           [ngClass]="{ 'big-button': selectedAdsType === 'pubs' }">
@@ -145,7 +145,7 @@
                   <i class="fa fa-spinner fa-spin"></i>
                 </span>
               </button>
-              <button (click)="generateContentByAI(post)" class="icon-button" [title]="'POST.PUBLISH' | translate">
+              <button (click)="publish(post)" class="icon-button" [title]="'POST.PUBLISH' | translate">
                 <i class="fa fa-paper-plane"></i>
               </button>
             </div>
@@ -290,6 +290,7 @@
     </div>
     <div class="sidebar" *ngIf="contentType === 'posts'">
       <div class="tab-selector">
+        <!--
         <button [disabled]="buttonsDisabled || addPostButtonDisabled" class="tab-button"
           [ngClass]="selectedPlatform.toLowerCase()" (click)="connectToPlatform(selectedPlatform)">
           <span *ngIf="!buttonsDisabled">
@@ -299,6 +300,7 @@
             <i class="fa fa-spinner fa-spin"></i>
           </span>
         </button>
+        -->
         <button [disabled]="buttonsDisabled || addPostButtonDisabled" class="tab-button"
           [ngClass]="selectedPlatform.toLowerCase()" (click)="createNewPost()">
           <span *ngIf="!buttonsDisabled">

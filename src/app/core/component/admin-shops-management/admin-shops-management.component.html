@@ -1,273 +1,248 @@
 <div class="admin-shops-management">
   <div class="search-bar">
-    <input
-      type="text"
-      placeholder="Rechercher..."
-      [(ngModel)]="searchTerm"
-      (input)="applyGlobalSearch()"
-    />
+    <input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerm" (input)="applyGlobalSearch()" />
   </div>
 
-  <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="dataSource" matSort class="shops-table">
+    <!-- Image Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let shop">
+        <div class="shop-avatar">
+          <img [src]="(imgStorageUrl + 'uploads/images/' +  (shop.image || 'default.png'))" alt="Aperçu de l'image"
+            class="image-preview small-preview" />
+          <!-- 🔮 Bouton IA dans la liste -->
+          <button type="button" class="ai-wand-btn" [disabled]="shop._aiLoading" (click)="changePhotoByAI(shop)"
+            title="Améliorer la photo avec l'IA">
+            <i class="fa fa-magic"></i>
+          </button>
+
+        </div>
+      </td>
+    </ng-container>
+
     <!-- Nom Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ "ADMIN_SHOP.NAME" | translate }}</th>
-      <td mat-cell *matCellDef="let shop">{{ shop.name }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        {{ "ADMIN_SHOP.NAME" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let shop">
+        <div class="shop-main-info">
+          <div class="shop-name">
+            {{ shop.name }}
+          </div>
+          <div class="shop-subinfo">
+            {{ shop.type }} • {{ shop.country }}
+          </div>
+        </div>
+      </td>
     </ng-container>
 
     <!-- Ville Column -->
     <ng-container matColumnDef="ville">
-      <th mat-header-cell *matHeaderCellDef>{{ "ADMIN_SHOP.CITY" | translate }}</th>
-      <td mat-cell *matCellDef="let shop">{{ shop.ville }}</td>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "ADMIN_SHOP.CITY" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let shop">
+        {{ shop.ville }}
+        <span *ngIf="shop.district">
+          ({{ shop.district }})
+        </span>
+      </td>
     </ng-container>
 
     <!-- Note Column -->
     <ng-container matColumnDef="note">
-      <th mat-header-cell *matHeaderCellDef>{{ "ADMIN_SHOP.NOTE" | translate }}</th>
-      <td mat-cell *matCellDef="let shop">{{ shop.note }} / 5</td>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "ADMIN_SHOP.NOTE" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let shop">
+        <div class="rating-chip">
+          <span class="rating-value">{{ shop.note }}</span>
+          <span class="rating-max">/ 5</span>
+        </div>
+      </td>
     </ng-container>
 
     <!-- Prix moyen Column -->
     <ng-container matColumnDef="averagePrice">
-      <th mat-header-cell *matHeaderCellDef>{{ "ADMIN_SHOP.MIDDLE_PRICE" | translate }}</th>
-      <td mat-cell *matCellDef="let shop">{{ shop.averagePrice }}</td>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "ADMIN_SHOP.MIDDLE_PRICE" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let shop">
+        <span *ngIf="shop.averagePrice; else noPrice">
+          {{ shop.averagePrice }} €
+        </span>
+        <ng-template #noPrice>
+          <span class="text-muted">—</span>
+        </ng-template>
+      </td>
     </ng-container>
 
     <!-- Promo Column -->
     <ng-container matColumnDef="promo">
-      <th mat-header-cell *matHeaderCellDef>{{ "ADMIN_SHOP.PROMOTION" | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "ADMIN_SHOP.PROMOTION" | translate }}
+      </th>
       <td mat-cell *matCellDef="let shop">
-        {{ shop.promo.active ? "Active" : "Inactive" }} ({{ shop.promo.type }})
+        <span class="promo-chip" [ngClass]="shop.promo?.active ? 'promo-active' : 'promo-inactive'"
+          (click)="togglePromo(shop)">
+          {{ shop.promo?.active ? "Active" : "Inactive" }}
+          <span class="promo-type" *ngIf="shop.promo?.type">
+            ({{ shop.promo.type }})
+          </span>
+        </span>
       </td>
     </ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>{{ "ADMIN_SHOP.ACTIONS" | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "ADMIN_SHOP.ACTIONS" | translate }}
+      </th>
       <td mat-cell *matCellDef="let shop">
-        <!--<button mat-raised-button color="primary" (click)="editShop(shop)">Éditer</button>-->
-
-        <button
-          class="btn create-button"
-          mat-raised-button
-          color="primary"
-          (click)="editShop(shop)"
-        >
-          <i class="fa fa-pencil"></i>
-        </button>
-        <button
-          class="btn ban-button"
-          [ngClass]="shop.active ? 'unlocked' : 'locked'"
-          mat-raised-button
-          color="warn"
-          (click)="toggleBlockUser(shop)"
-        >
-          <i *ngIf="shop.active" class="fa fa-ban"></i>
-          <i *ngIf="!shop.active" class="fa fa-check"></i>
-        </button>
+        <div class="actions-wrapper">
+          <button class="icon-button edit" mat-raised-button color="primary" (click)="editShop(shop)">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button class="icon-button status" mat-raised-button [ngClass]="shop.active ? 'unlocked' : 'locked'"
+            (click)="toggleBlockUser(shop)">
+            <i *ngIf="shop.active" class="fa fa-ban"></i>
+            <i *ngIf="!shop.active" class="fa fa-check"></i>
+          </button>
+        </div>
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" class="shop-row"></tr>
   </table>
 
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-  ></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 
 <!-- Modal -->
-<div
-  class="modal fade show"
-  tabindex="-1"
-  [style.display]="modalOpen ? 'block' : 'none'"
-  [ngClass]="{ show: modalOpen }"
->
+<div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
+  [ngClass]="{ show: modalOpen }">
   <div class="modal-dialog custom-modal-width">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title">{{ "ADMIN_SHOP.MODIFIER" | translate }}</h3>
-        <button
-          type="button"
-          class="btn-close"
-          aria-label="Close"
-          (click)="closeModal()"
-        ></button>
+        <h3 class="modal-title">
+          {{ "ADMIN_SHOP.MODIFIER" | translate }}
+        </h3>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
       </div>
 
       <div class="modal-body">
         <!-- Nom de la boutique -->
         <div class="form-group">
           <label for="shopName">{{ "ADMIN_SHOP.SHOP_NAME" | translate }}</label>
-          <input
-            type="text"
-            id="shopName"
-            [(ngModel)]="shop.name"
-            class="form-control"
-            required
-          />
+          <input type="text" id="shopName" [(ngModel)]="shop.name" class="form-control" required />
         </div>
 
         <!-- Description de la boutique -->
         <div class="form-group">
-          <label for="shopDescription">{{ "ADMIN_SHOP.DESCRIPTION" | translate }}</label>
-          <textarea
-            id="shopDescription"
-            [(ngModel)]="shop.description"
-            class="form-control"
-            required
-          ></textarea>
+          <label for="shopDescription">
+            {{ "ADMIN_SHOP.DESCRIPTION" | translate }}
+          </label>
+          <textarea id="shopDescription" [(ngModel)]="shop.description" class="form-control" required></textarea>
         </div>
 
         <!-- Image principale de la boutique -->
         <div class="form-group">
-          <label for="shopImage">{{ "ADMIN_SHOP.PRINCIPALE" | translate }}</label>
-          <div *ngIf="shop.image">
-            <img
-              [src]="imgStorageUrl + shop.image"
-              alt="Aperçu de l'image"
-              class="image-preview small-preview"
-            />
+          <div *ngIf="shop.image" class="image-preview-wrapper">
+            <img [src]="(imgStorageUrl  + 'uploads/images/' +  shop.image)" alt="Aperçu de l'image"
+              class="image-preview small-preview" (error)="onImageError($event)" />
+
+
+            <!-- 🔮 Bouton IA dans la liste
+            <button type="button" class="ai-wand-btn" [disabled]="shop._aiLoading" (click)="changePhotoByAI(shop)"
+              title="Améliorer la photo avec l'IA">
+              <i class="fa fa-magic"></i>
+            </button> -->
           </div>
-          
-        <div class="custom-upload">
-          <button type="button" class="margin-top-20" (click)="fileInput.click()">📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate}}</button>
-          <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
-        </div>
+
+          <div class="custom-upload">
+            <button type="button" class="margin-top-20" (click)="fileInput.click()">
+              📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate }}
+            </button>
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden />
+          </div>
         </div>
 
         <!-- Type de boutique -->
         <div class="form-group">
           <label for="shopType">{{ "ADMIN_SHOP.SHOP" | translate }}</label>
-          <input
-            type="text"
-            id="shopType"
-            [(ngModel)]="shop.type"
-            class="form-control"
-            required
-          />
+          <input type="text" id="shopType" [(ngModel)]="shop.type" class="form-control" required />
         </div>
 
         <!-- Ville et arrondissement -->
         <div class="form-group">
           <label for="shopVille">{{ "ADMIN_SHOP.CITY" | translate }}</label>
-          <input
-            type="text"
-            id="shopVille"
-            [(ngModel)]="shop.ville"
-            class="form-control"
-            required
-          />
+          <input type="text" id="shopVille" [(ngModel)]="shop.ville" class="form-control" required />
         </div>
+
         <div class="form-group">
-          <label for="shopDistrict">{{ "ADMIN_SHOP.ARRONDISSEMENT" | translate }}</label>
-          <input
-            type="text"
-            id="shopDistrict"
-            [(ngModel)]="shop.district"
-            class="form-control"
-          />
+          <label for="shopDistrict">
+            {{ "ADMIN_SHOP.ARRONDISSEMENT" | translate }}
+          </label>
+          <input type="text" id="shopDistrict" [(ngModel)]="shop.district" class="form-control" />
         </div>
 
         <!-- Prix moyen et délai minimum -->
         <div class="form-group">
-          <label for="averagePrice">{{ "ADMIN_SHOP.MIDDLE_PRICE" | translate }}</label>
-          <input
-            type="text"
-            id="averagePrice"
-            [(ngModel)]="shop.averagePrice"
-            class="form-control"
-          />
+          <label for="averagePrice">
+            {{ "ADMIN_SHOP.MIDDLE_PRICE" | translate }}
+          </label>
+          <input type="text" id="averagePrice" [(ngModel)]="shop.averagePrice" class="form-control" />
         </div>
+
         <div class="form-group">
-          <label for="minimumDelay">{{ "ADMIN_SHOP.MINIMUM_DELAI" | translate }}</label>
-          <input
-            type="text"
-            id="minimumDelay"
-            [(ngModel)]="shop.minimumDelay"
-            class="form-control"
-          />
+          <label for="minimumDelay">
+            {{ "ADMIN_SHOP.MINIMUM_DELAI" | translate }}
+          </label>
+          <input type="text" id="minimumDelay" [(ngModel)]="shop.minimumDelay" class="form-control" />
         </div>
 
         <!-- Distance maximale -->
         <div class="form-group">
-          <label for="maxDistance">{{ "ADMIN_SHOP.DISTANCE" | translate }}</label>
-          <input
-            type="number"
-            id="maxDistance"
-            [(ngModel)]="shop.maxDistance"
-            class="form-control"
-            required
-          />
+          <label for="maxDistance">
+            {{ "ADMIN_SHOP.DISTANCE" | translate }}
+          </label>
+          <input type="number" id="maxDistance" [(ngModel)]="shop.maxDistance" class="form-control" required />
         </div>
 
         <!-- Emplacement (latitude et longitude) -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.EMPLACEMENT" | translate }}</label>
-          <input
-            type="number"
-            [(ngModel)]="shop.location.latitude"
-            placeholder="Latitude"
-            class="form-control mb-2"
-          />
-          <input
-            type="number"
-            [(ngModel)]="shop.location.longitude"
-            placeholder="Longitude"
-            class="form-control mb-2"
-          />
+          <input type="number" [(ngModel)]="shop.location.latitude" placeholder="Latitude" class="form-control mb-2" />
+          <input type="number" [(ngModel)]="shop.location.longitude" placeholder="Longitude"
+            class="form-control mb-2" />
         </div>
 
         <!-- Heures d'ouverture (matin et après-midi) -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.HOURS_MORNING" | translate }}</label>
-          <input
-            type="time"
-            [(ngModel)]="shop.hours.morning.start"
-            class="form-control mb-2"
-          />
-          <input
-            type="time"
-            [(ngModel)]="shop.hours.morning.end"
-            class="form-control mb-2"
-          />
+          <input type="time" [(ngModel)]="shop.hours.morning.start" class="form-control mb-2" />
+          <input type="time" [(ngModel)]="shop.hours.morning.end" class="form-control mb-2" />
         </div>
+
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.HOURS_AFTERNOON" | translate }}</label>
-          <input
-            type="time"
-            [(ngModel)]="shop.hours.afternoon.start"
-            class="form-control mb-2"
-          />
-          <input
-            type="time"
-            [(ngModel)]="shop.hours.afternoon.end"
-            class="form-control mb-2"
-          />
+          <input type="time" [(ngModel)]="shop.hours.afternoon.start" class="form-control mb-2" />
+          <input type="time" [(ngModel)]="shop.hours.afternoon.end" class="form-control mb-2" />
         </div>
 
         <!-- Promo active -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.PROMOTION" | translate }}</label>
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              [(ngModel)]="shop.promo.active"
-              id="promoActive"
-            />
+            <input class="form-check-input" type="checkbox" [(ngModel)]="shop.promo.active" id="promoActive" />
             <label class="form-check-label" for="promoActive">
               {{ "ADMIN_SHOP.ACTIVE_PROMO" | translate }}
             </label>
           </div>
-          <input
-            type="text"
-            [(ngModel)]="shop.promo.type"
-            placeholder="Type de promotion"
-            class="form-control mt-2"
-          />
+          <input type="text" [(ngModel)]="shop.promo.type" placeholder="Type de promotion" class="form-control mt-2" />
         </div>
       </div>
 
@@ -281,4 +256,9 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="loader-overlay" *ngIf="loading">
+  <div class="spinner"></div>
+  <p>Modification de l'image en cours...</p>
 </div>

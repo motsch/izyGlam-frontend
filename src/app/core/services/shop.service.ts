@@ -17,6 +17,19 @@ export class ShopService {
         return raw.slice(0, 2).toLowerCase();
     }
 
+    /**
+ * Traitement IA de l'image principale d'un shop
+ * à partir de l'image déjà stockée côté serveur.
+ * @param shopId ID du shop
+ */
+    processShopImage(shopId: string): Observable<any> {
+        return this.http.post<any>(
+            `${environment.apiUrl}shop-image/process`,
+            { shopId }
+        );
+    }
+
+
     getShopsCount() {
         return this.http.get<number>(environment.apiUrl + 'shops-count-all');
     }
