@@ -1,0 +1,130 @@
+<div class="documents-wrapper">
+  <h2>Documents professionnels</h2>
+  <p class="intro">Fournis ou mets à jour tes documents pour valider ton profil professionnel.</p>
+
+  <!-- Section DOCUMENTS -->
+  <div class="documents-grid">
+
+    <!-- IDENTITÉ -->
+    <div class="doc-card">
+      <div class="doc-header">
+        <div>
+          <h3>Pièce d'identité</h3>
+          <p>Carte d’identité, passeport ou titre de séjour.</p>
+        </div>
+        <span class="status-pill" [ngClass]="getStatusClass(verification?.identity?.status)">
+          {{ getStatusLabel(verification?.identity?.status) }}
+        </span>
+      </div>
+
+      <div class="doc-body">
+        <label class="doc-upload">
+          <input type="file" (change)="onFileSelected($event, 'identity')" accept=".pdf,.jpg,.jpeg,.png"/>
+          <span>Choisir un fichier</span>
+        </label>
+
+        <div class="file-name" *ngIf="identityFileName">{{ identityFileName }}</div>
+
+        <div class="existing-doc" *ngIf="verification?.identity?.file">
+          <button type="button" class="doc-link-btn"
+                  (click)="openPreview(verification.identity.file)">
+            Voir document actuel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASSURANCE -->
+    <div class="doc-card">
+      <div class="doc-header">
+        <div>
+          <h3>Assurance professionnelle</h3>
+          <p>Document obligatoire pour exercer légalement.</p>
+        </div>
+        <span class="status-pill" [ngClass]="getStatusClass(verification?.insurance?.status)">
+          {{ getStatusLabel(verification?.insurance?.status) }}
+        </span>
+      </div>
+
+      <div class="doc-body">
+        <label class="doc-upload">
+          <input type="file" (change)="onFileSelected($event, 'insurance')" accept=".pdf,.jpg,.jpeg,.png"/>
+          <span>Choisir un fichier</span>
+        </label>
+
+        <div class="file-name" *ngIf="insuranceFileName">{{ insuranceFileName }}</div>
+
+        <div class="existing-doc" *ngIf="verification?.insurance?.file">
+          <button type="button" class="doc-link-btn"
+                  (click)="openPreview(verification.insurance.file)">
+            Voir document actuel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- KBIS -->
+    <div class="doc-card">
+      <div class="doc-header">
+        <div>
+          <h3>Kbis (facultatif)</h3>
+          <p>Recommandé si tu es une société.</p>
+        </div>
+        <span class="status-pill" [ngClass]="getStatusClass(verification?.kbis?.status)">
+          {{ getStatusLabel(verification?.kbis?.status) }}
+        </span>
+      </div>
+
+      <div class="doc-body">
+        <label class="doc-upload">
+          <input type="file" (change)="onFileSelected($event, 'kbis')" accept=".pdf,.jpg,.jpeg,.png"/>
+          <span>Choisir un fichier</span>
+        </label>
+
+        <div class="file-name" *ngIf="kbisFileName">{{ kbisFileName }}</div>
+
+        <div class="existing-doc" *ngIf="verification?.kbis?.file">
+          <button type="button" class="doc-link-btn"
+                  (click)="openPreview(verification.kbis.file)">
+            Voir document actuel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="save-btn" (click)="uploadDocuments()" [disabled]="isLoading">
+    {{ isLoading ? 'Envoi...' : 'Enregistrer les documents' }}
+  </button>
+</div>
+
+<!-- ============================= -->
+<!-- 🌸 MODALE DE PRÉVISUALISATION -->
+<!-- ============================= -->
+<div class="doc-modal-overlay" *ngIf="previewOpen" (click)="closePreview()">
+  <div class="doc-modal" (click)="$event.stopPropagation()">
+    <button class="doc-modal-close" (click)="closePreview()">✕</button>
+
+    <ng-container [ngSwitch]="previewType">
+
+      <!-- Image -->
+      <img *ngSwitchCase="'image'"
+           [src]="previewUrl"
+           class="doc-modal-image"
+           alt="Document"/>
+
+      <!-- PDF -->
+      <iframe *ngSwitchCase="'pdf'"
+              [src]="previewUrl"
+              class="doc-modal-iframe">
+      </iframe>
+
+      <!-- Autre type -->
+      <div *ngSwitchDefault class="doc-modal-other">
+        <p>Impossible de prévisualiser ce type de fichier.</p>
+        <a [href]="previewUrl" target="_blank">Ouvrir dans un nouvel onglet</a>
+      </div>
+
+    </ng-container>
+  </div>
+</div>

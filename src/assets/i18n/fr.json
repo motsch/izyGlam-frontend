@@ -1,5 +1,4 @@
 {
-  
   "ADDRESS_MODAL": {
     "ADDRESS": "Mes adresses",
     "ADDRESS_MODIFICATION": "Modification d'adresse",
@@ -193,6 +192,7 @@
     "PHOTOS": "Galerie photos",
     "STATS": "Statistiques",
     "PARAM": "Paramétrage",
+    "DOCUMENTS": "Documents",
     "SHOPS": "Les boutiques",
     "USERS": "Les utilisateurs",
     "MESSAGE": "Messagerie"
@@ -563,6 +563,9 @@
     "NOT_CONNECTED": "Veuillez-vous connecter pour enregistrer un salon",
     "TITLE": "Lancez-vous !",
     "TITLE2": "Crééons un salon !",
+    "STEP1_TITLE": "Informations du salon",
+    "STEP2_TITLE": "Vérification professionnelle",
+    "STEP2_TAGLINE": "Étape 2 sur 2 · Vos documents restent privés et protégés.",
     "NAME": "Nom de votre salon",
     "ADDRESS": "Adresse de votre entreprise",
     "STREET": "Rue",
@@ -593,7 +596,28 @@
     "ERROR5": "Le nom de famille est obligatoire.",
     "ERROR6": "L'e-mail est obligatoire.",
     "ERROR7": "Le numéro de téléphone portable est obligatoire.",
-    "ERROR8": "Vous devez accepter de recevoir des messages sur WhatsApp."
+    "ERROR8": "Vous devez accepter de recevoir des messages sur WhatsApp.",
+    "VERIF_TITLE": "Vérification de votre profil professionnel",
+    "VERIF_SUBTITLE": "Nous vérifions chaque professionnel pour protéger vos clients et votre réputation.",
+    "VERIF_ID_TITLE": "Pièce d’identité",
+    "VERIF_ID_DESC": "Carte d’identité, passeport ou titre de séjour en cours de validité.",
+    "VERIF_INSURANCE_TITLE": "Assurance professionnelle",
+    "VERIF_INSURANCE_DESC": "Attestation en cours de validité couvrant vos prestations à domicile (obligatoire).",
+    "VERIF_KBIS_TITLE": "Extrait Kbis (optionnel)",
+    "VERIF_KBIS_DESC": "Recommandé si vous exercez via une société immatriculée.",
+    "VERIF_UPLOAD_LABEL": "Téléverser un document",
+    "VERIF_ALLOWED_FORMATS": "Formats acceptés : PDF, JPG, PNG · taille max 10 Mo.",
+    "VERIF_MANDATORY_HINT": "La pièce d’identité et l’assurance sont obligatoires pour activer votre profil.",
+    "VERIF_STATUS_MISSING": "Document manquant",
+    "VERIF_STATUS_PENDING": "En cours de vérification",
+    "VERIF_STATUS_APPROVED": "Validé",
+    "VERIF_STATUS_REJECTED": "Refusé · nouveau document requis",
+    "VERIF_PRIMARY_BUTTON": "Envoyer les documents",
+    "VERIF_SKIP_BUTTON": "Je compléterai plus tard",
+    "VERIF_TOAST_SUCCESS": "Vos documents ont été envoyés pour vérification.",
+    "VERIF_TOAST_ERROR": "Impossible de téléverser vos documents pour le moment.",
+    "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
+    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modifier l’adresse",
@@ -938,8 +962,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Assistance en ligne"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Créditer le compte de l'employé",
     "AMOUNT": "Montant à créditer ",

@@ -1,6 +1,11 @@
 <div class="admin-shops-management">
   <div class="search-bar">
-    <input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerm" (input)="applyGlobalSearch()" />
+    <input
+      type="text"
+      placeholder="Rechercher..."
+      [(ngModel)]="searchTerm"
+      (input)="applyGlobalSearch()"
+    />
   </div>
 
   <table mat-table [dataSource]="dataSource" matSort class="shops-table">
@@ -9,14 +14,21 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let shop">
         <div class="shop-avatar">
-          <img [src]="(imgStorageUrl + 'uploads/images/' +  (shop.image || 'default.png'))" alt="Aperçu de l'image"
-            class="image-preview small-preview" />
+          <img
+            [src]="imgStorageUrl + 'uploads/images/' + (shop.image || 'default.png')"
+            alt="Aperçu de l'image"
+            class="image-preview small-preview"
+          />
           <!-- 🔮 Bouton IA dans la liste -->
-          <button type="button" class="ai-wand-btn" [disabled]="shop._aiLoading" (click)="changePhotoByAI(shop)"
-            title="Améliorer la photo avec l'IA">
+          <button
+            type="button"
+            class="ai-wand-btn"
+            [disabled]="shop._aiLoading"
+            (click)="changePhotoByAI(shop)"
+            title="Améliorer la photo avec l'IA"
+          >
             <i class="fa fa-magic"></i>
           </button>
-
         </div>
       </td>
     </ng-container>
@@ -85,8 +97,11 @@
         {{ "ADMIN_SHOP.PROMOTION" | translate }}
       </th>
       <td mat-cell *matCellDef="let shop">
-        <span class="promo-chip" [ngClass]="shop.promo?.active ? 'promo-active' : 'promo-inactive'"
-          (click)="togglePromo(shop)">
+        <span
+          class="promo-chip"
+          [ngClass]="shop.promo?.active ? 'promo-active' : 'promo-inactive'"
+          (click)="togglePromo(shop)"
+        >
           {{ shop.promo?.active ? "Active" : "Inactive" }}
           <span class="promo-type" *ngIf="shop.promo?.type">
             ({{ shop.promo.type }})
@@ -102,11 +117,20 @@
       </th>
       <td mat-cell *matCellDef="let shop">
         <div class="actions-wrapper">
-          <button class="icon-button edit" mat-raised-button color="primary" (click)="editShop(shop)">
+          <button
+            class="icon-button edit"
+            mat-raised-button
+            color="primary"
+            (click)="editShop(shop)"
+          >
             <i class="fa fa-pencil"></i>
           </button>
-          <button class="icon-button status" mat-raised-button [ngClass]="shop.active ? 'unlocked' : 'locked'"
-            (click)="toggleBlockUser(shop)">
+          <button
+            class="icon-button status"
+            mat-raised-button
+            [ngClass]="shop.active ? 'unlocked' : 'locked'"
+            (click)="toggleBlockUser(shop)"
+          >
             <i *ngIf="shop.active" class="fa fa-ban"></i>
             <i *ngIf="!shop.active" class="fa fa-check"></i>
           </button>
@@ -115,29 +139,51 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns" class="shop-row"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      class="shop-row"
+    ></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
 </div>
 
-<!-- Modal -->
-<div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
-  [ngClass]="{ show: modalOpen }">
+<!-- Modal édition shop -->
+<div
+  class="modal fade show"
+  tabindex="-1"
+  [style.display]="modalOpen ? 'block' : 'none'"
+  [ngClass]="{ show: modalOpen }"
+>
   <div class="modal-dialog custom-modal-width">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title">
           {{ "ADMIN_SHOP.MODIFIER" | translate }}
         </h3>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeModal()"
+        ></button>
       </div>
 
       <div class="modal-body">
         <!-- Nom de la boutique -->
         <div class="form-group">
           <label for="shopName">{{ "ADMIN_SHOP.SHOP_NAME" | translate }}</label>
-          <input type="text" id="shopName" [(ngModel)]="shop.name" class="form-control" required />
+          <input
+            type="text"
+            id="shopName"
+            [(ngModel)]="shop.name"
+            class="form-control"
+            required
+          />
         </div>
 
         <!-- Description de la boutique -->
@@ -145,48 +191,77 @@
           <label for="shopDescription">
             {{ "ADMIN_SHOP.DESCRIPTION" | translate }}
           </label>
-          <textarea id="shopDescription" [(ngModel)]="shop.description" class="form-control" required></textarea>
+          <textarea
+            id="shopDescription"
+            [(ngModel)]="shop.description"
+            class="form-control"
+            required
+          ></textarea>
         </div>
 
         <!-- Image principale de la boutique -->
         <div class="form-group">
           <div *ngIf="shop.image" class="image-preview-wrapper">
-            <img [src]="(imgStorageUrl  + 'uploads/images/' +  shop.image)" alt="Aperçu de l'image"
-              class="image-preview small-preview" (error)="onImageError($event)" />
-
-
-            <!-- 🔮 Bouton IA dans la liste
-            <button type="button" class="ai-wand-btn" [disabled]="shop._aiLoading" (click)="changePhotoByAI(shop)"
-              title="Améliorer la photo avec l'IA">
-              <i class="fa fa-magic"></i>
-            </button> -->
+            <img
+              [src]="imgStorageUrl + 'uploads/images/' + shop.image"
+              alt="Aperçu de l'image"
+              class="image-preview small-preview"
+              (error)="onImageError(shop)"
+            />
           </div>
 
           <div class="custom-upload">
-            <button type="button" class="margin-top-20" (click)="fileInput.click()">
+            <button
+              type="button"
+              class="margin-top-20"
+              (click)="fileInput.click()"
+            >
               📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate }}
             </button>
-            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden />
+            <input
+              type="file"
+              #fileInput
+              (change)="onFileSelected($event)"
+              accept="image/*"
+              hidden
+            />
           </div>
         </div>
 
         <!-- Type de boutique -->
         <div class="form-group">
           <label for="shopType">{{ "ADMIN_SHOP.SHOP" | translate }}</label>
-          <input type="text" id="shopType" [(ngModel)]="shop.type" class="form-control" required />
+          <input
+            type="text"
+            id="shopType"
+            [(ngModel)]="shop.type"
+            class="form-control"
+            required
+          />
         </div>
 
         <!-- Ville et arrondissement -->
         <div class="form-group">
           <label for="shopVille">{{ "ADMIN_SHOP.CITY" | translate }}</label>
-          <input type="text" id="shopVille" [(ngModel)]="shop.ville" class="form-control" required />
+          <input
+            type="text"
+            id="shopVille"
+            [(ngModel)]="shop.ville"
+            class="form-control"
+            required
+          />
         </div>
 
         <div class="form-group">
           <label for="shopDistrict">
             {{ "ADMIN_SHOP.ARRONDISSEMENT" | translate }}
           </label>
-          <input type="text" id="shopDistrict" [(ngModel)]="shop.district" class="form-control" />
+          <input
+            type="text"
+            id="shopDistrict"
+            [(ngModel)]="shop.district"
+            class="form-control"
+          />
         </div>
 
         <!-- Prix moyen et délai minimum -->
@@ -194,14 +269,24 @@
           <label for="averagePrice">
             {{ "ADMIN_SHOP.MIDDLE_PRICE" | translate }}
           </label>
-          <input type="text" id="averagePrice" [(ngModel)]="shop.averagePrice" class="form-control" />
+          <input
+            type="text"
+            id="averagePrice"
+            [(ngModel)]="shop.averagePrice"
+            class="form-control"
+          />
         </div>
 
         <div class="form-group">
           <label for="minimumDelay">
             {{ "ADMIN_SHOP.MINIMUM_DELAI" | translate }}
           </label>
-          <input type="text" id="minimumDelay" [(ngModel)]="shop.minimumDelay" class="form-control" />
+          <input
+            type="text"
+            id="minimumDelay"
+            [(ngModel)]="shop.minimumDelay"
+            class="form-control"
+          />
         </div>
 
         <!-- Distance maximale -->
@@ -209,45 +294,160 @@
           <label for="maxDistance">
             {{ "ADMIN_SHOP.DISTANCE" | translate }}
           </label>
-          <input type="number" id="maxDistance" [(ngModel)]="shop.maxDistance" class="form-control" required />
+          <input
+            type="number"
+            id="maxDistance"
+            [(ngModel)]="shop.maxDistance"
+            class="form-control"
+            required
+          />
         </div>
 
         <!-- Emplacement (latitude et longitude) -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.EMPLACEMENT" | translate }}</label>
-          <input type="number" [(ngModel)]="shop.location.latitude" placeholder="Latitude" class="form-control mb-2" />
-          <input type="number" [(ngModel)]="shop.location.longitude" placeholder="Longitude"
-            class="form-control mb-2" />
+          <input
+            type="number"
+            [(ngModel)]="shop.location.latitude"
+            placeholder="Latitude"
+            class="form-control mb-2"
+          />
+          <input
+            type="number"
+            [(ngModel)]="shop.location.longitude"
+            placeholder="Longitude"
+            class="form-control mb-2"
+          />
         </div>
 
         <!-- Heures d'ouverture (matin et après-midi) -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.HOURS_MORNING" | translate }}</label>
-          <input type="time" [(ngModel)]="shop.hours.morning.start" class="form-control mb-2" />
-          <input type="time" [(ngModel)]="shop.hours.morning.end" class="form-control mb-2" />
+          <input
+            type="time"
+            [(ngModel)]="shop.hours.morning.start"
+            class="form-control mb-2"
+          />
+          <input
+            type="time"
+            [(ngModel)]="shop.hours.morning.end"
+            class="form-control mb-2"
+          />
         </div>
 
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.HOURS_AFTERNOON" | translate }}</label>
-          <input type="time" [(ngModel)]="shop.hours.afternoon.start" class="form-control mb-2" />
-          <input type="time" [(ngModel)]="shop.hours.afternoon.end" class="form-control mb-2" />
+          <input
+            type="time"
+            [(ngModel)]="shop.hours.afternoon.start"
+            class="form-control mb-2"
+          />
+          <input
+            type="time"
+            [(ngModel)]="shop.hours.afternoon.end"
+            class="form-control mb-2"
+          />
         </div>
 
         <!-- Promo active -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.PROMOTION" | translate }}</label>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" [(ngModel)]="shop.promo.active" id="promoActive" />
+            <input
+              class="form-check-input"
+              type="checkbox"
+              [(ngModel)]="shop.promo.active"
+              id="promoActive"
+            />
             <label class="form-check-label" for="promoActive">
               {{ "ADMIN_SHOP.ACTIVE_PROMO" | translate }}
             </label>
           </div>
-          <input type="text" [(ngModel)]="shop.promo.type" placeholder="Type de promotion" class="form-control mt-2" />
+          <input
+            type="text"
+            [(ngModel)]="shop.promo.type"
+            placeholder="Type de promotion"
+            class="form-control mt-2"
+          />
+        </div>
+      </div>
+
+      <!-- =================================================== -->
+      <!-- 📂 Vérification documents professionnels -->
+      <!-- =================================================== -->
+      <div class="documents-admin-section">
+        <h3>Documents professionnels</h3>
+
+        <div
+          *ngFor="let doc of ['identity', 'insurance', 'kbis']"
+          class="doc-admin-row"
+        >
+          <div class="doc-info">
+            <div class="doc-title">
+              {{
+                doc === "identity"
+                  ? "Pièce d'identité"
+                  : doc === "insurance"
+                  ? "Assurance professionnelle"
+                  : "KBIS"
+              }}
+            </div>
+
+            <div
+              class="doc-status"
+              [ngClass]="shop?.verification?.[doc]?.status"
+            >
+              {{ shop?.verification?.[doc]?.status || "missing" }}
+            </div>
+
+            <!-- ✅ Preview / clic pour ouvrir la grande modale -->
+            <ng-container *ngIf="shop?.verification?.[doc]?.file as f">
+              <div class="doc-preview" (click)="openPreview(f)">
+                <!-- Image -->
+                <img
+                  *ngIf="isImageDoc(f)"
+                  [src]="buildDocUrl(f)"
+                  alt="Document"
+                  class="doc-image-preview"
+                />
+
+                <!-- PDF -->
+                <div *ngIf="isPdfDoc(f)" class="doc-chip doc-pdf-chip">
+                  <i class="fa fa-file-pdf-o"></i>
+                  <span>Voir le PDF</span>
+                </div>
+
+                <!-- Autres types -->
+                <div
+                  *ngIf="!isImageDoc(f) && !isPdfDoc(f)"
+                  class="doc-chip doc-generic-chip"
+                >
+                  <i class="fa fa-file"></i>
+                  <span>Ouvrir le document</span>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- Actions admin -->
+          <div class="doc-actions">
+            <button class="approve-btn" (click)="validateDoc(doc, 'approved')">
+              ✔ Valider
+            </button>
+
+            <button class="reject-btn" (click)="validateDoc(doc, 'rejected')">
+              ✖ Refuser
+            </button>
+          </div>
         </div>
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="closeModal()"
+        >
           {{ "ADMIN_SHOP.CANCEL" | translate }}
         </button>
         <button type="button" class="btn btn-primary" (click)="saveShop()">
@@ -258,7 +458,42 @@
   </div>
 </div>
 
+<!-- Loader global IA -->
 <div class="loader-overlay" *ngIf="loading">
   <div class="spinner"></div>
   <p>Modification de l'image en cours...</p>
+</div>
+
+<!-- 🧾 MODALE PREVIEW DOCUMENT -->
+<div
+  class="doc-modal-backdrop"
+  *ngIf="previewOpen"
+  (click)="closePreview()"
+>
+  <div class="doc-modal-content" (click)="$event.stopPropagation()">
+    <button class="doc-modal-close" (click)="closePreview()">✕</button>
+
+    <ng-container [ngSwitch]="previewType">
+      <img
+        *ngSwitchCase="'image'"
+        [src]="previewUrl!"
+        alt="Document"
+        class="doc-modal-image"
+      />
+      <iframe
+        *ngSwitchCase="'pdf'"
+        [src]="previewUrl!"
+        class="doc-modal-iframe"
+      ></iframe>
+      <a
+        *ngSwitchDefault
+        [href]="previewUrl!"
+        target="_blank"
+        rel="noopener"
+        class="doc-modal-link"
+      >
+        Ouvrir dans un nouvel onglet
+      </a>
+    </ng-container>
+  </div>
 </div>

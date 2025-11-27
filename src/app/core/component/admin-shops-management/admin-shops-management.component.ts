@@ -61,11 +61,16 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
   loading = false;
 
+  // 🔍 Preview des documents (modal dédiée)
+  previewOpen = false;
+  previewUrl: string | null = null;
+  previewType: 'image' | 'pdf' | 'other' = 'image';
+
   constructor(
     private shopService: ShopService,
     private toastr: ToastrService,
     private translate: TranslateService
-  ) { }
+  ) {}
 
   // ------------------------------------------------------
   // ⏱️ Chargement initial
@@ -158,7 +163,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
         this.toastr.success(
           this.translate.instant('SUCCESS.SHOPUPDATED') ||
-          'Boutique mise à jour.'
+            'Boutique mise à jour.'
         );
       },
       error: (err) => {
@@ -183,7 +188,8 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
         }
 
         this.toastr.success(
-          this.translate.instant('SUCCESS.USERUPDATED') || 'Shops mis à jour.'
+          this.translate.instant('SUCCESS.USERUPDATED') ||
+            'Shops mis à jour.'
         );
       },
       error: (err) => {
@@ -191,6 +197,49 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       },
     });
+  }
+
+  // ------------------------------------------------------
+  // 🔗 Helpers documents de vérification
+  // ------------------------------------------------------
+  buildDocUrl(path: string | undefined | null): string {
+    if (!path) return '';
+    // On enlève les / en trop au début pour éviter //uploads/docs/...
+    const clean = path.replace(/^\/+/, '');
+    return this.imgStorageUrl + clean;
+  }
+
+  isImageDoc(path: string | undefined | null): boolean {
+    if (!path) return false;
+    return /\.(png|jpe?g|gif|webp)$/i.test(path);
+  }
+
+  isPdfDoc(path: string | undefined | null): boolean {
+    if (!path) return false;
+    return /\.pdf$/i.test(path);
+  }
+
+  openPreview(path: string | undefined | null): void {
+    if (!path) return;
+
+    const fullUrl = this.buildDocUrl(path);
+    this.previewUrl = fullUrl;
+
+    const lower = fullUrl.toLowerCase();
+    if (this.isPdfDoc(lower)) {
+      this.previewType = 'pdf';
+    } else if (this.isImageDoc(lower)) {
+      this.previewType = 'image';
+    } else {
+      this.previewType = 'other';
+    }
+
+    this.previewOpen = true;
+  }
+
+  closePreview(): void {
+    this.previewOpen = false;
+    this.previewUrl = null;
   }
 
   // ------------------------------------------------------
@@ -216,7 +265,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
         this.toastr.success(
           this.translate.instant('SUCCESS.SHOPUPDATED') ||
-          'Boutique mise à jour.'
+            'Boutique mise à jour.'
         );
       },
       error: (error: any) => {
@@ -310,7 +359,10 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
       // Sinon, on s’assure d’avoir au moins la structure attendue par le template
       clone.hours = clone.hours || {};
       clone.hours.morning = clone.hours.morning || { start: '', end: '' };
-      clone.hours.afternoon = clone.hours.afternoon || { start: '', end: '' };
+      clone.hours.afternoon = clone.hours.afternoon || {
+        start: '',
+        end: '',
+      };
     }
 
     this.shop = clone;
@@ -368,16 +420,14 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
         this.toastr.success(
           this.translate.instant('SUCCESS.IMAGE_PROCESSED') ||
-          'Image mise à jour.'
+            'Image mise à jour.'
         );
       },
       error: (error) => {
         this.loading = false;
         shop._aiLoading = false;
         console.error('Erreur lors du traitement de l’image IA :', error);
-        this.showCustomToast(
-          this.translate.instant('ERROR.GENERIC_ERROR')
-        );
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       },
     });
   }
@@ -408,8 +458,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     try {
       this.formModified = true;
       this.validateForm();
-      // Si tu ne veux pas de save auto, commente cette ligne :
-      // this.saveShop();
+      // this.saveShop(); // si tu veux l'autosave
     } catch (err) {
       console.error('[ShopManagement] markFormModified error:', err);
     }
@@ -470,7 +519,25 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   // ------------------------------------------------------
   // Placeholders conservés
   // ------------------------------------------------------
-  saveService() { }
+  saveService() {}
+
+  validateDoc(docType: string, status: string) {
+    if (!this.shop?._id) return;
+
+    this.shopService
+      .validateDocument(this.shop._id, docType, status)
+      .subscribe({
+        next: (res: any) => {
+          this.shop.verification = res.verification;
+          this.toastr.success(
+            status === 'approved' ? 'Document validé' : 'Document refusé'
+          );
+        },
+        error: () => {
+          this.toastr.error('Erreur lors de la validation.');
+        },
+      });
+  }
 
   // ------------------------------------------------------
   // ✨ Toast d’erreur stylisé

@@ -1,444 +1,672 @@
+// create-shop.component.ts
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ShopService } from '../../services/shop.service';
 import { ShopTemplateService } from '../../services/shop-template.service';
-import { max } from 'lodash';
 import { CategoryService } from '../../services/category.service';
 import { ProductService } from '../../services/product.service';
 import { VilleService } from '../../services/ville.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-// ✅izyGlam: traductions & toasts
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { CountryService } from '../../services/country.service';
 
 @Component({
-    selector: 'app-create-shop',
-    templateUrl: './create-shop.component.html',
-    styleUrls: ['./create-shop.component.scss'],
+  selector: 'app-create-shop',
+  templateUrl: './create-shop.component.html',
+  styleUrls: ['./create-shop.component.scss'],
 })
 export class CreateShopComponent implements OnInit {
-    // 🔎 Gestion d’erreurs côté UI (messages par champs)
-    error: any = {};
+  // 🔎 Gestion d’erreurs côté UI (messages par champs)
+  error: any = {};
 
-    // 👤 Utilisateur courant
-    me: any = {};
+  // 🧾 Erreurs spécifiques au step 2 (docs)
+  verificationError: any = {};
 
-    // 🏪 Modèle de création de shop
-    newShop: any = {};
+  // 👤 Utilisateur courant
+  me: any = {};
 
-    // 🔐 État de session
-    isUserConnected: boolean = false;
-    alreadyProfessionnal: boolean = false;
+  // 🏪 Modèle de création de shop (infos step 1)
+  newShop: any = {};
 
-    // 🗂️ Catégories
-    categories: any[] = [];
+  // 🔐 État de session
+  isUserConnected: boolean = false;
+  alreadyProfessionnal: boolean = false;
 
-    // 🗺️ Adresse & zones de livraison
-    newAddress: any = {};
-    deliveryPostalCode: string = '';
-    deliveryPostalCodesList: string[] = [];
+  // 🗂️ Catégories
+  categories: any[] = [];
 
-    // 📍 Coordonnées géo
-    latitude = 0.0;
-    longitude = 0.0;
+  // 🗺️ Adresse & zones de livraison
+  newAddress: any = {};
+  deliveryPostalCode: string = '';
+  deliveryPostalCodesList: string[] = [];
 
-    // Données récupérées de l'API des villes
-    allCitiesData: any[] = [];               // base brute
-    availableArrondissements: string[] = []; // arrondissements filtrés pour une ville
+  // 📍 Coordonnées géo
+  latitude = 0.0;
+  longitude = 0.0;
 
-    // Valeurs sélectionnées par l'utilisateur (pays / ville / arrondissement)
-    selectedCountry = 'France';
-    selectedCity: any = {};
-    selectedArrondissement = '';
-    availableCountries:any[] = [];
-    availableCities: any[] = [];
-    postalCode: string = '';
+  // Villes / pays
+  allCitiesData: any[] = [];
+  availableArrondissements: string[] = [];
+  selectedCountry = 'France';
+  selectedCity: any = {};
+  selectedArrondissement = '';
+  availableCountries: any[] = [];
+  availableCities: any[] = [];
+  postalCode: string = '';
 
-    constructor(
-        private userService: UserService,
-        private shopService: ShopService,
-        private countryService: CountryService,
-        private productService: ProductService,
-        private router: Router,
-        private villeService: VilleService,
-        private categoryService: CategoryService,
-        // ✅izyGlam: traductions & toasts
-        private translate: TranslateService,
-        private toastr: ToastrService,
-        // ✅ Le composant peut être utilisé dans une modal (MatDialog)
-        @Optional() public dialogRef?: MatDialogRef<CreateShopComponent>,
-        @Optional() @Inject(MAT_DIALOG_DATA) public data?: any,
+  // 🪜 Stepper
+  currentStep: 1 | 2 = 1;
+  createdShopId: string | null = null;
 
-        // private shopTemplateService: ShopTemplateService,
-    ) { }
+  // 📂 Fichiers (step 2)
+  identityDocFile: File | null = null;
+  insuranceDocFile: File | null = null;
+  kbisDocFile: File | null = null;
 
-    // ----------------------------------------
-    // 🔄 Cycle de vie
-    // ----------------------------------------
-    ngOnInit() {
-        // 1) Charger les catégories
-        this.categoryService.getAll().subscribe({
-            next: (data: any) => {
-                this.categories = data;
-            },
-            error: (error: any) => {
-                console.error('Erreur lors du chargement des catégories :', error);
-                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-            },
-        });
+  identityDocFileName: string | null = null;
+  insuranceDocFileName: string | null = null;
+  kbisDocFileName: string | null = null;
 
-        // 2) Pré-renseigner quelques champs
-        this.newShop.companyType = 'coiffure';
-        this.newShop.countryIndication = 'FR';
-        if (this.isUserConnected) {
-            // 3) Charger l’utilisateur
-            this.userService.getMe().subscribe({
-                next: (data: any) => {
-                    this.me = { ...data };
+  verification: any = null;
+  isUploadingDocs: boolean = false;
 
-                    if (this.me.role === 'professionnel' || this.me.role === 'entreprise') {
-                        this.alreadyProfessionnal = true;
-                    }
-                    this.isUserConnected = true;
-                },
-                error: (error: any) => {
-                    console.error('Erreur lors de la récupération du profil utilisateur :', error);
-                    this.isUserConnected = false;
-                    this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                },
-            });
-        }
+  constructor(
+    private userService: UserService,
+    private shopService: ShopService,
+    private countryService: CountryService,
+    private productService: ProductService,
+    private router: Router,
+    private villeService: VilleService,
+    private categoryService: CategoryService,
+    private translate: TranslateService,
+    private toastr: ToastrService,
+    @Optional() public dialogRef?: MatDialogRef<CreateShopComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data?: any
+  ) {}
 
-        // 3) Récupération des pays activés
-        this.countryService.getAll({ active: true }).subscribe({
-            next: (countries: any[]) => {
-                this.availableCountries = countries;
-            },
-            error: (err) => {
-                console.error('Erreur lors du chargement des pays :', err);
+  // ----------------------------------------
+  // 🔄 Cycle de vie
+  // ----------------------------------------
+  ngOnInit() {
+    // 1) Charger les catégories
+    this.categoryService.getAll().subscribe({
+      next: (data: any) => {
+        this.categories = data;
+      },
+      error: (error: any) => {
+        console.error('Erreur lors du chargement des catégories :', error);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      },
+    });
+
+    // 2) Pré-renseigner quelques champs
+    this.newShop.companyType = 'coiffure';
+    this.newShop.countryIndication = 'FR';
+
+    // 3) Charger le user connecté
+    this.userService.getMe().subscribe({
+      next: (data: any) => {
+        this.me = { ...data };
+        this.isUserConnected = true;
+        this.alreadyProfessionnal =
+          this.me.role === 'professionnel' || this.me.role === 'entreprise';
+      },
+      error: (error: any) => {
+        console.error('Erreur lors de la récupération du profil utilisateur :', error);
+        this.isUserConnected = false;
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      },
+    });
+
+    // 4) Récupération des pays activés
+    this.countryService.getAll({ active: true }).subscribe({
+      next: (countries: any[]) => {
+        this.availableCountries = countries;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des pays :', err);
+      },
+    });
+  }
+
+  // ----------------------------------------
+  // 🌍 Sélection du pays
+  // ----------------------------------------
+  onCountryChange() {
+    this.postalCode = '';
+    this.availableCities = [];
+    this.selectedCity = {};
+    this.availableArrondissements = [];
+    this.selectedArrondissement = '';
+    this.newAddress.code_postal = '';
+  }
+
+  // ----------------------------------------
+  // ➕ Ajout d’un code postal de livraison
+  // ----------------------------------------
+  addPostalCode() {
+    try {
+      if (!this.deliveryPostalCode) return;
+
+      if (this.deliveryPostalCodesList.includes(this.deliveryPostalCode)) {
+        this.error.deliveryPostalCode = 'Ce code postal est déjà ajouté.';
+        return;
+      }
+
+      this.villeService
+        .getByPostalCode(this.deliveryPostalCode, this.selectedCountry)
+        .subscribe({
+          next: (res) => {
+            if (Array.isArray(res) && res.length > 0) {
+              this.deliveryPostalCodesList.push(this.deliveryPostalCode);
+              this.newShop.deliveryPostalCodes = this.deliveryPostalCodesList;
+              this.deliveryPostalCode = '';
+              this.error.deliveryPostalCode = null;
+            } else {
+              this.error.deliveryPostalCode = 'Code postal introuvable dans la base';
             }
+          },
+          error: (err) => {
+            console.error('Erreur lors de la recherche du code postal :', err);
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+          },
         });
+    } catch (err) {
+      console.error('Erreur addPostalCode :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
     }
+  }
 
-    // ----------------------------------------
-    // 🌍 Sélection du pays
-    // ----------------------------------------
-    onCountryChange() {
-        // Reset des sélections liés au pays
-        this.postalCode = '';
-        this.availableCities = [];
-        this.selectedCity = {};
-        this.availableArrondissements = [];
-        this.selectedArrondissement = '';
+  removePostalCode(index: number) {
+    try {
+      this.deliveryPostalCodesList.splice(index, 1);
+      this.newShop.deliveryPostalCodes = this.deliveryPostalCodesList;
+    } catch (err) {
+      console.error('Erreur removePostalCode :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+    }
+  }
+
+  // ----------------------------------------
+  // 🔎 Recherche des villes par code postal
+  // ----------------------------------------
+  onPostalCodeEntered() {
+    try {
+      if (!this.postalCode || this.postalCode.length < 4) return;
+
+      this.villeService
+        .getByPostalCode(this.postalCode, this.selectedCountry)
+        .subscribe({
+          next: (cities: any[]) => {
+            this.availableCities = cities;
+            this.newAddress.code_postal = this.postalCode;
+
+            if (cities.length === 1) {
+              this.selectedCity = cities[0];
+              this.onCityChange();
+            }
+          },
+          error: (err) => {
+            console.error('Erreur lors du chargement des villes par CP :', err);
+            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+          },
+        });
+    } catch (err) {
+      console.error('Erreur onPostalCodeEntered :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+    }
+  }
+
+  // -----------------------------------------
+  // 🏙️ Quand l’utilisateur choisit une ville
+  // -----------------------------------------
+  onCityChange() {
+    try {
+      const filteredByCity = this.allCitiesData.filter(
+        (v) => v.pays === this.selectedCountry && v.city === this.selectedCity.nom
+      );
+
+      if (filteredByCity.length > 1) {
+        this.availableArrondissements = [
+          ...new Set(filteredByCity.map((v) => v.name)),
+        ];
         this.newAddress.code_postal = '';
+      } else if (filteredByCity.length === 1) {
+        const doc = filteredByCity[0];
+        this.availableArrondissements = [doc.name];
+        this.selectedArrondissement = doc.name;
+        this.newAddress.code_postal = doc.code_postal;
+        this.latitude = doc.latitude;
+        this.longitude = doc.longitude;
+      }
+
+      this.newAddress.city = this.selectedCity.nom;
+    } catch (err) {
+      console.error('Erreur onCityChange :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+    }
+  }
+
+  // ----------------------------------------
+  // ✅ Validation du formulaire & passage au Step 2
+  // ----------------------------------------
+  onSubmit() {
+    try {
+      if (!this.validateNameWithInitial(this.newShop.name)) {
+        this.error.name = 'Le nom doit être au format Michelle T.';
+        return;
+      } else {
+        this.error.name = null;
+      }
+
+      if (!this.newShop.street) {
+        this.error.street = 'La rue est obligatoire';
+        return;
+      } else {
+        this.error.street = null;
+      }
+
+      if (!this.selectedCountry) {
+        this.error.selectedCountry = 'Le pays est obligatoire';
+        return;
+      } else {
+        this.error.selectedCountry = null;
+      }
+
+      if (!this.selectedCity) {
+        this.error.selectedCity = 'La ville est obligatoire';
+        return;
+      } else {
+        this.error.selectedCity = null;
+      }
+
+      if (!this.newShop.companyType) {
+        this.error.companyType = 'Le type de service proposé est obligatoire';
+        return;
+      } else {
+        this.error.companyType = null;
+      }
+
+      this.currentStep = 2;
+    } catch (err) {
+      console.error('Erreur onSubmit :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+    }
+  }
+
+  // ----------------------------------------
+  // 🔤 Validation du nom “Prénom N.”
+  // ----------------------------------------
+  validateNameWithInitial(input: string): boolean {
+    const nameRegex = /^[A-Z][a-z]+ [A-Z]\.$/;
+    return nameRegex.test((input || '').trim());
+  }
+
+  formatShopName(): void {
+    try {
+      const raw = (this.newShop.name || '').trim();
+      if (!raw) {
+        this.newShop.name = '';
+        return;
+      }
+
+      const parts = raw.split(/\s+/);
+
+      const rawFirst = parts[0];
+      const firstName =
+        rawFirst.charAt(0).toUpperCase() +
+        rawFirst.slice(1).toLowerCase();
+
+      let initial: string;
+      if (parts.length >= 2) {
+        const rawLast = parts[parts.length - 1];
+        initial = rawLast.charAt(0).toUpperCase();
+      } else {
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        initial = letters.charAt(Math.floor(Math.random() * letters.length));
+      }
+
+      this.newShop.name = `${firstName} ${initial}.`;
+    } catch (err) {
+      console.error('Erreur formatShopName :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+    }
+  }
+
+  // ----------------------------------------
+  // 🏗️ Création du shop côté backend
+  //  ⚠️ C'est ICI qu'on ajoute country + filter + ville, etc.
+  // ----------------------------------------
+  createShop(type: string, idUser: string, onAfterCreate?: () => void): any {
+    const newShopToCreate: any = {};
+
+    // Nom du salon (formaté “Prénom N.”)
+    newShopToCreate.name = this.newShop.name;
+
+    // 🔹 Pays requis par le schema (country: String, required: true)
+    newShopToCreate.country =
+      this.selectedCountry ||
+      this.newShop.country ||
+      this.newShop.countryIndication ||
+      'France';
+
+    // 🔹 Chercher la catégorie correspondante (pour trad / description / filter)
+    let categoryToSelect = this.categories.find(
+      (x: any) => x.filter === type
+    );
+
+    if (!categoryToSelect) {
+      console.error('Catégorie non trouvée pour le type :', type);
+      categoryToSelect = {
+        descriptionTrad: 'Description par défaut',
+        trad: 'Autres',
+        filter: type,
+      };
     }
 
-    // ----------------------------------------
-    // ➕ Ajout d’un code postal de livraison
-    // ----------------------------------------
-    addPostalCode() {
-        try {
-            if (!this.deliveryPostalCode) return;
+    const description = categoryToSelect.descriptionTrad || 'Description par défaut';
 
-            // ✅ Doublon
-            if (this.deliveryPostalCodesList.includes(this.deliveryPostalCode)) {
-                this.error.deliveryPostalCode = 'Ce code postal est déjà ajouté.';
-                return;
-            }
+    // 🔹 Champs de description
+    newShopToCreate.description_original = description;
+    newShopToCreate.description = description;
 
-            // 🔍 Valider le CP via API (on passe le pays si dispo)
-            this.villeService.getByPostalCode(this.deliveryPostalCode, this.selectedCountry).subscribe({
-                next: (res) => {
-                    if (Array.isArray(res) && res.length > 0) {
-                        this.deliveryPostalCodesList.push(this.deliveryPostalCode);
-                        this.newShop.deliveryPostalCodes = this.deliveryPostalCodesList;
-                        this.deliveryPostalCode = ''; // Reset du champ
-                        this.error.deliveryPostalCode = null;
-                        // (facultatif) this.showSuccessToast(this.translate.instant('SUCCESS.ACTION_OK'));
-                    } else {
-                        this.error.deliveryPostalCode = 'Code postal introuvable dans la base';
-                    }
-                },
-                error: (err) => {
-                    console.error('Erreur lors de la recherche du code postal :', err);
-                    this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                }
-            });
-        } catch (err) {
-            console.error('Erreur addPostalCode :', err);
-            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+    // 🔹 filter requis par le schema (filter: String, required: true)
+    newShopToCreate.filter = categoryToSelect.filter || type;
+
+    // Visuels / note
+    newShopToCreate.image = 'default.png';
+    newShopToCreate.note = '5';
+
+    // Type principal (coiffure, manucure, etc.)
+    newShopToCreate.type = type;
+
+    // Ville / district
+    newShopToCreate.ville =
+      this.selectedCity?.nom ||
+      this.newAddress?.city ||
+      'Paris';
+
+    newShopToCreate.district =
+      this.selectedArrondissement ||
+      this.newAddress?.district ||
+      undefined;
+
+    // Booking same-day (optionnel)
+    newShopToCreate.ondaybooking = this.newShop.ondaybooking ?? false;
+
+    // Distance max
+    newShopToCreate.maxDistance = this.newShop.maxDistance || 15;
+
+    // User propriétaire
+    newShopToCreate.idUser = idUser;
+
+    // Liste d’IDs de services (le schema autorise un tableau vide)
+    newShopToCreate.services = [];
+
+    // Codes postaux de livraison
+    newShopToCreate.deliveryPostalCodes = this.deliveryPostalCodesList;
+
+    // Texte traduit lié à la catégorie
+    newShopToCreate.trad = categoryToSelect.trad;
+
+    // Promo par défaut
+    newShopToCreate.promo = { active: false, type: '1' };
+
+    // Localisation
+    newShopToCreate.location = {
+      latitude: this.latitude,
+      longitude: this.longitude,
+    };
+
+    // Prix moyen / délai minimum (facultatifs dans le schema)
+    newShopToCreate.averagePrice = this.newShop.averagePrice || '';
+    newShopToCreate.minimumDelay = this.newShop.minimumDelay || '30';
+
+    // Horaires par défaut
+    newShopToCreate.hours = {
+      monday: {
+        morning: { start: '09:00', end: '12:00' },
+        afternoon: { start: '13:00', end: '18:00' },
+        closed: false,
+      },
+      tuesday: {
+        morning: { start: '09:00', end: '12:00' },
+        afternoon: { start: '13:00', end: '18:00' },
+        closed: false,
+      },
+      wednesday: {
+        morning: { start: '09:00', end: '12:00' },
+        afternoon: { start: '13:00', end: '18:00' },
+        closed: false,
+      },
+      thursday: {
+        morning: { start: '09:00', end: '12:00' },
+        afternoon: { start: '13:00', end: '18:00' },
+        closed: false,
+      },
+      friday: {
+        morning: { start: '09:00', end: '12:00' },
+        afternoon: { start: '13:00', end: '18:00' },
+        closed: false,
+      },
+      saturday: {
+        morning: { start: '09:00', end: '12:00' },
+        afternoon: { start: '13:00', end: '18:00' },
+        closed: false,
+      },
+      sunday: {
+        morning: { start: '09:00', end: '12:00' },
+        afternoon: { start: '13:00', end: '18:00' },
+        closed: false,
+      },
+    };
+
+    // 🔥 Appel backend
+    this.shopService.create(newShopToCreate).subscribe({
+      next: (data: any) => {
+        console.log('Shop créé :', data);
+
+        const createdShop = data?.shop || data;
+        this.createdShopId = createdShop?._id || null;
+
+        this.showSuccessToast(this.translate.instant('SUCCESS.SUBSCRIBE_SUCCESS'));
+
+        if (this.dialogRef) {
+          this.dialogRef.close(data);
+        } else {
+          this.loadVerificationStatus();
         }
-    }
 
-    // ❌ Suppression d’un code postal de livraison
-    removePostalCode(index: number) {
-        try {
-            this.deliveryPostalCodesList.splice(index, 1);
-            this.newShop.deliveryPostalCodes = this.deliveryPostalCodesList;
-        } catch (err) {
-            console.error('Erreur removePostalCode :', err);
-            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        if (onAfterCreate) {
+          onAfterCreate();
         }
+      },
+      error: (error: any) => {
+        console.error('Erreur lors de la création du shop :', error);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        return error;
+      },
+    });
+  }
+
+  formChecking() {}
+
+  goToSignUp() {
+    try {
+      this.router.navigate(['/sign-in']);
+    } catch (err) {
+      console.error('Erreur goToSignUp :', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
     }
+  }
 
-    // ----------------------------------------
-    // 🔎 Recherche des villes par code postal
-    // ----------------------------------------
-    onPostalCodeEntered() {
-        try {
-            if (!this.postalCode || this.postalCode.length < 4) return;
+  // ------------------------------------------------------------
+  // ✨ Toasts izyGlam
+  // ------------------------------------------------------------
+  private showCustomToast(message: string) {
+    this.toastr.error(message);
+  }
 
-            this.villeService.getByPostalCode(this.postalCode, this.selectedCountry).subscribe({
-                next: (cities: any[]) => {
-                    this.availableCities = cities;
-                    this.newAddress.code_postal = this.postalCode;
+  private showSuccessToast(message: string) {
+    this.toastr.success(message);
+  }
 
-                    if (cities.length === 1) {
-                        this.selectedCity = cities[0];
-                    }
-                },
-                error: (err) => {
-                    console.error('Erreur lors du chargement des villes par CP :', err);
-                    this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                }
-            });
-        } catch (err) {
-            console.error('Erreur onPostalCodeEntered :', err);
-            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        }
+  // ------------------------------------------------------------
+  // STEP 2 : Upload & statut de vérification
+  // ------------------------------------------------------------
+  private loadVerificationStatus(): void {
+    if (!this.createdShopId) {
+      return;
     }
+    this.shopService.getShopVerificationStatus(this.createdShopId).subscribe({
+      next: (verification: any) => {
+        this.verification = verification;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement du statut de vérification :', err);
+      },
+    });
+  }
 
-    // -----------------------------------------
-    // 🏙️ Quand l’utilisateur choisit une ville
-    // -----------------------------------------
-    onCityChange() {
-        try {
-            // Filtre par pays + nom de ville
-            const filteredByCity = this.allCitiesData.filter(
-                v => v.pays === this.selectedCountry && v.city === this.selectedCity.nom
-            );
-
-            if (filteredByCity.length > 1) {
-                // Plusieurs arrondissements => on ne fixe pas le CP tant que l’arrondissement n’est pas choisi
-                this.availableArrondissements = [...new Set(filteredByCity.map(v => v.name))];
-                this.newAddress.code_postal = '';
-            } else if (filteredByCity.length === 1) {
-                // Un seul document => on peut fixer le CP, l’arrondissement et les coords
-                const doc = filteredByCity[0];
-                this.availableArrondissements = [doc.name];
-                this.selectedArrondissement = doc.name;
-                this.newAddress.code_postal = doc.code_postal;
-                this.latitude = doc.latitude;
-                this.longitude = doc.longitude;
-            }
-
-            // Mise à jour de la ville
-            this.newAddress.city = this.selectedCity.nom;
-        } catch (err) {
-            console.error('Erreur onCityChange :', err);
-            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        }
+  onFileSelected(event: Event, type: 'identity' | 'insurance' | 'kbis'): void {
+    const input = event.target as HTMLInputElement;
+    if (!input.files || input.files.length === 0) {
+      return;
     }
+    const file = input.files[0];
 
-    // ----------------------------------------
-    // ✅ Validation du formulaire & création
-    // ----------------------------------------
-    onSubmit() {
-        try {
-            // 1) Validation “Michelle T.”
-            if (!this.validateNameWithInitial(this.newShop.name)) {
-                this.error.name = 'Le nom doit être au format Michelle T.';
-                return;
-            } else {
-                this.error.name = null;
-            }
+    switch (type) {
+      case 'identity':
+        this.identityDocFile = file;
+        this.identityDocFileName = file.name;
+        this.verificationError.identityDoc = null;
+        break;
+      case 'insurance':
+        this.insuranceDocFile = file;
+        this.insuranceDocFileName = file.name;
+        this.verificationError.insuranceDoc = null;
+        break;
+      case 'kbis':
+        this.kbisDocFile = file;
+        this.kbisDocFileName = file.name;
+        break;
+    }
+  }
 
-            // 2) Rue obligatoire
-            if (!this.newShop.street) {
-                this.error.street = 'La rue est obligatoire';
-                return;
-            } else {
-                this.error.street = null;
-            }
+  submitVerificationDocs(): void {
+    try {
+      this.verificationError = {};
+      if (!this.identityDocFile) {
+        this.verificationError.identityDoc = this.translate.instant(
+          'CREATION_SHOP.VERIF_ID_REQUIRED'
+        );
+      }
+      if (!this.insuranceDocFile) {
+        this.verificationError.insuranceDoc = this.translate.instant(
+          'CREATION_SHOP.VERIF_INSURANCE_REQUIRED'
+        );
+      }
 
-            // 3) Pays
-            if (!this.selectedCountry) {
-                this.error.selectedCountry = 'Le pays est obligatoire';
-                return;
-            }
+      if (this.verificationError.identityDoc || this.verificationError.insuranceDoc) {
+        return;
+      }
 
-            // 4) Ville
-            if (!this.selectedCity) {
-                this.error.selectedCity = 'La ville est obligatoire';
-                return;
-            }
+      this.isUploadingDocs = true;
 
-            // 5) Type de service
-            if (!this.newShop.companyType) {
-                this.error.companyType = 'Le type de service proposé est obligatoire';
-                return;
-            }
+      this.me.shopCompany = this.newShop;
+      this.me.role = 'professionnel';
 
-            // 6) On passe à la création si user connecté
-            if (this.isUserConnected) {
-                this.me.shopCompany = this.newShop;
-                this.me.role = 'professionnel';
+      this.userService.update(this.me).subscribe({
+        next: (data: any) => {
+          this.me = { ...data };
 
-                this.userService.update(this.me).subscribe({
-                    next: async (data: any) => {
-                        // Profil mis à jour → créer le shop
-                        try {
-                            await this.createShop(this.newShop.companyType, this.me._id);
-                        } catch (err) {
-                            console.error('Erreur lors de la création du shop :', err);
-                            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                        }
-                    },
-                    error: (error: any) => {
-                        console.error('Erreur lors de la mise à jour du profil en “professionnel” :', error);
-                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                    },
+          const type = this.newShop.companyType;
+          const userId = this.me._id;
+
+          this.createShop(type, userId, () => {
+            if (
+              this.createdShopId &&
+              (this.identityDocFile || this.insuranceDocFile || this.kbisDocFile)
+            ) {
+              this.shopService
+                .uploadVerificationDocs(this.createdShopId, {
+                  identityDoc: this.identityDocFile,
+                  insuranceDoc: this.insuranceDocFile,
+                  kbisDoc: this.kbisDocFile,
+                })
+                .subscribe({
+                  next: (resp: any) => {
+                    this.isUploadingDocs = false;
+                    this.verification = resp?.verification || this.verification;
+                    this.showSuccessToast(
+                      this.translate.instant('CREATION_SHOP.VERIF_TOAST_SUCCESS')
+                    );
+                  },
+                  error: (err) => {
+                    this.isUploadingDocs = false;
+                    console.error('Erreur lors de l’upload des documents :', err);
+                    this.showCustomToast(
+                      this.translate.instant('CREATION_SHOP.VERIF_TOAST_ERROR')
+                    );
+                  },
                 });
-            }
-        } catch (err) {
-            console.error('Erreur onSubmit :', err);
-            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        }
-    }
-
-    // ----------------------------------------
-    // 🔤 Validation du nom “Prénom N.”
-    // ----------------------------------------
-    validateNameWithInitial(input: string): boolean {
-        const nameRegex = /^[A-Z][a-z]+ [A-Z]\.$/;
-        return nameRegex.test((input || '').trim());
-    }
-
-    /**
-     * 🧼 Reformate newShop.name en "Prénom N."
-     * Ex : "Pierre Dupont" → "Pierre D."
-     */
-    formatShopName(): void {
-        try {
-            const raw = (this.newShop.name || '').trim();
-            if (!raw) {
-                this.newShop.name = '';
-                return;
-            }
-
-            const parts = raw.split(/\s+/);
-
-            const rawFirst = parts[0];
-            const firstName = rawFirst.charAt(0).toUpperCase() + rawFirst.slice(1).toLowerCase();
-
-            let initial: string;
-            if (parts.length >= 2) {
-                const rawLast = parts[parts.length - 1];
-                initial = rawLast.charAt(0).toUpperCase();
             } else {
-                // Si pas de nom, on génère une lettre aléatoire
-                const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                initial = letters.charAt(Math.floor(Math.random() * letters.length));
+              this.isUploadingDocs = false;
+              this.showSuccessToast(
+                this.translate.instant('CREATION_SHOP.VERIF_TOAST_SUCCESS')
+              );
             }
-
-            this.newShop.name = `${firstName} ${initial}.`;
-        } catch (err) {
-            console.error('Erreur formatShopName :', err);
-            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        }
+          });
+        },
+        error: (error: any) => {
+          this.isUploadingDocs = false;
+          console.error(
+            'Erreur lors de la mise à jour du profil en “professionnel” :',
+            error
+          );
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        },
+      });
+    } catch (err) {
+      this.isUploadingDocs = false;
+      console.error('Erreur submitVerificationDocs :', err);
+      this.showCustomToast(
+        this.translate.instant('CREATION_SHOP.VERIF_TOAST_ERROR')
+      );
     }
+  }
 
-    // ----------------------------------------
-    // 🏗️ Création du shop côté backend
-    // ----------------------------------------
-    createShop(type: string, idUser: string): any {
-        const newShopToCreate: any = {};
-        newShopToCreate.name = this.newShop.name;
-
-        // Chercher la catégorie correspondante
-        let categoryToSelect = this.categories.find((x: any) => x.filter === type);
-
-        // Fallback si introuvable
-        if (!categoryToSelect) {
-            console.error('Catégorie non trouvée pour le type :', type);
-            categoryToSelect = { descriptionTrad: 'Description par défaut', trad: 'Traduit par défaut' };
-        }
-
-        // Hydratation du modèle
-        newShopToCreate.deliveryPostalCodes = this.deliveryPostalCodesList;
-        const description = categoryToSelect.descriptionTrad;
-        newShopToCreate.description = description;
-        newShopToCreate.image = 'default.png';
-        newShopToCreate.note = '5';
-        newShopToCreate.type = type;
-        newShopToCreate.ville = 'Paris';
-        newShopToCreate.maxDistance = 15;
-        newShopToCreate.idUser = idUser;
-        newShopToCreate.promo = { active: false, type: '1' };
-
-        newShopToCreate.location = { latitude: this.latitude, longitude: this.longitude };
-
-        // Horaires par défaut
-        newShopToCreate.hours = {
-            morning: { start: '09:00', end: '12:00' },
-            afternoon: { start: '13:00', end: '18:00' }
-        };
-        newShopToCreate.trad = categoryToSelect.trad;
-
-        // Requête API
-        this.shopService.create(newShopToCreate).subscribe({
-            next: (data: any) => {
-                console.log('Shop créé :', data);
-
-                // ✅ Succès UI
-                this.showSuccessToast(this.translate.instant('SUCCESS.SUBSCRIBE_SUCCESS'));
-
-                // Si utilisé dans une modal → on renvoie la donnée créée
-                if (this.dialogRef) {
-                    this.dialogRef.close(data);
-                } else {
-                    // Sinon, on peut rediriger si besoin (optionnel)
-                    // this.router.navigate(['/profile']);
-                }
-            },
-            error: (error: any) => {
-                console.error('Erreur lors de la création du shop :', error);
-                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                return error;
-            },
-        });
+  skipVerification(): void {
+    if (this.dialogRef) {
+      this.dialogRef.close({
+        shopId: this.createdShopId,
+        skippedVerification: true,
+      });
+    } else {
+      // Tu peux rediriger ou laisser comme ça, selon ton flow
+      // this.router.navigate(['/profile']);
     }
+  }
 
-    // ----------------------------------------
-    // 🧪 Placeholder (tu l’avais déjà)
-    // ----------------------------------------
-    formChecking() { }
-
-    // ----------------------------------------
-    // 🔐 Navigation
-    // ----------------------------------------
-    goToSignUp() {
-        try {
-            this.router.navigate(['/sign-in']);
-        } catch (err) {
-            console.error('Erreur goToSignUp :', err);
-            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        }
+  getStatusLabel(status?: string): string {
+    switch (status) {
+      case 'pending':
+        return 'CREATION_SHOP.VERIF_STATUS_PENDING';
+      case 'approved':
+        return 'CREATION_SHOP.VERIF_STATUS_APPROVED';
+      case 'rejected':
+        return 'CREATION_SHOP.VERIF_STATUS_REJECTED';
+      case 'missing':
+      default:
+        return 'CREATION_SHOP.VERIF_STATUS_MISSING';
     }
+  }
 
-    // ------------------------------------------------------------
-    // ✨ ToastsizyGlam
-    // ------------------------------------------------------------
-    private showCustomToast(message: string) {
-        // ❗️Erreurs → canal “error”
-        this.toastr.error(message);
-    }
-
-    private showSuccessToast(message: string) {
-        // ✅ Succès → canal “success”
-        this.toastr.success(message);
-    }
+  getStatusClass(status?: string): string {
+    const value = status || 'missing';
+    return `status-${value}`;
+  }
 }

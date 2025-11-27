@@ -164,6 +164,10 @@
           <mat-tab [label]="'TABS.MESSAGE' | translate">
             <app-messagerie *ngIf="myShopData && me"></app-messagerie>
           </mat-tab>
+
+          <mat-tab [label]="'TABS.DOCUMENTS' | translate">
+            <app-shop-documents *ngIf="myShopData && me" [myShopData]="myShopData" [me]="me"></app-shop-documents>
+          </mat-tab>
         </mat-tab-group>
       </div>
       <div *ngIf="isSectionActive('admin')" id="admin-content">

@@ -389,3 +389,233 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+
+.documents-admin-section {
+  margin-top: 16px;
+  padding: 16px 24px 24px 24px;
+  border-top: 1px solid #f7e3f0;
+
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2d1230;
+    margin-bottom: 12px;
+  }
+}
+
+.doc-admin-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f7e3f0;
+  gap: 16px;
+}
+
+.doc-info {
+  flex: 1;
+
+  .doc-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a3b4d;
+    margin-bottom: 4px;
+  }
+
+  .doc-status {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+
+    &.approved {
+      background: #e7ffe9;
+      color: #248c3c;
+    }
+    &.rejected {
+      background: #fff1f1;
+      color: #d64747;
+    }
+    &.pending {
+      background: #fff7e6;
+      color: #b9731f;
+    }
+    &.missing {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+  }
+
+  .doc-preview {
+    margin-top: 6px;
+  }
+
+  .doc-image-preview {
+    max-width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .doc-pdf-preview {
+    width: 240px;
+    height: 180px;
+    border-radius: 12px;
+    border: 1px solid #edd8e8;
+  }
+
+  .doc-link {
+    font-size: 13px;
+    color: #de3c83;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.doc-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  .approve-btn,
+  .reject-btn {
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .approve-btn {
+    background: #e7ffe9;
+    color: #248c3c;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(36, 140, 60, 0.25);
+    }
+  }
+
+  .reject-btn {
+    background: #fff1f1;
+    color: #d64747;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(214, 71, 71, 0.25);
+    }
+  }
+}
+
+
+/* ---------- Preview dans la liste admin ---------- */
+.doc-preview {
+  margin-top: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.doc-image-preview {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.doc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+}
+
+.doc-pdf-chip {
+  background: #ffe9f3;
+  color: #c53b5c;
+}
+
+.doc-generic-chip {
+  background: #f4f1ff;
+  color: #5b3bc5;
+}
+
+/* ---------- Modal plein écran pour les docs ---------- */
+
+.doc-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 0, 20, 0.55);
+  z-index: 1080; // au-dessus du reste
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.doc-modal-content {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  padding: 16px 16px 20px;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 999px;
+  width: 28px;
+  height: 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.doc-modal-image,
+.doc-modal-iframe {
+  flex: 1;
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+}
+
+.doc-modal-image {
+  object-fit: contain;
+}
+
+.doc-modal-iframe {
+  background: #f7f7f7;
+}
+
+.doc-modal-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #f7e9ff;
+  color: #5b2c84;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 24px auto 6px;
+}

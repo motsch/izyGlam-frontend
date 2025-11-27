@@ -1,0 +1,181 @@
+.documents-wrapper {
+  padding: 20px;
+  background: #fff;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: #ff4081;
+}
+
+.intro {
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.documents-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.doc-card {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 20px;
+  width: calc(33% - 20px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 13px;
+    color: #777;
+    max-width: 200px;
+  }
+}
+
+.doc-body {
+  margin-top: 15px;
+}
+
+.doc-upload {
+  cursor: pointer;
+  background: #ff4081;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  display: block;
+
+  input {
+    display: none;
+  }
+}
+
+.file-name {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.existing-doc {
+  margin-top: 10px;
+  a {
+    color: #ff4081;
+    text-decoration: underline;
+  }
+}
+
+.status-pill {
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+
+  &.status-approved {
+    background: #4CAF50;
+  }
+  &.status-pending {
+    background: #FFC107;
+    color: #000;
+  }
+  &.status-rejected {
+    background: #F44336;
+  }
+  &.status-missing {
+    background: #999;
+  }
+}
+
+.save-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  background: #000;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.doc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.doc-modal {
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+  padding: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.doc-modal-image {
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.doc-modal-iframe {
+  width: 80vw;
+  height: 80vh;
+  border: none;
+  border-radius: 12px;
+}
+
+.doc-modal-other {
+  min-width: 260px;
+  text-align: center;
+
+  a {
+    display: inline-block;
+    margin-top: 8px;
+    text-decoration: underline;
+  }
+}
+
+.doc-link-btn {
+  border: none;
+  background: transparent;
+  color: #de3c83;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
