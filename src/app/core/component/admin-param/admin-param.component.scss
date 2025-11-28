@@ -1,86 +1,120 @@
+/* ============================
+   ADMIN PARAM – IzyGlam style
+   ============================ */
+
 .admin-param {
-    background-color: #FFFFFF;
-    padding: 1.5em;
-    max-width: 600px;
-    margin: auto;
-  
-    h2 {
-      color: #333333;
-      margin-bottom: 1.5em;
-      text-align: center;
-    }
-  
-    form {
-      display: flex;
-      flex-direction: column;
-  
-      .form-group {
-        margin-bottom: 1.5em;
-  
-        label {
-          display: block;
-          font-weight: bold;
-          color: #333333;
-          margin-bottom: 0.5em;
-        }
-  
-        input {
-          width: 100%;
-          padding: 0.75em;
-          font-size: 1em;
-          border: 1px solid #E0E0E0;
-          border-radius: 4px;
-          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-          transition: border-color 0.3s;
-  
-          &:focus {
-            border-color: #F06292;
-          }
-        }
-  
-        .error {
-          color: #F06292;
-          font-size: 0.85em;
-          margin-top: 0.25em;
-        }
-      }
-  
-      button {
-        padding: 0.75em;
-        background-color: #F06292;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background-color 0.3s;
-  
-        &:hover {
-          background-color: darken(#F06292, 10%);
-        }
-  
-        &:disabled {
-          background-color: #E0E0E0;
-          cursor: not-allowed;
-        }
-      }
-    }
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 24px 24px 28px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ffeaf7, #fffafd);
+  border: 1px solid #ffe0f2;
+  box-shadow: 0 22px 60px rgba(255, 117, 170, 0.22);
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #5d3a4a;
+
+  h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff4f9e;
+    margin: 0 0 12px;
   }
-  
 
-
-.closed-switch {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 }
+
+/* Espacement spécifique déjà utilisé dans le HTML */
+.margin-top-40 {
+  margin-top: 28px;
+}
+
+/* --------- GROUPES DE CHAMPS --------- */
+
+.form-group {
+  margin-bottom: 0; /* on gère via le gap du form */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Label principal */
+
+.form-group > label:first-of-type {
+  display: block;
+  font-weight: 500;
+  color: #a05c7f;
+  font-size: 13px;
+}
+
+/* Inputs numériques */
+
+.form-group input[type="number"],
+.form-group input[type="text"] {
+  width: 100%;
+  padding: 10px 13px;
+  font-size: 14px;
+  border-radius: 16px;
+  border: 1px solid #ffd3ea;
+  box-shadow: none;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  color: #5d3a4a;
+}
+
+.form-group input[disabled] {
+  background-color: #f9edf4;
+  color: #b08fa3;
+  cursor: not-allowed;
+}
+
+.form-group input:focus {
+  border-color: #ff8ac4;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 138, 196, 0.25);
+}
+
+/* Messages d'erreur */
+
+.error {
+  color: #ff4f7a;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* --------- LIGNES AVEC SWITCH --------- */
+
+.form-group .switch {
+  margin-left: 10px;
+}
+
+/* On aligne l’input disabled (true/false) à côté du switch */
+.form-group input[disabled][name$="2"] {
+  width: auto;
+  display: inline-block;
+  min-width: 60px;
+  padding-inline: 10px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* Si tu veux une version plus alignée sur une seule ligne : 
+   label + switch + valeur, tu peux à terme passer cette .form-group 
+   en display: flex; align-items: center; mais on garde ton HTML intact ici. */
+
+/* ============================
+   SWITCH TOGGLE ROSE
+   ============================ */
 
 .switch {
   position: relative;
   display: inline-block;
   width: 40px;
   height: 22px;
+  vertical-align: middle;
 }
 
 .switch input {
@@ -88,16 +122,14 @@
   width: 0;
   height: 0;
 }
+
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 34px;
+  inset: 0;
+  background-color: #f3d7e8;
+  transition: 0.25s;
+  border-radius: 999px;
 }
 
 .slider:before {
@@ -107,15 +139,57 @@
   width: 16px;
   left: 4px;
   bottom: 3px;
-  background-color: white;
-  transition: 0.4s;
+  background-color: #ffffff;
+  transition: 0.25s;
   border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(180, 108, 143, 0.35);
 }
 
 input:checked + .slider {
-  background-color: #4caf50;
+  background: linear-gradient(135deg, #ff8ac4, #ff4f9e);
 }
 
 input:checked + .slider:before {
   transform: translateX(18px);
+}
+
+/* ============================
+   BOUTON SUBMIT (mat-raised-button)
+   ============================ */
+
+.admin-param button[type="submit"] {
+  margin-top: 10px;
+  padding: 11px 16px;
+  width: 100%;
+  border-radius: 999px !important;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff72bc, #ff4f9e);
+  color: #ffffff;
+  box-shadow: 0 18px 40px rgba(255, 100, 170, 0.38);
+  text-transform: none;
+}
+
+.admin-param button[type="submit"]:hover {
+  transform: translateY(-1px);
+}
+
+.admin-param button[type="submit"]:disabled {
+  background: #f3d7e8;
+  color: #b894aa;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 600px) {
+  .admin-param {
+    margin: 24px 12px 32px;
+    padding: 20px 16px 22px;
+    border-radius: 20px;
+  }
 }

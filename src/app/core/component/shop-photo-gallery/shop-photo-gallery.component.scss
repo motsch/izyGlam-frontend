@@ -1,57 +1,107 @@
-.gallery-item {
-    display: inline-block;
-    position: relative; /* Pour positionner le bouton au-dessus de l'image */
-    margin: 10px;
-}
+/* ============================
+   GALERIE PHOTOS DU SHOP
+   ============================ */
 
-.gallery-image {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
+/* Bouton d’upload */
+.custom-upload {
+  margin-bottom: 16px;
 }
-
-  .delete-button {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background-color: #ff6b6b;
-    border: none;
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .delete-button i {
-    font-size: 16px; /* Taille de l'icône */
-  }
-  
-  .delete-button:hover {
-    background-color: #9f4444; /* Couleur plus foncée au survol */
-  }
-  
 
 .custom-upload button {
-  background: linear-gradient(135deg, #f2f2f2, #ffffff);
-  border: 1px solid #ccc;
+  background: linear-gradient(135deg, #fff6fb, #ffffff);
+  border: 1px dashed #ffc8e6;
   padding: 10px 20px;
-  border-radius: 12px;
-  font-size: 16px;
+  border-radius: 999px;
+  font-size: 14px;
   font-weight: 500;
-  color: #333;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: #a05c7f;
+  box-shadow: 0 10px 20px rgba(230, 154, 189, 0.15);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .custom-upload button:hover {
-  background: linear-gradient(135deg, #e6e6e6, #fafafa);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  background: #ffffff;
+  box-shadow: 0 14px 26px rgba(230, 154, 189, 0.22);
   transform: translateY(-1px);
+}
+
+/* ============================
+   LISTE D’IMAGES
+   ============================ */
+
+.gallery-item {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid #ffe2f4;
+}
+
+/* Image de la galerie */
+.gallery-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Bouton suppression rond en bas à droite */
+.delete-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #ffffff;
+  border: 1px solid #ffd3ea;
+  color: #ff4f9e;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(255, 100, 170, 0.3);
+  transition: all 0.18s ease-in-out;
+  padding: 0;
+}
+
+.delete-button i {
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.delete-button:hover {
+  background-color: #fff4fa;
+  color: #e43681;
+  transform: translateY(-1px);
+}
+
+.delete-button:active {
+  transform: translateY(0);
+  box-shadow: 0 7px 16px rgba(255, 100, 170, 0.25);
+}
+
+/* ============================
+   MESSAGE "Aucune image"
+   ============================ */
+
+p[ng-reflect-ng-if="true"],
+p[ng-reflect-ng-if="false"],
+p {
+  /* s'applique au <p *ngIf="galleryImages.length === 0"> sans classe */
+  margin-top: 12px;
+  font-size: 14px;
+  color: #b27393;
+  font-weight: 500;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #fff5fa;
+  display: inline-block;
 }

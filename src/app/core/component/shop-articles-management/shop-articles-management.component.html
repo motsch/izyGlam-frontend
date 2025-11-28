@@ -42,7 +42,7 @@
     </tbody>
   </table>
   <!-- Modal -->
-  <div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
+  <div class="modal fade show margin-top-40" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
     [ngClass]="{ show: modalOpen }">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -54,7 +54,9 @@
             : "Crééons une nouvelle prestation !"
             }}
           </h3>
-          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()">
+            ✕
+          </button>
         </div>
         <div class="modal-body">
           <div class="form-group">

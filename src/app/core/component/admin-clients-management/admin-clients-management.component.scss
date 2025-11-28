@@ -1,121 +1,320 @@
+/* ============================
+   ADMIN CLIENTS MANAGEMENT
+   ============================ */
+
 .admin-clients-management {
-    background-color: #FFFFFF;
-    padding: 1.5em;
-    
-    .search-bar {
-      margin-bottom: 1em;
-      input {
-        width: 100%;
-        padding: 0.8em;
-        font-size: 1.1em;
-        border: 1px solid #E0E0E0;
-        border-radius: 4px;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-        transition: border-color 0.3s;
-        
-        &:focus {
-          border-color: #F06292;
-        }
-      }
-    }
-  
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1.5em;
-      
-      th, td {
-        padding: 1em;
-        text-align: left;
-        font-size: 1em;
-        color: #333333;
-      }
-      
-      th {
-        background-color: #F5F5F5;
-        border-bottom: 2px solid #E0E0E0;
-        font-weight: bold;
-      }
-  
-      td {
-        border-bottom: 1px solid #E0E0E0;
-      }
-  
-      tr:nth-child(even) {
-        background-color: #FAFAFA;
-      }
-  
-      tr:hover {
-        background-color: #FCE4EC;
-      }
-    }
-  
-    .mat-paginator {
-      background-color: #FFFFFF;
-      padding: 0.5em;
-      border-top: 1px solid #E0E0E0;
-    }
-  }
-  
-.locked {
-  color: #ff6b6b;
-}
-.unlocked {
-  color: #38a01e;
-}
-.delete-button {
-  background-color: white;
-  height: 25px !important;
-  width: auto !important;
+  max-width: 1100px;
+  margin: 40px auto 48px;
+  padding: 24px 24px 28px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #ffeaf7, #fffafd);
+  border: 1px solid #ffe0f2;
+  box-shadow: 0 22px 60px rgba(255, 117, 170, 0.22);
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #5d3a4a;
 }
 
-.create-button {
-  color: #ff6b6b;
-  background-color: white;
-  height: 40px !important;
-  min-width: 30px !important;
-  border-radius: 50% !important;
-  margin-right: 5px;
-  margin-bottom: 5px;
+/* ---------- SEARCH BAR ---------- */
+
+.admin-clients-management .search-bar {
+  margin-bottom: 16px;
 }
 
+.admin-clients-management .search-bar input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid #ffd3ea;
+  background-color: #ffffff;
+  box-shadow: 0 10px 24px rgba(240, 158, 194, 0.18);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  color: #5d3a4a;
+}
+
+.admin-clients-management .search-bar input::placeholder {
+  color: #c9a5b9;
+}
+
+.admin-clients-management .search-bar input:focus {
+  border-color: #ff8ac4;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 138, 196, 0.25);
+}
+
+/* ---------- MAT-TABLE STYLING ---------- */
+
+.admin-clients-management table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.04);
+}
+
+/* Header */
+
+.admin-clients-management th[mat-header-cell] {
+  background-color: #ffeaf7;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #c25a91;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #ffd7ee;
+}
+
+/* Cells */
+
+.admin-clients-management td[mat-cell] {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #5d3a4a;
+  border-bottom: 1px solid #fff3fb;
+}
+
+/* Alternance de lignes + hover */
+
+.admin-clients-management tr[mat-row]:nth-child(even) td[mat-cell] {
+  background-color: #fff9fd;
+}
+
+.admin-clients-management tr[mat-row]:hover td[mat-cell] {
+  background-color: #fff0fa;
+}
+
+/* Select de rôle dans la table */
+
+.admin-clients-management td[mat-cell] select {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 999px;
+  border: 1px solid #ffd3ea;
+  background-color: #ffffff;
+  color: #5d3a4a;
+  outline: none;
+}
+
+/* ---------- PAGINATOR ---------- */
+
+.admin-clients-management .mat-paginator {
+  background: transparent;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+/* ============================
+   BOUTONS ACTIONS (EDIT / BAN)
+   ============================ */
+
+.create-button,
 .ban-button {
-  background-color: white;
+  border: none;
   height: 40px !important;
-  min-width: 30px !important;
+  min-width: 40px !important;
   border-radius: 50% !important;
+  background-color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+  transition: transform 0.12s ease-out, box-shadow 0.18s ease;
+  padding: 0;
+  margin-right: 6px;
 }
 
-.fa-pencil {
+.create-button i,
+.ban-button i {
   font-size: 14px;
 }
 
-.btn:hover {
-  transform: translateY(-2px); /* Légère élévation au survol */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+/* Icône crayon (edit) */
+
+.create-button {
+  color: #ff4f9e;
 }
+
+/* Icône ban / unlock */
+
+.ban-button {
+  color: #e84b4b;
+}
+
+/* État actif / inactif (couleur icône) */
+
+.locked {
+  color: #ff4d4d;
+}
+
+.unlocked {
+  color: #2e9f74;
+}
+
+/* Hover générique btn */
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================
+   MODAL EDIT UTILISATEUR
+   ============================ */
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   display: flex;
-  padding-left: 20vw !important;
-  padding-top: 10vh !important;
   align-items: center !important;
   justify-content: center !important;
-  background: rgba(0, 0, 0, 0.5); /* Assure un fond d'écran semi-transparent */
+  padding: 0;
+  background: rgba(14, 2, 16, 0.55);
+  z-index: 9050;
 }
 
 .modal-dialog {
   margin: 0;
-  max-width: 800px; /* Ajustez la largeur si nécessaire */
+  max-width: 800px;
   width: 100%;
 }
+
 .custom-modal-width {
-  max-width: 800px; /* Ajuste cette valeur selon le besoin */
-  width: 100%; /* Pour s'assurer que la modal occupe tout l'espace défini */
+  max-width: 720px;
+  width: 100%;
 }
 
+.modal-content {
+  background: linear-gradient(145deg, #fffafd, #ffeef7);
+  padding: 20px 20px 18px;
+  border-radius: 24px;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.35);
+  border: 1px solid #ffe0f2;
+}
+
+/* Header */
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ff4f9e;
+  margin: 0;
+}
+
+.btn-close {
+  background: #ffffff;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  opacity: 1;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+  font-size: 12px;
+}
+
+/* Body / form */
+
+.modal-body {
+  margin-top: 10px;
+}
+
+.modal-body .form-group {
+  margin-bottom: 10px;
+}
+
+.modal-body label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #a05c7f;
+  margin-bottom: 4px;
+}
+
+.modal-body .form-control,
+.modal-body select.form-control {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 14px;
+  border-radius: 14px;
+  border: 1px solid #ffd3ea;
+  background-color: #ffffff;
+  color: #5d3a4a;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-body .form-control:focus {
+  border-color: #ff8ac4;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 138, 196, 0.25);
+}
+
+/* Checkbox adresse principale */
+
+.form-check-input {
+  margin-right: 6px;
+}
+
+/* Footer */
+
+.modal-footer {
+  border-top: none;
+  padding-top: 6px;
+}
+
+/* Boutons modal */
+
+.modal-footer .btn {
+  border-radius: 999px;
+  font-size: 13px;
+  padding: 8px 18px;
+}
+
+/* Annuler */
+
+.modal-footer .btn-secondary {
+  background-color: #ffffff;
+  color: #b25280;
+  border: 1px solid #f0cbe0;
+}
+
+/* Enregistrer */
+
+.modal-footer .btn-primary {
+  background: linear-gradient(135deg, #ff72bc, #ff4f9e);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 16px 36px rgba(255, 100, 170, 0.35);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px) {
+  .admin-clients-management {
+    margin: 24px 12px 32px;
+    padding: 20px 16px 24px;
+    border-radius: 22px;
+  }
+
+  .modal-dialog,
+  .custom-modal-width {
+    max-width: 95%;
+  }
+
+  .admin-clients-management th[mat-header-cell],
+  .admin-clients-management td[mat-cell] {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+}

@@ -1,30 +1,43 @@
+/* ============================
+   PROFIL UTILISATEUR – IzyGlam
+   ============================ */
+
 .container-global {
   display: flex;
   justify-content: center;
-  padding: 0px 0px; // un peu plus de padding haut/bas pour l’espace visuel
-  // min-height: 100vh;
+  padding: 32px 16px;
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #5d3a4a;
 }
 
 .form {
   width: 100%;
-  max-width: 600px;
+  max-width: 680px;
+  padding: 24px 22px 26px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #ffeaf7, #fffafd);
+  border: 1px solid #ffe0f2;
+  box-shadow: 0 22px 60px rgba(255, 117, 170, 0.22);
 }
+
+/* ---------- HEADER PROFIL (photo + nom) ---------- */
 
 .row-profile {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 18px;
   flex-wrap: wrap;
-  // margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .profile img {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 50%;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border: 3px solid #ffe0f2;
+  box-shadow: 0 16px 35px rgba(200, 117, 157, 0.35);
+  background: #fff;
 }
 
 .info-row {
@@ -32,97 +45,142 @@
   flex-direction: column;
   gap: 10px;
   flex: 1;
-  min-width: 200px;
+  min-width: 220px;
   width: 100%;
 }
 
+/* ---------- INFOS LIGNES SUIVANTES ---------- */
+
+.info > div {
+  margin-bottom: 12px;
+}
+
+/* Labels */
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  color: #a05c7f;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* Inputs */
+
+input {
+  width: 100%;
+  padding: 10px 13px;
+  font-size: 14px;
+  border-radius: 16px;
+  border: 1px solid #ffd3ea;
+  background-color: #ffffff;
+  color: #5d3a4a;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: none;
+}
+
+input:focus {
+  border-color: #ff8ac4;
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 138, 196, 0.25);
+}
+
+input:disabled {
+  background-color: #f9edf4;
+  color: #b08fa3;
+  cursor: not-allowed;
+}
+
+/* ---------- BOUTONS ACTIONS ---------- */
+
+.margin-top-15 {
+  margin-top: 10px;
+}
+
+.button-red,
+.button-grey {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-red {
+  background: linear-gradient(135deg, #ff72bc, #ff4f9e);
+  color: #ffffff;
+  box-shadow: 0 16px 36px rgba(255, 100, 170, 0.35);
+}
+
+.button-red:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.button-red:disabled {
+  background: #f3d7e8;
+  color: #b894aa;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.button-grey {
+  background-color: #ffffff !important;
+  color: #b25280 !important;
+  border: 1px solid #f0cbe0;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
+}
+
+.button-grey:hover {
+  transform: translateY(-1px);
+}
+
+.margin-left-10 {
+  margin-left: 8px;
+}
+
+/* ---------- MESSAGES D’ERREUR / SUCCÈS ---------- */
+
+.error {
+  color: #ff4f7a;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.success {
+  color: #2e9f74;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
 @media (max-width: 768px) {
+  .container-global {
+    padding: 20px 10px;
+  }
+
+  .form {
+    padding: 20px 16px 22px;
+    border-radius: 22px;
+  }
+
   .row-profile {
     flex-direction: column;
     align-items: flex-start;
   }
 
   .profile img {
-    margin-bottom: 1px;
+    width: 100px;
+    height: 100px;
   }
-}
-
-.info > div {
-  margin-bottom: 0px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.6);
-  font-weight: 400;
-  text-transform: capitalize;
-  letter-spacing: 0.3px;
-}
-
-input {
-  width: 100%;
-  padding: 12px 14px;
-  font-size: 15px;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  background-color: #fafafa;
-  color: #222;
-  transition: all 0.2s ease-in-out;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
-
-  &:focus {
-    border-color: #ff80ab;
-    background-color: #fff;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(255, 128, 171, 0.2);
-  }
-
-  &:disabled {
-    background-color: #f5f5f5;
-    color: #999;
-    cursor: not-allowed;
-  }
-}
-
-.button-red,
-.button-grey {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button-red {
-  background-color: #ff80ab;
-  color: white;
-
-  &:hover {
-    background-color: #ff6699;
-  }
-
-  &:disabled {
-    background-color: #eee;
-    color: #aaa;
-    cursor: not-allowed;
-  }
-}
-
-.button-grey {
-  background-color: #cacaca !important;
-  color: #000 !important;
-}
-
-.error {
-  color: red;
-  margin-top: 10px;
-}
-
-.success {
-  color: green;
-  margin-top: 10px;
 }

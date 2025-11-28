@@ -464,36 +464,36 @@
   <p>Modification de l'image en cours...</p>
 </div>
 
-<!-- 🧾 MODALE PREVIEW DOCUMENT -->
-<div
-  class="doc-modal-backdrop"
-  *ngIf="previewOpen"
-  (click)="closePreview()"
->
-  <div class="doc-modal-content" (click)="$event.stopPropagation()">
+<!-- 🌸 MODALE DE PRÉVISUALISATION DOCUMENT (style page Documents) -->
+<div class="doc-modal-overlay" *ngIf="previewOpen" (click)="closePreview()">
+  <div class="doc-modal" (click)="$event.stopPropagation()">
     <button class="doc-modal-close" (click)="closePreview()">✕</button>
 
     <ng-container [ngSwitch]="previewType">
+
+      <!-- Image -->
       <img
         *ngSwitchCase="'image'"
-        [src]="previewUrl!"
-        alt="Document"
+        [src]="previewUrl"
         class="doc-modal-image"
+        alt="Document"
       />
+
+      <!-- PDF -->
       <iframe
         *ngSwitchCase="'pdf'"
-        [src]="previewUrl!"
+        [src]="previewUrl"
         class="doc-modal-iframe"
       ></iframe>
-      <a
-        *ngSwitchDefault
-        [href]="previewUrl!"
-        target="_blank"
-        rel="noopener"
-        class="doc-modal-link"
-      >
-        Ouvrir dans un nouvel onglet
-      </a>
+
+      <!-- Autre type -->
+      <div *ngSwitchDefault class="doc-modal-other">
+        <p>Impossible de prévisualiser ce type de fichier.</p>
+        <a [href]="previewUrl" target="_blank" rel="noopener">
+          Ouvrir dans un nouvel onglet
+        </a>
+      </div>
+
     </ng-container>
   </div>
 </div>

@@ -1,33 +1,122 @@
+/* ============================
+   SERVICES / ARTICLES DU SHOP
+   Style IzyGlam dashboard
+   ============================ */
+
 .container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px;
+  max-width: 1200px;
+  margin: 40px auto 48px;
+  padding: 24px 24px 32px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #ffeaf7, #fffafd);
+  border: 1px solid #ffe0f2;
+  box-shadow: 0 22px 60px rgba(255, 117, 170, 0.22);
+  font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #5d3a4a;
+  position: relative;
 }
 
-.form-group {
-  margin-bottom: 15px;
+/* ============================
+   BOUTON "Créer une prestation"
+   ============================ */
+
+.btn-create {
+  background: linear-gradient(135deg, #ffedf4, #ffe6f3);
+  color: #d63384;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  transition: all 0.18s ease-in-out;
+  box-shadow: 0 10px 22px rgba(255, 130, 180, 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.btn-create:hover {
+  background: linear-gradient(135deg, #ffe6f3, #ffedf4);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(255, 130, 180, 0.3);
+}
+
+.btn-create:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(255, 130, 180, 0.2);
+}
+
+.btn-create i {
+  font-size: 13px;
+}
+
+/* ============================
+   TABLEAU
+   ============================ */
+
+.table {
+  width: 100%;
+  margin-top: 8px;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.04);
+}
+
+.table thead {
+  background: #ffeaf7;
+}
+
+.table thead tr {
+  border-bottom: 1px solid #ffd7ee;
 }
 
 .table th,
 .table td {
-  text-align: center;
+  padding: 12px 14px;
+  font-size: 14px;
   vertical-align: middle;
+  text-align: left;
 }
 
-.table {
-  margin-top: 20px;
+.table th {
+  font-weight: 600;
+  color: #c25a91;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.03em;
 }
 
-.color-dot {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  margin-right: 10px;
-  vertical-align: middle;
-  border: rgb(163, 163, 163) solid 1px;
+.table tbody tr {
+  border-bottom: 1px solid #fff3fb;
+  transition: background-color 0.15s ease;
 }
 
+.table tbody tr:nth-child(even) {
+  background-color: #fff9fd;
+}
+
+.table tbody tr:hover {
+  background-color: #fff0fa;
+}
+
+/* Image dans le tableau */
+
+.image_table {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  margin-right: 4px;
+  object-fit: cover;
+  box-shadow: 0 10px 22px rgba(200, 117, 157, 0.25);
+}
+
+/* ============================
+   COULEURS / DOTS
+   ============================ */
+
+.color-dot,
 .color-dot-selection {
   display: inline-block;
   width: 20px;
@@ -35,188 +124,50 @@
   border-radius: 50%;
   margin-right: 10px;
   vertical-align: middle;
-  border: rgb(163, 163, 163) solid 1px;
+  border: 1px solid #f1c8df;
+}
+
+.color-dots {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .color-dot-selection.selected {
-  transform: scale(1.2);  /* Augmente légèrement la taille */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);  /* Effet d'ombre */
-  border: 1px solid rgba(0, 0, 0, 0.5); /* Bordure subtile */
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px rgba(255, 120, 180, 0.35);
+  border-color: #d63384;
 }
 
 .color-dot-selection:hover {
-  transform: scale(1.2); /* Ajoute un léger effet d'agrandissement au survol */
+  transform: scale(1.1);
 }
 
-.image_table {
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
-  margin-right: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.color-preview {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid #000;
-  margin-top: 10px;
-}
-
-select {
-  margin-left: 10px;
-}
-
-button:disabled {
-  background-color: #ddd;
-  cursor: not-allowed;
-}
+/* ============================
+   CELLULE ACTIONS
+   ============================ */
 
 .align-center {
   display: flex;
-  flex-direction: column; /* Pour empiler les boutons verticalement */
-  justify-content: center; /* Centre verticalement */
-  align-items: center; /* Centre horizontalement */
-  height: 100%; /* Assure que le contenu occupe toute la hauteur */
-}
-
-.no_photo {
-  font-size: 14px;
-  color: red;
-}
-
-.margin-top-5 {
-  margin-top: 5px; /* Ajout d'un léger espacement entre les boutons */
-}
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 9050;
+  gap: 6px;
 }
 
-.modal-header {
-  border-bottom: none;
-  height: 30px;
-}
+/* Bouton "Modifier" */
 
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 5px;
-  width: 100%;
-  max-width: 500px;
-  z-index: 9050;
-}
-
-.modal-dialog {
-  margin-top: 15vh;
-  z-index: 9050;
-}
-
-.modal-footer .btn {
-  border-radius: 5px; /* Coins légèrement arrondis */
-  padding: 10px 20px; /* Taille du bouton ajustée */
-  font-size: 16px; /* Taille du texte */
-  width: auto; /* Assurer que les boutons ne soient pas ronds */
-  height: auto; /* Assurer que les boutons ne soient pas ronds */
-  box-shadow: none; /* Retirer l'ombre subtile */
-  transition: background-color 0.3s ease; /* Transition pour l'effet de survol */
-}
-
-
-
-/* Bouton principal */
-.modal-footer .btn-primary {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 15px;
-  border-radius: 5px;
-  margin-top: 20px;
-  width: 100%;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #333;
-  }
-
-  &:disabled {
-    background-color: #999;
-    color: #ccc;
-    cursor: not-allowed;
-    opacity: 0.7;
-  }
-}
-.image-preview {
-  height: 120px;
-  width: auto;
-  object-fit: contain;
-  border-radius: 14px;
-}
-
-.custom-upload button {
-  background: linear-gradient(135deg, #f2f2f2, #ffffff);
-  border: 1px solid #ccc;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.modal-title {
-  margin-top: 50px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #ff4081;
-}
-
-.custom-upload button:hover {
-  background: linear-gradient(135deg, #e6e6e6, #fafafa);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-  transform: translateY(-1px);
-}
-
-/* Bouton principal (Créer) */
-.btn-create {
-  background: linear-gradient(to right, #fcdde1, #ffe9f0);
-  color: #d63384;
-  font-weight: 600;
-  padding: 8px 20px;
-  border-radius: 12px;
-  border: none;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.btn-create:hover {
-  background: linear-gradient(to right, #ffe9f0, #fcdde1);
-  transform: translateY(-2px);
-}
-
-/* Bouton action - Modifier */
 .btn-edit {
-  background-color: #fff;
+  background-color: #ffffff;
   color: #d63384;
   border: 1px solid #f8cdd8;
-  border-radius: 8px;
+  border-radius: 999px;
   font-weight: 500;
-  padding: 6px 12px;
-  transition: all 0.2s ease-in-out;
+  padding: 6px 14px;
+  transition: all 0.18s ease-in-out;
+  font-size: 13px;
+  box-shadow: 0 8px 18px rgba(248, 180, 210, 0.18);
 }
 
 .btn-edit:hover {
@@ -224,15 +175,18 @@ button:disabled {
   transform: translateY(-1px);
 }
 
-/* Bouton action - Supprimer */
+/* Bouton "Supprimer" */
+
 .btn-delete {
-  background-color: #fff;
+  background-color: #ffffff;
   color: #ff4d4d;
   border: 1px solid #ffd6d6;
-  border-radius: 8px;
+  border-radius: 999px;
   font-weight: 500;
-  padding: 6px 10px;
-  transition: all 0.2s ease-in-out;
+  padding: 6px 12px;
+  transition: all 0.18s ease-in-out;
+  font-size: 13px;
+  box-shadow: 0 8px 18px rgba(255, 90, 90, 0.12);
 }
 
 .btn-delete:hover {
@@ -240,71 +194,172 @@ button:disabled {
   transform: translateY(-1px);
 }
 
-/* Pour les icônes */
+.btn-delete:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Icônes dans les boutons */
+
 .btn i {
   margin-right: 5px;
-  font-size: 14px;
+  font-size: 13px;
+}
+
+.margin-top-5 {
+  margin-top: 5px;
+}
+
+/* ============================
+   MODAL (overlay custom)
+   ============================ */
+
+/* Overlay plein écran, centré + scrollable */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 2, 16, 0.48);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;          /* on part du haut */
+  overflow-y: auto;                 /* scroll si contenu trop grand */
+  padding: 40px 16px;               /* marge haut/bas pour respirer */
+  z-index: 9050;
+}
+
+/* Boîte de la modale */
+.modal-dialog {
+  margin: 0 auto;
+  max-width: 640px;
+  width: 100%;
+}
+
+/* Contenu de la modale */
+.modal-content {
+  background: linear-gradient(145deg, #fffafd, #ffeef7);
+  padding: 22px 24px 24px;
+  border-radius: 24px;
+  border: 1px solid #ffe0f2;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.25);
+}
+
+/* Header */
+
+.modal-header {
+  border-bottom: none;
+  padding: 0 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ff4f9e;
+  margin: 0;
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  opacity: 0.6;
+  color: #ff4f9e !important;
+  background: transparent;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+/* Corps du formulaire */
+
+.modal-body {
+  margin-top: 12px;
+}
+
+.form-group {
+  margin-bottom: 16px;
 }
 
 label {
-  color: #000;
-  font-size: 15px;
+  color: #a05c7f;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
 }
 
-/* Bouton sous champ (description) */
+/* Inputs / textareas dans la modal */
+
+.form-control {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 16px;
+  border: 1px solid #ffd3ea;
+  font-size: 14px;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  color: #5d3a4a;
+}
+
+.form-control:focus {
+  border-color: #ff8ac4;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 138, 196, 0.25);
+}
+
+.form-control:disabled {
+  background-color: #f9edf4;
+  color: #b08fa3;
+  cursor: not-allowed;
+}
+
+/* Zone description + bouton IA */
+
 .actions-row {
   display: flex;
   margin-top: 8px;
 }
-.actions-row.end { justify-content: flex-end; }
 
-/* Grille image: gauche = visuel, droite = actions */
+.actions-row.end {
+  justify-content: flex-end;
+}
+
+/* ============================
+   IMAGE / IA
+   ============================ */
+
 .image-grid {
   display: grid;
-  grid-template-columns: auto 220px; /* largeur colonne boutons */
+  grid-template-columns: auto 220px;
   gap: 14px;
-  align-items: start;
-}
-.image-left { min-width: 0; }
-
-/* Boutons IA iziGlam */
-.btn-izygenerate {
-  background: linear-gradient(135deg, #ffd6e0, #ffe6f0);
-  border: none;
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-weight: 600;
-  color: #d63384;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-.btn-izygenerate:hover {
-  background: linear-gradient(135deg, #ffc2d4, #ffd6e0);
-  transform: translateY(-1px);
+  align-items: flex-start;
 }
 
-/* Bouton upload (look assorti) */
-.btn-upload {
-  background: #fff;
-  border: 1px solid #f8cdd8;
-  color: #d63384;
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-  transition: all 0.2s ease-in-out;
-  margin-top: 10px;
-}
-.btn-upload:hover {
-  background: #fff0f5;
-  transform: translateY(-1px);
+.image-left {
+  min-width: 0;
 }
 
-/* Utilitaires */
-.w-100 { width: 100%; }
+.image-preview {
+  height: 120px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 12px 26px rgba(200, 117, 157, 0.25);
+}
 
-/* Placeholder quand pas d'image */
+.image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.image-wrapper.loading img {
+  filter: brightness(0.5);
+}
+
 .image-placeholder {
   height: 120px;
   width: 160px;
@@ -314,51 +369,75 @@ label {
   align-items: center;
   justify-content: center;
   color: #d63384;
-  font-size: 14px;
+  font-size: 13px;
   background: #fff9fc;
 }
 
-/* Responsive: pile verticale sur mobile */
-@media (max-width: 576px) {
-  .image-grid {
-    grid-template-columns: 1fr;
-  }
-  .w-100 { width: 100%; }
-}
-.spinner {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-  border: 2px solid rgba(214, 51, 132, 0.25);
-  border-top-color: #d63384;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
-  vertical-align: -2px;
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.34);
+  border-radius: 14px;
+  z-index: 2;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+/* Boutons IA / upload */
 
-.btn-izygenerate[disabled],
-.btn-upload[disabled] {
-  opacity: 0.7;
-  cursor: not-allowed;
-  transform: none;
+.w-100 {
+  width: 100%;
 }
 
-
-/* Empêche le bouton de se rétrécir */
 .fixed-btn {
-  min-height: 42px; /* même hauteur que d'origine */
+  min-height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Nouveau loader triangles animés */
+.btn-izygenerate {
+  background: linear-gradient(135deg, #ffd6e0, #ffe6f0);
+  border: none;
+  border-radius: 14px;
+  padding: 9px 12px;
+  font-weight: 600;
+  color: #d63384;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 10px 20px rgba(255, 130, 180, 0.2);
+  font-size: 13px;
+}
+
+.btn-izygenerate:hover {
+  background: linear-gradient(135deg, #ffc2d4, #ffd6e0);
+  transform: translateY(-1px);
+}
+
+.btn-upload {
+  background: #ffffff;
+  border: 1px solid #f8cdd8;
+  color: #d63384;
+  border-radius: 14px;
+  padding: 9px 12px;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease-in-out;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.btn-upload:hover {
+  background: #fff0f5;
+  transform: translateY(-1px);
+}
+
+/* Loader triangles */
+
 .loader {
   width: 24px;
-  aspect-ratio: 1.154; /* pour le triangle équilatéral */
+  aspect-ratio: 1.154;
   --_g: no-repeat radial-gradient(farthest-side, #d63384 90%, #0000);
   background:
     var(--_g) 50% 0,
@@ -374,7 +453,30 @@ label {
   }
 }
 
-/* Quand disabled, on garde la taille et l'alignement */
+.image-overlay .loader {
+  width: 30px;
+}
+
+/* Ancien spinner (si utilisé ailleurs) */
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border: 2px solid rgba(214, 51, 132, 0.25);
+  border-top-color: #d63384;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: -2px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .btn-izygenerate[disabled],
 .btn-upload[disabled] {
   opacity: 0.7;
@@ -382,30 +484,61 @@ label {
   transform: none;
 }
 
-.image-wrapper {
-  position: relative;
-  display: inline-block;
+/* ============================
+   FOOTER MODAL
+   ============================ */
+
+.modal-footer {
+  border-top: none;
+  padding: 10px 0 0;
 }
 
-.image-wrapper.loading img {
-  filter: brightness(0.5); /* ternir l'image */
-}
-
-.image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+.modal-footer .btn-primary {
+  background: linear-gradient(135deg, #ff72bc, #ff4f9e);
+  color: #ffffff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 999px;
+  margin-top: 8px;
   width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.3); /* voile transparent */
-  border-radius: 14px;
-  z-index: 2;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 16px 36px rgba(255, 100, 170, 0.35);
+  transition: all 0.2s ease;
 }
 
-.image-overlay .loader {
-  width: 30px;
-  height: 30px;
+.modal-footer .btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+.modal-footer .btn-primary:disabled {
+  background: #f3d7e8;
+  color: #b894aa;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 18px 16px 24px;
+    border-radius: 22px;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    padding: 24px 10px;       /* un peu moins de padding sur mobile */
+    align-items: flex-start;  /* on commence en haut + scroll */
+  }
+
+  .table th,
+  .table td {
+    font-size: 13px;
+  }
 }
