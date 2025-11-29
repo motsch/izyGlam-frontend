@@ -14,11 +14,6 @@ import { BookingService } from '../../services/booking.service';
   styleUrls: ['./company-management.component.scss'],
 })
 export class CompanyManagementComponent implements OnInit, OnChanges {
-  /**
-   * Id de la company en cours.
-   * 👉 Tu peux le passer depuis le parent ou le récupérer
-   * via ton AuthService et le setter ici plus tard.
-   */
   @Input() companyId: string | null = null;
 
   company: any | null = null;
@@ -66,6 +61,11 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
   editedCompanyCredit: number | null = null;
   savingCompanyCredit = false;
 
+  // Param mot de passe par défaut
+  showPasswordSettings = false;
+  passwordVisible = false;
+  defaultPassword = 'izyGlam2026!'; // valeur par défaut UI (à adapter si tu veux la charger du back)
+
   constructor(
     private companyService: CompanyService,
     private bookingService: BookingService
@@ -82,7 +82,6 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
   }
 
   private tryInit(): void {
-    // Si pas encore d'id, on ne fait rien (tu pourras brancher ton Auth ici)
     if (!this.companyId) {
       return;
     }
@@ -114,7 +113,7 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
     this.loadingEmployees = true;
     this.companyService.getCompanyEmployees(this.companyId).subscribe({
       next: (employees: any[]) => {
-        this.employees = employees;
+        this.employees = employees || [];
         this.loadingEmployees = false;
       },
       error: (err: any) => {
@@ -145,7 +144,6 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
 
     const payload = { ...this.company, credit: this.editedCompanyCredit };
 
-    // 👉 Ici on passe par CompanyService.update
     this.companyService.update(payload).subscribe({
       next: (updated: any) => {
         this.company = updated;
@@ -157,6 +155,29 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
         this.savingCompanyCredit = false;
       },
     });
+  }
+
+  // --- Bloc mot de passe par défaut ---
+
+  togglePasswordSettings(): void {
+    this.showPasswordSettings = !this.showPasswordSettings;
+  }
+
+  togglePasswordVisibility(): void {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  cancelPasswordEdit(): void {
+    // reset à une valeur par défaut (tu peux la remplacer par celle venant du back)
+    this.defaultPassword = 'izyGlam2026!';
+    this.passwordVisible = false;
+  }
+
+  saveDefaultPassword(): void {
+    const pwd = this.defaultPassword || '';
+    // Ici tu pourras appeler une route type:
+    // this.companyService.updateDefaultPassword(this.companyId, pwd).subscribe(...)
+    console.log('Mot de passe par défaut pour la société', this.companyId, ':', pwd);
   }
 
   // --- Gestion crédits des employés ---
@@ -171,13 +192,102 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
     if (event) {
       event.stopPropagation();
     }
+    if (!this.companyId) return;
 
-    // 👉 Ici on pourrait appeler une route PUT /users/:id
-    // Pour l'instant on log + TODO pour que tu puisses brancher ton backend
-    console.log('TODO: appeler API update user credit', {
-      userId: emp._id,
-      credit: emp.credit,
+    const newCredit = Number(emp.credit) || 0;
+
+    this.companyService
+      .updateEmployeeCurrentCredit(this.companyId, emp._id, newCredit)
+      .subscribe({
+        next: (res: any) => {
+          const updatedEmployee = res.employee;
+          const updatedCompany = res.company;
+
+          // maj liste employés
+          this.employees = (this.employees || []).map((e: any) =>
+            e._id === updatedEmployee._id ? { ...e, ...updatedEmployee } : e
+          );
+
+          // maj company
+          this.company = { ...(updatedCompany || this.company) };
+        },
+        error: (err: any) => {
+          console.error(
+            'Erreur lors de la mise à jour du crédit employé',
+            err
+          );
+        },
+      });
+  }
+
+  // --- Bouton rond 1 : reset allocations de tous les employés ---
+
+  resetAllocations(): void {
+    if (!this.companyId) return;
+
+    this.loadingEmployees = true;
+
+    this.companyService.resetCompanyAllocations(this.companyId).subscribe({
+      next: (res: any) => {
+        this.employees = res.employees || this.employees;
+        this.company = { ...(res.company || this.company) };
+        this.loadingEmployees = false;
+      },
+      error: (err: any) => {
+        console.error('Erreur lors du reset des allocations', err);
+        this.loadingEmployees = false;
+      },
     });
+  }
+
+  // --- Bouton rond 2 : distribuer équitablement le crédit restant ---
+
+  distributeRemainingCredit(): void {
+    if (!this.companyId) return;
+
+    const remaining = this.remainingCredit;
+    if (remaining <= 0) return;
+
+    const activeEmployees = (this.employees || []).filter(
+      (e: any) => e.active !== false
+    );
+    if (!activeEmployees.length) return;
+
+    const nb = activeEmployees.length;
+    const share = Math.floor(remaining / nb);
+    let remainder = remaining - share * nb;
+
+    if (share <= 0 && remainder <= 0) return;
+
+    const updateNext = (index: number) => {
+      if (index >= activeEmployees.length) {
+        // une fois fini, on recharge la liste pour être clean
+        this.loadEmployees();
+        this.loadCompany();
+        return;
+      }
+
+      const emp = activeEmployees[index];
+      const extra = remainder > 0 ? 1 : 0;
+      if (remainder > 0) remainder--;
+
+      const newCredit = (Number(emp.credit) || 0) + share + extra;
+
+      this.companyService
+        .updateEmployeeCurrentCredit(this.companyId!, emp._id, newCredit)
+        .subscribe({
+          next: () => updateNext(index + 1),
+          error: (err: any) => {
+            console.error(
+              'Erreur lors de la mise à jour du crédit employé (distribution)',
+              err
+            );
+            updateNext(index + 1);
+          },
+        });
+    };
+
+    updateNext(0);
   }
 
   // --- Modal création employé ---
@@ -211,14 +321,12 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
     const payload = {
       ...this.newEmployee,
       companyId: this.companyId,
-      role: 'user', // ou "entreprise" selon ton modèle
+      role: 'user',
     };
 
     console.log('TODO: créer employé via API', payload);
-    // 👉 tu pourras remplacer ce console.log par un vrai appel
-    // ex: this.userService.create(payload).subscribe(...)
+    // À brancher avec ton vrai userService
 
-    // pour l’instant, on simule le push local
     const fakeEmployee = {
       _id: 'temp-' + Date.now(),
       ...payload,
@@ -248,10 +356,9 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
     this.loadingBookings = true;
     this.bookingService.getBookingByClient(employeeId).subscribe({
       next: (bookings: any[]) => {
-        this.employeeBookings = bookings;
+        this.employeeBookings = bookings || [];
         this.loadingBookings = false;
 
-        // On garde le total à jour pour l'affichage
         if (this.selectedEmployee) {
           this.selectedEmployee = {
             ...this.selectedEmployee,
@@ -272,18 +379,16 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
     if (event) {
       event.stopPropagation();
     }
-
     console.log('TODO: reset mot de passe pour', emp._id);
-    // 👉 tu pourras ici appeler une route dédiée type POST /users/:id/reset-password
+    // Tu pourras appeler ici ton endpoint POST /users/:id/reset-password
   }
 
   deactivateEmployee(emp: any, event?: Event): void {
     if (event) {
       event.stopPropagation();
     }
-
     console.log('TODO: désactiver employé', emp._id);
-    // 👉 même principe : tu ajouteras une route backend
+    // Idem : à brancher avec un update de statut côté backend
   }
 
   // --- Helpers display ---

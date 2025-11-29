@@ -76,4 +76,58 @@ export class CompanyService {
         );
     }
 
+
+
+        /**
+     * Créer un employé pour une entreprise (B2B)
+     */
+    createCompanyEmployee(companyId: string, payload: any): Observable<any> {
+        return this.http.post<any>(
+            `${environment.apiUrl}company/${companyId}/employees`,
+            payload
+        );
+    }
+
+    /**
+     * Mettre à jour le crédit courant d'un employé
+     */
+    updateEmployeeCurrentCredit(companyId: string, employeeId: string, newCredit: number): Observable<any> {
+        return this.http.patch<any>(
+            `${environment.apiUrl}company/${companyId}/employees/${employeeId}/credit`,
+            { newCredit }
+        );
+    }
+
+    /**
+     * Mettre à jour l'allocation mensuelle d'un employé
+     */
+    updateEmployeeMonthlyCredit(companyId: string, employeeId: string, newMonthlyCredit: number): Observable<any> {
+        return this.http.patch<any>(
+            `${environment.apiUrl}company/${companyId}/employees/${employeeId}/monthly-credit`,
+            { newMonthlyCredit }
+        );
+    }
+
+    /**
+     * Activer / désactiver un employé
+     */
+    updateEmployeeStatus(companyId: string, employeeId: string, active: boolean): Observable<any> {
+        return this.http.patch<any>(
+            `${environment.apiUrl}company/${companyId}/employees/${employeeId}/status`,
+            { active }
+        );
+    }
+
+    /**
+     * Reset global des allocations selon le barème de la company
+     */
+    resetCompanyAllocations(companyId: string): Observable<any> {
+        return this.http.post<any>(
+            `${environment.apiUrl}company/${companyId}/reset-allocations`,
+            {}
+        );
+    }
+
+    
+
 }

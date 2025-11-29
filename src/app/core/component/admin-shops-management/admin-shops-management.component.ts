@@ -27,8 +27,8 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     'name',
     'ville',
     'note',
-    'averagePrice',
-    'promo',
+    'status',
+    'verification',
     'actions',
   ];
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
@@ -98,9 +98,13 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
       const f = normalize(filter);
 
-      return [data.name, data.ville, data.note, data.averagePrice].some(
-        (field) => normalize(field).includes(f)
-      );
+      return [
+        data.name,
+        data.ville,
+        data.note,
+        data.averagePrice,
+        data?.verification?.globalStatus,
+      ].some((field) => normalize(field).includes(f));
     };
 
     // Charge la liste
@@ -141,7 +145,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   }
 
   // ------------------------------------------------------
-  // 🎯 Activer / désactiver la promo d’un shop
+  // 🎯 Activer / désactiver la promo d’un shop (gardé pour la modale)
   // ------------------------------------------------------
   togglePromo(shop: any) {
     const updated = {
@@ -174,7 +178,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   }
 
   // ------------------------------------------------------
-  // 🚫 Bloquer / Débloquer un shop
+  // 🚫 Bloquer / Débloquer un shop (utilisé par la chip Statut)
   // ------------------------------------------------------
   toggleBlockUser(shop: any) {
     const updated = { ...shop, active: !shop.active };
@@ -200,7 +204,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   }
 
   // ------------------------------------------------------
-  // 🔗 Helpers documents de vérification
+  // 🔗 Helpers documents de vérification (liste + modale)
   // ------------------------------------------------------
   buildDocUrl(path: string | undefined | null): string {
     if (!path) return '';
@@ -537,6 +541,49 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
           this.toastr.error('Erreur lors de la validation.');
         },
       });
+  }
+
+  // ------------------------------------------------------
+  // 🧠 Helpers pour la colonne Documents
+  // ------------------------------------------------------
+  isFullyVerified(shop: any): boolean {
+    const v = shop?.verification;
+    if (!v) return false;
+
+    const docs: string[] = ['identity', 'insurance', 'kbis'];
+
+    return docs.every((key) => {
+      const doc = (v as any)[key];
+      if (!doc) return false;
+      return doc.status === 'approved';
+    });
+  }
+
+  getDocStatus(shop: any, docType: string): string {
+    const v = shop?.verification;
+    if (!v) return 'missing';
+    const doc = (v as any)[docType];
+    return doc?.status || 'missing';
+  }
+
+  getDocStatusClass(shop: any, docType: string): string {
+    return this.getDocStatus(shop, docType); // renvoie approved / rejected / pending / missing
+  }
+
+  getDocStatusTooltip(shop: any, docType: string): string {
+    const label =
+      docType === 'identity'
+        ? "Pièce d'identité"
+        : docType === 'insurance'
+        ? 'Assurance'
+        : 'KBIS';
+
+    const status = this.getDocStatus(shop, docType);
+
+    if (status === 'approved') return `${label} : approuvé`;
+    if (status === 'pending') return `${label} : en attente`;
+    if (status === 'rejected') return `${label} : refusé`;
+    return `${label} : manquant`;
   }
 
   // ------------------------------------------------------

@@ -75,6 +75,64 @@
   }
 }
 
+/* carte 2 avec boutons ronds */
+
+.stat-card-employees {
+  background: #fff5fb;
+
+  .stat-top-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
+
+.stat-round-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* --- Boutons ronds --- */
+
+.round-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid #ffbcd7;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 79, 139, 0.15);
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ff4f8b, #ff8fb3);
+    box-shadow: 0 8px 18px rgba(255, 79, 139, 0.35);
+    transform: translateY(-1px);
+
+    .round-icon-symbol {
+      color: #fff;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+    box-shadow: none;
+  }
+}
+
+.round-icon-symbol {
+  font-size: 15px;
+  color: #ff4f8b;
+}
+
+/* --- Edition crédit entreprise --- */
+
 .stat-edit-wrapper {
   display: flex;
   align-items: center;
@@ -128,8 +186,81 @@
   gap: 2px;
 }
 
+.card-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .card-body {
   margin-top: 8px;
+}
+
+/* --- Bloc mot de passe par défaut --- */
+
+.password-settings {
+  margin: 4px 0 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px dashed #ffc6de;
+  background: #fff9fd;
+}
+
+.password-header {
+  margin-bottom: 6px;
+
+  .password-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+  }
+
+  .password-caption {
+    font-size: 11px;
+    color: #999;
+  }
+}
+
+.password-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.password-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid #f0d4e2;
+  background: #fff;
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px 10px 8px 14px;
+    font-size: 13px;
+    border-radius: 999px;
+    background: transparent;
+  }
+
+  .icon-button.small {
+    margin-right: 6px;
+  }
+}
+
+.password-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.password-hint {
+  margin: 0;
+  font-size: 11px;
+  color: #b18aa3;
 }
 
 /* --- Loading & empty states --- */
@@ -291,11 +422,17 @@
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-}
+  transition: box-shadow 0.15s ease, transform 0.1s ease;
 
-.btn-primary.small {
-  padding: 6px 14px;
-  font-size: 12px;
+  &:hover {
+    box-shadow: 0 10px 20px rgba(255, 79, 139, 0.3);
+    transform: translateY(-1px);
+  }
+
+  &.small {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
 }
 
 .btn-primary-outline {
@@ -354,11 +491,11 @@
   background: #fff;
   color: #666;
   cursor: pointer;
-}
 
-.btn-secondary.small {
-  padding: 6px 12px;
-  font-size: 12px;
+  &.small {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
 }
 
 .btn-link {
@@ -368,6 +505,7 @@
   color: #ff4f8b;
   cursor: pointer;
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .btn-ghost {
@@ -379,6 +517,24 @@
 
   &.danger {
     color: #d13b5b;
+  }
+}
+
+.btn-text {
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  color: #ff4f8b;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &.subtle {
+    color: #d9487e;
+  }
+
+  &:hover {
+    color: #ff4f8b;
   }
 }
 
@@ -467,6 +623,10 @@
 
   &:hover {
     color: #ff4f8b;
+  }
+
+  &.small {
+    font-size: 14px;
   }
 }
 
@@ -658,4 +818,69 @@
   .booking-table {
     font-size: 12px;
   }
+}
+
+
+
+
+.employee-active-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.switch-label {
+  font-size: 11px;
+  color: #999;
+}
+
+/* Toggle switch (actif / inactif) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ddd;
+  transition: 0.2s;
+  border-radius: 999px;
+
+  &::before {
+    position: absolute;
+    content: '';
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: #fff;
+    transition: 0.2s;
+    border-radius: 50%;
+  }
+}
+
+input:checked + .slider {
+  background: linear-gradient(135deg, #ff4f8b, #ff8fb3);
+}
+
+input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.slider.round {
+  border-radius: 999px;
 }

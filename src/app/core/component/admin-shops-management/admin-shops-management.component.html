@@ -76,37 +76,56 @@
       </td>
     </ng-container>
 
-    <!-- Prix moyen Column -->
-    <ng-container matColumnDef="averagePrice">
+    <!-- ✅ Statut (active) Column -->
+    <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>
-        {{ "ADMIN_SHOP.MIDDLE_PRICE" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let shop">
-        <span *ngIf="shop.averagePrice; else noPrice">
-          {{ shop.averagePrice }} €
-        </span>
-        <ng-template #noPrice>
-          <span class="text-muted">—</span>
-        </ng-template>
-      </td>
-    </ng-container>
-
-    <!-- Promo Column -->
-    <ng-container matColumnDef="promo">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "ADMIN_SHOP.PROMOTION" | translate }}
+        {{ "ADMIN_SHOP.STATUS" | translate }}
       </th>
       <td mat-cell *matCellDef="let shop">
         <span
-          class="promo-chip"
-          [ngClass]="shop.promo?.active ? 'promo-active' : 'promo-inactive'"
-          (click)="togglePromo(shop)"
+          class="status-chip"
+          [ngClass]="shop.active ? 'status-active' : 'status-inactive'"
+          (click)="toggleBlockUser(shop)"
         >
-          {{ shop.promo?.active ? "Active" : "Inactive" }}
-          <span class="promo-type" *ngIf="shop.promo?.type">
-            ({{ shop.promo.type }})
+          <span class="status-bullet"></span>
+          <span class="status-label">
+            {{
+              shop.active
+                ? ("ADMIN_SHOP.ACTIVE" | translate)
+                : ("ADMIN_SHOP.INACTIVE" | translate)
+            }}
           </span>
         </span>
+      </td>
+    </ng-container>
+
+    <!-- 📂 Vérification documents Column -->
+    <ng-container matColumnDef="verification">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "ADMIN_SHOP.DOCUMENTS" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let shop">
+        <div
+          class="verification-wrapper"
+          [ngClass]="isFullyVerified(shop) ? 'verification-ok' : 'verification-ko'"
+        >
+          <span class="verification-main-label">
+            {{
+              isFullyVerified(shop)
+                ? ("ADMIN_SHOP.DOCS_OK" | translate)
+                : ("ADMIN_SHOP.DOCS_NOT_VALID" | translate)
+            }}
+          </span>
+
+          <div class="verification-dots">
+            <span
+              class="doc-dot"
+              *ngFor="let doc of ['identity', 'insurance', 'kbis']"
+              [ngClass]="getDocStatusClass(shop, doc)"
+              [attr.title]="getDocStatusTooltip(shop, doc)"
+            ></span>
+          </div>
+        </div>
       </td>
     </ng-container>
 
@@ -124,15 +143,6 @@
             (click)="editShop(shop)"
           >
             <i class="fa fa-pencil"></i>
-          </button>
-          <button
-            class="icon-button status"
-            mat-raised-button
-            [ngClass]="shop.active ? 'unlocked' : 'locked'"
-            (click)="toggleBlockUser(shop)"
-          >
-            <i *ngIf="shop.active" class="fa fa-ban"></i>
-            <i *ngIf="!shop.active" class="fa fa-check"></i>
           </button>
         </div>
       </td>
@@ -470,7 +480,6 @@
     <button class="doc-modal-close" (click)="closePreview()">✕</button>
 
     <ng-container [ngSwitch]="previewType">
-
       <!-- Image -->
       <img
         *ngSwitchCase="'image'"
@@ -493,7 +502,6 @@
           Ouvrir dans un nouvel onglet
         </a>
       </div>
-
     </ng-container>
   </div>
 </div>

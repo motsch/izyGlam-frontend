@@ -97,6 +97,19 @@ export class UserService {
     }
 
     /**
+     * Réinitialise le mot de passe d'un employé (coté admin / entreprise)
+     * @param employeeId ID de l'employé
+     */
+    resetEmployeePassword(employeeId: string) {
+        // ⚠️ Assure-toi que le backend expose bien cette route :
+        // POST /users/:id/reset-company-password
+        return this.http.post<any>(
+            environment.apiUrl + 'users/' + employeeId + '/reset-company-password',
+            {}
+        );
+    }
+
+    /**
      * Met à jour les infos du user
      * @param user (info du user à mettre à jour)
      */
@@ -176,6 +189,8 @@ export class UserService {
     subscribeToPlan(plan: string, durationInMonths: number) {
         return this.http.post<any>(environment.apiUrl + 'users-subscribe', { newPlan: plan, durationInMonths });
     }
+
+
 
 
 }

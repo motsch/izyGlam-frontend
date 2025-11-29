@@ -84,6 +84,11 @@
     box-shadow: none;
     transform: none;
   }
+
+  &.small {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
 }
 
 .btn-primary-outline {
@@ -102,6 +107,10 @@
     color: #fff;
     box-shadow: 0 8px 18px rgba(255, 79, 139, 0.3);
   }
+
+  &.subtle {
+    border-style: dashed;
+  }
 }
 
 .btn-secondary {
@@ -117,6 +126,30 @@
 
   &:hover {
     background: #ececec;
+  }
+
+  &.small {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+}
+
+.btn-text {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 12px;
+  color: #ff4f8b;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &.subtle {
+    color: #d9487e;
+  }
+
+  &:hover {
+    color: #ff4f8b;
   }
 }
 
@@ -286,36 +319,247 @@
   transition: max-height 0.25s ease;
 
   &.open {
-    max-height: 400px;
+    max-height: 900px; /* assez grand pour le contenu + animations */
   }
 }
 
 .company-panel-inner {
-  padding: 8px 16px 14px;
+  padding: 12px 16px 14px;
   border-top: 1px solid #ffe4ef;
   background: #fffafc;
 }
 
+/* --- Budget header (2 cartes) --- */
+
+.company-budget-header {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.budget-card {
+  border-radius: 16px;
+  border: 1px solid #ffe4ef;
+  background: #fff7fb;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &.total {
+    background: #fff9fc;
+  }
+
+  &.employees {
+    background: #fff5fb;
+  }
+}
+
+.budget-title {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.budget-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 2px;
+}
+
+.budget-edit-link {
+  margin-top: 2px;
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  color: #ff4f8b;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.budget-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.budget-main-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.budget-remaining {
+  font-size: 12px;
+  color: #999;
+
+  span {
+    font-weight: 500;
+    margin-left: 4px;
+
+    &.positive {
+      color: #39953a;
+    }
+
+    &.zero {
+      color: #999;
+    }
+  }
+}
+
+.budget-round-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Boutons ronds */
+
+.round-icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid #ffbcd7;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 79, 139, 0.15);
+  transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(135deg, #ff4f8b, #ff8fb3);
+    box-shadow: 0 8px 18px rgba(255, 79, 139, 0.35);
+    transform: translateY(-1px);
+
+    .round-icon-symbol {
+      color: #fff;
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+    box-shadow: none;
+  }
+}
+
+.round-icon-symbol {
+  font-size: 15px;
+  color: #ff4f8b;
+}
+
+/* Header collaborateurs */
+
+.company-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 6px;
+}
+
+.company-panel-actions-left,
+.company-panel-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.collab-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.collab-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #444;
+}
+
+.collab-subtitle {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Bloc mot de passe */
+
+.company-password-settings {
+  margin: 6px 0 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px dashed #ffc6de;
+  background: #fff9fd;
+}
+
+.password-header {
+  margin-bottom: 6px;
+
+  .password-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #444;
+  }
+
+  .password-caption {
+    font-size: 11px;
+    color: #999;
+  }
+}
+
+.password-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.password-input-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid #f0d4e2;
+  background: #fff;
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px 10px 8px 14px;
+    font-size: 13px;
+    border-radius: 999px;
+    background: transparent;
+  }
+
+  .icon-button.small {
+    margin-right: 6px;
+  }
+}
+
+.password-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.password-hint {
+  margin: 0;
+  font-size: 11px;
+  color: #b18aa3;
+}
+
+/* Ancienne classe (compat éventuelle) */
 .company-panel-actions {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 8px;
-}
-
-.btn-outline-small {
-  border-radius: 999px;
-  border: 1px dashed #ff4f8b;
-  padding: 4px 10px;
-  font-size: 11px;
-  background: #fff;
-  color: #ff4f8b;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-
-  &:hover {
-    background: #ff4f8b;
-    color: #fff;
-  }
 }
 
 /* --- Employees --- */
@@ -335,11 +579,20 @@
   background: #ffffff;
   border: 1px solid #ffe4ef;
   cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
 
   &:hover {
     box-shadow: 0 6px 16px rgba(255, 79, 139, 0.12);
     transform: translateY(-1px);
+  }
+
+  &.inactive {
+    background: #fff3f8;
+    opacity: 0.7;
+
+    .employee-name {
+      color: #999;
+    }
   }
 }
 
@@ -359,10 +612,21 @@
 .employee-info {
   flex: 1;
 
+  .employee-name-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 2px;
+  }
+
   .employee-name {
     font-size: 14px;
     font-weight: 600;
     color: #444;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .employee-meta {
@@ -374,6 +638,7 @@
       display: flex;
       align-items: center;
       gap: 4px;
+      flex-wrap: wrap;
 
       .dot {
         font-size: 10px;
@@ -382,7 +647,107 @@
   }
 }
 
+/* Badge rôle (employee / manager / executive) */
+.badge-role {
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 500;
+  border: 1px solid #ffd0e4;
+  background: #fff7fc;
+  color: #d05280;
+}
+
+/* Edition du crédit employé */
+.credit-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.credit-input {
+  width: 70px;
+  border-radius: 10px;
+  border: 1px solid #f0d4e2;
+  padding: 4px 6px;
+  font-size: 12px;
+  outline: none;
+  text-align: right;
+
+  &:focus {
+    border-color: #ff4f8b;
+    box-shadow: 0 0 0 1px rgba(255, 79, 139, 0.15);
+  }
+}
+
+.employee-active-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.switch-label {
+  font-size: 11px;
+  color: #999;
+}
+
+/* Toggle switch (actif / inactif) */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ddd;
+  transition: 0.2s;
+  border-radius: 999px;
+
+  &::before {
+    position: absolute;
+    content: '';
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: #fff;
+    transition: 0.2s;
+    border-radius: 50%;
+  }
+}
+
+input:checked + .slider {
+  background: linear-gradient(135deg, #ff4f8b, #ff8fb3);
+}
+
+input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.slider.round {
+  border-radius: 999px;
+}
+
+/* CTA Voir bookings + reset MDP */
 .employee-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+
   .btn-outline {
     border-radius: 999px;
     border: 1px solid #ff4f8b;
@@ -396,6 +761,21 @@
     &:hover {
       background: #ff4f8b;
       color: #fff;
+    }
+  }
+
+  .btn-text-danger {
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 11px;
+    color: #d9487e;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: #ff4f8b;
     }
   }
 }
@@ -493,6 +873,10 @@
 
   &:hover {
     color: #ff4f8b;
+  }
+
+  &.small {
+    font-size: 14px;
   }
 }
 
@@ -699,6 +1083,10 @@
   .company-stats {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .company-budget-header {
+    grid-template-columns: 1fr;
   }
 }
 

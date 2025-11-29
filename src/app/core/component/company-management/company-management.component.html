@@ -9,6 +9,7 @@
 
   <!-- Statistiques / Crédit entreprise -->
   <div class="stats-row">
+    <!-- Carte 1 : Crédit total entreprise -->
     <div class="stat-card">
       <div class="stat-label">Crédit total entreprise</div>
 
@@ -16,36 +17,19 @@
         <div class="stat-value">
           {{ totalCompanyCredit | number: '1.0-0' }} €
         </div>
-        <button
-          type="button"
-          class="btn-link"
-          (click)="startEditCompanyCredit()"
-        >
+        <button type="button" class="btn-link" (click)="startEditCompanyCredit()">
           Modifier
         </button>
       </div>
 
       <div class="stat-edit-wrapper" *ngIf="editingCompanyCredit">
-        <input
-          type="number"
-          [ngModel]="editedCompanyCredit"
-          (ngModelChange)="editedCompanyCredit = $event"
-          min="0"
-        />
+        <input type="number" [ngModel]="editedCompanyCredit" (ngModelChange)="editedCompanyCredit = $event" min="0" />
         <div class="stat-edit-actions">
-          <button
-            type="button"
-            class="btn-secondary small"
-            (click)="cancelEditCompanyCredit()"
-          >
+          <button type="button" class="btn-secondary small" (click)="cancelEditCompanyCredit()">
             Annuler
           </button>
-          <button
-            type="button"
-            class="btn-primary small"
-            [disabled]="savingCompanyCredit"
-            (click)="saveCompanyCredit()"
-          >
+          <button type="button" class="btn-primary small" [disabled]="savingCompanyCredit"
+            (click)="saveCompanyCredit()">
             <span *ngIf="!savingCompanyCredit">Enregistrer</span>
             <span *ngIf="savingCompanyCredit">Enregistrement...</span>
           </button>
@@ -53,19 +37,41 @@
       </div>
     </div>
 
-    <div class="stat-card">
-      <div class="stat-label">Crédit alloué aux employés</div>
-      <div class="stat-value">
-        {{ totalAllocatedCredit | number: '1.0-0' }} €
-      </div>
-      <div class="stat-sub">
-        <span
-          [class.negative]="remainingCredit < 0"
-          [class.positive]="remainingCredit >= 0"
-        >
-          Reste à allouer :
-          {{ remainingCredit | number: '1.0-0' }} €
-        </span>
+    <!-- Carte 2 : Crédit alloué + reste + 2 boutons ronds -->
+    <div class="stat-card stat-card-employees">
+      <div class="stat-top-row">
+        <div>
+          <div class="stat-label">Crédit alloué aux employés</div>
+          <div class="stat-value">
+            {{ totalAllocatedCredit | number: '1.0-0' }} €
+          </div>
+          <div class="stat-sub">
+            <span [class.negative]="remainingCredit < 0" [class.positive]="remainingCredit >= 0">
+              Reste à allouer :
+              {{ remainingCredit | number: '1.0-0' }} €
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-round-actions">
+          <!-- Bouton rond 1 : reset crédits employés -->
+          <button type="button" class="round-icon-btn"
+            title="Remettre les crédits de tous les employés au montant mensuel de base" (click)="resetAllocations()"
+            [disabled]="loadingEmployees || !employees.length">
+            <span class="round-icon-symbol">↺</span>
+          </button>
+
+          <!-- Bouton rond 2 : répartir équitablement le reste -->
+          <button type="button" class="round-icon-btn"
+            title="Répartir équitablement le crédit restant entre les employés actifs"
+            (click)="distributeRemainingCredit()" [disabled]="
+              loadingEmployees ||
+              !employees.length ||
+              remainingCredit <= 0
+            ">
+            <span class="round-icon-symbol">⇆</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -80,13 +86,49 @@
         </span>
       </div>
 
-      <button
-        type="button"
-        class="btn-primary-outline"
-        (click)="openEmployeeCreateModal()"
-      >
-        + Ajouter un employé
-      </button>
+      <div class="card-header-right">
+        <button type="button" class="btn-text subtle" (click)="togglePasswordSettings()">
+          Réinitialiser les mots de passe
+        </button>
+
+        <button type="button" class="btn-primary-outline" (click)="openEmployeeCreateModal()">
+          + Ajouter un employé
+        </button>
+      </div>
+    </div>
+
+    <!-- Bloc param mot de passe par défaut -->
+    <div class="password-settings" *ngIf="showPasswordSettings">
+      <div class="password-header">
+        <div class="password-title">Mot de passe par défaut</div>
+        <div class="password-caption">
+          Utilisé lors de la réinitialisation du mot de passe d’un collaborateur.
+        </div>
+      </div>
+
+      <div class="password-input-row">
+        <div class="password-input-wrapper">
+          <input [type]="passwordVisible ? 'text' : 'password'" [(ngModel)]="defaultPassword" />
+          <button type="button" class="icon-button small" (click)="togglePasswordVisibility()">
+            <span *ngIf="!passwordVisible">👁️</span>
+            <span *ngIf="passwordVisible">🙈</span>
+          </button>
+        </div>
+
+        <div class="password-actions">
+          <button type="button" class="btn-secondary small" (click)="togglePasswordSettings()">
+            Annuler
+          </button>
+          <button type="button" class="btn-primary small" (click)="saveDefaultPassword()">
+            Enregistrer
+          </button>
+        </div>
+      </div>
+
+      <p class="password-hint">
+        Tu peux communiquer ce mot de passe à ton contact entreprise pour qu’il le
+        partage à ses collaborateurs en cas de réinitialisation.
+      </p>
     </div>
 
     <div class="card-body">
@@ -95,19 +137,12 @@
         <span>Chargement des employés...</span>
       </div>
 
-      <div
-        *ngIf="!loadingEmployees && employees.length === 0"
-        class="empty-state"
-      >
+      <div *ngIf="!loadingEmployees && employees.length === 0" class="empty-state">
         <p>Aucun employé pour le moment.</p>
       </div>
 
       <div class="employee-list" *ngIf="!loadingEmployees && employees.length">
-        <div
-          class="employee-row"
-          *ngFor="let employee of employees"
-          (click)="openEmployeeModal(employee)"
-        >
+        <div class="employee-row" *ngFor="let employee of employees">
           <div class="employee-main">
             <div class="employee-info">
               <div class="employee-avatar">
@@ -130,44 +165,29 @@
             <div class="employee-credit">
               <label>Crédit</label>
               <div class="credit-input-wrapper">
-                <input
-                  type="number"
-                  [ngModel]="employee.credit"
-                  (ngModelChange)="onEmployeeCreditChange(employee, $event)"
-                  min="0"
-                  (click)="$event.stopPropagation()"
-                />
+                <input type="number" [ngModel]="employee.credit"
+                  (ngModelChange)="onEmployeeCreditChange(employee, $event)" min="0"
+                  (click)="$event.stopPropagation()" />
                 <span>€</span>
               </div>
-              <button
-                type="button"
-                class="btn-outline-small"
-                (click)="saveEmployeeCredit(employee, $event)"
-              >
+              <button type="button" class="btn-outline-small" (click)="saveEmployeeCredit(employee, $event)">
                 Mettre à jour
               </button>
             </div>
 
             <div class="employee-actions">
-              <button
-                type="button"
-                class="btn-ghost"
-                (click)="resetEmployeePassword(employee, $event)"
-              >
+              <button type="button" class="btn-ghost" (click)="resetEmployeePassword(employee, $event)">
                 Réinit. mot de passe
               </button>
-              <button
-                type="button"
-                class="btn-ghost danger"
-                (click)="deactivateEmployee(employee, $event)"
-              >
-                Désactiver
-              </button>
-              <button
-                type="button"
-                class="btn-outline"
-                (click)="openEmployeeModal(employee); $event.stopPropagation()"
-              >
+              <label class="switch">
+                <input type="checkbox" [checked]="employee.active !== false" (click)="$event.stopPropagation()"
+                  (change)="deactivateEmployee(employee, $event)" />
+                <span class="slider round"></span>
+              </label>
+              <span class="switch-label">
+                {{ employee.active === false ? 'Inactif' : 'Actif' }}
+              </span>
+              <button type="button" class="btn-outline" (click)="openEmployeeModal(employee); $event.stopPropagation()">
                 Voir les bookings
               </button>
             </div>
@@ -188,11 +208,7 @@
               <p>Crée un nouveau collaborateur pour l'entreprise.</p>
             </div>
           </div>
-          <button
-            type="button"
-            class="icon-button"
-            (click)="closeEmployeeCreateModal()"
-          >
+          <button type="button" class="icon-button" (click)="closeEmployeeCreateModal()">
             ✕
           </button>
         </div>
@@ -201,88 +217,46 @@
           <div class="form-row-inline">
             <div class="form-row">
               <label for="employee-firstname">Prénom</label>
-              <input
-                id="employee-firstname"
-                type="text"
-                name="firstname"
-                [(ngModel)]="newEmployee.firstname"
-                required
-              />
+              <input id="employee-firstname" type="text" name="firstname" [(ngModel)]="newEmployee.firstname"
+                required />
             </div>
             <div class="form-row">
               <label for="employee-lastname">Nom</label>
-              <input
-                id="employee-lastname"
-                type="text"
-                name="lastname"
-                [(ngModel)]="newEmployee.lastname"
-                required
-              />
+              <input id="employee-lastname" type="text" name="lastname" [(ngModel)]="newEmployee.lastname" required />
             </div>
           </div>
 
           <div class="form-row-inline">
             <div class="form-row">
               <label for="employee-email">Email</label>
-              <input
-                id="employee-email"
-                type="email"
-                name="email"
-                [(ngModel)]="newEmployee.email"
-                required
-              />
+              <input id="employee-email" type="email" name="email" [(ngModel)]="newEmployee.email" required />
             </div>
             <div class="form-row">
               <label for="employee-phone">Téléphone</label>
-              <input
-                id="employee-phone"
-                type="tel"
-                name="phone"
-                [(ngModel)]="newEmployee.phone"
-                required
-              />
+              <input id="employee-phone" type="tel" name="phone" [(ngModel)]="newEmployee.phone" required />
             </div>
           </div>
 
           <div class="form-row-inline">
             <div class="form-row">
               <label for="employee-sex">Sexe</label>
-              <select
-                id="employee-sex"
-                name="sex"
-                [(ngModel)]="newEmployee.sex"
-                required
-              >
+              <select id="employee-sex" name="sex" [(ngModel)]="newEmployee.sex" required>
                 <option value="female">Femme</option>
                 <option value="male">Homme</option>
               </select>
             </div>
             <div class="form-row">
               <label for="employee-credit">Crédit initial (€)</label>
-              <input
-                id="employee-credit"
-                type="number"
-                name="credit"
-                min="0"
-                [(ngModel)]="newEmployee.credit"
-              />
+              <input id="employee-credit" type="number" name="credit" min="0" [(ngModel)]="newEmployee.credit" />
             </div>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn-secondary"
-            (click)="closeEmployeeCreateModal()"
-          >
+          <button type="button" class="btn-secondary" (click)="closeEmployeeCreateModal()">
             Annuler
           </button>
-          <button
-            type="submit"
-            class="btn-primary"
-            [disabled]="creatingEmployee"
-          >
+          <button type="submit" class="btn-primary" [disabled]="creatingEmployee">
             <span *ngIf="!creatingEmployee">Enregistrer</span>
             <span *ngIf="creatingEmployee">Enregistrement...</span>
           </button>
@@ -306,11 +280,7 @@
             <p>{{ selectedEmployee.email }}</p>
           </div>
         </div>
-        <button
-          type="button"
-          class="icon-button"
-          (click)="closeEmployeeModal()"
-        >
+        <button type="button" class="icon-button" (click)="closeEmployeeModal()">
           ✕
         </button>
       </div>
@@ -334,17 +304,11 @@
           <span>Chargement des bookings...</span>
         </div>
 
-        <div
-          *ngIf="!loadingBookings && employeeBookings.length === 0"
-          class="empty-state"
-        >
+        <div *ngIf="!loadingBookings && employeeBookings.length === 0" class="empty-state">
           <p>Aucun booking pour cet employé.</p>
         </div>
 
-        <div
-          class="booking-table-wrapper"
-          *ngIf="!loadingBookings && employeeBookings.length > 0"
-        >
+        <div class="booking-table-wrapper" *ngIf="!loadingBookings && employeeBookings.length > 0">
           <table class="booking-table">
             <colgroup>
               <col class="col-date" />
