@@ -153,7 +153,7 @@
 
 .table-header {
   display: grid;
-  grid-template-columns: 3fr 1.5fr 2.2fr 1.6fr 3fr 0.8fr;
+  grid-template-columns: 3fr 1.5fr 2.2fr 1.6fr 2.1fr 3fr 0.8fr;
   padding: 10px 24px;
   font-size: 11px;
   color: #c58eb4;
@@ -164,7 +164,7 @@
 
 .table-row {
   display: grid;
-  grid-template-columns: 3fr 1.5fr 2.2fr 1.6fr 3fr 0.8fr;
+  grid-template-columns: 3fr 1.5fr 2.2fr 1.6fr 2.1fr 3fr 0.8fr;
   padding: 12px 24px;
   border-top: 1px solid #ffe0f1;
   align-items: flex-start;
@@ -303,6 +303,65 @@
   margin-top: 4px;
   font-size: 11px;
   color: #9a6a87;
+}
+
+/* 🆕 Colonne état des emails */
+.col-drip {
+  display: flex;
+  align-items: center;
+}
+
+.drip-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 170px;
+  padding: 4px 10px 4px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 500;
+  gap: 10px;
+
+  .drip-main-label {
+    white-space: nowrap;
+  }
+
+  .drip-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.drip-none {
+  background: #fff1f7;
+  color: #d64784;
+  border-color: #ffd0e3;
+}
+
+.drip-partial {
+  background: #fffaf1;
+  color: #b47a32;
+  border-color: #ffe0b3;
+}
+
+.drip-full {
+  background: #e7ffe9;
+  color: #248c3c;
+  border-color: #c3f5cd;
+}
+
+.drip-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04);
+  background: #d1d5db;
+
+  &.drip-dot--sent {
+    background: #ff7ab8;
+  }
 }
 
 .col-notes textarea {

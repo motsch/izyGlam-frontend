@@ -6,19 +6,35 @@
 
   <div class="toolbar">
     <div class="search-wrapper">
-      <input type="text" placeholder="Rechercher une entreprise, une ville, un site..." [(ngModel)]="searchTerm"
-        (ngModelChange)="onSearchChange($event)" />
+      <input
+        type="text"
+        placeholder="Rechercher une entreprise, une ville, un site..."
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange($event)"
+      />
     </div>
 
     <div class="toolbar-right">
       <div class="filter-chip-group">
-        <button class="chip" [class.chip--active]="filterHasEmail === 'all'" (click)="onFilterHasEmailChange('all')">
+        <button
+          class="chip"
+          [class.chip--active]="filterHasEmail === 'all'"
+          (click)="onFilterHasEmailChange('all')"
+        >
           Tous
         </button>
-        <button class="chip" [class.chip--active]="filterHasEmail === 'yes'" (click)="onFilterHasEmailChange('yes')">
+        <button
+          class="chip"
+          [class.chip--active]="filterHasEmail === 'yes'"
+          (click)="onFilterHasEmailChange('yes')"
+        >
           Avec email
         </button>
-        <button class="chip" [class.chip--active]="filterHasEmail === 'no'" (click)="onFilterHasEmailChange('no')">
+        <button
+          class="chip"
+          [class.chip--active]="filterHasEmail === 'no'"
+          (click)="onFilterHasEmailChange('no')"
+        >
           Sans email
         </button>
       </div>
@@ -39,25 +55,29 @@
     </div>
 
     <div class="table">
+      <!-- HEADER -->
       <div class="table-header">
         <div class="col col-company">Entreprise</div>
         <div class="col col-city">Ville</div>
         <div class="col col-email">Email</div>
         <div class="col col-status">Statut</div>
+        <div class="col col-drip">Emails</div>
         <div class="col col-notes">Notes</div>
         <div class="col col-actions">Actions</div>
       </div>
 
-      <div class="table-row" *ngFor="let lead of filteredLeads" (mouseleave)="hideEmailsPopover()">
+      <!-- ROWS -->
+      <div
+        class="table-row"
+        *ngFor="let lead of filteredLeads"
+        (mouseleave)="hideEmailsPopover()"
+      >
+        <!-- ENTREPRISE -->
         <div class="col col-company">
           <div class="company-main">
             <div class="avatar">
               <span>
-                {{
-                lead.companyName
-                ? lead.companyName.charAt(0).toUpperCase()
-                : "?"
-                }}
+                {{ lead.companyName ? lead.companyName.charAt(0).toUpperCase() : "?" }}
               </span>
             </div>
             <div class="company-text">
@@ -76,6 +96,7 @@
           </div>
         </div>
 
+        <!-- VILLE -->
         <div class="col col-city">
           <div class="city-main">
             <span class="city-name">{{ lead.city || "—" }}</span>
@@ -88,8 +109,15 @@
         <!-- EMAIL + POPOVER -->
         <div class="col col-email">
           <div class="email-wrapper">
-            <div class="email-badge" [class.email-badge--empty]="!lead.contactEmail">
-              <span *ngIf="lead.contactEmail; else noEmail" style="cursor: pointer" (click)="showEmailsPopover(lead)">
+            <div
+              class="email-badge"
+              [class.email-badge--empty]="!lead.contactEmail"
+            >
+              <span
+                *ngIf="lead.contactEmail; else noEmail"
+                style="cursor: pointer"
+                (click)="showEmailsPopover(lead)"
+              >
                 {{ lead.contactEmail }}
               </span>
               <ng-template #noEmail>
@@ -97,13 +125,21 @@
               </ng-template>
             </div>
 
-            <div *ngIf="lead.extraEmails?.length" class="extra-email-count" style="cursor: pointer" (click)="showEmailsPopover(lead)">
+            <div
+              *ngIf="lead.extraEmails?.length"
+              class="extra-email-count"
+              style="cursor: pointer"
+              (click)="showEmailsPopover(lead)"
+            >
               +{{ lead.extraEmails.length }}
               email{{ lead.extraEmails.length > 1 ? "s" : "" }}
 
               <!-- Popover liste d'emails -->
               <div class="email-popover" *ngIf="hoveredLeadId === lead._id">
-                <div class="email-popover-item email-popover-item--primary" *ngIf="lead.contactEmail">
+                <div
+                  class="email-popover-item email-popover-item--primary"
+                  *ngIf="lead.contactEmail"
+                >
                   {{ lead.contactEmail }}
                   <span class="email-label">Principal</span>
                 </div>
@@ -116,32 +152,84 @@
           </div>
         </div>
 
+        <!-- STATUT -->
         <div class="col col-status">
-          <span class="status-pill" [ngClass]="{
+          <span
+            class="status-pill"
+            [ngClass]="{
               'status-pill--new': lead.status === 'new',
               'status-pill--drip': lead.status === 'in_drip',
               'status-pill--meeting': lead.status === 'meeting_scheduled',
               'status-pill--won': lead.status === 'won',
               'status-pill--lost': lead.status === 'lost'
-            }">
+            }"
+          >
             {{ getStatusLabel(lead) }}
           </span>
 
           <div class="contact-flag" *ngIf="hasBeenContacted(lead)">
-            Contacté le
-            {{ lead.lastContactAt | date: "shortDate" }}
+            Contacté le {{ lead.lastContactAt | date: "shortDate" }}
           </div>
         </div>
 
-        <div class="col col-notes">
-          <textarea [(ngModel)]="lead.notes" (blur)="saveNotes(lead)" placeholder="Ajouter un commentaire..."
-            [disabled]="savingId === lead._id"></textarea>
+        <!-- 🆕 ETAT DES EMAILS -->
+        <div class="col col-drip">
+          <div class="drip-wrapper" [ngClass]="getDripWrapperClass(lead)">
+            <span class="drip-main-label">
+              {{ getDripMainLabel(lead) }}
+            </span>
+
+            <div class="drip-dots">
+              <span
+                class="drip-dot"
+                *ngFor="let step of [1,2,3,4,5]"
+                [ngClass]="{ 'drip-dot--sent': isEmailSent(lead, step) }"
+                [attr.title]="getEmailTooltip(lead, step)"
+              ></span>
+            </div>
+          </div>
         </div>
 
+        <!-- NOTES -->
+        <div class="col col-notes">
+          <textarea
+            [(ngModel)]="lead.notes"
+            (blur)="saveNotes(lead)"
+            placeholder="Ajouter un commentaire..."
+            [disabled]="savingId === lead._id"
+          ></textarea>
+        </div>
+
+        <!-- ACTIONS -->
         <div class="col col-actions">
-          <button class="icon-btn" [class.icon-btn--success]="hasBeenContacted(lead)" (click)="markContacted(lead)"
-            [disabled]="savingId === lead._id" title="Marquer comme contacté">
+          <button
+            class="icon-btn"
+            [class.icon-btn--success]="hasBeenContacted(lead)"
+            (click)="markContacted(lead)"
+            [disabled]="savingId === lead._id"
+            title="Marquer comme contacté"
+          >
             ✔
+          </button>
+
+          <!-- Envoyer prochain email -->
+          <button
+            class="icon-btn icon-btn--email"
+            (click)="sendNextEmail(lead)"
+            [disabled]="
+              sendingEmailId === lead._id ||
+              !lead.contactEmail ||
+              getNextEmailStep(lead) === null
+            "
+            [title]="
+              !lead.contactEmail
+                ? 'Aucun email disponible pour ce lead'
+                : getNextEmailStep(lead) === null
+                ? 'Tous les emails ont déjà été envoyés'
+                : 'Envoyer l\'email ' + getNextEmailStep(lead)
+            "
+          >
+            ✉
           </button>
         </div>
       </div>

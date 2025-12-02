@@ -21,10 +21,24 @@ export class CompanyManagementComponent implements OnInit, OnChanges {
 
   employees: any[] = [];
   loadingEmployees = false;
-
   // Stats crédits
   get totalCompanyCredit(): number {
     return this.company?.credit || 0;
+  }
+
+  // Company employee crédits
+  get employeeCredit(): number {
+    return this.company?.roleCreditConfig.employee || 0;
+  }
+
+  // Company employee crédits
+  get managerCredit(): number {
+    return this.company?.roleCreditConfig.manager || 0;
+  }
+
+  // Company employee crédits
+  get executiveCredit(): number {
+    return this.company?.roleCreditConfig.executive || 0;
   }
 
   get totalAllocatedCredit(): number {

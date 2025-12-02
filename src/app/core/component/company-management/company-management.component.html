@@ -74,6 +74,46 @@
         </div>
       </div>
     </div>
+
+    <!-- Carte 3 : Crédit total entreprise -->
+    <div class="stat-card">
+
+      <div class="employee-credit">
+        <label>Crédit par défaut: Employés</label>
+        <div class="credit-input-wrapper">
+          <input type="number" [ngModel]="employeeCredit" (ngModelChange)="saveCompanyCredit()" min="0"
+            (click)="$event.stopPropagation()" />
+          <span>€</span>
+        </div>
+        <button type="button" class="btn-outline-small" (click)="saveCompanyCredit()">
+          Mettre à jour
+        </button>
+      </div>
+
+      <div class="employee-credit">
+        <label>Crédit par défaut: Managers</label>
+        <div class="credit-input-wrapper">
+          <input type="number" [ngModel]="managerCredit" (ngModelChange)="saveCompanyCredit()" min="0"
+            (click)="$event.stopPropagation()" />
+          <span>€</span>
+        </div>
+        <button type="button" class="btn-outline-small" (click)="saveCompanyCredit()">
+          Mettre à jour
+        </button>
+      </div>
+
+      <div class="employee-credit">
+        <label>Crédit par défaut: Direction</label>
+        <div class="credit-input-wrapper">
+          <input type="number" [ngModel]="executiveCredit" (ngModelChange)="saveCompanyCredit()" min="0"
+            (click)="$event.stopPropagation()" />
+          <span>€</span>
+        </div>
+        <button type="button" class="btn-outline-small" (click)="saveCompanyCredit()">
+          Mettre à jour
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Liste des employés -->

@@ -47,4 +47,13 @@ export class B2BLeadService {
       {}
     );
   }
+
+
+  
+  sendDripEmail(leadId: string, step: number) {
+    return this.http.post<any>(
+      `${this.baseUrl}/${leadId}/send-email/${step}`,
+      {}
+    );
+  }
 }

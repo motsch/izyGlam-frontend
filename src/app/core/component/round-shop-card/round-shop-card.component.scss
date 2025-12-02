@@ -42,14 +42,20 @@ h3 { font-size: 18px; }
 .image-container {
   position: relative;
   width: var(--card-diameter);
-  height: var(--card-diameter);
+  /* On force un vrai carré */
+  aspect-ratio: 1 / 1;
+  height: auto;
   margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden; // coupe tout ce qui dépasse pour garder le cercle
 }
 
 .image-wrapper {
   position: relative;
-  width: var(--card-diameter);
-  height: var(--card-diameter);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 /* Images */
@@ -57,11 +63,15 @@ h3 { font-size: 18px; }
 .overlay-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+  object-fit: cover;   // garde les proportions de l’image
+  border-radius: 50%;  // cercle parfait
+  display: block;      // évite les petits espaces inline
 }
 
-.main-image { position: relative; }
+.main-image {
+  position: relative;
+}
+
 .overlay-image {
   position: absolute;
   inset: 0;
@@ -74,6 +84,7 @@ h3 { font-size: 18px; }
   box-shadow: 0 2px 4px rgba(0,0,0,.1);
   border-radius: 50%;
 }
+
 
 /* Texte */
 .profile-info { margin-top: 12px; }
