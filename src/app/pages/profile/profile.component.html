@@ -179,26 +179,26 @@
           <mat-tab [label]="'TABS.STATS' | translate" color="primary">
             <app-admin></app-admin>
           </mat-tab>
-          <mat-tab [label]="'TABS.PARAM' | translate">
-            <app-admin-param></app-admin-param>
+          <mat-tab [label]="'TABS.USERS' | translate">
+            <app-admin-clients-management></app-admin-clients-management>
+          </mat-tab>
+          <mat-tab [label]="'TABS.COMPANY' | translate">
+            <app-admin-company-management></app-admin-company-management>
           </mat-tab>
           <mat-tab [label]="'TABS.SHOPS' | translate">
             <app-admin-shops-management></app-admin-shops-management>
           </mat-tab>
-          <mat-tab label="Les entreprises">
-            <app-admin-company-management></app-admin-company-management>
-          </mat-tab>
-          <mat-tab label="La communication">
+          <mat-tab [label]="'TABS.COM' | translate">
             <app-post></app-post>
           </mat-tab>
-          <mat-tab label="BtoB Leads">
+          <mat-tab [label]="'TABS.B2BLEAD' | translate">
             <app-admin-b2b-lead-management></app-admin-b2b-lead-management>
           </mat-tab>
-          <mat-tab label="Pro Leads">
+          <mat-tab [label]="'TABS.PROLEAD' | translate">
             <app-admin-pro-lead-management></app-admin-pro-lead-management>
           </mat-tab>
-          <mat-tab [label]="'TABS.USERS' | translate">
-            <app-admin-clients-management></app-admin-clients-management>
+          <mat-tab [label]="'TABS.PARAM' | translate">
+            <app-admin-param></app-admin-param>
           </mat-tab>
           <mat-tab [label]="'TABS.MESSAGE' | translate">
             <app-admin-messagerie></app-admin-messagerie>

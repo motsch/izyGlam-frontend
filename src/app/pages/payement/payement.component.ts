@@ -40,6 +40,10 @@ export class PayementComponent implements OnInit {
   step = 1; // Étapes du process (UI)
   loading = false; // Loader global du composant
 
+  paymentMode: 'card' | 'employee_credit' = 'card';
+  employeeCreditAmount: number = 0; // à alimenter depuis ton backend
+
+
   // -----------------------------
   // Données métier
   // -----------------------------
@@ -210,6 +214,12 @@ export class PayementComponent implements OnInit {
     });
   }
 
+  selectEmployeeCredit(): void {
+    this.paymentMode = 'employee_credit';
+    this.selectedCardId = null as any; // ou undefined, selon ton type
+  }
+
+
   // -------------------------------------------------------------
   // 💶 Calcule le prix final (commission + TVA) arrondi à 2 déc.
   // -------------------------------------------------------------
@@ -241,6 +251,8 @@ export class PayementComponent implements OnInit {
   // 🂡 Sélectionne une carte Stripe par ID
   // -------------------------------------------------------------
   selectCard(cardId: string) {
+
+    this.paymentMode = 'card';
     this.selectedCardId = cardId;
   }
 

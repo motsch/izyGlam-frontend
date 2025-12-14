@@ -489,3 +489,37 @@ input[type="radio"]:checked {
     transform: rotate(360deg);
   }
 }
+
+
+.employee-credit-option {
+  background: #fff;
+  border: 2px dashed #ffb3d1;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: #ff4081;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  }
+
+  &.selected {
+    border-color: #ff4081;
+    background: #fff0f7;
+  }
+}
+
+.employee-credit-badge {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff4081;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #ff4081;
+  background-color: #ffe5ef;
+}

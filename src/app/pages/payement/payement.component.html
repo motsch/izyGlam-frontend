@@ -60,7 +60,8 @@
 
               <div class="payment-method">
                 <div *ngIf="cards.length > 0">
-                  <div *ngFor="let card of cards" class="card-option" [class.selected]="card.id === selectedCardId"
+                  <div *ngFor="let card of cards" class="card-option"
+                    [class.selected]="paymentMode === 'card' && card.id === selectedCardId"
                     (click)="selectCard(card.id)">
                     <div class="card-info">
                       <i class="fa fa-credit-card card-icon"></i>
@@ -94,7 +95,25 @@
                   <app-stripe-card-form [userId]="me._id" (cardAdded)="onCardAdded($event)"></app-stripe-card-form>
                 </div>
               </div>
+              <!-- Option paiement par crédit employé -->
 
+              <h3 class="section-title margin-top-30">{{ 'PAYEMENT.CREDIT_PAY' | translate }}</h3>
+              <div class="employee-credit-option" [class.selected]="paymentMode === 'employee_credit'"
+                (click)="selectEmployeeCredit()">
+                <div class="card-info">
+                  <i class="fa fa-wallet card-icon"></i>
+                  <div>
+                    <h4>{{ 'PAYEMENT.EMPLOYEE_CREDIT_TITLE' | translate }}</h4>
+                    <p *ngIf="me.credit > 0">
+                      {{ 'PAYEMENT.EMPLOYEE_CREDIT_AVAILABLE' | translate }}
+                      {{ me.credit | currency:'EUR':'symbol':'1.2-2':'fr' }}
+                    </p>
+                    <p *ngIf="me.credit === 0">
+                      {{ 'PAYEMENT.EMPLOYEE_CREDIT_EMPTY' | translate }}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -103,8 +122,8 @@
             <div class="appointment-right">
               <!-- Infos du shop -->
               <div class="doctor-info">
-                <img *ngIf="shop && shop.image" [src]="imgStorageUrl + 'uploads/images/' + shop.image" [alt]="shop?.name"
-                  class="doctor-avatar" />
+                <img *ngIf="shop && shop.image" [src]="imgStorageUrl + 'uploads/images/' + shop.image"
+                  [alt]="shop?.name" class="doctor-avatar" />
                 <div class="doctor-details">
                   <p class="shop-name">{{ shop?.name }}</p>
                   <p class="shop-trad">{{ shop?.trad | translate }}</p>
@@ -121,7 +140,8 @@
                 <ul class="summary-list">
                   <li><strong>{{ 'PAYEMENT.DATE' | translate }} :</strong> {{ dateSlot }}</li>
                   <li><strong>{{ 'PAYEMENT.HOUR' | translate }} :</strong> {{ startSlot }}</li>
-                  <li *ngIf="itemToBuy2 && itemToBuy2.name"><strong>{{ 'PAYEMENT.PRESTA' | translate }} :</strong> {{ itemToBuy2.name }}</li>
+                  <li *ngIf="itemToBuy2 && itemToBuy2.name"><strong>{{ 'PAYEMENT.PRESTA' | translate }} :</strong> {{
+                    itemToBuy2.name }}</li>
                   <li><strong>{{ 'PAYEMENT.WITH' | translate }} :</strong> {{ shop?.name }}, {{ shop?.trad | translate
                     }}</li>
                   <li><strong>{{ 'PAYEMENT.TOTAL' | translate }} :</strong>
