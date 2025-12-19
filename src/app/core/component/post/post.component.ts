@@ -70,7 +70,7 @@ export class PostComponent implements OnInit {
 
     ngOnInit(): void {
         this.getAdByUserId();
-        this.loadTips();
+        // this.loadTips();
         this.userService.getMe().subscribe({
             next: (data: any) => {
                 this.me = data;

@@ -215,6 +215,23 @@
                     <span>{{ getInitials(employee) }}</span>
                   </div>
 
+                  <span class="dot">•</span>
+
+<!-- Role editable -->
+<span class="role-edit" (click)="$event.stopPropagation()">
+  Rôle :
+  <select
+    class="role-select"
+    [ngModel]="employee.companyRole || 'employee'"
+    (ngModelChange)="changeEmployeeCompanyRole(company._id, employee, $event)"
+  >
+    <option value="employee">Employé</option>
+    <option value="manager">Manager</option>
+    <option value="executive">Executive</option>
+  </select>
+</span>
+
+
                   <div class="employee-info">
                     <div class="employee-name-row">
                       <div class="employee-name">

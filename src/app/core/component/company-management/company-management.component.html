@@ -17,9 +17,9 @@
         <div class="stat-value">
           {{ totalCompanyCredit | number: '1.0-0' }} €
         </div>
-        <button type="button" class="btn-link" (click)="startEditCompanyCredit()">
+        <!--<button type="button" class="btn-link" (click)="startEditCompanyCredit()">
           Modifier
-        </button>
+        </button>-->
       </div>
 
       <div class="stat-edit-wrapper" *ngIf="editingCompanyCredit">
@@ -79,17 +79,33 @@
     <div class="stat-card">
 
       <div class="employee-credit">
-        <label>Crédit par défaut: Employés</label>
-        <div class="credit-input-wrapper">
+        <label>Crédit par défaut : Employés</label>
+
+        <div class="credit-input-wrapper" [class.is-disabled]="remainingCredit <= 0">
+
           <input type="number" [ngModel]="employeeCredit" (ngModelChange)="saveCompanyCredit()" min="0"
-            (click)="$event.stopPropagation()" />
+            [disabled]="remainingCredit <= 0" (click)="$event.stopPropagation()" />
+
           <span>€</span>
         </div>
-        <button type="button" class="btn-outline-small" (click)="saveCompanyCredit()">
+
+        <button type="button" class="btn-outline-small" (click)="saveCompanyCredit()" [disabled]="remainingCredit <= 0"
+          [class.is-disabled]="remainingCredit <= 0">
           Mettre à jour
         </button>
+
+        <div class="credit-note" *ngIf="remainingCredit <= 0">
+          <span class="credit-note__dot"></span>
+          <span>
+            Crédit entreprise épuisé.
+            La modification nécessitera un paiement (bientôt).
+          </span>
+        </div>
       </div>
 
+
+
+      <!--
       <div class="employee-credit">
         <label>Crédit par défaut: Managers</label>
         <div class="credit-input-wrapper">
@@ -113,6 +129,7 @@
           Mettre à jour
         </button>
       </div>
+      -->
     </div>
   </div>
 
@@ -202,18 +219,40 @@
               </div>
             </div>
 
+
+            <!-- Role editable -->
+            <span class="role-edit" (click)="$event.stopPropagation()">
+              Rôle :
+              <select class="role-select" [ngModel]="employee.companyRole || 'employee'"
+                (ngModelChange)="changeEmployeeCompanyRole(employee, $event)" disabled>
+                <option value="employee">Employé</option>
+                <!--<option value="manager">Manager</option>
+                <option value="executive">Executive</option>-->
+              </select>
+            </span>
             <div class="employee-credit">
               <label>Crédit</label>
-              <div class="credit-input-wrapper">
+
+              <div class="credit-input-wrapper" [class.is-disabled]="remainingCredit <= 0">
                 <input type="number" [ngModel]="employee.credit"
-                  (ngModelChange)="onEmployeeCreditChange(employee, $event)" min="0"
+                  (ngModelChange)="onEmployeeCreditChange(employee, $event)" min="0" [disabled]="remainingCredit <= 0"
                   (click)="$event.stopPropagation()" />
                 <span>€</span>
               </div>
-              <button type="button" class="btn-outline-small" (click)="saveEmployeeCredit(employee, $event)">
+
+              <button type="button" class="btn-outline-small" (click)="saveEmployeeCredit(employee, $event)"
+                [disabled]="remainingCredit <= 0" [class.is-disabled]="remainingCredit <= 0">
                 Mettre à jour
               </button>
+
+              <div class="credit-note" *ngIf="remainingCredit <= 0">
+                <span class="credit-note__dot"></span>
+                <span>
+                  Crédit entreprise épuisé. L’augmentation nécessitera un paiement (bientôt).
+                </span>
+              </div>
             </div>
+
 
             <div class="employee-actions">
               <button type="button" class="btn-ghost" (click)="resetEmployeePassword(employee, $event)">
@@ -285,12 +324,76 @@
                 <option value="male">Homme</option>
               </select>
             </div>
-            <div class="form-row">
+            <!--<div class="form-row">
               <label for="employee-credit">Crédit initial (€)</label>
               <input id="employee-credit" type="number" name="credit" min="0" [(ngModel)]="newEmployee.credit" />
+            </div>-->
+          </div>
+
+
+
+          <!--<div class="form-row-inline">
+            <div class="form-row">
+              <label for="employee-sex">Rôle</label>
+              <select id="employee-sex" name="role" [(ngModel)]="newEmployee.companyRole" required disabled>
+                <option value="employee">Employé</option>
+                <option value="manager">Manager</option>
+                <option value="executive">Executive</option>
+              </select>
+            </div>
+          </div>-->
+
+
+          <!-- Récap abonnement (fake paiement) -->
+          <div class="subscription-recap" aria-live="polite">
+            <div class="subscription-recap__top">
+              <div class="subscription-recap__title">
+                <h4>Récap abonnement</h4>
+                <p>Impact estimé de l’ajout de cet employé.</p>
+              </div>
+
+              <span class="subscription-badge">
+                Paiement requis (bientôt)
+              </span>
+            </div>
+
+            <div class="subscription-recap__grid">
+              <div class="recap-item">
+                <span class="recap-label">Abonnement actuel</span>
+                <span class="recap-value">
+                  {{ totalCompanyCredit | number:'1.0-0' }} €
+                </span>
+              </div>
+
+              <div class="recap-item recap-item--plus">
+                <span class="recap-label">Ajout (employé)</span>
+                <span class="recap-value">
+                  + {{ employeeCredit | number:'1.0-0' }} €
+                </span>
+              </div>
+
+              <div class="recap-divider"></div>
+
+              <div class="recap-item recap-item--total">
+                <span class="recap-label">Nouveau total</span>
+                <span class="recap-value">
+                  {{ (totalCompanyCredit + employeeCredit) | number:'1.0-0' }} €
+                </span>
+              </div>
+            </div>
+
+            <div class="subscription-recap__note">
+              <span class="note-dot"></span>
+              <span>
+                Le paiement sera demandé lors de la validation (prochainement). Pour l’instant, c’est une simulation.
+              </span>
             </div>
           </div>
+
+
         </div>
+
+
 
         <div class="modal-footer">
           <button type="button" class="btn-secondary" (click)="closeEmployeeCreateModal()">

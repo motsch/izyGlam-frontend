@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RdvModalComponent } from 'src/app/core/component/rdv-modal/rdv-modal.component';
@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 // ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
     selector: 'app-shop',
@@ -26,6 +27,16 @@ export class ShopComponent {
     imgStorageUrl: string = environment.imgStorageUrl;
     APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
     activeTab = 'home';
+
+
+    shareModalOpen = false;
+    qrOpen = false;
+    copied = false;
+
+    shareUrl = '';
+    shareTitle = '';
+    shareText = '';
+
 
     // Infos du shop (détails, note, images, etc.)
     shopInfo: any = {};
@@ -55,6 +66,7 @@ export class ShopComponent {
         private activatedRoute: ActivatedRoute,
         private shopService: ShopService,
         private adminService: AdminService,
+        @Inject(DOCUMENT) private document: Document,
 
         // ✅ InjectionsizyGlam
         private toastr: ToastrService,
@@ -178,5 +190,86 @@ export class ShopComponent {
         // Exemple conseillé (fr.json) :
         // "ERROR": { "GENERIC_ERROR": "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨" }
         this.toastr.error(message);
+    }
+
+    private buildSharePayload() {
+        // ✅ Mets ici TON url finale (slug / id) selon ton routing réel
+        // Exemple: https://izyglam.com/shop/123
+        const origin = this.document.location.origin;
+
+        // si tu as un slug : `/pro/${this.shopInfo.slug}`
+        // sinon : `/shop/${this.shopInfo._id}`
+        const path = `/shop/${(this as any).shopInfo?._id ?? ''}`;
+
+        this.shareUrl = `${origin}${path}`;
+        this.shareTitle = (this as any).shopInfo?.name ?? 'IzyGlam';
+        this.shareText = `Découvre ${this.shareTitle} sur IzyGlam ✨`;
+    }
+
+    async onShareClick() {
+        this.buildSharePayload();
+
+        // ✅ Web Share API si dispo (mobile surtout)
+        const nav: any = navigator as any;
+        if (nav?.share) {
+            try {
+                await nav.share({
+                    title: this.shareTitle,
+                    text: this.shareText,
+                    url: this.shareUrl
+                });
+                return;
+            } catch {
+                // si l'utilisateur annule ou erreur -> fallback modal
+            }
+        }
+
+        // ✅ Fallback desktop
+        this.openShareModal();
+    }
+
+    openShareModal() {
+        this.shareModalOpen = true;
+        this.qrOpen = false;
+        this.copied = false;
+    }
+
+    closeShareModal() {
+        this.shareModalOpen = false;
+        this.qrOpen = false;
+    }
+
+    toggleQr() {
+        this.qrOpen = !this.qrOpen;
+    }
+
+    async copyShareUrl() {
+        try {
+            await navigator.clipboard.writeText(this.shareUrl);
+            this.copied = true;
+            setTimeout(() => (this.copied = false), 1500);
+        } catch {
+            // fallback vieux navigateurs
+            const input = this.document.createElement('input');
+            input.value = this.shareUrl;
+            this.document.body.appendChild(input);
+            input.select();
+            this.document.execCommand('copy');
+            this.document.body.removeChild(input);
+
+            this.copied = true;
+            setTimeout(() => (this.copied = false), 1500);
+        }
+    }
+
+    get mailToUrl() {
+        const subject = encodeURIComponent(this.shareTitle);
+        const body = encodeURIComponent(`${this.shareText}\n\n${this.shareUrl}`);
+        return `mailto:?subject=${subject}&body=${body}`;
+    }
+
+    get whatsAppUrl() {
+        const text = encodeURIComponent(`${this.shareText} ${this.shareUrl}`);
+        return `https://wa.me/?text=${text}`;
     }
 }

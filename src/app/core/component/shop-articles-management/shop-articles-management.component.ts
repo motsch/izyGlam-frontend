@@ -7,8 +7,10 @@ import {
   Output,
   SimpleChanges,
   ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { catchError, finalize, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,6 +19,7 @@ import { ShopService } from '../../services/shop.service';
 import { ProductService } from '../../services/product.service';
 import { ColorService } from '../../services/color.service';
 import { ShopTemplateService } from '../../services/shop-template.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-shop-articles-management',
@@ -32,6 +35,8 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   @Input() me: any = {};                     // Utilisateur courant (si utile pour permissions, etc.)
   @Output() articleUpdated = new EventEmitter<string>(); // Notifie le parent pour recharger
 
+
+  @ViewChild('csvInput') csvInput!: ElementRef<HTMLInputElement>;
   // ===========================
   // État local
   // ===========================
@@ -52,6 +57,8 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   isGeneratingDescription = false;           // Spinner génération description
   isGeneratingImage = false;                 // Spinner génération image
 
+  selectedCsvFile: File | null = null;
+
   constructor(
     private productService: ProductService,
     private colorService: ColorService,
@@ -60,7 +67,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     private translate: TranslateService,
     private shopService: ShopService,
     private cd: ChangeDetectorRef
-  ) {}
+  ) { }
 
   // ===========================================================
   // Lifecycle
@@ -154,21 +161,137 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     }
   }
 
+  uploadServices() {
+    if (!this.myShopData._id) {
+      console.error("shopId manquant");
+      return;
+    }
+    if (!this.selectedCsvFile) {
+      console.error("Aucun fichier CSV sélectionné");
+      return;
+    }
+
+    this.productService.uploadServicesCsv(this.myShopData._id, this.selectedCsvFile).subscribe({
+      next: (res) => {
+        console.log("Import OK", res);
+        // Optionnel : recharger la liste des articles/services ensuite
+        // this.loadServices();
+      },
+      error: (err) => {
+        console.error("Import CSV erreur", err);
+        // si backend renvoie errors[] tu peux l’afficher
+      }
+    });
+  }
+
+
+  downloadServices() {
+    if (!this.myShopData._id) return;
+
+    this.productService.downloadServicesCsvByShop(this.myShopData._id).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.href = url;
+
+        // Nom par défaut (si le backend envoie content-disposition, ça marche aussi selon navigateur,
+        // mais on force un nom clean côté front)
+        const today = new Date().toISOString().slice(0, 10);
+        a.download = `services_${this.myShopData._id}_${today}.csv`;
+
+        document.body.appendChild(a);
+        a.click();
+
+        a.remove();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        console.error('Erreur download CSV', err);
+      },
+    });
+  }
+
+  private refreshArticles() {
+    return this.productService.getAll();
+    // ou mieux: getProductsByShop(this.shopId) si tu veux uniquement le shop courant
+  }
+
+  openCsvPicker() {
+    this.csvInput.nativeElement.click();
+  }
+
+  onCsvSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+
+    if (!file) return;
+
+    if (!file.name.toLowerCase().endsWith('.csv')) {
+      this.toast('Merci de sélectionner un fichier .csv', 'error');
+      input.value = '';
+      return;
+    }
+
+    if (!this.myShopData._id) {
+      this.toast('ShopId manquant', 'error');
+      input.value = '';
+      return;
+    }
+
+    // ✅ Upload direct après sélection
+    this.productService.uploadServicesCsv(this.myShopData._id, file).pipe(
+      // ✅ refresh de la liste derrière
+      switchMap(() => this.productService.getProductsByShop(this.myShopData._id))
+    ).subscribe({
+      next: (prods) => {
+        this.myArticlesData = prods;
+        this.toast('Services importés ✅', 'success');
+        input.value = ''; // important: permet de re-sélectionner le même fichier ensuite
+      },
+      error: (err) => {
+        console.error('[ArticlesMgmt] uploadServicesCsv ERROR:', err);
+
+        // si backend renvoie errors[]
+        const backendMsg = err?.error?.message;
+        if (backendMsg) this.toast(backendMsg, 'error');
+        else this.toast('Erreur import CSV ❌', 'error');
+
+        input.value = '';
+      }
+    });
+  }
+
   uploadImage(): void {
     try {
       if (!this.selectedFile || !this.selectedService?._id) {
         console.warn('[ArticlesMgmt] uploadImage: missing file or serviceId');
         return;
       }
-      this.productService.uploadGalleryImages(this.selectedService._id, this.selectedFile).subscribe({
-        next: () => {
+
+      this.productService
+        .uploadGalleryImages(this.selectedService._id, this.selectedFile)
+        .pipe(
+          switchMap(() => this.refreshArticles()),
+          catchError((error) => {
+            console.error('[ArticlesMgmt] uploadImage pipeline ERROR:', error);
+            this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'), 'error');
+            return of(null);
+          })
+        )
+        .subscribe((prods: any[] | null) => {
+          if (!prods) return;
+
+          this.myArticlesData = prods;
+
+          // Optionnel : si tu veux garder selectedService à jour (image qui vient de changer)
+          if (this.selectedService?._id) {
+            const updated = prods.find(p => p._id === this.selectedService._id);
+            if (updated) this.selectedService = updated;
+          }
+
           this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.IMAGE_OK'), 'success');
-        },
-        error: (error) => {
-          console.error("[ArticlesMgmt] uploadGalleryImages ERROR:", error);
-          this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'), 'error');
-        },
-      });
+        });
     } catch (err) {
       console.error('[ArticlesMgmt] uploadImage FATAL:', err);
       this.toast(this.t('ERROR.GENERIC_ERROR'), 'error');

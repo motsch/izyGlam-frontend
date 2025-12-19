@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root',
 })
 export class ProductService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     /**
      * Uploader une image pour la galerie d'un shop
@@ -97,5 +97,23 @@ export class ProductService {
 
     deleteAllByShopId(shopId: string) {
         return this.http.delete<any>(`${environment.apiUrl}service-delete-all-by-shop/${shopId}`);
+    }
+
+
+    downloadServicesCsvByShop(shopId: string) {
+        return this.http.get(
+            `${environment.apiUrl}shop-csv-download/${shopId}/services/export/csv`,
+            { responseType: 'blob' } // IMPORTANT: on récupère un fichier
+        );
+    }
+
+    uploadServicesCsv(shopId: string, file: File) {
+        const formData = new FormData();
+        formData.append('csv', file); // doit matcher uploadCsv.single("csv")
+
+        return this.http.post<any>(
+            `${environment.apiUrl}shop-csv-upload/${shopId}/services/import/csv`,
+            formData
+        );
     }
 }

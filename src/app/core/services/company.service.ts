@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class CompanyService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     /**
      * Récupérer toutes les entreprises
@@ -56,10 +56,10 @@ export class CompanyService {
         return this.http.get<any[]>(`${environment.apiUrl}companies/industry/${industry}`);
     }
 
-        /**
-     * Récupérer tous les employés d'une entreprise
-     * @param companyId (ID de l'entreprise)
-     */
+    /**
+ * Récupérer tous les employés d'une entreprise
+ * @param companyId (ID de l'entreprise)
+ */
     getCompanyEmployees(companyId: string): Observable<any[]> {
         return this.http.get<any[]>(
             `${environment.apiUrl}company/${companyId}/employees`
@@ -78,9 +78,9 @@ export class CompanyService {
 
 
 
-        /**
-     * Créer un employé pour une entreprise (B2B)
-     */
+    /**
+ * Créer un employé pour une entreprise (B2B)
+ */
     createCompanyEmployee(companyId: string, payload: any): Observable<any> {
         return this.http.post<any>(
             `${environment.apiUrl}company/${companyId}/employees`,
@@ -128,6 +128,18 @@ export class CompanyService {
         );
     }
 
-    
+
+
+    /**
+     * Mettre à jour le rôle d'un employé (employee/manager/executive)
+     */
+    updateEmployeeCompanyRole(companyId: string, employeeId: string, companyRole: string): Observable<any> {
+        return this.http.patch<any>(
+            `${environment.apiUrl}company/${companyId}/employees/${employeeId}/company-role`,
+            { companyRole }
+        );
+    }
+
+
 
 }

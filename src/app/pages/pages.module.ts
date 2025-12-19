@@ -53,6 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SponsorComponent } from './sponsor/sponsor.component';
 import { FidelityComponent } from './fidelity/fidelity.component';
 import { PricePlansComponent } from './price-plans/price-plans.component';
+import { QRCodeModule } from 'angularx-qrcode';
 import { Subscription } from 'rxjs';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
@@ -78,6 +79,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
         MatDatepickerModule,
         MatNativeDateModule,
         MatButtonModule,
+        QRCodeModule,
         MatSelectModule,
         MatDialogModule,
         MatCardModule,

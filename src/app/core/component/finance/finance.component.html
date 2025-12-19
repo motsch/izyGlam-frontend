@@ -5,6 +5,13 @@
   </button>
 </div>
 
+<div class="text-end mb-4">
+  <button class="btn-create-service" (click)="startStripeOnboarding()">
+    <i class="fa fa-bolt me-2"></i> Activer mes paiements
+  </button>
+</div>
+
+
 <!-- MODAL BACKDROP -->
 <div class="modal-backdrop" *ngIf="bankModalVisible" (click)="closeBankModal()"></div>
 

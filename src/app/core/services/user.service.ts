@@ -193,4 +193,8 @@ export class UserService {
 
 
 
+    createStripeOnboardingLink(plan: string, durationInMonths: number) {
+        return this.http.post<any>(environment.apiUrl + 'users-subscribe', { newPlan: plan, durationInMonths });
+    }
+
 }

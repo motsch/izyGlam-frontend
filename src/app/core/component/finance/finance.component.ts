@@ -170,4 +170,14 @@ export class FinanceComponent implements OnInit {
       this.toastr.success(message);
     }
   }
+
+  async startStripeOnboarding() {
+    try {
+      // const { url } = await this.userService.createStripeOnboardingLink().toPromise();
+      // window.location.href = url; // redirection vers Stripe-hosted onboarding
+    } catch (e) {
+      console.error(e);
+      // TODO: toast "Impossible de démarrer l'onboarding Stripe"
+    }
+  }
 }

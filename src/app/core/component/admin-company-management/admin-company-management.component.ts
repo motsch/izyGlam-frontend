@@ -505,6 +505,34 @@ export class AdminCompanyManagementComponent implements OnInit, AfterViewInit {
     updateNext(0);
   }
 
+
+  changeEmployeeCompanyRole(companyId: string, emp: any, newRole: string): void {
+  if (!companyId || !emp?._id) return;
+
+  // Update optimiste (optionnel mais agréable)
+  const previous = emp.companyRole;
+  emp.companyRole = newRole;
+
+  this.companyService.updateEmployeeCompanyRole(companyId, emp._id, newRole).subscribe({
+    next: (res: any) => {
+      const updatedEmployee = res.employee ?? res; // selon ta réponse backend
+      const employees = this.companyEmployees[companyId] || [];
+
+      this.companyEmployees[companyId] = employees.map((e: any) =>
+        e._id === emp._id ? { ...e, ...updatedEmployee } : e
+      );
+    },
+    error: (err: any) => {
+      console.error('Erreur lors de la mise à jour du rôle employé', err);
+      // rollback si erreur
+      emp.companyRole = previous;
+    },
+  });
+}
+
+
+
+
   // -----------------------------
   // Reset du mot de passe employé
   // -----------------------------
