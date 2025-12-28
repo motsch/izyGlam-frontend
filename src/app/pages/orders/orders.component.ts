@@ -9,6 +9,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { environment } from 'src/environments/environment';
 import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
+import { SeoService } from 'src/app/core/services/seo.service';
 
 @Component({
   selector: 'app-orders',
@@ -44,7 +45,8 @@ export class OrdersComponent implements OnInit {
     private transactionService: TransactionService,
     private toastr: ToastrService,
     private cdr: ChangeDetectorRef,
-    private financialService: FinancialService
+    private financialService: FinancialService,
+    private seoService: SeoService
   ) {
     // Langue par défaut (fallback)
     this.translate.setDefaultLang('en');
@@ -54,6 +56,7 @@ export class OrdersComponent implements OnInit {
   // 🔹 Méthode principale d’initialisation du composant
   // -------------------------------
   ngOnInit(): void {
+        this.seoService.updateMeta('order');
     localStorage.setItem('tabs', 'orders'); // Sauvegarde le contexte d’onglet
 
     // Détection automatique de la langue du navigateur

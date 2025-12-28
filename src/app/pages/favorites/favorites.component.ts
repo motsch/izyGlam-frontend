@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { DrawerService } from 'src/app/core/services/drawer.service';
+import { SeoService } from 'src/app/core/services/seo.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { UserService } from 'src/app/core/services/user.service';
@@ -29,13 +30,15 @@ export class FavoritesComponent implements OnInit {
     public sessionService: SessionService,
     private userService: UserService,
     private translate: TranslateService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private seoService: SeoService
   ) { }
 
   // ----------------------------------------------------
   // ⏱️ Initialisation du composant
   // ----------------------------------------------------
   ngOnInit() {
+    this.seoService.updateMeta('favorite');
     // Nettoyage des résidus de navigation / panier
     localStorage.removeItem('shopSelected');
     localStorage.removeItem('productToBuy');

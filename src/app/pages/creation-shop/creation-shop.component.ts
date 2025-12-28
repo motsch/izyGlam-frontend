@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SeoService } from 'src/app/core/services/seo.service';
 import { SessionService } from 'src/app/core/services/session.service';
 
 @Component({
@@ -7,8 +8,9 @@ import { SessionService } from 'src/app/core/services/session.service';
     styleUrls: ['./creation-shop.component.scss'],
 })
 export class CreationShopComponent {
-    constructor(public sessionService: SessionService) {}
+    constructor(public sessionService: SessionService, private seoService: SeoService) { }
 
     ngOnInit(): void {
+        this.seoService.updateMeta('pro');
     }
 }

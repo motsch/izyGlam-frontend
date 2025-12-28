@@ -16,6 +16,7 @@ import { AdminService } from 'src/app/core/services/admin.service';
 // ✅ AjoutsizyGlam pour toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { SeoService } from 'src/app/core/services/seo.service';
 
 @Component({
     selector: 'app-profile',
@@ -72,13 +73,16 @@ export class ProfileComponent implements OnInit {
 
         // ✅ AjoutsizyGlam
         private toastr: ToastrService,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private seoService: SeoService
     ) { }
 
     // -------------------------------------------------
     // ⏱️ ngOnInit : paramètres, section active, données
     // -------------------------------------------------
     ngOnInit() {
+        
+        this.seoService.updateMeta('profile');
         // 1) Charge les paramètres d’admin (ex: multi-shops)
         this.adminService.getAdminSettings().subscribe({
             next: (data: any) => {

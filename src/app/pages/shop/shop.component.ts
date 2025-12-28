@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
+import { SeoService } from 'src/app/core/services/seo.service';
 
 @Component({
     selector: 'app-shop',
@@ -67,6 +68,7 @@ export class ShopComponent {
         private shopService: ShopService,
         private adminService: AdminService,
         @Inject(DOCUMENT) private document: Document,
+        private seoService: SeoService,
 
         // ✅ InjectionsizyGlam
         private toastr: ToastrService,
@@ -77,6 +79,7 @@ export class ShopComponent {
     // ⏱️ ngOnInit : charge settings, produits et shop
     // ----------------------------------------------------
     ngOnInit(): void {
+        this.seoService.updateMeta('shop');
         // 1) Paramètres d’admin (commission, frais, etc.)
         this.adminService.getAdminSettings().subscribe({
             next: (data: any) => {

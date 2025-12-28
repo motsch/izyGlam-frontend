@@ -17,6 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { CountryService } from 'src/app/core/services/country.service';
 import { DrawerService } from 'src/app/core/services/drawer.service';
+import { SeoService } from 'src/app/core/services/seo.service';
 
 @Component({
   selector: 'app-main',
@@ -100,13 +101,15 @@ export class MainComponent implements OnInit, AfterViewInit {
     private translate: TranslateService,
     private countryService: CountryService,
     private adminService: AdminService,
-    private drawerService: DrawerService
+    private drawerService: DrawerService,
+    private seoService: SeoService
   ) { }
 
   // ---------------------------------------------------
   // ⏱️ Initialisation : auth, paramètres, data, géoloc
   // ---------------------------------------------------
   ngOnInit() {
+        this.seoService.updateMeta('main');
     // 🔐 Redirection si non connecté
     if (!this.sessionService.isLoggedIn()) {
       this.router.navigate(['/login']);

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SeoService } from 'src/app/core/services/seo.service';
 import { SessionService } from 'src/app/core/services/session.service';
 
 @Component({
@@ -6,7 +7,7 @@ import { SessionService } from 'src/app/core/services/session.service';
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.scss']
 })
-export class HelpComponent {
+export class HelpComponent implements OnInit {
   panels = [
     {
       question: "HELP.QUESTION1",
@@ -65,5 +66,9 @@ export class HelpComponent {
       answer: "HELP.REPONSE14"
     }
   ];
-  constructor(public sessionService: SessionService) { }
+  constructor(public sessionService: SessionService, private seoService: SeoService) { }
+
+  ngOnInit(): void {
+    this.seoService.updateMeta('help');
+  }
 }

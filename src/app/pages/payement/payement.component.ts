@@ -21,6 +21,7 @@ import { SessionService } from 'src/app/core/services/session.service';
 // ✅ Ajouts pour le système d'erreurizyGlam
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { SeoService } from 'src/app/core/services/seo.service';
 
 @Component({
   selector: 'app-payement',
@@ -94,13 +95,15 @@ export class PayementComponent implements OnInit {
 
     // ✅ Injections ajoutées pour les toasts + i18n
     private toastr: ToastrService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private seoService: SeoService
   ) { }
 
   // ---------------------------------------------------------
   // ⏱️ ngOnInit : charge paramètres, shop, user, cartes Stripe
   // ---------------------------------------------------------
   ngOnInit(): void {
+        this.seoService.updateMeta('payement');
     this.adminService.getAdminSettings().subscribe({
       next: (data: any) => {
         // 1) Paramètres admin (commission, TVA, etc.)

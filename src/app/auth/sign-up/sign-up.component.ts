@@ -69,9 +69,7 @@ export class SignUpComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.seoService.updateMeta('signup');
         this.title.setTitle(this.route.snapshot.data['title']);
-
         this.translate.get(this.placeholerFirstName).subscribe((res: string) => {
             this.placeholerFirstName = res;
         });
@@ -100,6 +98,7 @@ export class SignUpComponent implements OnInit {
                 console.error('Erreur lors du chargement des pays :', err);
             }
         });
+        this.seoService.updateMeta('signup');
     }
 
     togglePasswordVisibility(): void {
