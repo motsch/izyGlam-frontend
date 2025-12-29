@@ -13,6 +13,22 @@ export class StripeService {
     this.stripePromise = loadStripe(environment.stripePublicKey);
   }
 
+  createStripeOnboardingLink(userId: string) {
+    return this.http.post<{ url: string }>(
+      `${environment.apiUrl}/stripe/connect/onboarding-link`,
+      { userId }
+    );
+  }
+
+
+  refreshStripeStatus(userId: string) {
+    return this.http.get<any>(`${environment.apiUrl}/stripe/connect/status`, {
+      params: { userId },
+    }
+    );
+  }
+
+
   // Créer une intention de paiement
   createPaymentIntent(amount: number, currency: string, customerId: string) {
     return this.http.post(`${environment.apiUrl}stripe/create-payment-intent`, {
@@ -78,5 +94,5 @@ export class StripeService {
     }
     return this.http.post<any>(url, payload);
   }
-  
+
 }

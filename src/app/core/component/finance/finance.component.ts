@@ -4,6 +4,8 @@ import { BookingService } from '../../services/booking.service';
 import { UserService } from '../../services/user.service';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
+import { StripeService } from '../../services/stripe.service';
 
 @Component({
   selector: 'app-finance',
@@ -27,6 +29,7 @@ export class FinanceComponent implements OnInit {
 
   /** État de la modale d’infos bancaires */
   bankModalVisible = false;
+  stripeLoading = false;
 
   /** KPIs du dashboard finance */
   totalRevenue = 0;
@@ -53,6 +56,7 @@ export class FinanceComponent implements OnInit {
     private fb: FormBuilder,
     private bookingService: BookingService,
     private userService: UserService,
+    private stripeService: StripeService,
     private translate: TranslateService,
     private toastr: ToastrService
   ) {
@@ -79,6 +83,14 @@ export class FinanceComponent implements OnInit {
       this.loadDashboardStats(this.myShopData._id);
     } else {
       console.warn('FinanceComponent → myShopData est vide, en attente de ngOnChanges.');
+    }
+
+
+    const params = new URLSearchParams(window.location.search);
+    const stripeReturn = params.get("stripe");
+
+    if (stripeReturn === "return" || stripeReturn === "refresh") {
+      this.refreshStripeStatus();
     }
   }
 
@@ -125,6 +137,17 @@ export class FinanceComponent implements OnInit {
 
   openBankModal(): void {
     this.bankModalVisible = true;
+    this.autoRefreshStripeStatus();
+  }
+
+  private autoRefreshStripeStatus(): void {
+    // évite l'appel si pas d'user
+    if (!this.me?._id) return;
+
+    // évite de spam si déjà en cours
+    if (this.stripeLoading) return;
+
+    this.refreshStripeStatus();
   }
 
   closeBankModal(): void {
@@ -171,13 +194,36 @@ export class FinanceComponent implements OnInit {
     }
   }
 
-  async startStripeOnboarding() {
-    try {
-      // const { url } = await this.userService.createStripeOnboardingLink().toPromise();
-      // window.location.href = url; // redirection vers Stripe-hosted onboarding
-    } catch (e) {
-      console.error(e);
-      // TODO: toast "Impossible de démarrer l'onboarding Stripe"
-    }
+  startStripeOnboarding(): void {
+    this.stripeLoading = true;
+
+    this.stripeService.createStripeOnboardingLink(this.me._id).subscribe({
+      next: ({ url }) => {
+        window.location.href = url;
+      },
+      error: (e) => {
+        console.error(e);
+        this.stripeLoading = false;
+        this.toastr.error("Impossible de démarrer l'activation des paiements.");
+      }
+    });
   }
+
+  refreshStripeStatus(): void {
+    this.stripeLoading = true;
+
+    this.stripeService.refreshStripeStatus(this.me._id).subscribe({
+      next: (updatedUser) => {
+        this.me = updatedUser;
+        this.stripeLoading = false;
+        // this.toastr.success("Statut Stripe mis à jour.");
+      },
+      error: (e) => {
+        console.error(e);
+        this.stripeLoading = false;
+        this.toastr.error("Impossible de rafraîchir le statut Stripe.");
+      }
+    });
+  }
+
 }

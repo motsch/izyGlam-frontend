@@ -5,54 +5,100 @@
   </button>
 </div>
 
-<div class="text-end mb-4">
-  <button class="btn-create-service" (click)="startStripeOnboarding()">
-    <i class="fa fa-bolt me-2"></i> Activer mes paiements
-  </button>
-</div>
-
-
 <!-- MODAL BACKDROP -->
 <div class="modal-backdrop" *ngIf="bankModalVisible" (click)="closeBankModal()"></div>
 
 <!-- MODAL -->
-<div class="modal-container" *ngIf="bankModalVisible">
+<div class="modal-container" *ngIf="bankModalVisible" (click)="closeBankModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
+
     <button class="modal-close" type="button" (click)="closeBankModal()">×</button>
-    <h4 class="modal-title">{{ "BANK.ENTER_BANK_INFO" | translate }}</h4>
 
-    <form (ngSubmit)="saveBankInfo()" #bankForm="ngForm">
-      <div class="mb-3">
-        <label for="iban">IBAN</label>
-        <input id="iban" type="text" [(ngModel)]="bank.iban" name="iban" required />
+    <!-- Header -->
+    <div class="stripe-header">
+      <div class="stripe-title-row">
+        <div class="stripe-icon">💗</div>
+        <div>
+          <h4 class="stripe-title">Paiements & Virements</h4>
+          <p class="stripe-subtitle">
+            Active Stripe pour recevoir automatiquement tes revenus.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    <div class="stripe-card" *ngIf="stripeLoading">
+      <div class="stripe-skeleton-line"></div>
+      <div class="stripe-skeleton-line small"></div>
+      <div class="stripe-skeleton-line"></div>
+      <div class="stripe-skeleton-line small"></div>
+    </div>
+
+    <!-- Status -->
+    <div class="stripe-card" *ngIf="!stripeLoading">
+      <div class="stripe-row">
+        <span class="stripe-label">Onboarding</span>
+        <span class="badge" [class.badge-ok]="me?.stripe?.onboardingStatus === 'complete'"
+          [class.badge-warn]="me?.stripe?.onboardingStatus === 'pending'"
+          [class.badge-bad]="!me?.stripe?.onboardingStatus || me?.stripe?.onboardingStatus === 'not_started'">
+          {{
+          me?.stripe?.onboardingStatus === 'complete' ? 'Terminé'
+          : me?.stripe?.onboardingStatus === 'pending' ? 'En cours'
+          : 'Non démarré'
+          }}
+        </span>
       </div>
 
-      <div class="mb-3">
-        <label for="bic">BIC</label>
-        <input id="bic" type="text" [(ngModel)]="bank.bic" name="bic" required />
+      <div class="stripe-row">
+        <span class="stripe-label">Paiements</span>
+        <span class="badge" [class.badge-ok]="me?.stripe?.chargesEnabled"
+          [class.badge-bad]="!me?.stripe?.chargesEnabled">
+          {{ me?.stripe?.chargesEnabled ? 'Activés' : 'Désactivés' }}
+        </span>
       </div>
 
-      <div class="mb-3">
-        <label for="bank_name">{{ "BANK.BANK_NAME" | translate }}</label>
-        <input id="bank_name" type="text" [(ngModel)]="bank.bank_name" name="bank_name" />
+      <div class="stripe-row">
+        <span class="stripe-label">Virements</span>
+        <span class="badge" [class.badge-ok]="me?.stripe?.payoutsEnabled"
+          [class.badge-bad]="!me?.stripe?.payoutsEnabled">
+          {{ me?.stripe?.payoutsEnabled ? 'Activés' : 'Désactivés' }}
+        </span>
       </div>
 
-      <div class="mb-3">
-        <label for="holder_name">{{ "BANK.HOLDER_NAME" | translate }}</label>
-        <input id="holder_name" type="text" [(ngModel)]="bank.holder_name" name="holder_name" />
+      <div class="stripe-hint" *ngIf="!me?.stripe?.chargesEnabled || !me?.stripe?.payoutsEnabled">
+        ⚠️ Il manque des informations. Clique sur <b>Compléter sur Stripe</b>.
       </div>
 
-      <div class="mb-4">
-        <label for="country">{{ "BANK.COUNTRY" | translate }}</label>
-        <input id="country" type="text" [(ngModel)]="bank.country" name="country" />
+      <div class="stripe-hint ok" *ngIf="me?.stripe?.chargesEnabled && me?.stripe?.payoutsEnabled">
+        ✅ Tout est prêt. Tes virements automatiques peuvent fonctionner.
       </div>
+    </div>
 
-      <button type="submit" class="btn-submit">
-        {{ "BANK.SAVE" | translate }}
+    <!-- Actions -->
+    <div class="stripe-actions">
+      <button type="button" class="btn-primary" (click)="startStripeOnboarding()" [disabled]="stripeLoading">
+        {{
+        (me?.stripe?.chargesEnabled && me?.stripe?.payoutsEnabled)
+        ? 'Mettre à jour sur Stripe'
+        : 'Activer / Compléter sur Stripe'
+        }}
       </button>
-    </form>
+
+      <button type="button" class="btn-ghost" (click)="refreshStripeStatus()" [disabled]="stripeLoading">
+        Mettre à jour le statut
+      </button>
+    </div>
+
+    <div class="stripe-footnote">
+      Tes informations bancaires ne sont jamais stockées sur IzyGlam.
+      Tout est saisi et sécurisé directement chez Stripe.
+    </div>
+
   </div>
 </div>
+
+
 
 <!-- KPI Cards -->
 <div class="row kpi-section">
