@@ -37,22 +37,6 @@
 
     <!-- Liste quand on a des conversations -->
     <ng-container *ngIf="conversations.length > 0">
-
-      <!-- Bandeau Support
-      <div class="conversation-item" (click)="getOrCreateSupportConversation()">
-        <div class="conversation-content">
-          <img src="assets/images/default2.jpeg" class="profile-pic" alt="Service Client">
-          <div class="conversation-info">
-            <h3>
-              {{ "MESSAGE.SERVICE_CLIENT" | translate }}
-              <span *ngIf="supportUnreadCount > 0" class="badge">{{ supportUnreadCount }}</span>
-            </h3>
-            <p>{{ supportPreview || translateSupportDefault() }}</p>
-          </div>
-          <span class="message-time">{{ supportPreviewTime }}</span>
-        </div>
-      </div> -->
-
       <!-- Conversations utilisateur -->
       <div *ngFor="let conversation of conversations; trackBy: trackByConvId"
            class="conversation-item"

@@ -59,6 +59,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
 import { PayementValidationComponent } from './payement-validation/payement-validation.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { MessageComponent } from './message/message.component';
+import { QuickComponent } from './quick/quick.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -111,6 +113,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
         TermsComponent,
         ThankYouComponent,
         ComingSoonComponent,
+        MessageComponent,
+        QuickComponent,
         PayementValidationComponent,
         PayementComponent,
         PayementProComponent,

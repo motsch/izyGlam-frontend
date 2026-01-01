@@ -77,7 +77,27 @@ export class MainComponent implements OnInit, AfterViewInit {
   private searchSubject = new Subject<string>();
   private subscription!: Subscription;
   loading = false;
-  count = 0
+  count = 0;
+
+  private readonly DEFAULT_ADDRESSES = [
+    {
+      street: "1 Rue de Rivoli",
+      city: "Paris",
+      code_postal: "75001",
+      country: "France",
+      floor: "",
+      main: true,
+    },
+    {
+      street: "1 Avenue de Wagram",
+      city: "Paris",
+      code_postal: "75017",
+      country: "France",
+      floor: "",
+      main: false,
+    },
+  ];
+
 
   @ViewChild('scrollContainerCategory') private scrollContainerCategory?: ElementRef;
   @ViewChild('scrollContainerDiscover') private scrollContainerDiscover?: ElementRef;
@@ -109,12 +129,12 @@ export class MainComponent implements OnInit, AfterViewInit {
   // ⏱️ Initialisation : auth, paramètres, data, géoloc
   // ---------------------------------------------------
   ngOnInit() {
-        this.seoService.updateMeta('main');
+    this.seoService.updateMeta('main');
     // 🔐 Redirection si non connecté
-    if (!this.sessionService.isLoggedIn()) {
+    /*if (!this.sessionService.isLoggedIn()) {
       this.router.navigate(['/login']);
       return;
-    }
+    }*/
     this.loading = true;
 
     // 🔎 Recherche globale (non bloquante)
@@ -297,9 +317,6 @@ export class MainComponent implements OnInit, AfterViewInit {
         this.me = data;
         this.sharedService.updateMe(this.me);
         this.getCountries();
-        console.log("MON USER FROM HELL");
-        console.log(data);
-        // this.selectedCountry = this.findCountryByNameOrTranslation(data.country) || this.countries[0] || null;
 
         // Nettoyage localStorage
         localStorage.removeItem('shopSelected');
@@ -307,31 +324,8 @@ export class MainComponent implements OnInit, AfterViewInit {
         localStorage.removeItem('selectItemFromShop');
         localStorage.removeItem('menu-param');
 
-        // ✅ Gestion des adresses
-        if (data.address && data.address.length > 0) {
-          this.userAddresses = data.address;
-
-          // Si rien n’est sélectionné, on prend la première adresse "affichable"
-          this.refreshDisplayedAddresses();
-
-          if (!this.selectedAddress) {
-            this.selectedAddress = this.displayedAddresses[0] || this.userAddresses[0];
-          }
-
-          // Liste des CP dispos
-          this.availablePostalCodes = this.userAddresses
-            .map((a: any) => a.code_postal)
-            .filter(Boolean);
-
-          // Force le CP courant si sélection valide
-          if (this.selectedAddress?.code_postal) {
-            this.selectedPostalCode = this.selectedAddress.code_postal;
-          }
-        } else {
-          // Aucune adresse en base => on reste sur le CP par défaut (75001)
-          this.userAddresses = [];
-          this.displayedAddresses = [];
-        }
+        // ✅ Initialisation adresses (connecté)
+        this.initAddressesFromUser(data);
 
         // Chargement des catégories & shops selon le code postal sélectionné
         this.loadCategories();
@@ -339,10 +333,62 @@ export class MainComponent implements OnInit, AfterViewInit {
       },
       error: (err) => {
         console.error('Erreur lors du chargement de l’utilisateur et des shops :', err);
-        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+
+        // ✅ Mode non connecté : on ne bloque pas la page
+        this.me = null;
+        this.sharedService.updateMe(null);
+
+        // ✅ Initialise les adresses par défaut (75001 / 75017)
+        this.initAddressesFromUser(null);
+
+        // Tu peux garder getCountries si nécessaire à la page même sans user
+        this.getCountries();
+
+        // Chargement quand même
+        this.loadCategories();
+        this.loadShops();
+
+        // Option : toast plus doux (pas une "erreur", juste non connecté)
+        // this.showCustomToast(this.translate.instant('INFO.NOT_LOGGED_IN'));
+        // ou rien du tout
       }
     });
   }
+
+
+  private initAddressesFromUser(data: any | null) {
+    // ✅ Gestion des adresses (connecté ou non)
+    const addresses = (data?.address && data.address.length > 0)
+      ? data.address
+      : this.DEFAULT_ADDRESSES;
+
+    this.userAddresses = addresses;
+
+    // Construit displayedAddresses selon TA logique existante
+    this.refreshDisplayedAddresses();
+
+    // selectedAddress : si déjà sélectionnée, on la garde, sinon main, sinon première
+    if (!this.selectedAddress) {
+      this.selectedAddress =
+        this.displayedAddresses.find((a: any) => a.main) ||
+        this.displayedAddresses[0] ||
+        this.userAddresses[0] ||
+        null;
+    }
+
+    // Liste des CP dispos
+    this.availablePostalCodes = this.userAddresses
+      .map((a: any) => a.code_postal)
+      .filter(Boolean);
+
+    // selectedPostalCode : priorité à l’adresse sélectionnée, sinon premier CP
+    if (this.selectedAddress?.code_postal) {
+      this.selectedPostalCode = this.selectedAddress.code_postal;
+    } else if (this.availablePostalCodes.length > 0) {
+      this.selectedPostalCode = this.availablePostalCodes[0];
+    }
+  }
+
 
   /** 🔎 Recherche pays par name ou par translation (insensible à la casse) */
   private findCountryByNameOrTranslation(raw: string): any | undefined {
@@ -371,7 +417,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         this.countries = countries || [];
         this.availableCountries = countries;
         // Lecture du localStorage (on stocke le *name* du pays)
-        let storedCountry = (this.me.country || '').replace(/^"(.*)"$/, '$1').trim();
+        let storedCountry = this.me ? (this.me.country || '').replace(/^"(.*)"$/, '$1').trim() : "France";
         if (!storedCountry) storedCountry = 'France';
 
         // On tente de retrouver par name ou translation (case-insensitive)
@@ -425,7 +471,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   private loadCategories() {
     // On passe toujours par le code postal sélectionné (aucune dépendance à la géoloc)
     this.categoryService
-      .getAvailableCategories(undefined, undefined, [this.selectedPostalCode], this.me.country)
+      .getAvailableCategories(undefined, undefined, this.selectedPostalCode ? [this.selectedPostalCode] : ["75001"], this.me ? this.me.country : "France")
       .subscribe({
         next: (data: any[]) => {
           this.categoriesFilter = data.sort((a, b) => a.position - b.position);
@@ -490,12 +536,12 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.promotedShops = [];
 
     this.shopsSub = this.shopService
-      .getShopsByPostalCodes([this.selectedPostalCode], this.me.country)
+      .getShopsByPostalCodes(this.selectedPostalCode ? [this.selectedPostalCode] : ["75001"], this.me ? this.me.country : "France")
       .subscribe({
         next: (categories: any) => {
           if (reqId !== this.shopsReqId) return;
 
-          const favoriteShops: string[] = this.me.favoriteShops || [];
+          const favoriteShops: string[] = this.me ? this.me.favoriteShops || [] : [];
 
           // Petit utilitaire pour mapper le flag favori après déduplication
           const mapIsFavorite = (arr: any[]) =>
@@ -520,6 +566,12 @@ export class MainComponent implements OnInit, AfterViewInit {
             ...malin,
             ...top10,
           ]);
+
+          this.shops = (this.shops ?? []).sort((a: any, b: any) => {
+            const aTotal = Number(a?.stats?.bookings?.finished?.total ?? 0);
+            const bTotal = Number(b?.stats?.bookings?.finished?.total ?? 0);
+            return bTotal - aTotal; // décroissant : + réservé -> - réservé
+          });
 
           // 3) Promos sans doublons
           this.promotedShops = this.uniqById(

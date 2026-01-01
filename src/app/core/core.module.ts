@@ -93,6 +93,8 @@ import { PostComponent } from './component/post/post.component';
 import { AdminB2bLeadManagementComponent } from './component/admin-b2b-lead-management/admin-b2b-lead-management.component';
 import { AdminProLeadManagementComponent } from './component/admin-pro-lead-management/admin-pro-lead-management.component';
 import { ShopDocumentsComponent } from './component/shop-documents/shop-documents.component';
+import { PostFakeGenerationComponent } from './component/post-fake-generation/post-fake-generation.component';
+import { AdminCommunicationManagementComponent } from './component/admin-communication-management/admin-communication-management.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -153,6 +155,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         HeaderComponent,
         ShopManagementComponent,
         AdminComponent,
+        PostFakeGenerationComponent,
         FinanceComponent,
         ProfileInformationsComponent,
         ChangePasswordComponent,
@@ -209,6 +212,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         OrderCardComponent,
         ReviewModalComponent,
         PostComponent,
+        AdminCommunicationManagementComponent,
         AdminB2bLeadManagementComponent,
         ReviewsModalComponent
     ],
@@ -231,6 +235,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         PostComponent,
         ModalYesNoComponent,
         OrderItemComponent,
+        PostFakeGenerationComponent,
         CompanyManagementComponent,
         TruncatePipe,
         CompanyFinanceManagementComponent,

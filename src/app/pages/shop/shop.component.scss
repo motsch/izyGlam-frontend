@@ -132,6 +132,23 @@
   margin-right: 5px;
   margin-top: -4px;
 }
+
+.socialLogo {
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.socialLogo:hover {
+  cursor: pointer;
+  transform: translateY(-1px);
+  border-color: rgba(255, 105, 180, 0.35);
+  box-shadow:
+    0 14px 30px rgba(255, 105, 180, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
 .moneyLogo {
   height: 11px;
   width: auto;
@@ -638,6 +655,7 @@ app-round-shop-card, .card {
 }
 
 .share-pill:hover {
+  cursor: pointer;
   transform: translateY(-1px);
   border-color: rgba(255, 105, 180, 0.35);
   box-shadow:

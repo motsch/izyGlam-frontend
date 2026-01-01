@@ -1,3 +1,5 @@
+<app-header [connected]="!sessionService.isLoggedIn()"></app-header>
+
 <!-- WRAPPER GLOBAL -->
 <div class="izy-wrapper">
   <!-- Bandeau info si géolocalisation désactivée (non bloquant) -->
@@ -6,7 +8,7 @@
   </div>
 
   <!-- SECTION ADRESSE & RECHERCHE -->
-  <div class="address-search-wrapper margin-top-60">
+  <div class="address-search-wrapper margin-top-90">
     <div class="address-search-row">
       <button class="address-button-pretty" (click)="openAddressModal()">
         <i class="icon-location">📍</i>

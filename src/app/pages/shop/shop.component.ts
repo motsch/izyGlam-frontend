@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
 import { SeoService } from 'src/app/core/services/seo.service';
+import { DrawerService } from 'src/app/core/services/drawer.service';
 
 @Component({
     selector: 'app-shop',
@@ -69,6 +70,7 @@ export class ShopComponent {
         private adminService: AdminService,
         @Inject(DOCUMENT) private document: Document,
         private seoService: SeoService,
+        private drawerService: DrawerService,
 
         // ✅ InjectionsizyGlam
         private toastr: ToastrService,
@@ -167,6 +169,25 @@ export class ShopComponent {
     closeLightbox() {
         this.isLightboxOpen = false;
     }
+
+    goTo(name: string) {
+        this.drawerService.closeDrawer();
+        this.router.navigate([name]);
+    }
+
+    openSocialLink(url: string): void {
+        if (!url) {
+            return;
+        }
+
+        // Sécurité : si l'utilisateur n'a pas mis http(s)
+        const finalUrl = url.startsWith('http')
+            ? url
+            : `https://${url}`;
+
+        window.open(finalUrl, '_blank', 'noopener,noreferrer');
+    }
+
 
     // ----------------------------------------------------
     // 🖼️ Lightbox — image précédente

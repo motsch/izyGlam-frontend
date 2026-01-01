@@ -34,6 +34,11 @@
           <span class="side-item">{{ "SIDEBAR.ORDERS" | translate }}</span>
         </li>
 
+        <li class="menu-hover" [ngClass]="{'active': isActive('message')}" (click)="goTo('message')">
+          <img class="side-icon" src="assets/images/icon/message.png" alt="messages" />
+          <span class="side-item">{{ "SIDEBAR.MESSAGES" | translate }}</span>
+        </li>
+
         <li class="menu-hover" [ngClass]="{'active': isActive('favorites')}" (click)="goTo('favorites')">
           <img class="side-icon" src="assets/images/icon/favorite.png" alt="Favoris" />
           <span class="side-item">{{ "SIDEBAR.FAVORITES" | translate }}</span>

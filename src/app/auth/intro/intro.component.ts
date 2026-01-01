@@ -129,7 +129,7 @@ export class IntroComponent implements OnInit, AfterViewInit {
   }
 
   onButtonClick(): void {
-    this.router.navigate(['/sign-in']);
+    this.router.navigate(['/main']);
   }
 
   trackByFn(index: number, item: string): string {

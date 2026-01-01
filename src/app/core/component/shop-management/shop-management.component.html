@@ -83,57 +83,85 @@
       </div>
     </div>
 
-    <!-- HORAIRES D'OUVERTURE -->
-    <h2>{{ "SHOP_MANAGEMENT.OPENNING" | translate}}</h2>
-    <div *ngFor="let day of days" class="form-section">
-      <div class="day-header-vertical">
-        <h3>{{ 'SHOP_MANAGEMENT.' + day.toUpperCase() | translate }}</h3>
-        <div class="closed-switch">
-          <span>{{ 'SHOP_MANAGEMENT.CLOSED' | translate }}</span>
-          <label class="switch">
-            <input type="checkbox" [(ngModel)]="shopCopyData.hours[day].closed" (change)="markFormModified()" />
-            <span class="slider round"></span>
-          </label>
+    <!-- RESEAUX SOCIAUX -->
+
+    <h2>{{ "SHOP_MANAGEMENT.SOCIAL_NETWORK" | translate}}</h2>
+    <div class="form-section">
+      <div class="column">
+        <label for="facebook">{{ "Facebook" | translate }}</label>
+        <div class="postal-code-entry">
+          <input type="text" [(ngModel)]="shopCopyData.facebook"
+            [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_FACEBOOK' | translate)" />
         </div>
       </div>
+      <div class="column">
+        <label for="instagram">{{ "Instagram" | translate}}</label>
+        <input [(ngModel)]="shopCopyData.instagram" class="input-style"
+          [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_INSTAGRAM' | translate)" />
+      </div>
+      <div class="column">
+        <label for="tiktok">{{ "Tiktok" | translate}}</label>
+        <input [(ngModel)]="shopCopyData.tiktok" class="input-style"
+          [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_TIKTOK' | translate)" />
+      </div>
+      <div class="column button-center">
+        <button (click)="saveSocial()">{{"BANK.SAVE" | translate}}</button>
+      </div>
+    </div>
 
-
-      <div class="grid-hours" *ngIf="!shopCopyData.hours[day].closed">
-        <!-- Matin -->
-        <div class="hour-row">
-          <div class="hour-column">
-            <label>{{ "SHOP_MANAGEMENT.MORNING_OPEN" | translate }}</label>
-            <select [(ngModel)]="shopCopyData.hours[day].morning.start" (ngModelChange)="saveShop()">
-              <option *ngFor="let hour of allowedMorningHours" [value]="hour">{{ hour }}</option>
-            </select>
-          </div>
-          <div class="hour-column">
-            <label>{{ "SHOP_MANAGEMENT.MORNING_CLOSE" | translate }}</label>
-            <select [(ngModel)]="shopCopyData.hours[day].morning.end" (ngModelChange)="saveShop()">
-              <option *ngFor="let hour of allowedMorningHours" [value]="hour"
-                [disabled]="hour <= shopCopyData.hours[day].morning.start">
-                {{ hour }}
-              </option>
-            </select>
+    <!-- HORAIRES D'OUVERTURE -->
+    <h2>{{ "SHOP_MANAGEMENT.OPENNING" | translate}}</h2>
+    <div *ngIf="shopCopyData?.hours">
+      <div *ngFor="let day of days" class="form-section">
+        <div class="day-header-vertical">
+          <h3>{{ 'SHOP_MANAGEMENT.' + day.toUpperCase() | translate }}</h3>
+          <div class="closed-switch">
+            <span>{{ 'SHOP_MANAGEMENT.CLOSED' | translate }}</span>
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="shopCopyData.hours[day].closed" (change)="markFormModified()" />
+              <span class="slider round"></span>
+            </label>
           </div>
         </div>
 
-        <!-- Après-midi -->
-        <div class="hour-row">
-          <div class="hour-column">
-            <label>{{ "SHOP_MANAGEMENT.AFTERNOON_OPEN" | translate }}</label>
-            <select [(ngModel)]="shopCopyData.hours[day].afternoon.start" (ngModelChange)="saveShop()">
-              <option *ngFor="let hour of allowedAfternoonHours" [value]="hour">{{ hour }}</option>
-            </select>
+
+        <div class="grid-hours" *ngIf="!shopCopyData.hours[day].closed">
+          <!-- Matin -->
+          <div class="hour-row">
+            <div class="hour-column">
+              <label>{{ "SHOP_MANAGEMENT.MORNING_OPEN" | translate }}</label>
+              <select [(ngModel)]="shopCopyData.hours[day].morning.start" (ngModelChange)="saveShop()">
+                <option *ngFor="let hour of allowedMorningHours" [value]="hour">{{ hour }}</option>
+              </select>
+            </div>
+            <div class="hour-column">
+              <label>{{ "SHOP_MANAGEMENT.MORNING_CLOSE" | translate }}</label>
+              <select [(ngModel)]="shopCopyData.hours[day].morning.end" (ngModelChange)="saveShop()">
+                <option *ngFor="let hour of allowedMorningHours" [value]="hour"
+                  [disabled]="hour <= shopCopyData.hours[day].morning.start">
+                  {{ hour }}
+                </option>
+              </select>
+            </div>
           </div>
-          <div class="hour-column">
-            <label>{{ "SHOP_MANAGEMENT.AFTERNOON_CLOSE" | translate }}</label>
-            <select [(ngModel)]="shopCopyData.hours[day].afternoon.end" (ngModelChange)="saveShop()">
-              <option *ngFor="let hour of allowedAfternoonHours" [value]="hour"
-                [disabled]="hour <= shopCopyData.hours[day].afternoon.start">
-                {{ hour }}
-              </option>
-            </select>
+
+          <!-- Après-midi -->
+          <div class="hour-row">
+            <div class="hour-column">
+              <label>{{ "SHOP_MANAGEMENT.AFTERNOON_OPEN" | translate }}</label>
+              <select [(ngModel)]="shopCopyData.hours[day].afternoon.start" (ngModelChange)="saveShop()">
+                <option *ngFor="let hour of allowedAfternoonHours" [value]="hour">{{ hour }}</option>
+              </select>
+            </div>
+            <div class="hour-column">
+              <label>{{ "SHOP_MANAGEMENT.AFTERNOON_CLOSE" | translate }}</label>
+              <select [(ngModel)]="shopCopyData.hours[day].afternoon.end" (ngModelChange)="saveShop()">
+                <option *ngFor="let hour of allowedAfternoonHours" [value]="hour"
+                  [disabled]="hour <= shopCopyData.hours[day].afternoon.start">
+                  {{ hour }}
+                </option>
+              </select>
+            </div>
           </div>
         </div>
       </div>

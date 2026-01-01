@@ -236,3 +236,68 @@ h3 { font-size: 18px; }
 
 /* Neutralise transform au survol quand modal ouverte */
 .modal-open .profile-card:hover { transform: none !important; }
+
+/* =========================
+   Badge niveau (profil)
+   ========================= */
+.level-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  user-select: none;
+  pointer-events: none;
+}
+
+
+.level-emoji {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.level-text {
+  line-height: 1;
+  color: #4b4b4b;
+}
+
+/* Variantes (accent subtil) */
+.lvl-starter { }
+.lvl-active {
+  border-color: rgba(255, 210, 90, 0.6);
+}
+.lvl-ambassador {
+  border-color: rgba(205, 170, 255, 0.7);
+}
+.lvl-icon {
+  border-color: rgba(255, 190, 210, 0.8);
+}
+
+/* Mobile : badge un peu plus compact */
+@media (max-width: 768px) {
+  .level-badge {
+    top: 8px;
+    left: 8px;
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+}

@@ -3,6 +3,12 @@
     <div class="image-wrapper">
       <!-- Skeleton -->
       <div class="shop-skeleton-card" *ngIf="!loadedShops[shop._id]"></div>
+      
+      <!-- Badge niveau -->
+      <div class="level-badge" [ngClass]="levelUi.class" *ngIf="levelUi">
+        <span class="level-emoji">{{ levelUi.emoji }}</span>
+        <span class="level-text">{{ levelUi.trads | translate}}</span>
+      </div>
 
       <!-- Image principale -->
       <img *ngIf="shop.image" class="main-image" [src]="imgStorageUrl + 'uploads/images/' + shop.image"
@@ -19,7 +25,8 @@
     <h3 (click)="toShopPage(shop._id)">{{ shop.name }}</h3>
     <p>{{ shop.trad | translate }}, {{ shop.ville }}</p>
     <p (click)="openModal()">
-      <i class="star-icon"></i>{{ shop.note }} ({{ shop.reviews ? shop.reviews.length : 0 }} {{ 'MAIN_PAGE.AVIS' | translate }})
+      <i class="star-icon"></i>{{ shop.note }} ({{ shop.reviews ? shop.reviews.length : 0 }} {{ 'MAIN_PAGE.AVIS' |
+      translate }})
     </p>
   </div>
 

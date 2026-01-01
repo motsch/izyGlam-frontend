@@ -1,9 +1,33 @@
-<!-- Bouton d'ajout -->
-<div class="text-end mb-4">
+<!-- Header finance : niveau + prochain palier (gauche) / bouton (droite) -->
+<div class="finance-header mb-4">
+  <div class="level-panel" *ngIf="shopLevelUi">
+    <div class="level-row">
+      <span class="level-badge" [ngClass]="shopLevelUi.class">
+        <span class="level-emoji">{{ shopLevelUi.emoji }}</span>
+        <span class="level-text">{{ shopLevelUi.trads | translate }}</span>
+      </span>
+    </div>
+
+    <div class="next-level" *ngIf="nextLevelUi; else maxLevelTpl">
+      🔒 {{ "FINANCE.NEXT_LEVEL" | translate }} :
+      <b>{{ nextLevelUi.trads | translate }}</b>
+      <span class="next-level-muted">
+        ({{ "FINANCE.REMAINING" | translate:{ count: nextLevelUi.remaining } }})
+      </span>
+    </div>
+
+    <ng-template #maxLevelTpl>
+      <div class="next-level">
+        👑 {{ "FINANCE.MAX_LEVEL" | translate }}
+      </div>
+    </ng-template>
+  </div>
+
   <button class="btn-create-service" (click)="openBankModal()">
     <i class="fa fa-plus me-2"></i> {{ "BANK.ADD_BANK_INFO" | translate }}
   </button>
 </div>
+
 
 <!-- MODAL BACKDROP -->
 <div class="modal-backdrop" *ngIf="bankModalVisible" (click)="closeBankModal()"></div>

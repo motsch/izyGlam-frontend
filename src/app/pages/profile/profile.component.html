@@ -12,11 +12,11 @@
         <!--<li [ngClass]="{ active: isSectionActive('message') }" (click)="setActiveSection('message')">
           {{ "PROFILE_MENU.MESSAGE" | translate }}
         </li>-->
-        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
+        <li *ngIf="me && (me.role === 'professionnel' || me.role === 'boss')"
           [ngClass]="{ active: isSectionActive('management') }" (click)="setActiveSection('management')">
           {{ "PROFILE_MENU.SHOP" | translate }}
         </li>
-        <li *ngIf="me.role === 'professionnel' || me.role === 'boss'"
+        <li *ngIf="me && (me.role === 'professionnel' || me.role === 'boss')"
           [ngClass]="{ active: isSectionActive('calendar') }" (click)="setActiveSection('calendar')">
           {{ "PROFILE_MENU.CALENDAR" | translate }}
         </li>
@@ -26,7 +26,7 @@
           {{ "PROFILE_MENU.DASHBOARD" | translate }}
         </li>
         -->
-        <li *ngIf="me.role === 'boss'" [ngClass]="{ active: isSectionActive('company') }"
+        <li *ngIf="me && me.role === 'boss'" [ngClass]="{ active: isSectionActive('company') }"
           (click)="setActiveSection('company')">
           {{ "PROFILE_MENU.COMPANY" | translate }}
         </li>
@@ -139,12 +139,13 @@
         <mat-tab-group class="custom-tab-group" [ngClass]="!multiShopsActivated ? 'margin-top-n80' : ''"
           mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab [label]="'TABS.FINANCE' | translate">
-            <app-finance [myShopData]="myShopData" [me]="me"></app-finance>
+            <app-finance [myShopData]="shops" [me]="me"></app-finance>
           </mat-tab>
 
           <mat-tab color="primary" [label]="'TABS.GENERAL_INFO' | translate">
-            <app-shop-management *ngIf="myShopData && me" [myShopData]="myShopData"
-              (shopUpdated)="onShopUpdated($event)"></app-shop-management>
+            <app-shop-management *ngIf="myShopData?._id && me?._id" [myShopData]="myShopData" [me]="me"
+              (shopUpdated)="onShopUpdated($event)">
+            </app-shop-management>
           </mat-tab>
 
           <mat-tab color="primary" *ngIf="me.role === 'admin'" [label]="'TABS.EMPLOYEES' | translate">
@@ -161,8 +162,9 @@
               (shopUpdated)="onShopUpdated($event)"></app-shop-photo-gallery>
           </mat-tab>
 
-          <mat-tab [label]="'TABS.MESSAGE' | translate">
-            <app-messagerie *ngIf="myShopData && me"></app-messagerie>
+          <mat-tab [label]="'TABS.SOCIAL' | translate">
+            <app-post-fake-generation [shopType]="myShopData.trads" [shopId]="myShopData._id" [shopName]="myShopData.name"
+              [city]="myShopData.ville"></app-post-fake-generation>
           </mat-tab>
 
           <mat-tab [label]="'TABS.DOCUMENTS' | translate">

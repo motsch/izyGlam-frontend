@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "id": "ig_all_fr_01",
+      "platform": "instagram",
+      "lang": "fr",
+      "shopTypes": ["all"],
+      "tone": "premium",
+      "text": "✨ Nouvelle dispo cette semaine !\n\n📍 {{city}}\n💖 {{shopName}}\n\n👉 Réserve ici : {{shopLink}}\n\n#izyglam #{{cityHashtag}} #beauty #bienetre #rdv"
+    },
+    {
+      "id": "snap_all_fr_01",
+      "platform": "snapchat",
+      "lang": "fr",
+      "shopTypes": ["all"],
+      "tone": "short",
+      "text": "✨ Dispos cette semaine !\n📍 {{city}}\n👉 {{shopLink}}\n#izyglam #{{cityHashtag}}"
+    },
+
+    {
+      "id": "ig_massage_fr_01",
+      "platform": "instagram",
+      "lang": "fr",
+      "shopTypes": ["massage", "beaute", "coiffure"],
+      "tone": "premium",
+      "text": "✨ Nouvelle disponibilité cette semaine chez {{shopName}} !\n\n📍 {{city}}\n💆‍♀️ Spécialité : {{category}}\n\n👉 Réserve ici : {{shopLink}}\n\n#izyglam #{{cityHashtag}} #bienetre #massageadomicile #selfcare #beautyfrance"
+    },
+    {
+      "id": "ig_massage_fr_02",
+      "platform": "instagram",
+      "lang": "fr",
+      "shopTypes": ["massage"],
+      "tone": "warm",
+      "text": "Je suis trop heureuse de vous retrouver cette semaine 🥰\n\n🌸 {{shopName}} — {{city}}\n📅 Quelques créneaux sont ouverts\n\nRéservation rapide : {{shopLink}}\n\n#izyglam #massage #relaxation #detente #{{cityHashtag}} #bienetre"
+    },
+    {
+      "id": "snap_beaute_fr_01",
+      "platform": "snapchat",
+      "lang": "fr",
+      "shopTypes": ["manucure", "maquillage", "beaute"],
+      "tone": "short",
+      "text": "💅 Dispo cette semaine !\n📍 {{city}}\n👉 Réserve : {{shopLink}}\n#izyglam #{{cityHashtag}} #beauty"
+    },
+
+    {
+      "id": "ig_all_en_01",
+      "platform": "instagram",
+      "lang": "en",
+      "shopTypes": ["all"],
+      "tone": "premium",
+      "text": "✨ New openings this week!\n📍 {{city}}\n💖 {{shopName}}\n👉 Book here: {{shopLink}}\n\n#izyglam #{{cityHashtag}} #beauty #wellness"
+    },
+    {
+      "id": "ig_massage_en_01",
+      "platform": "instagram",
+      "lang": "en",
+      "shopTypes": ["massage"],
+      "tone": "premium",
+      "text": "✨ New openings this week at {{shopName}}!\n📍 {{city}}\nBook here 👉 {{shopLink}}\n\n#izyglam #wellness #massage #selfcare #{{cityHashtag}}"
+    }
+  ]
+}

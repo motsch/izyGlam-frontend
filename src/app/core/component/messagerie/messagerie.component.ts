@@ -16,6 +16,7 @@ import { MqttService } from '../../services/mqtt.service';
 import { ConversationService } from '../../services/conversation.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-messagerie',
@@ -62,6 +63,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
     private mqttService: MqttService,
     private cdRef: ChangeDetectorRef,
     private toastr: ToastrService,
+    private userService: UserService,
     private translate: TranslateService
   ) { }
 
@@ -127,6 +129,23 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
 
   ngOnInit() {
     try {
+      if(!this.me) {
+        this.userService.getMe().subscribe({
+        next: (user: any) => {
+          try {
+            this.me = user;
+            this.currentUserId = user;
+          } catch (e) {
+            console.error('[loadConversations] Traitement des données :', e);
+            this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+          }
+        },
+        error: (err: any) => {
+          console.error('[loadConversations] Erreur HTTP :', err);
+          this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+        }
+      })
+      }
       // Récupère l’id utilisateur dès que possible (si “me” est déjà injecté à l’init)
       this.currentUserId = this.me?._id || '';
 
@@ -480,8 +499,6 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
       this.selectedConversation.messages.push(optimistic);
       this.scrollToBottom();
 
-      const isSupportConv = this.isSupport(this.selectedConversation);
-
       // Callback succès
       const onOk = (saved: any) => {
         try {
@@ -528,28 +545,14 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
         this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
       };
 
-      // 3) Envoi côté serveur (Support vs. Direct)
-      if (isSupportConv) {
-        this.conversationService
-          .sendMessageToSupport({
-            conversationId: this.selectedConversation._id,
-            sender: this.currentUserId,
-            content: trimmed,
-            messageType: 'text',
-            clientId,
-            language: this.currentLang
-          })
-          .subscribe({ next: onOk, error: onErr });
-      } else {
         this.conversationService
           .addMessage(this.selectedConversation._id, {
-            sender: this.me._id,
+            sender: this.currentUserId,
             content: trimmed,
             messageType: 'text',
             clientId
           })
           .subscribe({ next: onOk, error: onErr });
-      }
 
       this.newMessage = '';
     } catch (e) {

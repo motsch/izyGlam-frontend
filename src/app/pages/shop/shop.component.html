@@ -24,9 +24,26 @@
                   <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
                   ({{ shopInfo.noteCount ?? 0 }}+) <br />
                 </span>
+
+
+
+                <span>
+                  <img *ngIf="shopInfo.instagram" [src]="imgStorageUrl + 'instagram-icon.png'" alt="Instagram"
+                    class="socialLogo" (click)="openSocialLink(shopInfo.instagram)" />
+
+                  <img *ngIf="shopInfo.facebook" [src]="imgStorageUrl + 'facebook-icon.png'" alt="Facebook"
+                    class="socialLogo" (click)="openSocialLink(shopInfo.facebook)" />
+
+                  <img *ngIf="shopInfo.tiktok" [src]="imgStorageUrl + 'tiktok-icon.png'" alt="tiktok"
+                    class="socialLogo" (click)="openSocialLink(shopInfo.tiktok)" />
+
+                  <br />
+                </span>
               </div>
             </div>
 
+            <button class="share-pill margin-top-20 margin-right-10" (click)="goTo('main')"><i
+                class="fa fa-angle-left"></i></button>
             <!-- ✅ Bouton partager -->
             <button class="share-pill margin-top-20" type="button" (click)="onShareClick()">
               <span class="share-pill__icon" aria-hidden="true">

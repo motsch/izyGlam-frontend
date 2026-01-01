@@ -23,11 +23,18 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
 import { PayementValidationComponent } from './payement-validation/payement-validation.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { MessageComponent } from './message/message.component';
+import { ChoiceTypeComponent } from './choice-type/choice-type.component';
+import { QuickComponent } from './quick/quick.component';
 
 const routes: Routes = [
     {
         path: 'main',
-        component: MainComponent, canActivate: [AuthGuard]
+        component: MainComponent, canActivate: []
+    },
+    {
+        path: 'quick',
+        component: QuickComponent, canActivate: []
     },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     {
@@ -95,8 +102,18 @@ const routes: Routes = [
         canActivate: [AuthGuard],
     },
     {
+        path: 'message',
+        component: MessageComponent,
+        canActivate: [AuthGuard],
+    },
+    {
         path: 'creation-shop',
         component: CreationShopComponent,
+        canActivate: [],
+    },
+    {
+        path: 'choice',
+        component: ChoiceTypeComponent,
         canActivate: [],
     },
     {

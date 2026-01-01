@@ -1,0 +1,200 @@
+<div class="page">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <button class="icon-btn" (click)="back()" aria-label="Retour">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+        <path d="M15.5 19 8.5 12l7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+
+    <div class="center">
+      <div class="title">{{ stepTitle() }}</div>
+      <div class="sub">{{ stepSubtitle() }}</div>
+    </div>
+
+    <button class="chip-btn" type="button" aria-label="Adresse">
+      <span class="pin">📍</span>
+      <span class="addr">{{ addressLabel }}</span>
+    </button>
+  </header>
+
+  <!-- Progress (super minimal) -->
+  <div class="progress">
+    <span class="bar" [class.on]="step==='category' || step==='service' || step==='when' || step==='slots' || step==='summary'"></span>
+    <span class="bar" [class.on]="step==='service' || step==='when' || step==='slots' || step==='summary'"></span>
+    <span class="bar" [class.on]="step==='when' || step==='slots' || step==='summary'"></span>
+    <span class="bar" [class.on]="step==='slots' || step==='summary'"></span>
+    <span class="bar" [class.on]="step==='summary'"></span>
+  </div>
+
+  <main class="content">
+
+    <!-- STEP: CATEGORY -->
+    <section *ngIf="step==='category'" class="section">
+      <div class="sheet">
+        <h2>Que souhaitez-vous réserver ?</h2>
+        <p class="hint">Choisissez une catégorie. Ensuite : prestation → moment → créneau.</p>
+
+        <div class="grid">
+          <button class="card" *ngFor="let c of categories" (click)="chooseCategory(c)" type="button">
+            <div class="ico">{{ c.icon }}</div>
+            <div class="label">{{ c.label }}</div>
+            <div class="mini">{{ c.hint }}</div>
+          </button>
+        </div>
+
+        <div class="reassure">
+          <span class="dot"></span>
+          <span>Paiement sécurisé • Pros vérifiées • Support réactif</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP: SERVICE -->
+    <section *ngIf="step==='service'" class="section">
+      <div class="sheet">
+        <div class="head-row">
+          <div class="crumb">
+            <span class="crumb-ico">{{ selectedCategory?.icon }}</span>
+            <span class="crumb-txt">{{ selectedCategory?.label }}</span>
+          </div>
+
+          <div class="search">
+            <svg viewBox="0 0 24 24" class="sicon" aria-hidden="true">
+              <path d="M21 21l-4.3-4.3M10.8 18.1a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6Z"
+                    fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            </svg>
+            <input [(ngModel)]="search" placeholder="Rechercher une prestation" />
+          </div>
+        </div>
+
+        <div class="list">
+          <button class="row" *ngFor="let s of filteredServices" (click)="chooseService(s)" type="button">
+            <div class="row-left">
+              <div class="row-title">{{ s.label }}</div>
+              <div class="row-sub">{{ formatDuration(s.durationMin) }} • à partir de {{ formatPrice(s.priceFrom) }}</div>
+            </div>
+            <svg viewBox="0 0 24 24" class="icon chevron" aria-hidden="true">
+              <path d="M8.5 5 15.5 12l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="tip">
+          <span class="tip-ico">✨</span>
+          <span>Prix clair avant paiement. Vous confirmez quand tout est OK.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP: WHEN -->
+    <section *ngIf="step==='when'" class="section">
+      <div class="sheet">
+        <div class="summary-mini">
+          <div class="sm-top">
+            <div class="sm-title">{{ selectedService?.label }}</div>
+            <div class="sm-sub">{{ formatDuration(selectedService?.durationMin || 0) }} • à partir de {{ formatPrice(selectedService?.priceFrom || 0) }}</div>
+          </div>
+        </div>
+
+        <h2>Quel moment vous arrange ?</h2>
+        <p class="hint">On affichera uniquement les créneaux disponibles.</p>
+
+        <div class="seg">
+          <button class="seg-btn" [class.on]="selectedWhen==='today'" (click)="setWhen('today')" type="button">Aujourd’hui</button>
+          <button class="seg-btn" [class.on]="selectedWhen==='tonight'" (click)="setWhen('tonight')" type="button">Ce soir</button>
+          <button class="seg-btn" [class.on]="selectedWhen==='tomorrow'" (click)="setWhen('tomorrow')" type="button">Demain</button>
+          <button class="seg-btn" [class.on]="selectedWhen==='week'" (click)="setWhen('week')" type="button">Cette semaine</button>
+        </div>
+
+        <button class="cta" (click)="goSlots()" type="button">
+          Voir les créneaux disponibles
+          <svg viewBox="0 0 24 24" class="icon right" aria-hidden="true">
+            <path d="M8.5 5 15.5 12l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="muted-line">
+          <span class="dot"></span>
+          <span>Paiement sécurisé • Modification possible avant paiement</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP: SLOTS -->
+    <section *ngIf="step==='slots'" class="section">
+      <div class="sheet">
+        <div class="summary-mini">
+          <div class="sm-top">
+            <div class="sm-title">{{ selectedService?.label }}</div>
+            <div class="sm-sub">{{ whenLabel(selectedWhen) }} • {{ formatDuration(selectedService?.durationMin || 0) }}</div>
+          </div>
+        </div>
+
+        <h2>Créneaux disponibles</h2>
+        <p class="hint">Sélectionnez un créneau pour continuer.</p>
+
+        <div class="loading" *ngIf="loadingSlots">
+          <div class="sk"></div><div class="sk"></div><div class="sk"></div>
+        </div>
+
+        <div class="slots" *ngIf="!loadingSlots">
+          <button class="slot" *ngFor="let sl of slots" (click)="chooseSlot(sl)" type="button">
+            <div class="slot-time">{{ sl.label }}</div>
+            <div class="slot-meta">{{ sl.meta }}</div>
+          </button>
+        </div>
+
+        <div class="tip">
+          <span class="tip-ico">🛡️</span>
+          <span>Vous validez tout au récapitulatif avant paiement.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP: SUMMARY -->
+    <section *ngIf="step==='summary'" class="section">
+      <div class="sheet">
+        <h2>Récapitulatif</h2>
+        <p class="hint">Vérifiez avant de passer au paiement.</p>
+
+        <div class="summary">
+          <div class="line">
+            <div class="k">Prestation</div>
+            <div class="v">{{ selectedService?.label }}</div>
+          </div>
+          <div class="line">
+            <div class="k">Durée</div>
+            <div class="v">{{ formatDuration(selectedService?.durationMin || 0) }}</div>
+          </div>
+          <div class="line">
+            <div class="k">Quand</div>
+            <div class="v">{{ selectedSlot?.meta }} — {{ selectedSlot?.label }}</div>
+          </div>
+          <div class="line">
+            <div class="k">Adresse</div>
+            <div class="v">{{ addressLabel }}</div>
+          </div>
+          <div class="line">
+            <div class="k">Prix</div>
+            <div class="v strong">À partir de {{ formatPrice(selectedService?.priceFrom || 0) }}</div>
+          </div>
+        </div>
+
+        <button class="cta cta-pay" (click)="goToPayment()" type="button">
+          Continuer vers paiement
+          <svg viewBox="0 0 24 24" class="icon right" aria-hidden="true">
+            <path d="M8.5 5 15.5 12l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="fineprint">
+          Paiement sécurisé. Annulation selon conditions. Vous pourrez choisir de reprendre avec le même prestataire après la prestation.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</div>

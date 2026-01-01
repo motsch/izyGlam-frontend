@@ -38,10 +38,10 @@ export class ProfileComponent implements OnInit {
     // -------------------------------
     selected: any = {};
     shops: any[] = [];
-    me: any = {};
+    me: any = null;
     myCompany: any = {};
     myArticlesData: any[] = [];
-    myShopData: any = {};
+    myShopData: any = null;
     employees: any[] = [];
     categories: any[] = [];
     selectedCategory: any = null;

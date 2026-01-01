@@ -191,6 +191,7 @@
     "SERVICES": "Gestion des prestations",
     "PHOTOS": "Galerie photos",
     "STATS": "Statistiques",
+    "SOCIAL": "Réseaux sociaux",
     "PARAM": "Paramétrage",
     "DOCUMENTS": "Documents",
     "SHOPS": "Les salons",
@@ -241,6 +242,12 @@
     "COMMENT": "Commentaire",
     "NOTE": "Note",
     "CLOSE": "Fermer"
+  },
+  "UILEVEL": {
+    "STARTER": "Créatrice",
+    "ACTIVE": "Confirmée",
+    "AMBASSADOR": "Ambassadrice IzyGlam",
+    "ICONE": "Icône locale"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Aucune image dans la galerie."
@@ -502,7 +509,7 @@
     "CARD_PAY": "Paiement par carte bancaire",
     "CREDIT_PAY": "Paiement par crédit entreprise",
     "EMPLOYEE_CREDIT_TITLE": "Utiliser mon crédit d'entreprise",
-    "EMPLOYEE_CREDIT_AVAILABLE":  "Mon crédit disponible :",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Mon crédit disponible :",
     "EMPLOYEE_CREDIT_EMPTY": "Pas de crédit d'entreprise",
     "CARD_NUM": "Numéro de la carte",
     "CARD_NAME": "Nom sur la carte",
@@ -768,6 +775,7 @@
   "SIDEBAR": {
     "PROFILE": "Gérer le compte",
     "ORDERS": "Commandes passées",
+    "MESSAGES": "Mes messages",
     "FAVORITES": "Favoris",
     "HELP": "Aide",
     "MY_ABO": "Mon abonnement",
@@ -1024,7 +1032,10 @@
     "DATE": "Date",
     "AMOUNT": "Montant",
     "COMMISSION": "Commission",
-    "STATUS": "Statut"
+    "STATUS": "Statut",
+    "NEXT_LEVEL": "Prochain niveau",
+    "MAX_LEVEL": "Niveau maximum atteint",
+    "REMAINING": "encore {{count}} réservations"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Sélectionnez le type de boutique à créer",
@@ -1088,6 +1099,9 @@
     "PRESTA_DELETE_ERROR": "Erreur lors de la suppression de la prestation"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Image de la boutique",
     "UPLOAD_IMAGE": "Télécharger une image",
     "SNEEK_PIC": "Aperçu de l'image",
@@ -1117,6 +1131,7 @@
     "GENERATE_DESCRIPTION": "Générer la description",
     "PHOTO": "Exemples de photos acceptées / refusées",
     "CODE_POSTAUX": "Codes postaux desservis",
+    "SOCIAL_NETWORK": "Réseaux sociaux",
     "EXEMPLE_LOCAL": "Ex: 75001"
   },
   "EMPLOYEES": {

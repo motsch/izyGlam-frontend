@@ -246,6 +246,16 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
+  saveSocial(): void {
+    try {
+      this.validateForm();
+      // Sauvegarde optimiste (si tu préfères un bouton, commente la ligne ci-dessous)
+      this.saveShop();
+    } catch (err) {
+      console.error('[ShopManagement] markFormModified error:', err);
+    }
+  }
+
   // ======================
   // Localisation / Codes postaux
   // ======================

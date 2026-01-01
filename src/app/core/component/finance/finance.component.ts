@@ -14,7 +14,8 @@ import { StripeService } from '../../services/stripe.service';
 })
 export class FinanceComponent implements OnInit {
   /** Boutique sélectionnée (injectée par le parent) */
-  @Input() myShopData: any = {};
+  @Input() myShopData: any[] = [];
+  shop: any = {};
   /** Copie locale (si besoin de modifier sans toucher l’input directement) */
   shopCopyData: any = {};
 
@@ -72,6 +73,7 @@ export class FinanceComponent implements OnInit {
   // ---------------------------------------
 
   ngOnInit(): void {
+    this.shop = this.myShopData[0];
     // Marque la section active (pour ton menu latéral)
     localStorage.setItem('menu-param', 'management');
 
@@ -79,8 +81,8 @@ export class FinanceComponent implements OnInit {
     this.bank = (this.me && this.me.bank) ? { ...this.me.bank } : { ...this.bank };
 
     // Charge les stats si la boutique est connue au démarrage
-    if (this.myShopData && this.myShopData._id) {
-      this.loadDashboardStats(this.myShopData._id);
+    if (this.shop && this.shop._id) {
+      this.loadDashboardStats(this.shop._id);
     } else {
       console.warn('FinanceComponent → myShopData est vide, en attente de ngOnChanges.');
     }
@@ -97,9 +99,9 @@ export class FinanceComponent implements OnInit {
   /** Recharge les stats si l’@Input myShopData change (sélecteur de boutique côté parent) */
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['myShopData'] && changes['myShopData'].currentValue) {
-      this.shopCopyData = { ...this.myShopData };
-      if (this.myShopData?._id) {
-        this.loadDashboardStats(this.myShopData._id);
+      this.shopCopyData = { ...this.shop };
+      if (this.shop?._id) {
+        this.loadDashboardStats(this.shop._id);
       }
     }
   }
@@ -225,5 +227,30 @@ export class FinanceComponent implements OnInit {
       }
     });
   }
+
+  private get finishedTotal(): number {
+    const t = this.shop?.stats?.bookings?.finished?.total;
+    return Number.isFinite(+t) ? +t : 0;
+  }
+
+  get shopLevelUi(): { emoji: string; class: string; trads: string } {
+    const total = this.finishedTotal;
+
+    if (total < 30) return { emoji: "🌱", class: "lvl-starter", trads: "UILEVEL.STARTER" };
+    if (total < 120) return { emoji: "🔥", class: "lvl-active", trads: "UILEVEL.ACTIVE" };
+    if (total < 250) return { emoji: "💎", class: "lvl-ambassador", trads: "UILEVEL.AMBASSADOR" };
+    return { emoji: "👑", class: "lvl-icon", trads: "UILEVEL.ICONE" };
+  }
+
+  get nextLevelUi(): null | { trads: string; remaining: number } {
+    const total = this.finishedTotal;
+
+    if (total < 30) return { trads: "UILEVEL.ACTIVE", remaining: 30 - total };
+    if (total < 120) return { trads: "UILEVEL.AMBASSADOR", remaining: 120 - total };
+    if (total < 250) return { trads: "UILEVEL.ICONE", remaining: 250 - total };
+
+    return null; // déjà au max
+  }
+
 
 }

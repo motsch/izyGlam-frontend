@@ -31,7 +31,7 @@ export class RoundShopCardComponent {
     public sessionService: SessionService,
     private translate: TranslateService,
     private toastr: ToastrService,
-  private reviewsModal: ReviewsModalService
+    private reviewsModal: ReviewsModalService
   ) { }
 
   // ======================= Favoris =======================
@@ -138,4 +138,45 @@ export class RoundShopCardComponent {
     if (type === 'success') this.toastr.success(msg);
     else this.toastr.error(msg);
   }
+
+  get finishedBookingsTotal(): number {
+    const total = this.shop?.stats?.bookings?.finished?.total;
+    return Number.isFinite(+total) ? +total : 0;
+  }
+
+  get levelUi(): { emoji: string; label: string; class: string, trads: string } {
+    const total = this.finishedBookingsTotal;
+    if (total < 30)
+      return {
+        emoji: "🌱",
+        label: "Créatrice",
+        class: "lvl-starter",
+        trads: "UILEVEL.STARTER",
+      };
+
+    if (total < 120)
+      return {
+        emoji: "🔥",
+        label: "Confirmée",
+        class: "lvl-active",
+        trads: "UILEVEL.ACTIVE",
+      };
+
+    if (total < 250)
+      return {
+        emoji: "💎",
+        label: "Ambassadrice IzyGlam",
+        class: "lvl-ambassador",
+        trads: "UILEVEL.AMBASSADOR",
+      };
+
+    return {
+      emoji: "👑",
+      label: "Icône locale",
+      class: "lvl-icon",
+      trads: "UILEVEL.ICONE",
+    };
+
+  }
+
 }
