@@ -62,6 +62,13 @@ export class ShopService {
   }
 
   /**
+   * Récupérer toutes les shops
+   */
+  getAllAdmin() {
+    return this.http.get<any[]>(`${environment.apiUrl}shop-admin`);
+  }
+
+  /**
    * Récupérer un shops par son ID
    * @param id (ID du shop)
    */

@@ -131,7 +131,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
   /** Recharge toute la liste des shops (utilisé au init + après IA) */
   private loadShops(): void {
-    this.shopService.getAll().subscribe({
+    this.shopService.getAllAdmin().subscribe({
       next: (data: any[]) => {
         console.log('Shops:', data);
         this.shops = data;
@@ -632,7 +632,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     this.servicesLoadingByShopId[shopId] = true;
     this.servicesErrorByShopId[shopId] = null;
 
-    this.productService.getProductsByShop(shopId).subscribe({
+    this.productService.getProductsByShopAdmin(shopId).subscribe({
       next: (services: any[]) => {
         // Petit tri sympa: non-blocked d'abord + ordre alpha
         const sorted = (services || []).slice().sort((a, b) => {

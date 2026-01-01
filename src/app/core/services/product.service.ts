@@ -49,6 +49,12 @@ export class ProductService {
         );
     }
 
+    getProductsByShopAdmin(shopId: string) {
+        return this.http.get<any[]>(
+            `${environment.apiUrl}shop-admin/${shopId}/services`
+        );
+    }
+
     /**
      * Récupérer un products par son ID
      * @param id (ID du product)
