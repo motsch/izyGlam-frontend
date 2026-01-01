@@ -281,13 +281,14 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
     try {
       this.translate.use(lang.code);
       this.sessionService.setLang(lang.code);
-      this.seoService.setLanguage(lang);
+      this.seoService.setLanguage(lang.code); // ✅ ICI
       localStorage.setItem('langue', lang.code);
     } catch (err) {
       console.error('Erreur lors de l’application de la langue :', err);
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
     }
   }
+
 
   // ------------------------------------------------------
   // ✅ Validation basique du formulaire
