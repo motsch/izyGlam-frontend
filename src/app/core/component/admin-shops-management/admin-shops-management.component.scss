@@ -940,3 +940,25 @@ tr.detail-row {
   font-weight: 500;
   font-style: italic;
 }
+
+.moderation-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-left:10px;
+  padding:3px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  background:#fff7e6;
+  border:1px solid #ffd699;
+  color:#b9731f;
+}
+
+.icon-button.danger {
+  border: 1px solid #ffb4b4 !important;
+}
+
+.icon-button.danger i {
+  color: #d64747;
+}

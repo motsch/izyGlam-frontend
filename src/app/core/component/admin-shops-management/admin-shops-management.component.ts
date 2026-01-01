@@ -135,6 +135,14 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
       next: (data: any[]) => {
         console.log('Shops:', data);
         this.shops = data;
+        this.shops = (data || []).sort((a, b) => {
+          const fa = this.isShopFlagged(a) ? 1 : 0;
+          const fb = this.isShopFlagged(b) ? 1 : 0;
+          // flaggués d'abord
+          if (fa !== fb) return fb - fa;
+          // sinon tri secondaire (ex: nom)
+          return (a?.name || '').localeCompare(b?.name || '');
+        });
         this.dataSource.data = this.shops;
 
         if (this.paginator) this.dataSource.paginator = this.paginator;
@@ -690,4 +698,57 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     const p = Number(price || 0);
     return `${p.toFixed(0)}€`;
   }
+
+  isShopFlagged(shop: any): boolean {
+    const flags = (shop?.flags?.length || 0) > 0;
+    const status = shop?.status === 'needs_manual_review';
+    const unsafe = shop?.moderation?.desc?.safe === false;
+    return flags || status || unsafe;
+  }
+
+  getShopFlagReasons(shop: any): string[] {
+    // priorité aux raisons IA détaillées si dispo
+    const reasons = shop?.moderation?.desc?.reasons;
+    if (Array.isArray(reasons) && reasons.length) return reasons;
+    const flags = shop?.flags;
+    if (Array.isArray(flags) && flags.length) return flags;
+    return [];
+  }
+
+  blockShop(shop: any) {
+    const reasons = this.getShopFlagReasons(shop);
+    const reasonText = reasons?.length
+      ? reasons.join(', ')
+      : 'Blocage manuel (admin)';
+
+    const msg =
+      `Bloquer "${shop?.name}" et rembourser les bookings en attente (pending/accepted) ?\n\n` +
+      `Motif: ${reasonText}\n\n` +
+      `⚠️ Action irréversible côté client (emails + remboursements).`;
+
+    if (!confirm(msg)) return;
+
+    this.loading = true;
+
+    this.shopService.blockShop(shop._id, reasonText).subscribe({
+      next: (res: any) => {
+        this.loading = false;
+
+        const count = res?.refundedBookingsCount ?? 0;
+        this.toastr.success(
+          `Shop bloqué. ${count} booking(s) traité(s).`
+        );
+
+        // Recharge la liste (et donc tri flagged-first)
+        this.loadShops();
+      },
+      error: (err: any) => {
+        this.loading = false;
+        console.error(err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      }
+    });
+  }
+
+
 }

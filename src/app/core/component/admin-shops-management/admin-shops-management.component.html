@@ -30,6 +30,11 @@
         <div class="shop-main-info">
           <div class="shop-name">
             {{ shop.name }}
+            <span class="moderation-badge" *ngIf="isShopFlagged(shop)"
+              [attr.title]="getShopFlagReasons(shop).join(', ')">
+              ⚠️ À vérifier
+            </span>
+
             <span class="expand-hint" *ngIf="!isExpanded(shop)">• Voir prestations</span>
             <span class="expand-hint" *ngIf="isExpanded(shop)">• Masquer prestations</span>
           </div>
@@ -114,11 +119,19 @@
       </th>
       <td mat-cell *matCellDef="let shop">
         <div class="actions-wrapper">
+          <!-- ✅ Bloquer + rembourser (action admin métier) -->
+          <button class="icon-button danger" mat-raised-button (click)="$event.stopPropagation(); blockShop(shop)"
+            title="Bloquer la boutique + rembourser les bookings pending/accepted">
+            <i class="fa fa-ban"></i>
+          </button>
+
+          <!-- ✏️ Edit -->
           <button class="icon-button edit" mat-raised-button color="primary"
             (click)="$event.stopPropagation(); editShop(shop)">
             <i class="fa fa-pencil"></i>
           </button>
         </div>
+
       </td>
     </ng-container>
 

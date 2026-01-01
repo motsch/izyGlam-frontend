@@ -272,14 +272,14 @@ export class ShopService {
   }
 
   updateVerificationDocs(shopId: string, docs: any) {
-  const formData = new FormData();
+    const formData = new FormData();
 
-  if (docs.identityDoc) formData.append('identityDoc', docs.identityDoc);
-  if (docs.insuranceDoc) formData.append('insuranceDoc', docs.insuranceDoc);
-  if (docs.kbisDoc) formData.append('kbisDoc', docs.kbisDoc);
+    if (docs.identityDoc) formData.append('identityDoc', docs.identityDoc);
+    if (docs.insuranceDoc) formData.append('insuranceDoc', docs.insuranceDoc);
+    if (docs.kbisDoc) formData.append('kbisDoc', docs.kbisDoc);
 
-  return this.http.post(`${environment.apiUrl}shop/${shopId}/verification-docs`, formData);
-}
+    return this.http.post(`${environment.apiUrl}shop/${shopId}/verification-docs`, formData);
+  }
 
 
   // ---------------------------------------------------
@@ -328,11 +328,18 @@ export class ShopService {
   }
 
   validateDocument(shopId: string, docType: string, status: string): Observable<any> {
-  return this.http.post(`${environment.apiUrl}shop/validate-document`, {
-    shopId,
-    docType,
-    status,
-  });
-}
+    return this.http.post(`${environment.apiUrl}shop/validate-document`, {
+      shopId,
+      docType,
+      status,
+    });
+  }
+
+  /**
+   * 🚫 Blocage shop (admin) + remboursements bookings pending/accepted
+   */
+  blockShop(shopId: string, reason: string) {
+    return this.http.post<any>(`${environment.apiUrl}shop/${shopId}/block`, { reason });
+  }
 
 }
