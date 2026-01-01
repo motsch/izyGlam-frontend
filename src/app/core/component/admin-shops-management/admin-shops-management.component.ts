@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { ShopService } from '../../services/shop.service';
 import { environment } from 'src/environments/environment';
-
+import { ProductService } from '../../services/product.service';
 // ✅ Toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,6 +14,7 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './admin-shops-management.component.html',
   styleUrls: ['./admin-shops-management.component.scss'],
 })
+
 export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   // -----------------------------
   // 🏪 Données & UI
@@ -65,12 +66,29 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   previewOpen = false;
   previewUrl: string | null = null;
   previewType: 'image' | 'pdf' | 'other' = 'image';
+  // ------------------------------------------------------
+  // ✅ EXPAND ROWS (prestations par boutique)
+  // ------------------------------------------------------
+  expandedShopId: string | null = null;
 
+  /** cache: shopId -> services[] */
+  servicesByShopId: Record<string, any[]> = {};
+
+  /** loading: shopId -> boolean */
+  servicesLoadingByShopId: Record<string, boolean> = {};
+
+  /** error: shopId -> string */
+  servicesErrorByShopId: Record<string, string | null> = {};
   constructor(
     private shopService: ShopService,
     private toastr: ToastrService,
+    private productService: ProductService, // ✅ AJOUT
     private translate: TranslateService
-  ) {}
+  ) { }
+
+  // ✅ Pour éviter le re-render inutile
+  trackByShopId = (_: number, shop: any) => shop?._id;
+  trackByServiceId = (_: number, s: any) => s?._id;
 
   // ------------------------------------------------------
   // ⏱️ Chargement initial
@@ -167,7 +185,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
         this.toastr.success(
           this.translate.instant('SUCCESS.SHOPUPDATED') ||
-            'Boutique mise à jour.'
+          'Boutique mise à jour.'
         );
       },
       error: (err) => {
@@ -193,7 +211,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
         this.toastr.success(
           this.translate.instant('SUCCESS.USERUPDATED') ||
-            'Shops mis à jour.'
+          'Shops mis à jour.'
         );
       },
       error: (err) => {
@@ -269,7 +287,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
         this.toastr.success(
           this.translate.instant('SUCCESS.SHOPUPDATED') ||
-            'Boutique mise à jour.'
+          'Boutique mise à jour.'
         );
       },
       error: (error: any) => {
@@ -424,7 +442,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
 
         this.toastr.success(
           this.translate.instant('SUCCESS.IMAGE_PROCESSED') ||
-            'Image mise à jour.'
+          'Image mise à jour.'
         );
       },
       error: (error) => {
@@ -523,7 +541,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   // ------------------------------------------------------
   // Placeholders conservés
   // ------------------------------------------------------
-  saveService() {}
+  saveService() { }
 
   validateDoc(docType: string, status: string) {
     if (!this.shop?._id) return;
@@ -575,8 +593,8 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
       docType === 'identity'
         ? "Pièce d'identité"
         : docType === 'insurance'
-        ? 'Assurance'
-        : 'KBIS';
+          ? 'Assurance'
+          : 'KBIS';
 
     const status = this.getDocStatus(shop, docType);
 
@@ -591,5 +609,85 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
   // ------------------------------------------------------
   private showCustomToast(message: string) {
     this.toastr.error(message);
+  }
+
+  // ------------------------------------------------------
+  // ✅ Ouvrir / fermer + charger services on-demand
+  // ------------------------------------------------------
+  toggleRow(shop: any): void {
+    const shopId = shop?._id;
+    if (!shopId) return;
+
+    // Si on reclique sur la même boutique -> on referme
+    if (this.expandedShopId === shopId) {
+      this.expandedShopId = null;
+      return;
+    }
+
+    this.expandedShopId = shopId;
+
+    // Si déjà en cache -> pas de refetch
+    if (this.servicesByShopId[shopId]) return;
+
+    this.servicesLoadingByShopId[shopId] = true;
+    this.servicesErrorByShopId[shopId] = null;
+
+    this.productService.getProductsByShop(shopId).subscribe({
+      next: (services: any[]) => {
+        // Petit tri sympa: non-blocked d'abord + ordre alpha
+        const sorted = (services || []).slice().sort((a, b) => {
+          const ab = Number(!!a.blocked);
+          const bb = Number(!!b.blocked);
+          if (ab !== bb) return ab - bb;
+          return (a.name || '').localeCompare(b.name || '');
+        });
+
+        this.servicesByShopId[shopId] = sorted;
+        this.servicesLoadingByShopId[shopId] = false;
+      },
+      error: (err) => {
+        console.error('Erreur chargement services shop', shopId, err);
+        this.servicesLoadingByShopId[shopId] = false;
+        this.servicesErrorByShopId[shopId] =
+          this.translate.instant('ERROR.GENERIC_ERROR') || 'Erreur de chargement.';
+        this.showCustomToast(this.servicesErrorByShopId[shopId] || 'Erreur.');
+      },
+    });
+  }
+
+  isExpanded(shop: any): boolean {
+    return !!shop?._id && this.expandedShopId === shop._id;
+  }
+
+  getServices(shop: any): any[] {
+    const shopId = shop?._id;
+    if (!shopId) return [];
+    return this.servicesByShopId[shopId] || [];
+  }
+
+  isServicesLoading(shop: any): boolean {
+    const shopId = shop?._id;
+    if (!shopId) return false;
+    return !!this.servicesLoadingByShopId[shopId];
+  }
+
+  getServicesError(shop: any): string | null {
+    const shopId = shop?._id;
+    if (!shopId) return null;
+    return this.servicesErrorByShopId[shopId] || null;
+  }
+
+  formatDuration(mins: number): string {
+    const m = Number(mins || 0);
+    if (!m) return '—';
+    if (m < 60) return `${m} min`;
+    const h = Math.floor(m / 60);
+    const r = m % 60;
+    return r ? `${h}h${String(r).padStart(2, '0')}` : `${h}h`;
+  }
+
+  formatPrice(price: number): string {
+    const p = Number(price || 0);
+    return `${p.toFixed(0)}€`;
   }
 }

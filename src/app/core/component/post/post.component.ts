@@ -1,596 +1,264 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { SessionService } from '../../services/session.service';
-import { UserService } from '../../services/user.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AdService } from '../../services/ad.service';
-import { PostService } from '../../services/post.service';
-import { TipService } from '../../services/tips.service';
-import { MediaService } from '../../services/media.service';
-import { InstagramService } from '../../services/instagram.service';
+import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { FakePost, FakePostService, SocialPlatform } from '../../services/fake-post.service';
+
+type ActiveFilter = 'all' | 'active' | 'inactive';
 
 @Component({
-    selector: 'app-post',
-    templateUrl: './post.component.html',
-    styleUrl: './post.component.scss',
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-    buttonsDisabled = true; // Permet de désactiver les boutons lorsque l'on récupère les posts
-    addPostButtonDisabled = false;
+  loading = false;
 
-    @ViewChild('fileInput', { static: false }) fileInput!: ElementRef;
+  posts: FakePost[] = [];
+  filtered: FakePost[] = [];
 
-    @Input() me: any = {};
-    @Input() posts: any[] = [];
+  // filters
+  q = '';
+  platform: SocialPlatform | 'all' = 'all';
+  shopType = 'all';
+  activeFilter: ActiveFilter = 'all';
 
-    aPIimgStorageUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
-    selectedPlatform: string = 'LinkedIn'; // Par défaut Instagram
-    selectedAdsType: string = ''; // Par défaut none
-    filteredPosts: any[] = [];
-    selectedFile: File | null = null;
-    tips: any[] = [];
-    randomTip: any = null;
-    contentType: string = 'posts';
+  // pagination
+  page = 1;
+  pageSize = 10;
 
-    // pub
-    campagnes: any[] = [];
+  // modal/form
+  modalOpen = false;
+  editing: FakePost | null = null;
 
-    // audit
-    platforms = [
-        { name: 'Instagram', icon: 'assets/icons/instagram-icon.svg' },
-        { name: 'LinkedIn', icon: 'assets/icons/linkedin-icon.svg' },
-    ];
+  form = {
+    platform: 'instagram' as SocialPlatform,
+    shopTypesText: 'all', // "coiffure, manucure" ou "all"
+    tone: '',
+    text: '',
+    active: true,
+  };
 
-    selectedPlatformForAudit: string | null = null;
+  constructor(
+    private fakePostService: FakePostService,
+    private toastr: ToastrService
+  ) {}
 
-    platformDescriptions: { [key: string]: string } = {
-        instagram:
-            "Téléversez une capture de votre page de profil Instagram pour obtenir des suggestions d'amélioration.",
-        linkedin:
-            "Téléversez les captures de vos sections importantes (titre, résumé, expériences) pour obtenir des suggestions d'amélioration.",
+  ngOnInit(): void {
+    this.load();
+    this.form.platform = 'instagram';
+  }
+
+  load(): void {
+    this.loading = true;
+
+    this.fakePostService.getAll().subscribe({
+      next: (data) => {
+        this.posts = Array.isArray(data) ? data : [];
+        this.applyFilters();
+        this.loading = false;
+      },
+      error: (err) => {
+        this.loading = false;
+        this.toastr.error(err?.error?.message || 'Impossible de récupérer les posts');
+      }
+    });
+  }
+
+  // ======================
+  // Filters
+  // ======================
+  applyFilters(): void {
+    const q = (this.q || '').trim().toLowerCase();
+    const type = this.normalizeType(this.shopType || 'all');
+
+    this.filtered = this.posts.filter((p) => {
+      // platform
+      if (this.platform !== 'all' && p.platform !== this.platform) return false;
+
+      // active
+      if (this.activeFilter === 'active' && !p.active) return false;
+      if (this.activeFilter === 'inactive' && p.active) return false;
+
+      // shopType
+      if (type && type !== 'all') {
+        const types = (p.shopTypes || []).map((x) => this.normalizeType(x));
+        if (!types.includes(type) && !types.includes('all')) return false;
+      }
+
+      // search
+      if (q) {
+        const inText = (p.text || '').toLowerCase().includes(q);
+        const inTone = (p.tone || '').toLowerCase().includes(q);
+        const inTypes = (p.shopTypes || []).join(',').toLowerCase().includes(q);
+        if (!inText && !inTone && !inTypes) return false;
+      }
+
+      return true;
+    });
+
+    // reset pagination when filter changes
+    this.page = 1;
+  }
+
+  get shopTypeOptions(): string[] {
+    // liste stable des types trouvés en base + "all"
+    const set = new Set<string>();
+    set.add('all');
+    this.posts.forEach((p) => (p.shopTypes || []).forEach((t) => set.add(this.normalizeType(t))));
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  }
+
+  // ======================
+  // Pagination helpers
+  // ======================
+  get totalPages(): number {
+    return Math.max(1, Math.ceil(this.filtered.length / this.pageSize));
+  }
+
+  get paged(): FakePost[] {
+    const start = (this.page - 1) * this.pageSize;
+    return this.filtered.slice(start, start + this.pageSize);
+  }
+
+  nextPage(): void {
+    if (this.page < this.totalPages) this.page++;
+  }
+
+  prevPage(): void {
+    if (this.page > 1) this.page--;
+  }
+
+  // ======================
+  // Modal / Form
+  // ======================
+  openCreate(): void {
+    this.editing = null;
+    this.form = {
+      platform: 'instagram',
+      shopTypesText: 'all',
+      tone: '',
+      text: '',
+      active: true,
     };
+    this.modalOpen = true;
+  }
 
-    caption = '';
-    imageUrl = '';
-    loading = false;
-    successMessage = '';
-    errorMessage = '';
+  openEdit(p: FakePost): void {
+    this.editing = p;
+    this.form = {
+      platform: p.platform,
+      shopTypesText: (p.shopTypes || []).join(', '),
+      tone: p.tone || '',
+      text: p.text || '',
+      active: !!p.active,
+    };
+    this.modalOpen = true;
+  }
 
-    constructor(
-        private postService: PostService,
-        public sessionService: SessionService,
-        private mediaService: MediaService,
-        private userService: UserService,
-        private tipsService: TipService,
-        private _snackBar: MatSnackBar,
-        private instagramService: InstagramService,
-        // Pub
-        private adService: AdService
-    ) {}
+  closeModal(): void {
+    this.modalOpen = false;
+  }
 
-    ngOnInit(): void {
-        this.getAdByUserId();
-        // this.loadTips();
-        this.userService.getMe().subscribe({
-            next: (data: any) => {
-                this.me = data;
-                this.getAllPosts(data);
-            },
-            error: (error: any) => {
-                console.log(error);
-                this.buttonsDisabled = false;
-            },
-        });
+  save(): void {
+    const payload = this.buildPayloadFromForm();
+
+    if (!payload.text) {
+      this.toastr.error('Le texte est requis');
+      return;
     }
 
-    publish(post: any) {
-        if (this.selectedPlatform === 'Instagram') {
-            this.publishToInstagram(post);
-        } else {
-            this.publishToLinkedin(post);
+    if (!payload.shopTypes?.length) {
+      payload.shopTypes = ['all'];
+    }
+
+    this.loading = true;
+
+    if (this.editing?._id) {
+      this.fakePostService.update(this.editing._id, payload).subscribe({
+        next: (updated) => {
+          this.toastr.success('Post mis à jour ✨');
+          this.replaceLocal(updated);
+          this.loading = false;
+          this.modalOpen = false;
+          this.applyFilters();
+        },
+        error: (err) => {
+          this.loading = false;
+          this.toastr.error(err?.error?.message || 'Erreur lors de la mise à jour');
         }
-    }
-
-    publishToLinkedin(post: any) {
-        console.log('Post envoyé à l’API LinkedIn :', post);
-
-        this.successMessage = '';
-        this.errorMessage = '';
-
-        if (!post.content || !post.imageUrl) {
-            this.errorMessage =
-                'Le texte (content) et l’URL de l’image (imageUrl) sont obligatoires.';
-            return;
+      });
+    } else {
+      this.fakePostService.create(payload).subscribe({
+        next: (created) => {
+          this.toastr.success('Post créé ✨');
+          this.posts = [created, ...this.posts];
+          this.loading = false;
+          this.modalOpen = false;
+          this.applyFilters();
+        },
+        error: (err) => {
+          this.loading = false;
+          this.toastr.error(err?.error?.message || 'Erreur lors de la création');
         }
-
-        this.loading = true;
-        this.instagramService.publishLinkedinPost(post).subscribe({
-            next: (res) => {
-                this.loading = false;
-                this.successMessage = 'Post LinkedIn publié avec succès ✅';
-
-                // On recharge les posts pour mettre à jour le status (et on finit par reload la page)
-                this.userService.getMe().subscribe({
-                    next: (data: any) => {
-                        this.me = data;
-                        this.getAllPosts(data);
-                        // Recharge complète de la page une fois tout terminé
-                        window.location.reload();
-                    },
-                    error: (error: any) => {
-                        console.log(error);
-                        this.buttonsDisabled = false;
-                    },
-                });
-            },
-            error: (err) => {
-                this.loading = false;
-                this.errorMessage =
-                    err?.error?.message ||
-                    'Erreur lors de la publication sur LinkedIn.';
-            },
-        });
+      });
     }
+  }
 
-    publishToInstagram(post: any) {
-        console.log('Post envoyé à l’API Instagram :', post);
+  toggleActive(p: FakePost): void {
+    const nextActive = !p.active;
 
-        this.successMessage = '';
-        this.errorMessage = '';
+    this.fakePostService.update(p._id, { active: nextActive }).subscribe({
+      next: (updated) => {
+        p.active = updated.active;
+        this.toastr.success(updated.active ? 'Activé' : 'Désactivé');
+        this.applyFilters();
+      },
+      error: () => this.toastr.error('Impossible de modifier le statut')
+    });
+  }
 
-        if (!post.content || !post.imageUrl) {
-            this.errorMessage =
-                'Le texte (content) et l’URL de l’image (imageUrl) sont obligatoires.';
-            return;
-        }
+  delete(p: FakePost): void {
+    const ok = confirm('Supprimer ce post ?');
+    if (!ok) return;
 
-        this.loading = true;
-        this.instagramService.publishInstagramPost(post).subscribe({
-            next: (res) => {
-                this.loading = false;
-                this.successMessage = 'Post Instagram publié avec succès ✅';
+    this.fakePostService.delete(p._id).subscribe({
+      next: () => {
+        this.toastr.success('Post supprimé');
+        this.posts = this.posts.filter((x) => x._id !== p._id);
+        this.applyFilters();
+      },
+      error: () => this.toastr.error('Impossible de supprimer')
+    });
+  }
 
-                this.userService.getMe().subscribe({
-                    next: (data: any) => {
-                        this.me = data;
-                        this.getAllPosts(data);
-                        // Recharge complète de la page une fois tout terminé
-                        window.location.reload();
-                    },
-                    error: (error: any) => {
-                        console.log(error);
-                        this.buttonsDisabled = false;
-                    },
-                });
-            },
-            error: (err) => {
-                this.loading = false;
-                this.errorMessage =
-                    err?.error?.message || 'Erreur lors de la publication.';
-            },
-        });
-    }
+  // ======================
+  // Helpers
+  // ======================
+  private replaceLocal(updated: FakePost): void {
+    this.posts = this.posts.map((p) => (p._id === updated._id ? updated : p));
+  }
 
-    shuffleArray(array: any[]): any[] {
-        const shuffled = [...array];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-            const randomIndex = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[randomIndex]] = [
-                shuffled[randomIndex],
-                shuffled[i],
-            ];
-        }
-        return shuffled;
-    }
+  private buildPayloadFromForm(): Partial<FakePost> {
+    const types = (this.form.shopTypesText || '')
+      .split(',')
+      .map((x) => this.normalizeType(x))
+      .filter(Boolean);
 
-    connectToPlatform(platform: string): void {
-        let oauthUrl = '';
+    return {
+      platform: this.form.platform,
+      lang: 'fr',
+      shopTypes: types.length ? types : ['all'],
+      tone: (this.form.tone || '').trim() || undefined,
+      text: (this.form.text || '').trim(),
+      active: !!this.form.active,
+    };
+  }
 
-        switch (platform.toLowerCase()) {
-            case 'instagram':
-                const instagramScopes = encodeURIComponent(
-                    'instagram_business_basic,instagram_business_manage_messages,instagram_business_content_publish,instagram_business_manage_comments'
-                );
-                oauthUrl = `https://api.instagram.com/oauth/authorize?client_id=${environment.INSTAGRAM_APP_ID}&redirect_uri=${encodeURIComponent(
-                    environment.INSTAGRAM_REDIRECT_URI
-                )}&response_type=code&scope=${instagramScopes}`;
-                break;
-            case 'linkedin':
-                oauthUrl = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${environment.LINKEDIN_APP_ID}&redirect_uri=${encodeURIComponent(
-                    environment.LINKEDIN_REDIRECT_URI
-                )}&state=${platform}&scope=openid%20profile%20email%20w_member_social`;
-                break;
-            default:
-                this.openSnackBar(`Plateforme ${platform} non prise en charge.`);
-                return;
-        }
-
-        window.location.href = oauthUrl;
-    }
-
-    openSnackBar(phrase: string) {
-        this._snackBar.open(phrase, 'uploadTranslation', {
-            horizontalPosition: 'center',
-            verticalPosition: 'bottom',
-            duration: 5000,
-            panelClass: ['orange-snackbar', 'login-snackbar'],
-        });
-    }
-
-    loadTips(): void {
-        this.tipsService.getAll().subscribe({
-            next: (data: any[]) => {
-                this.tips = this.shuffleArray(data);
-                this.randomTip = this.getRandomTip();
-                console.log('Random Tip :', this.randomTip);
-            },
-            error: (err: any) => {
-                console.log(err);
-            },
-        });
-    }
-
-    public getRandomTip(): any {
-        if (this.tips.length > 0) {
-            const randomIndex = Math.floor(Math.random() * this.tips.length);
-            return this.tips[randomIndex];
-        }
-        return null;
-    }
-
-    getAllPosts(me: any) {
-        this.posts = [];
-        this.postService.getMonthlyPosts(me._id).subscribe({
-            next: (data: any) => {
-                console.log(data);
-                this.posts = data.map((post: any) => {
-                    return {
-                        ...post,
-                        content: JSON.parse(post.content),
-                    };
-                });
-                this.regenerateImages(this.posts);
-                if (!this.selectedPlatform) {
-                    this.selectPlatform('Facebook');
-                }
-                this.filteredPosts = this.posts.filter(
-                    (post) => post.platform === this.selectedPlatform
-                );
-                this.buttonsDisabled = false;
-                console.log(this.posts);
-            },
-            error: (error: any) => {
-                console.log(error);
-            },
-        });
-    }
-
-    editContentManually(post: any) {
-        console.log(post.edit);
-
-        if (!post.edit || post.edit === undefined) {
-            post.contentToUpdate = post.content.caption;
-            post.edit = true;
-        } else {
-            post.content.caption = post.contentToUpdate;
-            const postClone = {
-                ...post,
-                content: JSON.stringify(post.content),
-            };
-
-            this.postService.updatePostById(postClone._id, postClone).subscribe({
-                next: (data) => {
-                    console.log(data);
-                    post.content = JSON.parse(postClone.content);
-                    post.edit = !post.edit;
-                },
-                error: (error) => {
-                    console.log(error);
-                },
-            });
-        }
-
-        console.log(post.edit);
-    }
-
-    openFileSelector() {
-        if (this.fileInput) {
-            this.fileInput.nativeElement.click();
-        } else {
-            console.error("fileInput n'est pas encore initialisé.");
-        }
-    }
-
-    onFileSelected(event: any, post: any) {
-        this.selectedFile = event.target.files[0];
-        console.log('Fichier sélectionné :', this.selectedFile);
-        this.uploadMedia(post);
-    }
-
-    uploadMedia(post: any) {
-        if (this.selectedFile) {
-            this.mediaService
-                .uploadMedia(post._id, this.selectedFile, 'video')
-                .subscribe(
-                    (response: any) => {
-                        console.log('Média uploadé avec succès', response);
-                        this.getAllPosts(this.me);
-                    },
-                    (error: any) => {
-                        console.error(
-                            "Erreur lors de l'upload du média :",
-                            error
-                        );
-                        this.buttonsDisabled = false;
-                    }
-                );
-        } else {
-            console.log('Aucun fichier sélectionné');
-        }
-    }
-
-    closeEditContentManually(post: any) {
-        console.log(post.edit);
-        post.edit = false;
-        console.log(post.edit);
-    }
-
-    correctContentAuto(post: any) {
-        console.log('POST: ' + JSON.stringify(post));
-
-        this.postService
-            .improveInstagramPost(post, this.selectedPlatform, this.me._id)
-            .subscribe({
-                next: (response: any) => {
-                    post.content.caption = response.improved;
-                },
-                error: (error: any) => {
-                    console.error(
-                        "Erreur lors de l'amélioration du texte :",
-                        error
-                    );
-                },
-            });
-    }
-
-    changeOnePostAuto(post: any) {
-        this.buttonsDisabled = true;
-        console.log('POST: ' + JSON.stringify(post));
-
-        this.postService.updateOnePostFromAi(this.me._id, post._id).subscribe({
-            next: async (response: any) => {
-                console.log('Response update one post :', response);
-                post = response;
-                await this.regenerateImage(response);
-            },
-            error: (error) => {
-                console.error(
-                    'Erreur lors de la modification du post :',
-                    error
-                );
-            },
-        });
-    }
-
-    createNewPost() {
-        if (!this.selectedPlatform) {
-            console.error('Aucune plateforme sélectionnée');
-            return;
-        }
-        this.buttonsDisabled = true;
-        this.postService
-            .createOnePostFromAi(this.me._id, this.selectedPlatform)
-            .subscribe({
-                next: (response: any) => {
-                    console.log(
-                        'Response CREATE ONE POST AUTO : ' +
-                            JSON.stringify(response)
-                    );
-                    let postToSend = response.post;
-                    postToSend.content = postToSend.content;
-                    this.regenerateImage(postToSend);
-                },
-                error: (error) => {
-                    console.error(
-                        'Erreur lors de la création du post :',
-                        error
-                    );
-                    this.buttonsDisabled = false;
-                },
-            });
-    }
-
-    async generateAllImages() {
-        for (let i = 0; i < this.filteredPosts.length; i++) {
-            if (!this.filteredPosts[i].imageUrl) {
-                await this.regenerateImage(this.filteredPosts[i]);
-            }
-            this.buttonsDisabled = true;
-        }
-    }
-
-    regenerateImage(post: any) {
-        this.buttonsDisabled = true;
-        this.postService.sendPromptToAiImage(post._id).subscribe({
-            next: (response) => {
-                console.log(response);
-                post.imageUrl = response.imageUrl;
-                this.getAllPosts(this.me);
-            },
-            error: (error) => {
-                console.error(
-                    "Erreur lors de la génération de l'image:",
-                    error
-                );
-                this.buttonsDisabled = false;
-            },
-        });
-    }
-
-    regenerateImages(posts: any[]) {
-        if (!posts || posts.length === 0) {
-            return;
-        }
-
-        const postsWithoutImage = posts.filter(
-            (p) => !p.imageUrl || p.imageUrl.trim() === ''
-        );
-
-        if (postsWithoutImage.length === 0) {
-            console.log('Tous les posts ont déjà une image, rien à régénérer.');
-            return;
-        }
-
-        this.buttonsDisabled = true;
-
-        const postIds = postsWithoutImage.map((p) => p._id);
-
-        this.postService.sendPromptsToAiImage(postIds).subscribe({
-            next: (response) => {
-                console.log('Résultat génération multiple :', response);
-
-                if (response?.results && Array.isArray(response.results)) {
-                    response.results.forEach((result: any) => {
-                        if (result.success && result.imageUrl) {
-                            const foundPost = this.posts?.find(
-                                (p: any) => p._id === result.postId
-                            );
-                            if (foundPost) {
-                                foundPost.imageUrl = result.imageUrl;
-                            }
-                        } else {
-                            console.warn(
-                                `Échec de génération pour le post ${result.postId} :`,
-                                result.error
-                            );
-                        }
-                    });
-                }
-
-                this.getAllPosts(this.me);
-
-                this.buttonsDisabled = false;
-            },
-            error: (error) => {
-                console.error(
-                    'Erreur lors de la génération des images :',
-                    error
-                );
-                this.buttonsDisabled = false;
-            },
-        });
-    }
-
-    uploadNewImage(post: any) {
-        // Logic to allow user to upload their own image
-    }
-
-    selectPlatform(platform: string) {
-        console.log(`Selection de la plateforme : ${platform}`);
-        this.contentType = 'posts';
-        this.selectedPlatform = platform;
-        this.selectedAdsType = '';
-        this.filterPosts();
-        this.tips = this.shuffleArray(this.tips);
-    }
-
-    selectAdsType(type: string) {
-        console.log(`Selection de la plateforme : ${type}`);
-        this.contentType = 'pubs';
-        this.selectedAdsType = type;
-        this.selectedPlatform = '';
-    }
-
-    selectAuditType(type: string) {
-        console.log(`Selection de la plateforme : ${type}`);
-        this.contentType = 'audit';
-        this.selectedAdsType = type;
-        this.selectedPlatform = '';
-    }
-
-    selectUGCType(type: string) {
-        console.log(`Selection de la plateforme : ${type}`);
-        this.contentType = 'ugc';
-        this.selectedAdsType = type;
-        this.selectedPlatform = '';
-    }
-
-    selectComsType() {
-        this.contentType = 'coms';
-        this.selectedAdsType = 'coms';
-        this.selectedPlatform = '';
-    }
-
-    filterPosts() {
-        this.filteredPosts = this.posts.filter(
-            (post) => post.platform === this.selectedPlatform
-        );
-    }
-
-    isImage(url: string): boolean {
-        console.log('URL : ' + url);
-        const imageExtensions = [
-            '.png',
-            '.jpeg',
-            '.jpg',
-            '.gif',
-            '.bmp',
-            '.webp',
-        ];
-        const extension = url.substring(url.lastIndexOf('.')).toLowerCase();
-        return imageExtensions.includes(extension);
-    }
-
-    removeHashtag(post: any, index: number): void {
-        post.content.hashtags.splice(index, 1);
-        post.content = JSON.stringify(post.content);
-        this.postService.updatePostById(post._id, post).subscribe({
-            next: (data: any) => {
-                console.log('Hashtag supprimé');
-                console.log(data);
-                this.getAllPosts(this.me);
-            },
-            error: (err: any) => {
-                console.log('Erreur lors de la suppression du hashtag');
-                this.buttonsDisabled = false;
-            },
-        });
-    }
-
-    getAdByUserId() {
-        this.adService.getByUserId(this.me._id).subscribe({
-            next: (data: any[]) => {
-                console.log(data);
-                this.campagnes = data;
-            },
-            error: (error: any) => {
-                console.log(error);
-            },
-        });
-    }
-
-    createNewAd() {
-        console.log('CREATE PUB');
-    }
-
-    /** AUDIT */
-    selectPlatformForAudit(platform: string): void {
-        console.log(platform);
-        this.selectedPlatformForAudit = platform;
-    }
-
-    handleFileUpload(event: any): void {
-        const files = event.target.files;
-        console.log(
-            'Fichiers téléversés pour',
-            this.selectedPlatformForAudit,
-            files
-        );
-    }
-
-    launchAudit(): void {
-        if (this.selectedPlatformForAudit) {
-            console.log(`Audit lancé pour ${this.selectedPlatformForAudit}`);
-        }
-    }
+  private normalizeType(value: string): string {
+    return String(value ?? '')
+      .trim()
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '');
+  }
 }

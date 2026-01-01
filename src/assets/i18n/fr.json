@@ -396,28 +396,6 @@
     "LINKEDIN": "LinkedIn",
     "INSTAGRAM": "Instagram"
   },
-  "POST": {
-    "CONTENT_FOR": "Contenu pour",
-    "GENRATE_IMAGES": "Générer images IA",
-    "NO_IMAGE": "Aucune image n'a été trouvée",
-    "NO_VIDEO": "Votre navigateur ne supporte pas la balise vidéo",
-    "IMAGE_CARACTER": "Caractéristiques de l'image",
-    "IMAGE_STYLE": "Style",
-    "PHOTO_MATERIAL": "Matériel",
-    "PHOTO_OBJECTIF": "Objectif",
-    "CONTENT_TYPE": "Type de contenu",
-    "TRY": "À essayer",
-    "ADD_POST": "Ajouter post",
-    "DESCRIBE_YOUR_ACTIVITY": "Décrivez votre activité ou ce qui vous rend unique...",
-    "CHANGE_MANUALLY": "Changer manuellement",
-    "CORRECT_SENTENCE": "Corrigez la phrase",
-    "CHANGE_POST": "Changer le post",
-    "PUBLISH": "Publier",
-    "REGENERATE": "Regénérer l'image",
-    "REPLACE_IMAGE": "Remplacer par une image ou une vidéo",
-    "CREATE_VIDEO": "Créer une vidéo",
-    "POST_IMAGE": "Image du post"
-  },
   "ASTUCE": {
     "MINIMALISTE": "Un nail art minimaliste pour un effet élégant et moderne.",
     "CREATIVITE": "Choisissez des couleurs audacieuses pour exprimer votre créativité.",

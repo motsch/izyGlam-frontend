@@ -1,32 +1,20 @@
 <div class="admin-shops-management">
   <div class="search-bar">
-    <input
-      type="text"
-      placeholder="Rechercher..."
-      [(ngModel)]="searchTerm"
-      (input)="applyGlobalSearch()"
-    />
+    <input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerm" (input)="applyGlobalSearch()" />
   </div>
 
-  <table mat-table [dataSource]="dataSource" matSort class="shops-table">
+  <table mat-table [dataSource]="dataSource" matSort class="shops-table" multiTemplateDataRows>
     <!-- Image Column -->
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let shop">
         <div class="shop-avatar">
-          <img
-            [src]="imgStorageUrl + 'uploads/images/' + (shop.image || 'default.png')"
-            alt="Aperçu de l'image"
-            class="image-preview small-preview"
-          />
+          <img [src]="imgStorageUrl + 'uploads/images/' + (shop.image || 'default.png')" alt="Aperçu de l'image"
+            class="image-preview small-preview" />
+
           <!-- 🔮 Bouton IA dans la liste -->
-          <button
-            type="button"
-            class="ai-wand-btn"
-            [disabled]="shop._aiLoading"
-            (click)="changePhotoByAI(shop)"
-            title="Améliorer la photo avec l'IA"
-          >
+          <button type="button" class="ai-wand-btn" [disabled]="shop._aiLoading"
+            (click)="$event.stopPropagation(); changePhotoByAI(shop)" title="Améliorer la photo avec l'IA">
             <i class="fa fa-magic"></i>
           </button>
         </div>
@@ -42,6 +30,8 @@
         <div class="shop-main-info">
           <div class="shop-name">
             {{ shop.name }}
+            <span class="expand-hint" *ngIf="!isExpanded(shop)">• Voir prestations</span>
+            <span class="expand-hint" *ngIf="isExpanded(shop)">• Masquer prestations</span>
           </div>
           <div class="shop-subinfo">
             {{ shop.type }} • {{ shop.country }}
@@ -57,9 +47,7 @@
       </th>
       <td mat-cell *matCellDef="let shop">
         {{ shop.ville }}
-        <span *ngIf="shop.district">
-          ({{ shop.district }})
-        </span>
+        <span *ngIf="shop.district">({{ shop.district }})</span>
       </td>
     </ng-container>
 
@@ -82,17 +70,14 @@
         {{ "ADMIN_SHOP.STATUS" | translate }}
       </th>
       <td mat-cell *matCellDef="let shop">
-        <span
-          class="status-chip"
-          [ngClass]="shop.active ? 'status-active' : 'status-inactive'"
-          (click)="toggleBlockUser(shop)"
-        >
+        <span class="status-chip" [ngClass]="shop.active ? 'status-active' : 'status-inactive'"
+          (click)="$event.stopPropagation(); toggleBlockUser(shop)">
           <span class="status-bullet"></span>
           <span class="status-label">
             {{
-              shop.active
-                ? ("ADMIN_SHOP.ACTIVE" | translate)
-                : ("ADMIN_SHOP.INACTIVE" | translate)
+            shop.active
+            ? ("ADMIN_SHOP.ACTIVE" | translate)
+            : ("ADMIN_SHOP.INACTIVE" | translate)
             }}
           </span>
         </span>
@@ -105,25 +90,18 @@
         {{ "ADMIN_SHOP.DOCUMENTS" | translate }}
       </th>
       <td mat-cell *matCellDef="let shop">
-        <div
-          class="verification-wrapper"
-          [ngClass]="isFullyVerified(shop) ? 'verification-ok' : 'verification-ko'"
-        >
+        <div class="verification-wrapper" [ngClass]="isFullyVerified(shop) ? 'verification-ok' : 'verification-ko'">
           <span class="verification-main-label">
             {{
-              isFullyVerified(shop)
-                ? ("ADMIN_SHOP.DOCS_OK" | translate)
-                : ("ADMIN_SHOP.DOCS_NOT_VALID" | translate)
+            isFullyVerified(shop)
+            ? ("ADMIN_SHOP.DOCS_OK" | translate)
+            : ("ADMIN_SHOP.DOCS_NOT_VALID" | translate)
             }}
           </span>
 
           <div class="verification-dots">
-            <span
-              class="doc-dot"
-              *ngFor="let doc of ['identity', 'insurance', 'kbis']"
-              [ngClass]="getDocStatusClass(shop, doc)"
-              [attr.title]="getDocStatusTooltip(shop, doc)"
-            ></span>
+            <span class="doc-dot" *ngFor="let doc of ['identity', 'insurance', 'kbis']"
+              [ngClass]="getDocStatusClass(shop, doc)" [attr.title]="getDocStatusTooltip(shop, doc)"></span>
           </div>
         </div>
       </td>
@@ -136,64 +114,122 @@
       </th>
       <td mat-cell *matCellDef="let shop">
         <div class="actions-wrapper">
-          <button
-            class="icon-button edit"
-            mat-raised-button
-            color="primary"
-            (click)="editShop(shop)"
-          >
+          <button class="icon-button edit" mat-raised-button color="primary"
+            (click)="$event.stopPropagation(); editShop(shop)">
             <i class="fa fa-pencil"></i>
           </button>
         </div>
       </td>
     </ng-container>
 
+    <!-- ✅ Ligne "Shop" cliquable -->
+    <ng-container matColumnDef="shopRow">
+      <td mat-cell *matCellDef="let shop" [attr.colspan]="displayedColumns.length" class="shop-row-cell">
+        <!-- Cette colonne est un "hack" si besoin, mais on n'en a pas besoin ici -->
+      </td>
+    </ng-container>
+
+    <!-- ✅ Ligne "DETAIL" (prestations) -->
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let shop" [attr.colspan]="displayedColumns.length" class="expanded-detail-cell">
+        <div class="expanded-panel" [class.open]="isExpanded(shop)">
+          <div class="expanded-header">
+            <div class="expanded-left">
+              <!-- ✅ Description shop au-dessus -->
+              <div class="shop-desc" *ngIf="shop?.description && shop.description.trim().length > 0">
+                {{ shop.description }}
+              </div>
+
+              <!-- fallback si pas de description -->
+              <div class="shop-desc muted" *ngIf="!shop?.description || shop.description.trim().length === 0">
+                Aucune description pour cette boutique.
+              </div>
+
+              <div class="expanded-title">
+                Prestations • {{ getServices(shop).length }}
+              </div>
+            </div>
+
+            <div class="expanded-meta" *ngIf="isServicesLoading(shop)">
+              <span class="mini-spinner"></span>
+              Chargement...
+            </div>
+          </div>
+
+
+          <div class="expanded-error" *ngIf="getServicesError(shop)">
+            {{ getServicesError(shop) }}
+          </div>
+
+          <div class="services-grid" *ngIf="!isServicesLoading(shop) && !getServicesError(shop)">
+            <div class="empty-services" *ngIf="getServices(shop).length === 0">
+              Aucune prestation liée à cette boutique.
+            </div>
+
+            <div class="service-card" *ngFor="let s of getServices(shop); trackBy: trackByServiceId"
+              [class.blocked]="s.blocked">
+              <div class="service-top">
+                <div class="service-left">
+                  <span class="color-dot" [style.background]="s.color || '#ff4081'"></span>
+                  <div class="service-name">
+                    {{ s.name }}
+                    <span class="badge blocked" *ngIf="s.blocked">Bloquée</span>
+                  </div>
+                  <div class="service-type">{{ s.type }}</div>
+                </div>
+
+                <div class="service-right">
+                  <div class="price">{{ formatPrice(s.price) }}</div>
+                  <div class="duration">{{ formatDuration(s.duration) }}</div>
+                </div>
+              </div>
+
+              <div class="service-desc">
+                {{ s.description }}
+              </div>
+
+              <div class="service-flags" *ngIf="(s.flags?.length || 0) > 0">
+                <span class="flag" *ngFor="let f of s.flags">{{ f }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </td>
+    </ng-container>
+
+    <!-- Header -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr
-      mat-row
-      *matRowDef="let row; columns: displayedColumns"
-      class="shop-row"
-    ></tr>
+
+    <!-- Row shop -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; trackBy: trackByShopId" class="shop-row"
+      [class.expanded]="isExpanded(row)" (click)="toggleRow(row)"></tr>
+
+    <!-- Row detail -->
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row" [class.open]="isExpanded(row)">
+    </tr>
   </table>
 
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-  ></mat-paginator>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>
 
 <!-- Modal édition shop -->
-<div
-  class="modal fade show"
-  tabindex="-1"
-  [style.display]="modalOpen ? 'block' : 'none'"
-  [ngClass]="{ show: modalOpen }"
->
+<div class="modal fade show" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
+  [ngClass]="{ show: modalOpen }">
   <div class="modal-dialog custom-modal-width">
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title">
           {{ "ADMIN_SHOP.MODIFIER" | translate }}
         </h3>
-        <button
-          type="button"
-          class="btn-close"
-          aria-label="Close"
-          (click)="closeModal()"
-        ></button>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
       </div>
 
       <div class="modal-body">
         <!-- Nom de la boutique -->
         <div class="form-group">
           <label for="shopName">{{ "ADMIN_SHOP.SHOP_NAME" | translate }}</label>
-          <input
-            type="text"
-            id="shopName"
-            [(ngModel)]="shop.name"
-            class="form-control"
-            required
-          />
+          <input type="text" id="shopName" [(ngModel)]="shop.name" class="form-control" required />
         </div>
 
         <!-- Description de la boutique -->
@@ -201,77 +237,41 @@
           <label for="shopDescription">
             {{ "ADMIN_SHOP.DESCRIPTION" | translate }}
           </label>
-          <textarea
-            id="shopDescription"
-            [(ngModel)]="shop.description"
-            class="form-control"
-            required
-          ></textarea>
+          <textarea id="shopDescription" [(ngModel)]="shop.description" class="form-control" required></textarea>
         </div>
 
         <!-- Image principale de la boutique -->
         <div class="form-group">
           <div *ngIf="shop.image" class="image-preview-wrapper">
-            <img
-              [src]="imgStorageUrl + 'uploads/images/' + shop.image"
-              alt="Aperçu de l'image"
-              class="image-preview small-preview"
-              (error)="onImageError(shop)"
-            />
+            <img [src]="imgStorageUrl + 'uploads/images/' + shop.image" alt="Aperçu de l'image"
+              class="image-preview small-preview" (error)="onImageError(shop)" />
           </div>
 
           <div class="custom-upload">
-            <button
-              type="button"
-              class="margin-top-20"
-              (click)="fileInput.click()"
-            >
+            <button type="button" class="margin-top-20" (click)="fileInput.click()">
               📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate }}
             </button>
-            <input
-              type="file"
-              #fileInput
-              (change)="onFileSelected($event)"
-              accept="image/*"
-              hidden
-            />
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden />
           </div>
         </div>
 
         <!-- Type de boutique -->
         <div class="form-group">
           <label for="shopType">{{ "ADMIN_SHOP.SHOP" | translate }}</label>
-          <input
-            type="text"
-            id="shopType"
-            [(ngModel)]="shop.type"
-            class="form-control"
-            required
-          />
+          <input type="text" id="shopType" [(ngModel)]="shop.type" class="form-control" required />
         </div>
 
         <!-- Ville et arrondissement -->
         <div class="form-group">
           <label for="shopVille">{{ "ADMIN_SHOP.CITY" | translate }}</label>
-          <input
-            type="text"
-            id="shopVille"
-            [(ngModel)]="shop.ville"
-            class="form-control"
-            required
-          />
+          <input type="text" id="shopVille" [(ngModel)]="shop.ville" class="form-control" required />
         </div>
 
         <div class="form-group">
           <label for="shopDistrict">
             {{ "ADMIN_SHOP.ARRONDISSEMENT" | translate }}
           </label>
-          <input
-            type="text"
-            id="shopDistrict"
-            [(ngModel)]="shop.district"
-            class="form-control"
-          />
+          <input type="text" id="shopDistrict" [(ngModel)]="shop.district" class="form-control" />
         </div>
 
         <!-- Prix moyen et délai minimum -->
@@ -279,24 +279,14 @@
           <label for="averagePrice">
             {{ "ADMIN_SHOP.MIDDLE_PRICE" | translate }}
           </label>
-          <input
-            type="text"
-            id="averagePrice"
-            [(ngModel)]="shop.averagePrice"
-            class="form-control"
-          />
+          <input type="text" id="averagePrice" [(ngModel)]="shop.averagePrice" class="form-control" />
         </div>
 
         <div class="form-group">
           <label for="minimumDelay">
             {{ "ADMIN_SHOP.MINIMUM_DELAI" | translate }}
           </label>
-          <input
-            type="text"
-            id="minimumDelay"
-            [(ngModel)]="shop.minimumDelay"
-            class="form-control"
-          />
+          <input type="text" id="minimumDelay" [(ngModel)]="shop.minimumDelay" class="form-control" />
         </div>
 
         <!-- Distance maximale -->
@@ -304,81 +294,40 @@
           <label for="maxDistance">
             {{ "ADMIN_SHOP.DISTANCE" | translate }}
           </label>
-          <input
-            type="number"
-            id="maxDistance"
-            [(ngModel)]="shop.maxDistance"
-            class="form-control"
-            required
-          />
+          <input type="number" id="maxDistance" [(ngModel)]="shop.maxDistance" class="form-control" required />
         </div>
 
         <!-- Emplacement (latitude et longitude) -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.EMPLACEMENT" | translate }}</label>
-          <input
-            type="number"
-            [(ngModel)]="shop.location.latitude"
-            placeholder="Latitude"
-            class="form-control mb-2"
-          />
-          <input
-            type="number"
-            [(ngModel)]="shop.location.longitude"
-            placeholder="Longitude"
-            class="form-control mb-2"
-          />
+          <input type="number" [(ngModel)]="shop.location.latitude" placeholder="Latitude" class="form-control mb-2" />
+          <input type="number" [(ngModel)]="shop.location.longitude" placeholder="Longitude"
+            class="form-control mb-2" />
         </div>
 
         <!-- Heures d'ouverture (matin et après-midi) -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.HOURS_MORNING" | translate }}</label>
-          <input
-            type="time"
-            [(ngModel)]="shop.hours.morning.start"
-            class="form-control mb-2"
-          />
-          <input
-            type="time"
-            [(ngModel)]="shop.hours.morning.end"
-            class="form-control mb-2"
-          />
+          <input type="time" [(ngModel)]="shop.hours.morning.start" class="form-control mb-2" />
+          <input type="time" [(ngModel)]="shop.hours.morning.end" class="form-control mb-2" />
         </div>
 
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.HOURS_AFTERNOON" | translate }}</label>
-          <input
-            type="time"
-            [(ngModel)]="shop.hours.afternoon.start"
-            class="form-control mb-2"
-          />
-          <input
-            type="time"
-            [(ngModel)]="shop.hours.afternoon.end"
-            class="form-control mb-2"
-          />
+          <input type="time" [(ngModel)]="shop.hours.afternoon.start" class="form-control mb-2" />
+          <input type="time" [(ngModel)]="shop.hours.afternoon.end" class="form-control mb-2" />
         </div>
 
         <!-- Promo active -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.PROMOTION" | translate }}</label>
           <div class="form-check">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              [(ngModel)]="shop.promo.active"
-              id="promoActive"
-            />
+            <input class="form-check-input" type="checkbox" [(ngModel)]="shop.promo.active" id="promoActive" />
             <label class="form-check-label" for="promoActive">
               {{ "ADMIN_SHOP.ACTIVE_PROMO" | translate }}
             </label>
           </div>
-          <input
-            type="text"
-            [(ngModel)]="shop.promo.type"
-            placeholder="Type de promotion"
-            class="form-control mt-2"
-          />
+          <input type="text" [(ngModel)]="shop.promo.type" placeholder="Type de promotion" class="form-control mt-2" />
         </div>
       </div>
 
@@ -388,25 +337,19 @@
       <div class="documents-admin-section">
         <h3>Documents professionnels</h3>
 
-        <div
-          *ngFor="let doc of ['identity', 'insurance', 'kbis']"
-          class="doc-admin-row"
-        >
+        <div *ngFor="let doc of ['identity', 'insurance', 'kbis']" class="doc-admin-row">
           <div class="doc-info">
             <div class="doc-title">
               {{
-                doc === "identity"
-                  ? "Pièce d'identité"
-                  : doc === "insurance"
-                  ? "Assurance professionnelle"
-                  : "KBIS"
+              doc === "identity"
+              ? "Pièce d'identité"
+              : doc === "insurance"
+              ? "Assurance professionnelle"
+              : "KBIS"
               }}
             </div>
 
-            <div
-              class="doc-status"
-              [ngClass]="shop?.verification?.[doc]?.status"
-            >
+            <div class="doc-status" [ngClass]="shop?.verification?.[doc]?.status">
               {{ shop?.verification?.[doc]?.status || "missing" }}
             </div>
 
@@ -414,12 +357,7 @@
             <ng-container *ngIf="shop?.verification?.[doc]?.file as f">
               <div class="doc-preview" (click)="openPreview(f)">
                 <!-- Image -->
-                <img
-                  *ngIf="isImageDoc(f)"
-                  [src]="buildDocUrl(f)"
-                  alt="Document"
-                  class="doc-image-preview"
-                />
+                <img *ngIf="isImageDoc(f)" [src]="buildDocUrl(f)" alt="Document" class="doc-image-preview" />
 
                 <!-- PDF -->
                 <div *ngIf="isPdfDoc(f)" class="doc-chip doc-pdf-chip">
@@ -428,10 +366,7 @@
                 </div>
 
                 <!-- Autres types -->
-                <div
-                  *ngIf="!isImageDoc(f) && !isPdfDoc(f)"
-                  class="doc-chip doc-generic-chip"
-                >
+                <div *ngIf="!isImageDoc(f) && !isPdfDoc(f)" class="doc-chip doc-generic-chip">
                   <i class="fa fa-file"></i>
                   <span>Ouvrir le document</span>
                 </div>
@@ -453,11 +388,7 @@
       </div>
 
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          (click)="closeModal()"
-        >
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
           {{ "ADMIN_SHOP.CANCEL" | translate }}
         </button>
         <button type="button" class="btn btn-primary" (click)="saveShop()">
@@ -481,19 +412,10 @@
 
     <ng-container [ngSwitch]="previewType">
       <!-- Image -->
-      <img
-        *ngSwitchCase="'image'"
-        [src]="previewUrl"
-        class="doc-modal-image"
-        alt="Document"
-      />
+      <img *ngSwitchCase="'image'" [src]="previewUrl" class="doc-modal-image" alt="Document" />
 
       <!-- PDF -->
-      <iframe
-        *ngSwitchCase="'pdf'"
-        [src]="previewUrl"
-        class="doc-modal-iframe"
-      ></iframe>
+      <iframe *ngSwitchCase="'pdf'" [src]="previewUrl" class="doc-modal-iframe"></iframe>
 
       <!-- Autre type -->
       <div *ngSwitchDefault class="doc-modal-other">

@@ -1,713 +1,279 @@
-// GESTION DES POSTS
-/* Conteneur en flex pour l'image et les détails */
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding-top: 2rem;
-  margin-top: 60px;
-}
+.admin-posts {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px;
 
-.post-container {
-  margin-bottom: 2rem;
-}
-//Color settings
-$primary_color: #40e0d024; //#ec9793
-$secondary_color: #0fbbeb07; //#e5c4c2
-
-.test-f6 {
-  width: 550px;
-}
-.post-card {
-  background: linear-gradient(45deg, $primary_color 0%, $secondary_color 100%);
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-button:disabled {
-  background-color: #d6d6d6; /* Couleur de fond douce */
-  color: #9e9e9e; /* Couleur du texte atténuée */
-  border: 1px solid #ccc; /* Bordure pour un effet visuel */
-  cursor: not-allowed; /* Curseur interdit */
-  opacity: 0.7; /* Effet légèrement transparent */
-  box-shadow: none; /* Pas d'ombre pour un look désactivé */
-  pointer-events: none; /* Désactiver toutes les interactions */
-}
-.post-content {
-  margin-bottom: 1rem;
-}
-
-.post-day {
-  color: #00b2b2;
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: "Poppins", sans-serif;
-}
-
-/* Style pour les boutons ronds avec icônes */
-.icon-button {
-  background-color: #00b2b2;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.1rem;
-  position: relative;
-  transition: background-color 0.3s, transform 0.2s ease;
-
-  &:hover {
-    background-color: #007f80;
-    transform: scale(1.1);
-  }
-
-  &:active {
-    transform: scale(0.95);
-  }
-
-  /* Tooltip */
-  &::after {
-    content: attr(title);
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #333;
-    color: #fff;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s;
-    pointer-events: none;
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-}
-
-/* Alignement des boutons à droite */
-.image-actions,
-.action-buttons {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: flex-end;
-  margin-top: 5px;
-}
-
-.suggestion {
-  margin-top: 1rem;
-  padding: 1rem;
-  background: #f0f8ff;
-  border-left: 4px solid #00b2b2;
-  font-family: "Montserrat", sans-serif;
-
-  p {
-    margin: 0;
-    font-size: 0.9rem;
-  }
-}
-
-.instagram .suggestion {
-  border-left: 4px solid #dc2743;
-}
-
-.threads .suggestion {
-  border-left: 4px solid #e21388
-}
-
-.facebook .suggestion {
-  border-left: 4px solid #1877f2;
-}
-
-.linkedin .suggestion {
-  border-left: 4px solid #0077b5;
-}
-
-.tiktok .suggestion {
-  border-left: 4px solid #a0829c;
-}
-
-.bluesky .suggestion {
-  border-left: 4px solid #1185FE;
-}
-
-.x .suggestion {
-  border-left: 4px solid #000000;
-}
-
-.post-image-container {
+  .topbar {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  
-    .image-wrapper {
-      display: flex;
-      flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+
+    .title {
+      h2 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.2px;
+      }
+      p {
+        margin: 6px 0 0;
+        color: rgba(70, 70, 70, 0.8);
+        font-size: 13px;
+      }
+    }
+  }
+
+  .filters {
+    display: grid;
+    grid-template-columns: 1.4fr 0.7fr 0.7fr 0.7fr;
+    gap: 12px;
+    margin-bottom: 14px;
+
+    input, select {
+      height: 44px;
+      border-radius: 12px;
+      border: 1px solid rgba(210, 210, 210, 0.9);
+      padding: 0 12px;
+      background: #fff;
+      outline: none;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .table-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(220, 220, 220, 0.7);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.06);
+
+    .table-head, .row {
+      display: grid;
+      grid-template-columns: 0.7fr 1fr 2.2fr 0.6fr 1.2fr;
+      gap: 12px;
+      padding: 12px 14px;
       align-items: center;
-  
-      .post-image img,
-      .post-image video {
-        width: 160px;
-        height: 160px; /* Pour forcer un format carré */
-        object-fit: cover; /* S'assure que le média reste bien proportionné */
-        border-radius: 8px;
-        transition: box-shadow 0.3s;
-  
-        &:hover {
-          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-        }
+    }
+
+    .table-head {
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(60, 60, 60, 0.8);
+      background: rgba(250, 250, 250, 0.85);
+      border-bottom: 1px solid rgba(220, 220, 220, 0.6);
+    }
+
+    .row {
+      border-bottom: 1px solid rgba(235, 235, 235, 0.9);
+      &:last-child { border-bottom: none; }
+    }
+
+    .right {
+      justify-self: end;
+      text-align: right;
+    }
+
+    .chip {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 12px;
+      border: 1px solid rgba(255, 190, 210, 0.8);
+      background: rgba(255, 240, 246, 0.7);
+      width: fit-content;
+    }
+
+    .types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+
+      .badge {
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        border: 1px solid rgba(220, 220, 220, 0.9);
+        background: rgba(250, 250, 250, 0.85);
+        color: black;
       }
-  
-      .image-actions {
+    }
+
+    .text {
+      font-size: 13px;
+      color: rgba(60, 60, 60, 0.9);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      white-space: normal;
+      line-height: 1.35;
+    }
+
+    .status {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 12px;
+
+      &.on {
+        background: rgba(235, 255, 240, 0.9);
+        border: 1px solid rgba(110, 210, 150, 0.6);
+      }
+
+      &.off {
+        background: rgba(255, 240, 240, 0.9);
+        border: 1px solid rgba(230, 120, 120, 0.6);
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px;
+    }
+
+    .page-info {
+      font-size: 13px;
+      color: rgba(70, 70, 70, 0.85);
+      font-weight: 700;
+    }
+
+    .empty {
+      padding: 18px;
+      text-align: center;
+      color: rgba(70, 70, 70, 0.8);
+      font-weight: 700;
+    }
+  }
+
+  .loading {
+    padding: 26px;
+    text-align: center;
+    font-weight: 800;
+    color: rgba(70, 70, 70, 0.85);
+  }
+
+  // Buttons
+  .btn-primary, .btn-secondary, .btn-ghost, .btn-danger {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 13px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, rgba(255, 120, 170, 0.95), rgba(255, 170, 210, 0.95));
+    color: #fff;
+    box-shadow: 0 16px 40px rgba(255, 120, 170, 0.25);
+  }
+
+  .btn-secondary {
+    background: rgba(245, 245, 245, 1);
+    border: 1px solid rgba(220, 220, 220, 0.9);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(220, 220, 220, 0.9);
+  }
+
+  .btn-danger {
+    background: rgba(255, 235, 238, 1);
+    border: 1px solid rgba(255, 150, 150, 0.9);
+  }
+
+  // Modal
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 18px;
+
+    .modal-dialog {
+      width: min(820px, 96vw);
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 24px 90px rgba(0,0,0,0.18);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(235,235,235,0.9);
+
+      h3 { margin: 0; font-size: 16px; font-weight: 900; }
+      .btn-close {
+        background: transparent;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    }
+
+    .modal-body {
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+
+      label {
+        font-size: 12px;
+        font-weight: 900;
+        color: rgba(70, 70, 70, 0.85);
+      }
+
+      input, select, textarea {
+        border: 1px solid rgba(220, 220, 220, 0.9);
+        border-radius: 12px;
+        padding: 10px 12px;
+        font-size: 14px;
+        outline: none;
+      }
+
+      textarea { resize: vertical; }
+
+      .row-inline {
         display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-  
-        .icon-button {
-          background-color: #00b2b2;
-          color: white;
-          border: none;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          font-size: 1.1rem;
-          transition: background-color 0.3s, transform 0.2s ease;
-  
-          &:hover {
-            background-color: #007f80;
-            transform: scale(1.1);
-          }
-  
-          &:active {
-            transform: scale(0.95);
-          }
-  
-          /* Tooltip */
-          &::after {
-            content: attr(title);
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-          }
-  
-          &:hover::after {
-            opacity: 1;
-          }
-        }
+        align-items: center;
+        gap: 10px;
+        margin-top: 6px;
+
+        input { width: 18px; height: 18px; }
       }
     }
-  
-    .image-details {
-      font-size: 0.9rem;
-      color: #666;
-      background-color: rgba(0, 178, 178, 0.1);
-      padding: 0.8rem;
-      border-radius: 8px;
-  
-      .image-info {
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        font-family: "Montserrat", sans-serif;
-      }
-  
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-  
-      li {
-        margin-bottom: 0.3rem;
-      }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 14px 16px;
+      border-top: 1px solid rgba(235,235,235,0.9);
     }
-  }
-  
 
-.action-button {
-  background-color: #ffffff;
-  color: #00b2b2;
-}
-
-// Tab
-
-.tab-button {
-  color: white;
-  font-weight: bold;
-}
-
-.tab-button.izyglow1 {
-  background-color: #00b2b2; /* Turquoise */
-} 
-
-.tab-button.izyglow2 {
-  background-color: #ffa500; /* Orange */
-} 
-
-.tab-button.izyglow3 {
-  background-color: #ff69b4; /* Rose vif */
-} 
-.tab-button.izyglow4 {
-  background-color: #a76eff; /* Rose vif */
-} 
-.tab-button.instagram {
-  background: linear-gradient(
-    45deg,
-    #f09433,
-    #e6683c,
-    #dc2743,
-    #cc2366,
-    #bc1888
-  );
-  color: white;
-  font-weight: bold;
-}
-
-.tab-button.threads {
-  background: linear-gradient(
-    135deg,
-    #ffcc33, /* Jaune lumineux */
-    #ff7733, /* Orange intense */
-    #ff3355, /* Rouge vif */
-    #cc3366, /* Rose saturé */
-    #9933cc  /* Violet profond */
-  );
-  color: white;
-  font-weight: bold;
-}
-
-.tab-button.linkedin {
-  background-color: #0077b5;
-  color: white;
-  font-weight: bold;
-}
-
-.tab-button.facebook {
-  background-color: #1877f2;
-  color: white;
-  font-weight: bold;
-}
-
-.tab-button.tiktok {
-  background: linear-gradient(45deg, #69c9d0, #ee1d52);
-  color: white;
-  font-weight: bold;
-}
-
-.tab-button.bluesky {
-  background: #1185FE;
-  color: white;
-  font-weight: bold;
-}
-
-.tab-button.x {
-  background: #000000;
-  color: white;
-  font-weight: bold;
-}
-.tab-button .fa-spinner {
-  font-size: 16px; /* Même taille que le texte */
-  padding: 0.5rem 1rem;
-  cursor: not-allowed;
-  font-size: 1rem;
-}
-.tab-button {
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    // transform: scale(1.03);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    filter: brightness(0.9);
-  }
-
-  &.active {
-    font-weight: bold;
-    filter: brightness(0.8);
+    &.show { display: flex; }
   }
 }
-
-.big-button {
-  transform: scale(1.1);
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5) !important;
-}
-
-/* Styles des boutons spécifiques aux plateformes */
-
-/* Instagram */
-.instagram .icon-button {
-  background: linear-gradient(
-    45deg,
-    #f09433,
-    #e6683c,
-    #dc2743,
-    #cc2366,
-    #bc1888
-  );
-  color: white;
-}
-.threads .icon-button {
-  background: linear-gradient(
-    135deg,
-    #ffcc33, /* Jaune lumineux */
-    #ff7733, /* Orange intense */
-    #ff3355, /* Rouge vif */
-    #cc3366, /* Rose saturé */
-    #9933cc  /* Violet profond */
-  );
-  color: white;
-}
-
-.tiktok .icon-button {
-  background: linear-gradient(45deg, #69c9d0, #ee1d52) !important;
-  color: white;
-}
-
-.bluesky .icon-button {
-  background: #1185FE !important;
-  color: white;
-}
-
-.x .icon-button {
-  background: #000000 !important;
-  color: white;
-}
-
-.facebook .icon-button {
-  background: #1877f2 !important;
-  color: white;
-}
-
-.linkedin .icon-button {
-  background-color: #0077b5 !important;
-  color: white;
-}
-
-.izyGlow {
-  min-width: 150px !important;
-}
-
-.content-area {width: 100%;}
-.instagram .post-day {
-  color: #dc2743 !important;
-}
-
-.threads .post-day {
-  color: #e21388 !important;
-}
-
-.tiktok .post-day {
-  color: #a0829c !important;
-}
-.facebook .post-day {
-  color: #1877f2 !important;
-}
-
-.linkedin .post-day {
-  color: #0077b5 !important;
-}
-
-.bluesky .post-day {
-  color: #1185FE !important;
-}
-
-.x .post-day {
-  color: #000000 !important;
-}
-
-/* Ajout d'une transition pour un effet de survol */
-.icon-button {
-  transition: background-color 0.3s, transform 0.2s ease;
-}
-
-.icon-button:hover {
-  filter: brightness(0.9);
-}
-/* Titres avec dégradé selon la plateforme */
-
-.red-button {
-  color: red;
-  background-color: transparent;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-/* Instagram */
-.image-details {
-  background: linear-gradient(
-    45deg,
-    rgba(75, 144, 149, 0.01),
-    rgba(163, 18, 54, 0.01)
-  ); /* Couleur TikTok */
-  // -webkit-background-clip: text;
-  // color: transparent;
-}
-
-.main-container {
-  display: flex;
-}
-
-/* Tab Selector Collant sur le côté */
-.tab-selector {
-  position: sticky !important;
-  top: 100px !important; /* Ajuste cette valeur pour définir la hauteur fixe souhaitée */
-  right: 0 !important; /* Garde le menu à droite */
-  align-self: flex-start !important;
-  margin-right: 20px !important; /* Espace entre les boutons et la carte blanche */
-  margin-left: 20px !important; /* Espace entre les boutons et la carte blanche */
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.5rem !important;
-  padding: 1rem !important;
-  background-color: #ffffff; /* Pour bien le voir sur le fond */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un meilleur contraste */
-  border-radius: 8px; /* Optionnel, pour arrondir les coins */
-}
-
-.introduction-textarea {
-  width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #00b2b2;
-  border-radius: 8px;
-  font-size: 1rem;
-  resize: vertical;
-  min-height: 100px;
-  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-
-  &:focus {
-    outline: none;
-    border-color: #007f80;
-    box-shadow: 0 0 5px rgba(0, 127, 128, 0.2);
-  }
-}
-
-.post-caption {
-  padding: 0.8rem;
-}
-
-.media-element {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.hashtags-container {
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap; /* Permet de passer à la ligne si trop long */
-  gap: 4px; /* Espacement entre les hashtags */
-}
-
-.hashtag {
-  background-color: #287ed9a8;
-  padding: 5px 10px;
-  border-radius: 15px;
-  font-size: 13px;
-  color: #ffffff;
-}
-
-.remove-icon {
-  cursor: pointer;
-  margin-left: 4px;
-  font-size: 12px;
-  color: white;
-}
-
-.instagram .hashtag {
-  background: #dc2743 !important;
-  color: white;
-  font-weight: bold;
-}
-
-.threads .hashtag {
-  background: #e21388 !important;
-  color: white;
-  font-weight: bold;
-}
-
-.linkedin .hashtag {
-  background-color: #0077b5 !important;
-  color: white;
-}
-
-.facebook .hashtag {
-  background-color: #1877f2 !important;
-  color: white;
-}
-
-.tiktok .hashtag {
-  background-color: #a0829c !important;
-  color: white;
-}
-
-.bluesky .hashtag {
-  background-color: #1185FE !important;
-  color: white;
-}
-
-.x .hashtag {
-  background-color: #000000 !important;
-  color: white;
-}
-.ads-area {
-  flex: 1; /* Prend tout l'espace disponible à droite */
-}
-
-app-ads {
-  width: 100%; /* S'assure que le contenu occupe toute la largeur disponible */
-  height: auto; /* Ajuste la hauteur automatiquement selon le contenu */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* AUDIT */
-.audit-area {
-  font-family: 'Arial', sans-serif;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.audit-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.audit-header h2 {
-  color: #333;
-  font-size: 1.8rem;
-}
-
-.audit-header p {
-  color: #555;
-  font-size: 1rem;
-}
-
-.platform-selector {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.platform-button {
-  border: none;
-  background: none;
-  margin: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.platform-button img {
-  width: 20px;
-  height: 20px;
-}
-
-.platform-button.active {
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
-  color: #fff;
-  transform: translateY(-2px);
-}
-
-.audit-form {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.audit-form h3 {
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.audit-form p {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-
-.audit-form label {
-  font-weight: bold;
-  margin-bottom: 5px;
-  display: block;
-}
-
-.audit-form input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 0.9rem;
-}
-
-.audit-form .submit-button {
-  background-color: #0073b1;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.audit-form .submit-button:hover {
-  background-color: #005a86;
-}
-

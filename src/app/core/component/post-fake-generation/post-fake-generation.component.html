@@ -1,34 +1,76 @@
-<div class="post-gen-card">
+<div class="post-gen-card" [class.has-post]="!!generatedPost">
   <div class="header">
-    <div>
+    <div class="title">
       <h3>Assistant de publication</h3>
-      <p>Génère un post prêt à publier en 1 clic</p>
+      <p>Un texte prêt à copier-coller pour Instagram, Tiktok ou Facebook</p>
+
+      <div class="hint" *ngIf="generatedPost">
+        <span class="dot"></span>
+        Astuce : change 1 phrase + ajoute une photo réelle pour performer.
+      </div>
     </div>
 
-    <button class="btn-primary" type="button" (click)="generate()">Générer</button>
+    <!-- CTA principal : différent selon l'état -->
+    <button class="btn-primary" type="button" (click)="generate()" [disabled]="loading" [attr.aria-busy]="loading">
+      {{ generatedPost ? 'Rafraîchir' : 'Générer un post' }}
+    </button>
   </div>
 
-  <div class="controls">
-    <select [(ngModel)]="platform" (change)="generate()">
-      <option value="instagram">Instagram</option>
-      <option value="snapchat">Snapchat</option>
-      <option value="tiktok">TikTok</option>
-      <option value="facebook">Facebook</option>
-    </select>
-
-    <select [(ngModel)]="lang" (change)="generate()">
-      <option value="fr">Français</option>
-      <option value="en">English</option>
-      <option value="es">Español</option>
-    </select>
+  <!-- Etat vide -->
+  <div class="empty" *ngIf="!generatedPost && !error" (click)="generate()">
+    <div class="empty-icon">✨</div>
+    <div class="empty-text">
+      Clique sur <strong>Générer un post</strong> pour obtenir une première suggestion.
+    </div>
   </div>
 
-  <textarea readonly *ngIf="generatedPost">{{ generatedPost }}</textarea>
+  <!-- Post -->
+  <div class="content" *ngIf="generatedPost">
+    <div class="meta">
+      <span class="pill">Instagram</span>
+      <span class="pill">{{ shopType || 'all' }}</span>
+      <span class="spacer"></span>
+      <span class="count" *ngIf="suggestionIndex >= 0">Suggestion #{{ suggestionIndex + 1 }}</span>
+    </div>
 
-  <div class="actions" *ngIf="generatedPost">
-    <button class="btn-secondary" type="button" (click)="copy()">Copier</button>
-    <button class="btn-ghost" type="button" (click)="generate()">Autre suggestion</button>
+    <textarea readonly class="generated-post">{{ generatedPost }}</textarea>
+
+    <div class="actions">
+      <button class="btn-secondary" type="button" (click)="copy()" [disabled]="copying">
+        {{ copied ? 'Copié ✓' : 'Copier' }}
+      </button>
+    </div>
   </div>
 
-  <div class="error" *ngIf="error">{{ error }}</div>
+  <div class="publish-bar">
+    <div class="publish-label">Publier sur</div>
+
+    <div class="publish-actions">
+      <a class="pill-link ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+        title="Ouvrir Instagram">
+        <img [src]="imgStorageUrl + 'instagram-icon.png'" alt="Instagram" class="icon" />
+        Instagram
+      </a>
+
+      <a class="pill-link tk" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer"
+        title="Ouvrir TikTok">
+        <img [src]="imgStorageUrl + 'tiktok-icon.png'" alt="Instagram" class="icon" />
+        TikTok
+      </a>
+
+      <a class="pill-link fb" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+        title="Ouvrir Facebook">
+        <img [src]="imgStorageUrl + 'facebook-icon.png'" alt="Instagram" class="icon" />
+        Facebook
+      </a>
+    </div>
+  </div>
+
+
+
+  <!-- Error -->
+  <div class="error" *ngIf="error">
+    <span class="error-dot"></span>
+    {{ error }}
+  </div>
 </div>
