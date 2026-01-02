@@ -750,5 +750,25 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     });
   }
 
+  hasFlaggedServices(shop: any): boolean {
+    return (shop?.moderation?.services?.flaggedCount || 0) > 0;
+  }
 
+  getFlaggedServicesBadgeText(shop: any): string {
+    const n = shop?.moderation?.services?.flaggedCount || 0;
+    return n > 1 ? `⚠️ ${n} prestations signalées` : `⚠️ 1 prestation signalée`;
+  }
+
+  getFlaggedServicesTooltip(shop: any): string {
+    const n = shop?.moderation?.services?.flaggedCount || 0;
+    const reasons = shop?.moderation?.services?.topReasons || [];
+
+    if (!n) return "";
+
+    if (!reasons.length) {
+      return `${n} prestation(s) signalée(s).`;
+    }
+
+    return `${n} prestation(s) signalée(s) : ${reasons.join(", ")}`;
+  }
 }

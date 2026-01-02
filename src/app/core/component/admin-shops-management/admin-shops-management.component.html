@@ -35,6 +35,12 @@
               ⚠️ À vérifier
             </span>
 
+            <!-- ✅ NEW : prestations signalées -->
+            <span class="moderation-badge services" *ngIf="!isShopFlagged(shop) && hasFlaggedServices(shop)"
+              [attr.title]="getFlaggedServicesTooltip(shop)">
+              {{ getFlaggedServicesBadgeText(shop) }}
+            </span>
+
             <span class="expand-hint" *ngIf="!isExpanded(shop)">• Voir prestations</span>
             <span class="expand-hint" *ngIf="isExpanded(shop)">• Masquer prestations</span>
           </div>
