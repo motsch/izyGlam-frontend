@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+// import * as pdfMake from 'pdfmake/build/pdfmake';
+// import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
 import { BookingService } from '../../services/booking.service';
 import { RatingModalComponent } from '../rating-modal/rating-modal.component';
@@ -15,7 +15,10 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
 // ⚠️ pdfMake doit connaître ses polices
-(pdfMake as any).vfs = (pdfFonts as any).pdfMake.vfs;
+
+const pdfMake = require('pdfmake/build/pdfmake');
+const pdfFonts = require('pdfmake/build/vfs_fonts');
+pdfMake.vfs = pdfFonts.vfs;
 
 @Component({
   selector: 'app-order-item',

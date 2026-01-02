@@ -26,6 +26,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   @Input() me: any = {};
   @Output() shopUpdated: EventEmitter<string> = new EventEmitter<string>();
 
+  // ---------- Legal / Facturation ----------
+  legalExpanded = true;              // section ouverte par défaut
+  legalValid = false;                // validité du bloc legal
+  legalErrors: any = {};             // erreurs par champ
+
   // ---------- UI / State ----------
   imageUsed: string | null = null;              // URL d’aperçu finale utilisée par l’UI
   imagePreview: string | null = null;           // DataURL temporaire lors d’un upload
@@ -46,7 +51,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   // ---------- Horaires ----------
   allowedMorningHours: string[] = [];
   allowedAfternoonHours: string[] = [];
-  days: string[] = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+  days: string[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
   // ---------- Employés ----------
   employees: any[] = [];
@@ -63,7 +68,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     private userService: UserService,
     private sessionService: SessionService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   // ======================
   // Lifecycle
@@ -95,6 +100,9 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
 
         this.initHoursStructure(); // Normalisation de l’objet hours
+        this.initLegalStructure();
+        this.validateLegal();
+
       }
     } catch (err) {
       console.error('[ShopManagement] ngOnInit error:', err);
@@ -511,4 +519,131 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       console.warn('[ShopManagement] showCustomToast warn:', err, message);
     }
   }
+
+  // ======================
+  // Legal / Facturation
+  // ======================
+
+  private initLegalStructure(): void {
+    try {
+      if (!this.shopCopyData) return;
+
+      // Crée l'objet legal s'il n'existe pas
+      this.shopCopyData.legal = this.shopCopyData.legal || {};
+
+      // Valeurs par défaut
+      if (!this.shopCopyData.legal.country) this.shopCopyData.legal.country = 'FR';
+    } catch (err) {
+      console.error('[ShopManagement] initLegalStructure error:', err);
+    }
+  }
+
+  onLegalChange(field?: string): void {
+    try {
+      // Nettoyages légers
+      const l = this.shopCopyData?.legal;
+      if (!l) return;
+
+      if (field === 'siret' && l.siret) l.siret = this.onlyDigits(l.siret).slice(0, 14);
+      if (field === 'siren' && l.siren) l.siren = this.onlyDigits(l.siren).slice(0, 9);
+
+      if (field === 'vatNumber' && l.vatNumber) {
+        l.vatNumber = l.vatNumber.toString().toUpperCase().replace(/\s+/g, '');
+      }
+
+      if (field === 'phone' && l.phone) {
+        l.phone = l.phone.toString().trim();
+      }
+
+      if (field === 'email' && l.email) {
+        l.email = l.email.toString().trim();
+      }
+
+      this.validateLegal();
+    } catch (err) {
+      console.error('[ShopManagement] onLegalChange error:', err);
+    }
+  }
+
+  private onlyDigits(v: string): string {
+    return (v || '').toString().replace(/\D+/g, '');
+  }
+
+  private isValidEmail(email: string): boolean {
+    if (!email) return true; // optionnel
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  }
+
+  private isValidSiret(siret: string): boolean {
+    if (!siret) return true; // optionnel (mais recommandé)
+    return /^\d{14}$/.test(this.onlyDigits(siret));
+  }
+
+  private isValidSiren(siren: string): boolean {
+    if (!siren) return true; // optionnel
+    return /^\d{9}$/.test(this.onlyDigits(siren));
+  }
+
+  private isValidVat(vat: string): boolean {
+    if (!vat) return true; // optionnel
+    // Simple check FR... (tu pourras renforcer plus tard)
+    return /^FR[A-Z0-9]{2,13}$/i.test(vat.replace(/\s+/g, ''));
+  }
+
+  /**
+   * Valide le bloc legal.
+   * Ici on le rend "utile compta" : si un champ est rempli, on exige la cohérence des autres.
+   * Tu peux durcir plus tard (ex: rendre SIRET obligatoire).
+   */
+  validateLegal(): void {
+    try {
+      const l = this.shopCopyData?.legal || {};
+      this.legalErrors = {};
+
+      // Champs "recommandés" pour documents comptables
+      // (on ne bloque pas ton formulaire global, mais on affiche clairement si incomplet)
+      const hasAny =
+        !!l.companyName || !!l.siret || !!l.addressLine1 || !!l.postalCode || !!l.city || !!l.email || !!l.phone || !!l.vatNumber;
+
+      if (hasAny) {
+        if (!l.companyName) this.legalErrors.companyName = 'Raison sociale recommandée';
+        if (!l.addressLine1) this.legalErrors.addressLine1 = 'Adresse pro recommandée';
+        if (!l.postalCode) this.legalErrors.postalCode = 'Code postal recommandé';
+        if (!l.city) this.legalErrors.city = 'Ville recommandée';
+      }
+
+      if (!this.isValidSiret(l.siret)) this.legalErrors.siret = 'SIRET invalide (14 chiffres)';
+      if (!this.isValidSiren(l.siren)) this.legalErrors.siren = 'SIREN invalide (9 chiffres)';
+      if (!this.isValidVat(l.vatNumber)) this.legalErrors.vatNumber = 'TVA invalide (ex: FRXX...)';
+      if (!this.isValidEmail(l.email)) this.legalErrors.email = 'Email invalide';
+
+      this.legalValid = Object.keys(this.legalErrors).length === 0;
+    } catch (err) {
+      console.error('[ShopManagement] validateLegal error:', err);
+      this.legalValid = false;
+    }
+  }
+
+  /**
+   * Enregistre uniquement la section légal (pour éviter l'auto-save à chaque frappe).
+   */
+  saveLegal(): void {
+    try {
+      this.validateLegal();
+
+      if (!this.legalValid) {
+        this.showCustomToast('Merci de corriger les informations légales avant d’enregistrer.', 'error');
+        return;
+      }
+
+      // On déclenche une sauvegarde complète (car ton update envoie myShopData entier)
+      // mais ça sera volontaire via bouton.
+      this.saveShop();
+      this.showCustomToast('Informations légales enregistrées ✅');
+    } catch (err) {
+      console.error('[ShopManagement] saveLegal error:', err);
+      this.showCustomToast('Erreur lors de l’enregistrement des informations légales.', 'error');
+    }
+  }
+
 }

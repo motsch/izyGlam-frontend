@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ConversationService {
   private baseUrl = environment.apiUrl; // ex: http://localhost:3000/api/
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   /**
    * Récupérer la conversation du support ou la créer
@@ -85,4 +85,16 @@ export class ConversationService {
   getByEmail(email: string, userEmail: string) {
     return this.http.put<any>(`${this.baseUrl}conversation-email/${email}`, { userEmail });
   }
+
+  /**
+   * Récupérer toutes les conversations liées à un utilisateur
+   * @param type "user" | "pro"
+   * @param id userId
+   */
+  getConversationsByType(type: 'user' | 'pro', id: string): Observable<any[]> {
+    return this.http.get<any[]>(
+      `${this.baseUrl}conversation-by-type/user/${type}/${id}`
+    );
+  }
+
 }

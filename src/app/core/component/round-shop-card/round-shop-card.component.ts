@@ -165,7 +165,7 @@ export class RoundShopCardComponent {
     if (total < 250)
       return {
         emoji: "💎",
-        label: "Ambassadrice IzyGlam",
+        label: "Ambassadrice izyGlam",
         class: "lvl-ambassador",
         trads: "UILEVEL.AMBASSADOR",
       };

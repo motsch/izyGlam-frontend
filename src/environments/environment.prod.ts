@@ -28,4 +28,21 @@ export const environment = {
   App_iOS: "",
   stripePublicKey: 'pk_test_51NG9rzEDs001iAIL6R6k2IMnLte54Cs3Iihtv9cC95dDobeYSiqPeBpRgZgyRFbyyUhkYzRoG3AI2Wb738MYSRVk00mFFBaVSy', // Remplacez par votre clé publique
 
+  izyglamCompany: {
+    brandName: "izyGlam",
+    companyName: "IZYGLAM SAS",
+    legalForm: "SAS",
+    siret: "00000000000000",
+    vatNumber: "FR00000000000",
+    addressLine1: "Adresse ligne 1",
+    addressLine2: "",
+    postalCode: "75000",
+    city: "Paris",
+    country: "France",
+    email: "contact@izyglam.com",
+    phone: "+33 0 00 00 00 00",
+    website: "https://izyglam.com",
+    logoPath: "assets/images/logo/logo_true.png"
+  }
+
 };

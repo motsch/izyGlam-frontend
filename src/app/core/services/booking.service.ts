@@ -110,4 +110,16 @@ export class BookingService {
         return this.http.get<any>(`${environment.apiUrl}booking-dashboard/${shopId}`);
     }
 
+    /**
+     * Suivi comptable d'un shop (semaine ou mois)
+     * @param shopId
+     * @param mode "week" | "month"
+     * @param date "YYYY-MM-DD" (un jour dans la période)
+     */
+    getShopAccounting(shopId: string, mode: 'week' | 'month', date: string): Observable<any> {
+        const url = `${environment.apiUrl}booking-accounting/${shopId}?mode=${mode}&date=${date}`;
+        return this.http.get<any>(url);
+    }
+
+
 }

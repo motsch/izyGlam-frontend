@@ -226,8 +226,8 @@ export class ShopComponent {
         const path = `/shop/${(this as any).shopInfo?._id ?? ''}`;
 
         this.shareUrl = `${origin}${path}`;
-        this.shareTitle = (this as any).shopInfo?.name ?? 'IzyGlam';
-        this.shareText = `Découvre ${this.shareTitle} sur IzyGlam ✨`;
+        this.shareTitle = (this as any).shopInfo?.name ?? 'izyGlam';
+        this.shareText = `Découvre ${this.shareTitle} sur izyGlam ✨`;
     }
 
     async onShareClick() {

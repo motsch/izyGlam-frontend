@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FakePostService } from '../../services/fake-post.service'; // adapte le path si besoin
 import { environment } from 'src/environments/environment';
+import { ShopService } from '../../services/shop.service';
 
 @Component({
   selector: 'app-post-fake-generation',
@@ -9,10 +10,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./post-fake-generation.component.scss']
 })
 export class PostFakeGenerationComponent implements OnInit {
-  @Input() shopType: string = 'all';
-  @Input() shopId: string = '';
-  @Input() shopName: string = 'Mon activité';
-  @Input() city: string = '';
+  @Input() shop:any = {};
+
+
   imgStorageUrl: string = environment.imgStorageUrl;
   generatedPost = '';
   error = '';
@@ -24,30 +24,34 @@ export class PostFakeGenerationComponent implements OnInit {
 
   constructor(
     private fakePostService: FakePostService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private shopService: ShopService
   ) { }
 
   ngOnInit(): void {
     // Optionnel : auto-générer au chargement
     // this.generate();
+
+    this.shopService.getById
+
   }
 
   generate(): void {
     this.error = '';
     this.copied = false;
 
-    const type = this.normalizeType(this.shopType || 'all');
+    const type = this.normalizeType(this.shop.type || 'all');
 
     this.loading = true;
     this.fakePostService.getRandom(type, 'instagram').subscribe({
       next: (tpl) => {
-        const shopLink = this.buildShopLink(this.shopId);
+        const shopLink = this.buildShopLink(this.shop._id);
 
         this.generatedPost = this.render(tpl.text, {
-          shopName: this.shopName || 'Mon activité',
-          city: this.city || '',
+          shopName: this.shop.name || 'Mon activité',
+          city: this.shop.ville || '',
           category: type,
-          cityHashtag: this.toHashtag(this.city),
+          cityHashtag: this.toHashtag(this.shop.ville),
           shopLink
         });
 

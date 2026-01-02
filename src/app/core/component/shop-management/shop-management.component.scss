@@ -355,11 +355,11 @@ button:disabled {
   box-shadow: 0 3px 8px rgba(180, 108, 143, 0.35);
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background: linear-gradient(135deg, #ff8ac4, #ff4f9e);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(18px);
 }
 
@@ -408,4 +408,68 @@ input:checked + .slider:before {
   .hour-column {
     flex: 1 1 100%;
   }
+}
+
+.section-title {
+  margin-top: 26px;
+  font-size: 18px;
+  font-weight: 800;
+  color: #b25280;
+}
+
+.section-sub {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #7a5b6c;
+}
+
+.legal-panel {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(255, 226, 244, 0.95);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.legal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.legal-status {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.legal-status.ok {
+  background: rgba(60, 179, 113, 0.12);
+  border: 1px solid rgba(60, 179, 113, 0.25);
+  color: #1f6b43;
+}
+
+.legal-status.ko {
+  background: rgba(232, 75, 75, 0.10);
+  border: 1px solid rgba(232, 75, 75, 0.20);
+  color: #8c2b2b;
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.legal-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
 }

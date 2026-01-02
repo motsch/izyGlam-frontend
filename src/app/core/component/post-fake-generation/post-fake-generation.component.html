@@ -28,7 +28,7 @@
   <div class="content" *ngIf="generatedPost">
     <div class="meta">
       <span class="pill">Instagram</span>
-      <span class="pill">{{ shopType || 'all' }}</span>
+      <span class="pill">{{ shop.type || 'all' }}</span>
       <span class="spacer"></span>
       <span class="count" *ngIf="suggestionIndex >= 0">Suggestion #{{ suggestionIndex + 1 }}</span>
     </div>

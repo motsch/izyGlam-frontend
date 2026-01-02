@@ -7,33 +7,26 @@
       <!-- Collapsible wrapper -->
       <div class="mb-5" id="navbarSupportedContent">
         <div>
-          <div class="shop-hero"><!-- ⬅️ nouveau wrapper -->
-
+          <div class="shop-hero">
+            <!-- ⬅️ nouveau wrapper -->
             <div class="shop-info-header">
               <img [src]="APIimgStorageUrl + '/uploads/images/' + (shopInfo.image ? shopInfo.image : 'default.png')"
                 alt="shopLogo" class="shopInfoImage" />
-
               <div class="shop-info-texts">
                 <div>
                   <h4>{{ shopInfo.name }}</h4>
                   <div class="pink">{{ shopInfo.trad | translate }}</div>
                 </div>
-
                 <span>
                   {{ shopInfo.note ?? 5 }}
                   <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
                   ({{ shopInfo.noteCount ?? 0 }}+) <br />
                 </span>
-
-
-
                 <span>
                   <img *ngIf="shopInfo.instagram" [src]="imgStorageUrl + 'instagram-icon.png'" alt="Instagram"
                     class="socialLogo" (click)="openSocialLink(shopInfo.instagram)" />
-
                   <img *ngIf="shopInfo.facebook" [src]="imgStorageUrl + 'facebook-icon.png'" alt="Facebook"
                     class="socialLogo" (click)="openSocialLink(shopInfo.facebook)" />
-
                   <img *ngIf="shopInfo.tiktok" [src]="imgStorageUrl + 'tiktok-icon.png'" alt="tiktok"
                     class="socialLogo" (click)="openSocialLink(shopInfo.tiktok)" />
 
@@ -41,7 +34,6 @@
                 </span>
               </div>
             </div>
-
             <button class="share-pill margin-top-20 margin-right-10" (click)="goTo('main')"><i
                 class="fa fa-angle-left"></i></button>
             <!-- ✅ Bouton partager -->
@@ -55,11 +47,8 @@
                     stroke-linejoin="round" />
                 </svg>
               </span>
-
               <span class="share-pill__text">Partager</span>
             </button>
-
-
             <!-- ✅ Modal fallback (desktop / navigateurs non compatibles) -->
             <div class="share-backdrop" *ngIf="shareModalOpen" (click)="closeShareModal()"></div>
 
@@ -67,28 +56,22 @@
               <div class="share-modal-header">
                 <button class="share-close" (click)="closeShareModal()">✕</button>
               </div>
-
               <div class="share-url">
                 <input [value]="shareUrl" readonly />
                 <button (click)="copyShareUrl()">{{ copied ? 'Copié !' : 'Copier' }}</button>
               </div>
-
               <div class="share-actions">
                 <a class="share-action" [href]="mailToUrl" target="_blank" rel="noopener">Email</a>
                 <a class="share-action" [href]="whatsAppUrl" target="_blank" rel="noopener">WhatsApp</a>
                 <button class="share-action" (click)="toggleQr()">QR Code</button>
               </div>
-
               <div class="share-qr" *ngIf="qrOpen">
                 <!-- QR généré via lib (voir étape 2) -->
                 <qrcode [qrdata]="shareUrl" [width]="180" [errorCorrectionLevel]="'M'">
                 </qrcode>
-
                 <div class="share-qr-hint">Scanne pour ouvrir la page.</div>
               </div>
             </div>
-
-
             <div class="margin-top-20">
               <div *ngIf="adminSettings.commissionRate > 0">{{"PAYEMENT.SUMMARY_SERVICE_FEE" | translate}} : {{
                 adminSettings.commissionRate * 100 }}%</div>

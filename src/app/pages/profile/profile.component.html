@@ -98,7 +98,7 @@
         </div>
         <!-- SECTION BOUTONS SHOP -->
         <div class="row justify-content-between align-items-center g-3 flex-wrap shop-selector-wrapper"
-          *ngIf="me.role === 'boss'">
+          *ngIf="me && me.role === 'boss'">
           <div class="col-12 col-md-8" *ngIf="multiShopsActivated">
             <div class="d-flex flex-column flex-sm-row align-items-center gap-2">
               <div class="flex-grow-1 w-100">
@@ -148,7 +148,7 @@
             </app-shop-management>
           </mat-tab>
 
-          <mat-tab color="primary" *ngIf="me.role === 'admin'" [label]="'TABS.EMPLOYEES' | translate">
+          <mat-tab color="primary" *ngIf="me && me.role === 'admin'" [label]="'TABS.EMPLOYEES' | translate">
             <app-shop-employees *ngIf="myShopData && me" [me]="me"></app-shop-employees>
           </mat-tab>
 
@@ -163,8 +163,7 @@
           </mat-tab>
 
           <mat-tab [label]="'TABS.SOCIAL' | translate">
-            <app-post-fake-generation [shopType]="myShopData.type" [shopId]="myShopData._id" [shopName]="myShopData.name"
-              [city]="myShopData.ville"></app-post-fake-generation>
+            <app-post-fake-generation [shop]="myShopData"></app-post-fake-generation>
           </mat-tab>
 
           <mat-tab [label]="'TABS.DOCUMENTS' | translate">

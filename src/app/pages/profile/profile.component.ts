@@ -138,8 +138,6 @@ export class ProfileComponent implements OnInit {
                     // 👨‍🔧 Employé : récupère ses shops
                     forkJoin({
                         shops: this.shopService.getShopsByUserId(me._id),
-                        // company: this.companyService.getById(companyId),
-                        // companyUsers: this.userService.getByCompanyId(companyId),
                     }).subscribe({
                         next: (results: any) => {
                             this.shops = results.shops;
@@ -199,7 +197,7 @@ export class ProfileComponent implements OnInit {
                 });
 
             // Charge les données détaillées du shop pour d’autres zones (service interne)
-            this.shopService.loadShopData(this.shops[0]._id);
+            // this.shopService.loadShopData(this.shops[0]._id);
         }
     }
 

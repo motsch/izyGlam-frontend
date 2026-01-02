@@ -1,5 +1,7 @@
-<!-- Header finance : niveau + prochain palier (gauche) / bouton (droite) -->
+<!-- Header finance : niveau (gauche) / actions + compta (droite) -->
 <div class="finance-header mb-4">
+
+  <!-- LEFT -->
   <div class="level-panel" *ngIf="shopLevelUi">
     <div class="level-row">
       <span class="level-badge" [ngClass]="shopLevelUi.class">
@@ -23,11 +25,81 @@
     </ng-template>
   </div>
 
-  <button class="btn-create-service" (click)="openBankModal()">
-    <i class="fa fa-plus me-2"></i> {{ "BANK.ADD_BANK_INFO" | translate }}
-  </button>
-</div>
+  <!-- RIGHT -->
+  <div class="finance-actions">
 
+    <button class="btn-create-service" (click)="openBankModal()">
+      <i class="fa fa-plus me-2"></i> {{ "BANK.ADD_BANK_INFO" | translate }}
+    </button>
+
+    <!-- ✅ NOUVEAU : Documents comptables -->
+    <div class="accounting-panel" *ngIf="shop?._id">
+      <div class="accounting-head">
+        <div class="accounting-title">📄 Documents comptables</div>
+        <div class="accounting-sub">Choisis une période puis télécharge.</div>
+      </div>
+
+      <div class="accounting-controls">
+
+        <div class="field">
+          <label>Période</label>
+          <select [(ngModel)]="accountingMode" (change)="onAccountingParamsChange()">
+            <option value="week">Semaine</option>
+            <option value="month">Mois</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Date</label>
+          <input type="date" [(ngModel)]="accountingDate" (change)="onAccountingParamsChange()" />
+        </div>
+
+      </div>
+
+
+      <div class="accounting-actions">
+        <button class="btn-ghost small" (click)="loadAccounting()" [disabled]="accountingLoading">
+          {{ accountingLoading ? 'Chargement…' : 'Aperçu' }}
+        </button>
+
+        <button class="btn-primary small" (click)="downloadAccountingCSV()"
+          [disabled]="accountingLoading || !accountingData">
+          Télécharger CSV
+        </button>
+
+        <button class="btn-primary small alt" (click)="downloadAccountingPDF()"
+          [disabled]="accountingLoading || !accountingData">
+          Télécharger PDF
+        </button>
+      </div>
+
+      <!-- Mini aperçu -->
+      <div class="accounting-preview" *ngIf="accountingData">
+        <div class="chip">
+          <span>Période</span>
+          <b>{{ accountingPeriodLabel }}</b>
+        </div>
+        <div class="chip">
+          <span>CA</span>
+          <b>{{ accountingData?.totals?.totalPrice | currency:'EUR' }}</b>
+        </div>
+        <div class="chip">
+          <span>Commissions</span>
+          <b>{{ accountingData?.totals?.totalCommission | currency:'EUR' }}</b>
+        </div>
+        <div class="chip">
+          <span>Net</span>
+          <b>{{ accountingData?.totals?.totalShopEarnings | currency:'EUR' }}</b>
+        </div>
+      </div>
+
+      <div class="accounting-error" *ngIf="accountingError">
+        ⚠️ {{ accountingError }}
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- MODAL BACKDROP -->
 <div class="modal-backdrop" *ngIf="bankModalVisible" (click)="closeBankModal()"></div>
@@ -115,14 +187,12 @@
     </div>
 
     <div class="stripe-footnote">
-      Tes informations bancaires ne sont jamais stockées sur IzyGlam.
+      Tes informations bancaires ne sont jamais stockées sur izyGlam.
       Tout est saisi et sécurisé directement chez Stripe.
     </div>
 
   </div>
 </div>
-
-
 
 <!-- KPI Cards -->
 <div class="row kpi-section">

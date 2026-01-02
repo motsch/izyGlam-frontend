@@ -129,22 +129,22 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
 
   ngOnInit() {
     try {
-      if(!this.me) {
+      if (!this.me) {
         this.userService.getMe().subscribe({
-        next: (user: any) => {
-          try {
-            this.me = user;
-            this.currentUserId = user;
-          } catch (e) {
-            console.error('[loadConversations] Traitement des données :', e);
+          next: (user: any) => {
+            try {
+              this.me = user;
+              this.currentUserId = user;
+            } catch (e) {
+              console.error('[loadConversations] Traitement des données :', e);
+              this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+            }
+          },
+          error: (err: any) => {
+            console.error('[loadConversations] Erreur HTTP :', err);
             this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
           }
-        },
-        error: (err: any) => {
-          console.error('[loadConversations] Erreur HTTP :', err);
-          this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
-        }
-      })
+        })
       }
       // Récupère l’id utilisateur dès que possible (si “me” est déjà injecté à l’init)
       this.currentUserId = this.me?._id || '';
@@ -155,7 +155,6 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
       // Abonnement global MQTT : réception des nouveaux messages
       this.mqttSub = this.mqttService.subscribe().subscribe((payloaded: any) => {
         try {
-
 
           // 1) Parse robuste (string → objet). Gère même le double encodage éventuel.
           let payload: any = payloaded;
@@ -175,15 +174,6 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
           console.log('[WS] brut:', payloaded);
           console.log('[WS] payload objet:', payload);
           console.log('[WS] topic:', topic2);
-
-
-
-
-
-
-
-
-
           const { topic, message } = payload || {};
           const toto = payload.message.content;
           console.log("message : " + JSON.stringify(toto));
@@ -261,14 +251,35 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
     }
   }
 
+  private resolveConversationTypeByRole(role: string | undefined | null): 'user' | 'pro' {
+    // user | professionnel | admin | boss => user
+    // entreprise => pro
+    if (role === 'entreprise') return 'pro';
+    return 'user';
+  }
+
   // =========================
   // Chargement des données
   // =========================
 
-  /** Charge toutes les conversations (et s’abonne en MQTT à chacune d’elles) */
+  /** Charge toutes les conversations du user (et s’abonne en WS à chacune d’elles) */
   loadConversations() {
     try {
-      this.conversationService.getAllConversations().subscribe({
+      // ✅ Récupère l’utilisateur courant (à adapter à ton app)
+      const currentUser = this.me;
+
+      const userId: string | undefined = currentUser?._id || currentUser?.id;
+      const role: string | undefined = currentUser?.role;
+
+      if (!userId) {
+        console.warn('[loadConversations] userId introuvable');
+        this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
+        return;
+      }
+
+      const type = this.resolveConversationTypeByRole(role);
+
+      this.conversationService.getConversationsByType(type, userId).subscribe({
         next: (data: any) => {
           try {
             this.conversations = (data || []).map((c: any) => ({
@@ -277,7 +288,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
               unreadCount: 0
             }));
 
-            // Abonnement WS sur chaque conv (pour recevoir les messages ciblés)
+            // Abonnement WS sur chaque conv
             this.conversations.forEach(c => {
               try {
                 if (c?._id) this.mqttService.subscribeToConversation(c._id);
@@ -286,7 +297,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
               }
             });
 
-            // Prépare le bandeau Support si déjà existant
+            // Bandeau Support
             const sc = this.conversations.find(this.isSupport);
             if (sc) {
               this.updateSupportPreviewFromConv(sc);
@@ -296,7 +307,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
               this.supportUnreadCount = 0;
             }
 
-            // Sélection auto d’une conv si aucune n’est ouverte
+            // Sélection auto
             if (!this.selectedConversation && this.conversations.length > 0) {
               this.selectConversation(this.conversations[0]);
             }
@@ -317,6 +328,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
       this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
     }
   }
+
 
   /** Détermine si l’utilisateur est “proche” du bas (pour autoscroll smart) */
   private isUserNearBottom(): boolean {
@@ -545,14 +557,14 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
         this.showCustomToast('ERROR.GENERIC_ERROR', 'error');
       };
 
-        this.conversationService
-          .addMessage(this.selectedConversation._id, {
-            sender: this.currentUserId,
-            content: trimmed,
-            messageType: 'text',
-            clientId
-          })
-          .subscribe({ next: onOk, error: onErr });
+      this.conversationService
+        .addMessage(this.selectedConversation._id, {
+          sender: this.currentUserId,
+          content: trimmed,
+          messageType: 'text',
+          clientId
+        })
+        .subscribe({ next: onOk, error: onErr });
 
       this.newMessage = '';
     } catch (e) {
