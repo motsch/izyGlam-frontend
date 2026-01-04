@@ -45,7 +45,7 @@ export class PostFakeGenerationComponent implements OnInit {
     this.loading = true;
     this.fakePostService.getRandom(type, 'instagram').subscribe({
       next: (tpl) => {
-        const shopLink = this.buildShopLink(this.shop._id);
+        const shopLink = this.buildShopLink(this.shop.handle);
 
         this.generatedPost = this.render(tpl.text, {
           shopName: this.shop.name || 'Mon activité',
@@ -112,8 +112,8 @@ export class PostFakeGenerationComponent implements OnInit {
       .replace(/[^a-z0-9]/g, '');
   }
 
-  private buildShopLink(shopId: string): string {
-    if (!shopId) return '';
-    return `${window.location.origin}/shop/${shopId}`;
+  private buildShopLink(handle: string): string {
+    if (!handle) return '';
+    return `${window.location.origin}/shop/${handle}`;
   }
 }

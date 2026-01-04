@@ -58,6 +58,18 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
   // ---------- Divers ----------
   error: any = {};
+
+  private autosaveTimer: any = null;
+  saving = false;
+  saved = true;
+
+
+  handleChecking = false;
+  handleAvailable: boolean | null = null;
+
+  private handleTouchedByUser = false;
+  private initialHandle = "";
+
   private baseImgUrl = environment.APIimgStorageUrl.replace(/\/$/, ''); // base sans slash final
 
   constructor(
@@ -95,6 +107,10 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       // Initialisation de la copie éditable si donnée dispo
       if (this.myShopData && Object.keys(this.myShopData).length > 0) {
         this.shopCopyData = { ...this.myShopData };
+        this.initialHandle = this.shopCopyData.handle || "";
+        this.handleTouchedByUser = false;
+        this.handleAvailable = null;
+        this.error.handle = null;
 
         // Uniformiser l’URL d’image (chemin relatif -> URL)
         this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
@@ -645,5 +661,162 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       this.showCustomToast('Erreur lors de l’enregistrement des informations légales.', 'error');
     }
   }
+
+  onShopNameTyping() {
+
+    // auto-proposition handle locale (0 requête)
+    if (!this.handleTouchedByUser && this.shopCopyData) {
+      const proposed = this.normalizeHandle(this.shopCopyData.name || "");
+      if (proposed && proposed !== this.shopCopyData.handle) {
+        this.shopCopyData.handle = proposed;
+        this.handleAvailable = null;
+        this.error.handle = null;
+      }
+    }
+
+    // l'utilisateur tape : UX -> "modifié"
+    this.formModified = true;
+    this.saved = false;
+
+    // on ne save pas si pas boss
+    if (this.me?.role !== 'boss') return;
+
+    // debounce : 1 seule requête après pause
+    if (this.autosaveTimer) clearTimeout(this.autosaveTimer);
+
+    this.autosaveTimer = setTimeout(() => {
+      this.autosave();
+    }, 800);
+  }
+
+  private autosave() {
+    if (!this.shopCopyData) return;
+
+    // évite de sauver si aucune modif réelle
+    if (!this.formModified) return;
+
+    this.saving = true;
+
+    // on réutilise ton saveShop existant (qui gère upload image etc.)
+    // MAIS on veut marquer "saving/saved" au bon moment
+    this.myShopData = { ...this.shopCopyData };
+
+    // appelle persist direct (sans upload, car name only)
+    this.shopService.update(this.myShopData).subscribe({
+      next: (data: any) => {
+        this.shopCopyData = { ...data };
+        this.myShopData = { ...data };
+        this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
+
+        this.formModified = false;
+        this.saved = true;
+        this.saving = false;
+
+        // pas besoin de toast à chaque autosave, c’est chiant
+      },
+      error: (error: any) => {
+        console.error('[ShopManagement] autosave error:', error);
+        this.saving = false;
+        this.saved = false;
+        // toast léger
+        this.showCustomToast(this.t('CARD.ERROR1'), 'error');
+      },
+    });
+  }
+
+  onHandleTypingLocal(value: string) {
+    if (!this.shopCopyData) return;
+
+    this.handleTouchedByUser = true;
+
+    this.shopCopyData.handle = this.normalizeHandle(value);
+
+    // reset status (pas revalidé)
+    this.handleAvailable = null;
+    this.error.handle = null;
+
+    // on marque le form modifié pour l'UX
+    this.formModified = true;
+    this.saved = false;
+  }
+
+  validateAndSaveHandle() {
+  if (!this.shopCopyData) return;
+
+  const handle = this.normalizeHandle(this.shopCopyData.handle || "");
+  this.shopCopyData.handle = handle;
+
+  if (!handle || handle.length < 3) {
+    this.handleAvailable = false;
+    this.error.handle = "Minimum 3 caractères.";
+    return;
+  }
+
+  // ✅ 1 seule requête : check dispo (avec excludeId)
+  this.handleChecking = true;
+  this.handleAvailable = null;
+  this.error.handle = null;
+
+  this.shopService.isHandleAvailable(handle).subscribe({
+    next: (res: any) => {
+      const available = !!res?.available;
+
+      this.handleChecking = false;
+      this.handleAvailable = available;
+
+      if (!available) {
+        this.error.handle = "Cet identifiant est déjà utilisé.";
+        return;
+      }
+
+      // ✅ Dispo -> 1 requête update (uniquement handle)
+      this.shopService.update({ _id: this.shopCopyData._id, handle }).subscribe({
+        next: (data: any) => {
+          // sync local state
+          this.shopCopyData = { ...this.shopCopyData, ...data };
+          this.myShopData = { ...this.shopCopyData };
+
+          this.initialHandle = this.shopCopyData.handle || "";
+          this.handleTouchedByUser = false;
+
+          this.formModified = false;
+          this.saved = true;
+
+          this.showCustomToast("Identifiant public mis à jour ✅", "success");
+        },
+        error: () => {
+          this.showCustomToast("Erreur lors de la mise à jour du handle.", "error");
+        },
+      });
+    },
+    error: (err: any) => {
+      this.handleChecking = false;
+      this.handleAvailable = null;
+
+      if (err?.status === 429) {
+        this.error.handle = "Trop de requêtes. Réessaie dans 2 secondes.";
+      } else {
+        this.error.handle = "Erreur lors de la vérification.";
+      }
+    },
+  });
+}
+
+normalizeHandle(input: string): string {
+  const raw = (input || "").trim().replace(/^@+/, ""); // enlève @@@
+  if (!raw) return "";
+
+  // enlève accents
+  const noAccents = raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  // garde uniquement a-z 0-9 . _
+  const cleaned = noAccents
+    .toLowerCase()
+    .replace(/\s+/g, "")              // supprime espaces
+    .replace(/[^a-z0-9._]/g, "");     // supprime le reste
+
+  // évite "...." ou "__" en début/fin
+  return cleaned.replace(/^[._]+|[._]+$/g, "");
+}
 
 }

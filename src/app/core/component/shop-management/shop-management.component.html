@@ -40,8 +40,40 @@
     <!-- NOM DU SALON -->
     <div>
       <label for="name" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_NAME" | translate}}</label>
-      <input [disabled]="me.role !== 'boss'" [(ngModel)]="shopCopyData.name" class="input-style" type="text" id="name"
-        (ngModelChange)="saveShop()" />
+      <input [(ngModel)]="shopCopyData.name" class="input-style" type="text" id="name"
+        (ngModelChange)="onShopNameTyping()" />
+
+      <div class="handle-block" *ngIf="shopCopyData">
+        <label for="shop-handle" class="margin-top-20">Identifiant public</label>
+
+        <div class="handle-row">
+          <span class="handle-prefix">&#64;</span>
+
+          <input disabled type="text" id="shop-handle" class="input-style"
+            [(ngModel)]="shopCopyData.handle" placeholder="sabbeauty" (ngModelChange)="onHandleTypingLocal($event)"
+            autocomplete="off" />
+
+          <span class="handle-status" [class.ok]="handleAvailable === true" [class.ko]="handleAvailable === false"
+            *ngIf="shopCopyData.handle">
+            <ng-container *ngIf="handleChecking">Vérification...</ng-container>
+            <ng-container *ngIf="!handleChecking && handleAvailable === true">OK</ng-container>
+            <ng-container *ngIf="!handleChecking && handleAvailable === false">Pris</ng-container>
+          </span>
+        </div>
+
+        <div class="handle-preview" *ngIf="shopCopyData.handle">
+          Lien : <strong>izyglam.com/&#64;{{ shopCopyData.handle }}</strong>
+        </div>
+
+        <div class="error" *ngIf="error.handle">{{ error.handle }}</div>
+      </div>
+
+      <div class="save-status">
+        <span *ngIf="saving">💾 Enregistrement...</span>
+        <span *ngIf="!saving && saved">✅ Enregistré</span>
+        <span *ngIf="!saving && !saved">✏️ Modifications non enregistrées</span>
+      </div>
+
     </div>
 
     <!-- DESCRIPTION -->

@@ -13,6 +13,7 @@ import { StripeService } from '../../services/stripe.service';
 // Notifications / i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { ShopService } from '../../services/shop.service';
 
 @Component({
   selector: 'app-order-card',
@@ -53,6 +54,7 @@ export class OrderCardComponent {
     private bookingService: BookingService,
     private financialService: FinancialService,
     private toastr: ToastrService,
+    private shopService: ShopService,
     private translate: TranslateService
   ) { }
 
@@ -334,8 +336,16 @@ export class OrderCardComponent {
 
   goToShop(order: any) {
     try {
-      if (!order?.shopId) return;
-      this.router.navigate(['shop/' + order.shopId]);
+      if (!order?.shopId) return;      
+      this.shopService.getById(this.order?.shopId).subscribe({
+        next: (shop) => {
+          if (!shop) return;
+          this.router.navigate(['shop/' + shop.handle]);
+        },
+        error: (err) => {
+          console.error('[OrderItem] rating dialog close ERROR:', err);
+        }
+      })
     } catch (e) {
       console.error('[OrderCard] goToShop ERROR:', e);
     }

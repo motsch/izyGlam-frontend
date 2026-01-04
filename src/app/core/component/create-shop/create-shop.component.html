@@ -9,11 +9,7 @@
 
           <!-- Stepper -->
           <div class="stepper">
-            <div
-              class="stepper-item"
-              [class.active]="currentStep === 1"
-              [class.completed]="currentStep > 1"
-            >
+            <div class="stepper-item" [class.active]="currentStep === 1" [class.completed]="currentStep > 1">
               <div class="stepper-index">1</div>
               <div class="stepper-text">
                 <div class="stepper-label">
@@ -24,11 +20,7 @@
 
             <div class="stepper-divider"></div>
 
-            <div
-              class="stepper-item"
-              [class.active]="currentStep === 2"
-              [class.completed]="false"
-            >
+            <div class="stepper-item" [class.active]="currentStep === 2" [class.completed]="false">
               <div class="stepper-index">2</div>
               <div class="stepper-text">
                 <div class="stepper-label">
@@ -47,42 +39,50 @@
                 <label for="establishment-name">
                   {{ "CREATION_SHOP.NAME" | translate }}
                 </label>
-                <input
-                  type="text"
-                  id="establishment-name"
-                  name="establishment-name"
-                  [(ngModel)]="newShop.name"
-                  placeholder="Sab Beauty"
-                  (blur)="formatShopName()"
-                />
+                <input type="text" id="establishment-name" name="establishment-name" [(ngModel)]="newShop.name"
+                  placeholder="Sab Beauty" (ngModelChange)="onShopNameTyping()" />
+
                 <div *ngIf="error.name" class="error">{{ error.name }}</div>
               </div>
             </div>
 
+            <!-- HANDLE PUBLIC -->
+            <div class="row input-group-row">
+              <div class="col-md-12">
+                <label for="shop-handle">Identifiant public</label>
+
+                <div class="handle-row">
+                  <span class="handle-prefix">&#64;</span>
+
+                  <input type="text" id="shop-handle" name="shop-handle" [(ngModel)]="newShop.handle"
+                    placeholder="sabbeauty" (ngModelChange)="onHandleTypingLocal($event)" autocomplete="off" />
+
+                  <span class="handle-status" [class.ok]="handleAvailable === true"
+                    [class.ko]="handleAvailable === false" *ngIf="newShop.handle">
+                    <ng-container *ngIf="handleAvailable === true">OK</ng-container>
+                    <ng-container *ngIf="handleAvailable === false">Pris</ng-container>
+                  </span>
+                </div>
+
+                <div class="handle-preview" *ngIf="newShop.handle">
+                  Lien : <strong>izyglam.com/&#64;{{ newShop.handle }}</strong>
+                </div>
+
+                <div *ngIf="error.handle" class="error">{{ error.handle }}</div>
+              </div>
+            </div>
+
+
             <div class="row input-group-row">
               <div class="col-md-5">
                 <label for="floor">{{ "CREATION_SHOP.FLOOR" | translate }}</label>
-                <input
-                  type="text"
-                  id="floor"
-                  name="floor"
-                  placeholder="123"
-                  [(ngModel)]="newShop.floor"
-                />
+                <input type="text" id="floor" name="floor" placeholder="123" [(ngModel)]="newShop.floor" />
                 <div *ngIf="error.floor" class="error">{{ error.floor }}</div>
               </div>
               <div class="col-md-6">
                 <label for="country">{{ "CREATION_SHOP.COUNTRY" | translate }}</label>
-                <select
-                  [(ngModel)]="selectedCountry"
-                  name="country"
-                  (change)="onCountryChange()"
-                  required
-                >
-                  <option
-                    *ngFor="let country of availableCountries"
-                    [value]="country.name"
-                  >
+                <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
+                  <option *ngFor="let country of availableCountries" [value]="country.name">
                     {{ country.translation | translate }}
                   </option>
                 </select>
@@ -97,28 +97,15 @@
                 <label for="postalCode">
                   {{ "CREATION_SHOP.POSTAL_CODE" | translate }}
                 </label>
-                <input
-                  type="text"
-                  id="postalCode"
-                  name="postalCode"
-                  placeholder="Code postal"
-                  [(ngModel)]="postalCode"
-                  (blur)="onPostalCodeEntered()"
-                  required
-                  maxlength="10"
-                />
+                <input type="text" id="postalCode" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
+                  (blur)="onPostalCodeEntered()" required maxlength="10" />
                 <div *ngIf="error.postalCode" class="error">
                   {{ error.postalCode }}
                 </div>
               </div>
               <div class="col-md-6">
                 <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
-                <select
-                  [(ngModel)]="selectedCity"
-                  name="city"
-                  required
-                  (change)="onCityChange()"
-                >
+                <select [(ngModel)]="selectedCity" name="city" required (change)="onCityChange()">
                   <option *ngFor="let city of availableCities" [ngValue]="city">
                     {{ city.nom }}
                   </option>
@@ -134,14 +121,7 @@
                 <label for="street">
                   {{ "CREATION_SHOP.STREET" | translate }}
                 </label>
-                <input
-                  type="text"
-                  id="street"
-                  name="street"
-                  [(ngModel)]="newShop.street"
-                  placeholder="Rue"
-                  required
-                />
+                <input type="text" id="street" name="street" [(ngModel)]="newShop.street" placeholder="Rue" required />
                 <div *ngIf="error.street" class="error">{{ error.street }}</div>
               </div>
             </div>
@@ -151,11 +131,7 @@
                 <label for="business-type">
                   {{ "CREATION_SHOP.BUSINESSTYPE" | translate }}
                 </label>
-                <select
-                  id="business-type"
-                  name="business-type"
-                  [(ngModel)]="newShop.companyType"
-                >
+                <select id="business-type" name="business-type" [(ngModel)]="newShop.companyType">
                   <option value="coiffure">
                     {{ "MAIN_CATEGORY.COIFFURE" | translate }}
                   </option>
@@ -208,19 +184,9 @@
                   {{ "CREATION_SHOP.CODE_POSTAL_POSSIBLE" | translate }}
                 </label>
                 <div class="postal-code-entry">
-                  <input
-                    type="text"
-                    id="deliveryPostalCode"
-                    [(ngModel)]="deliveryPostalCode"
-                    placeholder="Ex: 75001"
-                    maxlength="10"
-                    (keyup.enter)="addPostalCode()"
-                  />
-                  <button
-                    type="button"
-                    class="add-postal-code-btn"
-                    (click)="addPostalCode()"
-                  >
+                  <input type="text" id="deliveryPostalCode" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001"
+                    maxlength="10" (keyup.enter)="addPostalCode()" />
+                  <button type="button" class="add-postal-code-btn" (click)="addPostalCode()">
                     +
                   </button>
                 </div>
@@ -229,16 +195,9 @@
                   {{ error.deliveryPostalCode }}
                 </div>
                 <div class="postal-code-list">
-                  <span
-                    class="postal-code-tag"
-                    *ngFor="let code of deliveryPostalCodesList; let i = index"
-                  >
+                  <span class="postal-code-tag" *ngFor="let code of deliveryPostalCodesList; let i = index">
                     {{ code }}
-                    <button
-                      type="button"
-                      class="remove-btn"
-                      (click)="removePostalCode(i)"
-                    >
+                    <button type="button" class="remove-btn" (click)="removePostalCode(i)">
                       ×
                     </button>
                   </span>
@@ -247,11 +206,7 @@
             </div>
 
             <div class="whatsapp">
-              <input
-                type="checkbox"
-                id="whatsapp"
-                [(ngModel)]="newShop.ccvaccepted"
-              />
+              <input type="checkbox" id="whatsapp" [(ngModel)]="newShop.ccvaccepted" />
               <label for="whatsapp">
                 {{ "CREATION_SHOP.WHATSAPP" | translate }}
               </label>
@@ -289,22 +244,15 @@
                       {{ "CREATION_SHOP.VERIF_ID_DESC" | translate }}
                     </p>
                   </div>
-                  <span
-                    class="verification-status-pill"
-                    [ngClass]="getStatusClass(verification?.identity?.status)"
-                  >
+                  <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.identity?.status)">
                     {{ getStatusLabel(verification?.identity?.status) | translate }}
                   </span>
                 </div>
                 <div class="verification-card-body">
                   <label class="file-input-label">
                     {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                    <input
-                      type="file"
-                      class="file-input-hidden"
-                      (change)="onFileSelected($event, 'identity')"
-                      accept=".pdf,.jpg,.jpeg,.png"
-                    />
+                    <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'identity')"
+                      accept=".pdf,.jpg,.jpeg,.png" />
                   </label>
                   <div class="file-name" *ngIf="identityDocFileName">
                     {{ identityDocFileName }}
@@ -326,22 +274,15 @@
                       {{ "CREATION_SHOP.VERIF_INSURANCE_DESC" | translate }}
                     </p>
                   </div>
-                  <span
-                    class="verification-status-pill"
-                    [ngClass]="getStatusClass(verification?.insurance?.status)"
-                  >
+                  <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.insurance?.status)">
                     {{ getStatusLabel(verification?.insurance?.status) | translate }}
                   </span>
                 </div>
                 <div class="verification-card-body">
                   <label class="file-input-label">
                     {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                    <input
-                      type="file"
-                      class="file-input-hidden"
-                      (change)="onFileSelected($event, 'insurance')"
-                      accept=".pdf,.jpg,.jpeg,.png"
-                    />
+                    <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'insurance')"
+                      accept=".pdf,.jpg,.jpeg,.png" />
                   </label>
                   <div class="file-name" *ngIf="insuranceDocFileName">
                     {{ insuranceDocFileName }}
@@ -363,22 +304,15 @@
                       {{ "CREATION_SHOP.VERIF_KBIS_DESC" | translate }}
                     </p>
                   </div>
-                  <span
-                    class="verification-status-pill"
-                    [ngClass]="getStatusClass(verification?.kbis?.status)"
-                  >
+                  <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.kbis?.status)">
                     {{ getStatusLabel(verification?.kbis?.status) | translate }}
                   </span>
                 </div>
                 <div class="verification-card-body">
                   <label class="file-input-label">
                     {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                    <input
-                      type="file"
-                      class="file-input-hidden"
-                      (change)="onFileSelected($event, 'kbis')"
-                      accept=".pdf,.jpg,.jpeg,.png"
-                    />
+                    <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'kbis')"
+                      accept=".pdf,.jpg,.jpeg,.png" />
                   </label>
                   <div class="file-name" *ngIf="kbisDocFileName">
                     {{ kbisDocFileName }}
@@ -395,19 +329,11 @@
             </p>
 
             <!-- Step 2 : on crée le shop + upload docs -->
-            <button
-              type="button"
-              (click)="submitVerificationDocs()"
-              [disabled]="isUploadingDocs"
-            >
+            <button type="button" (click)="submitVerificationDocs()" [disabled]="isUploadingDocs">
               {{ "CREATION_SHOP.VERIF_PRIMARY_BUTTON" | translate }}
             </button>
 
-            <button
-              type="button"
-              class="secondary-button"
-              (click)="skipVerification()"
-            >
+            <button type="button" class="secondary-button" (click)="skipVerification()">
               {{ "CREATION_SHOP.VERIF_SKIP_BUTTON" | translate }}
             </button>
           </ng-container>

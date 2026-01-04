@@ -254,7 +254,6 @@ export class PayementComponent implements OnInit {
   // 🂡 Sélectionne une carte Stripe par ID
   // -------------------------------------------------------------
   selectCard(cardId: string) {
-
     this.paymentMode = 'card';
     this.selectedCardId = cardId;
   }

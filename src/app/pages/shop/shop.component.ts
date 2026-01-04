@@ -97,53 +97,64 @@ export class ShopComponent {
         });
 
         // 2) Récupère l'id du shop depuis l'URL
-        const shopId = this.activatedRoute.snapshot.params['id'];
-        console.log('shop id : ' + shopId);
-        localStorage.setItem('shopSelected', shopId);
-
-        // 3) Vide la liste locale avant rechargement
-        this.shopItems = [];
-
-        // 4) Charge les produits du shop
-        this.productService.getProductsByShop(shopId).subscribe({
+        const shopHandle = this.activatedRoute.snapshot.params['handle'];
+        this.shopService.getShopByHandle(shopHandle).subscribe({
             next: (data: any) => {
                 console.log('Produits shop :', data);
-                this.shopItems = data;
+                console.log('shop id : ' + data._id);
+                localStorage.setItem('shopSelected', data._id);
+                const shopId = data._id;
+
+
+                // 3) Vide la liste locale avant rechargement
+                this.shopItems = [];
+
+                // 4) Charge les produits du shop
+                this.productService.getProductsByShop(shopId).subscribe({
+                    next: (data: any) => {
+                        console.log('Produits shop :', data);
+                        this.shopItems = data;
+                    },
+                    error: (err: any) => {
+                        console.error('Erreur lors du chargement des produits du shop :', err);
+                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                    }
+                });
+
+                // 5) Charge les infos du shop (note, reviews, galerie…)
+                this.shopService.getById(shopId).subscribe({
+                    next: (data: any) => {
+                        console.log('Shop data: ' + JSON.stringify(data));
+                        this.shopInfo = data;
+
+                        // Initialisation / recalcul de la note moyenne
+                        this.shopInfo.note = 0;
+                        this.shopInfo.noteCount = data.reviews.length;
+
+                        for (const elem of data.reviews) {
+                            this.shopInfo.note = this.shopInfo.note + elem.rating;
+                        }
+                        this.shopInfo.note = this.shopInfo.note / data.reviews.length;
+
+                        // Fallbacks si pas de note/décompte
+                        if (!this.shopInfo.note || isNaN(this.shopInfo.note)) {
+                            this.shopInfo.note = 5;
+                        }
+                        if (!this.shopInfo.noteCount) {
+                            this.shopInfo.noteCount = 0;
+                        }
+                    },
+                    error: (err: any) => {
+                        console.error('Erreur lors du chargement des informations du shop :', err);
+                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                    }
+                });
             },
             error: (err: any) => {
                 console.error('Erreur lors du chargement des produits du shop :', err);
                 this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
             }
-        });
-
-        // 5) Charge les infos du shop (note, reviews, galerie…)
-        this.shopService.getById(shopId).subscribe({
-            next: (data: any) => {
-                console.log('Shop data: ' + JSON.stringify(data));
-                this.shopInfo = data;
-
-                // Initialisation / recalcul de la note moyenne
-                this.shopInfo.note = 0;
-                this.shopInfo.noteCount = data.reviews.length;
-
-                for (const elem of data.reviews) {
-                    this.shopInfo.note = this.shopInfo.note + elem.rating;
-                }
-                this.shopInfo.note = this.shopInfo.note / data.reviews.length;
-
-                // Fallbacks si pas de note/décompte
-                if (!this.shopInfo.note || isNaN(this.shopInfo.note)) {
-                    this.shopInfo.note = 5;
-                }
-                if (!this.shopInfo.noteCount) {
-                    this.shopInfo.noteCount = 0;
-                }
-            },
-            error: (err: any) => {
-                console.error('Erreur lors du chargement des informations du shop :', err);
-                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-            }
-        });
+        })
     }
 
     // ----------------------------------------------------

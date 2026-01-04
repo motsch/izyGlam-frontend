@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 // Notifications / i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { ShopService } from '../../services/shop.service';
 
 // ⚠️ pdfMake doit connaître ses polices
 
@@ -41,10 +42,11 @@ export class OrderItemComponent implements OnInit {
     private dialog: MatDialog,
     private router: Router,
     private toastr: ToastrService,
+    private shopService: ShopService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // ============================================================
   // ==================  FACTURATION / PDF  =====================
@@ -79,10 +81,10 @@ export class OrderItemComponent implements OnInit {
     try {
       // Gestion des dates (compat MongoDB $date ou ISO)
       const startDate = new Date(this.order?.start?.$date || this.order?.start);
-      const endDate   = new Date(this.order?.end?.$date   || this.order?.end);
+      const endDate = new Date(this.order?.end?.$date || this.order?.end);
 
       const price = this.safeParseFloat(this.order?.price);
-      const tva   = this.safeParseFloat(this.order?.tva); // en %
+      const tva = this.safeParseFloat(this.order?.tva); // en %
       const shopEarnings = this.safeParseFloat(this.order?.shopEarnings);
 
       const tvaAmount = price * (tva / 100);
@@ -139,8 +141,8 @@ export class OrderItemComponent implements OnInit {
   generateIzyGlamCommissionInvoice() {
     try {
       const commission = this.safeParseFloat(this.order?.commission);
-      const tva        = this.safeParseFloat(this.order?.tva); // en %
-      const tvaAmount  = commission * (tva / 100);
+      const tva = this.safeParseFloat(this.order?.tva); // en %
+      const tvaAmount = commission * (tva / 100);
 
       const docDefinition: any = {
         content: [
@@ -197,7 +199,15 @@ export class OrderItemComponent implements OnInit {
   reorder() {
     try {
       if (!this.order?.shopId) return;
-      this.router.navigate(['shop/' + this.order.shopId]);
+      this.shopService.getById(this.order?.shopId).subscribe({
+        next: (shop) => {
+          if (!shop) return;
+          this.router.navigate(['shop/' + shop.handle]);
+        },
+        error: (err) => {
+          console.error('[OrderItem] rating dialog close ERROR:', err);
+        }
+      })
     } catch (e) {
       console.error('[OrderItem] reorder ERROR:', e);
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR') || 'Navigation impossible.', 'error');

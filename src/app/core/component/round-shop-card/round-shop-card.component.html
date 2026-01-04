@@ -1,5 +1,5 @@
 <div class="profile-card">
-  <div class="image-container" (click)="toShopPage(shop._id)">
+  <div class="image-container" (click)="toShopPage(shop.handle)">
     <div class="image-wrapper">
       <!-- Skeleton -->
       <div class="shop-skeleton-card" *ngIf="!loadedShops[shop._id]"></div>
@@ -22,7 +22,7 @@
   </div>
 
   <div class="profile-info">
-    <h3 (click)="toShopPage(shop._id)">{{ shop.name }}</h3>
+    <h3 (click)="toShopPage(shop.handle)">{{ shop.name }}</h3>
     <p>{{ shop.trad | translate }}, {{ shop.ville }}</p>
     <p (click)="openModal()">
       <i class="star-icon"></i>{{ shop.note }} ({{ shop.reviews ? shop.reviews.length : 0 }} {{ 'MAIN_PAGE.AVIS' |

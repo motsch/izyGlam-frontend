@@ -72,6 +72,11 @@ export class CreateShopComponent implements OnInit {
 
   verification: any = null;
   isUploadingDocs: boolean = false;
+  handleChecking = false;
+  handleAvailable: boolean | null = null;
+  private handleTouchedByUser = false;
+  private handleVerifyTimer: any = null;
+  private handleVerifySeq = 0;
 
   constructor(
     private userService: UserService,
@@ -85,7 +90,7 @@ export class CreateShopComponent implements OnInit {
     private toastr: ToastrService,
     @Optional() public dialogRef?: MatDialogRef<CreateShopComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data?: any
-  ) {}
+  ) { }
 
   // ----------------------------------------
   // 🔄 Cycle de vie
@@ -290,6 +295,18 @@ export class CreateShopComponent implements OnInit {
         this.error.companyType = null;
       }
 
+      // --- HANDLE: obligatoire + doit être validé via bouton ---
+      if (!this.newShop.handle) {
+        this.error.handle = "Identifiant public obligatoire";
+        return;
+      }
+
+      // Si pas encore vérifié => on force l’utilisateur à cliquer "Vérifier"
+      if (this.handleAvailable !== true) {
+        this.error.handle = "Identifiant non validé ou déjà pris.";
+        return;
+      }
+
       this.currentStep = 2;
     } catch (err) {
       console.error('Erreur onSubmit :', err);
@@ -305,37 +322,6 @@ export class CreateShopComponent implements OnInit {
     return nameRegex.test((input || '').trim());
   }
 
-  formatShopName(): void {
-    try {
-      const raw = (this.newShop.name || '').trim();
-      if (!raw) {
-        this.newShop.name = '';
-        return;
-      }
-
-      const parts = raw.split(/\s+/);
-
-      const rawFirst = parts[0];
-      const firstName =
-        rawFirst.charAt(0).toUpperCase() +
-        rawFirst.slice(1).toLowerCase();
-
-      let initial: string;
-      if (parts.length >= 2) {
-        const rawLast = parts[parts.length - 1];
-        initial = rawLast.charAt(0).toUpperCase();
-      } else {
-        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        initial = letters.charAt(Math.floor(Math.random() * letters.length));
-      }
-
-      this.newShop.name = `${firstName} ${initial}.`;
-    } catch (err) {
-      console.error('Erreur formatShopName :', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-    }
-  }
-
   // ----------------------------------------
   // 🏗️ Création du shop côté backend
   //  ⚠️ C'est ICI qu'on ajoute country + filter + ville, etc.
@@ -345,6 +331,7 @@ export class CreateShopComponent implements OnInit {
 
     // Nom du salon (formaté “Prénom N.”)
     newShopToCreate.name = this.newShop.name;
+    newShopToCreate.handle = this.newShop.handle;
 
     // 🔹 Pays requis par le schema (country: String, required: true)
     newShopToCreate.country =
@@ -492,7 +479,7 @@ export class CreateShopComponent implements OnInit {
     });
   }
 
-  formChecking() {}
+  formChecking() { }
 
   goToSignUp() {
     try {
@@ -669,4 +656,125 @@ export class CreateShopComponent implements OnInit {
     const value = status || 'missing';
     return `status-${value}`;
   }
+
+  private normalizeHandle(input: any): string {
+    const raw = String(input ?? "").trim().replace(/^@+/, "");
+    if (!raw) return "";
+
+    const noAccents = raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+    const cleaned = noAccents
+      .toLowerCase()
+      .replace(/\s+/g, "")
+      .replace(/[^a-z0-9._]/g, "");
+
+    return cleaned.replace(/^[._]+|[._]+$/g, "");
+  }
+
+  onShopNameTyping() {
+    if (this.handleTouchedByUser) return;
+
+    const proposed = this.normalizeHandle(this.newShop.name || "");
+    if (!proposed || proposed === this.newShop.handle) return;
+
+    this.newShop.handle = proposed;
+    this.handleAvailable = null;
+    this.error.handle = null;
+
+    // auto-check après pause (sans bouton)
+    if (this.handleVerifyTimer) clearTimeout(this.handleVerifyTimer);
+
+    if (proposed.length >= 3) {
+      this.handleVerifyTimer = setTimeout(() => {
+        this.checkHandleAvailabilityOnce(proposed);
+      }, 900);
+    }
+  }
+
+  onHandleTypingLocal(value: string) {
+    this.handleTouchedByUser = true;
+
+    const handle = this.normalizeHandle(value);
+    this.newShop.handle = handle;
+
+    // reset status (pas validé)
+    this.handleAvailable = null;
+    this.error.handle = null;
+
+    // stop timer précédent
+    if (this.handleVerifyTimer) clearTimeout(this.handleVerifyTimer);
+
+    // garde-fous : pas de check si trop court
+    if (!handle || handle.length < 3) {
+      this.handleChecking = false;
+      return;
+    }
+
+    // ✅ auto-check après pause
+    this.handleVerifyTimer = setTimeout(() => {
+      this.checkHandleAvailabilityOnce(handle);
+    }, 900); // tu peux mettre 700-1200 selon ton feeling
+  }
+
+  validateHandle() {
+    const handle = this.normalizeHandle(this.newShop.handle || "");
+    this.newShop.handle = handle;
+
+    if (!handle || handle.length < 3) {
+      this.handleAvailable = false;
+      this.error.handle = "Minimum 3 caractères.";
+      return;
+    }
+
+    this.handleChecking = true;
+    this.handleAvailable = null;
+    this.error.handle = null;
+
+    this.shopService.isHandleAvailable(handle).subscribe({
+      next: (res: any) => {
+        this.handleChecking = false;
+        this.handleAvailable = !!res?.available;
+
+        if (!this.handleAvailable) {
+          this.error.handle = "Cet identifiant est déjà utilisé.";
+        }
+      },
+      error: () => {
+        this.handleChecking = false;
+        this.handleAvailable = null;
+        this.error.handle = "Erreur lors de la vérification.";
+      },
+    });
+  }
+
+  private checkHandleAvailabilityOnce(handle: string) {
+    // anti-résultats obsolètes
+    const seq = ++this.handleVerifySeq;
+
+    this.handleChecking = true;
+    this.handleAvailable = null;
+    this.error.handle = null;
+
+    this.shopService.isHandleAvailable(handle).subscribe({
+      next: (res: any) => {
+        // si entre-temps l'utilisateur a retapé, on ignore ce résultat
+        if (seq !== this.handleVerifySeq) return;
+
+        this.handleChecking = false;
+        this.handleAvailable = !!res?.available;
+
+        if (!this.handleAvailable) {
+          this.error.handle = "Cet identifiant est déjà utilisé.";
+        }
+      },
+      error: () => {
+        if (seq !== this.handleVerifySeq) return;
+
+        this.handleChecking = false;
+        this.handleAvailable = null;
+        this.error.handle = "Erreur lors de la vérification.";
+      },
+    });
+  }
+
 }

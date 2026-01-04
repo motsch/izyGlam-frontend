@@ -342,4 +342,18 @@ export class ShopService {
     return this.http.post<any>(`${environment.apiUrl}shop/${shopId}/block`, { reason });
   }
 
+  suggestHandle(payload: { name: string }) {
+    return this.http.post(`${environment.apiUrl}shop-handle/suggest`, payload);
+  }
+
+  isHandleAvailable(handle: string) {
+    return this.http.get(`${environment.apiUrl}shop-handle/available`, {
+      params: { handle },
+    });
+  }
+
+  getShopByHandle(handle: string) {
+    return this.http.get(`${environment.apiUrl}shop-handle/${handle}`);
+  }
+
 }

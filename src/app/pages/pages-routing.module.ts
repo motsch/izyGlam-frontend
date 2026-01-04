@@ -38,7 +38,7 @@ const routes: Routes = [
     },
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
     {
-        path: 'shop/:id',
+        path: 'shop/:handle',
         component: ShopComponent,
         canActivate: [],
     },

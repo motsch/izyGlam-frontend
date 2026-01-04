@@ -92,9 +92,9 @@ export class RoundShopCardComponent {
   }
 
   // ======================= Navigation =======================
-  toShopPage(id: string) {
+  toShopPage(handle: string) {
     try {
-      this.router.navigate(['shop/' + id]);
+      this.router.navigate(['shop/' + handle]);
     } catch {
       this.showCustomToast(
         this.translate.instant('ERROR.GENERIC_ERROR') || 'Navigation impossible.',
