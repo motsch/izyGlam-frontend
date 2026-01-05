@@ -402,6 +402,7 @@ export class FinanceComponent implements OnInit, OnChanges {
 
     URL.revokeObjectURL(url);
   }
+  
   downloadAccountingPDF(): void {
     if (!this.shop?._id) return;
 

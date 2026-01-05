@@ -27,8 +27,8 @@
                     class="socialLogo" (click)="openSocialLink(shopInfo.instagram)" />
                   <img *ngIf="shopInfo.facebook" [src]="imgStorageUrl + 'facebook-icon.png'" alt="Facebook"
                     class="socialLogo" (click)="openSocialLink(shopInfo.facebook)" />
-                  <img *ngIf="shopInfo.tiktok" [src]="imgStorageUrl + 'tiktok-icon.png'" alt="tiktok"
-                    class="socialLogo" (click)="openSocialLink(shopInfo.tiktok)" />
+                  <img *ngIf="shopInfo.tiktok" [src]="imgStorageUrl + 'tiktok-icon.png'" alt="tiktok" class="socialLogo"
+                    (click)="openSocialLink(shopInfo.tiktok)" />
 
                   <br />
                 </span>
@@ -63,6 +63,9 @@
               <div class="share-actions">
                 <a class="share-action" [href]="mailToUrl" target="_blank" rel="noopener">Email</a>
                 <a class="share-action" [href]="whatsAppUrl" target="_blank" rel="noopener">WhatsApp</a>
+                <a class="share-action" [href]="instagramUrl" target="_blank" rel="noopener">Instagram</a>
+                <a class="share-action" [href]="tiktokUrl" target="_blank" rel="noopener">TikTok</a>
+
                 <button class="share-action" (click)="toggleQr()">QR Code</button>
               </div>
               <div class="share-qr" *ngIf="qrOpen">
@@ -88,8 +91,6 @@
               </button>
             </div>
           </div>
-
-
           <div *ngIf="isExpanded">
             <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-40 bold">{{ "SHOP.GALLERY" | translate }}:
             </div>

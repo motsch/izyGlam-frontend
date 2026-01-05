@@ -56,7 +56,8 @@ export class ShopComponent {
     isLightboxOpen = false;
     selectedImage: string = '';
     currentIndex: number = 0;
-
+    public instagramUrl = '';
+    public tiktokUrl = '';
     // Description étendue
     isExpanded = false;
 
@@ -81,6 +82,7 @@ export class ShopComponent {
     // ⏱️ ngOnInit : charge settings, produits et shop
     // ----------------------------------------------------
     ngOnInit(): void {
+        this.buildShareLinks();
         this.seoService.updateMeta('shop');
         // 1) Paramètres d’admin (commission, frais, etc.)
         this.adminService.getAdminSettings().subscribe({
@@ -186,6 +188,30 @@ export class ShopComponent {
         this.router.navigate([name]);
     }
 
+    private buildShareLinks(): void {
+        const encoded = encodeURIComponent(this.shareUrl);
+
+        // Instagram : pas de share URL officielle. On ouvre Instagram (web/app), l’utilisateur colle le lien.
+        // Sur mobile, instagram:// peut marcher mais pas garanti; on reste safe: web.
+        this.instagramUrl = `https://www.instagram.com/`;
+
+        // TikTok : pas de share URL simple et stable non plus. On ouvre TikTok.
+        this.tiktokUrl = `https://www.tiktok.com/`;
+
+        // Si tu veux tenter un truc "un peu plus direct" pour TikTok (pas garanti) :
+        // this.tiktokUrl = `https://www.tiktok.com/upload?lang=fr`; // dépend des versions
+    }
+
+    async shareToInstagram(): Promise<void> {
+        await this.copyShareUrl(true);
+        window.open(this.instagramUrl, '_blank', 'noopener');
+    }
+
+    async shareToTiktok(): Promise<void> {
+        await this.copyShareUrl(true);
+        window.open(this.tiktokUrl, '_blank', 'noopener');
+    }
+
     openSocialLink(url: string): void {
         if (!url) {
             return;
@@ -234,7 +260,7 @@ export class ShopComponent {
 
         // si tu as un slug : `/pro/${this.shopInfo.slug}`
         // sinon : `/shop/${this.shopInfo._id}`
-        const path = `/shop/${(this as any).shopInfo?._id ?? ''}`;
+        const path = `/shop/${(this as any).shopInfo?.handle ?? ''}`;
 
         this.shareUrl = `${origin}${path}`;
         this.shareTitle = (this as any).shopInfo?.name ?? 'izyGlam';
@@ -278,24 +304,30 @@ export class ShopComponent {
         this.qrOpen = !this.qrOpen;
     }
 
-    async copyShareUrl() {
+    async copyShareUrl(silent = false): Promise<void> {
         try {
             await navigator.clipboard.writeText(this.shareUrl);
-            this.copied = true;
-            setTimeout(() => (this.copied = false), 1500);
-        } catch {
-            // fallback vieux navigateurs
-            const input = this.document.createElement('input');
-            input.value = this.shareUrl;
-            this.document.body.appendChild(input);
-            input.select();
-            this.document.execCommand('copy');
-            this.document.body.removeChild(input);
 
-            this.copied = true;
-            setTimeout(() => (this.copied = false), 1500);
+            if (!silent) {
+                this.copied = true;
+                setTimeout(() => (this.copied = false), 1500);
+            }
+        } catch (e) {
+            // fallback old-school
+            const input = document.createElement('input');
+            input.value = this.shareUrl;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+
+            if (!silent) {
+                this.copied = true;
+                setTimeout(() => (this.copied = false), 1500);
+            }
         }
     }
+
 
     get mailToUrl() {
         const subject = encodeURIComponent(this.shareTitle);

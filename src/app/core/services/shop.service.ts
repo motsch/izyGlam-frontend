@@ -355,5 +355,4 @@ export class ShopService {
   getShopByHandle(handle: string) {
     return this.http.get(`${environment.apiUrl}shop-handle/${handle}`);
   }
-
 }
