@@ -3,7 +3,7 @@
   <div class="container" *ngIf="!sessionService.getCurrentUser()">
     <a class="navbar-brand" [routerLink]="'/'">
         <img [src]="imgStorageUrl+'logo/'+'glam_logo2.png'" class="logo"
-        alt="logo" /></a>
+        alt="logo" /></a> Francis Motsch
     <div>
       <ul>
         <li class=""></li>
@@ -16,7 +16,7 @@
           <button type="button" (click)="routerNavigate('/sign-up')" class="btn desktop-only color_izyglam" *ngIf="page !== 'connected'">
             {{'INTRO.REGISTRATION' | translate}}
           </button>
-
+Francis Motsch
           <!-- Bouton de menu hamburger visible sur mobile -->
           <div class="mobile-only">
             <button class="menu-btn" (click)="toggleMobileMenu()">
@@ -32,7 +32,7 @@
               <button type="button" (click)="routerNavigate('/sign-up'); isMobileMenuOpen = false" class="btn color-izyglam">
                 {{'INTRO.REGISTRATION' | translate}}
               </button>
-
+Francis Motsch
             </div>
           </div>
         </div>
