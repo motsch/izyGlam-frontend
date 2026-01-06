@@ -605,7 +605,7 @@
     "VERIF_KBIS_DESC": "Recomanat si treballes a través d'una societat registrada.",
     "VERIF_UPLOAD_LABEL": "Pujar un document",
     "VERIF_ALLOWED_FORMATS": "Formats acceptats: PDF, JPG, PNG · mida màxima 10 MB.",
-    "VERIF_MANDATORY_HINT": "La pièce d’identité et l’assurance sont obligatoires pour activer votre profil.",
+    "VERIF_MANDATORY_HINT": "El document d'identitat i l'assegurança són obligatoris per activar el teu perfil.",
     "VERIF_STATUS_MISSING": "Document faltant",
     "VERIF_STATUS_PENDING": "En procés de verificació",
     "VERIF_STATUS_APPROVED": "Validat",
@@ -614,8 +614,8 @@
     "VERIF_SKIP_BUTTON": "Completaré més tard",
     "VERIF_TOAST_SUCCESS": "Els teus documents han estat enviats per a verificació.",
     "VERIF_TOAST_ERROR": "No és possible pujar els teus documents en aquest moment.",
-    "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
-    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
+    "VERIF_ID_REQUIRED": "El document d'identitat és obligatori.",
+    "VERIF_INSURANCE_REQUIRED": "L'assegurança professional és obligatòria."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modificar l’adreça",
