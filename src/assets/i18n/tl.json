@@ -36,6 +36,24 @@
     "YOGA": "Pagpapahinga / Yoga",
     "DEVELOPPEMENT": "Pagpapaunlad ng sarili"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Gupit/Hairstyle",
+    "MANUCURE": "Manikyur",
+    "VISAGE": "Mukha",
+    "MASSAGE": "Masahe",
+    "MAQUILLAGE": "Make-up",
+    "EPILATION": "Waxing/Epilation",
+    "BRONZAGE": "Tanning",
+    "PARTUM": "Pagkatapos manganak",
+    "NUTRITION": "Nutrisyon",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupuncture",
+    "STYLISME": "Styling",
+    "YOGA": "Pag-relax",
+    "DEVELOPPEMENT": "Pag-angat sa sarili",
+    "BARBER": "Barbero",
+    "EYELASH": "Extension ng pilikmata"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Nadagdag ang salon sa mga paborito",
     "FAVORITE_REMOVED": "Inalis ang salon mula sa mga paborito",
@@ -130,16 +148,21 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Serbisyo sa customer",
-    "WRITE": "Sumulat ng mensahe…"
+    "WRITE": "Sumulat ng mensahe…",
+    "NO_CONV": "Walang usapan",
+    "CREATE": "Lumikha ng usapan",
+    "CREATE_CONV": "Lumikha",
+    "OPEN_CONV_LIST": "Buksan ang listahan ng mga usapan",
+    "PHOTO_SENT": "Naipadala ang larawan"
   },
   "FORGOT_DETAILS": {
-    "CONNEXION": "Introdueix el teu correu d’accés",
-    "VALIDE": "Si us plau, introdueix una adreça de correu vàlida.",
-    "LOADING": "Carregant",
-    "VERIF": "Verificant la teva informació, espera si us plau",
-    "ACCUEIL": "Torna a l’inici",
-    "OK": "Inici de sessió correcte!",
-    "SPACE": "Redirigint cap al teu espai"
+    "CONNEXION": "Ilagay ang iyong email para sa login",
+    "VALIDE": "Pakilagay ang wastong email address.",
+    "LOADING": "Naglo-load",
+    "VERIF": "Sinusuri ang iyong impormasyon, maghintay lamang",
+    "ACCUEIL": "Bumalik sa home",
+    "OK": "Matagumpay na pag-login!",
+    "SPACE": "Nagre-redirect sa iyong space"
   },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Sinusuri…",
@@ -173,8 +196,14 @@
     "SERVICES": "Pamamahala ng serbisyo",
     "PHOTOS": "Gallery ng mga larawan",
     "STATS": "Istatistika",
+    "SOCIAL": "Mga social network",
     "PARAM": "Mga setting",
+    "DOCUMENTS": "Mga dokumento",
     "SHOPS": "Mga boutique/salon",
+    "B2BLEAD": "Leads BtoB",
+    "PROLEAD": "Leads Pro",
+    "COMPANY": "Mga kumpanya",
+    "COM": "Komunikasyon",
     "USERS": "Mga user",
     "MESSAGE": "Mensaheng sistema"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Komento",
     "NOTE": "Rating",
     "CLOSE": "Isara"
+  },
+  "UILEVEL": {
+    "STARTER": "Tagalikha",
+    "ACTIVE": "Nakumpirma",
+    "AMBASSADOR": "Embahador IzyGlam",
+    "ICONE": "Lokal na icon"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Walang larawan sa gallery."
@@ -265,7 +300,7 @@
     "RESERVED": "Mag-reserba nang maaga",
     "GIFTCARDS": "Gift cards",
     "WORKWITHUS": "Makipagtrabaho sa izyGlam",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "Serbisyo ng kagandahan para sa negosyo",
     "CONFIDENTIAL": "Pagkapribado",
     "ACCESS": "Accessibility",
     "CONDITIONS": "Mga kondisyon",
@@ -290,23 +325,6 @@
     "TOP10": "Top 10 ng linggo",
     "SEARCHRESULT": "Mga resulta ng paghahanap",
     "AVIS": "Mga review"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Gupit/Hairstyle",
-    "MANUCURE": "Manikyur",
-    "VISAGE": "Mukha",
-    "MASSAGE": "Masahe",
-    "MAQUILLAGE": "Make-up",
-    "EPILATION": "Waxing/Epilation",
-    "BRONZAGE": "Tanning",
-    "PARTUM": "Post-partum",
-    "NUTRITION": "Nutrisyon",
-    "FITNESS": "Fitness",
-    "ACUPUNCTURE": "Acupuncture",
-    "STYLISME": "Styling",
-    "YOGA": "Pag-relax",
-    "DEVELOPPEMENT": "Pag-angat sa sarili",
-    "EYELASH": "Extension ng pilikmata"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Isang hairdresser",
@@ -379,6 +397,75 @@
     "LANGUE": "Wika",
     "COUNTRY": "Bansa"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Minimalistang nail art para sa eleganteng at modernong epekto.",
+    "CREATIVITE": "Pumili ng matapang na kulay upang ipahayag ang iyong pagkamalikhain.",
+    "VINTAGE": "Vintage style na muling binigyang-kahulugan para sa natatanging hitsura!",
+    "QUESTION": "Simulan ang iyong post sa isang nakakaengganyong tanong upang hikayatin ang pakikipag-ugnayan.",
+    "VISUELS": "I-optimize ang iyong mga visual gamit ang maliwanag na kulay at malinaw na teksto.",
+    "APPEL_ACTION": "Magdagdag ng malinaw na call-to-action, tulad ng \"I-click ang link\" o \"Ibahagi ang iyong opinyon\".",
+    "LEGENDES": "Gumamit ng maikli ngunit makapangyarihang caption para sa Instagram at Bluesky.",
+    "COMMENTAIRES": "Isama ang mga bukas na tanong upang hikayatin ang mga komento.",
+    "HASHTAGS": "Magdagdag ng nauugnay na hashtag upang maabot ang mas malawak na audience.",
+    "STATISTIQUES": "Magdagdag ng statistics o kawili-wiling katotohanan upang makaakit ng pansin.",
+    "STORYTELLING": "Magkuwento ng nakakaakit na kuwento upang panatilihing nakikipag-ugnayan ang iyong mga mambabasa.",
+    "REUSSITES": "I-highlight ang iyong mga tagumpay o ng iyong mga kliyente para sa LinkedIn.",
+    "AUTHENTICITE": "Maging tunay at ipakita ang iyong tunay na personalidad.",
+    "ANALYSE": "Suriin ang iyong mga performance at ayusin ang iyong estratehiya nang naaayon.",
+    "EMOJIS": "Gumamit ng emoji upang gawing mas visual at kaakit-akit ang iyong nilalaman.",
+    "HEURES": "Mag-post sa mga estratehikong oras upang i-maximize ang reach.",
+    "STORIES": "Isama ang mga stories o reels upang mabilis na makaakit ng pansin.",
+    "CAPTIVANTES": "Gumamit ng nakakaakit na caption na nagpapasabik na i-click ang \"Magbasa pa\".",
+    "ANECDOTE": "Magbahagi ng personal na mga anekdota upang lumikha ng emosyonal na koneksyon.",
+    "FORMATS": "Iba-ibahin ang iyong mga format: larawan, video, carousel o survey.",
+    "TON": "I-adapt ang tono ng iyong nilalaman depende sa platform na ginagamit.",
+    "MENTIONS": "Banggitin ang ibang mga user o brand upang palawakin ang iyong reach.",
+    "STYLES": "Subukan ang iba't ibang visual style upang matuklasan kung ano ang pinaka-nagugustuhan ng iyong audience.",
+    "VIDEOS": "Gumamit ng maikling video upang mabilis na makaakit ng pansin.",
+    "TEMOIGNAGES": "Magdagdag ng testimonials ng kliyente upang palakasin ang iyong kredibilidad.",
+    "SONDAGES": "Lumikha ng mga survey upang makipag-ugnayan sa iyong audience.",
+    "VALEURS": "I-highlight ang iyong mga halaga upang maabot ang iyong target audience.",
+    "AVANT_APRES": "Magdagdag ng before/after upang ipakita ang malinaw na epekto.",
+    "CITATIONS": "Isama ang mga inspirational quotes upang mag-motivate sa iyong audience.",
+    "STORYTELLING2": "Magdagdag ng storytelling caption upang magkuwento.",
+    "HASHTAGS_SPECIFIQUES": "I-adapt ang iyong hashtag sa bawat post upang i-maximize ang reach.",
+    "TEXTE_VISUEL": "Iwasan ang pag-overload ng iyong visual gamit ang masyadong maraming teksto.",
+    "REPONSE": "Mabilis na tumugon sa mga komento upang lumikha ng relasyon.",
+    "COULISSES": "I-highlight ang iyong behind-the-scenes upang gawing mas makatao ang iyong brand.",
+    "AUTHENTIQUE": "Gumamit ng tunay na larawan sa halip na stock images.",
+    "MESSAGES_CLES": "Regular na ulitin ang iyong key messages upang i-anchor ang iyong komunikasyon.",
+    "MOMENTS_FORTS": "Kilalanin ang mga key moments ng taon para sa iyong mga post.",
+    "TENDANCES": "Gamitin ang mga kasalukuyang trend upang sumabay sa balita.",
+    "STATISTIQUES2": "Magdagdag ng kawili-wiling statistics upang makaakit ng pansin.",
+    "CARROUSELS": "Lumikha ng carousel upang magkuwento sa maraming hakbang.",
+    "LIEN_BIO": "Maglagay ng malinaw na link sa iyong bio upang idirekta ang iyong mga bisita.",
+    "GUIDE": "Lumikha ng guide o checklist upang magbigay ng halaga sa iyong audience.",
+    "GIF": "Magdagdag ng GIF o stickers upang gawing mas dynamic ang iyong stories.",
+    "COULEURS": "Gumamit ng kulay na naaayon sa iyong branding.",
+    "COLLABORATEURS": "I-highlight ang iyong mga collaborator upang lumikha ng pakiramdam ng team.",
+    "CONVERSATIONNEL": "Sumulat ng iyong mga post na parang direktang nakikipag-usap sa isang tao.",
+    "QUIZ": "Magdagdag ng interactive quiz upang tumaas ang engagement.",
+    "URGENCE": "Lumikha ng pakiramdam ng urgency gamit ang limitadong promosyon.",
+    "AVANT_APRES_CONCRET": "Isama ang before/after photos upang ipakita ang kongkretong resulta.",
+    "COLLABORATION": "Lumikha ng collaborations sa ibang creators upang palawakin ang iyong audience.",
+    "TRANSPARENCE": "Maging transparent tungkol sa iyong mga proseso o produkto.",
+    "ANIMATIONS": "Magdagdag ng animations upang gawing mas dynamic ang iyong video.",
+    "EDUCATIF": "Lumikha ng educational posts upang magbigay ng halaga sa iyong audience.",
+    "RETOURS_EXPERIENCE": "I-highlight ang mga experience feedback upang magtatag ng tiwala.",
+    "CONCIS": "Maging maikli sa iyong mga mensahe upang direkta sa punto.",
+    "MOTS_CLES": "Gumamit ng nauugnay na keywords upang tumaas ang visibility.",
+    "CALENDRIER": "Lumikha ng editorial calendar upang planuhin ang iyong mga post.",
+    "MINIMALISTE2": "Mag-eksperimento gamit ang minimalist visual para sa malakas na visual impact.",
+    "TEMOIGNAGES_VIDEO": "Isama ang video testimonials para sa mas maraming authenticity.",
+    "HUMOUR": "Lumikha ng nakakatawang posts upang makipag-ugnayan nang magaan.",
+    "GRAPHIQUES": "Gumamit ng graphs o infographics upang ipaliwanag ang kumplikadong ideya.",
+    "REGULARITE": "Regular na mag-post upang panatilihing nakikipag-ugnayan ang iyong audience.",
+    "REMERCIEMENTS": "Isama ang pasasalamat o selebrasyon upang lumikha ng gratitude."
+  },
   "PAYEMENT": {
     "YOU": "Ikaw",
     "HEADER_TITLE": "Bayad",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Pumili ng address",
     "ADD_ADDRESS": "Magdagdag ng address",
     "CARD_PAY": "Bayad gamit ang bank card",
+    "CREDIT_PAY": "Bayad gamit ang corporate credit",
+    "EMPLOYEE_CREDIT_TITLE": "Gamitin ang aking corporate credit",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Aking available credit:",
+    "EMPLOYEE_CREDIT_EMPTY": "Walang corporate credit",
     "CARD_NUM": "Numero ng card",
     "CARD_NAME": "Pangalan sa card",
     "EXPIRATION": "Petsa ng pag-expire",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Mag-login upang magrehistro ng salon",
     "TITLE": "Simulan mo na!",
     "TITLE2": "Gumawa tayo ng salon!",
+    "STEP1_TITLE": "Impormasyon ng salon",
+    "STEP2_TITLE": "Propesyonal na beripikasyon",
+    "STEP2_TAGLINE": "Hakbang 2 ng 2 · Mananatiling pribado at protektado ang iyong mga dokumento.",
     "NAME": "Pangalan ng iyong salon",
     "ADDRESS": "Address ng iyong negosyo",
     "STREET": "Kalsada",
@@ -500,7 +594,28 @@
     "ERROR5": "Kinakailangan ang apelyido.",
     "ERROR6": "Kinakailangan ang e-mail.",
     "ERROR7": "Kinakailangan ang mobile number.",
-    "ERROR8": "Dapat pumayag tumanggap ng WhatsApp messages."
+    "ERROR8": "Dapat pumayag tumanggap ng WhatsApp messages.",
+    "VERIF_TITLE": "Beripikasyon ng iyong propesyonal na profile",
+    "VERIF_SUBTITLE": "Sinusuri namin ang bawat propesyonal upang protektahan ang iyong mga kliyente at reputasyon.",
+    "VERIF_ID_TITLE": "Valid ID",
+    "VERIF_ID_DESC": "Valid ID, passport o valid residence permit.",
+    "VERIF_INSURANCE_TITLE": "Propesyonal na seguro",
+    "VERIF_INSURANCE_DESC": "Valid na sertipiko na sumasaklaw sa iyong serbisyo sa bahay (kinakailangan).",
+    "VERIF_KBIS_TITLE": "Kbis extract (opsyonal)",
+    "VERIF_KBIS_DESC": "Inirerekomenda kung nagtatrabaho ka sa pamamagitan ng rehistradong kumpanya.",
+    "VERIF_UPLOAD_LABEL": "Mag-upload ng dokumento",
+    "VERIF_ALLOWED_FORMATS": "Tinatanggap na format: PDF, JPG, PNG · max size 10 MB.",
+    "VERIF_MANDATORY_HINT": "Ang Valid ID at insurance ay kinakailangan upang ma-activate ang iyong profile.",
+    "VERIF_STATUS_MISSING": "Nawawalang dokumento",
+    "VERIF_STATUS_PENDING": "Sa ilalim ng beripikasyon",
+    "VERIF_STATUS_APPROVED": "Na-validate",
+    "VERIF_STATUS_REJECTED": "Tinanggihan · kailangan ng bagong dokumento",
+    "VERIF_PRIMARY_BUTTON": "Ipadala ang mga dokumento",
+    "VERIF_SKIP_BUTTON": "Kukumpletuhin ko mamaya",
+    "VERIF_TOAST_SUCCESS": "Naipadala na ang iyong mga dokumento para sa beripikasyon.",
+    "VERIF_TOAST_ERROR": "Hindi ma-upload ang iyong mga dokumento sa ngayon.",
+    "VERIF_ID_REQUIRED": "Ang Valid ID ay kinakailangan.",
+    "VERIF_INSURANCE_REQUIRED": "Ang propesyonal na insurance ay kinakailangan."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Baguhin ang address",
@@ -533,6 +648,12 @@
     "NAME": "Pangalan",
     "CITY": "Lungsod",
     "NOTE": "Rating",
+    "DOCS_OK": "Na-validate",
+    "DOCS_NOT_VALID": "Hindi na-validate",
+    "ACTIVE": "Aktibo",
+    "INACTIVE": "Hindi aktibo",
+    "STATUS": "Status",
+    "DOCUMENTS": "Mga dokumento",
     "MIDDLE_PRICE": "Karaniwang presyo",
     "PROMOTION": "Promosyon",
     "ACTIONS": "Mga aksyon",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Pamamahala ng account",
     "ORDERS": "Nakaraang order",
+    "MESSAGES": "Aking mga mensahe",
     "FAVORITES": "Paborito",
     "HELP": "Tulong",
     "MY_ABO": "Aking subscription",
@@ -746,7 +868,7 @@
     "UKRAINIEN": "Ukrainian",
     "ROUMAIN": "Romanian",
     "CATALAN": "Catalan",
-    "BASQUE": "Basque",
+    "BASQUE": "Basko",
     "GALICIEN": "Galician",
     "ALBANAIS": "Albanian",
     "KURDE": "Kurdish",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Online na tulong"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Kreditan ang account ng empleyado",
     "AMOUNT": "Halagang ikre-credit",
@@ -894,7 +1015,10 @@
     "DATE": "Petsa",
     "AMOUNT": "Halaga",
     "COMMISSION": "Komisyon",
-    "STATUS": "Status"
+    "STATUS": "Status",
+    "NEXT_LEVEL": "Susunod na level",
+    "MAX_LEVEL": "Naabot na ang maximum level",
+    "REMAINING": "{{count}} pa na reservation"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Piliin ang uri ng boutique na gagawin",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Error sa pagtanggal ng serbisyo"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Larawan ng boutique",
     "UPLOAD_IMAGE": "Mag-upload ng larawan",
     "SNEEK_PIC": "Preview ng larawan",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Gumawa ng paglalarawan",
     "PHOTO": "Mga halimbawang larawang tinatanggap / tinatanggihan",
     "CODE_POSTAUX": "Sakop na postal code",
+    "SOCIAL_NETWORK": "Mga social network",
     "EXEMPLE_LOCAL": "Hal.: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Advanced",
     "PLANS": "Bilang ng aktibong salon",
     "READY": "Handa ka na bang palaguin ang iyong negosyo?",
-    "DISCOVERS": "Tuklasin ang mga alok ngizyGlam"
+    "DISCOVERS": "Tuklasin ang mga alok ngizyGlam",
+    "FREE_TRIAL": "Libre sa loob ng 1 buwan"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1448,7 +1577,7 @@
       "TEXT": "Saklaw ng <strong>batas ng Pransya</strong> ang CGU. Ang alitan ay dadalhin sa hukuman sa lokasyon ng punong-tanggapan ng izyGlam, nang may mga mas paborableng probisyon para sa consumer."
     },
     "CONTACT": {
-      "TITLE": "Contact",
+      "TITLE": "Kontak",
       "SUPPORT_LABEL": "Suporta",
       "LEGAL_LABEL": "Legal",
       "EMAIL_SUPPORT": "support@izyglam.com",
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Hindi tukoy",
     "INVALID_DATE": "Di-wastong petsa"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Kumpirmasyon",
+    "CANCEL": "Kanselahin",
+    "OK": "OK",
+    "TERMINATE": "Tapusin",
+    "DELETE": "Tanggalin"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Maghanap ng serbisyo",
+    "EMAIL_PLACEHOLDER": "Email ng user",
+    "CATEGORY_TITLE": "Ano ang gusto mong i-reserve?",
+    "CATEGORY_HINT": "Pumili ng kategorya. Pagkatapos: serbisyo → oras → slot.",
+    "REASSURANCE": "Secure na bayad • Na-verify na propesyonal • Responsive na support",
+    "PRICE_TIP": "Malinaw na presyo bago magbayad. Kino-kumpirma mo kapag lahat ay OK na.",
+    "WHEN_TITLE": "Anong oras ang maganda sa iyo?",
+    "WHEN_HINT": "Ipapakita lamang namin ang available na mga slot.",
+    "TODAY": "Ngayon",
+    "TONIGHT": "Ngayong gabi",
+    "TOMORROW": "Bukas",
+    "THIS_WEEK": "Sa linggong ito",
+    "VIEW_SLOTS": "Tingnan ang available na mga slot",
+    "PAYMENT_REASSURANCE": "Secure na bayad • Maaaring baguhin bago magbayad",
+    "SLOTS_TITLE": "Available na mga slot",
+    "SLOTS_HINT": "Pumili ng slot upang magpatuloy.",
+    "VALIDATION_TIP": "Kino-kumpirma mo ang lahat sa summary bago magbayad.",
+    "SUMMARY_TITLE": "Buod",
+    "SUMMARY_HINT": "Suriin bago magpatuloy sa bayad.",
+    "SERVICE": "Serbisyo",
+    "DURATION": "Tagal",
+    "WHEN": "Kailan",
+    "PRICE": "Presyo",
+    "FROM": "mula sa",
+    "CONTINUE_PAYMENT": "Magpatuloy sa bayad",
+    "PAYMENT_FOOTNOTE": "Secure na bayad. Pagkansela ayon sa kondisyon. Maaari mong piliing mag-reserve ulit sa parehong provider pagkatapos ng serbisyo."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Paano mo gustong mag-reserve?",
+    "SUBTITLE": "Mag-reserve sa loob ng 2 minuto — sa bahay, secure na bayad.",
+    "QUICK_TITLE": "Mabilis na reservation",
+    "QUICK_DESC": "Pumili ng serbisyo, magmumungkahi kami ng mga slot.",
+    "RECOMMENDED": "Inirerekomenda",
+    "PROVIDER_TITLE": "Pumili ng provider",
+    "PROVIDER_DESC": "Tingnan ang mga profile at mag-reserve sa kalendaryo."
   }
 }

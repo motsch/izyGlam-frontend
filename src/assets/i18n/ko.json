@@ -36,6 +36,24 @@
     "YOGA": "릴랙스 / 요가",
     "DEVELOPPEMENT": "자기 개발"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "헤어",
+    "MANUCURE": "매니큐어",
+    "VISAGE": "얼굴",
+    "MASSAGE": "마사지",
+    "MAQUILLAGE": "메이크업",
+    "EPILATION": "왁싱",
+    "BRONZAGE": "태닝",
+    "PARTUM": "산후 케어",
+    "NUTRITION": "영양",
+    "FITNESS": "피트니스",
+    "ACUPUNCTURE": "침술",
+    "STYLISME": "스타일링",
+    "YOGA": "릴랙스",
+    "DEVELOPPEMENT": "자기 성장",
+    "BARBER": "이발사",
+    "EYELASH": "속눈썹 연장"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "살롱이 즐겨찾기에 추가되었습니다",
     "FAVORITE_REMOVED": "살롱이 즐겨찾기에서 제거되었습니다",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Shërbimi ndaj klientit",
-    "WRITE": "Shkruaj një mesazh…"
+    "WRITE": "Shkruaj një mesazh…",
+    "NO_CONV": "대화 없음",
+    "CREATE": "대화 만들기",
+    "CREATE_CONV": "만들기",
+    "OPEN_CONV_LIST": "대화 목록 열기",
+    "PHOTO_SENT": "사진 전송됨"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "로그인 이메일을 입력하세요",
@@ -173,8 +196,14 @@
     "SERVICES": "서비스 관리",
     "PHOTOS": "사진 갤러리",
     "STATS": "통계",
+    "SOCIAL": "소셜 네트워크",
     "PARAM": "설정",
+    "DOCUMENTS": "문서",
     "SHOPS": "매장",
+    "B2BLEAD": "BtoB 리드",
+    "PROLEAD": "Pro 리드",
+    "COMPANY": "기업",
+    "COM": "커뮤니케이션",
     "USERS": "사용자",
     "MESSAGE": "메시지"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "코멘트",
     "NOTE": "평점",
     "CLOSE": "닫기"
+  },
+  "UILEVEL": {
+    "STARTER": "창작자",
+    "ACTIVE": "확인됨",
+    "AMBASSADOR": "IzyGlam 대사",
+    "ICONE": "로컬 아이콘"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "갤러리에 이미지가 없습니다."
@@ -265,7 +300,7 @@
     "RESERVED": "미리 예약하세요",
     "GIFTCARDS": "기프트 카드",
     "WORKWITHUS": "izyGlam과 함께하기",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "비즈니스를 위한 뷰티 서비스",
     "CONFIDENTIAL": "개인정보",
     "ACCESS": "접근성",
     "CONDITIONS": "이용약관",
@@ -290,23 +325,6 @@
     "TOP10": "주간 TOP 10",
     "SEARCHRESULT": "검색 결과",
     "AVIS": "후기"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "헤어",
-    "MANUCURE": "매니큐어",
-    "VISAGE": "얼굴",
-    "MASSAGE": "마사지",
-    "MAQUILLAGE": "메이크업",
-    "EPILATION": "왁싱",
-    "BRONZAGE": "태닝",
-    "PARTUM": "산후 케어",
-    "NUTRITION": "영양",
-    "FITNESS": "피트니스",
-    "ACUPUNCTURE": "침술",
-    "STYLISME": "스타일링",
-    "YOGA": "릴랙스",
-    "DEVELOPPEMENT": "자기 성장",
-    "EYELASH": "속눈썹 연장"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "헤어디자이너",
@@ -379,6 +397,75 @@
     "LANGUE": "언어",
     "COUNTRY": "국가"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "우아하고 현대적인 효과를 위한 미니멀 네일 아트.",
+    "CREATIVITE": "창의력을 표현하기 위해 대담한 색상을 선택하세요.",
+    "VINTAGE": "독특한 룩을 위한 재해석된 빈티지 스타일!",
+    "QUESTION": "상호작용을 유도하기 위해 매력적인 질문으로 게시물을 시작하세요.",
+    "VISUELS": "밝은 색상과 명확한 텍스트로 시각 자료를 최적화하세요.",
+    "APPEL_ACTION": "명확한 행동 유도 문구를 추가하세요. 예: \"링크 클릭\" 또는 \"의견 공유\".",
+    "LEGENDES": "Instagram과 Bluesky를 위해 짧지만 강력한 캡션을 사용하세요.",
+    "COMMENTAIRES": "댓글을 장려하기 위해 열린 질문을 포함하세요.",
+    "HASHTAGS": "더 넓은 관객에게 도달하기 위해 관련 해시태그를 추가하세요.",
+    "STATISTIQUES": "주의를 끌기 위해 통계나 흥미로운 사실을 추가하세요.",
+    "STORYTELLING": "독자들의 관심을 유지하기 위해 매력적인 이야기를 들려주세요.",
+    "REUSSITES": "LinkedIn을 위해 자신의 성공이나 고객의 성공을 강조하세요.",
+    "AUTHENTICITE": "진정성을 보여주고 진짜 성격을 드러내세요.",
+    "ANALYSE": "성과를 분석하고 그에 따라 전략을 조정하세요.",
+    "EMOJIS": "콘텐츠를 더 시각적이고 매력적으로 만들기 위해 이모지를 사용하세요.",
+    "HEURES": "도달 범위를 극대화하기 위해 전략적인 시간에 게시하세요.",
+    "STORIES": "빠르게 주의를 끌기 위해 스토리나 릴스를 통합하세요.",
+    "CAPTIVANTES": "'더 읽기'를 클릭하고 싶게 만드는 매력적인 캡션을 사용하세요.",
+    "ANECDOTE": "감정적 연결을 만들기 위해 개인적인 일화를 공유하세요.",
+    "FORMATS": "형식을 다양화하세요: 이미지, 비디오, 캐러셀 또는 설문조사.",
+    "TON": "사용하는 플랫폼에 따라 콘텐츠의 톤을 조정하세요.",
+    "MENTIONS": "도달 범위를 넓히기 위해 다른 사용자나 브랜드를 언급하세요.",
+    "STYLES": "관객에게 가장 인기 있는 것을 발견하기 위해 다양한 시각적 스타일을 테스트하세요.",
+    "VIDEOS": "빠르게 주의를 끌기 위해 짧은 비디오를 사용하세요.",
+    "TEMOIGNAGES": "신뢰성을 강화하기 위해 고객 후기를 추가하세요.",
+    "SONDAGES": "관객을 참여시키기 위해 설문조사를 만드세요.",
+    "VALEURS": "타겟 고객에게 도달하기 위해 가치를 강조하세요.",
+    "AVANT_APRES": "명확한 영향을 보여주기 위해 전후 사진을 추가하세요.",
+    "CITATIONS": "관객을 동기부여하기 위해 영감을 주는 인용구를 포함하세요.",
+    "STORYTELLING2": "이야기를 들려주기 위해 스토리텔링 형식의 캡션을 추가하세요.",
+    "HASHTAGS_SPECIFIQUES": "도달 범위를 극대화하기 위해 각 게시물에 해시태그를 맞추세요.",
+    "TEXTE_VISUEL": "시각 자료에 너무 많은 텍스트를 넣지 마세요.",
+    "REPONSE": "관계를 만들기 위해 댓글에 빠르게 답변하세요.",
+    "COULISSES": "브랜드를 인간적으로 만들기 위해 뒷모습을 강조하세요.",
+    "AUTHENTIQUE": "이미지 뱅크보다 진정성 있는 사진을 사용하세요.",
+    "MESSAGES_CLES": "커뮤니케이션을 강화하기 위해 핵심 메시지를 정기적으로 반복하세요.",
+    "MOMENTS_FORTS": "게시물을 위한 연중 주요 시점을 식별하세요.",
+    "TENDANCES": "최신 뉴스를 따라가기 위해 현재 트렌드를 활용하세요.",
+    "STATISTIQUES2": "주의를 끌기 위해 흥미로운 통계를 추가하세요.",
+    "CARROUSELS": "여러 단계로 이야기를 들려주기 위해 캐러셀을 만드세요.",
+    "LIEN_BIO": "방문자를 안내하기 위해 프로필에 명확한 링크를 넣으세요.",
+    "GUIDE": "관객에게 가치를 제공하기 위해 가이드나 체크리스트를 만드세요.",
+    "GIF": "스토리를 더 역동적으로 만들기 위해 GIF나 스티커를 추가하세요.",
+    "COULEURS": "브랜딩과 일관된 색상을 사용하세요.",
+    "COLLABORATEURS": "팀 정신을 만들기 위해 협력자를 강조하세요.",
+    "CONVERSATIONNEL": "한 사람에게 직접 말하는 것처럼 게시물을 작성하세요.",
+    "QUIZ": "참여도를 높이기 위해 인터랙티브 퀴즈를 추가하세요.",
+    "URGENCE": "제한된 프로모션으로 긴급감을 조성하세요.",
+    "AVANT_APRES_CONCRET": "구체적인 결과를 보여주기 위해 전후 사진을 통합하세요.",
+    "COLLABORATION": "관객을 넓히기 위해 다른 크리에이터와 협업을 만드세요.",
+    "TRANSPARENCE": "프로세스나 제품에 대해 투명하게 공개하세요.",
+    "ANIMATIONS": "비디오를 더 역동적으로 만들기 위해 애니메이션을 추가하세요.",
+    "EDUCATIF": "관객에게 가치를 제공하기 위해 교육적인 게시물을 만드세요.",
+    "RETOURS_EXPERIENCE": "신뢰를 구축하기 위해 경험 후기를 강조하세요.",
+    "CONCIS": "핵심을 바로 전달하기 위해 메시지를 간결하게 작성하세요.",
+    "MOTS_CLES": "가시성을 높이기 위해 관련 키워드를 사용하세요.",
+    "CALENDRIER": "게시물을 계획하기 위해 편집 캘린더를 만드세요.",
+    "MINIMALISTE2": "강한 시각적 영향을 위해 미니멀한 시각 자료로 실험하세요.",
+    "TEMOIGNAGES_VIDEO": "더 많은 진정성을 위해 비디오 후기를 통합하세요.",
+    "HUMOUR": "가볍게 참여시키기 위해 유머러스한 게시물을 만드세요.",
+    "GRAPHIQUES": "복잡한 아이디어를 설명하기 위해 그래프나 인포그래픽을 사용하세요.",
+    "REGULARITE": "관객의 참여를 유지하기 위해 정기적으로 게시하세요.",
+    "REMERCIEMENTS": "감사를 조성하기 위해 감사 인사나 축하를 포함하세요."
+  },
   "PAYEMENT": {
     "YOU": "회원님",
     "HEADER_TITLE": "결제",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "주소 선택",
     "ADD_ADDRESS": "주소 추가",
     "CARD_PAY": "신용/체크카드 결제",
+    "CREDIT_PAY": "기업 신용으로 결제",
+    "EMPLOYEE_CREDIT_TITLE": "내 기업 신용 사용",
+    "EMPLOYEE_CREDIT_AVAILABLE": "사용 가능한 내 신용:",
+    "EMPLOYEE_CREDIT_EMPTY": "기업 신용 없음",
     "CARD_NUM": "카드 번호",
     "CARD_NAME": "카드 소지자 이름",
     "EXPIRATION": "만료일",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "살롱을 등록하려면 로그인해 주세요",
     "TITLE": "지금 시작하세요!",
     "TITLE2": "살롱을 만들어 봅시다!",
+    "STEP1_TITLE": "살롱 정보",
+    "STEP2_TITLE": "전문가 인증",
+    "STEP2_TAGLINE": "2단계 중 2단계 · 귀하의 문서는 비공개로 보호됩니다.",
     "NAME": "살롱 이름",
     "ADDRESS": "사업장 주소",
     "STREET": "도로명/번지",
@@ -500,7 +594,28 @@
     "ERROR5": "성이 필요합니다.",
     "ERROR6": "이메일이 필요합니다.",
     "ERROR7": "휴대폰 번호가 필요합니다.",
-    "ERROR8": "WhatsApp 메시지 수신에 동의해야 합니다."
+    "ERROR8": "WhatsApp 메시지 수신에 동의해야 합니다.",
+    "VERIF_TITLE": "전문가 프로필 인증",
+    "VERIF_SUBTITLE": "고객과 평판을 보호하기 위해 각 전문가를 확인합니다.",
+    "VERIF_ID_TITLE": "신분증",
+    "VERIF_ID_DESC": "유효한 신분증, 여권 또는 거주 허가증.",
+    "VERIF_INSURANCE_TITLE": "전문 보험",
+    "VERIF_INSURANCE_DESC": "귀하의 가정 서비스를 포함하는 유효한 인증서(필수).",
+    "VERIF_KBIS_TITLE": "Kbis 추출물 (선택사항)",
+    "VERIF_KBIS_DESC": "등록된 회사를 통해 운영하는 경우 권장됩니다.",
+    "VERIF_UPLOAD_LABEL": "문서 업로드",
+    "VERIF_ALLOWED_FORMATS": "허용 형식: PDF, JPG, PNG · 최대 크기 10MB.",
+    "VERIF_MANDATORY_HINT": "프로필을 활성화하려면 신분증과 보험이 필수입니다.",
+    "VERIF_STATUS_MISSING": "누락된 문서",
+    "VERIF_STATUS_PENDING": "확인 중",
+    "VERIF_STATUS_APPROVED": "확인됨",
+    "VERIF_STATUS_REJECTED": "거부됨 · 새 문서 필요",
+    "VERIF_PRIMARY_BUTTON": "문서 보내기",
+    "VERIF_SKIP_BUTTON": "나중에 완료하겠습니다",
+    "VERIF_TOAST_SUCCESS": "문서가 확인을 위해 전송되었습니다.",
+    "VERIF_TOAST_ERROR": "현재 문서를 업로드할 수 없습니다.",
+    "VERIF_ID_REQUIRED": "신분증은 필수입니다.",
+    "VERIF_INSURANCE_REQUIRED": "전문가 보험은 필수입니다."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "주소 변경",
@@ -533,6 +648,12 @@
     "NAME": "이름",
     "CITY": "도시",
     "NOTE": "평점",
+    "DOCS_OK": "확인됨",
+    "DOCS_NOT_VALID": "미확인",
+    "ACTIVE": "활성",
+    "INACTIVE": "비활성",
+    "STATUS": "상태",
+    "DOCUMENTS": "문서",
     "MIDDLE_PRICE": "평균 가격",
     "PROMOTION": "프로모션",
     "ACTIONS": "작업",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "계정 관리",
     "ORDERS": "지난 주문",
+    "MESSAGES": "내 메시지",
     "FAVORITES": "즐겨찾기",
     "HELP": "도움말",
     "MY_ABO": "내 구독",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "온라인 지원"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "직원 계정 크레딧 지급",
     "AMOUNT": "지급 금액",
@@ -894,7 +1015,10 @@
     "DATE": "날짜",
     "AMOUNT": "금액",
     "COMMISSION": "수수료",
-    "STATUS": "상태"
+    "STATUS": "상태",
+    "NEXT_LEVEL": "다음 레벨",
+    "MAX_LEVEL": "최대 레벨 도달",
+    "REMAINING": "{{count}}개 예약 남음"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "생성할 매장 유형을 선택하세요",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "서비스 삭제 중 오류"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "매장 이미지",
     "UPLOAD_IMAGE": "이미지 업로드",
     "SNEEK_PIC": "이미지 미리보기",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "설명 생성",
     "PHOTO": "허용/거절 사진 예시",
     "CODE_POSTAUX": "서비스 가능 우편번호",
+    "SOCIAL_NETWORK": "소셜 네트워크",
     "EXEMPLE_LOCAL": "예: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "고급",
     "PLANS": "활성 살롱 수",
     "READY": "활동을 키울 준비됐어?",
-    "DISCOVERS": "IzyGlam 요금제 살펴보기"
+    "DISCOVERS": "IzyGlam 요금제 살펴보기",
+    "FREE_TRIAL": "1개월 무료"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "정의되지 않음",
     "INVALID_DATE": "유효하지 않은 날짜"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "확인",
+    "CANCEL": "취소",
+    "OK": "OK",
+    "TERMINATE": "완료",
+    "DELETE": "삭제"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "서비스 검색",
+    "EMAIL_PLACEHOLDER": "사용자 이메일",
+    "CATEGORY_TITLE": "무엇을 예약하시겠습니까?",
+    "CATEGORY_HINT": "카테고리를 선택하세요. 그 다음: 서비스 → 시간 → 시간대.",
+    "REASSURANCE": "안전한 결제 • 확인된 전문가 • 신속한 지원",
+    "PRICE_TIP": "결제 전 명확한 가격. 모든 것이 괜찮을 때 확인하세요.",
+    "WHEN_TITLE": "어떤 시간이 편하신가요?",
+    "WHEN_HINT": "이용 가능한 시간대만 표시됩니다.",
+    "TODAY": "오늘",
+    "TONIGHT": "오늘 저녁",
+    "TOMORROW": "내일",
+    "THIS_WEEK": "이번 주",
+    "VIEW_SLOTS": "이용 가능한 시간대 보기",
+    "PAYMENT_REASSURANCE": "안전한 결제 • 결제 전 수정 가능",
+    "SLOTS_TITLE": "이용 가능한 시간대",
+    "SLOTS_HINT": "계속하려면 시간대를 선택하세요.",
+    "VALIDATION_TIP": "결제 전 요약에서 모든 것을 확인하세요.",
+    "SUMMARY_TITLE": "요약",
+    "SUMMARY_HINT": "결제로 넘어가기 전에 확인하세요.",
+    "SERVICE": "서비스",
+    "DURATION": "소요 시간",
+    "WHEN": "언제",
+    "PRICE": "가격",
+    "FROM": "부터",
+    "CONTINUE_PAYMENT": "결제로 진행",
+    "PAYMENT_FOOTNOTE": "안전한 결제. 조건에 따른 취소. 서비스 후 같은 제공자와 재예약을 선택할 수 있습니다."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "어떻게 예약하시겠습니까?",
+    "SUBTITLE": "2분 안에 예약하세요 — 집에서, 안전한 결제.",
+    "QUICK_TITLE": "빠른 예약",
+    "QUICK_DESC": "서비스를 선택하시면 시간대를 제안해 드립니다.",
+    "RECOMMENDED": "권장",
+    "PROVIDER_TITLE": "제공자 선택",
+    "PROVIDER_DESC": "프로필을 둘러보고 일정표에서 예약하세요."
   }
 }

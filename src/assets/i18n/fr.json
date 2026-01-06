@@ -148,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Service client",
-    "WRITE": "Écrire un message…"
+    "WRITE": "Écrire un message…",
+    "NO_CONV": "Aucune conversation",
+    "CREATE": "Créer une conversation",
+    "CREATE_CONV": "Créer",
+    "OPEN_CONV_LIST": "Ouvrir la liste des conversations",
+    "PHOTO_SENT": "Photo envoyée"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Entrez votre email de connexion",
@@ -1192,7 +1197,8 @@
     "ADVANCE": "Avancée",
     "PLANS": "Nombre de salons actifs",
     "READY": "Prête à faire grandir ton activité ?",
-    "DISCOVERS": "Découvrir les offresizyGlam"
+    "DISCOVERS": "Découvrir les offresizyGlam",
+    "FREE_TRIAL": "Gratuit pendant 1 mois"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1614,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Indéfini",
     "INVALID_DATE": "Date invalide"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Confirmation",
+    "CANCEL": "Annuler",
+    "OK": "OK",
+    "TERMINATE": "Terminer",
+    "DELETE": "Supprimer"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Rechercher une prestation",
+    "EMAIL_PLACEHOLDER": "Email de l'utilisateur",
+    "CATEGORY_TITLE": "Que souhaitez-vous réserver ?",
+    "CATEGORY_HINT": "Choisissez une catégorie. Ensuite : prestation → moment → créneau.",
+    "REASSURANCE": "Paiement sécurisé • Pros vérifiées • Support réactif",
+    "PRICE_TIP": "Prix clair avant paiement. Vous confirmez quand tout est OK.",
+    "WHEN_TITLE": "Quel moment vous arrange ?",
+    "WHEN_HINT": "On affichera uniquement les créneaux disponibles.",
+    "TODAY": "Aujourd'hui",
+    "TONIGHT": "Ce soir",
+    "TOMORROW": "Demain",
+    "THIS_WEEK": "Cette semaine",
+    "VIEW_SLOTS": "Voir les créneaux disponibles",
+    "PAYMENT_REASSURANCE": "Paiement sécurisé • Modification possible avant paiement",
+    "SLOTS_TITLE": "Créneaux disponibles",
+    "SLOTS_HINT": "Sélectionnez un créneau pour continuer.",
+    "VALIDATION_TIP": "Vous validez tout au récapitulatif avant paiement.",
+    "SUMMARY_TITLE": "Récapitulatif",
+    "SUMMARY_HINT": "Vérifiez avant de passer au paiement.",
+    "SERVICE": "Prestation",
+    "DURATION": "Durée",
+    "WHEN": "Quand",
+    "PRICE": "Prix",
+    "FROM": "à partir de",
+    "CONTINUE_PAYMENT": "Continuer vers paiement",
+    "PAYMENT_FOOTNOTE": "Paiement sécurisé. Annulation selon conditions. Vous pourrez choisir de reprendre avec le même prestataire après la prestation."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Comment souhaitez-vous réserver ?",
+    "SUBTITLE": "Réservez en 2 minutes — à domicile, paiement sécurisé.",
+    "QUICK_TITLE": "Réservation rapide",
+    "QUICK_DESC": "Choisissez une prestation, on vous propose les créneaux.",
+    "RECOMMENDED": "Recommandé",
+    "PROVIDER_TITLE": "Choisir un prestataire",
+    "PROVIDER_DESC": "Parcourez les profils et réservez dans l'agenda."
   }
 }

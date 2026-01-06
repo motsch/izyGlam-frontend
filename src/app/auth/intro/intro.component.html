@@ -10,7 +10,7 @@
           <div *ngIf="paramVideo" class="video-wrapper">
             <video #videoElementIntro class="hero-media" autoplay muted playsinline loop>
               <source [src]="aPIimgStorageUrl + '/uploads/images/front/intro.mp4'" type="video/mp4" />
-              Votre navigateur ne supporte pas la balise vidéo.
+              {{ 'ABOUT.VIDEO_ERROR' | translate }}
             </video>
           </div>
         </div>

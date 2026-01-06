@@ -1,5 +1,4 @@
 <footer class="footer">
-    Francis Motsch
   <div class="footer-bottom">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -29,7 +28,6 @@
       ·
       <a class="pink" (click)="openModal('conditions', $event)">{{ "FOOTER.CONDITIONS" | translate }}</a>
     </p>
-    Francis Motsch
   </div>
   <!-- MODAL -->
   <div class="modal-backdrop" *ngIf="modalVisible" (click)="closeOnBackdrop($event)">
@@ -38,7 +36,7 @@
 
       <div class="modal-header">
         <h1 class="modal-title">{{ modalTitle }}</h1>
-        <button class="modal-close" type="button" (click)="closeModal()" aria-label="Fermer">×</button>
+        <button class="modal-close" type="button" (click)="closeModal()" [attr.aria-label]="'ADDRESS_MODAL.CLOSE' | translate">×</button>
       </div>
 
       <!-- zone scrollable -->

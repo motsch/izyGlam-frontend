@@ -1,7 +1,7 @@
 <div class="page">
 
   <header class="topbar">
-    <button class="icon-btn" (click)="goBack()" aria-label="Retour">
+    <button class="icon-btn" (click)="goBack()" [attr.aria-label]="'PROFILE_MENU.CANCEL' | translate">
       <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
         <path d="M15.5 19 8.5 12l7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -14,9 +14,9 @@
 
   <main class="content">
     <section class="hero">
-      <h1>Comment souhaitez-vous réserver ?</h1>
+      <h1>{{ 'CHOICE_TYPE.TITLE' | translate }}</h1>
       <p class="sub">
-        Réservez en 2 minutes — à domicile, paiement sécurisé.
+        {{ 'CHOICE_TYPE.SUBTITLE' | translate }}
       </p>
     </section>
 
@@ -25,11 +25,11 @@
       <!-- Primary -->
       <button class="choice choice-primary" type="button" (click)="goQuick()">
         <div class="choice-left">
-          <div class="choice-title">Réservation rapide</div>
-          <div class="choice-desc">Choisissez une prestation, on vous propose les créneaux.</div>
+          <div class="choice-title">{{ 'CHOICE_TYPE.QUICK_TITLE' | translate }}</div>
+          <div class="choice-desc">{{ 'CHOICE_TYPE.QUICK_DESC' | translate }}</div>
         </div>
         <div class="choice-right">
-          <span class="pill">Recommandé</span>
+          <span class="pill">{{ 'CHOICE_TYPE.RECOMMENDED' | translate }}</span>
           <svg viewBox="0 0 24 24" class="icon chevron" aria-hidden="true">
             <path d="M8.5 5 15.5 12l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -39,8 +39,8 @@
       <!-- Secondary -->
       <button class="choice" type="button" (click)="goProvider()">
         <div class="choice-left">
-          <div class="choice-title">Choisir un prestataire</div>
-          <div class="choice-desc">Parcourez les profils et réservez dans l’agenda.</div>
+          <div class="choice-title">{{ 'CHOICE_TYPE.PROVIDER_TITLE' | translate }}</div>
+          <div class="choice-desc">{{ 'CHOICE_TYPE.PROVIDER_DESC' | translate }}</div>
         </div>
         <div class="choice-right">
           <svg viewBox="0 0 24 24" class="icon chevron" aria-hidden="true">
@@ -53,7 +53,7 @@
 
     <footer class="reassurance">
       <span class="dot"></span>
-      <span>Paiement sécurisé • Pros vérifiées • Support réactif</span>
+      <span>{{ 'QUICK.REASSURANCE' | translate }}</span>
     </footer>
   </main>
 

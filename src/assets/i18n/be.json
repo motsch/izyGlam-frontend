@@ -36,6 +36,24 @@
     "YOGA": "Рэлаксацыя",
     "DEVELOPPEMENT": "Самаразвіццё"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Цырульня",
+    "MANUCURE": "Манікюр",
+    "VISAGE": "Твар",
+    "MASSAGE": "Масаж",
+    "MAQUILLAGE": "Візаж",
+    "EPILATION": "Эпіляцыя",
+    "BRONZAGE": "Загар",
+    "PARTUM": "Пост-партум",
+    "NUTRITION": "Харчаванне",
+    "FITNESS": "Фітнес",
+    "ACUPUNCTURE": "Акупунктура",
+    "STYLISME": "Стылістыка",
+    "YOGA": "Рэлаксацыя",
+    "DEVELOPPEMENT": "Асабовы рост",
+    "BARBER": "Барбер",
+    "EYELASH": "Вейкі"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Салон дададзены ў абранае",
     "FAVORITE_REMOVED": "Салон выдалены з абранага",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Служба падтрымкі кліентаў",
-    "WRITE": "Напісаць паведамленне…"
+    "WRITE": "Напісаць паведамленне…",
+    "NO_CONV": "Aucune conversation",
+    "CREATE": "Créer une conversation",
+    "CREATE_CONV": "Créer",
+    "OPEN_CONV_LIST": "Ouvrir la liste des conversations",
+    "PHOTO_SENT": "Photo envoyée"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Увядзіце ваш e-mail для ўваходу",
@@ -173,8 +196,14 @@
     "SERVICES": "Кіраванне паслугамі",
     "PHOTOS": "Фота-галерэя",
     "STATS": "Статыстыка",
+    "SOCIAL": "Сацыяльныя сеткі",
     "PARAM": "Налады",
+    "DOCUMENTS": "Дакументы",
     "SHOPS": "Крамы",
+    "B2BLEAD": "BtoB Ліды",
+    "PROLEAD": "Pro Ліды",
+    "COMPANY": "Кампаніі",
+    "COM": "Камунікацыя",
     "USERS": "Карыстальнікі",
     "MESSAGE": "Паведамленні"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Каментар",
     "NOTE": "Ацэнка",
     "CLOSE": "Закрыць"
+  },
+  "UILEVEL": {
+    "STARTER": "Стваральніца",
+    "ACTIVE": "Пацверджана",
+    "AMBASSADOR": "Пасол IzyGlam",
+    "ICONE": "Лакальная іконка"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "У галерэі няма выяў."
@@ -291,23 +326,6 @@
     "SEARCHRESULT": "Вынікі пошуку",
     "AVIS": "Водгукі"
   },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Цырульня",
-    "MANUCURE": "Манікюр",
-    "VISAGE": "Твар",
-    "MASSAGE": "Масаж",
-    "MAQUILLAGE": "Візаж",
-    "EPILATION": "Эпіляцыя",
-    "BRONZAGE": "Загар",
-    "PARTUM": "Пост-партум",
-    "NUTRITION": "Харчаванне",
-    "FITNESS": "Фітнес",
-    "ACUPUNCTURE": "Акупунктура",
-    "STYLISME": "Стылістыка",
-    "YOGA": "Рэлаксацыя",
-    "DEVELOPPEMENT": "Асабовы рост",
-    "EYELASH": "Вейкі"
-  },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Цырульнік",
     "MANUCURE": "Майстар манікюру",
@@ -379,6 +397,75 @@
     "LANGUE": "Мова",
     "COUNTRY": "Краіна"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Un nail art minimaliste pour un effet élégant et moderne.",
+    "CREATIVITE": "Choisissez des couleurs audacieuses pour exprimer votre créativité.",
+    "VINTAGE": "Un style vintage revisité pour un look unique !",
+    "QUESTION": "Commencez votre post par une question engageante pour inciter à interagir.",
+    "VISUELS": "Optimisez vos visuels avec des couleurs vives et un texte clair.",
+    "APPEL_ACTION": "Ajoutez un appel à l’action clair, comme 'Cliquez sur le lien' ou 'Partagez votre avis'.",
+    "LEGENDES": "Utilisez des légendes courtes mais percutantes pour Instagram et Bluesky.",
+    "COMMENTAIRES": "Incluez des questions ouvertes pour encourager les commentaires.",
+    "HASHTAGS": "Ajoutez des hashtags pertinents pour toucher un public plus large.",
+    "STATISTIQUES": "Ajoutez des statistiques ou des faits intéressants pour capter l’attention.",
+    "STORYTELLING": "Racontez une histoire captivante pour garder vos lecteurs engagés.",
+    "REUSSITES": "Mettez en avant vos réussites ou celles de vos clients pour LinkedIn.",
+    "AUTHENTICITE": "Soyez authentique et montrez votre vraie personnalité.",
+    "ANALYSE": "Analysez vos performances et ajustez votre stratégie en conséquence.",
+    "EMOJIS": "Utilisez des emojis pour rendre votre contenu plus visuel et attrayant.",
+    "HEURES": "Postez à des heures stratégiques pour maximiser la portée.",
+    "STORIES": "Intégrez des stories ou reels pour capter l’attention rapidement.",
+    "CAPTIVANTES": "Utilisez des légendes captivantes qui donnent envie de cliquer sur 'Lire la suite'.",
+    "ANECDOTE": "Partagez des anecdotes personnelles pour créer une connexion émotionnelle.",
+    "FORMATS": "Variez vos formats : images, vidéos, carrousels ou sondages.",
+    "TON": "Adaptez le ton de votre contenu en fonction de la plateforme utilisée.",
+    "MENTIONS": "Mentionnez d’autres utilisateurs ou marques pour élargir votre portée.",
+    "STYLES": "Testez différents styles visuels pour découvrir ce qui plaît le plus à votre audience.",
+    "VIDEOS": "Utilisez des vidéos courtes pour capter l'attention rapidement.",
+    "TEMOIGNAGES": "Ajoutez des témoignages clients pour renforcer votre crédibilité.",
+    "SONDAGES": "Créez des sondages pour engager votre audience.",
+    "VALEURS": "Mettez en avant vos valeurs pour toucher votre public cible.",
+    "AVANT_APRES": "Ajoutez un avant/après pour démontrer un impact clair.",
+    "CITATIONS": "Incorporez des citations inspirantes pour motiver votre audience.",
+    "STORYTELLING2": "Ajoutez des légendes en storytelling pour raconter une histoire.",
+    "HASHTAGS_SPECIFIQUES": "Adaptez vos hashtags à chaque publication pour maximiser la portée.",
+    "TEXTE_VISUEL": "Évitez de surcharger vos visuels avec trop de texte.",
+    "REPONSE": "Répondez rapidement aux commentaires pour créer une relation.",
+    "COULISSES": "Mettez en avant vos coulisses pour humaniser votre marque.",
+    "AUTHENTIQUE": "Utilisez des photos authentiques plutôt que des banques d'images.",
+    "MESSAGES_CLES": "Répétez vos messages clés régulièrement pour ancrer votre communication.",
+    "MOMENTS_FORTS": "Identifiez les moments forts de l'année pour vos publications.",
+    "TENDANCES": "Utilisez les tendances actuelles pour surfer sur l'actualité.",
+    "STATISTIQUES2": "Ajoutez des statistiques intéressantes pour capter l'attention.",
+    "CARROUSELS": "Créez des carrousels pour raconter une histoire en plusieurs étapes.",
+    "LIEN_BIO": "Mettez un lien clair dans votre bio pour diriger vos visiteurs.",
+    "GUIDE": "Créez un guide ou une checklist pour offrir de la valeur à votre audience.",
+    "GIF": "Ajoutez des GIF ou des stickers pour rendre vos stories plus dynamiques.",
+    "COULEURS": "Utilisez des couleurs cohérentes avec votre branding.",
+    "COLLABORATEURS": "Mettez en avant vos collaborateurs pour créer un sentiment d'équipe.",
+    "CONVERSATIONNEL": "Rédigez vos posts comme si vous parliez directement à une personne.",
+    "QUIZ": "Ajoutez des quiz interactifs pour augmenter l'engagement.",
+    "URGENCE": "Créez un sentiment d'urgence avec des promotions limitées.",
+    "AVANT_APRES_CONCRET": "Intégrez des photos avant/après pour montrer des résultats concrets.",
+    "COLLABORATION": "Créez des collaborations avec d'autres créateurs pour élargir votre audience.",
+    "TRANSPARENCE": "Soyez transparent sur vos processus ou vos produits.",
+    "ANIMATIONS": "Ajoutez des animations pour rendre vos vidéos plus dynamiques.",
+    "EDUCATIF": "Créez des posts éducatifs pour apporter de la valeur à votre audience.",
+    "RETOURS_EXPERIENCE": "Mettez en avant des retours d'expérience pour instaurer la confiance.",
+    "CONCIS": "Soyez concis dans vos messages pour aller droit au but.",
+    "MOTS_CLES": "Utilisez des mots-clés pertinents pour augmenter la visibilité.",
+    "CALENDRIER": "Créez un calendrier éditorial pour planifier vos publications.",
+    "MINIMALISTE2": "Expérimentez avec des visuels minimalistes pour un impact visuel fort.",
+    "TEMOIGNAGES_VIDEO": "Intégrez des témoignages vidéo pour plus d'authenticité.",
+    "HUMOUR": "Créez des posts humoristiques pour engager avec légèreté.",
+    "GRAPHIQUES": "Utilisez des graphiques ou infographies pour expliquer des idées complexes.",
+    "REGULARITE": "Publiez régulièrement pour garder votre audience engagée.",
+    "REMERCIEMENTS": "Incluez des remerciements ou des célébrations pour créer de la gratitude."
+  },
   "PAYEMENT": {
     "YOU": "Вы",
     "HEADER_TITLE": "Аплата",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Абраць адрас",
     "ADD_ADDRESS": "Дадаць адрас",
     "CARD_PAY": "Аплата банкаўскай картай",
+    "CREDIT_PAY": "Paiement par crédit entreprise",
+    "EMPLOYEE_CREDIT_TITLE": "Utiliser mon crédit d'entreprise",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Mon crédit disponible :",
+    "EMPLOYEE_CREDIT_EMPTY": "Pas de crédit d'entreprise",
     "CARD_NUM": "Нумар карты",
     "CARD_NAME": "Імя на карце",
     "EXPIRATION": "Тэрмін дзеяння",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Каб захаваць салон, увайдзіце",
     "TITLE": "Пачынайце!",
     "TITLE2": "Стварыць салон!",
+    "STEP1_TITLE": "Informations du salon",
+    "STEP2_TITLE": "Vérification professionnelle",
+    "STEP2_TAGLINE": "Étape 2 sur 2 · Vos documents restent privés et protégés.",
     "NAME": "Назва вашага салона",
     "ADDRESS": "Адрас вашай кампаніі",
     "STREET": "Вуліца",
@@ -500,7 +594,28 @@
     "ERROR5": "Прозвішча абавязкова.",
     "ERROR6": "E-mail абавязковы.",
     "ERROR7": "Нумар мабільнага абавязковы.",
-    "ERROR8": "Трэба даць згоду на паведамленні ў WhatsApp."
+    "ERROR8": "Трэба даць згоду на паведамленні ў WhatsApp.",
+    "VERIF_TITLE": "Vérification de votre profil professionnel",
+    "VERIF_SUBTITLE": "Nous vérifions chaque professionnel pour protéger vos clients et votre réputation.",
+    "VERIF_ID_TITLE": "Pièce d’identité",
+    "VERIF_ID_DESC": "Carte d’identité, passeport ou titre de séjour en cours de validité.",
+    "VERIF_INSURANCE_TITLE": "Прафесійная страхоўка",
+    "VERIF_INSURANCE_DESC": "Дзейны сертыфікат, які пакрывае вашыя дамашнія паслугі (абавязкова).",
+    "VERIF_KBIS_TITLE": "Extrait Kbis (optionnel)",
+    "VERIF_KBIS_DESC": "Recommandé si vous exercez via une société immatriculée.",
+    "VERIF_UPLOAD_LABEL": "Téléverser un document",
+    "VERIF_ALLOWED_FORMATS": "Formats acceptés : PDF, JPG, PNG · taille max 10 Mo.",
+    "VERIF_MANDATORY_HINT": "La pièce d’identité et l’assurance sont obligatoires pour activer votre profil.",
+    "VERIF_STATUS_MISSING": "Document manquant",
+    "VERIF_STATUS_PENDING": "En cours de vérification",
+    "VERIF_STATUS_APPROVED": "Validé",
+    "VERIF_STATUS_REJECTED": "Refusé · nouveau document requis",
+    "VERIF_PRIMARY_BUTTON": "Envoyer les documents",
+    "VERIF_SKIP_BUTTON": "Je compléterai plus tard",
+    "VERIF_TOAST_SUCCESS": "Vos documents ont été envoyés pour vérification.",
+    "VERIF_TOAST_ERROR": "Impossible de téléverser vos documents pour le moment.",
+    "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
+    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Змяніць адрас",
@@ -533,6 +648,12 @@
     "NAME": "Назва",
     "CITY": "Горад",
     "NOTE": "Ацэнка",
+    "DOCS_OK": "Validés",
+    "DOCS_NOT_VALID": "Non validés",
+    "ACTIVE": "Актыўны",
+    "INACTIVE": "Inatif",
+    "STATUS": "Statut",
+    "DOCUMENTS": "Дакументы",
     "MIDDLE_PRICE": "Сярэдні кошт",
     "PROMOTION": "Прома",
     "ACTIONS": "Дзеянні",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Кіраванне ўліковым запісам",
     "ORDERS": "Мінулыя замовы",
+    "MESSAGES": "Mes messages",
     "FAVORITES": "Упадабаныя",
     "HELP": "Дапамога",
     "MY_ABO": "Мая падпіска",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Анлайн-падтрымка"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Папоўніць рахунак супрацоўніка",
     "AMOUNT": "Сума папаўнення",
@@ -894,7 +1015,10 @@
     "DATE": "Дата",
     "AMOUNT": "Сума",
     "COMMISSION": "Камісія",
-    "STATUS": "Статус"
+    "STATUS": "Статус",
+    "NEXT_LEVEL": "Prochain niveau",
+    "MAX_LEVEL": "Niveau maximum atteint",
+    "REMAINING": "encore {{count}} réservations"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Абраць тып крамы для стварэння",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Памылка пры выдаленні паслугі"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Выява крамы",
     "UPLOAD_IMAGE": "Загрузіць выяву",
     "SNEEK_PIC": "Папярэдні прагляд выявы",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Згенераваць апісанне",
     "PHOTO": "Прыклады дапушчальных/адхіленых фота",
     "CODE_POSTAUX": "Абслугоўваемыя індэксы",
+    "SOCIAL_NETWORK": "Сацыяльныя сеткі",
     "EXEMPLE_LOCAL": "Напр.: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Пашырана",
     "PLANS": "Колькасць актыўных салонаў",
     "READY": "Гатовая расці?",
-    "DISCOVERS": "Паглядзець прапановыizyGlam"
+    "DISCOVERS": "Паглядзець прапановыizyGlam",
+    "FREE_TRIAL": "Gratuit pendant 1 mois"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Не вызначана",
     "INVALID_DATE": "Няправільная дата"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Confirmation",
+    "CANCEL": "Annuler",
+    "OK": "OK",
+    "TERMINATE": "Terminer",
+    "DELETE": "Supprimer"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Rechercher une prestation",
+    "EMAIL_PLACEHOLDER": "Email de l'utilisateur",
+    "CATEGORY_TITLE": "Que souhaitez-vous réserver ?",
+    "CATEGORY_HINT": "Choisissez une catégorie. Ensuite : prestation → moment → créneau.",
+    "REASSURANCE": "Paiement sécurisé • Pros vérifiées • Support réactif",
+    "PRICE_TIP": "Prix clair avant paiement. Vous confirmez quand tout est OK.",
+    "WHEN_TITLE": "Quel moment vous arrange ?",
+    "WHEN_HINT": "On affichera uniquement les créneaux disponibles.",
+    "TODAY": "Aujourd'hui",
+    "TONIGHT": "Ce soir",
+    "TOMORROW": "Demain",
+    "THIS_WEEK": "Cette semaine",
+    "VIEW_SLOTS": "Voir les créneaux disponibles",
+    "PAYMENT_REASSURANCE": "Paiement sécurisé • Modification possible avant paiement",
+    "SLOTS_TITLE": "Créneaux disponibles",
+    "SLOTS_HINT": "Sélectionnez un créneau pour continuer.",
+    "VALIDATION_TIP": "Vous validez tout au récapitulatif avant paiement.",
+    "SUMMARY_TITLE": "Récapitulatif",
+    "SUMMARY_HINT": "Vérifiez avant de passer au paiement.",
+    "SERVICE": "Prestation",
+    "DURATION": "Durée",
+    "WHEN": "Quand",
+    "PRICE": "Prix",
+    "FROM": "à partir de",
+    "CONTINUE_PAYMENT": "Continuer vers paiement",
+    "PAYMENT_FOOTNOTE": "Paiement sécurisé. Annulation selon conditions. Vous pourrez choisir de reprendre avec le même prestataire après la prestation."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Comment souhaitez-vous réserver ?",
+    "SUBTITLE": "Réservez en 2 minutes — à domicile, paiement sécurisé.",
+    "QUICK_TITLE": "Réservation rapide",
+    "QUICK_DESC": "Choisissez une prestation, on vous propose les créneaux.",
+    "RECOMMENDED": "Recommandé",
+    "PROVIDER_TITLE": "Choisir un prestataire",
+    "PROVIDER_DESC": "Parcourez les profils et réservez dans l'agenda."
   }
 }

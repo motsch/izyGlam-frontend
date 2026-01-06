@@ -4,12 +4,12 @@
          <!-- Média (image/vidéo) -->
          <div class="col-md-6 hero-image">
             <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/company.png'"
-               alt="Services de beauté pour entreprises" class="hero-media" />
+               [attr.alt]="'HOMEPAGE.PART3TITLE' | translate" class="hero-media" />
 
             <video *ngIf="paramVideo" #videoElementFeature class="hero-media hero-video" autoplay muted playsinline
                loop>
                <source [src]="aPIimgStorageUrl + '/uploads/images/front/company.mp4'" type="video/mp4" />
-               Votre navigateur ne supporte pas la balise vidéo.
+               {{ 'ABOUT.VIDEO_ERROR' | translate }}
             </video>
          </div>
 
@@ -18,7 +18,7 @@
             <h1>{{ 'HOMEPAGE.PART3TITLE' | translate }}</h1>
             <p>{{ 'HOMEPAGE.PART3TEXT' | translate }}</p>
             <button type="button" class="btn submit" (click)="goTo('creation-company')"
-               aria-label="En savoir plus sur l'offre entreprise">
+               [attr.aria-label]="'HOMEPAGE.KNOWMORE' | translate">
                {{ 'HOMEPAGE.KNOWMORE' | translate }}
             </button>
          </div>

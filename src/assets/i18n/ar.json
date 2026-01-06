@@ -1,1495 +1,1668 @@
 {
-    "ADDRESS_MODAL": {
-        "ADDRESS": "عناويني",
-        "ADDRESS_MODIFICATION": "تعديل العنوان",
-        "STREET": "الشارع",
-        "CITY": "المدينة",
-        "CP": "الرمز البريدي",
-        "CREATE": "إنشاء",
-        "BACK": "رجوع",
-        "CHANGE": "تعديل",
-        "CLOSE": "إغلاق"
+  "ADDRESS_MODAL": {
+    "ADDRESS": "عناويني",
+    "ADDRESS_MODIFICATION": "تعديل العنوان",
+    "STREET": "الشارع",
+    "CITY": "المدينة",
+    "CP": "الرمز البريدي",
+    "CREATE": "إنشاء",
+    "BACK": "رجوع",
+    "CHANGE": "تعديل",
+    "CLOSE": "إغلاق"
+  },
+  "SHOPTYPE": {
+    "HAIRDRESSER": "مصفف شعر",
+    "NAILTECHNICIAN": "فني أظافر",
+    "MAKEUP": "خبير تجميل",
+    "WAXING": "اختصاصي إزالة الشعر",
+    "FACIAL": "عناية بالوجه",
+    "MASSAGE": "مدلك",
+    "EYELASH": "خبير رموش",
+    "EYEBROW": "خبير تغذية",
+    "TANNING": "تسمير البشرة",
+    "BARBER": "حلاق",
+    "ACUPUNCTURE": "اختصاصي وخز بالإبر",
+    "OTHER": "أخرى",
+    "COIFFURE": "تصفيف الشعر",
+    "MANUCURE": "عناية بالأظافر",
+    "VISAGE": "عناية بالوجه",
+    "MAQUILLAGE": "تجميل",
+    "EPILATION": "إزالة الشعر",
+    "BRONZAGE": "تسمير",
+    "PARTUM": "ما بعد الولادة",
+    "NUTRITION": "تغذية",
+    "FITNESS": "لياقة بدنية",
+    "STYLISME": "تنسيق الأزياء",
+    "YOGA": "استرخاء",
+    "DEVELOPPEMENT": "تطوير الذات"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "تصفيف الشعر",
+    "MANUCURE": "مانيكير",
+    "VISAGE": "الوجه",
+    "MASSAGE": "مساج",
+    "MAQUILLAGE": "مكياج",
+    "EPILATION": "إزالة الشعر",
+    "BRONZAGE": "تسمير",
+    "PARTUM": "ما بعد الولادة",
+    "NUTRITION": "تغذية",
+    "FITNESS": "لياقة",
+    "ACUPUNCTURE": "وخز بالإبر",
+    "STYLISME": "تنسيق أزياء",
+    "YOGA": "استرخاء",
+    "DEVELOPPEMENT": "تطوير ذات",
+    "BARBER": "الحلاق",
+    "EYELASH": "وصلات رموش"
+  },
+  "SUCCESS": {
+    "FAVORITE_ADDED": "تمت إضافة الصالون إلى المفضلة",
+    "FAVORITE_REMOVED": "تمت إضافة الصالون إلى المفضلة",
+    "PHOTO_DELETE": "تم حذف الصورة من المعرض",
+    "PHOTO_UPLOAD": "تم رفع الصورة بنجاح",
+    "PARTIAL_REFUND_CONFIRM": "تم تأكيد الاسترداد الجزئي!",
+    "CODE_SAVED": "تم توليد الرمز.",
+    "USERCREATED": "تم إنشاء المستخدم بنجاح. تم إرسال رسالة تأكيد إلى بريدك الإلكتروني.",
+    "SUBSCRIBE_SUCCESS": "تم أخذ اشتراكك بعين الاعتبار.",
+    "EMAIL_VERIFIED": "تم تفعيل حسابك 🎉 يمكنك الآن تسجيل الدخول.",
+    "EMAIL_RESENT": "تمت إعادة إرسال بريد التحقق. يرجى التحقق من صندوق الوارد.",
+    "BOOKING_CREATED": "تم تسجيل حجزك بنجاح.",
+    "PAYMENT_OK": "تم تأكيد الدفع.",
+    "REFUND_OK": "تم تنفيذ الاسترداد.",
+    "USERUPDATED": "تم تحديث المستخدم.",
+    "SETTINGS_UPDATED": "تم تحديث الإعدادات.",
+    "REVIEW_ADDED": "تم نشر رأيك 🎉",
+    "SHOPUPDATED": "تم تحديث المتجر.",
+    "BOOKING_ACCEPTED": "تم قبول الحجز.",
+    "BOOKING_FINISHED": "تم إنهاء الحجز.",
+    "BOOKING_REFUSED": "تم رفض الحجز.",
+    "BOOKING_DELETED": "تم حذف الحجز.",
+    "CODE_GENERATED": "تم توليد الرمز.",
+    "CODE_CONFIRMED": "تم تأكيد الرمز.",
+    "INVOICE_DOWNLOADED": "تم تنزيل الفاتورة.",
+    "MARKED_NO_SHOW_CLIENT": "تم تمييز العميل كغائب.",
+    "COMPANY_CREDITED": "تم شحن رصيد حساب الشركة.",
+    "MARKED_NO_SHOW_PRO": "تم تمييز المقدّم كغائب.",
+    "EMPLOYEE_CREDITED": "تم شحن رصيد حساب الموظف.",
+    "NO_SHOW_PRO": "تم تطبيق غرامة وإجراء الاسترداد.",
+    "EMPLOYEE_DELETED": "تم حذف الموظف.",
+    "SLOT_SELECTED": "تم اختيار الموعد",
+    "PASSWORD_RESET": "تمت إعادة تعيين كلمة المرور.",
+    "INVOICE_GENERATED": "تم توليد الفواتير.",
+    "REVIEW_SAVED": "تم حفظ الرأي، شكرًا!",
+    "DEFAULT_PASSWORD_UPDATED": "تم تحديث كلمة المرور الافتراضية.",
+    "COMPANY_CREATED": "تم إنشاء حسابك المهني بنجاح."
+  },
+  "ERROR": {
+    "NO_CITIES": "رمز بريدي بلا تطابق",
+    "NOT_AVAILABLE": "لسنا متاحين في هذا الموقع بعد. لا تتردد في المحاولة مرة أخرى خلال بضعة أشهر!",
+    "LOGIN_REQUIRED": "يرجى تسجيل الدخول لإدارة المفضلات.",
+    "INVALID_IMAGE": "صورة غير صالحة.",
+    "NO_SLOTS": "لا توجد مواعيد متاحة لهذه الخدمة.",
+    "NO_SHOP_SELECTED": "لم يتم اختيار أي متجر.",
+    "NO_SERVICE_SELECTED": "لم يتم اختيار أي خدمة.",
+    "ORDER_ERROR": "حدث خطأ أثناء تحديث الطلب.",
+    "CODE_ERROR": "حدث خطأ أثناء حفظ الرمز.",
+    "INVOICE_GENERATED_ERROR": "حدث خطأ أثناء توليد الفواتير.",
+    "USERNOTCREATED": "تعذّر إنشاء المستخدم.",
+    "INSUFFICIENT_COMPANY_CREDIT": "رصيد الشركة غير كافٍ لهذا الشحن.",
+    "GENERIC_ERROR": "✨ عذرًا… حدث خطأ غير متوقع. يرجى المحاولة مجددًا ✨",
+    "COMPANY_CREDITED": "تم شحن رصيد حساب الشركة.",
+    "LINK_INVALID_OR_MISSING": "رابط غير صالح أو مفقود.",
+    "LINK_INVALID_OR_EXPIRED": "رابط غير صالح أو منتهي الصلاحية.",
+    "EMAIL_NOT_FOUND": "بريد المستخدم الإلكتروني غير موجود.",
+    "PAYMENT_FAILED": "فشل الدفع.",
+    "BOOKING_FAILED": "فشلت عملية إنشاء الحجز.",
+    "LOAD_CARDS_FAILED": "حدث خطأ أثناء تحميل بطاقاتك.",
+    "LOAD_SHOP_FAILED": "حدث خطأ أثناء تحميل الصالون.",
+    "LOAD_PRODUCTS_FAILED": "حدث خطأ أثناء تحميل الخدمات.",
+    "INVALID_CODE": "الرمز الذي أدخلته غير صالح.",
+    "PASSWORD_CHANGED": "تم تحديث كلمة المرور الخاصة بك.",
+    "PASSWORDS_IDENTICAL": "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية.",
+    "INVALID_AMOUNT": "المبلغ المدخل غير صالح.",
+    "INVALID_CURRENT_PASSWORD": "كلمة المرور الحالية غير صحيحة.",
+    "INVALID_CURRENT_PASSWORD_OR_GENERIC": "كلمة المرور الحالية غير صحيحة أو حدث خطأ.",
+    "PASSWORD_UPDATE_FAILED": "فشلت عملية تعديل كلمة المرور.",
+    "PASSWORD_UPDATE_GENERIC": "حدث خطأ أثناء تحديث كلمة المرور.",
+    "PASSWORDS_MISMATCH_OR_TOO_SHORT": "كلمتا المرور غير متطابقتين أو قصيرتان (الحد الأدنى 8 أحرف).",
+    "INVALID_PASSWORD": "لا يمكن أن تكون كلمة المرور فارغة.",
+    "PASSWORD_TOO_SHORT": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل."
+  },
+  "STRIPE": {
+    "MISSING_PK": "إعداد Stripe مفقود.",
+    "LOAD_FAILED": "تعذّر تحميل Stripe",
+    "NOT_READY": "لم يتم تهيئة Stripe",
+    "CONFIRM_FAILED": "فشل حفظ البطاقة",
+    "CARD_SAVED": "تم حفظ البطاقة بنجاح ✅",
+    "PM_FAILED": "فشل إنشاء البطاقة",
+    "SI_FAILED": "تعذّر تهيئة حفظ البطاقة",
+    "ATTACH_FAILED": "تعذّر ربط البطاقة بالحساب",
+    "SAVE_CARD": "حفظ البطاقة",
+    "ADD_CARD": "إضافة بطاقة"
+  },
+  "AUTH": {
+    "LOGIN_REQUIRED": "يرجى تسجيل الدخول"
+  },
+  "COMMON": {
+    "LOADING": "جارٍ التحميل…",
+    "UNEXPECTED_ERROR": "حدث خطأ غير متوقع"
+  },
+  "MESSAGE": {
+    "SERVICE_CLIENT": "خدمة العملاء",
+    "WRITE": "اكتب رسالة…",
+    "NO_CONV": "Aucune conversation",
+    "CREATE": "Créer une conversation",
+    "CREATE_CONV": "Créer",
+    "OPEN_CONV_LIST": "Ouvrir la liste des conversations",
+    "PHOTO_SENT": "Photo envoyée"
+  },
+  "FORGOT_DETAILS": {
+    "CONNEXION": "أدخل بريدك الإلكتروني لتسجيل الدخول",
+    "VALIDE": "يرجى إدخال عنوان بريد إلكتروني صالح.",
+    "LOADING": "جارٍ التحميل",
+    "VERIF": "جاري التحقق من معلوماتك، يرجى الانتظار",
+    "ACCUEIL": "العودة إلى الصفحة الرئيسية",
+    "OK": "تم تسجيل الدخول بنجاح!",
+    "SPACE": "جارٍ إعادة التوجيه إلى مساحتك"
+  },
+  "VERIFY_EMAIL": {
+    "VERIFICATION": "جاري التحقق",
+    "VALIDE": "نقوم بالتحقق من رابط التفعيل الخاص بك. لن يستغرق الأمر سوى لحظة.",
+    "ACCOUNT": "تم تفعيل الحساب",
+    "CONNECT": "تسجيل الدخول",
+    "REGISTER": "سجّل",
+    "OUPS": "عفوًا",
+    "WRITE": "بحاجة إلى مساعدة؟ راسلنا على",
+    "RESEND": "إعادة إرسال بريد التفعيل"
+  },
+  "BANK": {
+    "ENTER_BANK_INFO": "معلوماتي البنكية",
+    "ADD_BANK_INFO": "إضافة معلوماتي البنكية",
+    "BANK_NAME": "اسم البنك",
+    "HOLDER_NAME": "اسم صاحب الحساب",
+    "COUNTRY": "الدولة",
+    "SAVE": "حفظ"
+  },
+  "LOADER": {
+    "LOADING": "جارٍ التحميل…"
+  },
+  "SPONSORS": {
+    "TITLE": "رعاتنا",
+    "SPONSORISED": "برعاية"
+  },
+  "TABS": {
+    "FINANCE": "المتابعة المالية",
+    "GENERAL_INFO": "معلومات عامة",
+    "EMPLOYEES": "إدارة الموظفين",
+    "SERVICES": "إدارة الخدمات",
+    "PHOTOS": "معرض الصور",
+    "STATS": "إحصائيات",
+    "SOCIAL": "الشبكات الاجتماعية",
+    "PARAM": "الإعدادات",
+    "DOCUMENTS": "المستندات",
+    "SHOPS": "المتاجر",
+    "B2BLEAD": "عملاء محتملون BtoB",
+    "PROLEAD": "عملاء محتملون Pro",
+    "COMPANY": "الشركات",
+    "COM": "الاتصال",
+    "USERS": "المستخدمون",
+    "MESSAGE": "الرسائل"
+  },
+  "CARD": {
+    "ADD": "إضافة البطاقة",
+    "NO_IMAGE": "لا توجد صور في المعرض.",
+    "SALON": "تم تحديث الصالون بنجاح",
+    "ERROR1": "خطأ أثناء تحديث الصالون",
+    "ERROR2": "خطأ أثناء تحديث الصورة",
+    "UPDATE": "تم تحديث الصالون بنجاح"
+  },
+  "ORDER_CARD": {
+    "FINISHED": "منتهية",
+    "ACCEPTEE": "مقبولة",
+    "WAITING": "قيد الانتظار",
+    "CANCEL": "ملغاة",
+    "DELETE": "محذوفة",
+    "REFUSED": "مرفوضة",
+    "NO_PRESTA": "المقدّم غائب",
+    "CLIENT_ABSENT": "العميل غائب",
+    "ADRESSE": "العنوان",
+    "DATE": "التاريخ",
+    "TOTAL": "الإجمالي",
+    "FACTURE": "فاتورة",
+    "CANCELLED": "ملغاة",
+    "DELETED": "حذف",
+    "AVIS": "رأي",
+    "SUPPORT": "الدعم",
+    "CODE": "رمز التأكيد",
+    "CODE_A_DONNER": "الرمز الذي سيُسلّم للمقدّم",
+    "PRESTA_ABSENT": "المقدّم غائب"
+  },
+  "REVIEWS_MODAL": {
+    "REVIEWS": "التقييمات",
+    "ANON": "عميل",
+    "EMPTY_TITLE": "لا توجد مراجعات بعد",
+    "EMPTY_SUB": "كن أول من يشارك تجربتك."
+  },
+  "SHOP_CARD": {
+    "AVIS": "آراء حول المتجر",
+    "COMMENT": "تعليق",
+    "NOTE": "تقييم",
+    "CLOSE": "إغلاق"
+  },
+  "UILEVEL": {
+    "STARTER": "منشئة",
+    "ACTIVE": "مؤكدة",
+    "AMBASSADOR": "سفيرة IzyGlam",
+    "ICONE": "أيقونة محلية"
+  },
+  "SHOP_GALERIE": {
+    "NO_IMAGE": "لا توجد صور في المعرض."
+  },
+  "REVIEW_MODAL": {
+    "NOTE": "قيّم طلبك",
+    "DATE": "التاريخ",
+    "SERVICE": "الخدمة",
+    "AVIS": "رأيك",
+    "SEND": "إرسال",
+    "PLACEHOLDER": "صف تجربتك…"
+  },
+  "HOMEPAGE": {
+    "TITLERED": "خلّي الجمال يجي لعندك",
+    "KNOWMORE": "اعرف المزيد",
+    "PART1TITLE": "استمتع بأفضل خدمات التجميل في منزلك",
+    "PART1TEXT": "محترفونا المؤهلون يأتون إليك ليقدّموا عناية تجميلية عالية الجودة، تناسب احتياجاتك ورغباتك. عِش تجربة رفاهية فريدة، سواءً في استراحة الغداء، بعد العمل مساءً أو خلال ظهيرة مع الصديقات.",
+    "PART2TITLE": "اشتغل وقت ما تحب، وحقّق دخلًا على مقاسك",
+    "PART2TEXT": "حقّق دخلاً وفق جدولك الشخصي بقبول الطلبات على المنصّة بوتيرتك. يمكنك استخدام معداتك الخاصة أو استئجار معدات احترافية عبر izyGlam.",
+    "PART3TITLE": "خدمة جمال مُعاد ابتكارها للشركات",
+    "PART3TEXT": "Glam for Business منصة مخصصة للشركات من جميع الأحجام، لإدارة احتياجات عملائك وموظفيك الجمالية. قدّموا عناية تجميلية مخصّصة مباشرة في مقرّ العمل، خلال الفعاليات أو للمناسبات الخاصة. محترفونا المؤهلون يتنقّلون لتقديم خدمات مناسبة لاحتياجاتكم.",
+    "APPTITLE": "أسهل مع التطبيقات",
+    "DOWNLOADAPP1": "حمّل التطبيق",
+    "DOWNLOADAPP2": "حمّل تطبيق محترفي التجميل",
+    "SCANTODOWNLOAD": "امسح للتحميل",
+    "SIGNUP": "سجّل الآن!"
+  },
+  "ABOUT": {
+    "VIDEO_ERROR": "خطأ في تشغيل الفيديو",
+    "AUTOPLAY_BLOCKED": "تم حظر التشغيل التلقائي. اضغط لتشغيل الفيديو.",
+    "NAV_ERROR": "تعذّرت عملية التنقل"
+  },
+  "FOOTER": {
+    "HOWITWORKS": "كيفية عمل تطبيقات ومواقع izyGlam",
+    "HELPCENTER": "الدخول إلى مركز المساعدة",
+    "BUSINESS": "للشركات",
+    "ABOUT": "من نحن",
+    "OURSERVICES": "خدماتنا",
+    "PRESSAREA": "المنطقة الإعلامية",
+    "INVESTORS": "المستثمرون",
+    "CAREERS": "وظائف",
+    "AI": "الذكاء الاصطناعي",
+    "PRODUCTS": "المنتجات",
+    "GLAM": "دائمًا بأبهى إطلالة مع izyGlam",
+    "RESERVED": "احجز مسبقًا",
+    "GIFTCARDS": "بطاقات الهدايا",
+    "WORKWITHUS": "اعمل معنا",
+    "GLAMFORBUSINESS": "Glam for Business",
+    "CONFIDENTIAL": "الخصوصية",
+    "ACCESS": "إمكانية الوصول",
+    "CONDITIONS": "الشروط",
+    "LANGUAGE": "اللغة",
+    "LOCALISATION": "الموقع",
+    "ALL_RIGHT": "جميع الحقوق محفوظة"
+  },
+  "COMING_SOON": {
+    "TITLE": "نصل قريبًا",
+    "TITLE-NOT-COMING": "لم نخطط للمجيء بعد",
+    "DAYS": "أيام",
+    "HOURS": "ساعات",
+    "MINUTES": "دقائق",
+    "SECONDS": "ثوانٍ",
+    "TEXT": "نعمل بجدّ لنقدّم لك تجربة جمال منزلية فريدة. ابقَ على تواصل لتعرف موعد الإطلاق."
+  },
+  "MAIN_PAGE": {
+    "MOMENT": "عروض اللحظة",
+    "DISCOVER": "اكتشف على izyGlam",
+    "LIKED": "الأعلى تقييمًا بالقرب منك",
+    "SMART": "عروض ذكية",
+    "TOP10": "أفضل 10 لهذا الأسبوع",
+    "SEARCHRESULT": "نتائج البحث",
+    "AVIS": "آراء"
+  },
+  "MAIN_CATEGORY_INTRO": {
+    "COIFFURE": "مصففة شعر",
+    "MANUCURE": "اختصاصية مانيكير",
+    "ESTETICIAN": "اختصاصية تجميل",
+    "MASSAGE": "مدلّكة",
+    "MAQUILLAGE": "خبيرة مكياج",
+    "PEDICURE": "اختصاصية باديكير",
+    "NUTRITION": "اختصاصية تغذية",
+    "FITNESS": "مدربة"
+  },
+  "INTRO": {
+    "NORESULTS": "لم يتم العثور على نتائج",
+    "START": "ابدأ",
+    "SPECIALITY": "التخصص؟",
+    "WHERE": "أين؟",
+    "CONNEXION": "تسجيل الدخول",
+    "REGISTRATION": "إنشاء حساب"
+  },
+  "PROFILE_MENU": {
+    "INFORMATION": "معلومات الحساب",
+    "MESSAGE": "رسائلي",
+    "MESSAGE_SUBTITLE": "قائمة محادثاتك الجارية.",
+    "INFORMATION_SUBTITLE": "عدّل بياناتك الشخصية بكل بساطة.",
+    "SECURITY": "الأمان واللغة",
+    "SECURITY_SUBTITLE": "كلمة المرور، اللغة… كل شيء تحت السيطرة هنا.",
+    "CONFIDENTIAL": "الخصوصية والبيانات",
+    "CONFIDENTIAL_SUBTITLE": "بياناتك ثمينة. هكذا نعتني بها.",
+    "DASHBOARD": "لوحة التحكم",
+    "DASHBOARD_SUBTITLE": "أدر بيانات نشاطك بسهولة.",
+    "COMPANY": "إدارة شركتي",
+    "COMPANY_SUBTITLE": "أدر مواعيدك السابقة والقادمة والملغاة بسهولة.",
+    "SHOP": "إدارة صالوني",
+    "SHOP_SUBTITLE": "أدر صالونك وخدماتك ومالية نشاطك.",
+    "FINANCIAL": "المتابعة المالية",
+    "ADMIN": "إدارة عامة",
+    "ADMIN_SUBTITLE": "أدر هذا التحفة بكل سهولة. العالم لك يا بطل!",
+    "CALENDAR": "الأجندة",
+    "CALENDAR_SUBTITLE": "أدر مواعيدك السابقة والقادمة بسهولة.",
+    "SELECT_SALON": "اختر صالونًا",
+    "NEW_SALON": "إنشاء صالون",
+    "SHOP_TO_CREATE": "نوع المتجر الذي تريد إنشاءه",
+    "CANCEL": "إلغاء",
+    "CREATE": "أنشئ متجري",
+    "INFO1": "أنت على وشك حذف متجرك في",
+    "INFO2": "هذا الإجراء لا يمكن التراجع عنه",
+    "SURE": "هل أنت متأكد من المتابعة؟",
+    "DELETE": "حذف"
+  },
+  "PROFILE": {
+    "TITLE": "المعلومات الأساسية",
+    "FIRSTNAME": "الاسم",
+    "LASTNAME": "اسم العائلة",
+    "PHONE": "رقم الهاتف",
+    "ADDRESS": "عنوان البريد الإلكتروني",
+    "CHANGE_USER": "تعديل المستخدم",
+    "CANCEL": "إلغاء",
+    "SUCCESS": "تم تعديل الملف الشخصي بنجاح",
+    "UPDATE_ERROR": "حدث خطأ أثناء تحديث كلمة المرور."
+  },
+  "SECURITY": {
+    "CHANGE_PASSWORD_TITLE": "تغيير كلمة المرور",
+    "ACTUAL_PASSWORD": "كلمة المرور الحالية",
+    "NEW_PASSWORD": "كلمة المرور الجديدة",
+    "CONFIRMED_PASSWORD": "تأكيد كلمة المرور الجديدة",
+    "CHANGE_PASSWORD": "تغيير كلمة المرور",
+    "CHANGE_OK": "تم تغيير كلمة المرور بنجاح",
+    "CHANGE_LANGUE": "تغيير اللغة",
+    "CHANGE_COUNTRY": "تغيير الدولة",
+    "LANGUE": "اللغة",
+    "COUNTRY": "الدولة"
+  },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Un nail art minimaliste pour un effet élégant et moderne.",
+    "CREATIVITE": "Choisissez des couleurs audacieuses pour exprimer votre créativité.",
+    "VINTAGE": "Un style vintage revisité pour un look unique !",
+    "QUESTION": "Commencez votre post par une question engageante pour inciter à interagir.",
+    "VISUELS": "Optimisez vos visuels avec des couleurs vives et un texte clair.",
+    "APPEL_ACTION": "Ajoutez un appel à l’action clair, comme 'Cliquez sur le lien' ou 'Partagez votre avis'.",
+    "LEGENDES": "Utilisez des légendes courtes mais percutantes pour Instagram et Bluesky.",
+    "COMMENTAIRES": "Incluez des questions ouvertes pour encourager les commentaires.",
+    "HASHTAGS": "Ajoutez des hashtags pertinents pour toucher un public plus large.",
+    "STATISTIQUES": "Ajoutez des statistiques ou des faits intéressants pour capter l’attention.",
+    "STORYTELLING": "Racontez une histoire captivante pour garder vos lecteurs engagés.",
+    "REUSSITES": "Mettez en avant vos réussites ou celles de vos clients pour LinkedIn.",
+    "AUTHENTICITE": "Soyez authentique et montrez votre vraie personnalité.",
+    "ANALYSE": "Analysez vos performances et ajustez votre stratégie en conséquence.",
+    "EMOJIS": "Utilisez des emojis pour rendre votre contenu plus visuel et attrayant.",
+    "HEURES": "Postez à des heures stratégiques pour maximiser la portée.",
+    "STORIES": "Intégrez des stories ou reels pour capter l’attention rapidement.",
+    "CAPTIVANTES": "Utilisez des légendes captivantes qui donnent envie de cliquer sur 'Lire la suite'.",
+    "ANECDOTE": "Partagez des anecdotes personnelles pour créer une connexion émotionnelle.",
+    "FORMATS": "Variez vos formats : images, vidéos, carrousels ou sondages.",
+    "TON": "Adaptez le ton de votre contenu en fonction de la plateforme utilisée.",
+    "MENTIONS": "Mentionnez d’autres utilisateurs ou marques pour élargir votre portée.",
+    "STYLES": "Testez différents styles visuels pour découvrir ce qui plaît le plus à votre audience.",
+    "VIDEOS": "Utilisez des vidéos courtes pour capter l'attention rapidement.",
+    "TEMOIGNAGES": "Ajoutez des témoignages clients pour renforcer votre crédibilité.",
+    "SONDAGES": "Créez des sondages pour engager votre audience.",
+    "VALEURS": "Mettez en avant vos valeurs pour toucher votre public cible.",
+    "AVANT_APRES": "Ajoutez un avant/après pour démontrer un impact clair.",
+    "CITATIONS": "Incorporez des citations inspirantes pour motiver votre audience.",
+    "STORYTELLING2": "Ajoutez des légendes en storytelling pour raconter une histoire.",
+    "HASHTAGS_SPECIFIQUES": "Adaptez vos hashtags à chaque publication pour maximiser la portée.",
+    "TEXTE_VISUEL": "Évitez de surcharger vos visuels avec trop de texte.",
+    "REPONSE": "Répondez rapidement aux commentaires pour créer une relation.",
+    "COULISSES": "Mettez en avant vos coulisses pour humaniser votre marque.",
+    "AUTHENTIQUE": "Utilisez des photos authentiques plutôt que des banques d'images.",
+    "MESSAGES_CLES": "Répétez vos messages clés régulièrement pour ancrer votre communication.",
+    "MOMENTS_FORTS": "Identifiez les moments forts de l'année pour vos publications.",
+    "TENDANCES": "Utilisez les tendances actuelles pour surfer sur l'actualité.",
+    "STATISTIQUES2": "Ajoutez des statistiques intéressantes pour capter l'attention.",
+    "CARROUSELS": "Créez des carrousels pour raconter une histoire en plusieurs étapes.",
+    "LIEN_BIO": "Mettez un lien clair dans votre bio pour diriger vos visiteurs.",
+    "GUIDE": "Créez un guide ou une checklist pour offrir de la valeur à votre audience.",
+    "GIF": "Ajoutez des GIF ou des stickers pour rendre vos stories plus dynamiques.",
+    "COULEURS": "Utilisez des couleurs cohérentes avec votre branding.",
+    "COLLABORATEURS": "Mettez en avant vos collaborateurs pour créer un sentiment d'équipe.",
+    "CONVERSATIONNEL": "Rédigez vos posts comme si vous parliez directement à une personne.",
+    "QUIZ": "Ajoutez des quiz interactifs pour augmenter l'engagement.",
+    "URGENCE": "Créez un sentiment d'urgence avec des promotions limitées.",
+    "AVANT_APRES_CONCRET": "Intégrez des photos avant/après pour montrer des résultats concrets.",
+    "COLLABORATION": "Créez des collaborations avec d'autres créateurs pour élargir votre audience.",
+    "TRANSPARENCE": "Soyez transparent sur vos processus ou vos produits.",
+    "ANIMATIONS": "Ajoutez des animations pour rendre vos vidéos plus dynamiques.",
+    "EDUCATIF": "Créez des posts éducatifs pour apporter de la valeur à votre audience.",
+    "RETOURS_EXPERIENCE": "Mettez en avant des retours d'expérience pour instaurer la confiance.",
+    "CONCIS": "Soyez concis dans vos messages pour aller droit au but.",
+    "MOTS_CLES": "Utilisez des mots-clés pertinents pour augmenter la visibilité.",
+    "CALENDRIER": "Créez un calendrier éditorial pour planifier vos publications.",
+    "MINIMALISTE2": "Expérimentez avec des visuels minimalistes pour un impact visuel fort.",
+    "TEMOIGNAGES_VIDEO": "Intégrez des témoignages vidéo pour plus d'authenticité.",
+    "HUMOUR": "Créez des posts humoristiques pour engager avec légèreté.",
+    "GRAPHIQUES": "Utilisez des graphiques ou infographies pour expliquer des idées complexes.",
+    "REGULARITE": "Publiez régulièrement pour garder votre audience engagée.",
+    "REMERCIEMENTS": "Incluez des remerciements ou des célébrations pour créer de la gratitude."
+  },
+  "PAYEMENT": {
+    "YOU": "أنت",
+    "HEADER_TITLE": "الدفع",
+    "SERVICE_TITLE": "الخدمة",
+    "SERVICE_NOTE": "ملاحظة:",
+    "ADDRESS_TITLE": "عنوان تقديم الخدمة",
+    "ADDRESS_RENDEZVOUS": "اللقاء أمام باب منزلي",
+    "ADDRESS_CHANGE": "اختيار عنوان آخر",
+    "PAYMENT_SECTION_TITLE": "الدفع",
+    "PAYMENT_METHOD": "البطاقة الرئيسية",
+    "PAYMENT_EXPIRE": "تنتهي",
+    "PAYMENT_NO_CARD": "لا توجد بطاقة رئيسية محددة",
+    "PAYMENT_NO_CARD_DESC": "يرجى إضافة أو اختيار بطاقة كطريقة الدفع الرئيسية.",
+    "SUMMARY_SUBTOTAL": "المجموع الفرعي",
+    "SUMMARY_SERVICE_FEE": "عمولة izyGlam",
+    "SUMMARY_DELIVERY_FEE": "رسوم الخدمة",
+    "SUMMARY_TOTAL": "الإجمالي",
+    "TITLE": "احجز موعدك عبر الإنترنت",
+    "FOR_WHO": "لمن ستحجز هذا الموعد؟",
+    "ADD_PROCHE": "إضافة قريب",
+    "WHERE": "أين سيتم تقديم الموعد؟",
+    "SELECT_ADDRESS": "اختر عنوانًا",
+    "ADD_ADDRESS": "إضافة عنوان",
+    "CARD_PAY": "الدفع بالبطاقة البنكية",
+    "CREDIT_PAY": "Paiement par crédit entreprise",
+    "EMPLOYEE_CREDIT_TITLE": "Utiliser mon crédit d'entreprise",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Mon crédit disponible :",
+    "EMPLOYEE_CREDIT_EMPTY": "Pas de crédit d'entreprise",
+    "CARD_NUM": "رقم البطاقة",
+    "CARD_NAME": "الاسم على البطاقة",
+    "EXPIRATION": "تاريخ الانتهاء",
+    "CVV": "CVV",
+    "RDV": "تفاصيل موعدك",
+    "RESUME": "ملخص الموعد",
+    "DATE": "التاريخ",
+    "HOUR": "الوقت",
+    "PRESTA": "الخدمة",
+    "EXPIRE": "تنتهي",
+    "DEFAULT": "افتراضي",
+    "NOCARD": "لا توجد بطاقات محفوظة",
+    "WITH": "مع",
+    "TOTAL": "الإجمالي المستحق",
+    "ANNULER": "إلغاء",
+    "RETOUR": "رجوع",
+    "CONTINUER": "متابعة",
+    "VALIDER": "تأكيد",
+    "ADRESSE": "العنوان",
+    "LEGAL_TEXT_1": "بالنقر على زر إتمام الطلب، فإنك توافق على عقد خدمات التوصيل مع izyGlam France SAS (ROS 841 983 828).",
+    "LEGAL_TEXT_2": "تتخلى تذكيرًا عن حقك في الانسحاب فيما يخص خدمات التوصيل. يمكنك اللجوء إلى وسيط مستهلك هنا.",
+    "LEGAL_TEXT_3": "إذا لم تكن موجودًا عند وصول المرسَل، فسيتم ترك طلبك أمام الباب. عند إتمام الطلب، تتحمل كامل المسؤولية بمجرد تسليمه. في حال غيابك، الطلبات التي تحتوي على كحول أو عناصر مقيّدة ستُعاد مباشرةً إلى المنشأة.",
+    "CLOSE_FORM": "إغلاق النموذج",
+    "ADD_CARD": "إضافة بطاقة",
+    "TRAITEMENT": "جاري المعالجة"
+  },
+  "PAYEMENT_VALIDATION": {
+    "VALIDATION": "تم التحقق من الدفع",
+    "THANKS": "شكرًا! تم أخذ حجزك بعين الاعتبار.",
+    "BACKHOME": "العودة إلى الرئيسية",
+    "PROBLEME": "مشكلة في الحجز",
+    "PAIEMENT": "تم خصم دفعتك، لكن تعذّر تأكيد الحجز.",
+    "THANKSCONTACT": "يرجى التواصل مع دعمنا على",
+    "FAILED": "فشل الدفع",
+    "VALIDATE": "تعذّر علينا التحقق من دفعتك. يرجى المحاولة مجددًا."
+  },
+  "CREATION_SHOP_STEPS": {
+    "TITLE": "izyGlam للمستقلين",
+    "STEP1": {
+      "TITLE": "العملاء يُجرون الطلب",
+      "TEXT": "يعثر العميل على منشأتك ويُجري الطلب عبر تطبيق izyGlam."
     },
-    "SHOPTYPE": {
-        "HAIRDRESSER": "مصفف شعر",
-        "NAILTECHNICIAN": "فني أظافر",
-        "MAKEUP": "خبير تجميل",
-        "WAXING": "اختصاصي إزالة الشعر",
-        "FACIAL": "عناية بالوجه",
-        "MASSAGE": "مدلك",
-        "EYELASH": "خبير رموش",
-        "EYEBROW": "خبير تغذية",
-        "TANNING": "تسمير البشرة",
-        "BARBER": "حلاق",
-        "ACUPUNCTURE": "اختصاصي وخز بالإبر",
-        "OTHER": "أخرى",
-        "COIFFURE": "تصفيف الشعر",
-        "MANUCURE": "عناية بالأظافر",
-        "VISAGE": "عناية بالوجه",
-        "MAQUILLAGE": "تجميل",
-        "EPILATION": "إزالة الشعر",
-        "BRONZAGE": "تسمير",
-        "PARTUM": "ما بعد الولادة",
-        "NUTRITION": "تغذية",
-        "FITNESS": "لياقة بدنية",
-        "STYLISME": "تنسيق الأزياء",
-        "YOGA": "استرخاء",
-        "DEVELOPPEMENT": "تطوير الذات"
+    "STEP2": {
+      "TITLE": "أنت تقبل الحجز",
+      "TEXT": "توافق على الحجز ويتم تحديث أجندتك."
     },
-    "SUCCESS": {
-        "FAVORITE_ADDED": "تمت إضافة الصالون إلى المفضلة",
-        "FAVORITE_REMOVED": "تمت إضافة الصالون إلى المفضلة",
-        "PHOTO_DELETE": "تم حذف الصورة من المعرض",
-        "PHOTO_UPLOAD": "تم رفع الصورة بنجاح",
-        "PARTIAL_REFUND_CONFIRM": "تم تأكيد الاسترداد الجزئي!",
-        "CODE_SAVED": "تم توليد الرمز.",
-        "USERCREATED": "تم إنشاء المستخدم بنجاح. تم إرسال رسالة تأكيد إلى بريدك الإلكتروني.",
-        "SUBSCRIBE_SUCCESS": "تم أخذ اشتراكك بعين الاعتبار.",
-        "EMAIL_VERIFIED": "تم تفعيل حسابك 🎉 يمكنك الآن تسجيل الدخول.",
-        "EMAIL_RESENT": "تمت إعادة إرسال بريد التحقق. يرجى التحقق من صندوق الوارد.",
-        "BOOKING_CREATED": "تم تسجيل حجزك بنجاح.",
-        "PAYMENT_OK": "تم تأكيد الدفع.",
-        "REFUND_OK": "تم تنفيذ الاسترداد.",
-        "USERUPDATED": "تم تحديث المستخدم.",
-        "SETTINGS_UPDATED": "تم تحديث الإعدادات.",
-        "REVIEW_ADDED": "تم نشر رأيك 🎉",
-        "SHOPUPDATED": "تم تحديث المتجر.",
-        "BOOKING_ACCEPTED": "تم قبول الحجز.",
-        "BOOKING_FINISHED": "تم إنهاء الحجز.",
-        "BOOKING_REFUSED": "تم رفض الحجز.",
-        "BOOKING_DELETED": "تم حذف الحجز.",
-        "CODE_GENERATED": "تم توليد الرمز.",
-        "CODE_CONFIRMED": "تم تأكيد الرمز.",
-        "INVOICE_DOWNLOADED": "تم تنزيل الفاتورة.",
-        "MARKED_NO_SHOW_CLIENT": "تم تمييز العميل كغائب.",
-        "COMPANY_CREDITED": "تم شحن رصيد حساب الشركة.",
-        "MARKED_NO_SHOW_PRO": "تم تمييز المقدّم كغائب.",
-        "EMPLOYEE_CREDITED": "تم شحن رصيد حساب الموظف.",
-        "NO_SHOW_PRO": "تم تطبيق غرامة وإجراء الاسترداد.",
-        "EMPLOYEE_DELETED": "تم حذف الموظف.",
-        "SLOT_SELECTED": "تم اختيار الموعد",
-        "PASSWORD_RESET": "تمت إعادة تعيين كلمة المرور.",
-        "INVOICE_GENERATED": "تم توليد الفواتير.",
-        "REVIEW_SAVED": "تم حفظ الرأي، شكرًا!",
-        "DEFAULT_PASSWORD_UPDATED": "تم تحديث كلمة المرور الافتراضية.",
-        "COMPANY_CREATED": "تم إنشاء حسابك المهني بنجاح."
+    "STEP3": {
+      "TITLE": "وقت الموعد",
+      "TEXT": "ننبّهك مسبقًا بالمواعيد القادمة ونوجّهك للوصول إلى كل عميل."
+    }
+  },
+  "COMPANY": {
+    "CREDIT_COMPANY": "شحن رصيد حساب الشركة",
+    "SOLDE": "الرصيد الحالي",
+    "CREDIT": "المبلغ المطلوب شحنه",
+    "COMPANY": "شحن رصيد حساب الشركة",
+    "DEPENSE": "متابعة المصروفات",
+    "DATE": "التاريخ",
+    "COUNT": "المبلغ",
+    "EMPLOYEE": "الموظف",
+    "DESCRIPTION": "الوصف"
+  },
+  "CREATION_SHOP": {
+    "ALREDAY_SHOP": "لديك بالفعل حساب شريك أو شركة!",
+    "NOT_CONNECTED": "يرجى تسجيل الدخول لتسجيل صالون",
+    "TITLE": "انطلق!",
+    "TITLE2": "لننشئ صالونًا!",
+    "STEP1_TITLE": "Informations du salon",
+    "STEP2_TITLE": "Vérification professionnelle",
+    "STEP2_TAGLINE": "Étape 2 sur 2 · Vos documents restent privés et protégés.",
+    "NAME": "اسم الصالون",
+    "ADDRESS": "عنوان شركتك",
+    "STREET": "الشارع",
+    "CITY": "المدينة",
+    "CODE_POSTAL_POSSIBLE": "الرموز البريدية المخدومة",
+    "CODE_POSTAL": "الرمز البريدي",
+    "COUNTRY": "الدولة",
+    "ADDRESSPLACEHOLDER": "١٢٣، شارع الرئيسي",
+    "FLOOR": "الطابق/الجناح (اختياري)",
+    "BUSINESSTYPE": "نوع الشركة",
+    "FIRSTNAME": "الاسم",
+    "LASTNAME": "اسم العائلة",
+    "PASSWORD": "كلمة المرور",
+    "PASSWORDCONFIRMED": "تأكيد كلمة المرور",
+    "EMAIL": "البريد الإلكتروني",
+    "PHONE": "رقم الهاتف المحمول",
+    "WHATSAPP": "أوافق على تلقي الرسائل عبر واتساب",
+    "BUTTON": "تسجيل المتجر",
+    "SUCCESS": "تم إنشاء المتجر بنجاح!",
+    "ERROR": "حدث خطأ أثناء إنشاء المتجر:",
+    "ERROR1": "اسم شركتك مطلوب.",
+    "ERROR2": "عنوان شركتك مطلوب.",
+    "ERROR3": "نوع الشركة مطلوب.",
+    "ERROR4": "الاسم مطلوب.",
+    "CHOOSE_COUNTRY": "اختر دولة",
+    "POSTAL_CODE": "الرمز البريدي",
+    "CHOOSE_CITY": "اختر مدينة",
+    "ERROR5": "اسم العائلة مطلوب.",
+    "ERROR6": "البريد الإلكتروني مطلوب.",
+    "ERROR7": "رقم الهاتف المحمول مطلوب.",
+    "ERROR8": "يجب أن توافق على تلقي الرسائل عبر واتساب.",
+    "VERIF_TITLE": "Vérification de votre profil professionnel",
+    "VERIF_SUBTITLE": "Nous vérifions chaque professionnel pour protéger vos clients et votre réputation.",
+    "VERIF_ID_TITLE": "Pièce d’identité",
+    "VERIF_ID_DESC": "Carte d’identité, passeport ou titre de séjour en cours de validité.",
+    "VERIF_INSURANCE_TITLE": "تأمين مهني",
+    "VERIF_INSURANCE_DESC": "شهادة صالحة تغطي خدماتك المنزلية (مطلوبة).",
+    "VERIF_KBIS_TITLE": "Extrait Kbis (optionnel)",
+    "VERIF_KBIS_DESC": "Recommandé si vous exercez via une société immatriculée.",
+    "VERIF_UPLOAD_LABEL": "Téléverser un document",
+    "VERIF_ALLOWED_FORMATS": "Formats acceptés : PDF, JPG, PNG · taille max 10 Mo.",
+    "VERIF_MANDATORY_HINT": "La pièce d’identité et l’assurance sont obligatoires pour activer votre profil.",
+    "VERIF_STATUS_MISSING": "Document manquant",
+    "VERIF_STATUS_PENDING": "En cours de vérification",
+    "VERIF_STATUS_APPROVED": "Validé",
+    "VERIF_STATUS_REJECTED": "Refusé · nouveau document requis",
+    "VERIF_PRIMARY_BUTTON": "Envoyer les documents",
+    "VERIF_SKIP_BUTTON": "Je compléterai plus tard",
+    "VERIF_TOAST_SUCCESS": "Vos documents ont été envoyés pour vérification.",
+    "VERIF_TOAST_ERROR": "Impossible de téléverser vos documents pour le moment.",
+    "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
+    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
+  },
+  "MAIN": {
+    "CHANGE_ADDRESS": "تعديل العنوان",
+    "FIND_SHOP": "البحث عن متجر",
+    "CATEGORIES": "الفئات",
+    "OFFRE": "عروض اللحظة",
+    "DISCOVER": "اكتشف",
+    "APPRECIATE": "الأكثر تقديرًا",
+    "SMART": "عروض ذكية",
+    "TOP10": "أفضل 10 هذا الأسبوع",
+    "SEARCH_RESULT": "نتائج البحث",
+    "NOT_AVAILABLE": "غير متاح بعد لهذا العنوان",
+    "NEW_ADDRESS": "إضافة عنوان جديد",
+    "CHOOSE_ADDRESS": "اختر عنوانًا",
+    "CHOOSE_COUNTRY": "اختر دولة",
+    "CHOOSE_CITY": "اختر مدينة",
+    "CHOOSE_ARRONDISSEMENT": "اختر حيًّا",
+    "CANCEL": "إلغاء",
+    "SAVE": "حفظ",
+    "CLOSE": "إغلاق",
+    "ALL": "دليل المواهب",
+    "ALL2": "القائمة الكاملة للمهنيين المتاحين",
+    "DISCOVER2": "اختياراتنا المفضّلة حالياً",
+    "APPRECIATE2": "مواهب مُعتمدة من المجتمع",
+    "SMART2": "خدمات ذكية بلا تنازل",
+    "TOP102": "الأبرز هذا الأسبوع",
+    "CATEGORIES2": "تصفّح فئاتنا في الجمال والعافية"
+  },
+  "ADMIN_SHOP": {
+    "NAME": "الاسم",
+    "CITY": "المدينة",
+    "NOTE": "التقييم",
+    "DOCS_OK": "Validés",
+    "DOCS_NOT_VALID": "Non validés",
+    "ACTIVE": "نشط",
+    "INACTIVE": "Inatif",
+    "STATUS": "Statut",
+    "DOCUMENTS": "المستندات",
+    "MIDDLE_PRICE": "السعر المتوسط",
+    "PROMOTION": "عرض ترويجي",
+    "ACTIONS": "إجراءات",
+    "MODIFIER": "تعديل معلومات المتجر",
+    "SHOP_NAME": "اسم المتجر",
+    "DESCRIPTION": "الوصف",
+    "PRINCIPALE": "الصورة الرئيسية",
+    "SHOP": "نوع المتجر",
+    "ARRONDISSEMENT": "الحي",
+    "MINIMUM_DELAI": "الحد الأدنى للمهلة",
+    "DISTANCE": "أقصى مسافة (كم)",
+    "EMPLACEMENT": "الموقع",
+    "HOURS_MORNING": "ساعات العمل - صباحًا",
+    "HOURS_AFTERNOON": "ساعات العمل - مساءً",
+    "ACTIVE_PROMO": "عرض فعّال",
+    "CANCEL": "إلغاء",
+    "ENREGISTRER": "حفظ"
+  },
+  "CREATE_SHOP_INFO": {
+    "TITLE": "نمِّ نشاطك",
+    "TEXT": "آلاف مستخدمي تطبيق izyGlam قد يبحثون عن مطعم في منطقتك…",
+    "IMAGE": "صورة"
+  },
+  "CREATE_SHOP_STEPS": {
+    "TITLE": "لماذا izyGlam؟",
+    "STEP1": {
+      "TITLE": "اعمل بشروطك الخاصة",
+      "TEXT": "نظّم جدولك وأدر خدماتك بحرية تامة. استفد من منصة مرنة تتكيف مع احتياجاتك لتعظيم نشاطك."
     },
-    "ERROR": {
-        "NO_CITIES": "رمز بريدي بلا تطابق",
-        "NOT_AVAILABLE": "لسنا متاحين في هذا الموقع بعد. لا تتردد في المحاولة مرة أخرى خلال بضعة أشهر!",
-        "LOGIN_REQUIRED": "يرجى تسجيل الدخول لإدارة المفضلات.",
-        "INVALID_IMAGE": "صورة غير صالحة.",
-        "NO_SLOTS": "لا توجد مواعيد متاحة لهذه الخدمة.",
-        "NO_SHOP_SELECTED": "لم يتم اختيار أي متجر.",
-        "NO_SERVICE_SELECTED": "لم يتم اختيار أي خدمة.",
-        "ORDER_ERROR": "حدث خطأ أثناء تحديث الطلب.",
-        "CODE_ERROR": "حدث خطأ أثناء حفظ الرمز.",
-        "INVOICE_GENERATED_ERROR": "حدث خطأ أثناء توليد الفواتير.",
-        "USERNOTCREATED": "تعذّر إنشاء المستخدم.",
-        "INSUFFICIENT_COMPANY_CREDIT": "رصيد الشركة غير كافٍ لهذا الشحن.",
-        "GENERIC_ERROR": "✨ عذرًا… حدث خطأ غير متوقع. يرجى المحاولة مجددًا ✨",
-        "COMPANY_CREDITED": "تم شحن رصيد حساب الشركة.",
-        "LINK_INVALID_OR_MISSING": "رابط غير صالح أو مفقود.",
-        "LINK_INVALID_OR_EXPIRED": "رابط غير صالح أو منتهي الصلاحية.",
-        "EMAIL_NOT_FOUND": "بريد المستخدم الإلكتروني غير موجود.",
-        "PAYMENT_FAILED": "فشل الدفع.",
-        "BOOKING_FAILED": "فشلت عملية إنشاء الحجز.",
-        "LOAD_CARDS_FAILED": "حدث خطأ أثناء تحميل بطاقاتك.",
-        "LOAD_SHOP_FAILED": "حدث خطأ أثناء تحميل الصالون.",
-        "LOAD_PRODUCTS_FAILED": "حدث خطأ أثناء تحميل الخدمات.",
-        "INVALID_CODE": "الرمز الذي أدخلته غير صالح.",
-        "PASSWORD_CHANGED": "تم تحديث كلمة المرور الخاصة بك.",
-        "PASSWORDS_IDENTICAL": "يجب أن تكون كلمة المرور الجديدة مختلفة عن الحالية.",
-        "INVALID_AMOUNT": "المبلغ المدخل غير صالح.",
-        "INVALID_CURRENT_PASSWORD": "كلمة المرور الحالية غير صحيحة.",
-        "INVALID_CURRENT_PASSWORD_OR_GENERIC": "كلمة المرور الحالية غير صحيحة أو حدث خطأ.",
-        "PASSWORD_UPDATE_FAILED": "فشلت عملية تعديل كلمة المرور.",
-        "PASSWORD_UPDATE_GENERIC": "حدث خطأ أثناء تحديث كلمة المرور.",
-        "PASSWORDS_MISMATCH_OR_TOO_SHORT": "كلمتا المرور غير متطابقتين أو قصيرتان (الحد الأدنى 8 أحرف).",
-        "INVALID_PASSWORD": "لا يمكن أن تكون كلمة المرور فارغة.",
-        "PASSWORD_TOO_SHORT": "يجب أن تحتوي كلمة المرور على 8 أحرف على الأقل."
+    "STEP2": {
+      "TITLE": "عزّز حضورك على الإنترنت",
+      "TEXT": "اجذب المزيد من العملاء عبر أدوات التسويق في التطبيق، وارفع نتائجك بفضل زيادة الظهور."
     },
-    "STRIPE": {
-        "MISSING_PK": "إعداد Stripe مفقود.",
-        "LOAD_FAILED": "تعذّر تحميل Stripe",
-        "NOT_READY": "لم يتم تهيئة Stripe",
-        "CONFIRM_FAILED": "فشل حفظ البطاقة",
-        "CARD_SAVED": "تم حفظ البطاقة بنجاح ✅",
-        "PM_FAILED": "فشل إنشاء البطاقة",
-        "SI_FAILED": "تعذّر تهيئة حفظ البطاقة",
-        "ATTACH_FAILED": "تعذّر ربط البطاقة بالحساب",
-        "SAVE_CARD": "حفظ البطاقة",
-        "ADD_CARD": "إضافة بطاقة"
+    "STEP3": {
+      "TITLE": "اكسب ولاء عملائك",
+      "TEXT": "طوّر علاقات مستدامة بتحليل تفضيلات عملائك، الرد على آرائهم، وتقديم مزايا ولاء."
+    }
+  },
+  "INFO_SHOP_STEPS": {
+    "STEP1": {
+      "TITLE": "بسّط إدارة نشاطك",
+      "TEXT": "أدر نشاطك بكل راحة مع izyGlam، الحلّ المتكامل لمحترفي الرفاه. استفد من أدوات مرنة ومرافقة شخصية لتلبية كل احتياجاتك."
     },
-    "AUTH": {
-        "LOGIN_REQUIRED": "يرجى تسجيل الدخول"
+    "STEP2": {
+      "TITLE": "عزّز مبيعاتك",
+      "TEXT": "كل يوم، يستخدم آلاف الأشخاص izyGlam للعثور على خبراء جمال بالقرب منهم. اغتنم الفرصة للوصول إلى عملاء جدد في مجالك."
     },
-    "COMMON": {
-        "LOADING": "جارٍ التحميل…",
-        "UNEXPECTED_ERROR": "حدث خطأ غير متوقع"
+    "STEP3": {
+      "TITLE": "رضا العملاء مضمون",
+      "TEXT": "مع izyGlam، قدّم تجربة مخصّصة لعملائك. أدر مواعيدك بسهولة، تواصل بسرعة وقدّم خدمات مناسبة. عملاؤك يستفيدون من عناية حيثما ومتى أرادوا، بما يضمن رضاهم وولاءهم."
+    }
+  },
+  "CREATION_COMPANY_STEPS": {
+    "TITLE": "izyGlam لشركتك؟",
+    "STEP1": {
+      "TITLE": "موظفوك وعملاؤك يحجزون خدمات",
+      "TEXT": "يختار موظفوك أو عملاؤك خدمات الرفاه المناسبة لهم مباشرة عبر تطبيق izyGlam."
     },
-    "MESSAGE": {
-        "SERVICE_CLIENT": "خدمة العملاء",
-        "WRITE": "اكتب رسالة…"
+    "STEP2": {
+      "TITLE": "تحدّد مبلغًا مخصّصًا",
+      "TEXT": "تتحكم بشحن أرصدة موظفيك وعملائك. يمكنك الشحن دوريًا أو بشكل مرّة واحدة."
     },
-    "FORGOT_DETAILS": {
-        "CONNEXION": "أدخل بريدك الإلكتروني لتسجيل الدخول",
-        "VALIDE": "يرجى إدخال عنوان بريد إلكتروني صالح.",
-        "LOADING": "جارٍ التحميل",
-        "VERIF": "جاري التحقق من معلوماتك، يرجى الانتظار",
-        "ACCUEIL": "العودة إلى الصفحة الرئيسية",
-        "OK": "تم تسجيل الدخول بنجاح!",
-        "SPACE": "جارٍ إعادة التوجيه إلى مساحتك"
+    "STEP3": {
+      "TITLE": "تُنفَّذ الخدمات",
+      "TEXT": "خبراؤنا في الجمال يتوجّهون إلى موظفيك أو إلى مقركم لتقديم الخدمات المحجوزة، لضمان تجربة رفاه مثالية."
+    }
+  },
+  "CREATE_COMPANY_INFO": {
+    "TITLE": "عزّز قيمة شركتك",
+    "TEXT": "آلاف مستخدمي تطبيق izyGlam يبحثون عن خدمات رفاه. قدّم لموظفيك وعملائك وصولًا مميزًا لأفضل خبراء الجمال بالقرب منهم.",
+    "IMAGE": "صورة"
+  },
+  "CREATE_COMPANY_STEPS": {
+    "TITLE": "لماذا izyGlam؟",
+    "STEP1": {
+      "TITLE": "كافئ ووفّر مزايا لموظفيك",
+      "TEXT": "قدّم ميزة فريدة لفرقك عبر ميزانية جمال شهرية. مصففات، اختصاصيات تجميل وغيرهن من خبراء الرفاه تحت تصرّفهم، لرفع الرضا وتعزيز الانتماء."
     },
-    "VERIFY_EMAIL": {
-        "VERIFICATION": "جاري التحقق",
-        "VALIDE": "نقوم بالتحقق من رابط التفعيل الخاص بك. لن يستغرق الأمر سوى لحظة.",
-        "ACCOUNT": "تم تفعيل الحساب",
-        "CONNECT": "تسجيل الدخول",
-        "REGISTER": "سجّل",
-        "OUPS": "عفوًا",
-        "WRITE": "بحاجة إلى مساعدة؟ راسلنا على",
-        "RESEND": "إعادة إرسال بريد التفعيل"
+    "STEP2": {
+      "TITLE": "حسّن صورتك العلامية",
+      "TEXT": "نظّم فعاليات جمال لعملائك أو شركائك، أو أدمج خدمات izyGlam في برامج الولاء. اترك أثرًا بخدمات فاخرة تناسب كل مناسبة."
     },
-    "BANK": {
-        "ENTER_BANK_INFO": "معلوماتي البنكية",
-        "ADD_BANK_INFO": "إضافة معلوماتي البنكية",
-        "BANK_NAME": "اسم البنك",
-        "HOLDER_NAME": "اسم صاحب الحساب",
-        "COUNTRY": "الدولة",
-        "SAVE": "حفظ"
+    "STEP3": {
+      "TITLE": "حسّن الرفاه في العمل",
+      "TEXT": "سهّل وصول موظفيك لخدمات الرفاه مباشرة في مكان العمل أو بالقرب منه. بالاهتمام برفاههم، ترفع دافعيتهم وتعزّز تماسك فرقك."
+    }
+  },
+  "INFO_COMPANY_STEPS": {
+    "STEP1": {
+      "TITLE": "بسّط وصول فرقك للرفاه",
+      "TEXT": "مع izyGlam، قدّم لموظفيك حلًا بسيطًا ومرنًا للاعتناء بأنفسهم. سواءً لعناية تجميلية أو جلسات لياقة، كل شيء في متناول اليد."
     },
-    "LOADER": {
-        "LOADING": "جارٍ التحميل…"
+    "STEP2": {
+      "TITLE": "قدّم مزايا مبتكرة لعملائك",
+      "TEXT": "عزّز علاقتك مع عملائك بتقديم خدمات رفاه خلال الفعاليات أو ضمن برامج الولاء. أظهر لهم اهتمامك بتجربتهم عبر لمسات فريدة."
     },
-    "SPONSORS": {
-        "TITLE": "رعاتنا",
-        "SPONSORISED": "برعاية"
+    "STEP3": {
+      "TITLE": "رفاه مُفصَّل أينما ومتى شئت",
+      "TEXT": "مع izyGlam، يمكن لموظفيك وعملائك الاستفادة من خدمات عالية الجودة أينما كانوا. خبراء مختارون لتلبية احتياجاتهم الخاصة، ومرافقة شخصية لضمان رضاهم."
+    }
+  },
+  "SIDEBAR": {
+    "PROFILE": "إدارة الحساب",
+    "ORDERS": "الطلبات السابقة",
+    "MESSAGES": "Mes messages",
+    "FAVORITES": "المفضلات",
+    "HELP": "مساعدة",
+    "MY_ABO": "اشتراكي",
+    "PRICES": "خطط الأسعار",
+    "FIDELITY": "برنامج الولاء",
+    "LOGOUT": "تسجيل الخروج",
+    "YOUR_BEAUTY_SERVICES": "اعرض خدمات جمالك",
+    "YOUR_COMPANY": "سجّل شركتك"
+  },
+  "SUBTITLES": {
+    "HELP": "تحتاج مساعدة؟ هذه الصفحة هنا لأجلك."
+  },
+  "ORDERS": {
+    "TITLE": "طلباتي",
+    "TITLE_SUBTITLE": "أدر مواعيدك السابقة والقادمة والملغاة بسهولة.",
+    "UPCOMING_SECTION": "📅 قادم",
+    "NO_UPCOMING": "لا توجد لديك خدمات مجدولة.",
+    "PAST_SECTION": "✅ سابقة",
+    "NO_PAST": "لا توجد لديك خدمات مُنجزة.",
+    "ADDRESS": "العنوان",
+    "DATE": "التاريخ",
+    "TOTAL": "الإجمالي",
+    "ITEMS": "عناصر",
+    "DELETE": "حذف",
+    "VISIT": "زيارة",
+    "PRESTA_FOR": "خدمة لـ",
+    "AT": "في",
+    "ORDER_AGAIN": "اطلب مجددًا",
+    "INVOICE": "طلب فاتورة",
+    "REVIEW": "أضف رأيك",
+    "CANCEL": "إلغاء"
+  },
+  "FIDELITY": {
+    "TITLE": "مفضلاتي",
+    "AGAIN": "مرّة أخرى",
+    "AGAIN_SUBTITLE": "قبل مكافأتك",
+    "TITLE_SUBTITLE": "لفتح هديتك",
+    "DATE": "صالح حتى",
+    "HISTO": "سجلّ خدماتي"
+  },
+  "FAVORITES": {
+    "TITLE": "مفضلاتي",
+    "TITLE_SUBTITLE": "اعثر على صالوناتك المفضلة بلحظة."
+  },
+  "SHOP": {
+    "MOVING_FEE": "رسوم الخدمة:",
+    "DISTANCE": "أقصى مسافة:",
+    "PAYEMENT": "الدفع بالبطاقة وبـ PayPal مقبول",
+    "PRESS_FOR_INFO": "اضغط للاطلاع على المواعيد والمعلومات وغيرها.",
+    "GALLERY": "معرض الصور",
+    "SEE_MORE": "عرض المزيد",
+    "SEE_LESS": "عرض أقل"
+  },
+  "LOGIN": {
+    "TITLE": "أدخل بيانات تسجيل الدخول.",
+    "FORGET_PASSWORD": "هل نسيت كلمة المرور؟",
+    "CONTINUER": "متابعة",
+    "CONTINUE_WITH": "متابعة عبر",
+    "OR": "أو",
+    "QRCODE": "سجّل الدخول عبر رمز الاستجابة السريعة",
+    "CGU": "بالمتابعة، فإنك توافق على تلقي مكالمات ورسائل واتساب أو رسائل نصية (بما في ذلك بالطرق الآلية) من izyGlam والشركات التابعة لها على الرقم المزوّد.",
+    "PLACEHOLDER_EMAIL": "عنوان البريد الإلكتروني",
+    "PLACEHOLDER_PASSWORD": "كلمة المرور",
+    "PLACEHOLDER_PASSWORD_NEW": "كلمة مرور جديدة",
+    "PLACEHOLDER_PASSWORD_CONFIRMED": "تأكيد كلمة المرور",
+    "CHANGE_PASSWORD": "عدّل كلمة المرور",
+    "REINIT": "إعادة التعيين"
+  },
+  "SIGNUP": {
+    "GENRE": "النوع",
+    "CHOOSE": "اختر",
+    "SEX_MALE": "ذكر",
+    "SEX_FEMALE": "أنثى",
+    "TITLE": "أدخل معلوماتك الشخصية.",
+    "CONTINUER": "متابعة",
+    "OR": "أو",
+    "QRCODE": "سجّل الدخول عبر رمز الاستجابة السريعة",
+    "CGU": "بالمتابعة، فإنك توافق على تلقي مكالمات ورسائل واتساب أو رسائل نصية (بما في ذلك بالطرق الآلية) من izyGlam والشركات التابعة لها على الرقم المزوّد.",
+    "PLACEHOLDER_FIRSTNAME": "الاسم",
+    "PLACEHOLDER_LASTNAME": "اسم العائلة",
+    "PLACEHOLDER_EMAIL": "البريد الإلكتروني",
+    "PLACEHOLDER_EMAIL_REQUIRED": "البريد الإلكتروني مطلوب",
+    "PLACEHOLDER_EMAIL_WRONG": "صيغة البريد الإلكتروني غير صالحة",
+    "PLACEHOLDER_PHONE": "الهاتف",
+    "PLACEHOLDER_PHONE_NUMBER": "رقم الهاتف",
+    "PLACEHOLDER_PASSWORD": "كلمة المرور",
+    "PLACEHOLDER_PASSWORDCONFIRMED": "تأكيد كلمة المرور",
+    "COUNTRY": "الدولة"
+  },
+  "LANGUE": {
+    "FRANCAIS": "الفرنسية",
+    "ANGLAIS": "الإنجليزية",
+    "ESPAGNOL": "الإسبانية",
+    "NEERLANDAIS": "الهولندية",
+    "ITALIEN": "الإيطالية",
+    "ALLEMAND": "الألمانية",
+    "PORTUGAIS": "البرتغالية",
+    "POLONAIS": "البولندية",
+    "DANOIS": "الدانماركية",
+    "FINNOIS": "الفنلندية",
+    "SUEDOIS": "السويدية",
+    "ARABE": "العربية",
+    "TURC": "التركية",
+    "CHINOIS": "الصينية",
+    "RUSSE": "الروسية",
+    "PERSAN": "الفارسية",
+    "UKRAINIEN": "الأوكرانية",
+    "ROUMAIN": "الرومانية",
+    "CATALAN": "الكتالونية",
+    "BASQUE": "الباسكية",
+    "GALICIEN": "الجاليكية",
+    "ALBANAIS": "الألبانية",
+    "KURDE": "الكردية",
+    "ESTONIEN": "الإستونية",
+    "SOMALIEN": "الصومالية",
+    "BIELORUSSE": "البيلاروسية",
+    "JAPONAIS": "اليابانية",
+    "COREEN": "الكورية",
+    "INDONESIEN": "الإندونيسية",
+    "MALAIS": "الملايوية",
+    "THAI": "التايلاندية",
+    "VIETNAMIEN": "الفيتنامية",
+    "TAGALOG": "التاغالوغ",
+    "BENGALI": "البنغالية"
+  },
+  "COUNTRY": {
+    "FRANCE": "فرنسا",
+    "ALLEMAGNE": "ألمانيا",
+    "SPAIN": "إسبانيا",
+    "ITALY": "إيطاليا",
+    "DANEMARK": "الدنمارك",
+    "FINLAND": "فنلندا",
+    "NETHERLAND": "هولندا",
+    "POLAND": "بولندا",
+    "PORTUGAL": "البرتغال",
+    "SWEDEN": "السويد",
+    "CHINA": "الصين",
+    "INDIA": "الهند",
+    "JAPAN": "اليابان",
+    "SOUTH_KOREA": "كوريا الجنوبية",
+    "INDONESIA": "إندونيسيا",
+    "PHILIPPINES": "الفلبين",
+    "THAILAND": "تايلاند",
+    "VIETNAM": "فيتنام",
+    "MALAYSIA": "ماليزيا",
+    "SINGAPOURE": "سنغافورة",
+    "EMIRAT_ARABE": "الإمارات العربية المتحدة",
+    "SAUDI_ARABIA": "المملكة العربية السعودية"
+  },
+  "ADMIN_PARAM": {
+    "TITLE": "إعدادات المنصّة",
+    "COMMISSION": "نسبة العمولة (%)",
+    "0to100": "قيمة مطلوبة بين 0 و100",
+    "SERVICE": "رسوم الخدمة (€)",
+    "WEEKS": "عدد الأسابيع المعروضة",
+    "SUP0": "قيمة مطلوبة أكبر من 0",
+    "LESS24": "رسوم الإلغاء قبل أقل من 24 ساعة (%)",
+    "LESS48": "رسوم الإلغاء قبل أقل من 48 ساعة (€)",
+    "DELAY": "الحد الأدنى للحجز (ساعات)",
+    "TVA": "نسبة ضريبة القيمة المضافة (%)",
+    "ADS": "تفعيل الإعلانات",
+    "COMPANY": "تفعيل التجارة مع الشركات",
+    "FIDELITY": "تفعيل الولاء",
+    "MULTI_SHOP": "تفعيل المتاجر المتعددة",
+    "PROMO": "تفعيل العروض الترويجية في المتجر",
+    "SPONSORS": "تفعيل قسم الرعاة في صفحة الهبوط",
+    "SAVE": "حفظ"
+  },
+  "ADMIN_PAGE": {
+    "ALL_SHOPS": "إجمالي المتاجر",
+    "ACT_SHOPS": "عدد المتاجر النشطة",
+    "USERS": "إجمالي المستخدمين",
+    "NBR_USERS": "عدد المستخدمين المسجّلين",
+    "CA_TOTAL": "إجمالي رقم الأعمال",
+    "CA_GENERATED": "رقم الأعمال المتولد",
+    "SHOPS_PERFO": "أداء المتاجر",
+    "SHOP_NAME": "اسم المتجر",
+    "CITY": "المدينة",
+    "REVENUES": "الإيرادات",
+    "BOOKINGS": "عدد الحجوزات",
+    "NOTE": "المتوسط التقييمي",
+    "ACTIONS": "إجراءات",
+    "DETAILS": "تفاصيل",
+    "ADJUST": "تعديل",
+    "SHOP_ADJUST": "تعديل المتجر",
+    "STILL_DEVELOPPED": "هذه الميزة قيد التطوير",
+    "CLOSE": "إغلاق"
+  },
+  "CALENDAR_MODAL": {
+    "TITLE": "تفاصيل الحدث",
+    "CLIENT": "العميل",
+    "DEBUT": "البداية",
+    "FIN": "النهاية",
+    "ADDRESS": "العنوان",
+    "PHONE": "الهاتف",
+    "CANCEL": "إلغاء",
+    "SAVE": "حفظ"
+  },
+  "CALENDAR": {
+    "ADD_EVENT": "إنشاء حدث",
+    "COMING": "قادم",
+    "PAST": "سابقة",
+    "CANCELLED": "ملغاة",
+    "NO_CANCELLED": "لا توجد طلبات ملغاة."
+  },
+  "CHAT": {
+    "ONLINE_ASSISTANCE": "مساعدة عبر الإنترنت"
+  },
+  "COMPANY_MANAGEMENT": {},
+  "EMPLOYEE_MANAGEMENT": {
+    "TITLE": "شحن رصيد الموظف",
+    "AMOUNT": "المبلغ المراد شحنه",
+    "CANCEL": "إلغاء",
+    "SAVE": "تأكيد"
+  },
+  "DASHBOARD": {
+    "TOTAL": "إجمالي الحجوزات",
+    "TOTAL_MONTH": "حجوزات هذا الشهر",
+    "GENERATED": "الإيرادات المتولدة",
+    "MONTHLY": "إيرادات هذا الشهر",
+    "AVG_NOTE": "المتوسط التقييمي",
+    "BASED_ON": "استنادًا إلى",
+    "REVIEWS": "آراء",
+    "NEXT_APPOINTEMENT": "المواعيد القادمة",
+    "POPULAR_SERVICES": "أكثر الخدمات شعبية",
+    "RESERVATION": "حجوزات"
+  },
+  "FINANCE": {
+    "PROGRESS": "التطوّر منذ شهر-1",
+    "PROGRESSION": "التقدّم",
+    "TOTAL_GENERATED": "إجمالي الرقم المتولد",
+    "CA": "رقم الأعمال",
+    "COMMISSION_TAKEN": "العمولة المقتطعة",
+    "COMMISSIONS": "العمولات",
+    "NET_TO_PAY": "المبلغ الصافي المستحق",
+    "DISPO_AMOUNT": "المبلغ المتاح",
+    "REQUEST_WITHDRAWAL": "طلب تحويل",
+    "TAKE": "المبلغ المراد سحبه",
+    "TOTAL_EARNINGS": "الأرباح الصافية",
+    "TOTAL_BOOKINGS": "الخدمات المنجزة",
+    "CANCELLED_BOOKINGS": "الخدمات الملغاة",
+    "SERVICES_CANCELLED": "الحجوزات الملغاة أو المرفوضة",
+    "SERVICES_COMPLETED": "الحجوزات المنتهية",
+    "AVG_PRICE": "السعر المتوسط",
+    "PER_SERVICE": "لكل خدمة",
+    "REVIEW_RATIO": "آراء العملاء",
+    "CLIENT_FEEDBACK": "معدل التعليقات",
+    "TOP_PRODUCTS": "الخدمات الأكثر مبيعًا",
+    "AVG_DURATION": "المدة المتوسطة",
+    "DURATION_PER_BOOKING": "الوقت لكل حجز",
+    "DETAILS": "تفاصيل الحساب البنكي",
+    "ASK": "طلب تحويل",
+    "HISTORY": "سجلّ المعاملات",
+    "DATE": "التاريخ",
+    "AMOUNT": "المبلغ",
+    "COMMISSION": "العمولة",
+    "STATUS": "الحالة",
+    "NEXT_LEVEL": "Prochain niveau",
+    "MAX_LEVEL": "Niveau maximum atteint",
+    "REMAINING": "encore {{count}} réservations"
+  },
+  "NEW_SHOP_MODAL": {
+    "TITLE": "اختر نوع المتجر المراد إنشاؤه",
+    "CANCEL": "إلغاء",
+    "CREATE": "تأكيد"
+  },
+  "PROCHES": {
+    "TITLE": "معارفي",
+    "UPDATE": "تعديل قريب",
+    "FIRSTNAME": "الاسم الأول",
+    "NAME": "اسم العائلة",
+    "EMAIL": "البريد الإلكتروني",
+    "PHONE": "الهاتف",
+    "CREATE": "إنشاء",
+    "BACK": "رجوع",
+    "CHANGE": "تعديل",
+    "CLOSE": "إغلاق"
+  },
+  "RATING_MODAL": {
+    "TITLE": "قدّم رأيك",
+    "RATING": "التقييم",
+    "COMMENT": "تعليق",
+    "CLOSE": "إغلاق",
+    "SUBMIT": "إرسال"
+  },
+  "RDV_MODAL": {
+    "TITLE": "اختر تاريخ الخدمة",
+    "CANCEL": "إلغاء"
+  },
+  "SHOP_ARTICLES_MANAGEMENT": {
+    "CREATE_BUTTON": "إنشاء خدمة",
+    "NAME": "الاسم",
+    "DESCRIPTION": "الوصف",
+    "COLOR": "اللون",
+    "PRICE": "السعر",
+    "TIME": "المدة",
+    "IMAGE": "صورة",
+    "ACTIONS": "الإجراءات",
+    "MINUTES": "دقائق",
+    "CHANGE": "تعديل",
+    "DELETE": "حذف",
+    "SERVICE_NAME": "اسم الخدمة",
+    "TIME_MINUTES": "المدة (بالدقائق)",
+    "PREST_IMAGE": "صورة الخدمة",
+    "NO_PICS": "لا توجد صورة بعد",
+    "UPLOAD": "تحميل صورة",
+    "NEW_PIC": "معاينة الصورة الجديدة",
+    "PRESTA_COLOR": "لون الخدمة",
+    "CANCEL": "إلغاء",
+    "SAVE": "حفظ",
+    "AVG_PRICE": "السعر المتوسط",
+    "IMAGE_OK": "تم تحميل الصورة بنجاح",
+    "ERROR_IMAGE_LOAD": "خطأ أثناء تحميل الصورة",
+    "UPDATE_SUCCESS": "تم تحديث الخدمة بنجاح",
+    "ERROR_PRESTA": "خطأ أثناء تحديث الخدمة",
+    "PRESTA_UPDATED": "تم تحديث الخدمة بنجاح",
+    "PRESTA_ERROR": "خطأ أثناء تحديث الخدمة",
+    "PRESTA_SUCCESS": "تم تحديث الخدمة بنجاح",
+    "PHOTO_ERROR": "خطأ أثناء تحديث الصورة",
+    "PRESTA_DELETED": "تم حذف الخدمة بنجاح",
+    "PRESTA_DELETE_ERROR": "خطأ أثناء حذف الخدمة"
+  },
+  "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
+    "SHOP_IMAGE": "صورة المتجر",
+    "UPLOAD_IMAGE": "تحميل صورة",
+    "SNEEK_PIC": "معاينة الصورة",
+    "SHOP_NAME": "اسم المتجر",
+    "DESCRIPTION": "الوصف",
+    "DESC_INFO": "(الحد الأدنى 25 حرفًا)",
+    "CITY": "المدينة",
+    "DISCRICT": "الدوائر",
+    "LAT": "خط العرض",
+    "LON": "خط الطول",
+    "ZONE": "نطاق التنقل (كم)",
+    "OPENNING": "ساعات العمل",
+    "MORNING_OPEN": "الصباح - الافتتاح",
+    "MORNING_CLOSE": "الصباح - الإغلاق",
+    "AFTERNOON_OPEN": "بعد الظهر - الافتتاح",
+    "AFTERNOON_CLOSE": "بعد الظهر - الإغلاق",
+    "SAVE": "حفظ المتجر",
+    "MONDAY": "الاثنين",
+    "TUESDAY": "الثلاثاء",
+    "WEDNESDAY": "الأربعاء",
+    "THURSDAY": "الخميس",
+    "FRIDAY": "الجمعة",
+    "SATURDAY": "السبت",
+    "SUNDAY": "الأحد",
+    "CLOSED": "مغلق",
+    "GENERATE_IMAGE": "توليد الصورة",
+    "GENERATE_DESCRIPTION": "توليد الوصف",
+    "PHOTO": "أمثلة للصور المقبولة / المرفوضة",
+    "CODE_POSTAUX": "الرموز البريدية المشمولة",
+    "SOCIAL_NETWORK": "الشبكات الاجتماعية",
+    "EXEMPLE_LOCAL": "مثال: 75001"
+  },
+  "EMPLOYEES": {
+    "ADD_EMPLOYEES": "إضافة موظف",
+    "LOADING": "جارٍ التحميل",
+    "LIST": "قائمة الموظفين",
+    "ADD": "إضافة",
+    "EMAIL": "البريد الإلكتروني للموظف",
+    "FIRSTNAME": "الاسم الأول",
+    "FAMILY_NAME": "اسم العائلة",
+    "PHONE": "الهاتف",
+    "PASSWORD": "كلمة المرور",
+    "HAVE_TO": "جميع الحقول إلزامية.",
+    "EMAIL_ERROR": "بريد إلكتروني غير صالح.",
+    "EMPLOYEE_OK": "تمت إضافة الموظف بنجاح.",
+    "ADD_EMPLOYEE_ERROR": "حدث خطأ أثناء إضافة الموظف."
+  },
+  "AVIS": {
+    "TITLE": "ماذا يقول مستخدمونا",
+    "AVIS1": "كنت متشككة في البداية… لكن النتيجة فاقت التوقعات! مانيكور مثالي في البيت وبدون توتر. صار طقوسي كل مساء جمعة.",
+    "AVIS2": "حجزت عناية للوجه في 3 دقائق وأنا على الأريكة. الأخصائية كانت لطيفة ومتفهمة… وبشرتي لم تكن أجمل من قبل.",
+    "AVIS3": "كنت أظن أنه سيكون أغلى من الصالون… المفاجأة: نفس السعر، بل أقل أحيانًا! ولم أحتج للخروج. نعم كبير.",
+    "AVIS4": "كان قبل عيد ميلاد، وأردت تجفيف شعر سريع. وجدت محترفة متاحة بنقرتين. دقيقة، لطيفة والنتيجة رائعة.",
+    "AVIS5": "أنا أمّ منفردة وليس لدي وقت للتنقل. هنا أحجز عندما ينام الأطفال. الأمر بسيط وسريع وبصراحة رائع.",
+    "AVIS6": "أحببت جلستي الأولى. الأخصائية أراحتني فورًا وشعرت بالدلال. حجزت بالفعل للأسبوع القادم!"
+  },
+  "DOWNLOAD": {
+    "USERS": "مستخدمون راضون",
+    "SOCIAL": "محترفون متاحون",
+    "STORE": "على App Store وGoogle Play"
+  },
+  "TARIF": {
+    "DISCOVER": "اختر الخطة التي تناسبك",
+    "DISCOVER2": "وابدأ صعودك نحو القمة",
+    "SOLUTIONS": "أنت تستحق حلاً جميلًا وقويًا ومصممًا لك. يمكنك تغيير رأيك في أي وقت.",
+    "TEST": "صالونك الأول مجاني 100٪. بلا توتر. مجرّد سحر.",
+    "START_FREE": "أنشئ صالوني الأول",
+    "FREE": "مبتدئة",
+    "FREE_SUBTITLE": "ابدأ رحلتك مع صالونك الأول",
+    "THEN": "ثم",
+    "MONTHLY": "شهر",
+    "FREE1": "صالون نشط واحد",
+    "FREE2": "عدد غير محدود من الحجوزات والعملاء",
+    "FREE3": "إدارة الخدمات والجدولة",
+    "FREE4": "مزامنة التقويم الشخصي",
+    "FREE5": "مثالي للانطلاق بهدوء",
+    "FREE6": "أنشئ صالونًا مجانيًا",
+    "BASIC": "مختارة",
+    "BASIC_SUBTITLE": "أطلِقي قدراتك وابدئي بالتألّق",
+    "BASIC1": "حتى 3 صالونات نشطة",
+    "BASIC2": "إدارة كاملة للخدمات والعملاء والمواعيد",
+    "BASIC3": "دعم عبر البريد الإلكتروني أولوية",
+    "BASIC4": "وصول إلى موارد حصرية لتطوير نشاطك",
+    "BASIC5": "مثالي للمحترفات الساعيات لتوسيع قاعدة العملاء",
+    "BASIC6": "تجربة مجانية لمدة شهر",
+    "PREMIUM": "ملكة",
+    "PREMIUM_SUBTITLE": "إمبراطوريتك تتشكل ونفوذك يكبر",
+    "PREMIUM1": "حتى 10 صالونات نشطة",
+    "PREMIUM2": "وصول إلى إحصاءات متقدمة عن الأداء",
+    "PREMIUM3": "توصيات ذكية لزيادة الإيرادات",
+    "PREMIUM4": "تعزيز الظهور على منصةizyGlam",
+    "PREMIUM5": "دعم أولوية",
+    "PREMIUM6": "مصمّم للمستقلات الطموحات",
+    "PREMIUM7": "احصل على باقة ملكة",
+    "BUSINESS": "إلهة",
+    "BUSINESS_SUBTITLE": "طالبي بعرشك، أيتها الإلهة",
+    "BUSINESS1": "حسب الطلب",
+    "BUSINESS2": "عدد غير محدود من الصالونات",
+    "BUSINESS3": "مرافقة إستراتيجية مخصّصة",
+    "BUSINESS4": "تعزيز الظهور وإبراز صالوناتك",
+    "BUSINESS5": "حلول مخصصة لزيادة حجم نشاطك",
+    "BUSINESS6": "اتصل بنا",
+    "COMPARE": "مقارنة الميزات",
+    "FONCTIONS": "الميزات",
+    "BUSINESS9": "إدارة شاملة للنشاط",
+    "STUDIO_BASIC": "موارد حصرية",
+    "STUDIO_ADVANCED": "إحصاءات وتوصيات",
+    "ANALYSE": "تحليل الأداء",
+    "BASICS": "أساسية",
+    "ADVANCE": "متقدمة",
+    "PLANS": "عدد الصالونات النشطة",
+    "READY": "هل أنتِ مستعدة لتنمية نشاطك؟",
+    "DISCOVERS": "اكتشفي عروضizyGlam",
+    "FREE_TRIAL": "Gratuit pendant 1 mois"
+  },
+  "ACCESSIBILITY": {
+    "DECLARATION": {
+      "TITLE": "بيان إمكانية الوصول",
+      "TEXT": "تلتزمizyGlam بجعل خدماتها في متناول أكبر عدد ممكن من المستخدمين. هدفنا تحقيق مستوى مطابقة WCAG 2.2 بدرجة AA والالتزام بـ RGAA (فرنسا) قدر الإمكان."
     },
-    "TABS": {
-        "FINANCE": "المتابعة المالية",
-        "GENERAL_INFO": "معلومات عامة",
-        "EMPLOYEES": "إدارة الموظفين",
-        "SERVICES": "إدارة الخدمات",
-        "PHOTOS": "معرض الصور",
-        "STATS": "إحصائيات",
-        "PARAM": "الإعدادات",
-        "SHOPS": "المتاجر",
-        "USERS": "المستخدمون",
-        "MESSAGE": "الرسائل"
+    "SCOPE": {
+      "TITLE": "النطاق المشمول",
+      "L1": "الموقع العام وصفحات المعلومات.",
+      "L2": "تطبيق الويب (لوحة التحكم) المخصص للعملاء والمحترفين.",
+      "L3": "تطبيقات الهاتف المحمول (iOS/Android) عند الاقتضاء.",
+      "L4": "رسائل البريد الإلكترونية والمعاملات ومركز المساعدة.",
+      "L5": "أدوات دعم العملاء."
     },
-    "CARD": {
-        "ADD": "إضافة البطاقة",
-        "NO_IMAGE": "لا توجد صور في المعرض.",
-        "SALON": "تم تحديث الصالون بنجاح",
-        "ERROR1": "خطأ أثناء تحديث الصالون",
-        "ERROR2": "خطأ أثناء تحديث الصورة",
-        "UPDATE": "تم تحديث الصالون بنجاح"
+    "STATUS": {
+      "TITLE": "حالة المطابقة",
+      "TEXT": "حتى تاريخ هذا البيان، تعد قابلية الوصول في واجهاتizyGlam متوافقة جزئيًا مع WCAG 2.2 AA / RGAA. نعمل باستمرار على تحسين الواجهات وتصحيح الفجوات ذات الأولوية."
     },
-    "ORDER_CARD": {
-        "FINISHED": "منتهية",
-        "ACCEPTEE": "مقبولة",
-        "WAITING": "قيد الانتظار",
-        "CANCEL": "ملغاة",
-        "DELETE": "محذوفة",
-        "REFUSED": "مرفوضة",
-        "NO_PRESTA": "المقدّم غائب",
-        "CLIENT_ABSENT": "العميل غائب",
-        "ADRESSE": "العنوان",
-        "DATE": "التاريخ",
-        "TOTAL": "الإجمالي",
-        "FACTURE": "فاتورة",
-        "CANCELLED": "ملغاة",
-        "DELETED": "حذف",
-        "AVIS": "رأي",
-        "SUPPORT": "الدعم",
-        "CODE": "رمز التأكيد",
-        "CODE_A_DONNER": "الرمز الذي سيُسلّم للمقدّم",
-        "PRESTA_ABSENT": "المقدّم غائب"
+    "PREPARATION": {
+      "TITLE": "منهجية إعداد البيان",
+      "L1": "تقييمات ذاتية من فريق المنتج/الواجهة: مراجعة دلالات HTML، أدوار ARIA، ترتيب التنقل.",
+      "L2": "اختبارات يدوية: تنقل عبر لوحة المفاتيح، بروز واضح لمؤشر التركيز، تكبير 200٪ فأكثر، قرّاء الشاشة.",
+      "L3": "اختبارات مؤتمتة (تدقيق آلي على عينات من الشاشات).",
+      "L4": "تحقق مستمر أثناء الإصدارات (نظام تصميم ومكوّنات قابلة للوصول)."
     },
-    "REVIEWS_MODAL": {
-        "REVIEWS": "التقييمات",
-        "ANON": "عميل",
-        "EMPTY_TITLE": "لا توجد مراجعات بعد",
-        "EMPTY_SUB": "كن أول من يشارك تجربتك."
+    "FEATURES": {
+      "TITLE": "خصائص إمكانية الوصول المتاحة",
+      "KEYBOARD": {
+        "TITLE": "التنقل بلوحة المفاتيح",
+        "L1": "مسار كامل عبر لوحة المفاتيح (Tab، Shift+Tab، Enter، Space، Esc، الأسهم).",
+        "L2": "مؤشر تركيز مرئي ومتّسق وعالي التباين.",
+        "L3": "روابط «الانتقال إلى المحتوى» لتجاوز الترويسة.",
+        "L4": "قوائم ونوافذ منبثقة وقوائم منسدلة قابلة للتحكم بلوحة المفاتيح (فتح/إغلاق، احتجاز التركيز مضبوط، إغلاق بـ Esc)."
+      },
+      "SCREENREADERS": {
+        "TITLE": "قرّاء الشاشة والبنية",
+        "L1": "بنية دلالية بعناوين هرمية (h1→h6) ومعالم (header، nav، main، footer).",
+        "L2": "تسميات واضحة لجميع الحقول والأزرار وأسماء قابلة للوصول ومتسقة.",
+        "L3": "إعلان تغييرات الحالة عبر مناطق aria-live (الأخطاء، النجاحات، التحميلات).",
+        "L4": "صور معلوماتية مع خاصية alt وصفية وتجاهل الصور الزخرفية."
+      },
+      "CONTRAST": {
+        "TITLE": "التباين والألوان والتحجيم",
+        "L1": "التباين المستهدف ≥ ‎4.5:1 للنص العادي و≥ ‎3:1 للنص الكبير.",
+        "L2": "واجهة قابلة للاستخدام حتى 200٪ تكبير بدون فقدان محتوى أو وظيفة.",
+        "L3": "عدم الاعتماد على اللون وحده لنقل المعلومة."
+      },
+      "FORMS": {
+        "TITLE": "النماذج ورسائل الخطأ",
+        "L1": "ربط label⇄input، وتوضيح الحقول الإلزامية.",
+        "L2": "عرض الأخطاء قرب الحقل مع ملخص عند الحاجة.",
+        "L3": "تحريك التركيز إلى أول حقل به خطأ وتقديم إرشادات التصحيح."
+      },
+      "DYNAMIC": {
+        "TITLE": "المحتويات الديناميكية والرسوم",
+        "L1": "عناصر متحركة/معارض صور قابلة للإيقاف وغير مُعيقة.",
+        "L2": "احترام تفضيل النظام «تقليل الحركة» عند الإمكان.",
+        "L3": "نوافذ منبثقة غير متطفلة قابلة للإغلاق بلوحة المفاتيح وبالنقر خارجها."
+      },
+      "MEDIA": {
+        "TITLE": "الوسائط",
+        "L1": "فيديوهات (إن وجدت) مع ترجمات و/أو نُسَخ.",
+        "L2": "عناصر صوت/فيديو قابلة للتحكم بلوحة المفاتيح."
+      },
+      "MOBILE": {
+        "TITLE": "الهاتف المحمول",
+        "L1": "مناطق لمس كبيرة ومتباعدة بما يكفي.",
+        "L2": "تنقل متسق مع TalkBack (Android) وVoiceOver (iOS)."
+      }
     },
-    "SHOP_CARD": {
-        "AVIS": "آراء حول المتجر",
-        "COMMENT": "تعليق",
-        "NOTE": "تقييم",
-        "CLOSE": "إغلاق"
+    "ENVIRONMENTS": {
+      "TITLE": "البيئات وتقنيات المساعدة المستهدفة",
+      "L1": "Windows:‏ NVDA (Chrome/Firefox)، وJAWS (Edge/Chrome).",
+      "L2": "macOS:‏ VoiceOver (Safari).",
+      "L3": "iOS/iPadOS:‏ VoiceOver (Safari/Chrome).",
+      "L4": "Android:‏ TalkBack (Chrome).",
+      "L5": "متصفحات حديثة مدعومة ومحدثة."
     },
-    "SHOP_GALERIE": {
-        "NO_IMAGE": "لا توجد صور في المعرض."
+    "NONACCESSIBLE": {
+      "TITLE": "محتويات غير قابلة للوصول (مرصودة أو محتملة)",
+      "TEXT": "رغم جهودنا، قد تبقى بعض العناصر غير متوافقة:",
+      "L1": "صور قديمة دون نص بديل وصفي.",
+      "L2": "مستندات مقدّمة من أطراف ثالثة (PDF، مرفقات) غير قابلة للوصول بالكامل.",
+      "L3": "فيديوهات تاريخية بلا ترجمات/وصف.",
+      "L4": "مكوّنات مدمجة من أطراف ثالثة (الدفع، الخرائط، المشغلات) مع حدودها الخاصة.",
+      "MOTIVES": "أسباب محتملة: محتوى طرف ثالث، عبء غير متناسب، تحديث جارٍ."
     },
-    "REVIEW_MODAL": {
-        "NOTE": "قيّم طلبك",
-        "DATE": "التاريخ",
-        "SERVICE": "الخدمة",
-        "AVIS": "رأيك",
-        "SEND": "إرسال",
-        "PLACEHOLDER": "صف تجربتك…"
+    "ACCOMMODATIONS": {
+      "TITLE": "بدائل وترتيبات معقولة",
+      "TEXT": "إذا كنت بحاجة إلى صيغة بديلة (مثل مستند قابل للوصول أو مساعدة في الحجز)، فتواصل معنا. سنبذل أقصى ما نستطيع لتقديم حل مكافئ."
     },
-    "HOMEPAGE": {
-        "TITLERED": "خلّي الجمال يجي لعندك",
-        "KNOWMORE": "اعرف المزيد",
-        "PART1TITLE": "استمتع بأفضل خدمات التجميل في منزلك",
-        "PART1TEXT": "محترفونا المؤهلون يأتون إليك ليقدّموا عناية تجميلية عالية الجودة، تناسب احتياجاتك ورغباتك. عِش تجربة رفاهية فريدة، سواءً في استراحة الغداء، بعد العمل مساءً أو خلال ظهيرة مع الصديقات.",
-        "PART2TITLE": "اشتغل وقت ما تحب، وحقّق دخلًا على مقاسك",
-        "PART2TEXT": "حقّق دخلاً وفق جدولك الشخصي بقبول الطلبات على المنصّة بوتيرتك. يمكنك استخدام معداتك الخاصة أو استئجار معدات احترافية عبر izyGlam.",
-        "PART3TITLE": "خدمة جمال مُعاد ابتكارها للشركات",
-        "PART3TEXT": "Glam for Business منصة مخصصة للشركات من جميع الأحجام، لإدارة احتياجات عملائك وموظفيك الجمالية. قدّموا عناية تجميلية مخصّصة مباشرة في مقرّ العمل، خلال الفعاليات أو للمناسبات الخاصة. محترفونا المؤهلون يتنقّلون لتقديم خدمات مناسبة لاحتياجاتكم.",
-        "APPTITLE": "أسهل مع التطبيقات",
-        "DOWNLOADAPP1": "حمّل التطبيق",
-        "DOWNLOADAPP2": "حمّل تطبيق محترفي التجميل",
-        "SCANTODOWNLOAD": "امسح للتحميل",
-        "SIGNUP": "سجّل الآن!"
+    "FEEDBACK": {
+      "TITLE": "ملاحظات ومساعدة",
+      "L1": "عبر التطبيق: قسم المساعدة > إمكانية الوصول.",
+      "L2A": "بالبريد الإلكتروني:",
+      "L2B": "أو",
+      "L3": "يرجى ذكر الشاشة/الرابط والجهاز والمتصفح وقارئ الشاشة المستخدم إن وُجد."
     },
-    "ABOUT": {
-        "VIDEO_ERROR": "خطأ في تشغيل الفيديو",
-        "AUTOPLAY_BLOCKED": "تم حظر التشغيل التلقائي. اضغط لتشغيل الفيديو.",
-        "NAV_ERROR": "تعذّرت عملية التنقل"
+    "CONTACT": {
+      "EMAIL_ACCESS": "accessibilite@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com"
     },
-    "FOOTER": {
-        "HOWITWORKS": "كيفية عمل تطبيقات ومواقع izyGlam",
-        "HELPCENTER": "الدخول إلى مركز المساعدة",
-        "BUSINESS": "للشركات",
-        "ABOUT": "من نحن",
-        "OURSERVICES": "خدماتنا",
-        "PRESSAREA": "المنطقة الإعلامية",
-        "INVESTORS": "المستثمرون",
-        "CAREERS": "وظائف",
-        "AI": "الذكاء الاصطناعي",
-        "PRODUCTS": "المنتجات",
-        "GLAM": "دائمًا بأبهى إطلالة مع izyGlam",
-        "RESERVED": "احجز مسبقًا",
-        "GIFTCARDS": "بطاقات الهدايا",
-        "WORKWITHUS": "اعمل معنا",
-        "GLAMFORBUSINESS": "Glam for Business",
-        "CONFIDENTIAL": "الخصوصية",
-        "ACCESS": "إمكانية الوصول",
-        "CONDITIONS": "الشروط",
-        "LANGUAGE": "اللغة",
-        "LOCALISATION": "الموقع",
-        "ALL_RIGHT": "جميع الحقوق محفوظة"
+    "RECOURSE": {
+      "TITLE": "إجراءات التظلّم (فرنسا)",
+      "TEXT": "إذا لاحظت عيبًا في إمكانية الوصول يمنعك من الوصول إلى محتوى أو وظيفة ولم تحصل على رد مُرضٍ منا، يمكنك:",
+      "L1": "مراسلة وسيط الدفاع عن الحقوق أو مندوبه في مقاطعتك،",
+      "L2": "أو اللجوء إلى الوسيط عند الاقتضاء.",
+      "MORE": "مزيد من المعلومات:",
+      "LINK": "defenseurdesdroits.fr"
     },
-    "COMING_SOON": {
-        "TITLE": "نصل قريبًا",
-        "TITLE-NOT-COMING": "لم نخطط للمجيء بعد",
-        "DAYS": "أيام",
-        "HOURS": "ساعات",
-        "MINUTES": "دقائق",
-        "SECONDS": "ثوانٍ",
-        "TEXT": "نعمل بجدّ لنقدّم لك تجربة جمال منزلية فريدة. ابقَ على تواصل لتعرف موعد الإطلاق."
+    "CONTINUOUS": {
+      "TITLE": "تحسين مستمر",
+      "L1": "نظام تصميم بمكوّنات قابلة للوصول.",
+      "L2": "مراجعة كود واختبارات إمكانية الوصول مع كل إصدار.",
+      "L3": "تدريبات منتظمة لفرق المنتج والدعم.",
+      "L4": "ترتيب أولويات الإصلاحات حسب أثرها على المستخدم."
     },
-    "MAIN_PAGE": {
-        "MOMENT": "عروض اللحظة",
-        "DISCOVER": "اكتشف على izyGlam",
-        "LIKED": "الأعلى تقييمًا بالقرب منك",
-        "SMART": "عروض ذكية",
-        "TOP10": "أفضل 10 لهذا الأسبوع",
-        "SEARCHRESULT": "نتائج البحث",
-        "AVIS": "آراء"
+    "DATE": {
+      "TITLE": "تاريخ البيان والتحديثات",
+      "TEXT": "أُعدّ البيان في 25 ديسمبر 2025. سيتم تحديثه مرة واحدة على الأقل سنويًا أو عند التغييرات الكبرى."
+    }
+  },
+  "HELP": {
+    "QUESTION1": "كيف أحجز خدمة علىizyGlam؟",
+    "QUESTION2": "كيف أختار المهني المناسب لي؟",
+    "QUESTION3": "كيف أعدّل أو ألغي موعدي؟",
+    "QUESTION4": "كيف أتابع طلبي؟",
+    "QUESTION5": "ما وسائل الدفع المتاحة؟",
+    "QUESTION6": "كيف أتابع طلبي أو حجزي؟",
+    "QUESTION7": "هل يمكنني ترك رأي بعد خدمتي؟",
+    "QUESTION8": "كيف أستخدم عروض الولاء والعروض الترويجية؟",
+    "QUESTION9": "ماذا أفعل عند وجود مشكلة في طلبي؟",
+    "QUESTION10": "كيف أتواصل مع فريقizyGlam؟",
+    "QUESTION11": "كيف تعمل سياسة الإلغاء والاسترداد؟",
+    "QUESTION12": "هل يمكنني الحجز لشخص آخر (هدية، مفاجأة)؟",
+    "QUESTION13": "كيف أصبح مهنيًا شريكًا علىizyGlam؟",
+    "QUESTION14": "كيف أحمي معلوماتي الشخصية علىizyGlam؟",
+    "REPONSE1": "الأمر سهل وسريع. بعد التسجيل، اختر الخدمة التي تهمك، واستكشف المحترفين المتاحين قربك، ثم حدّد التاريخ والوقت. اضغط «احجز» لإتمام العملية، ثم ادفع ببطاقة بنكية. سيتم تأكيد حجزك يدويًا من قِبل المهني. عند الرفض، تسترد كامل المبلغ.",
+    "REPONSE2": "لكل مهني ملف تفصيلي يتضمن خدماته وأسعاره وصور أعماله وآراء العملاء. يمكنك إضافة المفضلين لسهولة الوصول. خذ وقتك للمقارنة واختيار الأنسب لتوقعاتك.",
+    "REPONSE3": "يمكنك تعديل أو إلغاء حجزك من مساحتك الخاصة. الإلغاء مجاني حتى 24 ساعة قبل الموعد. بعدها قد تُطبَّق رسوم. عند أي مشكلة، فريق الدعم هنا لمساعدتك.",
+    "REPONSE4": "سجّل الدخول إلى مساحتك، قسم «حجوزاتي». ستجد متابعة حيّة لطلبك، وإمكانية الإلغاء أو التعديل، وسجل خدماتك.",
+    "REPONSE5": "الدفع يتم حصريًا ببطاقة بنكية (Visa، MasterCard، American Express). لا نقد ولا PayPal حاليًا. كل شيء آمن لضمان راحتك.",
+    "REPONSE6": "بعد تأكيد حجزك، تصلك رسالة تلخيصية عبر البريد. نرسل تذكيرًا قبل الموعد (بريد و/أو إشعار). يمكنك متابعة الحالة من حسابك.",
+    "REPONSE7": "نعم. بعد كل خدمة منجَزة ستُدعَى لترك رأيك حول المهني. تُراجَع الآراء يدويًا لضمان مصداقيتها. لا يمكن للمهنيين تعديلها أو الرد عليها.",
+    "REPONSE8": "حاليًا لا يوجد برنامج ولاء أو أكواد ترويجية. هذه المزايا ضمن خارطة الطريق لاحقًا.",
+    "REPONSE9": "تواصل معنا من قسم «اتصال» أو عبر البريد. سنبذل جهدنا للرد خلال 24 ساعة (تقديريًا) ومساعدتك على الحل بأسرع وقت.",
+    "REPONSE10": "يمكنك التواصل عبر نموذج الاتصال بالموقع أو التطبيق. الدعم متاح من الإثنين إلى السبت، 9 صباحًا حتى 6 مساءً. مثال بريد: support@izyglam.com",
+    "REPONSE11": "يمكنك الإلغاء مجانًا حتى 24 ساعة قبل الموعد. بعد ذلك قد تُطبَّق رسوم. عند رفض المهني للحجز بعد الدفع، يتم الاسترداد تلقائيًا. نظام الاسترداد الآلي قيد النشر.",
+    "REPONSE12": "لا يمكنك حتى الآن إهداء خدمة مباشرة من حسابك. لكن إن قدّم المهني عرضًا ثنائيًا/عائليًا، يمكنك الحجز لعدة أشخاص ضمن ذلك.",
+    "REPONSE13": "هل أنتِ أخصائية تجميل أو مصففة شعر أو مختصة رفاه؟ انضمي لمجتمعizyGlam عبر نموذج «انضمّي كشريكة». سيتواصل معك فريقنا سريعًا لإتمام التسجيل.",
+    "REPONSE14": "حماية بياناتك أولوية لنا. نلتزم بالـ RGPD. لا يطّلع المهنيون إلا على المعلومات الضرورية للخدمة. توجد مراسلة مدمجة للتواصل عند الحاجة، وسيُراقَب أي سلوك يهدف لتجاوز المنصة."
+  },
+  "PRIVACY": {
+    "WHO": {
+      "TITLE": "من نحن؟",
+      "TEXT": "توضّح سياسة الخصوصية هذه كيف تجمع <strong>IzyGlam</strong> («نحن» أو «منصتنا») بياناتك الشخصية عند استخدامك لخدماتنا (الموقع، تطبيق الويب، تطبيق الهاتف، البريد والدعم)، وكيف نستخدمها ونحفظها ونشاركها ونحميها. نعمل كـ<strong>مسؤول معالجة</strong> للمعالجات الموضّحة أدناه."
     },
-    "MAIN_CATEGORY": {
-        "COIFFURE": "تصفيف الشعر",
-        "MANUCURE": "مانيكير",
-        "VISAGE": "الوجه",
-        "MASSAGE": "مساج",
-        "MAQUILLAGE": "مكياج",
-        "EPILATION": "إزالة الشعر",
-        "BRONZAGE": "تسمير",
-        "PARTUM": "ما بعد الولادة",
-        "NUTRITION": "تغذية",
-        "FITNESS": "لياقة",
-        "ACUPUNCTURE": "وخز بالإبر",
-        "STYLISME": "تنسيق أزياء",
-        "YOGA": "استرخاء",
-        "DEVELOPPEMENT": "تطوير ذات",
-        "EYELASH": "وصلات رموش"
+    "SCOPE": {
+      "TITLE": "نطاق السياسة",
+      "TEXT": "تنطبق هذه السياسة على <strong>العملاء</strong> الذين يحجزون خدمات، و<strong>المهنيين</strong> الذين يعرضون خدمات عبرizyGlam، و<strong>الزوار</strong> لواجهاتنا."
     },
-    "MAIN_CATEGORY_INTRO": {
-        "COIFFURE": "مصففة شعر",
-        "MANUCURE": "اختصاصية مانيكير",
-        "ESTETICIAN": "اختصاصية تجميل",
-        "MASSAGE": "مدلّكة",
-        "MAQUILLAGE": "خبيرة مكياج",
-        "PEDICURE": "اختصاصية باديكير",
-        "NUTRITION": "اختصاصية تغذية",
-        "FITNESS": "مدربة"
+    "DATA": {
+      "TITLE": "البيانات المجمّعة",
+      "PROVIDED": {
+        "TITLE": "بيانات تقدّمها أنت",
+        "L1": "<strong>الهوية وطرق الاتصال:</strong> الاسم، اللقب، البريد، الهاتف، العناوين، الصور/الصور الرمزية.",
+        "L2": "<strong>الحساب:</strong> بيانات الدخول، كلمات المرور (مُجزّأة)، التفضيلات، اللغة.",
+        "L3": "<strong>الحجوزات:</strong> الخدمات المختارة، التاريخ/الوقت، عناوين التنفيذ، الملاحظات، المرفقات.",
+        "L4": "<strong>الدفع:</strong> معلومات الدفع <em>عبر مزودنا (مثال: Stripe)</em> — لا نخزّن بيانات بطاقتك.",
+        "L5": "<strong>المهنيون:</strong> الملف العام، الخدمات، الأسعار، مناطق العمل، التوفر، رقم IBAN/RIB (محمي)، مستندات التحقق إن لزم.",
+        "L6": "<strong>الدعم:</strong> الرسائل، التذاكر، وتسجيلات المكالمات إن وُجدت."
+      },
+      "AUTOMATIC": {
+        "TITLE": "بيانات تُجمَّع تلقائيًا",
+        "L1": "<strong>تقنية:</strong> طراز الجهاز، نظام التشغيل، المتصفح، الدقة، معرفات الجلسة.",
+        "L2": "<strong>السجلات:</strong> عناوين IP، الطوابع الزمنية، أحداث الأخطاء، استخدام الميزات.",
+        "L3": "<strong>الموقع:</strong> موقع تقريبي (IP) أو دقيق (GPS بموافقتك).",
+        "L4": "<strong>الكوكيز وSDK:</strong> انظر القسم المخصّص أدناه."
+      },
+      "THIRD": {
+        "TITLE": "بيانات من أطراف ثالثة",
+        "L1": "<strong>مزودو الدفع</strong> (حالات الدفع، الرموز).",
+        "L2": "<strong>شركاء التحليلات/مكافحة الاحتيال</strong> (إشارات المخاطر، مجاميع الاستخدام).",
+        "L3": "<strong>التكاملات</strong> (مثل الاتصال، الخرائط، التخزين السحابي)."
+      }
     },
-    "INTRO": {
-        "NORESULTS": "لم يتم العثور على نتائج",
-        "START": "ابدأ",
-        "SPECIALITY": "التخصص؟",
-        "WHERE": "أين؟",
-        "CONNEXION": "تسجيل الدخول",
-        "REGISTRATION": "إنشاء حساب"
+    "PURPOSES": {
+      "TITLE": "الأغراض والأسس القانونية",
+      "TEXT": "نعالج البيانات للأغراض التالية:",
+      "L1": "<strong>تقديم الخدمة</strong> (إنشاء الحساب، الحجز، الربط، الإشعارات) — <em>الأساس: تنفيذ العقد</em>.",
+      "L2": "<strong>الدفع والفوترة</strong> — <em>عقد، التزام قانوني</em>.",
+      "L3": "<strong>الأمن ومنع الإساءة/الاحتيال</strong> — <em>مصلحة مشروعة، التزام قانوني</em>.",
+      "L4": "<strong>تحسين المنتج والإحصاءات</strong> — <em>مصلحة مشروعة</em>.",
+      "L5": "<strong>الدعم والجودة</strong> — <em>عقد، مصلحة مشروعة</em>.",
+      "L6": "<strong>التسويق المباشر</strong> (بريد/تطبيق) — <em>موافقة عند اللزوم</em>؛ إمكانية الانسحاب متاحة دائمًا.",
+      "L7": "<strong>الامتثال القانوني</strong> (محاسبة، طلبات سلطات) — <em>التزام قانوني</em>."
     },
-    "PROFILE_MENU": {
-        "INFORMATION": "معلومات الحساب",
-        "MESSAGE": "رسائلي",
-        "MESSAGE_SUBTITLE": "قائمة محادثاتك الجارية.",
-        "INFORMATION_SUBTITLE": "عدّل بياناتك الشخصية بكل بساطة.",
-        "SECURITY": "الأمان واللغة",
-        "SECURITY_SUBTITLE": "كلمة المرور، اللغة… كل شيء تحت السيطرة هنا.",
-        "CONFIDENTIAL": "الخصوصية والبيانات",
-        "CONFIDENTIAL_SUBTITLE": "بياناتك ثمينة. هكذا نعتني بها.",
-        "DASHBOARD": "لوحة التحكم",
-        "DASHBOARD_SUBTITLE": "أدر بيانات نشاطك بسهولة.",
-        "COMPANY": "إدارة شركتي",
-        "COMPANY_SUBTITLE": "أدر مواعيدك السابقة والقادمة والملغاة بسهولة.",
-        "SHOP": "إدارة صالوني",
-        "SHOP_SUBTITLE": "أدر صالونك وخدماتك ومالية نشاطك.",
-        "FINANCIAL": "المتابعة المالية",
-        "ADMIN": "إدارة عامة",
-        "ADMIN_SUBTITLE": "أدر هذا التحفة بكل سهولة. العالم لك يا بطل!",
-        "CALENDAR": "الأجندة",
-        "CALENDAR_SUBTITLE": "أدر مواعيدك السابقة والقادمة بسهولة.",
-        "SELECT_SALON": "اختر صالونًا",
-        "NEW_SALON": "إنشاء صالون",
-        "SHOP_TO_CREATE": "نوع المتجر الذي تريد إنشاءه",
-        "CANCEL": "إلغاء",
-        "CREATE": "أنشئ متجري",
-        "INFO1": "أنت على وشك حذف متجرك في",
-        "INFO2": "هذا الإجراء لا يمكن التراجع عنه",
-        "SURE": "هل أنت متأكد من المتابعة؟",
-        "DELETE": "حذف"
+    "SHARING": {
+      "TITLE": "مشاركة البيانات",
+      "L1": "<strong>المهنيون/العملاء</strong>: المعلومات اللازمة لتنفيذ الخدمة (الاسم، وسيلة التواصل، عنوان التنفيذ، تفاصيل الحجز).",
+      "L2": "<strong>المزوّدون</strong>: الدفع (مثال Stripe)، الاستضافة/التخزين، التحليلات، البريد/الرسائل، الدعم، KYC عند الحاجة. <em>وصول محدود للضروري وبعقود متوافقة مع RGPD.</em>",
+      "L3": "<strong>الشركاء</strong>: بموافقتك للعروض المحددة.",
+      "L4": "<strong>السلطات</strong>: عند وجوب القانون أو لحماية حقوقنا."
     },
-    "PROFILE": {
-        "TITLE": "المعلومات الأساسية",
-        "FIRSTNAME": "الاسم",
-        "LASTNAME": "اسم العائلة",
-        "PHONE": "رقم الهاتف",
-        "ADDRESS": "عنوان البريد الإلكتروني",
-        "CHANGE_USER": "تعديل المستخدم",
-        "CANCEL": "إلغاء",
-        "SUCCESS": "تم تعديل الملف الشخصي بنجاح",
-        "UPDATE_ERROR": "حدث خطأ أثناء تحديث كلمة المرور."
+    "TRANSFERS": {
+      "TITLE": "نقل البيانات خارج الاتحاد الأوروبي/المنطقة الاقتصادية الأوروبية",
+      "TEXT": "عند نقل البيانات إلى دول بلا قرار ملاءمة، نستخدم <strong>بنودًا تعاقدية نموذجية</strong> ونطبق تدابير تكميلية."
+    },
+    "RETENTION": {
+      "TITLE": "فترات الاحتفاظ",
+      "L1": "<strong>الحساب والهوية</strong>: طوال استخدام الحساب ثم <em>حتى 3 سنوات</em> بعد آخر نشاط (تسويق) أو <em>5–10 سنوات</em> للالتزامات المحاسبية/القانونية.",
+      "L2": "<strong>الحجوزات/الفواتير</strong>: <em>10 سنوات</em> (التزام قانوني).",
+      "L3": "<strong>سجلات الأمن</strong>: <em>6–24 شهرًا</em> حسب الحساسية.",
+      "L4": "<strong>الكوكيز</strong>: انظر قسم الكوكيز.",
+      "NOTE": "بعدها تُحذف البيانات أو تُجهّل."
+    },
+    "COOKIES": {
+      "TITLE": "الكوكيز وSDK",
+      "TEXT": "نستخدم الكوكيز/SDK لتشغيل المنصة وقياس الجمهور ومنع الاحتيال، ومع موافقتك لتخصيص التجربة.",
+      "L1": "<strong>ضرورية</strong>: المصادقة، الأمان، التفضيلات التقنية.",
+      "L2": "<strong>قياس الجمهور</strong>: إحصاءات استخدام مجمّعة.",
+      "L3": "<strong>تسويق</strong>: فقط بموافقتك.",
+      "PREF": "يمكنك إدارة تفضيلاتك في أي وقت عبر الشريط وإعدادات المتصفح."
+    },
+    "AUTOMATION": {
+      "TITLE": "القرارات المؤتمتة والتمييز",
+      "TEXT": "قد نستخدم إشارات آلية (مثل مخاطر الاحتيال، توفر المهني، المسافة) لترتيب الأولويات أو اقتراح مواعيد. لا نتخذ قرارات ذات أثر قانوني كبير دون تدخل بشري، إلا إذا فرض القانون أو بموافقتك الصريحة."
+    },
+    "RIGHTS": {
+      "TITLE": "حقوقك (RGPD)",
+      "L1": "حق <strong>الوصول</strong> و<strong>التصحيح</strong> و<strong>المحو</strong>.",
+      "L2": "حق <strong>تقييد</strong> المعالجة و<strong>قابلية النقل</strong>.",
+      "L3": "حق <strong>الاعتراض</strong> على المعالجة المبنية على المصلحة المشروعة.",
+      "L4": "حق <strong>سحب الموافقة</strong> في أي وقت.",
+      "L5": "حق تقديم <strong>شكوى</strong> إلى CNIL.",
+      "CONTACT": "لممارسة حقوقك، تواصل معنا:",
+      "VERIFY": "قد نطلب معلومات إضافية للتحقق من هويتك."
     },
     "SECURITY": {
-        "CHANGE_PASSWORD_TITLE": "تغيير كلمة المرور",
-        "ACTUAL_PASSWORD": "كلمة المرور الحالية",
-        "NEW_PASSWORD": "كلمة المرور الجديدة",
-        "CONFIRMED_PASSWORD": "تأكيد كلمة المرور الجديدة",
-        "CHANGE_PASSWORD": "تغيير كلمة المرور",
-        "CHANGE_OK": "تم تغيير كلمة المرور بنجاح",
-        "CHANGE_LANGUE": "تغيير اللغة",
-        "CHANGE_COUNTRY": "تغيير الدولة",
-        "LANGUE": "اللغة",
-        "COUNTRY": "الدولة"
+      "TITLE": "الأمان",
+      "TEXT": "نطبق تدابير تقنية وتنظيمية مناسبة: تشفير أثناء النقل (TLS)، تجزئة كلمات المرور، التسجيل والمراقبة، التحكم بالوصول، النسخ الاحتياطي، مراجعة الكود واختبارات الأمان."
     },
-    "PAYEMENT": {
-        "YOU": "أنت",
-        "HEADER_TITLE": "الدفع",
-        "SERVICE_TITLE": "الخدمة",
-        "SERVICE_NOTE": "ملاحظة:",
-        "ADDRESS_TITLE": "عنوان تقديم الخدمة",
-        "ADDRESS_RENDEZVOUS": "اللقاء أمام باب منزلي",
-        "ADDRESS_CHANGE": "اختيار عنوان آخر",
-        "PAYMENT_SECTION_TITLE": "الدفع",
-        "PAYMENT_METHOD": "البطاقة الرئيسية",
-        "PAYMENT_EXPIRE": "تنتهي",
-        "PAYMENT_NO_CARD": "لا توجد بطاقة رئيسية محددة",
-        "PAYMENT_NO_CARD_DESC": "يرجى إضافة أو اختيار بطاقة كطريقة الدفع الرئيسية.",
-        "SUMMARY_SUBTOTAL": "المجموع الفرعي",
-        "SUMMARY_SERVICE_FEE": "عمولة izyGlam",
-        "SUMMARY_DELIVERY_FEE": "رسوم الخدمة",
-        "SUMMARY_TOTAL": "الإجمالي",
-        "TITLE": "احجز موعدك عبر الإنترنت",
-        "FOR_WHO": "لمن ستحجز هذا الموعد؟",
-        "ADD_PROCHE": "إضافة قريب",
-        "WHERE": "أين سيتم تقديم الموعد؟",
-        "SELECT_ADDRESS": "اختر عنوانًا",
-        "ADD_ADDRESS": "إضافة عنوان",
-        "CARD_PAY": "الدفع بالبطاقة البنكية",
-        "CARD_NUM": "رقم البطاقة",
-        "CARD_NAME": "الاسم على البطاقة",
-        "EXPIRATION": "تاريخ الانتهاء",
-        "CVV": "CVV",
-        "RDV": "تفاصيل موعدك",
-        "RESUME": "ملخص الموعد",
-        "DATE": "التاريخ",
-        "HOUR": "الوقت",
-        "PRESTA": "الخدمة",
-        "EXPIRE": "تنتهي",
-        "DEFAULT": "افتراضي",
-        "NOCARD": "لا توجد بطاقات محفوظة",
-        "WITH": "مع",
-        "TOTAL": "الإجمالي المستحق",
-        "ANNULER": "إلغاء",
-        "RETOUR": "رجوع",
-        "CONTINUER": "متابعة",
-        "VALIDER": "تأكيد",
-        "ADRESSE": "العنوان",
-        "LEGAL_TEXT_1": "بالنقر على زر إتمام الطلب، فإنك توافق على عقد خدمات التوصيل مع izyGlam France SAS (ROS 841 983 828).",
-        "LEGAL_TEXT_2": "تتخلى تذكيرًا عن حقك في الانسحاب فيما يخص خدمات التوصيل. يمكنك اللجوء إلى وسيط مستهلك هنا.",
-        "LEGAL_TEXT_3": "إذا لم تكن موجودًا عند وصول المرسَل، فسيتم ترك طلبك أمام الباب. عند إتمام الطلب، تتحمل كامل المسؤولية بمجرد تسليمه. في حال غيابك، الطلبات التي تحتوي على كحول أو عناصر مقيّدة ستُعاد مباشرةً إلى المنشأة.",
-        "CLOSE_FORM": "إغلاق النموذج",
-        "ADD_CARD": "إضافة بطاقة",
-        "TRAITEMENT": "جاري المعالجة"
+    "MINORS": {
+      "TITLE": "بيانات القاصرين",
+      "TEXT": "خدماتنا غير موجهة لمن هم دون 15 عامًا. عند الاشتباه بحساب قاصر سنحذفه بعد التحقق."
     },
-    "PAYEMENT_VALIDATION": {
-        "VALIDATION": "تم التحقق من الدفع",
-        "THANKS": "شكرًا! تم أخذ حجزك بعين الاعتبار.",
-        "BACKHOME": "العودة إلى الرئيسية",
-        "PROBLEME": "مشكلة في الحجز",
-        "PAIEMENT": "تم خصم دفعتك، لكن تعذّر تأكيد الحجز.",
-        "THANKSCONTACT": "يرجى التواصل مع دعمنا على",
-        "FAILED": "فشل الدفع",
-        "VALIDATE": "تعذّر علينا التحقق من دفعتك. يرجى المحاولة مجددًا."
+    "SUBPROCESSORS": {
+      "TITLE": "المعالِجون الفرعيون الرئيسيون",
+      "TEXT": "نعمل مع مزودين أساسيين للاستضافة والدفع والبريد والتحليلات والتخزين. يمكن توفير قائمة محدثة عند الطلب على"
     },
-    "CREATION_SHOP_STEPS": {
-        "TITLE": "izyGlam للمستقلين",
-        "STEP1": {
-            "TITLE": "العملاء يُجرون الطلب",
-            "TEXT": "يعثر العميل على منشأتك ويُجري الطلب عبر تطبيق izyGlam."
-        },
-        "STEP2": {
-            "TITLE": "أنت تقبل الحجز",
-            "TEXT": "توافق على الحجز ويتم تحديث أجندتك."
-        },
-        "STEP3": {
-            "TITLE": "وقت الموعد",
-            "TEXT": "ننبّهك مسبقًا بالمواعيد القادمة ونوجّهك للوصول إلى كل عميل."
-        }
+    "CONTACT": {
+      "TITLE": "الاتصال ومسؤول حماية البيانات (DPO)",
+      "PRIVACY_LABEL": "اتصال الخصوصية",
+      "SUPPORT_LABEL": "الدعم",
+      "AUTHORITY_LABEL": "هيئة الرقابة",
+      "EMAIL_PRIVACY": "privacy@izyglam.com",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
     },
-    "COMPANY": {
-        "CREDIT_COMPANY": "شحن رصيد حساب الشركة",
-        "SOLDE": "الرصيد الحالي",
-        "CREDIT": "المبلغ المطلوب شحنه",
-        "COMPANY": "شحن رصيد حساب الشركة",
-        "DEPENSE": "متابعة المصروفات",
-        "DATE": "التاريخ",
-        "COUNT": "المبلغ",
-        "EMPLOYEE": "الموظف",
-        "DESCRIPTION": "الوصف"
+    "CHANGES": {
+      "TITLE": "تغييرات هذه السياسة",
+      "TEXT": "قد نحدّث هذه السياسة لتعكس تطورات قانونية أو وظيفية. عند تغييرات جوهرية سنبلغك عبر البريد أو التطبيق. تاريخ السريان: <strong>11&nbsp;أغسطس&nbsp;2025</strong>."
     },
-    "CREATION_SHOP": {
-        "ALREDAY_SHOP": "لديك بالفعل حساب شريك أو شركة!",
-        "NOT_CONNECTED": "يرجى تسجيل الدخول لتسجيل صالون",
-        "TITLE": "انطلق!",
-        "TITLE2": "لننشئ صالونًا!",
-        "NAME": "اسم الصالون",
-        "ADDRESS": "عنوان شركتك",
-        "STREET": "الشارع",
-        "CITY": "المدينة",
-        "CODE_POSTAL_POSSIBLE": "الرموز البريدية المخدومة",
-        "CODE_POSTAL": "الرمز البريدي",
-        "COUNTRY": "الدولة",
-        "ADDRESSPLACEHOLDER": "١٢٣، شارع الرئيسي",
-        "FLOOR": "الطابق/الجناح (اختياري)",
-        "BUSINESSTYPE": "نوع الشركة",
-        "FIRSTNAME": "الاسم",
-        "LASTNAME": "اسم العائلة",
-        "PASSWORD": "كلمة المرور",
-        "PASSWORDCONFIRMED": "تأكيد كلمة المرور",
-        "EMAIL": "البريد الإلكتروني",
-        "PHONE": "رقم الهاتف المحمول",
-        "WHATSAPP": "أوافق على تلقي الرسائل عبر واتساب",
-        "BUTTON": "تسجيل المتجر",
-        "SUCCESS": "تم إنشاء المتجر بنجاح!",
-        "ERROR": "حدث خطأ أثناء إنشاء المتجر:",
-        "ERROR1": "اسم شركتك مطلوب.",
-        "ERROR2": "عنوان شركتك مطلوب.",
-        "ERROR3": "نوع الشركة مطلوب.",
-        "ERROR4": "الاسم مطلوب.",
-        "CHOOSE_COUNTRY": "اختر دولة",
-        "POSTAL_CODE": "الرمز البريدي",
-        "CHOOSE_CITY": "اختر مدينة",
-        "ERROR5": "اسم العائلة مطلوب.",
-        "ERROR6": "البريد الإلكتروني مطلوب.",
-        "ERROR7": "رقم الهاتف المحمول مطلوب.",
-        "ERROR8": "يجب أن توافق على تلقي الرسائل عبر واتساب."
+    "LOCAL": {
+      "TITLE": "أحكام محلية",
+      "TEXT": "إذا كنت داخل الاتحاد الأوروبي، تُعالَج بياناتك وفق RGPD. قد تنطبق ملاحق خاصة بكل بلد/منطقة وسيتم إخطارك بها عند الاقتضاء."
     },
-    "MAIN": {
-        "CHANGE_ADDRESS": "تعديل العنوان",
-        "FIND_SHOP": "البحث عن متجر",
-        "CATEGORIES": "الفئات",
-        "OFFRE": "عروض اللحظة",
-        "DISCOVER": "اكتشف",
-        "APPRECIATE": "الأكثر تقديرًا",
-        "SMART": "عروض ذكية",
-        "TOP10": "أفضل 10 هذا الأسبوع",
-        "SEARCH_RESULT": "نتائج البحث",
-        "NOT_AVAILABLE": "غير متاح بعد لهذا العنوان",
-        "NEW_ADDRESS": "إضافة عنوان جديد",
-        "CHOOSE_ADDRESS": "اختر عنوانًا",
-        "CHOOSE_COUNTRY": "اختر دولة",
-        "CHOOSE_CITY": "اختر مدينة",
-        "CHOOSE_ARRONDISSEMENT": "اختر حيًّا",
-        "CANCEL": "إلغاء",
-        "SAVE": "حفظ",
-        "CLOSE": "إغلاق",
-        "ALL": "دليل المواهب",
-        "ALL2": "القائمة الكاملة للمهنيين المتاحين",
-        "DISCOVER2": "اختياراتنا المفضّلة حالياً",
-        "APPRECIATE2": "مواهب مُعتمدة من المجتمع",
-        "SMART2": "خدمات ذكية بلا تنازل",
-        "TOP102": "الأبرز هذا الأسبوع",
-        "CATEGORIES2": "تصفّح فئاتنا في الجمال والعافية"
+    "GLOSSARY": {
+      "TITLE": "مسرد (مختصر)",
+      "L1": "<strong>مسؤول المعالجة</strong>: الكيان الذي يحدد أغراض ووسائل المعالجة.",
+      "L2": "<strong>المعالِج</strong>: كيان يعالج بيانات لصالح المسؤول.",
+      "L3": "<strong>الأساس القانوني</strong>: المبرر الذي يجيز المعالجة (عقد، موافقة، التزام قانوني، مصلحة مشروعة).",
+      "L4": "<strong>كوكيز/SDK</strong>: أدوات تتبع يستخدمها الموقع/التطبيق للتشغيل والقياس والتخصيص."
+    }
+  },
+  "TERMS": {
+    "ACCEPT": {
+      "TITLE": "قبول الشروط",
+      "TEXT": "بدخولك خدماتizyGlam (الموقع، تطبيق الويب، تطبيق الهاتف) فإنك تقبل دون تحفظ شروط الاستخدام هذه («الشروط»). إذا لم توافق، فلا تستخدم المنصة."
     },
-    "ADMIN_SHOP": {
-        "NAME": "الاسم",
-        "CITY": "المدينة",
-        "NOTE": "التقييم",
-        "MIDDLE_PRICE": "السعر المتوسط",
-        "PROMOTION": "عرض ترويجي",
-        "ACTIONS": "إجراءات",
-        "MODIFIER": "تعديل معلومات المتجر",
-        "SHOP_NAME": "اسم المتجر",
-        "DESCRIPTION": "الوصف",
-        "PRINCIPALE": "الصورة الرئيسية",
-        "SHOP": "نوع المتجر",
-        "ARRONDISSEMENT": "الحي",
-        "MINIMUM_DELAI": "الحد الأدنى للمهلة",
-        "DISTANCE": "أقصى مسافة (كم)",
-        "EMPLACEMENT": "الموقع",
-        "HOURS_MORNING": "ساعات العمل - صباحًا",
-        "HOURS_AFTERNOON": "ساعات العمل - مساءً",
-        "ACTIVE_PROMO": "عرض فعّال",
-        "CANCEL": "إلغاء",
-        "ENREGISTRER": "حفظ"
+    "DEFINITIONS": {
+      "TITLE": "تعريفات",
+      "L1": "<strong>العميل</strong>: كل شخص يحجز و/أو يدفع مقابل خدمة على المنصة.",
+      "L2": "<strong>المهني</strong>: كل شخص يقدّم خدمات عبر المنصة.",
+      "L3": "<strong>الخدمة</strong>: خدمة يقدّمها مهني (مثل الجمال المنزلي).",
+      "L4": "<strong>المنصة</strong>: البنية البرمجية والمواقع والتطبيقات التي تديرهاizyGlam."
     },
-    "CREATE_SHOP_INFO": {
-        "TITLE": "نمِّ نشاطك",
-        "TEXT": "آلاف مستخدمي تطبيق izyGlam قد يبحثون عن مطعم في منطقتك…",
-        "IMAGE": "صورة"
+    "SERVICE_ROLE": {
+      "TITLE": "الخدمات ودورizyGlam",
+      "TEXT": "izyGlam هي <strong>منصة للربط</strong>. يتحمّل المهنيون <strong>المسؤولية الكاملة</strong> عن الخدمات التي ينفذونها (الجودة، الامتثال، التأمين). ما لم يُذكر خلاف ذلك، لا تعدizyGlam بائعًا ولا مقدّم خدمة ولا تتحمل مسؤولية التنفيذ."
     },
-    "CREATE_SHOP_STEPS": {
-        "TITLE": "لماذا izyGlam؟",
-        "STEP1": {
-            "TITLE": "اعمل بشروطك الخاصة",
-            "TEXT": "نظّم جدولك وأدر خدماتك بحرية تامة. استفد من منصة مرنة تتكيف مع احتياجاتك لتعظيم نشاطك."
-        },
-        "STEP2": {
-            "TITLE": "عزّز حضورك على الإنترنت",
-            "TEXT": "اجذب المزيد من العملاء عبر أدوات التسويق في التطبيق، وارفع نتائجك بفضل زيادة الظهور."
-        },
-        "STEP3": {
-            "TITLE": "اكسب ولاء عملائك",
-            "TEXT": "طوّر علاقات مستدامة بتحليل تفضيلات عملائك، الرد على آرائهم، وتقديم مزايا ولاء."
-        }
+    "ACCOUNT": {
+      "TITLE": "الحساب والأهلية",
+      "L1": "التسجيل إلزامي للحجز أو تقديم خدمة. تتعهد بتقديم معلومات دقيقة وتحديثها.",
+      "L2": "يجب أن لا يقل عمرك عن 15 عامًا لاستخدام المنصة. يجب أن يكون المهنيون مخوّلين قانونيًا لمزاولة نشاطهم.",
+      "L3": "أنت مسؤول عن سرية بيانات الدخول وعن أي نشاط يجري عبر حسابك.",
+      "L4": "تحتفظizyGlam بالحق في تعليق أو إنهاء حساب عند خرق الشروط أو وجود خطر احتيال مثبت."
     },
-    "INFO_SHOP_STEPS": {
-        "STEP1": {
-            "TITLE": "بسّط إدارة نشاطك",
-            "TEXT": "أدر نشاطك بكل راحة مع izyGlam، الحلّ المتكامل لمحترفي الرفاه. استفد من أدوات مرنة ومرافقة شخصية لتلبية كل احتياجاتك."
-        },
-        "STEP2": {
-            "TITLE": "عزّز مبيعاتك",
-            "TEXT": "كل يوم، يستخدم آلاف الأشخاص izyGlam للعثور على خبراء جمال بالقرب منهم. اغتنم الفرصة للوصول إلى عملاء جدد في مجالك."
-        },
-        "STEP3": {
-            "TITLE": "رضا العملاء مضمون",
-            "TEXT": "مع izyGlam، قدّم تجربة مخصّصة لعملائك. أدر مواعيدك بسهولة، تواصل بسرعة وقدّم خدمات مناسبة. عملاؤك يستفيدون من عناية حيثما ومتى أرادوا، بما يضمن رضاهم وولاءهم."
-        }
+    "BOOKINGS": {
+      "TITLE": "الحجوزات وإبرام العقد",
+      "L1": "تُحجز الخدمات وتُدفع <strong>عبر الإنترنت</strong> من قِبل العميل. لا مبالغ نقدية في الموقع.",
+      "L2": "الحجز <strong>خاضع لقيول المهني</strong> بعد الدفع. عند الرفض، <strong>يُسترد المبلغ بالكامل</strong>.",
+      "L3": "يُبرم عقد الخدمة مباشرة بين العميل والمهني عند القبول.",
+      "L4": "على الطرفين التحقق من المواعيد وعناوين التنفيذ وأي شروط خاصة."
     },
-    "CREATION_COMPANY_STEPS": {
-        "TITLE": "izyGlam لشركتك؟",
-        "STEP1": {
-            "TITLE": "موظفوك وعملاؤك يحجزون خدمات",
-            "TEXT": "يختار موظفوك أو عملاؤك خدمات الرفاه المناسبة لهم مباشرة عبر تطبيق izyGlam."
-        },
-        "STEP2": {
-            "TITLE": "تحدّد مبلغًا مخصّصًا",
-            "TEXT": "تتحكم بشحن أرصدة موظفيك وعملائك. يمكنك الشحن دوريًا أو بشكل مرّة واحدة."
-        },
-        "STEP3": {
-            "TITLE": "تُنفَّذ الخدمات",
-            "TEXT": "خبراؤنا في الجمال يتوجّهون إلى موظفيك أو إلى مقركم لتقديم الخدمات المحجوزة، لضمان تجربة رفاه مثالية."
-        }
+    "PRICES_PAYMENTS": {
+      "TITLE": "الأسعار والاشتراكات والدفع",
+      "L1": "يحدد المهنيون أسعار خدماتهم بحرّية. تطبقizyGlam <strong>عمولة</strong> منصة.",
+      "L2": "اشتراكات للمهنيين (مثال حالي): <em>صالون واحد مجاني مدى الحياة</em>؛ <em>Basic: ثلاثة صالونات – 99 € / شهر</em>؛ <em>Premium: عشرة صالونات – 499 € / شهر</em>؛ <em>أكثر: عرض خاص</em>.",
+      "L3": "الدفع <strong>بالبطاقة البنكية فقط</strong> عبر مزوّد (مثال: Stripe). <strong>لا نقد</strong> ولا أكواد ترويج ولا برنامج ولاء في هذه المرحلة.",
+      "L4": "تُعرض المبالغ والضرائب والرسوم قبل التأكيد. قد تتغير شروط الاشتراك؛ سنبلغك مسبقًا."
     },
-    "CREATE_COMPANY_INFO": {
-        "TITLE": "عزّز قيمة شركتك",
-        "TEXT": "آلاف مستخدمي تطبيق izyGlam يبحثون عن خدمات رفاه. قدّم لموظفيك وعملائك وصولًا مميزًا لأفضل خبراء الجمال بالقرب منهم.",
-        "IMAGE": "صورة"
+    "CANCELLATIONS": {
+      "TITLE": "الإلغاء والاسترداد والغياب",
+      "L1": "إلغاء مجاني حتى <strong>24 ساعة</strong> قبل الموعد.",
+      "L2": "خلال أقل من 24 ساعة قد تُطبّق <strong>رسوم</strong> وفق السياسة المعمول بها.",
+      "L3": "عند <strong>رفض</strong> المهني بعد الدفع، يُسترد المبلغ 100٪. أتمتة الاسترداد قيد النشر؛ وسيتولى الدعم العملية عند الحاجة.",
+      "L4": "الغياب غير المُبلّغ (<strong>no-show</strong>) قد يؤدي إلى رسوم أو عدم إمكانية الاسترداد."
     },
-    "CREATE_COMPANY_STEPS": {
-        "TITLE": "لماذا izyGlam؟",
-        "STEP1": {
-            "TITLE": "كافئ ووفّر مزايا لموظفيك",
-            "TEXT": "قدّم ميزة فريدة لفرقك عبر ميزانية جمال شهرية. مصففات، اختصاصيات تجميل وغيرهن من خبراء الرفاه تحت تصرّفهم، لرفع الرضا وتعزيز الانتماء."
-        },
-        "STEP2": {
-            "TITLE": "حسّن صورتك العلامية",
-            "TEXT": "نظّم فعاليات جمال لعملائك أو شركائك، أو أدمج خدمات izyGlam في برامج الولاء. اترك أثرًا بخدمات فاخرة تناسب كل مناسبة."
-        },
-        "STEP3": {
-            "TITLE": "حسّن الرفاه في العمل",
-            "TEXT": "سهّل وصول موظفيك لخدمات الرفاه مباشرة في مكان العمل أو بالقرب منه. بالاهتمام برفاههم، ترفع دافعيتهم وتعزّز تماسك فرقك."
-        }
+    "PAYOUTS": {
+      "TITLE": "التحويلات إلى المهنيين",
+      "L1": "يتم تنفيذ تحويل أرباح المهني عند <strong>تأكيد إنجاز</strong> الخدمة (مثال: تأكيد <em>رمز التحقق</em>).",
+      "L2": "يُستخدم رقم RIB/IBAN الذي يقدّمه المهني لإجراء التحويل. ويضمن المهني دقّة معلوماته البنكية.",
+      "L3": "المبالغ المُحوَّلة تطابق سعر الخدمة <em>بعد خصم</em> العمولة والرسوم المعمول بها."
     },
-    "INFO_COMPANY_STEPS": {
-        "STEP1": {
-            "TITLE": "بسّط وصول فرقك للرفاه",
-            "TEXT": "مع izyGlam، قدّم لموظفيك حلًا بسيطًا ومرنًا للاعتناء بأنفسهم. سواءً لعناية تجميلية أو جلسات لياقة، كل شيء في متناول اليد."
-        },
-        "STEP2": {
-            "TITLE": "قدّم مزايا مبتكرة لعملائك",
-            "TEXT": "عزّز علاقتك مع عملائك بتقديم خدمات رفاه خلال الفعاليات أو ضمن برامج الولاء. أظهر لهم اهتمامك بتجربتهم عبر لمسات فريدة."
-        },
-        "STEP3": {
-            "TITLE": "رفاه مُفصَّل أينما ومتى شئت",
-            "TEXT": "مع izyGlam، يمكن لموظفيك وعملائك الاستفادة من خدمات عالية الجودة أينما كانوا. خبراء مختارون لتلبية احتياجاتهم الخاصة، ومرافقة شخصية لضمان رضاهم."
-        }
+    "RESPONSIBILITIES": {
+      "TITLE": "مسؤوليات الأطراف",
+      "L1": "يتحمّل المهنيون مسؤولية مطابقة خدماتهم للمعايير، واحترام القوانين، ومعايير النظافة والسلامة.",
+      "L2": "يلتزم العملاء بتقديم معلومات دقيقة (العنوان، التوفّر، قيود الوصول) واحترام المواعيد.",
+      "L3": "تُتيح izyGlam المنصّة والأدوات (الحجز، الدفع، المراسلة) لكنها لا تضمن نتائج أيّ خدمة."
     },
-    "SIDEBAR": {
-        "PROFILE": "إدارة الحساب",
-        "ORDERS": "الطلبات السابقة",
-        "FAVORITES": "المفضلات",
-        "HELP": "مساعدة",
-        "MY_ABO": "اشتراكي",
-        "PRICES": "خطط الأسعار",
-        "FIDELITY": "برنامج الولاء",
-        "LOGOUT": "تسجيل الخروج",
-        "YOUR_BEAUTY_SERVICES": "اعرض خدمات جمالك",
-        "YOUR_COMPANY": "سجّل شركتك"
+    "REVIEWS": {
+      "INVALID_RATING": "تقييم غير صالح.",
+      "TITLE": "التقييمات والمراجعات",
+      "L1": "لا يمكن ترك المراجعات <strong>إلّا بعد تنفيذ خدمة فعلية</strong>.",
+      "L2": "قد تُخضع المراجعات إلى <strong>إشراف/مراجعة</strong> (مثل حذف المحتويات المخالفة للقانون أو لهذه الشروط)."
     },
-    "SUBTITLES": {
-        "HELP": "تحتاج مساعدة؟ هذه الصفحة هنا لأجلك."
+    "PROHIBITED": {
+      "TITLE": "سلوكيات محظورة",
+      "L1": "الاحتيال، انتحال الهوية، التحايل على المنصّة، التحريض على معاملات خارج المنصّة.",
+      "L2": "محتويات غير قانونية أو تشهيرية أو تمييزية أو عنيفة أو منافية للآداب.",
+      "L3": "الاختراق، حجب الخدمة، الهندسة العكسية، أو تجاوز إجراءات الأمان.",
+      "L4": "جمع غير مُصرّح به لبيانات شخصية تخص مستخدمين آخرين."
     },
-    "ORDERS": {
-        "TITLE": "طلباتي",
-        "TITLE_SUBTITLE": "أدر مواعيدك السابقة والقادمة والملغاة بسهولة.",
-        "UPCOMING_SECTION": "📅 قادم",
-        "NO_UPCOMING": "لا توجد لديك خدمات مجدولة.",
-        "PAST_SECTION": "✅ سابقة",
-        "NO_PAST": "لا توجد لديك خدمات مُنجزة.",
-        "ADDRESS": "العنوان",
-        "DATE": "التاريخ",
-        "TOTAL": "الإجمالي",
-        "ITEMS": "عناصر",
-        "DELETE": "حذف",
-        "VISIT": "زيارة",
-        "PRESTA_FOR": "خدمة لـ",
-        "AT": "في",
-        "ORDER_AGAIN": "اطلب مجددًا",
-        "INVOICE": "طلب فاتورة",
-        "REVIEW": "أضف رأيك",
-        "CANCEL": "إلغاء"
+    "IPR": {
+      "TITLE": "الملكية الفكرية",
+      "TEXT": "محتويات المنصّة وعلاماتها وعناصرها (الكود، التصميم، النصوص، الشعارات، الصور) محمية. ما لم يتم التصريح صراحةً، يُحظر أي نسخ أو توزيع أو تكييف. تبقى المحتويات التي يقدّمها المهنيون ملكًا لهم؛ ويمنحون izyGlam ترخيصًا غير حصري بالقدر اللازم لتشغيل المنصّة."
     },
-    "FIDELITY": {
-        "TITLE": "مفضلاتي",
-        "AGAIN": "مرّة أخرى",
-        "AGAIN_SUBTITLE": "قبل مكافأتك",
-        "TITLE_SUBTITLE": "لفتح هديتك",
-        "DATE": "صالح حتى",
-        "HISTO": "سجلّ خدماتي"
+    "THIRD_PARTY": {
+      "TITLE": "خدمات الأطراف الثالثة",
+      "TEXT": "قد تتكامل المنصّة مع خدمات جهات خارجية (الدفع، الخرائط، الاستضافة، التحليلات). تسري شروطها الخاصة. لا تتحمّل izyGlam مسؤولية انقطاعات أو أعطال تلك الخدمات."
     },
-    "FAVORITES": {
-        "TITLE": "مفضلاتي",
-        "TITLE_SUBTITLE": "اعثر على صالوناتك المفضلة بلحظة."
+    "AVAILABILITY": {
+      "TITLE": "التوفّر، الصيانة، والتحديثات",
+      "TEXT": "يجوز لنا تعديل المنصّة أو تعليقها أو إيقاف جزءٍ منها أو كاملها لأغراض الصيانة أو التحسين. نبذل جهودًا معقولة للحدّ من التأثير على المستخدمين."
     },
-    "SHOP": {
-        "MOVING_FEE": "رسوم الخدمة:",
-        "DISTANCE": "أقصى مسافة:",
-        "PAYEMENT": "الدفع بالبطاقة وبـ PayPal مقبول",
-        "PRESS_FOR_INFO": "اضغط للاطلاع على المواعيد والمعلومات وغيرها.",
-        "GALLERY": "معرض الصور",
-        "SEE_MORE": "عرض المزيد",
-        "SEE_LESS": "عرض أقل"
+    "LIABILITY": {
+      "TITLE": "تحديد المسؤولية والتعويض",
+      "TEXT": "في الحدود التي يسمح بها القانون، تقتصر مسؤولية izyGlam على الأضرار المباشرة، ويُستثنى الضرر غير المباشر (فقدان الفرصة، فقدان الإيرادات، إلخ). وتلتزم بتعويض izyGlam عن أي مطالبة ناتجة عن انتهاك هذه الشروط أو استخدامٍ غير قانوني للمنصّة."
     },
-    "LOGIN": {
-        "TITLE": "أدخل بيانات تسجيل الدخول.",
-        "FORGET_PASSWORD": "هل نسيت كلمة المرور؟",
-        "CONTINUER": "متابعة",
-        "CONTINUE_WITH": "متابعة عبر",
-        "OR": "أو",
-        "QRCODE": "سجّل الدخول عبر رمز الاستجابة السريعة",
-        "CGU": "بالمتابعة، فإنك توافق على تلقي مكالمات ورسائل واتساب أو رسائل نصية (بما في ذلك بالطرق الآلية) من izyGlam والشركات التابعة لها على الرقم المزوّد.",
-        "PLACEHOLDER_EMAIL": "عنوان البريد الإلكتروني",
-        "PLACEHOLDER_PASSWORD": "كلمة المرور",
-        "PLACEHOLDER_PASSWORD_NEW": "كلمة مرور جديدة",
-        "PLACEHOLDER_PASSWORD_CONFIRMED": "تأكيد كلمة المرور",
-        "CHANGE_PASSWORD": "عدّل كلمة المرور",
-        "REINIT": "إعادة التعيين"
-    },
-    "SIGNUP": {
-        "GENRE": "النوع",
-        "CHOOSE": "اختر",
-        "SEX_MALE": "ذكر",
-        "SEX_FEMALE": "أنثى",
-        "TITLE": "أدخل معلوماتك الشخصية.",
-        "CONTINUER": "متابعة",
-        "OR": "أو",
-        "QRCODE": "سجّل الدخول عبر رمز الاستجابة السريعة",
-        "CGU": "بالمتابعة، فإنك توافق على تلقي مكالمات ورسائل واتساب أو رسائل نصية (بما في ذلك بالطرق الآلية) من izyGlam والشركات التابعة لها على الرقم المزوّد.",
-        "PLACEHOLDER_FIRSTNAME": "الاسم",
-        "PLACEHOLDER_LASTNAME": "اسم العائلة",
-        "PLACEHOLDER_EMAIL": "البريد الإلكتروني",
-        "PLACEHOLDER_EMAIL_REQUIRED": "البريد الإلكتروني مطلوب",
-        "PLACEHOLDER_EMAIL_WRONG": "صيغة البريد الإلكتروني غير صالحة",
-        "PLACEHOLDER_PHONE": "الهاتف",
-        "PLACEHOLDER_PHONE_NUMBER": "رقم الهاتف",
-        "PLACEHOLDER_PASSWORD": "كلمة المرور",
-        "PLACEHOLDER_PASSWORDCONFIRMED": "تأكيد كلمة المرور",
-        "COUNTRY": "الدولة"
-    },
-    "LANGUE": {
-        "FRANCAIS": "الفرنسية",
-        "ANGLAIS": "الإنجليزية",
-        "ESPAGNOL": "الإسبانية",
-        "NEERLANDAIS": "الهولندية",
-        "ITALIEN": "الإيطالية",
-        "ALLEMAND": "الألمانية",
-        "PORTUGAIS": "البرتغالية",
-        "POLONAIS": "البولندية",
-        "DANOIS": "الدانماركية",
-        "FINNOIS": "الفنلندية",
-        "SUEDOIS": "السويدية",
-        "ARABE": "العربية",
-        "TURC": "التركية",
-        "CHINOIS": "الصينية",
-        "RUSSE": "الروسية",
-        "PERSAN": "الفارسية",
-        "UKRAINIEN": "الأوكرانية",
-        "ROUMAIN": "الرومانية",
-        "CATALAN": "الكتالونية",
-        "BASQUE": "الباسكية",
-        "GALICIEN": "الجاليكية",
-        "ALBANAIS": "الألبانية",
-        "KURDE": "الكردية",
-        "ESTONIEN": "الإستونية",
-        "SOMALIEN": "الصومالية",
-        "BIELORUSSE": "البيلاروسية",
-        "JAPONAIS": "اليابانية",
-        "COREEN": "الكورية",
-        "INDONESIEN": "الإندونيسية",
-        "MALAIS": "الملايوية",
-        "THAI": "التايلاندية",
-        "VIETNAMIEN": "الفيتنامية",
-        "TAGALOG": "التاغالوغ",
-        "BENGALI": "البنغالية"
-    },
-    "COUNTRY": {
-        "FRANCE": "فرنسا",
-        "ALLEMAGNE": "ألمانيا",
-        "SPAIN": "إسبانيا",
-        "ITALY": "إيطاليا",
-        "DANEMARK": "الدنمارك",
-        "FINLAND": "فنلندا",
-        "NETHERLAND": "هولندا",
-        "POLAND": "بولندا",
-        "PORTUGAL": "البرتغال",
-        "SWEDEN": "السويد",
-        "CHINA": "الصين",
-        "INDIA": "الهند",
-        "JAPAN": "اليابان",
-        "SOUTH_KOREA": "كوريا الجنوبية",
-        "INDONESIA": "إندونيسيا",
-        "PHILIPPINES": "الفلبين",
-        "THAILAND": "تايلاند",
-        "VIETNAM": "فيتنام",
-        "MALAYSIA": "ماليزيا",
-        "SINGAPOURE": "سنغافورة",
-        "EMIRAT_ARABE": "الإمارات العربية المتحدة",
-        "SAUDI_ARABIA": "المملكة العربية السعودية"
-    },
-    "ADMIN_PARAM": {
-        "TITLE": "إعدادات المنصّة",
-        "COMMISSION": "نسبة العمولة (%)",
-        "0to100": "قيمة مطلوبة بين 0 و100",
-        "SERVICE": "رسوم الخدمة (€)",
-        "WEEKS": "عدد الأسابيع المعروضة",
-        "SUP0": "قيمة مطلوبة أكبر من 0",
-        "LESS24": "رسوم الإلغاء قبل أقل من 24 ساعة (%)",
-        "LESS48": "رسوم الإلغاء قبل أقل من 48 ساعة (€)",
-        "DELAY": "الحد الأدنى للحجز (ساعات)",
-        "TVA": "نسبة ضريبة القيمة المضافة (%)",
-        "ADS": "تفعيل الإعلانات",
-        "COMPANY": "تفعيل التجارة مع الشركات",
-        "FIDELITY": "تفعيل الولاء",
-        "MULTI_SHOP": "تفعيل المتاجر المتعددة",
-        "PROMO": "تفعيل العروض الترويجية في المتجر",
-        "SPONSORS": "تفعيل قسم الرعاة في صفحة الهبوط",
-        "SAVE": "حفظ"
-    },
-    "ADMIN_PAGE": {
-        "ALL_SHOPS": "إجمالي المتاجر",
-        "ACT_SHOPS": "عدد المتاجر النشطة",
-        "USERS": "إجمالي المستخدمين",
-        "NBR_USERS": "عدد المستخدمين المسجّلين",
-        "CA_TOTAL": "إجمالي رقم الأعمال",
-        "CA_GENERATED": "رقم الأعمال المتولد",
-        "SHOPS_PERFO": "أداء المتاجر",
-        "SHOP_NAME": "اسم المتجر",
-        "CITY": "المدينة",
-        "REVENUES": "الإيرادات",
-        "BOOKINGS": "عدد الحجوزات",
-        "NOTE": "المتوسط التقييمي",
-        "ACTIONS": "إجراءات",
-        "DETAILS": "تفاصيل",
-        "ADJUST": "تعديل",
-        "SHOP_ADJUST": "تعديل المتجر",
-        "STILL_DEVELOPPED": "هذه الميزة قيد التطوير",
-        "CLOSE": "إغلاق"
-    },
-    "CALENDAR_MODAL": {
-        "TITLE": "تفاصيل الحدث",
-        "CLIENT": "العميل",
-        "DEBUT": "البداية",
-        "FIN": "النهاية",
-        "ADDRESS": "العنوان",
-        "PHONE": "الهاتف",
-        "CANCEL": "إلغاء",
-        "SAVE": "حفظ"
-    },
-    "CALENDAR": {
-        "ADD_EVENT": "إنشاء حدث",
-        "COMING": "قادم",
-        "PAST": "سابقة",
-        "CANCELLED": "ملغاة",
-        "NO_CANCELLED": "لا توجد طلبات ملغاة."
-    },
-    "CHAT": {
-        "ONLINE_ASSISTANCE": "مساعدة عبر الإنترنت"
-    },
-    "COMPANY_MANAGEMENT": {
-    },
-    "EMPLOYEE_MANAGEMENT": {
-        "TITLE": "شحن رصيد الموظف",
-        "AMOUNT": "المبلغ المراد شحنه",
-        "CANCEL": "إلغاء",
-        "SAVE": "تأكيد"
-    },
-    "DASHBOARD": {
-        "TOTAL": "إجمالي الحجوزات",
-        "TOTAL_MONTH": "حجوزات هذا الشهر",
-        "GENERATED": "الإيرادات المتولدة",
-        "MONTHLY": "إيرادات هذا الشهر",
-        "AVG_NOTE": "المتوسط التقييمي",
-        "BASED_ON": "استنادًا إلى",
-        "REVIEWS": "آراء",
-        "NEXT_APPOINTEMENT": "المواعيد القادمة",
-        "POPULAR_SERVICES": "أكثر الخدمات شعبية",
-        "RESERVATION": "حجوزات"
-    },
-    "FINANCE": {
-        "PROGRESS": "التطوّر منذ شهر-1",
-        "PROGRESSION": "التقدّم",
-        "TOTAL_GENERATED": "إجمالي الرقم المتولد",
-        "CA": "رقم الأعمال",
-        "COMMISSION_TAKEN": "العمولة المقتطعة",
-        "COMMISSIONS": "العمولات",
-        "NET_TO_PAY": "المبلغ الصافي المستحق",
-        "DISPO_AMOUNT": "المبلغ المتاح",
-        "REQUEST_WITHDRAWAL": "طلب تحويل",
-        "TAKE": "المبلغ المراد سحبه",
-        "TOTAL_EARNINGS": "الأرباح الصافية",
-        "TOTAL_BOOKINGS": "الخدمات المنجزة",
-        "CANCELLED_BOOKINGS": "الخدمات الملغاة",
-        "SERVICES_CANCELLED": "الحجوزات الملغاة أو المرفوضة",
-        "SERVICES_COMPLETED": "الحجوزات المنتهية",
-        "AVG_PRICE": "السعر المتوسط",
-        "PER_SERVICE": "لكل خدمة",
-        "REVIEW_RATIO": "آراء العملاء",
-        "CLIENT_FEEDBACK": "معدل التعليقات",
-        "TOP_PRODUCTS": "الخدمات الأكثر مبيعًا",
-        "AVG_DURATION": "المدة المتوسطة",
-        "DURATION_PER_BOOKING": "الوقت لكل حجز",
-        "DETAILS": "تفاصيل الحساب البنكي",
-        "ASK": "طلب تحويل",
-        "HISTORY": "سجلّ المعاملات",
-        "DATE": "التاريخ",
-        "AMOUNT": "المبلغ",
-        "COMMISSION": "العمولة",
-        "STATUS": "الحالة"
-    },
-    "NEW_SHOP_MODAL": {
-        "TITLE": "اختر نوع المتجر المراد إنشاؤه",
-        "CANCEL": "إلغاء",
-        "CREATE": "تأكيد"
-    },
-    "PROCHES": {
-        "TITLE": "معارفي",
-        "UPDATE": "تعديل قريب",
-        "FIRSTNAME": "الاسم الأول",
-        "NAME": "اسم العائلة",
-        "EMAIL": "البريد الإلكتروني",
-        "PHONE": "الهاتف",
-        "CREATE": "إنشاء",
-        "BACK": "رجوع",
-        "CHANGE": "تعديل",
-        "CLOSE": "إغلاق"
-    },
-    "RATING_MODAL": {
-        "TITLE": "قدّم رأيك",
-        "RATING": "التقييم",
-        "COMMENT": "تعليق",
-        "CLOSE": "إغلاق",
-        "SUBMIT": "إرسال"
-    },
-    "RDV_MODAL": {
-        "TITLE": "اختر تاريخ الخدمة",
-        "CANCEL": "إلغاء"
-    },
-    "SHOP_ARTICLES_MANAGEMENT": {
-        "CREATE_BUTTON": "إنشاء خدمة",
-        "NAME": "الاسم",
-        "DESCRIPTION": "الوصف",
-        "COLOR": "اللون",
-        "PRICE": "السعر",
-        "TIME": "المدة",
-        "IMAGE": "صورة",
-        "ACTIONS": "الإجراءات",
-        "MINUTES": "دقائق",
-        "CHANGE": "تعديل",
-        "DELETE": "حذف",
-        "SERVICE_NAME": "اسم الخدمة",
-        "TIME_MINUTES": "المدة (بالدقائق)",
-        "PREST_IMAGE": "صورة الخدمة",
-        "NO_PICS": "لا توجد صورة بعد",
-        "UPLOAD": "تحميل صورة",
-        "NEW_PIC": "معاينة الصورة الجديدة",
-        "PRESTA_COLOR": "لون الخدمة",
-        "CANCEL": "إلغاء",
-        "SAVE": "حفظ",
-        "AVG_PRICE": "السعر المتوسط",
-        "IMAGE_OK": "تم تحميل الصورة بنجاح",
-        "ERROR_IMAGE_LOAD": "خطأ أثناء تحميل الصورة",
-        "UPDATE_SUCCESS": "تم تحديث الخدمة بنجاح",
-        "ERROR_PRESTA": "خطأ أثناء تحديث الخدمة",
-        "PRESTA_UPDATED": "تم تحديث الخدمة بنجاح",
-        "PRESTA_ERROR": "خطأ أثناء تحديث الخدمة",
-        "PRESTA_SUCCESS": "تم تحديث الخدمة بنجاح",
-        "PHOTO_ERROR": "خطأ أثناء تحديث الصورة",
-        "PRESTA_DELETED": "تم حذف الخدمة بنجاح",
-        "PRESTA_DELETE_ERROR": "خطأ أثناء حذف الخدمة"
-    },
-    "SHOP_MANAGEMENT": {
-        "SHOP_IMAGE": "صورة المتجر",
-        "UPLOAD_IMAGE": "تحميل صورة",
-        "SNEEK_PIC": "معاينة الصورة",
-        "SHOP_NAME": "اسم المتجر",
-        "DESCRIPTION": "الوصف",
-        "DESC_INFO": "(الحد الأدنى 25 حرفًا)",
-        "CITY": "المدينة",
-        "DISCRICT": "الدوائر",
-        "LAT": "خط العرض",
-        "LON": "خط الطول",
-        "ZONE": "نطاق التنقل (كم)",
-        "OPENNING": "ساعات العمل",
-        "MORNING_OPEN": "الصباح - الافتتاح",
-        "MORNING_CLOSE": "الصباح - الإغلاق",
-        "AFTERNOON_OPEN": "بعد الظهر - الافتتاح",
-        "AFTERNOON_CLOSE": "بعد الظهر - الإغلاق",
-        "SAVE": "حفظ المتجر",
-        "MONDAY": "الاثنين",
-        "TUESDAY": "الثلاثاء",
-        "WEDNESDAY": "الأربعاء",
-        "THURSDAY": "الخميس",
-        "FRIDAY": "الجمعة",
-        "SATURDAY": "السبت",
-        "SUNDAY": "الأحد",
-        "CLOSED": "مغلق",
-        "GENERATE_IMAGE": "توليد الصورة",
-        "GENERATE_DESCRIPTION": "توليد الوصف",
-        "PHOTO": "أمثلة للصور المقبولة / المرفوضة",
-        "CODE_POSTAUX": "الرموز البريدية المشمولة",
-        "EXEMPLE_LOCAL": "مثال: 75001"
-    },
-    "EMPLOYEES": {
-        "ADD_EMPLOYEES": "إضافة موظف",
-        "LOADING": "جارٍ التحميل",
-        "LIST": "قائمة الموظفين",
-        "ADD": "إضافة",
-        "EMAIL": "البريد الإلكتروني للموظف",
-        "FIRSTNAME": "الاسم الأول",
-        "FAMILY_NAME": "اسم العائلة",
-        "PHONE": "الهاتف",
-        "PASSWORD": "كلمة المرور",
-        "HAVE_TO": "جميع الحقول إلزامية.",
-        "EMAIL_ERROR": "بريد إلكتروني غير صالح.",
-        "EMPLOYEE_OK": "تمت إضافة الموظف بنجاح.",
-        "ADD_EMPLOYEE_ERROR": "حدث خطأ أثناء إضافة الموظف."
-    },
-    "AVIS": {
-        "TITLE": "ماذا يقول مستخدمونا",
-        "AVIS1": "كنت متشككة في البداية… لكن النتيجة فاقت التوقعات! مانيكور مثالي في البيت وبدون توتر. صار طقوسي كل مساء جمعة.",
-        "AVIS2": "حجزت عناية للوجه في 3 دقائق وأنا على الأريكة. الأخصائية كانت لطيفة ومتفهمة… وبشرتي لم تكن أجمل من قبل.",
-        "AVIS3": "كنت أظن أنه سيكون أغلى من الصالون… المفاجأة: نفس السعر، بل أقل أحيانًا! ولم أحتج للخروج. نعم كبير.",
-        "AVIS4": "كان قبل عيد ميلاد، وأردت تجفيف شعر سريع. وجدت محترفة متاحة بنقرتين. دقيقة، لطيفة والنتيجة رائعة.",
-        "AVIS5": "أنا أمّ منفردة وليس لدي وقت للتنقل. هنا أحجز عندما ينام الأطفال. الأمر بسيط وسريع وبصراحة رائع.",
-        "AVIS6": "أحببت جلستي الأولى. الأخصائية أراحتني فورًا وشعرت بالدلال. حجزت بالفعل للأسبوع القادم!"
-    },
-    "DOWNLOAD": {
-        "USERS": "مستخدمون راضون",
-        "SOCIAL": "محترفون متاحون",
-        "STORE": "على App Store وGoogle Play"
-    },
-    "TARIF": {
-        "DISCOVER": "اختر الخطة التي تناسبك",
-        "DISCOVER2": "وابدأ صعودك نحو القمة",
-        "SOLUTIONS": "أنت تستحق حلاً جميلًا وقويًا ومصممًا لك. يمكنك تغيير رأيك في أي وقت.",
-        "TEST": "صالونك الأول مجاني 100٪. بلا توتر. مجرّد سحر.",
-        "START_FREE": "أنشئ صالوني الأول",
-        "FREE": "مبتدئة",
-        "FREE_SUBTITLE": "ابدأ رحلتك مع صالونك الأول",
-        "THEN": "ثم",
-        "MONTHLY": "شهر",
-        "FREE1": "صالون نشط واحد",
-        "FREE2": "عدد غير محدود من الحجوزات والعملاء",
-        "FREE3": "إدارة الخدمات والجدولة",
-        "FREE4": "مزامنة التقويم الشخصي",
-        "FREE5": "مثالي للانطلاق بهدوء",
-        "FREE6": "أنشئ صالونًا مجانيًا",
-        "BASIC": "مختارة",
-        "BASIC_SUBTITLE": "أطلِقي قدراتك وابدئي بالتألّق",
-        "BASIC1": "حتى 3 صالونات نشطة",
-        "BASIC2": "إدارة كاملة للخدمات والعملاء والمواعيد",
-        "BASIC3": "دعم عبر البريد الإلكتروني أولوية",
-        "BASIC4": "وصول إلى موارد حصرية لتطوير نشاطك",
-        "BASIC5": "مثالي للمحترفات الساعيات لتوسيع قاعدة العملاء",
-        "BASIC6": "تجربة مجانية لمدة شهر",
-        "PREMIUM": "ملكة",
-        "PREMIUM_SUBTITLE": "إمبراطوريتك تتشكل ونفوذك يكبر",
-        "PREMIUM1": "حتى 10 صالونات نشطة",
-        "PREMIUM2": "وصول إلى إحصاءات متقدمة عن الأداء",
-        "PREMIUM3": "توصيات ذكية لزيادة الإيرادات",
-        "PREMIUM4": "تعزيز الظهور على منصةizyGlam",
-        "PREMIUM5": "دعم أولوية",
-        "PREMIUM6": "مصمّم للمستقلات الطموحات",
-        "PREMIUM7": "احصل على باقة ملكة",
-        "BUSINESS": "إلهة",
-        "BUSINESS_SUBTITLE": "طالبي بعرشك، أيتها الإلهة",
-        "BUSINESS1": "حسب الطلب",
-        "BUSINESS2": "عدد غير محدود من الصالونات",
-        "BUSINESS3": "مرافقة إستراتيجية مخصّصة",
-        "BUSINESS4": "تعزيز الظهور وإبراز صالوناتك",
-        "BUSINESS5": "حلول مخصصة لزيادة حجم نشاطك",
-        "BUSINESS6": "اتصل بنا",
-        "COMPARE": "مقارنة الميزات",
-        "FONCTIONS": "الميزات",
-        "BUSINESS9": "إدارة شاملة للنشاط",
-        "STUDIO_BASIC": "موارد حصرية",
-        "STUDIO_ADVANCED": "إحصاءات وتوصيات",
-        "ANALYSE": "تحليل الأداء",
-        "BASICS": "أساسية",
-        "ADVANCE": "متقدمة",
-        "PLANS": "عدد الصالونات النشطة",
-        "READY": "هل أنتِ مستعدة لتنمية نشاطك؟",
-        "DISCOVERS": "اكتشفي عروضizyGlam"
-    },
-    "ACCESSIBILITY": {
-        "DECLARATION": {
-            "TITLE": "بيان إمكانية الوصول",
-            "TEXT": "تلتزمizyGlam بجعل خدماتها في متناول أكبر عدد ممكن من المستخدمين. هدفنا تحقيق مستوى مطابقة WCAG 2.2 بدرجة AA والالتزام بـ RGAA (فرنسا) قدر الإمكان."
-        },
-        "SCOPE": {
-            "TITLE": "النطاق المشمول",
-            "L1": "الموقع العام وصفحات المعلومات.",
-            "L2": "تطبيق الويب (لوحة التحكم) المخصص للعملاء والمحترفين.",
-            "L3": "تطبيقات الهاتف المحمول (iOS/Android) عند الاقتضاء.",
-            "L4": "رسائل البريد الإلكترونية والمعاملات ومركز المساعدة.",
-            "L5": "أدوات دعم العملاء."
-        },
-        "STATUS": {
-            "TITLE": "حالة المطابقة",
-            "TEXT": "حتى تاريخ هذا البيان، تعد قابلية الوصول في واجهاتizyGlam متوافقة جزئيًا مع WCAG 2.2 AA / RGAA. نعمل باستمرار على تحسين الواجهات وتصحيح الفجوات ذات الأولوية."
-        },
-        "PREPARATION": {
-            "TITLE": "منهجية إعداد البيان",
-            "L1": "تقييمات ذاتية من فريق المنتج/الواجهة: مراجعة دلالات HTML، أدوار ARIA، ترتيب التنقل.",
-            "L2": "اختبارات يدوية: تنقل عبر لوحة المفاتيح، بروز واضح لمؤشر التركيز، تكبير 200٪ فأكثر، قرّاء الشاشة.",
-            "L3": "اختبارات مؤتمتة (تدقيق آلي على عينات من الشاشات).",
-            "L4": "تحقق مستمر أثناء الإصدارات (نظام تصميم ومكوّنات قابلة للوصول)."
-        },
-        "FEATURES": {
-            "TITLE": "خصائص إمكانية الوصول المتاحة",
-            "KEYBOARD": {
-                "TITLE": "التنقل بلوحة المفاتيح",
-                "L1": "مسار كامل عبر لوحة المفاتيح (Tab، Shift+Tab، Enter، Space، Esc، الأسهم).",
-                "L2": "مؤشر تركيز مرئي ومتّسق وعالي التباين.",
-                "L3": "روابط «الانتقال إلى المحتوى» لتجاوز الترويسة.",
-                "L4": "قوائم ونوافذ منبثقة وقوائم منسدلة قابلة للتحكم بلوحة المفاتيح (فتح/إغلاق، احتجاز التركيز مضبوط، إغلاق بـ Esc)."
-            },
-            "SCREENREADERS": {
-                "TITLE": "قرّاء الشاشة والبنية",
-                "L1": "بنية دلالية بعناوين هرمية (h1→h6) ومعالم (header، nav، main، footer).",
-                "L2": "تسميات واضحة لجميع الحقول والأزرار وأسماء قابلة للوصول ومتسقة.",
-                "L3": "إعلان تغييرات الحالة عبر مناطق aria-live (الأخطاء، النجاحات، التحميلات).",
-                "L4": "صور معلوماتية مع خاصية alt وصفية وتجاهل الصور الزخرفية."
-            },
-            "CONTRAST": {
-                "TITLE": "التباين والألوان والتحجيم",
-                "L1": "التباين المستهدف ≥ ‎4.5:1 للنص العادي و≥ ‎3:1 للنص الكبير.",
-                "L2": "واجهة قابلة للاستخدام حتى 200٪ تكبير بدون فقدان محتوى أو وظيفة.",
-                "L3": "عدم الاعتماد على اللون وحده لنقل المعلومة."
-            },
-            "FORMS": {
-                "TITLE": "النماذج ورسائل الخطأ",
-                "L1": "ربط label⇄input، وتوضيح الحقول الإلزامية.",
-                "L2": "عرض الأخطاء قرب الحقل مع ملخص عند الحاجة.",
-                "L3": "تحريك التركيز إلى أول حقل به خطأ وتقديم إرشادات التصحيح."
-            },
-            "DYNAMIC": {
-                "TITLE": "المحتويات الديناميكية والرسوم",
-                "L1": "عناصر متحركة/معارض صور قابلة للإيقاف وغير مُعيقة.",
-                "L2": "احترام تفضيل النظام «تقليل الحركة» عند الإمكان.",
-                "L3": "نوافذ منبثقة غير متطفلة قابلة للإغلاق بلوحة المفاتيح وبالنقر خارجها."
-            },
-            "MEDIA": {
-                "TITLE": "الوسائط",
-                "L1": "فيديوهات (إن وجدت) مع ترجمات و/أو نُسَخ.",
-                "L2": "عناصر صوت/فيديو قابلة للتحكم بلوحة المفاتيح."
-            },
-            "MOBILE": {
-                "TITLE": "الهاتف المحمول",
-                "L1": "مناطق لمس كبيرة ومتباعدة بما يكفي.",
-                "L2": "تنقل متسق مع TalkBack (Android) وVoiceOver (iOS)."
-            }
-        },
-        "ENVIRONMENTS": {
-            "TITLE": "البيئات وتقنيات المساعدة المستهدفة",
-            "L1": "Windows:‏ NVDA (Chrome/Firefox)، وJAWS (Edge/Chrome).",
-            "L2": "macOS:‏ VoiceOver (Safari).",
-            "L3": "iOS/iPadOS:‏ VoiceOver (Safari/Chrome).",
-            "L4": "Android:‏ TalkBack (Chrome).",
-            "L5": "متصفحات حديثة مدعومة ومحدثة."
-        },
-        "NONACCESSIBLE": {
-            "TITLE": "محتويات غير قابلة للوصول (مرصودة أو محتملة)",
-            "TEXT": "رغم جهودنا، قد تبقى بعض العناصر غير متوافقة:",
-            "L1": "صور قديمة دون نص بديل وصفي.",
-            "L2": "مستندات مقدّمة من أطراف ثالثة (PDF، مرفقات) غير قابلة للوصول بالكامل.",
-            "L3": "فيديوهات تاريخية بلا ترجمات/وصف.",
-            "L4": "مكوّنات مدمجة من أطراف ثالثة (الدفع، الخرائط، المشغلات) مع حدودها الخاصة.",
-            "MOTIVES": "أسباب محتملة: محتوى طرف ثالث، عبء غير متناسب، تحديث جارٍ."
-        },
-        "ACCOMMODATIONS": {
-            "TITLE": "بدائل وترتيبات معقولة",
-            "TEXT": "إذا كنت بحاجة إلى صيغة بديلة (مثل مستند قابل للوصول أو مساعدة في الحجز)، فتواصل معنا. سنبذل أقصى ما نستطيع لتقديم حل مكافئ."
-        },
-        "FEEDBACK": {
-            "TITLE": "ملاحظات ومساعدة",
-            "L1": "عبر التطبيق: قسم المساعدة > إمكانية الوصول.",
-            "L2A": "بالبريد الإلكتروني:",
-            "L2B": "أو",
-            "L3": "يرجى ذكر الشاشة/الرابط والجهاز والمتصفح وقارئ الشاشة المستخدم إن وُجد."
-        },
-        "CONTACT": {
-            "EMAIL_ACCESS": "accessibilite@izyglam.com",
-            "EMAIL_SUPPORT": "support@izyglam.com"
-        },
-        "RECOURSE": {
-            "TITLE": "إجراءات التظلّم (فرنسا)",
-            "TEXT": "إذا لاحظت عيبًا في إمكانية الوصول يمنعك من الوصول إلى محتوى أو وظيفة ولم تحصل على رد مُرضٍ منا، يمكنك:",
-            "L1": "مراسلة وسيط الدفاع عن الحقوق أو مندوبه في مقاطعتك،",
-            "L2": "أو اللجوء إلى الوسيط عند الاقتضاء.",
-            "MORE": "مزيد من المعلومات:",
-            "LINK": "defenseurdesdroits.fr"
-        },
-        "CONTINUOUS": {
-            "TITLE": "تحسين مستمر",
-            "L1": "نظام تصميم بمكوّنات قابلة للوصول.",
-            "L2": "مراجعة كود واختبارات إمكانية الوصول مع كل إصدار.",
-            "L3": "تدريبات منتظمة لفرق المنتج والدعم.",
-            "L4": "ترتيب أولويات الإصلاحات حسب أثرها على المستخدم."
-        },
-        "DATE": {
-            "TITLE": "تاريخ البيان والتحديثات",
-            "TEXT": "أُعدّ البيان في 25 ديسمبر 2025. سيتم تحديثه مرة واحدة على الأقل سنويًا أو عند التغييرات الكبرى."
-        }
-    },
-    "HELP": {
-        "QUESTION1": "كيف أحجز خدمة علىizyGlam؟",
-        "QUESTION2": "كيف أختار المهني المناسب لي؟",
-        "QUESTION3": "كيف أعدّل أو ألغي موعدي؟",
-        "QUESTION4": "كيف أتابع طلبي؟",
-        "QUESTION5": "ما وسائل الدفع المتاحة؟",
-        "QUESTION6": "كيف أتابع طلبي أو حجزي؟",
-        "QUESTION7": "هل يمكنني ترك رأي بعد خدمتي؟",
-        "QUESTION8": "كيف أستخدم عروض الولاء والعروض الترويجية؟",
-        "QUESTION9": "ماذا أفعل عند وجود مشكلة في طلبي؟",
-        "QUESTION10": "كيف أتواصل مع فريقizyGlam؟",
-        "QUESTION11": "كيف تعمل سياسة الإلغاء والاسترداد؟",
-        "QUESTION12": "هل يمكنني الحجز لشخص آخر (هدية، مفاجأة)؟",
-        "QUESTION13": "كيف أصبح مهنيًا شريكًا علىizyGlam؟",
-        "QUESTION14": "كيف أحمي معلوماتي الشخصية علىizyGlam؟",
-        "REPONSE1": "الأمر سهل وسريع. بعد التسجيل، اختر الخدمة التي تهمك، واستكشف المحترفين المتاحين قربك، ثم حدّد التاريخ والوقت. اضغط «احجز» لإتمام العملية، ثم ادفع ببطاقة بنكية. سيتم تأكيد حجزك يدويًا من قِبل المهني. عند الرفض، تسترد كامل المبلغ.",
-        "REPONSE2": "لكل مهني ملف تفصيلي يتضمن خدماته وأسعاره وصور أعماله وآراء العملاء. يمكنك إضافة المفضلين لسهولة الوصول. خذ وقتك للمقارنة واختيار الأنسب لتوقعاتك.",
-        "REPONSE3": "يمكنك تعديل أو إلغاء حجزك من مساحتك الخاصة. الإلغاء مجاني حتى 24 ساعة قبل الموعد. بعدها قد تُطبَّق رسوم. عند أي مشكلة، فريق الدعم هنا لمساعدتك.",
-        "REPONSE4": "سجّل الدخول إلى مساحتك، قسم «حجوزاتي». ستجد متابعة حيّة لطلبك، وإمكانية الإلغاء أو التعديل، وسجل خدماتك.",
-        "REPONSE5": "الدفع يتم حصريًا ببطاقة بنكية (Visa، MasterCard، American Express). لا نقد ولا PayPal حاليًا. كل شيء آمن لضمان راحتك.",
-        "REPONSE6": "بعد تأكيد حجزك، تصلك رسالة تلخيصية عبر البريد. نرسل تذكيرًا قبل الموعد (بريد و/أو إشعار). يمكنك متابعة الحالة من حسابك.",
-        "REPONSE7": "نعم. بعد كل خدمة منجَزة ستُدعَى لترك رأيك حول المهني. تُراجَع الآراء يدويًا لضمان مصداقيتها. لا يمكن للمهنيين تعديلها أو الرد عليها.",
-        "REPONSE8": "حاليًا لا يوجد برنامج ولاء أو أكواد ترويجية. هذه المزايا ضمن خارطة الطريق لاحقًا.",
-        "REPONSE9": "تواصل معنا من قسم «اتصال» أو عبر البريد. سنبذل جهدنا للرد خلال 24 ساعة (تقديريًا) ومساعدتك على الحل بأسرع وقت.",
-        "REPONSE10": "يمكنك التواصل عبر نموذج الاتصال بالموقع أو التطبيق. الدعم متاح من الإثنين إلى السبت، 9 صباحًا حتى 6 مساءً. مثال بريد: support@izyglam.com",
-        "REPONSE11": "يمكنك الإلغاء مجانًا حتى 24 ساعة قبل الموعد. بعد ذلك قد تُطبَّق رسوم. عند رفض المهني للحجز بعد الدفع، يتم الاسترداد تلقائيًا. نظام الاسترداد الآلي قيد النشر.",
-        "REPONSE12": "لا يمكنك حتى الآن إهداء خدمة مباشرة من حسابك. لكن إن قدّم المهني عرضًا ثنائيًا/عائليًا، يمكنك الحجز لعدة أشخاص ضمن ذلك.",
-        "REPONSE13": "هل أنتِ أخصائية تجميل أو مصففة شعر أو مختصة رفاه؟ انضمي لمجتمعizyGlam عبر نموذج «انضمّي كشريكة». سيتواصل معك فريقنا سريعًا لإتمام التسجيل.",
-        "REPONSE14": "حماية بياناتك أولوية لنا. نلتزم بالـ RGPD. لا يطّلع المهنيون إلا على المعلومات الضرورية للخدمة. توجد مراسلة مدمجة للتواصل عند الحاجة، وسيُراقَب أي سلوك يهدف لتجاوز المنصة."
+    "TERMINATION": {
+      "TITLE": "الإنهاء والتعليق",
+      "TEXT": "يمكنك حذف حسابك في أي وقت. ويجوز لنا تعليق أو إنهاء الوصول في حال مخالفة الشروط، أو وقوع احتيال، أو إساءة استخدام، أو بناءً على أمرٍ قانوني. تبقى بعض الالتزامات (مثل سداد المبالغ المستحقّة، بنود المسؤولية) نافذة بعد الإنهاء."
     },
     "PRIVACY": {
-        "WHO": {
-            "TITLE": "من نحن؟",
-            "TEXT": "توضّح سياسة الخصوصية هذه كيف تجمع <strong>IzyGlam</strong> («نحن» أو «منصتنا») بياناتك الشخصية عند استخدامك لخدماتنا (الموقع، تطبيق الويب، تطبيق الهاتف، البريد والدعم)، وكيف نستخدمها ونحفظها ونشاركها ونحميها. نعمل كـ<strong>مسؤول معالجة</strong> للمعالجات الموضّحة أدناه."
-        },
-        "SCOPE": {
-            "TITLE": "نطاق السياسة",
-            "TEXT": "تنطبق هذه السياسة على <strong>العملاء</strong> الذين يحجزون خدمات، و<strong>المهنيين</strong> الذين يعرضون خدمات عبرizyGlam، و<strong>الزوار</strong> لواجهاتنا."
-        },
-        "DATA": {
-            "TITLE": "البيانات المجمّعة",
-            "PROVIDED": {
-                "TITLE": "بيانات تقدّمها أنت",
-                "L1": "<strong>الهوية وطرق الاتصال:</strong> الاسم، اللقب، البريد، الهاتف، العناوين، الصور/الصور الرمزية.",
-                "L2": "<strong>الحساب:</strong> بيانات الدخول، كلمات المرور (مُجزّأة)، التفضيلات، اللغة.",
-                "L3": "<strong>الحجوزات:</strong> الخدمات المختارة، التاريخ/الوقت، عناوين التنفيذ، الملاحظات، المرفقات.",
-                "L4": "<strong>الدفع:</strong> معلومات الدفع <em>عبر مزودنا (مثال: Stripe)</em> — لا نخزّن بيانات بطاقتك.",
-                "L5": "<strong>المهنيون:</strong> الملف العام، الخدمات، الأسعار، مناطق العمل، التوفر، رقم IBAN/RIB (محمي)، مستندات التحقق إن لزم.",
-                "L6": "<strong>الدعم:</strong> الرسائل، التذاكر، وتسجيلات المكالمات إن وُجدت."
-            },
-            "AUTOMATIC": {
-                "TITLE": "بيانات تُجمَّع تلقائيًا",
-                "L1": "<strong>تقنية:</strong> طراز الجهاز، نظام التشغيل، المتصفح، الدقة، معرفات الجلسة.",
-                "L2": "<strong>السجلات:</strong> عناوين IP، الطوابع الزمنية، أحداث الأخطاء، استخدام الميزات.",
-                "L3": "<strong>الموقع:</strong> موقع تقريبي (IP) أو دقيق (GPS بموافقتك).",
-                "L4": "<strong>الكوكيز وSDK:</strong> انظر القسم المخصّص أدناه."
-            },
-            "THIRD": {
-                "TITLE": "بيانات من أطراف ثالثة",
-                "L1": "<strong>مزودو الدفع</strong> (حالات الدفع، الرموز).",
-                "L2": "<strong>شركاء التحليلات/مكافحة الاحتيال</strong> (إشارات المخاطر، مجاميع الاستخدام).",
-                "L3": "<strong>التكاملات</strong> (مثل الاتصال، الخرائط، التخزين السحابي)."
-            }
-        },
-        "PURPOSES": {
-            "TITLE": "الأغراض والأسس القانونية",
-            "TEXT": "نعالج البيانات للأغراض التالية:",
-            "L1": "<strong>تقديم الخدمة</strong> (إنشاء الحساب، الحجز، الربط، الإشعارات) — <em>الأساس: تنفيذ العقد</em>.",
-            "L2": "<strong>الدفع والفوترة</strong> — <em>عقد، التزام قانوني</em>.",
-            "L3": "<strong>الأمن ومنع الإساءة/الاحتيال</strong> — <em>مصلحة مشروعة، التزام قانوني</em>.",
-            "L4": "<strong>تحسين المنتج والإحصاءات</strong> — <em>مصلحة مشروعة</em>.",
-            "L5": "<strong>الدعم والجودة</strong> — <em>عقد، مصلحة مشروعة</em>.",
-            "L6": "<strong>التسويق المباشر</strong> (بريد/تطبيق) — <em>موافقة عند اللزوم</em>؛ إمكانية الانسحاب متاحة دائمًا.",
-            "L7": "<strong>الامتثال القانوني</strong> (محاسبة، طلبات سلطات) — <em>التزام قانوني</em>."
-        },
-        "SHARING": {
-            "TITLE": "مشاركة البيانات",
-            "L1": "<strong>المهنيون/العملاء</strong>: المعلومات اللازمة لتنفيذ الخدمة (الاسم، وسيلة التواصل، عنوان التنفيذ، تفاصيل الحجز).",
-            "L2": "<strong>المزوّدون</strong>: الدفع (مثال Stripe)، الاستضافة/التخزين، التحليلات، البريد/الرسائل، الدعم، KYC عند الحاجة. <em>وصول محدود للضروري وبعقود متوافقة مع RGPD.</em>",
-            "L3": "<strong>الشركاء</strong>: بموافقتك للعروض المحددة.",
-            "L4": "<strong>السلطات</strong>: عند وجوب القانون أو لحماية حقوقنا."
-        },
-        "TRANSFERS": {
-            "TITLE": "نقل البيانات خارج الاتحاد الأوروبي/المنطقة الاقتصادية الأوروبية",
-            "TEXT": "عند نقل البيانات إلى دول بلا قرار ملاءمة، نستخدم <strong>بنودًا تعاقدية نموذجية</strong> ونطبق تدابير تكميلية."
-        },
-        "RETENTION": {
-            "TITLE": "فترات الاحتفاظ",
-            "L1": "<strong>الحساب والهوية</strong>: طوال استخدام الحساب ثم <em>حتى 3 سنوات</em> بعد آخر نشاط (تسويق) أو <em>5–10 سنوات</em> للالتزامات المحاسبية/القانونية.",
-            "L2": "<strong>الحجوزات/الفواتير</strong>: <em>10 سنوات</em> (التزام قانوني).",
-            "L3": "<strong>سجلات الأمن</strong>: <em>6–24 شهرًا</em> حسب الحساسية.",
-            "L4": "<strong>الكوكيز</strong>: انظر قسم الكوكيز.",
-            "NOTE": "بعدها تُحذف البيانات أو تُجهّل."
-        },
-        "COOKIES": {
-            "TITLE": "الكوكيز وSDK",
-            "TEXT": "نستخدم الكوكيز/SDK لتشغيل المنصة وقياس الجمهور ومنع الاحتيال، ومع موافقتك لتخصيص التجربة.",
-            "L1": "<strong>ضرورية</strong>: المصادقة، الأمان، التفضيلات التقنية.",
-            "L2": "<strong>قياس الجمهور</strong>: إحصاءات استخدام مجمّعة.",
-            "L3": "<strong>تسويق</strong>: فقط بموافقتك.",
-            "PREF": "يمكنك إدارة تفضيلاتك في أي وقت عبر الشريط وإعدادات المتصفح."
-        },
-        "AUTOMATION": {
-            "TITLE": "القرارات المؤتمتة والتمييز",
-            "TEXT": "قد نستخدم إشارات آلية (مثل مخاطر الاحتيال، توفر المهني، المسافة) لترتيب الأولويات أو اقتراح مواعيد. لا نتخذ قرارات ذات أثر قانوني كبير دون تدخل بشري، إلا إذا فرض القانون أو بموافقتك الصريحة."
-        },
-        "RIGHTS": {
-            "TITLE": "حقوقك (RGPD)",
-            "L1": "حق <strong>الوصول</strong> و<strong>التصحيح</strong> و<strong>المحو</strong>.",
-            "L2": "حق <strong>تقييد</strong> المعالجة و<strong>قابلية النقل</strong>.",
-            "L3": "حق <strong>الاعتراض</strong> على المعالجة المبنية على المصلحة المشروعة.",
-            "L4": "حق <strong>سحب الموافقة</strong> في أي وقت.",
-            "L5": "حق تقديم <strong>شكوى</strong> إلى CNIL.",
-            "CONTACT": "لممارسة حقوقك، تواصل معنا:",
-            "VERIFY": "قد نطلب معلومات إضافية للتحقق من هويتك."
-        },
-        "SECURITY": {
-            "TITLE": "الأمان",
-            "TEXT": "نطبق تدابير تقنية وتنظيمية مناسبة: تشفير أثناء النقل (TLS)، تجزئة كلمات المرور، التسجيل والمراقبة، التحكم بالوصول، النسخ الاحتياطي، مراجعة الكود واختبارات الأمان."
-        },
-        "MINORS": {
-            "TITLE": "بيانات القاصرين",
-            "TEXT": "خدماتنا غير موجهة لمن هم دون 15 عامًا. عند الاشتباه بحساب قاصر سنحذفه بعد التحقق."
-        },
-        "SUBPROCESSORS": {
-            "TITLE": "المعالِجون الفرعيون الرئيسيون",
-            "TEXT": "نعمل مع مزودين أساسيين للاستضافة والدفع والبريد والتحليلات والتخزين. يمكن توفير قائمة محدثة عند الطلب على"
-        },
-        "CONTACT": {
-            "TITLE": "الاتصال ومسؤول حماية البيانات (DPO)",
-            "PRIVACY_LABEL": "اتصال الخصوصية",
-            "SUPPORT_LABEL": "الدعم",
-            "AUTHORITY_LABEL": "هيئة الرقابة",
-            "EMAIL_PRIVACY": "privacy@izyglam.com",
-            "EMAIL_SUPPORT": "support@izyglam.com",
-            "EMAIL_PRIVACY_TEXT": "privacy@izyglam.com",
-            "EMAIL_SUPPORT_TEXT": "support@izyglam.com"
-        },
-        "CHANGES": {
-            "TITLE": "تغييرات هذه السياسة",
-            "TEXT": "قد نحدّث هذه السياسة لتعكس تطورات قانونية أو وظيفية. عند تغييرات جوهرية سنبلغك عبر البريد أو التطبيق. تاريخ السريان: <strong>11&nbsp;أغسطس&nbsp;2025</strong>."
-        },
-        "LOCAL": {
-            "TITLE": "أحكام محلية",
-            "TEXT": "إذا كنت داخل الاتحاد الأوروبي، تُعالَج بياناتك وفق RGPD. قد تنطبق ملاحق خاصة بكل بلد/منطقة وسيتم إخطارك بها عند الاقتضاء."
-        },
-        "GLOSSARY": {
-            "TITLE": "مسرد (مختصر)",
-            "L1": "<strong>مسؤول المعالجة</strong>: الكيان الذي يحدد أغراض ووسائل المعالجة.",
-            "L2": "<strong>المعالِج</strong>: كيان يعالج بيانات لصالح المسؤول.",
-            "L3": "<strong>الأساس القانوني</strong>: المبرر الذي يجيز المعالجة (عقد، موافقة، التزام قانوني، مصلحة مشروعة).",
-            "L4": "<strong>كوكيز/SDK</strong>: أدوات تتبع يستخدمها الموقع/التطبيق للتشغيل والقياس والتخصيص."
-        }
+      "TITLE": "البيانات الشخصية",
+      "TEXT": "تُوصَف معالجة بياناتك في <strong>سياسة الخصوصية</strong> الخاصة بنا. باستخدامك المنصّة، فإنك تقبل هذه السياسة. اطّلع عليها لمعرفة حقوقك وفق RGPD والتزاماتنا."
     },
-    "TERMS": {
-        "ACCEPT": {
-            "TITLE": "قبول الشروط",
-            "TEXT": "بدخولك خدماتizyGlam (الموقع، تطبيق الويب، تطبيق الهاتف) فإنك تقبل دون تحفظ شروط الاستخدام هذه («الشروط»). إذا لم توافق، فلا تستخدم المنصة."
-        },
-        "DEFINITIONS": {
-            "TITLE": "تعريفات",
-            "L1": "<strong>العميل</strong>: كل شخص يحجز و/أو يدفع مقابل خدمة على المنصة.",
-            "L2": "<strong>المهني</strong>: كل شخص يقدّم خدمات عبر المنصة.",
-            "L3": "<strong>الخدمة</strong>: خدمة يقدّمها مهني (مثل الجمال المنزلي).",
-            "L4": "<strong>المنصة</strong>: البنية البرمجية والمواقع والتطبيقات التي تديرهاizyGlam."
-        },
-        "SERVICE_ROLE": {
-            "TITLE": "الخدمات ودورizyGlam",
-            "TEXT": "izyGlam هي <strong>منصة للربط</strong>. يتحمّل المهنيون <strong>المسؤولية الكاملة</strong> عن الخدمات التي ينفذونها (الجودة، الامتثال، التأمين). ما لم يُذكر خلاف ذلك، لا تعدizyGlam بائعًا ولا مقدّم خدمة ولا تتحمل مسؤولية التنفيذ."
-        },
-        "ACCOUNT": {
-            "TITLE": "الحساب والأهلية",
-            "L1": "التسجيل إلزامي للحجز أو تقديم خدمة. تتعهد بتقديم معلومات دقيقة وتحديثها.",
-            "L2": "يجب أن لا يقل عمرك عن 15 عامًا لاستخدام المنصة. يجب أن يكون المهنيون مخوّلين قانونيًا لمزاولة نشاطهم.",
-            "L3": "أنت مسؤول عن سرية بيانات الدخول وعن أي نشاط يجري عبر حسابك.",
-            "L4": "تحتفظizyGlam بالحق في تعليق أو إنهاء حساب عند خرق الشروط أو وجود خطر احتيال مثبت."
-        },
-        "BOOKINGS": {
-            "TITLE": "الحجوزات وإبرام العقد",
-            "L1": "تُحجز الخدمات وتُدفع <strong>عبر الإنترنت</strong> من قِبل العميل. لا مبالغ نقدية في الموقع.",
-            "L2": "الحجز <strong>خاضع لقيول المهني</strong> بعد الدفع. عند الرفض، <strong>يُسترد المبلغ بالكامل</strong>.",
-            "L3": "يُبرم عقد الخدمة مباشرة بين العميل والمهني عند القبول.",
-            "L4": "على الطرفين التحقق من المواعيد وعناوين التنفيذ وأي شروط خاصة."
-        },
-        "PRICES_PAYMENTS": {
-            "TITLE": "الأسعار والاشتراكات والدفع",
-            "L1": "يحدد المهنيون أسعار خدماتهم بحرّية. تطبقizyGlam <strong>عمولة</strong> منصة.",
-            "L2": "اشتراكات للمهنيين (مثال حالي): <em>صالون واحد مجاني مدى الحياة</em>؛ <em>Basic: ثلاثة صالونات – 99 € / شهر</em>؛ <em>Premium: عشرة صالونات – 499 € / شهر</em>؛ <em>أكثر: عرض خاص</em>.",
-            "L3": "الدفع <strong>بالبطاقة البنكية فقط</strong> عبر مزوّد (مثال: Stripe). <strong>لا نقد</strong> ولا أكواد ترويج ولا برنامج ولاء في هذه المرحلة.",
-            "L4": "تُعرض المبالغ والضرائب والرسوم قبل التأكيد. قد تتغير شروط الاشتراك؛ سنبلغك مسبقًا."
-        },
-        "CANCELLATIONS": {
-            "TITLE": "الإلغاء والاسترداد والغياب",
-            "L1": "إلغاء مجاني حتى <strong>24 ساعة</strong> قبل الموعد.",
-            "L2": "خلال أقل من 24 ساعة قد تُطبّق <strong>رسوم</strong> وفق السياسة المعمول بها.",
-            "L3": "عند <strong>رفض</strong> المهني بعد الدفع، يُسترد المبلغ 100٪. أتمتة الاسترداد قيد النشر؛ وسيتولى الدعم العملية عند الحاجة.",
-            "L4": "الغياب غير المُبلّغ (<strong>no-show</strong>) قد يؤدي إلى رسوم أو عدم إمكانية الاسترداد."
-        },
-        "PAYOUTS": {
-            "TITLE": "التحويلات إلى المهنيين",
-            "L1": "يتم تنفيذ تحويل أرباح المهني عند <strong>تأكيد إنجاز</strong> الخدمة (مثال: تأكيد <em>رمز التحقق</em>).",
-            "L2": "يُستخدم رقم RIB/IBAN الذي يقدّمه المهني لإجراء التحويل. ويضمن المهني دقّة معلوماته البنكية.",
-            "L3": "المبالغ المُحوَّلة تطابق سعر الخدمة <em>بعد خصم</em> العمولة والرسوم المعمول بها."
-        },
-        "RESPONSIBILITIES": {
-            "TITLE": "مسؤوليات الأطراف",
-            "L1": "يتحمّل المهنيون مسؤولية مطابقة خدماتهم للمعايير، واحترام القوانين، ومعايير النظافة والسلامة.",
-            "L2": "يلتزم العملاء بتقديم معلومات دقيقة (العنوان، التوفّر، قيود الوصول) واحترام المواعيد.",
-            "L3": "تُتيح izyGlam المنصّة والأدوات (الحجز، الدفع، المراسلة) لكنها لا تضمن نتائج أيّ خدمة."
-        },
-        "REVIEWS": {
-            "INVALID_RATING": "تقييم غير صالح.",
-            "TITLE": "التقييمات والمراجعات",
-            "L1": "لا يمكن ترك المراجعات <strong>إلّا بعد تنفيذ خدمة فعلية</strong>.",
-            "L2": "قد تُخضع المراجعات إلى <strong>إشراف/مراجعة</strong> (مثل حذف المحتويات المخالفة للقانون أو لهذه الشروط)."
-        },
-        "PROHIBITED": {
-            "TITLE": "سلوكيات محظورة",
-            "L1": "الاحتيال، انتحال الهوية، التحايل على المنصّة، التحريض على معاملات خارج المنصّة.",
-            "L2": "محتويات غير قانونية أو تشهيرية أو تمييزية أو عنيفة أو منافية للآداب.",
-            "L3": "الاختراق، حجب الخدمة، الهندسة العكسية، أو تجاوز إجراءات الأمان.",
-            "L4": "جمع غير مُصرّح به لبيانات شخصية تخص مستخدمين آخرين."
-        },
-        "IPR": {
-            "TITLE": "الملكية الفكرية",
-            "TEXT": "محتويات المنصّة وعلاماتها وعناصرها (الكود، التصميم، النصوص، الشعارات، الصور) محمية. ما لم يتم التصريح صراحةً، يُحظر أي نسخ أو توزيع أو تكييف. تبقى المحتويات التي يقدّمها المهنيون ملكًا لهم؛ ويمنحون izyGlam ترخيصًا غير حصري بالقدر اللازم لتشغيل المنصّة."
-        },
-        "THIRD_PARTY": {
-            "TITLE": "خدمات الأطراف الثالثة",
-            "TEXT": "قد تتكامل المنصّة مع خدمات جهات خارجية (الدفع، الخرائط، الاستضافة، التحليلات). تسري شروطها الخاصة. لا تتحمّل izyGlam مسؤولية انقطاعات أو أعطال تلك الخدمات."
-        },
-        "AVAILABILITY": {
-            "TITLE": "التوفّر، الصيانة، والتحديثات",
-            "TEXT": "يجوز لنا تعديل المنصّة أو تعليقها أو إيقاف جزءٍ منها أو كاملها لأغراض الصيانة أو التحسين. نبذل جهودًا معقولة للحدّ من التأثير على المستخدمين."
-        },
-        "LIABILITY": {
-            "TITLE": "تحديد المسؤولية والتعويض",
-            "TEXT": "في الحدود التي يسمح بها القانون، تقتصر مسؤولية izyGlam على الأضرار المباشرة، ويُستثنى الضرر غير المباشر (فقدان الفرصة، فقدان الإيرادات، إلخ). وتلتزم بتعويض izyGlam عن أي مطالبة ناتجة عن انتهاك هذه الشروط أو استخدامٍ غير قانوني للمنصّة."
-        },
-        "TERMINATION": {
-            "TITLE": "الإنهاء والتعليق",
-            "TEXT": "يمكنك حذف حسابك في أي وقت. ويجوز لنا تعليق أو إنهاء الوصول في حال مخالفة الشروط، أو وقوع احتيال، أو إساءة استخدام، أو بناءً على أمرٍ قانوني. تبقى بعض الالتزامات (مثل سداد المبالغ المستحقّة، بنود المسؤولية) نافذة بعد الإنهاء."
-        },
-        "PRIVACY": {
-            "TITLE": "البيانات الشخصية",
-            "TEXT": "تُوصَف معالجة بياناتك في <strong>سياسة الخصوصية</strong> الخاصة بنا. باستخدامك المنصّة، فإنك تقبل هذه السياسة. اطّلع عليها لمعرفة حقوقك وفق RGPD والتزاماتنا."
-        },
-        "CHANGES": {
-            "TITLE": "تعديلات شروط الاستخدام",
-            "TEXT": "يجوز لنا تعديل هذه الشروط لأسباب قانونية أو تنظيمية أو وظيفية. في حال أي تغيير جوهري، سنخطرك عبر البريد الإلكتروني أو عبر التطبيق وننشر النسخة المُحدَّثة."
-        },
-        "LAW": {
-            "TITLE": "القانون الواجب التطبيق والنزاعات",
-            "TEXT": "تخضع هذه الشروط لـ<strong>القانون الفرنسي</strong>. وتُعرَض أي نزاعات أمام المحاكم المختصّة في مقرّ izyGlam، مع مراعاة أي أحكام قانونية إلزامية أكثر ملاءمة للمستهلك."
-        },
-        "CONTACT": {
-            "TITLE": "اتصال",
-            "SUPPORT_LABEL": "الدعم",
-            "LEGAL_LABEL": "الشؤون القانونية",
-            "EMAIL_SUPPORT": "support@izyglam.com",
-            "EMAIL_LEGAL": "legal@izyglam.com",
-            "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
-            "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
-        },
-        "EFFECTIVE": {
-            "TITLE": "تاريخ السريان",
-            "TEXT": "تدخل هذه الشروط حيّز التنفيذ في <strong>25&nbsp;ديسمبر&nbsp;2025</strong> وتُلغي أي إصدار سابق."
-        }
+    "CHANGES": {
+      "TITLE": "تعديلات شروط الاستخدام",
+      "TEXT": "يجوز لنا تعديل هذه الشروط لأسباب قانونية أو تنظيمية أو وظيفية. في حال أي تغيير جوهري، سنخطرك عبر البريد الإلكتروني أو عبر التطبيق وننشر النسخة المُحدَّثة."
     },
-    "invoice": {
-        "TITLE": "فاتورة",
-        "SELLER": "البائع",
-        "SELLER_ADDRESS": "izyGlam{{linebreak}}22، شارع فولتير{{linebreak}}75000 باريس، فرنسا",
-        "CLIENT": "العميل",
-        "UNKNOWN_CLIENT": "عميل غير معروف",
-        "BILLING_DATE": "تاريخ الفوترة:",
-        "NUMBER": "رقم الفاتورة:",
-        "DUE_DATE": "تاريخ الاستحقاق:",
-        "DUE_IMMEDIATE": "فوري",
-        "PAYMENT_STATUS": "حالة الدفع:",
-        "SERVICE_DATE": "تاريخ الخدمة:",
-        "DESCRIPTION": "الوصف",
-        "QTY": "الكمية",
-        "UNIT": "الوحدة",
-        "UNIT_PRICE_HT": "سعر الوحدة (بدون ضريبة)",
-        "VAT_RATE": "٪ ضريبة القيمة المضافة",
-        "TOTAL_VAT": "إجمالي ضريبة القيمة المضافة",
-        "TOTAL_TTC": "الإجمالي (شامل الضريبة)",
-        "DEFAULT_ITEM": "خدمة محجوزة",
-        "SERVICE_UNIT": "خدمة",
-        "IG_COMMISSION": "عمولة izyGlam",
-        "SERVICE_FEES": "رسوم الخدمة",
-        "VAT_STATE": "ضريبة القيمة المضافة (الولاية)",
-        "TOTAL_HT": "الإجمالي الفرعي (بدون ضريبة)",
-        "VAT": "ضريبة القيمة المضافة",
-        "FOOTER_LINE1": "izyGlam - الجمال والعافية في المنزل",
-        "FOOTER_LINE2": "www.izyglam.com",
-        "UNDEFINED": "غير معرّف",
-        "INVALID_DATE": "تاريخ غير صالح"
+    "LAW": {
+      "TITLE": "القانون الواجب التطبيق والنزاعات",
+      "TEXT": "تخضع هذه الشروط لـ<strong>القانون الفرنسي</strong>. وتُعرَض أي نزاعات أمام المحاكم المختصّة في مقرّ izyGlam، مع مراعاة أي أحكام قانونية إلزامية أكثر ملاءمة للمستهلك."
+    },
+    "CONTACT": {
+      "TITLE": "اتصال",
+      "SUPPORT_LABEL": "الدعم",
+      "LEGAL_LABEL": "الشؤون القانونية",
+      "EMAIL_SUPPORT": "support@izyglam.com",
+      "EMAIL_LEGAL": "legal@izyglam.com",
+      "EMAIL_SUPPORT_TEXT": "support&#64;izyglam.com",
+      "EMAIL_LEGAL_TEXT": "legal&#64;izyglam.com"
+    },
+    "EFFECTIVE": {
+      "TITLE": "تاريخ السريان",
+      "TEXT": "تدخل هذه الشروط حيّز التنفيذ في <strong>25&nbsp;ديسمبر&nbsp;2025</strong> وتُلغي أي إصدار سابق."
     }
+  },
+  "invoice": {
+    "TITLE": "فاتورة",
+    "SELLER": "البائع",
+    "SELLER_ADDRESS": "izyGlam{{linebreak}}22، شارع فولتير{{linebreak}}75000 باريس، فرنسا",
+    "CLIENT": "العميل",
+    "UNKNOWN_CLIENT": "عميل غير معروف",
+    "BILLING_DATE": "تاريخ الفوترة:",
+    "NUMBER": "رقم الفاتورة:",
+    "DUE_DATE": "تاريخ الاستحقاق:",
+    "DUE_IMMEDIATE": "فوري",
+    "PAYMENT_STATUS": "حالة الدفع:",
+    "SERVICE_DATE": "تاريخ الخدمة:",
+    "DESCRIPTION": "الوصف",
+    "QTY": "الكمية",
+    "UNIT": "الوحدة",
+    "UNIT_PRICE_HT": "سعر الوحدة (بدون ضريبة)",
+    "VAT_RATE": "٪ ضريبة القيمة المضافة",
+    "TOTAL_VAT": "إجمالي ضريبة القيمة المضافة",
+    "TOTAL_TTC": "الإجمالي (شامل الضريبة)",
+    "DEFAULT_ITEM": "خدمة محجوزة",
+    "SERVICE_UNIT": "خدمة",
+    "IG_COMMISSION": "عمولة izyGlam",
+    "SERVICE_FEES": "رسوم الخدمة",
+    "VAT_STATE": "ضريبة القيمة المضافة (الولاية)",
+    "TOTAL_HT": "الإجمالي الفرعي (بدون ضريبة)",
+    "VAT": "ضريبة القيمة المضافة",
+    "FOOTER_LINE1": "izyGlam - الجمال والعافية في المنزل",
+    "FOOTER_LINE2": "www.izyglam.com",
+    "UNDEFINED": "غير معرّف",
+    "INVALID_DATE": "تاريخ غير صالح"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Confirmation",
+    "CANCEL": "Annuler",
+    "OK": "OK",
+    "TERMINATE": "Terminer",
+    "DELETE": "Supprimer"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Rechercher une prestation",
+    "EMAIL_PLACEHOLDER": "Email de l'utilisateur",
+    "CATEGORY_TITLE": "Que souhaitez-vous réserver ?",
+    "CATEGORY_HINT": "Choisissez une catégorie. Ensuite : prestation → moment → créneau.",
+    "REASSURANCE": "Paiement sécurisé • Pros vérifiées • Support réactif",
+    "PRICE_TIP": "Prix clair avant paiement. Vous confirmez quand tout est OK.",
+    "WHEN_TITLE": "Quel moment vous arrange ?",
+    "WHEN_HINT": "On affichera uniquement les créneaux disponibles.",
+    "TODAY": "Aujourd'hui",
+    "TONIGHT": "Ce soir",
+    "TOMORROW": "Demain",
+    "THIS_WEEK": "Cette semaine",
+    "VIEW_SLOTS": "Voir les créneaux disponibles",
+    "PAYMENT_REASSURANCE": "Paiement sécurisé • Modification possible avant paiement",
+    "SLOTS_TITLE": "Créneaux disponibles",
+    "SLOTS_HINT": "Sélectionnez un créneau pour continuer.",
+    "VALIDATION_TIP": "Vous validez tout au récapitulatif avant paiement.",
+    "SUMMARY_TITLE": "Récapitulatif",
+    "SUMMARY_HINT": "Vérifiez avant de passer au paiement.",
+    "SERVICE": "Prestation",
+    "DURATION": "Durée",
+    "WHEN": "Quand",
+    "PRICE": "Prix",
+    "FROM": "à partir de",
+    "CONTINUE_PAYMENT": "Continuer vers paiement",
+    "PAYMENT_FOOTNOTE": "Paiement sécurisé. Annulation selon conditions. Vous pourrez choisir de reprendre avec le même prestataire après la prestation."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Comment souhaitez-vous réserver ?",
+    "SUBTITLE": "Réservez en 2 minutes — à domicile, paiement sécurisé.",
+    "QUICK_TITLE": "Réservation rapide",
+    "QUICK_DESC": "Choisissez une prestation, on vous propose les créneaux.",
+    "RECOMMENDED": "Recommandé",
+    "PROVIDER_TITLE": "Choisir un prestataire",
+    "PROVIDER_DESC": "Parcourez les profils et réservez dans l'agenda."
+  }
 }

@@ -36,6 +36,24 @@
     "YOGA": "Thư giãn / Yoga",
     "DEVELOPPEMENT": "Phát triển bản thân"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Tóc",
+    "MANUCURE": "Móng",
+    "VISAGE": "Khuôn mặt",
+    "MASSAGE": "Massage",
+    "MAQUILLAGE": "Trang điểm",
+    "EPILATION": "Tẩy lông",
+    "BRONZAGE": "Nhuộm da",
+    "PARTUM": "Hậu sản",
+    "NUTRITION": "Dinh dưỡng",
+    "FITNESS": "Thể hình",
+    "ACUPUNCTURE": "Châm cứu",
+    "STYLISME": "Stylist",
+    "YOGA": "Thư giãn",
+    "DEVELOPPEMENT": "Nâng tầm",
+    "BARBER": "Thợ cắt tóc",
+    "EYELASH": "Nối mi"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Đã thêm salon vào mục yêu thích",
     "FAVORITE_REMOVED": "Đã xóa salon khỏi mục yêu thích",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "บริการลูกค้า",
-    "WRITE": "เขียนข้อความ…"
+    "WRITE": "เขียนข้อความ…",
+    "NO_CONV": "Không có cuộc trò chuyện",
+    "CREATE": "Tạo cuộc trò chuyện",
+    "CREATE_CONV": "Tạo",
+    "OPEN_CONV_LIST": "Mở danh sách cuộc trò chuyện",
+    "PHOTO_SENT": "Ảnh đã gửi"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Nhập email đăng nhập của bạn",
@@ -173,8 +196,14 @@
     "SERVICES": "Quản lý dịch vụ",
     "PHOTOS": "Thư viện ảnh",
     "STATS": "Thống kê",
+    "SOCIAL": "Mạng xã hội",
     "PARAM": "Thiết lập",
+    "DOCUMENTS": "Tài liệu",
     "SHOPS": "Các cửa hàng",
+    "B2BLEAD": "Leads BtoB",
+    "PROLEAD": "Leads Pro",
+    "COMPANY": "Các công ty",
+    "COM": "Giao tiếp",
     "USERS": "Người dùng",
     "MESSAGE": "Nhắn tin"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Bình luận",
     "NOTE": "Điểm",
     "CLOSE": "Đóng"
+  },
+  "UILEVEL": {
+    "STARTER": "Người sáng tạo",
+    "ACTIVE": "Đã xác nhận",
+    "AMBASSADOR": "Đại sứ IzyGlam",
+    "ICONE": "Biểu tượng địa phương"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Không có ảnh trong thư viện."
@@ -265,7 +300,7 @@
     "RESERVED": "Đặt trước",
     "GIFTCARDS": "Thẻ quà tặng",
     "WORKWITHUS": "Hợp tác với izyGlam",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "Dịch vụ làm đẹp cho doanh nghiệp",
     "CONFIDENTIAL": "Bảo mật",
     "ACCESS": "Khả năng truy cập",
     "CONDITIONS": "Điều khoản",
@@ -290,23 +325,6 @@
     "TOP10": "Top 10 trong tuần",
     "SEARCHRESULT": "Kết quả tìm kiếm",
     "AVIS": "Đánh giá"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Tóc",
-    "MANUCURE": "Móng",
-    "VISAGE": "Khuôn mặt",
-    "MASSAGE": "Massage",
-    "MAQUILLAGE": "Trang điểm",
-    "EPILATION": "Tẩy lông",
-    "BRONZAGE": "Nhuộm da",
-    "PARTUM": "Hậu sản",
-    "NUTRITION": "Dinh dưỡng",
-    "FITNESS": "Thể hình",
-    "ACUPUNCTURE": "Châm cứu",
-    "STYLISME": "Stylist",
-    "YOGA": "Thư giãn",
-    "DEVELOPPEMENT": "Nâng tầm",
-    "EYELASH": "Nối mi"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Một thợ làm tóc",
@@ -379,6 +397,75 @@
     "LANGUE": "Ngôn ngữ",
     "COUNTRY": "Quốc gia"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Nghệ thuật làm móng tối giản để tạo hiệu ứng thanh lịch và hiện đại.",
+    "CREATIVITE": "Chọn màu sắc táo bạo để thể hiện sự sáng tạo của bạn.",
+    "VINTAGE": "Phong cách cổ điển được làm mới để tạo vẻ ngoài độc đáo!",
+    "QUESTION": "Bắt đầu bài đăng của bạn bằng một câu hỏi hấp dẫn để khuyến khích tương tác.",
+    "VISUELS": "Tối ưu hóa hình ảnh của bạn với màu sắc tươi sáng và văn bản rõ ràng.",
+    "APPEL_ACTION": "Thêm lời kêu gọi hành động rõ ràng, như \"Nhấp vào liên kết\" hoặc \"Chia sẻ ý kiến của bạn\".",
+    "LEGENDES": "Sử dụng chú thích ngắn gọn nhưng ấn tượng cho Instagram và Bluesky.",
+    "COMMENTAIRES": "Bao gồm các câu hỏi mở để khuyến khích bình luận.",
+    "HASHTAGS": "Thêm các hashtag phù hợp để tiếp cận đối tượng rộng hơn.",
+    "STATISTIQUES": "Thêm thống kê hoặc sự thật thú vị để thu hút sự chú ý.",
+    "STORYTELLING": "Kể một câu chuyện hấp dẫn để giữ độc giả của bạn tham gia.",
+    "REUSSITES": "Nổi bật thành công của bạn hoặc khách hàng của bạn cho LinkedIn.",
+    "AUTHENTICITE": "Hãy chân thực và thể hiện tính cách thật của bạn.",
+    "ANALYSE": "Phân tích hiệu suất của bạn và điều chỉnh chiến lược cho phù hợp.",
+    "EMOJIS": "Sử dụng emoji để làm cho nội dung của bạn trực quan và hấp dẫn hơn.",
+    "HEURES": "Đăng vào những giờ chiến lược để tối đa hóa phạm vi tiếp cận.",
+    "STORIES": "Tích hợp stories hoặc reels để nhanh chóng thu hút sự chú ý.",
+    "CAPTIVANTES": "Sử dụng chú thích hấp dẫn khiến người đọc muốn nhấp vào \"Đọc thêm\".",
+    "ANECDOTE": "Chia sẻ những giai thoại cá nhân để tạo kết nối cảm xúc.",
+    "FORMATS": "Đa dạng hóa định dạng của bạn: hình ảnh, video, carousel hoặc khảo sát.",
+    "TON": "Điều chỉnh giọng điệu nội dung của bạn tùy theo nền tảng được sử dụng.",
+    "MENTIONS": "Đề cập đến người dùng hoặc thương hiệu khác để mở rộng phạm vi tiếp cận.",
+    "STYLES": "Thử nghiệm các phong cách trực quan khác nhau để khám phá điều gì thu hút khán giả nhất.",
+    "VIDEOS": "Sử dụng video ngắn để nhanh chóng thu hút sự chú ý.",
+    "TEMOIGNAGES": "Thêm lời chứng thực của khách hàng để tăng cường uy tín.",
+    "SONDAGES": "Tạo khảo sát để thu hút khán giả của bạn.",
+    "VALEURS": "Nổi bật các giá trị của bạn để tiếp cận đối tượng mục tiêu.",
+    "AVANT_APRES": "Thêm hình ảnh trước/sau để thể hiện tác động rõ ràng.",
+    "CITATIONS": "Kết hợp các trích dẫn truyền cảm hứng để động viên khán giả.",
+    "STORYTELLING2": "Thêm chú thích kể chuyện để kể một câu chuyện.",
+    "HASHTAGS_SPECIFIQUES": "Điều chỉnh hashtag của bạn cho mỗi bài đăng để tối đa hóa phạm vi tiếp cận.",
+    "TEXTE_VISUEL": "Tránh làm quá tải hình ảnh của bạn với quá nhiều văn bản.",
+    "REPONSE": "Phản hồi nhanh chóng các bình luận để tạo mối quan hệ.",
+    "COULISSES": "Nổi bật hậu trường của bạn để nhân hóa thương hiệu.",
+    "AUTHENTIQUE": "Sử dụng ảnh chân thực thay vì ảnh stock.",
+    "MESSAGES_CLES": "Lặp lại các thông điệp chính của bạn thường xuyên để củng cố giao tiếp.",
+    "MOMENTS_FORTS": "Xác định các thời điểm quan trọng trong năm cho các bài đăng của bạn.",
+    "TENDANCES": "Sử dụng xu hướng hiện tại để theo dõi tin tức.",
+    "STATISTIQUES2": "Thêm thống kê thú vị để thu hút sự chú ý.",
+    "CARROUSELS": "Tạo carousel để kể một câu chuyện qua nhiều bước.",
+    "LIEN_BIO": "Đặt một liên kết rõ ràng trong tiểu sử của bạn để hướng dẫn khách truy cập.",
+    "GUIDE": "Tạo hướng dẫn hoặc danh sách kiểm tra để mang lại giá trị cho khán giả.",
+    "GIF": "Thêm GIF hoặc sticker để làm cho stories của bạn năng động hơn.",
+    "COULEURS": "Sử dụng màu sắc nhất quán với thương hiệu của bạn.",
+    "COLLABORATEURS": "Nổi bật các cộng tác viên của bạn để tạo cảm giác đồng đội.",
+    "CONVERSATIONNEL": "Viết bài đăng của bạn như thể bạn đang nói chuyện trực tiếp với một người.",
+    "QUIZ": "Thêm câu đố tương tác để tăng sự tham gia.",
+    "URGENCE": "Tạo cảm giác cấp bách với các khuyến mãi có giới hạn.",
+    "AVANT_APRES_CONCRET": "Tích hợp ảnh trước/sau để thể hiện kết quả cụ thể.",
+    "COLLABORATION": "Tạo hợp tác với các nhà sáng tạo khác để mở rộng khán giả.",
+    "TRANSPARENCE": "Hãy minh bạch về quy trình hoặc sản phẩm của bạn.",
+    "ANIMATIONS": "Thêm hoạt ảnh để làm cho video của bạn năng động hơn.",
+    "EDUCATIF": "Tạo bài đăng giáo dục để mang lại giá trị cho khán giả.",
+    "RETOURS_EXPERIENCE": "Nổi bật phản hồi trải nghiệm để xây dựng niềm tin.",
+    "CONCIS": "Hãy súc tích trong thông điệp của bạn để đi thẳng vào vấn đề.",
+    "MOTS_CLES": "Sử dụng từ khóa phù hợp để tăng khả năng hiển thị.",
+    "CALENDRIER": "Tạo lịch biên tập để lên kế hoạch cho các bài đăng của bạn.",
+    "MINIMALISTE2": "Thử nghiệm với hình ảnh tối giản để có tác động trực quan mạnh mẽ.",
+    "TEMOIGNAGES_VIDEO": "Tích hợp lời chứng thực video để tăng tính xác thực.",
+    "HUMOUR": "Tạo bài đăng hài hước để tương tác một cách nhẹ nhàng.",
+    "GRAPHIQUES": "Sử dụng biểu đồ hoặc infographic để giải thích các ý tưởng phức tạp.",
+    "REGULARITE": "Đăng thường xuyên để giữ khán giả của bạn tham gia.",
+    "REMERCIEMENTS": "Bao gồm lời cảm ơn hoặc lễ kỷ niệm để tạo lòng biết ơn."
+  },
   "PAYEMENT": {
     "YOU": "Bạn",
     "HEADER_TITLE": "Thanh toán",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Chọn một địa chỉ",
     "ADD_ADDRESS": "Thêm địa chỉ",
     "CARD_PAY": "Thanh toán bằng thẻ",
+    "CREDIT_PAY": "Thanh toán bằng tín dụng doanh nghiệp",
+    "EMPLOYEE_CREDIT_TITLE": "Sử dụng tín dụng doanh nghiệp của tôi",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Tín dụng khả dụng của tôi:",
+    "EMPLOYEE_CREDIT_EMPTY": "Không có tín dụng doanh nghiệp",
     "CARD_NUM": "Số thẻ",
     "CARD_NAME": "Tên trên thẻ",
     "EXPIRATION": "Ngày hết hạn",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Vui lòng đăng nhập để lưu salon",
     "TITLE": "Bắt đầu thôi!",
     "TITLE2": "Hãy tạo một salon!",
+    "STEP1_TITLE": "Thông tin salon",
+    "STEP2_TITLE": "Xác minh chuyên nghiệp",
+    "STEP2_TAGLINE": "Bước 2 trên 2 · Tài liệu của bạn vẫn riêng tư và được bảo vệ.",
     "NAME": "Tên salon của bạn",
     "ADDRESS": "Địa chỉ doanh nghiệp của bạn",
     "STREET": "Đường",
@@ -500,7 +594,28 @@
     "ERROR5": "Họ là bắt buộc.",
     "ERROR6": "E-mail là bắt buộc.",
     "ERROR7": "Số điện thoại di động là bắt buộc.",
-    "ERROR8": "Bạn phải đồng ý nhận tin nhắn qua WhatsApp."
+    "ERROR8": "Bạn phải đồng ý nhận tin nhắn qua WhatsApp.",
+    "VERIF_TITLE": "Xác minh hồ sơ chuyên nghiệp của bạn",
+    "VERIF_SUBTITLE": "Chúng tôi xác minh từng chuyên gia để bảo vệ khách hàng và danh tiếng của bạn.",
+    "VERIF_ID_TITLE": "Giấy tờ tùy thân",
+    "VERIF_ID_DESC": "Chứng minh nhân dân, hộ chiếu hoặc giấy phép cư trú hợp lệ.",
+    "VERIF_INSURANCE_TITLE": "Bảo hiểm chuyên nghiệp",
+    "VERIF_INSURANCE_DESC": "Giấy chứng nhận hợp lệ bao gồm dịch vụ tại nhà của bạn (bắt buộc).",
+    "VERIF_KBIS_TITLE": "Trích lục Kbis (tùy chọn)",
+    "VERIF_KBIS_DESC": "Được khuyến nghị nếu bạn hoạt động thông qua một công ty đã đăng ký.",
+    "VERIF_UPLOAD_LABEL": "Tải lên tài liệu",
+    "VERIF_ALLOWED_FORMATS": "Định dạng được chấp nhận: PDF, JPG, PNG · kích thước tối đa 10 MB.",
+    "VERIF_MANDATORY_HINT": "Giấy tờ tùy thân và bảo hiểm là bắt buộc để kích hoạt hồ sơ của bạn.",
+    "VERIF_STATUS_MISSING": "Thiếu tài liệu",
+    "VERIF_STATUS_PENDING": "Đang xác minh",
+    "VERIF_STATUS_APPROVED": "Đã xác nhận",
+    "VERIF_STATUS_REJECTED": "Bị từ chối · cần tài liệu mới",
+    "VERIF_PRIMARY_BUTTON": "Gửi tài liệu",
+    "VERIF_SKIP_BUTTON": "Tôi sẽ hoàn thành sau",
+    "VERIF_TOAST_SUCCESS": "Tài liệu của bạn đã được gửi để xác minh.",
+    "VERIF_TOAST_ERROR": "Không thể tải lên tài liệu của bạn vào lúc này.",
+    "VERIF_ID_REQUIRED": "Giấy tờ tùy thân là bắt buộc.",
+    "VERIF_INSURANCE_REQUIRED": "Bảo hiểm chuyên nghiệp là bắt buộc."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Thay đổi địa chỉ",
@@ -533,6 +648,12 @@
     "NAME": "Tên",
     "CITY": "Thành phố",
     "NOTE": "Điểm",
+    "DOCS_OK": "Đã xác nhận",
+    "DOCS_NOT_VALID": "Chưa xác nhận",
+    "ACTIVE": "Hoạt động",
+    "INACTIVE": "Không hoạt động",
+    "STATUS": "Trạng thái",
+    "DOCUMENTS": "Tài liệu",
     "MIDDLE_PRICE": "Giá trung bình",
     "PROMOTION": "Khuyến mãi",
     "ACTIONS": "Thao tác",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Quản lý tài khoản",
     "ORDERS": "Đơn hàng đã đặt",
+    "MESSAGES": "Tin nhắn của tôi",
     "FAVORITES": "Yêu thích",
     "HELP": "Trợ giúp",
     "MY_ABO": "Gói đăng ký của tôi",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Hỗ trợ trực tuyến"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Ghi có vào tài khoản nhân viên",
     "AMOUNT": "Số tiền ghi có",
@@ -894,7 +1015,10 @@
     "DATE": "Ngày",
     "AMOUNT": "Số tiền",
     "COMMISSION": "Hoa hồng",
-    "STATUS": "Trạng thái"
+    "STATUS": "Trạng thái",
+    "NEXT_LEVEL": "Cấp độ tiếp theo",
+    "MAX_LEVEL": "Đã đạt cấp độ tối đa",
+    "REMAINING": "còn {{count}} đặt chỗ"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Chọn loại cửa hàng cần tạo",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Lỗi khi xóa dịch vụ"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Ảnh cửa hàng",
     "UPLOAD_IMAGE": "Tải ảnh lên",
     "SNEEK_PIC": "Xem trước ảnh",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Tạo mô tả",
     "PHOTO": "Ví dụ ảnh chấp nhận / từ chối",
     "CODE_POSTAUX": "Mã bưu chính phục vụ",
+    "SOCIAL_NETWORK": "Mạng xã hội",
     "EXEMPLE_LOCAL": "Ví dụ: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Nâng cao",
     "PLANS": "Số salon hoạt động",
     "READY": "Sẵn sàng phát triển hoạt động?",
-    "DISCOVERS": "Khám phá các gói củaizyGlam"
+    "DISCOVERS": "Khám phá các gói củaizyGlam",
+    "FREE_TRIAL": "Miễn phí trong 1 tháng"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Không xác định",
     "INVALID_DATE": "Ngày không hợp lệ"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Xác nhận",
+    "CANCEL": "Hủy",
+    "OK": "OK",
+    "TERMINATE": "Hoàn thành",
+    "DELETE": "Xóa"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Tìm kiếm dịch vụ",
+    "EMAIL_PLACEHOLDER": "Email người dùng",
+    "CATEGORY_TITLE": "Bạn muốn đặt gì?",
+    "CATEGORY_HINT": "Chọn một danh mục. Sau đó: dịch vụ → thời gian → khung giờ.",
+    "REASSURANCE": "Thanh toán an toàn • Chuyên gia đã xác minh • Hỗ trợ phản hồi nhanh",
+    "PRICE_TIP": "Giá rõ ràng trước thanh toán. Bạn xác nhận khi mọi thứ đã ổn.",
+    "WHEN_TITLE": "Thời điểm nào phù hợp với bạn?",
+    "WHEN_HINT": "Chúng tôi sẽ chỉ hiển thị các khung giờ có sẵn.",
+    "TODAY": "Hôm nay",
+    "TONIGHT": "Tối nay",
+    "TOMORROW": "Ngày mai",
+    "THIS_WEEK": "Tuần này",
+    "VIEW_SLOTS": "Xem các khung giờ có sẵn",
+    "PAYMENT_REASSURANCE": "Thanh toán an toàn • Có thể chỉnh sửa trước thanh toán",
+    "SLOTS_TITLE": "Khung giờ có sẵn",
+    "SLOTS_HINT": "Chọn một khung giờ để tiếp tục.",
+    "VALIDATION_TIP": "Bạn xác nhận tất cả trong tóm tắt trước thanh toán.",
+    "SUMMARY_TITLE": "Tóm tắt",
+    "SUMMARY_HINT": "Kiểm tra trước khi tiếp tục thanh toán.",
+    "SERVICE": "Dịch vụ",
+    "DURATION": "Thời lượng",
+    "WHEN": "Khi nào",
+    "PRICE": "Giá",
+    "FROM": "từ",
+    "CONTINUE_PAYMENT": "Tiếp tục thanh toán",
+    "PAYMENT_FOOTNOTE": "Thanh toán an toàn. Hủy theo điều kiện. Bạn có thể chọn đặt lại với cùng nhà cung cấp dịch vụ sau khi dịch vụ hoàn thành."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Bạn muốn đặt như thế nào?",
+    "SUBTITLE": "Đặt trong 2 phút — tại nhà, thanh toán an toàn.",
+    "QUICK_TITLE": "Đặt nhanh",
+    "QUICK_DESC": "Chọn một dịch vụ, chúng tôi sẽ đề xuất các khung giờ.",
+    "RECOMMENDED": "Được đề xuất",
+    "PROVIDER_TITLE": "Chọn nhà cung cấp dịch vụ",
+    "PROVIDER_DESC": "Duyệt các hồ sơ và đặt trong lịch."
   }
 }

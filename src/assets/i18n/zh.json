@@ -36,6 +36,24 @@
     "YOGA": "放松 / 瑜伽",
     "DEVELOPPEMENT": "个人成长"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "美发",
+    "MANUCURE": "美甲",
+    "VISAGE": "面部",
+    "MASSAGE": "按摩",
+    "MAQUILLAGE": "化妆",
+    "EPILATION": "脱毛",
+    "BRONZAGE": "美黑",
+    "PARTUM": "产后护理",
+    "NUTRITION": "营养",
+    "FITNESS": "健身",
+    "ACUPUNCTURE": "针灸",
+    "STYLISME": "造型",
+    "YOGA": "放松/瑜伽",
+    "DEVELOPPEMENT": "自我提升",
+    "BARBER": "理发师",
+    "EYELASH": "睫毛延长"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "沙龙已添加到收藏",
     "FAVORITE_REMOVED": "沙龙已从收藏中移除",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "客户服务",
-    "WRITE": "写一条消息…"
+    "WRITE": "写一条消息…",
+    "NO_CONV": "暂无对话",
+    "CREATE": "创建对话",
+    "CREATE_CONV": "创建",
+    "OPEN_CONV_LIST": "打开对话列表",
+    "PHOTO_SENT": "照片已发送"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "输入你的登录邮箱",
@@ -173,8 +196,14 @@
     "SERVICES": "服务管理",
     "PHOTOS": "照片图库",
     "STATS": "统计",
+    "SOCIAL": "社交网络",
     "PARAM": "参数设置",
+    "DOCUMENTS": "文件",
     "SHOPS": "店铺",
+    "B2BLEAD": "BtoB 潜在客户",
+    "PROLEAD": "Pro 潜在客户",
+    "COMPANY": "公司",
+    "COM": "沟通",
     "USERS": "用户",
     "MESSAGE": "消息"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "评论",
     "NOTE": "评分",
     "CLOSE": "关闭"
+  },
+  "UILEVEL": {
+    "STARTER": "创作者",
+    "ACTIVE": "已确认",
+    "AMBASSADOR": "IzyGlam 大使",
+    "ICONE": "本地图标"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "图库中没有图片。"
@@ -265,7 +300,7 @@
     "RESERVED": "提前预订",
     "GIFTCARDS": "礼品卡",
     "WORKWITHUS": "与我们合作",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "企业美容服务",
     "CONFIDENTIAL": "隐私",
     "ACCESS": "无障碍",
     "CONDITIONS": "条款",
@@ -290,23 +325,6 @@
     "TOP10": "本周 Top 10",
     "SEARCHRESULT": "搜索结果",
     "AVIS": "评价"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "美发",
-    "MANUCURE": "美甲",
-    "VISAGE": "面部",
-    "MASSAGE": "按摩",
-    "MAQUILLAGE": "化妆",
-    "EPILATION": "脱毛",
-    "BRONZAGE": "美黑",
-    "PARTUM": "产后护理",
-    "NUTRITION": "营养",
-    "FITNESS": "健身",
-    "ACUPUNCTURE": "针灸",
-    "STYLISME": "造型",
-    "YOGA": "放松/瑜伽",
-    "DEVELOPPEMENT": "自我提升",
-    "EYELASH": "睫毛延长"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "一位女理发师",
@@ -379,6 +397,75 @@
     "LANGUE": "语言",
     "COUNTRY": "国家/地区"
   },
+  "CATEGORY": {
+    "LINKEDIN": "领英",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "简约美甲艺术，打造优雅现代效果。",
+    "CREATIVITE": "选择大胆的颜色来表达您的创造力。",
+    "VINTAGE": "复古风格重新演绎，打造独特造型！",
+    "QUESTION": "以引人入胜的问题开始您的帖子，鼓励互动。",
+    "VISUELS": "使用鲜艳的色彩和清晰的文字优化您的视觉效果。",
+    "APPEL_ACTION": "添加明确的行动号召，如\"点击链接\"或\"分享您的意见\"。",
+    "LEGENDES": "为 Instagram 和 Bluesky 使用简短但有力的标题。",
+    "COMMENTAIRES": "包含开放性问题以鼓励评论。",
+    "HASHTAGS": "添加相关标签以触达更广泛的受众。",
+    "STATISTIQUES": "添加统计数据或有趣的事实以吸引注意力。",
+    "STORYTELLING": "讲述引人入胜的故事以保持读者的参与度。",
+    "REUSSITES": "在 LinkedIn 上突出您的成功或客户的成就。",
+    "AUTHENTICITE": "保持真实，展现您的真实个性。",
+    "ANALYSE": "分析您的表现并相应调整策略。",
+    "EMOJIS": "使用表情符号使您的内容更具视觉吸引力和吸引力。",
+    "HEURES": "在战略时间发布以最大化覆盖范围。",
+    "STORIES": "整合故事或短视频以快速吸引注意力。",
+    "CAPTIVANTES": "使用引人入胜的标题，让人想要点击\"阅读更多\"。",
+    "ANECDOTE": "分享个人轶事以建立情感联系。",
+    "FORMATS": "多样化您的格式：图片、视频、轮播或调查。",
+    "TON": "根据使用的平台调整您内容的语调。",
+    "MENTIONS": "提及其他用户或品牌以扩大您的覆盖范围。",
+    "STYLES": "测试不同的视觉风格，找出最受观众喜爱的风格。",
+    "VIDEOS": "使用短视频快速吸引注意力。",
+    "TEMOIGNAGES": "添加客户推荐以增强您的可信度。",
+    "SONDAGES": "创建调查以吸引您的受众。",
+    "VALEURS": "突出您的价值观以触达目标受众。",
+    "AVANT_APRES": "添加前后对比以展示明显效果。",
+    "CITATIONS": "融入鼓舞人心的引语以激励您的受众。",
+    "STORYTELLING2": "添加故事性标题来讲述故事。",
+    "HASHTAGS_SPECIFIQUES": "为每篇帖子调整您的标签以最大化覆盖范围。",
+    "TEXTE_VISUEL": "避免在视觉效果中添加过多文字。",
+    "REPONSE": "快速回复评论以建立关系。",
+    "COULISSES": "展示幕后花絮以人性化您的品牌。",
+    "AUTHENTIQUE": "使用真实照片而非图库图片。",
+    "MESSAGES_CLES": "定期重复您的关键信息以巩固您的沟通。",
+    "MOMENTS_FORTS": "识别年度重要时刻用于您的发布。",
+    "TENDANCES": "利用当前趋势紧跟时事。",
+    "STATISTIQUES2": "添加有趣的统计数据以吸引注意力。",
+    "CARROUSELS": "创建轮播图以分步骤讲述故事。",
+    "LIEN_BIO": "在您的简介中放置清晰的链接以引导访问者。",
+    "GUIDE": "创建指南或清单以为您的受众提供价值。",
+    "GIF": "添加 GIF 或贴纸使您的故事更具活力。",
+    "COULEURS": "使用与您的品牌一致的颜色。",
+    "COLLABORATEURS": "突出您的合作伙伴以营造团队感。",
+    "CONVERSATIONNEL": "像直接与一个人交谈一样撰写您的帖子。",
+    "QUIZ": "添加互动测验以增加参与度。",
+    "URGENCE": "通过限时促销营造紧迫感。",
+    "AVANT_APRES_CONCRET": "整合前后对比照片以展示具体结果。",
+    "COLLABORATION": "与其他创作者合作以扩大您的受众。",
+    "TRANSPARENCE": "对您的流程或产品保持透明。",
+    "ANIMATIONS": "添加动画使您的视频更具活力。",
+    "EDUCATIF": "创建教育性帖子以为您的受众提供价值。",
+    "RETOURS_EXPERIENCE": "突出体验反馈以建立信任。",
+    "CONCIS": "在您的消息中保持简洁，直截了当。",
+    "MOTS_CLES": "使用相关关键词以提高可见性。",
+    "CALENDRIER": "创建编辑日历以规划您的发布。",
+    "MINIMALISTE2": "尝试简约视觉效果以获得强烈的视觉冲击。",
+    "TEMOIGNAGES_VIDEO": "整合视频推荐以提高真实性。",
+    "HUMOUR": "创建幽默帖子以轻松互动。",
+    "GRAPHIQUES": "使用图表或信息图来解释复杂的概念。",
+    "REGULARITE": "定期发布以保持受众参与。",
+    "REMERCIEMENTS": "包含感谢或庆祝以营造感激之情。"
+  },
   "PAYEMENT": {
     "YOU": "您",
     "HEADER_TITLE": "支付",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "选择一个地址",
     "ADD_ADDRESS": "添加地址",
     "CARD_PAY": "银行卡支付",
+    "CREDIT_PAY": "企业信用支付",
+    "EMPLOYEE_CREDIT_TITLE": "使用我的企业信用",
+    "EMPLOYEE_CREDIT_AVAILABLE": "我的可用信用：",
+    "EMPLOYEE_CREDIT_EMPTY": "无企业信用",
     "CARD_NUM": "卡号",
     "CARD_NAME": "持卡人姓名",
     "EXPIRATION": "到期日期",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "请登录以登记店铺",
     "TITLE": "开始行动！",
     "TITLE2": "让我们创建一个店铺！",
+    "STEP1_TITLE": "沙龙信息",
+    "STEP2_TITLE": "专业验证",
+    "STEP2_TAGLINE": "第 2 步，共 2 步 · 您的文件保持私密和受保护。",
     "NAME": "您的店铺名称",
     "ADDRESS": "您的企业地址",
     "STREET": "街道",
@@ -500,7 +594,28 @@
     "ERROR5": "姓氏为必填项。",
     "ERROR6": "电子邮箱为必填项。",
     "ERROR7": "手机号码为必填项。",
-    "ERROR8": "您必须同意接收 WhatsApp 消息。"
+    "ERROR8": "您必须同意接收 WhatsApp 消息。",
+    "VERIF_TITLE": "验证您的专业资料",
+    "VERIF_SUBTITLE": "我们验证每位专业人士以保护您的客户和声誉。",
+    "VERIF_ID_TITLE": "身份证明",
+    "VERIF_ID_DESC": "身份证、护照或有效居留许可。",
+    "VERIF_INSURANCE_TITLE": "专业保险",
+    "VERIF_INSURANCE_DESC": "涵盖您上门服务的有效证书（必需）。",
+    "VERIF_KBIS_TITLE": "Kbis 摘录（可选）",
+    "VERIF_KBIS_DESC": "如果您通过注册公司执业，建议提供。",
+    "VERIF_UPLOAD_LABEL": "上传文件",
+    "VERIF_ALLOWED_FORMATS": "接受格式：PDF、JPG、PNG · 最大 10 MB。",
+    "VERIF_MANDATORY_HINT": "身份证明和保险是激活您的资料所必需的。",
+    "VERIF_STATUS_MISSING": "缺少文件",
+    "VERIF_STATUS_PENDING": "验证中",
+    "VERIF_STATUS_APPROVED": "已验证",
+    "VERIF_STATUS_REJECTED": "已拒绝 · 需要新文件",
+    "VERIF_PRIMARY_BUTTON": "发送文件",
+    "VERIF_SKIP_BUTTON": "我稍后完成",
+    "VERIF_TOAST_SUCCESS": "您的文件已发送以供验证。",
+    "VERIF_TOAST_ERROR": "目前无法上传您的文件。",
+    "VERIF_ID_REQUIRED": "身份证明是必需的。",
+    "VERIF_INSURANCE_REQUIRED": "专业保险是必需的。"
   },
   "MAIN": {
     "CHANGE_ADDRESS": "修改地址",
@@ -533,6 +648,12 @@
     "NAME": "名称",
     "CITY": "城市",
     "NOTE": "评分",
+    "DOCS_OK": "已验证",
+    "DOCS_NOT_VALID": "未验证",
+    "ACTIVE": "活跃",
+    "INACTIVE": "非活跃",
+    "STATUS": "状态",
+    "DOCUMENTS": "文件",
     "MIDDLE_PRICE": "平均价格",
     "PROMOTION": "促销",
     "ACTIONS": "操作",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "管理账户",
     "ORDERS": "历史订单",
+    "MESSAGES": "我的消息",
     "FAVORITES": "收藏",
     "HELP": "帮助",
     "MY_ABO": "我的订阅",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "在线客服"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "为员工账户入账",
     "AMOUNT": "入账金额",
@@ -894,7 +1015,10 @@
     "DATE": "日期",
     "AMOUNT": "金额",
     "COMMISSION": "佣金",
-    "STATUS": "状态"
+    "STATUS": "状态",
+    "NEXT_LEVEL": "下一级别",
+    "MAX_LEVEL": "已达到最高级别",
+    "REMAINING": "还需 {{count}} 次预订"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "选择要创建的店铺类型",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "删除服务时出错"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "店铺图片",
     "UPLOAD_IMAGE": "上传图片",
     "SNEEK_PIC": "图片预览",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "生成描述",
     "PHOTO": "可接受/不可接受照片示例",
     "CODE_POSTAUX": "可服务邮编",
+    "SOCIAL_NETWORK": "社交网络",
     "EXEMPLE_LOCAL": "例如：75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "进阶",
     "PLANS": "活跃店铺数量",
     "READY": "准备好发展你的事业了吗？",
-    "DISCOVERS": "了解izyGlam 方案"
+    "DISCOVERS": "了解izyGlam 方案",
+    "FREE_TRIAL": "免费1个月"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "未定义",
     "INVALID_DATE": "日期无效"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "确认",
+    "CANCEL": "取消",
+    "OK": "OK",
+    "TERMINATE": "完成",
+    "DELETE": "删除"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "搜索服务",
+    "EMAIL_PLACEHOLDER": "用户邮箱",
+    "CATEGORY_TITLE": "您想预订什么？",
+    "CATEGORY_HINT": "选择一个类别。然后：服务 → 时间 → 时段。",
+    "REASSURANCE": "安全支付 • 认证专业人士 • 响应式支持",
+    "PRICE_TIP": "支付前价格清晰。一切就绪时您确认。",
+    "WHEN_TITLE": "什么时间适合您？",
+    "WHEN_HINT": "我们只显示可用时段。",
+    "TODAY": "今天",
+    "TONIGHT": "今晚",
+    "TOMORROW": "明天",
+    "THIS_WEEK": "本周",
+    "VIEW_SLOTS": "查看可用时段",
+    "PAYMENT_REASSURANCE": "安全支付 • 支付前可修改",
+    "SLOTS_TITLE": "可用时段",
+    "SLOTS_HINT": "选择一个时段以继续。",
+    "VALIDATION_TIP": "您在支付前在摘要中确认所有内容。",
+    "SUMMARY_TITLE": "摘要",
+    "SUMMARY_HINT": "在继续支付前检查。",
+    "SERVICE": "服务",
+    "DURATION": "时长",
+    "WHEN": "时间",
+    "PRICE": "价格",
+    "FROM": "起",
+    "CONTINUE_PAYMENT": "继续支付",
+    "PAYMENT_FOOTNOTE": "安全支付。根据条件取消。您可以在服务后选择与同一服务提供者重新预订。"
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "您想如何预订？",
+    "SUBTITLE": "2分钟内预订 — 上门服务，安全支付。",
+    "QUICK_TITLE": "快速预订",
+    "QUICK_DESC": "选择一项服务，我们为您提供时段。",
+    "RECOMMENDED": "推荐",
+    "PROVIDER_TITLE": "选择服务提供者",
+    "PROVIDER_DESC": "浏览个人资料并在日历中预订。"
   }
 }

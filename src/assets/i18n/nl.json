@@ -36,6 +36,24 @@
     "YOGA": "Ontspanning / Yoga",
     "DEVELOPPEMENT": "Persoonlijke ontwikkeling"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Kapsels",
+    "MANUCURE": "Manicure",
+    "VISAGE": "Gezicht",
+    "MASSAGE": "Massage",
+    "MAQUILLAGE": "Make-up",
+    "EPILATION": "Ontharing",
+    "BRONZAGE": "Bruinen",
+    "PARTUM": "Postpartum",
+    "NUTRITION": "Voeding",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupunctuur",
+    "STYLISME": "Styling",
+    "YOGA": "Ontspanning",
+    "DEVELOPPEMENT": "Ontplooiing",
+    "BARBER": "Barbier",
+    "EYELASH": "Wimperextensions"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon toegevoegd aan favorieten",
     "FAVORITE_REMOVED": "Salon uit favorieten verwijderd",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Klantenservice",
-    "WRITE": "Bericht schrijven…"
+    "WRITE": "Bericht schrijven…",
+    "NO_CONV": "Geen gesprek",
+    "CREATE": "Gesprek aanmaken",
+    "CREATE_CONV": "Aanmaken",
+    "OPEN_CONV_LIST": "Gesprekslijst openen",
+    "PHOTO_SENT": "Foto verzonden"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Voer je inlog-e-mail in",
@@ -173,8 +196,14 @@
     "SERVICES": "Beheer diensten",
     "PHOTOS": "Fotogalerij",
     "STATS": "Statistieken",
+    "SOCIAL": "Sociale netwerken",
     "PARAM": "Instellingen",
+    "DOCUMENTS": "Documenten",
     "SHOPS": "Winkels",
+    "B2BLEAD": "BtoB Leads",
+    "PROLEAD": "Pro Leads",
+    "COMPANY": "De bedrijven",
+    "COM": "De communicatie",
     "USERS": "Gebruikers",
     "MESSAGE": "Berichten"
   },
@@ -202,7 +231,7 @@
     "CANCELLED": "Geannuleerd",
     "DELETED": "Verwijderen",
     "AVIS": "Beoordeling",
-    "SUPPORT": "Support",
+    "SUPPORT": "Ondersteuning",
     "CODE": "Bevestigingscode",
     "CODE_A_DONNER": "Code om aan de dienstverlener te geven",
     "PRESTA_ABSENT": "Dienstverlener afwezig"
@@ -218,6 +247,12 @@
     "COMMENT": "Opmerking",
     "NOTE": "Score",
     "CLOSE": "Sluiten"
+  },
+  "UILEVEL": {
+    "STARTER": "Schepper",
+    "ACTIVE": "Bevestigd",
+    "AMBASSADOR": "IzyGlam Ambassadeur",
+    "ICONE": "Lokaal icoon"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Geen afbeeldingen in de galerij."
@@ -291,23 +326,6 @@
     "SEARCHRESULT": "Zoekresultaten",
     "AVIS": "Beoordelingen"
   },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Kapsels",
-    "MANUCURE": "Manicure",
-    "VISAGE": "Gezicht",
-    "MASSAGE": "Massage",
-    "MAQUILLAGE": "Make-up",
-    "EPILATION": "Ontharing",
-    "BRONZAGE": "Bruinen",
-    "PARTUM": "Postpartum",
-    "NUTRITION": "Voeding",
-    "FITNESS": "Fitness",
-    "ACUPUNCTURE": "Acupunctuur",
-    "STYLISME": "Styling",
-    "YOGA": "Ontspanning",
-    "DEVELOPPEMENT": "Ontplooiing",
-    "EYELASH": "Wimperextensions"
-  },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Een kapster",
     "MANUCURE": "Een manicure",
@@ -379,6 +397,75 @@
     "LANGUE": "Taal",
     "COUNTRY": "Land"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Un nail art minimaliste pour un effet élégant et moderne.",
+    "CREATIVITE": "Choisissez des couleurs audacieuses pour exprimer votre créativité.",
+    "VINTAGE": "Un style vintage revisité pour un look unique !",
+    "QUESTION": "Commencez votre post par une question engageante pour inciter à interagir.",
+    "VISUELS": "Optimisez vos visuels avec des couleurs vives et un texte clair.",
+    "APPEL_ACTION": "Ajoutez un appel à l’action clair, comme 'Cliquez sur le lien' ou 'Partagez votre avis'.",
+    "LEGENDES": "Utilisez des légendes courtes mais percutantes pour Instagram et Bluesky.",
+    "COMMENTAIRES": "Incluez des questions ouvertes pour encourager les commentaires.",
+    "HASHTAGS": "Ajoutez des hashtags pertinents pour toucher un public plus large.",
+    "STATISTIQUES": "Ajoutez des statistiques ou des faits intéressants pour capter l’attention.",
+    "STORYTELLING": "Racontez une histoire captivante pour garder vos lecteurs engagés.",
+    "REUSSITES": "Mettez en avant vos réussites ou celles de vos clients pour LinkedIn.",
+    "AUTHENTICITE": "Soyez authentique et montrez votre vraie personnalité.",
+    "ANALYSE": "Analysez vos performances et ajustez votre stratégie en conséquence.",
+    "EMOJIS": "Utilisez des emojis pour rendre votre contenu plus visuel et attrayant.",
+    "HEURES": "Postez à des heures stratégiques pour maximiser la portée.",
+    "STORIES": "Intégrez des stories ou reels pour capter l’attention rapidement.",
+    "CAPTIVANTES": "Utilisez des légendes captivantes qui donnent envie de cliquer sur 'Lire la suite'.",
+    "ANECDOTE": "Partagez des anecdotes personnelles pour créer une connexion émotionnelle.",
+    "FORMATS": "Variez vos formats : images, vidéos, carrousels ou sondages.",
+    "TON": "Adaptez le ton de votre contenu en fonction de la plateforme utilisée.",
+    "MENTIONS": "Mentionnez d’autres utilisateurs ou marques pour élargir votre portée.",
+    "STYLES": "Testez différents styles visuels pour découvrir ce qui plaît le plus à votre audience.",
+    "VIDEOS": "Utilisez des vidéos courtes pour capter l'attention rapidement.",
+    "TEMOIGNAGES": "Ajoutez des témoignages clients pour renforcer votre crédibilité.",
+    "SONDAGES": "Créez des sondages pour engager votre audience.",
+    "VALEURS": "Mettez en avant vos valeurs pour toucher votre public cible.",
+    "AVANT_APRES": "Ajoutez un avant/après pour démontrer un impact clair.",
+    "CITATIONS": "Incorporez des citations inspirantes pour motiver votre audience.",
+    "STORYTELLING2": "Ajoutez des légendes en storytelling pour raconter une histoire.",
+    "HASHTAGS_SPECIFIQUES": "Adaptez vos hashtags à chaque publication pour maximiser la portée.",
+    "TEXTE_VISUEL": "Évitez de surcharger vos visuels avec trop de texte.",
+    "REPONSE": "Répondez rapidement aux commentaires pour créer une relation.",
+    "COULISSES": "Mettez en avant vos coulisses pour humaniser votre marque.",
+    "AUTHENTIQUE": "Utilisez des photos authentiques plutôt que des banques d'images.",
+    "MESSAGES_CLES": "Répétez vos messages clés régulièrement pour ancrer votre communication.",
+    "MOMENTS_FORTS": "Identifiez les moments forts de l'année pour vos publications.",
+    "TENDANCES": "Utilisez les tendances actuelles pour surfer sur l'actualité.",
+    "STATISTIQUES2": "Ajoutez des statistiques intéressantes pour capter l'attention.",
+    "CARROUSELS": "Créez des carrousels pour raconter une histoire en plusieurs étapes.",
+    "LIEN_BIO": "Mettez un lien clair dans votre bio pour diriger vos visiteurs.",
+    "GUIDE": "Créez un guide ou une checklist pour offrir de la valeur à votre audience.",
+    "GIF": "Ajoutez des GIF ou des stickers pour rendre vos stories plus dynamiques.",
+    "COULEURS": "Utilisez des couleurs cohérentes avec votre branding.",
+    "COLLABORATEURS": "Mettez en avant vos collaborateurs pour créer un sentiment d'équipe.",
+    "CONVERSATIONNEL": "Rédigez vos posts comme si vous parliez directement à une personne.",
+    "QUIZ": "Ajoutez des quiz interactifs pour augmenter l'engagement.",
+    "URGENCE": "Créez un sentiment d'urgence avec des promotions limitées.",
+    "AVANT_APRES_CONCRET": "Intégrez des photos avant/après pour montrer des résultats concrets.",
+    "COLLABORATION": "Créez des collaborations avec d'autres créateurs pour élargir votre audience.",
+    "TRANSPARENCE": "Soyez transparent sur vos processus ou vos produits.",
+    "ANIMATIONS": "Ajoutez des animations pour rendre vos vidéos plus dynamiques.",
+    "EDUCATIF": "Créez des posts éducatifs pour apporter de la valeur à votre audience.",
+    "RETOURS_EXPERIENCE": "Mettez en avant des retours d'expérience pour instaurer la confiance.",
+    "CONCIS": "Soyez concis dans vos messages pour aller droit au but.",
+    "MOTS_CLES": "Utilisez des mots-clés pertinents pour augmenter la visibilité.",
+    "CALENDRIER": "Créez un calendrier éditorial pour planifier vos publications.",
+    "MINIMALISTE2": "Expérimentez avec des visuels minimalistes pour un impact visuel fort.",
+    "TEMOIGNAGES_VIDEO": "Intégrez des témoignages vidéo pour plus d'authenticité.",
+    "HUMOUR": "Créez des posts humoristiques pour engager avec légèreté.",
+    "GRAPHIQUES": "Utilisez des graphiques ou infographies pour expliquer des idées complexes.",
+    "REGULARITE": "Publiez régulièrement pour garder votre audience engagée.",
+    "REMERCIEMENTS": "Incluez des remerciements ou des célébrations pour créer de la gratitude."
+  },
   "PAYEMENT": {
     "YOU": "U",
     "HEADER_TITLE": "Betaling",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Selecteer een adres",
     "ADD_ADDRESS": "Adres toevoegen",
     "CARD_PAY": "Betaling per bankkaart",
+    "CREDIT_PAY": "Paiement par crédit entreprise",
+    "EMPLOYEE_CREDIT_TITLE": "Utiliser mon crédit d'entreprise",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Mon crédit disponible :",
+    "EMPLOYEE_CREDIT_EMPTY": "Pas de crédit d'entreprise",
     "CARD_NUM": "Kaartnummer",
     "CARD_NAME": "Naam op de kaart",
     "EXPIRATION": "Vervaldatum",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Log in om een salon op te slaan",
     "TITLE": "Aan de slag!",
     "TITLE2": "Laten we een salon maken!",
+    "STEP1_TITLE": "Informations du salon",
+    "STEP2_TITLE": "Vérification professionnelle",
+    "STEP2_TAGLINE": "Étape 2 sur 2 · Vos documents restent privés et protégés.",
     "NAME": "Naam van uw salon",
     "ADDRESS": "Adres van uw bedrijf",
     "STREET": "Straat",
@@ -500,7 +594,28 @@
     "ERROR5": "Achternaam is verplicht.",
     "ERROR6": "E-mail is verplicht.",
     "ERROR7": "Mobiel telefoonnummer is verplicht.",
-    "ERROR8": "U moet akkoord gaan met het ontvangen van berichten via WhatsApp."
+    "ERROR8": "U moet akkoord gaan met het ontvangen van berichten via WhatsApp.",
+    "VERIF_TITLE": "Vérification de votre profil professionnel",
+    "VERIF_SUBTITLE": "Nous vérifions chaque professionnel pour protéger vos clients et votre réputation.",
+    "VERIF_ID_TITLE": "Pièce d’identité",
+    "VERIF_ID_DESC": "Carte d’identité, passeport ou titre de séjour en cours de validité.",
+    "VERIF_INSURANCE_TITLE": "Professionele verzekering",
+    "VERIF_INSURANCE_DESC": "Geldig certificaat dat uw thuisbezoeken dekt (verplicht).",
+    "VERIF_KBIS_TITLE": "Extrait Kbis (optionnel)",
+    "VERIF_KBIS_DESC": "Recommandé si vous exercez via une société immatriculée.",
+    "VERIF_UPLOAD_LABEL": "Téléverser un document",
+    "VERIF_ALLOWED_FORMATS": "Formats acceptés : PDF, JPG, PNG · taille max 10 Mo.",
+    "VERIF_MANDATORY_HINT": "La pièce d’identité et l’assurance sont obligatoires pour activer votre profil.",
+    "VERIF_STATUS_MISSING": "Document manquant",
+    "VERIF_STATUS_PENDING": "En cours de vérification",
+    "VERIF_STATUS_APPROVED": "Validé",
+    "VERIF_STATUS_REJECTED": "Refusé · nouveau document requis",
+    "VERIF_PRIMARY_BUTTON": "Envoyer les documents",
+    "VERIF_SKIP_BUTTON": "Je compléterai plus tard",
+    "VERIF_TOAST_SUCCESS": "Vos documents ont été envoyés pour vérification.",
+    "VERIF_TOAST_ERROR": "Impossible de téléverser vos documents pour le moment.",
+    "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
+    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Adres wijzigen",
@@ -533,6 +648,12 @@
     "NAME": "Naam",
     "CITY": "Stad",
     "NOTE": "Score",
+    "DOCS_OK": "Validés",
+    "DOCS_NOT_VALID": "Non validés",
+    "ACTIVE": "Actief",
+    "INACTIVE": "Inatif",
+    "STATUS": "Statut",
+    "DOCUMENTS": "Documenten",
     "MIDDLE_PRICE": "Gemiddelde prijs",
     "PROMOTION": "Promotie",
     "ACTIONS": "Acties",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Account beheren",
     "ORDERS": "Afgelopen bestellingen",
+    "MESSAGES": "Mes messages",
     "FAVORITES": "Favorieten",
     "HELP": "Hulp",
     "MY_ABO": "Mijn abonnement",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Online ondersteuning"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Rekening van werknemer crediteren",
     "AMOUNT": "Te crediteren bedrag",
@@ -894,7 +1015,10 @@
     "DATE": "Datum",
     "AMOUNT": "Bedrag",
     "COMMISSION": "Commissie",
-    "STATUS": "Status"
+    "STATUS": "Status",
+    "NEXT_LEVEL": "Prochain niveau",
+    "MAX_LEVEL": "Niveau maximum atteint",
+    "REMAINING": "encore {{count}} réservations"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Selecteer het type winkel om te creëren",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Fout bij het verwijderen van de dienst"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Afbeelding van de winkel",
     "UPLOAD_IMAGE": "Afbeelding uploaden",
     "SNEEK_PIC": "Voorbeeld van de afbeelding",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Beschrijving genereren",
     "PHOTO": "Voorbeelden van geaccepteerde / geweigerde foto’s",
     "CODE_POSTAUX": "Postcodes die worden bediend",
+    "SOCIAL_NETWORK": "Sociale netwerken",
     "EXEMPLE_LOCAL": "Bijv.: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Geavanceerd",
     "PLANS": "Aantal actieve salons",
     "READY": "Klaar om je activiteit te laten groeien?",
-    "DISCOVERS": "Ontdek deizyGlam-aanbiedingen"
+    "DISCOVERS": "Ontdek deizyGlam-aanbiedingen",
+    "FREE_TRIAL": "Gratis voor 1 maand"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1323,7 +1452,7 @@
     "CONTACT": {
       "TITLE": "Contact & DPO",
       "PRIVACY_LABEL": "Privacycontact",
-      "SUPPORT_LABEL": "Support",
+      "SUPPORT_LABEL": "Ondersteuning",
       "AUTHORITY_LABEL": "Toezichthouder",
       "EMAIL_PRIVACY": "[privacy@izyglam.com](mailto:privacy@izyglam.com)",
       "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
@@ -1449,7 +1578,7 @@
     },
     "CONTACT": {
       "TITLE": "Contact",
-      "SUPPORT_LABEL": "Support",
+      "SUPPORT_LABEL": "Ondersteuning",
       "LEGAL_LABEL": "Juridisch",
       "EMAIL_SUPPORT": "[support@izyglam.com](mailto:support@izyglam.com)",
       "EMAIL_LEGAL": "[legal@izyglam.com](mailto:legal@izyglam.com)",
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Tidak ditentukan",
     "INVALID_DATE": "Tarikh tidak sah"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Confirmation",
+    "CANCEL": "Annuleren",
+    "OK": "OK",
+    "TERMINATE": "Voltooien",
+    "DELETE": "Verwijderen"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Zoek een service",
+    "EMAIL_PLACEHOLDER": "Gebruikers e-mail",
+    "CATEGORY_TITLE": "Wat wilt u boeken?",
+    "CATEGORY_HINT": "Kies een categorie. Dan: service → tijd → slot.",
+    "REASSURANCE": "Veilige betaling • Geverifieerde professionals • Responsieve ondersteuning",
+    "PRICE_TIP": "Duidelijke prijs voor betaling. U bevestigt wanneer alles in orde is.",
+    "WHEN_TITLE": "Welk moment past u?",
+    "WHEN_HINT": "We tonen alleen beschikbare slots.",
+    "TODAY": "Vandaag",
+    "TONIGHT": "Vanavond",
+    "TOMORROW": "Morgen",
+    "THIS_WEEK": "Deze week",
+    "VIEW_SLOTS": "Beschikbare slots bekijken",
+    "PAYMENT_REASSURANCE": "Veilige betaling • Wijziging mogelijk voor betaling",
+    "SLOTS_TITLE": "Beschikbare slots",
+    "SLOTS_HINT": "Selecteer een slot om door te gaan.",
+    "VALIDATION_TIP": "U valideert alles in het overzicht voor betaling.",
+    "SUMMARY_TITLE": "Samenvatting",
+    "SUMMARY_HINT": "Controleer voordat u doorgaat naar betaling.",
+    "SERVICE": "Service",
+    "DURATION": "Duur",
+    "WHEN": "Wanneer",
+    "PRICE": "Prijs",
+    "FROM": "vanaf",
+    "CONTINUE_PAYMENT": "Doorgaan naar betaling",
+    "PAYMENT_FOOTNOTE": "Veilige betaling. Annulering volgens voorwaarden. U kunt ervoor kiezen om opnieuw te boeken bij dezelfde aanbieder na de service."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Hoe wilt u boeken?",
+    "SUBTITLE": "Boek in 2 minuten — thuis, veilige betaling.",
+    "QUICK_TITLE": "Snelle boeking",
+    "QUICK_DESC": "Kies een service, wij stellen beschikbare slots voor.",
+    "RECOMMENDED": "Aanbevolen",
+    "PROVIDER_TITLE": "Kies een aanbieder",
+    "PROVIDER_DESC": "Blader door profielen en boek in de agenda."
   }
 }

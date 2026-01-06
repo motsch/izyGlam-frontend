@@ -16,7 +16,7 @@
       <!-- Accès rapide support même si aucune conv -->
       <div class="conversation-item" (click)="getOrCreateSupportConversation()">
         <div class="conversation-content">
-          <img src="assets/images/default2.jpeg" class="profile-pic" alt="Service Client">
+          <img src="assets/images/default2.jpeg" class="profile-pic" [attr.alt]="'MESSAGE.SERVICE_CLIENT' | translate">
           <div class="conversation-info">
             <h3>{{ "MESSAGE.SERVICE_CLIENT" | translate }}</h3>
             <p>{{ supportPreview || translateSupportDefault() }}</p>
@@ -27,7 +27,7 @@
 
       <!-- Form création conv -->
       <div class="new-conversation-form">
-        <input type="email" [(ngModel)]="newConversationEmail" placeholder="Email de l'utilisateur"
+        <input type="email" [(ngModel)]="newConversationEmail" [placeholder]="'QUICK.EMAIL_PLACEHOLDER' | translate"
                class="input-email" />
         <button class="create-button" (click)="createConversationByEmail()">
           {{ "MESSAGE.CREATE_CONV" | translate }}
@@ -44,7 +44,7 @@
            (click)="selectConversation(conversation)">
         <div class="conversation-content">
           <img *ngIf="conversation.participants?.length === 2"
-               [src]="getProfileImage(conversation)" class="profile-pic" alt="Photo de profil">
+               [src]="getProfileImage(conversation)" class="profile-pic" [attr.alt]="'PROFILE.TITLE' | translate">
           <div class="conversation-info">
             <h3>
               {{ getConversationName(conversation) }}
@@ -70,7 +70,7 @@
       <button
         class="toggle-conversation-list"
         (click)="toggleConversationList()"
-        aria-label="Ouvrir la liste des conversations"
+        [attr.aria-label]="'MESSAGE.OPEN_CONV_LIST' | translate"
         [attr.aria-expanded]="isConversationListOpen"
         type="button">
         ☰
@@ -89,7 +89,7 @@
 
           <div class="bubble" [ngClass]="{ 'photo': message.messageType === 'photo', 'failed': message.__failed }">
             <ng-container [ngSwitch]="message.messageType">
-              <img *ngSwitchCase="'photo'" [src]="message.mediaUrl" alt="photo envoyée" />
+              <img *ngSwitchCase="'photo'" [src]="message.mediaUrl" [attr.alt]="'MESSAGE.PHOTO_SENT' | translate" />
               <p *ngSwitchDefault>{{ message.content }}</p>
             </ng-container>
             <span class="timestamp">{{ message.createdAt | date:'shortTime' }}</span>

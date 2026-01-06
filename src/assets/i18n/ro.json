@@ -36,6 +36,24 @@
     "YOGA": "Relaxare / Yoga",
     "DEVELOPPEMENT": "Dezvoltare personală"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Coafură",
+    "MANUCURE": "Manichiură",
+    "VISAGE": "Față",
+    "MASSAGE": "Masaj",
+    "MAQUILLAGE": "Machiaj",
+    "EPILATION": "Epilare",
+    "BRONZAGE": "Bronzare",
+    "PARTUM": "Post-partum",
+    "NUTRITION": "Nutriție",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupunctură",
+    "STYLISME": "Stilism",
+    "YOGA": "Relaxare",
+    "DEVELOPPEMENT": "Elevație",
+    "BARBER": "Frizer",
+    "EYELASH": "Extensii de gene"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon adăugat la favorite",
     "FAVORITE_REMOVED": "Salon eliminat din favorite",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Serviciu clienți",
-    "WRITE": "Scrie un mesaj…"
+    "WRITE": "Scrie un mesaj…",
+    "NO_CONV": "Nicio conversație",
+    "CREATE": "Creează o conversație",
+    "CREATE_CONV": "Creează",
+    "OPEN_CONV_LIST": "Deschide lista de conversații",
+    "PHOTO_SENT": "Fotografie trimisă"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Introdu adresa ta de e-mail pentru autentificare",
@@ -173,8 +196,14 @@
     "SERVICES": "Gestionarea prestațiilor",
     "PHOTOS": "Galerie foto",
     "STATS": "Statistici",
+    "SOCIAL": "Rețele sociale",
     "PARAM": "Parametrizare",
+    "DOCUMENTS": "Documente",
     "SHOPS": "Magazinele",
+    "B2BLEAD": "Lead-uri BtoB",
+    "PROLEAD": "Lead-uri Pro",
+    "COMPANY": "Companiile",
+    "COM": "Comunicarea",
     "USERS": "Utilizatorii",
     "MESSAGE": "Mesagerie"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Comentariu",
     "NOTE": "Notă",
     "CLOSE": "Închide"
+  },
+  "UILEVEL": {
+    "STARTER": "Creatoare",
+    "ACTIVE": "Confirmată",
+    "AMBASSADOR": "Ambasador IzyGlam",
+    "ICONE": "Pictogramă locală"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Nicio imagine în galerie."
@@ -265,7 +300,7 @@
     "RESERVED": "Rezervă în avans",
     "GIFTCARDS": "Carduri cadou",
     "WORKWITHUS": "Lucrează cu izyGlam",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "Servicii de frumusețe pentru afaceri",
     "CONFIDENTIAL": "Confidențialitate",
     "ACCESS": "Accesibilitate",
     "CONDITIONS": "Condții",
@@ -290,23 +325,6 @@
     "TOP10": "Top 10 al săptămânii",
     "SEARCHRESULT": "Rezultatele căutării",
     "AVIS": "Recenzii"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Coafură",
-    "MANUCURE": "Manichiură",
-    "VISAGE": "Față",
-    "MASSAGE": "Masaj",
-    "MAQUILLAGE": "Machiaj",
-    "EPILATION": "Epilare",
-    "BRONZAGE": "Bronzare",
-    "PARTUM": "Post-partum",
-    "NUTRITION": "Nutriție",
-    "FITNESS": "Fitness",
-    "ACUPUNCTURE": "Acupunctură",
-    "STYLISME": "Stilism",
-    "YOGA": "Relaxare",
-    "DEVELOPPEMENT": "Elevație",
-    "EYELASH": "Extensii de gene"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "O coafeză",
@@ -379,6 +397,75 @@
     "LANGUE": "Limbă",
     "COUNTRY": "Țara"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Nail art minimalist pentru un efect elegant și modern.",
+    "CREATIVITE": "Alegeți culori îndrăznețe pentru a vă exprima creativitatea.",
+    "VINTAGE": "Un stil vintage reinterpretat pentru un look unic!",
+    "QUESTION": "Începeți postarea cu o întrebare captivantă pentru a încuraja interacțiunea.",
+    "VISUELS": "Optimizați vizualurile cu culori vii și text clar.",
+    "APPEL_ACTION": "Adăugați un apel la acțiune clar, cum ar fi \"Faceți clic pe link\" sau \"Distribuiți opinia dvs.\".",
+    "LEGENDES": "Folosiți legende scurte dar puternice pentru Instagram și Bluesky.",
+    "COMMENTAIRES": "Includeți întrebări deschise pentru a încuraja comentariile.",
+    "HASHTAGS": "Adăugați hashtag-uri relevante pentru a atinge un public mai larg.",
+    "STATISTIQUES": "Adăugați statistici sau fapte interesante pentru a capta atenția.",
+    "STORYTELLING": "Spuneți o poveste captivantă pentru a menține cititorii implicați.",
+    "REUSSITES": "Evidențiați succesele dvs. sau ale clienților dvs. pentru LinkedIn.",
+    "AUTHENTICITE": "Fii autentic și arată-ți personalitatea adevărată.",
+    "ANALYSE": "Analizați performanțele și ajustați strategia în consecință.",
+    "EMOJIS": "Folosiți emoji-uri pentru a face conținutul mai vizual și atractiv.",
+    "HEURES": "Postați la ore strategice pentru a maximiza acoperirea.",
+    "STORIES": "Integrați stories sau reels pentru a capta rapid atenția.",
+    "CAPTIVANTES": "Folosiți legende captivante care fac să doriți să faceți clic pe \"Citește mai mult\".",
+    "ANECDOTE": "Distribuiți anecdote personale pentru a crea o conexiune emoțională.",
+    "FORMATS": "Variați formatele: imagini, videoclipuri, caruseluri sau sondaje.",
+    "TON": "Adaptați tonul conținutului în funcție de platforma utilizată.",
+    "MENTIONS": "Menționați alți utilizatori sau mărci pentru a vă extinde acoperirea.",
+    "STYLES": "Testați stiluri vizuale diferite pentru a descoperi ce place cel mai mult publicului dvs.",
+    "VIDEOS": "Folosiți videoclipuri scurte pentru a capta rapid atenția.",
+    "TEMOIGNAGES": "Adăugați mărturii ale clienților pentru a vă consolida credibilitatea.",
+    "SONDAGES": "Creați sondaje pentru a vă implica publicul.",
+    "VALEURS": "Evidențiați valorile dvs. pentru a vă atinge publicul țintă.",
+    "AVANT_APRES": "Adăugați un înainte/după pentru a demonstra un impact clar.",
+    "CITATIONS": "Incorporați citate inspiratoare pentru a motiva publicul dvs.",
+    "STORYTELLING2": "Adăugați legende în stil storytelling pentru a spune o poveste.",
+    "HASHTAGS_SPECIFIQUES": "Adaptați hashtag-urile la fiecare postare pentru a maximiza acoperirea.",
+    "TEXTE_VISUEL": "Evitați să supraîncărcați vizualurile cu prea mult text.",
+    "REPONSE": "Răspundeți rapid la comentarii pentru a crea o relație.",
+    "COULISSES": "Evidențiați culisele pentru a umaniza marca dvs.",
+    "AUTHENTIQUE": "Folosiți fotografii autentice în loc de bănci de imagini.",
+    "MESSAGES_CLES": "Repetați mesajele cheie în mod regulat pentru a vă ancora comunicarea.",
+    "MOMENTS_FORTS": "Identificați momentele cheie ale anului pentru publicațiile dvs.",
+    "TENDANCES": "Folosiți tendințele actuale pentru a urmări știrile.",
+    "STATISTIQUES2": "Adăugați statistici interesante pentru a capta atenția.",
+    "CARROUSELS": "Creați caruseluri pentru a spune o poveste în mai multe etape.",
+    "LIEN_BIO": "Puneți un link clar în bio pentru a vă direcționa vizitatorii.",
+    "GUIDE": "Creați un ghid sau o listă de verificare pentru a oferi valoare publicului dvs.",
+    "GIF": "Adăugați GIF-uri sau stickere pentru a face stories-urile mai dinamice.",
+    "COULEURS": "Folosiți culori consistente cu branding-ul dvs.",
+    "COLLABORATEURS": "Evidențiați colaboratorii pentru a crea un sentiment de echipă.",
+    "CONVERSATIONNEL": "Scrieți postările ca și cum ați vorbi direct cu o persoană.",
+    "QUIZ": "Adăugați quiz-uri interactive pentru a crește implicarea.",
+    "URGENCE": "Creați un sentiment de urgență cu promoții limitate.",
+    "AVANT_APRES_CONCRET": "Integrați fotografii înainte/după pentru a arăta rezultate concrete.",
+    "COLLABORATION": "Creați colaborări cu alți creatori pentru a vă extinde publicul.",
+    "TRANSPARENCE": "Fii transparent despre procesele sau produsele dvs.",
+    "ANIMATIONS": "Adăugați animații pentru a face videoclipurile mai dinamice.",
+    "EDUCATIF": "Creați postări educative pentru a oferi valoare publicului dvs.",
+    "RETOURS_EXPERIENCE": "Evidențiați feedback-ul experiențelor pentru a crea încredere.",
+    "CONCIS": "Fii concis în mesaje pentru a merge direct la subiect.",
+    "MOTS_CLES": "Folosiți cuvinte cheie relevante pentru a crește vizibilitatea.",
+    "CALENDRIER": "Creați un calendar editorial pentru a vă planifica publicațiile.",
+    "MINIMALISTE2": "Experimentați cu vizualuri minimaliste pentru un impact vizual puternic.",
+    "TEMOIGNAGES_VIDEO": "Integrați mărturii video pentru mai multă autenticitate.",
+    "HUMOUR": "Creați postări umoristice pentru a vă implica cu ușurință.",
+    "GRAPHIQUES": "Folosiți grafice sau infografii pentru a explica idei complexe.",
+    "REGULARITE": "Publicați regulat pentru a menține publicul implicat.",
+    "REMERCIEMENTS": "Includeți mulțumiri sau sărbători pentru a crea recunoștință."
+  },
   "PAYEMENT": {
     "YOU": "Tu",
     "HEADER_TITLE": "Plată",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Selectează o adresă",
     "ADD_ADDRESS": "Adaugă o adresă",
     "CARD_PAY": "Plată cu cardul bancar",
+    "CREDIT_PAY": "Plată cu credit corporativ",
+    "EMPLOYEE_CREDIT_TITLE": "Folosește creditul meu corporativ",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Creditul meu disponibil:",
+    "EMPLOYEE_CREDIT_EMPTY": "Fără credit corporativ",
     "CARD_NUM": "Numărul cardului",
     "CARD_NAME": "Numele de pe card",
     "EXPIRATION": "Data expirării",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Vă rugăm să vă conectați pentru a înregistra un salon",
     "TITLE": "Începeți acum!",
     "TITLE2": "Să creăm un salon!",
+    "STEP1_TITLE": "Informații despre salon",
+    "STEP2_TITLE": "Verificare profesională",
+    "STEP2_TAGLINE": "Pasul 2 din 2 · Documentele dvs. rămân private și protejate.",
     "NAME": "Numele salonului dvs.",
     "ADDRESS": "Adresa companiei dvs.",
     "STREET": "Stradă",
@@ -500,7 +594,28 @@
     "ERROR5": "Numele de familie este obligatoriu.",
     "ERROR6": "E-mailul este obligatoriu.",
     "ERROR7": "Numărul de telefon mobil este obligatoriu.",
-    "ERROR8": "Trebuie să acceptați să primiți mesaje pe WhatsApp."
+    "ERROR8": "Trebuie să acceptați să primiți mesaje pe WhatsApp.",
+    "VERIF_TITLE": "Verificarea profilului dvs. profesional",
+    "VERIF_SUBTITLE": "Verificăm fiecare profesionist pentru a vă proteja clienții și reputația.",
+    "VERIF_ID_TITLE": "Act de identitate",
+    "VERIF_ID_DESC": "Carte de identitate, pașaport sau permis de ședere valabil.",
+    "VERIF_INSURANCE_TITLE": "Asigurare profesională",
+    "VERIF_INSURANCE_DESC": "Certificat valabil care acoperă serviciile dvs. la domiciliu (obligatoriu).",
+    "VERIF_KBIS_TITLE": "Extras Kbis (opțional)",
+    "VERIF_KBIS_DESC": "Recomandat dacă lucrați printr-o societate înregistrată.",
+    "VERIF_UPLOAD_LABEL": "Încarcă un document",
+    "VERIF_ALLOWED_FORMATS": "Formate acceptate: PDF, JPG, PNG · dimensiune maximă 10 MB.",
+    "VERIF_MANDATORY_HINT": "Actul de identitate și asigurarea sunt obligatorii pentru a activa profilul dvs.",
+    "VERIF_STATUS_MISSING": "Document lipsă",
+    "VERIF_STATUS_PENDING": "În curs de verificare",
+    "VERIF_STATUS_APPROVED": "Validat",
+    "VERIF_STATUS_REJECTED": "Refuzat · document nou necesar",
+    "VERIF_PRIMARY_BUTTON": "Trimite documentele",
+    "VERIF_SKIP_BUTTON": "Voi completa mai târziu",
+    "VERIF_TOAST_SUCCESS": "Documentele dvs. au fost trimise pentru verificare.",
+    "VERIF_TOAST_ERROR": "Imposibil de încărcat documentele dvs. în acest moment.",
+    "VERIF_ID_REQUIRED": "Actul de identitate este obligatoriu.",
+    "VERIF_INSURANCE_REQUIRED": "Asigurarea profesională este obligatorie."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modifică adresa",
@@ -533,6 +648,12 @@
     "NAME": "Nume",
     "CITY": "Oraș",
     "NOTE": "Notă",
+    "DOCS_OK": "Validate",
+    "DOCS_NOT_VALID": "Nevalidate",
+    "ACTIVE": "Activ",
+    "INACTIVE": "Inactiv",
+    "STATUS": "Status",
+    "DOCUMENTS": "Documente",
     "MIDDLE_PRICE": "Preț mediu",
     "PROMOTION": "Promoție",
     "ACTIONS": "Acțiuni",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Gestionează contul",
     "ORDERS": "Comenzi efectuate",
+    "MESSAGES": "Mesajele mele",
     "FAVORITES": "Favorite",
     "HELP": "Ajutor",
     "MY_ABO": "Abonamentul meu",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Asistență online"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Creditează contul angajatului",
     "AMOUNT": "Suma de creditat",
@@ -894,7 +1015,10 @@
     "DATE": "Data",
     "AMOUNT": "Sumă",
     "COMMISSION": "Comision",
-    "STATUS": "Stare"
+    "STATUS": "Stare",
+    "NEXT_LEVEL": "Următorul nivel",
+    "MAX_LEVEL": "Nivel maxim atins",
+    "REMAINING": "încă {{count}} rezervări"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Selectați tipul de magazin de creat",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Eroare la ștergerea prestației"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Imaginea magazinului",
     "UPLOAD_IMAGE": "Încarcă o imagine",
     "SNEEK_PIC": "Previzualizarea imaginii",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Generează descrierea",
     "PHOTO": "Exemple de fotografii acceptate / refuzate",
     "CODE_POSTAUX": "Coduri poștale deservite",
+    "SOCIAL_NETWORK": "Rețele sociale",
     "EXEMPLE_LOCAL": "Ex.: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Avansată",
     "PLANS": "Număr de saloane active",
     "READY": "Gata să-ți crești activitatea?",
-    "DISCOVERS": "Descoperă oferteleizyGlam"
+    "DISCOVERS": "Descoperă oferteleizyGlam",
+    "FREE_TRIAL": "Gratuit timp de 1 lună"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Nedefinit",
     "INVALID_DATE": "Dată invalidă"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Confirmare",
+    "CANCEL": "Anulează",
+    "OK": "OK",
+    "TERMINATE": "Termină",
+    "DELETE": "Șterge"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Caută un serviciu",
+    "EMAIL_PLACEHOLDER": "Email utilizator",
+    "CATEGORY_TITLE": "Ce doriți să rezervați?",
+    "CATEGORY_HINT": "Alegeți o categorie. Apoi: serviciu → moment → interval.",
+    "REASSURANCE": "Plată securizată • Profesioniști verificați • Suport reactiv",
+    "PRICE_TIP": "Preț clar înainte de plată. Confirmați când totul este în regulă.",
+    "WHEN_TITLE": "Ce moment vă convine?",
+    "WHEN_HINT": "Vom afișa doar intervalele disponibile.",
+    "TODAY": "Astăzi",
+    "TONIGHT": "Diseară",
+    "TOMORROW": "Mâine",
+    "THIS_WEEK": "Săptămâna aceasta",
+    "VIEW_SLOTS": "Vezi intervalele disponibile",
+    "PAYMENT_REASSURANCE": "Plată securizată • Modificare posibilă înainte de plată",
+    "SLOTS_TITLE": "Intervale disponibile",
+    "SLOTS_HINT": "Selectați un interval pentru a continua.",
+    "VALIDATION_TIP": "Confirmați totul în rezumat înainte de plată.",
+    "SUMMARY_TITLE": "Rezumat",
+    "SUMMARY_HINT": "Verificați înainte de a trece la plată.",
+    "SERVICE": "Serviciu",
+    "DURATION": "Durată",
+    "WHEN": "Când",
+    "PRICE": "Preț",
+    "FROM": "de la",
+    "CONTINUE_PAYMENT": "Continuă către plată",
+    "PAYMENT_FOOTNOTE": "Plată securizată. Anulare conform condițiilor. Veți putea alege să rezervați din nou cu același prestator după serviciu."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Cum doriți să rezervați?",
+    "SUBTITLE": "Rezervați în 2 minute — la domiciliu, plată securizată.",
+    "QUICK_TITLE": "Rezervare rapidă",
+    "QUICK_DESC": "Alegeți un serviciu, vă propunem intervalele.",
+    "RECOMMENDED": "Recomandat",
+    "PROVIDER_TITLE": "Alege un prestator",
+    "PROVIDER_DESC": "Răsfoiți profilele și rezervați în calendar."
   }
 }

@@ -36,6 +36,24 @@
     "YOGA": "Rentoutus",
     "DEVELOPPEMENT": "Itsensä kehittäminen"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Kampaamo",
+    "MANUCURE": "Manikyyri",
+    "VISAGE": "Kasvot",
+    "MASSAGE": "Hieronta",
+    "MAQUILLAGE": "Meikkaus",
+    "EPILATION": "Vahaus",
+    "BRONZAGE": "Rusketus",
+    "PARTUM": "Synnytyksen jälkeen",
+    "NUTRITION": "Ravitsemus",
+    "FITNESS": "Kuntoilu",
+    "ACUPUNCTURE": "Akupunktio",
+    "STYLISME": "Stailaus",
+    "YOGA": "Rentoutus",
+    "DEVELOPPEMENT": "Henkinen kasvu",
+    "BARBER": "Parturi",
+    "EYELASH": "Ripsienpidennykset"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salonki lisätty suosikkeihin",
     "FAVORITE_REMOVED": "Salonki poistettu suosikeista",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Atención al cliente",
-    "WRITE": "Escribir un mensaje…"
+    "WRITE": "Escribir un mensaje…",
+    "NO_CONV": "Ei keskusteluja",
+    "CREATE": "Luo keskustelu",
+    "CREATE_CONV": "Luo",
+    "OPEN_CONV_LIST": "Avaa keskustelulista",
+    "PHOTO_SENT": "Kuva lähetetty"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Anna kirjautumissähköpostisi",
@@ -173,8 +196,14 @@
     "SERVICES": "Palvelujen hallinta",
     "PHOTOS": "Kuvagalleria",
     "STATS": "Tilastot",
+    "SOCIAL": "Sosiaaliset verkostot",
     "PARAM": "Asetukset",
+    "DOCUMENTS": "Asiakirjat",
     "SHOPS": "Liikkeet",
+    "B2BLEAD": "BtoB-liidit",
+    "PROLEAD": "Pro-liidit",
+    "COMPANY": "Yritykset",
+    "COM": "Viestintä",
     "USERS": "Käyttäjät",
     "MESSAGE": "Viestit"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Kommentti",
     "NOTE": "Arvosana",
     "CLOSE": "Sulje"
+  },
+  "UILEVEL": {
+    "STARTER": "Luoja",
+    "ACTIVE": "Vahvistettu",
+    "AMBASSADOR": "IzyGlam Lähettiläs",
+    "ICONE": "Paikallinen kuvake"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Galleriassa ei ole kuvia."
@@ -265,7 +300,7 @@
     "RESERVED": "Varaa etukäteen",
     "GIFTCARDS": "Lahjakortit",
     "WORKWITHUS": "Tee töitä kanssamme",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "Kauneuspalvelut yrityksille",
     "CONFIDENTIAL": "Tietosuoja",
     "ACCESS": "Saavutettavuus",
     "CONDITIONS": "Ehdot",
@@ -290,23 +325,6 @@
     "TOP10": "Viikon Top 10",
     "SEARCHRESULT": "Hakutulokset",
     "AVIS": "Arviot"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Kampaamo",
-    "MANUCURE": "Manikyyri",
-    "VISAGE": "Kasvot",
-    "MASSAGE": "Hieronta",
-    "MAQUILLAGE": "Meikkaus",
-    "EPILATION": "Vahaus",
-    "BRONZAGE": "Rusketus",
-    "PARTUM": "Synnytyksen jälkeen",
-    "NUTRITION": "Ravitsemus",
-    "FITNESS": "Kuntoilu",
-    "ACUPUNCTURE": "Akupunktio",
-    "STYLISME": "Stailaus",
-    "YOGA": "Rentoutus",
-    "DEVELOPPEMENT": "Henkinen kasvu",
-    "EYELASH": "Ripsienpidennykset"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Kampaaja",
@@ -379,6 +397,75 @@
     "LANGUE": "Kieli",
     "COUNTRY": "Maa"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Minimalistinen kynsitaide tyylikkääseen ja moderniin vaikutukseen.",
+    "CREATIVITE": "Valitse rohkeita värejä ilmaistaksesi luovuuttasi.",
+    "VINTAGE": "Uudelleen tulkittu vintage-tyyli ainutlaatuiseen lookiin!",
+    "QUESTION": "Aloita julkaisusi kiinnostavalla kysymyksellä kannustaaksesi vuorovaikutukseen.",
+    "VISUELS": "Optimoi visuaalisi kirkkain värein ja selkeällä tekstillä.",
+    "APPEL_ACTION": "Lisää selkeä toimintakehotus, kuten \"Klikkaa linkkiä\" tai \"Jaa mielipiteesi\".",
+    "LEGENDES": "Käytä lyhyitä mutta vaikuttavia kuvatekstejä Instagramiin ja Blueskyyn.",
+    "COMMENTAIRES": "Sisällytä avoimia kysymyksiä kannustaaksesi kommentteihin.",
+    "HASHTAGS": "Lisää asiaankuuluvia hashtageja tavoittaaksesi laajemman yleisön.",
+    "STATISTIQUES": "Lisää tilastoja tai mielenkiintoisia faktoja kiinnittääksesi huomiota.",
+    "STORYTELLING": "Kerro mukaansatempaava tarina pitääksesi lukijasi kiinnostuneina.",
+    "REUSSITES": "Korosta omia tai asiakkaidesi menestyksiä LinkedInissä.",
+    "AUTHENTICITE": "Ole autenttinen ja näytä todellinen persoonallisuutesi.",
+    "ANALYSE": "Analysoi suorituksiasi ja säädä strategiaasi sen mukaan.",
+    "EMOJIS": "Käytä emojeja tehdäksesi sisällöstäsi visuaalisemman ja houkuttelevamman.",
+    "HEURES": "Julkaise strategisina aikoina maksimoidaksesi saavutettavuuden.",
+    "STORIES": "Integroi tarinoita tai reelejä kiinnittääksesi huomiota nopeasti.",
+    "CAPTIVANTES": "Käytä mukaansatempaavia kuvatekstejä, jotka saavat haluamaan klikata \"Lue lisää\".",
+    "ANECDOTE": "Jaa henkilökohtaisia anekdootteja luodaksesi emotionaalisen yhteyden.",
+    "FORMATS": "Vaihtele muotojasi: kuvat, videot, karusellit tai kyselyt.",
+    "TON": "Säädä sisältösi sävyä käyttämäsi alustan mukaan.",
+    "MENTIONS": "Mainitse muita käyttäjiä tai brändejä laajentaaksesi saavutettavuuttasi.",
+    "STYLES": "Testaa erilaisia visuaalisia tyylejä löytääksesi, mikä miellyttää yleisöäsi eniten.",
+    "VIDEOS": "Käytä lyhyitä videoita kiinnittääksesi huomiota nopeasti.",
+    "TEMOIGNAGES": "Lisää asiakastodistuksia vahvistaaksesi uskottavuuttasi.",
+    "SONDAGES": "Luo kyselyitä osallistaaksesi yleisöäsi.",
+    "VALEURS": "Korosta arvojasi tavoittaaksesi kohdeyleisöäsi.",
+    "AVANT_APRES": "Lisää ennen/jälkeen osoittaaksesi selkeän vaikutuksen.",
+    "CITATIONS": "Sisällytä inspiroivia lainauksia motivoidaksesi yleisöäsi.",
+    "STORYTELLING2": "Lisää tarinankerronnan kuvatekstejä kertoaksesi tarinan.",
+    "HASHTAGS_SPECIFIQUES": "Säädä hashtagisi jokaiseen julkaisuun maksimoidaksesi saavutettavuuden.",
+    "TEXTE_VISUEL": "Vältä visuaalien ylikuormittamista liialla tekstillä.",
+    "REPONSE": "Vastaa kommentteihin nopeasti luodaksesi suhteen.",
+    "COULISSES": "Korosta kulissejasi inhimillistääksesi brändiäsi.",
+    "AUTHENTIQUE": "Käytä autenttisia valokuvia kuvapankkien sijaan.",
+    "MESSAGES_CLES": "Toista avainviestisi säännöllisesti vahvistaaksesi viestintääsi.",
+    "MOMENTS_FORTS": "Tunnista vuoden vahvat hetket julkaisuillesi.",
+    "TENDANCES": "Hyödynnä ajankohtaisia trendejä pysyäksesi ajantasalla.",
+    "STATISTIQUES2": "Lisää mielenkiintoisia tilastoja kiinnittääksesi huomiota.",
+    "CARROUSELS": "Luo karuselleja kertoaksesi tarinan useassa vaiheessa.",
+    "LIEN_BIO": "Laita selkeä linkki bioosi ohjataksesi vierailijoitasi.",
+    "GUIDE": "Luo opas tai tarkistuslista tarjotaksesi arvoa yleisöllesi.",
+    "GIF": "Lisää GIFejä tai tarroja tehdäksesi tarinastasi dynaamisempia.",
+    "COULEURS": "Käytä brändäyksesi kanssa yhdenmukaisia värejä.",
+    "COLLABORATEURS": "Korosta yhteistyökumppaneitasi luodaksesi tiimitunteen.",
+    "CONVERSATIONNEL": "Kirjoita julkaisusi ikään kuin puhuisit suoraan yhdelle henkilölle.",
+    "QUIZ": "Lisää interaktiivisia tietokilpailuja lisätäksesi sitoutumista.",
+    "URGENCE": "Luo kiireentunne rajoitetuilla kampanjoilla.",
+    "AVANT_APRES_CONCRET": "Integroi ennen/jälkeen valokuvia näyttääksesi konkreettisia tuloksia.",
+    "COLLABORATION": "Luo yhteistyötä muiden luojien kanssa laajentaaksesi yleisöäsi.",
+    "TRANSPARENCE": "Ole läpinäkyvä prosesseistasi tai tuotteistasi.",
+    "ANIMATIONS": "Lisää animaatioita tehdäksesi videoistasi dynaamisempia.",
+    "EDUCATIF": "Luo opettavia julkaisuja tarjotaksesi arvoa yleisöllesi.",
+    "RETOURS_EXPERIENCE": "Korosta kokemuskertomuksia luodaksesi luottamusta.",
+    "CONCIS": "Ole ytimekäs viesteissäsi mennäksesi suoraan asiaan.",
+    "MOTS_CLES": "Käytä asiaankuuluvia avainsanoja lisätäksesi näkyvyyttä.",
+    "CALENDRIER": "Luo toimituksellinen kalenteri suunnitellaksesi julkaisujasi.",
+    "MINIMALISTE2": "Kokeile minimalistisia visuaaleja vahvaan visuaaliseen vaikutukseen.",
+    "TEMOIGNAGES_VIDEO": "Integroi videotodistuksia lisäämään autenttisuutta.",
+    "HUMOUR": "Luo huumoristisia julkaisuja osallistaaksesi kevyesti.",
+    "GRAPHIQUES": "Käytä kaavioita tai infografioita selittääksesi monimutkaisia ideoita.",
+    "REGULARITE": "Julkaise säännöllisesti pitääksesi yleisösi kiinnostuneena.",
+    "REMERCIEMENTS": "Sisällytä kiitoksia tai juhlia luodaksesi kiitollisuutta."
+  },
   "PAYEMENT": {
     "YOU": "Sinä",
     "HEADER_TITLE": "Maksu",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Valitse osoite",
     "ADD_ADDRESS": "Lisää osoite",
     "CARD_PAY": "Maksu pankkikortilla",
+    "CREDIT_PAY": "Maksu yritysluotolla",
+    "EMPLOYEE_CREDIT_TITLE": "Käytä yritysluottoani",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Käytettävissä oleva luottoni:",
+    "EMPLOYEE_CREDIT_EMPTY": "Ei yritysluottoa",
     "CARD_NUM": "Kortin numero",
     "CARD_NAME": "Nimi kortissa",
     "EXPIRATION": "Viimeinen voimassaolopäivä",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Kirjaudu sisään tallentaaksesi salonkin",
     "TITLE": "Aloita!",
     "TITLE2": "Luodaan salonki!",
+    "STEP1_TITLE": "Salongin tiedot",
+    "STEP2_TITLE": "Ammattitaitoinen vahvistus",
+    "STEP2_TAGLINE": "Vaihe 2/2 · Asiakirjasi pysyvät yksityisinä ja suojattuina.",
     "NAME": "Salonkisi nimi",
     "ADDRESS": "Yrityksesi osoite",
     "STREET": "Katu",
@@ -500,7 +594,28 @@
     "ERROR5": "Sukunimi on pakollinen.",
     "ERROR6": "Sähköposti on pakollinen.",
     "ERROR7": "Matkapuhelinnumero on pakollinen.",
-    "ERROR8": "Sinun on hyväksyttävä WhatsApp-viestit."
+    "ERROR8": "Sinun on hyväksyttävä WhatsApp-viestit.",
+    "VERIF_TITLE": "Ammattiprofiilisi vahvistus",
+    "VERIF_SUBTITLE": "Vahvistamme jokaisen ammattilaisen suojellaksemme asiakkaitasi ja mainettasi.",
+    "VERIF_ID_TITLE": "Henkilötodistus",
+    "VERIF_ID_DESC": "Henkilötodistus, passi tai voimassa oleva oleskelulupa.",
+    "VERIF_INSURANCE_TITLE": "Ammattivakuutus",
+    "VERIF_INSURANCE_DESC": "Voimassa oleva todistus, joka kattaa kotipalvelusi (pakollinen).",
+    "VERIF_KBIS_TITLE": "Kbis-ote (valinnainen)",
+    "VERIF_KBIS_DESC": "Suositeltavaa, jos toimitat rekisteröidyn yhtiön kautta.",
+    "VERIF_UPLOAD_LABEL": "Lataa asiakirja",
+    "VERIF_ALLOWED_FORMATS": "Hyväksytyt muodot: PDF, JPG, PNG · maksimikoko 10 Mt.",
+    "VERIF_MANDATORY_HINT": "Henkilötodistus ja vakuutus ovat pakollisia profiilin aktivointiin.",
+    "VERIF_STATUS_MISSING": "Puuttuva asiakirja",
+    "VERIF_STATUS_PENDING": "Vahvistuksessa",
+    "VERIF_STATUS_APPROVED": "Vahvistettu",
+    "VERIF_STATUS_REJECTED": "Hylätty · uusi asiakirja vaaditaan",
+    "VERIF_PRIMARY_BUTTON": "Lähetä asiakirjat",
+    "VERIF_SKIP_BUTTON": "Täydennän myöhemmin",
+    "VERIF_TOAST_SUCCESS": "Asiakirjasi on lähetetty vahvistettavaksi.",
+    "VERIF_TOAST_ERROR": "Asiakirjojen lataaminen ei ole tällä hetkellä mahdollista.",
+    "VERIF_ID_REQUIRED": "Henkilötodistus on pakollinen.",
+    "VERIF_INSURANCE_REQUIRED": "Ammattivakuutus on pakollinen."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Muuta osoitetta",
@@ -533,6 +648,12 @@
     "NAME": "Nimi",
     "CITY": "Kaupunki",
     "NOTE": "Arvosana",
+    "DOCS_OK": "Vahvistettu",
+    "DOCS_NOT_VALID": "Ei vahvistettu",
+    "ACTIVE": "Aktiivinen",
+    "INACTIVE": "Epäaktiivinen",
+    "STATUS": "Tila",
+    "DOCUMENTS": "Asiakirjat",
     "MIDDLE_PRICE": "Keskihinta",
     "PROMOTION": "Kampanja",
     "ACTIONS": "Toiminnot",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Hallitse tiliä",
     "ORDERS": "Tehdyt tilaukset",
+    "MESSAGES": "Viestini",
     "FAVORITES": "Suosikit",
     "HELP": "Apua",
     "MY_ABO": "Tilaukseni",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Verkkotuki"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Hyvitä työntekijän tiliä",
     "AMOUNT": "Hyvitettävä summa",
@@ -894,7 +1015,10 @@
     "DATE": "Päivä",
     "AMOUNT": "Summa",
     "COMMISSION": "Komissio",
-    "STATUS": "Tila"
+    "STATUS": "Tila",
+    "NEXT_LEVEL": "Seuraava taso",
+    "MAX_LEVEL": "Maksimitaso saavutettu",
+    "REMAINING": "vielä {{count}} varausta"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Valitse luotavan liikkeen tyyppi",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Virhe palvelun poistossa"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Liikkeen kuva",
     "UPLOAD_IMAGE": "Lataa kuva",
     "SNEEK_PIC": "Kuvan esikatselu",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Luo kuvaus",
     "PHOTO": "Hyväksyttyjen/hylättyjen kuvien esimerkkejä",
     "CODE_POSTAUX": "Palveltavat postinumerot",
+    "SOCIAL_NETWORK": "Sosiaaliset verkostot",
     "EXEMPLE_LOCAL": "Esim.: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Edistynyt",
     "PLANS": "Aktiivisten salonkien määrä",
     "READY": "Valmis kasvattamaan toimintaasi?",
-    "DISCOVERS": "TutustuizyGlamin tarjouksiin"
+    "DISCOVERS": "TutustuizyGlamin tarjouksiin",
+    "FREE_TRIAL": "Ilmainen 1 kuukauden ajan"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Määrittelemätön",
     "INVALID_DATE": "Virheellinen päivämäärä"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Vahvistus",
+    "CANCEL": "Peruuta",
+    "OK": "OK",
+    "TERMINATE": "Lopeta",
+    "DELETE": "Poista"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Etsi palvelua",
+    "EMAIL_PLACEHOLDER": "Käyttäjän sähköposti",
+    "CATEGORY_TITLE": "Mitä haluat varata?",
+    "CATEGORY_HINT": "Valitse kategoria. Sitten: palvelu → aika → aikaväli.",
+    "REASSURANCE": "Turvallinen maksu • Vahvistetut ammattilaiset • Reagoiva tuki",
+    "PRICE_TIP": "Selkeä hinta ennen maksua. Vahvistat, kun kaikki on kunnossa.",
+    "WHEN_TITLE": "Mikä aika sopii sinulle?",
+    "WHEN_HINT": "Näytämme vain saatavilla olevat aikavälit.",
+    "TODAY": "Tänään",
+    "TONIGHT": "Tänä iltana",
+    "TOMORROW": "Huomenna",
+    "THIS_WEEK": "Tällä viikolla",
+    "VIEW_SLOTS": "Näytä saatavilla olevat aikavälit",
+    "PAYMENT_REASSURANCE": "Turvallinen maksu • Muokkaus mahdollista ennen maksua",
+    "SLOTS_TITLE": "Saatavilla olevat aikavälit",
+    "SLOTS_HINT": "Valitse aikaväli jatkaaksesi.",
+    "VALIDATION_TIP": "Vahvistat kaiken yhteenvedossa ennen maksua.",
+    "SUMMARY_TITLE": "Yhteenveto",
+    "SUMMARY_HINT": "Tarkista ennen maksuun siirtymistä.",
+    "SERVICE": "Palvelu",
+    "DURATION": "Kesto",
+    "WHEN": "Milloin",
+    "PRICE": "Hinta",
+    "FROM": "alkaen",
+    "CONTINUE_PAYMENT": "Jatka maksuun",
+    "PAYMENT_FOOTNOTE": "Turvallinen maksu. Peruutus ehtojen mukaan. Voit valita uudelleenvarauksen saman palveluntarjoajan kanssa palvelun jälkeen."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Miten haluat varata?",
+    "SUBTITLE": "Varaa 2 minuutissa — kotona, turvallinen maksu.",
+    "QUICK_TITLE": "Nopea varaus",
+    "QUICK_DESC": "Valitse palvelu, tarjoamme aikavälit.",
+    "RECOMMENDED": "Suositeltava",
+    "PROVIDER_TITLE": "Valitse palveluntarjoaja",
+    "PROVIDER_DESC": "Selaa profiileja ja varaa kalenterista."
   }
 }

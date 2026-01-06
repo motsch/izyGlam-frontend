@@ -2,7 +2,7 @@
 
   <!-- Top bar -->
   <header class="topbar">
-    <button class="icon-btn" (click)="back()" aria-label="Retour">
+    <button class="icon-btn" (click)="back()" [attr.aria-label]="'PROFILE_MENU.CANCEL' | translate">
       <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
         <path d="M15.5 19 8.5 12l7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -13,7 +13,7 @@
       <div class="sub">{{ stepSubtitle() }}</div>
     </div>
 
-    <button class="chip-btn" type="button" aria-label="Adresse">
+    <button class="chip-btn" type="button" [attr.aria-label]="'ORDER_CARD.ADRESSE' | translate">
       <span class="pin">📍</span>
       <span class="addr">{{ addressLabel }}</span>
     </button>
@@ -33,8 +33,8 @@
     <!-- STEP: CATEGORY -->
     <section *ngIf="step==='category'" class="section">
       <div class="sheet">
-        <h2>Que souhaitez-vous réserver ?</h2>
-        <p class="hint">Choisissez une catégorie. Ensuite : prestation → moment → créneau.</p>
+        <h2>{{ 'QUICK.CATEGORY_TITLE' | translate }}</h2>
+        <p class="hint">{{ 'QUICK.CATEGORY_HINT' | translate }}</p>
 
         <div class="grid">
           <button class="card" *ngFor="let c of categories" (click)="chooseCategory(c)" type="button">
@@ -46,7 +46,7 @@
 
         <div class="reassure">
           <span class="dot"></span>
-          <span>Paiement sécurisé • Pros vérifiées • Support réactif</span>
+          <span>{{ 'QUICK.REASSURANCE' | translate }}</span>
         </div>
       </div>
     </section>
@@ -65,7 +65,7 @@
               <path d="M21 21l-4.3-4.3M10.8 18.1a7.3 7.3 0 1 1 0-14.6 7.3 7.3 0 0 1 0 14.6Z"
                     fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
-            <input [(ngModel)]="search" placeholder="Rechercher une prestation" />
+            <input [(ngModel)]="search" [placeholder]="'QUICK.SEARCH_PLACEHOLDER' | translate" />
           </div>
         </div>
 
@@ -73,7 +73,7 @@
           <button class="row" *ngFor="let s of filteredServices" (click)="chooseService(s)" type="button">
             <div class="row-left">
               <div class="row-title">{{ s.label }}</div>
-              <div class="row-sub">{{ formatDuration(s.durationMin) }} • à partir de {{ formatPrice(s.priceFrom) }}</div>
+              <div class="row-sub">{{ formatDuration(s.durationMin) }} • {{ 'QUICK.FROM' | translate }} {{ formatPrice(s.priceFrom) }}</div>
             </div>
             <svg viewBox="0 0 24 24" class="icon chevron" aria-hidden="true">
               <path d="M8.5 5 15.5 12l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -83,7 +83,7 @@
 
         <div class="tip">
           <span class="tip-ico">✨</span>
-          <span>Prix clair avant paiement. Vous confirmez quand tout est OK.</span>
+          <span>{{ 'QUICK.PRICE_TIP' | translate }}</span>
         </div>
       </div>
     </section>
@@ -94,22 +94,22 @@
         <div class="summary-mini">
           <div class="sm-top">
             <div class="sm-title">{{ selectedService?.label }}</div>
-            <div class="sm-sub">{{ formatDuration(selectedService?.durationMin || 0) }} • à partir de {{ formatPrice(selectedService?.priceFrom || 0) }}</div>
+            <div class="sm-sub">{{ formatDuration(selectedService?.durationMin || 0) }} • {{ 'QUICK.FROM' | translate }} {{ formatPrice(selectedService?.priceFrom || 0) }}</div>
           </div>
         </div>
 
-        <h2>Quel moment vous arrange ?</h2>
-        <p class="hint">On affichera uniquement les créneaux disponibles.</p>
+        <h2>{{ 'QUICK.WHEN_TITLE' | translate }}</h2>
+        <p class="hint">{{ 'QUICK.WHEN_HINT' | translate }}</p>
 
         <div class="seg">
-          <button class="seg-btn" [class.on]="selectedWhen==='today'" (click)="setWhen('today')" type="button">Aujourd’hui</button>
-          <button class="seg-btn" [class.on]="selectedWhen==='tonight'" (click)="setWhen('tonight')" type="button">Ce soir</button>
-          <button class="seg-btn" [class.on]="selectedWhen==='tomorrow'" (click)="setWhen('tomorrow')" type="button">Demain</button>
-          <button class="seg-btn" [class.on]="selectedWhen==='week'" (click)="setWhen('week')" type="button">Cette semaine</button>
+          <button class="seg-btn" [class.on]="selectedWhen==='today'" (click)="setWhen('today')" type="button">{{ 'QUICK.TODAY' | translate }}</button>
+          <button class="seg-btn" [class.on]="selectedWhen==='tonight'" (click)="setWhen('tonight')" type="button">{{ 'QUICK.TONIGHT' | translate }}</button>
+          <button class="seg-btn" [class.on]="selectedWhen==='tomorrow'" (click)="setWhen('tomorrow')" type="button">{{ 'QUICK.TOMORROW' | translate }}</button>
+          <button class="seg-btn" [class.on]="selectedWhen==='week'" (click)="setWhen('week')" type="button">{{ 'QUICK.THIS_WEEK' | translate }}</button>
         </div>
 
         <button class="cta" (click)="goSlots()" type="button">
-          Voir les créneaux disponibles
+          {{ 'QUICK.VIEW_SLOTS' | translate }}
           <svg viewBox="0 0 24 24" class="icon right" aria-hidden="true">
             <path d="M8.5 5 15.5 12l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -117,7 +117,7 @@
 
         <div class="muted-line">
           <span class="dot"></span>
-          <span>Paiement sécurisé • Modification possible avant paiement</span>
+          <span>{{ 'QUICK.PAYMENT_REASSURANCE' | translate }}</span>
         </div>
       </div>
     </section>
@@ -132,8 +132,8 @@
           </div>
         </div>
 
-        <h2>Créneaux disponibles</h2>
-        <p class="hint">Sélectionnez un créneau pour continuer.</p>
+        <h2>{{ 'QUICK.SLOTS_TITLE' | translate }}</h2>
+        <p class="hint">{{ 'QUICK.SLOTS_HINT' | translate }}</p>
 
         <div class="loading" *ngIf="loadingSlots">
           <div class="sk"></div><div class="sk"></div><div class="sk"></div>
@@ -148,7 +148,7 @@
 
         <div class="tip">
           <span class="tip-ico">🛡️</span>
-          <span>Vous validez tout au récapitulatif avant paiement.</span>
+          <span>{{ 'QUICK.VALIDATION_TIP' | translate }}</span>
         </div>
       </div>
     </section>
@@ -156,41 +156,41 @@
     <!-- STEP: SUMMARY -->
     <section *ngIf="step==='summary'" class="section">
       <div class="sheet">
-        <h2>Récapitulatif</h2>
-        <p class="hint">Vérifiez avant de passer au paiement.</p>
+        <h2>{{ 'QUICK.SUMMARY_TITLE' | translate }}</h2>
+        <p class="hint">{{ 'QUICK.SUMMARY_HINT' | translate }}</p>
 
         <div class="summary">
           <div class="line">
-            <div class="k">Prestation</div>
+            <div class="k">{{ 'QUICK.SERVICE' | translate }}</div>
             <div class="v">{{ selectedService?.label }}</div>
           </div>
           <div class="line">
-            <div class="k">Durée</div>
+            <div class="k">{{ 'QUICK.DURATION' | translate }}</div>
             <div class="v">{{ formatDuration(selectedService?.durationMin || 0) }}</div>
           </div>
           <div class="line">
-            <div class="k">Quand</div>
+            <div class="k">{{ 'QUICK.WHEN' | translate }}</div>
             <div class="v">{{ selectedSlot?.meta }} — {{ selectedSlot?.label }}</div>
           </div>
           <div class="line">
-            <div class="k">Adresse</div>
+            <div class="k">{{ 'ORDER_CARD.ADRESSE' | translate }}</div>
             <div class="v">{{ addressLabel }}</div>
           </div>
           <div class="line">
-            <div class="k">Prix</div>
-            <div class="v strong">À partir de {{ formatPrice(selectedService?.priceFrom || 0) }}</div>
+            <div class="k">{{ 'QUICK.PRICE' | translate }}</div>
+            <div class="v strong">{{ 'QUICK.FROM' | translate }} {{ formatPrice(selectedService?.priceFrom || 0) }}</div>
           </div>
         </div>
 
         <button class="cta cta-pay" (click)="goToPayment()" type="button">
-          Continuer vers paiement
+          {{ 'QUICK.CONTINUE_PAYMENT' | translate }}
           <svg viewBox="0 0 24 24" class="icon right" aria-hidden="true">
             <path d="M8.5 5 15.5 12l-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
 
         <div class="fineprint">
-          Paiement sécurisé. Annulation selon conditions. Vous pourrez choisir de reprendre avec le même prestataire après la prestation.
+          {{ 'QUICK.PAYMENT_FOOTNOTE' | translate }}
         </div>
       </div>
     </section>

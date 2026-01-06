@@ -2,7 +2,7 @@
   <div class="btn-close" style="visibility: hidden;"></div>
   <h4 class="modal-title bold-1000" *ngIf="user && user.modal && user.modal.titre">{{user.modal.titre | translate }}: "<span *ngIf="user.modal.titleName">{{user.modal.titleName | translate }}</span>"</h4>
   <!--in function dismiss return a string-->
-  <button (click)="activeModal.close(name)" type="button" class="btn-close" aria-label="Close"></button>
+  <button (click)="activeModal.close(name)" type="button" class="btn-close" [attr.aria-label]="'ADDRESS_MODAL.CLOSE' | translate"></button>
 </div>
 <div class="modal-body">
   <div style="white-space: pre-line" *ngIf="user && user.modal && user.modal.phrase">{{user.modal.phrase | translate }} <span *ngIf="user.modal.titlePhrase">{{user.modal.titlePhrase}}</span></div>

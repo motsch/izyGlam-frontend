@@ -4,11 +4,11 @@
          <!-- Media (image/vidéo) -->
          <div class="col-md-6 hero-image">
             <img *ngIf="!paramVideo" [src]="aPIimgStorageUrl + '/uploads/images/front/pro.png'"
-               alt="Travaillez quand vous voulez" class="hero-media" />
+               [attr.alt]="'HOMEPAGE.PART2TITLE' | translate" class="hero-media" />
 
             <video *ngIf="paramVideo" #videoElementAbout class="hero-media hero-video" autoplay muted playsinline loop>
                <source [src]="aPIimgStorageUrl + '/uploads/images/front/pro.mp4'" type="video/mp4" />
-               Votre navigateur ne supporte pas la balise vidéo.
+               {{ 'ABOUT.VIDEO_ERROR' | translate }}
             </video>
          </div>
 
@@ -17,7 +17,7 @@
             <h1>{{ 'HOMEPAGE.PART2TITLE' | translate }}</h1>
             <p>{{ 'HOMEPAGE.PART2TEXT' | translate }}</p>
             <button type="button" class="btn submit margin-bottom-50" (click)="goTo('creation-shop')"
-               aria-label="En savoir plus">
+               [attr.aria-label]="'HOMEPAGE.KNOWMORE' | translate">
                {{ 'HOMEPAGE.KNOWMORE' | translate }}
             </button>
          </div>

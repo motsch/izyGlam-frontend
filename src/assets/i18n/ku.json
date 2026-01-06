@@ -31,10 +31,28 @@
     "BRONZAGE": "Bronzebûn",
     "PARTUM": "Parastina piştî porodê",
     "NUTRITION": "Xwarin / Nûtrîsyon",
-    "FITNESS": "Fitness",
+    "FITNESS": "تەندروستی",
     "STYLISME": "Stîl / Stîlîzm",
     "YOGA": "Aramî / Yoga",
     "DEVELOPPEMENT": "Pêşketina xwe"
+  },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Şêvkirin",
+    "MANUCURE": "Manîkûr",
+    "VISAGE": "Rûy",
+    "MASSAGE": "Masaj",
+    "MAQUILLAGE": "Makîyaj",
+    "EPILATION": "Epilasyon",
+    "BRONZAGE": "Bronzkirin",
+    "PARTUM": "Pişt-por",
+    "NUTRITION": "Xwarin û teval",
+    "FITNESS": "Fîtnes",
+    "ACUPUNCTURE": "Akûpûnktûr",
+    "STYLISME": "Stîlîzm",
+    "YOGA": "Rahatbûn",
+    "DEVELOPPEMENT": "Bilindbûn",
+    "BARBER": "سەرتراش",
+    "EYELASH": "Dirêjkirina pilikan"
   },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon li favorîyan hate zêdekirin",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Xizmeta mişterîyan",
-    "WRITE": "Peyamek binivîse…"
+    "WRITE": "Peyamek binivîse…",
+    "NO_CONV": "Aucune conversation",
+    "CREATE": "Créer une conversation",
+    "CREATE_CONV": "Créer",
+    "OPEN_CONV_LIST": "Ouvrir la liste des conversations",
+    "PHOTO_SENT": "Photo envoyée"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "E-nameya têketinê xwe binivîse",
@@ -173,8 +196,14 @@
     "SERVICES": "Rêveberiya servîsan",
     "PHOTOS": "Galeriya wêneyan",
     "STATS": "Statîstîk",
+    "SOCIAL": "تورە کۆمەڵایەتییەکان",
     "PARAM": "Mîheng",
+    "DOCUMENTS": "بەڵگەکان",
     "SHOPS": "Dikan",
+    "B2BLEAD": "Leads BtoB",
+    "PROLEAD": "Leads Pro",
+    "COMPANY": "کۆمپانیاکان",
+    "COM": "پەیوەندی",
     "USERS": "Bikarhêner",
     "MESSAGE": "Peyam"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Şîrove",
     "NOTE": "Not",
     "CLOSE": "Girtin"
+  },
+  "UILEVEL": {
+    "STARTER": "دروستکەر",
+    "ACTIVE": "دڵنیاکراوە",
+    "AMBASSADOR": "سفیری IzyGlam",
+    "ICONE": "ئایکۆنی ناوخۆیی"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Di galeriyê de tu wêne tuneye."
@@ -291,23 +326,6 @@
     "SEARCHRESULT": "Encamên lêgerînê",
     "AVIS": "Rayan"
   },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Şêvkirin",
-    "MANUCURE": "Manîkûr",
-    "VISAGE": "Rûy",
-    "MASSAGE": "Masaj",
-    "MAQUILLAGE": "Makîyaj",
-    "EPILATION": "Epilasyon",
-    "BRONZAGE": "Bronzkirin",
-    "PARTUM": "Pişt-por",
-    "NUTRITION": "Xwarin û teval",
-    "FITNESS": "Fîtnes",
-    "ACUPUNCTURE": "Akûpûnktûr",
-    "STYLISME": "Stîlîzm",
-    "YOGA": "Rahatbûn",
-    "DEVELOPPEMENT": "Bilindbûn",
-    "EYELASH": "Dirêjkirina pilikan"
-  },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Şêvgerêk",
     "MANUCURE": "Manîkûrîstek",
@@ -379,6 +397,75 @@
     "LANGUE": "Ziman",
     "COUNTRY": "Welat"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Un nail art minimaliste pour un effet élégant et moderne.",
+    "CREATIVITE": "Choisissez des couleurs audacieuses pour exprimer votre créativité.",
+    "VINTAGE": "Un style vintage revisité pour un look unique !",
+    "QUESTION": "Commencez votre post par une question engageante pour inciter à interagir.",
+    "VISUELS": "Optimisez vos visuels avec des couleurs vives et un texte clair.",
+    "APPEL_ACTION": "Ajoutez un appel à l’action clair, comme 'Cliquez sur le lien' ou 'Partagez votre avis'.",
+    "LEGENDES": "Utilisez des légendes courtes mais percutantes pour Instagram et Bluesky.",
+    "COMMENTAIRES": "Incluez des questions ouvertes pour encourager les commentaires.",
+    "HASHTAGS": "Ajoutez des hashtags pertinents pour toucher un public plus large.",
+    "STATISTIQUES": "Ajoutez des statistiques ou des faits intéressants pour capter l’attention.",
+    "STORYTELLING": "Racontez une histoire captivante pour garder vos lecteurs engagés.",
+    "REUSSITES": "Mettez en avant vos réussites ou celles de vos clients pour LinkedIn.",
+    "AUTHENTICITE": "Soyez authentique et montrez votre vraie personnalité.",
+    "ANALYSE": "Analysez vos performances et ajustez votre stratégie en conséquence.",
+    "EMOJIS": "Utilisez des emojis pour rendre votre contenu plus visuel et attrayant.",
+    "HEURES": "Postez à des heures stratégiques pour maximiser la portée.",
+    "STORIES": "Intégrez des stories ou reels pour capter l’attention rapidement.",
+    "CAPTIVANTES": "Utilisez des légendes captivantes qui donnent envie de cliquer sur 'Lire la suite'.",
+    "ANECDOTE": "Partagez des anecdotes personnelles pour créer une connexion émotionnelle.",
+    "FORMATS": "Variez vos formats : images, vidéos, carrousels ou sondages.",
+    "TON": "Adaptez le ton de votre contenu en fonction de la plateforme utilisée.",
+    "MENTIONS": "Mentionnez d’autres utilisateurs ou marques pour élargir votre portée.",
+    "STYLES": "Testez différents styles visuels pour découvrir ce qui plaît le plus à votre audience.",
+    "VIDEOS": "Utilisez des vidéos courtes pour capter l'attention rapidement.",
+    "TEMOIGNAGES": "Ajoutez des témoignages clients pour renforcer votre crédibilité.",
+    "SONDAGES": "Créez des sondages pour engager votre audience.",
+    "VALEURS": "Mettez en avant vos valeurs pour toucher votre public cible.",
+    "AVANT_APRES": "Ajoutez un avant/après pour démontrer un impact clair.",
+    "CITATIONS": "Incorporez des citations inspirantes pour motiver votre audience.",
+    "STORYTELLING2": "Ajoutez des légendes en storytelling pour raconter une histoire.",
+    "HASHTAGS_SPECIFIQUES": "Adaptez vos hashtags à chaque publication pour maximiser la portée.",
+    "TEXTE_VISUEL": "Évitez de surcharger vos visuels avec trop de texte.",
+    "REPONSE": "Répondez rapidement aux commentaires pour créer une relation.",
+    "COULISSES": "Mettez en avant vos coulisses pour humaniser votre marque.",
+    "AUTHENTIQUE": "Utilisez des photos authentiques plutôt que des banques d'images.",
+    "MESSAGES_CLES": "Répétez vos messages clés régulièrement pour ancrer votre communication.",
+    "MOMENTS_FORTS": "Identifiez les moments forts de l'année pour vos publications.",
+    "TENDANCES": "Utilisez les tendances actuelles pour surfer sur l'actualité.",
+    "STATISTIQUES2": "Ajoutez des statistiques intéressantes pour capter l'attention.",
+    "CARROUSELS": "Créez des carrousels pour raconter une histoire en plusieurs étapes.",
+    "LIEN_BIO": "Mettez un lien clair dans votre bio pour diriger vos visiteurs.",
+    "GUIDE": "Créez un guide ou une checklist pour offrir de la valeur à votre audience.",
+    "GIF": "Ajoutez des GIF ou des stickers pour rendre vos stories plus dynamiques.",
+    "COULEURS": "Utilisez des couleurs cohérentes avec votre branding.",
+    "COLLABORATEURS": "Mettez en avant vos collaborateurs pour créer un sentiment d'équipe.",
+    "CONVERSATIONNEL": "Rédigez vos posts comme si vous parliez directement à une personne.",
+    "QUIZ": "Ajoutez des quiz interactifs pour augmenter l'engagement.",
+    "URGENCE": "Créez un sentiment d'urgence avec des promotions limitées.",
+    "AVANT_APRES_CONCRET": "Intégrez des photos avant/après pour montrer des résultats concrets.",
+    "COLLABORATION": "Créez des collaborations avec d'autres créateurs pour élargir votre audience.",
+    "TRANSPARENCE": "Soyez transparent sur vos processus ou vos produits.",
+    "ANIMATIONS": "Ajoutez des animations pour rendre vos vidéos plus dynamiques.",
+    "EDUCATIF": "Créez des posts éducatifs pour apporter de la valeur à votre audience.",
+    "RETOURS_EXPERIENCE": "Mettez en avant des retours d'expérience pour instaurer la confiance.",
+    "CONCIS": "Soyez concis dans vos messages pour aller droit au but.",
+    "MOTS_CLES": "Utilisez des mots-clés pertinents pour augmenter la visibilité.",
+    "CALENDRIER": "Créez un calendrier éditorial pour planifier vos publications.",
+    "MINIMALISTE2": "Expérimentez avec des visuels minimalistes pour un impact visuel fort.",
+    "TEMOIGNAGES_VIDEO": "Intégrez des témoignages vidéo pour plus d'authenticité.",
+    "HUMOUR": "Créez des posts humoristiques pour engager avec légèreté.",
+    "GRAPHIQUES": "Utilisez des graphiques ou infographies pour expliquer des idées complexes.",
+    "REGULARITE": "Publiez régulièrement pour garder votre audience engagée.",
+    "REMERCIEMENTS": "Incluez des remerciements ou des célébrations pour créer de la gratitude."
+  },
   "PAYEMENT": {
     "YOU": "Tu",
     "HEADER_TITLE": "Tevdan",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Navnîşanê hilbijêre",
     "ADD_ADDRESS": "Navnîşan zêde bike",
     "CARD_PAY": "Tevdan bi karta bankê",
+    "CREDIT_PAY": "Paiement par crédit entreprise",
+    "EMPLOYEE_CREDIT_TITLE": "Utiliser mon crédit d'entreprise",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Mon crédit disponible :",
+    "EMPLOYEE_CREDIT_EMPTY": "Pas de crédit d'entreprise",
     "CARD_NUM": "Hejmara kartê",
     "CARD_NAME": "Nav li ser kartê",
     "EXPIRATION": "Dîroka dawîbûnê",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Ji kerema xwe re têkevinê bikin ji bo tomarkirina salonê",
     "TITLE": "Dest pê bike!",
     "TITLE2": "Bibîn alejî: em salonek biafirînin!",
+    "STEP1_TITLE": "Informations du salon",
+    "STEP2_TITLE": "Vérification professionnelle",
+    "STEP2_TAGLINE": "Étape 2 sur 2 · Vos documents restent privés et protégés.",
     "NAME": "Navê salonê we",
     "ADDRESS": "Navnîşana şîrketê we",
     "STREET": "Kûçe",
@@ -500,7 +594,28 @@
     "ERROR5": "Paşnav pêdivî ye.",
     "ERROR6": "E-peyam pêdivî ye.",
     "ERROR7": "Hejmara telefonê destan pêdivî ye.",
-    "ERROR8": "Divê razî bî ku peyamên WhatsApp bistînî."
+    "ERROR8": "Divê razî bî ku peyamên WhatsApp bistînî.",
+    "VERIF_TITLE": "Vérification de votre profil professionnel",
+    "VERIF_SUBTITLE": "Nous vérifions chaque professionnel pour protéger vos clients et votre réputation.",
+    "VERIF_ID_TITLE": "Pièce d’identité",
+    "VERIF_ID_DESC": "Carte d’identité, passeport ou titre de séjour en cours de validité.",
+    "VERIF_INSURANCE_TITLE": "دڵنیایی پیشەیی",
+    "VERIF_INSURANCE_DESC": "بەڵگەنامەی دروست کە خزمەتگوزارییەکانی ماڵەکەت دەگرێتەوە (پێویست).",
+    "VERIF_KBIS_TITLE": "Extrait Kbis (optionnel)",
+    "VERIF_KBIS_DESC": "Recommandé si vous exercez via une société immatriculée.",
+    "VERIF_UPLOAD_LABEL": "Téléverser un document",
+    "VERIF_ALLOWED_FORMATS": "Formats acceptés : PDF, JPG, PNG · taille max 10 Mo.",
+    "VERIF_MANDATORY_HINT": "La pièce d’identité et l’assurance sont obligatoires pour activer votre profil.",
+    "VERIF_STATUS_MISSING": "Document manquant",
+    "VERIF_STATUS_PENDING": "En cours de vérification",
+    "VERIF_STATUS_APPROVED": "Validé",
+    "VERIF_STATUS_REJECTED": "Refusé · nouveau document requis",
+    "VERIF_PRIMARY_BUTTON": "Envoyer les documents",
+    "VERIF_SKIP_BUTTON": "Je compléterai plus tard",
+    "VERIF_TOAST_SUCCESS": "Vos documents ont été envoyés pour vérification.",
+    "VERIF_TOAST_ERROR": "Impossible de téléverser vos documents pour le moment.",
+    "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
+    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Navnîşan biguherîne",
@@ -533,6 +648,12 @@
     "NAME": "Nav",
     "CITY": "Bajar",
     "NOTE": "Not",
+    "DOCS_OK": "Validés",
+    "DOCS_NOT_VALID": "Non validés",
+    "ACTIVE": "چالاک",
+    "INACTIVE": "Inatif",
+    "STATUS": "Statut",
+    "DOCUMENTS": "بەڵگەکان",
     "MIDDLE_PRICE": "Bihaya navîn",
     "PROMOTION": "Promosyon",
     "ACTIONS": "Çalakî",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Hesabê birêve bibe",
     "ORDERS": "Fermanên borî",
+    "MESSAGES": "Mes messages",
     "FAVORITES": "Favorî",
     "HELP": "Alîkarî",
     "MY_ABO": "Abonem",
@@ -745,8 +867,8 @@
     "PERSAN": "Persan",
     "UKRAINIEN": "Ukrainien",
     "ROUMAIN": "Roumain",
-    "CATALAN": "Catalan",
-    "BASQUE": "Basque",
+    "CATALAN": "کاتالۆنی",
+    "BASQUE": "باسکی",
     "GALICIEN": "Galicien",
     "ALBANAIS": "Albanais",
     "KURDE": "Kurde",
@@ -760,7 +882,7 @@
     "THAI": "Thaï",
     "VIETNAMIEN": "Vietnamien",
     "TAGALOG": "Tagalog",
-    "BENGALI": "Bengali"
+    "BENGALI": "بەنگالی"
   },
   "COUNTRY": {
     "FRANCE": "France",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Alîkariyê serhêl"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Hesaba karkerê bikredîne",
     "AMOUNT": "Mîqdara kredîkirinê",
@@ -894,7 +1015,10 @@
     "DATE": "Dîrok",
     "AMOUNT": "Mîqdar",
     "COMMISSION": "Komîsyon",
-    "STATUS": "Rewş"
+    "STATUS": "Rewş",
+    "NEXT_LEVEL": "Prochain niveau",
+    "MAX_LEVEL": "Niveau maximum atteint",
+    "REMAINING": "encore {{count}} réservations"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Cureyê dikanê ku bixwazî biafirînî hilbijêre",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Di jêbirina xizmetê de çewtî çêbû"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Wêneya dikanê",
     "UPLOAD_IMAGE": "Wêne bar bike",
     "SNEEK_PIC": "Pêşdîtina wêneyê",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Danasîn biafirîne",
     "PHOTO": "Mînakên wêneyên qebûlkirî / ne-qebûlkirî",
     "CODE_POSTAUX": "Kodên postayê ku tê xizmetkirin",
+    "SOCIAL_NETWORK": "تورە کۆمەڵایەتییەکان",
     "EXEMPLE_LOCAL": "Mînak: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Pêşketî",
     "PLANS": "Hejmara salonên çalak",
     "READY": "Amadeyî ku çalakiyê xwe mezintir bikî?",
-    "DISCOVERS": "PêşniyarênizyGlam bibîne"
+    "DISCOVERS": "PêşniyarênizyGlam bibîne",
+    "FREE_TRIAL": "Gratuit pendant 1 mois"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Nediarkirî",
     "INVALID_DATE": "Dîroka nederbasdar"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Confirmation",
+    "CANCEL": "Annuler",
+    "OK": "OK",
+    "TERMINATE": "Terminer",
+    "DELETE": "Supprimer"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Rechercher une prestation",
+    "EMAIL_PLACEHOLDER": "Email de l'utilisateur",
+    "CATEGORY_TITLE": "Que souhaitez-vous réserver ?",
+    "CATEGORY_HINT": "Choisissez une catégorie. Ensuite : prestation → moment → créneau.",
+    "REASSURANCE": "Paiement sécurisé • Pros vérifiées • Support réactif",
+    "PRICE_TIP": "Prix clair avant paiement. Vous confirmez quand tout est OK.",
+    "WHEN_TITLE": "Quel moment vous arrange ?",
+    "WHEN_HINT": "On affichera uniquement les créneaux disponibles.",
+    "TODAY": "Aujourd'hui",
+    "TONIGHT": "Ce soir",
+    "TOMORROW": "Demain",
+    "THIS_WEEK": "Cette semaine",
+    "VIEW_SLOTS": "Voir les créneaux disponibles",
+    "PAYMENT_REASSURANCE": "Paiement sécurisé • Modification possible avant paiement",
+    "SLOTS_TITLE": "Créneaux disponibles",
+    "SLOTS_HINT": "Sélectionnez un créneau pour continuer.",
+    "VALIDATION_TIP": "Vous validez tout au récapitulatif avant paiement.",
+    "SUMMARY_TITLE": "Récapitulatif",
+    "SUMMARY_HINT": "Vérifiez avant de passer au paiement.",
+    "SERVICE": "Prestation",
+    "DURATION": "Durée",
+    "WHEN": "Quand",
+    "PRICE": "Prix",
+    "FROM": "à partir de",
+    "CONTINUE_PAYMENT": "Continuer vers paiement",
+    "PAYMENT_FOOTNOTE": "Paiement sécurisé. Annulation selon conditions. Vous pourrez choisir de reprendre avec le même prestataire après la prestation."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Comment souhaitez-vous réserver ?",
+    "SUBTITLE": "Réservez en 2 minutes — à domicile, paiement sécurisé.",
+    "QUICK_TITLE": "Réservation rapide",
+    "QUICK_DESC": "Choisissez une prestation, on vous propose les créneaux.",
+    "RECOMMENDED": "Recommandé",
+    "PROVIDER_TITLE": "Choisir un prestataire",
+    "PROVIDER_DESC": "Parcourez les profils et réservez dans l'agenda."
   }
 }

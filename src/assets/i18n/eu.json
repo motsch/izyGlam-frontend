@@ -36,6 +36,24 @@
     "YOGA": "Erlaxazioa",
     "DEVELOPPEMENT": "Auto-garapena"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Ile-apainketa",
+    "MANUCURE": "Manikura",
+    "VISAGE": "Aurpegia",
+    "MASSAGE": "Masajea",
+    "MAQUILLAGE": "Makillajea",
+    "EPILATION": "Depilazioa",
+    "BRONZAGE": "Brontzea",
+    "PARTUM": "Erditu ondokoa",
+    "NUTRITION": "Nutrizioa",
+    "FITNESS": "Fitnessa",
+    "ACUPUNCTURE": "Akupuntura",
+    "STYLISME": "Styling-a",
+    "YOGA": "Erlaxazioa",
+    "DEVELOPPEMENT": "Gorakada",
+    "BARBER": "Barbero",
+    "EYELASH": "Betile-luzapenak"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salong eemaldatud lemmikutest",
     "FAVORITE_REMOVED": "Salong eemaldatud lemmikutest",
@@ -75,8 +93,8 @@
     "COMPANY_CREATED": "Zure enpresa-kontua ondo sortu da."
   },
   "ERROR": {
-    "NO_CITIES": "Sihtnumbert ei leitud",
-    "NOT_AVAILABLE": "Me pole selles asukohas veel saadaval. Palun vaadake mõne kuu pärast uuesti!",
+    "NO_CITIES": "Posta kodea ez da aurkitu",
+    "NOT_AVAILABLE": "Oraindik ez gara eskuragarri kokapen honetan. Mesedez, saiatu berriro hilabete batzuk barru!",
     "LOGIN_REQUIRED": "Saioa hasi behar duzu gogokoak kudeatzeko.",
     "INVALID_IMAGE": "Irudi baliogabea.",
     "NO_SLOTS": "Ez dago tarterik zerbitzu honetarako.",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Bezeroarentzako arreta",
-    "WRITE": "Idatzi mezu bat…"
+    "WRITE": "Idatzi mezu bat…",
+    "NO_CONV": "Elkarrizketa gabe",
+    "CREATE": "Elkarrizketa bat sortu",
+    "CREATE_CONV": "Sortu",
+    "OPEN_CONV_LIST": "Elkarrizketa zerrenda ireki",
+    "PHOTO_SENT": "Argazkia bidalita"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Sartu saio-hasierako zure helbide-elektronikoa",
@@ -173,8 +196,14 @@
     "SERVICES": "Zerbitzuen kudeaketa",
     "PHOTOS": "Argazki-galeria",
     "STATS": "Estatistikak",
+    "SOCIAL": "Sare sozialak",
     "PARAM": "Ezarpenak",
+    "DOCUMENTS": "Dokumentuak",
     "SHOPS": "Dendak",
+    "B2BLEAD": "BtoB aukerak",
+    "PROLEAD": "Pro aukerak",
+    "COMPANY": "Enpresak",
+    "COM": "Komunikazioa",
     "USERS": "Erabiltzaileak",
     "MESSAGE": "Mezularitza"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Iruzkina",
     "NOTE": "Puntuazioa",
     "CLOSE": "Itxi"
+  },
+  "UILEVEL": {
+    "STARTER": "Sortzailea",
+    "ACTIVE": "Berretsia",
+    "AMBASSADOR": "IzyGlam Enbaxadorea",
+    "ICONE": "Ikono lokala"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Ez dago irudirik galerian."
@@ -265,7 +300,7 @@
     "RESERVED": "Erreserbatu aldez aurretik",
     "GIFTCARDS": "Opari-txartelak",
     "WORKWITHUS": "Lan eginizyGlam-ekin",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "Edertasun zerbitzuak enpresetarako",
     "CONFIDENTIAL": "Pribatutasuna",
     "ACCESS": "Irisgarritasuna",
     "CONDITIONS": "Baldintzak",
@@ -290,23 +325,6 @@
     "TOP10": "Asteko Top 10",
     "SEARCHRESULT": "Bilaketaren emaitzak",
     "AVIS": "Iritziak"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Ile-apainketa",
-    "MANUCURE": "Manikura",
-    "VISAGE": "Aurpegia",
-    "MASSAGE": "Masajea",
-    "MAQUILLAGE": "Makillajea",
-    "EPILATION": "Depilazioa",
-    "BRONZAGE": "Brontzea",
-    "PARTUM": "Erditu ondokoa",
-    "NUTRITION": "Nutrizioa",
-    "FITNESS": "Fitnessa",
-    "ACUPUNCTURE": "Akupuntura",
-    "STYLISME": "Styling-a",
-    "YOGA": "Erlaxazioa",
-    "DEVELOPPEMENT": "Gorakada",
-    "EYELASH": "Betile-luzapenak"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Ile-apaintzaile bat",
@@ -379,6 +397,75 @@
     "LANGUE": "Hizkuntza",
     "COUNTRY": "Herrialdea"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Nail art minimalista efektu dotore eta moderno bat lortzeko.",
+    "CREATIVITE": "Aukeratu kolore ausartak zure sormena adierazteko.",
+    "VINTAGE": "Estilo vintage berraztertua look berezi bat lortzeko!",
+    "QUESTION": "Hasi zure argitalpena galdera erakargarri batekin elkarreragitea bultzatzeko.",
+    "VISUELS": "Optimizatu zure bisualak kolore biziekin eta testu argi batekin.",
+    "APPEL_ACTION": "Gehitu ekintza deia argi bat, \"Egin klik estekan\" edo \"Partekatu zure iritzia\" bezala.",
+    "LEGENDES": "Erabili ohar laburrak baina eraginkorrak Instagram eta Blueskyrako.",
+    "COMMENTAIRES": "Sartu galdera irekiak iruzkinak bultzatzeko.",
+    "HASHTAGS": "Gehitu hashtag egokiak publiko zabalago bat lortzeko.",
+    "STATISTIQUES": "Gehitu estatistikak edo datu interesgarriak arreta erakartzeko.",
+    "STORYTELLING": "Kontatu istorio erakargarri bat zure irakurleak inplikatuta mantentzeko.",
+    "REUSSITES": "Nabarmendu zure arrakastak edo zure bezeroenak LinkedInerako.",
+    "AUTHENTICITE": "Izan autentikoa eta erakutsi zure benetako nortasuna.",
+    "ANALYSE": "Analizatu zure emaitzak eta egokitu zure estrategia horren arabera.",
+    "EMOJIS": "Erabili emojiak zure edukia bisualagoa eta erakargarriagoa egiteko.",
+    "HEURES": "Argitaratu ordu estrategikoetan eragina maximizatzeko.",
+    "STORIES": "Integratu istorioak edo reelak arreta azkar erakartzeko.",
+    "CAPTIVANTES": "Erabili ohar erakargarriak \"Irakurri gehiago\" klikatzeko gogoa ematen dutenak.",
+    "ANECDOTE": "Partekatu anekdota pertsonalak konexio emozional bat sortzeko.",
+    "FORMATS": "Aldatu zure formatuak: irudiak, bideoak, karuselak edo inkestak.",
+    "TON": "Egokitu zure edukiaren tonua erabiltzen den plataformaren arabera.",
+    "MENTIONS": "Aipatu beste erabiltzaile edo markak zure eragina zabaltzeko.",
+    "STYLES": "Probatu estilo bisual desberdinak zure audientziari gehien gustatzen zaiona aurkitzeko.",
+    "VIDEOS": "Erabili bideo laburrak arreta azkar erakartzeko.",
+    "TEMOIGNAGES": "Gehitu bezeroen testigantzak zure kredibilitatea indartzeko.",
+    "SONDAGES": "Sortu inkestak zure audientzia inplikatzeko.",
+    "VALEURS": "Nabarmendu zure balioak zure publiko helburua lortzeko.",
+    "AVANT_APRES": "Gehitu aurretik/ondoren eragina argi erakusteko.",
+    "CITATIONS": "Sartu zitat inspiratzaileak zure audientzia motibatzeko.",
+    "STORYTELLING2": "Gehitu istorio kontaketaren oharrak istorio bat kontatzeko.",
+    "HASHTAGS_SPECIFIQUES": "Egokitu zure hashtagak argitalpen bakoitzera eragina maximizatzeko.",
+    "TEXTE_VISUEL": "Saihestu zure bisualak gehiegi testuarekin gainkargatzea.",
+    "REPONSE": "Erantzun azkar iruzkinei harreman bat sortzeko.",
+    "COULISSES": "Nabarmendu zure atzealdeak zure marka humanizatzeko.",
+    "AUTHENTIQUE": "Erabili argazki autentikoak irudi bankuak baino gehiago.",
+    "MESSAGES_CLES": "Errepikatu zure mezu gakoak erregularki zure komunikazioa finkatzeko.",
+    "MOMENTS_FORTS": "Identifikatu urteko momentu garrantzitsuenak zure argitalpenetarako.",
+    "TENDANCES": "Erabili egungo joerak egungo gaietan ibiltzeko.",
+    "STATISTIQUES2": "Gehitu estatistika interesgarriak arreta erakartzeko.",
+    "CARROUSELS": "Sortu karuselak istorio bat hainbat urratsetan kontatzeko.",
+    "LIEN_BIO": "Jarri esteka argi bat zure biografian bisitariak zuzentzeko.",
+    "GUIDE": "Sortu gida edo egiaztapen zerrenda bat zure audientziari balioa eskaintzeko.",
+    "GIF": "Gehitu GIF edo etiketak zure istorioak dinamikoagoak egiteko.",
+    "COULEURS": "Erabili kolore koherenteak zure brandingarekin.",
+    "COLLABORATEURS": "Nabarmendu zure lankideak talde sentimendua sortzeko.",
+    "CONVERSATIONNEL": "Idatzi zure argitalpenak pertsona bati zuzenean hitz egiten ari zaren bezala.",
+    "QUIZ": "Gehitu galdetegi interaktiboak inplikazioa handitzeko.",
+    "URGENCE": "Sortu larritasun sentimendua promozio mugatuekin.",
+    "AVANT_APRES_CONCRET": "Integratu aurretik/ondoren argazkiak emaitza konkretuak erakusteko.",
+    "COLLABORATION": "Sortu lankidetzak beste sortzaileekin zure audientzia zabaltzeko.",
+    "TRANSPARENCE": "Izan gardena zure prozesu edo produktuei buruz.",
+    "ANIMATIONS": "Gehitu animazioak zure bideoak dinamikoagoak egiteko.",
+    "EDUCATIF": "Sortu argitalpen hezigarriak zure audientziari balioa emateko.",
+    "RETOURS_EXPERIENCE": "Nabarmendu esperientzia itzulpenak konfiantza sortzeko.",
+    "CONCIS": "Izan laburra zure mezuan zuzenean helburura joateko.",
+    "MOTS_CLES": "Erabili gako hitz egokiak ikusgarritasuna handitzeko.",
+    "CALENDRIER": "Sortu egutegi editorial bat zure argitalpenak planifikatzeko.",
+    "MINIMALISTE2": "Egin esperimentuak bisual minimalistekin eragin bisual handia lortzeko.",
+    "TEMOIGNAGES_VIDEO": "Integratu bideo testigantzak autentikotasun gehiago lortzeko.",
+    "HUMOUR": "Sortu argitalpen umoretsuak arin inplikatzeko.",
+    "GRAPHIQUES": "Erabili grafikoak edo infografiak ideia konplexuak azaltzeko.",
+    "REGULARITE": "Argitaratu erregularki zure audientzia inplikatuta mantentzeko.",
+    "REMERCIEMENTS": "Sartu eskerrak edo ospakizunak esker ona sortzeko."
+  },
   "PAYEMENT": {
     "YOU": "Zu",
     "HEADER_TITLE": "Ordainketa",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Hautatu helbide bat",
     "ADD_ADDRESS": "Gehitu helbide bat",
     "CARD_PAY": "Ordainketa kreditu-txartelarekin",
+    "CREDIT_PAY": "Ordainketa enpresako kredituarekin",
+    "EMPLOYEE_CREDIT_TITLE": "Erabili nire enpresako kreditua",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Nire kreditu erabilgarria:",
+    "EMPLOYEE_CREDIT_EMPTY": "Enpresako krediturik ez",
     "CARD_NUM": "Txartel-zenbakia",
     "CARD_NAME": "Izen-abizenak txartelean",
     "EXPIRATION": "Iraungitze-data",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Mesedez, hasi saioa saloi bat erregistratzeko",
     "TITLE": "Hasi bidea!",
     "TITLE2": "Sortu dezagun saloi bat!",
+    "STEP1_TITLE": "Saloiaren informazioa",
+    "STEP2_TITLE": "Egiaztapen profesionala",
+    "STEP2_TAGLINE": "2. urratsa 2tik · Zure dokumentuak pribatu eta babestuta mantentzen dira.",
     "NAME": "Zure saloiaren izena",
     "ADDRESS": "Zure enpresaren helbidea",
     "STREET": "Kalea",
@@ -500,7 +594,28 @@
     "ERROR5": "Abizena derrigorrezkoa da.",
     "ERROR6": "E-posta derrigorrezkoa da.",
     "ERROR7": "Telefono mugikorra derrigorrezkoa da.",
-    "ERROR8": "WhatsApp mezuak jasotzea onartu behar duzu."
+    "ERROR8": "WhatsApp mezuak jasotzea onartu behar duzu.",
+    "VERIF_TITLE": "Zure perfil profesionalaren egiaztapena",
+    "VERIF_SUBTITLE": "Profesional bakoitza egiaztatzen dugu zure bezeroak eta zure ospea babesteko.",
+    "VERIF_ID_TITLE": "Nortasun agiria",
+    "VERIF_ID_DESC": "Nortasun agiria, pasaporte edo bizi-titulua baliozkoa dena.",
+    "VERIF_INSURANCE_TITLE": "Asegurantza profesionala",
+    "VERIF_INSURANCE_DESC": "Zure etxeko zerbitzuak estaltzen dituen baliozko ziurtagiria (beharrezkoa).",
+    "VERIF_KBIS_TITLE": "Kbis erauzketa (aukerakoa)",
+    "VERIF_KBIS_DESC": "Gomendatua erregistratutako sozietate baten bidez jarduten baduzu.",
+    "VERIF_UPLOAD_LABEL": "Dokumentu bat igo",
+    "VERIF_ALLOWED_FORMATS": "Onartutako formatuak: PDF, JPG, PNG · gehienezko tamaina 10 MB.",
+    "VERIF_MANDATORY_HINT": "Nortasun agiria eta asegurua derrigorrezkoak dira zure profila aktibatzeko.",
+    "VERIF_STATUS_MISSING": "Dokumentu falta",
+    "VERIF_STATUS_PENDING": "Egiaztapen prozesuan",
+    "VERIF_STATUS_APPROVED": "Balioztatua",
+    "VERIF_STATUS_REJECTED": "Baztertua · dokumentu berria beharrezkoa",
+    "VERIF_PRIMARY_BUTTON": "Dokumentuak bidali",
+    "VERIF_SKIP_BUTTON": "Geroago osatuko dut",
+    "VERIF_TOAST_SUCCESS": "Zure dokumentuak egiaztatzeko bidali dira.",
+    "VERIF_TOAST_ERROR": "Ezin da zure dokumentuak orain igo.",
+    "VERIF_ID_REQUIRED": "Nortasun agiria derrigorrezkoa da.",
+    "VERIF_INSURANCE_REQUIRED": "Aseguru profesionala derrigorrezkoa da."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Aldatu helbidea",
@@ -533,6 +648,12 @@
     "NAME": "Izena",
     "CITY": "Hiria",
     "NOTE": "Puntuazioa",
+    "DOCS_OK": "Balioztatuak",
+    "DOCS_NOT_VALID": "Ez balioztatuak",
+    "ACTIVE": "Aktibo",
+    "INACTIVE": "Inaktiboa",
+    "STATUS": "Egoera",
+    "DOCUMENTS": "Dokumentuak",
     "MIDDLE_PRICE": "Batez besteko prezioa",
     "PROMOTION": "Promozioa",
     "ACTIONS": "Ekintzak",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Kudeatu kontua",
     "ORDERS": "Eginiko eskaerak",
+    "MESSAGES": "Nire mezuak",
     "FAVORITES": "Gogokoak",
     "HELP": "Laguntza",
     "MY_ABO": "Nire harpidetza",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Lineako laguntza"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Langilearen kontua kreditatu",
     "AMOUNT": "Kreditatzeko zenbatekoa",
@@ -894,7 +1015,10 @@
     "DATE": "Data",
     "AMOUNT": "Zenbatekoa",
     "COMMISSION": "Komisioa",
-    "STATUS": "Egoera"
+    "STATUS": "Egoera",
+    "NEXT_LEVEL": "Hurrengo maila",
+    "MAX_LEVEL": "Maila maximoa lortuta",
+    "REMAINING": "oraindik {{count}} erreserba"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Hautatu sortuko den dendaren mota",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Errorea zerbitzua ezabatzean"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Dendaren irudia",
     "UPLOAD_IMAGE": "Igo irudia",
     "SNEEK_PIC": "Irudiaren aurrebista",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Sortu deskribapena",
     "PHOTO": "Onartutako / baztertutako argazkien adibideak",
     "CODE_POSTAUX": "Zerbitzatutako posta-kodeak",
+    "SOCIAL_NETWORK": "Sare sozialak",
     "EXEMPLE_LOCAL": "Adib.: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Aurreratua",
     "PLANS": "Saloi aktibo kopurua",
     "READY": "Prest zure jarduera handitzeko?",
-    "DISCOVERS": "EzagutuizyGlam eskaintzak"
+    "DISCOVERS": "EzagutuizyGlam eskaintzak",
+    "FREE_TRIAL": "Doan 1 hilabetez"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Zehaztu gabe",
     "INVALID_DATE": "Baliogabeko data"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Berrespena",
+    "CANCEL": "Utzi",
+    "OK": "OK",
+    "TERMINATE": "Amaitu",
+    "DELETE": "Ezabatu"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Zerbitzu bat bilatu",
+    "EMAIL_PLACEHOLDER": "Erabiltzailearen posta elektronikoa",
+    "CATEGORY_TITLE": "Zer erreserbatu nahi duzu?",
+    "CATEGORY_HINT": "Aukeratu kategoria bat. Ondoren: zerbitzua → unea → tarte.",
+    "REASSURANCE": "Ordainketa segurua • Egiaztatutako profesionalak • Laguntza eraginkorra",
+    "PRICE_TIP": "Prezio argia ordainketa baino lehen. Dena ondo dagoenean berretsi.",
+    "WHEN_TITLE": "Zein une egokitzen zaizu?",
+    "WHEN_HINT": "Eskuragarri dauden tarteak bakarrik erakutsiko dira.",
+    "TODAY": "Gaur",
+    "TONIGHT": "Gaur gauean",
+    "TOMORROW": "Bihar",
+    "THIS_WEEK": "Aste honetan",
+    "VIEW_SLOTS": "Eskuragarri dauden tarteak ikusi",
+    "PAYMENT_REASSURANCE": "Ordainketa segurua • Aldaketa posiblea ordainketa baino lehen",
+    "SLOTS_TITLE": "Eskuragarri dauden tarteak",
+    "SLOTS_HINT": "Aukeratu tarte bat jarraitzeko.",
+    "VALIDATION_TIP": "Dena berretsi laburpenean ordainketa baino lehen.",
+    "SUMMARY_TITLE": "Laburpena",
+    "SUMMARY_HINT": "Egiaztatu ordainketara joan aurretik.",
+    "SERVICE": "Zerbitzua",
+    "DURATION": "Iraupena",
+    "WHEN": "Noiz",
+    "PRICE": "Prezioa",
+    "FROM": "hasita",
+    "CONTINUE_PAYMENT": "Jarraitu ordainketara",
+    "PAYMENT_FOOTNOTE": "Ordainketa segurua. Egoeren arabera ezeztatzea. Zerbitzuaren ondoren berriro erreserbatu ahal izango duzu hornitzaile berarekin."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Nola erreserbatu nahi duzu?",
+    "SUBTITLE": "Erreserbatu 2 minututan — etxean, ordainketa segurua.",
+    "QUICK_TITLE": "Erreserba azkarra",
+    "QUICK_DESC": "Aukeratu zerbitzu bat, tarteak proposatzen dizkizugu.",
+    "RECOMMENDED": "Gomendatua",
+    "PROVIDER_TITLE": "Hornitzaile bat aukeratu",
+    "PROVIDER_DESC": "Nabigatu profiletan eta erreserbatu agendan."
   }
 }

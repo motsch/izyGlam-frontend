@@ -36,6 +36,24 @@
     "YOGA": "Relajación",
     "DEVELOPPEMENT": "Desarrollo personal"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Peluquería",
+    "MANUCURE": "Manicura",
+    "VISAGE": "Rostro",
+    "MASSAGE": "Masaje",
+    "MAQUILLAGE": "Maquillaje",
+    "EPILATION": "Depilación",
+    "BRONZAGE": "Bronceado",
+    "PARTUM": "Posparto",
+    "NUTRITION": "Nutrición",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupuntura",
+    "STYLISME": "Estilismo",
+    "YOGA": "Relajación",
+    "DEVELOPPEMENT": "Elevación",
+    "BARBER": "Barbero",
+    "EYELASH": "Extensiones de pestañas"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salón añadido a favoritos",
     "FAVORITE_REMOVED": "Salón eliminado de favoritos",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Customer service",
-    "WRITE": "Write a message…"
+    "WRITE": "Write a message…",
+    "NO_CONV": "Sin conversación",
+    "CREATE": "Crear una conversación",
+    "CREATE_CONV": "Crear",
+    "OPEN_CONV_LIST": "Abrir lista de conversaciones",
+    "PHOTO_SENT": "Foto enviada"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Enter your login email",
@@ -173,8 +196,14 @@
     "SERVICES": "Gestión de servicios",
     "PHOTOS": "Galería de fotos",
     "STATS": "Estadísticas",
+    "SOCIAL": "Redes sociales",
     "PARAM": "Configuración",
+    "DOCUMENTS": "Documentos",
     "SHOPS": "Tiendas",
+    "B2BLEAD": "Leads BtoB",
+    "PROLEAD": "Leads Pro",
+    "COMPANY": "Las empresas",
+    "COM": "La comunicación",
     "USERS": "Usuarios",
     "MESSAGE": "Mensajería"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Comentario",
     "NOTE": "Nota",
     "CLOSE": "Cerrar"
+  },
+  "UILEVEL": {
+    "STARTER": "Creadora",
+    "ACTIVE": "Confirmada",
+    "AMBASSADOR": "Embajadora IzyGlam",
+    "ICONE": "Icono local"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "No hay imágenes en la galería."
@@ -291,23 +326,6 @@
     "SEARCHRESULT": "Resultados de la búsqueda",
     "AVIS": "Opiniones"
   },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Peluquería",
-    "MANUCURE": "Manicura",
-    "VISAGE": "Rostro",
-    "MASSAGE": "Masaje",
-    "MAQUILLAGE": "Maquillaje",
-    "EPILATION": "Depilación",
-    "BRONZAGE": "Bronceado",
-    "PARTUM": "Posparto",
-    "NUTRITION": "Nutrición",
-    "FITNESS": "Fitness",
-    "ACUPUNCTURE": "Acupuntura",
-    "STYLISME": "Estilismo",
-    "YOGA": "Relajación",
-    "DEVELOPPEMENT": "Elevación",
-    "EYELASH": "Extensiones de pestañas"
-  },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Una peluquera",
     "MANUCURE": "Una manicurista",
@@ -379,6 +397,75 @@
     "LANGUE": "Idioma",
     "COUNTRY": "País"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Un nail art minimaliste pour un effet élégant et moderne.",
+    "CREATIVITE": "Choisissez des couleurs audacieuses pour exprimer votre créativité.",
+    "VINTAGE": "Un style vintage revisité pour un look unique !",
+    "QUESTION": "Commencez votre post par une question engageante pour inciter à interagir.",
+    "VISUELS": "Optimisez vos visuels avec des couleurs vives et un texte clair.",
+    "APPEL_ACTION": "Ajoutez un appel à l’action clair, comme 'Cliquez sur le lien' ou 'Partagez votre avis'.",
+    "LEGENDES": "Utilisez des légendes courtes mais percutantes pour Instagram et Bluesky.",
+    "COMMENTAIRES": "Incluez des questions ouvertes pour encourager les commentaires.",
+    "HASHTAGS": "Ajoutez des hashtags pertinents pour toucher un public plus large.",
+    "STATISTIQUES": "Ajoutez des statistiques ou des faits intéressants pour capter l’attention.",
+    "STORYTELLING": "Racontez une histoire captivante pour garder vos lecteurs engagés.",
+    "REUSSITES": "Mettez en avant vos réussites ou celles de vos clients pour LinkedIn.",
+    "AUTHENTICITE": "Soyez authentique et montrez votre vraie personnalité.",
+    "ANALYSE": "Analysez vos performances et ajustez votre stratégie en conséquence.",
+    "EMOJIS": "Utilisez des emojis pour rendre votre contenu plus visuel et attrayant.",
+    "HEURES": "Postez à des heures stratégiques pour maximiser la portée.",
+    "STORIES": "Intégrez des stories ou reels pour capter l’attention rapidement.",
+    "CAPTIVANTES": "Utilisez des légendes captivantes qui donnent envie de cliquer sur 'Lire la suite'.",
+    "ANECDOTE": "Partagez des anecdotes personnelles pour créer une connexion émotionnelle.",
+    "FORMATS": "Variez vos formats : images, vidéos, carrousels ou sondages.",
+    "TON": "Adaptez le ton de votre contenu en fonction de la plateforme utilisée.",
+    "MENTIONS": "Mentionnez d’autres utilisateurs ou marques pour élargir votre portée.",
+    "STYLES": "Testez différents styles visuels pour découvrir ce qui plaît le plus à votre audience.",
+    "VIDEOS": "Utilisez des vidéos courtes pour capter l'attention rapidement.",
+    "TEMOIGNAGES": "Ajoutez des témoignages clients pour renforcer votre crédibilité.",
+    "SONDAGES": "Créez des sondages pour engager votre audience.",
+    "VALEURS": "Mettez en avant vos valeurs pour toucher votre public cible.",
+    "AVANT_APRES": "Ajoutez un avant/après pour démontrer un impact clair.",
+    "CITATIONS": "Incorporez des citations inspirantes pour motiver votre audience.",
+    "STORYTELLING2": "Ajoutez des légendes en storytelling pour raconter une histoire.",
+    "HASHTAGS_SPECIFIQUES": "Adaptez vos hashtags à chaque publication pour maximiser la portée.",
+    "TEXTE_VISUEL": "Évitez de surcharger vos visuels avec trop de texte.",
+    "REPONSE": "Répondez rapidement aux commentaires pour créer une relation.",
+    "COULISSES": "Mettez en avant vos coulisses pour humaniser votre marque.",
+    "AUTHENTIQUE": "Utilisez des photos authentiques plutôt que des banques d'images.",
+    "MESSAGES_CLES": "Répétez vos messages clés régulièrement pour ancrer votre communication.",
+    "MOMENTS_FORTS": "Identifiez les moments forts de l'année pour vos publications.",
+    "TENDANCES": "Utilisez les tendances actuelles pour surfer sur l'actualité.",
+    "STATISTIQUES2": "Ajoutez des statistiques intéressantes pour capter l'attention.",
+    "CARROUSELS": "Créez des carrousels pour raconter une histoire en plusieurs étapes.",
+    "LIEN_BIO": "Mettez un lien clair dans votre bio pour diriger vos visiteurs.",
+    "GUIDE": "Créez un guide ou une checklist pour offrir de la valeur à votre audience.",
+    "GIF": "Ajoutez des GIF ou des stickers pour rendre vos stories plus dynamiques.",
+    "COULEURS": "Utilisez des couleurs cohérentes avec votre branding.",
+    "COLLABORATEURS": "Mettez en avant vos collaborateurs pour créer un sentiment d'équipe.",
+    "CONVERSATIONNEL": "Rédigez vos posts comme si vous parliez directement à une personne.",
+    "QUIZ": "Ajoutez des quiz interactifs pour augmenter l'engagement.",
+    "URGENCE": "Créez un sentiment d'urgence avec des promotions limitées.",
+    "AVANT_APRES_CONCRET": "Intégrez des photos avant/après pour montrer des résultats concrets.",
+    "COLLABORATION": "Créez des collaborations avec d'autres créateurs pour élargir votre audience.",
+    "TRANSPARENCE": "Soyez transparent sur vos processus ou vos produits.",
+    "ANIMATIONS": "Ajoutez des animations pour rendre vos vidéos plus dynamiques.",
+    "EDUCATIF": "Créez des posts éducatifs pour apporter de la valeur à votre audience.",
+    "RETOURS_EXPERIENCE": "Mettez en avant des retours d'expérience pour instaurer la confiance.",
+    "CONCIS": "Soyez concis dans vos messages pour aller droit au but.",
+    "MOTS_CLES": "Utilisez des mots-clés pertinents pour augmenter la visibilité.",
+    "CALENDRIER": "Créez un calendrier éditorial pour planifier vos publications.",
+    "MINIMALISTE2": "Expérimentez avec des visuels minimalistes pour un impact visuel fort.",
+    "TEMOIGNAGES_VIDEO": "Intégrez des témoignages vidéo pour plus d'authenticité.",
+    "HUMOUR": "Créez des posts humoristiques pour engager avec légèreté.",
+    "GRAPHIQUES": "Utilisez des graphiques ou infographies pour expliquer des idées complexes.",
+    "REGULARITE": "Publiez régulièrement pour garder votre audience engagée.",
+    "REMERCIEMENTS": "Incluez des remerciements ou des célébrations pour créer de la gratitude."
+  },
   "PAYEMENT": {
     "YOU": "Tú",
     "HEADER_TITLE": "Pago",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Selecciona una dirección",
     "ADD_ADDRESS": "Añadir una dirección",
     "CARD_PAY": "Pago con tarjeta bancaria",
+    "CREDIT_PAY": "Paiement par crédit entreprise",
+    "EMPLOYEE_CREDIT_TITLE": "Utiliser mon crédit d'entreprise",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Mon crédit disponible :",
+    "EMPLOYEE_CREDIT_EMPTY": "Pas de crédit d'entreprise",
     "CARD_NUM": "Número de tarjeta",
     "CARD_NAME": "Nombre en la tarjeta",
     "EXPIRATION": "Fecha de caducidad",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Inicia sesión para registrar un salón",
     "TITLE": "¡Ponte en marcha!",
     "TITLE2": "¡Creamos un salón!",
+    "STEP1_TITLE": "Informations du salon",
+    "STEP2_TITLE": "Vérification professionnelle",
+    "STEP2_TAGLINE": "Étape 2 sur 2 · Vos documents restent privés et protégés.",
     "NAME": "Nombre de tu salón",
     "ADDRESS": "Dirección de tu empresa",
     "STREET": "Calle",
@@ -500,7 +594,28 @@
     "ERROR5": "Los apellidos son obligatorios.",
     "ERROR6": "El e-mail es obligatorio.",
     "ERROR7": "El número de móvil es obligatorio.",
-    "ERROR8": "Debes aceptar recibir mensajes por WhatsApp."
+    "ERROR8": "Debes aceptar recibir mensajes por WhatsApp.",
+    "VERIF_TITLE": "Vérification de votre profil professionnel",
+    "VERIF_SUBTITLE": "Nous vérifions chaque professionnel pour protéger vos clients et votre réputation.",
+    "VERIF_ID_TITLE": "Pièce d’identité",
+    "VERIF_ID_DESC": "Carte d’identité, passeport ou titre de séjour en cours de validité.",
+    "VERIF_INSURANCE_TITLE": "Seguro profesional",
+    "VERIF_INSURANCE_DESC": "Certificado válido que cubre sus servicios a domicilio (obligatorio).",
+    "VERIF_KBIS_TITLE": "Extrait Kbis (optionnel)",
+    "VERIF_KBIS_DESC": "Recommandé si vous exercez via une société immatriculée.",
+    "VERIF_UPLOAD_LABEL": "Téléverser un document",
+    "VERIF_ALLOWED_FORMATS": "Formats acceptés : PDF, JPG, PNG · taille max 10 Mo.",
+    "VERIF_MANDATORY_HINT": "La pièce d’identité et l’assurance sont obligatoires pour activer votre profil.",
+    "VERIF_STATUS_MISSING": "Document manquant",
+    "VERIF_STATUS_PENDING": "En cours de vérification",
+    "VERIF_STATUS_APPROVED": "Validé",
+    "VERIF_STATUS_REJECTED": "Refusé · nouveau document requis",
+    "VERIF_PRIMARY_BUTTON": "Envoyer les documents",
+    "VERIF_SKIP_BUTTON": "Je compléterai plus tard",
+    "VERIF_TOAST_SUCCESS": "Vos documents ont été envoyés pour vérification.",
+    "VERIF_TOAST_ERROR": "Impossible de téléverser vos documents pour le moment.",
+    "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
+    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modificar dirección",
@@ -533,6 +648,12 @@
     "NAME": "Nombre",
     "CITY": "Ciudad",
     "NOTE": "Nota",
+    "DOCS_OK": "Validés",
+    "DOCS_NOT_VALID": "Non validés",
+    "ACTIVE": "Activo",
+    "INACTIVE": "Inatif",
+    "STATUS": "Statut",
+    "DOCUMENTS": "Documentos",
     "MIDDLE_PRICE": "Precio medio",
     "PROMOTION": "Promoción",
     "ACTIONS": "Acciones",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Gestionar cuenta",
     "ORDERS": "Pedidos realizados",
+    "MESSAGES": "Mes messages",
     "FAVORITES": "Favoritos",
     "HELP": "Ayuda",
     "MY_ABO": "Mi suscripción",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Asistencia en línea"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Acreditar la cuenta del empleado",
     "AMOUNT": "Importe a acreditar",
@@ -894,7 +1015,10 @@
     "DATE": "Fecha",
     "AMOUNT": "Importe",
     "COMMISSION": "Comisión",
-    "STATUS": "Estado"
+    "STATUS": "Estado",
+    "NEXT_LEVEL": "Prochain niveau",
+    "MAX_LEVEL": "Niveau maximum atteint",
+    "REMAINING": "encore {{count}} réservations"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Selecciona el tipo de tienda a crear",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Error al eliminar la prestación"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Imagen de la tienda",
     "UPLOAD_IMAGE": "Subir imagen",
     "SNEEK_PIC": "Vista previa de la imagen",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Generar descripción",
     "PHOTO": "Ejemplos de fotos aceptadas / rechazadas",
     "CODE_POSTAUX": "Códigos postales atendidos",
+    "SOCIAL_NETWORK": "Redes sociales",
     "EXEMPLE_LOCAL": "Ej.: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Avanzada",
     "PLANS": "Número de salones activos",
     "READY": "¿Lista para hacer crecer tu actividad?",
-    "DISCOVERS": "Descubrir las ofertasizyGlam"
+    "DISCOVERS": "Descubrir las ofertasizyGlam",
+    "FREE_TRIAL": "Gratis durante 1 mes"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "No definido",
     "INVALID_DATE": "Fecha no válida"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Confirmation",
+    "CANCEL": "Cancelar",
+    "OK": "OK",
+    "TERMINATE": "Terminar",
+    "DELETE": "Eliminar"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Buscar un servicio",
+    "EMAIL_PLACEHOLDER": "Correo del usuario",
+    "CATEGORY_TITLE": "¿Qué te gustaría reservar?",
+    "CATEGORY_HINT": "Elige una categoría. Luego: servicio → momento → franja horaria.",
+    "REASSURANCE": "Pago seguro • Profesionales verificados • Soporte reactivo",
+    "PRICE_TIP": "Precio claro antes del pago. Confirmas cuando todo está bien.",
+    "WHEN_TITLE": "¿Qué momento te conviene?",
+    "WHEN_HINT": "Solo mostraremos las franjas horarias disponibles.",
+    "TODAY": "Hoy",
+    "TONIGHT": "Esta noche",
+    "TOMORROW": "Mañana",
+    "THIS_WEEK": "Esta semana",
+    "VIEW_SLOTS": "Ver franjas horarias disponibles",
+    "PAYMENT_REASSURANCE": "Pago seguro • Modificación posible antes del pago",
+    "SLOTS_TITLE": "Franjas horarias disponibles",
+    "SLOTS_HINT": "Selecciona una franja horaria para continuar.",
+    "VALIDATION_TIP": "Validas todo en el resumen antes del pago.",
+    "SUMMARY_TITLE": "Resumen",
+    "SUMMARY_HINT": "Verifica antes de proceder al pago.",
+    "SERVICE": "Servicio",
+    "DURATION": "Duración",
+    "WHEN": "Cuándo",
+    "PRICE": "Precio",
+    "FROM": "desde",
+    "CONTINUE_PAYMENT": "Continuar al pago",
+    "PAYMENT_FOOTNOTE": "Pago seguro. Cancelación según condiciones. Podrás elegir volver a reservar con el mismo proveedor después del servicio."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "¿Cómo te gustaría reservar?",
+    "SUBTITLE": "Reserva en 2 minutos — en casa, pago seguro.",
+    "QUICK_TITLE": "Reserva rápida",
+    "QUICK_DESC": "Elige un servicio, te sugerimos las franjas horarias.",
+    "RECOMMENDED": "Recomendado",
+    "PROVIDER_TITLE": "Elegir un proveedor",
+    "PROVIDER_DESC": "Explora los perfiles y reserva en el calendario."
   }
 }

@@ -36,6 +36,24 @@
     "YOGA": "Relaxació",
     "DEVELOPPEMENT": "Desenvolupament personal"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Perruqueria",
+    "MANUCURE": "Manicura",
+    "VISAGE": "Rostre",
+    "MASSAGE": "Massatge",
+    "MAQUILLAGE": "Maquillatge",
+    "EPILATION": "Depilació",
+    "BRONZAGE": "Bronzejat",
+    "PARTUM": "Postpart",
+    "NUTRITION": "Nutrició",
+    "FITNESS": "Fitness",
+    "ACUPUNCTURE": "Acupuntura",
+    "STYLISME": "Estilisme",
+    "YOGA": "Relaxació",
+    "DEVELOPPEMENT": "Elevació",
+    "BARBER": "Barber",
+    "EYELASH": "Extensions de pestanyes"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Saló afegit als preferits",
     "FAVORITE_REMOVED": "Saló eliminat dels preferits",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Atenció al client",
-    "WRITE": "Escriu un missatge…"
+    "WRITE": "Escriu un missatge…",
+    "NO_CONV": "Sense converses",
+    "CREATE": "Crear conversa",
+    "CREATE_CONV": "Crear",
+    "OPEN_CONV_LIST": "Obrir llista de converses",
+    "PHOTO_SENT": "Foto enviada"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Introdueix el teu correu d’accés",
@@ -173,8 +196,14 @@
     "SERVICES": "Gestió de prestacions",
     "PHOTOS": "Galeria de fotos",
     "STATS": "Estadístiques",
+    "SOCIAL": "Xarxes socials",
     "PARAM": "Paràmetres",
+    "DOCUMENTS": "Documents",
     "SHOPS": "Les botigues",
+    "B2BLEAD": "Leads BtoB",
+    "PROLEAD": "Leads Pro",
+    "COMPANY": "Les empreses",
+    "COM": "La comunicació",
     "USERS": "Els usuaris",
     "MESSAGE": "Missatgeria"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Comentari",
     "NOTE": "Nota",
     "CLOSE": "Tancar"
+  },
+  "UILEVEL": {
+    "STARTER": "Creadora",
+    "ACTIVE": "Confirmada",
+    "AMBASSADOR": "Ambaixadora IzyGlam",
+    "ICONE": "Icona local"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Cap imatge a la galeria."
@@ -265,7 +300,7 @@
     "RESERVED": "Reserva amb antelació",
     "GIFTCARDS": "Targetes regal",
     "WORKWITHUS": "Treballa amb izyGlam",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "Serveis de bellesa per a empreses",
     "CONFIDENTIAL": "Confidencialitat",
     "ACCESS": "Accessibilitat",
     "CONDITIONS": "Condicions",
@@ -290,23 +325,6 @@
     "TOP10": "Top 10 de la setmana",
     "SEARCHRESULT": "Resultats de la cerca",
     "AVIS": "Ressenyes"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Perruqueria",
-    "MANUCURE": "Manicura",
-    "VISAGE": "Rostre",
-    "MASSAGE": "Massatge",
-    "MAQUILLAGE": "Maquillatge",
-    "EPILATION": "Depilació",
-    "BRONZAGE": "Bronzejat",
-    "PARTUM": "Postpart",
-    "NUTRITION": "Nutrició",
-    "FITNESS": "Fitness",
-    "ACUPUNCTURE": "Acupuntura",
-    "STYLISME": "Estilisme",
-    "YOGA": "Relaxació",
-    "DEVELOPPEMENT": "Elevació",
-    "EYELASH": "Extensions de pestanyes"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Una perruquera",
@@ -379,6 +397,75 @@
     "LANGUE": "Idioma",
     "COUNTRY": "País"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Nail art minimalista per a un efecte elegant i modern.",
+    "CREATIVITE": "Trieu colors atrevits per expressar la vostra creativitat.",
+    "VINTAGE": "Un estil vintage reinterpretat per a un look únic!",
+    "QUESTION": "Comença el teu post amb una pregunta atractiva per animar a la interacció.",
+    "VISUELS": "Optimitza els teus visuals amb colors vius i text clar.",
+    "APPEL_ACTION": "Afegeix una crida a l'acció clara, com \"Fes clic al enllaç\" o \"Comparteix la teva opinió\".",
+    "LEGENDES": "Utilitza llegendes curtes però impactants per a Instagram i Bluesky.",
+    "COMMENTAIRES": "Inclou preguntes obertes per animar als comentaris.",
+    "HASHTAGS": "Afegeix hashtags rellevants per arribar a un públic més ampli.",
+    "STATISTIQUES": "Afegeix estadístiques o dades interessants per captar l'atenció.",
+    "STORYTELLING": "Explica una història captivadora per mantenir els teus lectors compromesos.",
+    "REUSSITES": "Destaca els teus èxits o els dels teus clients per a LinkedIn.",
+    "AUTHENTICITE": "Sigues autèntic i mostra la teva veritable personalitat.",
+    "ANALYSE": "Analitza els teus resultats i ajusta la teva estratègia en conseqüència.",
+    "EMOJIS": "Utilitza emojis per fer el teu contingut més visual i atractiu.",
+    "HEURES": "Publica en hores estratègiques per maximitzar l'abast.",
+    "STORIES": "Integra stories o reels per captar l'atenció ràpidament.",
+    "CAPTIVANTES": "Utilitza llegendes captivadores que donin ganes de fer clic a \"Llegeix més\".",
+    "ANECDOTE": "Comparteix anècdotes personals per crear una connexió emocional.",
+    "FORMATS": "Varia els teus formats: imatges, vídeos, carrusels o enquestes.",
+    "TON": "Adapta el to del teu contingut segons la plataforma utilitzada.",
+    "MENTIONS": "Menciona altres usuaris o marques per ampliar el teu abast.",
+    "STYLES": "Prova diferents estils visuals per descobrir el que més agrada a la teva audiència.",
+    "VIDEOS": "Utilitza vídeos curts per captar l'atenció ràpidament.",
+    "TEMOIGNAGES": "Afegeix testimonis de clients per reforçar la teva credibilitat.",
+    "SONDAGES": "Crea enquestes per involucrar la teva audiència.",
+    "VALEURS": "Destaca els teus valors per arribar al teu públic objectiu.",
+    "AVANT_APRES": "Afegeix un abans/després per demostrar un impacte clar.",
+    "CITATIONS": "Incorpora cites inspiradores per motivar la teva audiència.",
+    "STORYTELLING2": "Afegeix llegendes en forma de narrativa per explicar una història.",
+    "HASHTAGS_SPECIFIQUES": "Adapta els teus hashtags a cada publicació per maximitzar l'abast.",
+    "TEXTE_VISUEL": "Evita sobrecarregar els teus visuals amb massa text.",
+    "REPONSE": "Respon ràpidament als comentaris per crear una relació.",
+    "COULISSES": "Destaca els teus bastidors per humanitzar la teva marca.",
+    "AUTHENTIQUE": "Utilitza fotos autèntiques en lloc de bancs d'imatges.",
+    "MESSAGES_CLES": "Repeteix els teus missatges clau regularment per ancorar la teva comunicació.",
+    "MOMENTS_FORTS": "Identifica els moments forts de l'any per a les teves publicacions.",
+    "TENDANCES": "Utilitza les tendències actuals per navegar per l'actualitat.",
+    "STATISTIQUES2": "Afegeix estadístiques interessants per captar l'atenció.",
+    "CARROUSELS": "Crea carrusels per explicar una història en diverses etapes.",
+    "LIEN_BIO": "Posa un enllaç clar a la teva biografia per dirigir els teus visitants.",
+    "GUIDE": "Crea una guia o llista de verificació per oferir valor a la teva audiència.",
+    "GIF": "Afegeix GIFs o adhesius per fer les teves stories més dinàmiques.",
+    "COULEURS": "Utilitza colors coherents amb el teu branding.",
+    "COLLABORATEURS": "Destaca els teus col·laboradors per crear un sentiment d'equip.",
+    "CONVERSATIONNEL": "Escriu els teus posts com si parlessis directament a una persona.",
+    "QUIZ": "Afegeix qüestionaris interactius per augmentar el compromís.",
+    "URGENCE": "Crea un sentiment d'urgència amb promocions limitades.",
+    "AVANT_APRES_CONCRET": "Integra fotos abans/després per mostrar resultats concrets.",
+    "COLLABORATION": "Crea col·laboracions amb altres creadors per ampliar la teva audiència.",
+    "TRANSPARENCE": "Sigues transparent sobre els teus processos o productes.",
+    "ANIMATIONS": "Afegeix animacions per fer els teus vídeos més dinàmics.",
+    "EDUCATIF": "Crea posts educatius per aportar valor a la teva audiència.",
+    "RETOURS_EXPERIENCE": "Destaca retorns d'experiència per instaurar la confiança.",
+    "CONCIS": "Sigues concís en els teus missatges per anar directe al gra.",
+    "MOTS_CLES": "Utilitza paraules clau rellevants per augmentar la visibilitat.",
+    "CALENDRIER": "Crea un calendari editorial per planificar les teves publicacions.",
+    "MINIMALISTE2": "Experimenta amb visuals minimalistes per a un fort impacte visual.",
+    "TEMOIGNAGES_VIDEO": "Integra testimonis en vídeo per més autenticitat.",
+    "HUMOUR": "Crea posts humorístics per involucrar amb lleugeresa.",
+    "GRAPHIQUES": "Utilitza gràfics o infografies per explicar idees complexes.",
+    "REGULARITE": "Publica regularment per mantenir la teva audiència compromesa.",
+    "REMERCIEMENTS": "Inclou agraïments o celebracions per crear gratitud."
+  },
   "PAYEMENT": {
     "YOU": "Tu",
     "HEADER_TITLE": "Pagament",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Selecciona una adreça",
     "ADD_ADDRESS": "Afegir una adreça",
     "CARD_PAY": "Pagament amb targeta bancària",
+    "CREDIT_PAY": "Pagament amb crèdit empresarial",
+    "EMPLOYEE_CREDIT_TITLE": "Utilitzar el meu crèdit empresarial",
+    "EMPLOYEE_CREDIT_AVAILABLE": "El meu crèdit disponible:",
+    "EMPLOYEE_CREDIT_EMPTY": "Sense crèdit empresarial",
     "CARD_NUM": "Número de la targeta",
     "CARD_NAME": "Nom a la targeta",
     "EXPIRATION": "Data de caducitat",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Inicia sessió per enregistrar un saló",
     "TITLE": "Posa-t’hi!",
     "TITLE2": "Creem un saló!",
+    "STEP1_TITLE": "Informació del saló",
+    "STEP2_TITLE": "Verificació professional",
+    "STEP2_TAGLINE": "Pas 2 de 2 · Els teus documents romanen privats i protegits.",
     "NAME": "Nom del teu saló",
     "ADDRESS": "Adreça de la teva empresa",
     "STREET": "Carrer",
@@ -500,7 +594,28 @@
     "ERROR5": "Els cognoms són obligatoris.",
     "ERROR6": "El correu electrònic és obligatori.",
     "ERROR7": "El número de mòbil és obligatori.",
-    "ERROR8": "Has d’acceptar rebre missatges per WhatsApp."
+    "ERROR8": "Has d’acceptar rebre missatges per WhatsApp.",
+    "VERIF_TITLE": "Verificació del teu perfil professional",
+    "VERIF_SUBTITLE": "Verifiquem cada professional per protegir els teus clients i la teva reputació.",
+    "VERIF_ID_TITLE": "Document d'identitat",
+    "VERIF_ID_DESC": "Document d'identitat, passaport o títol de residència vàlid.",
+    "VERIF_INSURANCE_TITLE": "Assegurança professional",
+    "VERIF_INSURANCE_DESC": "Certificat vàlid que cobreix els vostres serveis a domicili (obligatori).",
+    "VERIF_KBIS_TITLE": "Extracte Kbis (opcional)",
+    "VERIF_KBIS_DESC": "Recomanat si treballes a través d'una societat registrada.",
+    "VERIF_UPLOAD_LABEL": "Pujar un document",
+    "VERIF_ALLOWED_FORMATS": "Formats acceptats: PDF, JPG, PNG · mida màxima 10 MB.",
+    "VERIF_MANDATORY_HINT": "La pièce d’identité et l’assurance sont obligatoires pour activer votre profil.",
+    "VERIF_STATUS_MISSING": "Document faltant",
+    "VERIF_STATUS_PENDING": "En procés de verificació",
+    "VERIF_STATUS_APPROVED": "Validat",
+    "VERIF_STATUS_REJECTED": "Rebutjat · es requereix un nou document",
+    "VERIF_PRIMARY_BUTTON": "Enviar documents",
+    "VERIF_SKIP_BUTTON": "Completaré més tard",
+    "VERIF_TOAST_SUCCESS": "Els teus documents han estat enviats per a verificació.",
+    "VERIF_TOAST_ERROR": "No és possible pujar els teus documents en aquest moment.",
+    "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
+    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modificar l’adreça",
@@ -533,6 +648,12 @@
     "NAME": "Nom",
     "CITY": "Ciutat",
     "NOTE": "Nota",
+    "DOCS_OK": "Validats",
+    "DOCS_NOT_VALID": "No validats",
+    "ACTIVE": "Actiu",
+    "INACTIVE": "Inactiu",
+    "STATUS": "Estat",
+    "DOCUMENTS": "Documents",
     "MIDDLE_PRICE": "Preu mitjà",
     "PROMOTION": "Promoció",
     "ACTIONS": "Accions",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Gestionar el compte",
     "ORDERS": "Comandes realitzades",
+    "MESSAGES": "Els meus missatges",
     "FAVORITES": "Favorits",
     "HELP": "Ajuda",
     "MY_ABO": "La meva subscripció",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Assistència en línia"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Crèdit al compte de l’emplet",
     "AMOUNT": "Import a acreditar",
@@ -894,7 +1015,10 @@
     "DATE": "Data",
     "AMOUNT": "Import",
     "COMMISSION": "Comissió",
-    "STATUS": "Estat"
+    "STATUS": "Estat",
+    "NEXT_LEVEL": "Següent nivell",
+    "MAX_LEVEL": "Nivell màxim assolit",
+    "REMAINING": "encara {{count}} reserves"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Seleccioneu el tipus de botiga a crear",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Error en suprimir la prestació"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Imatge de la botiga",
     "UPLOAD_IMAGE": "Pujar una imatge",
     "SNEEK_PIC": "Previsualització de la imatge",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Generar la descripció",
     "PHOTO": "Exemples de fotos acceptades / refusades",
     "CODE_POSTAUX": "Codis postals servits",
+    "SOCIAL_NETWORK": "Xarxes socials",
     "EXEMPLE_LOCAL": "Ex: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Avançada",
     "PLANS": "Nombre de botigues actives",
     "READY": "A punt per fer créixer la teva activitat?",
-    "DISCOVERS": "Descobrir les ofertes d’izyGlam"
+    "DISCOVERS": "Descobrir les ofertes d’izyGlam",
+    "FREE_TRIAL": "Gratuït durant 1 mes"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Indefinit",
     "INVALID_DATE": "Data no vàlida"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Confirmació",
+    "CANCEL": "Cancel·lar",
+    "OK": "OK",
+    "TERMINATE": "Finalitzar",
+    "DELETE": "Suprimir"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Buscar un servei",
+    "EMAIL_PLACEHOLDER": "Correu de l'usuari",
+    "CATEGORY_TITLE": "Què vols reservar?",
+    "CATEGORY_HINT": "Tria una categoria. Després: servei → moment → franja.",
+    "REASSURANCE": "Pagament segur • Professionals verificats • Suport reactiu",
+    "PRICE_TIP": "Preu clar abans del pagament. Confirmes quan tot està bé.",
+    "WHEN_TITLE": "Quin moment et va bé?",
+    "WHEN_HINT": "Mostrarem només les franjes disponibles.",
+    "TODAY": "Avui",
+    "TONIGHT": "Aquesta nit",
+    "TOMORROW": "Demà",
+    "THIS_WEEK": "Aquesta setmana",
+    "VIEW_SLOTS": "Veure les franjes disponibles",
+    "PAYMENT_REASSURANCE": "Pagament segur • Modificació possible abans del pagament",
+    "SLOTS_TITLE": "Franjes disponibles",
+    "SLOTS_HINT": "Selecciona una franja per continuar.",
+    "VALIDATION_TIP": "Valides tot al resum abans del pagament.",
+    "SUMMARY_TITLE": "Resum",
+    "SUMMARY_HINT": "Verifica abans de passar al pagament.",
+    "SERVICE": "Servei",
+    "DURATION": "Durada",
+    "WHEN": "Quan",
+    "PRICE": "Preu",
+    "FROM": "a partir de",
+    "CONTINUE_PAYMENT": "Continuar cap al pagament",
+    "PAYMENT_FOOTNOTE": "Pagament segur. Cancel·lació segons condicions. Podràs triar de tornar a reservar amb el mateix proveïdor després del servei."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Com vols reservar?",
+    "SUBTITLE": "Reserva en 2 minuts — a casa, pagament segur.",
+    "QUICK_TITLE": "Reserva ràpida",
+    "QUICK_DESC": "Tria un servei, et proposem les franjes.",
+    "RECOMMENDED": "Recomanat",
+    "PROVIDER_TITLE": "Tria un proveïdor",
+    "PROVIDER_DESC": "Navega pels perfils i reserva a l'agenda."
   }
 }

@@ -36,6 +36,24 @@
     "YOGA": "Relaksasi / yoga",
     "DEVELOPPEMENT": "Pengembangan diri"
   },
+  "MAIN_CATEGORY": {
+    "COIFFURE": "Tata rambut",
+    "MANUCURE": "Manikur",
+    "VISAGE": "Wajah",
+    "MASSAGE": "Pijat",
+    "MAQUILLAGE": "Rias",
+    "EPILATION": "Waxing",
+    "BRONZAGE": "Tanning",
+    "PARTUM": "Pasca persalinan",
+    "NUTRITION": "Nutrisi",
+    "FITNESS": "Kebugaran",
+    "ACUPUNCTURE": "Akupunktur",
+    "STYLISME": "Gaya busana",
+    "YOGA": "Relaksasi",
+    "DEVELOPPEMENT": "Pengembangan diri",
+    "BARBER": "Tukang cukur",
+    "EYELASH": "Ekstensi bulu mata"
+  },
   "SUCCESS": {
     "FAVORITE_ADDED": "Salon ditambahkan ke favorit",
     "FAVORITE_REMOVED": "Salon dihapus dari favorit",
@@ -130,7 +148,12 @@
   },
   "MESSAGE": {
     "SERVICE_CLIENT": "Layanan pelanggan",
-    "WRITE": "Tulis pesan…"
+    "WRITE": "Tulis pesan…",
+    "NO_CONV": "Tidak ada percakapan",
+    "CREATE": "Buat percakapan",
+    "CREATE_CONV": "Buat",
+    "OPEN_CONV_LIST": "Buka daftar percakapan",
+    "PHOTO_SENT": "Foto terkirim"
   },
   "FORGOT_DETAILS": {
     "CONNEXION": "Masukkan email login Anda",
@@ -173,8 +196,14 @@
     "SERVICES": "Manajemen layanan",
     "PHOTOS": "Galeri foto",
     "STATS": "Statistik",
+    "SOCIAL": "Jaringan sosial",
     "PARAM": "Pengaturan",
+    "DOCUMENTS": "Dokumen",
     "SHOPS": "Toko",
+    "B2BLEAD": "Leads BtoB",
+    "PROLEAD": "Leads Pro",
+    "COMPANY": "Perusahaan",
+    "COM": "Komunikasi",
     "USERS": "Pengguna",
     "MESSAGE": "Pesan"
   },
@@ -218,6 +247,12 @@
     "COMMENT": "Komentar",
     "NOTE": "Nilai",
     "CLOSE": "Tutup"
+  },
+  "UILEVEL": {
+    "STARTER": "Pencipta",
+    "ACTIVE": "Dikonfirmasi",
+    "AMBASSADOR": "Duta IzyGlam",
+    "ICONE": "Ikon lokal"
   },
   "SHOP_GALERIE": {
     "NO_IMAGE": "Tidak ada gambar di galeri."
@@ -265,7 +300,7 @@
     "RESERVED": "Pesan lebih awal",
     "GIFTCARDS": "Kartu hadiah",
     "WORKWITHUS": "Bekerja sama dengan izyGlam",
-    "GLAMFORBUSINESS": "Glam for Business",
+    "GLAMFORBUSINESS": "Layanan kecantikan untuk bisnis",
     "CONFIDENTIAL": "Kerahasiaan",
     "ACCESS": "Aksesibilitas",
     "CONDITIONS": "Ketentuan",
@@ -290,23 +325,6 @@
     "TOP10": "Top 10 minggu ini",
     "SEARCHRESULT": "Hasil pencarian",
     "AVIS": "Ulasan"
-  },
-  "MAIN_CATEGORY": {
-    "COIFFURE": "Tata rambut",
-    "MANUCURE": "Manikur",
-    "VISAGE": "Wajah",
-    "MASSAGE": "Pijat",
-    "MAQUILLAGE": "Rias",
-    "EPILATION": "Waxing",
-    "BRONZAGE": "Tanning",
-    "PARTUM": "Pasca persalinan",
-    "NUTRITION": "Nutrisi",
-    "FITNESS": "Kebugaran",
-    "ACUPUNCTURE": "Akupunktur",
-    "STYLISME": "Gaya busana",
-    "YOGA": "Relaksasi",
-    "DEVELOPPEMENT": "Pengembangan diri",
-    "EYELASH": "Ekstensi bulu mata"
   },
   "MAIN_CATEGORY_INTRO": {
     "COIFFURE": "Seorang penata rambut",
@@ -379,6 +397,75 @@
     "LANGUE": "Bahasa",
     "COUNTRY": "Negara"
   },
+  "CATEGORY": {
+    "LINKEDIN": "LinkedIn",
+    "INSTAGRAM": "Instagram"
+  },
+  "ASTUCE": {
+    "MINIMALISTE": "Nail art minimalis untuk efek yang elegan dan modern.",
+    "CREATIVITE": "Pilih warna yang berani untuk mengekspresikan kreativitas Anda.",
+    "VINTAGE": "Gaya vintage yang diinterpretasikan ulang untuk tampilan yang unik!",
+    "QUESTION": "Mulai postingan Anda dengan pertanyaan yang menarik untuk mendorong interaksi.",
+    "VISUELS": "Optimalkan visual Anda dengan warna cerah dan teks yang jelas.",
+    "APPEL_ACTION": "Tambahkan ajakan bertindak yang jelas, seperti \"Klik tautan\" atau \"Bagikan pendapat Anda\".",
+    "LEGENDES": "Gunakan caption pendek namun kuat untuk Instagram dan Bluesky.",
+    "COMMENTAIRES": "Sertakan pertanyaan terbuka untuk mendorong komentar.",
+    "HASHTAGS": "Tambahkan hashtag yang relevan untuk menjangkau audiens yang lebih luas.",
+    "STATISTIQUES": "Tambahkan statistik atau fakta menarik untuk menarik perhatian.",
+    "STORYTELLING": "Ceritakan kisah yang menarik untuk menjaga pembaca tetap terlibat.",
+    "REUSSITES": "Soroti kesuksesan Anda atau klien Anda untuk LinkedIn.",
+    "AUTHENTICITE": "Jadilah autentik dan tunjukkan kepribadian sejati Anda.",
+    "ANALYSE": "Analisis kinerja Anda dan sesuaikan strategi Anda dengan tepat.",
+    "EMOJIS": "Gunakan emoji untuk membuat konten Anda lebih visual dan menarik.",
+    "HEURES": "Posting pada jam strategis untuk memaksimalkan jangkauan.",
+    "STORIES": "Integrasikan stories atau reels untuk menarik perhatian dengan cepat.",
+    "CAPTIVANTES": "Gunakan caption yang menarik yang membuat orang ingin mengklik \"Baca selengkapnya\".",
+    "ANECDOTE": "Bagikan anekdot pribadi untuk menciptakan koneksi emosional.",
+    "FORMATS": "Variasikan format Anda: gambar, video, carousel, atau survei.",
+    "TON": "Sesuaikan nada konten Anda sesuai dengan platform yang digunakan.",
+    "MENTIONS": "Sebutkan pengguna atau merek lain untuk memperluas jangkauan Anda.",
+    "STYLES": "Uji berbagai gaya visual untuk menemukan apa yang paling disukai audiens Anda.",
+    "VIDEOS": "Gunakan video pendek untuk menarik perhatian dengan cepat.",
+    "TEMOIGNAGES": "Tambahkan testimoni klien untuk memperkuat kredibilitas Anda.",
+    "SONDAGES": "Buat survei untuk melibatkan audiens Anda.",
+    "VALEURS": "Soroti nilai-nilai Anda untuk menjangkau target audiens Anda.",
+    "AVANT_APRES": "Tambahkan sebelum/sesudah untuk menunjukkan dampak yang jelas.",
+    "CITATIONS": "Masukkan kutipan inspiratif untuk memotivasi audiens Anda.",
+    "STORYTELLING2": "Tambahkan caption dalam bentuk storytelling untuk menceritakan kisah.",
+    "HASHTAGS_SPECIFIQUES": "Sesuaikan hashtag Anda untuk setiap postingan untuk memaksimalkan jangkauan.",
+    "TEXTE_VISUEL": "Hindari membebani visual Anda dengan terlalu banyak teks.",
+    "REPONSE": "Balas komentar dengan cepat untuk membangun hubungan.",
+    "COULISSES": "Soroti di balik layar untuk memanusiakan merek Anda.",
+    "AUTHENTIQUE": "Gunakan foto autentik daripada bank gambar.",
+    "MESSAGES_CLES": "Ulangi pesan utama Anda secara teratur untuk memperkuat komunikasi Anda.",
+    "MOMENTS_FORTS": "Identifikasi momen penting tahun ini untuk postingan Anda.",
+    "TENDANCES": "Gunakan tren terkini untuk mengikuti berita terbaru.",
+    "STATISTIQUES2": "Tambahkan statistik menarik untuk menarik perhatian.",
+    "CARROUSELS": "Buat carousel untuk menceritakan kisah dalam beberapa langkah.",
+    "LIEN_BIO": "Tempatkan tautan yang jelas di bio Anda untuk mengarahkan pengunjung.",
+    "GUIDE": "Buat panduan atau checklist untuk menawarkan nilai kepada audiens Anda.",
+    "GIF": "Tambahkan GIF atau stiker untuk membuat stories Anda lebih dinamis.",
+    "COULEURS": "Gunakan warna yang konsisten dengan branding Anda.",
+    "COLLABORATEURS": "Soroti kolaborator Anda untuk menciptakan rasa tim.",
+    "CONVERSATIONNEL": "Tulis postingan Anda seolah-olah Anda berbicara langsung dengan seseorang.",
+    "QUIZ": "Tambahkan kuis interaktif untuk meningkatkan keterlibatan.",
+    "URGENCE": "Ciptakan rasa urgensi dengan promosi terbatas.",
+    "AVANT_APRES_CONCRET": "Integrasikan foto sebelum/sesudah untuk menunjukkan hasil konkret.",
+    "COLLABORATION": "Buat kolaborasi dengan kreator lain untuk memperluas audiens Anda.",
+    "TRANSPARENCE": "Jadilah transparan tentang proses atau produk Anda.",
+    "ANIMATIONS": "Tambahkan animasi untuk membuat video Anda lebih dinamis.",
+    "EDUCATIF": "Buat postingan edukatif untuk menawarkan nilai kepada audiens Anda.",
+    "RETOURS_EXPERIENCE": "Soroti testimoni pengalaman untuk membangun kepercayaan.",
+    "CONCIS": "Jadilah ringkas dalam pesan Anda untuk langsung ke intinya.",
+    "MOTS_CLES": "Gunakan kata kunci yang relevan untuk meningkatkan visibilitas.",
+    "CALENDRIER": "Buat kalender editorial untuk merencanakan postingan Anda.",
+    "MINIMALISTE2": "Eksperimen dengan visual minimalis untuk dampak visual yang kuat.",
+    "TEMOIGNAGES_VIDEO": "Integrasikan testimoni video untuk lebih autentik.",
+    "HUMOUR": "Buat postingan humoris untuk melibatkan dengan ringan.",
+    "GRAPHIQUES": "Gunakan grafik atau infografis untuk menjelaskan ide kompleks.",
+    "REGULARITE": "Posting secara teratur untuk menjaga audiens tetap terlibat.",
+    "REMERCIEMENTS": "Sertakan ucapan terima kasih atau perayaan untuk menciptakan rasa syukur."
+  },
   "PAYEMENT": {
     "YOU": "Anda",
     "HEADER_TITLE": "Pembayaran",
@@ -403,6 +490,10 @@
     "SELECT_ADDRESS": "Pilih alamat",
     "ADD_ADDRESS": "Tambahkan alamat",
     "CARD_PAY": "Pembayaran dengan kartu bank",
+    "CREDIT_PAY": "Pembayaran dengan kredit perusahaan",
+    "EMPLOYEE_CREDIT_TITLE": "Gunakan kredit perusahaan saya",
+    "EMPLOYEE_CREDIT_AVAILABLE": "Kredit saya yang tersedia:",
+    "EMPLOYEE_CREDIT_EMPTY": "Tidak ada kredit perusahaan",
     "CARD_NUM": "Nomor kartu",
     "CARD_NAME": "Nama pada kartu",
     "EXPIRATION": "Tanggal kedaluwarsa",
@@ -470,6 +561,9 @@
     "NOT_CONNECTED": "Silakan masuk untuk mendaftarkan salon",
     "TITLE": "Mulai sekarang!",
     "TITLE2": "Mari buat salon!",
+    "STEP1_TITLE": "Informasi salon",
+    "STEP2_TITLE": "Verifikasi profesional",
+    "STEP2_TAGLINE": "Langkah 2 dari 2 · Dokumen Anda tetap privat dan terlindungi.",
     "NAME": "Nama salon Anda",
     "ADDRESS": "Alamat perusahaan Anda",
     "STREET": "Jalan",
@@ -500,7 +594,28 @@
     "ERROR5": "Nama belakang wajib diisi.",
     "ERROR6": "Email wajib diisi.",
     "ERROR7": "Nomor ponsel wajib diisi.",
-    "ERROR8": "Anda harus menyetujui menerima pesan di WhatsApp."
+    "ERROR8": "Anda harus menyetujui menerima pesan di WhatsApp.",
+    "VERIF_TITLE": "Verifikasi profil profesional Anda",
+    "VERIF_SUBTITLE": "Kami memverifikasi setiap profesional untuk melindungi klien dan reputasi Anda.",
+    "VERIF_ID_TITLE": "Kartu identitas",
+    "VERIF_ID_DESC": "Kartu identitas, paspor, atau izin tinggal yang berlaku.",
+    "VERIF_INSURANCE_TITLE": "Asuransi profesional",
+    "VERIF_INSURANCE_DESC": "Sertifikat valid yang mencakup layanan rumah Anda (wajib).",
+    "VERIF_KBIS_TITLE": "Ekstrak Kbis (opsional)",
+    "VERIF_KBIS_DESC": "Direkomendasikan jika Anda beroperasi melalui perusahaan terdaftar.",
+    "VERIF_UPLOAD_LABEL": "Unggah dokumen",
+    "VERIF_ALLOWED_FORMATS": "Format yang diterima: PDF, JPG, PNG · ukuran maksimal 10 MB.",
+    "VERIF_MANDATORY_HINT": "Kartu identitas dan asuransi wajib untuk mengaktifkan profil Anda.",
+    "VERIF_STATUS_MISSING": "Dokumen hilang",
+    "VERIF_STATUS_PENDING": "Sedang diverifikasi",
+    "VERIF_STATUS_APPROVED": "Tervalidasi",
+    "VERIF_STATUS_REJECTED": "Ditolak · dokumen baru diperlukan",
+    "VERIF_PRIMARY_BUTTON": "Kirim dokumen",
+    "VERIF_SKIP_BUTTON": "Saya akan melengkapi nanti",
+    "VERIF_TOAST_SUCCESS": "Dokumen Anda telah dikirim untuk verifikasi.",
+    "VERIF_TOAST_ERROR": "Tidak dapat mengunggah dokumen Anda saat ini.",
+    "VERIF_ID_REQUIRED": "Kartu identitas wajib.",
+    "VERIF_INSURANCE_REQUIRED": "Asuransi profesional wajib."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Ubah alamat",
@@ -533,6 +648,12 @@
     "NAME": "Nama",
     "CITY": "Kota",
     "NOTE": "Nilai",
+    "DOCS_OK": "Tervalidasi",
+    "DOCS_NOT_VALID": "Belum tervalidasi",
+    "ACTIVE": "Aktif",
+    "INACTIVE": "Tidak aktif",
+    "STATUS": "Status",
+    "DOCUMENTS": "Dokumen",
     "MIDDLE_PRICE": "Harga rata-rata",
     "PROMOTION": "Promosi",
     "ACTIONS": "Aksi",
@@ -637,6 +758,7 @@
   "SIDEBAR": {
     "PROFILE": "Kelola akun",
     "ORDERS": "Pesanan",
+    "MESSAGES": "Pesan saya",
     "FAVORITES": "Favorit",
     "HELP": "Bantuan",
     "MY_ABO": "Langgananku",
@@ -845,8 +967,7 @@
   "CHAT": {
     "ONLINE_ASSISTANCE": "Bantuan online"
   },
-  "COMPANY_MANAGEMENT": {
-  },
+  "COMPANY_MANAGEMENT": {},
   "EMPLOYEE_MANAGEMENT": {
     "TITLE": "Kreditkan akun karyawan",
     "AMOUNT": "Jumlah kredit",
@@ -894,7 +1015,10 @@
     "DATE": "Tanggal",
     "AMOUNT": "Jumlah",
     "COMMISSION": "Komisi",
-    "STATUS": "Status"
+    "STATUS": "Status",
+    "NEXT_LEVEL": "Level berikutnya",
+    "MAX_LEVEL": "Level maksimum tercapai",
+    "REMAINING": "masih {{count}} reservasi"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Pilih jenis toko yang akan dibuat",
@@ -958,6 +1082,9 @@
     "PRESTA_DELETE_ERROR": "Kesalahan saat menghapus layanan"
   },
   "SHOP_MANAGEMENT": {
+    "EXEMPLE_FACEBOOK": "https://www.facebook.com/{mon_compte}/",
+    "EXEMPLE_INSTAGRAM": "https://www.instagram.com/{mon_compte}/",
+    "EXEMPLE_TIKTOK": "https://www.tiktok.com/@{mon_compte}",
     "SHOP_IMAGE": "Gambar toko",
     "UPLOAD_IMAGE": "Unggah gambar",
     "SNEEK_PIC": "Pratinjau gambar",
@@ -987,6 +1114,7 @@
     "GENERATE_DESCRIPTION": "Hasilkan deskripsi",
     "PHOTO": "Contoh foto diterima / ditolak",
     "CODE_POSTAUX": "Kode pos yang dilayani",
+    "SOCIAL_NETWORK": "Jaringan sosial",
     "EXEMPLE_LOCAL": "Contoh: 75001"
   },
   "EMPLOYEES": {
@@ -1069,7 +1197,8 @@
     "ADVANCE": "Lanjutan",
     "PLANS": "Jumlah salon aktif",
     "READY": "Siap menumbuhkan bisnismu?",
-    "DISCOVERS": "Lihat penawaranizyGlam"
+    "DISCOVERS": "Lihat penawaranizyGlam",
+    "FREE_TRIAL": "Gratis selama 1 bulan"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
@@ -1491,5 +1620,49 @@
     "FOOTER_LINE2": "www.izyglam.com",
     "UNDEFINED": "Tidak ditentukan",
     "INVALID_DATE": "Tanggal tidak valid"
+  },
+  "COMPONENT": {
+    "CONFIRMATION": "Konfirmasi",
+    "CANCEL": "Batal",
+    "OK": "OK",
+    "TERMINATE": "Selesai",
+    "DELETE": "Hapus"
+  },
+  "QUICK": {
+    "SEARCH_PLACEHOLDER": "Cari layanan",
+    "EMAIL_PLACEHOLDER": "Email pengguna",
+    "CATEGORY_TITLE": "Apa yang ingin Anda pesan?",
+    "CATEGORY_HINT": "Pilih kategori. Kemudian: layanan → waktu → slot.",
+    "REASSURANCE": "Pembayaran aman • Profesional terverifikasi • Dukungan responsif",
+    "PRICE_TIP": "Harga jelas sebelum pembayaran. Anda konfirmasi ketika semuanya OK.",
+    "WHEN_TITLE": "Waktu apa yang cocok untuk Anda?",
+    "WHEN_HINT": "Kami hanya akan menampilkan slot yang tersedia.",
+    "TODAY": "Hari ini",
+    "TONIGHT": "Malam ini",
+    "TOMORROW": "Besok",
+    "THIS_WEEK": "Minggu ini",
+    "VIEW_SLOTS": "Lihat slot yang tersedia",
+    "PAYMENT_REASSURANCE": "Pembayaran aman • Modifikasi dimungkinkan sebelum pembayaran",
+    "SLOTS_TITLE": "Slot tersedia",
+    "SLOTS_HINT": "Pilih slot untuk melanjutkan.",
+    "VALIDATION_TIP": "Anda memvalidasi semuanya di ringkasan sebelum pembayaran.",
+    "SUMMARY_TITLE": "Ringkasan",
+    "SUMMARY_HINT": "Periksa sebelum melanjutkan ke pembayaran.",
+    "SERVICE": "Layanan",
+    "DURATION": "Durasi",
+    "WHEN": "Kapan",
+    "PRICE": "Harga",
+    "FROM": "mulai dari",
+    "CONTINUE_PAYMENT": "Lanjutkan ke pembayaran",
+    "PAYMENT_FOOTNOTE": "Pembayaran aman. Pembatalan sesuai kondisi. Anda dapat memilih untuk memesan kembali dengan penyedia yang sama setelah layanan."
+  },
+  "CHOICE_TYPE": {
+    "TITLE": "Bagaimana Anda ingin memesan?",
+    "SUBTITLE": "Pesan dalam 2 menit — di rumah, pembayaran aman.",
+    "QUICK_TITLE": "Pemesanan cepat",
+    "QUICK_DESC": "Pilih layanan, kami akan menawarkan slot.",
+    "RECOMMENDED": "Direkomendasikan",
+    "PROVIDER_TITLE": "Pilih penyedia",
+    "PROVIDER_DESC": "Jelajahi profil dan pesan di agenda."
   }
 }
