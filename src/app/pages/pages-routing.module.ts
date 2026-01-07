@@ -24,7 +24,7 @@ import { PayementProComponent } from './payement-pro/payement-pro.component';
 import { PayementValidationComponent } from './payement-validation/payement-validation.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { MessageComponent } from './message/message.component';
-import { ChoiceTypeComponent } from './choice-type/choice-type.component';
+// import { ChoiceTypeComponent } from './choice-type/choice-type.component';
 import { QuickComponent } from './quick/quick.component';
 
 const routes: Routes = [
@@ -111,11 +111,11 @@ const routes: Routes = [
         component: CreationShopComponent,
         canActivate: [],
     },
-    {
+    /*{
         path: 'choice',
         component: ChoiceTypeComponent,
         canActivate: [],
-    },
+    },*/
     {
         path: 'creation-company',
         component: CreationCompanyComponent,
