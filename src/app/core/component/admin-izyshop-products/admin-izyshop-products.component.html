@@ -1,0 +1,178 @@
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="title">Produits e-commerce</div>
+      <div class="subtitle">Gestion du catalogue (liste, recherche, édition, suppression, import BigBuy).</div>
+    </div>
+
+    <div class="header-right">
+      <button class="btn btn-primary" (click)="startBigBuyBootstrap()" [disabled]="bigBuyLoading">
+        🛒 Import BigBuy
+      </button>
+      <button class="btn btn-ghost" (click)="refresh()" [disabled]="loading || bigBuyLoading">
+        ↻ Refresh
+      </button>
+    </div>
+  </div>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="search">
+      <input [formControl]="searchCtrl" placeholder="Rechercher (titre / SKU / EAN)…" />
+    </div>
+
+    <button class="chip" [class.active]="completeOnly" (click)="toggleComplete()">
+      Complets
+    </button>
+
+    <div class="taxonomies">
+      <input [formControl]="taxonomiesInputCtrl" placeholder="Catégories (ex: 5419,11496)" />
+    </div>
+
+    <div class="limit">
+      <label>Par page</label>
+      <select [value]="limit" (change)="setLimit($any($event.target).value)">
+        <option [value]="25">25</option>
+        <option [value]="50">50</option>
+        <option [value]="100">100</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- BigBuy Status -->
+  <div class="status" *ngIf="bigBuyStatus">
+    <div class="status-left">
+      <div class="status-title">BigBuy Job</div>
+      <div class="status-sub">
+        {{ bigBuyStatus?.state || (bigBuyStatus?.running ? 'RUNNING' : 'IDLE') }}
+        <span *ngIf="bigBuyStatus?.jobType"> • {{ bigBuyStatus.jobType }}</span>
+      </div>
+    </div>
+    <div class="status-right">
+      <span class="badge" [class.running]="bigBuyStatus?.state === 'RUNNING' || bigBuyStatus?.running">
+        {{ (bigBuyStatus?.state === 'RUNNING' || bigBuyStatus?.running) ? 'En cours' : 'Idle' }}
+      </span>
+      <button class="btn btn-ghost small" (click)="refreshBigBuyStatus()" [disabled]="bigBuyLoading">Statut</button>
+    </div>
+  </div>
+
+  <!-- Errors -->
+  <div class="error" *ngIf="error">{{ error }}</div>
+
+  <!-- Card List -->
+  <div class="card">
+    <div class="card-head">
+      <div class="count">{{ total }} produits</div>
+
+      <div class="pager">
+        <button class="btn btn-ghost small" (click)="prev()" [disabled]="loading || page<=1">←</button>
+        <span>Page {{ page }} / {{ totalPages || 1 }}</span>
+        <button class="btn btn-ghost small" (click)="next()" [disabled]="loading || page>=totalPages">→</button>
+      </div>
+    </div>
+
+    <div class="loading" *ngIf="loading">Chargement…</div>
+
+    <div class="list" *ngIf="!loading">
+      <div class="row" *ngFor="let p of items">
+        <div class="thumb">
+          <img *ngIf="getCover(p)" [src]="getCover(p)" alt="cover" />
+          <div class="fallback" *ngIf="!getCover(p)">🛍️</div>
+        </div>
+
+        <div class="main">
+          <div class="name">{{ p?.title || 'Sans titre' }}</div>
+
+          <div class="meta">
+            <span class="pill">SKU: {{ p?.supplier?.sku || '-' }}</span>
+            <span class="pill">EAN: {{ p?.supplier?.ean13 || '-' }}</span>
+            <span class="pill">Cat: {{ p?.categoryId ?? '-' }}</span>
+            <span class="pill">Tax: {{ p?.taxonomyId ?? '-' }}</span>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="price">
+            <div class="price-main">{{ money(p?.pricing?.retailPrice) }}</div>
+            <div class="price-sub">Wholesale: {{ money(p?.pricing?.wholesalePrice) }}</div>
+          </div>
+
+          <div class="stock">Stock: <b>{{ p?.stock?.supplierQty ?? 0 }}</b></div>
+        </div>
+
+        <div class="actions">
+          <button class="icon-btn" (click)="openEdit(p)" title="Modifier">✏️</button>
+          <button class="icon-btn danger" (click)="deleteOne(p)" title="Supprimer">🗑️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div class="modal-backdrop" *ngIf="editOpen" (click)="closeEdit()"></div>
+
+  <div class="modal" *ngIf="editOpen">
+    <div class="modal-head">
+      <div class="modal-title">Modifier produit</div>
+      <button class="icon-btn" (click)="closeEdit()">✕</button>
+    </div>
+
+    <div class="modal-body" *ngIf="editing">
+      <label>
+        Titre
+        <input [(ngModel)]="editing.title" />
+      </label>
+
+      <div class="grid-2">
+        <label>
+          Prix retail
+          <input type="number" [(ngModel)]="editing.pricing.retailPrice" />
+        </label>
+
+        <label>
+          Prix wholesale
+          <input type="number" [(ngModel)]="editing.pricing.wholesalePrice" />
+        </label>
+
+        <label>
+          Stock supplierQty
+          <input type="number" [(ngModel)]="editing.stock.supplierQty" />
+        </label>
+
+        <label>
+          Sale price
+          <input type="number" [(ngModel)]="editing.pricing.salePrice" />
+        </label>
+      </div>
+
+      <label>
+        Cover image (URL)
+        <input [(ngModel)]="editing.coverImage" />
+      </label>
+
+      <div class="grid-2">
+        <label>
+          categoryId
+          <input type="number" [(ngModel)]="editing.categoryId" />
+        </label>
+
+        <label>
+          taxonomyId
+          <input type="number" [(ngModel)]="editing.taxonomyId" />
+        </label>
+      </div>
+
+      <label>
+        Description HTML (optionnel)
+        <textarea rows="7" [(ngModel)]="editing.descriptionHtml" placeholder="HTML..."></textarea>
+      </label>
+    </div>
+
+    <div class="modal-foot">
+      <button class="btn btn-ghost" (click)="closeEdit()">Annuler</button>
+      <button class="btn btn-primary" (click)="saveEdit()" [disabled]="loading">Enregistrer</button>
+    </div>
+  </div>
+</div>

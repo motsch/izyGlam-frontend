@@ -1,0 +1,224 @@
+<div class="pro-leads-page">
+  <h1 class="page-title">Prestataires à domicile</h1>
+  <p class="page-subtitle">
+    Suis les prestataires potentiels à onboarder sur izyGlam.
+  </p>
+
+  <div class="toolbar">
+    <div class="search-wrapper">
+      <input
+        type="text"
+        placeholder="Rechercher un prestataire, une ville, une catégorie..."
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange($event)"
+      />
+    </div>
+
+    <div class="toolbar-right">
+      <div class="filter-chip-group">
+        <button
+          class="chip"
+          [class.chip--active]="filterHasEmail === 'all'"
+          (click)="onFilterHasEmailChange('all')"
+        >
+          Tous
+        </button>
+        <button
+          class="chip"
+          [class.chip--active]="filterHasEmail === 'yes'"
+          (click)="onFilterHasEmailChange('yes')"
+        >
+          Avec email
+        </button>
+        <button
+          class="chip"
+          [class.chip--active]="filterHasEmail === 'no'"
+          (click)="onFilterHasEmailChange('no')"
+        >
+          Sans email
+        </button>
+      </div>
+
+      <div class="filter-chip-group">
+        <button
+          class="chip"
+          [class.chip--active]="filterStatus === 'all'"
+          (click)="onFilterStatusChange('all')"
+        >
+          Tous statuts
+        </button>
+        <button
+          class="chip"
+          [class.chip--active]="filterStatus === 'new'"
+          (click)="onFilterStatusChange('new')"
+        >
+          Nouveaux
+        </button>
+        <button
+          class="chip"
+          [class.chip--active]="filterStatus === 'contacted'"
+          (click)="onFilterStatusChange('contacted')"
+        >
+          Contactés
+        </button>
+        <button
+          class="chip"
+          [class.chip--active]="filterStatus === 'qualified'"
+          (click)="onFilterStatusChange('qualified')"
+        >
+          Qualifiés
+        </button>
+        <button
+          class="chip"
+          [class.chip--active]="filterStatus === 'onboarded'"
+          (click)="onFilterStatusChange('onboarded')"
+        >
+          Onboardés
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="header-count">
+        {{ filteredLeads.length }}
+        prestataire{{ filteredLeads.length > 1 ? "s" : "" }}
+      </span>
+      <span *ngIf="loading" class="header-loading">Chargement...</span>
+    </div>
+
+    <div class="table">
+      <div class="table-header">
+        <div class="col col-provider">Prestataire</div>
+        <div class="col col-city">Ville</div>
+        <div class="col col-category">Catégorie</div>
+        <div class="col col-email">Email</div>
+        <div class="col col-status">Statut</div>
+        <div class="col col-notes">Notes</div>
+        <div class="col col-actions">Actions</div>
+      </div>
+
+      <div class="table-row" *ngFor="let lead of filteredLeads">
+        <!-- Prestataire -->
+        <div class="col col-provider">
+          <div class="provider-main">
+            <div class="avatar">
+              <span>{{
+                lead.name ? lead.name.charAt(0).toUpperCase() : "?"
+              }}</span>
+            </div>
+            <div class="provider-text">
+              <div class="provider-name">{{ lead.name }}</div>
+              <div class="provider-sub">
+                <span *ngIf="lead.website">
+                  <a [href]="lead.website" target="_blank" rel="noopener">
+                    {{ lead.website }}
+                  </a>
+                </span>
+                <span *ngIf="lead.contactPhone">
+                  • {{ lead.contactPhone }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ville -->
+        <div class="col col-city">
+          <div class="city-main">
+            <span class="city-name">{{ lead.city || "—" }}</span>
+            <span class="city-sub" *ngIf="lead.postalCode">
+              {{ lead.postalCode }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Catégorie -->
+        <div class="col col-category">
+          <span class="category-pill" *ngIf="lead.categoryName; else noCat">
+            {{ lead.categoryName }}
+          </span>
+          <ng-template #noCat>
+            <span class="category-pill category-pill--empty">
+              Non catégorisé
+            </span>
+          </ng-template>
+        </div>
+
+        <!-- Email -->
+        <div class="col col-email">
+          <div
+            class="email-badge"
+            [class.email-badge--empty]="!lead.contactEmail"
+          >
+            <span *ngIf="lead.contactEmail; else noEmail">
+              {{ lead.contactEmail }}
+            </span>
+            <ng-template #noEmail>
+              <span class="no-email-text">Aucun email</span>
+            </ng-template>
+          </div>
+        </div>
+
+        <!-- Statut -->
+        <div class="col col-status">
+          <span
+            class="status-pill"
+            [ngClass]="{
+              'status-pill--new': lead.status === 'new',
+              'status-pill--contacted': lead.status === 'contacted',
+              'status-pill--qualified': lead.status === 'qualified',
+              'status-pill--onboarded': lead.status === 'onboarded',
+              'status-pill--rejected': lead.status === 'rejected'
+            }"
+          >
+            {{ getStatusLabel(lead) }}
+          </span>
+
+          <div class="contact-flag" *ngIf="hasBeenContacted(lead)">
+            Contacté le
+            {{ lead.lastContactAt | date: "shortDate" }}
+          </div>
+
+          <div
+            class="employees-flag"
+            *ngIf="lead.estimatedEmployees"
+          >
+            ~{{ lead.estimatedEmployees }} employés ciblés
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div class="col col-notes">
+          <textarea
+            [(ngModel)]="lead.notes"
+            (blur)="saveNotes(lead)"
+            placeholder="Ajouter un commentaire..."
+            [disabled]="savingId === lead._id"
+          ></textarea>
+        </div>
+
+        <!-- Actions -->
+        <div class="col col-actions">
+          <button
+            class="icon-btn"
+            [class.icon-btn--success]="hasBeenContacted(lead)"
+            (click)="markContacted(lead)"
+            [disabled]="savingId === lead._id"
+            title="Marquer comme contacté"
+          >
+            ✔
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="table-empty"
+        *ngIf="!loading && filteredLeads.length === 0"
+      >
+        Aucun prestataire à afficher pour le moment.
+      </div>
+    </div>
+  </div>
+</div>
