@@ -1,344 +1,363 @@
-<!-- create-shop.component.html -->
-<div class="main-section">
-  <div class="container custom-container">
-    <div class="row">
-      <div class="col-md-12 content right-side">
-        <div class="form">
-          <!-- Titre principal simple -->
-          <h2>{{ "CREATION_SHOP.TITLE2" | translate }}</h2>
+<!-- PAGE : bouton unique -->
+<div class="page">
+  <div class="hero">
+    <div class="hero-text">
+      <h1 class="title">{{ "CREATION_SHOP.TITLE2" | translate }}</h1>
+      <p class="subtitle">
+        {{ "CREATION_SHOP_WIZARD.SUBTITLE" | translate }}
+      </p>
 
-          <!-- Stepper -->
-          <div class="stepper">
-            <div class="stepper-item" [class.active]="currentStep === 1" [class.completed]="currentStep > 1">
-              <div class="stepper-index">1</div>
-              <div class="stepper-text">
-                <div class="stepper-label">
-                  {{ "CREATION_SHOP.STEP1_TITLE" | translate }}
-                </div>
-              </div>
+      <button class="primary" (click)="openWizard()" [disabled]="!isUserConnected || alreadyProfessionnal">
+        {{ "CREATION_SHOP_WIZARD.OPEN" | translate }}
+      </button>
+
+      <p class="hint" *ngIf="alreadyProfessionnal">
+        {{ "CREATION_SHOP.ALREDAY_SHOP" | translate }}
+      </p>
+      <p class="hint" *ngIf="!isUserConnected">
+        {{ "CREATION_SHOP.NOT_CONNECTED" | translate }}
+      </p>
+    </div>
+
+    <div class="hero-visual">
+      <div class="visual-card">
+        <div class="visual-badge">izyglam</div>
+        <div class="visual-glow"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="izy-overlay" *ngIf="wizardOpen" (click)="closeWizard()"></div>
+
+
+<!-- MODAL -->
+
+<div class="izy-modal" *ngIf="wizardOpen" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+  <!-- HEADER -->
+  <div class="modal-header">
+    <button class="icon-btn" (click)="closeWizard()" aria-label="Close">✕</button>
+
+    <div class="step-hero">
+      <img class="step-image" [src]="wizardSteps[wizardStep].image" alt="" (error)="hideBrokenImg($event)" />
+      <div class="step-meta">
+        <div class="step-title">{{ wizardSteps[wizardStep].title | translate }}</div>
+        <div class="step-subtitle">{{ wizardSteps[wizardStep].subtitle | translate }}</div>
+      </div>
+    </div>
+
+    <div class="progress">
+      <div class="dots">
+        <span class="dot" *ngFor="let s of wizardSteps; let i = index" [class.active]="i === wizardStep"
+          [class.done]="i < wizardStep" [class.clickable]="canJumpTo(i)" (click)="goToStep(i)">
+        </span>
+      </div>
+      <div class="bar">
+        <div class="bar-fill" [style.width.%]="progressPercent"></div>
+      </div>
+    </div>
+    {{wizardStep}}
+  </div>
+
+  <!-- BODY -->
+  <div class="modal-body">
+
+    <!-- STEP 0 : INTRO -->
+    <ng-container *ngIf="wizardStep === 0">
+      <div class="card">
+        <div class="big">{{ "CREATION_SHOP_WIZARD.S0_BIG" | translate }}</div>
+        <div class="muted">{{ "CREATION_SHOP_WIZARD.S0_DESC" | translate }}</div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ico">⏱️</div>
+            <div>
+              <div class="t">{{ "CREATION_SHOP_WIZARD.S0_F1_T" | translate }}</div>
+              <div class="d">{{ "CREATION_SHOP_WIZARD.S0_F1_D" | translate }}</div>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="ico">🔒</div>
+            <div>
+              <div class="t">{{ "CREATION_SHOP_WIZARD.S0_F2_T" | translate }}</div>
+              <div class="d">{{ "CREATION_SHOP_WIZARD.S0_F2_D" | translate }}</div>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="ico">✅</div>
+            <div>
+              <div class="t">{{ "CREATION_SHOP_WIZARD.S0_F3_T" | translate }}</div>
+              <div class="d">{{ "CREATION_SHOP_WIZARD.S0_F3_D" | translate }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft">{{ "CREATION_SHOP_WIZARD.S0_NOTE" | translate }}</div>
+      </div>
+    </ng-container>
+
+    <!-- STEP 1 : INFOS SALON (nom/handle/catégorie) -->
+    <!-- STEP 1 : INFOS SALON (nom/handle/catégorie) -->
+    <ng-container *ngIf="wizardStep === 1">
+      <div class="card">
+        <div class="grid2">
+
+          <div class="field">
+            <label>{{ "CREATION_SHOP.NAME" | translate }}</label>
+            <input type="text" [(ngModel)]="newShop.name" placeholder="Sab Beauty"
+              (ngModelChange)="onShopNameTyping($event)" />
+            <div class="field-error" *ngIf="showErrors && !!error.name">{{ error.name }}</div>
+          </div>
+
+          <div class="field">
+            <label>{{ "CREATION_SHOP.BUSINESSTYPE" | translate }}</label>
+            <select [(ngModel)]="newShop.companyType" (change)="onCompanyTypeChange()">
+              <option value="coiffure">{{ "MAIN_CATEGORY.COIFFURE" | translate }}</option>
+              <option value="manucure">{{ "MAIN_CATEGORY.MANUCURE" | translate }}</option>
+              <option value="massage">{{ "MAIN_CATEGORY.MASSAGE" | translate }}</option>
+              <option value="maquillage">{{ "MAIN_CATEGORY.MAQUILLAGE" | translate }}</option>
+              <option value="epilation">{{ "MAIN_CATEGORY.EPILATION" | translate }}</option>
+              <option value="bronzage">{{ "MAIN_CATEGORY.BRONZAGE" | translate }}</option>
+              <option value="partum">{{ "MAIN_CATEGORY.PARTUM" | translate }}</option>
+              <option value="nutrition">{{ "MAIN_CATEGORY.NUTRITION"| translate }}</option>
+              <option value="fitness">{{ "MAIN_CATEGORY.FITNESS" | translate }}</option>
+              <option value="acupunture">{{ "MAIN_CATEGORY.ACUPUNCTURE" | translate }}</option>
+              <option value="stylisme">{{ "MAIN_CATEGORY.STYLISME" | translate }}</option>
+              <option value="relaxation">{{ "MAIN_CATEGORY.YOGA" | translate }}</option>
+              <option value="elevation">{{ "MAIN_CATEGORY.DEVELOPPEMENT" | translate }}</option>
+            </select>
+            <div class="field-error" *ngIf="showErrors && !!error.companyType">{{ error.companyType }}</div>
+          </div>
+
+          <!-- HANDLE (auto) -->
+          <div class="field full">
+            <label>{{ "CREATION_SHOP_WIZARD.HANDLE_LABEL" | translate }}</label>
+
+            <div class="handle-row">
+
+              <input type="text" [ngModel]="newShop.handle" disabled placeholder="sabbeauty" autocomplete="off" />
+
+              <button type="button" class="chip-btn" (click)="testHandle()"
+                [disabled]="!canTestHandle() || handleChecking">
+                <span *ngIf="!handleChecking">{{ "CREATION_SHOP_WIZARD.TEST" | translate }}</span>
+                <span *ngIf="handleChecking">{{ "CREATION_SHOP_WIZARD.CHECKING" | translate }}</span>
+              </button>
+
+              <span class="pill ok" *ngIf="!handleChecking && handleAvailable === true && newShop.handle">
+                {{ "CREATION_SHOP_WIZARD.AVAILABLE" | translate }}
+              </span>
+
+              <span class="pill ko" *ngIf="!handleChecking && handleAvailable === false && newShop.handle">
+                {{ "CREATION_SHOP_WIZARD.TAKEN" | translate }}
+              </span>
             </div>
 
-            <div class="stepper-divider"></div>
+            <div class="preview" *ngIf="newShop.handle">
+              {{ "CREATION_SHOP_WIZARD.HANDLE_PREVIEW" | translate }}
+              <strong>izyglam.com/{{ newShop.handle }}</strong>
+            </div>
 
-            <div class="stepper-item" [class.active]="currentStep === 2" [class.completed]="false">
-              <div class="stepper-index">2</div>
-              <div class="stepper-text">
-                <div class="stepper-label">
-                  {{ "CREATION_SHOP.STEP2_TITLE" | translate }}
-                </div>
+            <div class="soft small" *ngIf="newShop.handle && handleAvailable === null">
+              {{ "CREATION_SHOP_WIZARD.TEST_HINT" | translate }}
+            </div>
+
+            <div class="field-error" *ngIf="showErrors && !!error.handle">{{ error.handle }}</div>
+          </div>
+
+        </div>
+
+        <div class="soft">{{ "CREATION_SHOP_WIZARD.S1_HINT" | translate }}</div>
+      </div>
+    </ng-container>
+
+
+    <!-- STEP 2 : ADRESSE + ZONES -->
+    <ng-container *ngIf="wizardStep === 2">
+      <div class="card">
+        <div class="grid2">
+
+          <div class="field">
+            <label>{{ "CREATION_SHOP.COUNTRY" | translate }}</label>
+            <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()">
+              <option *ngFor="let country of availableCountries" [value]="country.name">
+                {{ country.translation | translate }}
+              </option>
+            </select>
+            <div class="field-error" *ngIf="showErrors && !!error.selectedCountry">{{ error.selectedCountry }}</div>
+          </div>
+
+          <div class="field">
+            <label>{{ "CREATION_SHOP.POSTAL_CODE" | translate }}</label>
+            <input type="text" [(ngModel)]="postalCode" placeholder="75001" maxlength="10"
+              (blur)="onPostalCodeEntered()" />
+            <div class="field-error" *ngIf="showErrors && !!error.postalCode">{{ error.postalCode }}</div>
+          </div>
+
+          <div class="field">
+            <label>{{ "CREATION_SHOP.CITY" | translate }}</label>
+            <select [(ngModel)]="selectedCity" name="city" (change)="onCityChange()">
+              <option *ngFor="let city of availableCities" [ngValue]="city">{{ city.nom }}</option>
+            </select>
+            <div class="field-error" *ngIf="showErrors && !!error.selectedCity">{{ error.selectedCity }}</div>
+          </div>
+
+          <div class="field">
+            <label>{{ "CREATION_SHOP.FLOOR" | translate }}</label>
+            <input type="text" [(ngModel)]="newShop.floor" placeholder="Étage / Suite (optionnel)" />
+          </div>
+
+          <div class="field full">
+            <label>{{ "CREATION_SHOP.STREET" | translate }}</label>
+            <input type="text" [(ngModel)]="newShop.street" placeholder="123, rue Principale" />
+            <div class="field-error" *ngIf="showErrors && !!error.street">{{ error.street }}</div>
+          </div>
+
+          <!-- ZONES -->
+          <div class="field full">
+            <label>{{ "CREATION_SHOP.CODE_POSTAL_POSSIBLE" | translate }}</label>
+
+            <div class="postal-row">
+              <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10"
+                (keyup.enter)="addPostalCode()" />
+              <button type="button" class="chip-btn" (click)="addPostalCode()">+</button>
+            </div>
+
+            <div class="field-error" *ngIf="!!error.deliveryPostalCode">{{ error.deliveryPostalCode }}</div>
+
+            <div class="tags" *ngIf="deliveryPostalCodesList?.length">
+              <span class="tag" *ngFor="let code of deliveryPostalCodesList; let i = index">
+                {{ code }}
+                <button type="button" class="x" (click)="removePostalCode(i)">×</button>
+              </span>
+            </div>
+
+            <div class="soft small">{{ "CREATION_SHOP_WIZARD.S2_HINT" | translate }}</div>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="field full">
+            <div class="toggle">
+              <input type="checkbox" id="whatsapp" [(ngModel)]="newShop.ccvaccepted" />
+              <label for="whatsapp">{{ "CREATION_SHOP.WHATSAPP" | translate }}</label>
+            </div>
+            <div class="field-error" *ngIf="showErrors && !!error.ccvaccepted">{{ error.ccvaccepted }}</div>
+          </div>
+
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- STEP 3 : DOCUMENTS + FINAL -->
+    <ng-container *ngIf="wizardStep === 3">
+      <div class="card">
+        <div class="doc-head">
+          <div class="big">{{ "CREATION_SHOP.VERIF_TITLE" | translate }}</div>
+          <div class="muted">{{ "CREATION_SHOP.VERIF_SUBTITLE" | translate }}</div>
+          <div class="soft small">{{ "CREATION_SHOP.STEP2_TAGLINE" | translate }}</div>
+        </div>
+
+        <!-- Upload cards (on garde ton HTML, mais stylé via le SCSS) -->
+        <div class="verification-section">
+
+          <!-- ID -->
+          <div class="verification-card">
+            <div class="verification-card-header">
+              <div>
+                <h3>{{ "CREATION_SHOP.VERIF_ID_TITLE" | translate }}</h3>
+                <p>{{ "CREATION_SHOP.VERIF_ID_DESC" | translate }}</p>
               </div>
+              <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.identity?.status)">
+                {{ getStatusLabel(verification?.identity?.status) | translate }}
+              </span>
+            </div>
+            <div class="verification-card-body">
+              <label class="file-input-label">
+                {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'identity')"
+                  accept=".pdf,.jpg,.jpeg,.png" />
+              </label>
+              <div class="file-name" *ngIf="identityDocFileName">{{ identityDocFileName }}</div>
+              <div class="field-error" *ngIf="verificationError.identityDoc">{{ verificationError.identityDoc }}</div>
             </div>
           </div>
 
-          <!-- STEP 1 : infos du salon -->
-          <ng-container *ngIf="currentStep === 1">
-            <div class="margin-bottom-20"></div>
-
-            <div class="row input-group-row">
-              <div class="col-md-12">
-                <label for="establishment-name">
-                  {{ "CREATION_SHOP.NAME" | translate }}
-                </label>
-                <input type="text" id="establishment-name" name="establishment-name" [(ngModel)]="newShop.name"
-                  placeholder="Sab Beauty" (ngModelChange)="onShopNameTyping()" />
-
-                <div *ngIf="error.name" class="error">{{ error.name }}</div>
+          <!-- Assurance -->
+          <div class="verification-card">
+            <div class="verification-card-header">
+              <div>
+                <h3>{{ "CREATION_SHOP.VERIF_INSURANCE_TITLE" | translate }}</h3>
+                <p>{{ "CREATION_SHOP.VERIF_INSURANCE_DESC" | translate }}</p>
               </div>
+              <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.insurance?.status)">
+                {{ getStatusLabel(verification?.insurance?.status) | translate }}
+              </span>
             </div>
-
-            <!-- HANDLE PUBLIC -->
-            <div class="row input-group-row">
-              <div class="col-md-12">
-                <label for="shop-handle">Identifiant public</label>
-
-                <div class="handle-row">
-                  <span class="handle-prefix">&#64;</span>
-
-                  <input type="text" id="shop-handle" name="shop-handle" [(ngModel)]="newShop.handle"
-                    placeholder="sabbeauty" (ngModelChange)="onHandleTypingLocal($event)" autocomplete="off" />
-
-                  <span class="handle-status" [class.ok]="handleAvailable === true"
-                    [class.ko]="handleAvailable === false" *ngIf="newShop.handle">
-                    <ng-container *ngIf="handleAvailable === true">OK</ng-container>
-                    <ng-container *ngIf="handleAvailable === false">Pris</ng-container>
-                  </span>
-                </div>
-
-                <div class="handle-preview" *ngIf="newShop.handle">
-                  Lien : <strong>izyglam.com/&#64;{{ newShop.handle }}</strong>
-                </div>
-
-                <div *ngIf="error.handle" class="error">{{ error.handle }}</div>
-              </div>
-            </div>
-
-
-            <div class="row input-group-row">
-              <div class="col-md-5">
-                <label for="floor">{{ "CREATION_SHOP.FLOOR" | translate }}</label>
-                <input type="text" id="floor" name="floor" placeholder="123" [(ngModel)]="newShop.floor" />
-                <div *ngIf="error.floor" class="error">{{ error.floor }}</div>
-              </div>
-              <div class="col-md-6">
-                <label for="country">{{ "CREATION_SHOP.COUNTRY" | translate }}</label>
-                <select [(ngModel)]="selectedCountry" name="country" (change)="onCountryChange()" required>
-                  <option *ngFor="let country of availableCountries" [value]="country.name">
-                    {{ country.translation | translate }}
-                  </option>
-                </select>
-                <div *ngIf="error.selectedCountry" class="error">
-                  {{ error.selectedCountry }}
-                </div>
-              </div>
-            </div>
-
-            <div class="row input-group-row">
-              <div class="col-md-5">
-                <label for="postalCode">
-                  {{ "CREATION_SHOP.POSTAL_CODE" | translate }}
-                </label>
-                <input type="text" id="postalCode" name="postalCode" placeholder="Code postal" [(ngModel)]="postalCode"
-                  (blur)="onPostalCodeEntered()" required maxlength="10" />
-                <div *ngIf="error.postalCode" class="error">
-                  {{ error.postalCode }}
-                </div>
-              </div>
-              <div class="col-md-6">
-                <label for="city">{{ "CREATION_SHOP.CITY" | translate }}</label>
-                <select [(ngModel)]="selectedCity" name="city" required (change)="onCityChange()">
-                  <option *ngFor="let city of availableCities" [ngValue]="city">
-                    {{ city.nom }}
-                  </option>
-                </select>
-                <div *ngIf="error.selectedCity" class="error">
-                  {{ error.selectedCity }}
-                </div>
-              </div>
-            </div>
-
-            <div class="row input-group-row">
-              <div class="col-md-12">
-                <label for="street">
-                  {{ "CREATION_SHOP.STREET" | translate }}
-                </label>
-                <input type="text" id="street" name="street" [(ngModel)]="newShop.street" placeholder="Rue" required />
-                <div *ngIf="error.street" class="error">{{ error.street }}</div>
-              </div>
-            </div>
-
-            <div class="row input-group-row">
-              <div class="col-md-12">
-                <label for="business-type">
-                  {{ "CREATION_SHOP.BUSINESSTYPE" | translate }}
-                </label>
-                <select id="business-type" name="business-type" [(ngModel)]="newShop.companyType">
-                  <option value="coiffure">
-                    {{ "MAIN_CATEGORY.COIFFURE" | translate }}
-                  </option>
-                  <option value="manucure">
-                    {{ "MAIN_CATEGORY.MANUCURE" | translate }}
-                  </option>
-                  <option value="massage">
-                    {{ "MAIN_CATEGORY.MASSAGE" | translate }}
-                  </option>
-                  <option value="maquillage">
-                    {{ "MAIN_CATEGORY.MAQUILLAGE" | translate }}
-                  </option>
-                  <option value="epilation">
-                    {{ "MAIN_CATEGORY.EPILATION" | translate }}
-                  </option>
-                  <option value="bronzage">
-                    {{ "MAIN_CATEGORY.BRONZAGE" | translate }}
-                  </option>
-                  <option value="partum">
-                    {{ "MAIN_CATEGORY.PARTUM" | translate }}
-                  </option>
-                  <option value="nutrition">
-                    {{ "MAIN_CATEGORY.NUTRITION" | translate }}
-                  </option>
-                  <option value="fitness">
-                    {{ "MAIN_CATEGORY.FITNESS" | translate }}
-                  </option>
-                  <option value="acupunture">
-                    {{ "MAIN_CATEGORY.ACUPUNCTURE" | translate }}
-                  </option>
-                  <option value="stylisme">
-                    {{ "MAIN_CATEGORY.STYLISME" | translate }}
-                  </option>
-                  <option value="relaxation">
-                    {{ "MAIN_CATEGORY.YOGA" | translate }}
-                  </option>
-                  <option value="elevation">
-                    {{ "MAIN_CATEGORY.DEVELOPPEMENT" | translate }}
-                  </option>
-                </select>
-                <div *ngIf="error.companyType" class="error">
-                  {{ error.companyType }}
-                </div>
-              </div>
-            </div>
-
-            <div class="row input-group-row">
-              <div class="col-md-12">
-                <label for="deliveryPostalCode">
-                  {{ "CREATION_SHOP.CODE_POSTAL_POSSIBLE" | translate }}
-                </label>
-                <div class="postal-code-entry">
-                  <input type="text" id="deliveryPostalCode" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001"
-                    maxlength="10" (keyup.enter)="addPostalCode()" />
-                  <button type="button" class="add-postal-code-btn" (click)="addPostalCode()">
-                    +
-                  </button>
-                </div>
-
-                <div *ngIf="error.deliveryPostalCode" class="error">
-                  {{ error.deliveryPostalCode }}
-                </div>
-                <div class="postal-code-list">
-                  <span class="postal-code-tag" *ngFor="let code of deliveryPostalCodesList; let i = index">
-                    {{ code }}
-                    <button type="button" class="remove-btn" (click)="removePostalCode(i)">
-                      ×
-                    </button>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div class="whatsapp">
-              <input type="checkbox" id="whatsapp" [(ngModel)]="newShop.ccvaccepted" />
-              <label for="whatsapp">
-                {{ "CREATION_SHOP.WHATSAPP" | translate }}
+            <div class="verification-card-body">
+              <label class="file-input-label">
+                {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'insurance')"
+                  accept=".pdf,.jpg,.jpeg,.png" />
               </label>
+              <div class="file-name" *ngIf="insuranceDocFileName">{{ insuranceDocFileName }}</div>
+              <div class="field-error" *ngIf="verificationError.insuranceDoc">{{ verificationError.insuranceDoc }}</div>
             </div>
+          </div>
 
-            <!-- Step 1 : on valide le formulaire et on passe au step 2 -->
-            <button (click)="onSubmit()" type="submit">
-              {{ "CREATION_SHOP.BUTTON" | translate }}
-            </button>
-          </ng-container>
-
-          <!-- STEP 2 : vérification & upload de documents -->
-          <ng-container *ngIf="currentStep === 2">
-            <div class="verification-header-global">
-              <h2>
-                {{ "CREATION_SHOP.VERIF_TITLE" | translate }}
-              </h2>
-              <p class="verification-subtitle">
-                {{ "CREATION_SHOP.VERIF_SUBTITLE" | translate }}
-              </p>
-              <p class="verification-tagline">
-                {{ "CREATION_SHOP.STEP2_TAGLINE" | translate }}
-              </p>
+          <!-- KBIS -->
+          <div class="verification-card">
+            <div class="verification-card-header">
+              <div>
+                <h3>{{ "CREATION_SHOP.VERIF_KBIS_TITLE" | translate }}</h3>
+                <p>{{ "CREATION_SHOP.VERIF_KBIS_DESC" | translate }}</p>
+              </div>
+              <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.kbis?.status)">
+                {{ getStatusLabel(verification?.kbis?.status) | translate }}
+              </span>
             </div>
-
-            <div class="verification-section">
-              <!-- Pièce d’identité -->
-              <div class="verification-card">
-                <div class="verification-card-header">
-                  <div>
-                    <h3>
-                      {{ "CREATION_SHOP.VERIF_ID_TITLE" | translate }}
-                    </h3>
-                    <p>
-                      {{ "CREATION_SHOP.VERIF_ID_DESC" | translate }}
-                    </p>
-                  </div>
-                  <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.identity?.status)">
-                    {{ getStatusLabel(verification?.identity?.status) | translate }}
-                  </span>
-                </div>
-                <div class="verification-card-body">
-                  <label class="file-input-label">
-                    {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                    <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'identity')"
-                      accept=".pdf,.jpg,.jpeg,.png" />
-                  </label>
-                  <div class="file-name" *ngIf="identityDocFileName">
-                    {{ identityDocFileName }}
-                  </div>
-                  <div class="error" *ngIf="verificationError.identityDoc">
-                    {{ verificationError.identityDoc }}
-                  </div>
-                </div>
-              </div>
-
-              <!-- Assurance pro -->
-              <div class="verification-card">
-                <div class="verification-card-header">
-                  <div>
-                    <h3>
-                      {{ "CREATION_SHOP.VERIF_INSURANCE_TITLE" | translate }}
-                    </h3>
-                    <p>
-                      {{ "CREATION_SHOP.VERIF_INSURANCE_DESC" | translate }}
-                    </p>
-                  </div>
-                  <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.insurance?.status)">
-                    {{ getStatusLabel(verification?.insurance?.status) | translate }}
-                  </span>
-                </div>
-                <div class="verification-card-body">
-                  <label class="file-input-label">
-                    {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                    <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'insurance')"
-                      accept=".pdf,.jpg,.jpeg,.png" />
-                  </label>
-                  <div class="file-name" *ngIf="insuranceDocFileName">
-                    {{ insuranceDocFileName }}
-                  </div>
-                  <div class="error" *ngIf="verificationError.insuranceDoc">
-                    {{ verificationError.insuranceDoc }}
-                  </div>
-                </div>
-              </div>
-
-              <!-- KBIS optionnel -->
-              <div class="verification-card">
-                <div class="verification-card-header">
-                  <div>
-                    <h3>
-                      {{ "CREATION_SHOP.VERIF_KBIS_TITLE" | translate }}
-                    </h3>
-                    <p>
-                      {{ "CREATION_SHOP.VERIF_KBIS_DESC" | translate }}
-                    </p>
-                  </div>
-                  <span class="verification-status-pill" [ngClass]="getStatusClass(verification?.kbis?.status)">
-                    {{ getStatusLabel(verification?.kbis?.status) | translate }}
-                  </span>
-                </div>
-                <div class="verification-card-body">
-                  <label class="file-input-label">
-                    {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                    <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'kbis')"
-                      accept=".pdf,.jpg,.jpeg,.png" />
-                  </label>
-                  <div class="file-name" *ngIf="kbisDocFileName">
-                    {{ kbisDocFileName }}
-                  </div>
-                </div>
-              </div>
+            <div class="verification-card-body">
+              <label class="file-input-label">
+                {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'kbis')"
+                  accept=".pdf,.jpg,.jpeg,.png" />
+              </label>
+              <div class="file-name" *ngIf="kbisDocFileName">{{ kbisDocFileName }}</div>
             </div>
+          </div>
 
-            <p class="verification-formats">
-              {{ "CREATION_SHOP.VERIF_ALLOWED_FORMATS" | translate }}
-            </p>
-            <p class="verification-mandatory">
-              {{ "CREATION_SHOP.VERIF_MANDATORY_HINT" | translate }}
-            </p>
+        </div>
 
-            <!-- Step 2 : on crée le shop + upload docs -->
-            <button type="button" (click)="submitVerificationDocs()" [disabled]="isUploadingDocs">
-              {{ "CREATION_SHOP.VERIF_PRIMARY_BUTTON" | translate }}
-            </button>
+        <p class="verification-formats">{{ "CREATION_SHOP.VERIF_ALLOWED_FORMATS" | translate }}</p>
+        <p class="verification-mandatory">{{ "CREATION_SHOP.VERIF_MANDATORY_HINT" | translate }}</p>
 
-            <button type="button" class="secondary-button" (click)="skipVerification()">
-              {{ "CREATION_SHOP.VERIF_SKIP_BUTTON" | translate }}
-            </button>
-          </ng-container>
+        <div class="final-actions">
+          <button class="primary" type="button" (click)="submitVerificationDocs()" [disabled]="isUploadingDocs || busy">
+            <span *ngIf="!(isUploadingDocs || busy)">{{ "CREATION_SHOP.VERIF_PRIMARY_BUTTON" | translate }}</span>
+            <span *ngIf="(isUploadingDocs || busy)">{{ "CREATION_SHOP_WIZARD.PLEASE_WAIT" | translate }}</span>
+          </button>
+
+          <button class="ghost" type="button" (click)="finishAndGoLogin()" [disabled]="busy">
+            {{ "CREATION_SHOP_WIZARD.FINISH" | translate }}
+          </button>
+
+          <button class="link" type="button" (click)="skipVerification()" [disabled]="busy">
+            {{ "CREATION_SHOP.VERIF_SKIP_BUTTON" | translate }}
+          </button>
         </div>
       </div>
-    </div>
+    </ng-container>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="modal-footer">
+    <button class="ghost" (click)="prev()">
+      {{ "CREATION_SHOP_WIZARD.BACK" | translate }}
+    </button>
+
+    <button class="primary" (click)="next()" *ngIf="wizardStep < 3">
+      <span *ngIf="!busy">{{ "CREATION_SHOP_WIZARD.NEXT" | translate }}</span>
+      <span *ngIf="busy">{{ "CREATION_SHOP_WIZARD.PLEASE_WAIT" | translate }}</span>
+    </button>
   </div>
 </div>
