@@ -53,7 +53,8 @@
               "lodash",
               "pdfmake",
               "mqtt",
-              "pdfmake/build/vfs_fonts"
+              "pdfmake/build/vfs_fonts",
+              "moment"
             ]
           },
           "configurations": {
