@@ -126,6 +126,11 @@ export class AppComponent implements OnInit {
   }
 
   goTo(name: string) {
+    if (name === 'shop') {
+      window.open('https://shop.izyglam.com', '_blank', 'noopener,noreferrer');
+      return;
+    }
+
     this.drawerService.closeDrawer();
     this.router.navigate([name]);
   }

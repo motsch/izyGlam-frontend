@@ -46,22 +46,12 @@
           <img class="menuBurger" [src]="imgStorageUrl + 'menuBurger.png'" alt="logo" />
         </a>
       </div>
-  
       <div class="col-auto">
         <a class="navbar-brand" [routerLink]="'/main'">
           <img [src]="imgStorageUrl + 'logo/glam_logo.png'" class="logo" alt="logo" (click)="removeSettingsProfil()" />
         </a>
       </div>
-  
-      <div class="col"></div> <!-- Espace entre le logo et le bouton -->
-      <!--
-      <div class="col-auto ms-auto" *ngIf="me.role === 'boss' || me.role === 'professionnel'">
-        <button class="btn btn-primary lavender-action-btn" (click)="goToPrices()">
-          {{ 'SIDEBAR.MY_ABO' | translate }}
-        </button>
-      </div>
-      -->
-  
+      <div class="col"></div> <!-- Espace entre le logo et le bouton -->  
     </div>
   </div>
   

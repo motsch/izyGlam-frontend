@@ -128,4 +128,8 @@ export class HeaderComponent implements OnInit {
   goToPrices() {
     this.router.navigate(['/prices']);
   }
+
+  goIzyGlam() {
+    window.open('https://izyglam.com', '_blank', 'noopener,noreferrer');
+  }
 }
