@@ -108,4 +108,5 @@ export class BookingCategoryService {
 
         return throwError(() => new Error(message));
     }
+
 }

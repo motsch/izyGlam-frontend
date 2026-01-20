@@ -178,6 +178,10 @@ export class ShopComponent {
         this.isExpanded = !this.isExpanded;
     }
 
+    getItemsByCategory(categoryId: string) {
+        return this.shopItems.filter(item => item.categoryId === categoryId);
+    }
+
     // ----------------------------------------------------
     // 🖼️ Lightbox — ouverture
     // ----------------------------------------------------

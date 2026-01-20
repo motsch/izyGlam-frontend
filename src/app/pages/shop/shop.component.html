@@ -140,5 +140,32 @@
         </div>
       </div>
     </div>
+
+
+
+    <!-- Gallery display section -->
+    <div class="col-lg-9">
+      <!-- {{ categories | json }} -->
+
+      <div *ngFor="let cat of categories" class="mb-5">
+
+        <!-- Nom de la catégorie -->
+        <h4 class="mb-3">{{ cat.name }}</h4>
+
+        <!-- Items de la catégorie -->
+        <div class="row g-3 justify-content-start">
+
+          <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of getItemsByCategory(cat._id)">
+            <app-shop-item-card [item]="item"></app-shop-item-card>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
   </div>
 </section>
