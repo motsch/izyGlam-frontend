@@ -222,10 +222,17 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
       name,
       description: (this.modalCategory.description || '').trim() || undefined,
       shopId: this.myShopData._id,
+      userProId: this.me?._id, // ✅ IMPORTANT
       color: this.modalCategory.color || undefined,
       order: typeof this.modalCategory.order === 'number' ? this.modalCategory.order : this.categories.length,
       active: typeof this.modalCategory.active === 'boolean' ? this.modalCategory.active : true,
     };
+
+    if (!createPayload.userProId) {
+      this.saving = false;
+      this.toast('UserProId manquant (me._id)', 'error');
+      return;
+    }
 
     this.bookingCategoryService
       .createBookingCategory(createPayload as any)
