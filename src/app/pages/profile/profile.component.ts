@@ -17,6 +17,7 @@ import { AdminService } from 'src/app/core/services/admin.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { SeoService } from 'src/app/core/services/seo.service';
+import { BookingCategoryService } from 'src/app/core/services/booking-category.service';
 
 @Component({
     selector: 'app-profile',
@@ -67,6 +68,7 @@ export class ProfileComponent implements OnInit {
         private productService: ProductService,
         private router: Router,
         public dialog: MatDialog,
+        private bookingCategoryService: BookingCategoryService,
         private categoryService: CategoryService,
         private shopTemplateService: ShopTemplateService,
         private adminService: AdminService,
@@ -81,7 +83,7 @@ export class ProfileComponent implements OnInit {
     // ⏱️ ngOnInit : paramètres, section active, données
     // -------------------------------------------------
     ngOnInit() {
-        
+
         this.seoService.updateMeta('profile');
         // 1) Charge les paramètres d’admin (ex: multi-shops)
         this.adminService.getAdminSettings().subscribe({

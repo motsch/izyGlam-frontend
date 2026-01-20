@@ -15,6 +15,8 @@ import { SeoService } from 'src/app/core/services/seo.service';
 import { DrawerService } from 'src/app/core/services/drawer.service';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { BookingCategoryService } from 'src/app/core/services/booking-category.service';
+import { forkJoin, of } from 'rxjs';
+import { switchMap, tap, catchError } from 'rxjs/operators';
 
 @Component({
     selector: 'app-shop',
@@ -52,6 +54,10 @@ export class ShopComponent {
     // Liste des services/produits du shop
     shopItems: any[] = [];
 
+
+    // ✅ listes prêtes pour le template
+    categoriesUnique: any[] = [];
+    itemsByCategory: Record<string, any[]> = {};
     // Lightbox (galerie)
     isLightboxOpen = false;
     selectedImage: string = '';
@@ -82,93 +88,66 @@ export class ShopComponent {
     // ----------------------------------------------------
     // ⏱️ ngOnInit : charge settings, produits et shop
     // ----------------------------------------------------
+
     ngOnInit(): void {
         this.buildShareLinks();
         this.seoService.updateMeta('shop');
-        // 1) Paramètres d’admin (commission, frais, etc.)
+
+        // Admin settings (peut rester indépendant)
         this.adminService.getAdminSettings().subscribe({
             next: (data: any) => {
                 this.adminSettings = data;
-                // Affichage propre à 2 décimales
-                this.adminSettings.serviceFee = this.adminSettings.serviceFee.toFixed(2);
-                console.log(this.adminSettings);
+                this.adminSettings.serviceFee = Number(this.adminSettings.serviceFee).toFixed(2);
             },
-            error: (err: any) => {
-                console.error('Erreur lors du chargement des paramètres admin :', err);
-                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-            },
+            error: () => this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR')),
         });
 
-        // 2) Récupère l'id du shop depuis l'URL
         const shopHandle = this.activatedRoute.snapshot.params['handle'];
-        this.shopService.getShopByHandle(shopHandle).subscribe({
-            next: (data: any) => {
-                console.log('Produits shop :', data);
-                console.log('shop id : ' + data._id);
-                localStorage.setItem('shopSelected', data._id);
-                const shopId = data._id;
 
+        this.shopService.getShopByHandle(shopHandle).pipe(
+            tap((shop: any) => {
+                localStorage.setItem('shopSelected', shop._id);
+            }),
+            switchMap((shop: any) => {
+                const shopId = shop._id;
 
-                // 3) Vide la liste locale avant rechargement
-                this.shopItems = [];
-
-                // 4) Charge les produits du shop
-                this.productService.getProductsByShop(shopId).subscribe({
-                    next: (data: any) => {
-                        console.log('Produits shop :', data);
-                        this.shopItems = data;
-                    },
-                    error: (err: any) => {
-                        console.error('Erreur lors du chargement des produits du shop :', err);
-                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                    }
+                // ⚡ 3 requêtes en parallèle
+                return forkJoin({
+                    products: this.productService.getProductsByShop(shopId),
+                    shopInfo: this.shopService.getById(shopId),
+                    categories: this.bookingCategoryService.getBookingCategoryByShopId(shopId),
                 });
+            }),
+            tap(({ products, shopInfo, categories }) => {
+                // 1) produits
+                this.shopItems = products || [];
 
-                // 5) Charge les infos du shop (note, reviews, galerie…)
-                this.shopService.getById(shopId).subscribe({
-                    next: (data: any) => {
-                        console.log('Shop data: ' + JSON.stringify(data));
-                        this.shopInfo = data;
+                // 2) shop info + note
+                this.shopInfo = shopInfo;
+                const reviews = shopInfo?.reviews || [];
+                const count = reviews.length;
 
-                        // Initialisation / recalcul de la note moyenne
-                        this.shopInfo.note = 0;
-                        this.shopInfo.noteCount = data.reviews.length;
+                if (count > 0) {
+                    const total = reviews.reduce((sum: number, r: any) => sum + (r.rating || 0), 0);
+                    this.shopInfo.note = total / count;
+                    this.shopInfo.noteCount = count;
+                } else {
+                    this.shopInfo.note = 5;
+                    this.shopInfo.noteCount = 0;
+                }
 
-                        for (const elem of data.reviews) {
-                            this.shopInfo.note = this.shopInfo.note + elem.rating;
-                        }
-                        this.shopInfo.note = this.shopInfo.note / data.reviews.length;
+                // 3) catégories
+                this.categories = categories || [];
 
-                        // Fallbacks si pas de note/décompte
-                        if (!this.shopInfo.note || isNaN(this.shopInfo.note)) {
-                            this.shopInfo.note = 5;
-                        }
-                        if (!this.shopInfo.noteCount) {
-                            this.shopInfo.noteCount = 0;
-                        }
-
-                        this.bookingCategoryService.getBookingCategoryByShopId(shopId).subscribe({
-                            next: (categories: any) => {
-                                console.log('Categories data: ' + JSON.stringify(categories));
-                                this.categories = categories;
-                            },
-                            error: (err: any) => {
-                                console.error('Erreur lors du chargement des informations du shop :', err);
-                                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                            }
-                        });
-                    },
-                    error: (err: any) => {
-                        console.error('Erreur lors du chargement des informations du shop :', err);
-                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                    }
-                });
-            },
-            error: (err: any) => {
-                console.error('Erreur lors du chargement des produits du shop :', err);
+                // ✅ maintenant seulement : build
+                this.buildViewModel();
+            }),
+            catchError((err) => {
+                console.error(err);
                 this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-            }
-        })
+                return of(null);
+            })
+        ).subscribe();
     }
 
     // ----------------------------------------------------
@@ -355,4 +334,29 @@ export class ShopComponent {
         const text = encodeURIComponent(`${this.shareText} ${this.shareUrl}`);
         return `https://wa.me/?text=${text}`;
     }
+
+
+    // Appelle ça juste après avoir chargé categories + items
+    private buildViewModel(): void {
+        // 1) Catégories uniques par _id
+        const map = new Map<string, any>();
+        for (const c of this.categories || []) {
+            if (c?._id && !map.has(c._id)) map.set(c._id, c);
+        }
+        this.categoriesUnique = Array.from(map.values());
+
+        // 2) Groupage des items par categoryId
+        const grouped: Record<string, any[]> = {};
+        for (const it of this.shopItems || []) {
+            const catId = (it as any).categoryId || (it as any).category?._id; // adapte selon ton modèle
+            if (!catId) continue;
+            if (!grouped[catId]) grouped[catId] = [];
+            grouped[catId].push(it);
+        }
+        this.itemsByCategory = grouped;
+    }
+
+    // ✅ TrackBy pour stabiliser l’affichage
+    trackByCategoryId = (_: number, cat: any) => cat._id;
+    trackByItemId = (_: number, item: any) => item._id;
 }

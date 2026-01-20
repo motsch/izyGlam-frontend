@@ -1,0 +1,87 @@
+<div class="container">
+  <button class="btn btn-create float-end" (click)="openModal()" data-bs-toggle="tooltip" data-bs-placement="top">
+    <i class="fa fa-plus"></i> {{ "Ajouter une catégorie" | translate }}
+  </button>
+
+  <table class="table table-striped" *ngIf="!loading; else loadingTpl">
+    <thead>
+      <tr>
+        <th>{{ "Nom" | translate }}</th>
+        <th>{{ "Description" | translate }}</th>
+        <th>{{ "Actions" | translate }}</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let cat of categories; let i = index">
+        <td>{{ cat.name }}</td>
+        <td>{{ (cat.description || '') | truncate : 50 }}</td>
+
+        <td class="align-center">
+          <button class="btn btn-edit" (click)="openModal(cat)">
+            <i class="fa fa-pencil-alt"></i> {{ "Modifier" | translate }}
+          </button>
+
+          <button class="btn btn-delete margin-top-5" (click)="deleteCategory(cat, i)"
+            [disabled]="categories.length <= 1">
+            {{ "Supprimer" | translate }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #loadingTpl>
+    <div class="loading-box">
+      <span class="loader"></span>
+      <span class="loading-text">Chargement des catégories…</span>
+    </div>
+  </ng-template>
+
+  <!-- MODAL -->
+  <div class="modal fade show margin-top-40" tabindex="-1" [style.display]="modalOpen ? 'block' : 'none'"
+    [ngClass]="{ show: modalOpen }">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h3 class="modal-title">
+            {{
+            editingCategoryId
+            ? ("Modifier la catégorie " + (modalCategory?.name || ''))
+            : "Créons une nouvelle catégorie !"
+            }}
+          </h3>
+
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()">
+            ✕
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!-- NAME -->
+          <div class="form-group">
+            <label for="catName">{{ "Nom" | translate }}</label>
+            <input type="text" id="catName" [(ngModel)]="modalCategory.name" class="form-control" required />
+          </div>
+
+          <!-- DESCRIPTION -->
+          <div class="form-group">
+            <label for="catDesc">{{ "Description" | translate }}</label>
+            <textarea id="catDesc" [(ngModel)]="modalCategory.description" class="form-control" rows="4"
+              [disabled]="!modalCategory.name"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="saveCategory()"
+            [disabled]="saving || !modalCategory?.name">
+            <span *ngIf="!saving">{{ "Enregistrer" | translate }}</span>
+            <span *ngIf="saving" class="loader"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

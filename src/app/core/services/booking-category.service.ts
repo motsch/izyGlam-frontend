@@ -44,7 +44,7 @@ export class BookingCategoryService {
 
     createBookingCategory(payload: Omit<BookingCategory, "_id" | "createdAt" | "updatedAt">): Observable<BookingCategory> {
         return this.http
-            .post<BookingCategory>(`${environment.apiUrl}/bookingCategory`, payload)
+            .post<BookingCategory>(`${environment.apiUrl}bookingCategory`, payload)
             .pipe(catchError(this.handleError));
     }
 
@@ -56,32 +56,32 @@ export class BookingCategoryService {
         }
 
         return this.http
-            .get<BookingCategory[]>(`${environment.apiUrl}/bookingCategory`, { params })
+            .get<BookingCategory[]>(`${environment.apiUrl}bookingCategory`, { params })
             .pipe(catchError(this.handleError));
     }
 
     getBookingCategoryById(id: string): Observable<BookingCategory> {
         return this.http
-            .get<BookingCategory>(`${environment.apiUrl}/bookingCategory/${id}`)
+            .get<BookingCategory>(`${environment.apiUrl}bookingCategory/${id}`)
             .pipe(catchError(this.handleError));
     }
 
     updateBookingCategory(id: string, payload: Partial<BookingCategory>): Observable<BookingCategory> {
         return this.http
-            .put<BookingCategory>(`${environment.apiUrl}/bookingCategory/${id}`, payload)
+            .put<BookingCategory>(`${environment.apiUrl}bookingCategory/${id}`, payload)
             .pipe(catchError(this.handleError));
     }
 
     deleteBookingCategory(id: string): Observable<{ message: string }> {
         return this.http
-            .delete<{ message: string }>(`${environment.apiUrl}/bookingCategory/${id}`)
+            .delete<{ message: string }>(`${environment.apiUrl}bookingCategory/${id}`)
             .pipe(catchError(this.handleError));
     }
 
     getBookingCategoryByShopId(id: string): Observable<BookingCategory[]> {
         return this.http
 
-            .get<BookingCategory[]>(`${environment.apiUrl}/bookingCategory-by-shopId/${id}`)
+            .get<BookingCategory[]>(`${environment.apiUrl}bookingCategory-by-shopId/${id}`)
             .pipe(catchError(this.handleError));
     }
 
@@ -91,7 +91,7 @@ export class BookingCategoryService {
 
     reorderBookingCategories(payload: ReorderPayload): Observable<BookingCategory[]> {
         return this.http
-            .patch<BookingCategory[]>(`${environment.apiUrl}/reorder`, payload)
+            .patch<BookingCategory[]>(`${environment.apiUrl}reorder`, payload)
             .pipe(catchError(this.handleError));
     }
 

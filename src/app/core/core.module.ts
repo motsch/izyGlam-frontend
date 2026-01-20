@@ -97,6 +97,7 @@ import { PostFakeGenerationComponent } from './component/post-fake-generation/po
 import { AdminCommunicationManagementComponent } from './component/admin-communication-management/admin-communication-management.component';
 import { AdminIzyshopOrdersComponent } from './component/admin-izyshop-orders/admin-izyshop-orders.component';
 import { AdminIzyshopProductsComponent } from './component/admin-izyshop-products/admin-izyshop-products.component';
+import { ShopCategoryManagementComponent } from './component/shop-category-management/shop-category-management.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -213,6 +214,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopDocumentsComponent,
         HorizontalPubListComponent,
         AdminProLeadManagementComponent,
+        ShopCategoryManagementComponent,
         OrderCardComponent,
         ReviewModalComponent,
         PostComponent,
@@ -236,6 +238,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ProfileInformationsComponent,
         ChangePasswordComponent,
         AdminIzyshopProductsComponent,
+        ShopCategoryManagementComponent,
         ConfidentialPolicyComponent,
         AccessibilityPolicyComponent,
         PostComponent,

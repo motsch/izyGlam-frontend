@@ -126,46 +126,17 @@
     </div>
     <!-- Gallery display section -->
     <div class="col-lg-9">
-      {{ categories | json }}
-      <div class="row justify-content-left">
-        <div class="mb-5" *ngFor="let cat of categories">
-          <!-- Nom de la catégorie -->
+      <ng-container *ngFor="let cat of categoriesUnique; trackBy: trackByCategoryId">
+        <div class="mb-5">
           <h4 class="mb-3">{{ cat.name }}</h4>
-          <!-- Items de la catégorie -->
           <div class="row g-3">
-            <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
-              <app-shop-item-card *ngIf="item.categoryId === cat._id" [item]="item"></app-shop-item-card>
+            <div class="col-12 col-md-6 col-lg-6 d-flex"
+              *ngFor="let item of (itemsByCategory[cat._id] || []); trackBy: trackByItemId">
+              <app-shop-item-card class="w-100" [item]="item"></app-shop-item-card>
             </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </div>
-
-
-
-    <!-- Gallery display section -->
-    <div class="col-lg-9">
-      <!-- {{ categories | json }} -->
-
-      <div *ngFor="let cat of categories" class="mb-5">
-
-        <!-- Nom de la catégorie -->
-        <h4 class="mb-3">{{ cat.name }}</h4>
-
-        <!-- Items de la catégorie -->
-        <div class="row g-3 justify-content-start">
-
-          <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of getItemsByCategory(cat._id)">
-            <app-shop-item-card [item]="item"></app-shop-item-card>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-
-
-
   </div>
 </section>

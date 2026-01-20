@@ -136,7 +136,7 @@
             </button>
           </div>
         </div>
-        <mat-tab-group class="custom-tab-group" [ngClass]="!multiShopsActivated ? 'margin-top-n80' : ''"
+        <mat-tab-group class="custom-tab-group margin-top-30" [ngClass]="!multiShopsActivated ? 'margin-top-n80' : ''"
           mat-stretch-tabs="false" mat-align-tabs="start">
           <mat-tab [label]="'TABS.FINANCE' | translate">
             <app-finance [myShopData]="shops" [me]="me"></app-finance>
@@ -150,6 +150,10 @@
 
           <mat-tab color="primary" *ngIf="me && me.role === 'admin'" [label]="'TABS.EMPLOYEES' | translate">
             <app-shop-employees *ngIf="myShopData && me" [me]="me"></app-shop-employees>
+          </mat-tab>
+
+          <mat-tab [label]="'TABS.CATEGORIES' | translate">
+            <app-shop-category-management  [myShopData]="myShopData"></app-shop-category-management>
           </mat-tab>
 
           <mat-tab [label]="'TABS.SERVICES' | translate">
