@@ -124,16 +124,18 @@
         </div>
       </div>
     </div>
+    <!-- Gallery display section -->
     <div class="col-lg-9">
-      <!-- DEBUG -->
-      <!-- {{ categories | json }} -->
-      <div *ngFor="let cat of categories" class="mb-5">
-        <!-- Titre catégorie -->
-        <h4 class="mb-3">{{ cat.name }}</h4>
-        <!-- ROW des items -->
-        <div class="row g-3">
-          <div class="col-12 col-md-6 col-lg-6">
-            <app-shop-item-card *ngFor="let item of categories" [item]="item"></app-shop-item-card>
+      {{ categories | json }}
+      <div class="row justify-content-left">
+        <div class="mb-5" *ngFor="let cat of categories">
+          <!-- Nom de la catégorie -->
+          <h4 class="mb-3">{{ cat.name }}</h4>
+          <!-- Items de la catégorie -->
+          <div class="row g-3">
+            <div class="col-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
+              <app-shop-item-card *ngIf="item.categoryId === cat._id" [item]="item"></app-shop-item-card>
+            </div>
           </div>
         </div>
       </div>
