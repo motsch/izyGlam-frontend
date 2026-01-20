@@ -4,10 +4,10 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:3000/api/',
+    apiUrl: 'https://api.izyglam.com/api/',
     imgStorageUrl: 'assets/images/',
     videoStorageUrl: 'assets/videos/',
-    APIimgStorageUrl: 'http://localhost:3000/',
+    APIimgStorageUrl: 'https://api.izyglam.com/',
     webSocketUrl: 'ws://localhost:3000',
     allowedCountries: ['FR'],
     comingSoonCountries: ['DE', 'ES', 'IT', 'NL', 'PT'],
