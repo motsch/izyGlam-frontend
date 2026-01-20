@@ -127,8 +127,11 @@
     <!-- Gallery display section -->
     <div class="col-lg-9">
       <div class="row justify-content-left">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
-          <app-shop-item-card [item]="item"></app-shop-item-card>
+        <div *ngFor="let cat of categories">
+          <span>{{cat.name}}</span>
+          <div class="col-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
+            <app-shop-item-card *ngIf="cat.shopId === item._id" [item]="item"></app-shop-item-card>
+          </div>
         </div>
       </div>
     </div>

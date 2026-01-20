@@ -1,10 +1,8 @@
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RdvModalComponent } from 'src/app/core/component/rdv-modal/rdv-modal.component';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { ProductService } from 'src/app/core/services/product.service';
-import { ScheduleService } from 'src/app/core/services/schedule.service';
 import { SessionService } from 'src/app/core/services/session.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { environment } from 'src/environments/environment';
@@ -15,6 +13,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
 import { SeoService } from 'src/app/core/services/seo.service';
 import { DrawerService } from 'src/app/core/services/drawer.service';
+import { CategoryService } from 'src/app/core/services/category.service';
+import { BookingCategoryService } from 'src/app/core/services/booking-category.service';
 
 @Component({
     selector: 'app-shop',
@@ -30,7 +30,7 @@ export class ShopComponent {
     APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
     activeTab = 'home';
 
-
+    categories: any[] = [];
     shareModalOpen = false;
     qrOpen = false;
     copied = false;
@@ -75,7 +75,8 @@ export class ShopComponent {
 
         // ✅ InjectionsizyGlam
         private toastr: ToastrService,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private bookingCategoryService: BookingCategoryService
     ) { }
 
     // ----------------------------------------------------
@@ -145,6 +146,17 @@ export class ShopComponent {
                         if (!this.shopInfo.noteCount) {
                             this.shopInfo.noteCount = 0;
                         }
+
+                        this.bookingCategoryService.getBookingCategoryByShopId(shopId).subscribe({
+                            next: (categories: any) => {
+                                console.log('Categories data: ' + JSON.stringify(categories));
+                                this.categories = categories;
+                            },
+                            error: (err: any) => {
+                                console.error('Erreur lors du chargement des informations du shop :', err);
+                                this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                            }
+                        });
                     },
                     error: (err: any) => {
                         console.error('Erreur lors du chargement des informations du shop :', err);
