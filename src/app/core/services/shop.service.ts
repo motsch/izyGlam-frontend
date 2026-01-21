@@ -370,7 +370,7 @@ export class ShopService {
       params = params.set('country', country);
     }
 
-    const url = `${environment.apiUrl}shop/by-postal-codes-with-categories`;
+    const url = `${environment.apiUrl}shop-search/by-postal-codes-with-categories`;
     return this.http.get<any>(url, { params });
   }
 
