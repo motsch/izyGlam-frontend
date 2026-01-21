@@ -121,5 +121,7 @@ export class BookingService {
         return this.http.get<any>(url);
     }
 
-
+    cancelBookingWithPolicy(bookingId: string, policy: 'full' | 'half', lang: string) {
+        return this.http.post(`/api/booking-cancel/${bookingId}/cancel`, { policy, lang });
+    }
 }

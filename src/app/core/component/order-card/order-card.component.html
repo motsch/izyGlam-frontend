@@ -39,7 +39,7 @@
     <button *ngIf="availableActions.includes('invoice')" class="action-button" (click)="onDownloadInvoice.emit(order)">
       📄 {{"ORDER_CARD.FACTURE" | translate}}
     </button>
-    <button *ngIf="availableActions.includes('cancel')" class="action-button" (click)="cancelBooking(order)">
+    <button *ngIf="availableActions.includes('cancel')" class="action-button" (click)="openCancelModal(order)">
       ❌ {{"ORDER_CARD.CANCEL" | translate}}
     </button>
     <button *ngIf="availableActions.includes('delete')" class="action-button" (click)="deleteBooking(order)">
@@ -69,5 +69,21 @@
     <button class="btn-tertiary" (click)="markPrestataireAbsent(order)">
       {{"ORDER_CARD.CODE_A_DONNER" | translate}}
     </button>
+  </div>
+</div>
+
+
+<!-- Modal annulation -->
+<div class="modal-backdrop" *ngIf="showCancelModal" (click)="closeCancelModal()"></div>
+
+<div class="modal" *ngIf="showCancelModal">
+  <div class="modal-card">
+    <h3>Annuler la réservation ?</h3>
+    <pre class="modal-text">{{ cancelModalText }}</pre>
+
+    <div class="modal-actions">
+      <button class="btn-secondary" (click)="closeCancelModal()">Retour</button>
+      <button class="btn-danger" (click)="confirmCancelModal()">Confirmer</button>
+    </div>
   </div>
 </div>

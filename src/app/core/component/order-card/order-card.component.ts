@@ -26,6 +26,11 @@ export class OrderCardComponent {
   APIimgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
   imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
   apiImageUrl = environment.APIimgStorageUrl;
+  // dans ton component
+  showCancelModal = false;
+  cancelModalText = '';
+  cancelPolicy: 'full' | 'half' = 'full';
+  cancelTarget: any = null;
 
   @Input() order: any;
   @Input() index: number = 0;
@@ -336,7 +341,7 @@ export class OrderCardComponent {
 
   goToShop(order: any) {
     try {
-      if (!order?.shopId) return;      
+      if (!order?.shopId) return;
       this.shopService.getById(this.order?.shopId).subscribe({
         next: (shop) => {
           if (!shop) return;
@@ -392,4 +397,56 @@ export class OrderCardComponent {
       else this.toastr.error(keyOrMessage);
     }
   }
+
+  openCancelModal(order: any) {
+  if (!order?._id) return;
+
+  const bookingStart = moment(order.start);
+  const now = moment();
+  const diffHours = bookingStart.diff(now, 'hours');
+
+  this.cancelTarget = order;
+
+  if (diffHours >= 24) {
+    this.cancelPolicy = 'full';
+    this.cancelModalText =
+      `✅ Annulation gratuite\n\n` +
+      `Vous êtes à plus de 24h du rendez-vous.\n` +
+      `Vous serez remboursé(e) à 100%.`;
+  } else {
+    this.cancelPolicy = 'half';
+    this.cancelModalText =
+      `⚠️ Annulation tardive\n\n` +
+      `Vous êtes à moins de 24h du rendez-vous.\n` +
+      `50% du montant est conservé (pour le prestataire).\n` +
+      `Vous serez remboursé(e) à 50%.`;
+  }
+
+  this.showCancelModal = true;
+}
+
+closeCancelModal() {
+  this.showCancelModal = false;
+  this.cancelTarget = null;
+}
+
+confirmCancelModal() {
+  const order = this.cancelTarget;
+  if (!order?._id) return this.closeCancelModal();
+
+  // ✅ 1 seul appel backend
+  this.bookingService.cancelBookingWithPolicy(order._id, this.cancelPolicy, this.storedLangue).subscribe({
+    next: () => {
+      this.showCustomToast(this.translate.instant('SUCCESS.CANCEL_OK') || 'Réservation annulée.', 'success');
+      this.closeCancelModal();
+      this.onUpdateNeeded.emit(order);
+    },
+    error: (err: any) => {
+      console.error('[OrderCard] cancelBookingWithPolicy ERROR:', err);
+      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR') || 'Erreur.', 'error');
+      this.closeCancelModal();
+    }
+  });
+}
+
 }
