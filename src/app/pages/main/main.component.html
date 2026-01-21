@@ -17,18 +17,17 @@
       <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
         [placeholder]="('MAIN.FIND_SHOP' | translate)" class="pretty-search-bar" *ngIf="shops.length > 0" />
     </div>
-  </div>
+    <div class="mode-switch">
+      <button type="button" class="mode-btn" [class.active]="serviceMode === 'SALON'"
+        (click)="toggleServiceMode('SALON')">
+        🏠 {{ 'MAIN.MODE_SALON' | translate }}
+      </button>
 
-  <div class="mode-switch">
-    <button type="button" class="mode-btn" [class.active]="serviceMode === 'SALON'"
-      (click)="toggleServiceMode('SALON')">
-      🏠 {{ 'MAIN.MODE_SALON' | translate }}
-    </button>
-
-    <button type="button" class="mode-btn" [class.active]="serviceMode === 'DOMICILE'"
-      (click)="toggleServiceMode('DOMICILE')">
-      🚗 {{ 'MAIN.MODE_DOMICILE' | translate }}
-    </button>
+      <button type="button" class="mode-btn" [class.active]="serviceMode === 'DOMICILE'"
+        (click)="toggleServiceMode('DOMICILE')">
+        🚗 {{ 'MAIN.MODE_DOMICILE' | translate }}
+      </button>
+    </div>
   </div>
 
 
