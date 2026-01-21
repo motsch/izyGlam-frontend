@@ -832,6 +832,8 @@ export class MainComponent implements OnInit, AfterViewInit {
     // Reset UI liés aux shops
     this.searchQuery = '';
     this.filteredSearchResults = [];
+    this.filteredItems = [];
+    this.categoriesFilter = [];
     this.cancelFilter();
     this.categoryTrad = '';
 

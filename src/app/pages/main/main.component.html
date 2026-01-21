@@ -10,12 +10,12 @@
   <!-- SECTION ADRESSE & RECHERCHE -->
   <div class="address-search-wrapper margin-top-90">
     <div class="address-search-row">
+      <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
+        [placeholder]="('MAIN.FIND_SHOP' | translate)" class="pretty-search-bar" *ngIf="shops.length > 0" />
       <button class="address-button-pretty" (click)="openAddressModal()">
         <i class="icon-location">📍</i>
         {{ selectedPostalCode }} <span class="light-text">— {{ "MAIN.CHANGE_ADDRESS" | translate }}</span>
       </button>
-      <input type="text" [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)"
-        [placeholder]="('MAIN.FIND_SHOP' | translate)" class="pretty-search-bar" *ngIf="shops.length > 0" />
     </div>
     <div class="mode-switch">
       <button type="button" class="mode-btn" [class.active]="serviceMode === 'SALON'"
