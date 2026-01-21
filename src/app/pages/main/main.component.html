@@ -18,19 +18,21 @@
         <i class="icon-location">📍</i>
         {{ selectedPostalCode }} <span class="light-text">— {{ "MAIN.CHANGE_ADDRESS" | translate }}</span>
       </button>
-    </div>
-    <div class="mode-switch">
-      <button type="button" class="mode-btn" [class.active]="serviceMode === 'SALON'"
-        (click)="toggleServiceMode('SALON')">
-        🏠 {{ 'MAIN.MODE_SALON' | translate }}
-      </button>
 
-      <button type="button" class="mode-btn" [class.active]="serviceMode === 'DOMICILE'"
-        (click)="toggleServiceMode('DOMICILE')">
-        🚗 {{ 'MAIN.MODE_DOMICILE' | translate }}
-      </button>
+      <div class="mode-switch">
+        <button type="button" class="mode-btn" [class.active]="serviceMode === 'SALON'"
+          (click)="toggleServiceMode('SALON')">
+          🏠 {{ 'MAIN.MODE_SALON' | translate }}
+        </button>
+
+        <button type="button" class="mode-btn" [class.active]="serviceMode === 'DOMICILE'"
+          (click)="toggleServiceMode('DOMICILE')">
+          🚗 {{ 'MAIN.MODE_DOMICILE' | translate }}
+        </button>
+      </div>
     </div>
   </div>
+
 
 
   <!-- CONTENU PRINCIPAL -->

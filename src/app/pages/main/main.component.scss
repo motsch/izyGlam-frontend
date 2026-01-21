@@ -134,16 +134,18 @@ h6 { margin-top: -10px; }
   justify-content: center;
   margin-top: 30px;
 }
+
 .address-search-row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;            /* 👈 important : ne wrap plus en desktop */
   align-items: center;
   justify-content: center;
   gap: 16px;
   width: 100%;
-  max-width: 800px;
+  max-width: 1100px;            /* tu peux garder 800 si tu veux plus serré */
   padding: 0 16px;
 }
+
 
 /* === BOUTON ADRESSE === */
 .address-button-pretty {
@@ -279,13 +281,22 @@ html, body {
 /* === RESPONSIVE POUR ADRESSE + RECHERCHE === */
 @media (max-width: 575px) {
   .address-search-row {
+    flex-wrap: wrap;            /* 👈 en mobile on autorise le retour */
     flex-direction: column;
     align-items: stretch;
   }
 
   .address-button-pretty,
-  .pretty-search-bar { width: 100%; }
+  .pretty-search-bar,
+  .mode-switch {
+    width: 100%;
+  }
+
+  .mode-switch {
+    justify-content: space-between;
+  }
 }
+
 
 /* === FORMULAIRE D'AJOUT D'ADRESSE === */
 .address-form {
