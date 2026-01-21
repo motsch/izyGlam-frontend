@@ -826,9 +826,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   toggleServiceMode(next: 'SALON' | 'DOMICILE') {
     if (this.serviceMode === next) return;
-
     this.serviceMode = next;
-
     // Reset UI liés aux shops
     this.searchQuery = '';
     this.filteredSearchResults = [];
