@@ -75,11 +75,6 @@ export class MainComponent implements OnInit, AfterViewInit {
   // ✅ NEW : mode de prestation
   serviceMode: 'SALON' | 'DOMICILE' = 'SALON';
 
-  get isSalonMode(): boolean {
-    return this.serviceMode === 'SALON';
-  }
-
-
   private shopsSub?: Subscription;
   private shopsReqId = 0;
   private searchSubject = new Subject<string>();
@@ -546,8 +541,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.filteredItemsTop10 = [];
     this.promotedShops = [];
 
-    this.shopsSub = this.shopService
-      .getShopsByPostalCodesWithCategories(
+    this.shopService.getShopsByPostalCodesWithCategories(
         this.selectedPostalCode ? [this.selectedPostalCode] : ["75001"],
         this.serviceMode,
         this.me ? this.me.country : "France"
@@ -555,12 +549,9 @@ export class MainComponent implements OnInit, AfterViewInit {
       .subscribe({
         next: (categories: any) => {
           if (reqId !== this.shopsReqId) return;
-
           const favoriteShops: string[] = this.me ? this.me.favoriteShops || [] : [];
-
           const mapIsFavorite = (arr: any[]) =>
             arr.map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
-
           const adecouvrir = mapIsFavorite(this.uniqById(categories?.discover || []));
           const apprecier = mapIsFavorite(this.uniqById(categories?.appreciated || []));
           const malin = mapIsFavorite(this.uniqById(categories?.smart || []));

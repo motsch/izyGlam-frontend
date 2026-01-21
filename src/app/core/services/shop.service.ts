@@ -365,11 +365,9 @@ export class ShopService {
     let params = new HttpParams()
       .set('codes', codes.join(','))
       .set('mode', mode);
-
     if (country) {
       params = params.set('country', country);
     }
-
     const url = `${environment.apiUrl}shop-search/by-postal-codes-with-categories`;
     return this.http.get<any>(url, { params });
   }
