@@ -72,9 +72,10 @@ export class BookingCategoryService {
             .pipe(catchError(this.handleError));
     }
 
-    deleteBookingCategory(id: string): Observable<{ message: string }> {
+    deleteBookingCategory(id: string, userProId: string): Observable<{ message: string }> {
         return this.http
-            .delete<{ message: string }>(`${environment.apiUrl}bookingCategory/${id}`)
+            .delete<{ message: string }>(`${environment.apiUrl}bookingCategory/${id}`,
+                { params: { userProId } })
             .pipe(catchError(this.handleError));
     }
 

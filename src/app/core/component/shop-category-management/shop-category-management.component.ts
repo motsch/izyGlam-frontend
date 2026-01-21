@@ -179,20 +179,27 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
       return;
     }
 
+    const userProId = this.me?._id;
+    if (!userProId) {
+      this.toast('UserProId manquant (me._id)', 'error');
+      return;
+    }
+
     this.saving = true;
 
     // ---------- EDIT ----------
     if (this.editingCategoryId) {
-      const payload: Partial<BookingCategory> = {
+      const payload = {
         name,
         description: (this.modalCategory.description || '').trim() || undefined,
         color: this.modalCategory.color || undefined,
         active: typeof this.modalCategory.active === 'boolean' ? this.modalCategory.active : true,
         order: typeof this.modalCategory.order === 'number' ? this.modalCategory.order : undefined,
+        userProId, // ✅ IMPORTANT (nouveau backend)
       };
 
       this.bookingCategoryService
-        .updateBookingCategory(this.editingCategoryId, payload)
+        .updateBookingCategory(this.editingCategoryId, payload as any)
         .pipe(
           switchMap(() => this.bookingCategoryService.getBookingCategoryByShopId(this.myShopData._id)),
           finalize(() => {
@@ -217,22 +224,15 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
     }
 
     // ---------- CREATE ----------
-    // ⚠️ On N'ENVOIE PAS userProId : le backend le récupère via getUserProId(req)
     const createPayload = {
       name,
       description: (this.modalCategory.description || '').trim() || undefined,
       shopId: this.myShopData._id,
-      userProId: this.me?._id, // ✅ IMPORTANT
+      userProId, // ✅ IMPORTANT
       color: this.modalCategory.color || undefined,
       order: typeof this.modalCategory.order === 'number' ? this.modalCategory.order : this.categories.length,
       active: typeof this.modalCategory.active === 'boolean' ? this.modalCategory.active : true,
     };
-
-    if (!createPayload.userProId) {
-      this.saving = false;
-      this.toast('UserProId manquant (me._id)', 'error');
-      return;
-    }
 
     this.bookingCategoryService
       .createBookingCategory(createPayload as any)
@@ -257,18 +257,23 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
       });
   }
 
-
   // ===========================
   // Delete
   // ===========================
   deleteCategory(cat: BookingCategory, index: number) {
     if (!cat?._id) return;
 
+    const userProId = this.me?._id;
+    if (!userProId) {
+      this.toast('UserProId manquant (me._id)', 'error');
+      return;
+    }
+
     // Optimiste: on retire direct
     const backup = [...this.categories];
     this.categories.splice(index, 1);
 
-    this.bookingCategoryService.deleteBookingCategory(cat._id).subscribe({
+    this.bookingCategoryService.deleteBookingCategory(cat._id, userProId).subscribe({
       next: () => {
         this.toast('Catégorie supprimée ✅', 'success');
         this.categoriesUpdated.emit();
