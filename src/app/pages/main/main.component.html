@@ -38,7 +38,7 @@
   <!-- CONTENU PRINCIPAL -->
   <div class="izy-content">
     <!-- BANDEAU DES CATÉGORIES -->
-    <div class="horizontal-section-wrapper margin-top-40" *ngIf="categoriesFilter.length > 0 && shops.length === 0">
+    <div class="horizontal-section-wrapper margin-top-40" *ngIf="categoriesFilter.length > 0 && shops.length !== 0">
       <div class="section-header">
         <h3>{{ "MAIN.CATEGORIES" | translate }}</h3>
         <h6>{{ "MAIN.CATEGORIES2" | translate }}</h6>
