@@ -285,4 +285,5 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
       },
     });
   }
+
 }
