@@ -533,3 +533,53 @@ html, body {
   .na-subtitle { color: #a1a1a6; }
   .na-icon { fill: #e2b9b9; }
 }
+
+/* ✅ Switch SALON / DOMICILE */
+.mode-switch {
+  display: inline-flex;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 16px;
+  background: rgba(255, 64, 129, 0.08);
+  border: 1px solid rgba(255, 64, 129, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.mode-btn {
+  border: none;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.75);
+  color: #222;
+  transition: transform 0.08s ease, background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &.active {
+    background: #ff4081;
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(255, 64, 129, 0.22);
+  }
+}
+
+/* Mobile : switch full width si besoin */
+@media (max-width: 575px) {
+  .mode-switch {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .mode-btn {
+    flex: 1;
+    text-align: center;
+  }
+}

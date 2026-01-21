@@ -19,6 +19,19 @@
     </div>
   </div>
 
+  <div class="mode-switch">
+    <button type="button" class="mode-btn" [class.active]="serviceMode === 'SALON'"
+      (click)="toggleServiceMode('SALON')">
+      🏠 {{ 'MAIN.MODE_SALON' | translate }}
+    </button>
+
+    <button type="button" class="mode-btn" [class.active]="serviceMode === 'DOMICILE'"
+      (click)="toggleServiceMode('DOMICILE')">
+      🚗 {{ 'MAIN.MODE_DOMICILE' | translate }}
+    </button>
+  </div>
+
+
   <!-- CONTENU PRINCIPAL -->
   <div class="izy-content">
     <!-- BANDEAU DES CATÉGORIES -->

@@ -657,7 +657,10 @@
     "FINISH": "Terminer (retour login)",
     "TEST": "Tester",
     "TEST_HINT": "Cliquez sur Tester pour vérifier la disponibilité.",
-    "HANDLE_MIN": "Minimum 3 caractères."
+    "HANDLE_MIN": "Minimum 3 caractères.",
+    "AREA_BASE": "Zone de départ",
+    "AREA_PLACEHOLDER": "Ville ou zone principale de départ",
+    "AREA_HINT": "Cette information permet d’indiquer votre zone de départ pour les déplacements à domicile."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modifier l’adresse",
@@ -684,7 +687,9 @@
     "APPRECIATE2": "Les talents plébiscités par la communauté",
     "SMART2": "Des prestations futées, sans compromis",
     "TOP102": "Les incontournables de la semaine",
-    "CATEGORIES2": "Parcourez nos catégories beauté et bien-être"
+    "CATEGORIES2": "Parcourez nos catégories beauté et bien-être",
+    "MODE_SALON": "Sur place",
+    "MODE_DOMICILE": "À domicile"
   },
   "ADMIN_SHOP": {
     "NAME": "Nom",
@@ -1158,7 +1163,12 @@
     "PHOTO": "Exemples de photos acceptées / refusées",
     "CODE_POSTAUX": "Codes postaux desservis",
     "SOCIAL_NETWORK": "Réseaux sociaux",
-    "EXEMPLE_LOCAL": "Ex: 75001"
+    "EXEMPLE_LOCAL": "Ex: 75001",
+    "SERVICE_MODE": "Mode de prestation",
+    "SERVICE_MODE_SALON": "Au salon",
+    "SERVICE_MODE_HOME": "À domicile",
+    "SERVICE_MODE_HINT_SALON": "Vos clients se déplacent jusqu’à votre salon.",
+    "SERVICE_MODE_HINT_HOME": "Vous vous déplacez directement chez vos clients."
   },
   "EMPLOYEES": {
     "ADD_EMPLOYEES": "Ajouter un employé",

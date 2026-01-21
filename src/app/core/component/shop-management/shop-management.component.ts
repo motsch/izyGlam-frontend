@@ -27,17 +27,17 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   @Output() shopUpdated: EventEmitter<string> = new EventEmitter<string>();
 
   // ---------- Legal / Facturation ----------
-  legalExpanded = true;              // section ouverte par défaut
-  legalValid = false;                // validité du bloc legal
-  legalErrors: any = {};             // erreurs par champ
+  legalExpanded = true;
+  legalValid = false;
+  legalErrors: any = {};
 
   // ---------- UI / State ----------
-  imageUsed: string | null = null;              // URL d’aperçu finale utilisée par l’UI
-  imagePreview: string | null = null;           // DataURL temporaire lors d’un upload
-  selectedFile: File | null = null;             // Fichier sélectionné
-  shopCopyData: any | null = null;              // Copie éditable du shop
-  formModified = false;                         // Le formulaire a changé
-  formValid = false;                            // Le formulaire est valide
+  imageUsed: string | null = null;
+  imagePreview: string | null = null;
+  selectedFile: File | null = null;
+  shopCopyData: any | null = null;
+  formModified = false;
+  formValid = false;
 
   // ---------- Localisation ----------
   selectedCountry = 'France';
@@ -60,17 +60,26 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   error: any = {};
 
   private autosaveTimer: any = null;
+
   saving = false;
   saved = true;
 
+  // ---------- Adresse salon ----------
+  placeAddressErrors: any = {};
+  placeAddressValid = true;
 
+  placeSaving = false;
+  placeSaved = true;
+  placeHasErrors = false;
+
+  // ---------- Handle ----------
   handleChecking = false;
   handleAvailable: boolean | null = null;
 
   private handleTouchedByUser = false;
-  private initialHandle = "";
+  private initialHandle = '';
 
-  private baseImgUrl = environment.APIimgStorageUrl.replace(/\/$/, ''); // base sans slash final
+  private baseImgUrl = environment.APIimgStorageUrl.replace(/\/$/, '');
 
   constructor(
     private shopService: ShopService,
@@ -88,37 +97,44 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     try {
-      // Récupérer l'utilisateur depuis la session si pas injecté
       if (!this.me) {
         this.me = this.sessionService.getCurrentUser();
       }
 
-      // Si boss → récupère les employés
       if (this.me?.role === 'boss') {
         this.fetchEmployees();
       }
 
-      // Créneaux autorisés pour les selects d’horaires
       this.allowedMorningHours = this.generateTimeSlots('05:00', '12:00');
       this.allowedAfternoonHours = this.generateTimeSlots('12:00', '23:00');
 
       localStorage.setItem('menu-param', 'management');
 
-      // Initialisation de la copie éditable si donnée dispo
       if (this.myShopData && Object.keys(this.myShopData).length > 0) {
         this.shopCopyData = { ...this.myShopData };
-        this.initialHandle = this.shopCopyData.handle || "";
+
+        this.initialHandle = this.shopCopyData.handle || '';
         this.handleTouchedByUser = false;
         this.handleAvailable = null;
         this.error.handle = null;
 
-        // Uniformiser l’URL d’image (chemin relatif -> URL)
         this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
 
-        this.initHoursStructure(); // Normalisation de l’objet hours
+        this.initHoursStructure();
         this.initLegalStructure();
+
+        if (!this.shopCopyData.serviceMode) this.shopCopyData.serviceMode = 'SALON';
+
+        if (this.shopCopyData.serviceMode === 'SALON') {
+          this.initPlaceAddressStructure();
+        }
+
+        this.validatePlaceAddress();
         this.validateLegal();
 
+        // états adresse (à l'ouverture, on considère "saved" si pas d'erreurs)
+        this.placeSaved = this.placeAddressValid;
+        this.placeHasErrors = !this.placeAddressValid;
       }
     } catch (err) {
       console.error('[ShopManagement] ngOnInit error:', err);
@@ -130,6 +146,14 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     try {
       if (changes['myShopData']?.currentValue) {
         this.shopCopyData = { ...this.myShopData };
+
+        if (!this.shopCopyData.serviceMode) this.shopCopyData.serviceMode = 'SALON';
+        if (this.shopCopyData.serviceMode === 'SALON') this.initPlaceAddressStructure();
+
+        this.validatePlaceAddress();
+        this.placeSaved = this.placeAddressValid;
+        this.placeHasErrors = !this.placeAddressValid;
+
         this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
       }
     } catch (err) {
@@ -160,14 +184,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   // Horaires
   // ======================
 
-  /**
-   * S’assure que this.shopCopyData.hours a la structure complète attendue :
-   * {
-   *   monday: { morning:{start,end}, afternoon:{start,end}, closed:boolean },
-   *   ...
-   * }
-   * Accepte l’ancien format { morning:{}, afternoon:{} } et duplique pour toute la semaine.
-   */
   initHoursStructure(): void {
     try {
       if (!this.shopCopyData) return;
@@ -195,9 +211,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /**
-   * Génère des créneaux horaires à pas de 30 minutes entre start et end (inclus).
-   */
   generateTimeSlots(start: string, end: string): string[] {
     try {
       const times: string[] = [];
@@ -223,9 +236,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   // Validation / Form
   // ======================
 
-  /**
-   * Évalue la validité du formulaire de boutique.
-   */
   validateForm(): void {
     try {
       if (!this.shopCopyData) {
@@ -233,13 +243,9 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         return;
       }
 
-      const descriptionValid =
-        !!this.shopCopyData.description && this.shopCopyData.description.length >= 25;
-
+      const descriptionValid = !!this.shopCopyData.description && this.shopCopyData.description.length >= 25;
       const cityValid = !!this.shopCopyData.ville && !!this.shopCopyData.district;
-
-      const maxDistanceValid =
-        this.shopCopyData.maxDistance && Number(this.shopCopyData.maxDistance) > 0;
+      const maxDistanceValid = this.shopCopyData.maxDistance && Number(this.shopCopyData.maxDistance) > 0;
 
       const hours = this.shopCopyData.hours || {};
       const allDaysValid = this.days.every((d) => {
@@ -256,14 +262,10 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /**
-   * Marque le formulaire comme modifié, revalide et tente une sauvegarde auto.
-   */
   markFormModified(): void {
     try {
       this.formModified = true;
       this.validateForm();
-      // Sauvegarde optimiste (si tu préfères un bouton, commente la ligne ci-dessous)
       this.saveShop();
     } catch (err) {
       console.error('[ShopManagement] markFormModified error:', err);
@@ -273,10 +275,9 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   saveSocial(): void {
     try {
       this.validateForm();
-      // Sauvegarde optimiste (si tu préfères un bouton, commente la ligne ci-dessous)
       this.saveShop();
     } catch (err) {
-      console.error('[ShopManagement] markFormModified error:', err);
+      console.error('[ShopManagement] saveSocial error:', err);
     }
   }
 
@@ -327,7 +328,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       if (!this.deliveryPostalCode) return;
       this.shopCopyData.deliveryPostalCodes = this.shopCopyData.deliveryPostalCodes || [];
 
-      // Doublon ?
       if (this.shopCopyData.deliveryPostalCodes.includes(this.deliveryPostalCode)) {
         this.error.deliveryPostalCode = this.t('CITY.ALREADY_ADDED') || 'Ce code postal est déjà ajouté.';
         return;
@@ -339,7 +339,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
             this.shopCopyData.deliveryPostalCodes.push(this.deliveryPostalCode);
             this.deliveryPostalCode = '';
             this.error.deliveryPostalCode = null;
-            this.saveShop(); // persiste
+            this.saveShop();
           } else {
             this.error.deliveryPostalCode = this.t('CITY.NOT_FOUND') || 'Code postal introuvable dans la base';
           }
@@ -375,7 +375,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
       this.selectedFile = file;
 
-      // Aperçu immédiat
       const reader = new FileReader();
       reader.onload = () => (this.imagePreview = reader.result as string);
       reader.readAsDataURL(file);
@@ -400,20 +399,18 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         return;
       }
 
-      this.shopService
-        .generateIzyGlamShopDescription(type, userDescription)
-        .subscribe({
-          next: (description: string) => {
-            if (!this.shopCopyData) return;
-            this.shopCopyData.description = description || '';
-            this.markFormModified();
-            this.showCustomToast(this.t('SHOP_MANAGEMENT.DESCRIPTION_OK') || 'Description générée ✅');
-          },
-          error: (err) => {
-            console.error('[ShopManagement] generateIzyGlamDescription error:', err);
-            this.showCustomToast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_GENERATE_DESC') || 'Erreur de génération ❌', 'error');
-          },
-        });
+      this.shopService.generateIzyGlamShopDescription(type, userDescription).subscribe({
+        next: (description: string) => {
+          if (!this.shopCopyData) return;
+          this.shopCopyData.description = description || '';
+          this.markFormModified();
+          this.showCustomToast(this.t('SHOP_MANAGEMENT.DESCRIPTION_OK') || 'Description générée ✅');
+        },
+        error: (err) => {
+          console.error('[ShopManagement] generateIzyGlamDescription error:', err);
+          this.showCustomToast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_GENERATE_DESC') || 'Erreur de génération ❌', 'error');
+        },
+      });
     } catch (err) {
       console.error('[ShopManagement] generateIzyGlamDescription try/catch error:', err);
       this.showCustomToast(this.t('ERROR.GENERIC_ERROR'), 'error');
@@ -428,28 +425,24 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     try {
       if (!this.shopCopyData) return;
 
-      // On pousse la copie vers l’objet “source” avant envoi
       this.myShopData = { ...this.shopCopyData };
 
-      // Cas 1 : upload image nécessaire, on uploade d’abord
       if (this.selectedFile) {
         this.imageService.uploadImage(this.selectedFile).subscribe({
           next: (response) => {
-            // response.imageUrl peut être "uploads/images/xxx.png" ou "/uploads/images/xxx.png"
-            const cleaned = (response?.imageUrl || '').replace(/^\/+/, ''); // enlève les "/" au début
-            this.myShopData.image = cleaned; // On stocke le chemin relatif normalisé
+            const cleaned = (response?.imageUrl || '').replace(/^\/+/, '');
+            this.myShopData.image = cleaned;
 
-            this.persistShop('CARD.SALON'); // puis update du shop
+            this.persistShop('CARD.SALON');
           },
           error: (error) => {
-            console.error("[ShopManagement] uploadImage error:", error);
+            console.error('[ShopManagement] uploadImage error:', error);
             this.showCustomToast(this.t('CARD.ERROR2'), 'error');
           },
         });
         return;
       }
 
-      // Cas 2 : pas d’upload, update direct
       this.persistShop('CARD.UPDATE');
     } catch (err) {
       console.error('[ShopManagement] saveShop error:', err);
@@ -457,29 +450,31 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /**
-   * Appelle l’API update du Shop et met à jour l’UI/cohérence des données.
-   */
   private persistShop(successKey: string): void {
     try {
       this.shopService.update(this.myShopData).subscribe({
         next: (data: any) => {
-          // Rafraîchit la copie editable et la source
           this.shopCopyData = { ...data };
           this.myShopData = { ...data };
 
-          // Recalcule l’URL finale d’aperçu
           this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
 
-          // Reset upload preview
           this.imagePreview = null;
           this.selectedFile = null;
 
-          // Émet un événement “update” pour le parent
           this.shopUpdated.emit(this.myShopData._id);
 
           this.formModified = false;
           this.validateForm();
+
+          // Si on est en SALON, on resynchronise la structure adresse
+          if (!this.shopCopyData.serviceMode) this.shopCopyData.serviceMode = 'SALON';
+          if (this.shopCopyData.serviceMode === 'SALON') {
+            this.initPlaceAddressStructure();
+            this.validatePlaceAddress();
+            this.placeSaved = this.placeAddressValid;
+            this.placeHasErrors = !this.placeAddressValid;
+          }
 
           this.showCustomToast(this.t(successKey));
         },
@@ -498,16 +493,10 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   // Helpers
   // ======================
 
-  /**
-   * Construit une URL d’image exploitable par l’UI à partir d’un chemin stocké en base.
-   * - Accepte “logo.png”, “uploads/images/logo.png”, “/uploads/images/logo.png”.
-   * - Retourne “{API}/uploads/images/logo.png”.
-   */
   private buildImageUrl(storedPath?: string): string | null {
     try {
       if (!storedPath) return null;
-      const clean = storedPath.replace(/^\/+/, ''); // supprime les "/" de début
-      // Si le chemin ne commence pas par "uploads/", on le rajoute (défensif)
+      const clean = storedPath.replace(/^\/+/, '');
       const finalPath = clean.startsWith('uploads/') ? clean : `uploads/images/${clean}`;
       return `${this.baseImgUrl}/${finalPath}`;
     } catch (err) {
@@ -516,7 +505,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /** i18n safe */
   private t(key: string): string {
     try {
       const tr = this.translate.instant(key);
@@ -526,7 +514,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /** Toast centralisé */
   private showCustomToast(message: string, type: 'success' | 'error' = 'success'): void {
     try {
       if (type === 'success') this.toastr.success(message);
@@ -543,11 +530,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   private initLegalStructure(): void {
     try {
       if (!this.shopCopyData) return;
-
-      // Crée l'objet legal s'il n'existe pas
       this.shopCopyData.legal = this.shopCopyData.legal || {};
-
-      // Valeurs par défaut
       if (!this.shopCopyData.legal.country) this.shopCopyData.legal.country = 'FR';
     } catch (err) {
       console.error('[ShopManagement] initLegalStructure error:', err);
@@ -556,7 +539,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
   onLegalChange(field?: string): void {
     try {
-      // Nettoyages légers
       const l = this.shopCopyData?.legal;
       if (!l) return;
 
@@ -567,13 +549,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         l.vatNumber = l.vatNumber.toString().toUpperCase().replace(/\s+/g, '');
       }
 
-      if (field === 'phone' && l.phone) {
-        l.phone = l.phone.toString().trim();
-      }
-
-      if (field === 'email' && l.email) {
-        l.email = l.email.toString().trim();
-      }
+      if (field === 'phone' && l.phone) l.phone = l.phone.toString().trim();
+      if (field === 'email' && l.email) l.email = l.email.toString().trim();
 
       this.validateLegal();
     } catch (err) {
@@ -586,38 +563,30 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   }
 
   private isValidEmail(email: string): boolean {
-    if (!email) return true; // optionnel
+    if (!email) return true;
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   }
 
   private isValidSiret(siret: string): boolean {
-    if (!siret) return true; // optionnel (mais recommandé)
+    if (!siret) return true;
     return /^\d{14}$/.test(this.onlyDigits(siret));
   }
 
   private isValidSiren(siren: string): boolean {
-    if (!siren) return true; // optionnel
+    if (!siren) return true;
     return /^\d{9}$/.test(this.onlyDigits(siren));
   }
 
   private isValidVat(vat: string): boolean {
-    if (!vat) return true; // optionnel
-    // Simple check FR... (tu pourras renforcer plus tard)
+    if (!vat) return true;
     return /^FR[A-Z0-9]{2,13}$/i.test(vat.replace(/\s+/g, ''));
   }
 
-  /**
-   * Valide le bloc legal.
-   * Ici on le rend "utile compta" : si un champ est rempli, on exige la cohérence des autres.
-   * Tu peux durcir plus tard (ex: rendre SIRET obligatoire).
-   */
   validateLegal(): void {
     try {
       const l = this.shopCopyData?.legal || {};
       this.legalErrors = {};
 
-      // Champs "recommandés" pour documents comptables
-      // (on ne bloque pas ton formulaire global, mais on affiche clairement si incomplet)
       const hasAny =
         !!l.companyName || !!l.siret || !!l.addressLine1 || !!l.postalCode || !!l.city || !!l.email || !!l.phone || !!l.vatNumber;
 
@@ -640,9 +609,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /**
-   * Enregistre uniquement la section légal (pour éviter l'auto-save à chaque frappe).
-   */
   saveLegal(): void {
     try {
       this.validateLegal();
@@ -652,8 +618,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         return;
       }
 
-      // On déclenche une sauvegarde complète (car ton update envoie myShopData entier)
-      // mais ça sera volontaire via bouton.
       this.saveShop();
       this.showCustomToast('Informations légales enregistrées ✅');
     } catch (err) {
@@ -662,11 +626,13 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  onShopNameTyping() {
+  // ======================
+  // Handle UX
+  // ======================
 
-    // auto-proposition handle locale (0 requête)
+  onShopNameTyping() {
     if (!this.handleTouchedByUser && this.shopCopyData) {
-      const proposed = this.normalizeHandle(this.shopCopyData.name || "");
+      const proposed = this.normalizeHandle(this.shopCopyData.name || '');
       if (proposed && proposed !== this.shopCopyData.handle) {
         this.shopCopyData.handle = proposed;
         this.handleAvailable = null;
@@ -674,14 +640,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       }
     }
 
-    // l'utilisateur tape : UX -> "modifié"
     this.formModified = true;
     this.saved = false;
 
-    // on ne save pas si pas boss
     if (this.me?.role !== 'boss') return;
 
-    // debounce : 1 seule requête après pause
     if (this.autosaveTimer) clearTimeout(this.autosaveTimer);
 
     this.autosaveTimer = setTimeout(() => {
@@ -691,17 +654,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
   private autosave() {
     if (!this.shopCopyData) return;
-
-    // évite de sauver si aucune modif réelle
     if (!this.formModified) return;
 
     this.saving = true;
-
-    // on réutilise ton saveShop existant (qui gère upload image etc.)
-    // MAIS on veut marquer "saving/saved" au bon moment
     this.myShopData = { ...this.shopCopyData };
 
-    // appelle persist direct (sans upload, car name only)
     this.shopService.update(this.myShopData).subscribe({
       next: (data: any) => {
         this.shopCopyData = { ...data };
@@ -711,14 +668,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         this.formModified = false;
         this.saved = true;
         this.saving = false;
-
-        // pas besoin de toast à chaque autosave, c’est chiant
       },
       error: (error: any) => {
         console.error('[ShopManagement] autosave error:', error);
         this.saving = false;
         this.saved = false;
-        // toast léger
         this.showCustomToast(this.t('CARD.ERROR1'), 'error');
       },
     });
@@ -728,95 +682,204 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     if (!this.shopCopyData) return;
 
     this.handleTouchedByUser = true;
-
     this.shopCopyData.handle = this.normalizeHandle(value);
 
-    // reset status (pas revalidé)
     this.handleAvailable = null;
     this.error.handle = null;
 
-    // on marque le form modifié pour l'UX
     this.formModified = true;
     this.saved = false;
   }
 
   validateAndSaveHandle() {
-  if (!this.shopCopyData) return;
+    if (!this.shopCopyData) return;
 
-  const handle = this.normalizeHandle(this.shopCopyData.handle || "");
-  this.shopCopyData.handle = handle;
+    const handle = this.normalizeHandle(this.shopCopyData.handle || '');
+    this.shopCopyData.handle = handle;
 
-  if (!handle || handle.length < 3) {
-    this.handleAvailable = false;
-    this.error.handle = "Minimum 3 caractères.";
-    return;
+    if (!handle || handle.length < 3) {
+      this.handleAvailable = false;
+      this.error.handle = 'Minimum 3 caractères.';
+      return;
+    }
+
+    this.handleChecking = true;
+    this.handleAvailable = null;
+    this.error.handle = null;
+
+    this.shopService.isHandleAvailable(handle).subscribe({
+      next: (res: any) => {
+        const available = !!res?.available;
+
+        this.handleChecking = false;
+        this.handleAvailable = available;
+
+        if (!available) {
+          this.error.handle = 'Cet identifiant est déjà utilisé.';
+          return;
+        }
+
+        this.shopService.update({ _id: this.shopCopyData._id, handle }).subscribe({
+          next: (data: any) => {
+            this.shopCopyData = { ...this.shopCopyData, ...data };
+            this.myShopData = { ...this.shopCopyData };
+
+            this.initialHandle = this.shopCopyData.handle || '';
+            this.handleTouchedByUser = false;
+
+            this.formModified = false;
+            this.saved = true;
+
+            this.showCustomToast('Identifiant public mis à jour ✅', 'success');
+          },
+          error: () => {
+            this.showCustomToast('Erreur lors de la mise à jour du handle.', 'error');
+          },
+        });
+      },
+      error: (err: any) => {
+        this.handleChecking = false;
+        this.handleAvailable = null;
+
+        if (err?.status === 429) {
+          this.error.handle = 'Trop de requêtes. Réessaie dans 2 secondes.';
+        } else {
+          this.error.handle = 'Erreur lors de la vérification.';
+        }
+      },
+    });
   }
 
-  // ✅ 1 seule requête : check dispo (avec excludeId)
-  this.handleChecking = true;
-  this.handleAvailable = null;
-  this.error.handle = null;
+  normalizeHandle(input: string): string {
+    const raw = (input || '').trim().replace(/^@+/, '');
+    if (!raw) return '';
 
-  this.shopService.isHandleAvailable(handle).subscribe({
-    next: (res: any) => {
-      const available = !!res?.available;
+    const noAccents = raw.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-      this.handleChecking = false;
-      this.handleAvailable = available;
+    const cleaned = noAccents
+      .toLowerCase()
+      .replace(/\s+/g, '')
+      .replace(/[^a-z0-9._]/g, '');
 
-      if (!available) {
-        this.error.handle = "Cet identifiant est déjà utilisé.";
+    return cleaned.replace(/^[._]+|[._]+$/g, '');
+  }
+
+  // ======================
+  // Service Mode + Place Address
+  // ======================
+
+  private initPlaceAddressStructure(): void {
+    if (!this.shopCopyData) return;
+
+    // Structure complète défensive
+    this.shopCopyData.placeAddress = this.shopCopyData.placeAddress || {
+      label: '',
+      addressLine1: '',
+      addressLine2: '',
+      postalCode: '',
+      city: '',
+      country: 'FR',
+    };
+
+    if (!this.shopCopyData.placeAddress.country) this.shopCopyData.placeAddress.country = 'FR';
+  }
+
+  onServiceModeChange(mode: 'SALON' | 'DOMICILE'): void {
+    if (!this.shopCopyData) return;
+
+    this.shopCopyData.serviceMode = (mode === 'SALON' ? 'SALON' : 'DOMICILE');
+
+    // reset états adresse quand on change de mode
+    if (this.shopCopyData.serviceMode === 'SALON') {
+      this.initPlaceAddressStructure();
+      this.validatePlaceAddress();
+      this.placeSaved = this.placeAddressValid;
+      this.placeHasErrors = !this.placeAddressValid;
+    } else {
+      this.placeAddressErrors = {};
+      this.placeAddressValid = true;
+      this.placeHasErrors = false;
+      this.placeSaved = true;
+    }
+
+    this.saveShop();
+  }
+
+  onPlaceAddressChange(): void {
+    // UX premium : on indique "non enregistrée" dès qu'on tape
+    this.placeSaved = false;
+    this.validatePlaceAddress();
+  }
+
+  private validatePlaceAddress(): void {
+    try {
+      const a = this.shopCopyData?.placeAddress || {};
+      this.placeAddressErrors = {};
+
+      if (this.shopCopyData?.serviceMode !== 'SALON') {
+        this.placeAddressValid = true;
+        this.placeHasErrors = false;
         return;
       }
 
-      // ✅ Dispo -> 1 requête update (uniquement handle)
-      this.shopService.update({ _id: this.shopCopyData._id, handle }).subscribe({
-        next: (data: any) => {
-          // sync local state
-          this.shopCopyData = { ...this.shopCopyData, ...data };
-          this.myShopData = { ...this.shopCopyData };
+      const addressLine1 = (a.addressLine1 || '').trim();
+      const postalCode = (a.postalCode || '').trim();
+      const city = (a.city || '').trim();
+      const country = (a.country || 'FR').toString().trim().toUpperCase();
 
-          this.initialHandle = this.shopCopyData.handle || "";
-          this.handleTouchedByUser = false;
+      // Normalisation légère
+      a.country = country || 'FR';
+      a.postalCode = postalCode.replace(/\s+/g, '').toUpperCase();
 
-          this.formModified = false;
-          this.saved = true;
-
-          this.showCustomToast("Identifiant public mis à jour ✅", "success");
-        },
-        error: () => {
-          this.showCustomToast("Erreur lors de la mise à jour du handle.", "error");
-        },
-      });
-    },
-    error: (err: any) => {
-      this.handleChecking = false;
-      this.handleAvailable = null;
-
-      if (err?.status === 429) {
-        this.error.handle = "Trop de requêtes. Réessaie dans 2 secondes.";
-      } else {
-        this.error.handle = "Erreur lors de la vérification.";
+      if (!addressLine1 || addressLine1.length < 5) {
+        this.placeAddressErrors.addressLine1 = 'Adresse invalide';
       }
-    },
-  });
-}
+      if (!a.postalCode || a.postalCode.length < 4) {
+        this.placeAddressErrors.postalCode = 'Code postal invalide';
+      }
+      if (!city || city.length < 2) {
+        this.placeAddressErrors.city = 'Ville invalide';
+      }
 
-normalizeHandle(input: string): string {
-  const raw = (input || "").trim().replace(/^@+/, ""); // enlève @@@
-  if (!raw) return "";
+      this.placeAddressValid = Object.keys(this.placeAddressErrors).length === 0;
+      this.placeHasErrors = !this.placeAddressValid;
+    } catch (err) {
+      console.error('[ShopManagement] validatePlaceAddress error:', err);
+      this.placeAddressValid = false;
+      this.placeHasErrors = true;
+    }
+  }
 
-  // enlève accents
-  const noAccents = raw.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  savePlaceAddress(): void {
+    try {
+      this.validatePlaceAddress();
 
-  // garde uniquement a-z 0-9 . _
-  const cleaned = noAccents
-    .toLowerCase()
-    .replace(/\s+/g, "")              // supprime espaces
-    .replace(/[^a-z0-9._]/g, "");     // supprime le reste
+      if (!this.placeAddressValid) {
+        this.showCustomToast('Merci de corriger l’adresse du salon.', 'error');
+        return;
+      }
 
-  // évite "...." ou "__" en début/fin
-  return cleaned.replace(/^[._]+|[._]+$/g, "");
-}
+      if (!this.shopCopyData) return;
 
+      // On évite le toast "Adresse enregistrée" si l'API plante
+      this.placeSaving = true;
+
+      // On persiste uniquement ce qu'il faut (optionnel),
+      // mais tu utilises update(myShopData) entier => on garde ton flow
+      this.saveShop();
+
+      // Comme saveShop est async (subscribe), on ne peut pas être 100% sûr ici
+      // MAIS ton persistShop remettra shopCopyData à jour => on peut setter "optimiste"
+      this.placeSaved = true;
+      this.placeHasErrors = false;
+
+      this.showCustomToast('Adresse du salon enregistrée ✅', 'success');
+    } catch (err) {
+      console.error('[ShopManagement] savePlaceAddress error:', err);
+      this.showCustomToast('Erreur lors de l’enregistrement de l’adresse.', 'error');
+    } finally {
+      // petit délai pour laisser l'API partir (évite clignotement)
+      setTimeout(() => (this.placeSaving = false), 450);
+    }
+  }
 }

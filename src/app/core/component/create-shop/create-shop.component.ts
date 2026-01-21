@@ -12,6 +12,7 @@ import { CountryService } from '../../services/country.service';
 import { ShopTemplateService } from '../../services/shop-template.service';
 
 type WizardStep = 0 | 1 | 2 | 3;
+type ServiceMode = 'SALON' | 'DOMICILE';
 
 @Component({
   selector: 'app-create-shop',
@@ -54,26 +55,10 @@ export class CreateShopComponent implements OnInit {
   busy = false;
 
   wizardSteps: Array<{ title: string; subtitle: string; image: string }> = [
-    {
-      title: 'CREATION_SHOP_WIZARD.S0_TITLE',
-      subtitle: 'CREATION_SHOP_WIZARD.S0_SUBTITLE',
-      image: 'assets/images/onboarding/shop-0.png',
-    },
-    {
-      title: 'CREATION_SHOP_WIZARD.S1_TITLE',
-      subtitle: 'CREATION_SHOP_WIZARD.S1_SUBTITLE',
-      image: 'assets/images/onboarding/shop-1.png',
-    },
-    {
-      title: 'CREATION_SHOP_WIZARD.S2_TITLE',
-      subtitle: 'CREATION_SHOP_WIZARD.S2_SUBTITLE',
-      image: 'assets/images/onboarding/shop-2.png',
-    },
-    {
-      title: 'CREATION_SHOP_WIZARD.S3_TITLE',
-      subtitle: 'CREATION_SHOP_WIZARD.S3_SUBTITLE',
-      image: 'assets/images/onboarding/shop-3.png',
-    },
+    { title: 'CREATION_SHOP_WIZARD.S0_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S0_SUBTITLE', image: 'assets/images/onboarding/shop-0.png' },
+    { title: 'CREATION_SHOP_WIZARD.S1_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S1_SUBTITLE', image: 'assets/images/onboarding/shop-1.png' },
+    { title: 'CREATION_SHOP_WIZARD.S2_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S2_SUBTITLE', image: 'assets/images/onboarding/shop-2.png' },
+    { title: 'CREATION_SHOP_WIZARD.S3_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S3_SUBTITLE', image: 'assets/images/onboarding/shop-3.png' },
   ];
 
   get progressPercent(): number {
@@ -124,6 +109,9 @@ export class CreateShopComponent implements OnInit {
     this.newShop.companyType = 'coiffure';
     this.newShop.countryIndication = 'FR';
 
+    // ✅ default serviceMode
+    this.newShop.serviceMode = 'SALON' as ServiceMode;
+
     this.userService.getMe().subscribe({
       next: (data: any) => {
         this.me = { ...data };
@@ -158,6 +146,27 @@ export class CreateShopComponent implements OnInit {
     // reset creation state
     this.createdShopId = null;
     this.verification = null;
+
+    // reset fields (conserve quelques defaults)
+    this.newShop = {
+      companyType: this.newShop.companyType || 'coiffure',
+      countryIndication: 'FR',
+      serviceMode: (this.newShop.serviceMode || 'SALON') as ServiceMode,
+      ccvaccepted: false,
+      maxDistance: this.newShop.maxDistance || 15,
+    };
+
+    this.deliveryPostalCodesList = [];
+    this.deliveryPostalCode = '';
+    this.postalCode = '';
+    this.selectedCity = {};
+    this.selectedArrondissement = '';
+    this.availableCities = [];
+    this.availableArrondissements = [];
+    this.latitude = 0.0;
+    this.longitude = 0.0;
+
+    this.resetHandleValidation();
   }
 
   closeWizard() {
@@ -166,19 +175,15 @@ export class CreateShopComponent implements OnInit {
   }
 
   prev() {
-    console.log("back")
     this.showErrors = false;
     this.wizardStep = (Math.max(0, this.wizardStep - 1) as WizardStep);
   }
 
   private refreshStepErrorsIfNeeded() {
-    // Si l’utilisateur a déjà tenté de continuer (showErrors = true),
-    // on peut recalculer proprement pour enlever les erreurs disparues.
     if (this.showErrors) {
       this.validateCurrentStep(true);
     }
   }
-
 
   async next() {
     if (this.busy) return;
@@ -187,7 +192,7 @@ export class CreateShopComponent implements OnInit {
     this.validateCurrentStep();
     if (!this.canContinue()) return;
 
-    // Si on va vers l’étape docs => on s’assure que le shop est créé
+    // step 2 -> step 3 : create shop avant docs
     if (this.wizardStep === 2) {
       await this.ensureShopCreated();
       if (!this.createdShopId) return;
@@ -196,7 +201,6 @@ export class CreateShopComponent implements OnInit {
     this.showErrors = false;
     this.wizardStep = (Math.min(3, this.wizardStep + 1) as WizardStep);
 
-    // À l'arrivée sur docs : charge le statut
     if (this.wizardStep === 3) {
       this.loadVerificationStatus();
     }
@@ -220,18 +224,13 @@ export class CreateShopComponent implements OnInit {
     if (this.busy) return false;
     if (target <= this.wizardStep) return true;
 
-    // pas de saut en avant si invalide
     for (let i = 0; i < target; i++) {
       this.wizardStep = i as WizardStep;
       this.validateCurrentStep(false);
-      if (!this.canContinue()) {
-        return false;
-      }
+      if (!this.canContinue()) return false;
     }
 
-    // si on veut aller docs, il faut un shop créé
     if (target === 3 && !this.createdShopId) return false;
-
     return true;
   }
 
@@ -248,17 +247,28 @@ export class CreateShopComponent implements OnInit {
   }
 
   // ---------------------------
+  // Service Mode
+  // ---------------------------
+  setServiceMode(mode: ServiceMode) {
+    this.newShop.serviceMode = mode;
+
+    // petite UX : si domicile, street devient plus "zone de base"
+    // (on ne force pas, on laisse l'user écrire)
+    this.refreshStepErrorsIfNeeded();
+  }
+
+  // ---------------------------
   // Step validations
   // ---------------------------
   private validateCurrentStep(setErrors = true) {
-    if (!setErrors) {
-      // on n’affiche pas les erreurs en mode "check background"
-      // mais on calcule quand même pour canJumpTo()
-    }
-
     if (this.wizardStep === 1) {
+      this.error.name = null;
+      this.error.companyType = null;
+      this.error.handle = null;
+
       if (!this.newShop.name) this.error.name = this.translate.instant('CREATION_SHOP.ERROR1');
       if (!this.newShop.companyType) this.error.companyType = this.translate.instant('CREATION_SHOP.ERROR3');
+
       if (!this.newShop.handle) {
         this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_REQUIRED');
       } else if (this.handleAvailable !== true) {
@@ -296,7 +306,7 @@ export class CreateShopComponent implements OnInit {
     this.busy = true;
 
     try {
-      // 1) Update user role + shopCompany (comme ton submitVerificationDocs)
+      // 1) Update user role + shopCompany
       const meToUpdate = { ...this.me };
       meToUpdate.shopCompany = this.newShop;
       meToUpdate.role = 'professionnel';
@@ -311,11 +321,10 @@ export class CreateShopComponent implements OnInit {
         });
       });
 
-      // 2) Create shop (wrappé en Promise)
+      // 2) Create shop
       await new Promise<void>((resolve, reject) => {
         const type = this.newShop.companyType;
         const userId = this.me._id;
-
         this.createShop(type, userId, () => resolve());
       });
 
@@ -331,10 +340,8 @@ export class CreateShopComponent implements OnInit {
   }
 
   // ---------------------------
-  // Keep your existing business methods below
-  // (onCountryChange, addPostalCode, removePostalCode, onPostalCodeEntered, onCityChange...)
+  // Localisation / zones
   // ---------------------------
-
   onCountryChange() {
     this.postalCode = '';
     this.availableCities = [];
@@ -342,6 +349,7 @@ export class CreateShopComponent implements OnInit {
     this.availableArrondissements = [];
     this.selectedArrondissement = '';
     this.newAddress.code_postal = '';
+    this.refreshStepErrorsIfNeeded();
   }
 
   addPostalCode() {
@@ -393,6 +401,8 @@ export class CreateShopComponent implements OnInit {
             this.selectedCity = cities[0];
             this.onCityChange();
           }
+
+          this.refreshStepErrorsIfNeeded();
         },
         error: (err) => {
           console.error(err);
@@ -424,6 +434,8 @@ export class CreateShopComponent implements OnInit {
       }
 
       this.newAddress.city = this.selectedCity.nom;
+      this.error.selectedCity = null;
+      this.refreshStepErrorsIfNeeded();
     } catch (err) {
       console.error(err);
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
@@ -431,13 +443,15 @@ export class CreateShopComponent implements OnInit {
   }
 
   // ---------------------------
-  // Your existing createShop 그대로 유지
+  // Your existing createShop 그대로 유지 (just added serviceMode)
   // ---------------------------
   createShop(type: string, idUser: string, onAfterCreate?: () => void): any {
-    // ⬇️ garde ton code EXACT (je n’y touche pas)
     const newShopToCreate: any = {};
     newShopToCreate.name = this.newShop.name;
     newShopToCreate.handle = this.newShop.handle;
+
+    // ✅ NEW
+    newShopToCreate.serviceMode = this.newShop.serviceMode || 'SALON';
 
     newShopToCreate.country =
       this.selectedCountry || this.newShop.country || this.newShop.countryIndication || 'France';
@@ -503,7 +517,7 @@ export class CreateShopComponent implements OnInit {
   }
 
   // ---------------------------
-  // Docs upload : tu peux garder tel quel
+  // Docs upload
   // ---------------------------
   private loadVerificationStatus(): void {
     if (!this.createdShopId) return;
@@ -536,7 +550,6 @@ export class CreateShopComponent implements OnInit {
   }
 
   submitVerificationDocs(): void {
-    // ton code fonctionne, mais on s’assure shop créé
     if (!this.createdShopId) {
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       return;
@@ -575,7 +588,6 @@ export class CreateShopComponent implements OnInit {
     if (this.dialogRef) {
       this.dialogRef.close({ shopId: this.createdShopId, skippedVerification: true });
     } else {
-      // libre selon ton flow
       this.finishAndGoLogin();
     }
   }
@@ -596,7 +608,7 @@ export class CreateShopComponent implements OnInit {
   }
 
   // ---------------------------
-  // Status pills (tu avais déjà)
+  // Status pills
   // ---------------------------
   getStatusLabel(status?: string): string {
     switch (status) {
@@ -607,13 +619,14 @@ export class CreateShopComponent implements OnInit {
       default: return 'CREATION_SHOP.VERIF_STATUS_MISSING';
     }
   }
+
   getStatusClass(status?: string): string {
     const value = status || 'missing';
     return `status-${value}`;
   }
 
   // ---------------------------
-  // HANDLE: garde ta logique
+  // HANDLE
   // ---------------------------
   private normalizeHandle(input: any): string {
     const raw = String(input ?? "").trim().replace(/^@+/, "");
@@ -624,20 +637,14 @@ export class CreateShopComponent implements OnInit {
   }
 
   onShopNameTyping(value?: string) {
-    // le nom change => on nettoie l'erreur du nom
     this.error.name = null;
 
-    // handle auto
     const proposed = this.normalizeHandle(this.newShop.name || "");
     this.newShop.handle = proposed;
 
-    // dès que ça change => handle doit être re-testé
     this.resetHandleValidation();
-
-    // si user avait déjà cliqué "Continuer", on recalc juste pour nettoyer l'UI
     this.refreshStepErrorsIfNeeded();
   }
-
 
   resetHandleValidation() {
     this.handleAvailable = null;
@@ -646,10 +653,8 @@ export class CreateShopComponent implements OnInit {
     this.refreshStepErrorsIfNeeded();
   }
 
-
   canTestHandle(): boolean {
     const handle = this.normalizeHandle(this.newShop.handle || "");
-    // On exige un minimum + un nom rempli
     return !!this.newShop.name && !!handle && handle.length >= 3;
   }
 
@@ -657,12 +662,11 @@ export class CreateShopComponent implements OnInit {
     const handle = this.normalizeHandle(this.newShop.handle || "");
     this.newShop.handle = handle;
 
-    // nettoie l’erreur avant de retester
     this.error.handle = null;
+
     if (!handle || handle.length < 3) {
       this.handleAvailable = false;
       this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_MIN');
-      // this.refreshStepErrorsIfNeeded();
       return;
     }
 
@@ -675,7 +679,6 @@ export class CreateShopComponent implements OnInit {
         this.handleAvailable = !!res?.available;
 
         if (this.handleAvailable) {
-          // ✅ super important : on supprime l'erreur précédente
           this.error.handle = null;
         } else {
           this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_TAKEN');
@@ -694,7 +697,7 @@ export class CreateShopComponent implements OnInit {
 
   onCompanyTypeChange() {
     this.error.companyType = null;
-    this.resetHandleValidation(); // pas obligatoire mais ok si ton handle dépend aussi de la logique
+    this.resetHandleValidation();
     this.refreshStepErrorsIfNeeded();
   }
 }

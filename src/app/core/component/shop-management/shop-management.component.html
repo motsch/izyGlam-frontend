@@ -10,9 +10,11 @@
           <label for="imageUpload" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_IMAGE" | translate}}</label>
           <img [src]="imageUsed" alt="Image du shop" class="image-preview small-preview" />
         </div>
+
         <div class="custom-upload">
-          <button type="button" class="margin-top-20" (click)="fileInput.click()">📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" |
-            translate}}</button>
+          <button type="button" class="margin-top-20" (click)="fileInput.click()">
+            📷 {{ "SHOP_MANAGEMENT.UPLOAD_IMAGE" | translate}}
+          </button>
           <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
         </div>
 
@@ -21,10 +23,6 @@
           <img [src]="imagePreview" alt="Aperçu de l'image" class="image-preview small-preview" />
         </div>
       </div>
-      <!--<div class="column">
-        <h3 style="margin-bottom: 10px;">{{ "SHOP_MANAGEMENT.PHOTO" | translate}}:</h3>
-        <img src="assets/images/photomaton.png" alt="Image du shop" class="photomaton" />
-      </div>-->
     </div>
 
     <!-- EMPLOYE SUR LE SALON -->
@@ -49,9 +47,8 @@
         <div class="handle-row">
           <span class="handle-prefix">&#64;</span>
 
-          <input disabled type="text" id="shop-handle" class="input-style"
-            [(ngModel)]="shopCopyData.handle" placeholder="sabbeauty" (ngModelChange)="onHandleTypingLocal($event)"
-            autocomplete="off" />
+          <input disabled type="text" id="shop-handle" class="input-style" [(ngModel)]="shopCopyData.handle"
+            placeholder="sabbeauty" (ngModelChange)="onHandleTypingLocal($event)" autocomplete="off" />
 
           <span class="handle-status" [class.ok]="handleAvailable === true" [class.ko]="handleAvailable === false"
             *ngIf="shopCopyData.handle">
@@ -73,20 +70,105 @@
         <span *ngIf="!saving && saved">✅ Enregistré</span>
         <span *ngIf="!saving && !saved">✏️ Modifications non enregistrées</span>
       </div>
-
     </div>
 
     <!-- DESCRIPTION -->
     <div>
       <label for="description">{{ "SHOP_MANAGEMENT.DESCRIPTION" | translate }}
         <span *ngIf="shopCopyData.description?.length < 25" class="error-text">
-          {{ "SHOP_MANAGEMENT.DESC_INFO" | translate }}</span></label>
+          {{ "SHOP_MANAGEMENT.DESC_INFO" | translate }}
+        </span>
+      </label>
+
       <textarea [(ngModel)]="shopCopyData.description" class="input-style" id="description"
         (ngModelChange)="markFormModified()"></textarea>
 
       <button type="button" (click)="generateIzyGlamDescription()">
         ✨ {{ "SHOP_MANAGEMENT.GENERATE_DESCRIPTION" | translate }}
       </button>
+    </div>
+
+    <!-- ============================
+     MODE DE PRESTATION
+     ============================ -->
+    <h2 class="section-title">
+      📍 Mode de prestation
+      <span class="section-sub">
+        Indique si le client vient au salon, ou si vous vous déplacez à domicile.
+      </span>
+    </h2>
+
+    <div class="form-section">
+      <div class="column">
+        <label>Le rendez-vous a lieu :</label>
+
+        <select class="input-style" [(ngModel)]="shopCopyData.serviceMode"
+          (ngModelChange)="onServiceModeChange($event)">
+          <option [ngValue]="'SALON'">🏠 Au salon (le client vient)</option>
+          <option [ngValue]="'DOMICILE'">🚗 À domicile (je me déplace)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ============================
+     ADRESSE DU SALON (placeAddress)
+     Visible seulement si SALON
+     ============================ -->
+    <div *ngIf="shopCopyData?.serviceMode === 'SALON'" class="legal-panel place-panel">
+      <div class="place-top">
+        <div>
+          <h3 class="place-title">📍 Adresse du salon</h3>
+          <div class="place-sub">Cette adresse est visible pour les clients qui viennent au salon.</div>
+        </div>
+
+        <div class="place-status" [class.ok]="placeSaved" [class.ko]="placeHasErrors">
+          <ng-container *ngIf="placeSaving">Enregistrement…</ng-container>
+          <ng-container *ngIf="!placeSaving && placeSaved">Enregistrée</ng-container>
+          <ng-container *ngIf="!placeSaving && !placeSaved">Non enregistrée</ng-container>
+        </div>
+      </div>
+
+      <div class="legal-grid place-grid">
+        <div class="column">
+          <label>Adresse ligne 1</label>
+          <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.addressLine1"
+            (ngModelChange)="onPlaceAddressChange()" placeholder="12 rue ..." />
+          <div class="error" *ngIf="placeAddressErrors.addressLine1">{{ placeAddressErrors.addressLine1 }}</div>
+        </div>
+
+        <div class="column">
+          <label>Adresse ligne 2</label>
+          <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.addressLine2"
+            (ngModelChange)="onPlaceAddressChange()" placeholder="Bâtiment, étage..." />
+        </div>
+
+        <div class="column">
+          <label>Code postal</label>
+          <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.postalCode"
+            (ngModelChange)="onPlaceAddressChange()" placeholder="75000" />
+          <div class="error" *ngIf="placeAddressErrors.postalCode">{{ placeAddressErrors.postalCode }}</div>
+        </div>
+
+        <div class="column">
+          <label>Ville</label>
+          <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.city"
+            (ngModelChange)="onPlaceAddressChange()" placeholder="Paris" />
+          <div class="error" *ngIf="placeAddressErrors.city">{{ placeAddressErrors.city }}</div>
+        </div>
+
+        <div class="column">
+          <label>Pays</label>
+          <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.country"
+            (ngModelChange)="onPlaceAddressChange()" placeholder="FR" />
+        </div>
+      </div>
+
+      <div class="legal-actions place-actions">
+        <button type="button" class="btn-primary" (click)="savePlaceAddress()"
+          [disabled]="placeSaving || placeHasErrors">
+          Enregistrer l’adresse du salon
+        </button>
+      </div>
     </div>
 
     <!-- ============================
@@ -199,7 +281,9 @@
             (keyup.enter)="addPostalCode()" />
           <button type="button" class="add-postal-code-btn" (click)="addPostalCode()">+</button>
         </div>
+
         <div *ngIf="error.deliveryPostalCode" class="error">{{error.deliveryPostalCode}}</div>
+
         <div class="postal-code-list">
           <span class="postal-code-tag" *ngFor="let code of shopCopyData.deliveryPostalCodes; let i = index">
             {{ code }}
@@ -207,6 +291,7 @@
           </span>
         </div>
       </div>
+
       <div class="column">
         <label for="longitude">{{ "SHOP_MANAGEMENT.ZONE" | translate}}</label>
         <input [(ngModel)]="shopCopyData.maxDistance" class="input-style" type="number" id="maxDistance"
@@ -215,7 +300,6 @@
     </div>
 
     <!-- RESEAUX SOCIAUX -->
-
     <h2>{{ "SHOP_MANAGEMENT.SOCIAL_NETWORK" | translate}}</h2>
     <div class="form-section">
       <div class="column">
@@ -225,16 +309,19 @@
             [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_FACEBOOK' | translate)" />
         </div>
       </div>
+
       <div class="column">
         <label for="instagram">{{ "Instagram" | translate}}</label>
         <input [(ngModel)]="shopCopyData.instagram" class="input-style"
           [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_INSTAGRAM' | translate)" />
       </div>
+
       <div class="column">
         <label for="tiktok">{{ "Tiktok" | translate}}</label>
         <input [(ngModel)]="shopCopyData.tiktok" class="input-style"
           [placeholder]="('SHOP_MANAGEMENT.EXEMPLE_TIKTOK' | translate)" />
       </div>
+
       <div class="column button-center">
         <button (click)="saveSocial()">{{"BANK.SAVE" | translate}}</button>
       </div>
@@ -246,6 +333,7 @@
       <div *ngFor="let day of days" class="form-section">
         <div class="day-header-vertical">
           <h3>{{ 'SHOP_MANAGEMENT.' + day.toUpperCase() | translate }}</h3>
+
           <div class="closed-switch">
             <span>{{ 'SHOP_MANAGEMENT.CLOSED' | translate }}</span>
             <label class="switch">
@@ -254,7 +342,6 @@
             </label>
           </div>
         </div>
-
 
         <div class="grid-hours" *ngIf="!shopCopyData.hours[day].closed">
           <!-- Matin -->
@@ -265,6 +352,7 @@
                 <option *ngFor="let hour of allowedMorningHours" [value]="hour">{{ hour }}</option>
               </select>
             </div>
+
             <div class="hour-column">
               <label>{{ "SHOP_MANAGEMENT.MORNING_CLOSE" | translate }}</label>
               <select [(ngModel)]="shopCopyData.hours[day].morning.end" (ngModelChange)="saveShop()">
@@ -284,6 +372,7 @@
                 <option *ngFor="let hour of allowedAfternoonHours" [value]="hour">{{ hour }}</option>
               </select>
             </div>
+
             <div class="hour-column">
               <label>{{ "SHOP_MANAGEMENT.AFTERNOON_CLOSE" | translate }}</label>
               <select [(ngModel)]="shopCopyData.hours[day].afternoon.end" (ngModelChange)="saveShop()">
@@ -295,7 +384,9 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
+
   </div>
 </div>

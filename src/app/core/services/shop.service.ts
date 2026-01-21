@@ -355,4 +355,41 @@ export class ShopService {
   getShopByHandle(handle: string) {
     return this.http.get(`${environment.apiUrl}shop-handle/${handle}`);
   }
+
+  // ✅ NEW : catégories + mode (SALON/DOMICILE)
+  getShopsByPostalCodesWithCategories(
+    codes: string[],
+    mode: 'SALON' | 'DOMICILE',
+    country?: string
+  ): Observable<any> {
+    let params = new HttpParams()
+      .set('codes', codes.join(','))
+      .set('mode', mode);
+
+    if (country) {
+      params = params.set('country', country);
+    }
+
+    const url = `${environment.apiUrl}shop/by-postal-codes-with-categories`;
+    return this.http.get<any>(url, { params });
+  }
+
+  // ✅ NEW : recherche shops + services + mode
+  searchShopsWithServicesByMode(
+    postalCode: string,
+    query: string,
+    mode: 'SALON' | 'DOMICILE',
+    country?: string
+  ): Observable<any[]> {
+    let params = new HttpParams()
+      .set('postalCode', postalCode)
+      .set('query', query)
+      .set('mode', mode);
+
+    if (country) params = params.set('country', country);
+
+    const url = `${environment.apiUrl}shops-search`;
+    return this.http.get<any[]>(url, { params });
+  }
+
 }

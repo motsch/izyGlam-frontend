@@ -31,9 +31,7 @@
 <!-- OVERLAY -->
 <div class="izy-overlay" *ngIf="wizardOpen" (click)="closeWizard()"></div>
 
-
 <!-- MODAL -->
-
 <div class="izy-modal" *ngIf="wizardOpen" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
   <!-- HEADER -->
   <div class="modal-header">
@@ -49,15 +47,19 @@
 
     <div class="progress">
       <div class="dots">
-        <span class="dot" *ngFor="let s of wizardSteps; let i = index" [class.active]="i === wizardStep"
-          [class.done]="i < wizardStep" [class.clickable]="canJumpTo(i)" (click)="goToStep(i)">
+        <span
+          class="dot"
+          *ngFor="let s of wizardSteps; let i = index"
+          [class.active]="i === wizardStep"
+          [class.done]="i < wizardStep"
+          [class.clickable]="canJumpTo(i)"
+          (click)="goToStep(i)">
         </span>
       </div>
       <div class="bar">
         <div class="bar-fill" [style.width.%]="progressPercent"></div>
       </div>
     </div>
-    {{wizardStep}}
   </div>
 
   <!-- BODY -->
@@ -98,7 +100,6 @@
     </ng-container>
 
     <!-- STEP 1 : INFOS SALON (nom/handle/catégorie) -->
-    <!-- STEP 1 : INFOS SALON (nom/handle/catégorie) -->
     <ng-container *ngIf="wizardStep === 1">
       <div class="card">
         <div class="grid2">
@@ -135,7 +136,6 @@
             <label>{{ "CREATION_SHOP_WIZARD.HANDLE_LABEL" | translate }}</label>
 
             <div class="handle-row">
-
               <input type="text" [ngModel]="newShop.handle" disabled placeholder="sabbeauty" autocomplete="off" />
 
               <button type="button" class="chip-btn" (click)="testHandle()"
@@ -171,11 +171,42 @@
       </div>
     </ng-container>
 
-
-    <!-- STEP 2 : ADRESSE + ZONES -->
+    <!-- STEP 2 : ADRESSE + ZONES + MODE DE PRESTATION -->
     <ng-container *ngIf="wizardStep === 2">
       <div class="card">
         <div class="grid2">
+
+          <!-- ✅ MODE DE PRESTATION -->
+          <div class="field full">
+            <label>{{ "SHOP_MANAGEMENT.SERVICE_MODE" | translate }}</label>
+
+            <div class="mode-switch">
+              <button
+                type="button"
+                class="mode-btn"
+                [class.active]="newShop.serviceMode === 'SALON'"
+                (click)="setServiceMode('SALON')">
+                🏠 {{ "SHOP_MANAGEMENT.SERVICE_MODE_SALON" | translate }}
+              </button>
+
+              <button
+                type="button"
+                class="mode-btn"
+                [class.active]="newShop.serviceMode === 'DOMICILE'"
+                (click)="setServiceMode('DOMICILE')">
+                🚗 {{ "SHOP_MANAGEMENT.SERVICE_MODE_HOME" | translate }}
+              </button>
+            </div>
+
+            <div class="soft small">
+              <ng-container *ngIf="newShop.serviceMode === 'SALON'">
+                {{ "SHOP_MANAGEMENT.SERVICE_MODE_HINT_SALON" | translate }}
+              </ng-container>
+              <ng-container *ngIf="newShop.serviceMode === 'DOMICILE'">
+                {{ "SHOP_MANAGEMENT.SERVICE_MODE_HINT_HOME" | translate }}
+              </ng-container>
+            </div>
+          </div>
 
           <div class="field">
             <label>{{ "CREATION_SHOP.COUNTRY" | translate }}</label>
@@ -207,10 +238,27 @@
             <input type="text" [(ngModel)]="newShop.floor" placeholder="Étage / Suite (optionnel)" />
           </div>
 
+          <!-- ✅ Label adaptatif selon serviceMode -->
           <div class="field full">
-            <label>{{ "CREATION_SHOP.STREET" | translate }}</label>
-            <input type="text" [(ngModel)]="newShop.street" placeholder="123, rue Principale" />
+            <label>
+              <ng-container *ngIf="newShop.serviceMode === 'SALON'">
+                {{ "CREATION_SHOP.STREET" | translate }}
+              </ng-container>
+              <ng-container *ngIf="newShop.serviceMode === 'DOMICILE'">
+                {{ "CREATION_SHOP_WIZARD.AREA_BASE" | translate }}
+              </ng-container>
+            </label>
+
+            <input
+              type="text"
+              [(ngModel)]="newShop.street"
+              [placeholder]="newShop.serviceMode === 'SALON' ? '123, rue Principale' : ('CREATION_SHOP_WIZARD.AREA_PLACEHOLDER' | translate)" />
+
             <div class="field-error" *ngIf="showErrors && !!error.street">{{ error.street }}</div>
+
+            <div class="soft small" *ngIf="newShop.serviceMode === 'DOMICILE'">
+              {{ "CREATION_SHOP_WIZARD.AREA_HINT" | translate }}
+            </div>
           </div>
 
           <!-- ZONES -->
@@ -257,7 +305,6 @@
           <div class="soft small">{{ "CREATION_SHOP.STEP2_TAGLINE" | translate }}</div>
         </div>
 
-        <!-- Upload cards (on garde ton HTML, mais stylé via le SCSS) -->
         <div class="verification-section">
 
           <!-- ID -->

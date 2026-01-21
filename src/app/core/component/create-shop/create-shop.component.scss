@@ -83,11 +83,8 @@
   backdrop-filter: blur(16px);
   box-shadow: 0 28px 120px rgba(0,0,0,0.28);
   overflow: hidden;
-
-  /* sécurité au cas où une lib met display:none */
   display: block;
 }
-
 
 .modal-header { padding: 16px; border-bottom: 1px solid rgba(17,17,17,0.08); }
 .icon-btn {
@@ -175,16 +172,6 @@
 .field-error { margin-top: 6px; font-size: 12px; font-weight: 800; color: #b00020; }
 
 /* handle row */
-.prefix {
-  height: 44px;
-  width: 25px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 14px;
-  border: 1px solid rgba(17,17,17,0.10);
-  background: rgba(17,17,17,0.04);
-  font-weight: 900;
-  color: rgba(17,17,17,0.60);
-}
 .pill {
   padding: 8px 10px;
   border-radius: 999px;
@@ -291,44 +278,59 @@
 .verification-formats, .verification-mandatory { margin: 10px 0 0 0; font-size: 12px; color: rgba(17,17,17,0.62); }
 
 .final-actions { margin-top: 14px; display: grid; gap: 10px; }
-.modal {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  z-index: 999999 !important;
-}
 
+/* handle row (responsive) */
 .handle-row {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: nowrap; // ❗ empêche de passer à la ligne
+  flex-wrap: nowrap;
 }
-
-.handle-row .prefix {
-  flex: 0 0 auto;
-}
-
 .handle-row input {
   flex: 1 1 auto;
-  min-width: 0; // ✅ important pour éviter des comportements bizarres en flex
+  min-width: 0;
 }
-
 .handle-row .chip-btn {
   flex: 0 0 auto;
-  white-space: nowrap; // garde "Tester" en une ligne
+  white-space: nowrap;
 }
-
 .handle-row .pill {
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  white-space: nowrap;     // ✅ empêche "Disponible" de se couper
-  word-break: keep-all;    // ✅ évite les cassures
+  white-space: nowrap;
+  word-break: keep-all;
   padding: 8px 12px;
   border-radius: 999px;
-  line-height: 1;          // ✅ évite les hauteurs chelou
-  min-width: 110px;        // ✅ assure une largeur minimale
+  line-height: 1;
+  min-width: 110px;
   text-align: center;
+}
+
+/* ✅ Mode switch (SALON / DOMICILE) */
+.mode-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.mode-btn {
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(17,17,17,0.10);
+  background: rgba(255,255,255,0.78);
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .06s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
+  color: rgba(17,17,17,0.82);
+
+  &:hover { opacity: .92; }
+  &:active { transform: scale(.99); }
+
+  &.active {
+    border-color: rgba(255,64,129,0.35);
+    background: rgba(255,64,129,0.10);
+    box-shadow: 0 0 0 4px rgba(255,64,129,0.12);
+  }
 }

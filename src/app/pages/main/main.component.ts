@@ -72,6 +72,14 @@ export class MainComponent implements OnInit, AfterViewInit {
   pubActivated: boolean = false;
   promoActivated: boolean = false;
 
+  // ✅ NEW : mode de prestation
+  serviceMode: 'SALON' | 'DOMICILE' = 'SALON';
+
+  get isSalonMode(): boolean {
+    return this.serviceMode === 'SALON';
+  }
+
+
   private shopsSub?: Subscription;
   private shopsReqId = 0;
   private searchSubject = new Subject<string>();
@@ -244,19 +252,25 @@ export class MainComponent implements OnInit, AfterViewInit {
       this.filteredSearchResults = [];
       return;
     }
-    // 🔎 Toujours par code postal -> pas dépendant de la géoloc
+
     this.shopService
-      .searchShopsWithServices(this.selectedPostalCode, query)
+      .searchShopsWithServicesByMode(
+        this.selectedPostalCode,
+        query,
+        this.serviceMode,
+        this.me ? this.me.country : 'France'
+      )
       .subscribe({
         next: (results) => {
           this.filteredSearchResults = results;
         },
         error: (err) => {
-          console.error('Erreur lors de la recherche de shops avec services :', err);
+          console.error('Erreur recherche shops/services :', err);
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
         }
       });
   }
+
 
   // ---------------------------------------------------
   // 🖱️ Drag-to-scroll sur les listes horizontales
@@ -519,12 +533,9 @@ export class MainComponent implements OnInit, AfterViewInit {
   private loadShops() {
     // Annule l'abonnement précédent (évite les chevauchements)
     this.shopsSub?.unsubscribe();
-
     // ID de requête pour ignorer les réponses obsolètes
     const reqId = ++this.shopsReqId;
-
     this.loading = true;
-
     this.cancelFilter();
     this.categoryTrad = '';
     // Reset immédiat (évite affichage d'anciennes données)
@@ -536,55 +547,46 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.promotedShops = [];
 
     this.shopsSub = this.shopService
-      .getShopsByPostalCodes(this.selectedPostalCode ? [this.selectedPostalCode] : ["75001"], this.me ? this.me.country : "France")
+      .getShopsByPostalCodesWithCategories(
+        this.selectedPostalCode ? [this.selectedPostalCode] : ["75001"],
+        this.serviceMode,
+        this.me ? this.me.country : "France"
+      )
       .subscribe({
         next: (categories: any) => {
           if (reqId !== this.shopsReqId) return;
 
           const favoriteShops: string[] = this.me ? this.me.favoriteShops || [] : [];
 
-          // Petit utilitaire pour mapper le flag favori après déduplication
           const mapIsFavorite = (arr: any[]) =>
             arr.map((s: any) => ({ ...s, isFavorite: favoriteShops.includes(s._id) }));
 
-          // 1) Dédup par catégorie
           const adecouvrir = mapIsFavorite(this.uniqById(categories?.discover || []));
           const apprecier = mapIsFavorite(this.uniqById(categories?.appreciated || []));
           const malin = mapIsFavorite(this.uniqById(categories?.smart || []));
           const top10 = mapIsFavorite(this.uniqById(categories?.top10 || []));
 
-          // ✅ Mets à jour les tableaux d’entrées des carrousels (dédupliqués)
           this.filteredItemsAdecouvrir = adecouvrir;
           this.filteredItemsApprecier = apprecier;
           this.filteredItemsMalin = malin;
           this.filteredItemsTop10 = top10;
 
-          // 2) Construit "ALL" puis dédup globalement
-          this.shops = this.uniqById([
-            ...adecouvrir,
-            ...apprecier,
-            ...malin,
-            ...top10,
-          ]);
+          this.shops = this.uniqById([...adecouvrir, ...apprecier, ...malin, ...top10])
+            .sort((a: any, b: any) => {
+              const aTotal = Number(a?.stats?.bookings?.finished?.total ?? 0);
+              const bTotal = Number(b?.stats?.bookings?.finished?.total ?? 0);
+              return bTotal - aTotal;
+            });
 
-          this.shops = (this.shops ?? []).sort((a: any, b: any) => {
-            const aTotal = Number(a?.stats?.bookings?.finished?.total ?? 0);
-            const bTotal = Number(b?.stats?.bookings?.finished?.total ?? 0);
-            return bTotal - aTotal; // décroissant : + réservé -> - réservé
-          });
-
-          // 3) Promos sans doublons
           this.promotedShops = this.uniqById(
             this.shops.filter((x: any) => x?.promo?.active === true)
           );
 
           this.loading = false;
-          // Si tes enfants utilisent OnPush :
-          // this.cd.markForCheck();
         },
         error: (err) => {
           if (reqId !== this.shopsReqId) return;
-          console.error('Erreur lors du chargement des shops par code postal :', err);
+          console.error('Erreur shops par CP + mode :', err);
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
           this.loading = false;
         }
@@ -820,5 +822,21 @@ export class MainComponent implements OnInit, AfterViewInit {
     // ⚠️ StandardizyGlam : pour les erreurs, on utilise toastr.error
     // Exemple clé i18n : this.translate.instant('ERROR.GENERIC_ERROR')
     this.toastr.error(message);
+  }
+
+  toggleServiceMode(next: 'SALON' | 'DOMICILE') {
+    if (this.serviceMode === next) return;
+
+    this.serviceMode = next;
+
+    // Reset UI liés aux shops
+    this.searchQuery = '';
+    this.filteredSearchResults = [];
+    this.cancelFilter();
+    this.categoryTrad = '';
+
+    // Reload data avec le mode
+    this.loadCategories();
+    this.loadShops();
   }
 }

@@ -528,3 +528,123 @@ input:checked+.slider:before {
 .handle-actions {
   margin-top: 12px;
 }
+
+
+/* ============================
+   PLACE ADDRESS (SALON)
+   ============================ */
+
+.place-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.place-panel:before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: radial-gradient(circle at top left, rgba(255, 114, 188, 0.18), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(255, 79, 158, 0.14), transparent 55%);
+  pointer-events: none;
+}
+
+.place-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.place-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #b25280;
+}
+
+.place-sub {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #7a5b6c;
+}
+
+.place-status {
+  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 226, 244, 0.95);
+  background: rgba(255, 255, 255, 0.9);
+  color: #7a5b6c;
+  white-space: nowrap;
+  box-shadow: 0 10px 20px rgba(255, 100, 170, 0.10);
+}
+
+.place-status.ok {
+  background: rgba(60, 179, 113, 0.10);
+  border-color: rgba(60, 179, 113, 0.22);
+  color: #1f6b43;
+}
+
+.place-status.ko {
+  background: rgba(232, 75, 75, 0.09);
+  border-color: rgba(232, 75, 75, 0.18);
+  color: #8c2b2b;
+}
+
+/* Inputs plus premium dans la zone adresse */
+.place-grid {
+  position: relative;
+  z-index: 1;
+}
+
+/* Petit helper d'erreur plus doux (garde ta classe .error existante) */
+.place-grid .error {
+  margin-top: 6px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(255, 79, 122, 0.07);
+  border: 1px solid rgba(255, 79, 122, 0.18);
+  color: #c63758;
+  font-weight: 600;
+}
+
+/* Actions */
+.place-actions {
+  position: relative;
+  z-index: 1;
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.place-actions .btn-primary {
+  min-height: 42px;
+  padding: 11px 18px;
+}
+
+/* Responsive: grid 1 colonne sur petits écrans */
+@media screen and (max-width: 640px) {
+  .place-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .legal-grid.place-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .place-actions {
+    justify-content: stretch;
+  }
+
+  .place-actions .btn-primary {
+    width: 100%;
+  }
+}
