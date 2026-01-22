@@ -1,4 +1,4 @@
-<div class="payment-container">
+<div class="payment-container margin-top-50">
     <header class="payment-header">
         <img src="assets/images/logo.png" alt="IzyGlam Logo" class="logo">
         <a (click)="goToAbonnement()" class="change-subscription">Changer d'abonnement</a>
@@ -6,7 +6,6 @@
 
     <section class="subscription-details">
         <div class="plan">
-            <img src="assets/images/logo/glam_logo.png" alt="Abonnement Duo" class="plan-icon">
             <div>
                 <h2 *ngIf="abonnement === 'premium'">👑 {{ "TARIF.PREMIUM" | translate }}</h2>
                 <p>Passez à izyGlam Premium</p>
@@ -43,12 +42,12 @@
             <h3 class="section-title">{{ 'PAYEMENT.CARD_PAY' | translate }}</h3>
 
             <div class="payment-method">
-                <i class="fa fa-credit-card"></i>
                 <!-- Liste des cartes -->
                 <div *ngIf="cards.length > 0">
                     <div *ngFor="let card of cards" class="card-option" [class.selected]="card.id === selectedCardId"
                         (click)="selectCard(card.id)">
-                        <h3>{{ card.brand }} - **** **** **** {{ card.last4 }}</h3>
+                        
+                <i class="fa fa-credit-card"></i><h3>{{ card.brand }} - **** **** **** {{ card.last4 }}</h3>
                         <p>{{"PAYEMENT.PAYMENT_EXPIRE" | translate}} {{ card.exp_month }}/{{ card.exp_year }}</p>
                     </div>
                 </div>
@@ -70,11 +69,6 @@
                     <app-stripe-card-form [userId]="me._id" (cardAdded)="onCardAdded($event)"></app-stripe-card-form>
                 </div>
             </div>
-
-            <label class="paypal-option card-icons">
-                <input type="radio" name="payment-method">
-                PayPal <img src="assets/payment/paypal.png" alt="PayPal">
-            </label>
         </form>
     </section>
 
