@@ -40,20 +40,29 @@ export class CategoryService {
   }
 
   // Récupérer les catégories disponibles en fonction des shops filtrés par géolocalisation ou codes postaux
-  getAvailableCategories(lat?: number, lon?: number, codes?: string[], country?: string): Observable<any[]> {
-    let params = new HttpParams();
+  getAvailableCategories(
+    mode: 'SALON' | 'DOMICILE',
+    lat?: number,
+    lon?: number,
+    codes?: string[],
+    country?: string
+  ): Observable<any[]> {
+    const url = `${environment.apiUrl}category/available`;
+
+    let params = new HttpParams().set('mode', mode);
 
     if (lat != null && lon != null) {
       params = params.set('lat', String(lat)).set('lon', String(lon));
     }
+
     if (codes && codes.length > 0) {
       params = params.set('codes', codes.join(','));
     }
+
     if (country) {
       params = params.set('country', country);
     }
 
-    const url = `${environment.apiUrl}category/available`;
     return this.http.get<any[]>(url, { params });
   }
 }

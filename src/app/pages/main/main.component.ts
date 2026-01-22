@@ -478,12 +478,20 @@ export class MainComponent implements OnInit, AfterViewInit {
   // 🗂️ Catégories disponibles pour le CP sélectionné
   // ---------------------------------------------------
   private loadCategories() {
-    // On passe toujours par le code postal sélectionné (aucune dépendance à la géoloc)
+    const country = this.me ? this.me.country : 'France';
+
+    const codes = this.selectedPostalCode
+      ? [this.selectedPostalCode]
+      : ['75001'];
+
+    // 🔥 adapte selon ton state UI (ex: this.mode, this.serviceMode, etc.)
+    const mode: 'SALON' | 'DOMICILE' = this.serviceMode ?? 'SALON';
+
     this.categoryService
-      .getAvailableCategories(undefined, undefined, this.selectedPostalCode ? [this.selectedPostalCode] : ["75001"], this.me ? this.me.country : "France")
+      .getAvailableCategories(mode, undefined, undefined, codes, country)
       .subscribe({
         next: (data: any[]) => {
-          this.categoriesFilter = data.sort((a, b) => a.position - b.position);
+          this.categoriesFilter = (data ?? []).sort((a, b) => a.position - b.position);
         },
         error: (err) => {
           console.error('Erreur lors du chargement des catégories disponibles :', err);
@@ -491,6 +499,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         }
       });
   }
+
 
   // ---------------------------------------------------
   // 🔍 Filtre local (par nom) sur la liste des shops
@@ -542,10 +551,10 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.promotedShops = [];
 
     this.shopService.getShopsByPostalCodesWithCategories(
-        this.selectedPostalCode ? [this.selectedPostalCode] : ["75001"],
-        this.serviceMode,
-        this.me ? this.me.country : "France"
-      )
+      this.selectedPostalCode ? [this.selectedPostalCode] : ["75001"],
+      this.serviceMode,
+      this.me ? this.me.country : "France"
+    )
       .subscribe({
         next: (categories: any) => {
           if (reqId !== this.shopsReqId) return;
