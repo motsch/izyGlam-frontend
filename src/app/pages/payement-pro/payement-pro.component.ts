@@ -66,7 +66,7 @@ export class PayementProComponent implements OnInit {
   ngOnInit(): void {
     // 1) Récupérer le paramètre d'URL
     this.abonnement = this.route.snapshot.paramMap.get('abonnement')!;
-    if (this.abonnement !== 'elue' && this.abonnement !== 'reine' && this.abonnement !== 'deesse') {
+    if (this.abonnement !== 'premium') {
       // Si abonnement invalide : retour à l’accueil
       this.router.navigate(['/main']);
       return;

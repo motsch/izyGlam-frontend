@@ -8,9 +8,8 @@
         <div class="plan">
             <img src="assets/images/logo/glam_logo.png" alt="Abonnement Duo" class="plan-icon">
             <div>
-                <h2 *ngIf="abonnement === 'elue'">✨ {{ "TARIF.BASIC" | translate }}</h2>
-                <h2 *ngIf="abonnement === 'reine'">👑 {{ "TARIF.PREMIUM" | translate }}</h2>
-                <p>2 comptesizyGlam Premium</p>
+                <h2 *ngIf="abonnement === 'premium'">👑 {{ "TARIF.PREMIUM" | translate }}</h2>
+                <p>Passez à izyGlam Premium</p>
             </div>
             <div class="price">15,17 €<span>/mois</span></div>
         </div>
@@ -45,7 +44,6 @@
 
             <div class="payment-method">
                 <i class="fa fa-credit-card"></i>
-                {{ cards | json }}
                 <!-- Liste des cartes -->
                 <div *ngIf="cards.length > 0">
                     <div *ngFor="let card of cards" class="card-option" [class.selected]="card.id === selectedCardId"
@@ -83,6 +81,7 @@
     <section class="summary">
         <h3>Résumé :</h3>
         <div class="summary-line subscription-details">
+            <p class="mini-badge">Sans engagement • Résiliable à tout moment</p>
 
             <div class="plan">
                 <img src="assets/images/logo/glam_logo.png" alt="Abonnement Duo" class="plan-icon">
