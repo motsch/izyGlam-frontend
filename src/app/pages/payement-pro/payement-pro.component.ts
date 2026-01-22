@@ -200,7 +200,7 @@ export class PayementProComponent implements OnInit {
 
   finalizePurchase() {
     this.stripeService.createPremiumCheckoutSession().subscribe({
-      next: ({ url }) => (window.location.href = url),
+      next: ({ url }) => console.error(url),
       error: (err) => console.error(err),
     });
   }
