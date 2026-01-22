@@ -20,14 +20,12 @@ export class StripeService {
     );
   }
 
-
   refreshStripeStatus(userId: string) {
     return this.http.get<any>(`${environment.apiUrl}/stripe/connect/status`, {
       params: { userId },
     }
     );
   }
-
 
   // Créer une intention de paiement
   createPaymentIntent(amount: number, currency: string, customerId: string) {
@@ -78,7 +76,6 @@ export class StripeService {
     throw new Error('Cette méthode est obsolète. Utilisez Stripe Elements à la place.');
   }
 
-
   /**
    * Demande un remboursement via le backend.
    * Le backend doit ensuite appeler l'API Stripe pour traiter le remboursement.
@@ -95,4 +92,7 @@ export class StripeService {
     return this.http.post<any>(url, payload);
   }
 
+  createPremiumCheckoutSession() {
+    return this.http.post(`${environment.apiUrl}premium/checkout-session`, {});
+  }
 }

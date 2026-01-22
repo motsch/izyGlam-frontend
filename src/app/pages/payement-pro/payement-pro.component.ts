@@ -7,6 +7,7 @@ import { loadStripe } from '@stripe/stripe-js';
 // ✅ Ajouts pour toasts + i18n (standardizyGlam)
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { StripeService } from 'src/app/core/services/stripe.service';
 
 @Component({
   selector: 'app-payement-pro',
@@ -57,8 +58,9 @@ export class PayementProComponent implements OnInit {
 
     // ✅ AjoutizyGlam
     private toastr: ToastrService,
-    private translate: TranslateService
-  ) {}
+    private translate: TranslateService,
+    private stripeService: StripeService
+  ) { }
 
   // ---------------------------------------------------------
   // ⏱️ ngOnInit : lit l’abonnement, vérifie / charge l’utilisateur & Stripe
@@ -195,4 +197,12 @@ export class PayementProComponent implements OnInit {
     // Ex : "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨"
     this.toastr.error(message);
   }
+
+  finalizePurchase() {
+    this.stripeService.createPremiumCheckoutSession().subscribe({
+      next: ({ url }) => (window.location.href = url),
+      error: (err) => console.error(err),
+    });
+  }
+
 }

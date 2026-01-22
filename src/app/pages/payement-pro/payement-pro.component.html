@@ -3,21 +3,19 @@
         <img src="assets/images/logo.png" alt="IzyGlam Logo" class="logo">
         <a (click)="goToAbonnement()" class="change-subscription">Changer d'abonnement</a>
     </header>
-
     <section class="subscription-details">
         <div class="plan">
             <div>
                 <h2 *ngIf="abonnement === 'premium'">👑 {{ "TARIF.PREMIUM" | translate }}</h2>
                 <p>Passez à izyGlam Premium</p>
             </div>
-            <div class="price">15,17 €<span>/mois</span></div>
+            <div class="price" *ngIf="abonnement === 'premium'">89,90 €<span>/mois</span></div>
         </div>
         <ul class="benefits">
             <li>Facturation mensuelle à partir d'aujourd'hui.</li>
             <li>Annulation possible à tout moment. <a href="#">Offre soumise à conditions</a>.</li>
         </ul>
     </section>
-
     <section class="address">
         <h3>Adresse</h3>
         <div class="address-info">
@@ -25,7 +23,6 @@
             <a href="#" class="edit">Modifier</a>
         </div>
     </section>
-
     <section class="payment-method">
         <h3>Mode de paiement</h3>
         <form>
@@ -38,32 +35,28 @@
                     <img src="assets/payment/amex.png" alt="American Express">
                 </div>
             </label>
-
             <h3 class="section-title">{{ 'PAYEMENT.CARD_PAY' | translate }}</h3>
-
             <div class="payment-method">
                 <!-- Liste des cartes -->
                 <div *ngIf="cards.length > 0">
                     <div *ngFor="let card of cards" class="card-option" [class.selected]="card.id === selectedCardId"
                         (click)="selectCard(card.id)">
-                        
-                <i class="fa fa-credit-card"></i><h3>{{ card.brand }} - **** **** **** {{ card.last4 }}</h3>
+
+                        <i class="fa fa-credit-card"></i>
+                        <h3>{{ card.brand }} - **** **** **** {{ card.last4 }}</h3>
                         <p>{{"PAYEMENT.PAYMENT_EXPIRE" | translate}} {{ card.exp_month }}/{{ card.exp_year }}</p>
                     </div>
                 </div>
-
                 <!-- Aucune carte -->
                 <div *ngIf="cards.length === 0" class="no-default-card">
                     <h3>{{"PAYEMENT.PAYMENT_NO_CARD" | translate}}</h3>
                     <p>{{"PAYEMENT.PAYMENT_NO_CARD_DESC" | translate}}</p>
                 </div>
-
                 <!-- Bouton Ajouter une carte -->
                 <button class="add-card-btn" (click)="showAddCardForm = !showAddCardForm">
                     {{ showAddCardForm ? ('PAYEMENT.HIDE_CARD_FORM' | translate) : ('PAYEMENT.ADD_CARD' | translate)
                     }}
                 </button>
-
                 <!-- Formulaire Stripe Elements pour ajout de carte -->
                 <div *ngIf="showAddCardForm">
                     <app-stripe-card-form [userId]="me._id" (cardAdded)="onCardAdded($event)"></app-stripe-card-form>
@@ -76,21 +69,16 @@
         <h3>Résumé :</h3>
         <div class="summary-line subscription-details">
             <p class="mini-badge">Sans engagement • Résiliable à tout moment</p>
-
             <div class="plan">
-                <img src="assets/images/logo/glam_logo.png" alt="Abonnement Duo" class="plan-icon">
                 <div>
-                    <h2 *ngIf="abonnement === 'elue'">✨ {{ "TARIF.BASIC" | translate }}</h2>
-                    <h2 *ngIf="abonnement === 'reine'">👑 {{ "TARIF.PREMIUM" | translate }}</h2>
+                    <h2>👑 {{ "TARIF.PREMIUM" | translate }}</h2>
                 </div>
             </div>
         </div>
         <div class="total">Total actuel :
-            <strong *ngIf="abonnement === 'elue'">89,00 €</strong>
-            <strong *ngIf="abonnement === 'reine'">299,00 €</strong>
+            <strong *ngIf="abonnement === 'premium'">89,90 €</strong>
         </div>
     </section>
-
     <section class="confirmation">
         <p class="terms">
             Vous consentez expressément à ce que nous vous fournissions immédiatement votre abonnement izyGlam et
@@ -98,6 +86,6 @@
             recueille, utilise, partage et protège vos données personnelles, veuillez consulter la <a href="#">Politique
                 de confidentialité</a>.
         </p>
-        <button class="confirm-button">Finaliser l'achat</button>
+        <button class="confirm-button" (click)="finalizePurchase()">Finaliser l'achat</button>
     </section>
 </div>
