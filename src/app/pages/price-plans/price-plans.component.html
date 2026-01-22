@@ -1,17 +1,16 @@
-
 <!-- Nouveau HTML inspiré de Spotify Premium -->
 <div class="price-plans">
   <div class="intro-section">
     <h1 class="title-gradient">{{ "TARIF.DISCOVER" | translate }}</h1>
     <p class="subtitle-soft">{{ "TARIF.SOLUTIONS" | translate }}</p>
-  
+
     <div class="payment-icons">
       <img src="/assets/payment/visa.png" alt="Visa">
       <img src="/assets/payment/mastercard.png" alt="MasterCard">
       <img src="/assets/payment/amex.png" alt="Amex">
       <img src="/assets/payment/paypal.png" alt="Paypal">
     </div>
-  
+
     <p class="magic-line">{{ "TARIF.TEST" | translate }}</p>
   </div>
 
@@ -64,18 +63,75 @@
     <table>
       <thead>
         <tr>
-          <th>Avantages</th>
+          <th>{{ "TARIF.ADVANTAGES" | translate }}</th>
           <th>{{ "TARIF.FREE" | translate }}</th>
           <th>{{ "TARIF.BASIC" | translate }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>{{ "TARIF.FREE3" | translate }}</td><td>–</td><td>✔️</td></tr>
-        <tr><td>{{ "TARIF.STUDIO_BASIC" | translate }}</td><td>–</td><td>✔️</td></tr>
-        <tr><td>{{ "TARIF.STUDIO_ADVANCED" | translate }}</td><td>–</td><td>✔️</td></tr>
-        <tr><td>{{ "TARIF.ANALYSE" | translate }}</td><td>–</td><td>✔️</td></tr>
-        <tr><td>{{ "TARIF.PLANS" | translate }}</td><td>1</td><td>1</td></tr>
+
+        <!-- Base -->
+        <tr>
+          <td>{{ "TARIF.COMPANY_BASE" | translate }}</td>
+          <td>✔️</td>
+          <td>✔️</td>
+        </tr>
+
+        <tr>
+          <td>{{ "TARIF.ONLINE_PAYMENT" | translate }}</td>
+          <td>✔️</td>
+          <td>✔️</td>
+        </tr>
+
+        <!-- izyPhone -->
+        <tr>
+          <td>{{ "TARIF.IZYPHONE" | translate }}</td>
+          <td>–</td>
+          <td>✔️</td>
+        </tr>
+
+        <tr>
+          <td>{{ "TARIF.CALL_MANAGEMENT" | translate }}</td>
+          <td>–</td>
+          <td>✔️</td>
+        </tr>
+
+        <!-- Visibilité -->
+        <tr>
+          <td>{{ "TARIF.VISIBILITY" | translate }}</td>
+          <td>–</td>
+          <td>✔️</td>
+        </tr>
+
+        <!-- Pilotage -->
+        <tr>
+          <td>{{ "TARIF.STATS_ADVANCED" | translate }}</td>
+          <td>–</td>
+          <td>✔️</td>
+        </tr>
+
+        <tr>
+          <td>{{ "TARIF.BILLING" | translate }}</td>
+          <td>–</td>
+          <td>✔️</td>
+        </tr>
+
+        <!-- Support -->
+        <tr>
+          <td>{{ "TARIF.SUPPORT_LEVEL" | translate }}</td>
+          <td>{{ "TARIF.SUPPORT_STANDARD" | translate }}</td>
+          <td>{{ "TARIF.SUPPORT_PREMIUM" | translate }}</td>
+        </tr>
+
+        <!-- Salons -->
+        <tr>
+          <td>{{ "TARIF.PLANS" | translate }}</td>
+          <td>1</td>
+          <td>1</td>
+        </tr>
+
       </tbody>
     </table>
+
   </div>
 </div>

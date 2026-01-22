@@ -1245,7 +1245,18 @@
     "READY": "Prête à faire grandir ton activité ?",
     "DISCOVERS": "Découvrir les offresizyGlam",
     "FREE_TRIAL": "Gratuit pendant 1 mois",
-    "COMPARE": "Comparatif tarifaire"
+    "COMPARE": "Comparatif tarifaire",
+    "ADVANTAGES": "Avantages",
+    "COMPANY_BASE": "Gestion du salon, des prestations et du planning",
+    "ONLINE_PAYMENT": "Paiement en ligne sécurisé",
+    "IZYPHONE": "Numéro professionnel izyPhone",
+    "CALL_MANAGEMENT": "Gestion des appels et des réservations à ta place",
+    "VISIBILITY": "Mise en avant et visibilité sur la plateforme",
+    "STATS_ADVANCED": "Statistiques avancées et pilotage d’activité",
+    "BILLING": "Facturation automatique et documents comptables",
+    "SUPPORT_LEVEL": "Niveau de support",
+    "SUPPORT_STANDARD": "Support standard",
+    "SUPPORT_PREMIUM": "Support prioritaire"
   },
   "ACCESSIBILITY": {
     "DECLARATION": {
