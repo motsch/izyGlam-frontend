@@ -6,11 +6,11 @@ import { UserService } from "src/app/core/services/user.service";
 import { StripeService } from "src/app/core/services/stripe.service";
 
 @Component({
-  selector: "app-premium-dashboard",
-  templateUrl: "./premium-dashboard.component.html",
-  styleUrls: ["./premium-dashboard.component.scss"],
+  selector: "app-billing",
+  templateUrl: "./billing.component.html",
+  styleUrls: ["./billing.component.scss"],
 })
-export class PremiumDashboardComponent implements OnInit, OnDestroy {
+export class BillingComponent implements OnInit, OnDestroy {
   imgStorageUrl = "assets/images/";
   loading = true;
   actionLoading = false;
