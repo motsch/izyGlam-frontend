@@ -95,4 +95,10 @@ export class StripeService {
   createPremiumCheckoutSession(userId: string) {
     return this.http.post(`${environment.apiUrl}premium/checkout-session`, { userId });
   }
+
+  getPremiumCheckoutStatus(sessionId: string, userId: string) {
+    return this.http.get(`${environment.apiUrl}premium/checkout-session-status`, {
+      params: { session_id: sessionId, userId }
+    });
+  }
 }
