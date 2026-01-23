@@ -1,16 +1,31 @@
 .premium-success {
+  width: 100%;
+  display: block;
+
   .thanks-bg {
-    min-height: 70vh;
+    margin-top: 50px;
+    min-height: 165vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 60px 16px;
+    align-items: flex-start;
+
+    /* ✅ petit padding top (header) */
+    padding: 24px 16px;
+
+    /* ✅ IMPORTANT : on laisse la place pour le footer */
+    padding-bottom: 260px;
   }
 
   .thank-you {
     width: 100%;
     max-width: 520px;
     text-align: center;
+  }
+
+  img.img-fluid {
+    max-width: 140px;
+    margin: 0 auto 14px;
+    display: block;
   }
 
   .premium {
@@ -20,6 +35,7 @@
   .subtitle {
     opacity: 0.85;
     line-height: 1.4;
+    margin-bottom: 16px;
   }
 
   .card {
@@ -28,50 +44,87 @@
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     text-align: left;
 
     .row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
+      gap: 12px;
       padding: 10px 0;
 
       &:not(:last-child) {
-        border-bottom: 1px solid rgba(0,0,0,0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       }
     }
 
-    .label { font-size: 13px; opacity: 0.7; }
-    .value { font-size: 14px; font-weight: 600; }
+    .label {
+      font-size: 13px;
+      opacity: 0.7;
+      flex: 0 0 42%;
+    }
+
+    .value {
+      font-size: 14px;
+      font-weight: 700;
+      text-align: right;
+      flex: 1;
+      word-break: break-word;
+    }
+
     .ok { color: #12b76a; }
+    .warn { color: #f79009; }
   }
 
+  /* ✅ Boutons */
   .actions {
+    margin-top: 18px;
     display: grid;
     gap: 10px;
-    margin-top: 18px;
+    position: relative;
+    z-index: 10;
   }
 
-  .btn-primary, .btn-secondary {
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 0;
     padding: 12px 14px;
     border-radius: 14px;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
   }
 
-  .btn-primary {
-    background: #ff4fa3;
-    color: white;
-  }
+  .btn-primary { background: #ff4fa3; color: #fff; }
+  .btn-secondary { background: rgba(0, 0, 0, 0.06); }
 
-  .btn-secondary {
-    background: rgba(0,0,0,0.06);
+  .link {
+    border: 0;
+    background: transparent;
+    margin-top: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    opacity: 0.85;
   }
 
   .small {
     font-size: 12px;
     opacity: 0.7;
+    margin-top: 18px;
+  }
+
+  /* ✅ Le spacer qui force le scroll sous le footer */
+  .bottom-safe-space {
+    height: 220px; /* ajuste si footer très grand */
+    width: 100%;
+  }
+
+  /* ✅ Ton animation ne doit pas bloquer */
+  .animation-circle-inverse {
+    pointer-events: none;
   }
 }

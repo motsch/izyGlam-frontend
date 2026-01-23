@@ -1,147 +1,160 @@
 <section class="p-0 premium-success">
-  <div class="animation-circle-inverse">
-    <i></i><i></i><i></i>
-  </div>
-
-  <div class="thanks-bg">
-    <div class="thank-you">
-      <img src="assets/images/logo.png" alt="thanks" class="img-fluid" />
-
-      <h2 class="mb-2">Gestion de ton <span class="premium">Premium</span> 👑</h2>
-      <p class="subtitle mb-4">Ici tu peux voir ton statut et gérer ton abonnement à tout moment.</p>
-
-      <!-- ✅ CARD SUBSCRIPTION -->
-      <div class="card" *ngIf="!loading; else loadingTpl">
-        <div class="row">
-          <div class="label">Formule</div>
-          <div class="value">{{ plan || "—" }}</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Statut</div>
-          <div class="value" [class.ok]="isActiveOrTrialing" [class.warn]="cancelAtPeriodEnd">
-            <ng-container *ngIf="status; else noStatus">{{ status }}</ng-container>
-            <ng-template #noStatus>—</ng-template>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="label">Prochaine échéance</div>
-          <div class="value">
-            <ng-container *ngIf="periodEnd; else noEnd">
-              {{ periodEnd | date:'dd/MM/yyyy' }}
-            </ng-container>
-            <ng-template #noEnd>—</ng-template>
-          </div>
-        </div>
-
-        <div class="row" *ngIf="cancelAtPeriodEnd">
-          <div class="label">Annulation</div>
-          <div class="value warn">Programmée à la fin de la période</div>
-        </div>
-      </div>
-
-      <!-- ✅ CARD USER INFO -->
-      <div class="card" *ngIf="!loading && me">
-        <div class="row">
-          <div class="label">Nom</div>
-          <div class="value">{{ me.firstname }} {{ me.lastname }}</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Email</div>
-          <div class="value">{{ me.email || "—" }}</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Téléphone</div>
-          <div class="value">{{ me.phone || "—" }}</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Rôle</div>
-          <div class="value">{{ me.role || "—" }}</div>
-        </div>
-
-        <div class="row" *ngIf="mainAddress as a">
-          <div class="label">Adresse principale</div>
-          <div class="value">
-            {{ a.street }}, {{ a.code_postal }} {{ a.city }}, {{ a.country }}
-          </div>
-        </div>
-      </div>
-
-      <!-- ✅ CARD BANK + TWILIO -->
-      <div class="card" *ngIf="!loading && me">
-        <div class="row">
-          <div class="label">Numéro SMS (Twilio)</div>
-          <div class="value">{{ me.twilioPhoneNumber || "—" }}</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Assistant activé</div>
-          <div class="value" [class.ok]="me.assistantProEnabled" [class.warn]="!me.assistantProEnabled">
-            {{ me.assistantProEnabled ? "Oui" : "Non" }}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="label">Banque</div>
-          <div class="value">{{ me.bank?.bank_name || "—" }}</div>
-        </div>
-
-        <div class="row">
-          <div class="label">Titulaire</div>
-          <div class="value">{{ me.bank?.holder_name || "—" }}</div>
-        </div>
-
-        <div class="row">
-          <div class="label">IBAN</div>
-          <div class="value">{{ me.bank?.iban || "—" }}</div>
-        </div>
-
-        <div class="row">
-          <div class="label">BIC</div>
-          <div class="value">{{ me.bank?.bic || "—" }}</div>
-        </div>
-      </div>
-
-      <ng-template #loadingTpl>
-        <div class="card">
-          <div class="row"><div class="label">Chargement…</div><div class="value">⏳</div></div>
-        </div>
-      </ng-template>
-
-      <!-- ACTIONS -->
-      <div class="actions">
-        <button class="btn-primary" (click)="openPortal()" [disabled]="actionLoading">
-          Gérer sur Stripe
-        </button>
-
-        <button
-          class="btn-secondary"
-          *ngIf="!cancelAtPeriodEnd"
-          (click)="cancelSubscription()"
-          [disabled]="actionLoading || loading"
-        >
-          Annuler l’abonnement
-        </button>
-
-        <button
-          class="btn-secondary"
-          *ngIf="cancelAtPeriodEnd"
-          (click)="resumeSubscription()"
-          [disabled]="actionLoading || loading"
-        >
-          Réactiver l’abonnement
-        </button>
-      </div>
-
-      <button class="link mt-3" (click)="goDashboard()">← Retour au dashboard</button>
-
-      <p class="small mt-4">
-        L’annulation est planifiée (cancel_at_period_end) : ton Premium reste actif jusqu’à l’échéance.
-      </p>
+    <div class="animation-circle-inverse">
+        <i></i><i></i><i></i>
     </div>
-  </div>
+
+    <div class="thanks-bg">
+        <div class="thank-you">
+            <img src="assets/images/logo.png" alt="izyGlam" class="img-fluid" />
+
+            <h2 class="mb-2">Gestion de ton <span class="premium">Premium</span> 👑</h2>
+            <p class="subtitle mb-4">
+                Ici tu peux voir ton statut et gérer ton abonnement à tout moment.
+            </p>
+
+            <!-- ✅ CARD SUBSCRIPTION -->
+            <div class="card" *ngIf="!loading; else loadingTpl">
+                <div class="row">
+                    <div class="label">Formule</div>
+                    <div class="value">{{ plan || "—" }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Statut</div>
+                    <div class="value" [class.ok]="isActiveOrTrialing" [class.warn]="cancelAtPeriodEnd">
+                        <ng-container *ngIf="status; else noStatus">
+                            {{ status }}
+                        </ng-container>
+                        <ng-template #noStatus>—</ng-template>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Prochaine échéance</div>
+                    <div class="value">
+                        <ng-container *ngIf="periodEnd; else noEnd">
+                            {{ periodEnd | date: "dd/MM/yyyy" }}
+                        </ng-container>
+                        <ng-template #noEnd>—</ng-template>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="cancelAtPeriodEnd">
+                    <div class="label">Fin prévue</div>
+                    <div class="value warn">
+                        {{ periodEnd ? (periodEnd | date:'dd/MM/yyyy') : '—' }}
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ✅ CARD USER INFO -->
+            <div class="card" *ngIf="!loading && me">
+                <div class="row">
+                    <div class="label">Nom</div>
+                    <div class="value">{{ me.firstname }} {{ me.lastname }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Email</div>
+                    <div class="value">{{ me.email || "—" }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Téléphone</div>
+                    <div class="value">{{ me.phone || "—" }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Rôle</div>
+                    <div class="value">{{ me.role || "—" }}</div>
+                </div>
+
+                <div class="row" *ngIf="mainAddress as a">
+                    <div class="label">Adresse principale</div>
+                    <div class="value">
+                        {{ a.street }}, {{ a.code_postal }} {{ a.city }}, {{ a.country }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- ✅ CARD BANK + TWILIO -->
+            <div class="card" *ngIf="!loading && me">
+                <div class="row">
+                    <div class="label">Numéro SMS (Twilio)</div>
+                    <div class="value">{{ me.twilioPhoneNumber || "—" }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Assistant activé</div>
+                    <div class="value" [class.ok]="me.assistantProEnabled" [class.warn]="!me.assistantProEnabled">
+                        {{ me.assistantProEnabled ? "Oui" : "Non" }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Banque</div>
+                    <div class="value">{{ me.bank?.bank_name || "—" }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Titulaire</div>
+                    <div class="value">{{ me.bank?.holder_name || "—" }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="label">IBAN</div>
+                    <div class="value">{{ me.bank?.iban || "—" }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="label">BIC</div>
+                    <div class="value">{{ me.bank?.bic || "—" }}</div>
+                </div>
+            </div>
+
+            <!-- ✅ LOADING -->
+            <ng-template #loadingTpl>
+                <div class="card">
+                    <div class="row">
+                        <div class="label">Chargement…</div>
+                        <div class="value">⏳</div>
+                    </div>
+                </div>
+            </ng-template>
+
+            <!-- ✅ ACTIONS -->
+            <div class="actions">
+                <button class="btn-primary" (click)="openPortal()" [disabled]="actionLoading">
+                    Gérer sur Stripe
+                </button>
+
+                <button class="btn-secondary" *ngIf="!cancelAtPeriodEnd" (click)="cancelSubscription()"
+                    [disabled]="actionLoading || loading">
+                    Annuler l’abonnement
+                </button>
+
+                <button class="btn-secondary" *ngIf="cancelAtPeriodEnd" (click)="resumeSubscription()"
+                    [disabled]="actionLoading || loading">
+                    Réactiver l’abonnement
+                </button>
+            </div>
+
+            <button class="link mt-3" (click)="goDashboard()">← Retour au dashboard</button>
+
+            <p class="small mt-4" *ngIf="cancelAtPeriodEnd">
+                Ton abonnement est planifié pour s’arrêter le
+                <strong>{{ periodEnd ? (periodEnd | date:'dd/MM/yyyy') : '—' }}</strong>.
+                Tu gardes le Premium jusqu’à cette date.
+            </p>
+
+            <p class="small mt-4" *ngIf="!cancelAtPeriodEnd && isActiveOrTrialing">
+                Ton Premium est actif. Prochaine échéance :
+                <strong>{{ periodEnd ? (periodEnd | date:'dd/MM/yyyy') : '—' }}</strong>.
+            </p>
+
+            <!-- ✅ Spacer pour pouvoir scroller sous le footer -->
+            <div class="bottom-safe-space"></div>
+        </div>
+    </div>
 </section>
