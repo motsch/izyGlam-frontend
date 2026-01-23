@@ -798,3 +798,28 @@ app-shop-item-card {
 :host ::ng-deep .card {
   width: 100%;
 }
+
+.twilio-box {
+  margin-top: 12px;
+}
+
+.twilio-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255, 79, 163, 0.12);
+  color: #ff4fa3;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba(255, 79, 163, 0.18);
+  }
+
+  .number {
+    font-weight: 600;
+    opacity: 0.85;
+  }
+}

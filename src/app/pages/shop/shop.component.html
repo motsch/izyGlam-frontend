@@ -80,6 +80,14 @@
                 adminSettings.commissionRate * 100 }}%</div>
               <div *ngIf="adminSettings.serviceFee > 0">{{"PAYEMENT.SUMMARY_DELIVERY_FEE" | translate}} : {{
                 adminSettings.serviceFee }}€</div>
+              <div *ngIf="shopInfo.isPremium && shopInfo.twilioPhoneNumber" class="twilio-box">
+                <a class="twilio-call" [href]="'tel:' + shopInfo.twilioPhoneNumber" aria-label="Appeler le salon">
+                  <span class="icon">📞</span>
+                  <span class="label">Appeler pour réserver</span>
+                  <span class="number">{{ shopInfo.twilioPhoneNumber }}</span>
+                </a>
+              </div>
+
             </div>
             <div class="description-wrapper">
               <div class="description-text">

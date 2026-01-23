@@ -66,6 +66,7 @@ export class ShopComponent {
     public tiktokUrl = '';
     // Description étendue
     isExpanded = false;
+    izyPhone: string | null = null;
 
     constructor(
         private router: Router,
@@ -106,6 +107,7 @@ export class ShopComponent {
 
         this.shopService.getShopByHandle(shopHandle).pipe(
             tap((shop: any) => {
+                this.izyPhone = shop.twilioPhoneNumber;
                 localStorage.setItem('shopSelected', shop._id);
             }),
             switchMap((shop: any) => {
@@ -148,6 +150,7 @@ export class ShopComponent {
                 return of(null);
             })
         ).subscribe();
+
     }
 
     // ----------------------------------------------------
