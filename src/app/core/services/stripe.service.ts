@@ -92,7 +92,7 @@ export class StripeService {
     return this.http.post<any>(url, payload);
   }
 
-  createPremiumCheckoutSession() {
-    return this.http.post(`${environment.apiUrl}premium/checkout-session`, {});
+  createPremiumCheckoutSession(userId: string) {
+    return this.http.post(`${environment.apiUrl}premium/checkout-session`, { userId });
   }
 }

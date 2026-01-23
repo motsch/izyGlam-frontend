@@ -199,10 +199,13 @@ export class PayementProComponent implements OnInit {
   }
 
   finalizePurchase() {
-    this.stripeService.createPremiumCheckoutSession().subscribe({
-      next: (url) => console.error(url),
+    this.stripeService.createPremiumCheckoutSession(this.me._id).subscribe({
+      next: (res: any) => {
+        window.location.href = res.url; // ✅ redirection Stripe Checkout
+      },
       error: (err) => console.error(err),
     });
   }
+
 
 }
