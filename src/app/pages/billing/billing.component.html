@@ -5,22 +5,21 @@
 
   <div class="thanks-bg">
     <div class="thank-you">
-      <img [src]="imgStorageUrl + 'thanks.gif'" alt="thanks" class="img-fluid" />
+      <img src="assets/images/logo.png" alt="thanks" class="img-fluid" />
 
       <h2 class="mb-2">Gestion de ton <span class="premium">Premium</span> 👑</h2>
-      <p class="subtitle mb-4">
-        Ici tu peux voir ton statut et gérer ton abonnement à tout moment.
-      </p>
+      <p class="subtitle mb-4">Ici tu peux voir ton statut et gérer ton abonnement à tout moment.</p>
 
+      <!-- ✅ CARD SUBSCRIPTION -->
       <div class="card" *ngIf="!loading; else loadingTpl">
         <div class="row">
           <div class="label">Formule</div>
-          <div class="value">{{ plan || '—' }}</div>
+          <div class="value">{{ plan || "—" }}</div>
         </div>
 
         <div class="row">
           <div class="label">Statut</div>
-          <div class="value" [class.ok]="status === 'active' || status === 'trialing'" [class.warn]="cancelAtPeriodEnd">
+          <div class="value" [class.ok]="isActiveOrTrialing" [class.warn]="cancelAtPeriodEnd">
             <ng-container *ngIf="status; else noStatus">{{ status }}</ng-container>
             <ng-template #noStatus>—</ng-template>
           </div>
@@ -42,12 +41,78 @@
         </div>
       </div>
 
+      <!-- ✅ CARD USER INFO -->
+      <div class="card" *ngIf="!loading && me">
+        <div class="row">
+          <div class="label">Nom</div>
+          <div class="value">{{ me.firstname }} {{ me.lastname }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Email</div>
+          <div class="value">{{ me.email || "—" }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Téléphone</div>
+          <div class="value">{{ me.phone || "—" }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Rôle</div>
+          <div class="value">{{ me.role || "—" }}</div>
+        </div>
+
+        <div class="row" *ngIf="mainAddress as a">
+          <div class="label">Adresse principale</div>
+          <div class="value">
+            {{ a.street }}, {{ a.code_postal }} {{ a.city }}, {{ a.country }}
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ CARD BANK + TWILIO -->
+      <div class="card" *ngIf="!loading && me">
+        <div class="row">
+          <div class="label">Numéro SMS (Twilio)</div>
+          <div class="value">{{ me.twilioPhoneNumber || "—" }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Assistant activé</div>
+          <div class="value" [class.ok]="me.assistantProEnabled" [class.warn]="!me.assistantProEnabled">
+            {{ me.assistantProEnabled ? "Oui" : "Non" }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="label">Banque</div>
+          <div class="value">{{ me.bank?.bank_name || "—" }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Titulaire</div>
+          <div class="value">{{ me.bank?.holder_name || "—" }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">IBAN</div>
+          <div class="value">{{ me.bank?.iban || "—" }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">BIC</div>
+          <div class="value">{{ me.bank?.bic || "—" }}</div>
+        </div>
+      </div>
+
       <ng-template #loadingTpl>
         <div class="card">
           <div class="row"><div class="label">Chargement…</div><div class="value">⏳</div></div>
         </div>
       </ng-template>
 
+      <!-- ACTIONS -->
       <div class="actions">
         <button class="btn-primary" (click)="openPortal()" [disabled]="actionLoading">
           Gérer sur Stripe
@@ -75,7 +140,7 @@
       <button class="link mt-3" (click)="goDashboard()">← Retour au dashboard</button>
 
       <p class="small mt-4">
-        L’annulation est immédiate côté planification (cancel_at_period_end) : ton Premium reste actif jusqu’à l’échéance.
+        L’annulation est planifiée (cancel_at_period_end) : ton Premium reste actif jusqu’à l’échéance.
       </p>
     </div>
   </div>
