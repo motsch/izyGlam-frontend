@@ -51,7 +51,6 @@ const routes: Routes = [
     {
         path: 'thank-you',
         component: ThankYouComponent,
-        canActivate: [AuthGuard],
     },
     {
         path: 'billing',
