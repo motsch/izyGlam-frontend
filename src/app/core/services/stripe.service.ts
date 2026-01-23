@@ -101,4 +101,11 @@ export class StripeService {
       params: { session_id: sessionId, userId }
     });
   }
+
+  getPremiumSubscription(userId: string) {
+    return this.http.get(`${environment.apiUrl}premium/subscription`, {
+      params: { userId }
+    });
+  }
+
 }
