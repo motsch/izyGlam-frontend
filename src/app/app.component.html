@@ -54,9 +54,19 @@
           <span class="side-item">{{ "SIDEBAR.FIDELITY" | translate }}</span>
         </li>
 
-        <li class="menu-hover" (click)="goTo('prices')">
+        <li class="menu-hover" *ngIf="!hasActivePremium" [ngClass]="{'active': isActive('prices')}"
+          (click)="goTo('prices')">
           <img class="side-icon" src="assets/images/icon/prices.png" alt="Abonnement Premium" />
           <span class="side-item">{{ "SIDEBAR.PRICES" | translate }}</span>
+        </li>
+
+        <!-- ✅ PREMIUM actif → dashboard abonnement -->
+        <li class="menu-hover" *ngIf="hasActivePremium" [ngClass]="{'active': isActive('billing')}"
+          (click)="goTo('billing')">
+          <img class="side-icon" src="assets/images/logo.png" alt="Mon abonnement" />
+          <span class="side-item">
+            {{ "SIDEBAR.MY_SUBSCRIPTION" | translate }}
+          </span>
         </li>
 
         <li class="menu-hover" (click)="goTo('shop')">

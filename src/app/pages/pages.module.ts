@@ -61,6 +61,7 @@ import { PayementValidationComponent } from './payement-validation/payement-vali
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { MessageComponent } from './message/message.component';
 import { QuickComponent } from './quick/quick.component';
+import { BillingComponent } from './billing/billing.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -112,6 +113,7 @@ import { QuickComponent } from './quick/quick.component';
         ShopComponent,
         TermsComponent,
         ThankYouComponent,
+        BillingComponent,
         ComingSoonComponent,
         MessageComponent,
         QuickComponent,

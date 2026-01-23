@@ -141,4 +141,15 @@ export class AppComponent implements OnInit {
     await this.router.navigate(['/']);
     window.location.reload();
   }
+
+  get hasActivePremium(): boolean {
+    const sub = this.me?.subscription;
+    if (!sub) return false;
+
+    return (
+      sub.plan === 'premium' &&
+      (sub.status === 'active' || sub.status === 'trialing')
+    );
+  }
+
 }

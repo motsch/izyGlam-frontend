@@ -26,6 +26,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { MessageComponent } from './message/message.component';
 // import { ChoiceTypeComponent } from './choice-type/choice-type.component';
 import { QuickComponent } from './quick/quick.component';
+import { DashboardComponent } from '../core/component/dashboard/dashboard.component';
 
 const routes: Routes = [
     {
@@ -51,6 +52,12 @@ const routes: Routes = [
     {
         path: 'thank-you',
         component: ThankYouComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'dashboard',
+        component: DashboardComponent,
+        canActivate: [AuthGuard],
     },
     {
         path: 'billing',

@@ -1,0 +1,82 @@
+<section class="p-0 premium-success">
+  <div class="animation-circle-inverse">
+    <i></i><i></i><i></i>
+  </div>
+
+  <div class="thanks-bg">
+    <div class="thank-you">
+      <img [src]="imgStorageUrl + 'thanks.gif'" alt="thanks" class="img-fluid" />
+
+      <h2 class="mb-2">Gestion de ton <span class="premium">Premium</span> 👑</h2>
+      <p class="subtitle mb-4">
+        Ici tu peux voir ton statut et gérer ton abonnement à tout moment.
+      </p>
+
+      <div class="card" *ngIf="!loading; else loadingTpl">
+        <div class="row">
+          <div class="label">Formule</div>
+          <div class="value">{{ plan || '—' }}</div>
+        </div>
+
+        <div class="row">
+          <div class="label">Statut</div>
+          <div class="value" [class.ok]="status === 'active' || status === 'trialing'" [class.warn]="cancelAtPeriodEnd">
+            <ng-container *ngIf="status; else noStatus">{{ status }}</ng-container>
+            <ng-template #noStatus>—</ng-template>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="label">Prochaine échéance</div>
+          <div class="value">
+            <ng-container *ngIf="periodEnd; else noEnd">
+              {{ periodEnd | date:'dd/MM/yyyy' }}
+            </ng-container>
+            <ng-template #noEnd>—</ng-template>
+          </div>
+        </div>
+
+        <div class="row" *ngIf="cancelAtPeriodEnd">
+          <div class="label">Annulation</div>
+          <div class="value warn">Programmée à la fin de la période</div>
+        </div>
+      </div>
+
+      <ng-template #loadingTpl>
+        <div class="card">
+          <div class="row"><div class="label">Chargement…</div><div class="value">⏳</div></div>
+        </div>
+      </ng-template>
+
+      <div class="actions">
+        <button class="btn-primary" (click)="openPortal()" [disabled]="actionLoading">
+          Gérer sur Stripe
+        </button>
+
+        <button
+          class="btn-secondary"
+          *ngIf="!cancelAtPeriodEnd"
+          (click)="cancelSubscription()"
+          [disabled]="actionLoading || loading"
+        >
+          Annuler l’abonnement
+        </button>
+
+        <button
+          class="btn-secondary"
+          *ngIf="cancelAtPeriodEnd"
+          (click)="resumeSubscription()"
+          [disabled]="actionLoading || loading"
+        >
+          Réactiver l’abonnement
+        </button>
+      </div>
+
+      <button class="link mt-3" (click)="goDashboard()">← Retour au dashboard</button>
+
+      <p class="small mt-4">
+        L’annulation est immédiate côté planification (cancel_at_period_end) : ton Premium reste actif jusqu’à l’échéance.
+      </p>
+    </div>
+  </div>
+</section>

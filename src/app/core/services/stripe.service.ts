@@ -108,4 +108,15 @@ export class StripeService {
     });
   }
 
+  cancelPremium(userId: string) {
+    return this.http.post(`${environment.apiUrl}premium/cancel`, { userId });
+  }
+
+  resumePremium(userId: string) {
+    return this.http.post(`${environment.apiUrl}premium/resume`, { userId });
+  }
+
+  openCustomerPortal(userId: string) {
+    return this.http.post(`${environment.apiUrl}premium/portal`, { userId });
+  }
 }
