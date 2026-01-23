@@ -3,11 +3,11 @@
     <div class="image-wrapper">
       <!-- Skeleton -->
       <div class="shop-skeleton-card" *ngIf="!loadedShops[shop._id]"></div>
-      
-      <!-- Badge niveau -->
-      <div class="level-badge" [ngClass]="levelUi.class" *ngIf="levelUi">
-        <span class="level-emoji">{{ levelUi.emoji }}</span>
-        <span class="level-text">{{ levelUi.trads | translate}}</span>
+
+      <!-- Badge niveau (uniquement si shop premium) -->
+      <div class="level-badge" [ngClass]="levelUi?.class" *ngIf="levelUi as ui">
+        <span class="level-emoji">{{ ui.emoji }}</span>
+        <span class="level-text">{{ ui.trads | translate }}</span>
       </div>
 
       <!-- Image principale -->
@@ -42,7 +42,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title">{{ 'SHOP_CARD.AVIS' | translate }}: {{ shop.name }}</h3>
-        <button type="button" class="btn-close" [attr.aria-label]="'ADDRESS_MODAL.CLOSE' | translate" (click)="closeModal()"></button>
+        <button type="button" class="btn-close" [attr.aria-label]="'ADDRESS_MODAL.CLOSE' | translate"
+          (click)="closeModal()"></button>
       </div>
 
       <div class="modal-body">
