@@ -201,19 +201,14 @@ export class PayementProComponent implements OnInit {
   finalizePurchase() {
     this.stripeService.createPremiumCheckoutSession(this.me._id).subscribe({
       next: (res: any) => {
-        console.log("checkout-session response =", res);
-
-        if (res?.alreadyActive) {
-          window.location.href = "https://izyglam.com/thank-you";
+        if (res?.url) {
+          window.location.href = res.url;
           return;
         }
-
-        window.location.href = res.url;
+        // fallback safe
+        window.location.href = '/thank-you?fallback=1';
       },
       error: (err) => console.error(err),
     });
   }
-
-
-
 }
