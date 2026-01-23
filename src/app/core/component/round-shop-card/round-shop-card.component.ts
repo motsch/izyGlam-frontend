@@ -144,11 +144,11 @@ export class RoundShopCardComponent {
     return Number.isFinite(+total) ? +total : 0;
   }
 
-  get levelUi(): { emoji: string; label: string; class: string; trads: string } | null {
+  get levelUi(): {
+    emoji: string; label: string; class: string; trads: string
+  } | null {
     if (!this.shop?.isPremium) return null; // ✅ badge jamais affiché si pas premium
-
     const total = this.finishedBookingsTotal;
-
     if (total < 30) return { emoji: "🌱", label: "Créatrice", class: "lvl-starter", trads: "UILEVEL.STARTER" };
     if (total < 120) return { emoji: "🔥", label: "Confirmée", class: "lvl-active", trads: "UILEVEL.ACTIVE" };
     if (total < 250) return { emoji: "💎", label: "Ambassadrice izyGlam", class: "lvl-ambassador", trads: "UILEVEL.AMBASSADOR" };

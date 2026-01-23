@@ -16,20 +16,17 @@
                 alt="shopLogo"
                 class="shopInfoImage"
               />
-
               <div class="shop-info-texts">
                 <div>
                   <h4>{{ shopInfo.name }}</h4>
                   <div class="pink">{{ shopInfo.trad | translate }}</div>
                 </div>
-
                 <span>
                   {{ shopInfo.note ?? 5 }}
                   <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
                   ({{ shopInfo.noteCount ?? 0 }}+)
                   <br />
                 </span>
-
                 <span>
                   <img
                     *ngIf="shopInfo.instagram"
@@ -56,13 +53,11 @@
                 </span>
               </div>
             </div>
-
             <!-- Actions (retour + partager) -->
             <div class="shop-actions">
               <button class="share-pill margin-top-20 margin-right-10" (click)="goTo('main')">
                 <i class="fa fa-angle-left"></i>
               </button>
-
               <!-- Bouton partager -->
               <button class="share-pill margin-top-20" type="button" (click)="onShareClick()">
                 <span class="share-pill__icon" aria-hidden="true">
@@ -80,15 +75,12 @@
                 <span class="share-pill__text">Partager</span>
               </button>
             </div>
-
             <!-- Modal fallback (desktop / navigateurs non compatibles) -->
             <div class="share-backdrop" *ngIf="shareModalOpen" (click)="closeShareModal()"></div>
-
             <div class="share-modal" *ngIf="shareModalOpen">
               <div class="share-modal-header">
                 <button class="share-close" (click)="closeShareModal()">✕</button>
               </div>
-
               <div class="share-url">
                 <input [value]="shareUrl" readonly />
                 <button (click)="copyShareUrl()">{{ copied ? 'Copié !' : 'Copier' }}</button>
@@ -193,8 +185,6 @@
         </div>
       </ng-container>
     </div>
-
-    
     <!-- Gallery display section -->
     <div class="col-12 col-lg-9" *ngIf="categoriesUnique.length === 0">
       <div class="row justify-content-left">
@@ -205,10 +195,6 @@
     </div>
   </div>
 </section>
-
-
-
-
 
 <div class="loader-overlay" *ngIf="loading">
   <div class="spinner"></div>

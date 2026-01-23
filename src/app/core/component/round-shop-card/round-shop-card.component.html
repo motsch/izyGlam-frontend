@@ -5,7 +5,7 @@
       <div class="shop-skeleton-card" *ngIf="!loadedShops[shop._id]"></div>
 
       <!-- Badge niveau (uniquement si shop premium) -->
-      <div class="level-badge" [ngClass]="levelUi?.class" *ngIf="levelUi as ui">
+      <div *ngIf="levelUi as ui" class="level-badge" [ngClass]="levelUi?.class">
         <span class="level-emoji">{{ ui.emoji }}</span>
         <span class="level-text">{{ ui.trads | translate }}</span>
       </div>
