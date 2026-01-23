@@ -359,7 +359,7 @@ export class ShopService {
   // ✅ NEW : catégories + mode (SALON/DOMICILE)
   getShopsByPostalCodesWithCategories(
     codes: string[],
-    mode: 'SALON' | 'DOMICILE',
+    mode: string,
     country?: string
   ): Observable<any> {
     let params = new HttpParams()
@@ -376,7 +376,7 @@ export class ShopService {
   searchShopsWithServicesByMode(
     postalCode: string,
     query: string,
-    mode: 'SALON' | 'DOMICILE',
+    mode: string,
     country?: string
   ): Observable<any[]> {
     let params = new HttpParams()

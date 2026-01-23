@@ -66,6 +66,7 @@ export class ShopComponent {
     public tiktokUrl = '';
     // Description étendue
     isExpanded = false;
+    loading = false;
     izyPhone: string | null = null;
 
     constructor(
@@ -91,6 +92,7 @@ export class ShopComponent {
     // ----------------------------------------------------
 
     ngOnInit(): void {
+        this.loading = true;
         this.buildShareLinks();
         this.seoService.updateMeta('shop');
 
@@ -357,6 +359,7 @@ export class ShopComponent {
             grouped[catId].push(it);
         }
         this.itemsByCategory = grouped;
+        this.loading = false;
     }
 
     // ✅ TrackBy pour stabiliser l’affichage

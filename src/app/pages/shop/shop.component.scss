@@ -1,14 +1,14 @@
 .category-filter {
   display: flex;
-  justify-content: center; /* Centre horizontalement */
-  align-items: center; /* Centre verticalement */
-  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne suivante si nécessaire */
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 
   .category-item {
     display: flex;
-    flex-direction: column; /* Organise les enfants verticalement */
-    align-items: center; /* Centre les enfants verticalement dans chaque élément */
-    margin: 10px; /* Espacement autour de chaque élément */
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
 
     .icon {
       width: 40px;
@@ -26,12 +26,13 @@
     }
   }
 }
+
 .categories {
   padding-right: 15px;
   background-color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Assure une répartition équilibrée */
+  justify-content: space-between;
 
   h2 {
     margin-bottom: 20px;
@@ -41,11 +42,10 @@
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
-    scrollbar-width: none; /* Pour Firefox */
-    -ms-overflow-style: none; /* Pour Internet Explorer 10+ */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 
     .category-item {
-      // background-color: #fff;
       padding: 10px 20px;
       border: 1px solid #ddd;
       border-radius: 4px;
@@ -57,15 +57,16 @@
   }
 
   .category-list::-webkit-scrollbar {
-    display: none; /* Pour Chrome, Safari et Opera */
+    display: none;
   }
 }
 
 .card {
   border: none;
-  flex: 0 0 auto; /* Empêche les cartes de se compresser */
-  margin-right: 20px; /* Espace entre les cartes */
+  flex: 0 0 auto;
+  margin-right: 20px;
 }
+
 .card-filter {
   display: flex;
   justify-content: space-between;
@@ -93,14 +94,13 @@
 }
 
 .fa {
-  pointer-events: none; /* Empêche les interactions directes avec l'icône */
+  pointer-events: none;
 }
 
 .top-bar {
   display: flex;
-  justify-content: space-between; /* Alignement horizontal des éléments enfants */
-  align-items: center; /* Centrage vertical des éléments */
-  // margin-top: 10px; /* Espacement autour du contenu de la barre */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .scroll-buttons {
@@ -112,7 +112,7 @@
   height: 20px;
   border-radius: 50%;
   border: none;
-  background-color: #007bff; /* Bleu Bootstrap par exemple */
+  background-color: #007bff;
   color: white;
   font-size: 9px;
   display: flex;
@@ -120,12 +120,13 @@
   align-items: center;
   cursor: pointer;
   outline: none;
-  margin-left: 10px; /* Espacement entre les boutons */
+  margin-left: 10px;
 }
 
 .scroll-btn:hover {
-  background-color: #0056b3; /* Un bleu plus foncé pour l'effet hover */
+  background-color: #0056b3;
 }
+
 .starLogo {
   width: 15px;
   height: 15px;
@@ -144,9 +145,7 @@
   cursor: pointer;
   transform: translateY(-1px);
   border-color: rgba(255, 105, 180, 0.35);
-  box-shadow:
-    0 14px 30px rgba(255, 105, 180, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 30px rgba(255, 105, 180, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .moneyLogo {
@@ -154,6 +153,7 @@
   width: auto;
   margin-top: 20px;
 }
+
 .rogn-image {
   width: 100%;
   height: 365px;
@@ -162,7 +162,7 @@
 }
 
 .glam-nav {
-  color: #EC9794;
+  color: #ec9794;
 }
 
 .glam-nav:hover {
@@ -170,23 +170,23 @@
 }
 
 .active {
-  background-color: #EB9F9B !important;
+  background-color: #eb9f9b !important;
 }
 
-/* Existing styles */
+/* Gallery */
 .gallery-container {
   position: relative;
   display: flex;
   justify-content: flex-start;
   overflow: hidden;
   white-space: nowrap;
-  max-height: 80px; /* Limite basse au repos */
-  transition: max-height 0.5s ease; /* On anime max-height au lieu de height */
+  max-height: 80px;
+  transition: max-height 0.5s ease;
   padding-bottom: 10px;
 }
 
 .gallery-container:hover {
-  max-height: 500px; /* À l'hover, on autorise jusqu'à 500px par exemple */
+  max-height: 500px;
   white-space: normal;
 }
 
@@ -198,14 +198,14 @@
 
 .thumbnail {
   cursor: pointer;
-  margin-right: 10px; /* Espace entre les miniatures */
-  flex: 0 0 auto; /* Empêche les miniatures de se rétrécir */
+  margin-right: 10px;
+  flex: 0 0 auto;
 }
 
 .thumbnail img {
   width: 80px;
   height: 70px;
-  max-height: 70px; /* Taille des miniatures */
+  max-height: 70px;
   object-fit: cover;
   border-radius: 10px;
   transition: transform 1s;
@@ -215,6 +215,7 @@
   transform: scale(1.05);
 }
 
+/* Lightbox */
 .lightbox {
   position: fixed;
   top: 0;
@@ -223,25 +224,25 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.9);
   display: flex;
-  justify-content: center; /* Centre l'image horizontalement */
-  align-items: center; /* Centre l'image verticalement */
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
-  overflow: hidden; /* Empêche l'overflow si l'image est trop grande */
+  overflow: hidden;
 }
 
 .lightbox-content {
   position: relative;
   display: flex;
-  justify-content: center; /* Centre l'image entre les flèches */
-  align-items: center; /* Assure que l'image soit centrée verticalement */
+  justify-content: center;
+  align-items: center;
   max-width: 90%;
-  max-height: 90%; /* Assure que l'image ne dépasse pas la taille de l'écran */
+  max-height: 90%;
 }
 
 .lightbox-image {
   max-width: 100%;
-  max-height: 100%; /* Contrainte pour ne pas que l'image dépasse la taille de l'écran */
-  object-fit: contain; /* Permet à l'image de garder son aspect ratio tout en tenant dans la zone disponible */
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .close-lightbox {
@@ -253,15 +254,16 @@
   cursor: pointer;
 }
 
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
-  top: 50%; /* Aligne verticalement les flèches avec l'image */
+  top: 50%;
   font-size: 40px;
   color: white;
   transition: 0.6s ease;
   user-select: none;
-  transform: translateY(-50%); /* Assure que les flèches soient centrées par rapport à l'image */
+  transform: translateY(-50%);
 }
 
 .prev {
@@ -272,196 +274,29 @@
   right: 20px;
 }
 
-.prev:hover, .next:hover {
-  color: #ccc; /* Optionnel : léger effet hover sur les flèches */
+.prev:hover,
+.next:hover {
+  color: #ccc;
 }
 
-
-@media screen and (max-width: 768px) {
-  /* Réorganiser la structure générale en colonne */
-  .container .row {
-    flex-direction: column;
-  }
-
-  .col-lg-3,
-  .col-lg-9 {
-    width: 100% !important;
-    max-width: 100%;
-    flex: 0 0 100%;
-  }
-
-  /* Réduction des paddings inutiles */
-  .gallery-thumbnails .thumbnail img {
-    width: 80px;
-    height: 60px;
-  }
-
-  /* Améliorer l’espacement dans la lightbox */
-  .lightbox-content {
-    max-width: 95%;
-    max-height: 80%;
-    padding: 10px;
-  }
-
-  .lightbox-image {
-    max-width: 100%;
-    max-height: 80vh;
-  }
-
-  /* Adapter la sidebar */
-  #navbarSupportedContent {
-    margin-bottom: 20px;
-  }
-
-  /* Espacer les items pour meilleure lisibilité */
-  .gallery-container {
-    padding: 10px 0;
-  }
-
-  /* Rendre les cartes adaptables */
-  .col-md-6, .col-lg-6 {
-    width: 100% !important;
-    margin-bottom: 20px;
-  }
-
-  /* Adapter les logos */
-  .starLogo, .moneyLogo {
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-
-  /* Scroll horizontal plus naturel en mobile */
-  .category-list {
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-
-    .category-item {
-      scroll-snap-align: start;
-      min-width: 100px;
-    }
-  }
-
-  .scroll-buttons {
-    margin-top: 10px;
-    justify-content: center;
-  }
-
-  .scroll-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 14px;
-  }
-
-  /* Améliorer les marges pour éviter le collé-serré */
-  .margin-top-10 {
-    margin-top: 10px !important;
-  }
-
-  .margin-top-20 {
-    margin-top: 20px !important;
-  }
-}
-/* RESET DE BASE POUR FORCER LE RESPONSIVE */
-html, body {
+/* ✅ RESET SAFE (évite les bugs 100vw mobile) */
+html,
+body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
 :host {
   display: block;
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
-/* VERSION MOBILE — ADAPTATION COMPLÈTE */
-@media (max-width: 480px) {
-  body {
-    font-size: 14px;
-    padding: 0 10px;
-  }
-
-  .container {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
-  .category-list,
-  .category-filter {
-    display: flex;
-    justify-content: flex-start;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding: 10px;
-    -webkit-overflow-scrolling: touch;
-    padding: 10px 0;
-    gap: 16px;
-    margin-left: 0;
-  }
-
-  .category-filter .category-item {
-    min-width: 70px;
-    scroll-snap-align: start;
-    text-align: center;
-  }
-
-  .horizontal-scroll-container {
-    width: 100%;
-    overflow-x: hidden;
-    position: relative;
-    margin-bottom: 20px;
-  }
-
-  .card.pointer {
-    flex: 0 0 100%;
-    max-width: 100%;
-    scroll-snap-align: center;
-  }
-
-  .scroll-btn,
-  .scroll-btn-cat {
-    display: none;
-  }
-
-  .top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .address-selector-wrapper,
-  .search-bar-wrapper {
-    padding: 0 10px;
-  }
-
-  .modal-content {
-    width: 95%;
-    max-width: 95%;
-  }
-}
-
-/* CAROUSEL D'IMAGES RESPONSIVE POUR PAGE SHOP */
-.shop-gallery-wrapper {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-
-.shop-gallery-wrapper img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  scroll-snap-align: start;
-}
-
-/* CORRECTIONS DE LARGEUR GLOBALE */
+/* Responsive media for images */
 img,
 iframe,
 video {
@@ -470,7 +305,8 @@ video {
 }
 
 /* POUR TOUS LES COMPOSANTS BOUTIQUE EN MOBILE */
-app-round-shop-card, .card {
+app-round-shop-card,
+.card {
   width: 100%;
   box-sizing: border-box;
 }
@@ -490,39 +326,24 @@ app-round-shop-card, .card {
 }
 
 .pink2 {
-  color: #cc678c;font-weight: 600
+  color: #cc678c;
+  font-weight: 600;
 }
 
+/* Header shop */
 .shop-info-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: 0px;
+  gap: 16px;
 }
-
-@media (max-width: 768px) {
-  .shop-info-header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .shop-info-texts {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-
-
 
 .shopInfoImage {
   margin-top: -10px;
-  width: 100px; /* Taille de ton image */
+  width: 100px;
   height: 100px;
-  object-fit: cover; /* Que l'image reste jolie même si pas carrée */
-  border-radius: 50%; /* Arrondi si tu veux un style 'photo de profil' */
-  border: 2px solid #ff69b4; /* Une bordure rose pour matcher ton thème */
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ff69b4;
 }
 
 .shop-info-texts {
@@ -531,9 +352,10 @@ app-round-shop-card, .card {
   justify-content: center;
 }
 
+/* Description */
 .description-wrapper {
   margin-top: 20px;
-  color: #c71585; /* ou ce que tu utilises pour .pink2 */
+  color: #c71585;
 }
 
 .description-text {
@@ -567,58 +389,12 @@ app-round-shop-card, .card {
   color: #a91e60;
 }
 
-/* Par défaut (desktop/tablette) -> rien ne change */
+/* Desktop default */
 .shop-hero {
   display: block;
 }
 
-/* MOBILE UNIQUEMENT : description à droite du bloc image+infos */
-@media (max-width: 768px) {
-  .shop-hero {
-    display: grid;
-    grid-template-columns: 130px 1fr; /* largeur colonne gauche (image+infos) / droite (description) */
-    column-gap: 16px;
-    align-items: start;
-  }
-
-  /* Le bloc image + nom + note reste en colonne (comme aujourd'hui) */
-  .shop-info-header {
-    grid-column: 1;
-    grid-row: 1;
-    display: flex;
-    flex-direction: column;   /* image au-dessus du nom+note */
-    align-items: center;      /* centre joliment l'avatar */
-    text-align: left;         /* texte aligné à gauche */
-    margin-bottom: 0;         /* supprime l'espace vertical inutile */
-  }
-
-  /* Taille un peu plus compacte de l’avatar sur mobile */
-  .shopInfoImage {
-    width: 80px;
-    height: 80px;
-  }
-
-  /* La description passe à droite */
-  .description-wrapper {
-    grid-column: 2;
-    grid-row: 1;
-    margin-top: 0;
-  }
-
-  /* Optionnel: on réduit la contrainte de hauteur pour éviter un grand vide */
-  .description-text.collapsed {
-    max-height: 140px; /* au lieu de 100px si tu veux un peu plus d’aperçu */
-  }
-
-  /* On annule l’ancienne règle qui forçait le header en colonne/centre sur mobile,
-     pour éviter que d’autres styles ne contredisent la grille. */
-  .shop-info-header,
-  .shop-info-texts {
-    width: 100%;
-  }
-}
-
-
+/* Share pill */
 .share-pill {
   margin-left: auto;
   display: inline-flex;
@@ -630,15 +406,13 @@ app-round-shop-card, .card {
 
   border: 1px solid rgba(255, 105, 180, 0.25);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 235, 245, 0.75));
-  box-shadow:
-    0 10px 24px rgba(255, 105, 180, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 24px rgba(255, 105, 180, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
-  color: #c2186a; /* rose premium (pas fluo) */
+  color: #c2186a;
   font-weight: 700;
   cursor: pointer;
 
-  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .share-pill__icon {
@@ -658,50 +432,32 @@ app-round-shop-card, .card {
   cursor: pointer;
   transform: translateY(-1px);
   border-color: rgba(255, 105, 180, 0.35);
-  box-shadow:
-    0 14px 30px rgba(255, 105, 180, 0.16),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 30px rgba(255, 105, 180, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .share-pill:active {
   transform: translateY(0);
-  box-shadow:
-    0 8px 18px rgba(255, 105, 180, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 18px rgba(255, 105, 180, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .share-pill:focus-visible {
   outline: none;
-  box-shadow:
-    0 14px 30px rgba(255, 105, 180, 0.16),
-    0 0 0 4px rgba(255, 105, 180, 0.18);
+  box-shadow: 0 14px 30px rgba(255, 105, 180, 0.16), 0 0 0 4px rgba(255, 105, 180, 0.18);
 }
 
-
-.shop-info-header {
+/* Actions wrapper (retour + partager) */
+.shop-actions {
   display: flex;
+  gap: 12px;
   align-items: center;
-  gap: 16px;
+  margin-top: 14px;
 }
 
-.share-btn {
-  margin-left: auto;
-  border: 1px solid rgba(0,0,0,0.08);
-  background: white;
-  padding: 10px 14px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.share-btn:hover {
-  border-color: rgba(0,0,0,0.18);
-}
-
+/* Share modal */
 .share-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 9998;
 }
 
@@ -715,7 +471,7 @@ app-round-shop-card, .card {
   background: white;
   border-radius: 16px;
   padding: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
 }
 
 .share-modal-header {
@@ -723,11 +479,6 @@ app-round-shop-card, .card {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
-}
-
-.share-title {
-  font-size: 16px;
-  font-weight: 700;
 }
 
 .share-close {
@@ -747,14 +498,14 @@ app-round-shop-card, .card {
   flex: 1;
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.12);
-  background: rgba(0,0,0,0.02);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.02);
 }
 
 .share-url button {
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   background: white;
   cursor: pointer;
   font-weight: 600;
@@ -769,7 +520,7 @@ app-round-shop-card, .card {
 .share-action {
   padding: 10px 12px;
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.12);
+  border: 1px solid rgba(0, 0, 0, 0.12);
   background: white;
   cursor: pointer;
   font-weight: 600;
@@ -789,6 +540,7 @@ app-round-shop-card, .card {
   font-size: 13px;
   opacity: 0.7;
 }
+
 app-shop-item-card {
   display: block;
   width: 100%;
@@ -799,6 +551,7 @@ app-shop-item-card {
   width: 100%;
 }
 
+/* Twilio */
 .twilio-box {
   margin-top: 12px;
 }
@@ -822,4 +575,132 @@ app-shop-item-card {
     font-weight: 600;
     opacity: 0.85;
   }
+}
+
+/* ✅ MOBILE CLEAN (sans casser desktop) */
+@media (max-width: 768px) {
+  /* Ne force pas .row en column (Bootstrap s'en charge avec col-12) */
+
+  /* Header shop : avatar + infos en colonne */
+  .shop-info-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .shopInfoImage {
+    width: 84px;
+    height: 84px;
+    margin-top: 0;
+  }
+
+  .shop-info-texts {
+    align-items: center;
+  }
+
+  /* Boutons retour + partager alignés */
+  .shop-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* IMPORTANT : sinon le bouton se décale bizarrement sur mobile */
+  .share-pill {
+    margin-left: 0;
+  }
+
+  /* Cartes items */
+  .col-md-6,
+  .col-lg-6 {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+
+  /* Lightbox un peu plus respirante */
+  .lightbox-content {
+    max-width: 95%;
+    max-height: 80%;
+    padding: 10px;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+  }
+
+  /* Galerie thumbnails */
+  .gallery-thumbnails .thumbnail img {
+    width: 80px;
+    height: 60px;
+  }
+
+  /* Twilio full width */
+  .twilio-call {
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    .number {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 45%;
+    }
+  }
+
+  /* Marges utilitaires */
+  .margin-top-10 {
+    margin-top: 10px !important;
+  }
+
+  .margin-top-20 {
+    margin-top: 20px !important;
+  }
+}
+
+/* Petit bonus : sur très petit écran */
+@media (max-width: 480px) {
+  :host .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .share-modal {
+    width: calc(100vw - 24px);
+  }
+}
+
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+
+  p {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #444;
+    font-weight: 500;
+  }
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #ff7eb3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

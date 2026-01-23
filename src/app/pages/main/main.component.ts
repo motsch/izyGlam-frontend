@@ -73,7 +73,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   promoActivated: boolean = false;
 
   // ✅ NEW : mode de prestation
-  serviceMode: 'SALON' | 'DOMICILE' = 'SALON';
+  serviceMode = 'SALON';
 
   private shopsSub?: Subscription;
   private shopsReqId = 0;
@@ -132,6 +132,13 @@ export class MainComponent implements OnInit, AfterViewInit {
   // ⏱️ Initialisation : auth, paramètres, data, géoloc
   // ---------------------------------------------------
   ngOnInit() {
+    const serviceSelected = localStorage.getItem("serviceMode");
+    if (serviceSelected) {
+      this.serviceMode = serviceSelected;
+      console.log(this.serviceMode + " IF"); // "SALON" → SALON ✅
+    } else {
+      console.log(this.serviceMode + " ELSE")
+    }
     this.seoService.updateMeta('main');
     // 🔐 Redirection si non connecté
     /*if (!this.sessionService.isLoggedIn()) {
@@ -485,7 +492,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       : ['75001'];
 
     // 🔥 adapte selon ton state UI (ex: this.mode, this.serviceMode, etc.)
-    const mode: 'SALON' | 'DOMICILE' = this.serviceMode ?? 'SALON';
+    const mode: string = this.serviceMode ?? 'SALON';
 
     this.categoryService
       .getAvailableCategories(mode, undefined, undefined, codes, country)
@@ -838,5 +845,6 @@ export class MainComponent implements OnInit, AfterViewInit {
     // Reload data avec le mode
     this.loadCategories();
     this.loadShops();
+    localStorage.setItem("serviceMode", this.serviceMode)
   }
 }

@@ -1,65 +1,99 @@
 <app-header *ngIf="!sessionService.isLoggedIn()" [connected]="false"></app-header>
+
 <!-- sidebar + content -->
 <section class="container padding-top-20pourc">
   <div class="row">
     <!-- sidebar -->
-    <div class="col-lg-3 justify-content-center">
+    <div class="col-12 col-lg-3 justify-content-center">
       <!-- Collapsible wrapper -->
       <div class="mb-5" id="navbarSupportedContent">
         <div>
           <div class="shop-hero">
-            <!-- ⬅️ nouveau wrapper -->
+            <!-- Header shop -->
             <div class="shop-info-header">
-              <img [src]="APIimgStorageUrl + '/uploads/images/' + (shopInfo.image ? shopInfo.image : 'default.png')"
-                alt="shopLogo" class="shopInfoImage" />
+              <img
+                [src]="APIimgStorageUrl + '/uploads/images/' + (shopInfo.image ? shopInfo.image : 'default.png')"
+                alt="shopLogo"
+                class="shopInfoImage"
+              />
+
               <div class="shop-info-texts">
                 <div>
                   <h4>{{ shopInfo.name }}</h4>
                   <div class="pink">{{ shopInfo.trad | translate }}</div>
                 </div>
+
                 <span>
                   {{ shopInfo.note ?? 5 }}
                   <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
-                  ({{ shopInfo.noteCount ?? 0 }}+) <br />
+                  ({{ shopInfo.noteCount ?? 0 }}+)
+                  <br />
                 </span>
-                <span>
-                  <img *ngIf="shopInfo.instagram" [src]="imgStorageUrl + 'instagram-icon.png'" alt="Instagram"
-                    class="socialLogo" (click)="openSocialLink(shopInfo.instagram)" />
-                  <img *ngIf="shopInfo.facebook" [src]="imgStorageUrl + 'facebook-icon.png'" alt="Facebook"
-                    class="socialLogo" (click)="openSocialLink(shopInfo.facebook)" />
-                  <img *ngIf="shopInfo.tiktok" [src]="imgStorageUrl + 'tiktok-icon.png'" alt="tiktok" class="socialLogo"
-                    (click)="openSocialLink(shopInfo.tiktok)" />
 
+                <span>
+                  <img
+                    *ngIf="shopInfo.instagram"
+                    [src]="imgStorageUrl + 'instagram-icon.png'"
+                    alt="Instagram"
+                    class="socialLogo"
+                    (click)="openSocialLink(shopInfo.instagram)"
+                  />
+                  <img
+                    *ngIf="shopInfo.facebook"
+                    [src]="imgStorageUrl + 'facebook-icon.png'"
+                    alt="Facebook"
+                    class="socialLogo"
+                    (click)="openSocialLink(shopInfo.facebook)"
+                  />
+                  <img
+                    *ngIf="shopInfo.tiktok"
+                    [src]="imgStorageUrl + 'tiktok-icon.png'"
+                    alt="tiktok"
+                    class="socialLogo"
+                    (click)="openSocialLink(shopInfo.tiktok)"
+                  />
                   <br />
                 </span>
               </div>
             </div>
-            <button class="share-pill margin-top-20 margin-right-10" (click)="goTo('main')"><i
-                class="fa fa-angle-left"></i></button>
-            <!-- ✅ Bouton partager -->
-            <button class="share-pill margin-top-20" type="button" (click)="onShareClick()">
-              <span class="share-pill__icon" aria-hidden="true">
-                <!-- icône share en SVG (propre, léger, sans lib) -->
-                <svg viewBox="0 0 24 24" width="18" height="18">
-                  <path
-                    d="M15 8a3 3 0 1 0-2.83-4H12a3 3 0 0 0 3 4ZM6 14a3 3 0 1 0 2.83 4H9a3 3 0 0 0-3-4Zm12 0a3 3 0 1 0 2.83 4H21a3 3 0 0 0-3-4Zm-9.2 1.1 6.4-3.2m-6.4-3.8 6.4 3.2"
-                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                </svg>
-              </span>
-              <span class="share-pill__text">Partager</span>
-            </button>
-            <!-- ✅ Modal fallback (desktop / navigateurs non compatibles) -->
+
+            <!-- Actions (retour + partager) -->
+            <div class="shop-actions">
+              <button class="share-pill margin-top-20 margin-right-10" (click)="goTo('main')">
+                <i class="fa fa-angle-left"></i>
+              </button>
+
+              <!-- Bouton partager -->
+              <button class="share-pill margin-top-20" type="button" (click)="onShareClick()">
+                <span class="share-pill__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path
+                      d="M15 8a3 3 0 1 0-2.83-4H12a3 3 0 0 0 3 4ZM6 14a3 3 0 1 0 2.83 4H9a3 3 0 0 0-3-4Zm12 0a3 3 0 1 0 2.83 4H21a3 3 0 0 0-3-4Zm-9.2 1.1 6.4-3.2m-6.4-3.8 6.4 3.2"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.8"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="share-pill__text">Partager</span>
+              </button>
+            </div>
+
+            <!-- Modal fallback (desktop / navigateurs non compatibles) -->
             <div class="share-backdrop" *ngIf="shareModalOpen" (click)="closeShareModal()"></div>
 
             <div class="share-modal" *ngIf="shareModalOpen">
               <div class="share-modal-header">
                 <button class="share-close" (click)="closeShareModal()">✕</button>
               </div>
+
               <div class="share-url">
                 <input [value]="shareUrl" readonly />
                 <button (click)="copyShareUrl()">{{ copied ? 'Copié !' : 'Copier' }}</button>
               </div>
+
               <div class="share-actions">
                 <a class="share-action" [href]="mailToUrl" target="_blank" rel="noopener">Email</a>
                 <a class="share-action" [href]="whatsAppUrl" target="_blank" rel="noopener">WhatsApp</a>
@@ -68,18 +102,14 @@
 
                 <button class="share-action" (click)="toggleQr()">QR Code</button>
               </div>
+
               <div class="share-qr" *ngIf="qrOpen">
-                <!-- QR généré via lib (voir étape 2) -->
-                <qrcode [qrdata]="shareUrl" [width]="180" [errorCorrectionLevel]="'M'">
-                </qrcode>
+                <qrcode [qrdata]="shareUrl" [width]="180" [errorCorrectionLevel]="'M'"></qrcode>
                 <div class="share-qr-hint">Scanne pour ouvrir la page.</div>
               </div>
             </div>
+
             <div class="margin-top-20">
-              <div *ngIf="adminSettings.commissionRate > 0">{{"PAYEMENT.SUMMARY_SERVICE_FEE" | translate}} : {{
-                adminSettings.commissionRate * 100 }}%</div>
-              <div *ngIf="adminSettings.serviceFee > 0">{{"PAYEMENT.SUMMARY_DELIVERY_FEE" | translate}} : {{
-                adminSettings.serviceFee }}€</div>
               <div *ngIf="shopInfo.isPremium && izyPhone" class="twilio-box">
                 <a class="twilio-call" [href]="'tel:' + izyPhone" aria-label="Appeler le salon">
                   <span class="icon">📞</span>
@@ -87,10 +117,19 @@
                   <span class="number">{{ izyPhone }}</span>
                 </a>
               </div>
-
             </div>
+
+            <div class="margin-top-20">
+              <div *ngIf="adminSettings.commissionRate > 0">
+                {{ "PAYEMENT.SUMMARY_SERVICE_FEE" | translate }} : {{ adminSettings.commissionRate * 100 }}%
+              </div>
+              <div *ngIf="adminSettings.serviceFee > 0">
+                {{ "PAYEMENT.SUMMARY_DELIVERY_FEE" | translate }} : {{ adminSettings.serviceFee }}€
+              </div>
+            </div>
+
             <div class="description-wrapper">
-              <div class="description-text">
+              <div class="description-text" [ngClass]="{ collapsed: !isExpanded, expanded: isExpanded }">
                 {{ shopInfo.description }}
               </div>
 
@@ -99,9 +138,12 @@
               </button>
             </div>
           </div>
+
           <div *ngIf="isExpanded">
-            <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-40 bold">{{ "SHOP.GALLERY" | translate }}:
+            <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-40 bold">
+              {{ "SHOP.GALLERY" | translate }}:
             </div>
+
             <div *ngIf="shopInfo.galleryImages.length > 2" class="margin-top-10">
               <div class="gallery-container">
                 <div class="gallery-thumbnails">
@@ -121,6 +163,7 @@
                 </div>
               </div>
             </div>
+
             <div>
               <img [src]="imgStorageUrl + 'money.png'" alt="starLogo" class="moneyLogo" />
             </div>
@@ -132,19 +175,42 @@
         </div>
       </div>
     </div>
-    <!-- Gallery display section -->
-    <div class="col-lg-9">
+
+    <!-- Content -->
+    <div class="col-12 col-lg-9" *ngIf="categoriesUnique.length > 0">
       <ng-container *ngFor="let cat of categoriesUnique; trackBy: trackByCategoryId">
         <div class="mb-5">
           <h4 class="mb-3">{{ cat.name }}</h4>
+
           <div class="row g-3">
-            <div class="col-12 col-md-6 col-lg-6 d-flex"
-              *ngFor="let item of (itemsByCategory[cat._id] || []); trackBy: trackByItemId">
+            <div
+              class="col-12 col-md-6 col-lg-6 d-flex"
+              *ngFor="let item of (itemsByCategory[cat._id] || []); trackBy: trackByItemId"
+            >
               <app-shop-item-card class="w-100" [item]="item"></app-shop-item-card>
             </div>
           </div>
         </div>
       </ng-container>
     </div>
+
+    
+    <!-- Gallery display section -->
+    <div class="col-12 col-lg-9" *ngIf="categoriesUnique.length === 0">
+      <div class="row justify-content-left">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6" *ngFor="let item of shopItems">
+          <app-shop-item-card [item]="item"></app-shop-item-card>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+
+
+
+
+<div class="loader-overlay" *ngIf="loading">
+  <div class="spinner"></div>
+  <p>{{ 'PAYEMENT.TRAITEMENT' | translate }}...</p>
+</div>

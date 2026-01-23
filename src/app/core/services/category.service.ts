@@ -41,7 +41,7 @@ export class CategoryService {
 
   // Récupérer les catégories disponibles en fonction des shops filtrés par géolocalisation ou codes postaux
   getAvailableCategories(
-    mode: 'SALON' | 'DOMICILE',
+    mode: string,
     lat?: number,
     lon?: number,
     codes?: string[],
