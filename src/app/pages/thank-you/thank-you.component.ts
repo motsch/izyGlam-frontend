@@ -75,7 +75,7 @@ export class ThankYouComponent implements OnInit {
 
 
   goDashboard() {
-    this.router.navigate(["/dashboard"]);
+    this.router.navigate(["/profile"]);
   }
 
   goBilling() {

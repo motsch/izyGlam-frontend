@@ -27,6 +27,7 @@ import { MessageComponent } from './message/message.component';
 // import { ChoiceTypeComponent } from './choice-type/choice-type.component';
 import { QuickComponent } from './quick/quick.component';
 import { DashboardComponent } from '../core/component/dashboard/dashboard.component';
+import { BillingComponent } from './billing/billing.component';
 
 const routes: Routes = [
     {
@@ -55,8 +56,8 @@ const routes: Routes = [
         canActivate: [AuthGuard],
     },
     {
-        path: 'dashboard',
-        component: DashboardComponent,
+        path: 'billing',
+        component: BillingComponent,
         canActivate: [AuthGuard],
     },
     {
