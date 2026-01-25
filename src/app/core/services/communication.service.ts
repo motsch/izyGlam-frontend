@@ -23,15 +23,6 @@ export class CommunicationService {
     return this.myRoleSubject.asObservable();
   }
 
-  get getFilAriane(): any[] {
-    return this.myVariable;
-  }
-
-  set setFilAriane(value: any[]) {
-    this.myVariable = value;
-    this.myVariableSubject.next(value);
-  }
-
   get getItemToBuy(): any {
     return this.myItemToBuy;
   }
