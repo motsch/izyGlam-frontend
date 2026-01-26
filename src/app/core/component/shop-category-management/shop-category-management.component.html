@@ -48,7 +48,7 @@
           <h3 class="modal-title">
             {{
             editingCategoryId
-            ? ("Modifier la catégorie " + (modalCategory?.name || ''))
+            ? ("Modifier la catégorie " + (modalCategory.name || ''))
             : "Créons une nouvelle catégorie !"
             }}
           </h3>
@@ -75,7 +75,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" (click)="saveCategory()"
-            [disabled]="saving || !modalCategory?.name">
+            [disabled]="saving || !modalCategory.name">
             <span *ngIf="!saving">{{ "Enregistrer" | translate }}</span>
             <span *ngIf="saving" class="loader"></span>
           </button>
