@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   apiUrl: '/api/',
   imgStorageUrl: 'assets/images/',
-  APIimgStorageUrl: '',
+  APIimgStorageUrl: 'https://api.izyglam.com/',
   allowedCountries: ['FR'],
   comingSoonCountries: ['EN', 'ES', 'IT', 'NL', 'PT'],
   comingSoonCountriesDate: '2025-01-01',
