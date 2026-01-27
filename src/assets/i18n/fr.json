@@ -267,7 +267,8 @@
     "PLACEHOLDER": "Décrivez votre expérience..."
   },
   "HOMEPAGE": {
-    "TITLERED": "izyGlam s’occupe des",
+    "TITLERED": "izyGlam est un assistant de prise de commande automatisé",
+    "TITLERED2": "On s’occupe des",
     "KNOWMORE": "En savoir plus",
     "PART1TITLE": "Profitez des meilleurs services esthétiques à domicile",
     "PART1TEXT": "Nos professionnels qualifiés se déplacent chez vous pour vous offrir des soins de beauté de qualité, adaptés à vos besoins et à vos envies. Vivez une expérience de bien-être unique, que ce soit à votre pause déjeuner, après le travail le soir ou lors d'une après-midi entre amies.",
@@ -328,9 +329,9 @@
     "AVIS": "Avis"
   },
   "MAIN_CATEGORY_INTRO": {
-    "CALL": "appels",
-    "RESA": "réservations",
-    "PAIEMENT": "paiements"
+    "CALL": "Appels",
+    "RESA": "Réservations",
+    "PAIEMENT": "Paiements"
   },
   "INTRO": {
     "NORESULTS": "Aucun résultat trouvé",
