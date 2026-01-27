@@ -95,7 +95,7 @@ import { AdminIzyshopOrdersComponent } from './component/admin-izyshop-orders/ad
 import { AdminIzyshopProductsComponent } from './component/admin-izyshop-products/admin-izyshop-products.component';
 import { ShopCategoryManagementComponent } from './component/shop-category-management/shop-category-management.component';
 import { IzyPhoneMiddleComponent } from './component/izyPhone-middle/izyPhone-middle.component';
-import { IzyphoneStepComponent } from './component/izyPhone-step/izyPhone-step.component';
+import { IzyPhoneStepComponent } from './component/izyPhone-step/izyPhone-step.component';
 import { IzyPhonebottomComponent } from './component/izyPhone-bottom/izyPhone-bottom.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -180,7 +180,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CalendarComponent,
         ProfileInformationsComponent,
         FinanceComponent,
-        IzyPhonebottomComponent,
         AdminComponent,
         ShopArticlesManagementComponent,
         CompanySetDefaultPasswordComponent,
@@ -197,8 +196,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         OrderItemComponent,
         CreateShopInfoComponent,
         CreateShopStepsComponent,
+        IzyPhoneStepComponent,
         IzyPhoneMiddleComponent,
-        IzyphoneStepComponent,
+        IzyPhonebottomComponent,
         AgendaComponent,
         ContentCalendarItemDialog,
         NewShopModalComponent,
@@ -246,7 +246,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         OrderItemComponent,
         PostFakeGenerationComponent,
         CompanyManagementComponent,
-        IzyPhonebottomComponent,
         TruncatePipe,
         CompanyFinanceManagementComponent,
         FilterByString,
@@ -263,8 +262,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CreateShopInfoComponent,
         ShopEmployeesComponent,
         CreateShopStepsComponent,
+        IzyPhoneStepComponent,
         IzyPhoneMiddleComponent,
-        IzyphoneStepComponent,
+        IzyPhonebottomComponent,
         NewShopModalComponent,
         AgendaComponent,
         ShopPhotoGalleryComponent,
