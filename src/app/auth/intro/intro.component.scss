@@ -97,6 +97,15 @@
   }
 
   /* Titres */
+  .page-title-main {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px;
+    line-height: 1.1;
+  }
+
+  /* Titres */
   .page-title {
     font-size: 2rem;
     font-weight: 700;
@@ -187,22 +196,6 @@
     word-break: break-word;
     hyphens: auto;
     text-align: left;
-
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
-      text-align: center;
-      padding: 0 1rem;
-    }
-  }
-
-  /* h1 globaux (compat), mais le sizing principal reste .page-title */
-  h3 {
-    font-size: 1.5rem;
-    line-height: 1.2;
-    word-break: break-word;
-    hyphens: auto;
-    text-align: left;
-    color:#fff ;
 
     @media (max-width: 768px) {
       font-size: 1.5rem;
