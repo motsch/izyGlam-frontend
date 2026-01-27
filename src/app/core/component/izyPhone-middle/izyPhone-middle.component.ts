@@ -12,11 +12,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-create-company',
-  templateUrl: './create-company.component.html',
-  styleUrls: ['./create-company.component.scss'],
+  selector: 'app-izyphone-middle',
+  templateUrl: './izyPhone-middle.component.html',
+  styleUrls: ['./izyPhone-middle.component.scss'],
 })
-export class CreateCompanyComponent implements OnInit {
+export class IzyPhoneMiddleComponent implements OnInit {
   // 👤 Utilisateur courant
   me: any = {};
 

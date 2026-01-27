@@ -4,11 +4,11 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-create-company-info',
-  templateUrl: './create-company-info.component.html',
-  styleUrls: ['./create-company-info.component.scss']
+  selector: 'app-izyphone-bottom',
+  templateUrl: './izyPhone-bottom.component.html',
+  styleUrls: ['./izyPhone-bottom.component.scss']
 })
-export class CreateCompanyInfoComponent implements OnDestroy {
+export class IzyPhonebottomComponent implements OnDestroy {
 
   // 🔢 Index de l'étape courante
   currentIndex = 0;
@@ -90,7 +90,7 @@ export class CreateCompanyInfoComponent implements OnDestroy {
 
       this.autoScrollInterval = setInterval(() => {
         this.nextStep();
-      }, 5000); // ⏱️ Passage automatique toutes les 5 secondes
+      }, 10000); // ⏱️ Passage automatique toutes les 5 secondes
     } catch (err) {
       console.error('Erreur startAutoScroll :', err);
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));

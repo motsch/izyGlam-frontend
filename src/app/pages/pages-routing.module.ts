@@ -28,6 +28,7 @@ import { MessageComponent } from './message/message.component';
 import { QuickComponent } from './quick/quick.component';
 import { DashboardComponent } from '../core/component/dashboard/dashboard.component';
 import { BillingComponent } from './billing/billing.component';
+import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
 
 const routes: Routes = [
     {
@@ -115,6 +116,11 @@ const routes: Routes = [
     {
         path: 'creation-shop',
         component: CreationShopComponent,
+        canActivate: [],
+    },
+    {
+        path: 'izyPhone-info',
+        component: IzyPhoneInfoComponent,
         canActivate: [],
     },
     /*{

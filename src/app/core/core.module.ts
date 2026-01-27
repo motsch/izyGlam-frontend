@@ -54,8 +54,6 @@ import { ShopArticlesManagementComponent } from './component/shop-articles-manag
 import { OrderItemComponent } from './component/order-item/order-item.component';
 import { CreateShopComponent } from './component/create-shop/create-shop.component';
 import { CreateShopStepsComponent } from './component/create-shop-steps/create-shop-steps.component';
-import { CreateCompanyComponent } from './component/create-company/create-company.component';
-import { CreateCompanyStepComponent } from './component/create-company-step/create-company-step.component';
 import { NewShopModalComponent } from './component/new-shop-modal/new-shop-modal.component';
 import {
     AgendaComponent,
@@ -82,13 +80,11 @@ import { ReviewModalComponent } from './component/review-modal/review-modal.comp
 import { CreateShopInfoComponent } from './component/create-shop-info/create-shop-info.component';
 import { ShopEmployeesComponent } from './component/shop-employees/shop-employees.component';
 import { StripeCardFormComponent } from './component/stripe-card-form/stripe-card-form.component';
-import { TermsComponent } from '../pages/terms/terms.component';
 import { AccessibilityPolicyComponent } from './component/accessibility-policy/accessibility-policy.component';
 import { TermsPolicyComponent } from './component/terms-policy/terms-policy.component';
 import { MessagerieComponent } from './component/messagerie/messagerie.component';
 import { LocaleDatePipe } from './pipe/locale-date.pipe';
 import { AdminCompanyManagementComponent } from './component/admin-company-management/admin-company-management.component';
-import { PostService } from './services/post.service';
 import { PostComponent } from './component/post/post.component';
 import { AdminB2bLeadManagementComponent } from './component/admin-b2b-lead-management/admin-b2b-lead-management.component';
 import { AdminProLeadManagementComponent } from './component/admin-pro-lead-management/admin-pro-lead-management.component';
@@ -98,6 +94,9 @@ import { AdminCommunicationManagementComponent } from './component/admin-communi
 import { AdminIzyshopOrdersComponent } from './component/admin-izyshop-orders/admin-izyshop-orders.component';
 import { AdminIzyshopProductsComponent } from './component/admin-izyshop-products/admin-izyshop-products.component';
 import { ShopCategoryManagementComponent } from './component/shop-category-management/shop-category-management.component';
+import { IzyPhoneMiddleComponent } from './component/izyPhone-middle/izyPhone-middle.component';
+import { IzyphoneStepComponent } from './component/izyPhone-step/izyPhone-step.component';
+import { IzyPhonebottomComponent } from './component/izyPhone-bottom/izyPhone-bottom.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -181,6 +180,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CalendarComponent,
         ProfileInformationsComponent,
         FinanceComponent,
+        IzyPhonebottomComponent,
         AdminComponent,
         ShopArticlesManagementComponent,
         CompanySetDefaultPasswordComponent,
@@ -197,8 +197,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         OrderItemComponent,
         CreateShopInfoComponent,
         CreateShopStepsComponent,
-        CreateCompanyComponent,
-        CreateCompanyStepComponent,
+        IzyPhoneMiddleComponent,
+        IzyphoneStepComponent,
         AgendaComponent,
         ContentCalendarItemDialog,
         NewShopModalComponent,
@@ -246,6 +246,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         OrderItemComponent,
         PostFakeGenerationComponent,
         CompanyManagementComponent,
+        IzyPhonebottomComponent,
         TruncatePipe,
         CompanyFinanceManagementComponent,
         FilterByString,
@@ -262,8 +263,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CreateShopInfoComponent,
         ShopEmployeesComponent,
         CreateShopStepsComponent,
-        CreateCompanyComponent,
-        CreateCompanyStepComponent,
+        IzyPhoneMiddleComponent,
+        IzyphoneStepComponent,
         NewShopModalComponent,
         AgendaComponent,
         ShopPhotoGalleryComponent,

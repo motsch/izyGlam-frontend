@@ -47,14 +47,12 @@ import { GiftCardComponent } from './gift-card/gift-card.component';
 import { InviteFriendsComponent } from './invite-friends/invite-friends.component';
 import { CreationShopComponent } from './creation-shop/creation-shop.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { CreateCompanyInfoComponent } from '../core/component/create-company-info/create-company-info.component';
 import { CreationCompanyComponent } from './creation-company/creation-company.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SponsorComponent } from './sponsor/sponsor.component';
 import { FidelityComponent } from './fidelity/fidelity.component';
 import { PricePlansComponent } from './price-plans/price-plans.component';
 import { QRCodeModule } from 'angularx-qrcode';
-import { Subscription } from 'rxjs';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
 import { PayementValidationComponent } from './payement-validation/payement-validation.component';
@@ -62,6 +60,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { MessageComponent } from './message/message.component';
 import { QuickComponent } from './quick/quick.component';
 import { BillingComponent } from './billing/billing.component';
+import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -119,6 +118,7 @@ import { BillingComponent } from './billing/billing.component';
         QuickComponent,
         PayementValidationComponent,
         PayementComponent,
+        IzyPhoneInfoComponent,
         PayementProComponent,
         OrdersComponent,
         HelpComponent,
@@ -129,11 +129,11 @@ import { BillingComponent } from './billing/billing.component';
         InviteFriendsComponent,
         CreationShopComponent,
         CreationCompanyComponent,
-        CreateCompanyInfoComponent,
+        IzyPhoneInfoComponent,
         FidelityComponent,
         PricePlansComponent,
         SubscriptionComponent,
     ],
-    exports: [CreationShopComponent, CreateCompanyInfoComponent, CreationCompanyComponent],
+    exports: [CreationShopComponent, IzyPhoneInfoComponent, CreationCompanyComponent],
 })
 export class PagesModule {}

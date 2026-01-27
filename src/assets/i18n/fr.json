@@ -750,19 +750,19 @@
       "TEXT": "Avec izyGlam, proposez une expérience personnalisée à vos clients. Gérez facilement vos rendez-vous, communiquez rapidement et offrez des services adaptés. Vos clients bénéficient de soins où et quand ils le souhaitent, assurant leur satisfaction et fidélité."
     }
   },
-  "CREATION_COMPANY_STEPS": {
-    "TITLE": "izyGlam pour votre entreprise ?",
+  "IZYPHONE_STEPS": {
+    "TITLE": "Comment izyPhone simplifie votre quotidien ?",
     "STEP1": {
-      "TITLE": "Vos employés et clients réservent des services",
-      "TEXT": "Vos employés ou clients sélectionnent les prestations bien-être qui leur conviennent directement via l'application izyGlam."
+      "TITLE": "Vous configurez votre activité",
+      "TEXT": "Vous définissez vos prestations, vos disponibilités et vos règles une seule fois. izyPhone s’adapte à votre façon de travailler, sans complexité ni réglages techniques. En quelques minutes, tout est prêt."
     },
     "STEP2": {
-      "TITLE": "Vous décidez d'un montant à allouer",
-      "TEXT": "Vous avez la mains pour créditer les comptes de vos employés et de vos clients. Vous pouvez choisir de créditer ces comptes périodiquement ou de manière ponctuelle."
+      "TITLE": "izyPhone prend les commandes à votre place",
+      "TEXT": "Appels, messages, demandes de rendez-vous, paiements. izyPhone répond, organise et confirme automatiquement, même quand vous êtes en prestation ou indisponible."
     },
     "STEP3": {
-      "TITLE": "Les prestations sont réalisées",
-      "TEXT": "Nos experts beauté se déplacent chez vos employés ou dans vos locaux pour fournir les prestations réservées, garantissant une expérience de bien-être optimale."
+      "TITLE": "Vous vivez et travaillez plus sereinement",
+      "TEXT": "Pendant qu’izyPhone s’occupe du reste, vous vous concentrez sur votre métier, vos clientes… et votre vie personnelle. Moins de stress, plus de clarté, plus de temps pour vous."
     }
   },
   "CREATE_COMPANY_INFO": {
@@ -770,33 +770,33 @@
     "TEXT": "Des milliers d'utilisateurs de l'application izyGlam sont à la recherche de services de bien-être. Offrez à vos employés et clients un accès privilégié aux meilleurs experts de la beauté près de chez eux.",
     "IMAGE": "image"
   },
-  "CREATE_COMPANY_STEPS": {
-    "TITLE": "Pourquoi izyGlam ?",
+  "IZYPHONE_MIDDLE_STEPS": {
+    "TITLE": "Pourquoi izyGlam change vraiment la donne ?",
     "STEP1": {
-      "TITLE": "Fidélisez et récompensez vos employés",
-      "TEXT": "Offrez un avantage unique à vos équipes en leur proposant un budget beauté mensuel. Coiffeuses, esthéticiennes et bien d'autres experts du bien-être à leur disposition, pour améliorer leur satisfaction et renforcer le sentiment d'appartenance à votre entreprise."
+      "TITLE": "Protégez votre vie privée (et celle de vos clientes)",
+      "TEXT": "Votre numéro de téléphone n’est plus exposé partout. Avec izyPhone, les appels passent par un assistant dédié, sans divulguer vos coordonnées personnelles. Vous protégez votre vie privée, posez des limites claires et travaillez sans être sollicitée à toute heure."
     },
     "STEP2": {
-      "TITLE": "Améliorez votre image de marque",
-      "TEXT": "Organisez des événements beauté pour vos clients ou partenaires, ou intégrez les services izyGlam dans vos programmes de fidélisation. Assurez-vous de marquer les esprits avec des soins haut de gamme, adaptés à chaque occasion."
+      "TITLE": "Ne perdez plus de chiffre d’affaires",
+      "TEXT": "Un appel manqué, c’est souvent une prestation perdue. izyPhone répond automatiquement, prend les commandes et confirme les rendez-vous, même quand vous êtes occupée ou indisponible. Votre activité continue de générer du chiffre, sans dépendre de votre disponibilité."
     },
     "STEP3": {
-      "TITLE": "Optimisez le bien-être au travail",
-      "TEXT": "Facilitez l'accès de vos employés à des services de bien-être directement sur leur lieu de travail ou à proximité. En prenant soin de leur bien-être, vous boostez leur motivation et renforcez la cohésion de vos équipes."
+      "TITLE": "Allégez votre charge mentale au quotidien",
+      "TEXT": "Répondre, rappeler, organiser, encaisser… tout en travaillant. Cette charge mentale finit par peser lourd. Avec izyPhone, la prise de commande se fait sans vous interrompre, pour des journées plus fluides et des fins de journée plus sereines."
     }
   },
   "INFO_COMPANY_STEPS": {
     "STEP1": {
-      "TITLE": "Simplifiez l'accès au bien-être pour vos équipes",
-      "TEXT": "Avec izyGlam, offrez à vos collaborateurs une solution simple et flexible pour prendre soin d'eux. Que ce soit pour des soins esthétiques ou des séances de remise en forme, tout est à portée de main."
+      "TITLE": "Votre activité ne devrait pas envahir votre vie privée",
+      "TEXT": "Votre téléphone sonne, même le soir. Vos clientes ont votre numéro personnel. Vous répondez \"vite fait\", tout le temps. Avec izyPhone, vous posez enfin des limites claires. Votre numéro reste privé, les appels passent par votre assistant, et votre activité s’arrête quand vous le décidez."
     },
     "STEP2": {
-      "TITLE": "Proposez des avantages innovants à vos clients",
-      "TEXT": "Renforcez vos relations avec vos clients en leur offrant des prestations de bien-être lors d'événements ou dans le cadre de vos programmes de fidélisation. Montrez-leur que vous prenez soin de leur expérience avec des attentions uniques."
+      "TITLE": "Chaque appel manqué, c’est du chiffre d’affaires perdu",
+      "TEXT": "Quand vous êtes en prestation, vous ne pouvez pas répondre. Quand vous rappelez, c’est souvent trop tard. izyPhone ne laisse plus aucune opportunité s’échapper. Les appels sont pris, les rendez-vous confirmés, les paiements sécurisés, même quand vous êtes occupée."
     },
     "STEP3": {
-      "TITLE": "Un bien-être sur mesure, où et quand vous le souhaitez",
-      "TEXT": "Avec izyGlam, vos employés et vos clients peuvent bénéficier de services de qualité où qu'ils soient. Des experts sélectionnés pour répondre à leurs besoins spécifiques, et un accompagnement personnalisé pour garantir leur satisfaction."
+      "TITLE": "Vous n’avez pas créé votre activité pour être sous pression",
+      "TEXT": "Gérer les appels, les messages, les rendez-vous, les paiements… Tout repose sur vous. Tout le temps. izyGlam enlève cette charge mentale. Avec izyPhone, la prise de commande devient automatique et silencieuse. Vous travaillez plus sereinement, vous rentrez chez vous l’esprit plus léger."
     }
   },
   "SIDEBAR": {
