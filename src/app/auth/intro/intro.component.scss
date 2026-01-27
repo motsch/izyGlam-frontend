@@ -23,13 +23,23 @@
   }
 
   /* Ordre par défaut (mobile & tablettes) : MEDIA d'abord, TEXTE ensuite */
-  .home-media { order: 1; }
-  .intro-content { order: 2; }
+  .home-media {
+    order: 1;
+  }
+
+  .intro-content {
+    order: 2;
+  }
 
   /* ≥ md : TEXTE à gauche, MEDIA à droite */
   @media (min-width: 768px) {
-    .intro-content { order: 1; }
-    .home-media   { order: 2; }
+    .intro-content {
+      order: 1;
+    }
+
+    .home-media {
+      order: 2;
+    }
   }
 
   /* --- MEDIA --- */
@@ -44,10 +54,11 @@
   .video-wrapper,
   .hero-media {
     width: 100%;
-    max-width: 640px; /* ajuste selon ton design */
+    max-width: 640px;
+    /* ajuste selon ton design */
     border-radius: 20px;
     display: block;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
 
   /* Image */
@@ -59,7 +70,8 @@
   /* Vidéo dans un conteneur à ratio fixe */
   .video-wrapper {
     position: relative;
-    aspect-ratio: 1 / 1; /* carré par défaut (mobile) */
+    aspect-ratio: 1 / 1;
+    /* carré par défaut (mobile) */
     overflow: hidden;
 
     video.hero-media {
@@ -72,7 +84,9 @@
 
   /* Sur écrans plus larges, ratio plus panoramique si souhaité */
   @media (min-width: 992px) {
-    .video-wrapper { aspect-ratio: 1 / 1; }
+    .video-wrapper {
+      aspect-ratio: 1 / 1;
+    }
   }
 
   /* Affinages responsive du bloc media */
@@ -90,7 +104,8 @@
   .slide-text-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* passe à flex-start si tu veux aligner à gauche en desktop */
+    align-items: center;
+    /* passe à flex-start si tu veux aligner à gauche en desktop */
     justify-content: center;
     text-align: center;
     width: 100%;
@@ -102,7 +117,26 @@
     font-weight: 600;
     margin: 0 0 10px;
     line-height: 1.1;
+
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
+
+  @media (max-width: 768px) {
+  .page-title-main {
+    font-size: 1.4rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .page-title-main .title-red {
+    display: block;
+    margin-top: 6px;
+  }
+}
+
+
 
   /* Titres */
   .page-title {
@@ -116,25 +150,28 @@
   .title-red {
     color: #A43A4A;
     display: inline-block;
-    white-space: nowrap; /* évite les retours à la ligne “bizarres” */
+    white-space: nowrap;
+    /* évite les retours à la ligne “bizarres” */
   }
 
   .title-white {
     color: #ffffff;
     display: inline-block;
-    white-space: nowrap; /* évite les retours à la ligne “bizarres” */
+    white-space: nowrap;
+    /* évite les retours à la ligne “bizarres” */
   }
 
   .main-title {
     font-size: 2rem;
-    color: #fff;
+    color: #A43A4A;
     margin-bottom: 8px;
   }
 
   /* Conteneur d'animation du sous-titre (stabilise la hauteur) */
   .text-wrapper {
     position: relative;
-    height: 2.5rem; /* ajuste selon ta typo */
+    height: 2.5rem;
+    /* ajuste selon ta typo */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,7 +181,9 @@
   .animated-text {
     display: inline-block;
     white-space: nowrap;
-    will-change: opacity, transform; /* l’animation Angular fait le reste */
+    font-weight: 600;
+    will-change: opacity, transform;
+    /* l’animation Angular fait le reste */
   }
 
   /* Formulaire/CTA */
@@ -169,7 +208,8 @@
         transition: background-color 0.3s ease, transform 0.2s ease;
 
         &:hover {
-          background-color: #A43A4A; /* même teinte, léger effet de scale */
+          background-color: #A43A4A;
+          /* même teinte, léger effet de scale */
           transform: scale(1.028);
         }
 
@@ -190,8 +230,15 @@
 
   /* Keyframe douce pour l’arrivée de l’image */
   @keyframes fadeInUp {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   /* h1 globaux (compat), mais le sizing principal reste .page-title */
@@ -221,9 +268,12 @@
 .intro-hero.slide-bg {
   /* On ne définit PAS de background ici ! */
   /* Harmonise les espacements pour matcher ton style.scss */
-  padding-top: 80px;   /* .slide-bg le met déjà : redondant mais sûr */
-  padding-bottom: 0;   /* idem */
-  min-height: 100vh;   /* .slide-bg -> height: 100vh ; on évite de le casser */
+  padding-top: 80px;
+  /* .slide-bg le met déjà : redondant mais sûr */
+  padding-bottom: 0;
+  /* idem */
+  min-height: 100vh;
+  /* .slide-bg -> height: 100vh ; on évite de le casser */
 
   /* Propager la hauteur aux enfants pour centrer verticalement comme dans ton style.scss */
   .container,
