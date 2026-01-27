@@ -552,11 +552,11 @@ app-shop-item-card {
 }
 
 /* Twilio */
-.twilio-box {
+.izyPhone-box {
   margin-top: 12px;
 }
 
-.twilio-call {
+.izyPhone-call {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -637,7 +637,7 @@ app-shop-item-card {
   }
 
   /* Twilio full width */
-  .twilio-call {
+  .izyPhone-call {
     width: 100%;
     justify-content: space-between;
     box-sizing: border-box;

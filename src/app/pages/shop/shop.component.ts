@@ -109,7 +109,7 @@ export class ShopComponent {
 
         this.shopService.getShopByHandle(shopHandle).pipe(
             tap((shop: any) => {
-                this.izyPhone = shop.twilioPhoneNumber;
+                this.izyPhone = shop.izyPhone;
                 localStorage.setItem('shopSelected', shop._id);
             }),
             switchMap((shop: any) => {
