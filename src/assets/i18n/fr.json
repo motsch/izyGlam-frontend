@@ -267,7 +267,7 @@
     "PLACEHOLDER": "Décrivez votre expérience..."
   },
   "HOMEPAGE": {
-    "TITLERED": "Faites venir chez vous",
+    "TITLERED": "izyGlam s’occupe des",
     "KNOWMORE": "En savoir plus",
     "PART1TITLE": "Profitez des meilleurs services esthétiques à domicile",
     "PART1TEXT": "Nos professionnels qualifiés se déplacent chez vous pour vous offrir des soins de beauté de qualité, adaptés à vos besoins et à vos envies. Vivez une expérience de bien-être unique, que ce soit à votre pause déjeuner, après le travail le soir ou lors d'une après-midi entre amies.",
@@ -328,14 +328,9 @@
     "AVIS": "Avis"
   },
   "MAIN_CATEGORY_INTRO": {
-    "COIFFURE": "Une coiffeuse",
-    "MANUCURE": "Une manucure",
-    "ESTETICIAN": "Une esthéticienne",
-    "MASSAGE": "Une masseuse",
-    "MAQUILLAGE": "Une maquilleuse",
-    "PEDICURE": "Une pédicure",
-    "NUTRITION": "Une nutritionniste",
-    "FITNESS": "Une coach"
+    "CALL": "appels",
+    "RESA": "réservations",
+    "PAIEMENT": "paiements"
   },
   "INTRO": {
     "NORESULTS": "Aucun résultat trouvé",

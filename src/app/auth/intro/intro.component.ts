@@ -47,9 +47,7 @@ export class IntroComponent implements OnInit, AfterViewInit {
   imgStorageUrl: string = environment.imgStorageUrl;
 
   propositions: string[] = [
-    'MAIN_CATEGORY_INTRO.COIFFURE', 'MAIN_CATEGORY_INTRO.MANUCURE', 'MAIN_CATEGORY_INTRO.ESTETICIAN',
-    'MAIN_CATEGORY_INTRO.MASSAGE', 'MAIN_CATEGORY_INTRO.MAQUILLAGE', 'MAIN_CATEGORY_INTRO.PEDICURE',
-    'MAIN_CATEGORY_INTRO.NUTRITION', 'MAIN_CATEGORY_INTRO.FITNESS'
+    'MAIN_CATEGORY_INTRO.CALL', 'MAIN_CATEGORY_INTRO.RESA', 'MAIN_CATEGORY_INTRO.PAIEMENT'
   ];
   currentProposition = this.propositions[0];
   previousProposition = this.propositions[0];

@@ -5,11 +5,11 @@
       <!-- MEDIA : image/vidéo (mobile: en haut | ≥md: à droite) -->
       <div class="col-12 col-md-6 home-media">
         <div class="media-box">
-          <img *ngIf="!paramVideo" [src]="imgStorageUrl + 'intro.png'" alt="illustration" class="hero-media" />
+          <img *ngIf="!paramVideo" [src]="imgStorageUrl + 'pro.png'" alt="illustration" class="hero-media" />
 
           <div *ngIf="paramVideo" class="video-wrapper">
             <video #videoElementIntro class="hero-media" autoplay muted playsinline loop>
-              <source [src]="aPIimgStorageUrl + '/uploads/images/front/intro.mp4'" type="video/mp4" />
+              <source [src]="aPIimgStorageUrl + '/uploads/images/front/pro.mp4'" type="video/mp4" />
               {{ 'ABOUT.VIDEO_ERROR' | translate }}
             </video>
           </div>
