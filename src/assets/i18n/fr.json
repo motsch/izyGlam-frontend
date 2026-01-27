@@ -252,7 +252,7 @@
   "UILEVEL": {
     "STARTER": "Créatrice",
     "ACTIVE": "Confirmée",
-    "AMBASSADOR": "Ambassadrice IzyGlam",
+    "AMBASSADOR": "Ambassadrice izyGlam",
     "ICONE": "Icône locale"
   },
   "SHOP_GALERIE": {
@@ -1185,12 +1185,12 @@
   },
   "AVIS": {
     "TITLE": "CE QUE DISENT NOS UTILISATEURS",
-    "AVIS1": "J’étais sceptique au début… et pourtant ! Ma manucure était impeccable, à la maison, sans stress. C’est devenu mon petit rituel du vendredi soir.",
-    "AVIS2": "J’ai réservé un soin visage en 3 minutes, depuis mon canapé. L’esthéticienne était douce, à l’écoute… et ma peau n’a jamais été aussi belle.",
-    "AVIS3": "Je pensais que ce serait plus cher qu’en salon… surprise : même tarif, voire moins ! Et je n’ai pas eu à me déplacer. C’est un grand oui.",
-    "AVIS4": "C’était la veille d’un anniversaire, je voulais un brushing express. J’ai trouvé une pro dispo en 2 clics. Ponctuelle, sympa et résultat canon.",
-    "AVIS5": "Je suis maman solo, je n’ai pas le temps de courir partout. Là, je réserve quand les enfants dorment. C’est simple, rapide et franchement génial.",
-    "AVIS6": "J’ai adoré ma première séance. L’esthéticienne m’a mise à l’aise tout de suite. Je me sentais chouchoutée. J’ai déjà repris rendez-vous pour la semaine prochaine !"
+    "AVIS1": "J’avais l’impression de courir partout, tout le temps. Depuis izyPhone, je ne rate plus aucun appel et je peux enfin me concentrer sur mes prestations. Ma charge mentale a clairement diminué.",
+    "AVIS2": "La mise en place a été beaucoup plus simple que ce que je pensais. En quelques minutes, tout était configuré. Aujourd’hui, les réservations se font toutes seules et je gagne un temps fou.",
+    "AVIS3": "Avant, je passais mes soirées à rappeler des clientes ou à gérer les paiements. Maintenant, tout est pris en charge automatiquement. Je finis mes journées plus sereine, et ça change tout.",
+    "AVIS4": "Ce que j’aime le plus, c’est de pouvoir être pleinement avec mes clientes… et avec ma famille après. Mon téléphone ne me stresse plus, je sais qu’izyPhone gère pour moi.",
+    "AVIS5": "Je suis maman et entrepreneure. izyGlam m’a permis de retrouver un vrai équilibre. Moins d’interruptions, moins de pression, et pourtant plus de rendez-vous confirmés.",
+    "AVIS6": "Depuis que j’utilise izyPhone, mon activité est plus fluide. Les appels sont pris, les paiements sécurisés, et je n’ai plus cette sensation d’être débordée en permanence."
   },
   "DOWNLOAD": {
     "USERS": "utilisateurs satisfaits",
@@ -1200,7 +1200,7 @@
   "TARIF": {
     "DISCOVER": "izyGlam vend de la tranquillités",
     "SOLUTIONS": "On s’occupe des appels et des réservations. Toi, tu te concentres sur ton métier",
-    "TEST": "En passant à IzyGlam Pro, tu obtiens un izyPhone : un numéro professionnel qui gère appels et réservations.",
+    "TEST": "En passant à izyGlam Pro, tu obtiens un izyPhone : un numéro professionnel qui gère appels et réservations.",
     "START_FREE": "Créer mon premier salon",
     "FREE": "Free",
     "FREE_SUBTITLE": "Idéal pour démarrer sereinement.",

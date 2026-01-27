@@ -309,7 +309,7 @@ export class RdvModalComponent implements OnInit, OnDestroy {
         'success'
       );
 
-      this.router.navigate(['billing']);
+      this.router.navigate(['paiement']);
     } catch (err) {
       console.error('[RDV Modal] slotClick ERROR:', err, slot, day);
       this.showCustomToast(

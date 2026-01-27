@@ -6,6 +6,7 @@ import { SubscriptionService } from 'src/app/core/services/subscription.service'
 // ✅ Ajouts pour toasts + i18n (standardizyGlam)
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { SessionService } from 'src/app/core/services/session.service';
 
 @Component({
   selector: 'app-price-plans',
@@ -24,8 +25,9 @@ export class PricePlansComponent implements OnInit {
 
     // ✅ AjoutizyGlam
     private toastr: ToastrService,
-    private translate: TranslateService
-  ) {}
+    private translate: TranslateService,
+    public sessionService: SessionService
+  ) { }
 
   // ------------------------------------------------------------------
   // ⏱️ ngOnInit : SEO + chargement de la liste des abonnements (FR)

@@ -57,11 +57,10 @@ const routes: Routes = [
     },
     {
         path: 'billing',
-        component: BillingComponent,
-        canActivate: [AuthGuard],
+        component: BillingComponent
     },
     {
-        path: 'billing',
+        path: 'paiement',
         component: PayementComponent,
         canActivate: [AuthGuard],
     },
@@ -135,8 +134,7 @@ const routes: Routes = [
     },
     {
         path: 'prices',
-        component: PricePlansComponent,
-        canActivate: [],
+        component: PricePlansComponent
     },
     {
         path: 'subscription',

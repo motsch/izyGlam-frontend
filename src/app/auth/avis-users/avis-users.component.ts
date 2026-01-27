@@ -55,6 +55,6 @@ export class AvisUsersComponent implements OnInit {
           cards[previousIndex].classList.remove('exiting');
         }
       }, 800); // Temps égal à la durée de la transition CSS
-    }, 5500); // Changement toutes les 5.5 secondes
+    }, 7000); // Changement toutes les 5.5 secondes
   }
 }

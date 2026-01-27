@@ -127,7 +127,7 @@ export class IntroComponent implements OnInit, AfterViewInit {
   }
 
   onButtonClick(): void {
-    this.router.navigate(['/main']);
+    this.router.navigate(['/prices']);
   }
 
   trackByFn(index: number, item: string): string {
