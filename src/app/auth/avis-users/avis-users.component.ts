@@ -10,27 +10,27 @@ export class AvisUsersComponent implements OnInit {
     {
       "text": "AVIS.AVIS1",
       "image": "assets/images/profile/profile1.png",
-      "name": "Li M."
+      "name": "Mai-Liên N."
     },
     {
       "text": "AVIS.AVIS2",
       "image": "assets/images/profile/profile2.png",
-      "name": "Emily T."
+      "name": "Emilie B."
     },
     {
       "text": "AVIS.AVIS3",
       "image": "assets/images/profile/profile3.png",
-      "name": "Alex R."
+      "name": "Vanessa K."
     },
     {
       "text": "AVIS.AVIS4",
       "image": "assets/images/profile/profile4.png",
-      "name": "Kofi A."
+      "name": "Cécile S."
     },
     {
       "text": "AVIS.AVIS5",
       "image": "assets/images/profile/profile5.png",
-      "name": "Arjun K."
+      "name": "Moussou K."
     },
     {
       "text": "AVIS.AVIS6",

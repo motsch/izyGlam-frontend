@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { DrawerService } from './core/services/drawer.service';
 import { SessionService } from './core/services/session.service';
 import { UserService } from './core/services/user.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { CartService } from './core/services/cart.service';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,6 +13,7 @@ import { SharedService } from './core/services/shared.service';
 import { MatDrawer } from '@angular/material/sidenav';
 import { AdminService } from './core/services/admin.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -59,6 +60,17 @@ export class AppComponent implements OnInit {
     this.userService.getMe().subscribe(user => {
       this.me = user;
     });
+
+    
+    this.router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe(() => {
+        // Force haut de page (window)
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+        // Petit "re-trigger" au cas où un layout recalcule après rendu
+        setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 0);
+      });
   }
 
   ngOnInit() {
