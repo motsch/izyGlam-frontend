@@ -7,23 +7,17 @@
         {{ "CREATION_SHOP_WIZARD.SUBTITLE" | translate }}
       </p>
 
-      <button class="primary" (click)="openWizard()" [disabled]="!isUserConnected || alreadyProfessionnal">
+      <button class="primary" (click)="openWizard()" [disabled]="alreadyProfessionnal">
         {{ "CREATION_SHOP_WIZARD.OPEN" | translate }}
       </button>
 
       <p class="hint" *ngIf="alreadyProfessionnal">
         {{ "CREATION_SHOP.ALREDAY_SHOP" | translate }}
       </p>
-      <p class="hint" *ngIf="!isUserConnected">
-        {{ "CREATION_SHOP.NOT_CONNECTED" | translate }}
-      </p>
     </div>
 
     <div class="hero-visual">
-      <div class="visual-card">
-        <div class="visual-badge">izyglam</div>
-        <div class="visual-glow"></div>
-      </div>
+      <img class="hero-image" src="assets/images/stepper.png" />
     </div>
   </div>
 </div>
@@ -33,6 +27,7 @@
 
 <!-- MODAL -->
 <div class="izy-modal" *ngIf="wizardOpen" role="dialog" aria-modal="true" (click)="$event.stopPropagation()">
+
   <!-- HEADER -->
   <div class="modal-header">
     <button class="icon-btn" (click)="closeWizard()" aria-label="Close">✕</button>
@@ -51,9 +46,7 @@
           class="dot"
           *ngFor="let s of wizardSteps; let i = index"
           [class.active]="i === wizardStep"
-          [class.done]="i < wizardStep"
-          [class.clickable]="canJumpTo(i)"
-          (click)="goToStep(i)">
+          [class.done]="i < wizardStep">
         </span>
       </div>
       <div class="bar">
@@ -99,14 +92,129 @@
       </div>
     </ng-container>
 
-    <!-- STEP 1 : INFOS SALON (nom/handle/catégorie) -->
+    <!-- ✅ STEP 1 : AUTH EMAIL (nouvelle étape) -->
     <ng-container *ngIf="wizardStep === 1">
+      <div class="card">
+        <!-- Commentaire : ce step sert à "récupérer" ou "créer" le user,
+             afin d'avoir un token (session) AVANT de créer le shop. -->
+
+        <div class="big">{{ "CREATION_SHOP_WIZARD.AUTH_TITLE" | translate }}</div>
+        <div class="muted">{{ "CREATION_SHOP_WIZARD.AUTH_SUBTITLE" | translate }}</div>
+
+        <!-- EMAIL -->
+        <div class="field">
+          <label>{{ "SIGNUP.PLACEHOLDER_EMAIL" | translate }}</label>
+          <input
+            type="email"
+            [(ngModel)]="authUser.email"
+            placeholder="ex: sab@gmail.com"
+            autocomplete="email"
+            [ngModelOptions]="{ updateOn: 'blur' }"
+            (blur)="onAuthEmailBlur()" />
+          <div class="field-error" *ngIf="showErrors && !!authError.email">{{ authError.email }}</div>
+        </div>
+
+        <!-- Indication si email connu / inconnu -->
+        <div class="soft small" *ngIf="authEmailExists === true">
+          {{ "CREATION_SHOP_WIZARD.AUTH_EMAIL_EXISTS" | translate }}
+        </div>
+        <div class="soft small" *ngIf="authEmailExists === false">
+          {{ "CREATION_SHOP_WIZARD.AUTH_EMAIL_NEW" | translate }}
+        </div>
+
+        <!-- PASSWORD : demandé uniquement si email existe -->
+        <div class="field" *ngIf="authEmailExists === true">
+          <label>{{ "SIGNUP.PLACEHOLDER_PASSWORD" | translate }}</label>
+          <input
+            [type]="authPasswordVisible ? 'text' : 'password'"
+            [(ngModel)]="authUser.password"
+            placeholder="••••••••"
+            autocomplete="current-password" />
+          <div class="field-error" *ngIf="showErrors && !!authError.password">{{ authError.password }}</div>
+
+          <button type="button" class="link" (click)="authPasswordVisible = !authPasswordVisible">
+            {{ authPasswordVisible ? "Masquer" : "Afficher" }}
+          </button>
+        </div>
+
+        <!-- REGISTER FIELDS : seulement si email n'existe pas -->
+        <ng-container *ngIf="authEmailExists === false">
+
+          <div class="grid2">
+            <div class="field">
+              <label>{{ "SIGNUP.GENRE" | translate }}</label>
+              <select [(ngModel)]="authUser.sex">
+                <option value="" disabled>-- {{ "SIGNUP.CHOOSE" | translate }} --</option>
+                <option value="male">{{ "SIGNUP.SEX_MALE" | translate }}</option>
+                <option value="female">{{ "SIGNUP.SEX_FEMALE" | translate }}</option>
+              </select>
+              <div class="field-error" *ngIf="showErrors && !!authError.sex">{{ authError.sex }}</div>
+            </div>
+
+            <div class="field">
+              <label>{{ "SIGNUP.COUNTRY" | translate }}</label>
+              <select [(ngModel)]="authUser.country">
+                <option value="" disabled>-- {{ "SIGNUP.CHOOSE" | translate }} --</option>
+                <option *ngFor="let country of availableCountries" [value]="country.name">
+                  {{ country.translation | translate }}
+                </option>
+              </select>
+              <div class="field-error" *ngIf="showErrors && !!authError.country">{{ authError.country }}</div>
+            </div>
+
+            <div class="field">
+              <label>{{ "SIGNUP.PLACEHOLDER_FIRSTNAME" | translate }}</label>
+              <input type="text" [(ngModel)]="authUser.firstname" placeholder="Sab" autocomplete="given-name" />
+              <div class="field-error" *ngIf="showErrors && !!authError.firstname">{{ authError.firstname }}</div>
+            </div>
+
+            <div class="field">
+              <label>{{ "SIGNUP.PLACEHOLDER_LASTNAME" | translate }}</label>
+              <input type="text" [(ngModel)]="authUser.lastname" placeholder="Beauty" autocomplete="family-name" />
+              <div class="field-error" *ngIf="showErrors && !!authError.lastname">{{ authError.lastname }}</div>
+            </div>
+
+            <div class="field">
+              <label>{{ "SIGNUP.PLACEHOLDER_PHONE_NUMBER" | translate }}</label>
+              <input type="tel" [(ngModel)]="authUser.phone" placeholder="0612345678" (input)="onAuthPhoneInput()" />
+              <div class="field-error" *ngIf="showErrors && !!authError.phone">{{ authError.phone }}</div>
+            </div>
+
+            <div class="field">
+              <label>{{ "SIGNUP.PLACEHOLDER_PASSWORD" | translate }}</label>
+              <input [type]="authPasswordVisible ? 'text' : 'password'" [(ngModel)]="authUser.password" placeholder="••••••••" autocomplete="new-password" />
+              <div class="field-error" *ngIf="showErrors && !!authError.password">{{ authError.password }}</div>
+            </div>
+
+            <div class="field">
+              <label>{{ "SIGNUP.PLACEHOLDER_PASSWORDCONFIRMED" | translate }}</label>
+              <input [type]="authPasswordVisible2 ? 'text' : 'password'" [(ngModel)]="authUser.passwordConfirmed" placeholder="••••••••" autocomplete="new-password" />
+              <div class="field-error" *ngIf="showErrors && !!authError.passwordConfirmed">{{ authError.passwordConfirmed }}</div>
+
+              <button type="button" class="link" (click)="authPasswordVisible2 = !authPasswordVisible2">
+                {{ authPasswordVisible2 ? "Masquer" : "Afficher" }}
+              </button>
+            </div>
+          </div>
+
+        </ng-container>
+
+        <div class="soft small">
+          {{ "CREATION_SHOP_WIZARD.AUTH_HINT" | translate }}
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- STEP 2 : INFOS SALON (nom/handle/catégorie) -->
+    <ng-container *ngIf="wizardStep === 2">
       <div class="card">
         <div class="grid2">
 
           <div class="field">
             <label>{{ "CREATION_SHOP.NAME" | translate }}</label>
-            <input type="text" [(ngModel)]="newShop.name" placeholder="Sab Beauty"
+            <input type="text"
+              [(ngModel)]="newShop.name"
+              placeholder="Sab Beauty"
               (ngModelChange)="onShopNameTyping($event)" />
             <div class="field-error" *ngIf="showErrors && !!error.name">{{ error.name }}</div>
           </div>
@@ -131,12 +239,12 @@
             <div class="field-error" *ngIf="showErrors && !!error.companyType">{{ error.companyType }}</div>
           </div>
 
-          <!-- HANDLE (auto) -->
+          <!-- HANDLE -->
           <div class="field full">
             <label>{{ "CREATION_SHOP_WIZARD.HANDLE_LABEL" | translate }}</label>
 
             <div class="handle-row">
-              <input type="text" [ngModel]="newShop.handle" disabled placeholder="sabbeauty" autocomplete="off" />
+              <input type="text" [(ngModel)]="newShop.handle" readonly placeholder="sabbeauty" autocomplete="off" />
 
               <button type="button" class="chip-btn" (click)="testHandle()"
                 [disabled]="!canTestHandle() || handleChecking">
@@ -158,53 +266,29 @@
               <strong>izyglam.com/{{ newShop.handle }}</strong>
             </div>
 
-            <div class="soft small" *ngIf="newShop.handle && handleAvailable === null">
-              {{ "CREATION_SHOP_WIZARD.TEST_HINT" | translate }}
-            </div>
-
             <div class="field-error" *ngIf="showErrors && !!error.handle">{{ error.handle }}</div>
           </div>
 
         </div>
-
-        <div class="soft">{{ "CREATION_SHOP_WIZARD.S1_HINT" | translate }}</div>
       </div>
     </ng-container>
 
-    <!-- STEP 2 : ADRESSE + ZONES + MODE DE PRESTATION -->
-    <ng-container *ngIf="wizardStep === 2">
+    <!-- STEP 3 : ADRESSE + ZONES + MODE DE PRESTATION -->
+    <ng-container *ngIf="wizardStep === 3">
       <div class="card">
         <div class="grid2">
 
-          <!-- ✅ MODE DE PRESTATION -->
           <div class="field full">
             <label>{{ "SHOP_MANAGEMENT.SERVICE_MODE" | translate }}</label>
 
             <div class="mode-switch">
-              <button
-                type="button"
-                class="mode-btn"
-                [class.active]="newShop.serviceMode === 'SALON'"
-                (click)="setServiceMode('SALON')">
+              <button type="button" class="mode-btn" [class.active]="newShop.serviceMode === 'SALON'" (click)="setServiceMode('SALON')">
                 🏠 {{ "SHOP_MANAGEMENT.SERVICE_MODE_SALON" | translate }}
               </button>
 
-              <button
-                type="button"
-                class="mode-btn"
-                [class.active]="newShop.serviceMode === 'DOMICILE'"
-                (click)="setServiceMode('DOMICILE')">
+              <button type="button" class="mode-btn" [class.active]="newShop.serviceMode === 'DOMICILE'" (click)="setServiceMode('DOMICILE')">
                 🚗 {{ "SHOP_MANAGEMENT.SERVICE_MODE_HOME" | translate }}
               </button>
-            </div>
-
-            <div class="soft small">
-              <ng-container *ngIf="newShop.serviceMode === 'SALON'">
-                {{ "SHOP_MANAGEMENT.SERVICE_MODE_HINT_SALON" | translate }}
-              </ng-container>
-              <ng-container *ngIf="newShop.serviceMode === 'DOMICILE'">
-                {{ "SHOP_MANAGEMENT.SERVICE_MODE_HINT_HOME" | translate }}
-              </ng-container>
             </div>
           </div>
 
@@ -220,8 +304,7 @@
 
           <div class="field">
             <label>{{ "CREATION_SHOP.POSTAL_CODE" | translate }}</label>
-            <input type="text" [(ngModel)]="postalCode" placeholder="75001" maxlength="10"
-              (blur)="onPostalCodeEntered()" />
+            <input type="text" [(ngModel)]="postalCode" placeholder="75001" maxlength="10" (blur)="onPostalCodeEntered()" />
             <div class="field-error" *ngIf="showErrors && !!error.postalCode">{{ error.postalCode }}</div>
           </div>
 
@@ -238,7 +321,6 @@
             <input type="text" [(ngModel)]="newShop.floor" placeholder="Étage / Suite (optionnel)" />
           </div>
 
-          <!-- ✅ Label adaptatif selon serviceMode -->
           <div class="field full">
             <label>
               <ng-container *ngIf="newShop.serviceMode === 'SALON'">
@@ -249,16 +331,10 @@
               </ng-container>
             </label>
 
-            <input
-              type="text"
-              [(ngModel)]="newShop.street"
+            <input type="text" [(ngModel)]="newShop.street"
               [placeholder]="newShop.serviceMode === 'SALON' ? '123, rue Principale' : ('CREATION_SHOP_WIZARD.AREA_PLACEHOLDER' | translate)" />
 
             <div class="field-error" *ngIf="showErrors && !!error.street">{{ error.street }}</div>
-
-            <div class="soft small" *ngIf="newShop.serviceMode === 'DOMICILE'">
-              {{ "CREATION_SHOP_WIZARD.AREA_HINT" | translate }}
-            </div>
           </div>
 
           <!-- ZONES -->
@@ -266,8 +342,7 @@
             <label>{{ "CREATION_SHOP.CODE_POSTAL_POSSIBLE" | translate }}</label>
 
             <div class="postal-row">
-              <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10"
-                (keyup.enter)="addPostalCode()" />
+              <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10" (keyup.enter)="addPostalCode()" />
               <button type="button" class="chip-btn" (click)="addPostalCode()">+</button>
             </div>
 
@@ -279,8 +354,6 @@
                 <button type="button" class="x" (click)="removePostalCode(i)">×</button>
               </span>
             </div>
-
-            <div class="soft small">{{ "CREATION_SHOP_WIZARD.S2_HINT" | translate }}</div>
           </div>
 
           <!-- WhatsApp -->
@@ -296,14 +369,9 @@
       </div>
     </ng-container>
 
-    <!-- STEP 3 : DOCUMENTS + FINAL -->
-    <ng-container *ngIf="wizardStep === 3">
+    <!-- STEP 4 : DOCUMENTS + FINAL -->
+    <ng-container *ngIf="wizardStep === 4">
       <div class="card">
-        <div class="doc-head">
-          <div class="big">{{ "CREATION_SHOP.VERIF_TITLE" | translate }}</div>
-          <div class="muted">{{ "CREATION_SHOP.VERIF_SUBTITLE" | translate }}</div>
-          <div class="soft small">{{ "CREATION_SHOP.STEP2_TAGLINE" | translate }}</div>
-        </div>
 
         <div class="verification-section">
 
@@ -321,8 +389,7 @@
             <div class="verification-card-body">
               <label class="file-input-label">
                 {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'identity')"
-                  accept=".pdf,.jpg,.jpeg,.png" />
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'identity')" accept=".pdf,.jpg,.jpeg,.png" />
               </label>
               <div class="file-name" *ngIf="identityDocFileName">{{ identityDocFileName }}</div>
               <div class="field-error" *ngIf="verificationError.identityDoc">{{ verificationError.identityDoc }}</div>
@@ -343,8 +410,7 @@
             <div class="verification-card-body">
               <label class="file-input-label">
                 {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'insurance')"
-                  accept=".pdf,.jpg,.jpeg,.png" />
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'insurance')" accept=".pdf,.jpg,.jpeg,.png" />
               </label>
               <div class="file-name" *ngIf="insuranceDocFileName">{{ insuranceDocFileName }}</div>
               <div class="field-error" *ngIf="verificationError.insuranceDoc">{{ verificationError.insuranceDoc }}</div>
@@ -365,17 +431,13 @@
             <div class="verification-card-body">
               <label class="file-input-label">
                 {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'kbis')"
-                  accept=".pdf,.jpg,.jpeg,.png" />
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'kbis')" accept=".pdf,.jpg,.jpeg,.png" />
               </label>
               <div class="file-name" *ngIf="kbisDocFileName">{{ kbisDocFileName }}</div>
             </div>
           </div>
 
         </div>
-
-        <p class="verification-formats">{{ "CREATION_SHOP.VERIF_ALLOWED_FORMATS" | translate }}</p>
-        <p class="verification-mandatory">{{ "CREATION_SHOP.VERIF_MANDATORY_HINT" | translate }}</p>
 
         <div class="final-actions">
           <button class="primary" type="button" (click)="submitVerificationDocs()" [disabled]="isUploadingDocs || busy">
@@ -391,6 +453,7 @@
             {{ "CREATION_SHOP.VERIF_SKIP_BUTTON" | translate }}
           </button>
         </div>
+
       </div>
     </ng-container>
 
@@ -398,11 +461,11 @@
 
   <!-- FOOTER -->
   <div class="modal-footer">
-    <button class="ghost" (click)="prev()">
+    <button class="ghost" (click)="prev()" [disabled]="wizardStep === 0">
       {{ "CREATION_SHOP_WIZARD.BACK" | translate }}
     </button>
 
-    <button class="primary" (click)="next()" *ngIf="wizardStep < 3">
+    <button class="primary" (click)="next()" *ngIf="wizardStep < 4" [disabled]="busy">
       <span *ngIf="!busy">{{ "CREATION_SHOP_WIZARD.NEXT" | translate }}</span>
       <span *ngIf="busy">{{ "CREATION_SHOP_WIZARD.PLEASE_WAIT" | translate }}</span>
     </button>

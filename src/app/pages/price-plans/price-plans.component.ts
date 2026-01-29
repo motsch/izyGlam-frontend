@@ -75,7 +75,11 @@ export class PricePlansComponent implements OnInit {
   // 💳 Aller au paiement Pro en passant le plan sélectionné
   // ------------------------------------------------------------------
   goToPaiement(plan: string) {
-    this.router.navigate(['/payement-pro/' + plan]);
+    if (this.sessionService.isLoggedIn()) {
+      this.router.navigate(['/payement-pro/' + plan]);
+    } else {
+      this.router.navigate(['/sign-in']);
+    }
   }
 
   // ------------------------------------------------------------------

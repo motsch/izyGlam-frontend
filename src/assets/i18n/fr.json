@@ -650,14 +650,19 @@
     "POSTAL_NOT_FOUND": "Code postal introuvable dans la base.",
     "BACK": "Retour",
     "NEXT": "Continuer",
-    "PLEASE_WAIT": "Traitement…",
     "FINISH": "Terminer (retour login)",
     "TEST": "Tester",
     "TEST_HINT": "Cliquez sur Tester pour vérifier la disponibilité.",
     "HANDLE_MIN": "Minimum 3 caractères.",
     "AREA_BASE": "Zone de départ",
     "AREA_PLACEHOLDER": "Ville ou zone principale de départ",
-    "AREA_HINT": "Cette information permet d’indiquer votre zone de départ pour les déplacements à domicile."
+    "AREA_HINT": "Cette information permet d’indiquer votre zone de départ pour les déplacements à domicile.",
+    "AUTH_TITLE": "Votre email",
+    "AUTH_SUBTITLE": "On vérifie si vous avez déjà un compte, ou on en crée un en quelques secondes.",
+    "AUTH_EMAIL_EXISTS": "Un compte existe déjà avec cet email. Veuillez saisir votre mot de passe pour continuer.",
+    "AUTH_EMAIL_NEW": "Aucun compte trouvé. Créons-en un rapidement pour continuer.",
+    "AUTH_HINT": "Votre compte est nécessaire pour associer votre salon et sécuriser vos informations.",
+    "PLEASE_WAIT": "Traitement en cours…"
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modifier l’adresse",

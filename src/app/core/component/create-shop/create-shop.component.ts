@@ -11,7 +11,14 @@ import { ToastrService } from 'ngx-toastr';
 import { CountryService } from '../../services/country.service';
 import { ShopTemplateService } from '../../services/shop-template.service';
 
-type WizardStep = 0 | 1 | 2 | 3;
+// ✅ on reprend ton auth existante (sign-in)
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
+import { SessionService } from 'src/app/core/services/session.service';
+
+// ✅ comme dans ton signup
+import { v4 as uuidv4 } from 'uuid';
+
+type WizardStep = 0 | 1 | 2 | 3 | 4;
 type ServiceMode = 'SALON' | 'DOMICILE';
 
 @Component({
@@ -21,9 +28,18 @@ type ServiceMode = 'SALON' | 'DOMICILE';
 })
 export class CreateShopComponent implements OnInit {
 
+  // ------------------------------------------------------------
+  // ERREURS
+  // ------------------------------------------------------------
   error: any = {};
   verificationError: any = {};
 
+  // ✅ erreurs dédiées au step AUTH
+  authError: any = {};
+
+  // ------------------------------------------------------------
+  // DATA USER / SHOP
+  // ------------------------------------------------------------
   me: any = {};
   newShop: any = {};
 
@@ -32,6 +48,41 @@ export class CreateShopComponent implements OnInit {
 
   categories: any[] = [];
 
+  // ------------------------------------------------------------
+  // AUTH STEP (nouveau)
+  // ------------------------------------------------------------
+
+  /**
+   * authUser = "mini form" pour :
+   * - login si email existe
+   * - register si email n'existe pas
+   *
+   * On garde un objet simple (ngModel partout).
+   */
+  authUser: any = {
+    email: '',
+    password: '',
+    passwordConfirmed: '',
+    firstname: '',
+    lastname: '',
+    phone: '',
+    sex: 'female',
+    country: 'France',
+  };
+
+  /**
+   * null = pas encore testé
+   * true = email existe en BDD
+   * false = email inconnu → on proposera les champs de register
+   */
+  authEmailExists: boolean | null = null;
+
+  authPasswordVisible = false;
+  authPasswordVisible2 = false;
+
+  // ------------------------------------------------------------
+  // ADRESSE / ZONES
+  // ------------------------------------------------------------
   newAddress: any = {};
   deliveryPostalCode = '';
   deliveryPostalCodesList: string[] = [];
@@ -48,7 +99,9 @@ export class CreateShopComponent implements OnInit {
   availableCities: any[] = [];
   postalCode = '';
 
-  // ✅ wizard
+  // ------------------------------------------------------------
+  // WIZARD
+  // ------------------------------------------------------------
   wizardOpen = false;
   wizardStep: WizardStep = 0;
   showErrors = false;
@@ -56,6 +109,8 @@ export class CreateShopComponent implements OnInit {
 
   wizardSteps: Array<{ title: string; subtitle: string; image: string }> = [
     { title: 'CREATION_SHOP_WIZARD.S0_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S0_SUBTITLE', image: 'assets/images/onboarding/shop-0.png' },
+    // ✅ nouveau step auth
+    { title: 'CREATION_SHOP_WIZARD.AUTH_TITLE', subtitle: 'CREATION_SHOP_WIZARD.AUTH_SUBTITLE', image: 'assets/images/onboarding/shop-auth.png' },
     { title: 'CREATION_SHOP_WIZARD.S1_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S1_SUBTITLE', image: 'assets/images/onboarding/shop-1.png' },
     { title: 'CREATION_SHOP_WIZARD.S2_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S2_SUBTITLE', image: 'assets/images/onboarding/shop-2.png' },
     { title: 'CREATION_SHOP_WIZARD.S3_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S3_SUBTITLE', image: 'assets/images/onboarding/shop-3.png' },
@@ -68,7 +123,9 @@ export class CreateShopComponent implements OnInit {
 
   createdShopId: string | null = null;
 
-  // Fichiers
+  // ------------------------------------------------------------
+  // DOCS
+  // ------------------------------------------------------------
   identityDocFile: File | null = null;
   insuranceDocFile: File | null = null;
   kbisDocFile: File | null = null;
@@ -80,7 +137,9 @@ export class CreateShopComponent implements OnInit {
   verification: any = null;
   isUploadingDocs = false;
 
-  // Handle
+  // ------------------------------------------------------------
+  // HANDLE
+  // ------------------------------------------------------------
   handleChecking = false;
   handleAvailable: boolean | null = null;
 
@@ -95,23 +154,35 @@ export class CreateShopComponent implements OnInit {
     private categoryService: CategoryService,
     private translate: TranslateService,
     private toastr: ToastrService,
+
+    // ✅ auth services
+    private authenticationService: AuthenticationService,
+    private sessionService: SessionService,
+
     @Optional() public dialogRef?: MatDialogRef<CreateShopComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data?: any
   ) { }
 
   ngOnInit() {
+    // -----------------------------------------
+    // 1) Catégories (inchangé)
+    // -----------------------------------------
     this.categoryService.getAll().subscribe({
       next: (data: any) => (this.categories = data || []),
       error: () => this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR')),
     });
 
-    // defaults
+    // -----------------------------------------
+    // 2) Defaults shop (inchangé)
+    // -----------------------------------------
     this.newShop.companyType = 'coiffure';
     this.newShop.countryIndication = 'FR';
-
-    // ✅ default serviceMode
     this.newShop.serviceMode = 'SALON' as ServiceMode;
 
+    // -----------------------------------------
+    // 3) "Me" : si token déjà présent, on est connecté
+    // Sinon ça fail → normal : on laisse le wizard gérer l'auth
+    // -----------------------------------------
     this.userService.getMe().subscribe({
       next: (data: any) => {
         this.me = { ...data };
@@ -119,27 +190,34 @@ export class CreateShopComponent implements OnInit {
         this.alreadyProfessionnal = this.me.role === 'professionnel' || this.me.role === 'entreprise';
       },
       error: () => {
+        // Pas connecté → OK, on ne bloque plus
         this.isUserConnected = false;
-        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       },
     });
 
+    // -----------------------------------------
+    // 4) Pays (inchangé)
+    // -----------------------------------------
     this.countryService.getAll({ active: true }).subscribe({
       next: (countries: any[]) => (this.availableCountries = countries || []),
       error: (err) => console.error('Erreur pays :', err),
     });
   }
 
-  // ---------------------------
-  // Wizard controls
-  // ---------------------------
+  // ============================================================
+  // WIZARD CONTROLS
+  // ============================================================
+
   openWizard() {
-    if (!this.isUserConnected || this.alreadyProfessionnal) return;
+    // ✅ vérif 1 (on garde)
+    if (this.alreadyProfessionnal) return;
 
     this.wizardOpen = true;
     this.wizardStep = 0;
+
     this.showErrors = false;
     this.error = {};
+    this.authError = {};
     this.verificationError = {};
     this.busy = false;
 
@@ -147,7 +225,7 @@ export class CreateShopComponent implements OnInit {
     this.createdShopId = null;
     this.verification = null;
 
-    // reset fields (conserve quelques defaults)
+    // reset shop fields
     this.newShop = {
       companyType: this.newShop.companyType || 'coiffure',
       countryIndication: 'FR',
@@ -156,6 +234,7 @@ export class CreateShopComponent implements OnInit {
       maxDistance: this.newShop.maxDistance || 15,
     };
 
+    // reset address fields
     this.deliveryPostalCodesList = [];
     this.deliveryPostalCode = '';
     this.postalCode = '';
@@ -166,6 +245,19 @@ export class CreateShopComponent implements OnInit {
     this.latitude = 0.0;
     this.longitude = 0.0;
 
+    // reset auth step
+    this.authEmailExists = null;
+    this.authUser = {
+      email: '',
+      password: '',
+      passwordConfirmed: '',
+      firstname: '',
+      lastname: '',
+      phone: '',
+      sex: 'female',
+      country: 'France',
+    };
+
     this.resetHandleValidation();
   }
 
@@ -175,70 +267,79 @@ export class CreateShopComponent implements OnInit {
   }
 
   prev() {
+    if (this.busy) return;
     this.showErrors = false;
+
+    // simple step - 1
     this.wizardStep = (Math.max(0, this.wizardStep - 1) as WizardStep);
   }
 
-  private refreshStepErrorsIfNeeded() {
-    if (this.showErrors) {
-      this.validateCurrentStep(true);
-    }
-  }
-
+  /**
+   * NEXT ultra simple, MAIS avec 2 exceptions indispensables :
+   * - step0 : si déjà connecté -> on skip le step auth, on va direct à step2
+   * - step1 : on exécute l'auth (login ou register+login)
+   * - step3 : on crée le shop avant d'aller au step docs (sinon pas d'ID)
+   */
   async next() {
     if (this.busy) return;
 
+    // Tu veux connecter les validations plus tard.
+    // Mais tu peux déjà afficher les erreurs :
     this.showErrors = true;
     this.validateCurrentStep();
-    if (!this.canContinue()) return;
 
-    // step 2 -> step 3 : create shop avant docs
-    if (this.wizardStep === 2) {
+    // -------------------------------------------
+    // Step 0 -> Step 1 (auth) OU Step 2 (si connecté)
+    // -------------------------------------------
+    if (this.wizardStep === 0) {
+      this.showErrors = false;
+
+      // Si déjà connecté (token déjà présent), pas besoin de step auth
+      if (this.isUserConnected) {
+        this.wizardStep = 2;
+        return;
+      }
+
+      // Sinon on passe au step auth
+      this.wizardStep = 1;
+      return;
+    }
+
+    // -------------------------------------------
+    // Step 1 (auth) : on doit obtenir un user connecté
+    // -------------------------------------------
+    if (this.wizardStep === 1) {
+      const ok = await this.ensureAuthenticatedBeforeShop();
+      if (!ok) return; // on reste sur le step 1, erreurs affichées
+
+      // Après login/register : on passe aux infos shop
+      this.showErrors = false;
+      this.wizardStep = 2;
+      return;
+    }
+
+    // -------------------------------------------
+    // Step 3 -> Step 4 : create shop avant docs
+    // -------------------------------------------
+    if (this.wizardStep === 3) {
       await this.ensureShopCreated();
       if (!this.createdShopId) return;
+
+      this.showErrors = false;
+      this.wizardStep = 4;
+      this.loadVerificationStatus();
+      return;
     }
 
+    // -------------------------------------------
+    // Sinon : step + 1 simple
+    // -------------------------------------------
     this.showErrors = false;
-    this.wizardStep = (Math.min(3, this.wizardStep + 1) as WizardStep);
+    this.wizardStep = (Math.min(4, (this.wizardStep + 1)) as WizardStep);
 
-    if (this.wizardStep === 3) {
+    if (this.wizardStep === 4) {
       this.loadVerificationStatus();
     }
-  }
-
-  canContinue(): boolean {
-    if (this.wizardStep === 0) return true;
-
-    if (this.wizardStep === 1) {
-      return !this.error.name && !this.error.handle && !this.error.companyType;
-    }
-
-    if (this.wizardStep === 2) {
-      return !this.error.street && !this.error.selectedCountry && !this.error.selectedCity && !this.error.ccvaccepted;
-    }
-
-    return true;
-  }
-
-  canJumpTo(target: number): boolean {
-    if (this.busy) return false;
-    if (target <= this.wizardStep) return true;
-
-    for (let i = 0; i < target; i++) {
-      this.wizardStep = i as WizardStep;
-      this.validateCurrentStep(false);
-      if (!this.canContinue()) return false;
-    }
-
-    if (target === 3 && !this.createdShopId) return false;
-    return true;
-  }
-
-  goToStep(target: number) {
-    if (!this.canJumpTo(target)) return;
-    this.showErrors = false;
-    this.wizardStep = target as WizardStep;
-    if (this.wizardStep === 3) this.loadVerificationStatus();
   }
 
   hideBrokenImg(ev: Event) {
@@ -246,56 +347,423 @@ export class CreateShopComponent implements OnInit {
     img.style.display = 'none';
   }
 
-  // ---------------------------
-  // Service Mode
-  // ---------------------------
-  setServiceMode(mode: ServiceMode) {
-    this.newShop.serviceMode = mode;
+  // ============================================================
+  // AUTH STEP LOGIC
+  // ============================================================
 
-    // petite UX : si domicile, street devient plus "zone de base"
-    // (on ne force pas, on laisse l'user écrire)
-    this.refreshStepErrorsIfNeeded();
+  /**
+   * Au blur de l'email :
+   * - si email invalide -> on ne fait rien
+   * - sinon -> check en BDD si existe
+   */
+  onAuthEmailBlur() {
+    // reset erreurs UI
+    this.authError.email = null;
+
+    const email = this.str(this.authUser.email);
+
+    // Si vide -> pas d'appel
+    if (!email) {
+      this.authEmailExists = null;
+      return;
+    }
+
+    // Email mal formé -> on affiche une erreur simple
+    if (!this.isValidEmail(email)) {
+      this.authEmailExists = null;
+      this.authError.email = "L'email doit ressembler à xx@xx.xx";
+      return;
+    }
+
+    // ✅ check "email exists"
+    this.checkEmailExists(email);
   }
 
-  // ---------------------------
-  // Step validations
-  // ---------------------------
-  private validateCurrentStep(setErrors = true) {
-    if (this.wizardStep === 1) {
+  /**
+   * IMPORTANT :
+   * Ici tu dois brancher ton endpoint "email exists".
+   *
+   * Je te donne 2 approches :
+   * A) tu as déjà une méthode côté UserService => tu l'appelles.
+   * B) tu n'en as pas => tu la crées côté backend (simple route) puis ici.
+   *
+   * Pour éviter que ton TS casse si le nom est différent, je passe par (this.userService as any)
+   * --> Tu pourras remplacer par la vraie méthode quand tu veux.
+   */
+  private checkEmailExists(email: string) {
+    this.busy = true;
+    this.authEmailExists = null;
+
+    // ⚠️ Remplace "existsByEmail" par TA vraie méthode si besoin.
+    // Exemple attendu : return { exists: true/false }
+    const service: any = this.userService as any;
+
+    // Si tu as une méthode du style:
+    // userService.existsByEmail(email).subscribe(...)
+    if (typeof service.existsByEmail === 'function') {
+      service.existsByEmail(email).subscribe({
+        next: (res: any) => {
+          this.busy = false;
+          this.authEmailExists = !!res?.exists;
+        },
+        error: (err: any) => {
+          this.busy = false;
+          console.error(err);
+          this.authEmailExists = null;
+          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        }
+      });
+      return;
+    }
+
+    // Sinon : fallback → tu n'as pas encore la route.
+    // On log pour que tu le voies immédiatement.
+    this.busy = false;
+    console.warn('[CreateShop] Il manque une méthode userService.existsByEmail(email). Branche ton endpoint "email exists".');
+    // Valeur par défaut : on ne sait pas → on force l'utilisateur à tester via bouton ou tu branches la route.
+    this.authEmailExists = null;
+  }
+
+  /**
+   * Ce bloc fait EXACTEMENT ce que tu veux :
+   * - si email inconnu -> register (createNoToken) -> login -> set session -> getMe
+   * - si email connu -> login -> set session -> getMe
+   *
+   * On fait SIMPLE, avec des messages simples.
+   */
+  private async ensureAuthenticatedBeforeShop(): Promise<boolean> {
+    this.authError = {};
+
+    const email = this.str(this.authUser.email);
+    const password = this.str(this.authUser.password);
+
+    // ----------------------------------------------------------
+    // 1) Validations ultra simples (sans se prendre la tête)
+    // ----------------------------------------------------------
+
+    if (!email) {
+      this.authError.email = "L'email est obligatoire";
+      return false;
+    }
+    if (!this.isValidEmail(email)) {
+      this.authError.email = "L'email doit ressembler à xx@xx.xx";
+      return false;
+    }
+
+    // Si on ne sait pas encore si l'email existe : on force un check
+    if (this.authEmailExists === null) {
+      // On tente de check ; si ça ne marche pas (pas branché), on demandera un choix
+      await this.checkEmailExistsAsync(email);
+      if (this.authEmailExists === null) {
+        this.authError.email = "Impossible de vérifier cet email. (endpoint email-exists à brancher)";
+        return false;
+      }
+    }
+
+    // ----------------------------------------------------------
+    // 2) Si email existe → on fait un login
+    // ----------------------------------------------------------
+    if (this.authEmailExists === true) {
+
+      if (!password) {
+        this.authError.password = "Le mot de passe est obligatoire";
+        return false;
+      }
+
+      const ok = await this.loginAndLoadMe(email, password);
+      return ok;
+    }
+
+    // ----------------------------------------------------------
+    // 3) Si email n'existe pas → on crée un user puis login
+    // ----------------------------------------------------------
+    if (this.authEmailExists === false) {
+
+      // Champs minimum (comme ton signup)
+      if (!this.isNonEmpty(this.authUser.sex)) this.authError.sex = "Le genre est obligatoire";
+      if (!this.isNonEmpty(this.authUser.firstname) || this.authUser.firstname.length < 2) this.authError.firstname = "Le prénom est obligatoire (min 2)";
+      if (!this.isNonEmpty(this.authUser.lastname) || this.authUser.lastname.length < 2) this.authError.lastname = "Le nom est obligatoire (min 2)";
+      if (!this.isValidPhoneFR(this.authUser.phone)) this.authError.phone = "Le numéro de téléphone n'est pas valide (ex: 0612345678)";
+      if (!password) this.authError.password = "Le mot de passe est obligatoire";
+      if (!this.isNonEmpty(this.authUser.passwordConfirmed)) this.authError.passwordConfirmed = "La confirmation de mot de passe est obligatoire";
+      if (this.str(this.authUser.passwordConfirmed) !== password) this.authError.passwordConfirmed = "Les mots de passe ne correspondent pas";
+      if (!this.isNonEmpty(this.authUser.country)) this.authError.country = "Le pays est obligatoire";
+
+      // S'il y a au moins une erreur → stop
+      const hasError = Object.values(this.authError).some(v => !!v);
+      if (hasError) return false;
+
+      // Payload user comme ton signup
+      const payload: any = {
+        sex: this.authUser.sex,
+        firstname: this.authUser.firstname,
+        lastname: this.authUser.lastname,
+        phone: this.onlyDigits(this.authUser.phone),
+        email,
+        password,
+        passwordConfirmed: this.authUser.passwordConfirmed,
+        country: this.authUser.country,
+
+        // user classique
+        role: 'user',
+
+        // conversationId obligatoire chez toi
+        conversationId: uuidv4(),
+
+        // fidelity comme ton signup
+        fidelity: {
+          stars: 0,
+          card_expiration: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+          rewards_history: [],
+        },
+      };
+
+      const created = await this.registerNoToken(payload);
+      if (!created) return false;
+
+      // Après register : login pour obtenir le token
+      const ok = await this.loginAndLoadMe(email, password);
+      return ok;
+    }
+
+    return false;
+  }
+
+  /**
+   * Petit utilitaire : checkEmailExists en "await"
+   * - on wrap en Promise pour garder next() clean
+   */
+  private checkEmailExistsAsync(email: string): Promise<void> {
+    return new Promise((resolve) => {
+      this.busy = true;
+      const service: any = this.userService as any;
+
+      if (typeof service.existsByEmail !== 'function') {
+        this.busy = false;
+        this.authEmailExists = null;
+        resolve();
+        return;
+      }
+
+      service.existsByEmail(email).subscribe({
+        next: (res: any) => {
+          this.busy = false;
+          this.authEmailExists = !!res?.exists;
+          resolve();
+        },
+        error: (err: any) => {
+          this.busy = false;
+          console.error(err);
+          this.authEmailExists = null;
+          resolve();
+        }
+      });
+    });
+  }
+
+  /**
+   * Register no token (comme ton signup)
+   * - userService.createNoToken(payload)
+   */
+  private registerNoToken(payload: any): Promise<boolean> {
+    return new Promise((resolve) => {
+      this.busy = true;
+
+      const service: any = this.userService as any;
+
+      if (typeof service.createNoToken !== 'function') {
+        this.busy = false;
+        console.warn('[CreateShop] Il manque userService.createNoToken(user).');
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        resolve(false);
+        return;
+      }
+
+      service.createNoToken(payload).subscribe({
+        next: () => {
+          this.busy = false;
+          resolve(true);
+        },
+        error: (err: any) => {
+          this.busy = false;
+          console.error(err);
+          this.showCustomToast(this.translate.instant('ERROR.USERNOTCREATED') || "Impossible de créer l'utilisateur");
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  /**
+   * Login + setCurrentUser(token) + refresh getMe
+   * => indispensable pour que createShop / upload marchent derrière
+   */
+  private loginAndLoadMe(email: string, password: string): Promise<boolean> {
+    return new Promise((resolve) => {
+      this.busy = true;
+
+      this.authenticationService.login(email, password).subscribe({
+        next: (user: any) => {
+          // ✅ on stocke le token comme ton sign-in
+          this.sessionService.setCurrentUser(user.token, true);
+
+          // ✅ puis on recharge "me"
+          this.userService.getMe().subscribe({
+            next: (me: any) => {
+              this.me = { ...me };
+              this.isUserConnected = true;
+              this.alreadyProfessionnal = this.me.role === 'professionnel' || this.me.role === 'entreprise';
+              this.busy = false;
+              resolve(true);
+            },
+            error: (err: any) => {
+              this.busy = false;
+              console.error(err);
+              this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+              resolve(false);
+            }
+          });
+        },
+        error: (err: any) => {
+          this.busy = false;
+          console.error(err);
+          // message backend souvent utile ici (mauvais mdp, etc)
+          this.authError.password = err?.error?.message || "Mot de passe incorrect";
+          resolve(false);
+        }
+      });
+    });
+  }
+
+  onAuthPhoneInput() {
+    // Comme ton signup : digits only, max 10
+    this.authUser.phone = this.onlyDigits(this.authUser.phone).slice(0, 10);
+  }
+
+  // ============================================================
+  // SERVICE MODE
+  // ============================================================
+
+  setServiceMode(mode: ServiceMode) {
+    this.newShop.serviceMode = mode;
+  }
+
+  // ============================================================
+  // VALIDATIONS (simple + commentée, pas encore “bloquante”)
+  // ============================================================
+
+  private validateCurrentStep(step: WizardStep = this.wizardStep): void {
+
+    // ----------------------------------------------------------
+    // Step 0 : intro -> rien
+    // ----------------------------------------------------------
+    if (step === 0) return;
+
+    // ----------------------------------------------------------
+    // Step 1 : Auth
+    // ----------------------------------------------------------
+    if (step === 1) {
+      // reset erreurs visibles
+      this.authError.email = null;
+      this.authError.password = null;
+      this.authError.passwordConfirmed = null;
+      this.authError.firstname = null;
+      this.authError.lastname = null;
+      this.authError.phone = null;
+      this.authError.sex = null;
+      this.authError.country = null;
+
+      // Email obligatoire + format
+      if (!this.isNonEmpty(this.authUser.email)) {
+        this.authError.email = "L'email est obligatoire";
+      } else if (!this.isValidEmail(this.authUser.email)) {
+        this.authError.email = "L'email doit ressembler à xx@xx.xx";
+      }
+
+      // Si email existe => mdp obligatoire
+      if (this.authEmailExists === true) {
+        if (!this.isNonEmpty(this.authUser.password)) {
+          this.authError.password = "Le mot de passe est obligatoire";
+        }
+      }
+
+      // Si email n'existe pas => champs register simples
+      if (this.authEmailExists === false) {
+        if (!this.isNonEmpty(this.authUser.sex)) this.authError.sex = "Le genre est obligatoire";
+        if (!this.isNonEmpty(this.authUser.firstname) || this.str(this.authUser.firstname).length < 2) this.authError.firstname = "Prénom obligatoire (min 2)";
+        if (!this.isNonEmpty(this.authUser.lastname) || this.str(this.authUser.lastname).length < 2) this.authError.lastname = "Nom obligatoire (min 2)";
+        if (!this.isValidPhoneFR(this.authUser.phone)) this.authError.phone = "Téléphone invalide (ex: 0612345678)";
+        if (!this.isNonEmpty(this.authUser.password)) this.authError.password = "Mot de passe obligatoire";
+        if (!this.isNonEmpty(this.authUser.passwordConfirmed)) this.authError.passwordConfirmed = "Confirmation obligatoire";
+        if (this.isNonEmpty(this.authUser.passwordConfirmed) && this.str(this.authUser.passwordConfirmed) !== this.str(this.authUser.password)) {
+          this.authError.passwordConfirmed = "Les mots de passe ne correspondent pas";
+        }
+        if (!this.isNonEmpty(this.authUser.country)) this.authError.country = "Pays obligatoire";
+      }
+
+      return;
+    }
+
+    // ----------------------------------------------------------
+    // Step 2 : infos shop
+    // ----------------------------------------------------------
+    if (step === 2) {
       this.error.name = null;
       this.error.companyType = null;
       this.error.handle = null;
 
-      if (!this.newShop.name) this.error.name = this.translate.instant('CREATION_SHOP.ERROR1');
-      if (!this.newShop.companyType) this.error.companyType = this.translate.instant('CREATION_SHOP.ERROR3');
+      if (!this.isNonEmpty(this.newShop?.name)) this.error.name = this.translate.instant('CREATION_SHOP.ERROR1');
+      if (!this.isNonEmpty(this.newShop?.companyType)) this.error.companyType = this.translate.instant('CREATION_SHOP.ERROR3');
 
-      if (!this.newShop.handle) {
-        this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_REQUIRED');
-      } else if (this.handleAvailable !== true) {
-        this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_NOT_VALID');
-      }
+      const h = this.normalizeHandle(this.newShop?.handle);
+      if (!this.isNonEmpty(h)) this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_REQUIRED');
+      else if (!this.isValidHandle(h)) this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_MIN');
+
+      return;
     }
 
-    if (this.wizardStep === 2) {
-      this.error.street = null;
+    // ----------------------------------------------------------
+    // Step 3 : adresse
+    // ----------------------------------------------------------
+    if (step === 3) {
       this.error.selectedCountry = null;
-      this.error.selectedCity = null;
-      this.error.ccvaccepted = null;
       this.error.postalCode = null;
+      this.error.selectedCity = null;
+      this.error.street = null;
+      this.error.ccvaccepted = null;
 
-      if (!this.newShop.street) this.error.street = this.translate.instant('CREATION_SHOP.ERROR2');
-      if (!this.selectedCountry) this.error.selectedCountry = this.translate.instant('CREATION_SHOP.CHOOSE_COUNTRY');
-      if (!this.selectedCity || !this.selectedCity.nom) this.error.selectedCity = this.translate.instant('CREATION_SHOP.CHOOSE_CITY');
+      if (!this.isNonEmpty(this.selectedCountry)) this.error.selectedCountry = this.translate.instant('CREATION_SHOP.CHOOSE_COUNTRY');
 
-      if (!this.newShop.ccvaccepted) {
-        this.error.ccvaccepted = this.translate.instant('CREATION_SHOP.ERROR8');
-      }
+      if (!this.isNonEmpty(this.postalCode)) this.error.postalCode = "Code postal obligatoire";
+      else if (!this.isValidPostalCode(this.postalCode)) this.error.postalCode = "Code postal invalide";
+
+      if (!this.selectedCity || !this.isNonEmpty(this.selectedCity?.nom)) this.error.selectedCity = this.translate.instant('CREATION_SHOP.CHOOSE_CITY');
+
+      if (!this.isNonEmpty(this.newShop?.street)) this.error.street = this.translate.instant('CREATION_SHOP.ERROR2');
+
+      if (!this.newShop?.ccvaccepted) this.error.ccvaccepted = this.translate.instant('CREATION_SHOP.ERROR8');
+
+      return;
+    }
+
+    // ----------------------------------------------------------
+    // Step 4 : docs
+    // ----------------------------------------------------------
+    if (step === 4) {
+      this.verificationError.identityDoc = null;
+      this.verificationError.insuranceDoc = null;
+
+      if (!this.identityDocFile) this.verificationError.identityDoc = this.translate.instant('CREATION_SHOP.VERIF_ID_REQUIRED');
+      if (!this.insuranceDocFile) this.verificationError.insuranceDoc = this.translate.instant('CREATION_SHOP.VERIF_INSURANCE_REQUIRED');
+
+      return;
     }
   }
 
-  // ---------------------------
-  // Ensure shop created before docs
-  // ---------------------------
+  // ============================================================
+  // SHOP CREATION / ADDRESS / ZONES (inchangé)
+  // ============================================================
+
   private async ensureShopCreated(): Promise<void> {
     if (this.createdShopId) return;
     if (!this.me?._id) {
@@ -322,7 +790,7 @@ export class CreateShopComponent implements OnInit {
       });
 
       // 2) Create shop
-      await new Promise<void>((resolve, reject) => {
+      await new Promise<void>((resolve) => {
         const type = this.newShop.companyType;
         const userId = this.me._id;
         this.createShop(type, userId, () => resolve());
@@ -339,9 +807,6 @@ export class CreateShopComponent implements OnInit {
     }
   }
 
-  // ---------------------------
-  // Localisation / zones
-  // ---------------------------
   onCountryChange() {
     this.postalCode = '';
     this.availableCities = [];
@@ -349,7 +814,6 @@ export class CreateShopComponent implements OnInit {
     this.availableArrondissements = [];
     this.selectedArrondissement = '';
     this.newAddress.code_postal = '';
-    this.refreshStepErrorsIfNeeded();
   }
 
   addPostalCode() {
@@ -401,8 +865,6 @@ export class CreateShopComponent implements OnInit {
             this.selectedCity = cities[0];
             this.onCityChange();
           }
-
-          this.refreshStepErrorsIfNeeded();
         },
         error: (err) => {
           console.error(err);
@@ -435,22 +897,16 @@ export class CreateShopComponent implements OnInit {
 
       this.newAddress.city = this.selectedCity.nom;
       this.error.selectedCity = null;
-      this.refreshStepErrorsIfNeeded();
     } catch (err) {
       console.error(err);
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
     }
   }
 
-  // ---------------------------
-  // Your existing createShop 그대로 유지 (just added serviceMode)
-  // ---------------------------
   createShop(type: string, idUser: string, onAfterCreate?: () => void): any {
     const newShopToCreate: any = {};
     newShopToCreate.name = this.newShop.name;
     newShopToCreate.handle = this.newShop.handle;
-
-    // ✅ NEW
     newShopToCreate.serviceMode = this.newShop.serviceMode || 'SALON';
 
     newShopToCreate.country =
@@ -516,9 +972,10 @@ export class CreateShopComponent implements OnInit {
     });
   }
 
-  // ---------------------------
-  // Docs upload
-  // ---------------------------
+  // ============================================================
+  // DOCS
+  // ============================================================
+
   private loadVerificationStatus(): void {
     if (!this.createdShopId) return;
 
@@ -597,9 +1054,10 @@ export class CreateShopComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  // ---------------------------
-  // Toasts
-  // ---------------------------
+  // ============================================================
+  // TOASTS
+  // ============================================================
+
   private showCustomToast(message: string) {
     this.toastr.error(message);
   }
@@ -607,9 +1065,10 @@ export class CreateShopComponent implements OnInit {
     this.toastr.success(message);
   }
 
-  // ---------------------------
-  // Status pills
-  // ---------------------------
+  // ============================================================
+  // STATUS PILLS
+  // ============================================================
+
   getStatusLabel(status?: string): string {
     switch (status) {
       case 'pending': return 'CREATION_SHOP.VERIF_STATUS_PENDING';
@@ -625,9 +1084,10 @@ export class CreateShopComponent implements OnInit {
     return `status-${value}`;
   }
 
-  // ---------------------------
+  // ============================================================
   // HANDLE
-  // ---------------------------
+  // ============================================================
+
   private normalizeHandle(input: any): string {
     const raw = String(input ?? "").trim().replace(/^@+/, "");
     if (!raw) return "";
@@ -643,14 +1103,12 @@ export class CreateShopComponent implements OnInit {
     this.newShop.handle = proposed;
 
     this.resetHandleValidation();
-    this.refreshStepErrorsIfNeeded();
   }
 
   resetHandleValidation() {
     this.handleAvailable = null;
     this.handleChecking = false;
     this.error.handle = null;
-    this.refreshStepErrorsIfNeeded();
   }
 
   canTestHandle(): boolean {
@@ -683,14 +1141,11 @@ export class CreateShopComponent implements OnInit {
         } else {
           this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_TAKEN');
         }
-
-        this.refreshStepErrorsIfNeeded();
       },
       error: () => {
         this.handleChecking = false;
         this.handleAvailable = null;
         this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_CHECK_ERROR');
-        this.refreshStepErrorsIfNeeded();
       }
     });
   }
@@ -698,6 +1153,49 @@ export class CreateShopComponent implements OnInit {
   onCompanyTypeChange() {
     this.error.companyType = null;
     this.resetHandleValidation();
-    this.refreshStepErrorsIfNeeded();
+  }
+
+  // ============================================================
+  // HELPERS (validation simples)
+  // ============================================================
+
+  private str(value: any): string {
+    return String(value ?? '').trim();
+  }
+
+  private isNonEmpty(value: any): boolean {
+    return this.str(value).length > 0;
+  }
+
+  private isValidEmail(email: any): boolean {
+    const v = this.str(email);
+    if (!v) return false;
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  }
+
+  private isValidHandle(handle: any): boolean {
+    const v = this.normalizeHandle(handle);
+    if (!v) return false;
+    if (v.length < 3) return false;
+    return /^[a-z0-9._]+$/.test(v);
+  }
+
+  private isValidPostalCode(postal: any): boolean {
+    const v = this.str(postal);
+    if (!v) return false;
+    return /^[a-zA-Z0-9\- ]{4,10}$/.test(v);
+  }
+
+  private onlyDigits(v: any): string {
+    return this.str(v).replace(/\D/g, '');
+  }
+
+  /**
+   * Valide un format FR simple : 10 digits, commence par 0
+   * -> exactement comme ton pattern signup
+   */
+  private isValidPhoneFR(phone: any): boolean {
+    const digits = this.onlyDigits(phone);
+    return /^0[1-9][0-9]{8}$/.test(digits);
   }
 }
