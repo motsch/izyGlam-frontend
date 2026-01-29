@@ -2,35 +2,35 @@
   <button class="btn btn-create float-end" (click)="openModal()" data-bs-toggle="tooltip" data-bs-placement="top">
     <i class="fa fa-plus"></i> {{ "Ajouter une catégorie" | translate }}
   </button>
+  <div class="table-responsive izy-table-responsive">
+    <table class="table table-striped izy-table" *ngIf="!loading; else loadingTpl">
+      <thead>
+        <tr>
+          <th>{{ "Nom" | translate }}</th>
+          <th>{{ "Description" | translate }}</th>
+          <th>{{ "Actions" | translate }}</th>
+        </tr>
+      </thead>
 
-  <table class="table table-striped" *ngIf="!loading; else loadingTpl">
-    <thead>
-      <tr>
-        <th>{{ "Nom" | translate }}</th>
-        <th>{{ "Description" | translate }}</th>
-        <th>{{ "Actions" | translate }}</th>
-      </tr>
-    </thead>
+      <tbody>
+        <tr *ngFor="let cat of categories; let i = index">
+          <td>{{ cat.name }}</td>
+          <td>{{ (cat.description || '') | truncate : 50 }}</td>
 
-    <tbody>
-      <tr *ngFor="let cat of categories; let i = index">
-        <td>{{ cat.name }}</td>
-        <td>{{ (cat.description || '') | truncate : 50 }}</td>
+          <td class="align-center">
+            <button class="btn btn-edit" (click)="openModal(cat)">
+              <i class="fa fa-pencil-alt"></i> {{ "Modifier" | translate }}
+            </button>
 
-        <td class="align-center">
-          <button class="btn btn-edit" (click)="openModal(cat)">
-            <i class="fa fa-pencil-alt"></i> {{ "Modifier" | translate }}
-          </button>
-
-          <button class="btn btn-delete margin-top-5" (click)="deleteCategory(cat, i)"
-            [disabled]="categories.length <= 1">
-            {{ "Supprimer" | translate }}
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
+            <button class="btn btn-delete margin-top-5" (click)="deleteCategory(cat, i)"
+              [disabled]="categories.length <= 1">
+              {{ "Supprimer" | translate }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <ng-template #loadingTpl>
     <div class="loading-box">
       <span class="loader"></span>

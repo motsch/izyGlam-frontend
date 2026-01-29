@@ -3,231 +3,232 @@
     <input type="text" placeholder="Rechercher..." [(ngModel)]="searchTerm" (input)="applyGlobalSearch()" />
   </div>
 
-  <table mat-table [dataSource]="dataSource" matSort class="shops-table" multiTemplateDataRows>
-    <!-- Image Column -->
-    <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let shop">
-        <div class="shop-avatar">
-          <img [src]="imgStorageUrl + 'uploads/images/' + (shop.image || 'default.png')" alt="Aperçu de l'image"
-            class="image-preview small-preview" />
+  <div class="table-responsive izy-table-responsive">
+    <table mat-table [dataSource]="dataSource" matSort class="shops-table izy-table" multiTemplateDataRows>
+      <!-- Image Column -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let shop">
+          <div class="shop-avatar">
+            <img [src]="imgStorageUrl + 'uploads/images/' + (shop.image || 'default.png')" alt="Aperçu de l'image"
+              class="image-preview small-preview" />
 
-          <!-- 🔮 Bouton IA dans la liste -->
-          <button type="button" class="ai-wand-btn" [disabled]="shop._aiLoading"
-            (click)="$event.stopPropagation(); changePhotoByAI(shop)" title="Améliorer la photo avec l'IA">
-            <i class="fa fa-magic"></i>
-          </button>
-        </div>
-      </td>
-    </ng-container>
+            <!-- 🔮 Bouton IA dans la liste -->
+            <button type="button" class="ai-wand-btn" [disabled]="shop._aiLoading"
+              (click)="$event.stopPropagation(); changePhotoByAI(shop)" title="Améliorer la photo avec l'IA">
+              <i class="fa fa-magic"></i>
+            </button>
+          </div>
+        </td>
+      </ng-container>
 
-    <!-- Nom Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ "ADMIN_SHOP.NAME" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let shop">
-        <div class="shop-main-info">
-          <div class="shop-name">
-            {{ shop.name }}
-            <span class="moderation-badge" *ngIf="isShopFlagged(shop)"
-              [attr.title]="getShopFlagReasons(shop).join(', ')">
-              ⚠️ À vérifier
+      <!-- Nom Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "ADMIN_SHOP.NAME" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let shop">
+          <div class="shop-main-info">
+            <div class="shop-name">
+              {{ shop.name }}
+              <span class="moderation-badge" *ngIf="isShopFlagged(shop)"
+                [attr.title]="getShopFlagReasons(shop).join(', ')">
+                ⚠️ À vérifier
+              </span>
+
+              <!-- ✅ NEW : prestations signalées -->
+              <span class="moderation-badge services" *ngIf="!isShopFlagged(shop) && hasFlaggedServices(shop)"
+                [attr.title]="getFlaggedServicesTooltip(shop)">
+                {{ getFlaggedServicesBadgeText(shop) }}
+              </span>
+
+              <span class="expand-hint" *ngIf="!isExpanded(shop)">• Voir prestations</span>
+              <span class="expand-hint" *ngIf="isExpanded(shop)">• Masquer prestations</span>
+            </div>
+            <div class="shop-subinfo">
+              {{ shop.type }} • {{ shop.country }}
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Ville Column -->
+      <ng-container matColumnDef="ville">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "ADMIN_SHOP.CITY" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let shop">
+          {{ shop.ville }}
+          <span *ngIf="shop.district">({{ shop.district }})</span>
+        </td>
+      </ng-container>
+
+      <!-- Note Column -->
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "ADMIN_SHOP.NOTE" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let shop">
+          <div class="rating-chip">
+            <span class="rating-value">{{ shop.note }}</span>
+            <span class="rating-max">/ 5</span>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- ✅ Statut (active) Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "ADMIN_SHOP.STATUS" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let shop">
+          <span class="status-chip" [ngClass]="shop.active ? 'status-active' : 'status-inactive'"
+            (click)="$event.stopPropagation(); toggleBlockUser(shop)">
+            <span class="status-bullet"></span>
+            <span class="status-label">
+              {{
+              shop.active
+              ? ("ADMIN_SHOP.ACTIVE" | translate)
+              : ("ADMIN_SHOP.INACTIVE" | translate)
+              }}
+            </span>
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- 📂 Vérification documents Column -->
+      <ng-container matColumnDef="verification">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "ADMIN_SHOP.DOCUMENTS" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let shop">
+          <div class="verification-wrapper" [ngClass]="isFullyVerified(shop) ? 'verification-ok' : 'verification-ko'">
+            <span class="verification-main-label">
+              {{
+              isFullyVerified(shop)
+              ? ("ADMIN_SHOP.DOCS_OK" | translate)
+              : ("ADMIN_SHOP.DOCS_NOT_VALID" | translate)
+              }}
             </span>
 
-            <!-- ✅ NEW : prestations signalées -->
-            <span class="moderation-badge services" *ngIf="!isShopFlagged(shop) && hasFlaggedServices(shop)"
-              [attr.title]="getFlaggedServicesTooltip(shop)">
-              {{ getFlaggedServicesBadgeText(shop) }}
-            </span>
-
-            <span class="expand-hint" *ngIf="!isExpanded(shop)">• Voir prestations</span>
-            <span class="expand-hint" *ngIf="isExpanded(shop)">• Masquer prestations</span>
+            <div class="verification-dots">
+              <span class="doc-dot" *ngFor="let doc of ['identity', 'insurance', 'kbis']"
+                [ngClass]="getDocStatusClass(shop, doc)" [attr.title]="getDocStatusTooltip(shop, doc)"></span>
+            </div>
           </div>
-          <div class="shop-subinfo">
-            {{ shop.type }} • {{ shop.country }}
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ "ADMIN_SHOP.ACTIONS" | translate }}
+        </th>
+        <td mat-cell *matCellDef="let shop">
+          <div class="actions-wrapper">
+            <!-- ✅ Bloquer + rembourser (action admin métier) -->
+            <button class="icon-button danger" mat-raised-button (click)="$event.stopPropagation(); blockShop(shop)"
+              title="Bloquer la boutique + rembourser les bookings pending/accepted">
+              <i class="fa fa-ban"></i>
+            </button>
+
+            <!-- ✏️ Edit -->
+            <button class="icon-button edit" mat-raised-button color="primary"
+              (click)="$event.stopPropagation(); editShop(shop)">
+              <i class="fa fa-pencil"></i>
+            </button>
           </div>
-        </div>
-      </td>
-    </ng-container>
 
-    <!-- Ville Column -->
-    <ng-container matColumnDef="ville">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "ADMIN_SHOP.CITY" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let shop">
-        {{ shop.ville }}
-        <span *ngIf="shop.district">({{ shop.district }})</span>
-      </td>
-    </ng-container>
+        </td>
+      </ng-container>
 
-    <!-- Note Column -->
-    <ng-container matColumnDef="note">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "ADMIN_SHOP.NOTE" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let shop">
-        <div class="rating-chip">
-          <span class="rating-value">{{ shop.note }}</span>
-          <span class="rating-max">/ 5</span>
-        </div>
-      </td>
-    </ng-container>
+      <!-- ✅ Ligne "Shop" cliquable -->
+      <ng-container matColumnDef="shopRow">
+        <td mat-cell *matCellDef="let shop" [attr.colspan]="displayedColumns.length" class="shop-row-cell">
+          <!-- Cette colonne est un "hack" si besoin, mais on n'en a pas besoin ici -->
+        </td>
+      </ng-container>
 
-    <!-- ✅ Statut (active) Column -->
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "ADMIN_SHOP.STATUS" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let shop">
-        <span class="status-chip" [ngClass]="shop.active ? 'status-active' : 'status-inactive'"
-          (click)="$event.stopPropagation(); toggleBlockUser(shop)">
-          <span class="status-bullet"></span>
-          <span class="status-label">
-            {{
-            shop.active
-            ? ("ADMIN_SHOP.ACTIVE" | translate)
-            : ("ADMIN_SHOP.INACTIVE" | translate)
-            }}
-          </span>
-        </span>
-      </td>
-    </ng-container>
+      <!-- ✅ Ligne "DETAIL" (prestations) -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let shop" [attr.colspan]="displayedColumns.length" class="expanded-detail-cell">
+          <div class="expanded-panel" [class.open]="isExpanded(shop)">
+            <div class="expanded-header">
+              <div class="expanded-left">
+                <!-- ✅ Description shop au-dessus -->
+                <div class="shop-desc" *ngIf="shop?.description && shop.description.trim().length > 0">
+                  {{ shop.description }}
+                </div>
 
-    <!-- 📂 Vérification documents Column -->
-    <ng-container matColumnDef="verification">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "ADMIN_SHOP.DOCUMENTS" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let shop">
-        <div class="verification-wrapper" [ngClass]="isFullyVerified(shop) ? 'verification-ok' : 'verification-ko'">
-          <span class="verification-main-label">
-            {{
-            isFullyVerified(shop)
-            ? ("ADMIN_SHOP.DOCS_OK" | translate)
-            : ("ADMIN_SHOP.DOCS_NOT_VALID" | translate)
-            }}
-          </span>
+                <!-- fallback si pas de description -->
+                <div class="shop-desc muted" *ngIf="!shop?.description || shop.description.trim().length === 0">
+                  Aucune description pour cette boutique.
+                </div>
 
-          <div class="verification-dots">
-            <span class="doc-dot" *ngFor="let doc of ['identity', 'insurance', 'kbis']"
-              [ngClass]="getDocStatusClass(shop, doc)" [attr.title]="getDocStatusTooltip(shop, doc)"></span>
-          </div>
-        </div>
-      </td>
-    </ng-container>
-
-    <!-- Actions Column -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>
-        {{ "ADMIN_SHOP.ACTIONS" | translate }}
-      </th>
-      <td mat-cell *matCellDef="let shop">
-        <div class="actions-wrapper">
-          <!-- ✅ Bloquer + rembourser (action admin métier) -->
-          <button class="icon-button danger" mat-raised-button (click)="$event.stopPropagation(); blockShop(shop)"
-            title="Bloquer la boutique + rembourser les bookings pending/accepted">
-            <i class="fa fa-ban"></i>
-          </button>
-
-          <!-- ✏️ Edit -->
-          <button class="icon-button edit" mat-raised-button color="primary"
-            (click)="$event.stopPropagation(); editShop(shop)">
-            <i class="fa fa-pencil"></i>
-          </button>
-        </div>
-
-      </td>
-    </ng-container>
-
-    <!-- ✅ Ligne "Shop" cliquable -->
-    <ng-container matColumnDef="shopRow">
-      <td mat-cell *matCellDef="let shop" [attr.colspan]="displayedColumns.length" class="shop-row-cell">
-        <!-- Cette colonne est un "hack" si besoin, mais on n'en a pas besoin ici -->
-      </td>
-    </ng-container>
-
-    <!-- ✅ Ligne "DETAIL" (prestations) -->
-    <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let shop" [attr.colspan]="displayedColumns.length" class="expanded-detail-cell">
-        <div class="expanded-panel" [class.open]="isExpanded(shop)">
-          <div class="expanded-header">
-            <div class="expanded-left">
-              <!-- ✅ Description shop au-dessus -->
-              <div class="shop-desc" *ngIf="shop?.description && shop.description.trim().length > 0">
-                {{ shop.description }}
+                <div class="expanded-title">
+                  Prestations • {{ getServices(shop).length }}
+                </div>
               </div>
 
-              <!-- fallback si pas de description -->
-              <div class="shop-desc muted" *ngIf="!shop?.description || shop.description.trim().length === 0">
-                Aucune description pour cette boutique.
-              </div>
-
-              <div class="expanded-title">
-                Prestations • {{ getServices(shop).length }}
+              <div class="expanded-meta" *ngIf="isServicesLoading(shop)">
+                <span class="mini-spinner"></span>
+                Chargement...
               </div>
             </div>
 
-            <div class="expanded-meta" *ngIf="isServicesLoading(shop)">
-              <span class="mini-spinner"></span>
-              Chargement...
-            </div>
-          </div>
 
-
-          <div class="expanded-error" *ngIf="getServicesError(shop)">
-            {{ getServicesError(shop) }}
-          </div>
-
-          <div class="services-grid" *ngIf="!isServicesLoading(shop) && !getServicesError(shop)">
-            <div class="empty-services" *ngIf="getServices(shop).length === 0">
-              Aucune prestation liée à cette boutique.
+            <div class="expanded-error" *ngIf="getServicesError(shop)">
+              {{ getServicesError(shop) }}
             </div>
 
-            <div class="service-card" *ngFor="let s of getServices(shop); trackBy: trackByServiceId"
-              [class.blocked]="s.blocked">
-              <div class="service-top">
-                <div class="service-left">
-                  <span class="color-dot" [style.background]="s.color || '#ff4081'"></span>
-                  <div class="service-name">
-                    {{ s.name }}
-                    <span class="badge blocked" *ngIf="s.blocked">Bloquée</span>
+            <div class="services-grid" *ngIf="!isServicesLoading(shop) && !getServicesError(shop)">
+              <div class="empty-services" *ngIf="getServices(shop).length === 0">
+                Aucune prestation liée à cette boutique.
+              </div>
+
+              <div class="service-card" *ngFor="let s of getServices(shop); trackBy: trackByServiceId"
+                [class.blocked]="s.blocked">
+                <div class="service-top">
+                  <div class="service-left">
+                    <span class="color-dot" [style.background]="s.color || '#ff4081'"></span>
+                    <div class="service-name">
+                      {{ s.name }}
+                      <span class="badge blocked" *ngIf="s.blocked">Bloquée</span>
+                    </div>
+                    <div class="service-type">{{ s.type }}</div>
                   </div>
-                  <div class="service-type">{{ s.type }}</div>
+
+                  <div class="service-right">
+                    <div class="price">{{ formatPrice(s.price) }}</div>
+                    <div class="duration">{{ formatDuration(s.duration) }}</div>
+                  </div>
                 </div>
 
-                <div class="service-right">
-                  <div class="price">{{ formatPrice(s.price) }}</div>
-                  <div class="duration">{{ formatDuration(s.duration) }}</div>
+                <div class="service-desc">
+                  {{ s.description }}
                 </div>
-              </div>
 
-              <div class="service-desc">
-                {{ s.description }}
-              </div>
-
-              <div class="service-flags" *ngIf="(s.flags?.length || 0) > 0">
-                <span class="flag" *ngFor="let f of s.flags">{{ f }}</span>
+                <div class="service-flags" *ngIf="(s.flags?.length || 0) > 0">
+                  <span class="flag" *ngFor="let f of s.flags">{{ f }}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </td>
-    </ng-container>
+        </td>
+      </ng-container>
 
-    <!-- Header -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <!-- Header -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-    <!-- Row shop -->
-    <tr mat-row *matRowDef="let row; columns: displayedColumns; trackBy: trackByShopId" class="shop-row"
-      [class.expanded]="isExpanded(row)" (click)="toggleRow(row)"></tr>
+      <!-- Row shop -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; trackBy: trackByShopId" class="shop-row"
+        [class.expanded]="isExpanded(row)" (click)="toggleRow(row)"></tr>
 
-    <!-- Row detail -->
-    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row" [class.open]="isExpanded(row)">
-    </tr>
-  </table>
-
+      <!-- Row detail -->
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row" [class.open]="isExpanded(row)">
+      </tr>
+    </table>
+  </div>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 </div>

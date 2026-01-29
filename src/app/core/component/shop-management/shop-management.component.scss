@@ -118,6 +118,41 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(255, 138, 196, 0.25);
 }
 
+/* évite que ça "déborde" visuellement du background arrondi */
+.form-section {
+  overflow: hidden;
+}
+
+/* wrapper pour maîtriser la forme */
+.select-wrap {
+  width: 100%;
+}
+
+/* style premium du select fermé */
+select.input-style {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  padding-right: 44px; /* place pour chevron */
+  border-radius: 18px;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #a05c7f 50%),
+    linear-gradient(135deg, #a05c7f 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%,
+    0 0;
+  background-size:
+    6px 6px,
+    6px 6px,
+    100% 100%;
+  background-repeat: no-repeat;
+}
+
+
 input:disabled {
   background-color: #f9edf4;
   cursor: not-allowed;
@@ -647,4 +682,17 @@ input:checked+.slider:before {
   .place-actions .btn-primary {
     width: 100%;
   }
+}
+
+
+/* Place-grid devient un bootstrap row : on évite tout conflit de layout */
+.place-grid {
+  width: 100%;
+  margin-left: 0;  /* bootstrap row met des marges négatives */
+  margin-right: 0;
+}
+
+.place-grid > [class*="col-"] {
+  padding-left: 0;   /* optionnel: si tu veux un alignement ultra net */
+  padding-right: 0;
 }

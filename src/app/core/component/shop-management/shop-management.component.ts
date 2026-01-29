@@ -791,18 +791,17 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
     // reset états adresse quand on change de mode
     if (this.shopCopyData.serviceMode === 'SALON') {
-      this.initPlaceAddressStructure();
+      /*this.initPlaceAddressStructure();
       this.validatePlaceAddress();
       this.placeSaved = this.placeAddressValid;
-      this.placeHasErrors = !this.placeAddressValid;
+      this.placeHasErrors = !this.placeAddressValid;*/
     } else {
       this.placeAddressErrors = {};
       this.placeAddressValid = true;
       this.placeHasErrors = false;
       this.placeSaved = true;
+      this.saveShop();
     }
-
-    this.saveShop();
   }
 
   onPlaceAddressChange(): void {

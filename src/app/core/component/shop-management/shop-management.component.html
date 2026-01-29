@@ -102,13 +102,16 @@
       <div class="column">
         <label>Le rendez-vous a lieu :</label>
 
-        <select class="input-style" [(ngModel)]="shopCopyData.serviceMode"
-          (ngModelChange)="onServiceModeChange($event)">
-          <option [ngValue]="'SALON'">🏠 Au salon (le client vient)</option>
-          <option [ngValue]="'DOMICILE'">🚗 À domicile (je me déplace)</option>
-        </select>
+        <div class="select-wrap">
+          <select class="input-style" [(ngModel)]="shopCopyData.serviceMode"
+            (ngModelChange)="onServiceModeChange($event)">
+            <option [ngValue]="'SALON'">🏠 Au salon (le client vient)</option>
+            <option [ngValue]="'DOMICILE'">🚗 À domicile (je me déplace)</option>
+          </select>
+        </div>
       </div>
     </div>
+
 
     <!-- ============================
      ADRESSE DU SALON (placeAddress)
@@ -128,40 +131,52 @@
         </div>
       </div>
 
-      <div class="legal-grid place-grid">
-        <div class="column">
+      <div class="row g-3 place-grid">
+        <!-- Adresse ligne 1 -->
+        <div class="col-12 col-md-6">
           <label>Adresse ligne 1</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.addressLine1"
             (ngModelChange)="onPlaceAddressChange()" placeholder="12 rue ..." />
-          <div class="error" *ngIf="placeAddressErrors.addressLine1">{{ placeAddressErrors.addressLine1 }}</div>
+          <div class="error" *ngIf="placeAddressErrors.addressLine1">
+            {{ placeAddressErrors.addressLine1 }}
+          </div>
         </div>
 
-        <div class="column">
+        <!-- Adresse ligne 2 -->
+        <div class="col-12 col-md-6">
           <label>Adresse ligne 2</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.addressLine2"
             (ngModelChange)="onPlaceAddressChange()" placeholder="Bâtiment, étage..." />
         </div>
 
-        <div class="column">
+        <!-- Code postal -->
+        <div class="col-12 col-md-4">
           <label>Code postal</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.postalCode"
             (ngModelChange)="onPlaceAddressChange()" placeholder="75000" />
-          <div class="error" *ngIf="placeAddressErrors.postalCode">{{ placeAddressErrors.postalCode }}</div>
+          <div class="error" *ngIf="placeAddressErrors.postalCode">
+            {{ placeAddressErrors.postalCode }}
+          </div>
         </div>
 
-        <div class="column">
+        <!-- Ville -->
+        <div class="col-12 col-md-5">
           <label>Ville</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.city"
             (ngModelChange)="onPlaceAddressChange()" placeholder="Paris" />
-          <div class="error" *ngIf="placeAddressErrors.city">{{ placeAddressErrors.city }}</div>
+          <div class="error" *ngIf="placeAddressErrors.city">
+            {{ placeAddressErrors.city }}
+          </div>
         </div>
 
-        <div class="column">
+        <!-- Pays -->
+        <div class="col-12 col-md-3">
           <label>Pays</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.country"
             (ngModelChange)="onPlaceAddressChange()" placeholder="FR" />
         </div>
       </div>
+
 
       <div class="legal-actions place-actions">
         <button type="button" class="btn-primary" (click)="savePlaceAddress()"
@@ -182,87 +197,100 @@
     </h2>
 
     <div class="legal-panel">
-      <div *ngIf="legalExpanded" class="legal-grid">
-        <div class="column">
+      <div *ngIf="legalExpanded" class="row g-3">
+        <!-- Raison sociale -->
+        <div class="col-12 col-md-6">
           <label>Raison sociale</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.companyName" (ngModelChange)="onLegalChange()"
             placeholder="Ex: BEAUTY BY SARAH" />
           <div class="error" *ngIf="legalErrors.companyName">{{ legalErrors.companyName }}</div>
         </div>
 
-        <div class="column">
+        <!-- Forme juridique -->
+        <div class="col-12 col-md-6">
           <label>Forme juridique</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.legalForm" (ngModelChange)="onLegalChange()"
             placeholder="EI / SASU / EURL / SAS..." />
         </div>
 
-        <div class="column">
+        <!-- SIRET -->
+        <div class="col-12 col-md-6">
           <label>SIRET (14 chiffres)</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.siret" (ngModelChange)="onLegalChange('siret')"
             placeholder="12345678901234" maxlength="14" />
           <div class="error" *ngIf="legalErrors.siret">{{ legalErrors.siret }}</div>
         </div>
 
-        <div class="column">
+        <!-- SIREN -->
+        <div class="col-12 col-md-6">
           <label>SIREN (9 chiffres)</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.siren" (ngModelChange)="onLegalChange('siren')"
             placeholder="123456789" maxlength="9" />
           <div class="error" *ngIf="legalErrors.siren">{{ legalErrors.siren }}</div>
         </div>
 
-        <div class="column">
+        <!-- TVA -->
+        <div class="col-12 col-md-6">
           <label>TVA intracom</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.vatNumber"
             (ngModelChange)="onLegalChange('vatNumber')" placeholder="FRXX123456789" />
           <div class="error" *ngIf="legalErrors.vatNumber">{{ legalErrors.vatNumber }}</div>
         </div>
 
-        <div class="column">
+        <!-- Email -->
+        <div class="col-12 col-md-6">
           <label>Email pro</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.email" (ngModelChange)="onLegalChange('email')"
             placeholder="contact@domaine.fr" />
           <div class="error" *ngIf="legalErrors.email">{{ legalErrors.email }}</div>
         </div>
 
-        <div class="column">
+        <!-- Téléphone -->
+        <div class="col-12 col-md-6">
           <label>Téléphone pro</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.phone" (ngModelChange)="onLegalChange('phone')"
             placeholder="+33..." />
         </div>
 
-        <div class="column">
+        <!-- Adresse 1 -->
+        <div class="col-12 col-md-6">
           <label>Adresse ligne 1</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.addressLine1" (ngModelChange)="onLegalChange()"
             placeholder="N°, rue..." />
           <div class="error" *ngIf="legalErrors.addressLine1">{{ legalErrors.addressLine1 }}</div>
         </div>
 
-        <div class="column">
+        <!-- Adresse 2 -->
+        <div class="col-12 col-md-6">
           <label>Adresse ligne 2</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.addressLine2" (ngModelChange)="onLegalChange()"
             placeholder="Bâtiment, étage, etc." />
         </div>
 
-        <div class="column">
+        <!-- Code postal -->
+        <div class="col-12 col-md-6">
           <label>Code postal</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.postalCode" (ngModelChange)="onLegalChange()"
             placeholder="75000" />
           <div class="error" *ngIf="legalErrors.postalCode">{{ legalErrors.postalCode }}</div>
         </div>
 
-        <div class="column">
+        <!-- Ville -->
+        <div class="col-12 col-md-6">
           <label>Ville</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.city" (ngModelChange)="onLegalChange()"
             placeholder="Paris" />
           <div class="error" *ngIf="legalErrors.city">{{ legalErrors.city }}</div>
         </div>
 
-        <div class="column">
+        <!-- Pays -->
+        <div class="col-12 col-md-6">
           <label>Pays</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.country" (ngModelChange)="onLegalChange()"
             placeholder="FR" />
         </div>
       </div>
+
 
       <div class="legal-actions" *ngIf="legalExpanded">
         <button type="button" class="btn-primary" (click)="saveLegal()" [disabled]="!shopCopyData">

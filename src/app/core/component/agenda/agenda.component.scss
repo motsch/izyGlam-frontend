@@ -1,11 +1,71 @@
-.calendar-header {
-    display: flex;
-    justify-content: flex-end; /* Place le bouton à droite */
-    align-items: center;
-    padding: 10px;
-  }
-  
+
   .create-event-btn {
     margin-left: auto; /* Ajoute un espacement entre le bouton et le reste */
   }
   
+  .calendar-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.izy-calendar {
+  width: 100%;
+}
+
+/* Evite les débordements horizontaux */
+:host ::ng-deep .fc {
+  max-width: 100%;
+}
+
+:host ::ng-deep .fc .fc-scrollgrid,
+:host ::ng-deep .fc .fc-view-harness,
+:host ::ng-deep .fc .fc-scroller {
+  overflow-x: hidden !important;
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 768px) {
+  .calendar-header {
+    justify-content: stretch;
+  }
+
+  .create-event-btn {
+    width: 100%;
+  }
+
+  /* Toolbar compacte */
+  :host ::ng-deep .fc .fc-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  :host ::ng-deep .fc .fc-toolbar-title {
+    font-size: 18px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  :host ::ng-deep .fc .fc-button {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  /* Colonnes plus lisibles */
+  :host ::ng-deep .fc .fc-col-header-cell-cushion {
+    font-size: 12px;
+    padding: 6px 2px;
+  }
+
+  /* Heures plus petites en week/day */
+  :host ::ng-deep .fc .fc-timegrid-axis-cushion {
+    font-size: 12px;
+  }
+
+  /* Events plus compacts */
+  :host ::ng-deep .fc .fc-event-title,
+  :host ::ng-deep .fc .fc-event-time {
+    font-size: 12px;
+  }
+}

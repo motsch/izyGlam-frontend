@@ -178,3 +178,32 @@ label {
   background-color: #ff69b4 !important; // Rose flashy (HotPink), change si tu veux un rose plus doux
   color: white !important;
 }
+
+
+.izy-table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* scroll fluide iOS */
+  border-radius: 24px;              /* garde ton style */
+}
+
+/* évite les colonnes qui s'étirent comme des malades */
+.izy-table th,
+.izy-table td {
+  white-space: nowrap;
+}
+
+/* permet aux colonnes texte de couper si besoin */
+.izy-table td:nth-child(1), /* NAME */
+.izy-table td:nth-child(2)  /* DESCRIPTION */
+{
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* limite l'image */
+.image_table {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+}
