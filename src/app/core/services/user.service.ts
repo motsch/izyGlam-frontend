@@ -193,5 +193,29 @@ export class UserService {
     createStripeOnboardingLink(plan: string, durationInMonths: number) {
         return this.http.post<any>(environment.apiUrl + 'users-subscribe', { newPlan: plan, durationInMonths });
     }
+    /**
+     * ✅ Vérifie si un email existe en base
+     * POST /email-exists
+     * Body: { email }
+     * Response: { exists: boolean }
+     */
+    checkEmailExists(email: string) {
+        return this.http.post<{ exists: boolean }>(
+            environment.apiUrl + 'email-exists',
+            { email }
+        );
+    }
 
+    /**
+     * ✅ Vérifie si un user est activé (active=true) via email
+     * POST /users-check-active
+     * Body: { email }
+     * Response: { active: boolean }
+     */
+    checkUserActiveByEmail(email: string) {
+        return this.http.post<{ active: boolean }>(
+            environment.apiUrl + 'users-check-active',
+            { email }
+        );
+    }
 }

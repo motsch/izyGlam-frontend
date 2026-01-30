@@ -619,7 +619,7 @@
     "SUBTITLE": "Créez votre salon en quelques étapes, puis envoyez vos documents pour activer votre profil.",
     "OPEN": "Créer mon salon",
     "S0_TITLE": "Bienvenue",
-    "S0_SUBTITLE": "On vous guide pas à pas — simple, rapide, et sécurisé.",
+    "S0_SUBTITLE": "On vous guide pas à pas. Simple, rapide, et sécurisé.",
     "S0_BIG": "On crée votre salon en 2 minutes",
     "S0_DESC": "Vous allez choisir un nom, un identifiant public, votre adresse et vos zones desservies. Ensuite, vous téléversez vos documents pour la vérification.",
     "S0_F1_T": "Rapide",
@@ -1428,7 +1428,7 @@
         "L1": "<strong>Identité & contact :</strong> nom, prénom, e-mail, téléphone, adresse(s), photo/avatars.",
         "L2": "<strong>Compte :</strong> identifiants, mots de passe (hachés), préférences, langue.",
         "L3": "<strong>Réservations :</strong> services choisis, date/heure, adresses d’intervention, notes, pièces jointes.",
-        "L4": "<strong>Paiement :</strong> informations de paiement <em>via notre prestataire (ex. Stripe)</em> — nous ne stockons pas vos données de carte.",
+        "L4": "<strong>Paiement :</strong> informations de paiement <em>via notre prestataire (ex. Stripe)</em>, nous ne stockons pas vos données de carte.",
         "L5": "<strong>Professionnels :</strong> profil public, prestations, tarifs, zones d’intervention, disponibilité, RIB/IBAN (sécurisé), documents de vérification si requis.",
         "L6": "<strong>Support :</strong> messages, tickets, enregistrements d’appels le cas échéant."
       },
@@ -1449,7 +1449,7 @@
     "PURPOSES": {
       "TITLE": "Finalités & bases légales",
       "TEXT": "Nous traitons les données pour les finalités suivantes :",
-      "L1": "<strong>Fournir le service</strong> (création de compte, réservation, mise en relation, notifications) — <em>Base : exécution du contrat</em>.",
+      "L1": "<strong>Fournir le service</strong> (création de compte, réservation, mise en relation, notifications). <em>Base : exécution du contrat</em>.",
       "L2": "<strong>Paiement & facturation</strong> — <em>Contrat, obligation légale</em>.",
       "L3": "<strong>Sécurité, prévention des abus/fraudes</strong> — <em>Intérêt légitime, obligation légale</em>.",
       "L4": "<strong>Amélioration produit, statistiques</strong> — <em>Intérêt légitime</em>.",
@@ -1719,7 +1719,7 @@
   },
   "CHOICE_TYPE": {
     "TITLE": "Comment souhaitez-vous réserver ?",
-    "SUBTITLE": "Réservez en 2 minutes — à domicile, paiement sécurisé.",
+    "SUBTITLE": "Réservez en 2 minutes, à domicile ou en salon, paiement sécurisé.",
     "QUICK_TITLE": "Réservation rapide",
     "QUICK_DESC": "Choisissez une prestation, on vous propose les créneaux.",
     "RECOMMENDED": "Recommandé",

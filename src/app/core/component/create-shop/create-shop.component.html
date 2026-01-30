@@ -30,10 +30,12 @@
 
   <!-- HEADER -->
   <div class="modal-header">
+
+    <!-- ✅ Close button -->
     <button class="icon-btn" (click)="closeWizard()" aria-label="Close">✕</button>
 
     <div class="step-hero">
-      <img class="step-image" [src]="wizardSteps[wizardStep].image" alt="" (error)="hideBrokenImg($event)" />
+      <img class="step-image" [src]="wizardHeaderImage" alt="" />
       <div class="step-meta">
         <div class="step-title">{{ wizardSteps[wizardStep].title | translate }}</div>
         <div class="step-subtitle">{{ wizardSteps[wizardStep].subtitle | translate }}</div>
@@ -53,6 +55,7 @@
         <div class="bar-fill" [style.width.%]="progressPercent"></div>
       </div>
     </div>
+
   </div>
 
   <!-- BODY -->
@@ -72,6 +75,7 @@
               <div class="d">{{ "CREATION_SHOP_WIZARD.S0_F1_D" | translate }}</div>
             </div>
           </div>
+
           <div class="feature">
             <div class="ico">🔒</div>
             <div>
@@ -79,6 +83,7 @@
               <div class="d">{{ "CREATION_SHOP_WIZARD.S0_F2_D" | translate }}</div>
             </div>
           </div>
+
           <div class="feature">
             <div class="ico">✅</div>
             <div>
@@ -92,44 +97,85 @@
       </div>
     </ng-container>
 
-    <!-- ✅ STEP 1 : AUTH EMAIL (nouvelle étape) -->
+    <!-- ✅ STEP 1 : AUTH EMAIL -->
     <ng-container *ngIf="wizardStep === 1">
       <div class="card">
-        <!-- Commentaire : ce step sert à "récupérer" ou "créer" le user,
-             afin d'avoir un token (session) AVANT de créer le shop. -->
 
         <div class="big">{{ "CREATION_SHOP_WIZARD.AUTH_TITLE" | translate }}</div>
         <div class="muted">{{ "CREATION_SHOP_WIZARD.AUTH_SUBTITLE" | translate }}</div>
 
-        <!-- EMAIL -->
+        <!-- EMAIL + refresh button (à droite) -->
         <div class="field">
           <label>{{ "SIGNUP.PLACEHOLDER_EMAIL" | translate }}</label>
-          <input
-            type="email"
-            [(ngModel)]="authUser.email"
-            placeholder="ex: sab@gmail.com"
-            autocomplete="email"
-            [ngModelOptions]="{ updateOn: 'blur' }"
-            (blur)="onAuthEmailBlur()" />
+
+          <!-- ✅ wrapper pour placer le bouton refresh à droite -->
+          <div style="display:flex; gap:10px; align-items:center;">
+            <input
+              type="email"
+              [(ngModel)]="authUser.email"
+              placeholder="ex: sab@gmail.com"
+              autocomplete="email"
+              [ngModelOptions]="{ updateOn: 'blur' }"
+              (blur)="onAuthEmailBlur()"
+              style="flex:1 1 auto;"
+            />
+
+            <!-- ✅ Bouton refresh visible UNIQUEMENT quand on est en attente validation -->
+            <button
+              *ngIf="pendingEmailVerification"
+              type="button"
+              class="chip-btn"
+              (click)="checkIfUserIsActivated()"
+              [disabled]="checkingActivation || busy"
+              title="Vérifier l'activation"
+              aria-label="Vérifier l'activation"
+              style="width:44px; padding:0; display:flex; align-items:center; justify-content:center;">
+              <span *ngIf="!checkingActivation">↻</span>
+              <span *ngIf="checkingActivation">…</span>
+            </button>
+          </div>
+
           <div class="field-error" *ngIf="showErrors && !!authError.email">{{ authError.email }}</div>
         </div>
 
-        <!-- Indication si email connu / inconnu -->
-        <div class="soft small" *ngIf="authEmailExists === true">
+        <!-- Indication email connu / inconnu -->
+        <div class="soft small" *ngIf="authEmailExists === true && !pendingEmailVerification">
           {{ "CREATION_SHOP_WIZARD.AUTH_EMAIL_EXISTS" | translate }}
         </div>
-        <div class="soft small" *ngIf="authEmailExists === false">
+        <div class="soft small" *ngIf="authEmailExists === false && !pendingEmailVerification">
           {{ "CREATION_SHOP_WIZARD.AUTH_EMAIL_NEW" | translate }}
         </div>
 
-        <!-- PASSWORD : demandé uniquement si email existe -->
-        <div class="field" *ngIf="authEmailExists === true">
+        <!-- ✅ MODE PENDING : message + actions -->
+        <div class="soft" *ngIf="pendingEmailVerification" style="margin-top:12px;">
+          <div style="font-weight:900; margin-bottom:6px;">
+            ✅ Compte créé !
+          </div>
+          <div style="line-height:1.5;">
+            On vient de t’envoyer un email de validation.<br />
+            <strong>Ouvre ta boîte mail</strong>, clique sur le lien, puis reviens ici et clique sur <strong>↻</strong>.
+          </div>
+
+          <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="ghost" (click)="resendActivationEmail()" [disabled]="busy">
+              Renvoyer l’email
+            </button>
+
+            <span *ngIf="lastActivationCheckAt" style="font-size:12px; opacity:.7; align-self:center;">
+              Dernière vérif : {{ lastActivationCheckAt | date:'shortTime' }}
+            </span>
+          </div>
+        </div>
+
+        <!-- ✅ LOGIN FLOW (email existe) : password -->
+        <div class="field" *ngIf="authEmailExists === true && !pendingEmailVerification">
           <label>{{ "SIGNUP.PLACEHOLDER_PASSWORD" | translate }}</label>
           <input
             [type]="authPasswordVisible ? 'text' : 'password'"
             [(ngModel)]="authUser.password"
             placeholder="••••••••"
             autocomplete="current-password" />
+
           <div class="field-error" *ngIf="showErrors && !!authError.password">{{ authError.password }}</div>
 
           <button type="button" class="link" (click)="authPasswordVisible = !authPasswordVisible">
@@ -137,10 +183,11 @@
           </button>
         </div>
 
-        <!-- REGISTER FIELDS : seulement si email n'existe pas -->
-        <ng-container *ngIf="authEmailExists === false">
+        <!-- ✅ REGISTER FLOW (email n'existe pas) -->
+        <ng-container *ngIf="authEmailExists === false && !pendingEmailVerification">
 
           <div class="grid2">
+
             <div class="field">
               <label>{{ "SIGNUP.GENRE" | translate }}</label>
               <select [(ngModel)]="authUser.sex">
@@ -176,43 +223,56 @@
 
             <div class="field">
               <label>{{ "SIGNUP.PLACEHOLDER_PHONE_NUMBER" | translate }}</label>
-              <input type="tel" [(ngModel)]="authUser.phone" placeholder="0612345678" (input)="onAuthPhoneInput()" />
+              <input
+                type="tel"
+                [(ngModel)]="authUser.phone"
+                placeholder="0612345678"
+                (input)="onAuthPhoneInput()" />
               <div class="field-error" *ngIf="showErrors && !!authError.phone">{{ authError.phone }}</div>
             </div>
 
             <div class="field">
               <label>{{ "SIGNUP.PLACEHOLDER_PASSWORD" | translate }}</label>
-              <input [type]="authPasswordVisible ? 'text' : 'password'" [(ngModel)]="authUser.password" placeholder="••••••••" autocomplete="new-password" />
+              <input
+                [type]="authPasswordVisible ? 'text' : 'password'"
+                [(ngModel)]="authUser.password"
+                placeholder="••••••••"
+                autocomplete="new-password" />
               <div class="field-error" *ngIf="showErrors && !!authError.password">{{ authError.password }}</div>
             </div>
 
             <div class="field">
               <label>{{ "SIGNUP.PLACEHOLDER_PASSWORDCONFIRMED" | translate }}</label>
-              <input [type]="authPasswordVisible2 ? 'text' : 'password'" [(ngModel)]="authUser.passwordConfirmed" placeholder="••••••••" autocomplete="new-password" />
+              <input
+                [type]="authPasswordVisible2 ? 'text' : 'password'"
+                [(ngModel)]="authUser.passwordConfirmed"
+                placeholder="••••••••"
+                autocomplete="new-password" />
               <div class="field-error" *ngIf="showErrors && !!authError.passwordConfirmed">{{ authError.passwordConfirmed }}</div>
 
               <button type="button" class="link" (click)="authPasswordVisible2 = !authPasswordVisible2">
                 {{ authPasswordVisible2 ? "Masquer" : "Afficher" }}
               </button>
             </div>
-          </div>
 
+          </div>
         </ng-container>
 
-        <div class="soft small">
+        <div class="soft small" *ngIf="!pendingEmailVerification">
           {{ "CREATION_SHOP_WIZARD.AUTH_HINT" | translate }}
         </div>
       </div>
     </ng-container>
 
-    <!-- STEP 2 : INFOS SALON (nom/handle/catégorie) -->
+    <!-- STEP 2 : INFOS SALON -->
     <ng-container *ngIf="wizardStep === 2">
       <div class="card">
         <div class="grid2">
 
           <div class="field">
             <label>{{ "CREATION_SHOP.NAME" | translate }}</label>
-            <input type="text"
+            <input
+              type="text"
               [(ngModel)]="newShop.name"
               placeholder="Sab Beauty"
               (ngModelChange)="onShopNameTyping($event)" />
@@ -273,7 +333,7 @@
       </div>
     </ng-container>
 
-    <!-- STEP 3 : ADRESSE + ZONES + MODE DE PRESTATION -->
+    <!-- STEP 3 : ADRESSE + ZONES + MODE -->
     <ng-container *ngIf="wizardStep === 3">
       <div class="card">
         <div class="grid2">
@@ -331,7 +391,9 @@
               </ng-container>
             </label>
 
-            <input type="text" [(ngModel)]="newShop.street"
+            <input
+              type="text"
+              [(ngModel)]="newShop.street"
               [placeholder]="newShop.serviceMode === 'SALON' ? '123, rue Principale' : ('CREATION_SHOP_WIZARD.AREA_PLACEHOLDER' | translate)" />
 
             <div class="field-error" *ngIf="showErrors && !!error.street">{{ error.street }}</div>
@@ -369,7 +431,7 @@
       </div>
     </ng-container>
 
-    <!-- STEP 4 : DOCUMENTS + FINAL -->
+    <!-- STEP 4 : DOCUMENTS -->
     <ng-container *ngIf="wizardStep === 4">
       <div class="card">
 
@@ -461,13 +523,19 @@
 
   <!-- FOOTER -->
   <div class="modal-footer">
-    <button class="ghost" (click)="prev()" [disabled]="wizardStep === 0">
+    <button class="ghost" (click)="prev()" [disabled]="wizardStep === 0 || busy">
       {{ "CREATION_SHOP_WIZARD.BACK" | translate }}
     </button>
 
-    <button class="primary" (click)="next()" *ngIf="wizardStep < 4" [disabled]="busy">
+    <!-- ✅ NEXT bouton : désactivé si pendingEmailVerification -->
+    <button
+      class="primary"
+      (click)="next()"
+      *ngIf="wizardStep < 4"
+      [disabled]="busy || (wizardStep === 1 && pendingEmailVerification)">
       <span *ngIf="!busy">{{ "CREATION_SHOP_WIZARD.NEXT" | translate }}</span>
       <span *ngIf="busy">{{ "CREATION_SHOP_WIZARD.PLEASE_WAIT" | translate }}</span>
     </button>
   </div>
+
 </div>
