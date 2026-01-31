@@ -47,7 +47,7 @@ export class CreateShopComponent implements OnInit {
 
   categories: any[] = [];
   // ✅ image FIXE en haut à gauche, ne bouge jamais
-  wizardHeaderImage = 'assets/images/onboarding/shop-0.png';
+  wizardHeaderImage = 'assets/images/logo.png';
 
   // ============================================================
   // AUTH STEP (STEP 1)

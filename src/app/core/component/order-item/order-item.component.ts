@@ -160,7 +160,7 @@ export class OrderItemComponent implements OnInit {
                   this.tr('INVOICE.TOTAL', 'Total')
                 ],
                 [
-                  this.tr('INVOICE.IZYGLAM_COMMISSION', 'Commission izyGlam'),
+                  this.tr('INVOICE.IZYGLAM_COMMISSION', 'Frais de service'),
                   '1',
                   `${commission.toFixed(2)} €`,
                   `${tvaAmount.toFixed(2)} €`,

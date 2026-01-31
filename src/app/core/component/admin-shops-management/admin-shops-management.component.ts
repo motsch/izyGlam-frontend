@@ -203,6 +203,64 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     });
   }
 
+  private ensureAdminShopDefaults(): void {
+    // Valeur par défaut si absent (anciens shops)
+    if (!this.shop.serviceMode) {
+      this.shop.serviceMode = 'SALON';
+    }
+
+    // placeAddress doit exister si SALON (sinon ngModel plante)
+    if (!this.shop.placeAddress) {
+      this.shop.placeAddress = {
+        label: '',
+        addressLine1: '',
+        addressLine2: '',
+        postalCode: '',
+        city: '',
+        country: 'FR',
+      };
+    }
+
+    // country par défaut si vide
+    if (!this.shop.placeAddress.country) {
+      this.shop.placeAddress.country = 'FR';
+    }
+  }
+
+  onServiceModeChange(mode: 'SALON' | 'DOMICILE'): void {
+    // Si on passe en SALON : garantir placeAddress
+    if (mode === 'SALON') {
+      if (!this.shop.placeAddress) {
+        this.shop.placeAddress = {
+          label: '',
+          addressLine1: '',
+          addressLine2: '',
+          postalCode: '',
+          city: '',
+          country: 'FR',
+        };
+      }
+      if (!this.shop.placeAddress.country) {
+        this.shop.placeAddress.country = 'FR';
+      }
+    }
+
+    // Si on passe en DOMICILE : optionnel -> on peut garder l’adresse
+    // MAIS si tu préfères éviter d’afficher une adresse incohérente pour un shop DOMICILE,
+    // tu peux choisir de la vider côté admin :
+    //
+    // if (mode === 'DOMICILE') {
+    //   this.shop.placeAddress = undefined as any;
+    // }
+  }
+
+  isPlaceAddressFilled(): boolean {
+    const a = this.shop?.placeAddress;
+    if (!a) return false;
+    return !!(a.addressLine1 && a.postalCode && a.city);
+  }
+
+
   // ------------------------------------------------------
   // 🚫 Bloquer / Débloquer un shop (utilisé par la chip Statut)
   // ------------------------------------------------------

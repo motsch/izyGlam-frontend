@@ -325,6 +325,86 @@
             class="form-control mb-2" />
         </div>
 
+        <!-- =================================================== -->
+        <!-- 🧭 Mode de prestation (SALON / DOMICILE) -->
+        <!-- =================================================== -->
+        <div class="form-group">
+          <label for="serviceMode">Mode de prestation</label>
+
+          <select id="serviceMode" class="form-control" [(ngModel)]="shop.serviceMode"
+            (ngModelChange)="onServiceModeChange($event)">
+            <option [ngValue]="'SALON'">🏠 Au salon (le client vient)</option>
+            <option [ngValue]="'DOMICILE'">🚗 À domicile (je me déplace)</option>
+          </select>
+
+          <small class="form-text text-muted">
+            Indique si le client vient au salon, ou si le professionnel se déplace.
+          </small>
+        </div>
+
+        <!-- =================================================== -->
+        <!-- 📍 Adresse du salon (visible uniquement si SALON) -->
+        <!-- =================================================== -->
+        <div class="form-group" *ngIf="shop.serviceMode === 'SALON'">
+          <div class="d-flex align-items-center justify-content-between">
+            <label class="mb-0">Adresse du salon</label>
+
+            <!-- Optionnel : mini badge "Enregistrée" (si tu veux) -->
+            <span class="badge rounded-pill" [ngClass]="isPlaceAddressFilled() ? 'bg-success' : 'bg-secondary'"
+              style="font-weight: 600;">
+              {{ isPlaceAddressFilled() ? 'Enregistrée' : 'Incomplète' }}
+            </span>
+          </div>
+
+          <small class="form-text text-muted mb-2">
+            Cette adresse est visible pour les clients qui viennent au salon.
+          </small>
+
+          <div class="row">
+            <div class="col-md-6">
+              <label for="addressLine1">Adresse ligne 1</label>
+              <input id="addressLine1" type="text" class="form-control" [(ngModel)]="shop.placeAddress.addressLine1"
+                placeholder="12 rue ..." />
+            </div>
+
+            <div class="col-md-6">
+              <label for="addressLine2">Adresse ligne 2</label>
+              <input id="addressLine2" type="text" class="form-control" [(ngModel)]="shop.placeAddress.addressLine2"
+                placeholder="Bâtiment, étage..." />
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-3">
+              <label for="postalCode">Code postal</label>
+              <input id="postalCode" type="text" class="form-control" [(ngModel)]="shop.placeAddress.postalCode"
+                placeholder="75002" />
+            </div>
+
+            <div class="col-md-6">
+              <label for="city">Ville</label>
+              <input id="city" type="text" class="form-control" [(ngModel)]="shop.placeAddress.city"
+                placeholder="Paris" />
+            </div>
+
+            <div class="col-md-3">
+              <label for="country">Pays</label>
+              <input id="country" type="text" class="form-control" [(ngModel)]="shop.placeAddress.country"
+                placeholder="FR" />
+            </div>
+          </div>
+
+          <!-- Label "complet" optionnel (utile si tu veux stocker/afficher une version lisible) -->
+          <div class="mt-2">
+            <label for="label">Adresse complète (label)</label>
+            <input id="label" type="text" class="form-control" [(ngModel)]="shop.placeAddress.label"
+              placeholder="12 rue ..., 75002 Paris, FR" />
+          </div>
+        </div>
+
+
+
+
         <!-- Heures d'ouverture (matin et après-midi) -->
         <div class="form-group">
           <label>{{ "ADMIN_SHOP.HOURS_MORNING" | translate }}</label>
