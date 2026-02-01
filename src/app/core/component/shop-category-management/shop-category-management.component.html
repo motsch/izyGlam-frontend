@@ -1,14 +1,14 @@
 <div class="container">
   <button class="btn btn-create float-end" (click)="openModal()" data-bs-toggle="tooltip" data-bs-placement="top">
-    <i class="fa fa-plus"></i> {{ "Ajouter une catégorie" | translate }}
+    <i class="fa fa-plus"></i> {{ "SHOP_CATEGORY_MANAGEMENT.ADD" | translate }}
   </button>
   <div class="table-responsive izy-table-responsive">
     <table class="table table-striped izy-table" *ngIf="!loading; else loadingTpl">
       <thead>
         <tr>
-          <th>{{ "Nom" | translate }}</th>
-          <th>{{ "Description" | translate }}</th>
-          <th>{{ "Actions" | translate }}</th>
+          <th>{{ "SHOP_CATEGORY_MANAGEMENT.NAME" | translate }}</th>
+          <th>{{ "SHOP_CATEGORY_MANAGEMENT.DESC" | translate }}</th>
+          <th>{{ "SHOP_CATEGORY_MANAGEMENT.ACTIONS" | translate }}</th>
         </tr>
       </thead>
 
@@ -19,12 +19,12 @@
 
           <td class="align-center">
             <button class="btn btn-edit" (click)="openModal(cat)">
-              <i class="fa fa-pencil-alt"></i> {{ "Modifier" | translate }}
+              <i class="fa fa-pencil-alt"></i> {{ "SHOP_CATEGORY_MANAGEMENT.UPDATE" | translate }}
             </button>
 
             <button class="btn btn-delete margin-top-5" (click)="deleteCategory(cat, i)"
               [disabled]="categories.length <= 1">
-              {{ "Supprimer" | translate }}
+              {{ "SHOP_CATEGORY_MANAGEMENT.DELETE" | translate }}
             </button>
           </td>
         </tr>
@@ -34,7 +34,7 @@
   <ng-template #loadingTpl>
     <div class="loading-box">
       <span class="loader"></span>
-      <span class="loading-text">Chargement des catégories…</span>
+      <span class="loading-text">{{ "SHOP_CATEGORY_MANAGEMENT.LOADING" | translate }}</span>
     </div>
   </ng-template>
 
@@ -48,8 +48,8 @@
           <h3 class="modal-title">
             {{
             editingCategoryId
-            ? ("Modifier la catégorie " + (modalCategory.name || ''))
-            : "Créons une nouvelle catégorie !"
+            ? (("SHOP_CATEGORY_MANAGEMENT.UPDATE_CAT" | translate) + " " + (modalCategory.name || ''))
+            : ("SHOP_CATEGORY_MANAGEMENT.CREATE_CAT" | translate)
             }}
           </h3>
 
@@ -61,13 +61,13 @@
         <div class="modal-body">
           <!-- NAME -->
           <div class="form-group">
-            <label for="catName">{{ "Nom" | translate }}</label>
+            <label for="catName">{{ "SHOP_CATEGORY_MANAGEMENT.NAME" | translate }}</label>
             <input type="text" id="catName" [(ngModel)]="modalCategory.name" class="form-control" required />
           </div>
 
           <!-- DESCRIPTION -->
           <div class="form-group">
-            <label for="catDesc">{{ "Description" | translate }}</label>
+            <label for="catDesc">{{ "SHOP_CATEGORY_MANAGEMENT.DESC" | translate }}</label>
             <textarea id="catDesc" [(ngModel)]="modalCategory.description" class="form-control" rows="4"
               [disabled]="!modalCategory.name"></textarea>
           </div>
@@ -76,7 +76,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" (click)="saveCategory()"
             [disabled]="saving || !modalCategory.name">
-            <span *ngIf="!saving">{{ "Enregistrer" | translate }}</span>
+            <span *ngIf="!saving">{{ "SHOP_CATEGORY_MANAGEMENT.SAVE" | translate }}</span>
             <span *ngIf="saving" class="loader"></span>
           </button>
         </div>

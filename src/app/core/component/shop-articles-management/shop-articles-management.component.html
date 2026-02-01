@@ -64,8 +64,8 @@
         <h3 class="modal-title">
           {{
           editingServiceIndex !== null
-          ? "Modifier la prestation " + modalService.type
-          : "Crééons une nouvelle prestation !"
+          ? ("SHOP_ARTICLES_MANAGEMENT.UPDATE_PRESTA" | translate)+ " " + modalService.type
+          : ("SHOP_ARTICLES_MANAGEMENT.CREATE_PRESTA" | translate)
           }}
         </h3>
         <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()">

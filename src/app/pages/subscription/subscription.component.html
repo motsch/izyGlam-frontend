@@ -1,12 +1,53 @@
-<div *ngIf="subscription">
-    <h2>Votre abonnement actuel : {{ subscription.abonnement }}</h2>
-    <p *ngIf="subscription.abonnement_end">Expire le : {{ subscription.abonnement_end | date:'longDate' }}</p>
-    <p *ngIf="subscription.isExpired">⚠️ Votre abonnement a expiré</p>
-  
-    <h3>Changer d'abonnement :</h3>
-    <button (click)="onSubscribe('basic', 1)">Passer à Basic (1 mois)</button>
-    <button (click)="onSubscribe('pro', 1)">Passer à Pro (1 mois)</button>
-    <button (click)="onSubscribe('custom', 1)">Offre personnalisée</button>
-    <button (click)="onSubscribe('free', 0)">Retour à Gratuit</button>
-  </div>
-  
+<section class="p-0 premium-success">
+    <div class="animation-circle-inverse">
+        <i></i><i></i><i></i>
+    </div>
+
+    <div class="thanks-bg">
+        <div class="thank-you">
+            <img [src]="imgStorageUrl + 'thanks.gif'" alt="thanks" class="img-fluid" />
+
+            <h2 class="mb-2">Bienvenue dans <span class="premium">IzyGlam Premium</span> 👑</h2>
+            <p class="subtitle mb-4">
+                Ton abonnement est actif. Tu peux profiter immédiatement de toutes les fonctionnalités Premium.
+            </p>
+
+            <div class="card">
+                <div class="row">
+                    <div class="label">Statut</div>
+                    <div class="value" [class.ok]="status === 'active' || status === 'trialing'">
+                        {{ status || '...' }}
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="label">Prochaine échéance</div>
+                    <div class="value">
+                        <ng-container *ngIf="periodEnd; else loadingEnd">
+                            {{ periodEnd | date:'dd/MM/yyyy' }}
+                        </ng-container>
+                        <ng-template #loadingEnd>Chargement…</ng-template>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="label">Formule</div>
+                    <div class="value">
+                        {{ (plan || 'premium') | titlecase }} • 89,90€/mois
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-primary" (click)="goDashboard()">Accéder au tableau de bord</button>
+                <button class="btn-secondary" (click)="goBilling()">Gérer mon abonnement</button>
+            </div>
+
+            <p class="small mt-4">
+                Si tu ne vois pas ton Premium tout de suite, patiente quelques secondes : Stripe peut mettre un petit
+                délai.
+            </p>
+        </div>
+    </div>
+</section>

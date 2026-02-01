@@ -35,22 +35,22 @@
     <!-- ✅ NOUVEAU : Documents comptables -->
     <div class="accounting-panel" *ngIf="shop?._id">
       <div class="accounting-head">
-        <div class="accounting-title">📄 Documents comptables</div>
-        <div class="accounting-sub">Choisis une période puis télécharge.</div>
+        <div class="accounting-title">📄 {{ "BANK.DOCUMENTS" | translate }}</div>
+        <div class="accounting-sub">{{ "BANK.PERIOD_CHOOSE" | translate }}</div>
       </div>
 
       <div class="accounting-controls">
 
         <div class="field">
-          <label>Période</label>
+          <label>{{ "BANK.PERIOD" | translate }}</label>
           <select [(ngModel)]="accountingMode" (change)="onAccountingParamsChange()">
-            <option value="week">Semaine</option>
-            <option value="month">Mois</option>
+            <option value="week">{{ "BANK.WEEK" | translate }}</option>
+            <option value="month">{{ "BANK.MONTH" | translate }}</option>
           </select>
         </div>
 
         <div class="field">
-          <label>Date</label>
+          <label>{{ "BANK.DATE" | translate }}</label>
           <input type="date" [(ngModel)]="accountingDate" (change)="onAccountingParamsChange()" />
         </div>
 
@@ -64,31 +64,31 @@
 
         <button class="btn-primary small" (click)="downloadAccountingCSV()"
           [disabled]="accountingLoading || !accountingData">
-          Télécharger CSV
+          {{ "BANK.CSV" | translate }}
         </button>
 
         <button class="btn-primary small alt" (click)="downloadAccountingPDF()"
           [disabled]="accountingLoading || !accountingData">
-          Télécharger PDF
+          {{ "BANK.PDF" | translate }}
         </button>
       </div>
 
       <!-- Mini aperçu -->
       <div class="accounting-preview" *ngIf="accountingData">
         <div class="chip">
-          <span>Période</span>
+          <span>{{ "BANK.PERIOD" | translate }}</span>
           <b>{{ accountingPeriodLabel }}</b>
         </div>
         <div class="chip">
-          <span>CA</span>
+          <span>{{ "BANK.CA" | translate }}</span>
           <b>{{ accountingData?.totals?.totalPrice | currency:'EUR' }}</b>
         </div>
         <div class="chip">
-          <span>Commissions</span>
+          <span>{{ "BANK.COMMISSIONS" | translate }}</span>
           <b>{{ accountingData?.totals?.totalCommission | currency:'EUR' }}</b>
         </div>
         <div class="chip">
-          <span>Net</span>
+          <span>{{ "BANK.NET" | translate }}</span>
           <b>{{ accountingData?.totals?.totalShopEarnings | currency:'EUR' }}</b>
         </div>
       </div>
@@ -115,9 +115,9 @@
       <div class="stripe-title-row">
         <div class="stripe-icon">💗</div>
         <div>
-          <h4 class="stripe-title">Paiements & Virements</h4>
+          <h4 class="stripe-title">{{ "BANK.PAY_VIREMENTS" | translate }}</h4>
           <p class="stripe-subtitle">
-            Active Stripe pour recevoir automatiquement tes revenus.
+            {{ "BANK.ACTIVE_STRIPE" | translate }}
           </p>
         </div>
       </div>
@@ -134,20 +134,20 @@
     <!-- Status -->
     <div class="stripe-card" *ngIf="!stripeLoading">
       <div class="stripe-row">
-        <span class="stripe-label">Onboarding</span>
+        <span class="stripe-label">{{ "BANK.ONBOARD" | translate }}</span>
         <span class="badge" [class.badge-ok]="me?.stripe?.onboardingStatus === 'complete'"
           [class.badge-warn]="me?.stripe?.onboardingStatus === 'pending'"
           [class.badge-bad]="!me?.stripe?.onboardingStatus || me?.stripe?.onboardingStatus === 'not_started'">
           {{
-          me?.stripe?.onboardingStatus === 'complete' ? 'Terminé'
-          : me?.stripe?.onboardingStatus === 'pending' ? 'En cours'
+          me?.stripe?.onboardingStatus === ("BANK.COMPLETE" | translate) ? ('BANK.END' | translate)
+          : me?.stripe?.onboardingStatus === ('BANK.PENDING' | translate) ? ('BANK.EN_COURS' | translate)
           : 'Non démarré'
           }}
         </span>
       </div>
 
       <div class="stripe-row">
-        <span class="stripe-label">Paiements</span>
+        <span class="stripe-label">{{ "BANK.PAY" | translate }}</span>
         <span class="badge" [class.badge-ok]="me?.stripe?.chargesEnabled"
           [class.badge-bad]="!me?.stripe?.chargesEnabled">
           {{ me?.stripe?.chargesEnabled ? 'Activés' : 'Désactivés' }}
@@ -155,7 +155,7 @@
       </div>
 
       <div class="stripe-row">
-        <span class="stripe-label">Virements</span>
+        <span class="stripe-label">{{ "BANK.VIREMENT" | translate }}</span>
         <span class="badge" [class.badge-ok]="me?.stripe?.payoutsEnabled"
           [class.badge-bad]="!me?.stripe?.payoutsEnabled">
           {{ me?.stripe?.payoutsEnabled ? 'Activés' : 'Désactivés' }}
@@ -163,11 +163,11 @@
       </div>
 
       <div class="stripe-hint" *ngIf="!me?.stripe?.chargesEnabled || !me?.stripe?.payoutsEnabled">
-        ⚠️ Il manque des informations. Clique sur <b>Compléter sur Stripe</b>.
+        ⚠️ <p [innerHTML]="'BANK.MISSING' | translate"></p>
       </div>
 
       <div class="stripe-hint ok" *ngIf="me?.stripe?.chargesEnabled && me?.stripe?.payoutsEnabled">
-        ✅ Tout est prêt. Tes virements automatiques peuvent fonctionner.
+        ✅ {{ "BANK.READY" | translate }}
       </div>
     </div>
 
@@ -182,13 +182,13 @@
       </button>
 
       <button type="button" class="btn-ghost" (click)="refreshStripeStatus()" [disabled]="stripeLoading">
-        Mettre à jour le statut
+        {{ "BANK.STATUS" | translate }}
       </button>
     </div>
 
     <div class="stripe-footnote">
-      Tes informations bancaires ne sont jamais stockées sur izyGlam.
-      Tout est saisi et sécurisé directement chez Stripe.
+      {{ "BANK.BANK_INFO" | translate }}
+      {{ "BANK.ALL_SECURISED" | translate }}
     </div>
 
   </div>

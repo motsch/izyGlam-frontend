@@ -127,7 +127,7 @@
               class="chip-btn"
               (click)="checkIfUserIsActivated()"
               [disabled]="checkingActivation || busy"
-              title="Vérifier l'activation"
+              [title]="'CREATION_SHOP_WIZARD.CHECK_ACTIVATION' | translate"
               aria-label="Vérifier l'activation"
               style="width:44px; padding:0; display:flex; align-items:center; justify-content:center;">
               <span *ngIf="!checkingActivation">↻</span>
@@ -149,20 +149,20 @@
         <!-- ✅ MODE PENDING : message + actions -->
         <div class="soft" *ngIf="pendingEmailVerification" style="margin-top:12px;">
           <div style="font-weight:900; margin-bottom:6px;">
-            ✅ Compte créé !
+            ✅ {{ "CREATION_SHOP_WIZARD.ACCOUNT_CREATE" | translate }}
           </div>
           <div style="line-height:1.5;">
-            On vient de t’envoyer un email de validation.<br />
-            <strong>Ouvre ta boîte mail</strong>, clique sur le lien, puis reviens ici et clique sur <strong>↻</strong>.
+            {{ "CREATION_SHOP_WIZARD.EMAIL_SEND" | translate }}<br />
+            <strong>{{ "CREATION_SHOP_WIZARD.OPEN_EMAIL" | translate }}</strong>, {{ "CREATION_SHOP_WIZARD.CLICK_LINK" | translate }} <strong>↻</strong>.
           </div>
 
           <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
             <button type="button" class="ghost" (click)="resendActivationEmail()" [disabled]="busy">
-              Renvoyer l’email
+              {{ "CREATION_SHOP_WIZARD.RESEND_EMAIL" | translate }}
             </button>
 
             <span *ngIf="lastActivationCheckAt" style="font-size:12px; opacity:.7; align-self:center;">
-              Dernière vérif : {{ lastActivationCheckAt | date:'shortTime' }}
+              {{ "CREATION_SHOP_WIZARD.LAST_VERIF" | translate }} : {{ lastActivationCheckAt | date:'shortTime' }}
             </span>
           </div>
         </div>

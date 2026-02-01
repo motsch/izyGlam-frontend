@@ -78,12 +78,12 @@
 
 <div class="modal" *ngIf="showCancelModal">
   <div class="modal-card">
-    <h3>Annuler la réservation ?</h3>
+    <h3>{{"ORDER_CARD.CANCEL_RESA" | translate}}</h3>
     <pre class="modal-text">{{ cancelModalText }}</pre>
 
     <div class="modal-actions">
-      <button class="btn-secondary" (click)="closeCancelModal()">Retour</button>
-      <button class="btn-danger" (click)="confirmCancelModal()">Confirmer</button>
+      <button class="btn-secondary" (click)="closeCancelModal()">{{"ORDER_CARD.RETURN" | translate}}</button>
+      <button class="btn-danger" (click)="confirmCancelModal()">{{"ORDER_CARD.CONFIRME" | translate}}</button>
     </div>
   </div>
 </div>

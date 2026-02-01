@@ -7,20 +7,20 @@
         <div class="thank-you">
             <img src="assets/images/logo.png" alt="izyGlam" class="img-fluid" />
 
-            <h2 class="mb-2">Gestion de ton <span class="premium">Premium</span> 👑</h2>
+            <h2 class="mb-2">{{"BILLING.MANAGE_YOUR_ABO" | translate}} <span class="premium">Premium</span> 👑</h2>
             <p class="subtitle mb-4">
-                Ici tu peux voir ton statut et gérer ton abonnement à tout moment.
+                {{"BILLING.HERE_YOU_CAN" | translate}}
             </p>
 
             <!-- ✅ CARD SUBSCRIPTION -->
             <div class="card" *ngIf="!loading; else loadingTpl">
                 <div class="row">
-                    <div class="label">Formule</div>
+                    <div class="label">{{"BILLING.FORMULA" | translate}}</div>
                     <div class="value">{{ plan || "—" }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="label">Statut</div>
+                    <div class="label">{{"BILLING.STATUS" | translate}}</div>
                     <div class="value" [class.ok]="isActiveOrTrialing" [class.warn]="cancelAtPeriodEnd">
                         <ng-container *ngIf="status; else noStatus">
                             {{ status }}
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="label">Prochaine échéance</div>
+                    <div class="label">{{"BILLING.NEXT" | translate}}</div>
                     <div class="value">
                         <ng-container *ngIf="periodEnd; else noEnd">
                             {{ periodEnd | date: "dd/MM/yyyy" }}
@@ -40,7 +40,7 @@
                 </div>
 
                 <div class="row" *ngIf="cancelAtPeriodEnd">
-                    <div class="label">Fin prévue</div>
+                    <div class="label">{{"BILLING.END" | translate}}</div>
                     <div class="value warn">
                         {{ periodEnd ? (periodEnd | date:'dd/MM/yyyy') : '—' }}
                     </div>
@@ -51,27 +51,27 @@
             <!-- ✅ CARD USER INFO -->
             <div class="card" *ngIf="!loading && me">
                 <div class="row">
-                    <div class="label">Nom</div>
+                    <div class="label">{{"BILLING.NAME" | translate}}</div>
                     <div class="value">{{ me.firstname }} {{ me.lastname }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="label">Email</div>
+                    <div class="label">{{"BILLING.EMAIL" | translate}}</div>
                     <div class="value">{{ me.email || "—" }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="label">Téléphone</div>
+                    <div class="label">{{"BILLING.PHONE" | translate}}</div>
                     <div class="value">{{ me.phone || "—" }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="label">Rôle</div>
+                    <div class="label">{{"BILLING.ROLE" | translate}}</div>
                     <div class="value">{{ me.role || "—" }}</div>
                 </div>
 
                 <div class="row" *ngIf="mainAddress as a">
-                    <div class="label">Adresse principale</div>
+                    <div class="label">{{"BILLING.ADDRESS" | translate}}</div>
                     <div class="value">
                         {{ a.street }}, {{ a.code_postal }} {{ a.city }}, {{ a.country }}
                     </div>
@@ -81,34 +81,34 @@
             <!-- ✅ CARD BANK + izyPhone -->
             <div class="card" *ngIf="!loading && me">
                 <div class="row">
-                    <div class="label">Numéro SMS (izyPhone)</div>
+                    <div class="label">{{"BILLING.SMS" | translate}}</div>
                     <div class="value">{{ me.izyPhone || "—" }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="label">Assistant activé</div>
+                    <div class="label">{{"BILLING.ASSISTANT" | translate}}</div>
                     <div class="value" [class.ok]="me.assistantProEnabled" [class.warn]="!me.assistantProEnabled">
                         {{ me.assistantProEnabled ? "Oui" : "Non" }}
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="label">Banque</div>
+                    <div class="label">{{"BILLING.BANK" | translate}}</div>
                     <div class="value">{{ me.bank?.bank_name || "—" }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="label">Titulaire</div>
+                    <div class="label">{{"BILLING.OWNER" | translate}}</div>
                     <div class="value">{{ me.bank?.holder_name || "—" }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="label">IBAN</div>
+                    <div class="label">{{"BILLING.IBAN" | translate}}</div>
                     <div class="value">{{ me.bank?.iban || "—" }}</div>
                 </div>
 
                 <div class="row">
-                    <div class="label">BIC</div>
+                    <div class="label">{{"BILLING.BIC" | translate}}</div>
                     <div class="value">{{ me.bank?.bic || "—" }}</div>
                 </div>
             </div>
@@ -117,7 +117,7 @@
             <ng-template #loadingTpl>
                 <div class="card">
                     <div class="row">
-                        <div class="label">Chargement…</div>
+                        <div class="label">{{"BILLING.LOAD" | translate}}</div>
                         <div class="value">⏳</div>
                     </div>
                 </div>
@@ -126,30 +126,30 @@
             <!-- ✅ ACTIONS -->
             <div class="actions">
                 <button class="btn-primary" (click)="openPortal()" [disabled]="actionLoading">
-                    Gérer sur Stripe
+                    {{"BILLING.MANAGE" | translate}}
                 </button>
 
                 <button class="btn-secondary" *ngIf="!cancelAtPeriodEnd" (click)="cancelSubscription()"
                     [disabled]="actionLoading || loading">
-                    Annuler l’abonnement
+                    {{"BILLING.CANCEL" | translate}}
                 </button>
 
                 <button class="btn-secondary" *ngIf="cancelAtPeriodEnd" (click)="resumeSubscription()"
                     [disabled]="actionLoading || loading">
-                    Réactiver l’abonnement
+                    {{"BILLING.ACTIVATE" | translate}}
                 </button>
             </div>
 
-            <button class="link mt-3" (click)="goDashboard()">← Retour au dashboard</button>
+            <button class="link mt-3" (click)="goDashboard()">← {{"BILLING.BACK" | translate}}</button>
 
             <p class="small mt-4" *ngIf="cancelAtPeriodEnd">
-                Ton abonnement est planifié pour s’arrêter le
+                {{"BILLING.YOUR_ABO" | translate}}
                 <strong>{{ periodEnd ? (periodEnd | date:'dd/MM/yyyy') : '—' }}</strong>.
-                Tu gardes le Premium jusqu’à cette date.
+                {{"BILLING.YOU_KEEP" | translate}}
             </p>
 
             <p class="small mt-4" *ngIf="!cancelAtPeriodEnd && isActiveOrTrialing">
-                Ton Premium est actif. Prochaine échéance :
+                {{"BILLING.ACTIVE_ABO" | translate}}
                 <strong>{{ periodEnd ? (periodEnd | date:'dd/MM/yyyy') : '—' }}</strong>.
             </p>
 

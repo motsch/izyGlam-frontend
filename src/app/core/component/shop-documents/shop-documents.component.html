@@ -1,6 +1,6 @@
 <div class="documents-wrapper">
-  <h2>Documents professionnels</h2>
-  <p class="intro">Fournis ou mets à jour tes documents pour valider ton profil professionnel.</p>
+  <h2>{{"SHOP_DOCUMENT.TITLE" | translate}}</h2>
+  <p class="intro">{{"SHOP_DOCUMENT.TO_GIVE" | translate}}</p>
 
   <!-- Section DOCUMENTS -->
   <div class="documents-grid">
@@ -9,8 +9,8 @@
     <div class="doc-card">
       <div class="doc-header">
         <div>
-          <h3>Pièce d'identité</h3>
-          <p>Carte d’identité, passeport ou titre de séjour.</p>
+          <h3>{{"SHOP_DOCUMENT.ID" | translate}}</h3>
+          <p>{{"SHOP_DOCUMENT.ID2" | translate}}</p>
         </div>
         <span class="status-pill" [ngClass]="getStatusClass(verification?.identity?.status)">
           {{ getStatusLabel(verification?.identity?.status) }}
@@ -20,7 +20,7 @@
       <div class="doc-body">
         <label class="doc-upload">
           <input type="file" (change)="onFileSelected($event, 'identity')" accept=".pdf,.jpg,.jpeg,.png"/>
-          <span>Choisir un fichier</span>
+          <span>{{"SHOP_DOCUMENT.CHOOSE" | translate}}</span>
         </label>
 
         <div class="file-name" *ngIf="identityFileName">{{ identityFileName }}</div>
@@ -28,7 +28,7 @@
         <div class="existing-doc" *ngIf="verification?.identity?.file">
           <button type="button" class="doc-link-btn"
                   (click)="openPreview(verification.identity.file)">
-            Voir document actuel
+            {{"SHOP_DOCUMENT.ACTUAL_DOC" | translate}}
           </button>
         </div>
       </div>
@@ -38,8 +38,8 @@
     <div class="doc-card">
       <div class="doc-header">
         <div>
-          <h3>Assurance professionnelle</h3>
-          <p>Document obligatoire pour exercer légalement.</p>
+          <h3>{{"SHOP_DOCUMENT.ASSURANCE" | translate}}</h3>
+          <p>{{"SHOP_DOCUMENT.DOC_FORCED" | translate}}</p>
         </div>
         <span class="status-pill" [ngClass]="getStatusClass(verification?.insurance?.status)">
           {{ getStatusLabel(verification?.insurance?.status) }}
@@ -49,7 +49,7 @@
       <div class="doc-body">
         <label class="doc-upload">
           <input type="file" (change)="onFileSelected($event, 'insurance')" accept=".pdf,.jpg,.jpeg,.png"/>
-          <span>Choisir un fichier</span>
+          <span>{{"SHOP_DOCUMENT.CHOOSE" | translate}}</span>
         </label>
 
         <div class="file-name" *ngIf="insuranceFileName">{{ insuranceFileName }}</div>
@@ -57,7 +57,7 @@
         <div class="existing-doc" *ngIf="verification?.insurance?.file">
           <button type="button" class="doc-link-btn"
                   (click)="openPreview(verification.insurance.file)">
-            Voir document actuel
+            {{"SHOP_DOCUMENT.ACTUAL_DOC" | translate}}
           </button>
         </div>
       </div>
@@ -67,8 +67,8 @@
     <div class="doc-card">
       <div class="doc-header">
         <div>
-          <h3>Kbis (facultatif)</h3>
-          <p>Recommandé si tu es une société.</p>
+          <h3>{{"SHOP_DOCUMENT.KBIS" | translate}}</h3>
+          <p>{{"SHOP_DOCUMENT.INFO_COMPANY" | translate}}</p>
         </div>
         <span class="status-pill" [ngClass]="getStatusClass(verification?.kbis?.status)">
           {{ getStatusLabel(verification?.kbis?.status) }}
@@ -78,7 +78,7 @@
       <div class="doc-body">
         <label class="doc-upload">
           <input type="file" (change)="onFileSelected($event, 'kbis')" accept=".pdf,.jpg,.jpeg,.png"/>
-          <span>Choisir un fichier</span>
+          <span>{{"SHOP_DOCUMENT.CHOOSE" | translate}}</span>
         </label>
 
         <div class="file-name" *ngIf="kbisFileName">{{ kbisFileName }}</div>
@@ -86,7 +86,7 @@
         <div class="existing-doc" *ngIf="verification?.kbis?.file">
           <button type="button" class="doc-link-btn"
                   (click)="openPreview(verification.kbis.file)">
-            Voir document actuel
+            {{"SHOP_DOCUMENT.ACTUAL_DOC" | translate}}
           </button>
         </div>
       </div>
@@ -94,7 +94,7 @@
   </div>
 
   <button class="save-btn" (click)="uploadDocuments()" [disabled]="isLoading">
-    {{ isLoading ? 'Envoi...' : 'Enregistrer les documents' }}
+    {{ isLoading ? ('SHOP_DOCUMENT.SENDING' | translate) : ('SHOP_DOCUMENT.SAVE_DOCS' | translate) }}
   </button>
 </div>
 
@@ -121,8 +121,8 @@
 
       <!-- Autre type -->
       <div *ngSwitchDefault class="doc-modal-other">
-        <p>Impossible de prévisualiser ce type de fichier.</p>
-        <a [href]="previewUrl" target="_blank">Ouvrir dans un nouvel onglet</a>
+        <p>{{"SHOP_DOCUMENT.IMPOSSIBLE" | translate}}</p>
+        <a [href]="previewUrl" target="_blank">{{"SHOP_DOCUMENT.NEW_ONGLET" | translate}}</a>
       </div>
 
     </ng-container>

@@ -2,37 +2,37 @@
 
   <div class="topbar">
     <div class="title">
-      <h2>Fake Posts</h2>
-      <p>Gère les posts proposés aux prestataires (Instagram / TikTok / Facebook)</p>
+      <h2>{{ "FAKE_POST.TITLE" | translate }}</h2>
+      <p>{{ "FAKE_POST.SUB_TITLE" | translate }}</p>
     </div>
 
     <button class="btn-primary" type="button" (click)="openCreate()">
-      + Ajouter un post
+      + {{ "FAKE_POST.ADD_POST" | translate }}
     </button>
   </div>
 
   <div class="filters">
-    <input type="text" [(ngModel)]="q" (input)="applyFilters()" placeholder="Rechercher (texte, ton, catégorie...)" />
+    <input type="text" [(ngModel)]="q" (input)="applyFilters()" [placeholder]="'FAKE_POST.SEARCH' | translate" />
 
     <select [(ngModel)]="shopType" (change)="applyFilters()">
-      <option value="all">Toutes catégories</option>
+      <option value="all">{{ "FAKE_POST.ALL_CATEGORIES" | translate }}</option>
       <option *ngFor="let t of shopTypeOptions" [value]="t">{{ t }}</option>
     </select>
 
     <select [(ngModel)]="activeFilter" (change)="applyFilters()">
-      <option value="all">Tous</option>
-      <option value="active">Actifs</option>
-      <option value="inactive">Inactifs</option>
+      <option value="all">{{ "FAKE_POST.ALL" | translate }}</option>
+      <option value="active">{{ "FAKE_POST.ACTIFS" | translate }}</option>
+      <option value="inactive">{{ "FAKE_POST.INACTIF" | translate }}</option>
     </select>
   </div>
 
   <div class="table-card" *ngIf="!loading; else loadingTpl">
     <div class="table-head">
-      <div>Plateforme</div>
-      <div>Catégories</div>
-      <div>Texte</div>
-      <div>Statut</div>
-      <div class="right">Actions</div>
+      <div>{{ "FAKE_POST.PLATFORM" | translate }}</div>
+      <div>{{ "FAKE_POST.CATEGORIES" | translate }}</div>
+      <div>{{ "FAKE_POST.TEXT" | translate }}</div>
+      <div>{{ "FAKE_POST.STATUS" | translate }}</div>
+      <div class="right">{{ "FAKE_POST.ACTIONS" | translate }}</div>
     </div>
 
     <div class="row" *ngFor="let p of paged">
@@ -48,32 +48,32 @@
 
       <div>
         <span class="status" [class.on]="p.active" [class.off]="!p.active">
-          {{ p.active ? 'Actif' : 'Inactif' }}
+          {{ p.active ? ('FAKE_POST.ACTIF' | translate) : ('FAKE_POST.INACTIF' | translate) }}
         </span>
       </div>
 
       <div class="actions right">
-        <button class="btn-ghost" type="button" (click)="openEdit(p)">Modifier</button>
+        <button class="btn-ghost" type="button" (click)="openEdit(p)">{{ "FAKE_POST.UPDATE" | translate }}</button>
         <button class="btn-ghost" type="button" (click)="toggleActive(p)">
           {{ p.active ? 'Désactiver' : 'Activer' }}
         </button>
-        <button class="btn-danger" type="button" (click)="delete(p)">Supprimer</button>
+        <button class="btn-danger" type="button" (click)="delete(p)">{{ "FAKE_POST.DELETE" | translate }}</button>
       </div>
     </div>
 
     <div class="pagination" *ngIf="filtered.length > 0">
       <button class="btn-ghost" type="button" (click)="prevPage()" [disabled]="page <= 1">←</button>
-      <div class="page-info">Page {{ page }} / {{ totalPages }} — {{ filtered.length }} posts</div>
+      <div class="page-info">{{ "FAKE_POST.PAGE" | translate }} {{ page }} / {{ totalPages }} — {{ filtered.length }} {{ "FAKE_POST.POSTS" | translate }}</div>
       <button class="btn-ghost" type="button" (click)="nextPage()" [disabled]="page >= totalPages">→</button>
     </div>
 
     <div class="empty" *ngIf="filtered.length === 0">
-      Aucun post pour ces filtres.
+      {{ "FAKE_POST.NONE_POST" | translate }}
     </div>
   </div>
 
   <ng-template #loadingTpl>
-    <div class="loading">Chargement…</div>
+    <div class="loading">{{ "FAKE_POST.LOADING" | translate }}</div>
   </ng-template>
 
   <!-- MODAL -->
@@ -81,35 +81,35 @@
     <div class="modal-dialog" (click)="$event.stopPropagation()">
       <div class="modal-content">
         <div class="modal-header">
-          <h3>{{ editing ? 'Modifier le post' : 'Créer un post' }}</h3>
+          <h3>{{ editing ? ('FAKE_POST.UPDATE_POST' | translate) : ('FAKE_POST.CREATE_POST' | translate) }}</h3>
           <button class="btn-close" type="button" (click)="closeModal()">✕</button>
         </div>
 
         <div class="modal-body">
-          <label>Catégories (séparées par des virgules)</label>
+          <label>{{ "FAKE_POST.CAT" | translate }}</label>
 
           <select [(ngModel)]="form.shopTypesText">
-            <option value="all">Toutes catégories</option>
+            <option value="all">{{ "FAKE_POST.ALL_CATEGORIES" | translate }}</option>
             <option *ngFor="let t of shopTypeOptions" [value]="t">{{ t }}</option>
           </select>
           <!--<input [(ngModel)]="form.shopTypesText" placeholder="ex: coiffure, manucure ou all" />-->
 
-          <label>Ton (optionnel)</label>
-          <input [(ngModel)]="form.tone" placeholder="premium, warm, short..." />
+          <label>{{ "FAKE_POST.TON" | translate }}</label>
+          <input [(ngModel)]="form.tone" [placeholder]="'FAKE_POST.TONE' | translate" />
 
-          <label>Texte</label>
-          <textarea [(ngModel)]="form.text" rows="8" placeholder="Ton post avec 'shopName' etc..."></textarea>
+          <label>{{ "FAKE_POST.TEXT" | translate }}</label>
+          <textarea [(ngModel)]="form.text" rows="8" [placeholder]="'FAKE_POST.YOUR_POST' | translate"></textarea>
 
           <label class="row-inline">
             <input type="checkbox" [(ngModel)]="form.active" />
-            Actif
+            {{ "FAKE_POST.ACTIF" | translate }}
           </label>
         </div>
 
         <div class="modal-footer">
-          <button class="btn-secondary" type="button" (click)="closeModal()">Annuler</button>
+          <button class="btn-secondary" type="button" (click)="closeModal()">{{ "FAKE_POST.CANCEL" | translate }}</button>
           <button class="btn-primary" type="button" (click)="save()">
-            {{ editing ? 'Enregistrer' : 'Créer' }}
+            {{ editing ? ('FAKE_POST.SAVE' | translate) : ('FAKE_POST.CREATE' | translate) }}
           </button>
         </div>
       </div>

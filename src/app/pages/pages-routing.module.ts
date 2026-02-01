@@ -4,7 +4,6 @@ import { AuthGuard } from '../core/services/auth-guard.service';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ShopComponent } from './shop/shop.component';
-import { TermsComponent } from './terms/terms.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { GuestGuard } from '../core/services/guest-guard.service';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
@@ -19,7 +18,6 @@ import { CreationCompanyComponent } from './creation-company/creation-company.co
 import { SponsorComponent } from './sponsor/sponsor.component';
 import { FidelityComponent } from './fidelity/fidelity.component';
 import { PricePlansComponent } from './price-plans/price-plans.component';
-import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
 import { PayementValidationComponent } from './payement-validation/payement-validation.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
@@ -29,6 +27,7 @@ import { QuickComponent } from './quick/quick.component';
 import { DashboardComponent } from '../core/component/dashboard/dashboard.component';
 import { BillingComponent } from './billing/billing.component';
 import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 const routes: Routes = [
     {
@@ -45,7 +44,6 @@ const routes: Routes = [
         component: ShopComponent,
         canActivate: [],
     },
-    { path: 'terms', component: TermsComponent, canActivate: [AuthGuard] },
     {
         path: 'coming-soon/:country',
         component: ComingSoonComponent,

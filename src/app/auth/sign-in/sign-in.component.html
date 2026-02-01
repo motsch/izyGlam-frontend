@@ -1,34 +1,69 @@
 <section class="auth-page">
-   <app-header [connected]="false" [page]="'connected'"></app-header>
-   <div class="auth-card">
-      <div class="text-left">
-         <!--<img src="assets/images/title-line.png" alt="ligne de titre" class="img-fluid line">-->
-         <p class="welcome-text">{{ 'LOGIN.TITLE' | translate }}</p>
+  <app-header [connected]="false" [page]="'connected'"></app-header>
+
+  <div class="auth-card">
+    <div class="text-left">
+      <p class="welcome-text">{{ 'LOGIN.TITLE' | translate }}</p>
+    </div>
+
+    <form class="auth-form" (ngSubmit)="onSubmit()">
+      <!-- EMAIL -->
+      <div class="form-group field">
+        <label class="izy-label">{{ placeholderEmail }}</label>
+
+        <input
+          class="form-control izy-input"
+          name="login[username]"
+          [(ngModel)]="user.login"
+          type="email"
+          [required]="true"
+          [placeholder]="placeholderEmail"
+          autocomplete="email"
+          autocapitalize="none"
+          spellcheck="false"
+        />
       </div>
-      <form class="auth-form">
-         <div class="form-group">
-            <input [required]="true" class="form-control" name="login[username]" [(ngModel)]="user.login" type="email"
-               [placeholder]="placeholderEmail">
-         </div>
-         <div class="form-group">
-            <input 
-              id="inputPassword" 
-              [type]="isPasswordVisible ? 'text' : 'password'" 
-              class="form-control" 
-              [required]="true" 
-              [(ngModel)]="user.password" 
-              name="login[password]" 
-              [placeholder]="placeholderPassword">
-            
-            <a (click)="togglePasswordVisibility()" class="show-pass">
-              <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
-            </a>
-          </div>
-         <div class="form-group">
-            <a routerLink="/forget-password" class="forgot-pass">{{ 'LOGIN.FORGET_PASSWORD' | translate }}</a>
-         </div>
-         <button type="submit" class="btn submit" (click)="onSubmit()">{{ 'LOGIN.CONTINUER' | translate }}</button>
-         <app-connexion-buttons [forConnection]="true"></app-connexion-buttons>
-      </form>
-   </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group field has-trailing">
+        <label class="izy-label">{{ placeholderPassword }}</label>
+
+        <input
+          id="inputPassword"
+          class="form-control izy-input"
+          name="login[password]"
+          [(ngModel)]="user.password"
+          [type]="isPasswordVisible ? 'text' : 'password'"
+          [required]="true"
+          [placeholder]="placeholderPassword"
+          autocomplete="current-password"
+          autocapitalize="none"
+          spellcheck="false"
+        />
+
+        <button
+          type="button"
+          (click)="togglePasswordVisibility()"
+          class="trailing-btn"
+          [attr.aria-label]="isPasswordVisible ? 'Masquer le mot de passe' : 'Afficher le mot de passe'"
+        >
+          <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </button>
+      </div>
+
+      <!-- FORGOT -->
+      <div class="form-group">
+        <a routerLink="/forget-password" class="forgot-pass">
+          {{ 'LOGIN.FORGET_PASSWORD' | translate }}
+        </a>
+      </div>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="btn submit">
+        {{ 'LOGIN.CONTINUER' | translate }}
+      </button>
+
+      <app-connexion-buttons [forConnection]="true"></app-connexion-buttons>
+    </form>
+  </div>
 </section>

@@ -1,95 +1,285 @@
+/* =========================
+   IzyGlam Login (Premium)
+   ========================= */
+
+:root {
+  --izy-bg: #ffffff;
+  --izy-text: #161616;
+  --izy-muted: rgba(22, 22, 22, 0.55);
+
+  /* Rose doux + premium */
+  --izy-rose: #e79aa8;
+  --izy-rose-strong: #d96a83;
+
+  --izy-border: rgba(22, 22, 22, 0.10);
+  --izy-border-strong: rgba(22, 22, 22, 0.18);
+
+  --izy-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --izy-shadow-hover: 0 14px 40px rgba(0, 0, 0, 0.08);
+
+  --izy-radius: 14px;
+}
+
+/* =========================
+   Page & Card
+   ========================= */
+
 .auth-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 80px; /* ou la hauteur de ton header */
+  padding-top: 80px;
   padding-bottom: 40px;
-  background: #fff;
   min-height: 100vh;
   box-sizing: border-box;
+
+  background:
+    radial-gradient(1200px 500px at 20% 0%, rgba(231, 154, 168, 0.22), transparent 55%),
+    radial-gradient(900px 500px at 80% 10%, rgba(217, 106, 131, 0.14), transparent 55%),
+    #fff;
 }
 
 .auth-card {
   width: 350px;
   padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.034);
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.90);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--izy-shadow);
 }
 
 .text-left {
   text-align: left;
 }
 
-.welcome-text,
-.small {
-  margin: 10px 0;
+.welcome-text {
+  margin: 10px 0 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--izy-text);
 }
 
-.form-control {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+/* =========================
+   Fields
+   ========================= */
+
+.form-group {
+  margin-bottom: 14px;
 }
+
+.field {
+  position: relative;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.60);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   Label (TOUJOURS visible)
+   ========================= */
+
+.izy-label {
+  display: block;
+  margin: 2px 0 8px;
+  padding-left: 4px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+
+  color: rgba(22, 22, 22, 0.55);
+
+  pointer-events: none;
+  opacity: 1;
+  transform: none;
+
+  transition: color 0.15s ease;
+}
+
+/* Label devient rose quand le champ est focus */
+.field:focus-within .izy-label {
+  color: rgba(217, 106, 131, 0.95);
+}
+
+/* =========================
+   Input
+   ========================= */
+
+.form-control.izy-input {
+  width: 100%;
+  height: 54px;
+  padding: 14px 14px;
+  border-radius: var(--izy-radius);
+
+  border: 1px solid rgba(22, 22, 22, 0.10);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(248, 248, 248, 0.95)
+  );
+
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+
+  color: var(--izy-text);
+  outline: none;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+/* Placeholder discret (important) */
+.form-control.izy-input::placeholder {
+  color: rgba(22, 22, 22, 0.35);
+}
+
+/* Hover */
+.form-control.izy-input:hover {
+  border-color: var(--izy-border-strong);
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+}
+
+/* Focus */
+.form-control.izy-input:focus {
+  border-color: rgba(217, 106, 131, 0.60);
+  box-shadow:
+    0 0 0 5px rgba(231, 154, 168, 0.22),
+    0 12px 30px rgba(0, 0, 0, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  transform: translateY(-1px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(252, 245, 247, 0.92)
+  );
+}
+
+/* =========================
+   Trailing button (eye)
+   ========================= */
+
+.has-trailing .form-control.izy-input {
+  padding-right: 52px;
+}
+
+.trailing-btn {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.75);
+
+  color: rgba(22, 22, 22, 0.65);
+  cursor: pointer;
+
+  display: grid;
+  place-items: center;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease;
+
+  i {
+    font-size: 14px;
+  }
+}
+
+.trailing-btn:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgba(22, 22, 22, 0.85);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  transform: scale(1.02);
+}
+
+.trailing-btn:active {
+  transform: scale(0.98);
+}
+
+/* =========================
+   Forgot password
+   ========================= */
+
+.forgot-pass {
+  display: inline-block;
+  margin-top: 2px;
+  color: rgba(217, 106, 131, 0.95);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.forgot-pass:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Buttons
+   ========================= */
 
 .btn {
   display: block;
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 10px;
-  color: #fff;
-  background-color: #000;
+
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
+
   cursor: pointer;
+  font-weight: 700;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s ease;
 }
 
-.btn.primary {
-  background-color: #1b1b1b;
+.btn.submit {
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    rgba(217, 106, 131, 0.92),
+    rgba(217, 106, 131, 0.78)
+  );
+  box-shadow: 0 16px 34px rgba(217, 106, 131, 0.22);
 }
 
-.btn.google {
-  background-color: #e8e8e8; /* Google's blue */
-  color: #000;
+.btn.submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 42px rgba(217, 106, 131, 0.28);
 }
 
-.btn.google:hover {
-  background-color: #b0b0b0; /* Google's blue */
-  color: #000;
+.btn.submit:active {
+  transform: translateY(0);
+  opacity: 0.95;
 }
 
-.or-separator {
-  text-align: center;
-  border-top: 1px solid #ccc;
-  line-height: 0.1em;
-  margin: 20px 0;
-}
+/* =========================
+   Font Awesome (KEEP AS IS)
+   ========================= */
 
-.or-separator span {
-  background: #fff;
-  padding: 0 10px;
-}
-
-.small {
-  font-size: 0.8em;
-  color: #666;
-  text-align: left;
-  margin-top: 20px;
-}
-
-.qr {
-  background: none;
-  color: #000;
-  border: 1px solid #000;
-}
-
-.btn.qr:hover {
-  background-color: #e8e8e8; /* Google's blue */
-  color: #000;
-}
-.btn-icon {
-  width: 15px;
-  height: 15px;
-  margin-top: -2px;
-  margin-right: 5px;
+.fa {
+  margin-top: -5px;
+  margin-left: -10px;
 }

@@ -1,34 +1,35 @@
 <div class="payment-container margin-top-70">
     <header class="payment-header">
         <img src="assets/images/logo.png" alt="IzyGlam Logo" class="logo">
-        <a (click)="goToAbonnement()" class="change-subscription">Changer d'abonnement</a>
+        <a (click)="goToAbonnement()" class="change-subscription">{{"PAYEMENT_PRO.CHANGE_ABO" | translate}}</a>
     </header>
     <section class="subscription-details">
         <div class="plan">
             <div>
                 <h2 *ngIf="abonnement === 'premium'">👑 {{ "TARIF.PREMIUM" | translate }}</h2>
-                <p>Passez à izyGlam Premium</p>
+                <p>{{"PAYEMENT_PRO.GO_TO_PREMIUM" | translate}}</p>
             </div>
             <div class="price" *ngIf="abonnement === 'premium'">89,90 €<span>/mois</span></div>
         </div>
         <ul class="benefits">
-            <li>Facturation mensuelle à partir d'aujourd'hui.</li>
-            <li>Annulation possible à tout moment. <a href="#">Offre soumise à conditions</a>.</li>
+            <li>{{"PAYEMENT_PRO.FACTURATION" | translate}}</li>
+            <li>{{"PAYEMENT_PRO.OK_TO_CANCEL" | translate}} <a href="#">{{"PAYEMENT_PRO.CONDITION" | translate}}</a>.
+            </li>
         </ul>
     </section>
     <section class="address">
-        <h3>Adresse</h3>
+        <h3>{{"PAYEMENT_PRO.ADDRESS" | translate}}</h3>
         <div class="address-info">
             <span>France<br>FR</span>
-            <a href="#" class="edit">Modifier</a>
+            <a href="#" class="edit">{{"PAYEMENT_PRO.CHANGE" | translate}}</a>
         </div>
     </section>
     <section class="payment-method">
-        <h3>Mode de paiement</h3>
+        <h3>{{"PAYEMENT_PRO.PAIEMENT" | translate}}</h3>
         <form>
             <label>
                 <input type="radio" name="payment-method" checked>
-                Carte de crédit ou de débit
+                {{"PAYEMENT_PRO.CREDIT_CARD" | translate}}
                 <div class="card-icons">
                     <img src="assets/payment/visa.png" alt="Visa">
                     <img src="assets/payment/mastercard.png" alt="MasterCard">
@@ -66,26 +67,23 @@
     </section>
 
     <section class="summary">
-        <h3>Résumé :</h3>
+        <h3>{{"PAYEMENT_PRO.RESUME" | translate}}</h3>
         <div class="summary-line subscription-details">
-            <p class="mini-badge">Sans engagement • Résiliable à tout moment</p>
+            <p class="mini-badge">{{"PAYEMENT_PRO.NO_ENGAGE" | translate}}</p>
             <div class="plan">
                 <div>
                     <h2>👑 {{ "TARIF.PREMIUM" | translate }}</h2>
                 </div>
             </div>
         </div>
-        <div class="total">Total actuel :
+        <div class="total">{{"PAYEMENT_PRO.TOTAL" | translate}}
             <strong *ngIf="abonnement === 'premium'">89,90 €</strong>
         </div>
     </section>
     <section class="confirmation">
         <p class="terms">
-            Vous consentez expressément à ce que nous vous fournissions immédiatement votre abonnement izyGlam et
-            acceptez de perdre votre droit de rétractation. [...] Pour en savoir plus sur la façon dont izyGlam
-            recueille, utilise, partage et protège vos données personnelles, veuillez consulter la <a href="#">Politique
-                de confidentialité</a>.
+            {{"PAYEMENT_PRO.CONSENT" | translate}} <a href="#">{{"PAYEMENT_PRO.CONFIDENTIAL" | translate}}</a>.
         </p>
-        <button class="confirm-button" (click)="finalizePurchase()">Finaliser l'achat</button>
+        <button class="confirm-button" (click)="finalizePurchase()">{{"PAYEMENT_PRO.FINALISE" | translate}}</button>
     </section>
 </div>

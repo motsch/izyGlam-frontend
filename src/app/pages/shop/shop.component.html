@@ -72,7 +72,7 @@
                     />
                   </svg>
                 </span>
-                <span class="share-pill__text">Partager</span>
+                <span class="share-pill__text">{{"SHOP.SHARE" | translate}}</span>
               </button>
             </div>
             <!-- Modal fallback (desktop / navigateurs non compatibles) -->
@@ -87,17 +87,17 @@
               </div>
 
               <div class="share-actions">
-                <a class="share-action" [href]="mailToUrl" target="_blank" rel="noopener">Email</a>
+                <a class="share-action" [href]="mailToUrl" target="_blank" rel="noopener">{{"SHOP.EMAIL" | translate}}</a>
                 <a class="share-action" [href]="whatsAppUrl" target="_blank" rel="noopener">WhatsApp</a>
                 <a class="share-action" [href]="instagramUrl" target="_blank" rel="noopener">Instagram</a>
                 <a class="share-action" [href]="tiktokUrl" target="_blank" rel="noopener">TikTok</a>
 
-                <button class="share-action" (click)="toggleQr()">QR Code</button>
+                <button class="share-action" (click)="toggleQr()">{{"SHOP.QR" | translate}}</button>
               </div>
 
               <div class="share-qr" *ngIf="qrOpen">
                 <qrcode [qrdata]="shareUrl" [width]="180" [errorCorrectionLevel]="'M'"></qrcode>
-                <div class="share-qr-hint">Scanne pour ouvrir la page.</div>
+                <div class="share-qr-hint">{{"SHOP.SCAN" | translate}}</div>
               </div>
             </div>
 
@@ -105,7 +105,7 @@
               <div *ngIf="shopInfo.isPremium && izyPhone" class="izyPhone-box">
                 <a class="izyPhone-call" [href]="'tel:' + izyPhone" aria-label="Appeler le salon">
                   <span class="icon">📞</span>
-                  <span class="label">Appeler pour réserver</span>
+                  <span class="label">{{"SHOP.CALL" | translate}}</span>
                   <span class="number">{{ izyPhone }}</span>
                 </a>
               </div>

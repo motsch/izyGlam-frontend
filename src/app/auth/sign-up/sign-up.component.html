@@ -1,82 +1,177 @@
 <section class="auth-page">
-   <app-header [connected]="false" [page]="'connected'"></app-header>
-   <div class="auth-card">
-      <div class="text-left">
-         <p class="welcome-text">{{ 'SIGNUP.TITLE' | translate }}</p>
+  <app-header [connected]="false" [page]="'connected'"></app-header>
+
+  <div class="auth-card">
+    <div class="text-left">
+      <p class="welcome-text">{{ 'SIGNUP.TITLE' | translate }}</p>
+    </div>
+
+    <form class="auth-form" #signupForm="ngForm" novalidate>
+
+      <!-- GENRE -->
+      <div class="form-group field">
+        <label class="izy-label">{{ 'SIGNUP.GENRE' | translate }}</label>
+
+        <select
+          class="form-control izy-input"
+          [(ngModel)]="user.sex"
+          name="sex"
+          required
+        >
+          <option value="" disabled selected hidden>
+            {{ 'SIGNUP.CHOOSE' | translate }}
+          </option>
+          <option value="male">{{ 'SIGNUP.SEX_MALE' | translate }}</option>
+          <option value="female">{{ 'SIGNUP.SEX_FEMALE' | translate }}</option>
+        </select>
+
+        <div *ngIf="error.sex" class="error">{{ error.sex }}</div>
       </div>
-      <form class="auth-form" #signupForm="ngForm" novalidate>
-         <div class="form-group">
-            {{ 'SIGNUP.GENRE' | translate }}
-            <select [(ngModel)]="user.sex" name="sex" #sex="ngModel" required>
-               <option value="" disabled selected hidden>-- {{ 'SIGNUP.CHOOSE' | translate }} --</option>
-               <option value="male">{{ 'SIGNUP.SEX_MALE' | translate }}</option>
-               <option value="female">{{ 'SIGNUP.SEX_FEMALE' | translate }}</option>
-            </select>
-            <div *ngIf="error.sex" class="error">{{error.sex}}</div>
-         </div>
-         <div class="form-group">
-            {{ 'SIGNUP.PLACEHOLDER_LASTNAME' | translate }}
-            <input required name="lastname" type="text" class="form-control" [(ngModel)]="user.lastname"
-               #lastname="ngModel" id="inputlastname" [placeholder]="placeholerLastName">
-            <div *ngIf="error.lastname" class="error">{{error.lastname}}</div>
-         </div>
-         <div class="form-group">
-            {{ 'SIGNUP.PLACEHOLDER_FIRSTNAME' | translate }}
-            <input required name="firstname" type="text" class="form-control" [(ngModel)]="user.firstname"
-               #firstname="ngModel" id="inputfirstname" [placeholder]="placeholerFirstName">
-            <div *ngIf="error.firstname" class="error">{{error.firstname}}</div>
-         </div>
-         <div class="form-group">
-            {{ 'SIGNUP.PLACEHOLDER_PHONE_NUMBER' | translate }}
-            <input required name="phone" type="tel" class="form-control" [(ngModel)]="user.phone" #phone="ngModel"
-               pattern="^0[1-9][0-9]{8}$" id="inputphone" [placeholder]="placeholerPhone">
-            <div *ngIf="error.phone" class="error">{{error.phone}}</div>
-         </div>
-         <div class="form-group">
-            {{ 'SIGNUP.PLACEHOLDER_EMAIL' | translate }}
-            <input type="email" name="email" class="form-control" id="inputEmail" [placeholder]="placeholerEmail"
-               required [(ngModel)]="user.email" [ngModelOptions]="{ updateOn: 'blur' }" #email="ngModel" />
 
-            <div *ngIf="email.errors?.['required'] && email.touched" class="error">
-            {{ 'SIGNUP.PLACEHOLDER_EMAIL_REQUIRED' | translate }}
-            </div>
-            <div *ngIf="email.errors?.['email'] && email.touched" class="error">
-            {{ 'SIGNUP.PLACEHOLDER_EMAIL_WRONG' | translate }}
-            </div>
-            <div *ngIf="error.email" class="error">{{error.email}}</div>
-         </div>
+      <!-- NOM -->
+      <div class="form-group field">
+        <label class="izy-label">{{ 'SIGNUP.PLACEHOLDER_LASTNAME' | translate }}</label>
 
-         <div class="form-group">
-            {{ 'SIGNUP.PLACEHOLDER_PASSWORD' | translate }}
-            <input required name="password" [type]="isPasswordVisible ? 'text' : 'password'" class="form-control" [(ngModel)]="user.password" id="inputpassword" [placeholder]="placeholderPassword">
-            
-            <a (click)="togglePasswordVisibility()" class="show-pass">
-              <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
-            </a>
-            <div *ngIf="error.password" class="error">{{error.password}}</div>
-         </div>
-         <div class="form-group">
-            {{ 'SIGNUP.PLACEHOLDER_PASSWORDCONFIRMED' | translate }}
-            <input required name="passwordConfirmed"  [type]="isPasswordVisible2 ? 'text' : 'password'" class="form-control"
-               [(ngModel)]="user.passwordConfirmed" id="inputpasswordConfirmed"
-               [placeholder]="placeholderConfirmPassword">
-            <a (click)="togglePasswordVisibility2()" class="show-pass">
-              <i class="fa" [ngClass]="isPasswordVisible2 ? 'fa-eye-slash' : 'fa-eye'"></i>
-            </a>
-               <div *ngIf="error.passwordConfirmed" class="error">{{error.passwordConfirmed}}</div>
-         </div>
-         <div class="form-group">
-            {{ 'SIGNUP.COUNTRY' | translate }}
-            <select [(ngModel)]="user.country" name="country" #country="ngModel" required>
-               <option value="" disabled selected hidden>-- {{ 'SIGNUP.CHOOSE' | translate }} --</option>
-               <option *ngFor="let country of countries" [value]="country.name">{{ country.translation | translate }}</option>
-            </select>
-            <div *ngIf="error.country" class="error">{{error.country}}</div>
-         </div>
-         <button type="submit" class="btn submit" (click)="validAjouterModifier()">
-            {{ 'SIGNUP.CONTINUER' | translate }}
-         </button>
-         <app-connexion-buttons [forConnection]="false"></app-connexion-buttons>
-      </form>
-   </div>
+        <input
+          class="form-control izy-input"
+          type="text"
+          name="lastname"
+          required
+          [(ngModel)]="user.lastname"
+          [placeholder]="placeholerLastName"
+        />
+
+        <div *ngIf="error.lastname" class="error">{{ error.lastname }}</div>
+      </div>
+
+      <!-- PRÉNOM -->
+      <div class="form-group field">
+        <label class="izy-label">{{ 'SIGNUP.PLACEHOLDER_FIRSTNAME' | translate }}</label>
+
+        <input
+          class="form-control izy-input"
+          type="text"
+          name="firstname"
+          required
+          [(ngModel)]="user.firstname"
+          [placeholder]="placeholerFirstName"
+        />
+
+        <div *ngIf="error.firstname" class="error">{{ error.firstname }}</div>
+      </div>
+
+      <!-- TÉLÉPHONE -->
+      <div class="form-group field">
+        <label class="izy-label">{{ 'SIGNUP.PLACEHOLDER_PHONE_NUMBER' | translate }}</label>
+
+        <input
+          class="form-control izy-input"
+          type="tel"
+          name="phone"
+          required
+          pattern="^0[1-9][0-9]{8}$"
+          [(ngModel)]="user.phone"
+          [placeholder]="placeholerPhone"
+        />
+
+        <div *ngIf="error.phone" class="error">{{ error.phone }}</div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="form-group field">
+        <label class="izy-label">{{ 'SIGNUP.PLACEHOLDER_EMAIL' | translate }}</label>
+
+        <input
+          class="form-control izy-input"
+          type="email"
+          name="email"
+          required
+          [(ngModel)]="user.email"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          [placeholder]="placeholerEmail"
+        />
+
+        <div *ngIf="error.email" class="error">{{ error.email }}</div>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="form-group field has-trailing">
+        <label class="izy-label">{{ 'SIGNUP.PLACEHOLDER_PASSWORD' | translate }}</label>
+
+        <input
+          class="form-control izy-input"
+          [type]="isPasswordVisible ? 'text' : 'password'"
+          name="password"
+          required
+          [(ngModel)]="user.password"
+          [placeholder]="placeholderPassword"
+        />
+
+        <button
+          type="button"
+          class="trailing-btn"
+          (click)="togglePasswordVisibility()"
+        >
+          <i class="fa" [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </button>
+
+        <div *ngIf="error.password" class="error">{{ error.password }}</div>
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="form-group field has-trailing">
+        <label class="izy-label">{{ 'SIGNUP.PLACEHOLDER_PASSWORDCONFIRMED' | translate }}</label>
+
+        <input
+          class="form-control izy-input"
+          [type]="isPasswordVisible2 ? 'text' : 'password'"
+          name="passwordConfirmed"
+          required
+          [(ngModel)]="user.passwordConfirmed"
+          [placeholder]="placeholderConfirmPassword"
+        />
+
+        <button
+          type="button"
+          class="trailing-btn"
+          (click)="togglePasswordVisibility2()"
+        >
+          <i class="fa" [ngClass]="isPasswordVisible2 ? 'fa-eye-slash' : 'fa-eye'"></i>
+        </button>
+
+        <div *ngIf="error.passwordConfirmed" class="error">
+          {{ error.passwordConfirmed }}
+        </div>
+      </div>
+
+      <!-- COUNTRY -->
+      <div class="form-group field">
+        <label class="izy-label">{{ 'SIGNUP.COUNTRY' | translate }}</label>
+
+        <select
+          class="form-control izy-input"
+          [(ngModel)]="user.country"
+          name="country"
+          required
+        >
+          <option value="" disabled selected hidden>
+            {{ 'SIGNUP.CHOOSE' | translate }}
+          </option>
+          <option *ngFor="let country of countries" [value]="country.name">
+            {{ country.translation | translate }}
+          </option>
+        </select>
+
+        <div *ngIf="error.country" class="error">{{ error.country }}</div>
+      </div>
+
+      <!-- SUBMIT -->
+      <button type="submit" class="btn submit" (click)="validAjouterModifier()">
+        {{ 'SIGNUP.CONTINUER' | translate }}
+      </button>
+
+      <app-connexion-buttons [forConnection]="false"></app-connexion-buttons>
+
+    </form>
+  </div>
 </section>

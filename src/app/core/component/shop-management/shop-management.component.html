@@ -42,7 +42,7 @@
         (ngModelChange)="onShopNameTyping()" />
 
       <div class="handle-block" *ngIf="shopCopyData">
-        <label for="shop-handle" class="margin-top-20">Identifiant public</label>
+        <label for="shop-handle" class="margin-top-20">{{ "SHOP_MANAGEMENT.PUBLIC_ID" | translate}}</label>
 
         <div class="handle-row">
           <span class="handle-prefix">&#64;</span>
@@ -52,23 +52,23 @@
 
           <span class="handle-status" [class.ok]="handleAvailable === true" [class.ko]="handleAvailable === false"
             *ngIf="shopCopyData.handle">
-            <ng-container *ngIf="handleChecking">Vérification...</ng-container>
-            <ng-container *ngIf="!handleChecking && handleAvailable === true">OK</ng-container>
-            <ng-container *ngIf="!handleChecking && handleAvailable === false">Pris</ng-container>
+            <ng-container *ngIf="handleChecking">{{ "SHOP_MANAGEMENT.VERIF" | translate}}</ng-container>
+            <ng-container *ngIf="!handleChecking && handleAvailable === true">{{ "SHOP_MANAGEMENT.OK" | translate}}</ng-container>
+            <ng-container *ngIf="!handleChecking && handleAvailable === false">{{ "SHOP_MANAGEMENT.GOT" | translate}}</ng-container>
           </span>
         </div>
 
         <div class="handle-preview" *ngIf="shopCopyData.handle">
-          Lien : <strong>izyglam.com/&#64;{{ shopCopyData.handle }}</strong>
+          {{ "SHOP_MANAGEMENT.LINK" | translate}} : <strong>izyglam.com/&#64;{{ shopCopyData.handle }}</strong>
         </div>
 
         <div class="error" *ngIf="error.handle">{{ error.handle }}</div>
       </div>
 
       <div class="save-status">
-        <span *ngIf="saving">💾 Enregistrement...</span>
-        <span *ngIf="!saving && saved">✅ Enregistré</span>
-        <span *ngIf="!saving && !saved">✏️ Modifications non enregistrées</span>
+        <span *ngIf="saving">💾 {{ "SHOP_MANAGEMENT.SAVING" | translate}}</span>
+        <span *ngIf="!saving && saved">✅ {{ "SHOP_MANAGEMENT.SAVED" | translate}}</span>
+        <span *ngIf="!saving && !saved">✏️ {{ "SHOP_MANAGEMENT.NOT_SAVED" | translate}}</span>
       </div>
     </div>
 
@@ -92,21 +92,21 @@
      MODE DE PRESTATION
      ============================ -->
     <h2 class="section-title">
-      📍 Mode de prestation
+      📍 {{ "SHOP_MANAGEMENT.MODE" | translate}}
       <span class="section-sub">
-        Indique si le client vient au salon, ou si vous vous déplacez à domicile.
+        {{ "SHOP_MANAGEMENT.SHOW" | translate}}
       </span>
     </h2>
 
     <div class="form-section">
       <div class="column">
-        <label>Le rendez-vous a lieu :</label>
+        <label>{{ "SHOP_MANAGEMENT.RDV" | translate}} :</label>
 
         <div class="select-wrap">
           <select class="input-style" [(ngModel)]="shopCopyData.serviceMode"
             (ngModelChange)="onServiceModeChange($event)">
-            <option [ngValue]="'SALON'">🏠 Au salon (le client vient)</option>
-            <option [ngValue]="'DOMICILE'">🚗 À domicile (je me déplace)</option>
+            <option [ngValue]="'SALON'">🏠 {{ "SHOP_MANAGEMENT.SALON" | translate}}</option>
+            <option [ngValue]="'DOMICILE'">🚗 {{ "SHOP_MANAGEMENT.DOMICILE" | translate}}</option>
           </select>
         </div>
       </div>
@@ -120,21 +120,21 @@
     <div *ngIf="shopCopyData?.serviceMode === 'SALON'" class="legal-panel place-panel">
       <div class="place-top">
         <div>
-          <h3 class="place-title">📍 Adresse du salon</h3>
-          <div class="place-sub">Cette adresse est visible pour les clients qui viennent au salon.</div>
+          <h3 class="place-title">📍 {{ "SHOP_MANAGEMENT.ADDRESS" | translate}}</h3>
+          <div class="place-sub">{{ "SHOP_MANAGEMENT.VISIBLE_ADDRESS" | translate}}</div>
         </div>
 
         <div class="place-status" [class.ok]="placeSaved" [class.ko]="placeHasErrors">
-          <ng-container *ngIf="placeSaving">Enregistrement…</ng-container>
-          <ng-container *ngIf="!placeSaving && placeSaved">Enregistrée</ng-container>
-          <ng-container *ngIf="!placeSaving && !placeSaved">Non enregistrée</ng-container>
+          <ng-container *ngIf="placeSaving">{{ "SHOP_MANAGEMENT.SAVING" | translate}}</ng-container>
+          <ng-container *ngIf="!placeSaving && placeSaved">{{ "SHOP_MANAGEMENT.SAVED2" | translate}}</ng-container>
+          <ng-container *ngIf="!placeSaving && !placeSaved">{{ "SHOP_MANAGEMENT.NOT_SAVED2" | translate}}</ng-container>
         </div>
       </div>
 
       <div class="row g-3 place-grid">
         <!-- Adresse ligne 1 -->
         <div class="col-12 col-md-6">
-          <label>Adresse ligne 1</label>
+          <label>{{ "SHOP_MANAGEMENT.ADDRESS_LINE" | translate}} 1</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.addressLine1"
             (ngModelChange)="onPlaceAddressChange()" placeholder="12 rue ..." />
           <div class="error" *ngIf="placeAddressErrors.addressLine1">
@@ -144,14 +144,14 @@
 
         <!-- Adresse ligne 2 -->
         <div class="col-12 col-md-6">
-          <label>Adresse ligne 2</label>
+          <label>{{ "SHOP_MANAGEMENT.ADDRESS_LINE" | translate}} 2</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.addressLine2"
             (ngModelChange)="onPlaceAddressChange()" placeholder="Bâtiment, étage..." />
         </div>
 
         <!-- Code postal -->
         <div class="col-12 col-md-4">
-          <label>Code postal</label>
+          <label>{{ "SHOP_MANAGEMENT.CP" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.postalCode"
             (ngModelChange)="onPlaceAddressChange()" placeholder="75000" />
           <div class="error" *ngIf="placeAddressErrors.postalCode">
@@ -161,7 +161,7 @@
 
         <!-- Ville -->
         <div class="col-12 col-md-5">
-          <label>Ville</label>
+          <label>{{ "SHOP_MANAGEMENT.CITY" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.city"
             (ngModelChange)="onPlaceAddressChange()" placeholder="Paris" />
           <div class="error" *ngIf="placeAddressErrors.city">
@@ -171,7 +171,7 @@
 
         <!-- Pays -->
         <div class="col-12 col-md-3">
-          <label>Pays</label>
+          <label>{{ "SHOP_MANAGEMENT.COUNTRY" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.country"
             (ngModelChange)="onPlaceAddressChange()" placeholder="FR" />
         </div>
@@ -181,7 +181,7 @@
       <div class="legal-actions place-actions">
         <button type="button" class="btn-primary" (click)="savePlaceAddress()"
           [disabled]="placeSaving || placeHasErrors">
-          Enregistrer l’adresse du salon
+          {{ "SHOP_MANAGEMENT.SALON_SAVE" | translate}}
         </button>
       </div>
     </div>
@@ -190,9 +190,9 @@
      INFORMATIONS LEGALES (FACTURATION)
      ============================ -->
     <h2 class="section-title">
-      🔒 Informations légales (facturation)
+      🔒 {{ "SHOP_MANAGEMENT.LEGAL_INFO" | translate}}
       <span class="section-sub">
-        Indispensable pour générer des documents comptables utilisables par un comptable / l’administration.
+        {{ "SHOP_MANAGEMENT.INFO_LEGAL" | translate}}
       </span>
     </h2>
 
@@ -200,7 +200,7 @@
       <div *ngIf="legalExpanded" class="row g-3">
         <!-- Raison sociale -->
         <div class="col-12 col-md-6">
-          <label>Raison sociale</label>
+          <label>{{ "SHOP_MANAGEMENT.SOCIAL_NAME" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.companyName" (ngModelChange)="onLegalChange()"
             placeholder="Ex: BEAUTY BY SARAH" />
           <div class="error" *ngIf="legalErrors.companyName">{{ legalErrors.companyName }}</div>
@@ -208,14 +208,14 @@
 
         <!-- Forme juridique -->
         <div class="col-12 col-md-6">
-          <label>Forme juridique</label>
+          <label>{{ "SHOP_MANAGEMENT.COMPANY_TYPE" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.legalForm" (ngModelChange)="onLegalChange()"
             placeholder="EI / SASU / EURL / SAS..." />
         </div>
 
         <!-- SIRET -->
         <div class="col-12 col-md-6">
-          <label>SIRET (14 chiffres)</label>
+          <label>{{ "SHOP_MANAGEMENT.SIRET" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.siret" (ngModelChange)="onLegalChange('siret')"
             placeholder="12345678901234" maxlength="14" />
           <div class="error" *ngIf="legalErrors.siret">{{ legalErrors.siret }}</div>
@@ -223,7 +223,7 @@
 
         <!-- SIREN -->
         <div class="col-12 col-md-6">
-          <label>SIREN (9 chiffres)</label>
+          <label>{{ "SHOP_MANAGEMENT.SIREN" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.siren" (ngModelChange)="onLegalChange('siren')"
             placeholder="123456789" maxlength="9" />
           <div class="error" *ngIf="legalErrors.siren">{{ legalErrors.siren }}</div>
@@ -231,7 +231,7 @@
 
         <!-- TVA -->
         <div class="col-12 col-md-6">
-          <label>TVA intracom</label>
+          <label>{{ "SHOP_MANAGEMENT.TVA" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.vatNumber"
             (ngModelChange)="onLegalChange('vatNumber')" placeholder="FRXX123456789" />
           <div class="error" *ngIf="legalErrors.vatNumber">{{ legalErrors.vatNumber }}</div>
@@ -239,7 +239,7 @@
 
         <!-- Email -->
         <div class="col-12 col-md-6">
-          <label>Email pro</label>
+          <label>{{ "SHOP_MANAGEMENT.EMAIL_PRO" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.email" (ngModelChange)="onLegalChange('email')"
             placeholder="contact@domaine.fr" />
           <div class="error" *ngIf="legalErrors.email">{{ legalErrors.email }}</div>
@@ -247,14 +247,14 @@
 
         <!-- Téléphone -->
         <div class="col-12 col-md-6">
-          <label>Téléphone pro</label>
+          <label>{{ "SHOP_MANAGEMENT.PHONE" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.phone" (ngModelChange)="onLegalChange('phone')"
             placeholder="+33..." />
         </div>
 
         <!-- Adresse 1 -->
         <div class="col-12 col-md-6">
-          <label>Adresse ligne 1</label>
+          <label>{{ "SHOP_MANAGEMENT.ADDRESS_LINE" | translate}} 1</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.addressLine1" (ngModelChange)="onLegalChange()"
             placeholder="N°, rue..." />
           <div class="error" *ngIf="legalErrors.addressLine1">{{ legalErrors.addressLine1 }}</div>
@@ -262,14 +262,14 @@
 
         <!-- Adresse 2 -->
         <div class="col-12 col-md-6">
-          <label>Adresse ligne 2</label>
+          <label>{{ "SHOP_MANAGEMENT.ADDRESS_LINE" | translate}} 2</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.addressLine2" (ngModelChange)="onLegalChange()"
             placeholder="Bâtiment, étage, etc." />
         </div>
 
         <!-- Code postal -->
         <div class="col-12 col-md-6">
-          <label>Code postal</label>
+          <label>{{ "SHOP_MANAGEMENT.CP" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.postalCode" (ngModelChange)="onLegalChange()"
             placeholder="75000" />
           <div class="error" *ngIf="legalErrors.postalCode">{{ legalErrors.postalCode }}</div>
@@ -277,7 +277,7 @@
 
         <!-- Ville -->
         <div class="col-12 col-md-6">
-          <label>Ville</label>
+          <label>{{ "SHOP_MANAGEMENT.CITY" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.city" (ngModelChange)="onLegalChange()"
             placeholder="Paris" />
           <div class="error" *ngIf="legalErrors.city">{{ legalErrors.city }}</div>
@@ -285,7 +285,7 @@
 
         <!-- Pays -->
         <div class="col-12 col-md-6">
-          <label>Pays</label>
+          <label>{{ "SHOP_MANAGEMENT.COUNTRY" | translate}}</label>
           <input class="input-style" [(ngModel)]="shopCopyData.legal.country" (ngModelChange)="onLegalChange()"
             placeholder="FR" />
         </div>
@@ -294,7 +294,7 @@
 
       <div class="legal-actions" *ngIf="legalExpanded">
         <button type="button" class="btn-primary" (click)="saveLegal()" [disabled]="!shopCopyData">
-          Enregistrer
+          {{ "SHOP_MANAGEMENT.SAVED_DONE" | translate}}
         </button>
       </div>
     </div>

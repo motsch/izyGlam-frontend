@@ -1,81 +1,84 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/core/services/user.service';
-
-// ✅ AjoutsizyGlam : toasts + i18n
-import { ToastrService } from 'ngx-toastr';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { StripeService } from "src/app/core/services/stripe.service";
+import { SessionService } from "src/app/core/services/session.service"; // adapte le chemin
+import { UserService } from "src/app/core/services/user.service";
 
 @Component({
-  selector: 'app-subscription',
-  templateUrl: './subscription.component.html',
-  // ⚠️ Correction : Angular attend "styleUrls" (tableau), pas "styleUrl"
-  styleUrls: ['./subscription.component.scss']
+  selector: "app-subscription",
+  templateUrl: "./subscription.component.html",
+  styleUrls: ["./subscription.component.scss"],
 })
 export class SubscriptionComponent implements OnInit {
-  // Données de l'utilisateur connecté
-  me: any = null;
-  // Détail de l'abonnement actuel
-  subscription: any = null;
+  imgStorageUrl = "assets/images/";
+  periodEnd: Date | null = null;
+  me: any | null = null;
+  status: string | null = null;
+  plan: string | null = null;
 
   constructor(
-    private userService: UserService,
-
-    // ✅ AjoutizyGlam
-    private toastr: ToastrService,
-    private translate: TranslateService
+    private route: ActivatedRoute,
+    private router: Router,
+    private stripeService: StripeService,
+    private sessionService: SessionService,
+    private userService: UserService
   ) { }
 
-  // ------------------------------------------------------
-  // ⏱️ Au chargement : on récupère l'utilisateur puis son abonnement
-  // ------------------------------------------------------
   ngOnInit(): void {
+    const sessionId = this.route.snapshot.queryParamMap.get("session_id");
+    const alreadyActive = this.route.snapshot.queryParamMap.get("alreadyActive") === "1";
     this.userService.getMe().subscribe({
       next: (user: any) => {
         this.me = user;
+        const userId = this.me?._id || localStorage.getItem("userId") || "";
 
-        // Ensuite on charge l'abonnement courant
-        this.userService.getSubscription().subscribe({
-          next: (sub: any) => {
-            this.subscription = sub;
+        // Si pas de userId => page ok mais sans détails
+        if (!userId) {
+          this.periodEnd = null;
+          this.status = null;
+          this.plan = null;
+          return;
+        }
+
+        // ✅ Cas A : on a un sessionId => on récupère via Stripe
+        if (sessionId) {
+          this.stripeService.getPremiumCheckoutStatus(sessionId, userId).subscribe({
+            next: (res: any) => {
+              this.status = res?.status || null;
+              this.plan = res?.plan || "premium";
+              this.periodEnd = res?.currentPeriodEnd ? new Date(res.currentPeriodEnd) : null;
+            },
+            error: () => {
+              this.periodEnd = null;
+            },
+          });
+          return;
+        }
+
+        // ✅ Cas B : pas de sessionId (déjà premium / accès direct)
+        this.stripeService.getPremiumSubscription(userId).subscribe({
+          next: (res: any) => {
+            this.status = res?.status || null;
+            this.plan = res?.plan || "premium";
+            this.periodEnd = res?.currentPeriodEnd ? new Date(res.currentPeriodEnd) : null;
           },
-          error: (err) => {
-            console.error('Erreur lors du chargement de la souscription :', err);
-            this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-          }
+          error: () => {
+            this.periodEnd = null;
+          },
         });
       },
-      error: (err) => {
-        console.error('Erreur lors du chargement utilisateur :', err);
-        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      error: (error: any) => {
+        console.error('Erreur lors de la récupération des données utilisateur :', error);
       }
-    });
+    })
   }
 
-  // ------------------------------------------------------
-  // ▶️ Souscrire à un plan (plan + durée en mois)
-  // ------------------------------------------------------
-  onSubscribe(plan: string, durationInMonths: number) {
-    this.userService.subscribeToPlan(plan, durationInMonths).subscribe({
-      next: (response) => {
-        // ✅ On remplace l'alert par un toast de succès propre
-        //    (On garde showCustomToast pour les erreurs)
-        this.toastr.success(response?.message || this.translate.instant('SUCCESS.SUBSCRIBE_SUCCESS'));
-        // Recharge les infos de l'écran (utilisateur + abonnement)
-        this.ngOnInit();
-      },
-      error: (err) => {
-        console.error('Erreur lors de la souscription au plan :', err);
-        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-      }
-    });
+
+  goDashboard() {
+    this.router.navigate(["/profile"]);
   }
 
-  // ------------------------------------------------------
-  // ✨ Toast d’erreur styliséizyGlam (centralisé)
-  // ------------------------------------------------------
-  private showCustomToast(message: string) {
-    // Exemple conseillé (fr.json) :
-    // "ERROR": { "GENERIC_ERROR": "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨" }
-    this.toastr.error(message);
+  goBilling() {
+    this.router.navigate(["/billing"]);
   }
 }

@@ -34,7 +34,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MainComponent } from './main/main.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ShopComponent } from './shop/shop.component';
-import { TermsComponent } from './terms/terms.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { AuthModule } from '../auth/auth.module';
@@ -53,7 +52,6 @@ import { SponsorComponent } from './sponsor/sponsor.component';
 import { FidelityComponent } from './fidelity/fidelity.component';
 import { PricePlansComponent } from './price-plans/price-plans.component';
 import { QRCodeModule } from 'angularx-qrcode';
-import { SubscriptionComponent } from './subscription/subscription.component';
 import { PayementProComponent } from './payement-pro/payement-pro.component';
 import { PayementValidationComponent } from './payement-validation/payement-validation.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
@@ -61,6 +59,7 @@ import { MessageComponent } from './message/message.component';
 import { QuickComponent } from './quick/quick.component';
 import { BillingComponent } from './billing/billing.component';
 import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -110,7 +109,6 @@ import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
         MainComponent,
         ProfileComponent,
         ShopComponent,
-        TermsComponent,
         ThankYouComponent,
         BillingComponent,
         ComingSoonComponent,

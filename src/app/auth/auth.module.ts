@@ -37,12 +37,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AvisUsersComponent } from './avis-users/avis-users.component';
 import { CguComponent } from './cgu/cgu.component';
 import { ConnexionButtonsComponent } from './connexion-buttons/connexion-buttons.component';
-import { InstaLoginComponent } from './insta-login/insta-login.component';
-import { LinkedinLoginComponent } from './linkedin-login/linkedin-login.component';
 import { MetaLoginComponent } from './meta-login/meta-login.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ThreadLoginComponent } from './thread-login/thread-login.component';
-import { XLoginComponent } from './x-login/x-login.component';
 
 @NgModule({
     imports: [
@@ -77,10 +74,7 @@ import { XLoginComponent } from './x-login/x-login.component';
     ],
     declarations: [
         MetaLoginComponent,
-        XLoginComponent,
         ThreadLoginComponent,
-        LinkedinLoginComponent,
-        InstaLoginComponent,
         ResetPasswordComponent,
         AvisUsersComponent,
         ConnexionButtonsComponent,

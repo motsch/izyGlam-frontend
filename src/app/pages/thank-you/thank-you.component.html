@@ -7,14 +7,14 @@
         <div class="thank-you">
             <img [src]="imgStorageUrl + 'thanks.gif'" alt="thanks" class="img-fluid" />
 
-            <h2 class="mb-2">Bienvenue dans <span class="premium">IzyGlam Premium</span> 👑</h2>
+            <h2 class="mb-2">{{"THANK_YOU.WELCOME" | translate}} <span class="premium">IzyGlam Premium</span> 👑</h2>
             <p class="subtitle mb-4">
-                Ton abonnement est actif. Tu peux profiter immédiatement de toutes les fonctionnalités Premium.
+                {{"THANK_YOU.ABO" | translate}}
             </p>
 
             <div class="card">
                 <div class="row">
-                    <div class="label">Statut</div>
+                    <div class="label">{{"THANK_YOU.STATUS" | translate}}</div>
                     <div class="value" [class.ok]="status === 'active' || status === 'trialing'">
                         {{ status || '...' }}
                     </div>
@@ -22,31 +22,30 @@
                 </div>
 
                 <div class="row">
-                    <div class="label">Prochaine échéance</div>
+                    <div class="label">{{"THANK_YOU.NEXT" | translate}}</div>
                     <div class="value">
                         <ng-container *ngIf="periodEnd; else loadingEnd">
                             {{ periodEnd | date:'dd/MM/yyyy' }}
                         </ng-container>
-                        <ng-template #loadingEnd>Chargement…</ng-template>
+                        <ng-template #loadingEnd>{{"THANK_YOU.LOADING" | translate}}</ng-template>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="label">Formule</div>
+                    <div class="label">{{"THANK_YOU.FORMULA" | translate}}</div>
                     <div class="value">
-                        {{ (plan || 'premium') | titlecase }} • 89,90€/mois
+                        {{ (plan || 'premium') | titlecase }} • 89,90€/{{"THANK_YOU.MONTH" | translate}}
                     </div>
                 </div>
             </div>
 
             <div class="actions">
-                <button class="btn-primary" (click)="goDashboard()">Accéder au tableau de bord</button>
-                <button class="btn-secondary" (click)="goBilling()">Gérer mon abonnement</button>
+                <button class="btn-primary" (click)="goDashboard()">{{"THANK_YOU.ACCESS" | translate}}</button>
+                <button class="btn-secondary" (click)="goBilling()">{{"THANK_YOU.MANAGE" | translate}}</button>
             </div>
 
             <p class="small mt-4">
-                Si tu ne vois pas ton Premium tout de suite, patiente quelques secondes : Stripe peut mettre un petit
-                délai.
+                {{"THANK_YOU.IF" | translate}}
             </p>
         </div>
     </div>
