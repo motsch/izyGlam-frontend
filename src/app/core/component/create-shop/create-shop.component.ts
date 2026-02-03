@@ -319,7 +319,7 @@ export class CreateShopComponent implements OnInit {
 
       // ✅ si on est en attente email, on bloque totalement la suite
       if (this.pendingEmailVerification) {
-        this.showCustomToast("Validez d'abord votre email, puis cliquez sur ↻.");
+        this.showCustomToast(this.translate.instant("CREATION_SHOP_WIZARD.VALIDATE_EMAIL"));
         return;
       }
 
@@ -388,7 +388,7 @@ export class CreateShopComponent implements OnInit {
 
     if (!this.isValidEmail(email)) {
       this.authEmailExists = null;
-      this.authError.email = "L'email doit ressembler à xx@xx.xx";
+      this.authError.email = this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_NOT_VALID");
       return;
     }
 
@@ -459,11 +459,11 @@ export class CreateShopComponent implements OnInit {
     // 1) validations simples
     // ----------------------------------------------------------
     if (!email) {
-      this.authError.email = "L'email est obligatoire";
+      this.authError.email =  this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_HAVE_TO");
       return false;
     }
     if (!this.isValidEmail(email)) {
-      this.authError.email = "L'email doit ressembler à xx@xx.xx";
+      this.authError.email = this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_NOT_VALID");
       return false;
     }
 
@@ -472,7 +472,7 @@ export class CreateShopComponent implements OnInit {
       await this.checkEmailExistsAsync(email);
 
       if (this.authEmailExists === null) {
-        this.authError.email = "Impossible de vérifier cet email (endpoint email-exists).";
+        this.authError.email = this.translate.instant("CREATION_SHOP_WIZARD.NOT_VERIFY_EMAIL");
         return false;
       }
     }
@@ -482,7 +482,7 @@ export class CreateShopComponent implements OnInit {
     // ----------------------------------------------------------
     if (this.authEmailExists === true) {
       if (!password) {
-        this.authError.password = "Le mot de passe est obligatoire";
+        this.authError.password = this.translate.instant("CREATION_SHOP_WIZARD.MDP_HAVE_TO");
         return false;
       }
       return await this.loginAndLoadMe(email, password);
@@ -494,14 +494,14 @@ export class CreateShopComponent implements OnInit {
     if (this.authEmailExists === false) {
 
       // champs register minimum
-      if (!this.isNonEmpty(this.authUser.sex)) this.authError.sex = "Le genre est obligatoire";
-      if (!this.isNonEmpty(this.authUser.firstname) || this.str(this.authUser.firstname).length < 2) this.authError.firstname = "Le prénom est obligatoire (min 2)";
-      if (!this.isNonEmpty(this.authUser.lastname) || this.str(this.authUser.lastname).length < 2) this.authError.lastname = "Le nom est obligatoire (min 2)";
-      if (!this.isValidPhoneFR(this.authUser.phone)) this.authError.phone = "Téléphone invalide (ex: 0612345678)";
-      if (!this.isNonEmpty(this.authUser.password)) this.authError.password = "Mot de passe obligatoire";
-      if (!this.isNonEmpty(this.authUser.passwordConfirmed)) this.authError.passwordConfirmed = "Confirmation obligatoire";
-      if (this.str(this.authUser.passwordConfirmed) !== this.str(this.authUser.password)) this.authError.passwordConfirmed = "Les mots de passe ne correspondent pas";
-      if (!this.isNonEmpty(this.authUser.country)) this.authError.country = "Pays obligatoire";
+      if (!this.isNonEmpty(this.authUser.sex)) this.authError.sex = this.translate.instant("CREATION_SHOP_WIZARD.SEX_HAVE_TO");
+      if (!this.isNonEmpty(this.authUser.firstname) || this.str(this.authUser.firstname).length < 2) this.authError.firstname = this.translate.instant("CREATION_SHOP_WIZARD.FIRSTNAME_HAVE_TO");
+      if (!this.isNonEmpty(this.authUser.lastname) || this.str(this.authUser.lastname).length < 2) this.authError.lastname = this.translate.instant("CREATION_SHOP_WIZARD.NAME_HAVE_TO");
+      if (!this.isValidPhoneFR(this.authUser.phone)) this.authError.phone = this.translate.instant("CREATION_SHOP_WIZARD.PHONE_NOT_VALID");
+      if (!this.isNonEmpty(this.authUser.password)) this.authError.password = this.translate.instant("CREATION_SHOP_WIZARD.MDP_HAVE_TO");
+      if (!this.isNonEmpty(this.authUser.passwordConfirmed)) this.authError.passwordConfirmed = this.translate.instant("CREATION_SHOP_WIZARD.CONFIRM_HAVE_TO");
+      if (this.str(this.authUser.passwordConfirmed) !== this.str(this.authUser.password)) this.authError.passwordConfirmed = this.translate.instant("CREATION_SHOP_WIZARD.MDP_NOT_MATCHING");
+      if (!this.isNonEmpty(this.authUser.country)) this.authError.country = this.translate.instant("CREATION_SHOP_WIZARD.COUNTRY_HAVE_TO");
 
       // si erreur -> stop
       const hasError = Object.values(this.authError).some(v => !!v);
@@ -626,7 +626,7 @@ export class CreateShopComponent implements OnInit {
 
     const email = this.str(this.authUser.email);
     if (!email || !this.isValidEmail(email)) {
-      this.authError.email = "Email invalide";
+      this.authError.email = this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_VALID");
       return;
     }
 
@@ -641,7 +641,7 @@ export class CreateShopComponent implements OnInit {
         const isActive = !!res?.active;
 
         if (!isActive) {
-          this.showCustomToast("Pas encore activé. Cliquez à nouveau après avoir validé l'email.");
+          this.showCustomToast(this.translate.instant("CREATION_SHOP_WIZARD.NOT_ACTIVATED"));
           return;
         }
 
@@ -654,7 +654,7 @@ export class CreateShopComponent implements OnInit {
         // UX : on reset password (optionnel)
         this.authUser.password = '';
 
-        this.showSuccessToast("Compte activé ✅ Entrez votre mot de passe pour continuer.");
+        this.showSuccessToast(this.translate.instant("CREATION_SHOP_WIZARD.ACCOUNT_ACTIVATED"));
       },
       error: (err: any) => {
         this.checkingActivation = false;
@@ -670,7 +670,7 @@ export class CreateShopComponent implements OnInit {
   resendActivationEmail() {
     const email = this.str(this.authUser.email);
     if (!email || !this.isValidEmail(email)) {
-      this.authError.email = "Email invalide";
+      this.authError.email = this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_VALID");
       return;
     }
 
@@ -678,7 +678,7 @@ export class CreateShopComponent implements OnInit {
     this.userService.resendVerificationEmail(email).subscribe({
       next: () => {
         this.busy = false;
-        this.showSuccessToast("Email renvoyé ✅");
+        this.showSuccessToast(this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_RESEND"));
       },
       error: (err: any) => {
         this.busy = false;
@@ -723,9 +723,9 @@ export class CreateShopComponent implements OnInit {
 
       // email
       if (!this.isNonEmpty(this.authUser.email)) {
-        this.authError.email = "L'email est obligatoire";
+        this.authError.email = this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_HAVE_TO");
       } else if (!this.isValidEmail(this.authUser.email)) {
-        this.authError.email = "L'email doit ressembler à xx@xx.xx";
+        this.authError.email = this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_NOT_VALID");
       }
 
       // si on est pending => pas besoin de valider le reste ici
@@ -734,22 +734,22 @@ export class CreateShopComponent implements OnInit {
       // email existe => password requis
       if (this.authEmailExists === true) {
         if (!this.isNonEmpty(this.authUser.password)) {
-          this.authError.password = "Le mot de passe est obligatoire";
+          this.authError.password = this.translate.instant("CREATION_SHOP_WIZARD.MDP_HAVE_TO");
         }
       }
 
       // email n'existe pas => register minimal
       if (this.authEmailExists === false) {
-        if (!this.isNonEmpty(this.authUser.sex)) this.authError.sex = "Le genre est obligatoire";
-        if (!this.isNonEmpty(this.authUser.firstname) || this.str(this.authUser.firstname).length < 2) this.authError.firstname = "Prénom obligatoire (min 2)";
-        if (!this.isNonEmpty(this.authUser.lastname) || this.str(this.authUser.lastname).length < 2) this.authError.lastname = "Nom obligatoire (min 2)";
-        if (!this.isValidPhoneFR(this.authUser.phone)) this.authError.phone = "Téléphone invalide (ex: 0612345678)";
-        if (!this.isNonEmpty(this.authUser.password)) this.authError.password = "Mot de passe obligatoire";
-        if (!this.isNonEmpty(this.authUser.passwordConfirmed)) this.authError.passwordConfirmed = "Confirmation obligatoire";
+        if (!this.isNonEmpty(this.authUser.sex)) this.authError.sex = this.translate.instant("CREATION_SHOP_WIZARD.SEX_HAVE_TO");
+        if (!this.isNonEmpty(this.authUser.firstname) || this.str(this.authUser.firstname).length < 2) this.authError.firstname = this.translate.instant("CREATION_SHOP_WIZARD.FIRSTNAME_HAVE_TO");
+        if (!this.isNonEmpty(this.authUser.lastname) || this.str(this.authUser.lastname).length < 2) this.authError.lastname = this.translate.instant("CREATION_SHOP_WIZARD.NAME_HAVE_TO");
+        if (!this.isValidPhoneFR(this.authUser.phone)) this.authError.phone = this.translate.instant("CREATION_SHOP_WIZARD.PHONE_NOT_VALID");
+        if (!this.isNonEmpty(this.authUser.password)) this.authError.password = this.translate.instant("CREATION_SHOP_WIZARD.MDP_HAVE_TO");
+        if (!this.isNonEmpty(this.authUser.passwordConfirmed)) this.authError.passwordConfirmed = this.translate.instant("CREATION_SHOP_WIZARD.CONFIRM_HAVE_TO");
         if (this.isNonEmpty(this.authUser.passwordConfirmed) && this.str(this.authUser.passwordConfirmed) !== this.str(this.authUser.password)) {
-          this.authError.passwordConfirmed = "Les mots de passe ne correspondent pas";
+          this.authError.passwordConfirmed = this.translate.instant("CREATION_SHOP_WIZARD.MDP_NOT_MATCHING");
         }
-        if (!this.isNonEmpty(this.authUser.country)) this.authError.country = "Pays obligatoire";
+        if (!this.isNonEmpty(this.authUser.country)) this.authError.country = this.translate.instant("CREATION_SHOP_WIZARD.COUNTRY_HAVE_TO");
       }
       return;
     }
@@ -780,11 +780,10 @@ export class CreateShopComponent implements OnInit {
       this.error.selectedCity = null;
       this.error.street = null;
       this.error.ccvaccepted = null;
-
       if (!this.isNonEmpty(this.selectedCountry)) this.error.selectedCountry = this.translate.instant('CREATION_SHOP.CHOOSE_COUNTRY');
 
-      if (!this.isNonEmpty(this.postalCode)) this.error.postalCode = "Code postal obligatoire";
-      else if (!this.isValidPostalCode(this.postalCode)) this.error.postalCode = "Code postal invalide";
+      if (!this.isNonEmpty(this.postalCode)) this.error.postalCode = this.translate.instant("CREATION_SHOP.CP_HAVE_TO");
+      else if (!this.isValidPostalCode(this.postalCode)) this.error.postalCode = this.translate.instant("CREATION_SHOP.CP_NOT_VALID");
 
       if (!this.selectedCity || !this.isNonEmpty(this.selectedCity?.nom)) this.error.selectedCity = this.translate.instant('CREATION_SHOP.CHOOSE_CITY');
 

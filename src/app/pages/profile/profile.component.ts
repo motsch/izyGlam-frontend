@@ -61,14 +61,11 @@ export class ProfileComponent implements OnInit {
     multiShopsActivated = false;
 
     constructor(
-        private eRef: ElementRef,
         private userService: UserService,
-        private companyService: CompanyService,
         private shopService: ShopService,
         private productService: ProductService,
         private router: Router,
         public dialog: MatDialog,
-        private bookingCategoryService: BookingCategoryService,
         private categoryService: CategoryService,
         private shopTemplateService: ShopTemplateService,
         private adminService: AdminService,

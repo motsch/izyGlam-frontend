@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-invite-friends',
@@ -11,11 +12,14 @@ export class InviteFriendsComponent {
     successMessage: string | null = null;
     errorMessage: string | null = null;
 
+  constructor(
+    private translate: TranslateService
+  ) {}
     addFriend() {
         if (this.email && this.isValidEmail(this.email)) {
             this.friendsList.push(this.email);
             this.email = ''; // Réinitialiser l'email
-            this.successMessage = 'Ami ajouté à la liste !';
+            this.successMessage = this.translate.instant('Ami ajouté à la liste !');
             this.errorMessage = null;
         } else {
             this.errorMessage = 'Veuillez entrer une adresse email valide.';

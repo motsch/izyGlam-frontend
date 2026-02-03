@@ -1,18 +1,18 @@
 <div class="post-gen-card" [class.has-post]="!!generatedPost">
   <div class="header">
     <div class="title">
-      <h3>Assistant de publication</h3>
-      <p>Un texte prêt à copier-coller pour Instagram, Tiktok ou Facebook</p>
+      <h3>{{"FAKE_POST.ASSISTANT_PUBLICATION" | translate}}</h3>
+      <p>{{"FAKE_POST.TEXT_READY" | translate}}</p>
 
       <div class="hint" *ngIf="generatedPost">
         <span class="dot"></span>
-        Astuce : change 1 phrase + ajoute une photo réelle pour performer.
+        {{"FAKE_POST.ASTUCE" | translate}}
       </div>
     </div>
 
     <!-- CTA principal : différent selon l'état -->
     <button class="btn-primary" type="button" (click)="generate()" [disabled]="loading" [attr.aria-busy]="loading">
-      {{ generatedPost ? 'Rafraîchir' : 'Générer un post' }}
+      {{ generatedPost ? ('FAKE_POST.REFRESH' | translate) : ('FAKE_POST.GENERATE' | translate) }}
     </button>
   </div>
 
@@ -20,7 +20,7 @@
   <div class="empty" *ngIf="!generatedPost && !error" (click)="generate()">
     <div class="empty-icon">✨</div>
     <div class="empty-text">
-      Clique sur <strong>Générer un post</strong> pour obtenir une première suggestion.
+    <p [innerHTML]="'FAKE_POST.CLICK' | translate"></p>
     </div>
   </div>
 
@@ -30,20 +30,20 @@
       <span class="pill">Instagram</span>
       <span class="pill">{{ shop.type || 'all' }}</span>
       <span class="spacer"></span>
-      <span class="count" *ngIf="suggestionIndex >= 0">Suggestion #{{ suggestionIndex + 1 }}</span>
+      <span class="count" *ngIf="suggestionIndex >= 0">{{"FAKE_POST.SUGGEST" | translate}} #{{ suggestionIndex + 1 }}</span>
     </div>
 
     <textarea readonly class="generated-post">{{ generatedPost }}</textarea>
 
     <div class="actions">
       <button class="btn-secondary" type="button" (click)="copy()" [disabled]="copying">
-        {{ copied ? 'Copié ✓' : 'Copier' }}
+        {{ copied ? ('FAKE_POST.COPY1' | translate) : ('FAKE_POST.COPY2' | translate) }}
       </button>
     </div>
   </div>
 
   <div class="publish-bar">
-    <div class="publish-label">Publier sur</div>
+    <div class="publish-label">{{"FAKE_POST.PUBLISH" | translate}}</div>
 
     <div class="publish-actions">
       <a class="pill-link ig" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"

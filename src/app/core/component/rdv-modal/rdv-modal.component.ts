@@ -37,7 +37,6 @@ export class RdvModalComponent implements OnInit, OnDestroy {
     public sessionService: SessionService,
     private router: Router,
     public dialog: MatDialog,
-    private communicationService: CommunicationService,
     private bookingService: BookingService,
     private translate: TranslateService,
     private toastr: ToastrService

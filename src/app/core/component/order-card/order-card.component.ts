@@ -399,54 +399,56 @@ export class OrderCardComponent {
   }
 
   openCancelModal(order: any) {
-  if (!order?._id) return;
+    if (!order?._id) return;
 
-  const bookingStart = moment(order.start);
-  const now = moment();
-  const diffHours = bookingStart.diff(now, 'hours');
+    const bookingStart = moment(order.start);
+    const now = moment();
+    const diffHours = bookingStart.diff(now, 'hours');
 
-  this.cancelTarget = order;
+    this.cancelTarget = order;
+    const t = (key: string) => this.translate.instant(key);
 
-  if (diffHours >= 24) {
-    this.cancelPolicy = 'full';
-    this.cancelModalText =
-      `✅ Annulation gratuite\n\n` +
-      `Vous êtes à plus de 24h du rendez-vous.\n` +
-      `Vous serez remboursé(e) à 100%.`;
-  } else {
-    this.cancelPolicy = 'half';
-    this.cancelModalText =
-      `⚠️ Annulation tardive\n\n` +
-      `Vous êtes à moins de 24h du rendez-vous.\n` +
-      `50% du montant est conservé (pour le prestataire).\n` +
-      `Vous serez remboursé(e) à 50%.`;
+    if (diffHours >= 24) {
+      this.cancelPolicy = 'full';
+      this.cancelModalText =
+        `${t('CANCEL_POLICY.FREE_TITLE')}\n\n` +
+        `${t('CANCEL_POLICY.FREE_LINE_1')}\n` +
+        `${t('CANCEL_POLICY.FREE_LINE_2')}`;
+    } else {
+      this.cancelPolicy = 'half';
+      this.cancelModalText =
+        `${t('CANCEL_POLICY.LATE_TITLE')}\n\n` +
+        `${t('CANCEL_POLICY.LATE_LINE_1')}\n` +
+        `${t('CANCEL_POLICY.LATE_LINE_2')}\n` +
+        `${t('CANCEL_POLICY.LATE_LINE_3')}`;
+    }
+
+
+    this.showCancelModal = true;
   }
 
-  this.showCancelModal = true;
-}
+  closeCancelModal() {
+    this.showCancelModal = false;
+    this.cancelTarget = null;
+  }
 
-closeCancelModal() {
-  this.showCancelModal = false;
-  this.cancelTarget = null;
-}
+  confirmCancelModal() {
+    const order = this.cancelTarget;
+    if (!order?._id) return this.closeCancelModal();
 
-confirmCancelModal() {
-  const order = this.cancelTarget;
-  if (!order?._id) return this.closeCancelModal();
-
-  // ✅ 1 seul appel backend
-  this.bookingService.cancelBookingWithPolicy(order._id, this.cancelPolicy, this.storedLangue).subscribe({
-    next: () => {
-      this.showCustomToast(this.translate.instant('SUCCESS.CANCEL_OK') || 'Réservation annulée.', 'success');
-      this.closeCancelModal();
-      this.onUpdateNeeded.emit(order);
-    },
-    error: (err: any) => {
-      console.error('[OrderCard] cancelBookingWithPolicy ERROR:', err);
-      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR') || 'Erreur.', 'error');
-      this.closeCancelModal();
-    }
-  });
-}
+    // ✅ 1 seul appel backend
+    this.bookingService.cancelBookingWithPolicy(order._id, this.cancelPolicy, this.storedLangue).subscribe({
+      next: () => {
+        this.showCustomToast(this.translate.instant('SUCCESS.CANCEL_OK') || 'Réservation annulée.', 'success');
+        this.closeCancelModal();
+        this.onUpdateNeeded.emit(order);
+      },
+      error: (err: any) => {
+        console.error('[OrderCard] cancelBookingWithPolicy ERROR:', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR') || 'Erreur.', 'error');
+        this.closeCancelModal();
+      }
+    });
+  }
 
 }

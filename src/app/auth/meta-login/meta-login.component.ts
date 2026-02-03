@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { SessionService } from 'src/app/core/services/session.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-meta-login',
@@ -19,6 +20,7 @@ export class MetaLoginComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient,
     private sessionService: SessionService,
+    private translate: TranslateService,
     public router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -46,7 +48,7 @@ export class MetaLoginComponent implements OnInit {
         // Vérification des données reçues
         if (!accessToken || !expiresIn) {
           console.error('Access token ou expiration non reçu du backend.');
-          this.openSnackBar('Erreur lors de la récupération du token Facebook');
+          this.openSnackBar(this.translate.instant('FORGOT_DETAILS.TOKEN_FACEBOOK'));
           return;
         }
 
@@ -65,13 +67,13 @@ export class MetaLoginComponent implements OnInit {
           },
           (error) => {
             console.error('Erreur lors du login utilisateur :', error);
-            this.openSnackBar(error.error.message || 'Erreur de connexion');
+            this.openSnackBar(error.error.message || this.translate.instant('FORGOT_DETAILS.CONNEX_ERROR'));
           }
         );
       },
       (error) => {
         console.error('Erreur lors de l’échange du code au backend :', error);
-        this.openSnackBar('Erreur lors de l’échange du code');
+        this.openSnackBar(this.translate.instant('FORGOT_DETAILS.CODE_SWAP'));
       }
     );
   }

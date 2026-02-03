@@ -1,8 +1,0 @@
-<div *ngIf="loading$ | async" class="loader-overlay">
-  <div class="pulsing-loader">
-    <div class="icon-container" *ngFor="let icon of icons; let i = index" [ngStyle]="{'animation-delay': (i * 0.3) + 's'}">
-      <img [src]="icon.src" [alt]="icon.alt">
-    </div>
-  </div>
-  <p class="loading-text">{{"LOADER.LOADING"}}...</p>
-</div>

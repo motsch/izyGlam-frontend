@@ -13,7 +13,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { DOCUMENT } from '@angular/common';
 import { SeoService } from 'src/app/core/services/seo.service';
 import { DrawerService } from 'src/app/core/services/drawer.service';
-import { CategoryService } from 'src/app/core/services/category.service';
 import { BookingCategoryService } from 'src/app/core/services/booking-category.service';
 import { forkJoin, of } from 'rxjs';
 import { switchMap, tap, catchError } from 'rxjs/operators';

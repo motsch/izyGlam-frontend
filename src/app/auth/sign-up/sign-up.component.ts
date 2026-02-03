@@ -113,60 +113,60 @@ export class SignUpComponent implements OnInit {
      */
     validAjouterModifier() {
         if (!this.user.sex) {
-            this.error.sex = "Le genre est obligatoire";
+            this.error.sex = this.translate.instant("SIGNUP.ERROR_SEX");
             return;
         }
 
         if (!this.user.lastname) {
-            this.error.lastname = "Le nom de famille est obligatoire";
+            this.error.lastname = this.translate.instant("SIGNUP.SURENAME_ERROR");
             return;
         } else if (this.user.lastname.length < 2) {
-            this.error.lastname = "Le nom de famille doit être composé d'au moins 2 lettres";
+            this.error.lastname = this.translate.instant("SIGNUP.FAMILY_ERROR");
             return;
         } else {
             this.error.lastname = null;
         }
         if (!this.user.firstname) {
-            this.error.firstname = "Le prénom est obligatoire";
+            this.error.firstname = this.translate.instant("SIGNUP.FIRSTNAME_ERROR");
             return;
         } else if (this.user.firstname.length < 2) {
-            this.error.firstname = "Le prénom doit être composé d'au moins 2 lettres";
+            this.error.firstname = this.translate.instant("SIGNUP.TWO_LETTER_FIRSTNAME");
             return;
         } else {
             this.error.firstname = null;
         }
         if (!this.user.phone) {
-            this.error.phone = "Le numéro de téléphone est obligatoire";
+            this.error.phone = this.translate.instant("SIGNUP.PHONE");
             return;
         } else if (!this.validatePhoneNumber('+33', this.user.phone)) {
-            this.error.phone = "Le numéro de téléphone n'est pas valide";
+            this.error.phone = this.translate.instant("SIGNUP.PHONE_NOT_VALID");
             return;
         } else {
             this.error.phone = null;
         }
         if (!this.user.email) {
-            this.error.email = "L'email est obligatoire";
+            this.error.email = this.translate.instant("SIGNUP.EMAIL");
             return;
         } else if (!this.validateEmail(this.user.email)) {
-            this.error.email = "L'email doit ressembler à xx@xx.xx";
+            this.error.email = this.translate.instant("SIGNUP.EMAIL_NOT_VALID");
             return;
         } else {
             this.error.email = null;
         }
         if (!this.user.password) {
-            this.error.password = "Le mot de passe est obligatoire";
+            this.error.password = this.translate.instant("SIGNUP.MDP");
             return;
         } else {
             this.error.password = null;
         }
         if (!this.user.passwordConfirmed) {
-            this.error.passwordConfirmed = "La confirmation de mot de passe est obligatoire";
+            this.error.passwordConfirmed = this.translate.instant("SIGNUP.MDP_CONFIRM");
             return;
         } else {
             this.error.passwordConfirmed = null;
         }
         if (!this.user.country) {
-            this.error.country = "Le pays est obligatoire";
+            this.error.country = this.translate.instant("SIGNUP.COUNTRY_NEEDED");
             return;
         } else {
             this.error.country = null;

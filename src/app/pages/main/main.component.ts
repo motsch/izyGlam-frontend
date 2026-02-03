@@ -117,14 +117,10 @@ export class MainComponent implements OnInit, AfterViewInit {
     private categoryService: CategoryService,
     private userService: UserService,
     private router: Router,
-    private advertisementService: AdvertisementService,
-    private mqttService: MqttService,
-    private cd: ChangeDetectorRef,
     private toastr: ToastrService,
     private translate: TranslateService,
     private countryService: CountryService,
     private adminService: AdminService,
-    private drawerService: DrawerService,
     private seoService: SeoService
   ) { }
 
@@ -187,7 +183,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         const status = await navigator.permissions.query({ name: 'geolocation' });
         if (status.state === 'denied') {
           this.geolocationAvailable = false;
-          this.locationError = 'La géolocalisation est désactivée par le navigateur.';
+          this.locationError = this.translate.instant('PAYEMENT.GEOLOC');
           this.locationCheckDone = true;
           this.refreshDisplayedAddresses();
           return;
@@ -214,7 +210,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       this.locationError = '';
     } catch (e: any) {
       this.geolocationAvailable = false;
-      this.locationError = 'Géolocalisation non autorisée. Utilisez le code postal.';
+      this.locationError = this.translate.instant('PAYEMENT.GEOLOC_NOT_OK');
     } finally {
       this.locationCheckDone = true;
       this.refreshDisplayedAddresses();

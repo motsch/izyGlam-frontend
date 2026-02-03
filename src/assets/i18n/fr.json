@@ -162,7 +162,13 @@
     "VERIF": "Vérification de vos informations, veuillez patienter",
     "ACCUEIL": "Retour à l'accueil",
     "OK": "Connexion réussie !",
-    "SPACE": "Redirection vers votre espace en cours"
+    "SPACE": "Redirection vers votre espace en cours",
+    "VALID_EMAIL": "Veuillez entrer un email valide.",
+    "REINIT_EMAIL": "Un email de réinitialisation a été envoyé.",
+    "ERROR_HAPPEN": "Une erreur est survenue.",
+    "TOKEN_FACEBOOK": "Erreur lors de la récupération du token Facebook",
+    "CONNEX_ERROR": "Erreur de connexion",
+    "CODE_SWAP": "Erreur lors de l’échange du code"
   },
   "VERIFY_EMAIL": {
     "VERIFICATION": "Vérification en cours",
@@ -295,7 +301,18 @@
     "TONE": "premium, warm, short...",
     "YOUR_POST": "Ton post avec 'shopName' etc...",
     "SAVE": "Enregistrer",
-    "CREATE": "Créer"
+    "CREATE": "Créer",
+
+    "ASSISTANT_PUBLICATION": "Assistant de publication",
+    "TEXT_READY": "Un texte prêt à copier-coller pour Instagram, Tiktok ou Facebook",
+    "ASTUCE": "Astuce : change 1 phrase + ajoute une photo réelle pour performer.",
+    "REFRESH": "Rafraîchir",
+    "GENERATE": "Générer un post",
+    "CLICK": "Clique sur <strong>Générer un post</strong> pour obtenir une première suggestion.",
+    "SUGGEST": "Suggestion",
+    "PUBLISH": "Publier sur",
+    "COPY1": "Copié ✓",
+    "COPY2": "Copier"
   },
   "REVIEWS_MODAL": {
     "REVIEWS": "Avis",
@@ -605,7 +622,9 @@
     "LEGAL_TEXT_3": "Si vous n'êtes pas là lors de l’arrivée du coursier, ce dernier déposera votre commande devant la porte. Lorsque vous passez une commande, vous acceptez d’en assumer l’entière responsabilité une fois celle-ci livrée. En votre absence, les commandes contenant de l’alcool ou d’autres articles faisant l’objet de restrictions seront directement retournées à l’établissement.",
     "CLOSE_FORM": "Fermer le formulaire",
     "ADD_CARD": "Ajouter une carte",
-    "TRAITEMENT": "Traitement en cours"
+    "TRAITEMENT": "Traitement en cours",
+    "GEOLOC": "La géolocalisation est désactivée par le navigateur.",
+    "GEOLOC_NOT_OK": "Géolocalisation non autorisée. Utilisez le code postal."
   },
   "PAYEMENT_PRO": {
     "CHANGE_ABO": "Changer d'abonnement",
@@ -775,7 +794,25 @@
     "OPEN_EMAIL": "Ouvre ta boîte mail",
     "CLICK_LINK": "clique sur le lien, puis reviens ici et clique sur",
     "RESEND_EMAIL": "Renvoyer l’email",
-    "LAST_VERIF": "Dernière vérif"
+    "LAST_VERIF": "Dernière vérif",
+    "VALIDATE_EMAIL": "Validez d'abord votre email, puis cliquez sur ↻.",
+    "EMAIL_NOT_VALID": "L'email doit ressembler à xx@xx.xx",
+    "EMAIL_HAVE_TO": "L'email est obligatoire",
+    "NOT_VERIFY_EMAIL": "Impossible de vérifier cet email (endpoint email-exists).",
+    "SEX_HAVE_TO": "Le genre est obligatoire",
+    "FIRSTNAME_HAVE_TO": "Le prénom est obligatoire (min 2)",
+    "NAME_HAVE_TO": "Le nom est obligatoire (min 2)",
+    "PHONE_NOT_VALID": "Téléphone invalide (ex: 0612345678)",
+    "CONFIRM_HAVE_TO": "Confirmation obligatoire",
+    "MDP_NOT_MATCHING": "Les mots de passe ne correspondent pas",
+    "COUNTRY_HAVE_TO": "Pays obligatoire",
+    "NOT_ACTIVATED": "Pas encore activé. Cliquez à nouveau après avoir validé l'email.",
+    "ACCOUNT_ACTIVATED": "Compte activé ✅ Entrez votre mot de passe pour continuer.",
+    "EMAIL_VALID": "Email invalide",
+    "EMAIL_RESEND": "Email renvoyé ✅",
+    "MDP_HAVE_TO": "Le mot de passe est obligatoire",
+    "CP_HAVE_TO": "Code postal obligatoire",
+    "CP_NOT_VALID": "Code postal invalide"
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modifier l’adresse",
@@ -967,7 +1004,7 @@
     "TITLE": "Mes favoris",
     "TITLE_SUBTITLE": "Retrouve tes salons coup de cœur en un clin d’œil."
   },
-  "THANK_YOU" : {
+  "THANK_YOU": {
     "WELCOME": "Bienvenue dans",
     "ABO": "Ton abonnement est actif. Tu peux profiter immédiatement de toutes les fonctionnalités Premium.",
     "STATUS": "Statut",
@@ -987,7 +1024,6 @@
     "GALLERY": "Gallerie d'images",
     "SEE_MORE": "Voir plus",
     "SEE_LESS": "Voir moins",
-
     "SHARE": "Partager",
     "EMAIL": "Email",
     "QR": "QR Code",
@@ -1007,7 +1043,10 @@
     "PLACEHOLDER_PASSWORD_NEW": "Nouveau mot de passe",
     "PLACEHOLDER_PASSWORD_CONFIRMED": "Confirmer mot de passe",
     "CHANGE_PASSWORD": "Modifiez votre mot de passe",
-    "REINIT": "Réinitialiser"
+    "REINIT": "Réinitialiser",
+    "INVALID_TOKEN": "Le token est invalide ou manquant.",
+    "MDP_NOT_MATCHING": "Les mots de passe ne correspondent pas.",
+    "ERROR_HAPPEN": "Une erreur est survenue."
   },
   "SIGNUP": {
     "GENRE": "Genre",
@@ -1028,7 +1067,19 @@
     "PLACEHOLDER_PHONE_NUMBER": "Numéro de téléphone",
     "PLACEHOLDER_PASSWORD": "Mot de passe",
     "PLACEHOLDER_PASSWORDCONFIRMED": "Confirmation de mot de passe",
-    "COUNTRY": "Pays"
+    "COUNTRY": "Pays",
+    "ERROR_SEX": "Le genre est obligatoire",
+    "SURENAME_ERROR": "Le nom de famille est obligatoire",
+    "FAMILY_ERROR": "Le nom de famille doit être composé d'au moins 2 lettres",
+    "FIRSTNAME_ERROR": "Le prénom est obligatoire",
+    "TWO_LETTER_FIRSTNAME": "Le prénom doit être composé d'au moins 2 lettres",
+    "PHONE": "Le numéro de téléphone est obligatoire",
+    "PHONE_NOT_VALID": "Le numéro de téléphone n'est pas valide",
+    "EMAIL": "L'email est obligatoire",
+    "EMAIL_NOT_VALID": "L'email doit ressembler à xx@xx.xx",
+    "MDP": "Le mot de passe est obligatoire",
+    "MDP_CONFIRM": "La confirmation de mot de passe est obligatoire",
+    "COUNTRY_NEEDED": "Le pays est obligatoire"
   },
   "LANGUE": {
     "FRANCAIS": "Français",
@@ -1200,7 +1251,59 @@
     "STATUS": "Statut",
     "NEXT_LEVEL": "Prochain niveau",
     "MAX_LEVEL": "Niveau maximum atteint",
-    "REMAINING": "encore {{count}} réservations"
+    "REMAINING": "encore {{count}} réservations",
+    "START_ACTIVATION": "Impossible de démarrer l'activation des paiements.",
+    "REFRESH_STRIPE": "Impossible de rafraîchir le statut Stripe.",
+    "LOAD_DATA": "Impossible de charger les données comptables."
+  },
+  "": {
+
+  },
+  "CANCEL_POLICY": {
+    "FREE_TITLE": "✅ Annulation gratuite",
+    "FREE_LINE_1": "Vous êtes à plus de 24h du rendez-vous.",
+    "FREE_LINE_2": "Vous serez remboursé(e) à 100%.",
+    "LATE_TITLE": "⚠️ Annulation tardive",
+    "LATE_LINE_1": "Vous êtes à moins de 24h du rendez-vous.",
+    "LATE_LINE_2": "50% du montant est conservé (pour le prestataire).",
+    "LATE_LINE_3": "Vous serez remboursé(e) à 50%."
+  },
+  "ACCOUNTING_EXPORT": {
+    "DAY": "Jour",
+    "YEAR": "Année",
+    "ISO_WEEK": "Semaine (ISO)",
+    "BOOKINGS": "Réservations",
+    "TURNOVER": "Chiffre d'affaires",
+    "SERVICE_FEE": "Frais de service",
+    "COMMISSION": "Commission",
+    "NET": "Revenu net",
+    "VAT": "TVA",
+    "TURNOVER_SHORT": "CA",
+    "SERVICE_FEE_SHORT": "Frais",
+    "NET_PROVIDER": "Net prestataire",
+    "TOTAL_TURNOVER": "Total CA",
+    "TOTAL_SERVICE_FEE": "Total frais",
+    "TOTAL_COMMISSION": "Total commission",
+    "TOTAL_NET_PROVIDER": "Total net prestataire",
+    "DOCUMENT": "Document",
+    "PAGE": "Page",
+    "DOCUMENT_TITLE": "Relevé comptable",
+    "PERIOD": "Période",
+    "DOCUMENT_META": "Document",
+    "ISSUED_ON": "Émis le",
+    "MODE": "Mode",
+    "DATE": "Date",
+    "ISSUER": "Émetteur (plateforme)",
+    "BENEFICIARY": "Bénéficiaire (prestataire)",
+    "SIRET": "SIRET",
+    "VAT_LABEL": "TVA",
+    "SUMMARY": "Synthèse",
+    "DETAILS": "Détail par période",
+    "MENTIONS_TITLE": "Mentions",
+    "MENTION_1": "Ce document est un relevé de synthèse généré automatiquement à partir des réservations enregistrées sur {{brand}}.",
+    "MENTION_2": "Les montants affichés sont exprimés en EUR.",
+    "MENTION_3": "En cas de contrôle, ce relevé doit pouvoir être recoupé avec les réservations et paiements associés.",
+    "FILE_NAME": "releve_comptable"
   },
   "NEW_SHOP_MODAL": {
     "TITLE": "Sélectionnez le type de boutique à créer",

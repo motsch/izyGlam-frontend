@@ -47,7 +47,7 @@ export class ForgetPasswordComponent implements OnInit {
 
   onSubmit() {
     if (!this.user.login) {
-      this.openSnackBar('Veuillez entrer un email valide.');
+      this.openSnackBar(this.translate.instant("FORGOT_DETAILS.VALID_EMAIL"));
       return;
     }
 
@@ -55,11 +55,11 @@ export class ForgetPasswordComponent implements OnInit {
     this.authService.forgotPassword(this.user.login).subscribe({
       next: () => {
         this.isLoading = false;
-        this.openSnackBar('Un email de réinitialisation a été envoyé.');
+        this.openSnackBar('FORGOT_DETAILS.REINIT_EMAIL');
       },
       error: (err) => {
         this.isLoading = false;
-        this.openSnackBar(err.error.message || 'Une erreur est survenue.');
+        this.openSnackBar(err.error.message || this.translate.instant('FORGOT_DETAILS.ERROR_HAPPEN'));
       },
     });
   }

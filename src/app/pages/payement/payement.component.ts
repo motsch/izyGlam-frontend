@@ -2,8 +2,6 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CommunicationService } from 'src/app/core/services/communication.service';
-import { ScheduleService } from 'src/app/core/services/schedule.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { AddressModalComponent } from 'src/app/core/component/address-modal/address-modal.component';
@@ -12,9 +10,7 @@ import { environment } from 'src/environments/environment';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { BookingService } from 'src/app/core/services/booking.service';
 import { loadStripe } from '@stripe/stripe-js';
-import { FinancialService } from 'src/app/core/services/financial.service';
 import { StripeService } from 'src/app/core/services/stripe.service';
-import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { SubscriptionService } from 'src/app/core/services/subscription.service';
 import { SessionService } from 'src/app/core/services/session.service';
 

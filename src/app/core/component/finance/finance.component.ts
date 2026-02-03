@@ -224,7 +224,7 @@ export class FinanceComponent implements OnInit, OnChanges {
       error: (e) => {
         console.error(e);
         this.stripeLoading = false;
-        this.toastr.error("Impossible de démarrer l'activation des paiements.");
+        this.toastr.error(this.translate.instant("FINANCE.START_ACTIVATION"));
       }
     });
   }
@@ -241,7 +241,7 @@ export class FinanceComponent implements OnInit, OnChanges {
       error: (e) => {
         console.error(e);
         this.stripeLoading = false;
-        this.toastr.error("Impossible de rafraîchir le statut Stripe.");
+        this.toastr.error(this.translate.instant("FINANCE.REFRESH_STRIPE"));
       }
     });
   }
@@ -318,8 +318,8 @@ export class FinanceComponent implements OnInit, OnChanges {
       error: (err: any) => {
         console.error('Erreur suivi comptable :', err);
         this.accountingLoading = false;
-        this.accountingError = "Impossible de charger les données comptables.";
-        this.showCustomToast(this.accountingError, true);
+        this.accountingError = this.translate.instant("FINANCE.LOAD_DATA");
+        this.showCustomToast(this.accountingError!, true);
       }
     });
   }
@@ -361,7 +361,16 @@ export class FinanceComponent implements OnInit, OnChanges {
     lines.push('BREAKDOWN');
 
     if (mode === 'week') {
-      lines.push('Jour;Bookings;CA;ServiceFee;Commission;Net;TVA');
+      lines.push([
+        this.translate.instant('ACCOUNTING_EXPORT.DAY'),
+        this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'),
+        this.translate.instant('ACCOUNTING_EXPORT.TURNOVER'),
+        this.translate.instant('ACCOUNTING_EXPORT.SERVICE_FEE'),
+        this.translate.instant('ACCOUNTING_EXPORT.COMMISSION'),
+        this.translate.instant('ACCOUNTING_EXPORT.NET'),
+        this.translate.instant('ACCOUNTING_EXPORT.VAT')
+      ].join(';'));
+
       breakdown.forEach((b: any) => {
         lines.push([
           b.day ?? '',
@@ -373,8 +382,19 @@ export class FinanceComponent implements OnInit, OnChanges {
           b.totalTva ?? 0
         ].join(';'));
       });
-    } else {
-      lines.push('Annee;SemaineISO;Bookings;CA;ServiceFee;Commission;Net;TVA');
+    }
+    else {
+      lines.push([
+        this.translate.instant('ACCOUNTING_EXPORT.YEAR'),
+        this.translate.instant('ACCOUNTING_EXPORT.ISO_WEEK'),
+        this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'),
+        this.translate.instant('ACCOUNTING_EXPORT.TURNOVER'),
+        this.translate.instant('ACCOUNTING_EXPORT.SERVICE_FEE'),
+        this.translate.instant('ACCOUNTING_EXPORT.COMMISSION'),
+        this.translate.instant('ACCOUNTING_EXPORT.NET'),
+        this.translate.instant('ACCOUNTING_EXPORT.VAT')
+      ].join(';'));
+
       breakdown.forEach((b: any) => {
         lines.push([
           b.year ?? '',
@@ -402,7 +422,7 @@ export class FinanceComponent implements OnInit, OnChanges {
 
     URL.revokeObjectURL(url);
   }
-  
+
   downloadAccountingPDF(): void {
     if (!this.shop?._id) return;
 
@@ -430,17 +450,24 @@ export class FinanceComponent implements OnInit, OnChanges {
     const breakdown = this.accountingData?.breakdown || [];
 
     // Lignes du tableau
+    // Lignes du tableau
     const tableBody: any[] = [
       [
-        { text: mode === 'week' ? 'Jour' : 'Semaine ISO', style: 'th' },
-        { text: 'Réservations', style: 'th' },
-        { text: 'CA', style: 'th' },
-        { text: 'Frais', style: 'th' },
-        { text: 'Commission', style: 'th' },
-        { text: 'Net prestataire', style: 'th' },
-        { text: 'TVA', style: 'th' },
+        {
+          text: mode === 'week'
+            ? this.translate.instant('ACCOUNTING_EXPORT.DAY')
+            : this.translate.instant('ACCOUNTING_EXPORT.ISO_WEEK'),
+          style: 'th'
+        },
+        { text: this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'), style: 'th' },
+        { text: this.translate.instant('ACCOUNTING_EXPORT.TURNOVER_SHORT'), style: 'th' },
+        { text: this.translate.instant('ACCOUNTING_EXPORT.SERVICE_FEE_SHORT'), style: 'th' },
+        { text: this.translate.instant('ACCOUNTING_EXPORT.COMMISSION'), style: 'th' },
+        { text: this.translate.instant('ACCOUNTING_EXPORT.NET_PROVIDER'), style: 'th' },
+        { text: this.translate.instant('ACCOUNTING_EXPORT.VAT'), style: 'th' }
       ]
     ];
+
 
     breakdown.forEach((b: any) => {
       const label = mode === 'week'
@@ -460,17 +487,37 @@ export class FinanceComponent implements OnInit, OnChanges {
 
     // Totaux
     const totalsBlock = [
-      ['Total CA', this.formatMoney(totals.totalPrice)],
-      ['Total frais', this.formatMoney(totals.totalServiceFee)],
-      ['Total commission', this.formatMoney(totals.totalCommission)],
-      ['Total net prestataire', this.formatMoney(totals.totalShopEarnings)],
-      ['TVA', this.formatMoney(totals.totalTva)],
-      ['Réservations', String(totals.bookingsCount ?? 0)],
+      [
+        this.translate.instant('ACCOUNTING_EXPORT.TOTAL_TURNOVER'),
+        this.formatMoney(totals.totalPrice)
+      ],
+      [
+        this.translate.instant('ACCOUNTING_EXPORT.TOTAL_SERVICE_FEE'),
+        this.formatMoney(totals.totalServiceFee)
+      ],
+      [
+        this.translate.instant('ACCOUNTING_EXPORT.TOTAL_COMMISSION'),
+        this.formatMoney(totals.totalCommission)
+      ],
+      [
+        this.translate.instant('ACCOUNTING_EXPORT.TOTAL_NET_PROVIDER'),
+        this.formatMoney(totals.totalShopEarnings)
+      ],
+      [
+        this.translate.instant('ACCOUNTING_EXPORT.VAT'),
+        this.formatMoney(totals.totalTva)
+      ],
+      [
+        this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'),
+        String(totals.bookingsCount ?? 0)
+      ]
     ];
+
 
     // Logo en base64 : on le charge via fetch (assets)
     const logoUrl = izy.logoPath;
-
+    const t = (key: string, params?: any) =>
+      this.translate.instant(key, params);
     fetch(logoUrl)
       .then(r => r.blob())
       .then(blob => new Promise<string>((resolve) => {
@@ -484,8 +531,8 @@ export class FinanceComponent implements OnInit, OnChanges {
           pageMargins: [30, 30, 30, 40],
           footer: (currentPage: number, pageCount: number) => ({
             columns: [
-              { text: `${izy.brandName} • Document ${documentNumber}`, style: 'footer' },
-              { text: `Page ${currentPage} / ${pageCount}`, alignment: 'right', style: 'footer' }
+              { text: `${izy.brandName} • ${this.translate.instant("ACCOUNTING_EXPORT.DOCUMENT")} ${documentNumber}`, style: 'footer' },
+              { text: `${this.translate.instant("ACCOUNTING_EXPORT.PAGE")} ${currentPage} / ${pageCount}`, alignment: 'right', style: 'footer' }
             ],
             margin: [30, 0, 30, 20]
           }),
@@ -501,9 +548,19 @@ export class FinanceComponent implements OnInit, OnChanges {
                 {
                   width: '*',
                   stack: [
-                    { text: 'Relevé comptable', style: 'h1' },
-                    { text: `Période : ${fromDate?.toLocaleDateString('fr-FR')} → ${toDate?.toLocaleDateString('fr-FR')}`, style: 'sub' },
-                    { text: `Document : ${documentNumber} • Émis le ${issueDate} • Mode: ${mode} • Date: ${date}`, style: 'sub2' },
+                    { text: t('ACCOUNTING_EXPORT.DOCUMENT_TITLE'), style: 'h1' },
+                    {
+                      text: `${t('ACCOUNTING_EXPORT.PERIOD')} : ${fromDate?.toLocaleDateString('fr-FR')} → ${toDate?.toLocaleDateString('fr-FR')}`,
+                      style: 'sub'
+                    },
+                    {
+                      text:
+                        `${t('ACCOUNTING_EXPORT.DOCUMENT_META')} : ${documentNumber} • ` +
+                        `${t('ACCOUNTING_EXPORT.ISSUED_ON')} ${issueDate} • ` +
+                        `${t('ACCOUNTING_EXPORT.MODE')} : ${mode} • ` +
+                        `${t('ACCOUNTING_EXPORT.DATE')} : ${date}`,
+                      style: 'sub2'
+                    }
                   ]
                 }
               ],
@@ -518,12 +575,12 @@ export class FinanceComponent implements OnInit, OnChanges {
                 {
                   width: '*',
                   stack: [
-                    { text: 'Émetteur (plateforme)', style: 'sectionTitle' },
+                    { text: t('ACCOUNTING_EXPORT.ISSUER'), style: 'sectionTitle' },
                     { text: this.safe(izy.companyName), style: 'bold' },
                     { text: this.safe(izy.legalForm), style: 'text' },
                     { text: this.buildIzyAddress(), style: 'text' },
-                    { text: `SIRET : ${this.safe(izy.siret)}`, style: 'text' },
-                    { text: `TVA : ${this.safe(izy.vatNumber)}`, style: 'text' },
+                    { text: `${t('ACCOUNTING_EXPORT.SIRET')} : ${this.safe(izy.siret)}`, style: 'text' },
+                    { text: `${t('ACCOUNTING_EXPORT.VAT_LABEL')} : ${this.safe(izy.vatNumber)}`, style: 'text' },
                     { text: `${this.safe(izy.email)} • ${this.safe(izy.phone)}`, style: 'textSmall' },
                     { text: this.safe(izy.website), style: 'textSmall' },
                   ],
@@ -532,13 +589,12 @@ export class FinanceComponent implements OnInit, OnChanges {
                 {
                   width: '*',
                   stack: [
-                    { text: 'Bénéficiaire (prestataire)', style: 'sectionTitle, bold' },
-                    /*{ text: this.safe(shop?.name), style: 'bold' },*/
+                    { text: t('ACCOUNTING_EXPORT.BENEFICIARY'), style: 'sectionTitle' },
                     { text: this.safe(shop?.legal?.companyName || ''), style: 'text' },
                     { text: this.safe(shop?.legal?.legalForm || ''), style: 'text' },
                     { text: this.buildShopAddress(shop), style: 'text' },
-                    { text: `SIRET : ${this.safe(shop?.legal?.siret)}`, style: 'text' },
-                    { text: `TVA : ${this.safe(shop?.legal?.vatNumber)}`, style: 'text' },
+                    { text: `${t('ACCOUNTING_EXPORT.SIRET')} : ${this.safe(shop?.legal?.siret)}`, style: 'text' },
+                    { text: `${t('ACCOUNTING_EXPORT.VAT_LABEL')} : ${this.safe(shop?.legal?.vatNumber)}`, style: 'text' },
                     { text: `${this.safe(shop?.legal?.email)} • ${this.safe(shop?.legal?.phone)}`, style: 'textSmall' },
                   ],
                   style: 'card'
@@ -550,7 +606,7 @@ export class FinanceComponent implements OnInit, OnChanges {
             { text: ' ', margin: [0, 10] },
 
             // Totaux
-            { text: 'Synthèse', style: 'sectionTitle', margin: [0, 0, 0, 6] },
+            { text: t('ACCOUNTING_EXPORT.SUMMARY'), style: 'sectionTitle', margin: [0, 0, 0, 6] },
             {
               table: {
                 widths: ['*', 'auto', '*', 'auto'],
@@ -566,7 +622,7 @@ export class FinanceComponent implements OnInit, OnChanges {
             { text: ' ', margin: [0, 10] },
 
             // Détail
-            { text: 'Détail par période', style: 'sectionTitle', margin: [0, 0, 0, 6] },
+            { text: t('ACCOUNTING_EXPORT.DETAILS'), style: 'sectionTitle', margin: [0, 0, 0, 6] },
             {
               table: {
                 headerRows: 1,
@@ -589,10 +645,10 @@ export class FinanceComponent implements OnInit, OnChanges {
             // Mentions
             {
               text:
-                `Mentions :\n` +
-                `• Ce document est un relevé de synthèse généré automatiquement à partir des réservations enregistrées sur ${izy.brandName}.\n` +
-                `• Les montants affichés sont exprimés en EUR.\n` +
-                `• En cas de contrôle, ce relevé doit pouvoir être recoupé avec les réservations et paiements associés.`,
+                `${t('ACCOUNTING_EXPORT.MENTIONS_TITLE')} :\n` +
+                `• ${t('ACCOUNTING_EXPORT.MENTION_1', { brand: izy.brandName })}\n` +
+                `• ${t('ACCOUNTING_EXPORT.MENTION_2')}\n` +
+                `• ${t('ACCOUNTING_EXPORT.MENTION_3')}`,
               style: 'note'
             }
           ],
@@ -619,8 +675,7 @@ export class FinanceComponent implements OnInit, OnChanges {
             font: 'Roboto'
           }
         };
-
-        const fileName = `releve_comptable_${shop._id}_${fromISO}_${toISO}.pdf`;
+        const fileName = `${this.translate.instant('ACCOUNTING_EXPORT.FILE_NAME')}_${shop._id}_${fromISO}_${toISO}.pdf`;
         (pdfMake as any).createPdf(docDefinition).download(fileName);
       })
       .catch((e) => {

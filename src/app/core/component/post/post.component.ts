@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FakePost, FakePostService, SocialPlatform } from '../../services/fake-post.service';
+import { TranslateService } from '@ngx-translate/core';
 
 type ActiveFilter = 'all' | 'active' | 'inactive';
 
@@ -39,8 +40,9 @@ export class PostComponent implements OnInit {
 
   constructor(
     private fakePostService: FakePostService,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    private translate: TranslateService
+  ) { }
 
   ngOnInit(): void {
     this.load();
@@ -58,7 +60,7 @@ export class PostComponent implements OnInit {
       },
       error: (err) => {
         this.loading = false;
-        this.toastr.error(err?.error?.message || 'Impossible de récupérer les posts');
+        this.toastr.error(err?.error?.message || this.translate.instant('Impossible de récupérer les posts'));
       }
     });
   }

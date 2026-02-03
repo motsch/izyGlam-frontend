@@ -54,12 +54,12 @@ export class ResetPasswordComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     if (!this.token) {
-      this.userChangeError = 'Le token est invalide ou manquant.';
+      this.userChangeError = this.translate.instant('LOGIN.INVALID_TOKEN');
       return;
     }
 
     if (this.newPassword !== this.confirmPassword) {
-      this.userChangeError = 'Les mots de passe ne correspondent pas.';
+      this.userChangeError = this.translate.instant('LOGIN.MDP_NOT_MATCHING');
       return;
     }
 
@@ -72,7 +72,7 @@ export class ResetPasswordComponent implements OnInit {
         this.loading = false;
       },
       error: (error) => {
-        this.userChangeError = error.error.message || 'Une erreur est survenue.';
+        this.userChangeError = error.error.message || this.translate.instant('LOGIN.ERROR_HAPPEN');
         this.loading = false;
       }
     });
