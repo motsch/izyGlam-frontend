@@ -4,8 +4,29 @@
 
 /************ Margin-top ************/
 
+
+.margin-top-n1 {
+  margin-top: -1px !important;
+}
+
+.margin-top-n2 {
+  margin-top: -2px !important;
+}
+
+.margin-top-n3 {
+  margin-top: -3px !important;
+}
+
+.margin-top-n4 {
+  margin-top: -4px !important;
+}
+
 .margin-top-n5 {
   margin-top: -5px !important;
+}
+
+.margin-top-n6 {
+  margin-top: -6px !important;
 }
 
 .margin-top-n7 {
@@ -30,8 +51,8 @@
 
 .margin-top-n40 {
   margin-top: -40px !important;
-}  
-  
+}
+
 .margin-top-n60 {
   margin-top: -60px !important;
 }
@@ -171,6 +192,7 @@
 .margin-top-75 {
   margin-top: 75px !important;
 }
+
 .margin-top-80 {
   margin-top: 80px !important;
 }
@@ -434,6 +456,7 @@
 .margin-right-n50 {
   margin-right: -50px !important;
 }
+
 .margin-right-n100 {
   margin-right: -100px !important;
 }
@@ -748,4 +771,5 @@
   margin-left: 10% !important;
   margin-right: 10% !important;
 }
+
 /***********************************************************************************/

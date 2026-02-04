@@ -703,7 +703,7 @@
     "PASSWORDCONFIRMED": "Confirmation du mot de passe",
     "EMAIL": "E-mail",
     "PHONE": "Numéro de téléphone portable",
-    "WHATSAPP": "J’accepte de recevoir des messages sur WhatsApp",
+    "WHATSAPP": "J’accepte les conditions générales d'utilisation",
     "BUTTON": "Enregistrer la boutique",
     "SUCCESS": "La boutique a été créée avec succès !",
     "ERROR": "Une erreur est survenue lors de la création de la boutique :",
@@ -717,7 +717,7 @@
     "ERROR5": "Le nom de famille est obligatoire.",
     "ERROR6": "L'e-mail est obligatoire.",
     "ERROR7": "Le numéro de téléphone portable est obligatoire.",
-    "ERROR8": "Vous devez accepter de recevoir des messages sur WhatsApp.",
+    "ERROR8": "Vous devez accepter les conditions générales d'utilisation.",
     "VERIF_TITLE": "Vérification de votre profil professionnel",
     "VERIF_SUBTITLE": "Nous vérifions chaque professionnel pour protéger vos clients et votre réputation.",
     "VERIF_ID_TITLE": "Pièce d’identité",
@@ -812,7 +812,8 @@
     "EMAIL_RESEND": "Email renvoyé ✅",
     "MDP_HAVE_TO": "Le mot de passe est obligatoire",
     "CP_HAVE_TO": "Code postal obligatoire",
-    "CP_NOT_VALID": "Code postal invalide"
+    "CP_NOT_VALID": "Code postal invalide",
+    "HANDLE_MUST_BE_AVAILABLE": "Veuillez tester le handle et choisir un identifiant disponible."
   },
   "MAIN": {
     "CHANGE_ADDRESS": "Modifier l’adresse",

@@ -10,6 +10,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+app-header, .app-header, header {
+  position: sticky; /* ou fixed si tu l’utilises */
+  top: 0;
+  z-index: 50; /* <= important : reste bas */
+}
+
+
 /* Erreurs */
 .error {
   color: #e58c88;

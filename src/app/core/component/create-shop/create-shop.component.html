@@ -313,11 +313,11 @@
               </button>
 
               <span class="pill ok" *ngIf="!handleChecking && handleAvailable === true && newShop.handle">
-                {{ "CREATION_SHOP_WIZARD.AVAILABLE" | translate }}
+                ✓ {{ "CREATION_SHOP_WIZARD.AVAILABLE" | translate }}
               </span>
 
               <span class="pill ko" *ngIf="!handleChecking && handleAvailable === false && newShop.handle">
-                {{ "CREATION_SHOP_WIZARD.TAKEN" | translate }}
+                ✕ {{ "CREATION_SHOP_WIZARD.TAKEN" | translate }}
               </span>
             </div>
 
@@ -422,7 +422,7 @@
           <div class="field full">
             <div class="toggle">
               <input type="checkbox" id="whatsapp" [(ngModel)]="newShop.ccvaccepted" />
-              <label for="whatsapp">{{ "CREATION_SHOP.WHATSAPP" | translate }}</label>
+              <label for="whatsapp" class="margin-top-n5">{{ "CREATION_SHOP.WHATSAPP" | translate }}</label>
             </div>
             <div class="field-error" *ngIf="showErrors && !!error.ccvaccepted">{{ error.ccvaccepted }}</div>
           </div>

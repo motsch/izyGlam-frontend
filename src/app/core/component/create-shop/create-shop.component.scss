@@ -233,7 +233,8 @@
 }
 
 .progress {
-  margin-top: 14px;
+  margin-top: 16px;
+  padding: 2px;
   display: grid;
   gap: 10px;
 }
@@ -376,31 +377,81 @@
 }
 
 /* handle row */
+/* ✅ Status pill (Apple-like) */
 .pill {
-  padding: 8px 10px;
+  --pill-bg: rgba(17, 17, 17, 0.06);
+  --pill-border: rgba(17, 17, 17, 0.10);
+  --pill-text: rgba(17, 17, 17, 0.72);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 9px 12px;
   border-radius: 999px;
+
   font-size: 12px;
   font-weight: 900;
-  border: 1px solid rgba(17, 17, 17, 0.10);
-  background: rgba(255, 255, 255, 0.70);
+  line-height: 1;
+
+  border: 1px solid var(--pill-border);
+  background: var(--pill-bg);
+  color: var(--pill-text);
+
+  letter-spacing: -0.01em;
+  user-select: none;
+  white-space: nowrap;
+
+  /* petit glow iOS */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(8px);
+
+  /* dot iOS */
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--pill-text);
+    opacity: 0.55;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.65);
+  }
 
   &.ok {
-    border-color: rgba(0, 0, 0, 0.08);
-    background: rgba(255, 64, 129, 0.12);
-    color: rgba(17, 17, 17, 0.80);
+    --pill-bg: rgba(52, 199, 89, 0.14);     /* iOS green */
+    --pill-border: rgba(52, 199, 89, 0.28);
+    --pill-text: rgba(18, 128, 50, 0.95);
+
+    &::before {
+      background: rgba(52, 199, 89, 0.95);
+      opacity: 1;
+    }
   }
 
   &.ko {
-    background: rgba(176, 0, 32, 0.10);
-    color: #b00020;
-    border-color: rgba(176, 0, 32, 0.18);
+    --pill-bg: rgba(255, 59, 48, 0.14);     /* iOS red */
+    --pill-border: rgba(255, 59, 48, 0.28);
+    --pill-text: rgba(176, 0, 32, 0.95);
+
+    &::before {
+      background: rgba(255, 59, 48, 0.95);
+      opacity: 1;
+    }
   }
 
   &.loading {
-    background: rgba(17, 17, 17, 0.06);
-    color: rgba(17, 17, 17, 0.65);
+    --pill-bg: rgba(17, 17, 17, 0.06);
+    --pill-border: rgba(17, 17, 17, 0.10);
+    --pill-text: rgba(17, 17, 17, 0.55);
+
+    &::before {
+      background: rgba(17, 17, 17, 0.45);
+      opacity: 0.65;
+    }
   }
 }
+
 
 .preview {
   margin-top: 10px;
@@ -420,9 +471,27 @@
   height: 44px;
   border-radius: 14px;
   border: 1px solid rgba(17, 17, 17, 0.10);
+
   background: rgba(255, 64, 129, 0.10);
+  color: rgba(17, 17, 17, 0.88);
+
   font-weight: 900;
   cursor: pointer;
+
+  transition: transform .06s ease, background .2s ease, opacity .2s ease, box-shadow .2s ease;
+
+  &:hover {
+    background: rgba(255, 64, 129, 0.14);
+  }
+
+  &:active {
+    transform: scale(.98);
+  }
+
+  &:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+  }
 }
 
 .tags {
@@ -640,7 +709,7 @@
   padding: 8px 12px;
   border-radius: 999px;
   line-height: 1;
-  min-width: 110px;
+  min-width: 96px;
   text-align: center;
 }
 
@@ -679,4 +748,15 @@
 .hero-image {
   width: 450px;
   height: auto;
+}
+
+.izy-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+}
+
+.izy-modal {
+  position: fixed;
+  z-index: 10001;
 }

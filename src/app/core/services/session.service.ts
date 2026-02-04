@@ -16,6 +16,8 @@ export class SessionService {
 
     private readonly fbAccessTokenKey = 'fbAccessToken';
     private readonly fbTokenExpiryKey = 'fbTokenExpiry';
+    // Dans SessionService
+    private readonly authTokenKey = 'auth_token';
 
     constructor(private http: HttpClient) {
         const localStorageUser = localStorage.getItem('user');
@@ -43,6 +45,24 @@ export class SessionService {
             } else {
                 this.langue = 'fr';
             }
+        }
+    }
+
+
+    getAuthToken(): string | null {
+        return localStorage.getItem(this.authTokenKey) || sessionStorage.getItem(this.authTokenKey);
+    }
+
+    setAuthToken(token: string, rememberMe: boolean | null): void {
+        if (!token) return;
+
+        if (rememberMe) {
+            this.setRememberMe(true);
+            localStorage.setItem(this.authTokenKey, token);
+            sessionStorage.removeItem(this.authTokenKey);
+        } else {
+            sessionStorage.setItem(this.authTokenKey, token);
+            localStorage.removeItem(this.authTokenKey);
         }
     }
 

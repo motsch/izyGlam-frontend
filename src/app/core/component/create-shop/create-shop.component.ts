@@ -295,7 +295,10 @@ export class CreateShopComponent implements OnInit {
     // ✅ on affiche les erreurs si besoin (pas bloquant partout, mais utile)
     this.showErrors = true;
     this.validateCurrentStep();
-
+    // ✅ Bloque si le step courant n'est pas valide
+    if (!this.isStepValid(this.wizardStep)) {
+      return;
+    }
     // -------------------------------------------
     // Step 0 -> Step 1 (auth) OU Step 2 (si connecté)
     // -------------------------------------------
@@ -459,7 +462,7 @@ export class CreateShopComponent implements OnInit {
     // 1) validations simples
     // ----------------------------------------------------------
     if (!email) {
-      this.authError.email =  this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_HAVE_TO");
+      this.authError.email = this.translate.instant("CREATION_SHOP_WIZARD.EMAIL_HAVE_TO");
       return false;
     }
     if (!this.isValidEmail(email)) {
@@ -581,7 +584,7 @@ export class CreateShopComponent implements OnInit {
       this.authenticationService.login(email, password).subscribe({
         next: (user: any) => {
           // ✅ stock token
-          this.sessionService.setCurrentUser(user.token, true);
+          this.sessionService.setAuthToken(user.token, true);
 
           // ✅ reload me
           this.userService.getMe().subscribe({
@@ -757,6 +760,9 @@ export class CreateShopComponent implements OnInit {
     // ----------------------------------------------------------
     // Step 2 : infos shop
     // ----------------------------------------------------------
+    // ----------------------------------------------------------
+    // Step 2 : infos shop
+    // ----------------------------------------------------------
     if (step === 2) {
       this.error.name = null;
       this.error.companyType = null;
@@ -765,11 +771,31 @@ export class CreateShopComponent implements OnInit {
       if (!this.isNonEmpty(this.newShop?.name)) this.error.name = this.translate.instant('CREATION_SHOP.ERROR1');
       if (!this.isNonEmpty(this.newShop?.companyType)) this.error.companyType = this.translate.instant('CREATION_SHOP.ERROR3');
 
-      const h = this.normalizeHandle(this.newShop?.handle);
-      if (!this.isNonEmpty(h)) this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_REQUIRED');
-      else if (!this.isValidHandle(h)) this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_MIN');
+      // ✅ force normalisation + validation syntaxique
+      this.newShop.handle = this.normalizeHandle(this.newShop?.handle);
+      const h = this.newShop.handle;
+
+      if (!this.isNonEmpty(h)) {
+        this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_REQUIRED');
+        return;
+      }
+
+      if (!this.isValidHandle(h)) {
+        this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_MIN');
+        return;
+      }
+
+      // ✅ handle doit être "testé" et dispo pour continuer
+      if (this.handleAvailable !== true) {
+        // message clair : "clique sur Tester"
+        this.error.handle = this.translate.instant('CREATION_SHOP_WIZARD.HANDLE_MUST_BE_AVAILABLE')
+          || "Veuillez tester le handle et choisir un identifiant disponible.";
+        return;
+      }
+
       return;
     }
+
 
     // ----------------------------------------------------------
     // Step 3 : adresse
@@ -782,8 +808,8 @@ export class CreateShopComponent implements OnInit {
       this.error.ccvaccepted = null;
       if (!this.isNonEmpty(this.selectedCountry)) this.error.selectedCountry = this.translate.instant('CREATION_SHOP.CHOOSE_COUNTRY');
 
-      if (!this.isNonEmpty(this.postalCode)) this.error.postalCode = this.translate.instant("CREATION_SHOP.CP_HAVE_TO");
-      else if (!this.isValidPostalCode(this.postalCode)) this.error.postalCode = this.translate.instant("CREATION_SHOP.CP_NOT_VALID");
+      if (!this.isNonEmpty(this.postalCode)) this.error.postalCode = this.translate.instant("CREATION_SHOP_WIZARD.CP_HAVE_TO");
+      else if (!this.isValidPostalCode(this.postalCode)) this.error.postalCode = this.translate.instant("CREATION_SHOP_WIZARD.CP_NOT_VALID");
 
       if (!this.selectedCity || !this.isNonEmpty(this.selectedCity?.nom)) this.error.selectedCity = this.translate.instant('CREATION_SHOP.CHOOSE_CITY');
 
@@ -1266,6 +1292,23 @@ export class CreateShopComponent implements OnInit {
    */
   private isValidEmail(email: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || '').trim().toLowerCase());
+  }
+
+  private hasAnyError(obj: any): boolean {
+    if (!obj) return false;
+    return Object.values(obj).some(v => !!v);
+  }
+
+  private isStepValid(step: WizardStep = this.wizardStep): boolean {
+    // Step 0 = toujours OK
+    if (step === 0) return true;
+
+    if (step === 1) return !this.hasAnyError(this.authError);
+    if (step === 2) return !this.hasAnyError(this.error);
+    if (step === 3) return !this.hasAnyError(this.error);
+    if (step === 4) return !this.hasAnyError(this.verificationError);
+
+    return true;
   }
 
 }
