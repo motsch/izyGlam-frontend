@@ -1,0 +1,83 @@
+<div class="izyphone-wrapper">
+  <div *ngIf="loading" class="box">
+    Chargement...
+  </div>
+
+  <div *ngIf="!loading && loadError" class="box error">
+    {{ loadError }}
+  </div>
+
+  <div *ngIf="!loading && !loadError" class="box">
+    <h2>Finaliser votre réservation</h2>
+
+    <div class="summary" *ngIf="bookingSummary">
+      <div><b>Prix :</b> {{ bookingSummary.price }} €</div>
+      <div><b>Date :</b> {{ bookingSummary.date }}</div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row">
+        <label>Email *</label>
+        <input type="email" formControlName="email" />
+        <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">Email invalide</small>
+      </div>
+
+      <div class="row">
+        <label>Prénom *</label>
+        <input type="text" formControlName="firstname" />
+      </div>
+
+      <div class="row">
+        <label>Nom *</label>
+        <input type="text" formControlName="lastname" />
+      </div>
+
+      <div class="row">
+        <label>Téléphone *</label>
+        <input type="text" formControlName="phone" />
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <label>Adresse *</label>
+        <input type="text" formControlName="addressLine1" placeholder="Numéro et rue" />
+      </div>
+
+      <div class="row">
+        <label>Complément</label>
+        <input type="text" formControlName="addressLine2" placeholder="Bâtiment, étage, etc." />
+      </div>
+
+      <div class="row">
+        <label>Code postal *</label>
+        <input type="text" formControlName="postalCode" />
+      </div>
+
+      <div class="row">
+        <label>Ville *</label>
+        <input type="text" formControlName="city" />
+      </div>
+
+      <div class="row">
+        <label>Pays *</label>
+        <input type="text" formControlName="country" />
+      </div>
+
+      <div class="error" *ngIf="submitError">
+        {{ submitError }}
+      </div>
+
+      <button type="submit" [disabled]="submitting">
+        {{ submitting ? 'Validation...' : 'Valider et recevoir le lien de paiement' }}
+      </button>
+    </form>
+
+    <div class="success" *ngIf="submitSuccess">
+      ✅ Merci ! Un SMS de paiement vient de vous être envoyé.
+      <div *ngIf="checkoutUrl" class="payNow">
+        <a [href]="checkoutUrl" target="_blank" rel="noopener">Payer maintenant</a>
+      </div>
+    </div>
+  </div>
+</div>

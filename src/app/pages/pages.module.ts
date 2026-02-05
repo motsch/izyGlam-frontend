@@ -60,6 +60,7 @@ import { QuickComponent } from './quick/quick.component';
 import { BillingComponent } from './billing/billing.component';
 import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { IzyphoneBookingComponent } from './izyphone-booking/izyphone-booking.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -119,6 +120,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
         IzyPhoneInfoComponent,
         PayementProComponent,
         OrdersComponent,
+        IzyphoneBookingComponent,
         HelpComponent,
         VerifyEmailComponent,
         FavoritesComponent,

@@ -28,6 +28,7 @@ import { DashboardComponent } from '../core/component/dashboard/dashboard.compon
 import { BillingComponent } from './billing/billing.component';
 import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { IzyphoneBookingComponent } from './izyphone-booking/izyphone-booking.component';
 
 const routes: Routes = [
     {
@@ -105,6 +106,10 @@ const routes: Routes = [
         path: 'invite-friends',
         component: InviteFriendsComponent,
         canActivate: [AuthGuard],
+    }, {
+        path: 'izyPhone-booking/:token',
+        component: IzyphoneBookingComponent,
+        canActivate: [GuestGuard],
     },
     {
         path: 'message',

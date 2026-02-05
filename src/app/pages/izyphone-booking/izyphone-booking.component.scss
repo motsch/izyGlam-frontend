@@ -1,0 +1,87 @@
+.izyphone-wrapper {
+  max-width: 520px;
+  margin: 24px auto;
+  padding: 0 16px;
+  font-family: Arial, sans-serif;
+}
+
+.box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fff;
+}
+
+.summary {
+  margin: 12px 0 18px;
+  padding: 10px;
+  border: 1px dashed #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+input {
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+small {
+  color: #b00020;
+  font-size: 12px;
+}
+
+button {
+  width: 100%;
+  height: 44px;
+  border: 0;
+  border-radius: 10px;
+  background: #111;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-top: 12px;
+  color: #b00020;
+  font-weight: 600;
+}
+
+.success {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #e8fff0;
+  border: 1px solid #b7f2c7;
+}
+
+.payNow {
+  margin-top: 10px;
+}
+.payNow a {
+  display: inline-block;
+  padding: 10px 12px;
+  border: 1px solid #111;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #111;
+}
