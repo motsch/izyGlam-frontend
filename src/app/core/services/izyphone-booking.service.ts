@@ -35,11 +35,11 @@ export class IzyphoneBookingService {
 
   /** GET /twilio/intake/:token */
   getIntake(token: string): Observable<IzyphoneIntakeGetResponse> {
-    return this.http.get<IzyphoneIntakeGetResponse>(`${environment.apiUrl}twilio/intake/${token}`);
+    return this.http.get<IzyphoneIntakeGetResponse>(`${environment.apiUrlNoAPI}twilio/intake/${token}`);
   }
 
   /** POST /twilio/intake/:token */
   submitIntake(token: string, payload: IzyphoneIntakePrefill): Observable<IzyphoneIntakePostResponse> {
-    return this.http.post<IzyphoneIntakePostResponse>(`${environment.apiUrl}twilio/intake/${token}`, payload);
+    return this.http.post<IzyphoneIntakePostResponse>(`${environment.apiUrlNoAPI}twilio/intake/${token}`, payload);
   }
 }

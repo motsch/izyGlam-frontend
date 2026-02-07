@@ -5,6 +5,7 @@
 export const environment = {
     production: false,
     apiUrl: 'http://localhost:3000/api/',
+    apiUrlNoAPI: 'http://localhost:3000/',
     imgStorageUrl: 'assets/images/',
     videoStorageUrl: 'assets/videos/',
     APIimgStorageUrl: 'http://localhost:3000/',
