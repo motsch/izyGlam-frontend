@@ -108,8 +108,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
     }, {
         path: 'izyPhone-booking/:token',
-        component: IzyphoneBookingComponent,
-        canActivate: [GuestGuard],
+        component: IzyphoneBookingComponent
     },
     {
         path: 'message',
