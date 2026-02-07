@@ -39,45 +39,44 @@
 
       <hr />
 
-      <div class="row">
-        <label>Adresse *</label>
-        <input type="text" formControlName="addressLine1" placeholder="Numéro et rue" />
-      </div>
+      <div *ngIf="serviceMode === 'DOMICILE'">
+        <div class="row">
+          <label>Adresse *</label>
+          <input type="text" formControlName="addressLine1" placeholder="Numéro et rue" />
+        </div>
 
-      <div class="row">
-        <label>Complément</label>
-        <input type="text" formControlName="addressLine2" placeholder="Bâtiment, étage, etc." />
-      </div>
+        <div class="row">
+          <label>Complément</label>
+          <input type="text" formControlName="addressLine2" placeholder="Bâtiment, étage, etc." />
+        </div>
 
-      <div class="row">
-        <label>Code postal *</label>
-        <input type="text" formControlName="postalCode" />
-      </div>
+        <div class="row">
+          <label>Code postal *</label>
+          <input type="text" formControlName="postalCode" />
+        </div>
 
-      <div class="row">
-        <label>Ville *</label>
-        <input type="text" formControlName="city" />
-      </div>
+        <div class="row">
+          <label>Ville *</label>
+          <input type="text" formControlName="city" />
+        </div>
 
-      <div class="row">
-        <label>Pays *</label>
-        <input type="text" formControlName="country" />
+        <div class="row">
+          <label>Pays *</label>
+          <input type="text" formControlName="country" />
+        </div>
       </div>
-
+      <div *ngIf="serviceMode === 'SALON'" class="info">
+        ✅ Rendez-vous au salon : l’adresse sera celle du salon, vous n’avez rien à renseigner ici.
+      </div>
       <div class="error" *ngIf="submitError">
         {{ submitError }}
       </div>
-
       <button type="submit" [disabled]="submitting">
-        {{ submitting ? 'Validation...' : 'Valider et recevoir le lien de paiement' }}
+        {{ submitting ? 'Validation...' : 'Valider et payer' }}
       </button>
     </form>
-
     <div class="success" *ngIf="submitSuccess">
-      ✅ Merci ! Un SMS de paiement vient de vous être envoyé.
-      <div *ngIf="checkoutUrl" class="payNow">
-        <a [href]="checkoutUrl" target="_blank" rel="noopener">Payer maintenant</a>
-      </div>
+      ✅ Redirection vers le paiement en cours...
     </div>
   </div>
 </div>
