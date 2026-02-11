@@ -24,6 +24,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ShopManagementComponent implements OnInit, OnChanges {
   @Input() myShopData: any = {};
   @Input() me: any = {};
+  @Input() stepper: boolean = false;
   @Output() shopUpdated: EventEmitter<string> = new EventEmitter<string>();
 
   // ---------- Legal / Facturation ----------

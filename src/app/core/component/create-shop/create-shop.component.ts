@@ -19,8 +19,9 @@ import { SessionService } from 'src/app/core/services/session.service';
 
 // ✅ comme dans ton signup
 import { v4 as uuidv4 } from 'uuid';
+import { StripeService } from '../../services/stripe.service';
 
-type WizardStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+type WizardStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 type ServiceMode = 'SALON' | 'DOMICILE';
 
 @Component({
@@ -84,6 +85,7 @@ export class CreateShopComponent implements OnInit {
 
   // ✅ nouveau : après register, on attend validation email
   pendingEmailVerification = false;
+  icsUrl = "ics lien"
 
   // ✅ spinner refresh activation
   checkingActivation = false;
@@ -116,19 +118,19 @@ export class CreateShopComponent implements OnInit {
   showErrors = false;
   busy = false;
 
-  wizardSteps: Array<{ title: string; subtitle: string; image: string }> = [
-    { title: 'CREATION_SHOP_WIZARD.S0_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S0_SUBTITLE', image: 'assets/images/onboarding/shop-0.png' },
-    { title: 'CREATION_SHOP_WIZARD.AUTH_TITLE', subtitle: 'CREATION_SHOP_WIZARD.AUTH_SUBTITLE', image: 'assets/images/onboarding/shop-auth.png' },
-    { title: 'CREATION_SHOP_WIZARD.S1_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S1_SUBTITLE', image: 'assets/images/onboarding/shop-1.png' },
-    { title: 'CREATION_SHOP_WIZARD.S2_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S2_SUBTITLE', image: 'assets/images/onboarding/shop-2.png' },
-    { title: 'CREATION_SHOP_WIZARD.S3_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S3_SUBTITLE', image: 'assets/images/onboarding/shop-3.png' },
+  wizardSteps: Array<{ title: string; subtitle: string }> = [
+    { title: 'CREATION_SHOP_WIZARD.S0_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S0_SUBTITLE' },
+    { title: 'CREATION_SHOP_WIZARD.AUTH_TITLE', subtitle: 'CREATION_SHOP_WIZARD.AUTH_SUBTITLE' },
+    { title: 'CREATION_SHOP_WIZARD.S1_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S1_SUBTITLE' },
+    { title: 'CREATION_SHOP_WIZARD.S2_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S2_SUBTITLE' },
+    { title: 'CREATION_SHOP_WIZARD.S3_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S3_SUBTITLE' },
 
     // ✅ Nouveaux steps (implémentations déjà existantes dans ton app)
-    { title: 'CREATION_SHOP_WIZARD.S4_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S4_SUBTITLE', image: 'assets/images/onboarding/shop-4.png' }, // Gestion salon (photo, légal, réseaux, horaires, zones...)
-    { title: 'CREATION_SHOP_WIZARD.S5_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S5_SUBTITLE', image: 'assets/images/onboarding/shop-docs.png' }, // Docs & KYC (docs)
-    { title: 'CREATION_SHOP_WIZARD.S6_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S6_SUBTITLE', image: 'assets/images/onboarding/shop-categories.png' }, // Catégories
-    { title: 'CREATION_SHOP_WIZARD.S7_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S7_SUBTITLE', image: 'assets/images/onboarding/shop-services.png' }, // Prestations
-    { title: 'CREATION_SHOP_WIZARD.S8_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S8_SUBTITLE', image: 'assets/images/onboarding/shop-payment.png' }, // Paiement / Stripe KYC
+    { title: 'CREATION_SHOP_WIZARD.S4_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S4_SUBTITLE' }, // Gestion salon (photo, légal, réseaux, horaires, zones...)
+    { title: 'CREATION_SHOP_WIZARD.S5_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S5_SUBTITLE' }, // Docs & KYC (docs)
+    { title: 'CREATION_SHOP_WIZARD.S6_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S6_SUBTITLE' }, // Catégories
+    { title: 'CREATION_SHOP_WIZARD.S7_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S7_SUBTITLE' }, // Prestations
+    { title: 'CREATION_SHOP_WIZARD.S8_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S8_SUBTITLE' }, // Paiement / Stripe KYC
   ];
 
   get progressPercent(): number {
@@ -154,6 +156,7 @@ export class CreateShopComponent implements OnInit {
   verification: any = null;
   isUploadingDocs = false;
 
+  stripeLoading = false;
   // ============================================================
   // HANDLE
   // ============================================================
@@ -162,9 +165,9 @@ export class CreateShopComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private stripeService: StripeService,
     private shopService: ShopService,
     private productService: ProductService,
-    private shopTemplateService: ShopTemplateService,
     private countryService: CountryService,
     private router: Router,
     private villeService: VilleService,
@@ -799,10 +802,6 @@ export class CreateShopComponent implements OnInit {
       }
       return;
     }
-
-    // ----------------------------------------------------------
-    // Step 2 : infos shop
-    // ----------------------------------------------------------
     // ----------------------------------------------------------
     // Step 2 : infos shop
     // ----------------------------------------------------------
@@ -1357,4 +1356,44 @@ export class CreateShopComponent implements OnInit {
     return true;
   }
 
+
+
+  startStripeOnboarding(): void {
+    this.stripeLoading = true;
+
+    this.stripeService.createStripeOnboardingLink(this.me._id).subscribe({
+      next: ({ url }) => {
+        window.location.href = url;
+      },
+      error: (e) => {
+        console.error(e);
+        this.stripeLoading = false;
+        this.toastr.error(this.translate.instant("FINANCE.START_ACTIVATION"));
+      }
+    });
+  }
+
+  refreshStripeStatus(): void {
+    this.stripeLoading = true;
+
+    this.stripeService.refreshStripeStatus(this.me._id).subscribe({
+      next: (updatedUser) => {
+        this.me = updatedUser;
+        this.stripeLoading = false;
+        // this.toastr.success("Statut Stripe mis à jour.");
+      },
+      error: (e) => {
+        console.error(e);
+        this.stripeLoading = false;
+        this.toastr.error(this.translate.instant("FINANCE.REFRESH_STRIPE"));
+      }
+    });
+  }
+
+  copyToClipboard(text: string) {
+    if (!text) return;
+    navigator.clipboard?.writeText(text);
+    // Optionnel : toast premium
+    // this.toastr.success('Lien copié ✅');
+  }
 }

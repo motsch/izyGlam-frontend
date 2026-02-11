@@ -36,7 +36,7 @@
     </div>
 
     <!-- NOM DU SALON -->
-    <div>
+    <div *ngIf="!stepper">
       <label for="name" class="margin-top-20">{{ "SHOP_MANAGEMENT.SHOP_NAME" | translate}}</label>
       <input [(ngModel)]="shopCopyData.name" class="input-style" type="text" id="name"
         (ngModelChange)="onShopNameTyping()" />
@@ -91,14 +91,14 @@
     <!-- ============================
      MODE DE PRESTATION
      ============================ -->
-    <h2 class="section-title">
+    <h2 class="section-title" *ngIf="!stepper">
       📍 {{ "SHOP_MANAGEMENT.MODE" | translate}}
       <span class="section-sub">
         {{ "SHOP_MANAGEMENT.SHOW" | translate}}
       </span>
     </h2>
 
-    <div class="form-section">
+    <div class="form-section" *ngIf="!stepper">
       <div class="column">
         <label>{{ "SHOP_MANAGEMENT.RDV" | translate}} :</label>
 
@@ -117,7 +117,7 @@
      ADRESSE DU SALON (placeAddress)
      Visible seulement si SALON
      ============================ -->
-    <div *ngIf="shopCopyData?.serviceMode === 'SALON'" class="legal-panel place-panel">
+    <div *ngIf="shopCopyData?.serviceMode === 'SALON' && !stepper" class="legal-panel place-panel">
       <div class="place-top">
         <div>
           <h3 class="place-title">📍 {{ "SHOP_MANAGEMENT.ADDRESS" | translate}}</h3>
@@ -300,7 +300,7 @@
     </div>
 
     <!-- CODES POSTAUX + ZONE -->
-    <div class="form-section">
+    <div class="form-section" *ngIf="!stepper">
       <div class="column">
         <label for="deliveryPostalCode">{{ "SHOP_MANAGEMENT.CODE_POSTAUX" | translate }}</label>
         <div class="postal-code-entry">

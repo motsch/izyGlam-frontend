@@ -33,7 +33,6 @@
 
     <!-- ✅ Close button -->
     <button class="icon-btn" (click)="closeWizard()" aria-label="Close">✕</button>
-
     <div class="step-hero">
       <img class="step-image" [src]="wizardHeaderImage" alt="" />
       <div class="step-meta">
@@ -97,6 +96,10 @@
     <!-- ✅ STEP 1 : AUTH EMAIL -->
     <ng-container *ngIf="wizardStep === 1">
       <div class="card">
+
+        <div class="soft" style="margin-bottom:14px;">
+          {{ "CREATION_SHOP_WIZARD.S1_HINT" | translate }}
+        </div>
 
         <div class="big">{{ "CREATION_SHOP_WIZARD.AUTH_TITLE" | translate }}</div>
         <div class="muted">{{ "CREATION_SHOP_WIZARD.AUTH_SUBTITLE" | translate }}</div>
@@ -241,6 +244,10 @@
     <!-- STEP 2 : INFOS SALON -->
     <ng-container *ngIf="wizardStep === 2">
       <div class="card">
+
+        <div class="soft" style="margin-bottom:14px;">
+          {{ "CREATION_SHOP_WIZARD.S2_HINT" | translate }}
+        </div>
         <div class="grid2">
 
           <div class="field">
@@ -307,6 +314,10 @@
     <!-- STEP 3 : ADRESSE + ZONES + MODE -->
     <ng-container *ngIf="wizardStep === 3">
       <div class="card">
+
+        <div class="soft" style="margin-bottom:14px;">
+          {{ "CREATION_SHOP_WIZARD.S3_HINT" | translate }}
+        </div>
         <div class="grid2">
 
           <div class="field full">
@@ -414,7 +425,7 @@
         </div>
 
         <!-- ✅ Ton composant déjà complet (photo, description, mode, adresse, légal, réseaux, horaires, codes postaux...) -->
-        <app-shop-management *ngIf="createdShopData" [myShopData]="createdShopData" [me]="me"
+        <app-shop-management *ngIf="createdShopData" [myShopData]="createdShopData" [me]="me" [stepper]="true"
           (shopUpdated)="onShopUpdated($event)">
         </app-shop-management>
 
@@ -429,6 +440,10 @@
     <!-- STEP 5 : DOCUMENTS -->
     <ng-container *ngIf="wizardStep === 5">
       <div class="card">
+
+        <div class="soft" style="margin-bottom:14px;">
+          {{ "CREATION_SHOP_WIZARD.S5_HINT" | translate }}
+        </div>
 
         <div class="verification-section">
 
@@ -504,21 +519,13 @@
             <span *ngIf="!(isUploadingDocs || busy)">{{ "CREATION_SHOP.VERIF_PRIMARY_BUTTON" | translate }}</span>
             <span *ngIf="(isUploadingDocs || busy)">{{ "CREATION_SHOP_WIZARD.PLEASE_WAIT" | translate }}</span>
           </button>
-
-          <button class="ghost" type="button" (click)="finishAndGoLogin()" [disabled]="busy">
-            {{ "CREATION_SHOP_WIZARD.FINISH" | translate }}
-          </button>
-
-          <button class="link" type="button" (click)="skipVerification()" [disabled]="busy">
-            {{ "CREATION_SHOP.VERIF_SKIP_BUTTON" | translate }}
-          </button>
         </div>
 
       </div>
     </ng-container>
 
     <!-- STEP 5 : DOCUMENTS -->
-    <ng-container *ngIf="wizardStep === 5">
+    <ng-container *ngIf="wizardStep === 6">
       <div class="card">
         <div class="soft" style="margin-bottom:14px;">
           {{ "CREATION_SHOP_WIZARD.S6_HINT" | translate }}
@@ -553,27 +560,249 @@
     <!-- STEP 8 : PAIEMENT / KYC (Stripe) -->
     <ng-container *ngIf="wizardStep === 8">
       <div class="card">
-        <div class="big">{{ "CREATION_SHOP_WIZARD.S8_BIG" | translate }}</div>
-        <div class="muted" style="margin-top:8px;">
-          {{ "CREATION_SHOP_WIZARD.S8_DESC" | translate }}
-        </div>
-
-        <!-- Ici tu peux brancher ton composant Stripe (si tu en as déjà un) -->
-        <!-- Exemple:
-          <app-stripe-kyc [shop]="createdShopData" [me]="me"></app-stripe-kyc>
-        -->
 
         <div class="soft" style="margin-top:16px;">
           {{ "CREATION_SHOP_WIZARD.S8_NOTE" | translate }}
         </div>
 
-        <div class="final-actions" style="margin-top:16px;">
-          <button class="primary" type="button" (click)="finishAndGoLogin()" [disabled]="busy">
-            {{ "CREATION_SHOP_WIZARD.FINISH" | translate }}
+        <div class="big">{{ "CREATION_SHOP_WIZARD.S8_BIG" | translate }}</div>
+        <div class="muted" style="margin-top:8px;">
+          {{ "CREATION_SHOP_WIZARD.S8_DESC" | translate }}
+        </div>
+
+        <!-- Header -->
+        <div class="stripe-header">
+          <div class="stripe-title-row">
+            <div class="stripe-icon">💗</div>
+            <div>
+              <h4 class="stripe-title">{{ "BANK.PAY_VIREMENTS" | translate }}</h4>
+              <p class="stripe-subtitle">
+                {{ "BANK.ACTIVE_STRIPE" | translate }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading state -->
+        <div class="stripe-card" *ngIf="stripeLoading">
+          <div class="stripe-skeleton-line"></div>
+          <div class="stripe-skeleton-line small"></div>
+          <div class="stripe-skeleton-line"></div>
+          <div class="stripe-skeleton-line small"></div>
+        </div>
+
+        <!-- Status -->
+        <div class="stripe-card" *ngIf="!stripeLoading">
+          <div class="stripe-row">
+            <span class="stripe-label">{{ "BANK.ONBOARD" | translate }}</span>
+            <span class="badge" [class.badge-ok]="me?.stripe?.onboardingStatus === 'complete'"
+              [class.badge-warn]="me?.stripe?.onboardingStatus === 'pending'"
+              [class.badge-bad]="!me?.stripe?.onboardingStatus || me?.stripe?.onboardingStatus === 'not_started'">
+              {{
+              me?.stripe?.onboardingStatus === ("BANK.COMPLETE" | translate) ? ('BANK.END' | translate)
+              : me?.stripe?.onboardingStatus === ('BANK.PENDING' | translate) ? ('BANK.EN_COURS' | translate)
+              : 'Non démarré'
+              }}
+            </span>
+          </div>
+
+          <div class="stripe-row">
+            <span class="stripe-label">{{ "BANK.PAY" | translate }}</span>
+            <span class="badge" [class.badge-ok]="me?.stripe?.chargesEnabled"
+              [class.badge-bad]="!me?.stripe?.chargesEnabled">
+              {{ me?.stripe?.chargesEnabled ? 'Activés' : 'Désactivés' }}
+            </span>
+          </div>
+
+          <div class="stripe-row">
+            <span class="stripe-label">{{ "BANK.VIREMENT" | translate }}</span>
+            <span class="badge" [class.badge-ok]="me?.stripe?.payoutsEnabled"
+              [class.badge-bad]="!me?.stripe?.payoutsEnabled">
+              {{ me?.stripe?.payoutsEnabled ? 'Activés' : 'Désactivés' }}
+            </span>
+          </div>
+
+          <div class="stripe-hint" *ngIf="!me?.stripe?.chargesEnabled || !me?.stripe?.payoutsEnabled">
+            ⚠️ <p [innerHTML]="'BANK.MISSING' | translate"></p>
+          </div>
+
+          <div class="stripe-hint ok" *ngIf="me?.stripe?.chargesEnabled && me?.stripe?.payoutsEnabled">
+            ✅ {{ "BANK.READY" | translate }}
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="stripe-actions">
+          <button type="button" class="btn-primary" (click)="startStripeOnboarding()" [disabled]="stripeLoading">
+            {{
+            (me?.stripe?.chargesEnabled && me?.stripe?.payoutsEnabled)
+            ? 'Mettre à jour sur Stripe'
+            : 'Activer / Compléter sur Stripe'
+            }}
+          </button>
+
+          <button type="button" class="btn-ghost" (click)="refreshStripeStatus()" [disabled]="stripeLoading">
+            {{ "BANK.STATUS" | translate }}
           </button>
         </div>
       </div>
     </ng-container>
+    <ng-container *ngIf="wizardStep === 9">
+      <div class="final-step">
+
+        <!-- HERO -->
+        <div class="final-hero">
+          <div class="final-hero-left">
+            <div class="final-badge">✨ Boutique terminée</div>
+            <h2 class="final-title">Félicitations 🎉</h2>
+            <p class="final-subtitle">
+              Ta boutique est prête ! Il ne reste plus qu’une étape : la validation par l’équipe
+              <strong>izyGlam</strong>.
+            </p>
+
+            <div class="final-status">
+              <span class="status-pill pending">⏳ En attente de validation</span>
+              <span class="status-note">Généralement rapide. Tu recevras une notification dès que c’est validé.</span>
+            </div>
+          </div>
+
+          <div class="final-hero-right">
+            <div class="final-card glass">
+              <div class="final-card-title">🚀 Prochaine étape</div>
+              <div class="final-card-text">
+                Partage ton lien et utilise le calendrier pour que tes clientes puissent réserver au bon moment.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="final-grid">
+
+          <!-- PUBLIC LINK -->
+          <div class="final-panel glass">
+            <div class="panel-head">
+              <h3 class="panel-title">🔗 Lien public de ta boutique</h3>
+              <p class="panel-desc">
+                C’est <strong>ton lien officiel</strong> à partager partout : réseaux sociaux, site web, bio Instagram,
+                signature email…
+                L’objectif : que tes clientes prennent l’habitude de réserver directement ici.
+              </p>
+            </div>
+
+            <div class="link-row">
+              <div class="link-box">
+                <div class="link-label">Lien boutique</div>
+                <div class="link-value">
+                  <strong>izyglam.com/{{ createdShopData?.handle || 'ton-handle' }}</strong>
+                </div>
+              </div>
+
+              <button type="button" class="btn-premium"
+                (click)="copyToClipboard('https://izyglam.com/' + (createdShopData?.handle))"
+                [disabled]="!(createdShopData?.handle)">
+                Copier
+              </button>
+            </div>
+
+            <div class="tips">
+              <div class="tip">
+                <div class="tip-title">💡 Astuce “pro”</div>
+                <div class="tip-text">
+                  Mets ce lien en <strong>bio</strong> + en <strong>story à la une “Réserver”</strong>.
+                  Ajoute aussi un bouton “Réserver” sur ton site : tu centralises tout au même endroit.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ICS -->
+          <div class="final-panel glass">
+            <div class="panel-head">
+              <h3 class="panel-title">📅 Ton calendrier (.ics)</h3>
+              <p class="panel-desc">
+                Le fichier <strong>.ics</strong> permet d’ajouter un calendrier à ton téléphone.
+                Une fois importé, tu verras ton planning directement dans ton agenda.
+              </p>
+            </div>
+
+            <div class="link-row">
+              <div class="link-box">
+                <div class="link-label">Lien .ics</div>
+                <div class="link-value">
+                  <strong>{{ icsUrl || ('https://izyglam.com/api/shops/' + (createdShopData?._id || createdShopId) +
+                    '/calendar.ics') }}</strong>
+                </div>
+              </div>
+
+              <a class="btn-premium"
+                [href]="icsUrl || ('https://izyglam.com/api/shops/' + (createdShopData?._id || createdShopId) + '/calendar.ics')"
+                target="_blank" rel="noopener">
+                Ouvrir
+              </a>
+            </div>
+
+            <div class="final-how">
+              <div class="how-col">
+                <div class="how-title">📱 iPhone / iOS</div>
+                <ol class="how-list">
+                  <li>Appuie sur <strong>Ouvrir</strong> (ci-dessus).</li>
+                  <li>Le fichier .ics se télécharge.</li>
+                  <li>iOS propose automatiquement <strong>Ajouter au calendrier</strong>.</li>
+                  <li>Valide : ton planning apparaît dans l’app Calendrier.</li>
+                </ol>
+                <div class="how-links">
+                  <a class="doc-link" href="https://support.apple.com/fr-fr/guide/iphone/iph3d1110d4/ios"
+                    target="_blank" rel="noopener">
+                    Documentation Apple (Calendrier iPhone)
+                  </a>
+                </div>
+              </div>
+
+              <div class="how-col">
+                <div class="how-title">🤖 Android</div>
+                <ol class="how-list">
+                  <li>Appuie sur <strong>Ouvrir</strong> (ci-dessus).</li>
+                  <li>Le fichier .ics se télécharge.</li>
+                  <li>Ouvre-le depuis “Téléchargements”.</li>
+                  <li>Sélectionne Google Calendar / Calendrier et valide l’import.</li>
+                </ol>
+                <div class="how-links">
+                  <a class="doc-link" href="https://support.google.com/calendar/answer/37118?hl=fr" target="_blank"
+                    rel="noopener">
+                    Documentation Google Calendar (Importer un agenda)
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="fineprint">
+              Remarque : selon ton appareil, l’import peut créer un nouveau calendrier ou s’ajouter à un calendrier
+              existant.
+              Si tu ne vois rien, vérifie que le calendrier est bien “activé” dans la liste des agendas.
+            </div>
+          </div>
+        </div>
+
+        <!-- FOOT CTA -->
+        <div class="final-footer glass">
+          <div class="footer-left">
+            <div class="footer-title">✅ Tu es prête.</div>
+            <div class="footer-text">
+              Ta boutique est configurée et en attente de validation. Dès que c’est validé, tu pourras recevoir tes
+              premières réservations.
+            </div>
+          </div>
+
+          <div class="footer-actions">
+            <button class="primary" type="button" (click)="finishAndGoLogin()" [disabled]="busy">
+              {{ "CREATION_SHOP_WIZARD.FINISH" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
   </div>
 
   <!-- FOOTER -->
