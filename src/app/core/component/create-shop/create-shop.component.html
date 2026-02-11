@@ -44,10 +44,7 @@
 
     <div class="progress">
       <div class="dots">
-        <span
-          class="dot"
-          *ngFor="let s of wizardSteps; let i = index"
-          [class.active]="i === wizardStep"
+        <span class="dot" *ngFor="let s of wizardSteps; let i = index" [class.active]="i === wizardStep"
           [class.done]="i < wizardStep">
         </span>
       </div>
@@ -110,24 +107,12 @@
 
           <!-- ✅ wrapper pour placer le bouton refresh à droite -->
           <div style="display:flex; gap:10px; align-items:center;">
-            <input
-              type="email"
-              [(ngModel)]="authUser.email"
-              placeholder="ex: sab@gmail.com"
-              autocomplete="email"
-              [ngModelOptions]="{ updateOn: 'blur' }"
-              (blur)="onAuthEmailBlur()"
-              style="flex:1 1 auto;"
-            />
+            <input type="email" [(ngModel)]="authUser.email" placeholder="ex: sab@gmail.com" autocomplete="email"
+              [ngModelOptions]="{ updateOn: 'blur' }" (blur)="onAuthEmailBlur()" style="flex:1 1 auto;" />
 
             <!-- ✅ Bouton refresh visible UNIQUEMENT quand on est en attente validation -->
-            <button
-              *ngIf="pendingEmailVerification"
-              type="button"
-              class="chip-btn"
-              (click)="checkIfUserIsActivated()"
-              [disabled]="checkingActivation || busy"
-              [title]="'CREATION_SHOP_WIZARD.CHECK_ACTIVATION' | translate"
+            <button *ngIf="pendingEmailVerification" type="button" class="chip-btn" (click)="checkIfUserIsActivated()"
+              [disabled]="checkingActivation || busy" [title]="'CREATION_SHOP_WIZARD.CHECK_ACTIVATION' | translate"
               aria-label="Vérifier l'activation"
               style="width:44px; padding:0; display:flex; align-items:center; justify-content:center;">
               <span *ngIf="!checkingActivation">↻</span>
@@ -153,7 +138,8 @@
           </div>
           <div style="line-height:1.5;">
             {{ "CREATION_SHOP_WIZARD.EMAIL_SEND" | translate }}<br />
-            <strong>{{ "CREATION_SHOP_WIZARD.OPEN_EMAIL" | translate }}</strong>, {{ "CREATION_SHOP_WIZARD.CLICK_LINK" | translate }} <strong>↻</strong>.
+            <strong>{{ "CREATION_SHOP_WIZARD.OPEN_EMAIL" | translate }}</strong>, {{ "CREATION_SHOP_WIZARD.CLICK_LINK" |
+            translate }} <strong>↻</strong>.
           </div>
 
           <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -170,11 +156,8 @@
         <!-- ✅ LOGIN FLOW (email existe) : password -->
         <div class="field" *ngIf="authEmailExists === true && !pendingEmailVerification">
           <label>{{ "SIGNUP.PLACEHOLDER_PASSWORD" | translate }}</label>
-          <input
-            [type]="authPasswordVisible ? 'text' : 'password'"
-            [(ngModel)]="authUser.password"
-            placeholder="••••••••"
-            autocomplete="current-password" />
+          <input [type]="authPasswordVisible ? 'text' : 'password'" [(ngModel)]="authUser.password"
+            placeholder="••••••••" autocomplete="current-password" />
 
           <div class="field-error" *ngIf="showErrors && !!authError.password">{{ authError.password }}</div>
 
@@ -223,32 +206,23 @@
 
             <div class="field">
               <label>{{ "SIGNUP.PLACEHOLDER_PHONE_NUMBER" | translate }}</label>
-              <input
-                type="tel"
-                [(ngModel)]="authUser.phone"
-                placeholder="0612345678"
-                (input)="onAuthPhoneInput()" />
+              <input type="tel" [(ngModel)]="authUser.phone" placeholder="0612345678" (input)="onAuthPhoneInput()" />
               <div class="field-error" *ngIf="showErrors && !!authError.phone">{{ authError.phone }}</div>
             </div>
 
             <div class="field">
               <label>{{ "SIGNUP.PLACEHOLDER_PASSWORD" | translate }}</label>
-              <input
-                [type]="authPasswordVisible ? 'text' : 'password'"
-                [(ngModel)]="authUser.password"
-                placeholder="••••••••"
-                autocomplete="new-password" />
+              <input [type]="authPasswordVisible ? 'text' : 'password'" [(ngModel)]="authUser.password"
+                placeholder="••••••••" autocomplete="new-password" />
               <div class="field-error" *ngIf="showErrors && !!authError.password">{{ authError.password }}</div>
             </div>
 
             <div class="field">
               <label>{{ "SIGNUP.PLACEHOLDER_PASSWORDCONFIRMED" | translate }}</label>
-              <input
-                [type]="authPasswordVisible2 ? 'text' : 'password'"
-                [(ngModel)]="authUser.passwordConfirmed"
-                placeholder="••••••••"
-                autocomplete="new-password" />
-              <div class="field-error" *ngIf="showErrors && !!authError.passwordConfirmed">{{ authError.passwordConfirmed }}</div>
+              <input [type]="authPasswordVisible2 ? 'text' : 'password'" [(ngModel)]="authUser.passwordConfirmed"
+                placeholder="••••••••" autocomplete="new-password" />
+              <div class="field-error" *ngIf="showErrors && !!authError.passwordConfirmed">{{
+                authError.passwordConfirmed }}</div>
 
               <button type="button" class="link" (click)="authPasswordVisible2 = !authPasswordVisible2">
                 {{ authPasswordVisible2 ? "Masquer" : "Afficher" }}
@@ -271,10 +245,7 @@
 
           <div class="field">
             <label>{{ "CREATION_SHOP.NAME" | translate }}</label>
-            <input
-              type="text"
-              [(ngModel)]="newShop.name"
-              placeholder="Sab Beauty"
+            <input type="text" [(ngModel)]="newShop.name" placeholder="Sab Beauty"
               (ngModelChange)="onShopNameTyping($event)" />
             <div class="field-error" *ngIf="showErrors && !!error.name">{{ error.name }}</div>
           </div>
@@ -342,11 +313,13 @@
             <label>{{ "SHOP_MANAGEMENT.SERVICE_MODE" | translate }}</label>
 
             <div class="mode-switch">
-              <button type="button" class="mode-btn" [class.active]="newShop.serviceMode === 'SALON'" (click)="setServiceMode('SALON')">
+              <button type="button" class="mode-btn" [class.active]="newShop.serviceMode === 'SALON'"
+                (click)="setServiceMode('SALON')">
                 🏠 {{ "SHOP_MANAGEMENT.SERVICE_MODE_SALON" | translate }}
               </button>
 
-              <button type="button" class="mode-btn" [class.active]="newShop.serviceMode === 'DOMICILE'" (click)="setServiceMode('DOMICILE')">
+              <button type="button" class="mode-btn" [class.active]="newShop.serviceMode === 'DOMICILE'"
+                (click)="setServiceMode('DOMICILE')">
                 🚗 {{ "SHOP_MANAGEMENT.SERVICE_MODE_HOME" | translate }}
               </button>
             </div>
@@ -364,7 +337,8 @@
 
           <div class="field">
             <label>{{ "CREATION_SHOP.POSTAL_CODE" | translate }}</label>
-            <input type="text" [(ngModel)]="postalCode" placeholder="75001" maxlength="10" (blur)="onPostalCodeEntered()" />
+            <input type="text" [(ngModel)]="postalCode" placeholder="75001" maxlength="10"
+              (blur)="onPostalCodeEntered()" />
             <div class="field-error" *ngIf="showErrors && !!error.postalCode">{{ error.postalCode }}</div>
           </div>
 
@@ -391,9 +365,7 @@
               </ng-container>
             </label>
 
-            <input
-              type="text"
-              [(ngModel)]="newShop.street"
+            <input type="text" [(ngModel)]="newShop.street"
               [placeholder]="newShop.serviceMode === 'SALON' ? '123, rue Principale' : ('CREATION_SHOP_WIZARD.AREA_PLACEHOLDER' | translate)" />
 
             <div class="field-error" *ngIf="showErrors && !!error.street">{{ error.street }}</div>
@@ -404,7 +376,8 @@
             <label>{{ "CREATION_SHOP.CODE_POSTAL_POSSIBLE" | translate }}</label>
 
             <div class="postal-row">
-              <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10" (keyup.enter)="addPostalCode()" />
+              <input type="text" [(ngModel)]="deliveryPostalCode" placeholder="Ex: 75001" maxlength="10"
+                (keyup.enter)="addPostalCode()" />
               <button type="button" class="chip-btn" (click)="addPostalCode()">+</button>
             </div>
 
@@ -431,8 +404,30 @@
       </div>
     </ng-container>
 
-    <!-- STEP 4 : DOCUMENTS -->
+
+    <!-- STEP 4 : GESTION DU SALON (réutilise les composants existants) -->
     <ng-container *ngIf="wizardStep === 4">
+      <div class="card">
+
+        <div class="soft" style="margin-bottom:14px;">
+          {{ "CREATION_SHOP_WIZARD.S4_HINT" | translate }}
+        </div>
+
+        <!-- ✅ Ton composant déjà complet (photo, description, mode, adresse, légal, réseaux, horaires, codes postaux...) -->
+        <app-shop-management *ngIf="createdShopData" [myShopData]="createdShopData" [me]="me"
+          (shopUpdated)="onShopUpdated($event)">
+        </app-shop-management>
+
+        <!-- fallback si jamais createdShopData n'est pas prêt -->
+        <div class="soft" *ngIf="!createdShopData" style="padding:12px;">
+          {{ "CREATION_SHOP_WIZARD.S4_LOADING" | translate }}
+        </div>
+
+      </div>
+    </ng-container>
+
+    <!-- STEP 5 : DOCUMENTS -->
+    <ng-container *ngIf="wizardStep === 5">
       <div class="card">
 
         <div class="verification-section">
@@ -451,7 +446,8 @@
             <div class="verification-card-body">
               <label class="file-input-label">
                 {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'identity')" accept=".pdf,.jpg,.jpeg,.png" />
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'identity')"
+                  accept=".pdf,.jpg,.jpeg,.png" />
               </label>
               <div class="file-name" *ngIf="identityDocFileName">{{ identityDocFileName }}</div>
               <div class="field-error" *ngIf="verificationError.identityDoc">{{ verificationError.identityDoc }}</div>
@@ -472,7 +468,8 @@
             <div class="verification-card-body">
               <label class="file-input-label">
                 {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'insurance')" accept=".pdf,.jpg,.jpeg,.png" />
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'insurance')"
+                  accept=".pdf,.jpg,.jpeg,.png" />
               </label>
               <div class="file-name" *ngIf="insuranceDocFileName">{{ insuranceDocFileName }}</div>
               <div class="field-error" *ngIf="verificationError.insuranceDoc">{{ verificationError.insuranceDoc }}</div>
@@ -493,7 +490,8 @@
             <div class="verification-card-body">
               <label class="file-input-label">
                 {{ "CREATION_SHOP.VERIF_UPLOAD_LABEL" | translate }}
-                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'kbis')" accept=".pdf,.jpg,.jpeg,.png" />
+                <input type="file" class="file-input-hidden" (change)="onFileSelected($event, 'kbis')"
+                  accept=".pdf,.jpg,.jpeg,.png" />
               </label>
               <div class="file-name" *ngIf="kbisDocFileName">{{ kbisDocFileName }}</div>
             </div>
@@ -519,6 +517,63 @@
       </div>
     </ng-container>
 
+    <!-- STEP 5 : DOCUMENTS -->
+    <ng-container *ngIf="wizardStep === 5">
+      <div class="card">
+        <div class="soft" style="margin-bottom:14px;">
+          {{ "CREATION_SHOP_WIZARD.S6_HINT" | translate }}
+        </div>
+
+        <app-shop-category-management *ngIf="createdShopData" [myShopData]="createdShopData" [me]="me">
+        </app-shop-category-management>
+
+        <div class="soft" *ngIf="!createdShopData" style="padding:12px;">
+          {{ "CREATION_SHOP_WIZARD.S4_LOADING" | translate }}
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- STEP 7 : PRESTATIONS -->
+    <ng-container *ngIf="wizardStep === 7">
+      <div class="card">
+        <div class="soft" style="margin-bottom:14px;">
+          {{ "CREATION_SHOP_WIZARD.S7_HINT" | translate }}
+        </div>
+
+        <app-shop-articles-management *ngIf="createdShopData" [myShopData]="createdShopData"
+          [myArticlesData]="myArticlesData" [me]="me" (articleUpdated)="reloadArticles()">
+        </app-shop-articles-management>
+
+        <div class="soft" *ngIf="!createdShopData" style="padding:12px;">
+          {{ "CREATION_SHOP_WIZARD.S4_LOADING" | translate }}
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- STEP 8 : PAIEMENT / KYC (Stripe) -->
+    <ng-container *ngIf="wizardStep === 8">
+      <div class="card">
+        <div class="big">{{ "CREATION_SHOP_WIZARD.S8_BIG" | translate }}</div>
+        <div class="muted" style="margin-top:8px;">
+          {{ "CREATION_SHOP_WIZARD.S8_DESC" | translate }}
+        </div>
+
+        <!-- Ici tu peux brancher ton composant Stripe (si tu en as déjà un) -->
+        <!-- Exemple:
+          <app-stripe-kyc [shop]="createdShopData" [me]="me"></app-stripe-kyc>
+        -->
+
+        <div class="soft" style="margin-top:16px;">
+          {{ "CREATION_SHOP_WIZARD.S8_NOTE" | translate }}
+        </div>
+
+        <div class="final-actions" style="margin-top:16px;">
+          <button class="primary" type="button" (click)="finishAndGoLogin()" [disabled]="busy">
+            {{ "CREATION_SHOP_WIZARD.FINISH" | translate }}
+          </button>
+        </div>
+      </div>
+    </ng-container>
   </div>
 
   <!-- FOOTER -->
@@ -528,10 +583,7 @@
     </button>
 
     <!-- ✅ NEXT bouton : désactivé si pendingEmailVerification -->
-    <button
-      class="primary"
-      (click)="next()"
-      *ngIf="wizardStep < 4"
+    <button class="primary" (click)="next()" *ngIf="wizardStep < (wizardSteps.length - 1)"
       [disabled]="busy || (wizardStep === 1 && pendingEmailVerification)">
       <span *ngIf="!busy">{{ "CREATION_SHOP_WIZARD.NEXT" | translate }}</span>
       <span *ngIf="busy">{{ "CREATION_SHOP_WIZARD.PLEASE_WAIT" | translate }}</span>

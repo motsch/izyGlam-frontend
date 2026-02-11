@@ -11,6 +11,7 @@ import { CategoryService } from '../../services/category.service';
 import { VilleService } from '../../services/ville.service';
 import { CountryService } from '../../services/country.service';
 import { ShopTemplateService } from '../../services/shop-template.service';
+import { ProductService } from '../../services/product.service';
 
 // ✅ Auth existante (sign-in)
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
@@ -19,7 +20,7 @@ import { SessionService } from 'src/app/core/services/session.service';
 // ✅ comme dans ton signup
 import { v4 as uuidv4 } from 'uuid';
 
-type WizardStep = 0 | 1 | 2 | 3 | 4;
+type WizardStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 type ServiceMode = 'SALON' | 'DOMICILE';
 
 @Component({
@@ -121,6 +122,13 @@ export class CreateShopComponent implements OnInit {
     { title: 'CREATION_SHOP_WIZARD.S1_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S1_SUBTITLE', image: 'assets/images/onboarding/shop-1.png' },
     { title: 'CREATION_SHOP_WIZARD.S2_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S2_SUBTITLE', image: 'assets/images/onboarding/shop-2.png' },
     { title: 'CREATION_SHOP_WIZARD.S3_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S3_SUBTITLE', image: 'assets/images/onboarding/shop-3.png' },
+
+    // ✅ Nouveaux steps (implémentations déjà existantes dans ton app)
+    { title: 'CREATION_SHOP_WIZARD.S4_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S4_SUBTITLE', image: 'assets/images/onboarding/shop-4.png' }, // Gestion salon (photo, légal, réseaux, horaires, zones...)
+    { title: 'CREATION_SHOP_WIZARD.S5_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S5_SUBTITLE', image: 'assets/images/onboarding/shop-docs.png' }, // Docs & KYC (docs)
+    { title: 'CREATION_SHOP_WIZARD.S6_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S6_SUBTITLE', image: 'assets/images/onboarding/shop-categories.png' }, // Catégories
+    { title: 'CREATION_SHOP_WIZARD.S7_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S7_SUBTITLE', image: 'assets/images/onboarding/shop-services.png' }, // Prestations
+    { title: 'CREATION_SHOP_WIZARD.S8_TITLE', subtitle: 'CREATION_SHOP_WIZARD.S8_SUBTITLE', image: 'assets/images/onboarding/shop-payment.png' }, // Paiement / Stripe KYC
   ];
 
   get progressPercent(): number {
@@ -129,6 +137,8 @@ export class CreateShopComponent implements OnInit {
   }
 
   createdShopId: string | null = null;
+  createdShopData: any | null = null;
+  myArticlesData: any[] = [];
 
   // ============================================================
   // DOCS
@@ -153,6 +163,7 @@ export class CreateShopComponent implements OnInit {
   constructor(
     private userService: UserService,
     private shopService: ShopService,
+    private productService: ProductService,
     private shopTemplateService: ShopTemplateService,
     private countryService: CountryService,
     private router: Router,
@@ -344,7 +355,7 @@ export class CreateShopComponent implements OnInit {
 
       this.showErrors = false;
       this.wizardStep = 4;
-      this.loadVerificationStatus();
+      // Step 4 = gestion du salon (infos complètes)
       return;
     }
 
@@ -352,10 +363,10 @@ export class CreateShopComponent implements OnInit {
     // Step normal : +1
     // -------------------------------------------
     this.showErrors = false;
-    this.wizardStep = (Math.min(4, (this.wizardStep + 1)) as WizardStep);
+    this.wizardStep = (Math.min(this.wizardSteps.length - 1, (this.wizardStep + 1)) as WizardStep);
 
     // si on arrive aux docs : on récupère statut
-    if (this.wizardStep === 4) {
+    if (this.wizardStep === 5) {
       this.loadVerificationStatus();
     }
   }
@@ -364,6 +375,38 @@ export class CreateShopComponent implements OnInit {
     const img = ev.target as HTMLImageElement;
     img.style.display = 'none';
   }
+
+  // ============================================================
+  // Prestations (services) - nécessaire pour le step "Prestations"
+  // ============================================================
+  reloadArticles(): void {
+    try {
+      if (!this.createdShopId) {
+        this.myArticlesData = [];
+        return;
+      }
+
+      // ⚠️ suppose que tu as ProductService.getProductsByShop(shopId)
+      this.productService.getProductsByShop(this.createdShopId).subscribe({
+        next: (prods: any[]) => (this.myArticlesData = prods || []),
+        error: (err: any) => {
+          console.error('[CreateShop] reloadArticles error:', err);
+          this.myArticlesData = [];
+        },
+      });
+    } catch (e) {
+      console.error('[CreateShop] reloadArticles fatal:', e);
+      this.myArticlesData = [];
+    }
+  }
+
+  onShopUpdated(shopId: string) {
+    this.createdShopId = shopId || this.createdShopId;
+    // on ne refetch pas le shop (pas de méthode ici), mais on peut recharger les prestations
+    this.reloadArticles();
+  }
+
+
 
   // ============================================================
   // AUTH STEP LOGIC
@@ -822,7 +865,7 @@ export class CreateShopComponent implements OnInit {
     // ----------------------------------------------------------
     // Step 4 : docs
     // ----------------------------------------------------------
-    if (step === 4) {
+    if (step === 5) {
       this.verificationError.identityDoc = null;
       this.verificationError.insuranceDoc = null;
 
@@ -1040,6 +1083,9 @@ export class CreateShopComponent implements OnInit {
       next: (data: any) => {
         const createdShop = data?.shop || data;
         this.createdShopId = createdShop?._id || null;
+        this.createdShopData = createdShop || null;
+        // charge prestations si besoin
+        this.reloadArticles();
 
         this.showSuccessToast(this.translate.instant('SUCCESS.SUBSCRIBE_SUCCESS'));
 
@@ -1306,7 +1352,7 @@ export class CreateShopComponent implements OnInit {
     if (step === 1) return !this.hasAnyError(this.authError);
     if (step === 2) return !this.hasAnyError(this.error);
     if (step === 3) return !this.hasAnyError(this.error);
-    if (step === 4) return !this.hasAnyError(this.verificationError);
+    if (step === 5) return !this.hasAnyError(this.verificationError);
 
     return true;
   }
