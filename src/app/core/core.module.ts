@@ -97,6 +97,7 @@ import { ShopCategoryManagementComponent } from './component/shop-category-manag
 import { IzyPhoneMiddleComponent } from './component/izyPhone-middle/izyPhone-middle.component';
 import { IzyPhoneStepComponent } from './component/izyPhone-step/izyPhone-step.component';
 import { IzyPhonebottomComponent } from './component/izyPhone-bottom/izyPhone-bottom.component';
+import { AdminCountryManagementComponent } from './component/admin-country-management/admin-country-management.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -166,6 +167,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AccessibilityPolicyComponent,
         FooterComponent,
         StripeCardFormComponent,
+        AdminCountryManagementComponent,
         CompanyManagementComponent,
         AdminCompanyManagementComponent,
         ShopCardComponent,
@@ -243,6 +245,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         AccessibilityPolicyComponent,
         PostComponent,
         ModalYesNoComponent,
+        AdminCountryManagementComponent,
         OrderItemComponent,
         PostFakeGenerationComponent,
         CompanyManagementComponent,

@@ -1,0 +1,120 @@
+<div class="page">
+  <!-- Header -->
+  <header class="page-header">
+    <div class="header-left">
+      <h1 class="title">Gestion des pays</h1>
+      <p class="subtitle">Active/désactive un pays et vérifie son drapeau.</p>
+    </div>
+
+    <div class="header-right">
+      <button class="btn ghost" type="button" (click)="loadCountries()">
+        Rafraîchir
+      </button>
+    </div>
+  </header>
+
+  <section class="content">
+    <!-- Loading -->
+    <div class="info" *ngIf="loading">Chargement...</div>
+
+    <!-- Desktop / Tablet -->
+    <div class="table-card hide-on-mobile" *ngIf="!loading">
+      <div class="table-head">
+        <div class="th country">Pays</div>
+        <div class="th translation">Translation key</div>
+        <div class="th langs">Langues</div>
+        <div class="th state">Actif</div>
+      </div>
+
+      <div class="table-body">
+        <div class="row" *ngFor="let c of countries; trackBy: trackById">
+          <div class="td country">
+            <div class="flag-pill">
+              <img class="flag" [src]="c.flag" [alt]="c.name" loading="lazy" />
+            </div>
+
+            <div class="country-text">
+              <div class="primary">{{ c.name }}</div>
+              <div class="secondary">
+                <span class="muted">Langue principale :</span>
+                <span class="chip subtle">{{ c.mainLangue || '—' }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="td translation">
+            <span class="mono">{{ c.translation }}</span>
+          </div>
+
+          <div class="td langs">
+            <div class="langs-wrap">
+              <span class="chip" *ngFor="let l of c.languages">{{ l }}</span>
+              <span class="chip subtle" *ngIf="!c.languages?.length">—</span>
+            </div>
+          </div>
+
+          <div class="td state">
+            <label class="switch" title="Activer / Désactiver">
+              <input
+                type="checkbox"
+                [checked]="c.active"
+                (change)="toggleActive(c, { detail: { checked: $any($event.target).checked } })"
+              />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="empty" *ngIf="!countries?.length">
+          Aucun pays trouvé.
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile -->
+    <div class="mobile-list show-on-mobile" *ngIf="!loading">
+      <div class="country-card" *ngFor="let c of countries; trackBy: trackById">
+        <div class="card-top">
+          <div class="left">
+            <div class="flag-pill">
+              <img class="flag" [src]="c.flag" [alt]="c.name" loading="lazy" />
+            </div>
+
+            <div>
+              <div class="primary">{{ c.name }}</div>
+              <div class="secondary">{{ c.translation }}</div>
+            </div>
+          </div>
+
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="c.active"
+              (change)="toggleActive(c, { detail: { checked: $any($event.target).checked } })"
+            />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="card-bottom">
+          <div class="block">
+            <div class="label">Langue principale</div>
+            <div class="value">{{ c.mainLangue || '—' }}</div>
+          </div>
+
+          <div class="block">
+            <div class="label">Langues</div>
+            <div class="langs-wrap">
+              <span class="chip" *ngFor="let l of c.languages">{{ l }}</span>
+              <span class="chip subtle" *ngIf="!c.languages?.length">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="empty" *ngIf="!countries?.length">
+        Aucun pays trouvé.
+      </div>
+    </div>
+  </section>
+</div>
