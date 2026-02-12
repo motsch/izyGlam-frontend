@@ -83,7 +83,7 @@
       <textarea [(ngModel)]="shopCopyData.description" class="input-style" id="description"
         (ngModelChange)="markFormModified()"></textarea>
 
-      <button type="button" (click)="generateIzyGlamDescription()">
+      <button *ngIf="!stepper" type="button" (click)="generateIzyGlamDescription()">
         ✨ {{ "SHOP_MANAGEMENT.GENERATE_DESCRIPTION" | translate }}
       </button>
     </div>
@@ -351,7 +351,7 @@
       </div>
 
       <div class="column button-center">
-        <button (click)="saveSocial()">{{"BANK.SAVE" | translate}}</button>
+        <button *ngIf="!stepper" (click)="saveSocial()">{{"BANK.SAVE" | translate}}</button>
       </div>
     </div>
 

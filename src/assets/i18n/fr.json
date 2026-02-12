@@ -725,7 +725,7 @@
     "VERIF_ID_DESC": "Carte d’identité, passeport ou titre de séjour en cours de validité.",
     "VERIF_INSURANCE_TITLE": "Assurance professionnelle",
     "VERIF_INSURANCE_DESC": "Attestation en cours de validité couvrant vos prestations à domicile (obligatoire).",
-    "VERIF_KBIS_TITLE": "Extrait Kbis (optionnel)",
+    "VERIF_KBIS_TITLE": "Extrait Kbis",
     "VERIF_KBIS_DESC": "Recommandé si vous exercez via une société immatriculée.",
     "VERIF_UPLOAD_LABEL": "Téléverser un document",
     "VERIF_ALLOWED_FORMATS": "Formats acceptés : PDF, JPG, PNG · taille max 10 Mo.",
@@ -739,7 +739,8 @@
     "VERIF_TOAST_SUCCESS": "Vos documents ont été envoyés pour vérification.",
     "VERIF_TOAST_ERROR": "Impossible de téléverser vos documents pour le moment.",
     "VERIF_ID_REQUIRED": "La pièce d’identité est obligatoire.",
-    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire."
+    "VERIF_INSURANCE_REQUIRED": "L’assurance professionnelle est obligatoire.",
+    "VERIF_KBIS_REQUIRED": "Le KBIS est obligatoire"
   },
   "CREATION_SHOP_WIZARD": {
     "SUBTITLE": "Créez votre salon en quelques étapes, puis envoyez vos documents pour activer votre profil.",
@@ -773,7 +774,7 @@
     "S6_TITLE": "Les Prestations",
     "S6_SUBTITLE": "Créer les prestations que vos clients peuvent commander.",
     "S8_NOTE": "Tes informations bancaires ne sont jamais stockées sur izyGlam. Tout est saisi et sécurisé directement chez Stripe.",
-    "S7_HINT": "Astuce : un nom clair et une durée précise évitent les malentendus et améliorent l’expérience cliente.",
+    "S7_HINT": "Astuce : Vous ne pouvez pas avoir moins d'une prestataion. Pour supprimer l'exemple, veuillez en ajouter une nouvelle.",
     "S3_SUBTITLE": "Photo de profil de votre salon, informations légales, réseaux sociaux et horaires de travail.",
     "HANDLE_LABEL": "Identifiant public",
     "HANDLE_PREVIEW": "Lien :",

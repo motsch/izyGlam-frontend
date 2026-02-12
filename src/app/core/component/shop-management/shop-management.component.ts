@@ -16,6 +16,40 @@ import { UserService } from '../../services/user.service';
 import { SessionService } from '../../services/session.service';
 import { TranslateService } from '@ngx-translate/core';
 
+type ServiceMode = 'SALON' | 'DOMICILE';
+
+export type ShopManagementSnapshot = {
+  // ✅ IMPORTANT: pour que le parent puisse commit
+  shop?: any;
+
+  // snapshot minimal “step 4”
+  shopId?: string;
+  image?: string | null;
+  description?: string;
+  legal?: any;
+  hours?: any;
+  placeAddress?: any;
+  serviceMode?: ServiceMode;
+
+  // états “wizard”
+  valid: boolean;
+  descriptionValid: boolean;
+  legalValid: boolean;
+  hoursValid: boolean;
+  placeAddressValid?: boolean;
+  hasHandleError?: boolean;
+
+  blockedElements?: string[];
+
+  errors?: {
+    description?: string | null;
+    hours?: string | null;
+    legal?: any;
+    placeAddress?: any;
+  };
+};
+
+
 @Component({
   selector: 'app-shop-management',
   templateUrl: './shop-management.component.html',
@@ -25,7 +59,22 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   @Input() myShopData: any = {};
   @Input() me: any = {};
   @Input() stepper: boolean = false;
+
   @Output() shopUpdated: EventEmitter<string> = new EventEmitter<string>();
+
+  // ✅ wizard: parent veut snapshot + validité
+  @Output() snapshotChange: EventEmitter<ShopManagementSnapshot> =
+    new EventEmitter<ShopManagementSnapshot>();
+  @Output() validityChange = new EventEmitter<{
+    valid: boolean;
+    formValid: boolean;
+    legalValid: boolean;
+    hoursValid: boolean;
+    placeAddressValid: boolean;
+    hasHandleError: boolean;
+    blockedElements: string[];
+  }>();
+
 
   // ---------- Legal / Facturation ----------
   legalExpanded = true;
@@ -36,8 +85,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   imageUsed: string | null = null;
   imagePreview: string | null = null;
   selectedFile: File | null = null;
+
   shopCopyData: any | null = null;
   formModified = false;
+
+  // Form “full page” validity (non-stepper)
   formValid = false;
 
   // ---------- Localisation ----------
@@ -52,7 +104,15 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   // ---------- Horaires ----------
   allowedMorningHours: string[] = [];
   allowedAfternoonHours: string[] = [];
-  days: string[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+  days: string[] = [
+    'monday',
+    'tuesday',
+    'wednesday',
+    'thursday',
+    'friday',
+    'saturday',
+    'sunday',
+  ];
 
   // ---------- Employés ----------
   employees: any[] = [];
@@ -61,11 +121,10 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   error: any = {};
 
   private autosaveTimer: any = null;
-
   saving = false;
   saved = true;
 
-  // ---------- Adresse salon ----------
+  // ---------- Adresse salon (placeAddress) ----------
   placeAddressErrors: any = {};
   placeAddressValid = true;
 
@@ -112,31 +171,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       localStorage.setItem('menu-param', 'management');
 
       if (this.myShopData && Object.keys(this.myShopData).length > 0) {
-        this.shopCopyData = { ...this.myShopData };
-
-        this.initialHandle = this.shopCopyData.handle || '';
-        this.handleTouchedByUser = false;
-        this.handleAvailable = null;
-        this.error.handle = null;
-
-        this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
-
-        this.initHoursStructure();
-        this.initLegalStructure();
-
-        if (!this.shopCopyData.serviceMode) this.shopCopyData.serviceMode = 'SALON';
-
-        if (this.shopCopyData.serviceMode === 'SALON') {
-          this.initPlaceAddressStructure();
-        }
-
-        this.validatePlaceAddress();
-        this.validateLegal();
-
-        // états adresse (à l'ouverture, on considère "saved" si pas d'erreurs)
-        this.placeSaved = this.placeAddressValid;
-        this.placeHasErrors = !this.placeAddressValid;
+        this.bootstrapFromInput(this.myShopData);
       }
+
+      // ✅ initial emit vers wizard
+      this.emitValidityAndSnapshot();
     } catch (err) {
       console.error('[ShopManagement] ngOnInit error:', err);
       this.showCustomToast(this.t('CARD.ERROR1'), 'error');
@@ -146,20 +185,47 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     try {
       if (changes['myShopData']?.currentValue) {
-        this.shopCopyData = { ...this.myShopData };
-
-        if (!this.shopCopyData.serviceMode) this.shopCopyData.serviceMode = 'SALON';
-        if (this.shopCopyData.serviceMode === 'SALON') this.initPlaceAddressStructure();
-
-        this.validatePlaceAddress();
-        this.placeSaved = this.placeAddressValid;
-        this.placeHasErrors = !this.placeAddressValid;
-
-        this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
+        this.bootstrapFromInput(changes['myShopData'].currentValue);
+        this.emitValidityAndSnapshot();
       }
     } catch (err) {
       console.error('[ShopManagement] ngOnChanges error:', err);
     }
+  }
+
+  private bootstrapFromInput(shop: any): void {
+    this.shopCopyData = { ...shop };
+
+    this.initialHandle = this.shopCopyData.handle || '';
+    this.handleTouchedByUser = false;
+    this.handleAvailable = null;
+    this.error.handle = null;
+
+    this.imageUsed = this.buildImageUrl(this.shopCopyData.image);
+
+    this.initHoursStructure();
+    this.initLegalStructure();
+
+    if (!this.shopCopyData.serviceMode) {
+      this.shopCopyData.serviceMode = 'SALON';
+    }
+
+    // placeAddress existe peut-être déjà dans la DB : on le laisse,
+    // mais en stepper on ne le bloque pas.
+    if (this.shopCopyData.serviceMode === 'SALON') {
+      this.initPlaceAddressStructure();
+    }
+
+    this.validatePlaceAddress();
+    this.validateLegal(true);
+    this.validateForm(); // full (page)
+    // états adresse (à l'ouverture, on considère "saved" si pas d'erreurs)
+    this.placeSaved = this.placeAddressValid;
+    this.placeHasErrors = !this.placeAddressValid;
+
+    this.formModified = false;
+    this.saved = true;
+    this.saving = false;
   }
 
   // ======================
@@ -172,12 +238,18 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         next: (users: any[]) => (this.employees = users || []),
         error: (error: any) => {
           console.error('[ShopManagement] fetchEmployees error:', error);
-          this.showCustomToast(this.t('EMPLOYEES.LOAD_ERROR') || 'Erreur chargement employés', 'error');
+          this.showCustomToast(
+            this.t('EMPLOYEES.LOAD_ERROR') || 'Erreur chargement employés',
+            'error'
+          );
         },
       });
     } catch (err) {
       console.error('[ShopManagement] fetchEmployees try/catch error:', err);
-      this.showCustomToast(this.t('EMPLOYEES.LOAD_ERROR') || 'Erreur chargement employés', 'error');
+      this.showCustomToast(
+        this.t('EMPLOYEES.LOAD_ERROR') || 'Erreur chargement employés',
+        'error'
+      );
     }
   }
 
@@ -196,6 +268,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       };
 
       const legacy = this.shopCopyData.hours || {};
+
+      // si legacy.monday absent => ancienne structure (morning/afternoon global)
       if (!legacy.monday) {
         const fullWeek: any = {};
         this.days.forEach((day) => {
@@ -206,6 +280,26 @@ export class ShopManagementComponent implements OnInit, OnChanges {
           };
         });
         this.shopCopyData.hours = fullWeek;
+      } else {
+        // ✅ structure semaine présente : sécurise chaque jour
+        this.days.forEach((day) => {
+          this.shopCopyData.hours[day] = this.shopCopyData.hours[day] || {
+            ...defaultSchedule,
+          };
+
+          const d = this.shopCopyData.hours[day];
+          d.morning = d.morning || { ...defaultSchedule.morning };
+          d.afternoon = d.afternoon || { ...defaultSchedule.afternoon };
+          if (typeof d.closed !== 'boolean') d.closed = false;
+
+          // fallback horaires manquants
+          if (!d.morning.start) d.morning.start = defaultSchedule.morning.start;
+          if (!d.morning.end) d.morning.end = defaultSchedule.morning.end;
+          if (!d.afternoon.start)
+            d.afternoon.start = defaultSchedule.afternoon.start;
+          if (!d.afternoon.end)
+            d.afternoon.end = defaultSchedule.afternoon.end;
+        });
       }
     } catch (err) {
       console.error('[ShopManagement] initHoursStructure error:', err);
@@ -219,7 +313,9 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       const [endH, endM] = end.split(':').map(Number);
 
       while (h < endH || (h === endH && m <= endM)) {
-        times.push(`${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`);
+        times.push(
+          `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`
+        );
         m += 30;
         if (m >= 60) {
           m = 0;
@@ -234,9 +330,13 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   }
 
   // ======================
-  // Validation / Form
+  // Validation / Wizard
   // ======================
 
+  /**
+   * ✅ Full validation (page gestion classique)
+   * ⚠️ en stepper on ne s’en sert PAS pour bloquer.
+   */
   validateForm(): void {
     try {
       if (!this.shopCopyData) {
@@ -244,22 +344,189 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         return;
       }
 
-      const descriptionValid = !!this.shopCopyData.description && this.shopCopyData.description.length >= 25;
+      const descriptionValid =
+        !!this.shopCopyData.description && this.shopCopyData.description.length >= 25;
+
       const cityValid = !!this.shopCopyData.ville && !!this.shopCopyData.district;
-      const maxDistanceValid = this.shopCopyData.maxDistance && Number(this.shopCopyData.maxDistance) > 0;
+      const maxDistanceValid =
+        this.shopCopyData.maxDistance && Number(this.shopCopyData.maxDistance) > 0;
 
-      const hours = this.shopCopyData.hours || {};
-      const allDaysValid = this.days.every((d) => {
-        const data = hours[d];
-        if (!data) return false;
-        if (data.closed) return true;
-        return !!(data.morning?.start && data.morning?.end && data.afternoon?.start && data.afternoon?.end);
-      });
+      const hoursValid = this.isHoursValid(this.shopCopyData.hours);
 
-      this.formValid = descriptionValid && cityValid && maxDistanceValid && allDaysValid;
+      this.formValid = descriptionValid && cityValid && maxDistanceValid && hoursValid;
     } catch (err) {
       console.error('[ShopManagement] validateForm error:', err);
       this.formValid = false;
+    }
+  }
+
+  /**
+   * ✅ Stepper validation (STEP 4) : Photo + Description + Legal + Hours
+   * - Photo: non-bloquante (tu peux la laisser optionnelle)
+   * - Description: min 25 (bloquante)
+   * - Legal: bloquante si formats invalides (SIRET/TVA/email, etc.)
+   * - Hours: chaque jour doit être cohérent ou closed
+   */
+  private computeStepperValidity() {
+    const errors: any = {};
+    const blockedElements: string[] = [];
+
+    const desc = (this.shopCopyData?.description || '').toString();
+    const descriptionValid = desc.trim().length >= 25;
+    if (!descriptionValid) {
+      errors.description = this.t('SHOP_MANAGEMENT.DESC_INFO') || 'Description trop courte';
+      blockedElements.push('Description');
+    }
+
+    this.validateLegal(true);
+    const legalValid = this.legalValid;
+    if (!legalValid) {
+      errors.legal = { ...this.legalErrors };
+      blockedElements.push('Informations légales');
+    }
+
+    const hoursValid = this.isHoursValid(this.shopCopyData?.hours);
+    if (!hoursValid) {
+      errors.hours = 'Horaires invalides';
+      blockedElements.push('Horaires');
+    }
+
+    // ✅ NEW: placeAddress obligatoire si SALON
+    let placeAddressValid = true;
+    if (this.shopCopyData?.serviceMode === 'SALON') {
+      this.validatePlaceAddress();
+      placeAddressValid = this.placeAddressValid;
+      if (!placeAddressValid) {
+        errors.placeAddress = { ...this.placeAddressErrors };
+        blockedElements.push('Adresse du salon');
+      }
+    }
+
+    const valid = descriptionValid && legalValid && hoursValid && placeAddressValid;
+
+    return { valid, descriptionValid, legalValid, hoursValid, placeAddressValid, errors, blockedElements };
+  }
+
+  private isHoursValid(hours: any): boolean {
+    try {
+      if (!hours) return false;
+
+      return this.days.every((d) => {
+        const data = hours[d];
+        if (!data) return false;
+
+        // fermé => OK
+        if (data.closed) return true;
+
+        const ms = data.morning?.start;
+        const me = data.morning?.end;
+        const as = data.afternoon?.start;
+        const ae = data.afternoon?.end;
+
+        if (!(ms && me && as && ae)) return false;
+
+        // cohérence start < end
+        if (!this.isTimeBefore(ms, me)) return false;
+        if (!this.isTimeBefore(as, ae)) return false;
+
+        // optionnel : évite chevauchement matin/aprem (me <= as)
+        if (!this.isTimeBeforeOrEqual(me, as)) return false;
+
+        return true;
+      });
+    } catch (err) {
+      console.error('[ShopManagement] isHoursValid error:', err);
+      return false;
+    }
+  }
+
+  private isTimeBefore(a: string, b: string): boolean {
+    return this.timeToMinutes(a) < this.timeToMinutes(b);
+  }
+
+  private isTimeBeforeOrEqual(a: string, b: string): boolean {
+    return this.timeToMinutes(a) <= this.timeToMinutes(b);
+  }
+
+  private timeToMinutes(t: string): number {
+    const [h, m] = (t || '00:00').split(':').map((x) => Number(x));
+    return (h || 0) * 60 + (m || 0);
+  }
+
+  private emitValidityAndSnapshot(): void {
+    try {
+      if (!this.shopCopyData) {
+        this.validityChange.emit();
+        this.snapshotChange.emit({
+          valid: false,
+          descriptionValid: false,
+          legalValid: false,
+          hoursValid: false,
+          errors: { description: 'No data' },
+        });
+        return;
+      }
+
+      if (this.stepper) {
+        const v = this.computeStepperValidity();
+
+        this.validityChange.emit({
+          valid: v.valid,
+          formValid: true, // on ne bloque pas sur ton "validateForm" page
+          legalValid: v.legalValid,
+          hoursValid: v.hoursValid,
+          placeAddressValid: v.placeAddressValid,
+          hasHandleError: false, // handle pas géré en stepper
+          blockedElements: v.blockedElements || [],
+        });
+
+        const snap: ShopManagementSnapshot = {
+          shopId: this.shopCopyData?._id,
+          shop: { ...this.shopCopyData }, // ✅ CRUCIAL
+
+          image: this.shopCopyData?.image || null,
+          description: this.shopCopyData?.description || '',
+          legal: this.shopCopyData?.legal || {},
+          hours: this.shopCopyData?.hours || {},
+          placeAddress: this.shopCopyData?.placeAddress || {},
+          serviceMode: this.shopCopyData?.serviceMode || 'SALON',
+
+          valid: v.valid,
+          descriptionValid: v.descriptionValid,
+          legalValid: v.legalValid,
+          hoursValid: v.hoursValid,
+          placeAddressValid: v.placeAddressValid,
+
+          blockedElements: v.blockedElements || [],
+          errors: v.errors,
+        };
+
+        this.snapshotChange.emit(snap);
+        return;
+      }
+
+      // mode normal : on peut quand même émettre un snapshot (non bloquant)
+      this.validateForm();
+      this.validateLegal(true);
+
+      const snap: ShopManagementSnapshot = {
+        shopId: this.shopCopyData?._id,
+        image: this.shopCopyData?.image || null,
+        description: this.shopCopyData?.description || '',
+        legal: this.shopCopyData?.legal || {},
+        hours: this.shopCopyData?.hours || {},
+        valid: this.formValid && this.legalValid,
+        descriptionValid:
+          (this.shopCopyData?.description || '').toString().trim().length >= 25,
+        legalValid: this.legalValid,
+        hoursValid: this.isHoursValid(this.shopCopyData?.hours),
+        errors: { legal: { ...this.legalErrors } },
+      };
+
+      this.validityChange.emit();
+      this.snapshotChange.emit(snap);
+    } catch (err) {
+      console.error('[ShopManagement] emitValidityAndSnapshot error:', err);
     }
   }
 
@@ -267,6 +534,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     try {
       this.formModified = true;
       this.validateForm();
+
+      // ✅ en stepper, on ne veut pas “bloquer silencieusement” :
+      // on émet l’état en live pendant la saisie
+      this.emitValidityAndSnapshot();
+
       this.saveShop();
     } catch (err) {
       console.error('[ShopManagement] markFormModified error:', err);
@@ -276,6 +548,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   saveSocial(): void {
     try {
       this.validateForm();
+      this.emitValidityAndSnapshot();
       this.saveShop();
     } catch (err) {
       console.error('[ShopManagement] saveSocial error:', err);
@@ -291,14 +564,18 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       if (!this.shopCopyData?.district) return;
 
       const arr = (this.availableCities || []).find(
-        (c: any) => c.name === this.shopCopyData.district || c.nom === this.shopCopyData.district
+        (c: any) =>
+          c.name === this.shopCopyData.district || c.nom === this.shopCopyData.district
       );
       if (arr) {
         this.shopCopyData.location = this.shopCopyData.location || {};
         this.shopCopyData.location.latitude = arr.latitude;
         this.shopCopyData.location.longitude = arr.longitude;
       }
-      this.markFormModified();
+
+      this.formModified = true;
+      this.emitValidityAndSnapshot();
+      this.saveShop();
     } catch (err) {
       console.error('[ShopManagement] onDistrictChange error:', err);
     }
@@ -330,7 +607,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       this.shopCopyData.deliveryPostalCodes = this.shopCopyData.deliveryPostalCodes || [];
 
       if (this.shopCopyData.deliveryPostalCodes.includes(this.deliveryPostalCode)) {
-        this.error.deliveryPostalCode = this.t('CITY.ALREADY_ADDED') || 'Ce code postal est déjà ajouté.';
+        this.error.deliveryPostalCode =
+          this.t('CITY.ALREADY_ADDED') || 'Ce code postal est déjà ajouté.';
         return;
       }
 
@@ -340,13 +618,20 @@ export class ShopManagementComponent implements OnInit, OnChanges {
             this.shopCopyData.deliveryPostalCodes.push(this.deliveryPostalCode);
             this.deliveryPostalCode = '';
             this.error.deliveryPostalCode = null;
+
+            this.emitValidityAndSnapshot();
             this.saveShop();
           } else {
-            this.error.deliveryPostalCode = this.t('CITY.NOT_FOUND') || 'Code postal introuvable dans la base';
+            this.error.deliveryPostalCode =
+              this.t('CITY.NOT_FOUND') || 'Code postal introuvable dans la base';
           }
         },
         error: () => {
-          this.showCustomToast(this.t('ERROR.GENERIC_ERROR') || 'Erreur lors de la recherche du code postal.', 'error');
+          this.showCustomToast(
+            this.t('ERROR.GENERIC_ERROR') ||
+            'Erreur lors de la recherche du code postal.',
+            'error'
+          );
         },
       });
     } catch (err) {
@@ -359,6 +644,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     try {
       if (!this.shopCopyData?.deliveryPostalCodes) return;
       this.shopCopyData.deliveryPostalCodes.splice(index, 1);
+
+      this.emitValidityAndSnapshot();
       this.saveShop();
     } catch (err) {
       console.error('[ShopManagement] removePostalCode error:', err);
@@ -380,7 +667,10 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       reader.onload = () => (this.imagePreview = reader.result as string);
       reader.readAsDataURL(file);
 
-      this.markFormModified();
+      // image change => on sauvegarde
+      this.formModified = true;
+      this.emitValidityAndSnapshot();
+      this.saveShop();
     } catch (err) {
       console.error('[ShopManagement] onFileSelected error:', err);
     }
@@ -404,12 +694,22 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         next: (description: string) => {
           if (!this.shopCopyData) return;
           this.shopCopyData.description = description || '';
-          this.markFormModified();
-          this.showCustomToast(this.t('SHOP_MANAGEMENT.DESCRIPTION_OK') || 'Description générée ✅');
+          this.formModified = true;
+
+          this.emitValidityAndSnapshot();
+          this.saveShop();
+
+          this.showCustomToast(
+            this.t('SHOP_MANAGEMENT.DESCRIPTION_OK') || 'Description générée ✅'
+          );
         },
         error: (err) => {
           console.error('[ShopManagement] generateIzyGlamDescription error:', err);
-          this.showCustomToast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_GENERATE_DESC') || 'Erreur de génération ❌', 'error');
+          this.showCustomToast(
+            this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_GENERATE_DESC') ||
+            'Erreur de génération ❌',
+            'error'
+          );
         },
       });
     } catch (err) {
@@ -426,14 +726,20 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     try {
       if (!this.shopCopyData) return;
 
+      // ✅ STEPper: jamais de PUT, jamais d’upload
+      if (this.isStepperMode()) {
+        this.emitValidityAndSnapshot(); // on remonte l’état au parent
+        return;
+      }
+
       this.myShopData = { ...this.shopCopyData };
+      this.emitValidityAndSnapshot();
 
       if (this.selectedFile) {
         this.imageService.uploadImage(this.selectedFile).subscribe({
           next: (response) => {
             const cleaned = (response?.imageUrl || '').replace(/^\/+/, '');
             this.myShopData.image = cleaned;
-
             this.persistShop('CARD.SALON');
           },
           error: (error) => {
@@ -453,6 +759,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
   private persistShop(successKey: string): void {
     try {
+      if (!this.myShopData?._id) {
+        // en wizard, si jamais on passe un shop “draft” sans _id, on évite de crasher
+        console.warn('[ShopManagement] persistShop: missing _id');
+      }
+
       this.shopService.update(this.myShopData).subscribe({
         next: (data: any) => {
           this.shopCopyData = { ...data };
@@ -463,13 +774,18 @@ export class ShopManagementComponent implements OnInit, OnChanges {
           this.imagePreview = null;
           this.selectedFile = null;
 
-          this.shopUpdated.emit(this.myShopData._id);
+          if (this.myShopData?._id) {
+            this.shopUpdated.emit(this.myShopData._id);
+          }
 
           this.formModified = false;
-          this.validateForm();
 
-          // Si on est en SALON, on resynchronise la structure adresse
-          if (!this.shopCopyData.serviceMode) this.shopCopyData.serviceMode = 'SALON';
+          // structures + validations
+          if (!this.shopCopyData.serviceMode)
+            this.shopCopyData.serviceMode = 'SALON';
+
+          this.initHoursStructure();
+          this.initLegalStructure();
           if (this.shopCopyData.serviceMode === 'SALON') {
             this.initPlaceAddressStructure();
             this.validatePlaceAddress();
@@ -477,11 +793,21 @@ export class ShopManagementComponent implements OnInit, OnChanges {
             this.placeHasErrors = !this.placeAddressValid;
           }
 
+          this.validateLegal(true);
+          this.validateForm();
+
+          // ✅ re-emit wizard snapshot/validité après save
+          this.emitValidityAndSnapshot();
+
+          // toast only (ton flow)
           this.showCustomToast(this.t(successKey));
         },
         error: (error: any) => {
           console.error('[ShopManagement] persistShop update error:', error);
           this.showCustomToast(this.t('CARD.ERROR1'), 'error');
+
+          // ✅ même en erreur, on remonte l’état actuel
+          this.emitValidityAndSnapshot();
         },
       });
     } catch (err) {
@@ -498,7 +824,9 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     try {
       if (!storedPath) return null;
       const clean = storedPath.replace(/^\/+/, '');
-      const finalPath = clean.startsWith('uploads/') ? clean : `uploads/images/${clean}`;
+      const finalPath = clean.startsWith('uploads/')
+        ? clean
+        : `uploads/images/${clean}`;
       return `${this.baseImgUrl}/${finalPath}`;
     } catch (err) {
       console.error('[ShopManagement] buildImageUrl error:', err);
@@ -515,7 +843,10 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  private showCustomToast(message: string, type: 'success' | 'error' = 'success'): void {
+  private showCustomToast(
+    message: string,
+    type: 'success' | 'error' = 'success'
+  ): void {
     try {
       if (type === 'success') this.toastr.success(message);
       else this.toastr.error(message);
@@ -553,7 +884,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       if (field === 'phone' && l.phone) l.phone = l.phone.toString().trim();
       if (field === 'email' && l.email) l.email = l.email.toString().trim();
 
-      this.validateLegal();
+      this.validateLegal(true);
+      this.emitValidityAndSnapshot();
     } catch (err) {
       console.error('[ShopManagement] onLegalChange error:', err);
     }
@@ -583,15 +915,33 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     return /^FR[A-Z0-9]{2,13}$/i.test(vat.replace(/\s+/g, ''));
   }
 
-  validateLegal(): void {
+
+
+  validateLegal(strict: boolean = false): void {
     try {
       const l = this.shopCopyData?.legal || {};
       this.legalErrors = {};
 
       const hasAny =
-        !!l.companyName || !!l.siret || !!l.addressLine1 || !!l.postalCode || !!l.city || !!l.email || !!l.phone || !!l.vatNumber;
+        !!l.companyName ||
+        !!l.siret ||
+        !!l.addressLine1 ||
+        !!l.postalCode ||
+        !!l.city ||
+        !!l.email ||
+        !!l.phone ||
+        !!l.vatNumber;
 
-      if (hasAny) {
+      // ✅ STEP 4 (strict) => obligatoire même si vide
+      if (strict && !hasAny) {
+        this.legalErrors.companyName = 'Raison sociale obligatoire';
+        this.legalErrors.addressLine1 = 'Adresse obligatoire';
+        this.legalErrors.postalCode = 'Code postal obligatoire';
+        this.legalErrors.city = 'Ville obligatoire';
+      }
+
+      // mode "soft" => seulement si l’utilisateur a commencé
+      if (!strict && hasAny) {
         if (!l.companyName) this.legalErrors.companyName = 'Raison sociale recommandée';
         if (!l.addressLine1) this.legalErrors.addressLine1 = 'Adresse pro recommandée';
         if (!l.postalCode) this.legalErrors.postalCode = 'Code postal recommandé';
@@ -612,26 +962,36 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
   saveLegal(): void {
     try {
-      this.validateLegal();
+      this.validateLegal(true);
+      this.emitValidityAndSnapshot();
 
       if (!this.legalValid) {
-        this.showCustomToast('Merci de corriger les informations légales avant d’enregistrer.', 'error');
+        this.showCustomToast(
+          'Merci de corriger les informations légales avant d’enregistrer.',
+          'error'
+        );
         return;
       }
 
       this.saveShop();
-      this.showCustomToast('Informations légales enregistrées ✅');
+      this.showCustomToast('Informations légales enregistrées ✅', 'success');
     } catch (err) {
       console.error('[ShopManagement] saveLegal error:', err);
-      this.showCustomToast('Erreur lors de l’enregistrement des informations légales.', 'error');
+      this.showCustomToast(
+        'Erreur lors de l’enregistrement des informations légales.',
+        'error'
+      );
     }
   }
 
   // ======================
-  // Handle UX
+  // Handle UX (non-stepper)
   // ======================
 
   onShopNameTyping() {
+    // en stepper, tu ne gères pas le handle ici => on ignore ce flow
+    if (this.stepper) return;
+
     if (!this.handleTouchedByUser && this.shopCopyData) {
       const proposed = this.normalizeHandle(this.shopCopyData.name || '');
       if (proposed && proposed !== this.shopCopyData.handle) {
@@ -669,17 +1029,23 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         this.formModified = false;
         this.saved = true;
         this.saving = false;
+
+        this.emitValidityAndSnapshot();
       },
       error: (error: any) => {
         console.error('[ShopManagement] autosave error:', error);
         this.saving = false;
         this.saved = false;
         this.showCustomToast(this.t('CARD.ERROR1'), 'error');
+        this.emitValidityAndSnapshot();
       },
     });
   }
 
   onHandleTypingLocal(value: string) {
+    // en stepper, tu ne gères pas le handle
+    if (this.stepper) return;
+
     if (!this.shopCopyData) return;
 
     this.handleTouchedByUser = true;
@@ -693,6 +1059,9 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   }
 
   validateAndSaveHandle() {
+    // en stepper, tu ne gères pas le handle
+    if (this.stepper) return;
+
     if (!this.shopCopyData) return;
 
     const handle = this.normalizeHandle(this.shopCopyData.handle || '');
@@ -732,9 +1101,11 @@ export class ShopManagementComponent implements OnInit, OnChanges {
             this.saved = true;
 
             this.showCustomToast('Identifiant public mis à jour ✅', 'success');
+            this.emitValidityAndSnapshot();
           },
           error: () => {
             this.showCustomToast('Erreur lors de la mise à jour du handle.', 'error');
+            this.emitValidityAndSnapshot();
           },
         });
       },
@@ -747,6 +1118,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         } else {
           this.error.handle = 'Erreur lors de la vérification.';
         }
+        this.emitValidityAndSnapshot();
       },
     });
   }
@@ -772,7 +1144,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   private initPlaceAddressStructure(): void {
     if (!this.shopCopyData) return;
 
-    // Structure complète défensive
     this.shopCopyData.placeAddress = this.shopCopyData.placeAddress || {
       label: '',
       addressLine1: '',
@@ -785,17 +1156,18 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     if (!this.shopCopyData.placeAddress.country) this.shopCopyData.placeAddress.country = 'FR';
   }
 
-  onServiceModeChange(mode: 'SALON' | 'DOMICILE'): void {
+  onServiceModeChange(mode: ServiceMode): void {
     if (!this.shopCopyData) return;
 
-    this.shopCopyData.serviceMode = (mode === 'SALON' ? 'SALON' : 'DOMICILE');
+    this.shopCopyData.serviceMode = mode === 'SALON' ? 'SALON' : 'DOMICILE';
 
-    // reset états adresse quand on change de mode
+    // ⚠️ en stepper : tu ne traites PAS l’adresse SALON => on ne bloque pas le wizard
     if (this.shopCopyData.serviceMode === 'SALON') {
-      /*this.initPlaceAddressStructure();
+      this.initPlaceAddressStructure();
       this.validatePlaceAddress();
       this.placeSaved = this.placeAddressValid;
-      this.placeHasErrors = !this.placeAddressValid;*/
+      this.placeHasErrors = !this.placeAddressValid;
+      // on ne force pas de save ici, l’utilisateur clique
     } else {
       this.placeAddressErrors = {};
       this.placeAddressValid = true;
@@ -803,12 +1175,14 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       this.placeSaved = true;
       this.saveShop();
     }
+
+    this.emitValidityAndSnapshot();
   }
 
   onPlaceAddressChange(): void {
-    // UX premium : on indique "non enregistrée" dès qu'on tape
     this.placeSaved = false;
     this.validatePlaceAddress();
+    this.emitValidityAndSnapshot();
   }
 
   private validatePlaceAddress(): void {
@@ -827,7 +1201,6 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       const city = (a.city || '').trim();
       const country = (a.country || 'FR').toString().trim().toUpperCase();
 
-      // Normalisation légère
       a.country = country || 'FR';
       a.postalCode = postalCode.replace(/\s+/g, '').toUpperCase();
 
@@ -861,15 +1234,10 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
       if (!this.shopCopyData) return;
 
-      // On évite le toast "Adresse enregistrée" si l'API plante
       this.placeSaving = true;
 
-      // On persiste uniquement ce qu'il faut (optionnel),
-      // mais tu utilises update(myShopData) entier => on garde ton flow
       this.saveShop();
 
-      // Comme saveShop est async (subscribe), on ne peut pas être 100% sûr ici
-      // MAIS ton persistShop remettra shopCopyData à jour => on peut setter "optimiste"
       this.placeSaved = true;
       this.placeHasErrors = false;
 
@@ -878,8 +1246,12 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       console.error('[ShopManagement] savePlaceAddress error:', err);
       this.showCustomToast('Erreur lors de l’enregistrement de l’adresse.', 'error');
     } finally {
-      // petit délai pour laisser l'API partir (évite clignotement)
       setTimeout(() => (this.placeSaving = false), 450);
+      this.emitValidityAndSnapshot();
     }
+  }
+
+  private isStepperMode(): boolean {
+    return !!this.stepper;
   }
 }

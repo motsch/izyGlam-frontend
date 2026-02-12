@@ -52,9 +52,9 @@ registerLocaleData(localeEn, 'en-US');
 
 // ⬇️ EN par défaut, sauf si localStorage.langue = 'fr'
 export function defaultLocaleFactory(): string {
-  const raw = localStorage.getItem('langue') || 'en';
-  const lang = raw.replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
-  return lang === 'fr' ? 'fr-FR' : 'en-US';
+    const raw = localStorage.getItem('langue') || 'en';
+    const lang = raw.replace(/^"(.*)"$/, '$1').trim().slice(0, 2).toLowerCase();
+    return lang === 'fr' ? 'fr-FR' : 'en-US';
 }
 
 @NgModule({
@@ -87,6 +87,11 @@ export function defaultLocaleFactory(): string {
             positionClass: 'toast-custom-bottom-center',
             timeOut: 3000,
             preventDuplicates: true,
+
+            closeButton: true,
+            progressBar: true,
+            newestOnTop: true,
+            tapToDismiss: true,
         }),
         CalendarModule.forRoot({
             provide: DateAdapter,

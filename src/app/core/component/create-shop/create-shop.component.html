@@ -426,8 +426,24 @@
 
         <!-- ✅ Ton composant déjà complet (photo, description, mode, adresse, légal, réseaux, horaires, codes postaux...) -->
         <app-shop-management *ngIf="createdShopData" [myShopData]="createdShopData" [me]="me" [stepper]="true"
-          (shopUpdated)="onShopUpdated($event)">
+          (shopUpdated)="onShopUpdated($event)" (snapshotChange)="onShopManagementSnapshot($event)"
+          (validityChange)="onShopManagementValidity($event)">
         </app-shop-management>
+        <div class="soft"
+          style="margin-top:12px; padding:12px; border:1px dashed rgba(255,255,255,.25); border-radius:12px;">
+          <div><strong>DEBUG Step 4</strong></div>
+
+          <div style="margin-top:8px;">
+            <div>validityChange :</div>
+            <pre style="white-space:pre-wrap; margin:0;">{{ shopManagementValidity | json }}</pre>
+          </div>
+
+          <div style="margin-top:8px;">
+            <div>snapshotChange :</div>
+            <pre style="white-space:pre-wrap; margin:0;">{{ shopManagementSnapshot | json }}</pre>
+          </div>
+        </div>
+
 
         <!-- fallback si jamais createdShopData n'est pas prêt -->
         <div class="soft" *ngIf="!createdShopData" style="padding:12px;">
@@ -509,6 +525,7 @@
                   accept=".pdf,.jpg,.jpeg,.png" />
               </label>
               <div class="file-name" *ngIf="kbisDocFileName">{{ kbisDocFileName }}</div>
+              <div class="field-error" *ngIf="verificationError.kbisDoc">{{ verificationError.kbisDoc }}</div>
             </div>
           </div>
 
@@ -524,15 +541,16 @@
       </div>
     </ng-container>
 
-    <!-- STEP 5 : DOCUMENTS -->
+    <!-- STEP 6 : CATEGORY -->
     <ng-container *ngIf="wizardStep === 6">
       <div class="card">
         <div class="soft" style="margin-bottom:14px;">
           {{ "CREATION_SHOP_WIZARD.S6_HINT" | translate }}
         </div>
 
-        <app-shop-category-management *ngIf="createdShopData" [myShopData]="createdShopData" [me]="me">
-        </app-shop-category-management>
+        <app-shop-category-management *ngIf="createdShopData" [myShopData]="createdShopData" [me]="me"
+          (categoriesUpdated)="onCategoriesUpdated()"
+          (categoriesCountChange)="shopCategoriesCount = $event"></app-shop-category-management>
 
         <div class="soft" *ngIf="!createdShopData" style="padding:12px;">
           {{ "CREATION_SHOP_WIZARD.S4_LOADING" | translate }}

@@ -10,10 +10,14 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-app-header, .app-header, header {
-  position: sticky; /* ou fixed si tu l’utilises */
+app-header,
+.app-header,
+header {
+  position: sticky;
+  /* ou fixed si tu l’utilises */
   top: 0;
-  z-index: 50; /* <= important : reste bas */
+  z-index: 50;
+  /* <= important : reste bas */
 }
 
 
@@ -26,6 +30,7 @@ app-header, .app-header, header {
 .link {
   color: #e9769c;
 }
+
 .btn-pink {
   background-color: #ff4081;
   color: white;
@@ -34,6 +39,7 @@ app-header, .app-header, header {
   border: none;
   cursor: pointer;
 }
+
 .btn-pink:hover {
   background-color: #a32b3a;
   opacity: 0.8;
@@ -47,22 +53,26 @@ app-header, .app-header, header {
 
 /* Changer les numéros de jour */
 .fc-daygrid-day-number {
-  color: #e57373 !important; /* Applique la couleur rose aux numéros de jour */
+  color: #e57373 !important;
+  /* Applique la couleur rose aux numéros de jour */
 }
 
 /* Changer la couleur des en-têtes des jours de la semaine */
 .fc-col-header-cell-cushion {
-  color: #e57373 !important; /* Appliquer une couleur rose aux jours de la semaine */
+  color: #e57373 !important;
+  /* Appliquer une couleur rose aux jours de la semaine */
 }
 
 /* Changer la couleur des événements */
 .fc-daygrid-event {
-  color: #ffffff !important; /* Texte en blanc */
+  color: #ffffff !important;
+  /* Texte en blanc */
 }
 
 /* Supprimer les bordures inutiles dans les cases des événements */
 .fc-daygrid-day {
-  border: none; /* Pas de bordure pour les jours */
+  border: none;
+  /* Pas de bordure pour les jours */
 }
 
 /* Boutons (today, next, prev) */
@@ -73,21 +83,25 @@ app-header, .app-header, header {
 }
 
 .fc-button:hover {
-  background-color: #e57373 !important; /* Sombre au hover */
+  background-color: #e57373 !important;
+  /* Sombre au hover */
   border-color: #e57373 !important;
 }
 
 /* Surligner le jour actuel */
 .fc-daygrid-day.fc-day-today {
-  background-color: #ffebee !important; /* Fond doux pour le jour actuel */
+  background-color: #ffebee !important;
+  /* Fond doux pour le jour actuel */
 }
 
 /* --- Problème de la colonne des heures --- */
 
 /* Ajuster la colonne des heures */
 .fc-timegrid-axis {
-  width: 50px;  /* Largeur de la colonne des heures */
-  text-align: right;  /* Aligner le texte des heures à droite */
+  width: 50px;
+  /* Largeur de la colonne des heures */
+  text-align: right;
+  /* Aligner le texte des heures à droite */
   padding-right: 10px;
   font-size: 14px;
   color: #333;
@@ -97,20 +111,24 @@ app-header, .app-header, header {
 .fc-timegrid-slot-label-frame {
   border: none;
   display: flex;
-  align-items: center;  /* Centrer verticalement les heures */
-  justify-content: flex-end;  /* Assurer que les heures sont alignées à droite */
+  align-items: center;
+  /* Centrer verticalement les heures */
+  justify-content: flex-end;
+  /* Assurer que les heures sont alignées à droite */
 }
 
 /* Ajuster la hauteur des créneaux horaires */
 .fc-timegrid-slot {
   height: 28px !important;
   // min-height: 88px;
-  border-top: 1px solid #ddd; /* Lignes fines pour séparer les créneaux */
+  border-top: 1px solid #ddd;
+  /* Lignes fines pour séparer les créneaux */
 }
 
 /* Supprimer les bordures dans la première colonne (heures) */
 .fc-timegrid-slot-frame {
-  border-left: none; /* Supprimer la bordure gauche */
+  border-left: none;
+  /* Supprimer la bordure gauche */
 }
 
 /* Ajuster les lignes du calendrier */
@@ -142,13 +160,19 @@ app-header, .app-header, header {
   background-color: rgba(255, 235, 59, 0.3) !important;
   border: none !important;
 }
+
 /* Style pour les événements annulés */
 .event-cancelled {
-  text-decoration: line-through !important;  /* Barrer le texte, avec !important pour forcer le style */
-  opacity: 0.6 !important;  /* Réduire l'opacité pour indiquer l'annulation */
-  background-color: #ccc !important;  /* Couleur de fond grisée */
-  border-color: #ccc !important;  /* Couleur de la bordure grisée */
-  color: #000000 !important;  /* Couleur du texte grisée */
+  text-decoration: line-through !important;
+  /* Barrer le texte, avec !important pour forcer le style */
+  opacity: 0.6 !important;
+  /* Réduire l'opacité pour indiquer l'annulation */
+  background-color: #ccc !important;
+  /* Couleur de fond grisée */
+  border-color: #ccc !important;
+  /* Couleur de la bordure grisée */
+  color: #000000 !important;
+  /* Couleur du texte grisée */
 }
 
 
@@ -160,8 +184,10 @@ app-header, .app-header, header {
 .hero-image video {
   width: 500px;
   height: 500px;
-  object-fit: cover; /* Crop la vidéo pour remplir le conteneur */
-  object-position: center; /* Centre la vidéo dans le conteneur */
+  object-fit: cover;
+  /* Crop la vidéo pour remplir le conteneur */
+  object-position: center;
+  /* Centre la vidéo dans le conteneur */
 }
 
 label {
@@ -173,6 +199,7 @@ label {
 
 
 
+/* Position: tu peux garder exactement ton bloc */
 .toast-custom-bottom-center {
   bottom: 20px !important;
   left: 50% !important;
@@ -180,18 +207,155 @@ label {
   right: auto !important;
   top: auto !important;
   position: fixed !important;
+  z-index: 99999 !important;
 }
-.toast-success {
-  background-color: #ff69b4 !important; // Rose flashy (HotPink), change si tu veux un rose plus doux
-  color: white !important;
+
+/* Important: s'assurer que le container ne force pas une largeur cheloue */
+.toast-container.toast-custom-bottom-center {
+  width: auto !important;
 }
+
+/* Base toast: glass + premium */
+.toast-container .ngx-toastr,
+.toast-container .toast {
+  /* layout */
+  border-radius: 16px !important;
+  padding: 14px 16px !important;
+
+  /* glass */
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(140%) !important;
+
+  /* border + shadow premium */
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.10) inset !important;
+
+  /* text */
+  color: rgba(255, 255, 255, 0.95) !important;
+  letter-spacing: 0.2px !important;
+
+  /* size responsive */
+  min-width: 320px !important;
+  max-width: min(560px, calc(100vw - 32px)) !important;
+
+  /* ngx-toastr met parfois une opacité */
+  opacity: 1 !important;
+}
+
+/* On enlève l'icône PNG par défaut de la lib (moche et datée) */
+.toast-container .ngx-toastr {
+  background-image: none !important;
+}
+
+/* Accent bar à gauche via inset shadow (sans pseudo-element) */
+.toast-container .toast-success {
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.10) inset,
+    4px 0 0 0 #FF4DA6 inset !important;
+  background: linear-gradient(135deg,
+      rgba(255, 77, 166, 0.18),
+      rgba(255, 255, 255, 0.10)) !important;
+}
+
+.toast-container .toast-error {
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.10) inset,
+    4px 0 0 0 #E11D48 inset !important;
+  background: linear-gradient(135deg,
+      rgba(225, 29, 72, 0.18),
+      rgba(255, 255, 255, 0.10)) !important;
+}
+
+.toast-container .toast-info {
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.10) inset,
+    4px 0 0 0 #FF4DA6 inset !important;
+}
+
+.toast-container .toast-warning {
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.10) inset,
+    4px 0 0 0 #F59E0B inset !important;
+}
+
+/* Titre / message (ngx-toastr injecte .toast-title et .toast-message) */
+.toast-container .toast-title {
+  font-weight: 650 !important;
+  font-size: 14px !important;
+  margin-bottom: 2px !important;
+  opacity: 0.95 !important;
+}
+
+.toast-container .toast-message {
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  opacity: 0.92 !important;
+}
+
+/* Bouton close: discret et premium */
+.toast-container .ngx-toastr .toast-close-button {
+  color: rgba(255, 255, 255, 0.85) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+  font-weight: 600 !important;
+
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 12px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  transition: background 160ms ease, transform 160ms ease !important;
+}
+
+.toast-container .ngx-toastr .toast-close-button:hover {
+  background: rgba(255, 255, 255, 0.10) !important;
+}
+
+.toast-container .ngx-toastr .toast-close-button:active {
+  transform: scale(0.98) !important;
+}
+
+/* Progress bar: fine & classy */
+.toast-container .ngx-toastr .toast-progress {
+  height: 2px !important;
+  opacity: 0.65 !important;
+  border-radius: 999px !important;
+  margin-top: 10px !important;
+}
+
+/* Micro-optimisations mobile */
+@media (max-width: 420px) {
+
+  .toast-container .ngx-toastr,
+  .toast-container .toast {
+    min-width: auto !important;
+    width: calc(100vw - 24px) !important;
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+  }
+}
+
+
+
 
 
 .izy-table-responsive {
   width: 100%;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* scroll fluide iOS */
-  border-radius: 24px;              /* garde ton style */
+  -webkit-overflow-scrolling: touch;
+  /* scroll fluide iOS */
+  border-radius: 24px;
+  /* garde ton style */
 }
 
 /* évite les colonnes qui s'étirent comme des malades */
@@ -201,9 +365,12 @@ label {
 }
 
 /* permet aux colonnes texte de couper si besoin */
-.izy-table td:nth-child(1), /* NAME */
-.izy-table td:nth-child(2)  /* DESCRIPTION */
-{
+.izy-table td:nth-child(1),
+/* NAME */
+.izy-table td:nth-child(2)
+
+/* DESCRIPTION */
+  {
   white-space: normal;
   word-break: break-word;
 }

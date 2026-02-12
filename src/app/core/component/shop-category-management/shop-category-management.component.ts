@@ -29,6 +29,8 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
   @Input() myShopData: any = {};
   @Input() me: any = {};
   @Output() categoriesUpdated = new EventEmitter<void>();
+  @Output() categoriesCountChange = new EventEmitter<number>();
+
 
   // ===========================
   // State
@@ -116,6 +118,7 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
       .subscribe((cats) => {
         // petit tri “order” si présent
         this.categories = (cats || []).sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0));
+        this.categoriesCountChange.emit(this.categories.length);
       });
   }
 
@@ -212,6 +215,7 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
             this.categories = (cats || []).sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0));
             this.toast('Catégorie mise à jour ✅', 'success');
             this.categoriesUpdated.emit();
+            this.categoriesCountChange.emit(this.categories.length);
             this.closeModal();
           },
           error: (err) => {
@@ -248,6 +252,7 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
           this.categories = (cats || []).sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0));
           this.toast('Catégorie créée ✅', 'success');
           this.categoriesUpdated.emit();
+          this.categoriesCountChange.emit(this.categories.length);
           this.closeModal();
         },
         error: (err) => {
@@ -277,6 +282,7 @@ export class ShopCategoryManagementComponent implements OnInit, OnChanges {
       next: () => {
         this.toast('Catégorie supprimée ✅', 'success');
         this.categoriesUpdated.emit();
+        this.categoriesCountChange.emit(this.categories.length);
       },
       error: (err) => {
         console.error('[Categories] delete ERROR:', err);
