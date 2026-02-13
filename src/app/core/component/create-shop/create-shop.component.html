@@ -244,7 +244,6 @@
     <!-- STEP 2 : INFOS SALON -->
     <ng-container *ngIf="wizardStep === 2">
       <div class="card">
-
         <div class="soft" style="margin-bottom:14px;">
           {{ "CREATION_SHOP_WIZARD.S2_HINT" | translate }}
         </div>
@@ -429,20 +428,6 @@
           (shopUpdated)="onShopUpdated($event)" (snapshotChange)="onShopManagementSnapshot($event)"
           (validityChange)="onShopManagementValidity($event)">
         </app-shop-management>
-        <div class="soft"
-          style="margin-top:12px; padding:12px; border:1px dashed rgba(255,255,255,.25); border-radius:12px;">
-          <div><strong>DEBUG Step 4</strong></div>
-
-          <div style="margin-top:8px;">
-            <div>validityChange :</div>
-            <pre style="white-space:pre-wrap; margin:0;">{{ shopManagementValidity | json }}</pre>
-          </div>
-
-          <div style="margin-top:8px;">
-            <div>snapshotChange :</div>
-            <pre style="white-space:pre-wrap; margin:0;">{{ shopManagementSnapshot | json }}</pre>
-          </div>
-        </div>
 
 
         <!-- fallback si jamais createdShopData n'est pas prêt -->
@@ -579,26 +564,8 @@
     <ng-container *ngIf="wizardStep === 8">
       <div class="card">
 
-        <div class="soft" style="margin-top:16px;">
+        <div class="soft margin-bottom-20" style="margin-top:16px;">
           {{ "CREATION_SHOP_WIZARD.S8_NOTE" | translate }}
-        </div>
-
-        <div class="big">{{ "CREATION_SHOP_WIZARD.S8_BIG" | translate }}</div>
-        <div class="muted" style="margin-top:8px;">
-          {{ "CREATION_SHOP_WIZARD.S8_DESC" | translate }}
-        </div>
-
-        <!-- Header -->
-        <div class="stripe-header">
-          <div class="stripe-title-row">
-            <div class="stripe-icon">💗</div>
-            <div>
-              <h4 class="stripe-title">{{ "BANK.PAY_VIREMENTS" | translate }}</h4>
-              <p class="stripe-subtitle">
-                {{ "BANK.ACTIVE_STRIPE" | translate }}
-              </p>
-            </div>
-          </div>
         </div>
 
         <!-- Loading state -->

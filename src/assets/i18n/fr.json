@@ -303,7 +303,6 @@
     "YOUR_POST": "Ton post avec 'shopName' etc...",
     "SAVE": "Enregistrer",
     "CREATE": "Créer",
-
     "ASSISTANT_PUBLICATION": "Assistant de publication",
     "TEXT_READY": "Un texte prêt à copier-coller pour Instagram, Tiktok ou Facebook",
     "ASTUCE": "Astuce : change 1 phrase + ajoute une photo réelle pour performer.",
@@ -747,7 +746,7 @@
     "OPEN": "Créer mon salon",
     "S0_TITLE": "Bienvenue",
     "S0_SUBTITLE": "On vous guide pas à pas. Simple, rapide, et sécurisé.",
-    "S0_BIG": "On crée votre salon en 2 minutes",
+    "S0_BIG": "On crée votre salon en 3 minutes",
     "S0_DESC": "Vous allez choisir un nom, un identifiant public, votre adresse et vos zones desservies. Ensuite, vous téléversez vos documents pour la vérification.",
     "S0_F1_T": "Rapide",
     "S0_F1_D": "Création du salon en quelques étapes.",
@@ -773,7 +772,9 @@
     "S3_TITLE": "Documents",
     "S6_TITLE": "Les Prestations",
     "S6_SUBTITLE": "Créer les prestations que vos clients peuvent commander.",
-    "S8_NOTE": "Tes informations bancaires ne sont jamais stockées sur izyGlam. Tout est saisi et sécurisé directement chez Stripe.",
+    "S7_TITLE": "Paiements & Virements",
+    "S7_SUBTITLE": "IzyGlam n’a jamais accès à vos informations bancaires. Elles sont traitées et sécurisées exclusivement par Stripe, conformément aux normes de sécurité les plus strictes.",
+    "S8_NOTE": "IzyGlam n’a jamais accès à vos informations bancaires. Elles sont traitées et sécurisées exclusivement par Stripe, conformément aux normes de sécurité les plus strictes.",
     "S7_HINT": "Astuce : Vous ne pouvez pas avoir moins d'une prestataion. Pour supprimer l'exemple, veuillez en ajouter une nouvelle.",
     "S3_SUBTITLE": "Photo de profil de votre salon, informations légales, réseaux sociaux et horaires de travail.",
     "HANDLE_LABEL": "Identifiant public",
@@ -1271,9 +1272,7 @@
     "REFRESH_STRIPE": "Impossible de rafraîchir le statut Stripe.",
     "LOAD_DATA": "Impossible de charger les données comptables."
   },
-  "": {
-
-  },
+  "": {},
   "CANCEL_POLICY": {
     "FREE_TITLE": "✅ Annulation gratuite",
     "FREE_LINE_1": "Vous êtes à plus de 24h du rendez-vous.",

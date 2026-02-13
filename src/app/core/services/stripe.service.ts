@@ -15,13 +15,13 @@ export class StripeService {
 
   createStripeOnboardingLink(userId: string) {
     return this.http.post<{ url: string }>(
-      `${environment.apiUrl}/stripe/connect/onboarding-link`,
+      `${environment.apiUrl}stripe/connect/onboarding-link`,
       { userId }
     );
   }
 
   refreshStripeStatus(userId: string) {
-    return this.http.get<any>(`${environment.apiUrl}/stripe/connect/status`, {
+    return this.http.get<any>(`${environment.apiUrl}stripe/connect/status`, {
       params: { userId },
     }
     );

@@ -106,7 +106,6 @@ export class CreateShopComponent implements OnInit {
 
   // ✅ spinner refresh activation
   checkingActivation = false;
-  lastActivationCheckAt: Date | null = null;
 
   // ============================================================
   // ADRESSE / ZONES
@@ -120,10 +119,11 @@ export class CreateShopComponent implements OnInit {
 
   allCitiesData: any[] = [];
   availableArrondissements: string[] = [];
-  selectedCountry = 'France';
+  selectedCountry: any = {};
   selectedCity: any = {};
   selectedArrondissement = '';
-  availableCountries: any[] = [];
+  availableCountries: any[] = ["France"];
+  countries: any[] = [];
   availableCities: any[] = [];
   postalCode = '';
 
@@ -172,6 +172,8 @@ export class CreateShopComponent implements OnInit {
   isUploadingDocs = false;
   shopCategoriesCount = 0;
   stripeLoading = false;
+  lastActivationCheckAt: string | null = null;
+
 
   // ============================================================
   // HANDLE
@@ -231,6 +233,25 @@ export class CreateShopComponent implements OnInit {
         },
       });
     });
+  }
+
+  // ============================================================
+  // ✅ STEP 8 EVENTS (Stripe KYC)
+  // ============================================================
+
+  private isStripeReady(me: any): boolean {
+    return !!me?.stripe?.chargesEnabled && !!me?.stripe?.payoutsEnabled;
+  }
+
+  private getStripeBlockedMessage(me: any): string {
+    const missing: string[] = [];
+    if (!me?.stripe?.chargesEnabled) missing.push('Paiements (charges)');
+    if (!me?.stripe?.payoutsEnabled) missing.push('Virements (payouts)');
+
+    if (missing.length) {
+      return `Stripe incomplet : ${missing.join(' + ')}. Termine l’activation Stripe pour continuer.`;
+    }
+    return `Stripe incomplet.`;
   }
 
   // ✅ NEW: reçoit snapshot du step 4
@@ -370,89 +391,120 @@ export class CreateShopComponent implements OnInit {
   // ============================================================
   // DRAFT
   // ============================================================
-  private persistDraft() {
-    const draft: any = {
+  private persistDraft(): void {
+    // ✅ garantit les defaults avant sauvegarde
+    this.ensureStep2Defaults();
+    this.ensureStep3Defaults();
+
+    const draft: CreateShopDraft = {
       updatedAt: Date.now(),
-      wizardOpen: this.wizardOpen,
-      wizardStep: this.wizardStep,
+      wizardOpen: false, // ✅ pas "true" en dur
+      wizardStep: 0,
 
       auth: {
-        email: this.str(this.authUser.email),
-        authEmailExists: this.authEmailExists,
-        pendingEmailVerification: this.pendingEmailVerification,
-        lastActivationCheckAt: this.lastActivationCheckAt ? this.lastActivationCheckAt.toISOString() : null,
+        email: this.authUser?.email || '',
+        authEmailExists: this.authEmailExists ?? null,
+        pendingEmailVerification: this.pendingEmailVerification ?? false,
+        lastActivationCheckAt: this.lastActivationCheckAt ?? null,
+
+        userSnapshot: this.me
+          ? {
+            _id: this.me._id,
+            firstname: this.me.firstname,
+            lastname: this.me.lastname,
+            phone: this.me.phone,
+            country: this.me.country,
+            sex: this.me.sex,
+            stripe: this.me.stripe || null,
+          }
+          : null,
       },
 
-      shop: {
-        ...this.newShop,
-        // sécurité : ne jamais stocker un mdp
-        password: undefined,
-        passwordConfirmed: undefined,
-      },
+      // ✅ on sauvegarde le brouillon (step 2/3), pas createdShopData
+      shop: this.newShop || null,
 
       address: {
         selectedCountry: this.selectedCountry,
         postalCode: this.postalCode,
         selectedCity: this.selectedCity,
         selectedArrondissement: this.selectedArrondissement,
-        deliveryPostalCodesList: this.deliveryPostalCodesList,
+        deliveryPostalCodesList: this.deliveryPostalCodesList || [],
         latitude: this.latitude,
         longitude: this.longitude,
       },
 
       created: {
-        createdShopId: this.createdShopId,
-        createdShopData: this.createdShopData,
-      },
-
-      // ✅ NEW
-      shopManagement: {
-        snapshot: this.shopManagementSnapshot,
-        validity: this.shopManagementValidity,
+        createdShopId: this.createdShopId || null,
+        createdShopData: this.createdShopData || null,
       },
     };
 
-    this.wizardDraft.save(draft as CreateShopDraft);
+    this.wizardDraft.save(draft);
   }
 
-  private async restoreDraft() {
+
+
+  private async restoreDraft(forceOpen = false) {
     const draft: any = this.wizardDraft.load();
     if (!draft) return;
 
-    this.wizardOpen = true;
-    this.wizardStep = draft.wizardStep as WizardStep;
-
-    this.authUser.email = draft.auth.email;
-    this.authEmailExists = draft.auth.authEmailExists;
-    this.pendingEmailVerification = draft.auth.pendingEmailVerification;
-    this.lastActivationCheckAt = draft.auth.lastActivationCheckAt ? new Date(draft.auth.lastActivationCheckAt) : null;
-
-    this.newShop = { ...draft.shop };
-
-    this.selectedCountry = draft.address.selectedCountry;
-    this.postalCode = draft.address.postalCode;
-    this.selectedCity = draft.address.selectedCity;
-    this.selectedArrondissement = draft.address.selectedArrondissement;
-    this.deliveryPostalCodesList = draft.address.deliveryPostalCodesList || [];
-    this.latitude = draft.address.latitude || 0;
-    this.longitude = draft.address.longitude || 0;
-
-    this.createdShopId = draft.created.createdShopId;
-    this.createdShopData = draft.created.createdShopData;
-
-    if (draft.shopManagement?.snapshot) {
-      this.shopManagementSnapshot = draft.shopManagement.snapshot;
-
-      // priorité : snapshot.validity runtime
-      const extracted = this.extractValidityFromSnapshot(draft.shopManagement.snapshot);
-      this.shopManagementValidity = extracted || draft.shopManagement.validity || null;
-
-      const shopFromSnap = (draft.shopManagement.snapshot as any)?.shop;
-      if (shopFromSnap) {
-        this.createdShopData = { ...shopFromSnap };
-        this.createdShopId = this.createdShopData?._id || this.createdShopId;
-      }
+    if (forceOpen) {
+    } else {
+      this.wizardOpen = !!draft.wizardOpen;
     }
+    this.wizardStep = 0;
+
+    // --- auth ---
+    this.authUser.email = draft.auth?.email || '';
+    this.authEmailExists = draft.auth?.authEmailExists ?? null;
+    this.pendingEmailVerification = !!draft.auth?.pendingEmailVerification;
+    this.lastActivationCheckAt = draft.auth?.lastActivationCheckAt ?? null;
+
+    // ✅ defaults d'abord
+    this.ensureStep2Defaults();
+    this.ensureStep3Defaults();
+
+    // --- STEP2/3 : restore newShop draft (merge) ---
+    // rétro-compat: si draft.shop ressemble à un shop créé (a un _id), on ne l’écrase pas dans newShop
+    const shopLike = draft.shop;
+    const looksLikeCreatedShop = !!shopLike?._id;
+
+    if (shopLike && !looksLikeCreatedShop) {
+      this.newShop = draft.shop && typeof draft.shop === 'object' ? { ...draft.shop } : {};
+      this.ensureStep2Defaults();
+      this.ensureStep3Defaults();
+      this.deliveryPostalCodesList = Array.isArray(draft.address?.deliveryPostalCodesList)
+        ? draft.address.deliveryPostalCodesList
+        : [];
+
+    } else if (shopLike && looksLikeCreatedShop) {
+      // ancienne version: draft.shop contenait parfois createdShopData
+      this.createdShopData = { ...(this.createdShopData || {}), ...shopLike };
+      this.createdShopId = this.createdShopData?._id || this.createdShopId;
+    }
+
+    // ✅ re-default après merge (au cas où)
+    this.ensureStep2Defaults();
+
+    // --- address ---
+    this.selectedCountry = draft.address?.selectedCountry ?? this.selectedCountry;
+    this.postalCode = draft.address?.postalCode ?? this.postalCode;
+    this.selectedCity = draft.address?.selectedCity ?? this.selectedCity;
+    this.selectedArrondissement = draft.address?.selectedArrondissement ?? this.selectedArrondissement;
+
+    this.deliveryPostalCodesList = Array.isArray(draft.address?.deliveryPostalCodesList)
+      ? draft.address.deliveryPostalCodesList
+      : [];
+
+    this.latitude = draft.address?.latitude ?? 0;
+    this.longitude = draft.address?.longitude ?? 0;
+
+    // ✅ defaults step3 après restore
+    this.ensureStep3Defaults();
+
+    // --- created (source de vérité serveur) ---
+    this.createdShopId = draft.created?.createdShopId ?? this.createdShopId;
+    this.createdShopData = draft.created?.createdShopData ?? this.createdShopData;
 
     if (this.createdShopId) {
       this.reloadArticles();
@@ -461,7 +513,10 @@ export class CreateShopComponent implements OnInit {
 
     this.handleAvailable = null;
     this.handleChecking = false;
+
+    this.getCountries();
   }
+
 
   constructor(
     private userService: UserService,
@@ -485,55 +540,42 @@ export class CreateShopComponent implements OnInit {
     @Optional() @Inject(MAT_DIALOG_DATA) public data?: any
   ) { }
 
-  ngOnInit() {
-    // ----------------------------------------------------------
-    // 1) Catégories
-    // ----------------------------------------------------------
-    this.categoryService.getAll().subscribe({
-      next: (data: any) => (this.categories = data || []),
-      error: () => this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR')),
-    });
+  ngOnInit(): void {
+    const draft = this.wizardDraft.load();
 
-    // ----------------------------------------------------------
-    // 2) Defaults shop
-    // ----------------------------------------------------------
-    this.newShop.companyType = 'coiffure';
-    this.newShop.countryIndication = 'FR';
-    this.newShop.serviceMode = 'SALON' as ServiceMode;
+    // ✅ si draft existe : on restaure TOUT proprement
+    if (draft) {
+      this.restoreDraft();
+      return;
+    }
 
-    // ----------------------------------------------------------
-    // 3) "Me" : si token déjà présent, on est connecté
-    // ----------------------------------------------------------
-    this.userService.getMe().subscribe({
-      next: (data: any) => {
-        this.me = { ...data };
-        this.isUserConnected = true;
-        this.alreadyProfessionnal = this.me.role === 'professionnel' || this.me.role === 'entreprise';
-      },
-      error: () => {
-        this.isUserConnected = false;
-      },
-    });
-
-    // ----------------------------------------------------------
-    // 4) Pays
-    // ----------------------------------------------------------
-    this.countryService.getAll({ active: true }).subscribe({
-      next: (countries: any[]) => (this.availableCountries = countries || []),
-      error: (err) => console.error('Erreur pays :', err),
-    });
+    // ✅ sinon : on prépare un état clean (important pour step2/3)
+    this.ensureStep2Defaults();
+    this.ensureStep3Defaults();
+    this.getCountries();
   }
+
+
 
   // ============================================================
   // WIZARD CONTROLS
   // ============================================================
 
   openWizard() {
-    if (this.alreadyProfessionnal) return;
+    console.log('🟣 [Wizard] openWizard() called');
 
+    if (this.alreadyProfessionnal) {
+      console.warn('🟡 [Wizard] alreadyProfessionnal = true → abort');
+      return;
+    }
+
+    // ✅ toujours ouvrir ici
     this.wizardOpen = true;
     this.wizardStep = 0;
 
+    console.log('🟢 [Wizard] wizardOpen set to true, step = 0');
+
+    // reset errors/states
     this.showErrors = false;
     this.error = {};
     this.authError = {};
@@ -549,10 +591,10 @@ export class CreateShopComponent implements OnInit {
     this.checkingActivation = false;
     this.lastActivationCheckAt = null;
 
-    // ✅ NEW: reset snapshot
     this.shopManagementSnapshot = null;
     this.shopManagementValidity = null;
 
+    // reset auth user
     this.authUser = {
       email: '',
       password: '',
@@ -564,14 +606,9 @@ export class CreateShopComponent implements OnInit {
       country: 'France',
     };
 
-    this.newShop = {
-      companyType: this.newShop.companyType || 'coiffure',
-      countryIndication: 'FR',
-      serviceMode: (this.newShop.serviceMode || 'SALON') as ServiceMode,
-      ccvaccepted: false,
-      maxDistance: this.newShop.maxDistance || 15,
-    };
+    console.log('🟢 [Wizard] authUser reset');
 
+    // ✅ reset step 3 state AVANT ensure defaults
     this.deliveryPostalCodesList = [];
     this.deliveryPostalCode = '';
     this.postalCode = '';
@@ -582,16 +619,56 @@ export class CreateShopComponent implements OnInit {
     this.latitude = 0.0;
     this.longitude = 0.0;
 
+    console.log('🟢 [Wizard] address reset');
+
+    // reset step 2 draft
+    this.newShop = {
+      companyType: 'coiffure',
+      countryIndication: 'FR',
+      serviceMode: 'SALON',
+      ccvaccepted: false,
+      maxDistance: 15,
+    };
+
+    console.log('🟢 [Wizard] newShop initialized:', this.newShop);
+
+    // ✅ force defaults
+    this.ensureStep2Defaults();
+    this.ensureStep3Defaults();
+
+    console.log('🟢 [Wizard] after ensure defaults:', {
+      companyType: this.newShop.companyType,
+      serviceMode: this.newShop.serviceMode,
+      deliveryPostalCodesList: this.deliveryPostalCodesList
+    });
+
     this.resetHandleValidation();
+    console.log('🟢 [Wizard] handle validation reset');
 
     const draft = this.wizardDraft.load();
+    console.log('🔎 [Wizard] draft loaded:', draft);
+
+    if (draft && draft.wizardOpen === false) {
+      console.warn('🟡 [Wizard] draft has wizardOpen=false, forcing open anyway');
+    }
+
     if (draft) {
-      this.restoreDraft();
+      console.log('🟣 [Wizard] restoring draft...');
+      try {
+        this.restoreDraft(true); // ✅ voir patch plus bas
+        console.log('🟢 [Wizard] restoreDraft() completed');
+      } catch (e) {
+        console.error('🔴 [Wizard] restoreDraft() CRASHED:', e);
+      }
       return;
     }
 
+    console.log('🟢 [Wizard] no draft → persisting fresh state');
     this.persistDraft();
+    console.log('🟢 [Wizard] draft persisted (fresh)');
   }
+
+
 
   closeWizard() {
     if (this.busy || this.isUploadingDocs) return;
@@ -678,6 +755,31 @@ export class CreateShopComponent implements OnInit {
     return merged;
   }
 
+  private ensureStep2Defaults(): void {
+    if (!this.newShop || typeof this.newShop !== 'object') this.newShop = {};
+
+    // ✅ Step 2 defaults
+    if (!this.newShop.companyType) this.newShop.companyType = 'coiffure';
+
+    // (optionnel mais utile)
+    if (!this.newShop.countryIndication) this.newShop.countryIndication = 'FR';
+    if (this.newShop.ccvaccepted === undefined) this.newShop.ccvaccepted = false;
+
+    // distance par défaut
+    if (!this.newShop.maxDistance) this.newShop.maxDistance = 15;
+  }
+
+  private ensureStep3Defaults(): void {
+    if (!this.newShop || typeof this.newShop !== 'object') this.newShop = {};
+
+    // ✅ Step 3 defaults
+    if (!this.newShop.serviceMode) this.newShop.serviceMode = 'SALON';
+
+    if (!Array.isArray(this.deliveryPostalCodesList)) this.deliveryPostalCodesList = [];
+    if (!this.deliveryPostalCode) this.deliveryPostalCode = '';
+  }
+
+
   private validateStep3PlaceAddress(): boolean {
     // Si domicile, pas d'adresse salon obligatoire
     if ((this.newShop?.serviceMode || 'SALON') !== 'SALON') return true;
@@ -717,11 +819,34 @@ export class CreateShopComponent implements OnInit {
    * - step3 : create shop avant step4
    * - step4 : VALIDATE + COMMIT (unique) via stepper
    */
+
   async next() {
     if (this.busy) return;
 
     this.showErrors = true;
     this.validateCurrentStep();
+
+    // ✅ STEP 8 : fin wizard => STRIPE VALIDATION + clear draft
+    if (this.wizardStep === 8) {
+      /*
+            // ✅ OK => on peut finaliser
+            this.showErrors = false;
+      
+            // ✅ on nettoie le draft localStorage
+            this.wizardDraft.clear();
+      
+            // optionnel : reset states (évite les "restes" si on rouvre)
+            this.shopManagementSnapshot = null;
+            this.shopManagementValidity = null;
+            this.createdShopId = null;
+            this.createdShopData = null;
+      
+            // ✅ tu peux fermer / rediriger ici
+            // this.wizardOpen = false;
+            // this.router.navigate(['/pro/dashboard']);
+      */
+      return;
+    }
 
     // ✅ STEP 4 : le stepper est le seul qui push en BDD (STRICT)
     if (this.wizardStep === 4) {
@@ -874,8 +999,18 @@ export class CreateShopComponent implements OnInit {
       if (!ok) return;
 
       this.showErrors = false;
+      this.ensureStep2Defaults();
+      this.ensureStep3Defaults();
       this.wizardStep = 2;
       return;
+    }
+
+    // -------------------------------------------
+    // Step 3 -> Step 4 : create shop avant docs
+    // -------------------------------------------
+    if (this.wizardStep === 2) {
+      // this.setServiceMode("SALON");
+      // this.newShop.companyType = "coiffure";
     }
 
     // -------------------------------------------
@@ -927,6 +1062,26 @@ export class CreateShopComponent implements OnInit {
     // ✅ en entrant en step 5 : charge status
     if (this.wizardStep === 5) {
       this.loadVerificationStatus();
+    }
+
+    if (this.wizardStep === 8) {
+      // 0) Bloque si refresh en cours
+      if (this.stripeLoading) {
+        this.showCustomToast(this.translate.instant('CREATION_SHOP_WIZARD.PLEASE_WAIT'));
+        return;
+      }
+
+      // 1) Source de vérité : on refresh Stripe status
+      const updatedMe = await this.refreshStripeStatusAsync();
+
+      // Si refresh a échoué, on utilise quand même this.me (dernier état connu)
+      const meToCheck = updatedMe || this.me;
+
+      // 2) Validation Stripe (STRICT)
+      if (!this.isStripeReady(meToCheck)) {
+        this.showCustomToast(this.getStripeBlockedMessage(meToCheck));
+        return;
+      }
     }
 
     this.persistDraft();
@@ -990,6 +1145,7 @@ export class CreateShopComponent implements OnInit {
     }
 
     this.checkEmailExists(email);
+    this.persistDraft();
   }
 
   private checkEmailExists(email: string) {
@@ -1030,6 +1186,79 @@ export class CreateShopComponent implements OnInit {
       });
     });
   }
+
+  private refreshStripeStatusAsync(opts?: { silentError?: boolean }): Promise<any | null> {
+    return new Promise((resolve) => {
+      if (!this.me?._id) return resolve(null);
+      if (this.stripeLoading) return resolve(this.me);
+
+      this.stripeLoading = true;
+      console.log("ID DE MON USER :")
+      console.log(this.me._id)
+      this.stripeService.refreshStripeStatus(this.me._id).subscribe({
+        next: (updatedUser) => {
+          this.me = updatedUser;          // ✅ vérité backend
+          this.stripeLoading = false;
+          this.persistDraft();            // ✅ garde l’état en reload
+          resolve(updatedUser);
+        },
+        error: (e) => {
+          console.error(e);
+          this.stripeLoading = false;
+          if (!opts?.silentError) {
+            this.toastr.error(this.translate.instant("FINANCE.REFRESH_STRIPE"));
+          }
+          resolve(null);
+        }
+      });
+    });
+  }
+
+
+  // ------------------------------------------------------
+  // 🗺️ Charger les pays actifs, sélectionner le pays stocké, charger ses langues
+  // ------------------------------------------------------
+  getCountries(): void {
+    this.countryService.getAll({ active: true }).subscribe({
+      next: (countries: any[]) => {
+        this.countries = countries || [];
+        this.availableCountries = countries;
+        // Lecture du localStorage (on stocke le *name* du pays)
+        let storedCountry = this.me ? (this.me.country || '').replace(/^"(.*)"$/, '$1').trim() : "France";
+        if (!storedCountry) storedCountry = 'France';
+
+        // On tente de retrouver par name ou translation (case-insensitive)
+        this.selectedCountry = this.findCountryByNameOrTranslation(storedCountry);
+        console.log("selectedCountry : " + JSON.stringify(this.selectedCountry))
+        // Fallback France / 1er pays dispo
+        if (!this.selectedCountry) {
+          this.selectedCountry =
+            this.findCountryByNameOrTranslation('France') || this.countries[0] || null;
+        }
+
+        // Appliquer côté session + charger les langues
+        if (this.selectedCountry) {
+          this.sessionService.setCountry(this.selectedCountry.name);
+        } else {
+          console.error('Country not found for name:', storedCountry);
+        }
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des pays', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      },
+    });
+  }
+
+
+  /** 🔎 Recherche pays par name ou par translation (insensible à la casse) */
+  private findCountryByNameOrTranslation(raw: string): any | undefined {
+    const norm = raw.trim().toLowerCase();
+    return this.countries.find(
+      (c) => c.name?.toLowerCase() === norm || c.translation?.toLowerCase() === norm
+    );
+  }
+
 
   private async ensureAuthenticatedBeforeShop(): Promise<boolean> {
     this.authError = {};
@@ -1222,13 +1451,19 @@ export class CreateShopComponent implements OnInit {
     }
 
     this.checkingActivation = true;
-    this.lastActivationCheckAt = new Date();
+
+    // ✅ on marque le moment où l’utilisateur clique sur ↻
+    this.lastActivationCheckAt = new Date().toISOString();
+    this.persistDraft();
 
     this.userService.checkUserActiveByEmail(email).subscribe({
       next: (res: any) => {
         this.checkingActivation = false;
 
         const isActive = !!res?.active;
+
+        // ✅ on garde la trace du check (déjà set juste avant, mais on persist encore)
+        this.persistDraft();
 
         if (!isActive) {
           this.showCustomToast(this.translate.instant("CREATION_SHOP_WIZARD.NOT_ACTIVATED"));
@@ -1240,14 +1475,20 @@ export class CreateShopComponent implements OnInit {
         this.authUser.password = '';
 
         this.showSuccessToast(this.translate.instant("CREATION_SHOP_WIZARD.ACCOUNT_ACTIVATED"));
+        this.persistDraft();
       },
       error: (err: any) => {
         this.checkingActivation = false;
         console.error(err);
+
+        // ✅ on garde quand même lastActivationCheckAt (ça prouve qu’on a essayé)
+        this.persistDraft();
+
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       }
     });
   }
+
 
   resendActivationEmail() {
     const email = this.str(this.authUser.email);

@@ -13,6 +13,8 @@ export interface CreateShopDraft {
     authEmailExists: boolean | null;
     pendingEmailVerification: boolean;
     lastActivationCheckAt: string | null;
+    // ✅ AJOUTE ÇA (sinon TS/compile va être bancal)
+    userSnapshot?: any | null;
   };
 
   shop: any;
