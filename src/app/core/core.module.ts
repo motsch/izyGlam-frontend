@@ -98,6 +98,7 @@ import { IzyPhoneMiddleComponent } from './component/izyPhone-middle/izyPhone-mi
 import { IzyPhoneStepComponent } from './component/izyPhone-step/izyPhone-step.component';
 import { IzyPhonebottomComponent } from './component/izyPhone-bottom/izyPhone-bottom.component';
 import { AdminCountryManagementComponent } from './component/admin-country-management/admin-country-management.component';
+import { CookieBannerComponent } from './component/cookie-banner/cookie-banner.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -145,7 +146,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
             provide: DateAdapter,
             useFactory: adapterFactory,
         }),
-    ],    
+    ],
     declarations: [
         TermsPolicyComponent,
         CreateShopComponent,
@@ -159,6 +160,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopManagementComponent,
         AdminIzyshopOrdersComponent,
         AdminComponent,
+        CookieBannerComponent,
         PostFakeGenerationComponent,
         FinanceComponent,
         ProfileInformationsComponent,
@@ -253,6 +255,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         CompanyFinanceManagementComponent,
         FilterByString,
         ShopArticlesManagementComponent,
+        CookieBannerComponent,
         HeaderComponent,
         FooterComponent,
         AdminCompanyManagementComponent,
@@ -288,4 +291,4 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     ],
     providers: [SessionService, ModalYesNoComponent, DatePipe],
 })
-export class CoreModule {}
+export class CoreModule { }

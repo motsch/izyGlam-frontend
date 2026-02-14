@@ -9,12 +9,12 @@ export interface ICountry {
   name: string;
   translation: string;
   active: boolean;
-  languages: string[]; // ex: ['fr','en','es']
+  languages: string[];
   createdAt?: string;
   updatedAt?: string;
 }
 
-/** DTO de création (tu peux rendre 'active' optionnel si tu veux par défaut false côté backend) */
+/** DTO de création */
 export interface CreateCountryDto {
   name: string;
   translation: string;
@@ -38,12 +38,30 @@ export interface CountryLanguagesResponse {
   languages: string[];
 }
 
+/** Réponse pour /country/name/:name/subscriptions */
+export interface CountrySubscriptionsResponse {
+  countryId: string;
+  name: string;
+  currency: string;
+  proMonthlyCents: number;
+  premiumMonthlyCents: number;
+}
+
+/** Réponse pour /country-me/subscriptions */
+export interface MyCountrySubscriptionsResponse {
+  userId: string;
+  shopName: string;
+  shopCountry: string;
+  countryName: string;
+  currency: string;
+  proMonthlyCents: number;
+  premiumMonthlyCents: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class CountryService {
-  private baseUrl = `${environment.apiUrl}country`;
-
   constructor(private http: HttpClient) {}
 
   /**
@@ -61,7 +79,7 @@ export class CountryService {
       params = params.set('q', opts.q.trim());
     }
 
-    return this.http.get<ICountry[]>(this.baseUrl, { params });
+    return this.http.get<ICountry[]>(`${environment.apiUrl}country`, { params });
   }
 
   /**
@@ -69,7 +87,7 @@ export class CountryService {
    * @param id (ID du pays)
    */
   getById(id: string): Observable<ICountry> {
-    return this.http.get<ICountry>(`${this.baseUrl}/${id}`);
+    return this.http.get<ICountry>(`${environment.apiUrl}country/${id}`);
   }
 
   /**
@@ -77,7 +95,7 @@ export class CountryService {
    * @param payload (données du pays à créer)
    */
   create(payload: CreateCountryDto): Observable<ICountry> {
-    return this.http.post<ICountry>(this.baseUrl, payload);
+    return this.http.post<ICountry>(`${environment.apiUrl}country`, payload);
   }
 
   /**
@@ -85,7 +103,7 @@ export class CountryService {
    * @param payload (données à mettre à jour — doit contenir _id)
    */
   update(payload: UpdateCountryDto): Observable<ICountry> {
-    return this.http.put<ICountry>(`${this.baseUrl}/${payload._id}`, payload);
+    return this.http.put<ICountry>(`${environment.apiUrl}country/${payload._id}`, payload);
   }
 
   /**
@@ -93,7 +111,7 @@ export class CountryService {
    * @param id (ID du pays à supprimer)
    */
   delete(id: string): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}/${id}`);
+    return this.http.delete<any>(`${environment.apiUrl}country/${id}`);
   }
 
   /**
@@ -102,18 +120,39 @@ export class CountryService {
    * @param active (true pour activer, false pour désactiver)
    */
   setActive(id: string, active: boolean): Observable<ICountry> {
-    // côté backend: route PATCH /country/:id/active accepte body { active } ou ?active=
-    return this.http.patch<ICountry>(`${this.baseUrl}/${id}/active`, { active });
+    return this.http.patch<ICountry>(`${environment.apiUrl}country/${id}/active`, { active });
   }
 
   /**
    * Récupérer les langues d'un pays par son nom (insensible à la casse)
    * @param name (nom ou traduction du pays, ex: "France" ou "Germany")
    */
-  getLanguagesByName(name: string) {
-    // encodeURIComponent pour supporter espaces & caractères spéciaux
+  getLanguagesByName(name: string): Observable<CountryLanguagesResponse> {
     const safe = encodeURIComponent(name.trim());
-    return this.http.get<any>(`${this.baseUrl}/name/${safe}/languages`);
+    return this.http.get<CountryLanguagesResponse>(
+      `${environment.apiUrl}country/name/${safe}/languages`
+    );
+  }
+
+  /**
+   * Récupérer uniquement les abonnements d'un pays par son nom (insensible à la casse)
+   * @param name (nom ou traduction du pays, ex: "France" ou "Germany")
+   */
+  getSubscriptionsByName(name: string): Observable<CountrySubscriptionsResponse> {
+    const safe = encodeURIComponent(name.trim());
+    return this.http.get<CountrySubscriptionsResponse>(
+      `${environment.apiUrl}country/name/${safe}/subscriptions`
+    );
+  }
+
+  /**
+   * ✅ Récupérer les abonnements du pays du shop du user connecté
+   * Route backend : GET /country-me/subscriptions
+   */
+  getMySubscriptions(): Observable<MyCountrySubscriptionsResponse> {
+    return this.http.get<MyCountrySubscriptionsResponse>(
+      `${environment.apiUrl}country-me/subscriptions`
+    );
   }
 
   /**

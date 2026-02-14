@@ -1,9 +1,11 @@
+/* =========================================================
+   PayementPro — Page (premium rose)
+========================================================= */
+
 .payment-page {
   min-height: 100vh;
   padding: 72px 16px 48px;
   font-family: 'Poppins', sans-serif;
-
-  /* Fond clair premium */
   background:
     radial-gradient(900px 420px at 20% 0%, rgba(245, 163, 181, 0.22), transparent 55%),
     radial-gradient(700px 420px at 85% 10%, rgba(190, 140, 255, 0.18), transparent 55%),
@@ -13,8 +15,6 @@
 .payment-container {
   max-width: 680px;
   margin: 0 auto;
-
-  /* Card principale claire + glassy */
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(245, 163, 181, 0.22);
   border-radius: 22px;
@@ -48,7 +48,7 @@
     font-size: 0.92rem;
     color: #c85b78;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     padding: 10px 14px;
     border-radius: 999px;
     background: rgba(245, 163, 181, 0.14);
@@ -71,15 +71,6 @@
     align-items: center;
     gap: 14px;
 
-    .plan-icon {
-      height: 44px;
-      width: 44px;
-      border-radius: 14px;
-      background: rgba(245, 163, 181, 0.14);
-      border: 1px solid rgba(245, 163, 181, 0.22);
-      padding: 8px;
-    }
-
     h2 {
       font-size: 1.25rem;
       color: #c85b78;
@@ -95,14 +86,14 @@
 
     .price {
       font-size: 1.15rem;
-      font-weight: 700;
+      font-weight: 800;
       text-align: right;
       color: #1b1b1b;
 
       span {
         display: block;
         font-size: 0.82rem;
-        font-weight: 600;
+        font-weight: 700;
         color: rgba(27, 27, 27, 0.55);
       }
     }
@@ -116,58 +107,17 @@
       font-size: 0.92rem;
       margin-bottom: 0.35rem;
       color: rgba(27, 27, 27, 0.62);
-
-      a {
-        color: #c85b78;
-        text-decoration: underline;
-        text-underline-offset: 3px;
-      }
     }
   }
 }
 
-/* Adresse */
-.address {
-  h3 {
-    margin: 0 0 0.6rem;
-    font-size: 1.05rem;
-    color: #1b1b1b;
-    letter-spacing: -0.2px;
-  }
-
-  .address-info {
-    background: rgba(255, 255, 255, 0.72);
-    padding: 0.9rem 1rem;
-    border-radius: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    span {
-      color: rgba(27, 27, 27, 0.72);
-      line-height: 1.25;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .edit {
-      color: #c85b78;
-      font-weight: 700;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(245, 163, 181, 0.14);
-      border: 1px solid rgba(245, 163, 181, 0.25);
-
-      &:hover {
-        cursor: pointer;
-        background: rgba(245, 163, 181, 0.20);
-      }
-    }
-  }
+/* Liens (conditions / confidentialité) */
+.conditions-link {
+  color: #c05b7a;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
 /* Paiement */
@@ -182,7 +132,7 @@
     label {
       display: block;
       margin-bottom: 0.8rem;
-      font-weight: 700;
+      font-weight: 800;
       color: #c85b78;
     }
 
@@ -201,13 +151,12 @@
 
     .card-icons img {
       height: 22px;
-      opacity: 0.8;
-      filter: none; /* plus clean en fond clair */
+      opacity: 0.85;
     }
   }
 }
 
-/* Liste des cartes */
+/* Cards Stripe */
 .card-option {
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -221,7 +170,7 @@
     margin: 0;
     font-size: 0.98rem;
     color: #1b1b1b;
-    font-weight: 800;
+    font-weight: 900;
   }
 
   p {
@@ -244,7 +193,6 @@
   }
 }
 
-/* Etat "pas de carte" */
 .no-default-card {
   background: rgba(255, 255, 255, 0.68);
   border: 1px dashed rgba(200, 91, 120, 0.35);
@@ -264,7 +212,6 @@
   }
 }
 
-/* Bouton add card */
 .add-card-btn {
   margin-top: 0.9rem;
   background: rgba(245, 163, 181, 0.14);
@@ -273,7 +220,7 @@
   border: 1px solid rgba(245, 163, 181, 0.35);
   border-radius: 999px;
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 900;
   width: fit-content;
   cursor: pointer;
   transition: transform 0.15s ease, background 0.2s ease;
@@ -285,26 +232,26 @@
 }
 
 /* Résumé */
+.mini-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(190, 140, 255, 0.14);
+  border: 1px solid rgba(190, 140, 255, 0.22);
+  color: rgba(27, 27, 27, 0.7);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
 .summary {
   h3 {
     font-size: 1.05rem;
     margin: 0 0 0.6rem;
   }
 
-  .summary-line {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: rgba(27, 27, 27, 0.7);
-
-    img {
-      height: 28px;
-      margin-right: 0.5rem;
-    }
-  }
-
   .total {
-    font-weight: 800;
+    font-weight: 900;
     margin-top: 0.7rem;
     color: #1b1b1b;
 
@@ -320,13 +267,6 @@
     font-size: 0.85rem;
     color: rgba(27, 27, 27, 0.62);
     line-height: 1.35;
-
-    a {
-      color: #c85b78;
-      font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
   }
 
   .confirm-button {
@@ -347,10 +287,6 @@
       transform: translateY(-1px);
       box-shadow: 0 20px 42px rgba(245, 163, 181, 0.45);
     }
-
-    &:active {
-      transform: translateY(0px);
-    }
   }
 }
 
@@ -363,21 +299,363 @@
 
   .subscription-details .plan {
     align-items: flex-start;
+    .price { font-size: 1.05rem; }
+  }
+}
 
-    .price {
-      font-size: 1.05rem;
+/* =========================================================
+   MODALE CONDITIONS — hauteur fixe + scroll body only
+========================================================= */
+
+:host ::ng-deep body.modal-open {
+  overflow: hidden;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 9999;
+}
+
+/* Base modal card */
+.modal-card {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 192, 203, 0.32);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+/* Header + footer fixes */
+.modal-card .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background:
+    radial-gradient(600px 120px at 10% 0%, rgba(245, 163, 181, 0.22), transparent 60%),
+    radial-gradient(420px 120px at 90% 0%, rgba(190, 140, 255, 0.18), transparent 60%),
+    rgba(255, 255, 255, 0.92);
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 950;
+  color: #c05b7a;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+
+.modal-emoji {
+  font-size: 18px;
+}
+
+.modal-close {
+  border: none;
+  background: rgba(245, 163, 181, 0.18);
+  color: #c05b7a;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+  transition: transform 0.12s ease, background 0.12s ease;
+
+  &:hover {
+    background: rgba(245, 163, 181, 0.28);
+    transform: translateY(-1px);
+  }
+}
+
+/* ✅ Modale conditions : layout “header fixed / body scroll / footer fixed” */
+.modal-card.modal-conditions {
+  /* hauteur fixe (responsive) */
+  height: min(78vh, 640px);
+  display: flex;
+  flex-direction: column;
+
+  /* Body scrollable */
+  .modal-body {
+    padding: 18px 20px 16px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    color: rgba(18, 18, 18, 0.78);
+  }
+
+  .modal-footer {
+    padding: 14px 18px 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.92);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}
+
+/* Contenu premium (moins “fade”, plus hiérarchie) */
+.modal-card.modal-conditions {
+  .conditions-intro {
+    margin-bottom: 14px;
+
+    .conditions-kicker {
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(192, 91, 122, 0.90);
+    }
+
+    .conditions-lead {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(18, 18, 18, 0.68);
+
+      strong {
+        color: rgba(18, 18, 18, 0.88);
+        font-weight: 950;
+      }
+    }
+  }
+
+  .conditions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .cond-card {
+    position: relative;
+    border-radius: 18px;
+    padding: 14px 14px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    background:
+      radial-gradient(380px 120px at 15% 0%, rgba(245, 163, 181, 0.16), transparent 60%),
+      rgba(255, 255, 255, 0.90);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.06);
+
+    .cond-card__head {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .cond-ico {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: rgba(245, 163, 181, 0.18);
+      border: 1px solid rgba(245, 163, 181, 0.28);
+      display: grid;
+      place-items: center;
+      font-size: 16px;
+      flex: 0 0 38px;
+    }
+
+    .cond-title {
+      font-weight: 950;
+      font-size: 14px;
+      color: rgba(18, 18, 18, 0.88);
+      letter-spacing: -0.15px;
+      margin-bottom: 2px;
+    }
+
+    .cond-subtitle {
+      font-size: 12.5px;
+      font-weight: 850;
+      color: rgba(18, 18, 18, 0.52);
+    }
+
+    .cond-points {
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+
+      li {
+        position: relative;
+        padding-left: 18px;
+        font-size: 13.5px;
+        line-height: 1.55;
+        color: rgba(18, 18, 18, 0.70);
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 9px;
+          width: 8px;
+          height: 8px;
+          border-radius: 999px;
+          background: rgba(192, 91, 122, 0.55);
+          box-shadow: 0 6px 16px rgba(192, 91, 122, 0.18);
+        }
+      }
+    }
+  }
+
+  .conditions-legal {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(190, 140, 255, 0.20);
+    background:
+      radial-gradient(420px 120px at 0% 0%, rgba(190, 140, 255, 0.14), transparent 60%),
+      rgba(190, 140, 255, 0.08);
+
+    .conditions-legal__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(90, 70, 150, 0.86);
+      margin-bottom: 8px;
+    }
+
+    .conditions-legal__text {
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: rgba(18, 18, 18, 0.68);
+    }
+
+    .legal-link {
+      color: #c05b7a;
+      font-weight: 900;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+  }
+
+  .btn-secondary {
+    border: none;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-radius: 999px;
+    background: rgba(245, 163, 181, 0.20);
+    border: 1px solid rgba(245, 163, 181, 0.30);
+    color: #c05b7a;
+    font-weight: 950;
+    transition: transform 0.12s ease, background 0.12s ease;
+
+    &:hover {
+      background: rgba(245, 163, 181, 0.28);
+      transform: translateY(-1px);
     }
   }
 }
 
-.mini-badge {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(190, 140, 255, 0.14);
-  border: 1px solid rgba(190, 140, 255, 0.22);
-  color: rgba(27, 27, 27, 0.7);
-  font-weight: 700;
-  font-size: 0.85rem;
+/* =========================================================
+   MODALE POLICY (comme footer) — scroll interne
+========================================================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 10000;
+}
+
+.modal-panel {
+  width: 100%;
+  max-width: 760px;
+  max-height: 84vh;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 192, 203, 0.35);
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .modal-header {
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .modal-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 950;
+    color: #c05b7a;
+  }
+
+  .modal-body {
+    padding: 16px 18px 18px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-close {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    font-size: 22px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .modal-panel {
+    max-height: 88vh;
+    border-radius: 18px;
+  }
+  .modal-card {
+    border-radius: 18px;
+  }
+}
+
+
+/* Policy modal header: title left, close right */
+.modal-panel .modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* important: allow title to take space */
+.modal-panel .modal-title {
+  flex: 1;
+  margin: 0;
+}
+
+/* force close button to stay at the far right */
+.modal-panel .modal-close {
+  margin-left: auto;
 }

@@ -7,6 +7,9 @@ import { SubscriptionService } from 'src/app/core/services/subscription.service'
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionService } from 'src/app/core/services/session.service';
+import { UserService } from 'src/app/core/services/user.service';
+import { ShopService } from 'src/app/core/services/shop.service';
+import { CountryService } from 'src/app/core/services/country.service';
 
 @Component({
   selector: 'app-price-plans',
@@ -17,11 +20,14 @@ import { SessionService } from 'src/app/core/services/session.service';
 export class PricePlansComponent implements OnInit {
   // Liste des abonnements (récupérés via l’API)
   subscriptions: any[] | undefined;
+  proSub: string | null = null;
+  premiumSub: string | null = null;
+  abonnements: any;
 
   constructor(
     private router: Router,
     private seoService: SeoService,
-    private subscriptionService: SubscriptionService,
+    private countryService: CountryService,
 
     // ✅ AjoutizyGlam
     private toastr: ToastrService,
@@ -42,10 +48,20 @@ export class PricePlansComponent implements OnInit {
     }
 
     // Récupération de la liste des plans d’abonnement côté backend
-    this.subscriptionService.getAll('FR').subscribe({
+    this.countryService.getMySubscriptions().subscribe({
       next: (subs) => {
-        this.subscriptions = subs;
-        console.log('Abonnements chargés :', this.subscriptions);
+        console.log(JSON.stringify(subs));
+        this.proSub = (subs.proMonthlyCents / 100).toLocaleString('fr-FR', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+
+        this.premiumSub = (subs.premiumMonthlyCents / 100).toLocaleString('fr-FR', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        this.abonnements = subs;
+
       },
       error: (err) => {
         console.error('Erreur lors du chargement des abonnements :', err);
@@ -75,12 +91,16 @@ export class PricePlansComponent implements OnInit {
   // 💳 Aller au paiement Pro en passant le plan sélectionné
   // ------------------------------------------------------------------
   goToPaiement(plan: string) {
-    if (this.sessionService.isLoggedIn()) {
-      this.router.navigate(['/payement-pro/' + plan]);
-    } else {
+    if (!this.sessionService.isLoggedIn()) {
       this.router.navigate(['/sign-in']);
+      return;
     }
+
+    this.router.navigate(['/payement-pro', plan], {
+      state: { subs: this.abonnements }
+    });
   }
+
 
   // ------------------------------------------------------------------
   // 🏪 Aller à la création de shop

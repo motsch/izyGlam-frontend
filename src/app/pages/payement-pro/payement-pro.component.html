@@ -1,89 +1,296 @@
 <div class="payment-container margin-top-70">
+
     <header class="payment-header">
         <img src="assets/images/logo.png" alt="IzyGlam Logo" class="logo">
-        <a (click)="goToAbonnement()" class="change-subscription">{{"PAYEMENT_PRO.CHANGE_ABO" | translate}}</a>
+        <a (click)="goToAbonnement()" class="change-subscription">
+            {{ "PAYEMENT_PRO.CHANGE_ABO" | translate }}
+        </a>
     </header>
+
+    <!-- ======================= -->
+    <!-- PLAN + PRIX DYNAMIQUE -->
+    <!-- ======================= -->
     <section class="subscription-details">
         <div class="plan">
             <div>
-                <h2 *ngIf="abonnement === 'premium'">👑 {{ "TARIF.PREMIUM" | translate }}</h2>
-                <p>{{"PAYEMENT_PRO.GO_TO_PREMIUM" | translate}}</p>
+                <h2>
+                    <span *ngIf="abonnement === 'premium'">🏆</span>
+                    <span *ngIf="abonnement === 'pro'">✨</span>
+                    {{ planLabel }}
+                </h2>
+
+                <p>
+                    {{ abonnement === 'premium'
+                    ? ("PAYEMENT_PRO.GO_TO_PREMIUM" | translate)
+                    : ("PAYEMENT_PRO.GO_TO_PRO" | translate) }}
+                </p>
             </div>
-            <div class="price" *ngIf="abonnement === 'premium'">89,90 €<span>/mois</span></div>
+
+            <div class="price">
+                {{ displayPrice }} {{ currencySymbol }}
+                <span>/{{ "PAYEMENT_PRO.MONTH" | translate }}</span>
+            </div>
         </div>
+
         <ul class="benefits">
-            <li>{{"PAYEMENT_PRO.FACTURATION" | translate}}</li>
-            <li>{{"PAYEMENT_PRO.OK_TO_CANCEL" | translate}} <a href="#">{{"PAYEMENT_PRO.CONDITION" | translate}}</a>.
+            <li>{{ "PAYEMENT_PRO.FACTURATION" | translate }}</li>
+            <li>
+                {{ "PAYEMENT_PRO.OK_TO_CANCEL" | translate }}
+
+                <!-- ✅ Ouvre la modale "offre soumise à conditions" -->
+                <a href="" class="conditions-link" (click)="openConditionsModal($event)">
+                    {{ "PAYEMENT_PRO.CONDITION" | translate }}
+                </a>.
             </li>
         </ul>
     </section>
-    <section class="address">
-        <h3>{{"PAYEMENT_PRO.ADDRESS" | translate}}</h3>
-        <div class="address-info">
-            <span>France<br>FR</span>
-            <a href="#" class="edit">{{"PAYEMENT_PRO.CHANGE" | translate}}</a>
-        </div>
-    </section>
+
+    <!-- ======================= -->
+    <!-- PAIEMENT -->
+    <!-- ======================= -->
     <section class="payment-method">
-        <h3>{{"PAYEMENT_PRO.PAIEMENT" | translate}}</h3>
+        <h3>{{ "PAYEMENT_PRO.PAIEMENT" | translate }}</h3>
+
         <form>
             <label>
                 <input type="radio" name="payment-method" checked>
-                {{"PAYEMENT_PRO.CREDIT_CARD" | translate}}
+                {{ "PAYEMENT_PRO.CREDIT_CARD" | translate }}
                 <div class="card-icons">
                     <img src="assets/payment/visa.png" alt="Visa">
                     <img src="assets/payment/mastercard.png" alt="MasterCard">
                     <img src="assets/payment/amex.png" alt="American Express">
                 </div>
             </label>
+
             <h3 class="section-title">{{ 'PAYEMENT.CARD_PAY' | translate }}</h3>
+
             <div class="payment-method">
-                <!-- Liste des cartes -->
+
                 <div *ngIf="cards.length > 0">
                     <div *ngFor="let card of cards" class="card-option" [class.selected]="card.id === selectedCardId"
                         (click)="selectCard(card.id)">
-
                         <i class="fa fa-credit-card"></i>
                         <h3>{{ card.brand }} - **** **** **** {{ card.last4 }}</h3>
-                        <p>{{"PAYEMENT.PAYMENT_EXPIRE" | translate}} {{ card.exp_month }}/{{ card.exp_year }}</p>
+                        <p>
+                            {{ "PAYEMENT.PAYMENT_EXPIRE" | translate }}
+                            {{ card.exp_month }}/{{ card.exp_year }}
+                        </p>
                     </div>
                 </div>
-                <!-- Aucune carte -->
+
                 <div *ngIf="cards.length === 0" class="no-default-card">
-                    <h3>{{"PAYEMENT.PAYMENT_NO_CARD" | translate}}</h3>
-                    <p>{{"PAYEMENT.PAYMENT_NO_CARD_DESC" | translate}}</p>
+                    <h3>{{ "PAYEMENT.PAYMENT_NO_CARD" | translate }}</h3>
+                    <p>{{ "PAYEMENT.PAYMENT_NO_CARD_DESC" | translate }}</p>
                 </div>
-                <!-- Bouton Ajouter une carte -->
-                <button class="add-card-btn" (click)="showAddCardForm = !showAddCardForm">
-                    {{ showAddCardForm ? ('PAYEMENT.HIDE_CARD_FORM' | translate) : ('PAYEMENT.ADD_CARD' | translate)
-                    }}
+
+                <button class="add-card-btn" type="button" (click)="showAddCardForm = !showAddCardForm">
+                    {{ showAddCardForm
+                    ? ('PAYEMENT.HIDE_CARD_FORM' | translate)
+                    : ('PAYEMENT.ADD_CARD' | translate) }}
                 </button>
-                <!-- Formulaire Stripe Elements pour ajout de carte -->
+
                 <div *ngIf="showAddCardForm">
-                    <app-stripe-card-form [userId]="me._id" (cardAdded)="onCardAdded($event)"></app-stripe-card-form>
+                    <app-stripe-card-form [userId]="me._id" (cardAdded)="onCardAdded($event)">
+                    </app-stripe-card-form>
                 </div>
+
             </div>
         </form>
     </section>
 
+    <!-- ======================= -->
+    <!-- RESUME -->
+    <!-- ======================= -->
     <section class="summary">
-        <h3>{{"PAYEMENT_PRO.RESUME" | translate}}</h3>
+        <h3>{{ "PAYEMENT_PRO.RESUME" | translate }}</h3>
+
         <div class="summary-line subscription-details">
-            <p class="mini-badge">{{"PAYEMENT_PRO.NO_ENGAGE" | translate}}</p>
+            <p class="mini-badge">
+                {{ "PAYEMENT_PRO.NO_ENGAGE" | translate }}
+            </p>
+
             <div class="plan">
                 <div>
-                    <h2>👑 {{ "TARIF.PREMIUM" | translate }}</h2>
+                    <h2>
+                        <span *ngIf="abonnement === 'premium'">🏆</span>
+                        <span *ngIf="abonnement === 'pro'">✨</span>
+                        {{ planLabel }}
+                    </h2>
                 </div>
             </div>
         </div>
-        <div class="total">{{"PAYEMENT_PRO.TOTAL" | translate}}
-            <strong *ngIf="abonnement === 'premium'">89,90 €</strong>
+
+        <div class="total">
+            {{ "PAYEMENT_PRO.TOTAL" | translate }}
+            <strong>{{ displayPrice }} {{ currencySymbol }}</strong>
         </div>
     </section>
+
+    <!-- ======================= -->
+    <!-- CONFIRMATION -->
+    <!-- ======================= -->
     <section class="confirmation">
         <p class="terms">
-            {{"PAYEMENT_PRO.CONSENT" | translate}} <a href="#">{{"PAYEMENT_PRO.CONFIDENTIAL" | translate}}</a>.
+            {{ "PAYEMENT_PRO.CONSENT" | translate }}
+
+            <!-- ✅ Ouvre la même modale que le footer mais depuis la page paiement -->
+            <a href="" class="conditions-link" (click)="openPolicyModal('confidentiality', $event)">
+                {{ "PAYEMENT_PRO.CONFIDENTIAL" | translate }}
+            </a>.
         </p>
-        <button class="confirm-button" (click)="finalizePurchase()">{{"PAYEMENT_PRO.FINALISE" | translate}}</button>
+
+        <button class="confirm-button" type="button" (click)="finalizePurchase()">
+            {{ "PAYEMENT_PRO.FINALISE" | translate }}
+        </button>
     </section>
+
+</div>
+
+<!-- ======================= -->
+<!-- ✅ MODALE CONDITIONS -->
+<!-- ======================= -->
+<div class="modal-overlay" *ngIf="showConditionsModal" (click)="closeConditionsModal()">
+  <div class="modal-card modal-conditions" (click)="$event.stopPropagation()">
+
+    <div class="modal-header">
+      <div class="modal-title">
+        <span class="modal-emoji">📌</span>
+        <span>{{ "PAYMENT_CONDITIONS.TITLE" | translate }}</span>
+      </div>
+
+      <button
+        type="button"
+        class="modal-close"
+        (click)="closeConditionsModal()"
+        [attr.aria-label]="'PAYMENT_CONDITIONS.CLOSE' | translate"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="conditions-intro">
+        <p class="conditions-kicker">
+          {{ "PAYMENT_CONDITIONS.KICKER" | translate }}
+        </p>
+
+        <p class="conditions-lead">
+          {{ "PAYMENT_CONDITIONS.LEAD_PREFIX" | translate }}
+          <strong>{{ planLabel }}</strong>.
+        </p>
+      </div>
+
+      <div class="conditions-grid">
+
+        <!-- Facturation -->
+        <div class="cond-card">
+          <div class="cond-card__head">
+            <span class="cond-ico">🧾</span>
+            <div class="cond-title-wrap">
+              <div class="cond-title">{{ "PAYMENT_CONDITIONS.BILLING.TITLE" | translate }}</div>
+              <div class="cond-subtitle">{{ "PAYMENT_CONDITIONS.BILLING.SUBTITLE" | translate }}</div>
+            </div>
+          </div>
+
+          <ul class="cond-points">
+            <li>{{ "PAYMENT_CONDITIONS.BILLING.POINT_1" | translate }}</li>
+            <li>{{ "PAYMENT_CONDITIONS.BILLING.POINT_2" | translate }}</li>
+          </ul>
+        </div>
+
+        <!-- Résiliation -->
+        <div class="cond-card">
+          <div class="cond-card__head">
+            <span class="cond-ico">🔁</span>
+            <div class="cond-title-wrap">
+              <div class="cond-title">{{ "PAYMENT_CONDITIONS.CANCEL.TITLE" | translate }}</div>
+              <div class="cond-subtitle">{{ "PAYMENT_CONDITIONS.CANCEL.SUBTITLE" | translate }}</div>
+            </div>
+          </div>
+
+          <ul class="cond-points">
+            <li>{{ "PAYMENT_CONDITIONS.CANCEL.POINT_1" | translate }}</li>
+            <li>{{ "PAYMENT_CONDITIONS.CANCEL.POINT_2" | translate }}</li>
+            <li>{{ "PAYMENT_CONDITIONS.CANCEL.POINT_3" | translate }}</li>
+          </ul>
+        </div>
+
+        <!-- Tarifs -->
+        <div class="cond-card">
+          <div class="cond-card__head">
+            <span class="cond-ico">🌍</span>
+            <div class="cond-title-wrap">
+              <div class="cond-title">{{ "PAYMENT_CONDITIONS.PRICING.TITLE" | translate }}</div>
+              <div class="cond-subtitle">{{ "PAYMENT_CONDITIONS.PRICING.SUBTITLE" | translate }}</div>
+            </div>
+          </div>
+
+          <ul class="cond-points">
+            <li>{{ "PAYMENT_CONDITIONS.PRICING.POINT_1" | translate }}</li>
+            <li>{{ "PAYMENT_CONDITIONS.PRICING.POINT_2" | translate }}</li>
+          </ul>
+        </div>
+
+        <!-- Conformité / usage -->
+        <div class="cond-card">
+          <div class="cond-card__head">
+            <span class="cond-ico">🛡️</span>
+            <div class="cond-title-wrap">
+              <div class="cond-title">{{ "PAYMENT_CONDITIONS.COMPLIANCE.TITLE" | translate }}</div>
+              <div class="cond-subtitle">{{ "PAYMENT_CONDITIONS.COMPLIANCE.SUBTITLE" | translate }}</div>
+            </div>
+          </div>
+
+          <ul class="cond-points">
+            <li>{{ "PAYMENT_CONDITIONS.COMPLIANCE.POINT_1" | translate }}</li>
+            <li>{{ "PAYMENT_CONDITIONS.COMPLIANCE.POINT_2" | translate }}</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="conditions-legal">
+        <div class="conditions-legal__badge">
+          {{ "PAYMENT_CONDITIONS.DOCS.BADGE" | translate }}
+        </div>
+
+        <p class="conditions-legal__text">
+          {{ "PAYMENT_CONDITIONS.DOCS.TEXT" | translate }}
+          <a class="legal-link" href="" (click)="openPolicyModal('conditions', $event)">
+            {{ "PAYMENT_CONDITIONS.DOCS.CGU" | translate }}
+          </a>
+          ·
+          <a class="legal-link" href="" (click)="openPolicyModal('confidentiality', $event)">
+            {{ "PAYMENT_CONDITIONS.DOCS.PRIVACY" | translate }}
+          </a>
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" (click)="closeConditionsModal()">
+          {{ "PAYMENT_CONDITIONS.CTA" | translate }}
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================= -->
+<!-- ✅ MODALE POLICY (comme footer) -->
+<!-- ======================= -->
+<div class="modal-backdrop" *ngIf="policyModalVisible" (click)="closePolicyOnBackdrop($event)">
+    <div class="modal-panel" role="dialog" aria-modal="true" [attr.aria-label]="policyModalTitle"
+        (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h1 class="modal-title">{{ policyModalTitle }}</h1>
+            <button class="modal-close" (click)="closePolicyModal()">×</button>
+        </div>
+
+        <div class="modal-body">
+            <ng-container *ngIf="policyActiveComponent" [ngComponentOutlet]="policyActiveComponent"></ng-container>
+        </div>
+    </div>
 </div>

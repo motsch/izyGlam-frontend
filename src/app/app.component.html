@@ -1,6 +1,8 @@
 <!-- Si l'utilisateur n'est pas connecté -->
 <div *ngIf="!sessionService.isLoggedIn()">
   <router-outlet></router-outlet>
+  <!-- Toujours présent, mais ne s'affiche que si besoin -->
+  <app-cookie-banner></app-cookie-banner>
 </div>
 
 <!-- Modale globale, RENDUE UNE SEULE FOIS -->

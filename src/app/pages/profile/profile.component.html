@@ -30,7 +30,7 @@
           (click)="setActiveSection('company')">
           {{ "PROFILE_MENU.COMPANY" | translate }}
         </li>
-        <li [ngClass]="{ active: isSectionActive('admin') }" (click)="setActiveSection('admin')">
+        <li *ngIf="me && (me.role === 'admin')" [ngClass]="{ active: isSectionActive('admin') }" (click)="setActiveSection('admin')">
           {{ "PROFILE_MENU.ADMIN" | translate }}
         </li>
         <li [ngClass]="{ active: isSectionActive('privacy') }" (click)="setActiveSection('privacy')">

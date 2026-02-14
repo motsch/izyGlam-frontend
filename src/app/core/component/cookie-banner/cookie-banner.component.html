@@ -1,0 +1,218 @@
+<div
+  class="cookie-overlay"
+  *ngIf="visible"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="'COOKIE_MODAL.ARIA_LABEL' | translate"
+>
+  <div class="cookie-card">
+    <div class="cookie-header">
+      <div class="cookie-title">🍪 {{ 'COOKIE_MODAL.TITLE' | translate }}</div>
+
+      <button
+        class="icon-btn"
+        type="button"
+        (click)="close()"
+        [attr.aria-label]="'COOKIE_MODAL.CLOSE' | translate"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- PANEL: Choix rapides -->
+    <ng-container *ngIf="panel === 'choices'">
+      <p class="cookie-text">
+        {{ 'COOKIE_MODAL.DESCRIPTION' | translate }}
+      </p>
+
+      <div class="actions">
+        <button class="btn ghost" (click)="rejectAll()">
+          {{ 'COOKIE_MODAL.REJECT' | translate }}
+        </button>
+        <button class="btn ghost" (click)="openSettings()">
+          {{ 'COOKIE_MODAL.CUSTOMIZE' | translate }}
+        </button>
+        <button class="btn primary" (click)="acceptAll()">
+          {{ 'COOKIE_MODAL.ACCEPT' | translate }}
+        </button>
+      </div>
+
+      <div class="cookie-links">
+        <button class="linklike" type="button" (click)="openPolicy()">
+          {{ 'COOKIE_MODAL.READ_POLICY' | translate }}
+        </button>
+        <span>•</span>
+        <button class="linklike" type="button" (click)="openSettings()">
+          {{ 'COOKIE_MODAL.MANAGE_COOKIES' | translate }}
+        </button>
+      </div>
+    </ng-container>
+
+    <!-- PANEL: Paramétrage -->
+    <ng-container *ngIf="panel === 'settings'">
+      <div class="panel-top">
+        <button class="btn ghost small" type="button" (click)="backToChoices()">
+          ← {{ 'COOKIE_MODAL.BACK' | translate }}
+        </button>
+        <div class="panel-title">{{ 'COOKIE_MODAL.CUSTOMIZE_TITLE' | translate }}</div>
+      </div>
+
+      <div class="cookie-settings">
+        <div class="row">
+          <div class="label">
+            <div class="name">{{ 'COOKIE_MODAL.ESSENTIALS_TITLE' | translate }}</div>
+            <div class="desc">{{ 'COOKIE_MODAL.ESSENTIALS_DESC' | translate }}</div>
+          </div>
+          <div class="value">
+            <span class="pill">{{ 'COOKIE_MODAL.ALWAYS_ACTIVE' | translate }}</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="name">{{ 'COOKIE_MODAL.ANALYTICS_TITLE' | translate }}</div>
+            <div class="desc">{{ 'COOKIE_MODAL.ANALYTICS_DESC' | translate }}</div>
+          </div>
+          <div class="value">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="analytics" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="label">
+            <div class="name">{{ 'COOKIE_MODAL.MARKETING_TITLE' | translate }}</div>
+            <div class="desc">{{ 'COOKIE_MODAL.MARKETING_DESC' | translate }}</div>
+          </div>
+          <div class="value">
+            <label class="switch">
+              <input type="checkbox" [(ngModel)]="marketing" />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn ghost" (click)="openPolicy()">
+            {{ 'COOKIE_MODAL.READ_POLICY_SHORT' | translate }}
+          </button>
+          <button class="btn primary" (click)="saveSettings()">
+            {{ 'COOKIE_MODAL.SAVE' | translate }}
+          </button>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- PANEL: Politique -->
+    <ng-container *ngIf="panel === 'policy'">
+      <div class="panel-top">
+        <button class="btn ghost small" type="button" (click)="backToChoices()">
+          ← {{ 'COOKIE_MODAL.BACK' | translate }}
+        </button>
+        <div class="panel-title">{{ 'COOKIE_MODAL.POLICY_TITLE' | translate }}</div>
+      </div>
+
+      <div class="policy-scroll">
+        <section class="policy">
+          <h2>{{ 'COOKIE_POLICY.H2' | translate }}</h2>
+          <p class="meta">{{ 'COOKIE_POLICY.META' | translate }}</p>
+
+          <p>{{ 'COOKIE_POLICY.P1' | translate }}</p>
+          <p>{{ 'COOKIE_POLICY.P2' | translate }}</p>
+
+          <hr />
+
+          <h3>{{ 'COOKIE_POLICY.S1_TITLE' | translate }}</h3>
+          <p>{{ 'COOKIE_POLICY.S1_P1' | translate }}</p>
+          <p>{{ 'COOKIE_POLICY.S1_P2' | translate }}</p>
+
+          <hr />
+
+          <h3>{{ 'COOKIE_POLICY.S2_TITLE' | translate }}</h3>
+
+          <h4>{{ 'COOKIE_POLICY.S2_1_TITLE' | translate }}</h4>
+          <p>{{ 'COOKIE_POLICY.S2_1_P1' | translate }}</p>
+          <p>{{ 'COOKIE_POLICY.S2_1_P2' | translate }}</p>
+
+          <h4>{{ 'COOKIE_POLICY.S2_2_TITLE' | translate }}</h4>
+          <p>{{ 'COOKIE_POLICY.S2_2_P1' | translate }}</p>
+
+          <h4>{{ 'COOKIE_POLICY.EXAMPLE_PROVIDER' | translate }}</h4>
+          <ul>
+            <li><strong>{{ 'COOKIE_POLICY.GA4_NAME' | translate }}</strong> — {{ 'COOKIE_POLICY.GA4_COMPANY' | translate }}</li>
+          </ul>
+
+          <h4>{{ 'COOKIE_POLICY.S2_3_TITLE' | translate }}</h4>
+          <p>{{ 'COOKIE_POLICY.S2_3_P1' | translate }}</p>
+
+          <h4>{{ 'COOKIE_POLICY.EXAMPLE_PROVIDER' | translate }}</h4>
+          <ul>
+            <li><strong>{{ 'COOKIE_POLICY.META_PIXEL_NAME' | translate }}</strong> — {{ 'COOKIE_POLICY.META_PIXEL_COMPANY' | translate }}</li>
+          </ul>
+
+          <hr />
+
+          <h3>{{ 'COOKIE_POLICY.S3_TITLE' | translate }}</h3>
+          <p>{{ 'COOKIE_POLICY.S3_P1' | translate }}</p>
+          <p>{{ 'COOKIE_POLICY.S3_P2' | translate }}</p>
+
+          <hr />
+
+          <h3>{{ 'COOKIE_POLICY.S4_TITLE' | translate }}</h3>
+          <ul>
+            <li>{{ 'COOKIE_POLICY.S4_L1' | translate }}</li>
+            <li>{{ 'COOKIE_POLICY.S4_L2' | translate }}</li>
+            <li>{{ 'COOKIE_POLICY.S4_L3' | translate }}</li>
+            <li>{{ 'COOKIE_POLICY.S4_L4' | translate }}</li>
+          </ul>
+
+          <hr />
+
+          <h3>{{ 'COOKIE_POLICY.S5_TITLE' | translate }}</h3>
+          <p>{{ 'COOKIE_POLICY.S5_P1' | translate }}</p>
+
+          <hr />
+
+          <h3>{{ 'COOKIE_POLICY.S6_TITLE' | translate }}</h3>
+          <p>{{ 'COOKIE_POLICY.S6_P1' | translate }}</p>
+
+          <ul>
+            <li>{{ 'COOKIE_POLICY.S6_L1' | translate }}</li>
+            <li>{{ 'COOKIE_POLICY.S6_L2' | translate }}</li>
+            <li>{{ 'COOKIE_POLICY.S6_L3' | translate }}</li>
+            <li>{{ 'COOKIE_POLICY.S6_L4' | translate }}</li>
+            <li>{{ 'COOKIE_POLICY.S6_L5' | translate }}</li>
+          </ul>
+
+          <p>{{ 'COOKIE_POLICY.S6_P2' | translate }}</p>
+
+          <hr />
+
+          <h3>{{ 'COOKIE_POLICY.S7_TITLE' | translate }}</h3>
+          <p>
+            <strong>{{ 'COOKIE_POLICY.COMPANY_NAME' | translate }}</strong><br />
+            {{ 'COOKIE_POLICY.REGISTERED_IN' | translate }}<br />
+            {{ 'COOKIE_POLICY.REGISTERED_OFFICE' | translate }}<br />
+            {{ 'COOKIE_POLICY.EMAIL_LABEL' | translate }} {{ 'COOKIE_POLICY.EMAIL_VALUE' | translate }}
+          </p>
+
+          <p>
+            {{ 'COOKIE_POLICY.CONTACT_P1' | translate }}
+            <strong>{{ 'COOKIE_POLICY.EMAIL_VALUE' | translate }}</strong>
+          </p>
+        </section>
+      </div>
+
+      <div class="actions">
+        <button class="btn ghost" (click)="openSettings()">
+          {{ 'COOKIE_MODAL.MANAGE_COOKIES' | translate }}
+        </button>
+        <button class="btn primary" (click)="backToChoices()">
+          {{ 'COOKIE_MODAL.OK' | translate }}
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

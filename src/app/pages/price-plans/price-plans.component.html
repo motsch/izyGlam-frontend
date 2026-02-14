@@ -1,26 +1,32 @@
 <app-header *ngIf="!sessionService.getCurrentUser()"></app-header>
 
-
 <!-- Nouveau HTML inspiré de Spotify Premium -->
 <div class="price-plans">
-
-  <div class="intro-section">
+  <div class="intro-section intro--pricing">
     <div class="izy-icons">
       <img src="/assets/images/logo.png" alt="izyIcon">
     </div>
-    </div>
-  <div class="intro-section">
-    <h1 class="title-gradient">{{ "TARIF.DISCOVER" | translate }}</h1>
-    <p class="subtitle-soft">{{ "TARIF.SOLUTIONS" | translate }}</p>
 
-    <p class="magic-line">{{ "TARIF.TEST" | translate }}</p>
+    <h1 class="title-gradient">{{ "TARIF.HERO_TITLE" | translate }}</h1>
+
+    <p class="subtitle-soft">
+      {{ "TARIF.HERO_SUBTITLE" | translate }}
+    </p>
+
+    <div class="intro-chips">
+      <span class="chip">📞 {{ "TARIF.CHIP_IZYPHONE" | translate }}</span>
+      <span class="chip chip--premium">🎙️ {{ "TARIF.CHIP_PREMIUM" | translate }}</span>
+    </div>
   </div>
 
   <div class="plans-container">
-    <div class="plan-card freeForm">
-      <h2 class="free">🌱 {{ "TARIF.FREE" | translate }}</h2>
-      <div>{{ "TARIF.FREE_SUBTITLE" | translate }}</div>
+
+    <!-- FREE -->
+    <div class="plan-card plan--free">
+      <h2 class="plan-title">🌱 {{ "TARIF.FREE" | translate }}</h2>
+      <div class="plan-subtitle">{{ "TARIF.FREE_SUBTITLE" | translate }}</div>
       <p class="price">0€/mois</p>
+
       <ul>
         <li>✅ {{ "TARIF.FREE1" | translate }}</li>
         <li>✅ {{ "TARIF.FREE2" | translate }}</li>
@@ -31,50 +37,96 @@
         <li>✅ {{ "TARIF.FREE7" | translate }}</li>
         <li>✅ {{ "TARIF.FREE8" | translate }}</li>
       </ul>
-      <button class="btn" (click)="goToShopCreation()">{{ "TARIF.FREE9" | translate }}</button>
+
+      <button class="btn" (click)="goToShopCreation()">
+        {{ "TARIF.FREE9" | translate }}
+      </button>
     </div>
 
-    <div class="plan-card student">
+    <!-- PRO -->
+    <div class="plan-card plan--pro">
       <span class="badge">{{ "TARIF.FREE_TRIAL" | translate }}</span>
-      <h2 class="basic">✨ {{ "TARIF.BASIC" | translate }}</h2>
-      <div>{{ "TARIF.BASIC_SUBTITLE" | translate }}</div>
-      <p class="price">89,90€/mois {{ "TARIF.THEN" | translate }}</p>
+
+      <h2 class="plan-title">✨ {{ "TARIF.BASIC" | translate }}</h2>
+      <div class="plan-subtitle">{{ "TARIF.BASIC_SUBTITLE" | translate }}</div>
+      <p class="price">{{proSub}}€/mois ensuite</p>
+
       <ul>
         <li><strong>{{ "TARIF.BASIC1" | translate }}</strong></li>
         <li>- {{ "TARIF.BASIC2" | translate }}</li>
+        <li>- {{ "TARIF.PRO_VOICE_ASSISTANT" | translate }}</li>
         <li>- {{ "TARIF.BASIC3" | translate }}</li>
         <li>- {{ "TARIF.BASIC4" | translate }}</li>
         <li>- {{ "TARIF.BASIC5" | translate }}</li>
-        <li><strong>{{ "TARIF.BASIC6" | translate }}</strong></li>
-        <li>- {{ "TARIF.BASIC7" | translate }}</li>
-        <li>- {{ "TARIF.BASIC8" | translate }}</li>
-        <li>- {{ "TARIF.BASIC9" | translate }}</li>
+
         <li><strong>{{ "TARIF.BASIC10" | translate }}</strong></li>
         <li>- {{ "TARIF.BASIC11" | translate }}</li>
         <li>- {{ "TARIF.BASIC12" | translate }}</li>
         <li>- {{ "TARIF.BASIC13" | translate }}</li>
+
+        <li><strong>{{ "TARIF.BASIC14" | translate }}</strong></li>
+        <li>- {{ "TARIF.FREE7" | translate }}</li>
+      </ul>
+
+      <button class="btn" (click)="goToPaiement('pro')">
+        {{ "TARIF.BASIC16" | translate }}
+      </button>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="plan-card plan--premium">
+      <span class="badge">🎙️ {{ "TARIF.PREMIUM_BADGE" | translate }}</span>
+
+      <h2 class="plan-title">🏆 {{ "TARIF.PREMIUM" | translate }}</h2>
+      <div class="plan-subtitle">{{ "TARIF.PREMIUM_SUBTITLE" | translate }}</div>
+      <p class="price">{{premiumSub}}€/mois</p>
+
+      <ul>
+        <li><strong>🎙️ {{ "TARIF.PREMIUM_ASSISTANT_TITLE" | translate }}</strong></li>
+        <li>- {{ "TARIF.BASIC2" | translate }}</li>
+        <li>- {{ "TARIF.PREMIUM_REALTIME_AI" | translate }}</li>
+        <li>- {{ "TARIF.BASIC3" | translate }}</li>
+        <li>- {{ "TARIF.BASIC4" | translate }}</li>
+        <li>- {{ "TARIF.BASIC5" | translate }}</li>
+
+        <li><strong>{{ "TARIF.BASIC6" | translate }}</strong></li>
+        <li>- {{ "TARIF.BASIC7" | translate }}</li>
+        <li>- {{ "TARIF.BASIC8" | translate }}</li>
+        <li>- {{ "TARIF.BASIC9" | translate }}</li>
+
+        <li><strong>{{ "TARIF.BASIC10" | translate }}</strong></li>
+        <li>- {{ "TARIF.BASIC11" | translate }}</li>
+        <li>- {{ "TARIF.BASIC12" | translate }}</li>
+        <li>- {{ "TARIF.BASIC13" | translate }}</li>
+
         <li><strong>{{ "TARIF.BASIC14" | translate }}</strong></li>
         <li>- {{ "TARIF.BASIC15" | translate }}</li>
       </ul>
-      <button class="btn" (click)="goToPaiement('premium')">{{ "TARIF.BASIC16" | translate }}</button>
+
+      <button class="btn" (click)="goToPaiement('premium')">
+        {{ "TARIF.PREMIUM_CTA" | translate }}
+      </button>
     </div>
+
   </div>
 
   <div class="comparison-table">
     <h3>{{ "TARIF.COMPARE" | translate }}</h3>
+
     <table>
       <thead>
         <tr>
           <th>{{ "TARIF.ADVANTAGES" | translate }}</th>
           <th>{{ "TARIF.FREE" | translate }}</th>
           <th>{{ "TARIF.BASIC" | translate }}</th>
+          <th>{{ "TARIF.PREMIUM" | translate }}</th>
         </tr>
       </thead>
-      <tbody>
 
-        <!-- Base -->
+      <tbody>
         <tr>
           <td>{{ "TARIF.COMPANY_BASE" | translate }}</td>
+          <td>✔️</td>
           <td>✔️</td>
           <td>✔️</td>
         </tr>
@@ -83,12 +135,13 @@
           <td>{{ "TARIF.ONLINE_PAYMENT" | translate }}</td>
           <td>✔️</td>
           <td>✔️</td>
+          <td>✔️</td>
         </tr>
 
-        <!-- izyPhone -->
         <tr>
           <td>{{ "TARIF.IZYPHONE" | translate }}</td>
           <td>–</td>
+          <td>✔️</td>
           <td>✔️</td>
         </tr>
 
@@ -96,19 +149,6 @@
           <td>{{ "TARIF.CALL_MANAGEMENT" | translate }}</td>
           <td>–</td>
           <td>✔️</td>
-        </tr>
-
-        <!-- Visibilité -->
-        <tr>
-          <td>{{ "TARIF.VISIBILITY" | translate }}</td>
-          <td>–</td>
-          <td>✔️</td>
-        </tr>
-
-        <!-- Pilotage -->
-        <tr>
-          <td>{{ "TARIF.STATS_ADVANCED" | translate }}</td>
-          <td>–</td>
           <td>✔️</td>
         </tr>
 
@@ -116,25 +156,52 @@
           <td>{{ "TARIF.BILLING" | translate }}</td>
           <td>–</td>
           <td>✔️</td>
+          <td>✔️</td>
         </tr>
 
-        <!-- Support -->
+        <tr>
+          <td>{{ "TARIF.VISIBILITY" | translate }}</td>
+          <td>–</td>
+          <td>–</td>
+          <td>✔️</td>
+        </tr>
+
+        <tr>
+          <td>{{ "TARIF.STATS_ADVANCED" | translate }}</td>
+          <td>–</td>
+          <td>–</td>
+          <td>✔️</td>
+        </tr>
+
+        <tr>
+          <td>{{ "TARIF.PHONE_TECH_TITLE" | translate }}</td>
+          <td>–</td>
+          <td>{{ "TARIF.PHONE_TECH_PRO" | translate }}</td>
+          <td>{{ "TARIF.PHONE_TECH_PREMIUM" | translate }}</td>
+        </tr>
+
+        <tr>
+          <td>{{ "TARIF.PHONE_EXP_TITLE" | translate }}</td>
+          <td>–</td>
+          <td>{{ "TARIF.PHONE_EXP_PRO" | translate }}</td>
+          <td>{{ "TARIF.PHONE_EXP_PREMIUM" | translate }}</td>
+        </tr>
+
         <tr>
           <td>{{ "TARIF.SUPPORT_LEVEL" | translate }}</td>
+          <td>{{ "TARIF.SUPPORT_STANDARD" | translate }}</td>
           <td>{{ "TARIF.SUPPORT_STANDARD" | translate }}</td>
           <td>{{ "TARIF.SUPPORT_PREMIUM" | translate }}</td>
         </tr>
 
-        <!-- Salons -->
         <tr>
           <td>{{ "TARIF.PLANS" | translate }}</td>
           <td>1</td>
           <td>1</td>
+          <td>1</td>
         </tr>
-
       </tbody>
     </table>
-
   </div>
 </div>
 
