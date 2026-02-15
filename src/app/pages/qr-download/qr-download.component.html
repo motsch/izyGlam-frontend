@@ -1,22 +1,9 @@
 <div class="qr-download">
   <h1>Redirection…</h1>
+  <p>Ouverture de la page de téléchargement.</p>
 
-  <p *ngIf="targetUrl && !autoOpenBlocked">
-    Ouverture de l’application dans un nouvel onglet.
-  </p>
-
-  <ng-container *ngIf="autoOpenBlocked && targetUrl">
-    <p>
-      Ton navigateur a bloqué l’ouverture automatique.
-      Clique ici pour continuer :
-    </p>
-
-    <button class="btn" (click)="openManually()">
-      Ouvrir le lien
-    </button>
-  </ng-container>
-
-  <p *ngIf="!targetUrl">
-    Appareil non détecté. Retour à l’accueil…
-  </p>
+  <!-- Fallback au cas où (rare) -->
+  <a *ngIf="targetUrl" [href]="targetUrl" rel="noopener">
+    Clique ici si tu n’es pas redirigé
+  </a>
 </div>
