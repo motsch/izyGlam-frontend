@@ -385,6 +385,39 @@
       </div>
     </div>
 
+    <!-- Délais entre chaque prestation -->
+    <h2>{{ "SHOP_MANAGEMENT.OPENNING" | translate}}</h2>
+
+    <!-- Délai minimum avant RDV (minutes) -->
+    <!-- ============================
+     DÉLAI MINIMUM AVANT RÉSERVATION
+     ============================ -->
+    <div class="form-section" *ngIf="shopCopyData">
+      <div class="column">
+        <label class="margin-top-20">
+          ⏳ {{ "SHOP_MANAGEMENT.MINIMUM_DELAY_TITLE" | translate }}
+        </label>
+
+        <select class="input-style" [(ngModel)]="shopCopyData.minimumDelay"
+          (ngModelChange)="onMinimumDelayChange($event)">
+          <option [ngValue]="'0'">0 {{ "SHOP_MANAGEMENT.MINUTES" | translate }}</option>
+          <option [ngValue]="'15'">15 {{ "SHOP_MANAGEMENT.MINUTES" | translate }}</option>
+          <option [ngValue]="'30'">30 {{ "SHOP_MANAGEMENT.MINUTES" | translate }}</option>
+          <option [ngValue]="'45'">45 {{ "SHOP_MANAGEMENT.MINUTES" | translate }}</option>
+          <option [ngValue]="'60'">1{{ "SHOP_MANAGEMENT.HOUR_SHORT" | translate }}</option>
+          <option [ngValue]="'90'">1{{ "SHOP_MANAGEMENT.HOUR_SHORT" | translate }}30</option>
+          <option [ngValue]="'120'">2{{ "SHOP_MANAGEMENT.HOUR_SHORT" | translate }}</option>
+          <option [ngValue]="'180'">3{{ "SHOP_MANAGEMENT.HOUR_SHORT" | translate }}</option>
+          <option [ngValue]="'240'">4{{ "SHOP_MANAGEMENT.HOUR_SHORT" | translate }}</option>
+        </select>
+
+        <div class="section-sub" style="margin-top: 6px; opacity: 0.8;">
+          {{ "SHOP_MANAGEMENT.MINIMUM_DELAY_HINT" | translate }}
+        </div>
+      </div>
+    </div>
+
+
     <!-- HORAIRES D'OUVERTURE -->
     <h2>{{ "SHOP_MANAGEMENT.OPENNING" | translate}}</h2>
     <div *ngIf="shopCopyData?.hours">
@@ -442,9 +475,7 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 </div>

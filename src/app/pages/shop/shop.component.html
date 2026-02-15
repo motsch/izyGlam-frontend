@@ -113,7 +113,8 @@
 
             <div class="margin-top-20">
               <div *ngIf="adminSettings.commissionRate > 0">
-                {{ "PAYEMENT.SUMMARY_SERVICE_FEE" | translate }} : {{ adminSettings.commissionRate * 100 }}%
+                {{ "PAYEMENT.SUMMARY_SERVICE_FEE" | translate }} : {{ adminSettings.commissionRate * 100 | number:'1.2-2' }}%
+
               </div>
               <div *ngIf="adminSettings.serviceFee > 0">
                 {{ "PAYEMENT.SUMMARY_DELIVERY_FEE" | translate }} : {{ adminSettings.serviceFee }}€

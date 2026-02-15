@@ -24,6 +24,8 @@ import { CreateShopDraft, WizardDraftService } from '../../services/wizard-draft
 // ✅ NEW: child step 4
 import { ShopManagementComponent, ShopManagementSnapshot } from '../shop-management/shop-management.component';
 import { BookingCategoryService } from '../../services/booking-category.service';
+import { CalendarSyncService } from '../../services/calendar-sync.service';
+import { finalize } from 'rxjs';
 
 type WizardStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 type ServiceMode = 'SALON' | 'DOMICILE';
@@ -103,6 +105,7 @@ export class CreateShopComponent implements OnInit {
   // ✅ nouveau : après register, on attend validation email
   pendingEmailVerification = false;
   icsUrl = "ics lien";
+  icsLoading = false;
 
   // ✅ spinner refresh activation
   checkingActivation = false;
@@ -119,10 +122,11 @@ export class CreateShopComponent implements OnInit {
 
   allCitiesData: any[] = [];
   availableArrondissements: string[] = [];
-  selectedCountry: any = {};
+  selectedCountry: string = 'France';
+
   selectedCity: any = {};
   selectedArrondissement = '';
-  availableCountries: any[] = ["France"];
+  availableCountries: any[] = [];
   countries: any[] = [];
   availableCities: any[] = [];
   postalCode = '';
@@ -163,6 +167,7 @@ export class CreateShopComponent implements OnInit {
   identityDocFile: File | null = null;
   insuranceDocFile: File | null = null;
   kbisDocFile: File | null = null;
+
 
   identityDocFileName: string | null = null;
   insuranceDocFileName: string | null = null;
@@ -528,6 +533,7 @@ export class CreateShopComponent implements OnInit {
     private villeService: VilleService,
     private categoryService: CategoryService,
     private translate: TranslateService,
+    private calendarSyncService: CalendarSyncService,
     private wizardDraft: WizardDraftService,
     private toastr: ToastrService,
     private bookingCategoryService: BookingCategoryService,
@@ -555,6 +561,49 @@ export class CreateShopComponent implements OnInit {
     this.getCountries();
   }
 
+  async generateICSLinkForStep9(): Promise<void> {
+    try {
+      if (!this.me?._id) {
+        this.showCustomToast('Utilisateur introuvable. Merci de vous reconnecter.');
+        return;
+      }
+
+      // évite double call
+      if (this.icsLoading) return;
+
+      this.icsLoading = true;
+
+      this.calendarSyncService
+        .getOrCreateMyCalendarLink(this.me._id)
+        .pipe(finalize(() => (this.icsLoading = false)))
+        .subscribe({
+          next: (data: any) => {
+            this.icsUrl = data?.icsUrl || '';
+
+            if (!this.icsUrl) {
+              this.showCustomToast(
+                this.translate.instant('SETTINGS.ICS.TOAST.LINK_NOT_FOUND') || 'Lien .ics introuvable.'
+              );
+              return;
+            }
+
+            this.persistDraft();
+          },
+          error: (err: any) => {
+            console.error('[Wizard S9] generateICSLinkForStep9 error:', err);
+            this.showCustomToast(
+              this.translate.instant('SETTINGS.ICS.TOAST.GENERATE_ERROR') || 'Impossible de générer le lien .ics.'
+            );
+          },
+        });
+    } catch (e) {
+      console.error('[Wizard S9] generateICSLinkForStep9 fatal:', e);
+      this.icsLoading = false;
+      this.showCustomToast(
+        this.translate.instant('SETTINGS.ICS.TOAST.GENERATE_ERROR') || 'Impossible de générer le lien .ics.'
+      );
+    }
+  }
 
 
   // ============================================================
@@ -826,25 +875,39 @@ export class CreateShopComponent implements OnInit {
     this.showErrors = true;
     this.validateCurrentStep();
 
-    // ✅ STEP 8 : fin wizard => STRIPE VALIDATION + clear draft
+    // ✅ STEP 8 : CLICK NEXT => validate Stripe then go step 9
     if (this.wizardStep === 8) {
-      /*
-            // ✅ OK => on peut finaliser
-            this.showErrors = false;
-      
-            // ✅ on nettoie le draft localStorage
-            this.wizardDraft.clear();
-      
-            // optionnel : reset states (évite les "restes" si on rouvre)
-            this.shopManagementSnapshot = null;
-            this.shopManagementValidity = null;
-            this.createdShopId = null;
-            this.createdShopData = null;
-      
-            // ✅ tu peux fermer / rediriger ici
-            // this.wizardOpen = false;
-            // this.router.navigate(['/pro/dashboard']);
-      */
+      console.log('🔎 [WIZARD] next() clicked on step 8');
+
+      // 0) Bloque si refresh en cours
+      if (this.stripeLoading) {
+        this.showCustomToast(this.translate.instant('CREATION_SHOP_WIZARD.PLEASE_WAIT'));
+        return;
+      }
+
+      // 1) Source de vérité : refresh Stripe status (safe)
+      const updatedMe = await this.refreshStripeStatusAsync({ silentError: true });
+
+      // Si refresh a échoué, on utilise quand même this.me (dernier état connu)
+      const meToCheck = updatedMe || this.me;
+
+      // 2) Validation Stripe (STRICT)
+      const stripeReady = this.isStripeReady(meToCheck);
+      console.log('🔐 [WIZARD] stripeReady:', stripeReady, 'stripe:', meToCheck?.stripe);
+
+      if (!stripeReady) {
+        this.showCustomToast(this.getStripeBlockedMessage(meToCheck));
+        return;
+      }
+
+      // ✅ OK => on peut passer au step 9
+      this.showErrors = false;
+      this.wizardStep = 9 as WizardStep;
+
+      // ✅ génération ICS à l’entrée step 9
+      this.generateICSLinkForStep9();
+
+      this.persistDraft();
       return;
     }
 
@@ -927,10 +990,9 @@ export class CreateShopComponent implements OnInit {
 
       // ✅ OK : on peut passer à la suite
       this.showErrors = false;
-      this.wizardStep = (Math.min(
-        this.wizardSteps.length - 1,
-        this.wizardStep + 1
-      ) as WizardStep);
+
+      const nextStep = (Math.min(this.wizardSteps.length - 1, this.wizardStep + 1) as WizardStep);
+      this.wizardStep = nextStep;
 
       this.persistDraft();
       return;
@@ -958,7 +1020,10 @@ export class CreateShopComponent implements OnInit {
 
       // OK ✅
       this.showErrors = false;
-      this.wizardStep = (Math.min(this.wizardSteps.length - 1, (this.wizardStep + 1)) as WizardStep);
+
+      const nextStep = (Math.min(this.wizardSteps.length - 1, (this.wizardStep + 1)) as WizardStep);
+      this.wizardStep = nextStep;
+
       this.persistDraft();
       return;
     }
@@ -1050,42 +1115,63 @@ export class CreateShopComponent implements OnInit {
       return;
     }
 
+    // après avoir restauré me + createdShopId etc...
+    if (this.wizardStep === 9) {
+      this.generateICSLinkForStep9();
+    }
+
     // -------------------------------------------
     // Step normal : +1
     // -------------------------------------------
     this.showErrors = false;
-    this.wizardStep = (Math.min(
-      this.wizardSteps.length - 1,
-      this.wizardStep + 1
-    ) as WizardStep);
+
+    const nextStep = (Math.min(this.wizardSteps.length - 1, this.wizardStep + 1) as WizardStep);
+    this.wizardStep = nextStep;
 
     // ✅ en entrant en step 5 : charge status
     if (this.wizardStep === 5) {
       this.loadVerificationStatus();
     }
 
+    // ✅ en entrant en step 8 : auto refresh Stripe (quand on arrive depuis 7)
     if (this.wizardStep === 8) {
-      // 0) Bloque si refresh en cours
-      if (this.stripeLoading) {
-        this.showCustomToast(this.translate.instant('CREATION_SHOP_WIZARD.PLEASE_WAIT'));
-        return;
-      }
+      console.log('🟣 [WIZARD] entering step 8 -> auto refresh Stripe');
 
-      // 1) Source de vérité : on refresh Stripe status
-      const updatedMe = await this.refreshStripeStatusAsync();
-
-      // Si refresh a échoué, on utilise quand même this.me (dernier état connu)
-      const meToCheck = updatedMe || this.me;
-
-      // 2) Validation Stripe (STRICT)
-      if (!this.isStripeReady(meToCheck)) {
-        this.showCustomToast(this.getStripeBlockedMessage(meToCheck));
-        return;
+      // évite double refresh
+      if (!this.stripeLoading) {
+        await this.refreshStripeStatusAsync({ silentError: true });
+      } else {
+        console.log('🟡 [WIZARD] stripeLoading already true, skip auto refresh');
       }
     }
 
     this.persistDraft();
+    return;
   }
+
+
+  private async enterStep8(): Promise<void> {
+    console.log('🟣 [WIZARD] entering step 8 -> auto refresh Stripe status');
+
+    // si pas de user => impossible
+    if (!this.me?._id) {
+      console.warn('🔴 [WIZARD] no me._id, cannot refresh stripe');
+      return;
+    }
+
+    // évite double refresh si ça spam
+    if (this.stripeLoading) {
+      console.log('🟡 [WIZARD] stripeLoading already true, skip refresh');
+      return;
+    }
+
+    // refresh silencieux (pas de toast d'erreur si tu veux)
+    const updatedMe = await this.refreshStripeStatusAsync({ silentError: true });
+
+    const meToCheck = updatedMe || this.me;
+    console.log('🧠 [WIZARD] Stripe status refreshed on enter step 8:', meToCheck?.stripe);
+  }
+
 
   hideBrokenImg(ev: Event) {
     const img = ev.target as HTMLImageElement;
@@ -1222,26 +1308,19 @@ export class CreateShopComponent implements OnInit {
     this.countryService.getAll({ active: true }).subscribe({
       next: (countries: any[]) => {
         this.countries = countries || [];
-        this.availableCountries = countries;
-        // Lecture du localStorage (on stocke le *name* du pays)
-        let storedCountry = this.me ? (this.me.country || '').replace(/^"(.*)"$/, '$1').trim() : "France";
-        if (!storedCountry) storedCountry = 'France';
+        this.availableCountries = this.countries;
 
-        // On tente de retrouver par name ou translation (case-insensitive)
-        this.selectedCountry = this.findCountryByNameOrTranslation(storedCountry);
-        console.log("selectedCountry : " + JSON.stringify(this.selectedCountry))
-        // Fallback France / 1er pays dispo
-        if (!this.selectedCountry) {
-          this.selectedCountry =
-            this.findCountryByNameOrTranslation('France') || this.countries[0] || null;
-        }
+        // country stocké côté user (string)
+        let storedCountry = this.me?.country ? String(this.me.country).trim() : 'France';
+        storedCountry = storedCountry.replace(/^"(.*)"$/, '$1').trim(); // sécurité si quotes
 
-        // Appliquer côté session + charger les langues
-        if (this.selectedCountry) {
-          this.sessionService.setCountry(this.selectedCountry.name);
-        } else {
-          console.error('Country not found for name:', storedCountry);
-        }
+        // On retrouve le pays (objet) mais on stocke UNIQUEMENT son name (string)
+        const found = this.findCountryByNameOrTranslation(storedCountry);
+        this.selectedCountry = found?.name || 'France';
+
+        this.sessionService.setCountry(this.selectedCountry);
+
+        console.log('[getCountries] selectedCountry (string):', this.selectedCountry);
       },
       error: (err) => {
         console.error('Erreur lors du chargement des pays', err);
@@ -1250,14 +1329,13 @@ export class CreateShopComponent implements OnInit {
     });
   }
 
-
-  /** 🔎 Recherche pays par name ou par translation (insensible à la casse) */
   private findCountryByNameOrTranslation(raw: string): any | undefined {
-    const norm = raw.trim().toLowerCase();
+    const norm = String(raw || '').trim().toLowerCase();
     return this.countries.find(
-      (c) => c.name?.toLowerCase() === norm || c.translation?.toLowerCase() === norm
+      (c) => String(c.name || '').toLowerCase() === norm || String(c.translation || '').toLowerCase() === norm
     );
   }
+
 
 
   private async ensureAuthenticatedBeforeShop(): Promise<boolean> {
@@ -1380,6 +1458,7 @@ export class CreateShopComponent implements OnInit {
     const countryCode =
       (this.selectedCountry || '').toString().toUpperCase().startsWith('FR') ? 'FR' : 'FR';
 
+
     const postal =
       (this.postalCode || shop?.placeAddress?.postalCode || '').toString().trim();
 
@@ -1394,13 +1473,14 @@ export class CreateShopComponent implements OnInit {
       serviceMode,
       placeAddress: {
         ...(shop.placeAddress || {}),
-        country: countryCode,
+        country: this.selectedCountry || 'France',
         postalCode: postal,
         city: cityName,
         addressLine1,
         addressLine2,
       },
     };
+
   }
 
   private loginAndLoadMe(email: string, password: string): Promise<boolean> {
@@ -1815,7 +1895,7 @@ export class CreateShopComponent implements OnInit {
         addressLine1: this.str(this.newShop?.street) || undefined,
         postalCode: this.str(this.postalCode) || undefined,
         city: this.str(this.selectedCity?.nom || this.newAddress?.city) || undefined,
-        country: 'FR',
+        country: this.selectedCountry || 'France',
         addressLine2: this.str(this.newShop?.addressLine2) || undefined,
         label: undefined,
       };
@@ -1975,10 +2055,110 @@ export class CreateShopComponent implements OnInit {
     // optionnel : tu peux refresh un count server ou juste laisser l’enfant émettre
   }
 
-  finishAndGoLogin() {
-    this.wizardDraft.clear();
-    this.wizardOpen = false;
-    this.router.navigate(['/login']);
+  async finishAndGoLogin() {
+    if (this.busy || this.isUploadingDocs) return;
+
+    this.busy = true;
+
+    try {
+      // ✅ Sauvegarde finale du shop (tout ce qu’on peut)
+      const ok = await this.saveShopBeforeExit();
+
+      if (!ok) {
+        // si l’update a échoué, on NE quitte PAS (sinon tu perds l’intention de save)
+        this.showCustomToast(
+          this.translate.instant('ERROR.GENERIC_ERROR') || "Impossible de sauvegarder la boutique. Réessaie."
+        );
+        return;
+      }
+
+      // ✅ seulement après une sauvegarde OK :
+      this.wizardDraft.clear();
+      this.wizardOpen = false;
+
+      this.router.navigate(['/login']);
+    } catch (e) {
+      console.error('[Finish] fatal:', e);
+      this.showCustomToast(
+        this.translate.instant('ERROR.GENERIC_ERROR') || "Une erreur est survenue. Réessaie."
+      );
+    } finally {
+      this.busy = false;
+    }
+  }
+
+  private getSelectedCountryCode(): string {
+    const c: any = this.selectedCountry;
+
+    // Si c'est déjà un code "FR", "BE", etc.
+    if (typeof c === 'string') {
+      const s = c.trim().toUpperCase();
+      // si ton "name" est "France", on ne peut pas déduire => fallback FR
+      if (s.length === 2) return s;
+      return 'FR';
+    }
+
+    // Si c'est un objet (cas getCountries)
+    const code =
+      c?.code || c?.iso2 || c?.alpha2 || c?.countryCode || c?.name;
+
+    if (typeof code === 'string') {
+      const s = code.trim().toUpperCase();
+      return s.length >= 2 ? s.slice(0, 2) : 'FR';
+    }
+
+    return 'FR';
+  }
+
+
+
+  /**
+ * ✅ Force une dernière sauvegarde complète du shop (si possible)
+ * - merge createdShopData + snapshot.step4.shop (priorité au snapshot)
+ * - tente aussi un "flush" si le child expose une méthode (optionnel, safe)
+ */
+  private async saveShopBeforeExit(): Promise<boolean> {
+    // Rien à sauver si pas de shop créé
+    const shopId = this.createdShopData?._id || this.createdShopId;
+    if (!shopId) return true;
+
+    // 1) (Optionnel) si ton child a une méthode pour forcer la sauvegarde / flush debounce
+    // -> on n'assume rien : on check au runtime
+    try {
+      const cmp: any = this.shopManagementCmp as any;
+
+      // Exemples de noms possibles : adapte si tu as déjà une méthode dans le child
+      if (cmp && typeof cmp.flushPendingSave === 'function') {
+        await cmp.flushPendingSave();
+      } else if (cmp && typeof cmp.forceSave === 'function') {
+        await cmp.forceSave();
+      } else if (cmp && typeof cmp.saveNow === 'function') {
+        await cmp.saveNow();
+      }
+    } catch (e) {
+      // On ne bloque pas la sortie pour ça, on log juste
+      console.warn('[Finish] Child flush save failed (ignored):', e);
+    }
+
+    // 2) Build payload le + complet possible (merge)
+    const mergedShop = this.buildStep4ShopToUpdate() || this.createdShopData;
+    if (!mergedShop?._id) return true;
+
+    // 3) Update backend (source de vérité)
+    const updated = await this.updateShopAsync(mergedShop._id, mergedShop);
+    if (!updated) return false;
+
+    // 4) On garde la vérité serveur dans le parent (important si on revient)
+    this.createdShopData = { ...updated };
+    this.createdShopId = updated?._id || this.createdShopId;
+
+    // réaligne snapshot si présent
+    if (this.shopManagementSnapshot) {
+      this.shopManagementSnapshot = { ...(this.shopManagementSnapshot as any), shop: updated };
+    }
+
+    this.persistDraft();
+    return true;
   }
 
   // ============================================================
@@ -2173,5 +2353,45 @@ export class CreateShopComponent implements OnInit {
   copyToClipboard(text: string) {
     if (!text) return;
     navigator.clipboard?.writeText(text);
+    this.toastr.success(this.translate.instant("FINANCE.HANDLE_COPY"));
+  }
+
+  async copyIcsLink() {
+    if (!this.icsUrl) {
+      this.showCustomToast(
+        this.translate.instant('SETTINGS.ICS.TOAST.NO_LINK') || 'Aucun lien .ics à copier.'
+      );
+      return;
+    }
+
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(this.icsUrl);
+        this.showSuccessToast(
+          this.translate.instant('SETTINGS.ICS.TOAST.COPY_SUCCESS') || 'Lien .ics copié.'
+        );
+        return;
+      }
+
+      // fallback old browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = this.icsUrl;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+
+      this.showSuccessToast(
+        this.translate.instant('SETTINGS.ICS.TOAST.HANDLE_COPY') || 'Lien .ics copié.'
+      );
+    } catch (e) {
+      console.error(e);
+      this.showCustomToast(
+        this.translate.instant('SETTINGS.ICS.TOAST.COPY_ERROR') || 'Impossible de copier le lien.'
+      );
+    }
   }
 }

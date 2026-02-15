@@ -205,8 +205,40 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     }
   }
 
+  onMinimumDelayChange(value: any): void {
+    try {
+      if (!this.shopCopyData) return;
+
+      // force digits only
+      const v = (value ?? '').toString().replace(/\D+/g, '');
+      let n = Number(v);
+
+      // bornes simples (à toi d’ajuster)
+      if (Number.isNaN(n)) n = 30;
+      if (n < 0) n = 0;
+      if (n > 240) n = 240;
+
+      // ton schema est String -> on stocke en string
+      this.shopCopyData.minimumDelay = String(n);
+
+      this.emitValidityAndSnapshot();
+      this.saveShop(); // => simple, comme demandé
+    } catch (err) {
+      console.error('[ShopManagement] onMinimumDelayChange error:', err);
+    }
+  }
+
+
   private bootstrapFromInput(shop: any): void {
     this.shopCopyData = { ...shop };
+    // minimumDelay (en minutes) - default si absent
+    if (
+      this.shopCopyData.minimumDelay === undefined ||
+      this.shopCopyData.minimumDelay === null ||
+      this.shopCopyData.minimumDelay === ''
+    ) {
+      this.shopCopyData.minimumDelay = '30';
+    }
 
     this.initialHandle = this.shopCopyData.handle || '';
     this.handleTouchedByUser = false;

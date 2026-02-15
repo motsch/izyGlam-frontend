@@ -30,7 +30,7 @@
 
   <!-- HEADER -->
   <div class="modal-header">
-
+    {{ wizardStep }}
     <!-- ✅ Close button -->
     <button class="icon-btn" (click)="closeWizard()" aria-label="Close">✕</button>
     <div class="step-hero">
@@ -679,7 +679,7 @@
               <div class="link-box">
                 <div class="link-label">Lien boutique</div>
                 <div class="link-value">
-                  <strong>izyglam.com/{{ createdShopData?.handle || 'ton-handle' }}</strong>
+                  <strong>https://izyglam.com/{{ createdShopData?.handle || 'ton-handle' }}</strong>
                 </div>
               </div>
 
@@ -715,14 +715,17 @@
               <div class="link-box">
                 <div class="link-label">Lien .ics</div>
                 <div class="link-value">
-                  <strong>{{ icsUrl || ('https://izyglam.com/api/shops/' + (createdShopData?._id || createdShopId) +
-                    '/calendar.ics') }}</strong>
+                  <strong *ngIf="!icsLoading">{{ icsUrl || '—' }}</strong>
+                  <strong *ngIf="icsLoading">Génération en cours…</strong>
                 </div>
               </div>
 
-              <a class="btn-premium"
-                [href]="icsUrl || ('https://izyglam.com/api/shops/' + (createdShopData?._id || createdShopId) + '/calendar.ics')"
-                target="_blank" rel="noopener">
+              <button type="button" class="btn-premium" (click)="copyIcsLink()" [disabled]="!icsUrl || icsLoading">
+                Copier
+              </button>
+
+              <a class="btn-ghost" [href]="icsUrl" target="_blank" rel="noopener"
+                [class.disabled]="!icsUrl || icsLoading" (click)="(!icsUrl || icsLoading) && $event.preventDefault()">
                 Ouvrir
               </a>
             </div>

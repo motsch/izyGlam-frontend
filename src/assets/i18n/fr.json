@@ -1311,6 +1311,8 @@
   "FINANCE": {
     "PROGRESS": "Évolution depuis M-1",
     "PROGRESSION": "Progression",
+    "HANDLE_COPY": "Lien copié avec succès",
+    "COPY_ERROR": "Erreur lors de la copie du lien",
     "TOTAL_GENERATED": "Total de chiffre généré",
     "CA": "Chiffre d'affaires",
     "COMMISSION_TAKEN": "Commission prélevée",
@@ -1497,6 +1499,7 @@
     "SOCIAL_NAME": "Raison sociale",
     "COMPANY_TYPE": "Forme juridique",
     "SIRET": "SIRET (14 chiffres)",
+    "DELAI": "Délais entre chaque prestation",
     "SIREN": "SIREN (9 chiffres)",
     "TVA": "TVA intracom",
     "EMAIL_PRO": "Email pro",
@@ -1540,7 +1543,11 @@
     "SERVICE_MODE_SALON": "Au salon",
     "SERVICE_MODE_HOME": "À domicile",
     "SERVICE_MODE_HINT_SALON": "Vos clients se déplacent jusqu’à votre salon.",
-    "SERVICE_MODE_HINT_HOME": "Vous vous déplacez directement chez vos clients."
+    "SERVICE_MODE_HINT_HOME": "Vous vous déplacez directement chez vos clients.",
+    "MINIMUM_DELAY_TITLE": "Délai minimum avant réservation",
+    "MINIMUM_DELAY_HINT": "Exemple : 30 min = un client ne peut pas réserver un créneau qui démarre dans moins de 30 minutes.",
+    "MINUTES": "min",
+    "HOUR_SHORT": "h"
   },
   "BILLING": {
     "MANAGE_YOUR_ABO": "Gestion de ton abonnement",
