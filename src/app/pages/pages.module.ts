@@ -61,6 +61,7 @@ import { BillingComponent } from './billing/billing.component';
 import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { IzyphoneBookingComponent } from './izyphone-booking/izyphone-booking.component';
+import { QrDownloadComponent } from './qr-download/qr-download.component';
 @NgModule({
     imports: [
         BrowserAnimationsModule,
@@ -121,6 +122,7 @@ import { IzyphoneBookingComponent } from './izyphone-booking/izyphone-booking.co
         PayementProComponent,
         OrdersComponent,
         IzyphoneBookingComponent,
+        QrDownloadComponent,
         HelpComponent,
         VerifyEmailComponent,
         FavoritesComponent,

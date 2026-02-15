@@ -29,6 +29,7 @@ import { BillingComponent } from './billing/billing.component';
 import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { IzyphoneBookingComponent } from './izyphone-booking/izyphone-booking.component';
+import { QrDownloadComponent } from './qr-download/qr-download.component';
 
 const routes: Routes = [
     {
@@ -130,6 +131,10 @@ const routes: Routes = [
         component: ChoiceTypeComponent,
         canActivate: [],
     },*/
+    {
+        path: 'app-download',
+        component: QrDownloadComponent
+    },
     {
         path: 'creation-company',
         component: CreationCompanyComponent,

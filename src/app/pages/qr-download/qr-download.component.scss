@@ -1,0 +1,27 @@
+.qr-download {
+  min-height: 60vh;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  .btn {
+    border: 0;
+    border-radius: 14px;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+}
