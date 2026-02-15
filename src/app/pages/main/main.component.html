@@ -151,7 +151,11 @@
             <span class="icon">{{ address.street === 'MAIN_PAGE.MA_POSITION' ? '📍' : '📌' }}</span>
             <strong>{{ address.street }}</strong>, {{ address.city }} ({{ address.code_postal }})
           </div>
-          <button type="button" class="delete-btn" (click)="removeAddress(i)">🗑️</button>
+          <button type="button" [disabled]="displayedAddresses.length <= 1" class="delete-btn"
+            (click)="removeAddress(address); $event.stopPropagation()">
+            <i class="fa fa-trash"></i>
+          </button>
+
         </li>
         <li class="add-address-btn" (click)="toggleAddAddress()">
           ➕ {{ "MAIN.NEW_ADDRESS" | translate }}

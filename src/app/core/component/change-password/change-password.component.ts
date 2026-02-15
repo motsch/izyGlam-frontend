@@ -263,8 +263,6 @@ export class ChangePasswordComponent implements OnInit, OnChanges {
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       },
     });
-
-
   }
 
   // ------------------------------------------------------

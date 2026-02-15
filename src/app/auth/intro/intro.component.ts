@@ -127,7 +127,7 @@ export class IntroComponent implements OnInit, AfterViewInit {
   }
 
   onButtonClick(): void {
-    this.router.navigate(['/prices']);
+    this.router.navigate(['/izyPhone-info']);
   }
 
   trackByFn(index: number, item: string): string {

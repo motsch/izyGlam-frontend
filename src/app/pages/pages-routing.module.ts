@@ -142,7 +142,8 @@ const routes: Routes = [
     },
     {
         path: 'prices',
-        component: PricePlansComponent
+        component: PricePlansComponent,
+        canActivate: [AuthGuard],
     },
     {
         path: 'subscription',

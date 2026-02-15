@@ -19,6 +19,8 @@ import { ShopService } from '../../services/shop.service';
 import { ProductService } from '../../services/product.service';
 import { ColorService } from '../../services/color.service';
 import { ShopTemplateService } from '../../services/shop-template.service';
+import { BookingCategoryService } from '../../services/booking-category.service';
+
 import { of } from 'rxjs';
 
 @Component({
@@ -32,32 +34,40 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   // ===========================
   @Input() myArticlesData: any[] = [];       // Liste des services (produits) du shop
   @Input() myShopData: any = {};             // Métadonnées de la boutique courante
-  @Input() me: any = {};                     // Utilisateur courant (si utile pour permissions, etc.)
-  @Output() articleUpdated = new EventEmitter<string>(); // Notifie le parent pour recharger
-
+  @Input() me: any = {};                     // Utilisateur courant (si utile)
+  @Output() articleUpdated = new EventEmitter<string>(); // Notifie le parent (si tu veux)
 
   @ViewChild('csvInput') csvInput!: ElementRef<HTMLInputElement>;
+  readonly MIN_PRICE = 10;
+
   // ===========================
   // État local
   // ===========================
-  services: any[] = [];                      // Non utilisé ici mais conservé si template s’en sert
-  selectedService: any = {};                 // Élément sélectionné (ligne)
-  modalOpen = false;                         // Toggle modal détail
-  editingServiceIndex: number | null = null; // Index du service en cours d’édition dans la table
-  articlesCopyData: any[] = [];              // Copie immuable pour patch visuel
-  modalService: any = {};                    // Snapshot de l’élément affiché en modal (édition/création)
-  colors: any[] = [];                        // Palette de couleurs (backend)
-  selectedColor = '';                        // Couleur sélectionnée
+  services: any[] = [];
+  selectedService: any = {};
+  modalOpen = false;
+  editingServiceIndex: number | null = null;
+  articlesCopyData: any[] = [];
+  modalService: any = {};
+  colors: any[] = [];
+  selectedColor = '';
   imgStorageUrl: string = environment.APIimgStorageUrl.replace(/\/$/, '');
-  imageUsed: string | null = null;           // Image finale utilisée (génération IA ou upload)
-  selectedFile: File | null = null;          // Fichier local sélectionné
-  imagePreview: string | null = null;        // Aperçu base64 lors d’un upload
-  templateByType: any[] = [];                // Templates de services selon la catégorie du shop
-  creationType: string | null = null;        // Type du template choisi
-  isGeneratingDescription = false;           // Spinner génération description
-  isGeneratingImage = false;                 // Spinner génération image
+  imageUsed: string | null = null;
+  selectedFile: File | null = null;
+  imagePreview: string | null = null;
+  templateByType: any[] = [];
+  creationType: string | null = null;
+  isGeneratingDescription = false;
+  isGeneratingImage = false;
 
+  // CSV
   selectedCsvFile: File | null = null;
+
+  // Catégories
+  serviceCategories: any[] = [];
+  isLoadingCategories = false;
+  categoryNameById: Record<string, string> = {};
+  categoryColorById: Record<string, string> = {};
 
   constructor(
     private productService: ProductService,
@@ -66,6 +76,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     private toastr: ToastrService,
     private translate: TranslateService,
     private shopService: ShopService,
+    private bookingCategoryService: BookingCategoryService,
     private cd: ChangeDetectorRef
   ) { }
 
@@ -76,7 +87,8 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     try {
       localStorage.setItem('menu-param', 'management');
-      // Récupération palette couleurs
+
+      // Palette couleurs
       this.colorService.getAll().subscribe({
         next: (data: any) => {
           this.colors = (data || []).map((c: any) => ({ ...c, selected: false }));
@@ -86,6 +98,12 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
           this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_COLORS'), 'error');
         },
       });
+
+      // Si jamais myShopData est déjà dispo au init
+      const shopId = this.myShopData?._id;
+      if (shopId) {
+        this.loadServicesAndCategories(shopId);
+      }
     } catch (err) {
       console.error('[ArticlesMgmt] ngOnInit FATAL:', err);
       this.toast(this.t('ERROR.GENERIC_ERROR'), 'error');
@@ -94,14 +112,19 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     try {
-      // Synchronise la table quand le parent change la source
+      // Si le parent change myArticlesData (on garde la synchro)
       if (changes['myArticlesData']?.currentValue) {
         this.articlesCopyData = [...this.myArticlesData];
-        console.log('[ArticlesMgmt] myArticlesData updated:', this.myArticlesData);
       }
-      // Informe le parent si la boutique change (cas où le parent veut re-fetch côté haut)
+
+      // Si la boutique change : on recharge services + catégories
       if (changes['myShopData']?.currentValue) {
-        this.articleUpdated.emit();
+        const shopId = this.myShopData?._id;
+        if (shopId) {
+          this.loadServicesAndCategories(shopId);
+        }
+        // ⚠️ IMPORTANT : NE PAS emit ici (sinon boucle/doubles fetch)
+        // this.articleUpdated.emit();
       }
     } catch (err) {
       console.error('[ArticlesMgmt] ngOnChanges FATAL:', err);
@@ -110,10 +133,9 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   }
 
   // ===========================================================
-  // Helpers d’UI / Toasts / i18n
+  // Helpers i18n / Toasts
   // ===========================================================
 
-  /** Raccourci i18n avec fallback texte brut si clé absente */
   private t(keyOrText: string): string {
     try {
       const tr = this.translate.instant(keyOrText);
@@ -123,7 +145,6 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /** Toast centralisé (success|error) */
   private toast(msg: string, type: 'success' | 'error' = 'success') {
     try {
       if (type === 'success') this.toastr.success(msg);
@@ -133,7 +154,6 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /** Patch immuable d’une ligne (index = this.editingServiceIndex) */
   private patchEditedRow(patch: Partial<any>) {
     if (this.editingServiceIndex !== null && this.editingServiceIndex > -1) {
       this.articlesCopyData = this.articlesCopyData.map((s, i) =>
@@ -143,79 +163,69 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   }
 
   // ===========================================================
-  // Upload image (file input)
+  // Chargements (services + catégories)
   // ===========================================================
 
-  onFileSelected(event: any): void {
-    try {
-      const file: File = event?.target?.files?.[0];
-      if (!file) return;
+  private loadServicesAndCategories(shopId: string) {
+    this.isLoadingCategories = true;
 
-      this.selectedFile = file;
-      const reader = new FileReader();
-      reader.onload = () => (this.imagePreview = reader.result as string);
-      reader.readAsDataURL(file);
-    } catch (err) {
-      console.error('[ArticlesMgmt] onFileSelected ERROR:', err);
-      this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'), 'error');
-    }
-  }
-
-  uploadServices() {
-    if (!this.myShopData._id) {
-      console.error("shopId manquant");
-      return;
-    }
-    if (!this.selectedCsvFile) {
-      console.error("Aucun fichier CSV sélectionné");
-      return;
-    }
-
-    this.productService.uploadServicesCsv(this.myShopData._id, this.selectedCsvFile).subscribe({
-      next: (res) => {
-        console.log("Import OK", res);
-        // Optionnel : recharger la liste des articles/services ensuite
-        // this.loadServices();
+    // 1) Services du shop
+    this.productService.getProductsByShop(shopId).subscribe({
+      next: (prods) => {
+        this.myArticlesData = prods || [];
+        this.articlesCopyData = [...this.myArticlesData];
       },
       error: (err) => {
-        console.error("Import CSV erreur", err);
-        // si backend renvoie errors[] tu peux l’afficher
+        console.error('[ArticlesMgmt] getProductsByShop ERROR:', err);
+        this.toast('Erreur chargement services ❌', 'error');
+      }
+    });
+
+    // 2) Catégories du shop
+    this.bookingCategoryService.getBookingCategoryByShopId(shopId).pipe(
+      finalize(() => {
+        this.isLoadingCategories = false;
+        this.cd.detectChanges();
+      })
+    ).subscribe({
+      next: (cats) => {
+        this.serviceCategories = (cats || []).sort((a: any, b: any) => (a.order ?? 0) - (b.order ?? 0));
+
+        // ✅ map id -> name (supporte _id ou id)
+        this.categoryNameById = this.serviceCategories.reduce((acc: Record<string, string>, c: any) => {
+          const id = String(c?._id ?? c?.id ?? '');
+          if (id) acc[id] = c?.name || '';
+          return acc;
+        }, {});
+
+        // ✅ map id -> color (optionnel, si dispo)
+        this.categoryColorById = this.serviceCategories.reduce((acc: Record<string, string>, c: any) => {
+          const id = String(c?._id ?? c?.id ?? '');
+          if (id) acc[id] = c?.color || '';
+          return acc;
+        }, {});
+      },
+      error: (err) => {
+        console.error('[ArticlesMgmt] getBookingCategoryByShopId ERROR:', err);
+        this.toast('Erreur chargement catégories ❌', 'error');
       }
     });
   }
 
-
-  downloadServices() {
-    if (!this.myShopData._id) return;
-
-    this.productService.downloadServicesCsvByShop(this.myShopData._id).subscribe({
-      next: (blob) => {
-        const url = window.URL.createObjectURL(blob);
-
-        const a = document.createElement('a');
-        a.href = url;
-
-        // Nom par défaut (si le backend envoie content-disposition, ça marche aussi selon navigateur,
-        // mais on force un nom clean côté front)
-        const today = new Date().toISOString().slice(0, 10);
-        a.download = `services_${this.myShopData._id}_${today}.csv`;
-
-        document.body.appendChild(a);
-        a.click();
-
-        a.remove();
-        window.URL.revokeObjectURL(url);
-      },
-      error: (err) => {
-        console.error('Erreur download CSV', err);
-      },
-    });
+  // Helper affichage
+  getCategoryName(categoryId?: string): string {
+    if (!categoryId) return '—';
+    return this.categoryNameById[String(categoryId)] || '—';
   }
 
-  private refreshArticles() {
-    return this.productService.getAll();
-    // ou mieux: getProductsByShop(this.shopId) si tu veux uniquement le shop courant
+  getCategoryColor(categoryId?: string): string {
+    if (!categoryId) return '';
+    return this.categoryColorById[String(categoryId)] || '';
   }
+
+  // ===========================================================
+  // CSV import / export
+  // ===========================================================
 
   openCsvPicker() {
     this.csvInput.nativeElement.click();
@@ -239,29 +249,69 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
       return;
     }
 
-    // ✅ Upload direct après sélection
-    this.productService.uploadServicesCsv(this.myShopData._id, file).pipe(
-      // ✅ refresh de la liste derrière
-      switchMap(() => this.productService.getProductsByShop(this.myShopData._id))
-    ).subscribe({
-      next: (prods) => {
-        this.myArticlesData = prods;
+    // Upload direct après sélection + refresh complet (services + catégories)
+    this.productService.uploadServicesCsv(this.myShopData._id, file).subscribe({
+      next: () => {
         this.toast('Services importés ✅', 'success');
-        input.value = ''; // important: permet de re-sélectionner le même fichier ensuite
+        input.value = '';
+
+        // ✅ refresh complet
+        this.refreshAfterMutation();
       },
       error: (err) => {
         console.error('[ArticlesMgmt] uploadServicesCsv ERROR:', err);
-
-        // si backend renvoie errors[]
         const backendMsg = err?.error?.message;
-        if (backendMsg) this.toast(backendMsg, 'error');
-        else this.toast('Erreur import CSV ❌', 'error');
-
+        this.toast(backendMsg || 'Erreur import CSV ❌', 'error');
         input.value = '';
       }
     });
   }
 
+  downloadServices() {
+    if (!this.myShopData._id) return;
+
+    this.productService.downloadServicesCsvByShop(this.myShopData._id).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+
+        const today = new Date().toISOString().slice(0, 10);
+        a.download = `services_${this.myShopData._id}_${today}.csv`;
+
+        document.body.appendChild(a);
+        a.click();
+
+        a.remove();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err) => {
+        console.error('Erreur download CSV', err);
+        this.toast('Erreur téléchargement CSV ❌', 'error');
+      },
+    });
+  }
+
+  // ===========================================================
+  // Upload image (file input)
+  // ===========================================================
+
+  onFileSelected(event: any): void {
+    try {
+      const file: File = event?.target?.files?.[0];
+      if (!file) return;
+
+      this.selectedFile = file;
+      const reader = new FileReader();
+      reader.onload = () => (this.imagePreview = reader.result as string);
+      reader.readAsDataURL(file);
+    } catch (err) {
+      console.error('[ArticlesMgmt] onFileSelected ERROR:', err);
+      this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'), 'error');
+    }
+  }
+
+  // Upload image immédiat (si tu l’utilises ailleurs)
   uploadImage(): void {
     try {
       if (!this.selectedFile || !this.selectedService?._id) {
@@ -272,25 +322,18 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
       this.productService
         .uploadGalleryImages(this.selectedService._id, this.selectedFile)
         .pipe(
-          switchMap(() => this.refreshArticles()),
           catchError((error) => {
-            console.error('[ArticlesMgmt] uploadImage pipeline ERROR:', error);
+            console.error('[ArticlesMgmt] uploadImage ERROR:', error);
             this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'), 'error');
             return of(null);
           })
         )
-        .subscribe((prods: any[] | null) => {
-          if (!prods) return;
-
-          this.myArticlesData = prods;
-
-          // Optionnel : si tu veux garder selectedService à jour (image qui vient de changer)
-          if (this.selectedService?._id) {
-            const updated = prods.find(p => p._id === this.selectedService._id);
-            if (updated) this.selectedService = updated;
-          }
-
+        .subscribe((res: any | null) => {
+          if (!res) return;
           this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.IMAGE_OK'), 'success');
+
+          // ✅ refresh complet (important pour re-sync table)
+          this.refreshAfterMutation();
         });
     } catch (err) {
       console.error('[ArticlesMgmt] uploadImage FATAL:', err);
@@ -317,7 +360,7 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   }
 
   // ===========================================================
-  // Générations IA : Description / Image
+  // IA : Description / Image
   // ===========================================================
 
   onGenerateDescription() {
@@ -332,7 +375,6 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     this.generateIzyGlamImage(this.modalService);
   }
 
-  /** Génère une description via backend (IA) et met à jour modal + table */
   generateIzyGlamProductDescription(product: any) {
     try {
       this.shopService
@@ -345,10 +387,9 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
         )
         .subscribe({
           next: (prod: any) => {
-            console.log('[ArticlesMgmt] gen description response:', prod);
             const newDescription = prod?.description || '';
-            this.modalService.description = newDescription;     // modal
-            this.patchEditedRow({ description: newDescription }); // table
+            this.modalService.description = newDescription;
+            this.patchEditedRow({ description: newDescription });
             this.toast(this.t('SHOP_MANAGEMENT.DESCRIPTION_OK') || 'Description générée ✅', 'success');
           },
           error: (err: any) => {
@@ -363,7 +404,6 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /** Génère une image via backend (IA) et met à jour modal + aperçu + table */
   generateIzyGlamImage(product: any) {
     try {
       this.shopService
@@ -382,13 +422,11 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
               return;
             }
 
-            // MAJ modal + aperçu local
             this.modalService.image = newImagePath;
             this.imageUsed = newImagePath;
             this.imagePreview = null;
             this.selectedFile = null;
 
-            // MAJ table (ligne en cours d’édition)
             this.patchEditedRow({ image: newImagePath });
 
             this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.IMAGE_OK') || 'Image générée ✅', 'success');
@@ -406,75 +444,65 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   }
 
   // ===========================================================
-  // Modale (ouverture/fermeture)
+  // Modale
   // ===========================================================
 
-  /** Ouvre la modale : en création (service undefined) ou en édition (service fourni) */
   openModal(service?: any): void {
     try {
-      console.log('[ArticlesMgmt] openModal shopData:', this.myShopData);
-
-      // Cas CREATION (pas de service fourni)
+      // CREATION
       if (!service) {
         this.imageUsed = null;
-        this.shopTemplateService
-          .getServiceTemplatesByCategory(this.myShopData.type)
-          .subscribe({
-            next: (data: any[]) => {
-              this.templateByType = data || [];
 
-              // Filtrage par type du shop
-              const filtered = this.templateByType.filter((x: any) => x.type === this.myShopData.type);
+        this.shopTemplateService.getServiceTemplatesByCategory(this.myShopData.type).subscribe({
+          next: (data: any[]) => {
+            this.templateByType = data || [];
+            const filtered = this.templateByType.filter((x: any) => x.type === this.myShopData.type);
 
-              // Pick aléatoire si dispo, sinon null
-              this.modalService = filtered.length > 0
-                ? filtered[Math.floor(Math.random() * filtered.length)]
-                : null;
+            this.modalService = filtered.length > 0
+              ? filtered[Math.floor(Math.random() * filtered.length)]
+              : {};
 
-              if (this.modalService) {
-                // Nettoyage des champs « template »
-                this.modalService._id = undefined;
-                this.modalService.shopId = this.myArticlesData?.[0]?.shopId || this.myShopData?._id;
-                this.creationType = this.modalService.type;
-                this.editingServiceIndex = null;
+            // Nettoyage template
+            this.modalService._id = undefined;
+            this.modalService.shopId = this.myShopData?._id;
+            this.creationType = this.modalService.type;
+            this.editingServiceIndex = null;
 
-                // Image/preview/reset
-                this.imageUsed = this.modalService.image;
-                this.imagePreview = null;
-                this.selectedService = this.modalService;
-                this.selectedFile = null;
-              }
-            },
-            error: (error: any) => {
-              console.error('[ArticlesMgmt] getServiceTemplatesByCategory ERROR:', error);
-              this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_TEMPLATE_LOAD') || this.t('ERROR.GENERIC_ERROR'), 'error');
-            },
-          });
+            // Reset image
+            this.imageUsed = this.modalService.image || null;
+            this.imagePreview = null;
+            this.selectedService = this.modalService;
+            this.selectedFile = null;
+
+            // ✅ catégorie : forcer choix
+            this.modalService.categoryId = '';
+
+            // couleurs reset
+            this.colors.forEach((c: any) => (c.selected = false));
+          },
+          error: (error: any) => {
+            console.error('[ArticlesMgmt] getServiceTemplatesByCategory ERROR:', error);
+            this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_TEMPLATE_LOAD') || this.t('ERROR.GENERIC_ERROR'), 'error');
+          },
+        });
+
+        this.modalOpen = true;
+        return;
       }
 
-      // Ouverture effective de la modal (pour les deux cas)
+      // EDITION
       this.imagePreview = null;
       this.selectedService = service;
       this.modalOpen = true;
 
-      if (service) {
-        // Cas EDITION
-        this.imageUsed = service.image;
+      this.imageUsed = service.image || null;
 
-        // Couleurs: reflète la sélection existante
-        for (const c of this.colors) c.selected = c.hex === service.color;
+      for (const c of this.colors) c.selected = c.hex === service.color;
 
-        // Copie indépendante pour édition dans la modal
-        this.modalService = { ...service };
+      this.modalService = { ...service };
+      if (!this.modalService.categoryId) this.modalService.categoryId = '';
 
-        // Mémorise l’index pour patcher l’UI de la ligne au fil de l’édition
-        this.editingServiceIndex = this.articlesCopyData.indexOf(service);
-      } else if (!this.modalService) {
-        // Si aucun template trouvé, modal serait vide → feedback
-        this.modalService = {};
-        this.editingServiceIndex = null;
-        this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.NO_TEMPLATE'), 'error');
-      }
+      this.editingServiceIndex = this.articlesCopyData.indexOf(service);
     } catch (err) {
       console.error('[ArticlesMgmt] openModal FATAL:', err);
       this.toast(this.t('ERROR.GENERIC_ERROR'), 'error');
@@ -482,55 +510,54 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   }
 
   closeModal(): void {
-    try {
-      this.modalOpen = false;
-    } catch (err) {
-      console.error('[ArticlesMgmt] closeModal ERROR:', err);
-    }
+    this.modalOpen = false;
   }
 
   // ===========================================================
-  // Sauvegarde (édition / création)
+  // Sauvegarde
   // ===========================================================
 
   saveService(): void {
     try {
-      // MODE ÉDITION
+
+      if (Number(this.modalService.price) < this.MIN_PRICE) {
+        this.modalService.price = this.MIN_PRICE;
+      }
+
+      // ✅ Validation catégorie obligatoire
+      if (!this.modalService?.categoryId) {
+        this.toast('Merci de sélectionner une catégorie.', 'error');
+        return;
+      }
+
+      // EDITION
       if (this.editingServiceIndex !== null) {
-        // Upload image si nécessaire, puis update du service
         if (this.selectedFile) {
-          // 1) Upload image
+          // Upload image puis update
           this.productService.uploadGalleryImages(this.selectedService._id, this.selectedFile).subscribe({
             next: (response) => {
-              // Nettoyage éventuel du chemin si ton backend le requiert
-              // const cleanedImageUrl = response.image?.replace('/uploads/images/', '');
               this.modalService.image = response?.image || this.modalService.image;
-
-              // 2) Update service avec la nouvelle image
               this.updateService(this.modalService._id, this.modalService, true);
             },
             error: (error) => {
-              console.error("[ArticlesMgmt] uploadGalleryImages (edit) ERROR:", error);
+              console.error('[ArticlesMgmt] uploadGalleryImages (edit) ERROR:', error);
               this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.ERROR_IMAGE_LOAD'), 'error');
             },
           });
         } else {
-          // Édition sans changement d’image
           this.updateService(this.modalService._id, this.modalService);
         }
         return;
       }
 
-      // MODE CRÉATION
+      // CREATION
       this.modalService.shopId = this.myShopData?._id || this.modalService?.shopId;
 
-      // 1) Crée l’objet (sans image au besoin)
       this.productService.create(this.modalService).subscribe({
         next: (created: any) => {
           this.selectedService = created;
           this.modalService = created;
 
-          // 2) S’il y a un fichier, upload + update (pour lier l’image)
           if (this.selectedFile) {
             this.productService.uploadGalleryImages(this.selectedService._id, this.selectedFile).subscribe({
               next: (uploadRes) => {
@@ -538,9 +565,11 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
 
                 this.productService.update(this.modalService._id, this.modalService).subscribe({
                   next: () => {
-                    this.articleUpdated.emit();
                     this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.PRESTA_SUCCESS'), 'success');
                     this.closeModal();
+
+                    // ✅ refresh complet
+                    this.refreshAfterMutation();
                   },
                   error: (error: any) => {
                     console.error('[ArticlesMgmt] update after upload (create) ERROR:', error);
@@ -549,22 +578,21 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
                 });
               },
               error: (error) => {
-                console.error("[ArticlesMgmt] uploadGalleryImages (create) ERROR:", error);
+                console.error('[ArticlesMgmt] uploadGalleryImages (create) ERROR:', error);
                 this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.PHOTO_ERROR'), 'error');
               },
             });
           } else {
-            // Création simple (pas de fichier)
             this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.PRESTA_SUCCESS'), 'success');
             this.closeModal();
-            this.articleUpdated.emit();
+
+            // ✅ refresh complet
+            this.refreshAfterMutation();
           }
         },
         error: (error: any) => {
           console.error('[ArticlesMgmt] create service ERROR:', error);
           this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'), 'error');
-          // Optionnel: on laisse l’élément dans la table pour que l’utilisateur ne perde pas tout
-          this.articlesCopyData.push(this.modalService);
         },
       });
     } catch (err) {
@@ -573,21 +601,35 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
     }
   }
 
-  /** Update générique + toasts + fermeture modal + notify parent */
+  isFormValid(): boolean {
+    return (
+      !!this.modalService?.categoryId &&
+      !!this.modalService?.name &&
+      !!this.modalService?.description &&
+      !!this.modalService?.duration &&
+      this.modalService?.price !== null &&
+      this.modalService?.price !== undefined &&
+      Number(this.modalService.price) >= this.MIN_PRICE
+    );
+  }
+
+
   private updateService(serviceId: string, payload: any, fromUpload: boolean = false) {
     if (!serviceId) {
-      console.warn('[ArticlesMgmt] updateService: missing serviceId');
       this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.PRESTA_ERROR'), 'error');
       return;
     }
+
     this.productService.update(serviceId, payload).subscribe({
       next: () => {
-        this.articleUpdated.emit();
         this.toast(
           this.t(fromUpload ? 'SHOP_ARTICLES_MANAGEMENT.UPDATE_SUCCESS' : 'SHOP_ARTICLES_MANAGEMENT.PRESTA_UPDATED'),
           'success'
         );
         this.closeModal();
+
+        // ✅ refresh complet
+        this.refreshAfterMutation();
       },
       error: (error: any) => {
         console.error('[ArticlesMgmt] update service ERROR:', error);
@@ -603,30 +645,44 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
   deleteService(index: number): void {
     try {
       const toDelete = this.articlesCopyData[index];
-      if (!toDelete?._id) {
-        console.warn('[ArticlesMgmt] deleteService: no _id on item');
-        return;
-      }
+      if (!toDelete?._id) return;
 
-      // Optimiste : on retire immédiatement de la table
-      if (index !== -1) {
-        this.articlesCopyData.splice(index, 1);
-      }
+      // Optimiste
+      this.articlesCopyData.splice(index, 1);
 
       this.productService.delete(toDelete._id).subscribe({
         next: () => {
-          this.articleUpdated.emit();
           this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.PRESTA_DELETED'), 'success');
+
+          // ✅ refresh complet
+          this.refreshAfterMutation();
         },
         error: (error) => {
           console.error('[ArticlesMgmt] delete service ERROR:', error);
           this.toast(this.t('SHOP_ARTICLES_MANAGEMENT.PRESTA_DELETE_ERROR'), 'error');
+
+          // si erreur, on recharge pour remettre la table correcte
+          this.refreshAfterMutation();
         },
       });
     } catch (err) {
       console.error('[ArticlesMgmt] deleteService FATAL:', err);
       this.toast(this.t('ERROR.GENERIC_ERROR'), 'error');
     }
+  }
+
+  // ===========================================================
+  // Refresh centralisé après mutation
+  // ===========================================================
+
+  private refreshAfterMutation() {
+    const shopId = this.myShopData?._id;
+    if (shopId) {
+      this.loadServicesAndCategories(shopId);
+    }
+
+    // si ton parent doit aussi refresh autre chose, tu peux garder ça
+    this.articleUpdated.emit();
   }
 
   // ===========================================================
@@ -638,8 +694,19 @@ export class ShopArticlesManagementComponent implements OnInit, OnChanges {
       if (this.modalService?.description?.length > 50) {
         this.modalService.description = this.modalService.description.substring(0, 50) + '...';
       }
-    } catch (err) {
-      console.warn('[ArticlesMgmt] truncateDescription WARN:', err);
+    } catch { }
+  }
+
+  enforceMinimumPrice(): void {
+    if (this.modalService?.price === null || this.modalService?.price === undefined) {
+      return;
+    }
+
+    const numericPrice = Number(this.modalService.price);
+
+    if (isNaN(numericPrice) || numericPrice < this.MIN_PRICE) {
+      this.modalService.price = this.MIN_PRICE;
     }
   }
+
 }

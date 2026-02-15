@@ -53,8 +53,10 @@
           <span class="handle-status" [class.ok]="handleAvailable === true" [class.ko]="handleAvailable === false"
             *ngIf="shopCopyData.handle">
             <ng-container *ngIf="handleChecking">{{ "SHOP_MANAGEMENT.VERIF" | translate}}</ng-container>
-            <ng-container *ngIf="!handleChecking && handleAvailable === true">{{ "SHOP_MANAGEMENT.OK" | translate}}</ng-container>
-            <ng-container *ngIf="!handleChecking && handleAvailable === false">{{ "SHOP_MANAGEMENT.GOT" | translate}}</ng-container>
+            <ng-container *ngIf="!handleChecking && handleAvailable === true">{{ "SHOP_MANAGEMENT.OK" |
+              translate}}</ng-container>
+            <ng-container *ngIf="!handleChecking && handleAvailable === false">{{ "SHOP_MANAGEMENT.GOT" |
+              translate}}</ng-container>
           </span>
         </div>
 
@@ -117,7 +119,7 @@
      ADRESSE DU SALON (placeAddress)
      Visible seulement si SALON
      ============================ -->
-    <div *ngIf="shopCopyData?.serviceMode === 'SALON' && !stepper" class="legal-panel place-panel">
+    <div *ngIf="shopCopyData?.serviceMode === 'SALON' && !stepper" class="legal-panel">
       <div class="place-top">
         <div>
           <h3 class="place-title">📍 {{ "SHOP_MANAGEMENT.ADDRESS" | translate}}</h3>
@@ -172,13 +174,27 @@
         <!-- Pays -->
         <div class="col-12 col-md-3">
           <label>{{ "SHOP_MANAGEMENT.COUNTRY" | translate}}</label>
-          <input class="input-style" [(ngModel)]="shopCopyData.placeAddress.country"
-            (ngModelChange)="onPlaceAddressChange()" placeholder="FR" />
+          <div class="select-box country" (clickOutside)="closeDropdownCountry()">
+            <div class="selected" (click)="toggleDropdownCountry()">
+              <img *ngIf="selectedCountry?.flag" [src]="selectedCountry.flag" class="flag-icon"
+                alt="{{ selectedCountry?.name }}" />
+              <span>
+                {{ selectedCountry?.translation | translate }}
+              </span>
+              <i class="arrow" [class.down]="!dropdownOpenCountry" [class.up]="dropdownOpenCountry"></i>
+            </div>
+            <ul class="options" *ngIf="dropdownOpenCountry">
+              <li *ngFor="let country of countries" (click)="selectCountry(country)">
+                <img *ngIf="country?.flag" [src]="country.flag" class="flag-icon" alt="{{ country.name }}" />
+                {{ country.translation | translate }}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
 
-      <div class="legal-actions place-actions">
+      <div class="legal-actions">
         <button type="button" class="btn-primary" (click)="savePlaceAddress()"
           [disabled]="placeSaving || placeHasErrors">
           {{ "SHOP_MANAGEMENT.SALON_SAVE" | translate}}
@@ -286,8 +302,22 @@
         <!-- Pays -->
         <div class="col-12 col-md-6">
           <label>{{ "SHOP_MANAGEMENT.COUNTRY" | translate}}</label>
-          <input class="input-style" [(ngModel)]="shopCopyData.legal.country" (ngModelChange)="onLegalChange()"
-            placeholder="FR" />
+          <div class="select-box country" [class.disabled]="true" (clickOutside)="closeDropdownCountryLegal()">
+            <div class="selected" (click)="toggleDropdownCountryLegal()">
+              <img *ngIf="selectedCountryLegal?.flag" [src]="selectedCountryLegal.flag" class="flag-icon"
+                alt="{{ selectedCountry?.name }}" />
+              <span>
+                {{ selectedCountryLegal?.translation | translate }}
+              </span>
+              <i class="arrow" [class.down]="!dropdownOpenCountryLegal" [class.up]="dropdownOpenCountryLegal"></i>
+            </div>
+            <ul class="options" *ngIf="dropdownOpenCountryLegal">
+              <li *ngFor="let country of countries" (click)="selectCountryLegal(country)">
+                <img *ngIf="country?.flag" [src]="country.flag" class="flag-icon" alt="{{ country.name }}" />
+                {{ country.translation | translate }}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 

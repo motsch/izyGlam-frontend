@@ -63,6 +63,17 @@ export class PayementProComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.userService.getMe().subscribe({
+      next: (me: any) => {
+        this.me = me;
+        if (this.me.role !== "professionnel") {
+          this.router.navigate(['/izyPhone-info']);
+        }
+      },
+      error: () => {
+        this.computePlanUi();
+      }
+    })
     this.abonnement = this.route.snapshot.paramMap.get('abonnement') as any;
 
     if (this.abonnement !== 'premium' && this.abonnement !== 'pro') {

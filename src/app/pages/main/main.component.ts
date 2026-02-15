@@ -768,6 +768,7 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   removeAddress(index: number) {
     this.me.address.splice(index, 1);
+    this.refreshDisplayedAddresses();
 
     this.userService.update(this.me).subscribe({
       next: (result: any) => {

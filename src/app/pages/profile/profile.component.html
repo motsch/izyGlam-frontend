@@ -30,7 +30,8 @@
           (click)="setActiveSection('company')">
           {{ "PROFILE_MENU.COMPANY" | translate }}
         </li>
-        <li *ngIf="me && (me.role === 'admin')" [ngClass]="{ active: isSectionActive('admin') }" (click)="setActiveSection('admin')">
+        <li *ngIf="me && (me.role === 'admin')" [ngClass]="{ active: isSectionActive('admin') }"
+          (click)="setActiveSection('admin')">
           {{ "PROFILE_MENU.ADMIN" | translate }}
         </li>
         <li [ngClass]="{ active: isSectionActive('privacy') }" (click)="setActiveSection('privacy')">
@@ -184,6 +185,9 @@
           <mat-tab [label]="'TABS.STATS' | translate" color="primary">
             <app-admin></app-admin>
           </mat-tab>
+          <mat-tab [label]="'TABS.COUNTRY' | translate">
+            <app-admin-country-management></app-admin-country-management>
+          </mat-tab>
           <mat-tab [label]="'TABS.USERS' | translate">
             <app-admin-clients-management></app-admin-clients-management>
           </mat-tab>
@@ -207,9 +211,6 @@
           </mat-tab>
           <mat-tab [label]="'TABS.PROLEAD' | translate">
             <app-admin-pro-lead-management></app-admin-pro-lead-management>
-          </mat-tab>
-          <mat-tab [label]="'TABS.COUNTRY' | translate">
-            <app-admin-country-management></app-admin-country-management>
           </mat-tab>
           <mat-tab [label]="'TABS.PARAM' | translate">
             <app-admin-param></app-admin-param>

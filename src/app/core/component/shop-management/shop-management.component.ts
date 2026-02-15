@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../services/user.service';
 import { SessionService } from '../../services/session.service';
 import { TranslateService } from '@ngx-translate/core';
+import { CountryService } from '../../services/country.service';
 
 type ServiceMode = 'SALON' | 'DOMICILE';
 
@@ -75,12 +76,20 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     blockedElements: string[];
   }>();
 
+  countries: any[] = [];
 
   // ---------- Legal / Facturation ----------
   legalExpanded = true;
   legalValid = false;
   legalErrors: any = {};
 
+
+
+  // 🧭 Menus déroulants de langue/pays
+  dropdownOpen = false;
+  dropdownOpenLegal = false;
+  dropdownOpenCountry = false;
+  dropdownOpenCountryLegal = false;
   // ---------- UI / State ----------
   imageUsed: string | null = null;
   imagePreview: string | null = null;
@@ -93,7 +102,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
   formValid = false;
 
   // ---------- Localisation ----------
-  selectedCountry = 'France';
+  selectedCountry: any | null = null;
+  selectedCountryLegal: any | null = null;
   selectedCity: any = {};
   selectedArrondissement = '';
   availableCountries = ['France'];
@@ -148,7 +158,8 @@ export class ShopManagementComponent implements OnInit, OnChanges {
     private toastr: ToastrService,
     private userService: UserService,
     private sessionService: SessionService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private countryService: CountryService
   ) { }
 
   // ======================
@@ -176,6 +187,7 @@ export class ShopManagementComponent implements OnInit, OnChanges {
 
       // ✅ initial emit vers wizard
       this.emitValidityAndSnapshot();
+      this.getCountries();
     } catch (err) {
       console.error('[ShopManagement] ngOnInit error:', err);
       this.showCustomToast(this.t('CARD.ERROR1'), 'error');
@@ -251,6 +263,57 @@ export class ShopManagementComponent implements OnInit, OnChanges {
         'error'
       );
     }
+  }
+
+  closeDropdownCountry() {
+    this.dropdownOpenCountry = false;
+  }
+
+  toggleDropdownCountry() {
+    this.dropdownOpenCountry = !this.dropdownOpenCountry;
+    this.dropdownOpen = false;
+  }
+
+
+  closeDropdownCountryLegal() {
+    this.dropdownOpenCountryLegal = false;
+  }
+
+  toggleDropdownCountryLegal() {
+    this.dropdownOpenCountryLegal = !this.dropdownOpenCountryLegal;
+    this.dropdownOpenLegal = false;
+  }
+  // ------------------------------------------------------
+  // 🗺️ Charger les pays actifs, sélectionner le pays stocké, charger ses langues
+  // ------------------------------------------------------
+  getCountries(): void {
+    this.countryService.getAll({ active: true }).subscribe({
+      next: (countries: any[]) => {
+        this.countries = countries || [];
+
+        // Fallback France / 1er pays dispo
+        if (!this.selectedCountry) {
+          this.selectedCountry =
+            this.findCountryByNameOrTranslation('France') || this.countries[0] || null;
+        }
+        if (!this.selectedCountryLegal) {
+          this.selectedCountryLegal =
+            this.findCountryByNameOrTranslation('France') || this.countries[0] || null;
+        }
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des pays', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+      },
+    });
+  }
+
+  /** 🔎 Recherche pays par name ou par translation (insensible à la casse) */
+  private findCountryByNameOrTranslation(raw: string): any | undefined {
+    const norm = raw.trim().toLowerCase();
+    return this.countries.find(
+      (c) => c.name?.toLowerCase() === norm || c.translation?.toLowerCase() === norm
+    );
   }
 
   // ======================
@@ -438,6 +501,20 @@ export class ShopManagementComponent implements OnInit, OnChanges {
       console.error('[ShopManagement] isHoursValid error:', err);
       return false;
     }
+  }
+
+  // ------------------------------------------------------
+  // 🗺️ Sélection d’un pays
+  // ------------------------------------------------------
+  selectCountry(country: any): void {
+    this.shopCopyData.placeAddress.country = country.name;
+    this.selectedCountry = country;
+    this.dropdownOpenCountry = false;
+  }
+  selectCountryLegal(country: any): void {
+    this.shopCopyData.legal.country = country.name;
+    this.selectedCountryLegal = country;
+    this.dropdownOpenCountryLegal = false;
   }
 
   private isTimeBefore(a: string, b: string): boolean {
