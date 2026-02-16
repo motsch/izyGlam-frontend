@@ -2,24 +2,27 @@ import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import allLocales from '@fullcalendar/core/locales-all'; // ✅ toutes les locales FC
+import allLocales from '@fullcalendar/core/locales-all';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+
 import { BookingService } from '../../services/booking.service';
 import { SessionService } from '../../services/session.service';
 
-// ✅ AjoutsizyGlam : toasts + i18n
+// ✅ Ajouts izyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { VacationService } from '../../services/shop-vacations.service';
+
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.scss'], // ✅ correction: styleUrls (tableau) 
+  styleUrls: ['./agenda.component.scss'],
 })
 export class AgendaComponent implements OnInit {
   @Input() me: any = {};
@@ -27,52 +30,29 @@ export class AgendaComponent implements OnInit {
 
   openNewEventModal = false;
   newEventData: any = {};
-  @ViewChild('calendar', { static: false }) calendarComponent?: FullCalendarComponent;
 
-  // ⚙️ Options FullCalendar (config par défaut + FR)
+  @ViewChild('calendar', { static: false })
+  calendarComponent?: FullCalendarComponent;
+
+  // ✅ Optionnel : état de chargement
+  loadingCalendar = false;
+
+  // ⚙️ Options FullCalendar
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, timeGridPlugin],
     initialView: 'timeGridWeek',
     weekends: true,
     slotMinTime: '04:00:00',
     slotMaxTime: '23:59:59',
-    // allDayText: 'Events',
     eventOrder: 'status,-start',
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay',
     },
-    locales: allLocales, // ✅ toutes les locales
+    locales: allLocales,
     locale: 'fr',
-    // Événements d’exemple (restent si pas de données)
-    events: [
-      {
-        title: "Vacances d'été",
-        start: '2024-07-01',
-        end: '2024-09-01',
-        rendering: 'background',
-        backgroundColor: 'green',
-        allDay: true,
-      },
-      {
-        title: 'Vacances de Noël',
-        start: '2024-12-20',
-        end: '2025-01-03',
-        rendering: 'background',
-        backgroundColor: '#ffeb3b',
-        textColor: '#000000',
-        borderColor: 'transparent',
-      },
-      {
-        title: 'Coiffure zigo',
-        start: '2024-09-27T10:00:00',
-        end: '2024-09-27T11:00:00',
-        backgroundColor: '#f28b82',
-        borderColor: '#f28b82',
-        textColor: '#000000',
-      },
-    ],
+    events: [], // ✅ on laisse vide et on remplit au chargement
     eventClick: this.handleEventClick.bind(this),
   };
 
@@ -81,78 +61,162 @@ export class AgendaComponent implements OnInit {
     private bookingService: BookingService,
     private sessionService: SessionService,
 
-    // ✅izyGlam
+    // ✅ NEW
+    private vacationService: VacationService,
+
+    // ✅ izyGlam
     private toastr: ToastrService,
     private translate: TranslateService
-  ) { }
+  ) {}
 
   // ------------------------------------------------------
-  // ⏱️ Chargement : on set le menu + on récupère les bookings pro
+  // ⏱️ Chargement : langue + bookings + vacations
   // ------------------------------------------------------
   ngOnInit(): void {
     localStorage.setItem('menu-param', 'calendar');
 
-    // ✅ 1) Récupère la langue (SessionService prioritaire)
-    const initialLang = this.sessionService.getLang() || localStorage.getItem('langue') || 'fr';
-    // localStorage.getItem('langue') peut contenir des guillemets si JSON.stringify, on gère vite fait :
-    const cleanedLang = (initialLang || 'fr').toString().replace(/^"+|"+$/g, '');
+    // ✅ 1) langue
+    const initialLang =
+      this.sessionService.getLang() ||
+      localStorage.getItem('langue') ||
+      'fr';
 
-    // ✅ 2) Applique aux traductions app (si ce n’est pas déjà fait ailleurs)
+    const cleanedLang = (initialLang || 'fr')
+      .toString()
+      .replace(/^"+|"+$/g, '');
+
     this.translate.use(cleanedLang);
-
-    // ✅ 3) Applique au calendrier
     this.setCalendarLocale(cleanedLang);
 
-    // ✅ 4) Réagit quand la langue change via ngx-translate
     this.translate.onLangChange.subscribe((e) => {
       const newLang = e.lang || 'fr';
-      // optionnel : persister côté session/local
       this.sessionService.setLang(newLang);
       this.setCalendarLocale(newLang);
     });
 
-    // ⚠️ Si me/shops ne sont pas encore injectés, on évite l’appel vide
+    // ⚠️ guards
     if (!this?.me?._id) {
       console.warn('AgendaComponent: me._id manquant — abonnement non lancé.');
       return;
     }
 
-    this.bookingService.getBookingByUserPro(this.me._id).subscribe({
-      next: (data: any) => {
-        if (this.calendarOptions.events) {
-          data.forEach((elem: any) => {
-            elem.start = new Date(elem.start);
-            elem.end = new Date(elem.end);
-            elem.textColor = '#000000';
-            elem.backgroundColor = elem.color;
-            if (!elem.extendedProps) {
-              elem.extendedProps = {};
-            }
-            elem.extendedProps.address = elem.address || 'Adresse inconnue';
-            elem.extendedProps.phoneNumber = elem.phoneNumber || 'Numéro inconnu';
-          });
-          this.calendarOptions.events = data;
-        }
-      },
-      error: (error: any) => {
-        console.error('Erreur lors du chargement des bookings pro :', error);
-        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-      },
-    });
+    // ✅ on charge tout
+    this.loadCalendarData();
   }
 
+  // ------------------------------------------------------
+  // 🌍 Locale FullCalendar
+  // ------------------------------------------------------
   private setCalendarLocale(lang: string) {
-    // 1) Mets à jour l’option locale dans l’objet (utile si Angular re-render)
     this.calendarOptions = { ...this.calendarOptions, locale: lang };
 
-    // 2) Mets à jour directement l’instance FullCalendar si déjà montée
     const api = this.calendarComponent?.getApi();
     if (api) {
       api.setOption('locale', lang);
     }
   }
+
   // ------------------------------------------------------
-  // ➕ Ouvrir la modale d’ajout d’événement
+  // 📦 Load bookings + vacations puis merge dans events
+  // ------------------------------------------------------
+  private loadCalendarData() {
+    const shopId = this.shops?.[0]?._id;
+
+    // Si pas de shop, on charge quand même bookings (au pire)
+    this.loadingCalendar = true;
+
+    // 1) bookings
+    this.bookingService.getBookingByUserPro(this.me._id).subscribe({
+      next: (bookings: any[]) => {
+        const bookingEvents = (bookings || []).map((elem: any) => {
+          const start = new Date(elem.start);
+          const end = new Date(elem.end);
+
+          const extendedProps = {
+            ...(elem.extendedProps || {}),
+            address: elem.address || 'Adresse inconnue',
+            phoneNumber: elem.phoneNumber || 'Numéro inconnu',
+            type: 'booking',
+          };
+
+          return {
+            ...elem,
+            start,
+            end,
+            textColor: '#000000',
+            backgroundColor: elem.color,
+            borderColor: elem.color,
+            extendedProps,
+          };
+        });
+
+        // 2) vacations si shopId
+        if (!shopId) {
+          this.calendarOptions = { ...this.calendarOptions, events: bookingEvents };
+          this.loadingCalendar = false;
+          return;
+        }
+
+        this.vacationService.getVacations(shopId).subscribe({
+          next: (vacations: any[]) => {
+            const vacationEvents = (vacations || []).map((v: any) =>
+              this.mapVacationToCalendarEvent(v)
+            );
+
+            // ✅ merge : vacations d'abord (background) puis bookings
+            this.calendarOptions = {
+              ...this.calendarOptions,
+              events: [...vacationEvents, ...bookingEvents],
+            };
+
+            this.loadingCalendar = false;
+          },
+          error: (err: any) => {
+            console.error('Erreur lors du chargement des vacations :', err);
+
+            // même si vacations fail, on affiche bookings
+            this.calendarOptions = { ...this.calendarOptions, events: bookingEvents };
+            this.loadingCalendar = false;
+          },
+        });
+      },
+      error: (error: any) => {
+        console.error('Erreur lors du chargement des bookings pro :', error);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        this.loadingCalendar = false;
+      },
+    });
+  }
+
+  // ------------------------------------------------------
+  // 🧱 Mapper une vacation -> background event FullCalendar
+  // ------------------------------------------------------
+  private mapVacationToCalendarEvent(v: any) {
+    return {
+      id: v._id,
+      title: v.title || this.translate.instant('CALENDAR.VACATION') || 'Vacances',
+      start: new Date(v.start),
+      end: new Date(v.end),
+      allDay: !!v.allDay,
+
+      // ✅ FullCalendar moderne
+      display: 'background',
+
+      // ✅ noir très foncé
+      backgroundColor: v.color || '#0b0b0b',
+
+      // évite des comportements bizarres
+      overlap: false,
+      editable: false,
+
+      extendedProps: {
+        type: 'vacation',
+      },
+    };
+  }
+
+  // ------------------------------------------------------
+  // ➕ Ouvrir la modale d’ajout d’événement (booking)
   // ------------------------------------------------------
   openAddEventModal() {
     const dialogRef = this.dialog.open(ContentCalendarItemDialog, {
@@ -163,24 +227,21 @@ export class AgendaComponent implements OnInit {
         end: '',
         address: '',
         phoneNumber: '',
-        new: true, // indique un nouvel événement
+        new: true,
       },
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        console.log('New event data:', result);
-
-        // ⚠️ On sécurise la présence d’un shop pour peupler les champs
+        // ⚠️ shops guard
         if (!this.shops || this.shops.length === 0) {
           console.warn("Aucun shop disponible pour créer l'événement.");
         }
 
-        // Création du booking à partir des infos (me, shop[0], result)
         const newBooking = {
           title: result.title,
           establishmentName: this.shops?.[0]?.name,
-          productName: 'Some Product', // TODO: adapter si besoin
+          productName: 'Some Product',
           address: result.address,
           phoneNumber: result.phoneNumber,
           clientId: this.me._id,
@@ -199,27 +260,38 @@ export class AgendaComponent implements OnInit {
           reviewAdded: false,
         };
 
-        // Toujours un tableau pour calendarOptions.events
         if (!this.calendarOptions.events) {
           this.calendarOptions.events = [];
         }
 
         const sessionLangue = this.sessionService.getLang();
 
-        // Appel API de création du booking
         this.bookingService.create(newBooking, sessionLangue!).subscribe({
           next: (response) => {
             console.log('Booking created successfully:', response);
 
-            // ✅ On ajoute aussi l’événement au calendrier
-            this.calendarOptions.events = [
-              ...(this.calendarOptions.events as any[]),
-              newBooking,
-            ];
+            // ✅ ajoute au calendrier (sans recharger tout)
+            this.calendarOptions = {
+              ...this.calendarOptions,
+              events: [
+                ...(this.calendarOptions.events as any[]),
+                {
+                  ...newBooking,
+                  textColor: '#000000',
+                  backgroundColor: newBooking.color,
+                  borderColor: newBooking.color,
+                  extendedProps: {
+                    address: newBooking.address || 'Adresse inconnue',
+                    phoneNumber: newBooking.phoneNumber || 'Numéro inconnu',
+                    type: 'booking',
+                  },
+                },
+              ],
+            };
 
-            // ✅ Toast de succès
             this.toastr.success(
-              this.translate.instant('SUCCESS.BOOKING_CREATED') || 'Votre réservation a bien été enregistrée.'
+              this.translate.instant('SUCCESS.BOOKING_CREATED') ||
+                'Votre réservation a bien été enregistrée.'
             );
           },
           error: (err) => {
@@ -232,9 +304,14 @@ export class AgendaComponent implements OnInit {
   }
 
   // ------------------------------------------------------
-  // 🖱️ Clic sur un événement du calendrier (édition rapide)
+  // 🖱️ Clic sur un événement
   // ------------------------------------------------------
   handleEventClick(info: any) {
+    // ✅ ignore les clicks sur "vacations"
+    if (info?.event?.extendedProps?.type === 'vacation') {
+      return;
+    }
+
     const formatDate = (date: Date) => {
       const pad = (n: number) => (n < 10 ? '0' + n : n);
       const year = date.getFullYear();
@@ -253,25 +330,23 @@ export class AgendaComponent implements OnInit {
         end: formatDate(new Date(info.event.end)),
         address: info.event.extendedProps.address,
         phoneNumber: info.event.extendedProps.phoneNumber,
-        new: false, // événement existant
+        new: false,
       },
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        // MAJ locale de l’événement (ici côté calendrier uniquement)
         info.event.setProp('title', result.title);
         info.event.setDates(result.start, result.end);
-        // 👉 Si tu veux persister la modif, ajoute un appel bookingService.update(...)
+        // 👉 Si tu veux persister, ajoute bookingService.update(...)
       }
     });
   }
 
   // ------------------------------------------------------
-  // ✨ Toast d’erreur styliséizyGlam (centralisé)
+  // ✨ Toast d’erreur
   // ------------------------------------------------------
   private showCustomToast(message: string) {
-    // Standard : erreurs → toastr.error
     this.toastr.error(message);
   }
 }
@@ -279,13 +354,13 @@ export class AgendaComponent implements OnInit {
 @Component({
   selector: 'content-calendar-item-dialog',
   templateUrl: './dialog/content-calendar-item-dialog.component.html',
-  styleUrls: ['./dialog/content-calendar-item-dialog.component.scss'], // ✅ styleUrls
+  styleUrls: ['./dialog/content-calendar-item-dialog.component.scss'],
 })
 export class ContentCalendarItemDialog {
   constructor(
     public dialogRef: MatDialogRef<ContentCalendarItemDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();

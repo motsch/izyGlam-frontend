@@ -1,0 +1,154 @@
+<div class="vacations-wrap">
+
+  <!-- Header -->
+  <div class="vacations-header">
+    <div class="title-zone">
+      <h2 class="title">{{ 'VACATIONS.TITLE' | translate }}</h2>
+      <p class="subtitle">
+        {{ 'VACATIONS.SUBTITLE' | translate }}
+      </p>
+    </div>
+
+    <div class="header-actions">
+      <button mat-stroked-button class="btn-refresh" type="button" (click)="loadVacations?.()"
+        [disabled]="loadingVacations">
+        <span class="dot" [class.pulse]="loadingVacations"></span>
+        {{ 'ACTIONS.REFRESH' | translate }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Add card -->
+  <div class="card glass add-card">
+
+    <div class="card-head">
+      <div class="card-title">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>{{ 'VACATIONS.ADD_TITLE' | translate }}</span>
+        </div>
+        <p class="hint">{{ 'VACATIONS.ADD_HINT' | translate }}</p>
+      </div>
+
+      <div class="preview">
+        <div class="preview-pill">
+          <span class="pill-dot"></span>
+          <span class="pill-text">{{ 'VACATIONS.PREVIEW_BLOCK' | translate }}</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="form-grid" (ngSubmit)="addVacation?.()" novalidate>
+
+      <!-- Titre -->
+      <div class="field full">
+        <label class="label">{{ 'VACATIONS.FIELDS.TITLE' | translate }}</label>
+        <input class="input" type="text" placeholder="{{ 'VACATIONS.FIELDS.TITLE_PLACEHOLDER' | translate }}"
+          [(ngModel)]="vacationForm.title" name="title" autocomplete="off" />
+        <div class="help">
+          {{ 'VACATIONS.FIELDS.TITLE_HELP' | translate }}
+        </div>
+      </div>
+
+      <!-- Début -->
+      <div class="field">
+        <label class="label">{{ 'VACATIONS.FIELDS.START' | translate }}</label>
+        <input class="input" type="datetime-local" [(ngModel)]="vacationForm.start" name="start" required />
+      </div>
+
+      <!-- Fin -->
+      <div class="field">
+        <label class="label">{{ 'VACATIONS.FIELDS.END' | translate }}</label>
+        <input class="input" type="datetime-local" [(ngModel)]="vacationForm.end" name="end" required />
+      </div>
+
+      <!-- Erreur validation -->
+      <div class="inline-alert" *ngIf="formError">
+        <span class="alert-dot"></span>
+        <span class="alert-text">{{ formError }}</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions full">
+        <button mat-raised-button color="primary" class="btn-primary" type="submit" [disabled]="loadingVacations">
+          <span class="btn-icon">＋</span>
+          {{ 'VACATIONS.ADD_ACTION' | translate }}
+        </button>
+
+        <button mat-button type="button" class="btn-secondary" (click)="resetForm?.()" [disabled]="loadingVacations">
+          {{ 'ACTIONS.RESET' | translate }}
+        </button>
+      </div>
+
+      <div class="footnote full">
+        <span class="i">i</span>
+        <span>{{ 'VACATIONS.FOOTNOTE' | translate }}</span>
+      </div>
+    </form>
+  </div>
+
+  <!-- List -->
+  <div class="card glass list-card">
+    <div class="list-head">
+      <div>
+        <h3 class="list-title">{{ 'VACATIONS.LIST_TITLE' | translate }}</h3>
+        <p class="list-sub">
+          {{ 'VACATIONS.LIST_SUBTITLE' | translate }}
+        </p>
+      </div>
+
+      <div class="count">
+        <span class="count-dot"></span>
+        <span>{{ (vacations?.length || 0) }} {{ 'VACATIONS.COUNT' | translate }}</span>
+      </div>
+    </div>
+
+    <!-- Empty -->
+    <div class="empty" *ngIf="!loadingVacations && (!vacations || vacations.length === 0)">
+      <div class="empty-icon">🏖️</div>
+      <div class="empty-title">{{ 'VACATIONS.EMPTY_TITLE' | translate }}</div>
+      <div class="empty-sub">{{ 'VACATIONS.EMPTY_SUBTITLE' | translate }}</div>
+    </div>
+
+    <!-- Skeleton -->
+    <div class="skeleton" *ngIf="loadingVacations">
+      <div class="sk-row" *ngFor="let _ of [1,2,3]">
+        <div class="sk-block"></div>
+        <div class="sk-line"></div>
+        <div class="sk-line short"></div>
+      </div>
+    </div>
+
+    <!-- Items -->
+    <div class="vacations-list" *ngIf="!loadingVacations && vacations?.length">
+      <div class="vacation-item" *ngFor="let v of vacations; trackBy: trackByVacationId">
+        <div class="left">
+          <div class="chip">
+            <span class="chip-dot"></span>
+            <span class="chip-text">{{ v.title || ('VACATIONS.DEFAULT_TITLE' | translate) }}</span>
+          </div>
+
+          <div class="meta">
+            <div class="line">
+              <span class="k">{{ 'VACATIONS.FIELDS.START' | translate }} :</span>
+              <span class="val">{{ v.start | date:'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+            <div class="line">
+              <span class="k">{{ 'VACATIONS.FIELDS.END' | translate }} :</span>
+              <span class="val">{{ v.end | date:'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <button mat-icon-button class="btn-delete" (click)="deleteVacation?.(v._id)" [disabled]="loadingVacations" aria-label="delete">
+            <span class="trash margin-top-n20">
+              <i class="fa fa-trash"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

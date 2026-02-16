@@ -161,9 +161,17 @@
     "INVOICE_GENERATED": "Factures générées.",
     "REVIEW_SAVED": "Avis enregistré, merci !",
     "DEFAULT_PASSWORD_UPDATED": "Le mot de passe par défaut a été mis à jour.",
-    "COMPANY_CREATED": "Votre compte professionnel a bien été créé."
+    "COMPANY_CREATED": "Votre compte professionnel a bien été créé.",
+    "VACATION_ADDED": "La période d'indisponibilité a bien été ajoutée.",
+    "VACATION_DELETED": "La période d'indisponibilité a bien été supprimée."
   },
   "ERROR": {
+    "VACATION_START_END_REQUIRED": "Merci de renseigner une date de début et une date de fin.",
+    "VACATION_INVALID_DATES": "Les dates saisies sont invalides.",
+    "VACATION_END_AFTER_START": "La date de fin doit être postérieure à la date de début.",
+    "VACATION_OVERLAPS_BOOKINGS": "Impossible d’ajouter des vacances : une réservation existe déjà sur cette période.",
+    "SHOP_NOT_FOUND": "Salon introuvable.",
+    "PRO_NOT_FOUND": "Professionnel introuvable.",
     "NO_CITIES": "Code postal sans correspondance",
     "NOT_AVAILABLE": "Nous ne sommes pas encore disponible à cet endroit. N'hésitez pas à repasser d'ici quelques mois !",
     "LOGIN_REQUIRED": "Veuillez vous connecter pour gérer vos favoris.",
@@ -291,9 +299,40 @@
     "TITLE": "Nos Sponsors",
     "SPONSORISED": "Sponsorisée"
   },
+  "VACATIONS": {
+    "TITLE": "Périodes d'indisponibilité",
+    "SUBTITLE": "Définissez les périodes durant lesquelles votre établissement ne peut pas recevoir de réservations.",
+    "ADD_TITLE": "Ajouter une période",
+    "ADD_HINT": "Pendant cette période, aucun créneau ne pourra être réservé par vos clients.",
+    "ADD_ACTION": "Ajouter la période",
+    "PREVIEW_BLOCK": "Blocage total des réservations",
+    "FOOTNOTE": "Les créneaux disponibles seront automatiquement recalculés en excluant ces périodes.",
+    "LIST_TITLE": "Périodes enregistrées",
+    "LIST_SUBTITLE": "Historique des périodes d'indisponibilité définies pour ce salon.",
+    "COUNT": "période(s)",
+    "EMPTY_TITLE": "Aucune période définie",
+    "EMPTY_SUBTITLE": "Ajoutez une période pour bloquer les réservations pendant vos congés ou fermetures exceptionnelles.",
+    "DEFAULT_TITLE": "Vacances",
+    "FIELDS": {
+      "TITLE": "Titre",
+      "TITLE_PLACEHOLDER": "Ex: Vacances d'été, Fermeture annuelle...",
+      "TITLE_HELP": "Ce titre sera visible dans votre agenda professionnel.",
+      "START": "Date de début",
+      "END": "Date de fin"
+    },
+    "ERRORS": {
+      "START_END_REQUIRED": "Merci de renseigner une date de début et une date de fin.",
+      "END_AFTER_START": "La date de fin doit être postérieure à la date de début."
+    }
+  },
+  "ACTIONS": {
+    "REFRESH": "Actualiser",
+    "RESET": "Réinitialiser"
+  },
   "TABS": {
     "FINANCE": "Suivi financier",
     "GENERAL_INFO": "Informations générales",
+    "VACATIONS": "Vacances",
     "EMPLOYEES": "Gestions des employés",
     "SERVICES": "Gestion des prestations",
     "PHOTOS": "Galerie photos",

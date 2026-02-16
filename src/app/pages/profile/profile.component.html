@@ -149,6 +149,11 @@
             </app-shop-management>
           </mat-tab>
 
+          <mat-tab color="primary" [label]="'TABS.VACATIONS' | translate">
+            <app-shop-vacations *ngIf="myShopData?._id && me?._id" [myShopData]="myShopData" [me]="me">
+            </app-shop-vacations>
+          </mat-tab>
+
           <mat-tab color="primary" *ngIf="me && me.role === 'admin'" [label]="'TABS.EMPLOYEES' | translate">
             <app-shop-employees *ngIf="myShopData && me" [me]="me"></app-shop-employees>
           </mat-tab>
