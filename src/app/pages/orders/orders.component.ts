@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { SeoService } from 'src/app/core/services/seo.service';
+import { ProblemService } from 'src/app/core/services/problem.service';
 
 @Component({
   selector: 'app-orders',
@@ -41,6 +42,7 @@ export class OrdersComponent implements OnInit {
     private userService: UserService,
     private translate: TranslateService,
     private router: Router,
+    private problemService: ProblemService,
     private stripeService: StripeService,
     private transactionService: TransactionService,
     private toastr: ToastrService,
@@ -56,7 +58,7 @@ export class OrdersComponent implements OnInit {
   // 🔹 Méthode principale d’initialisation du composant
   // -------------------------------
   ngOnInit(): void {
-        this.seoService.updateMeta('order');
+    this.seoService.updateMeta('order');
     localStorage.setItem('tabs', 'orders'); // Sauvegarde le contexte d’onglet
 
     // Détection automatique de la langue du navigateur
@@ -291,6 +293,9 @@ export class OrdersComponent implements OnInit {
   // 🔹 Marquer un client absent
   // -------------------------------
   markClientAbsent(order: any) {
+    console.log('Client absent pour la commande', order);
+    this.reportProblem(order, 'NO_SHOW');
+    /*
     this.bookingService.updateBookingStatus(order._id, 'no-show-client', this.storedLangue).subscribe({
       next: () => {
         this.transactionService.getAll().subscribe({
@@ -317,6 +322,13 @@ export class OrdersComponent implements OnInit {
         console.error('Erreur no-show-client :', err);
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       }
+    });*/
+  }
+
+  reportProblem(order: any, type: 'NO_SHOW' | 'LATE' | 'REFUND_REQUEST' | 'OTHER') {
+    this.problemService.reportProblem(order._id, { type }).subscribe({
+      //next: () => this.switchUserOrPro(),
+      error: (e) => console.error('reportProblem error:', e),
     });
   }
 
@@ -324,6 +336,8 @@ export class OrdersComponent implements OnInit {
   // 🔹 Marquer un prestataire absent
   // -------------------------------
   markPrestataireAbsent(order: any) {
+    this.reportProblem(order, 'NO_SHOW');
+    /*
     this.bookingService.updateBookingStatus(order._id, 'no-show-pro', this.storedLangue).subscribe({
       next: () => {
         // Remboursement client
@@ -360,7 +374,7 @@ export class OrdersComponent implements OnInit {
         console.error('Erreur no-show-pro :', err);
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       }
-    });
+    });*/
   }
 
   // -------------------------------

@@ -31,6 +31,12 @@
           <div class="shop-main-info">
             <div class="shop-name">
               {{ shop.name }}
+              <!-- ✅ BADGE GLOBAL (visibilité maximale) -->
+              <span class="shop-state-badge" [ngClass]="getShopState(shop).css"
+                [attr.title]="getShopState(shop).tooltip">
+                {{ getShopState(shop).label }}
+              </span>
+
               <span class="moderation-badge" *ngIf="isShopFlagged(shop)"
                 [attr.title]="getShopFlagReasons(shop).join(', ')">
                 ⚠️ À vérifier
@@ -83,7 +89,10 @@
         </th>
         <td mat-cell *matCellDef="let shop">
           <span class="status-chip" [ngClass]="shop.active ? 'status-active' : 'status-inactive'"
-            (click)="$event.stopPropagation(); toggleBlockUser(shop)">
+            [class.disabled]="shop.status === 'blocked'" [attr.title]="shop.status === 'blocked'
+        ? 'Boutique bloquée : utilisez le flow de déblocage (si existant) ou modifiez le status côté admin.'
+        : 'Clique pour activer/désactiver'"
+            (click)="$event.stopPropagation(); shop.status !== 'blocked' && toggleBlockUser(shop)">
             <span class="status-bullet"></span>
             <span class="status-label">
               {{
@@ -92,6 +101,18 @@
               : ("ADMIN_SHOP.INACTIVE" | translate)
               }}
             </span>
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderable">
+        <th mat-header-cell *matHeaderCellDef>Réservations</th>
+        <td mat-cell *matCellDef="let shop">
+          <span class="orderable-chip" [ngClass]="isShopOrderable(shop) ? 'orderable-yes' : 'orderable-no'"
+            [attr.title]="isShopOrderable(shop)
+            ? 'La boutique peut recevoir de nouvelles réservations.'
+            : 'La boutique ne peut PAS recevoir de nouvelles réservations.'">
+            {{ isShopOrderable(shop) ? '✅ OUI' : '⛔ NON' }}
           </span>
         </td>
       </ng-container>

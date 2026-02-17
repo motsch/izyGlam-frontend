@@ -1,0 +1,307 @@
+<div class="page">
+
+  <div class="header">
+    <div>
+      <h2>⚠️ Problèmes réservations</h2>
+      <p class="sub">Dossiers ouverts (signalements client / prestataire) à traiter manuellement.</p>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn" (click)="loadOpenProblems()" [disabled]="loading">
+        🔄 Rafraîchir
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="errorMsg" class="error">
+    {{ errorMsg }}
+  </div>
+
+  <div class="content">
+    <!-- LEFT: LIST -->
+    <div class="left">
+      <div class="card">
+        <div class="card-title">
+          <span>Open</span>
+          <span class="chip">{{ problems.length }}</span>
+        </div>
+
+        <div *ngIf="loading" class="loading">Chargement…</div>
+
+        <div *ngIf="!loading && problems.length === 0" class="empty">
+          Aucun problème ouvert.
+        </div>
+
+        <div class="list" *ngIf="!loading && problems.length > 0">
+          <button
+            class="list-item"
+            *ngFor="let p of problems"
+            (click)="selectProblem(p)"
+            [class.active]="selectedProblem?._id === p._id"
+          >
+            <div class="top">
+              <span class="badge">{{ p.type }}</span>
+              <span class="time">{{ p.reportedAtUi | date:'short' }}</span>
+            </div>
+
+            <div class="mid">
+              <strong>{{ p.shop?.name || p.booking?.establishmentName || '—' }}</strong><br />
+              <span class="muted">{{ p.service?.name || p.booking?.productName || '—' }}</span>
+            </div>
+
+            <div class="bot">
+              <span>Signalé par: <strong>{{ p.reportedBy }}</strong></span>
+              <span class="status">OPEN</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: DETAILS -->
+    <div class="right">
+      <div class="card" *ngIf="selectedProblem; else noSelection">
+        <div class="card-title">
+          <span>Détails</span>
+          <span class="chip">{{ selectedProblem.type }}</span>
+        </div>
+
+        <!-- ✅ VISU BOOKING -->
+        <div class="section">
+          <h3>📌 Réservation</h3>
+
+          <div class="grid">
+            <div class="field">
+              <label>Shop</label>
+              <div class="value">
+                <strong>{{ shop?.name || booking?.establishmentName || '—' }}</strong>
+                <div class="muted" *ngIf="shop?.handle">@{{ shop.handle }}</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Service</label>
+              <div class="value">
+                <strong>{{ service?.name || booking?.productName || '—' }}</strong>
+                <div class="muted" *ngIf="service?.duration">⏱ {{ service.duration }} min</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Date / Heure</label>
+              <div class="value">
+                {{ selectedProblem.bookingStartUi | date:'fullDate' }}<br />
+                <strong>{{ selectedProblem.bookingStartUi | date:'shortTime' }}</strong>
+                →
+                <strong>{{ selectedProblem.bookingEndUi | date:'shortTime' }}</strong>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Prix</label>
+              <div class="value">
+                <strong>{{ formatPrice(booking?.price) }}€</strong>
+                <div class="muted">Commission: {{ formatPrice(booking?.commission) }}€</div>
+              </div>
+            </div>
+
+            <div class="field full">
+              <label>Adresse</label>
+              <div class="value row">
+                <span>{{ booking?.address || '—' }}</span>
+                <button class="mini" (click)="openMaps(booking?.address)" [disabled]="!booking?.address">Maps</button>
+                <button class="mini" (click)="copy(booking?.address)" [disabled]="!booking?.address">Copier</button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Status booking</label>
+              <div class="value">
+                <strong>{{ booking?.status || '—' }}</strong>
+                <div class="muted" *ngIf="booking?.problemActive">⚠ problemActive</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Prestation confirmée</label>
+              <div class="value">
+                {{ booking?.proCodeConfirmed ? '✅ Oui' : '❌ Non' }}
+              </div>
+            </div>
+
+            <div class="field full">
+              <label>BookingId</label>
+              <div class="value row">
+                <span>{{ selectedProblem.bookingId }}</span>
+                <button class="mini" (click)="copy(selectedProblem.bookingId)">Copier</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIGNAL -->
+        <div class="section">
+          <h3>🧾 Signalement</h3>
+
+          <div class="grid">
+            <div class="field">
+              <label>Signalé par</label>
+              <div class="value">{{ selectedProblem.reportedBy }}</div>
+            </div>
+
+            <div class="field">
+              <label>Date signalement</label>
+              <div class="value">
+                {{ selectedProblem.reportedAtUi | date:'fullDate' }} - {{ selectedProblem.reportedAtUi | date:'shortTime' }}
+              </div>
+            </div>
+
+            <div class="field full">
+              <label>Message</label>
+              <div class="value">
+                {{ selectedProblem.message || '—' }}
+              </div>
+            </div>
+
+            <div class="field full" *ngIf="selectedProblem.evidence">
+              <label>Preuves</label>
+              <div class="value">
+                <div *ngIf="selectedProblem.evidence.photoUrl">
+                  📷 Photo: <a [href]="selectedProblem.evidence.photoUrl" target="_blank">ouvrir</a>
+                </div>
+
+                <div *ngIf="selectedProblem.evidence.lat && selectedProblem.evidence.lng">
+                  📍 Loc: {{ selectedProblem.evidence.lat }}, {{ selectedProblem.evidence.lng }}
+                  <span *ngIf="selectedProblem.evidence.accuracyMeters"> (±{{ selectedProblem.evidence.accuracyMeters }}m)</span>
+                </div>
+
+                <div *ngIf="!selectedProblem.evidence.photoUrl && !(selectedProblem.evidence.lat && selectedProblem.evidence.lng)">
+                  —
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT -->
+        <div class="section">
+          <h3>📞 Contacter</h3>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <div class="contact-title">Client</div>
+
+              <div class="row">
+                <span class="muted">Nom:</span>
+                <strong>{{ client?.firstname || '—' }} {{ client?.lastname || '' }}</strong>
+              </div>
+
+              <div class="row">
+                <span class="muted">Tel:</span>
+                <strong>{{ client?.phone || '—' }}</strong>
+                <button class="mini" (click)="call(client?.phone)" [disabled]="!client?.phone">Appeler</button>
+                <button class="mini" (click)="copy(client?.phone)" [disabled]="!client?.phone">Copier</button>
+              </div>
+
+              <div class="row">
+                <span class="muted">Email:</span>
+                <strong>{{ client?.email || '—' }}</strong>
+                <button class="mini" (click)="email(client?.email)" [disabled]="!client?.email">Email</button>
+                <button class="mini" (click)="copy(client?.email)" [disabled]="!client?.email">Copier</button>
+              </div>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-title">Prestataire</div>
+
+              <div class="row">
+                <span class="muted">Nom:</span>
+                <strong>{{ pro?.firstname || '—' }} {{ pro?.lastname || '' }}</strong>
+              </div>
+
+              <div class="row">
+                <span class="muted">Tel:</span>
+                <strong>{{ pro?.phone || '—' }}</strong>
+                <button class="mini" (click)="call(pro?.phone)" [disabled]="!pro?.phone">Appeler</button>
+                <button class="mini" (click)="copy(pro?.phone)" [disabled]="!pro?.phone">Copier</button>
+              </div>
+
+              <div class="row">
+                <span class="muted">Email:</span>
+                <strong>{{ pro?.email || '—' }}</strong>
+                <button class="mini" (click)="email(pro?.email)" [disabled]="!pro?.email">Email</button>
+                <button class="mini" (click)="copy(pro?.email)" [disabled]="!pro?.email">Copier</button>
+              </div>
+
+              <div class="row">
+                <span class="muted">Abonnement:</span>
+                <strong>{{ getProPlanLabel(selectedProblem) }}</strong>
+                <span class="chip" style="margin-left:8px;">{{ getProSubscriptionStatus(selectedProblem) }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESOLVE -->
+        <div class="section">
+          <h3>✅ Verdict admin</h3>
+
+          <div class="form">
+            <label>Note admin (interne)</label>
+            <textarea [(ngModel)]="adminNote" rows="3" placeholder="Explique la décision…"></textarea>
+
+            <div class="row">
+              <label class="muted">Refund</label>
+              <select [(ngModel)]="refund">
+                <option value="NONE">NONE</option>
+                <option value="FULL">FULL</option>
+                <option value="PARTIAL">PARTIAL</option>
+              </select>
+
+              <label class="muted">Pénalité</label>
+              <label class="switch">
+                <input type="checkbox" [(ngModel)]="penalty">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="actions">
+              <button class="btn danger"
+                      (click)="presetVerdict('NO_SHOW_PRO'); resolve('NO_SHOW_PRO')"
+                      [disabled]="isResolvingCurrent()">
+                NO_SHOW_PRO (refund + pénalité)
+              </button>
+
+              <button class="btn"
+                      (click)="presetVerdict('NO_SHOW_CLIENT'); resolve('NO_SHOW_CLIENT')"
+                      [disabled]="isResolvingCurrent()">
+                NO_SHOW_CLIENT
+              </button>
+
+              <button class="btn"
+                      (click)="presetVerdict('REFUND_FULL_NO_PENALTY'); resolve('REFUND_FULL_NO_PENALTY')"
+                      [disabled]="isResolvingCurrent()">
+                REFUND FULL (sans pénalité)
+              </button>
+
+              <button class="btn ghost"
+                      (click)="presetVerdict('NO_ACTION'); resolve('NO_ACTION')"
+                      [disabled]="isResolvingCurrent()">
+                NO ACTION
+              </button>
+            </div>
+
+            <div class="loading" *ngIf="isResolvingCurrent()">Traitement…</div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noSelection>
+        <div class="card empty-right">
+          <div class="big">Sélectionne un dossier à gauche 👈</div>
+          <div class="muted">Tu verras ici tous les détails + le verdict.</div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

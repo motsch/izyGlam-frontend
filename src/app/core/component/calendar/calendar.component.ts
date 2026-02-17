@@ -10,6 +10,7 @@ import { TransactionService } from '../../services/transaction.service';
 import { UserService } from '../../services/user.service';
 import { InvoiceService } from '../../services/invoice.service';
 import { ToastrService } from 'ngx-toastr';
+import { ProblemService } from '../../services/problem.service';
 
 @Component({
   selector: 'app-calendar',
@@ -47,9 +48,10 @@ export class CalendarComponent implements OnInit {
     private translate: TranslateService,
     private router: Router,
     private invoiceService: InvoiceService,
-    private stripeService: StripeService,
-    private transactionService: TransactionService,
+    // private stripeService: StripeService,
+    // private transactionService: TransactionService,
     private financialService: FinancialService,
+    private problemService: ProblemService,
     private toastr: ToastrService
   ) {
     // ⬇️ Par défaut FR
@@ -425,6 +427,8 @@ export class CalendarComponent implements OnInit {
   // ------------------------------------------------------
   markClientAbsent(order: any) {
     console.log('Client absent pour la commande', order);
+    this.reportProblem(order, 'NO_SHOW');
+    /*
     this.bookingService
       .updateBookingStatus(order._id, 'no-show-client', this.storedLangue)
       .subscribe(
@@ -468,6 +472,14 @@ export class CalendarComponent implements OnInit {
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
         }
       );
+      */
+  }
+
+  reportProblem(order: any, type: 'NO_SHOW' | 'LATE' | 'REFUND_REQUEST' | 'OTHER') {
+    this.problemService.reportProblem(order._id, { type }).subscribe({
+      next: () => this.switchUserOrPro(),
+      error: (e) => console.error('reportProblem error:', e),
+    });
   }
 
   // ------------------------------------------------------
@@ -573,103 +585,104 @@ export class CalendarComponent implements OnInit {
   // ------------------------------------------------------
   markPrestataireAbsent(order: any) {
     console.log('Prestataire absent pour la commande', order);
-
-    this.bookingService
-      .updateBookingStatus(order._id, 'no-show-pro', this.storedLangue)
-      .subscribe(
-        (response) => {
-          console.log('Booking no-show-pro response :', JSON.stringify(response));
-
-          this.stripeService.refundPayment(order.paymentIntentId).subscribe({
-            next: (refundResponse: any) => {
-              console.log('Remboursement complet réussi via Stripe :', refundResponse);
-
-              this.transactionService.getAll().subscribe(
-                (transactions: any[]) => {
-                  const matchingTransactions = transactions.filter((tx) => tx.idBooking === order._id);
-                  console.log('Transactions trouvées pour ce booking :', matchingTransactions);
-                  if (matchingTransactions.length > 0) {
-                    matchingTransactions.forEach((tx: any) => {
-                      tx.status = 'refunded';
-                      this.transactionService.update(tx).subscribe(
-                        (updatedTx) => {
-                          console.log('Transaction MAJ pour remboursement :', JSON.stringify(updatedTx));
-                        },
-                        (error) => {
-                          console.error('Erreur MAJ transaction (refund) :', JSON.stringify(error));
-                          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                        }
-                      );
-                    });
-                  } else {
-                    console.warn('Aucune transaction trouvée pour ce booking.');
-                  }
-                },
-                (error) => {
-                  console.error('Erreur récupération des transactions :', JSON.stringify(error));
-                  this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-                }
-              );
-
-              const totalAmount = parseFloat(order.price);
-              const commission = order.commission ? parseFloat(order.commission) : 0;
-              const additionalPenalty = totalAmount * 0.1;
-              const totalPenalty = commission + additionalPenalty;
-
-              const penaltyTransactionPayload = {
-                userProId: order.userProId,
-                type: 'debit',
-                amount: totalPenalty,
-                description: 'Pénalité pour no-show-pro : commission + 10% additionnels',
-                status: 'completed',
-                idBooking: order._id,
-              };
-
-              this.transactionService.create(penaltyTransactionPayload).subscribe({
-                next: (penaltyResponse: any) => {
-                  console.log('Transaction de pénalité créée pour le prestataire :', penaltyResponse);
-
-                  const platformTransactionPayload = {
-                    userProId: 'platform',
-                    type: 'credit',
+    this.reportProblem(order, 'NO_SHOW');
+    /*
+        this.bookingService
+          .updateBookingStatus(order._id, 'no-show-pro', this.storedLangue)
+          .subscribe(
+            (response) => {
+              console.log('Booking no-show-pro response :', JSON.stringify(response));
+    
+              this.stripeService.refundPayment(order.paymentIntentId).subscribe({
+                next: (refundResponse: any) => {
+                  console.log('Remboursement complet réussi via Stripe :', refundResponse);
+    
+                  this.transactionService.getAll().subscribe(
+                    (transactions: any[]) => {
+                      const matchingTransactions = transactions.filter((tx) => tx.idBooking === order._id);
+                      console.log('Transactions trouvées pour ce booking :', matchingTransactions);
+                      if (matchingTransactions.length > 0) {
+                        matchingTransactions.forEach((tx: any) => {
+                          tx.status = 'refunded';
+                          this.transactionService.update(tx).subscribe(
+                            (updatedTx) => {
+                              console.log('Transaction MAJ pour remboursement :', JSON.stringify(updatedTx));
+                            },
+                            (error) => {
+                              console.error('Erreur MAJ transaction (refund) :', JSON.stringify(error));
+                              this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                            }
+                          );
+                        });
+                      } else {
+                        console.warn('Aucune transaction trouvée pour ce booking.');
+                      }
+                    },
+                    (error) => {
+                      console.error('Erreur récupération des transactions :', JSON.stringify(error));
+                      this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                    }
+                  );
+    
+                  const totalAmount = parseFloat(order.price);
+                  const commission = order.commission ? parseFloat(order.commission) : 0;
+                  const additionalPenalty = totalAmount * 0.1;
+                  const totalPenalty = commission + additionalPenalty;
+    
+                  const penaltyTransactionPayload = {
+                    userProId: order.userProId,
+                    type: 'debit',
                     amount: totalPenalty,
-                    description: 'Crédit de pénalité suite à no-show-pro (commission + 10% additionnels)',
+                    description: 'Pénalité pour no-show-pro : commission + 10% additionnels',
                     status: 'completed',
                     idBooking: order._id,
                   };
-
-                  this.transactionService.create(platformTransactionPayload).subscribe({
-                    next: (platformTxResponse: any) => {
-                      console.log('Transaction de crédit pour la plateforme :', platformTxResponse);
-                      this.toastr.success(
-                        this.translate.instant('SUCCESS.MARKED_NO_SHOW_PRO') || 'Prestataire marqué absent.'
-                      );
+    
+                  this.transactionService.create(penaltyTransactionPayload).subscribe({
+                    next: (penaltyResponse: any) => {
+                      console.log('Transaction de pénalité créée pour le prestataire :', penaltyResponse);
+    
+                      const platformTransactionPayload = {
+                        userProId: 'platform',
+                        type: 'credit',
+                        amount: totalPenalty,
+                        description: 'Crédit de pénalité suite à no-show-pro (commission + 10% additionnels)',
+                        status: 'completed',
+                        idBooking: order._id,
+                      };
+    
+                      this.transactionService.create(platformTransactionPayload).subscribe({
+                        next: (platformTxResponse: any) => {
+                          console.log('Transaction de crédit pour la plateforme :', platformTxResponse);
+                          this.toastr.success(
+                            this.translate.instant('SUCCESS.MARKED_NO_SHOW_PRO') || 'Prestataire marqué absent.'
+                          );
+                        },
+                        error: (platformTxError: any) => {
+                          console.error('Erreur création transaction plateforme :', platformTxError);
+                          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                        },
+                      });
                     },
-                    error: (platformTxError: any) => {
-                      console.error('Erreur création transaction plateforme :', platformTxError);
+                    error: (penaltyError: any) => {
+                      console.error('Erreur création transaction pénalité :', penaltyError);
                       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                     },
                   });
                 },
-                error: (penaltyError: any) => {
-                  console.error('Erreur création transaction pénalité :', penaltyError);
+                error: (refundError: any) => {
+                  console.error('Erreur remboursement Stripe :', refundError);
                   this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
                 },
               });
+    
+              this.switchUserOrPro();
             },
-            error: (refundError: any) => {
-              console.error('Erreur remboursement Stripe :', refundError);
+            (error) => {
+              console.error('Erreur MAJ booking (no-show-pro) :', JSON.stringify(error));
               this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-            },
-          });
-
-          this.switchUserOrPro();
-        },
-        (error) => {
-          console.error('Erreur MAJ booking (no-show-pro) :', JSON.stringify(error));
-          this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
-        }
-      );
+            }
+          );*/
   }
 
   // ------------------------------------------------------

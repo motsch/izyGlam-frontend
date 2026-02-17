@@ -100,6 +100,7 @@ import { IzyPhonebottomComponent } from './component/izyPhone-bottom/izyPhone-bo
 import { AdminCountryManagementComponent } from './component/admin-country-management/admin-country-management.component';
 import { CookieBannerComponent } from './component/cookie-banner/cookie-banner.component';
 import { ShopVacationsComponent } from './component/shop-agenda/shop-vacations.component';
+import { AdminProblemResaManagementComponent } from './component/admin-problem-resa-management/admin-problem-resa-management.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
     return new TranslateHttpLoader(httpClient);
@@ -223,6 +224,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         ShopCategoryManagementComponent,
         OrderCardComponent,
         ReviewModalComponent,
+        AdminProblemResaManagementComponent,
         PostComponent,
         AdminCommunicationManagementComponent,
         AdminB2bLeadManagementComponent,
@@ -251,6 +253,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         PostComponent,
         ModalYesNoComponent,
         AdminCountryManagementComponent,
+        AdminProblemResaManagementComponent,
         OrderItemComponent,
         PostFakeGenerationComponent,
         CompanyManagementComponent,

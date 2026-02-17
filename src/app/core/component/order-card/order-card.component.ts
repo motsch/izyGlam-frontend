@@ -14,6 +14,7 @@ import { StripeService } from '../../services/stripe.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { ShopService } from '../../services/shop.service';
+import { ProblemService } from '../../services/problem.service';
 
 @Component({
   selector: 'app-order-card',
@@ -58,6 +59,7 @@ export class OrderCardComponent {
     private transactionService: TransactionService,
     private bookingService: BookingService,
     private financialService: FinancialService,
+    private problemService: ProblemService,
     private toastr: ToastrService,
     private shopService: ShopService,
     private translate: TranslateService
@@ -227,6 +229,13 @@ export class OrderCardComponent {
     }
   }
 
+  reportProblem(order: any, type: 'NO_SHOW' | 'LATE' | 'REFUND_REQUEST' | 'OTHER') {
+    this.problemService.reportProblem(order._id, { type }).subscribe({
+      //next: () => this.switchUserOrPro(),
+      error: (e) => console.error('reportProblem error:', e),
+    });
+  }
+
   /**
    * Marque le prestataire comme absent (no-show-pro)
    * - Update statut
@@ -235,10 +244,11 @@ export class OrderCardComponent {
    * - Pénalité : commission + 10% du total, débit prestataire + crédit plateforme
    */
   markPrestataireAbsent(order: any) {
-    try {
       if (!order?._id) return;
 
       console.log('[OrderCard] no-show-pro →', order?._id);
+    this.reportProblem(order, 'NO_SHOW');
+    /*
       this.bookingService.updateBookingStatus(order._id, 'no-show-pro', this.storedLangue).subscribe({
         next: () => {
           // 1) Remboursement Stripe intégral du client
@@ -327,7 +337,7 @@ export class OrderCardComponent {
     } catch (e) {
       console.error('[OrderCard] markPrestataireAbsent try/catch ERROR:', e);
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'), 'error');
-    }
+    }*/
   }
 
   // ============================================================

@@ -29,6 +29,7 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     'ville',
     'note',
     'status',
+    'orderable',
     'verification',
     'actions',
   ];
@@ -138,11 +139,15 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
         this.shops = (data || []).sort((a, b) => {
           const fa = this.isShopFlagged(a) ? 1 : 0;
           const fb = this.isShopFlagged(b) ? 1 : 0;
-          // flaggués d'abord
-          if (fa !== fb) return fb - fa;
-          // sinon tri secondaire (ex: nom)
+          if (fa !== fb) return fb - fa; // flagged d'abord
+
+          const ba = a?.status === 'blocked' ? 1 : 0;
+          const bb = b?.status === 'blocked' ? 1 : 0;
+          if (ba !== bb) return bb - ba; // blocked ensuite
+
           return (a?.name || '').localeCompare(b?.name || '');
         });
+
         this.dataSource.data = this.shops;
 
         if (this.paginator) this.dataSource.paginator = this.paginator;
@@ -258,6 +263,58 @@ export class AdminShopsManagementComponent implements OnInit, AfterViewInit {
     const a = this.shop?.placeAddress;
     if (!a) return false;
     return !!(a.addressLine1 && a.postalCode && a.city);
+  }
+
+  getShopState(shop: any): { label: string; css: string; tooltip: string } {
+    const active = shop?.active !== false;
+    const status = (shop?.status || '').toString();
+
+    // logique "orderable" = peut recevoir de NOUVELLES réservations
+    const orderable = active && status === 'approved';
+
+    // ✅ Priorités visuelles (le plus critique d'abord)
+    if (status === 'blocked') {
+      return {
+        label: '⛔ BLOQUÉE',
+        css: 'state-blocked',
+        tooltip: 'Boutique bloquée : aucune nouvelle réservation autorisée. Les bookings existants restent gérables.'
+      };
+    }
+
+    if (!active) {
+      return {
+        label: '⏸ INACTIVE',
+        css: 'state-inactive',
+        tooltip: 'Boutique inactive : aucune nouvelle réservation autorisée.'
+      };
+    }
+
+    if (status === 'needs_manual_review') {
+      return {
+        label: '⚠️ À VÉRIFIER',
+        css: 'state-review',
+        tooltip: 'Boutique en revue : à contrôler / modérer.'
+      };
+    }
+
+    if (status === 'approved') {
+      return {
+        label: '✅ OK',
+        css: 'state-approved',
+        tooltip: 'Boutique approuvée : réservations autorisées.'
+      };
+    }
+
+    // fallback : status inconnu (draft, pending, etc.)
+    return {
+      label: '🟡 EN ATTENTE',
+      css: 'state-pending',
+      tooltip: `Statut: ${status || 'inconnu'}. Selon la règle métier, la boutique ne doit pas recevoir de nouvelles réservations tant qu’elle n’est pas "approved".`
+    };
+  }
+
+  isShopOrderable(shop: any): boolean {
+    return (shop?.active !== false) && shop?.status === 'approved';
   }
 
 
