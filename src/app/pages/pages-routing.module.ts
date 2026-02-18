@@ -34,7 +34,8 @@ import { QrDownloadComponent } from './qr-download/qr-download.component';
 const routes: Routes = [
     {
         path: 'main',
-        component: MainComponent, canActivate: []
+        component: MainComponent, 
+        canActivate: [AuthGuard],
     },
     {
         path: 'quick',
