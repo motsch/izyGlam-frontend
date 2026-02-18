@@ -14,6 +14,7 @@ import { MatDrawer } from '@angular/material/sidenav';
 import { AdminService } from './core/services/admin.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { filter } from 'rxjs/operators';
+import { SsoService } from './core/services/sso.service';
 
 @Component({
   selector: 'app-root',
@@ -46,6 +47,7 @@ export class AppComponent implements OnInit {
     public dialog: MatDialog,
     private cdr: ChangeDetectorRef,
     private adminService: AdminService,
+    private ssoService: SsoService,
     private geoLocationService: GeoLocationService
   ) {
     translate.addLangs([
@@ -61,7 +63,7 @@ export class AppComponent implements OnInit {
       this.me = user;
     });
 
-    
+
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {
@@ -139,7 +141,20 @@ export class AppComponent implements OnInit {
 
   goTo(name: string) {
     if (name === 'shop') {
-      window.open('https://shop.izyglam.com', '_blank', 'noopener,noreferrer');
+      this.drawerService.closeDrawer();
+      this.ssoService.createHandoffCode().subscribe({
+        next: ({ code }) => {
+          console.log('SSO code =', code);
+
+          const url = this.ssoService.buildShopSsoUrl(environment.shopIzyGlam, code);
+          console.log('Open URL =', url);
+
+          window.open(url, '_blank', 'noopener,noreferrer');
+        },
+        error: () => {
+          console.error('Impossible de générer le code SSO');
+        }
+      });
       return;
     }
 

@@ -10,7 +10,7 @@
     </div>
 
     <div class="header-actions">
-      <button mat-stroked-button class="btn-refresh" type="button" (click)="loadVacations?.()"
+      <button mat-stroked-button class="btn-refresh" type="button" (click)="loadVacations()"
         [disabled]="loadingVacations">
         <span class="dot" [class.pulse]="loadingVacations"></span>
         {{ 'ACTIONS.REFRESH' | translate }}
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <form class="form-grid" (ngSubmit)="addVacation?.()" novalidate>
+    <form class="form-grid" (ngSubmit)="addVacation()" novalidate>
 
       <!-- Titre -->
       <div class="field full">
@@ -75,7 +75,7 @@
           {{ 'VACATIONS.ADD_ACTION' | translate }}
         </button>
 
-        <button mat-button type="button" class="btn-secondary" (click)="resetForm?.()" [disabled]="loadingVacations">
+        <button mat-button type="button" class="btn-secondary" (click)="resetForm()" [disabled]="loadingVacations">
           {{ 'ACTIONS.RESET' | translate }}
         </button>
       </div>
@@ -99,7 +99,7 @@
 
       <div class="count">
         <span class="count-dot"></span>
-        <span>{{ (vacations?.length || 0) }} {{ 'VACATIONS.COUNT' | translate }}</span>
+        <span>{{ (vacations.length || 0) }} {{ 'VACATIONS.COUNT' | translate }}</span>
       </div>
     </div>
 
@@ -120,7 +120,7 @@
     </div>
 
     <!-- Items -->
-    <div class="vacations-list" *ngIf="!loadingVacations && vacations?.length">
+    <div class="vacations-list" *ngIf="!loadingVacations && vacations.length">
       <div class="vacation-item" *ngFor="let v of vacations; trackBy: trackByVacationId">
         <div class="left">
           <div class="chip">
@@ -141,7 +141,7 @@
         </div>
 
         <div class="right">
-          <button mat-icon-button class="btn-delete" (click)="deleteVacation?.(v._id)" [disabled]="loadingVacations" aria-label="delete">
+          <button mat-icon-button class="btn-delete" (click)="deleteVacation(v._id)" [disabled]="loadingVacations" aria-label="delete">
             <span class="trash margin-top-n20">
               <i class="fa fa-trash"></i>
             </span>

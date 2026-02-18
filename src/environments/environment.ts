@@ -34,7 +34,8 @@ export const environment = {
     App_Android: "https://play.google.com/store/apps/details?id=com.izyglam.client",
     App_iOS: "",
     stripePublicKey: 'pk_test_51NG9rzEDs001iAIL6R6k2IMnLte54Cs3Iihtv9cC95dDobeYSiqPeBpRgZgyRFbyyUhkYzRoG3AI2Wb738MYSRVk00mFFBaVSy', // Remplacez par votre clé publique  
-
+    shopIzyGlam: "http://localhost:4200/",
+    coreIzyGlam: "http://127.0.0.1:4200/",
     izyglamCompany: {
         brandName: "izyGlam",
         companyName: "IZYGLAM SAS",
