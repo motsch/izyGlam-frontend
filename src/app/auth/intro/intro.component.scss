@@ -154,8 +154,12 @@
     /* évite les retours à la ligne “bizarres” */
   }
 
+  .logo {
+    width: 120px;
+  }
+  
   .title-white {
-    color: #ffffff;
+    color: #d36d8e;
     display: inline-block;
     white-space: nowrap;
     font-weight: 600;

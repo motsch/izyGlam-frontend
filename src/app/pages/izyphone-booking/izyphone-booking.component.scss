@@ -1,87 +1,340 @@
+/* =========================
+   izyGlam — Apple-like SCSS
+   For: .izyphone-wrapper
+   ========================= */
+
+/* Optional: si tu as déjà un reset global, tu peux retirer ça */
+:host {
+  display: block;
+  font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #1f1a1c;
+}
+
+/* ---------- Theme tokens ---------- */
+$bg1: #f7c7d1;
+$bg2: #f3aebd;
+
+$cardBg: rgba(255, 255, 255, 0.55);
+$cardBgStrong: rgba(255, 255, 255, 0.72);
+$stroke: rgba(255, 255, 255, 0.55);
+$strokeSoft: rgba(210, 120, 150, 0.25);
+
+$text: #1f1a1c;
+$textSoft: rgba(31, 26, 28, 0.7);
+
+$brand: #b43b62;         // rose framboise
+$brand2: #d65780;        // plus lumineux
+$brandSoft: rgba(180, 59, 98, 0.12);
+
+$danger: #d63a3a;
+$dangerSoft: rgba(214, 58, 58, 0.12);
+
+$success: #1f9d63;
+$successSoft: rgba(31, 157, 99, 0.12);
+
+$radiusXL: 26px;
+$radiusL: 18px;
+
+/* ---------- Helpers ---------- */
+@mixin glass-card($bg: $cardBg) {
+  background: $bg;
+  border: 1px solid $stroke;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.10),
+    0 10px 30px rgba(180, 59, 98, 0.12);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+  border-radius: $radiusXL;
+}
+
+@mixin focus-ring($color: rgba(180, 59, 98, 0.35)) {
+  outline: none;
+  box-shadow:
+    0 0 0 5px $color,
+    0 10px 25px rgba(0, 0, 0, 0.08);
+  border-color: rgba(180, 59, 98, 0.45);
+}
+
 .izyphone-wrapper {
-  max-width: 520px;
-  margin: 24px auto;
-  padding: 0 16px;
-  font-family: Arial, sans-serif;
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 28px 18px 60px;
+  position: relative;
+
+  /* Background premium "soft" */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(1200px 800px at 20% 10%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 60%),
+      radial-gradient(900px 600px at 85% 25%, rgba(255, 245, 248, 0.75) 0%, rgba(255, 255, 255, 0) 55%),
+      linear-gradient(180deg, rgba($bg1, 0.75) 0%, rgba($bg2, 0.35) 60%, rgba(255, 255, 255, 0.95) 100%);
+  }
+
+  /* petits halos */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    z-index: -3;
+    background:
+      radial-gradient(400px 280px at 15% 40%, rgba(180, 59, 98, 0.18), rgba(180, 59, 98, 0) 70%),
+      radial-gradient(460px 320px at 90% 55%, rgba(214, 87, 128, 0.16), rgba(214, 87, 128, 0) 70%);
+    filter: blur(18px);
+  }
 }
 
+/* ---------- Card container ---------- */
 .box {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 16px;
-  background: #fff;
+  @include glass-card();
+  padding: 26px 24px;
+  overflow: hidden;
+  position: relative;
+
+  /* fine grain highlight */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.15) 35%,
+      rgba(255, 255, 255, 0.0) 60%
+    );
+    opacity: 0.6;
+  }
+
+  h2 {
+    margin: 0 0 14px;
+    font-size: clamp(22px, 2.2vw, 28px);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: $text;
+  }
+
+  /* Chargement */
+  &:not(.error) {
+    color: $text;
+  }
+
+  /* Responsive padding */
+  @media (max-width: 560px) {
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
 }
 
+/* box d’erreur de chargement (ton HTML: class="box error") */
+.box.error {
+  @include glass-card(rgba(255, 255, 255, 0.65));
+  border-color: rgba(214, 58, 58, 0.35);
+
+  color: $danger;
+  font-weight: 600;
+}
+
+/* ---------- Summary ---------- */
 .summary {
-  margin: 12px 0 18px;
-  padding: 10px;
-  border: 1px dashed #ddd;
-  border-radius: 8px;
-  font-size: 14px;
+  margin: 10px 0 16px;
+  padding: 14px 14px;
+  border-radius: $radiusL;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid $strokeSoft;
+  display: grid;
+  gap: 6px;
+
+  b {
+    color: rgba($text, 0.9);
+    font-weight: 700;
+  }
+
+  div {
+    color: $textSoft;
+    font-size: 14px;
+  }
+}
+
+/* ---------- Form layout ---------- */
+form {
+  margin-top: 6px;
 }
 
 .row {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 12px;
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+
+  label {
+    font-size: 13px;
+    font-weight: 650;
+    color: rgba($text, 0.82);
+    letter-spacing: 0.01em;
+  }
+
+  input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(180, 59, 98, 0.18);
+    background: rgba(255, 255, 255, 0.72);
+    color: $text;
+    font-size: 15px;
+    transition: transform 120ms ease, box-shadow 180ms ease, border-color 180ms ease, background 180ms ease;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+
+    &::placeholder {
+      color: rgba(31, 26, 28, 0.35);
+    }
+
+    &:hover {
+      border-color: rgba(180, 59, 98, 0.28);
+      transform: translateY(-1px);
+    }
+
+    &:focus {
+      @include focus-ring(rgba(180, 59, 98, 0.28));
+      background: rgba(255, 255, 255, 0.84);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+  }
+
+  small {
+    margin-top: 2px;
+    color: $danger;
+    font-size: 12px;
+    font-weight: 600;
+  }
 }
 
-label {
-  font-weight: 600;
+/* Inputs invalid (Angular ajoute souvent ng-invalid/ng-touched) */
+input.ng-invalid.ng-touched {
+  border-color: rgba(214, 58, 58, 0.45) !important;
+  box-shadow:
+    0 0 0 5px rgba(214, 58, 58, 0.14),
+    0 10px 22px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ---------- Separator ---------- */
+hr {
+  margin: 18px 0;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(180, 59, 98, 0) 0%, rgba(180, 59, 98, 0.20) 50%, rgba(180, 59, 98, 0) 100%);
+}
+
+/* ---------- Info block ---------- */
+.info {
+  margin: 14px 0 0;
+  padding: 14px 14px;
+  border-radius: $radiusL;
+  background: rgba(180, 59, 98, 0.08);
+  border: 1px solid rgba(180, 59, 98, 0.18);
+  color: rgba($text, 0.82);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* ---------- Inline error / success under form ---------- */
+.error {
+  margin-top: 10px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: $dangerSoft;
+  border: 1px solid rgba(214, 58, 58, 0.18);
+  color: $danger;
+  font-weight: 650;
   font-size: 13px;
 }
 
-input {
-  height: 38px;
-  padding: 0 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-small {
-  color: #b00020;
-  font-size: 12px;
-}
-
-button {
-  width: 100%;
-  height: 44px;
-  border: 0;
-  border-radius: 10px;
-  background: #111;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-button[disabled] {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.error {
-  margin-top: 12px;
-  color: #b00020;
-  font-weight: 600;
-}
-
 .success {
-  margin-top: 16px;
-  padding: 12px;
-  border-radius: 10px;
-  background: #e8fff0;
-  border: 1px solid #b7f2c7;
+  margin-top: 12px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  background: $successSoft;
+  border: 1px solid rgba(31, 157, 99, 0.20);
+  color: $success;
+  font-weight: 700;
+  font-size: 13px;
 }
 
-.payNow {
-  margin-top: 10px;
+/* ---------- Primary button ---------- */
+button[type="submit"] {
+  width: 100%;
+  height: 50px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+
+  color: #fff;
+  font-weight: 750;
+  letter-spacing: 0.01em;
+  font-size: 15px;
+
+  background: linear-gradient(135deg, $brand 0%, $brand2 60%, #e06c90 100%);
+  box-shadow:
+    0 20px 45px rgba(180, 59, 98, 0.32),
+    0 10px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 120ms ease, box-shadow 180ms ease, filter 180ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+    box-shadow:
+      0 26px 55px rgba(180, 59, 98, 0.36),
+      0 12px 22px rgba(0, 0, 0, 0.10);
+  }
+
+  &:active {
+    transform: translateY(0px) scale(0.99);
+    box-shadow:
+      0 14px 30px rgba(180, 59, 98, 0.28),
+      0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  &:focus {
+    @include focus-ring(rgba(255, 255, 255, 0.35));
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.68;
+    filter: grayscale(0.1);
+    box-shadow: none;
+    transform: none;
+  }
 }
-.payNow a {
-  display: inline-block;
-  padding: 10px 12px;
-  border: 1px solid #111;
-  border-radius: 10px;
-  text-decoration: none;
-  color: #111;
+
+/* ---------- Subtle “loading” state for the submit button text ---------- */
+/* (ton HTML: submitting ? 'Validation...' : ...) */
+button[disabled] {
+  position: relative;
+}
+
+/* ---------- Mobile tweaks ---------- */
+@media (max-width: 560px) {
+  .summary {
+    padding: 12px;
+  }
+
+  .row input {
+    height: 46px;
+    border-radius: 14px;
+  }
+
+  button[type="submit"] {
+    height: 48px;
+    border-radius: 16px;
+  }
 }
