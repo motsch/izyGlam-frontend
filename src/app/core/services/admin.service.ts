@@ -3,10 +3,26 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
+type BalanceStatus = 'ok' | 'unavailable' | 'error';
+
+interface ProviderBalance {
+  amount: number | null;
+  currency: string | null;
+  status: BalanceStatus;
+  updatedAt: string | null;
+}
+
+export interface AdminBalancesResponse {
+  twilio: ProviderBalance;
+  bigbuy: ProviderBalance;
+  openai: ProviderBalance;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
+
   constructor(private http: HttpClient) { }
 
   // Récupérer les paramètres administratifs
@@ -27,5 +43,9 @@ export class AdminService {
   // Supprimer les paramètres administratifs
   deleteAdminSettings(): Observable<any> {
     return this.http.delete(`${environment.apiUrl}admin-settings`);
+  }
+
+  getBalances(): Observable<AdminBalancesResponse> {
+    return this.http.get<AdminBalancesResponse>(`${environment.apiUrl}admin-settings/balances`);
   }
 }

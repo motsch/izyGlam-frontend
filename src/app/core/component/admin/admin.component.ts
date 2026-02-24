@@ -6,6 +6,22 @@ import { BookingService } from '../../services/booking.service';
 // ✅ AjoutsizyGlam : toasts + i18n
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
+import { AdminService } from '../../services/admin.service';
+
+type BalanceStatus = 'ok' | 'unavailable' | 'error';
+
+interface ProviderBalance {
+  amount: number | null;
+  currency: string | null;
+  status: BalanceStatus;
+  updatedAt: string | null; // ISO string
+}
+
+interface AdminBalancesResponse {
+  twilio: ProviderBalance;
+  bigbuy: ProviderBalance;
+  openai: ProviderBalance;
+}
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +29,11 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-
+  balances: AdminBalancesResponse = {
+    twilio: { amount: null, currency: null, status: 'unavailable', updatedAt: null },
+    bigbuy: { amount: null, currency: null, status: 'unavailable', updatedAt: null },
+    openai: { amount: null, currency: null, status: 'unavailable', updatedAt: null },
+  };
   // -----------------------------
   // 📊 KPIs affichés sur le dashboard
   // -----------------------------
@@ -24,12 +44,7 @@ export class AdminComponent implements OnInit {
   // -----------------------------
   // 🏪 Échantillon de boutiques (mock)
   // -----------------------------
-  shops = [
-    { name: 'Boutique 1', ville: 'Paris', revenue: 30000, reservations: 200, averageRating: 4.5 },
-    { name: 'Boutique 2', ville: 'Lyon', revenue: 20000, reservations: 150, averageRating: 4.3 },
-    { name: 'Boutique 3', ville: 'Marseille', revenue: 25000, reservations: 180, averageRating: 4.7 },
-    // Plus de boutiques fictives...
-  ];
+  shops = [];
 
   // Détail d’une boutique sélectionnée (modal)
   selectedShop: any = null;
@@ -38,11 +53,12 @@ export class AdminComponent implements OnInit {
     private userService: UserService,
     private shopService: ShopService,
     private bookingService: BookingService,
+    private adminService: AdminService,
 
     // ✅ InjectionsizyGlam
     private toastr: ToastrService,
     private translate: TranslateService
-  ) {}
+  ) { }
 
   // ------------------------------------------------------
   // ⏱️ Au chargement : sauvegarde menu + récupération KPIs
@@ -84,8 +100,9 @@ export class AdminComponent implements OnInit {
         this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
       }
     });
+    this.loadBalances();
   }
-  
+
   // ------------------------------------------------------
   // ❌ Fermer la modale d’une boutique
   // ------------------------------------------------------
@@ -100,5 +117,30 @@ export class AdminComponent implements OnInit {
     // StandardizyGlam : erreurs → toastr.error
     // Clé i18n recommandée : ERROR.GENERIC_ERROR
     this.toastr.error(message);
+  }
+
+  loadBalances(): void {
+    this.adminService.getBalances().subscribe({
+      next: (data) => {
+        this.balances = data;
+      },
+      error: (err) => {
+        console.error('Erreur balances admin:', err);
+        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+        // On laisse les valeurs par défaut (unavailable)
+      }
+    });
+  }
+
+  getStatusLabel(status: 'ok' | 'unavailable' | 'error'): string {
+    if (status === 'ok') return 'OK';
+    if (status === 'unavailable') return 'Indispo';
+    return 'Erreur';
+  }
+
+  getAltLabel(status: 'ok' | 'unavailable' | 'error'): string {
+    if (status === 'unavailable') return 'N/A';
+    if (status === 'error') return '--';
+    return '';
   }
 }

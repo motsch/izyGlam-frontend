@@ -1,5 +1,98 @@
 <div class="container">
     <!-- Section: Vue d'ensemble de l'activité -->
+
+  <!-- ✅ Section: Soldes fournisseurs -->
+  <div class="row mb-4">
+    <!-- Twilio -->
+    <div class="col-md-4 col-sm-12 mb-3">
+      <div class="admin-card kpi-card kpi-twilio">
+        <div class="kpi-header">
+          <div class="kpi-title">
+            <span class="kpi-dot dot-twilio"></span>
+            <span>Twilio</span>
+          </div>
+          <span class="kpi-status" [ngClass]="balances.twilio.status">
+            {{ getStatusLabel(balances.twilio.status) }}
+          </span>
+        </div>
+
+        <div class="kpi-value">
+          <ng-container *ngIf="balances.twilio.status === 'ok'; else twilioAlt">
+            {{ balances.twilio.amount | number:'1.2-2' }} {{ balances.twilio.currency }}
+          </ng-container>
+          <ng-template #twilioAlt>
+            <span class="kpi-na">{{ getAltLabel(balances.twilio.status) }}</span>
+          </ng-template>
+        </div>
+
+        <div class="kpi-footer">
+          <span *ngIf="balances.twilio.updatedAt">
+            Maj: {{ balances.twilio.updatedAt | date:'dd/MM/yyyy HH:mm' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BigBuy -->
+    <div class="col-md-4 col-sm-12 mb-3">
+      <div class="admin-card kpi-card kpi-bigbuy">
+        <div class="kpi-header">
+          <div class="kpi-title">
+            <span class="kpi-dot dot-bigbuy"></span>
+            <span>BigBuy</span>
+          </div>
+          <span class="kpi-status" [ngClass]="balances.bigbuy.status">
+            {{ getStatusLabel(balances.bigbuy.status) }}
+          </span>
+        </div>
+
+        <div class="kpi-value">
+          <ng-container *ngIf="balances.bigbuy.status === 'ok'; else bigbuyAlt">
+            {{ balances.bigbuy.amount | number:'1.2-2' }} {{ balances.bigbuy.currency }}
+          </ng-container>
+          <ng-template #bigbuyAlt>
+            <span class="kpi-na">{{ getAltLabel(balances.bigbuy.status) }}</span>
+          </ng-template>
+        </div>
+
+        <div class="kpi-footer">
+          <span *ngIf="balances.bigbuy.updatedAt">
+            Maj: {{ balances.bigbuy.updatedAt | date:'dd/MM/yyyy HH:mm' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- OpenAI -->
+    <div class="col-md-4 col-sm-12 mb-3">
+      <div class="admin-card kpi-card kpi-openai">
+        <div class="kpi-header">
+          <div class="kpi-title">
+            <span class="kpi-dot dot-openai"></span>
+            <span>OpenAI</span>
+          </div>
+          <span class="kpi-status" [ngClass]="balances.openai.status">
+            {{ getStatusLabel(balances.openai.status) }}
+          </span>
+        </div>
+
+        <div class="kpi-value">
+          <ng-container *ngIf="balances.openai.status === 'ok'; else openaiAlt">
+            {{ balances.openai.amount | number:'1.2-2' }} {{ balances.openai.currency }}
+          </ng-container>
+          <ng-template #openaiAlt>
+            <span class="kpi-na">{{ getAltLabel(balances.openai.status) }}</span>
+          </ng-template>
+        </div>
+
+        <div class="kpi-footer">
+          <span *ngIf="balances.openai.updatedAt">
+            Maj: {{ balances.openai.updatedAt | date:'dd/MM/yyyy HH:mm' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="row">
       <div class="col-md-4 col-sm-12 mb-4">
         <div class="admin-card">
