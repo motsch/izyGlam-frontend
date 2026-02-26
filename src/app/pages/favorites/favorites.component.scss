@@ -4,11 +4,16 @@
 
 .page-container {
   margin-top: 80px;
-  width: 100%; /* 🔥 Remplace bien 98vw par 100% */
-  max-width: 100vw; /* 🔥 Assure qu'on ne dépasse jamais la largeur du viewport */
-  min-height: 100vh; /* 🔥 Permet d'occuper toute la hauteur, évite les scrolls inutiles */
-  overflow-x: hidden; /* 🔥 Coupe tout débordement horizontal */
-  overflow-y: auto; /* 🔥 Permet un scroll vertical uniquement si VRAIMENT nécessaire */
+  width: 100%;
+  /* 🔥 Remplace bien 98vw par 100% */
+  max-width: 100vw;
+  /* 🔥 Assure qu'on ne dépasse jamais la largeur du viewport */
+  min-height: 100vh;
+  /* 🔥 Permet d'occuper toute la hauteur, évite les scrolls inutiles */
+  overflow-x: hidden;
+  /* 🔥 Coupe tout débordement horizontal */
+  overflow-y: auto;
+  /* 🔥 Permet un scroll vertical uniquement si VRAIMENT nécessaire */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,13 +170,16 @@
 }
 
 .test66 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
   gap: 20px;
   width: 100%;
   padding: 0 16px;
   box-sizing: border-box;
+
+  /* 🔥 Colonnes auto, chaque card garde une largeur stable */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
+  /* centre les cards dans leur colonne */
 }
 
 .card {

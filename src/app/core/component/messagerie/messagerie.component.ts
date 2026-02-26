@@ -609,7 +609,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
       const el = this.chatMessages.nativeElement;
       setTimeout(() => { el.scrollTop = el.scrollHeight; }, 0);
     } catch (e) {
-      // Pas bloquant (par exemple si l’élément n’existe pas encore)
+      // Pas bloquant
     }
   }
 
@@ -621,10 +621,18 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
     if (!conversation) return '';
     if (this.isSupport(conversation)) return 'Support';
 
-    if (conversation.name && conversation.participants?.length > 2) {
-      return conversation.name;
+    // ✅ Si un name existe, on le "nettoie" (supprime "• date")
+    if (conversation.name) {
+      const cleaned = this.stripNameAfterBullet(conversation.name);
+      if (cleaned) return cleaned;
     }
 
+    // Group conversation
+    if (conversation.name && conversation.participants?.length > 2) {
+      return this.stripNameAfterBullet(conversation.name);
+    }
+
+    // 1-to-1 conversation
     if (conversation.participants && conversation.participants.length === 2) {
       const other = conversation.participants.find((p: any) => p._id !== this.currentUserId);
       if (other) {
@@ -633,7 +641,14 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
       }
     }
 
-    return conversation.name || 'Conversation';
+    return this.stripNameAfterBullet(conversation.name || 'Conversation');
+  }
+
+  private stripNameAfterBullet(name: string): string {
+    if (!name) return '';
+    // Supprime tout à partir de "•" (inclus) + trim
+    const idx = name.indexOf('•');
+    return (idx === -1 ? name : name.slice(0, idx)).trim();
   }
 
   getLastMessage(conversation: any): string {
@@ -665,7 +680,7 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
     this.supportPreviewTime = new Date(last.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 
-  /** Message par défaut pour le bandeau support (clé i18n à brancher si dispo) */
+  /** Message par défaut pour le bandeau support */
   translateSupportDefault() {
     return 'Votre service client à portée de main';
   }
@@ -675,14 +690,102 @@ export class MessagerieComponent implements OnInit, OnChanges, AfterViewInit, On
   }
 
   // =========================
+  // Booking-centric UI helpers
+  // =========================
+
+  // ✅ Choisis ton fuseau d’affichage
+  // Si tu veux UTC partout -> 'UTC'
+  // Si tu veux France -> 'Europe/Paris'
+  private readonly DISPLAY_TIMEZONE = 'Europe/Paris';
+
+  private asDate(value: any): Date | null {
+    if (!value) return null;
+    const d = new Date(value);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  private formatDateTime(date: Date, opts: Intl.DateTimeFormatOptions): string {
+    try {
+      return new Intl.DateTimeFormat(this.currentLang || 'fr', {
+        timeZone: this.DISPLAY_TIMEZONE,
+        ...opts,
+      }).format(date);
+    } catch {
+      return date.toLocaleString();
+    }
+  }
+
+  private getBookingStart(conv: any): Date | null {
+    const start = this.asDate(conv?.bookingRef?.start);
+    if (start) return start;
+
+    const dateOnly = this.asDate(conv?.bookingRef?.date);
+    return dateOnly;
+  }
+
+  /** ✅ Titre principal à gauche (prestations / booking) */
+  getConversationTitle(conversation: any): string {
+    if (!conversation) return '';
+    if (this.isSupport(conversation)) return 'Support';
+
+    const b = conversation.bookingRef;
+    if (b?.title) return b.title;
+    if (b?.productName) return b.productName;
+    if (b?.establishmentName) return b.establishmentName;
+
+    return this.getConversationName(conversation);
+  }
+
+  /** ✅ Sous-titre à gauche (salon + statut) */
+  getConversationSubtitle(conversation: any): string {
+    if (!conversation) return '';
+    if (this.isSupport(conversation)) return this.supportPreview || this.translateSupportDefault();
+
+    const b = conversation.bookingRef;
+    const parts: string[] = [];
+
+    if (b?.establishmentName) parts.push(b.establishmentName);
+    if (b?.status) parts.push(b.status);
+
+    if (parts.length > 0) return parts.join(' • ');
+    return this.getLastMessage(conversation);
+  }
+
+  /** ✅ Méta time à droite dans la liste (priorité date booking) */
+  getConversationMetaTime(conversation: any): string {
+    if (!conversation) return '-';
+    if (this.isSupport(conversation)) return this.supportPreviewTime || '';
+
+    const bookingStart = this.getBookingStart(conversation);
+    if (bookingStart) {
+      return this.formatDateTime(bookingStart, { hour: '2-digit', minute: '2-digit' });
+    }
+
+    return this.getLastMessageTime(conversation);
+  }
+
+  /** ✅ Date dans le header (format clean, sans GMT+0000) */
+  getConversationHeaderDate(conversation: any): string {
+    if (!conversation) return '';
+    if (this.isSupport(conversation)) return '';
+
+    const bookingStart = this.getBookingStart(conversation);
+    if (!bookingStart) return '';
+
+    return this.formatDateTime(bookingStart, {
+      weekday: 'short',
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  }
+
+  // =========================
   // Toasts centralisés
   // =========================
 
-  /**
-   * Affiche un toast de succès/erreur avec i18n.
-   * @param keyOrMessage clé i18n (‘ERROR.GENERIC_ERROR’) ou message brut
-   * @param type 'success' | 'error'
-   */
   private showCustomToast(keyOrMessage: string, type: 'success' | 'error' = 'success') {
     try {
       const translated = this.translate.instant(keyOrMessage);

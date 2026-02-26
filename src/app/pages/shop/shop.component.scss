@@ -446,11 +446,21 @@ app-round-shop-card,
 }
 
 /* Actions wrapper (retour + partager) */
+/* Actions wrapper (retour + partager) */
 .shop-actions {
   display: flex;
   gap: 12px;
   align-items: center;
   margin-top: 14px;
+
+  /* ✅ Desktop: boutons alignés à gauche avec marge */
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+/* ✅ IMPORTANT : annule le push à droite sur desktop */
+.shop-actions .share-pill {
+  margin-left: 0;
 }
 
 /* Share modal */
@@ -606,7 +616,6 @@ app-shop-item-card {
     flex-wrap: wrap;
   }
 
-  /* IMPORTANT : sinon le bouton se décale bizarrement sur mobile */
   .share-pill {
     margin-left: 0;
   }
@@ -700,7 +709,13 @@ app-shop-item-card {
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -16,6 +16,7 @@ import { DrawerService } from 'src/app/core/services/drawer.service';
 import { BookingCategoryService } from 'src/app/core/services/booking-category.service';
 import { forkJoin, of } from 'rxjs';
 import { switchMap, tap, catchError } from 'rxjs/operators';
+import { ReviewsModalService } from 'src/app/core/services/reviews-modal.service';
 
 @Component({
     selector: 'app-shop',
@@ -67,6 +68,7 @@ export class ShopComponent {
     isExpanded = false;
     loading = false;
     izyPhone: string | null = null;
+    modalOpen = false;
 
     constructor(
         private router: Router,
@@ -83,7 +85,8 @@ export class ShopComponent {
         // ✅ InjectionsizyGlam
         private toastr: ToastrService,
         private translate: TranslateService,
-        private bookingCategoryService: BookingCategoryService
+        private bookingCategoryService: BookingCategoryService,
+        private reviewsModal: ReviewsModalService
     ) { }
 
     // ----------------------------------------------------
@@ -152,6 +155,17 @@ export class ShopComponent {
             })
         ).subscribe();
 
+    }
+
+    // ======================= Modale =======================
+    // ouvre la modale globale
+    openModal() {
+        this.reviewsModal.open(this.shopInfo);
+    }
+
+    // (optionnel) fermer depuis la carte si besoin
+    closeModal() {
+        this.reviewsModal.close();
     }
 
     // ----------------------------------------------------

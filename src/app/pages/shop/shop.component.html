@@ -21,7 +21,7 @@
                   <h4>{{ shopInfo.name }}</h4>
                   <div class="pink">{{ shopInfo.trad | translate }}</div>
                 </div>
-                <span>
+                <span (click)="openModal()">
                   {{ shopInfo.note ?? 5 }}
                   <img [src]="imgStorageUrl + 'star.png'" alt="starLogo" class="starLogo" />
                   ({{ shopInfo.noteCount ?? 0 }}+)
@@ -200,4 +200,35 @@
 <div class="loader-overlay" *ngIf="loading">
   <div class="spinner"></div>
   <p>{{ 'PAYEMENT.TRAITEMENT' | translate }}...</p>
+</div>
+
+
+<!-- Modal -->
+<div class="modal" role="dialog" aria-modal="true" [class.show]="modalOpen"
+  [style.display]="modalOpen ? 'flex' : 'none'" (click)="closeModal()">
+  <div class="modal-dialog custom-modal-width" (click)="$event.stopPropagation()">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">{{ 'SHOP_CARD.AVIS' | translate }}: {{ shopInfo.name }}</h3>
+        <button type="button" class="btn-close" [attr.aria-label]="'ADDRESS_MODAL.CLOSE' | translate"
+          (click)="closeModal()"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group" *ngFor="let review of shopInfo.reviews">
+          <label>{{ 'SHOP_CARD.COMMENT' | translate }}:</label>
+          <div>{{ review.comment }}</div>
+
+          <label>{{ 'SHOP_CARD.NOTE' | translate }}:</label>
+          <div>{{ review.rating }}</div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          {{ 'SHOP_CARD.CLOSE' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

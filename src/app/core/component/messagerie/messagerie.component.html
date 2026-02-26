@@ -3,7 +3,7 @@
   <!-- Liste des conversations -->
   <div class="conversation-list" [ngClass]="{ 'open': isConversationListOpen }">
 
-    <!-- Refresh (tu peux remplacer ça par ton propre bouton) -->
+    <!-- Refresh -->
     <div *ngIf="isConversationListOpen" class="refresh-container">
       <button class="refresh-btn" (click)="refreshPage($event)">⟳</button>
     </div>
@@ -16,7 +16,9 @@
       <!-- Accès rapide support même si aucune conv -->
       <div class="conversation-item" (click)="getOrCreateSupportConversation()">
         <div class="conversation-content">
-          <img src="assets/images/default2.jpeg" class="profile-pic" [attr.alt]="'MESSAGE.SERVICE_CLIENT' | translate">
+          <img src="assets/images/default2.jpeg"
+               class="profile-pic"
+               [attr.alt]="'MESSAGE.SERVICE_CLIENT' | translate">
           <div class="conversation-info">
             <h3>{{ "MESSAGE.SERVICE_CLIENT" | translate }}</h3>
             <p>{{ supportPreview || translateSupportDefault() }}</p>
@@ -27,7 +29,9 @@
 
       <!-- Form création conv -->
       <div class="new-conversation-form">
-        <input type="email" [(ngModel)]="newConversationEmail" [placeholder]="'QUICK.EMAIL_PLACEHOLDER' | translate"
+        <input type="email"
+               [(ngModel)]="newConversationEmail"
+               [placeholder]="'QUICK.EMAIL_PLACEHOLDER' | translate"
                class="input-email" />
         <button class="create-button" (click)="createConversationByEmail()">
           {{ "MESSAGE.CREATE_CONV" | translate }}
@@ -37,35 +41,45 @@
 
     <!-- Liste quand on a des conversations -->
     <ng-container *ngIf="conversations.length > 0">
-      <!-- Conversations utilisateur -->
       <div *ngFor="let conversation of conversations; trackBy: trackByConvId"
            class="conversation-item"
            [class.active]="selectedConversation?._id === conversation._id"
            (click)="selectConversation(conversation)">
+
         <div class="conversation-content">
           <img *ngIf="conversation.participants?.length === 2"
-               [src]="getProfileImage(conversation)" class="profile-pic" [attr.alt]="'PROFILE.TITLE' | translate">
+               [src]="getProfileImage(conversation)"
+               class="profile-pic"
+               [attr.alt]="'PROFILE.TITLE' | translate">
+
           <div class="conversation-info">
             <h3>
-              {{ getConversationName(conversation) }}
+              <!-- ✅ Ligne 1 : nom boutique -->
+              {{ conversation?.bookingRef?.establishmentName || getConversationName(conversation) }}
+
               <span *ngIf="conversation.unreadCount > 0" class="badge">
                 {{ conversation.unreadCount }}
               </span>
             </h3>
-            <p>{{ getLastMessage(conversation) }}</p>
+
+            <!-- ✅ Ligne 2 : nom prestation -->
+            <p>
+              {{ conversation?.bookingRef?.productName || '' }}
+            </p>
           </div>
-          <span class="message-time">{{ getLastMessageTime(conversation) }}</span>
+
+          <!-- ✅ Heure à droite (booking start formaté via TS) -->
+          <span class="message-time">{{ getConversationMetaTime(conversation) }}</span>
         </div>
       </div>
     </ng-container>
   </div>
 
-  <!-- 🔥 Backdrop mobile pour fermer en touchant à côté -->
+  <!-- Backdrop mobile -->
   <div class="backdrop" *ngIf="isConversationListOpen" (click)="isConversationListOpen = false"></div>
 
   <!-- Zone de chat -->
   <div class="chat-box" *ngIf="selectedConversation">
-    <!-- 🔥 Header compact avec bouton menu (affiché seulement sur mobile) -->
     <div class="chat-header">
       <button
         class="toggle-conversation-list"
@@ -76,10 +90,15 @@
         ☰
       </button>
 
-      <h2>{{ getConversationName(selectedConversation) }}</h2>
+      <!-- ✅ Header : destinataire + 1 seule date formatée -->
+      <h2>
+        {{ getConversationName(selectedConversation) }}
+        <span class="header-sep">•</span>
+        <span class="header-date">{{ getConversationHeaderDate(selectedConversation) }}</span>
+      </h2>
     </div>
 
-    <!-- Messages - zone scrollable -->
+    <!-- Messages -->
     <div class="chat-messages" #chatMessages>
       <ng-container *ngFor="let message of selectedConversation?.messages; trackBy: trackByMessage">
         <div class="message-row" [ngClass]="{
@@ -89,16 +108,19 @@
 
           <div class="bubble" [ngClass]="{ 'photo': message.messageType === 'photo', 'failed': message.__failed }">
             <ng-container [ngSwitch]="message.messageType">
-              <img *ngSwitchCase="'photo'" [src]="message.mediaUrl" [attr.alt]="'MESSAGE.PHOTO_SENT' | translate" />
+              <img *ngSwitchCase="'photo'"
+                   [src]="message.mediaUrl"
+                   [attr.alt]="'MESSAGE.PHOTO_SENT' | translate" />
               <p *ngSwitchDefault>{{ message.content }}</p>
             </ng-container>
+
             <span class="timestamp">{{ message.createdAt | date:'shortTime' }}</span>
           </div>
         </div>
       </ng-container>
     </div>
 
-    <!-- Input (toujours visible en bas) -->
+    <!-- Input -->
     <div class="message-input">
       <textarea
         #messageBox
@@ -113,8 +135,10 @@
         autofocus>
       </textarea>
 
-      <button class="send-button" (click)="sendMessage()"
-              [disabled]="isSending" [class.sending]="isSending">
+      <button class="send-button"
+              (click)="sendMessage()"
+              [disabled]="isSending"
+              [class.sending]="isSending">
         ➤
       </button>
     </div>
