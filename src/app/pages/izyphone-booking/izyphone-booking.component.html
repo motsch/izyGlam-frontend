@@ -14,67 +14,119 @@
       <div><b>Prix :</b> {{ bookingSummary.price }} €</div>
       <div><b>Date :</b> {{ bookingSummary.date }}</div>
     </div>
+    model: {{ model | json }}
+    error: {{ errors | json }}
 
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <label>Email *</label>
+      <input
+        type="email"
+        [(ngModel)]="model.email"
+        (input)="onFieldInput('email')"
+        placeholder="ex: client@mail.com"
+      />
+      <small *ngIf="errors.email">{{ errors.email }}</small>
+    </div>
+
+    <div class="row">
+      <label>Prénom *</label>
+      <input
+        type="text"
+        [(ngModel)]="model.firstname"
+        (input)="onFieldInput('firstname')"
+      />
+      <small *ngIf="errors.firstname">{{ errors.firstname }}</small>
+    </div>
+
+    <div class="row">
+      <label>Nom *</label>
+      <input
+        type="text"
+        [(ngModel)]="model.lastname"
+        (input)="onFieldInput('lastname')"
+      />
+      <small *ngIf="errors.lastname">{{ errors.lastname }}</small>
+    </div>
+
+    <div class="row">
+      <label>Téléphone *</label>
+      <input
+        type="text"
+        [(ngModel)]="model.phone"
+        (input)="onFieldInput('phone')"
+        [disabled]="phoneLocked"
+      />
+      <small *ngIf="errors.phone">{{ errors.phone }}</small>
+      <small *ngIf="phoneLocked" class="hint">Téléphone verrouillé (fourni lors de l’appel).</small>
+    </div>
+
+    <hr />
+
+    <div *ngIf="serviceMode === 'DOMICILE'">
       <div class="row">
-        <label>Email *</label>
-        <input type="email" formControlName="email" />
-        <small *ngIf="form.get('email')?.touched && form.get('email')?.invalid">Email invalide</small>
+        <label>Adresse *</label>
+        <input
+          type="text"
+          [(ngModel)]="model.addressLine1"
+          (input)="onFieldInput('addressLine1')"
+          placeholder="Numéro et rue"
+        />
+        <small *ngIf="errors.addressLine1">{{ errors.addressLine1 }}</small>
       </div>
 
       <div class="row">
-        <label>Prénom *</label>
-        <input type="text" formControlName="firstname" />
+        <label>Complément</label>
+        <input
+          type="text"
+          [(ngModel)]="model.addressLine2"
+          (input)="onFieldInput('addressLine2')"
+          placeholder="Bâtiment, étage, etc."
+        />
       </div>
 
       <div class="row">
-        <label>Nom *</label>
-        <input type="text" formControlName="lastname" />
+        <label>Code postal *</label>
+        <input
+          type="text"
+          [(ngModel)]="model.postalCode"
+          (input)="onFieldInput('postalCode')"
+        />
+        <small *ngIf="errors.postalCode">{{ errors.postalCode }}</small>
       </div>
 
       <div class="row">
-        <label>Téléphone *</label>
-        <input type="text" formControlName="phone" />
+        <label>Ville *</label>
+        <input
+          type="text"
+          [(ngModel)]="model.city"
+          (input)="onFieldInput('city')"
+        />
+        <small *ngIf="errors.city">{{ errors.city }}</small>
       </div>
 
-      <hr />
-
-      <div *ngIf="serviceMode === 'DOMICILE'">
-        <div class="row">
-          <label>Adresse *</label>
-          <input type="text" formControlName="addressLine1" placeholder="Numéro et rue" />
-        </div>
-
-        <div class="row">
-          <label>Complément</label>
-          <input type="text" formControlName="addressLine2" placeholder="Bâtiment, étage, etc." />
-        </div>
-
-        <div class="row">
-          <label>Code postal *</label>
-          <input type="text" formControlName="postalCode" />
-        </div>
-
-        <div class="row">
-          <label>Ville *</label>
-          <input type="text" formControlName="city" />
-        </div>
-
-        <div class="row">
-          <label>Pays *</label>
-          <input type="text" formControlName="country" />
-        </div>
+      <div class="row">
+        <label>Pays *</label>
+        <input
+          type="text"
+          [(ngModel)]="model.country"
+          (input)="onFieldInput('country')"
+        />
+        <small *ngIf="errors.country">{{ errors.country }}</small>
       </div>
-      <div *ngIf="serviceMode === 'SALON'" class="info">
-        ✅ Rendez-vous au salon : l’adresse sera celle du salon, vous n’avez rien à renseigner ici.
-      </div>
-      <div class="error" *ngIf="submitError">
-        {{ submitError }}
-      </div>
-      <button type="submit" [disabled]="submitting">
-        {{ submitting ? 'Validation...' : 'Valider et payer' }}
-      </button>
-    </form>
+    </div>
+
+    <div *ngIf="serviceMode === 'SALON'" class="info">
+      ✅ Rendez-vous au salon : l’adresse sera celle du salon, vous n’avez rien à renseigner ici.
+    </div>
+
+    <div class="error" *ngIf="submitError">
+      {{ submitError }}
+    </div>
+
+    <button type="button" (click)="submit()" [disabled]="submitting">
+      {{ submitting ? 'Validation...' : 'Valider et payer' }}
+    </button>
+
     <div class="success" *ngIf="submitSuccess">
       ✅ Redirection vers le paiement en cours...
     </div>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { IzyphoneBookingService } from 'src/app/core/services/izyphone-booking.service';
+
+type ServiceMode = 'SALON' | 'DOMICILE';
 
 @Component({
   selector: 'app-izyphone-booking',
@@ -20,32 +21,24 @@ export class IzyphoneBookingComponent implements OnInit {
 
   bookingSummary: any = null;
   checkoutUrl = '';
-  serviceMode: 'SALON' | 'DOMICILE' = 'SALON';
+  serviceMode: ServiceMode = 'SALON';
 
-  form!: FormGroup;
+  phoneLocked = false;
+
+  // ✅ modèle ngModel
+  model: any = {};
+
+  // ✅ erreurs UI (par champ)
+  errors: any = {};
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder,
     private izyphoneService: IzyphoneBookingService
   ) { }
 
   ngOnInit(): void {
     this.token = (this.route.snapshot.paramMap.get('token') || '').trim();
-
-    this.form = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      firstname: ['', [Validators.required]],
-      lastname: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-
-      addressLine1: ['', [Validators.required]],
-      addressLine2: [''],
-      postalCode: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      country: ['FR', [Validators.required]],
-    });
 
     if (!this.token) {
       this.loading = false;
@@ -61,7 +54,7 @@ export class IzyphoneBookingComponent implements OnInit {
     this.loadError = '';
 
     this.izyphoneService.getIntake(this.token).subscribe({
-      next: (res :any) => {
+      next: (res: any) => {
         if (!res?.ok) {
           this.loadError = this.mapError(res?.error) || 'Impossible de charger la réservation.';
           this.loading = false;
@@ -69,13 +62,13 @@ export class IzyphoneBookingComponent implements OnInit {
         }
 
         this.bookingSummary = res.booking || null;
-        // ✅ NEW: serviceMode depuis l’API
-        this.applyServiceModeValidators(res?.serviceMode || 'SALON');
 
-        // ✅ Si déjà payé / confirmé => page inaccessible
+        // serviceMode depuis API
+        this.applyServiceMode(res?.serviceMode || 'SALON');
+
+        // déjà payé => dehors
         const status = String(this.bookingSummary?.status || '').toLowerCase();
         const intakeStatus = String(this.bookingSummary?.intakeStatus || '').toUpperCase();
-
         const alreadyPaid =
           ['accepted', 'finished', 'paid'].includes(status) || intakeStatus === 'PAID';
 
@@ -85,23 +78,20 @@ export class IzyphoneBookingComponent implements OnInit {
         }
 
         const p = res.prefill || {};
-        this.form.patchValue({
-          email: p.email || '',
-          firstname: p.firstname || '',
-          lastname: p.lastname || '',
-          phone: p.phone || '',
-          addressLine1: p.addressLine1 || '',
-          addressLine2: p.addressLine2 || '',
-          postalCode: p.postalCode || '',
-          city: p.city || '',
-          country: p.country || 'FR',
-        });
+        this.model.email = p.email || '';
+        this.model.firstname = p.firstname || '';
+        this.model.lastname = p.lastname || '';
+        this.model.phone = p.phone || '';
+        this.model.addressLine1 = p.addressLine1 || '';
+        this.model.addressLine2 = p.addressLine2 || '';
+        this.model.postalCode = p.postalCode || '';
+        this.model.city = p.city || '';
+        this.model.country = p.country || 'FR';
 
-        // ✅ Logique simple pour “désactiver ce qui ne doit pas changer”
-        // Ici : si téléphone déjà connu -> on le lock (car c’est l’identifiant du flow Twilio).
-        const phoneVal = (p.phone || '').trim();
-        if (phoneVal) {
-          this.form.get('phone')?.disable({ emitEvent: false });
+        this.phoneLocked = !!String(p.phone || '').trim();
+
+        if (this.serviceMode === 'SALON') {
+          this.clearAddressModel();
         }
 
         this.loading = false;
@@ -113,27 +103,57 @@ export class IzyphoneBookingComponent implements OnInit {
     });
   }
 
+  // ✅ helpers UI : quand l’utilisateur tape, on retire l’erreur du champ
+  onFieldInput(field: string): void {
+    if (this.errors[field]) delete this.errors[field];
+    if (this.submitError) this.submitError = '';
+  }
+
+  onServiceModeChanged(mode: ServiceMode): void {
+    this.applyServiceMode(mode);
+
+    // si SALON => on vide les champs adresse + on clear leurs erreurs
+    if (this.serviceMode === 'SALON') {
+      this.clearAddressModel();
+      ['addressLine1', 'addressLine2', 'postalCode', 'city', 'country'].forEach(k => delete this.errors[k]);
+    }
+  }
+
+  // ✅ bouton (click)
   submit(): void {
     this.submitError = '';
     this.submitSuccess = false;
     this.checkoutUrl = '';
+    this.errors = {};
 
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      this.submitError = 'Merci de compléter tous les champs obligatoires.';
+    if (this.submitting) return;
+
+    const ok = this.validate();
+    if (!ok) {
+      this.submitError = 'Merci de corriger les champs en erreur.';
       return;
     }
 
-    if (this.submitting) return; // anti double-submit
     this.submitting = true;
 
-    const payload = this.form.getRawValue();
+    const payload: any = {
+      email: this.model.email.trim(),
+      firstname: this.model.firstname.trim(),
+      lastname: this.model.lastname.trim(),
+      phone: this.model.phone.trim(),
+    };
+
+    if (this.serviceMode === 'DOMICILE') {
+      payload.addressLine1 = this.model.addressLine1.trim();
+      payload.addressLine2 = (this.model.addressLine2 || '').trim();
+      payload.postalCode = this.model.postalCode.trim();
+      payload.city = this.model.city.trim();
+      payload.country = (this.model.country || 'FR').trim();
+    }
 
     this.izyphoneService.submitIntake(this.token, payload).subscribe({
       next: (res: any) => {
-        // Cas : backend répond ok:false + error
         if (!res?.ok) {
-          // Si déjà payé => on dégage
           if (res?.error === 'BOOKING_ALREADY_PAID') {
             window.location.href = '/main';
             return;
@@ -144,7 +164,6 @@ export class IzyphoneBookingComponent implements OnInit {
           return;
         }
 
-        // Cas : ok:true mais pas de checkoutUrl => bug / incohérence
         const url = String(res?.checkoutUrl || '').trim();
         if (!url) {
           this.submitError = 'Lien de paiement indisponible. Merci de réessayer.';
@@ -152,15 +171,11 @@ export class IzyphoneBookingComponent implements OnInit {
           return;
         }
 
-        // (optionnel) UI si tu veux afficher un état 0.5s avant redirect
         this.checkoutUrl = url;
         this.submitSuccess = true;
-
-        // ✅ Flow PRO : redirection immédiate vers Stripe
         window.location.href = url;
       },
       error: (err) => {
-        // Si ton backend renvoie directement un 409/410 etc.
         const code = err?.error?.error;
         if (code === 'BOOKING_ALREADY_PAID') {
           window.location.href = '/';
@@ -173,53 +188,54 @@ export class IzyphoneBookingComponent implements OnInit {
     });
   }
 
-  private applyServiceModeValidators(mode: string): void {
-    const m = String(mode || 'SALON').toUpperCase();
-    this.serviceMode = (m === 'DOMICILE' ? 'DOMICILE' : 'SALON');
+  private validate(): boolean {
 
-    const addressLine1 = this.form.get('addressLine1');
-    const postalCode = this.form.get('postalCode');
-    const city = this.form.get('city');
-    const country = this.form.get('country');
+    // email
+    if (!this.model.email) {
+      this.errors.email = 'Email obligatoire.';
+    }
+    else if (!this.isValidEmail(this.model.email)) { this.errors.email = 'Email invalide.' };
 
+    // noms
+    if (!this.model.firstname) { this.errors.firstname = 'Prénom obligatoire.' };
+    if (!this.model.lastname) { this.errors.lastname = 'Nom obligatoire.' };
+
+    // téléphone
+    if (!this.model.phone) { this.errors.phone = 'Téléphone obligatoire.' };
+
+    // adresse si DOMICILE
     if (this.serviceMode === 'DOMICILE') {
-      // ✅ Adresse client requise
-      addressLine1?.setValidators([Validators.required]);
-      postalCode?.setValidators([Validators.required]);
-      city?.setValidators([Validators.required]);
-      country?.setValidators([Validators.required]);
+      const a1 = (this.model.addressLine1 || '').trim();
+      const cp = (this.model.postalCode || '').trim();
+      const city = (this.model.city || '').trim();
+      const country = (this.model.country || '').trim();
 
-      // on garde enabled (le client doit saisir)
-      addressLine1?.enable({ emitEvent: false });
-      postalCode?.enable({ emitEvent: false });
-      city?.enable({ emitEvent: false });
-      country?.enable({ emitEvent: false });
-    } else {
-      // ✅ SALON : adresse client NON requise
-      addressLine1?.clearValidators();
-      postalCode?.clearValidators();
-      city?.clearValidators();
-      country?.clearValidators();
-
-      // Option A (recommandé UX) : on désactive + on vide
-      addressLine1?.setValue('', { emitEvent: false });
-      this.form.get('addressLine2')?.setValue('', { emitEvent: false });
-      postalCode?.setValue('', { emitEvent: false });
-      city?.setValue('', { emitEvent: false });
-      country?.setValue('FR', { emitEvent: false });
-
-      addressLine1?.disable({ emitEvent: false });
-      this.form.get('addressLine2')?.disable({ emitEvent: false });
-      postalCode?.disable({ emitEvent: false });
-      city?.disable({ emitEvent: false });
-      country?.disable({ emitEvent: false });
+      if (!a1) { this.errors.addressLine1 = 'Adresse obligatoire.' };
+      if (!cp) { this.errors.postalCode = 'Code postal obligatoire.' };
+      if (!city) { this.errors.city = 'Ville obligatoire.' };
+      if (!country) { this.errors.country = 'Pays obligatoire.' };
     }
 
-    // Important : recalcul de l’état du form
-    addressLine1?.updateValueAndValidity({ emitEvent: false });
-    postalCode?.updateValueAndValidity({ emitEvent: false });
-    city?.updateValueAndValidity({ emitEvent: false });
-    country?.updateValueAndValidity({ emitEvent: false });
+    // si erreurs => false
+    return Object.keys(this.errors).length === 0;
+  }
+
+  private isValidEmail(email: string): boolean {
+    // regex simple et suffisante pour UI
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  private applyServiceMode(mode: string): void {
+    const m = String(mode || 'SALON').toUpperCase();
+    this.serviceMode = (m === 'DOMICILE' ? 'DOMICILE' : 'SALON');
+  }
+
+  private clearAddressModel(): void {
+    this.model.addressLine1 = '';
+    this.model.addressLine2 = '';
+    this.model.postalCode = '';
+    this.model.city = '';
+    this.model.country = 'FR';
   }
 
   private mapError(code?: string): string {
@@ -242,9 +258,7 @@ export class IzyphoneBookingComponent implements OnInit {
       case 'PAYMENT_ALREADY_SENT': return 'Le lien de paiement a déjà été envoyé.';
       case 'TWILIO_FROM_MISSING': return 'Erreur technique (SMS). Merci de contacter le salon.';
       case 'SERVER_ERROR': return 'Erreur serveur. Réessayez dans quelques instants.';
-
-      default:
-        return '';
+      default: return '';
     }
   }
 }
