@@ -30,6 +30,7 @@ export const environment = {
   stripePublicKey: 'pk_test_51NG9rzEDs001iAIL6R6k2IMnLte54Cs3Iihtv9cC95dDobeYSiqPeBpRgZgyRFbyyUhkYzRoG3AI2Wb738MYSRVk00mFFBaVSy', // Remplacez par votre clé publique
   shopIzyGlam: "https://shop.izyglam.com/",
   coreIzyGlam: "https://izyglam.com/",
+  TVA_RATE: 0.20,
   izyglamCompany: {
     brandName: "izyGlam",
     companyName: "IZYGLAM SAS",

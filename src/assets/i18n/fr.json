@@ -185,6 +185,7 @@
     "USERNOTCREATED": "Impossible de créer l'utilisateur.",
     "INSUFFICIENT_COMPANY_CREDIT": "Le solde de l’entreprise est insuffisant pour ce crédit.",
     "GENERIC_ERROR": "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨",
+    "NO_PRO": "✨ Enregistrez vous comme prestataire ✨",
     "COMPANY_CREDITED": "Le compte de l’entreprise a été crédité.",
     "LINK_INVALID_OR_MISSING": "Lien invalide ou manquant.",
     "LINK_INVALID_OR_EXPIRED": "Lien invalide ou expiré.",
@@ -740,6 +741,8 @@
   "PAYEMENT_PRO": {
     "CHANGE_ABO": "Changer d'abonnement",
     "MONTH": "mois",
+    "HT": "HT",
+    "TTC": "TTC",
     "GO_TO_PREMIUM": "Passez à izyGlam Premium",
     "GO_TO_PRO": "Passez à izyGlam Pro",
     "FACTURATION": "Facturation mensuelle à partir d'aujourd'hui.",

@@ -10,6 +10,7 @@ import { SessionService } from 'src/app/core/services/session.service';
 import { UserService } from 'src/app/core/services/user.service';
 import { ShopService } from 'src/app/core/services/shop.service';
 import { CountryService } from 'src/app/core/services/country.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-price-plans',
@@ -23,6 +24,7 @@ export class PricePlansComponent implements OnInit {
   proSub: string | null = null;
   premiumSub: string | null = null;
   abonnements: any;
+  tva_rate = environment.TVA_RATE;
 
   constructor(
     private router: Router,
@@ -107,6 +109,22 @@ export class PricePlansComponent implements OnInit {
   // ------------------------------------------------------------------
   goToShopCreation() {
     this.router.navigate(['/creation-shop']);
+  }
+
+  getTVAPrice(price: string | null): string {
+    if (!price) return "0,00€";
+
+    const normalized = price.replace(",", ".");
+    const priceNumber = Number(normalized);
+
+    if (Number.isNaN(priceNumber)) return "0,00€";
+
+    const ttc = priceNumber * (1 + this.tva_rate);
+
+    return new Intl.NumberFormat("fr-FR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(ttc);
   }
 
   // ------------------------------------------------------------------

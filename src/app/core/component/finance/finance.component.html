@@ -58,18 +58,18 @@
 
 
       <div class="accounting-actions">
-        <button class="btn-ghost small" (click)="loadAccounting()" [disabled]="accountingLoading">
-          {{ accountingLoading ? 'Chargement…' : 'Aperçu' }}
-        </button>
-
-        <button class="btn-primary small" (click)="downloadAccountingCSV()"
+        <button *ngIf="accountingData" class="btn-primary small" (click)="downloadAccountingCSV()"
           [disabled]="accountingLoading || !accountingData">
           {{ "BANK.CSV" | translate }}
         </button>
 
-        <button class="btn-primary small alt" (click)="downloadAccountingPDF()"
+        <button *ngIf="accountingData" class="btn-primary small alt" (click)="downloadAccountingPDF()"
           [disabled]="accountingLoading || !accountingData">
           {{ "BANK.PDF" | translate }}
+        </button>
+        
+        <button class="btn-ghost small" (click)="loadAccounting()" [disabled]="accountingLoading">
+          {{ accountingData ? 'Fermer' : 'Aperçu' }}
         </button>
       </div>
 

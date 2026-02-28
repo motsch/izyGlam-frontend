@@ -25,7 +25,7 @@
     <div class="plan-card plan--free">
       <h2 class="plan-title">🌱 {{ "TARIF.FREE" | translate }}</h2>
       <div class="plan-subtitle">{{ "TARIF.FREE_SUBTITLE" | translate }}</div>
-      <p class="price">0€/mois</p>
+      <p class="price">0€/{{ "PAYEMENT_PRO.MONTH" | translate }}</p>
 
       <ul>
         <li>✅ {{ "TARIF.FREE1" | translate }}</li>
@@ -49,7 +49,8 @@
 
       <h2 class="plan-title">✨ {{ "TARIF.BASIC" | translate }}</h2>
       <div class="plan-subtitle">{{ "TARIF.BASIC_SUBTITLE" | translate }}</div>
-      <p class="price">{{proSub}}€/{{ "PAYEMENT_PRO.MONTH" | translate }}</p>
+      <p class="price">{{proSub}}€/{{ "PAYEMENT_PRO.MONTH" | translate }} {{ "PAYEMENT_PRO.HT" | translate }}</p>
+      <p class="priceTTC">({{getTVAPrice(proSub)}}€/{{ "PAYEMENT_PRO.MONTH" | translate }} {{ "PAYEMENT_PRO.TTC" | translate }})</p>
 
       <ul>
         <li><strong>{{ "TARIF.BASIC1" | translate }}</strong></li>
@@ -79,7 +80,8 @@
 
       <h2 class="plan-title">🏆 {{ "TARIF.PREMIUM" | translate }}</h2>
       <div class="plan-subtitle">{{ "TARIF.PREMIUM_SUBTITLE" | translate }}</div>
-      <p class="price">{{premiumSub}}€/mois</p>
+      <p class="price">{{premiumSub}}€/{{"PAYEMENT_PRO.MONTH" | translate}} {{ "PAYEMENT_PRO.HT" | translate }}</p>
+      <p class="priceTTC">({{getTVAPrice(premiumSub)}}€/{{"PAYEMENT_PRO.MONTH" | translate}} {{ "PAYEMENT_PRO.TTC" | translate }})</p>
 
       <ul>
         <li><strong>🎙️ {{ "TARIF.PREMIUM_ASSISTANT_TITLE" | translate }}</strong></li>

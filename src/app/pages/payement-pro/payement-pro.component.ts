@@ -28,7 +28,7 @@ export class PayementProComponent implements OnInit {
   planLabel: string = '';
   displayPrice: string = '';
   currencySymbol: string = '€';
-
+  tva_rate = environment.TVA_RATE;
   me: any = {};
   adressePrincipale: any = {};
   stripeCustomerID?: string;
@@ -67,7 +67,9 @@ export class PayementProComponent implements OnInit {
       next: (me: any) => {
         this.me = me;
         if (this.me.role !== "professionnel") {
+          this.toastr.error(this.translate.instant('ERROR.NO_PRO'));
           this.router.navigate(['/izyPhone-info']);
+
         }
       },
       error: () => {
@@ -276,5 +278,22 @@ export class PayementProComponent implements OnInit {
 
   private showError() {
     this.toastr.error(this.translate.instant('ERROR.GENERIC_ERROR'));
+  }
+  
+
+  getTVAPrice(price: string | null): string {
+    if (!price) return "0,00€";
+
+    const normalized = price.replace(",", ".");
+    const priceNumber = Number(normalized);
+
+    if (Number.isNaN(priceNumber)) return "0,00€";
+
+    const ttc = priceNumber * (1 + this.tva_rate);
+
+    return new Intl.NumberFormat("fr-FR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(ttc);
   }
 }

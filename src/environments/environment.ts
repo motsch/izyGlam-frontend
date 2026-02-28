@@ -36,6 +36,7 @@ export const environment = {
     stripePublicKey: 'pk_test_51NG9rzEDs001iAIL6R6k2IMnLte54Cs3Iihtv9cC95dDobeYSiqPeBpRgZgyRFbyyUhkYzRoG3AI2Wb738MYSRVk00mFFBaVSy', // Remplacez par votre clé publique  
     shopIzyGlam: "http://localhost:4200/",
     coreIzyGlam: "http://127.0.0.1:4200/",
+    TVA_RATE: 0.20,
     izyglamCompany: {
         brandName: "izyGlam",
         companyName: "IZYGLAM SAS",
@@ -51,6 +52,5 @@ export const environment = {
         phone: "+33 0 00 00 00 00",
         website: "https://izyglam.com",
         logoPath: "assets/images/logo/logo_true.png"
-    }
-
+    },
 };

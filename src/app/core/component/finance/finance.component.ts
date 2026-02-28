@@ -13,9 +13,6 @@ const pdfFonts = require('pdfmake/build/vfs_fonts');
 
 pdfMake.vfs = pdfFonts.vfs;
 
-
-
-
 @Component({
   selector: 'app-finance',
   templateUrl: './finance.component.html',
@@ -64,7 +61,6 @@ export class FinanceComponent implements OnInit, OnChanges {
   accountingError: string | null = null;
   accountingPeriodLabel = '';
 
-
   constructor(
     private fb: FormBuilder,
     private bookingService: BookingService,
@@ -79,8 +75,9 @@ export class FinanceComponent implements OnInit, OnChanges {
     });
   }
 
-
-
+  // -------------------------------------------------------------
+  // Helpers format / strings
+  // -------------------------------------------------------------
   private formatMoney(v: any): string {
     const n = Number(v ?? 0);
     return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(n);
@@ -112,10 +109,9 @@ export class FinanceComponent implements OnInit, OnChanges {
     return `ACC-${s}-${fromISO.replaceAll('-', '')}-${toISO.replaceAll('-', '')}`;
   }
 
-  // ---------------------------------------
+  // -------------------------------------------------------------
   // Cycle de vie
-  // ---------------------------------------
-
+  // -------------------------------------------------------------
   ngOnInit(): void {
     this.shop = this.myShopData[0];
     // Marque la section active (pour ton menu latéral)
@@ -128,7 +124,6 @@ export class FinanceComponent implements OnInit, OnChanges {
       console.warn('FinanceComponent → myShopData est vide, en attente de ngOnChanges.');
     }
 
-
     const params = new URLSearchParams(window.location.search);
     const stripeReturn = params.get("stripe");
 
@@ -140,17 +135,22 @@ export class FinanceComponent implements OnInit, OnChanges {
   /** Recharge les stats si l’@Input myShopData change (sélecteur de boutique côté parent) */
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['myShopData'] && changes['myShopData'].currentValue) {
+      // ✅ important : on re-binde shop sur le nouvel input (sinon tu restes sur l’ancien)
+      this.shop = this.myShopData?.[0] ?? {};
       this.shopCopyData = { ...this.shop };
+
       if (this.shop?._id) {
         this.loadDashboardStats(this.shop._id);
+
+        // si la boutique change, mieux vaut reset l’aperçu compta
+        this.onAccountingParamsChange();
       }
     }
   }
 
-  // ---------------------------------------
+  // -------------------------------------------------------------
   // Données / API
-  // ---------------------------------------
-
+  // -------------------------------------------------------------
   /** Récupère toutes les statistiques d’un shop */
   private loadDashboardStats(shopId: string): void {
     this.bookingService.getDashboardStats(shopId).subscribe({
@@ -174,10 +174,9 @@ export class FinanceComponent implements OnInit, OnChanges {
     });
   }
 
-  // ---------------------------------------
+  // -------------------------------------------------------------
   // Modale d’infos bancaires
-  // ---------------------------------------
-
+  // -------------------------------------------------------------
   openBankModal(): void {
     this.bankModalVisible = true;
     this.autoRefreshStripeStatus();
@@ -197,13 +196,12 @@ export class FinanceComponent implements OnInit, OnChanges {
     this.bankModalVisible = false;
   }
 
-  // ---------------------------------------
+  // -------------------------------------------------------------
   // Utilitaires UI
-  // ---------------------------------------
-
+  // -------------------------------------------------------------
   /**
-   * Affiche un toast uniformeizyGlam
-   * @param message  texte déjà traduit (ou clé si tu préfères)
+   * Affiche un toast uniforme IzyGlam
+   * @param message  texte déjà traduit
    * @param isError  true → toast erreur | false → toast succès
    */
   private showCustomToast(message: string, isError: boolean = false): void {
@@ -236,7 +234,6 @@ export class FinanceComponent implements OnInit, OnChanges {
       next: (updatedUser) => {
         this.me = updatedUser;
         this.stripeLoading = false;
-        // this.toastr.success("Statut Stripe mis à jour.");
       },
       error: (e) => {
         console.error(e);
@@ -246,6 +243,9 @@ export class FinanceComponent implements OnInit, OnChanges {
     });
   }
 
+  // -------------------------------------------------------------
+  // UI Level shop
+  // -------------------------------------------------------------
   private get finishedTotal(): number {
     const t = this.shop?.stats?.bookings?.finished?.total;
     return Number.isFinite(+t) ? +t : 0;
@@ -270,9 +270,19 @@ export class FinanceComponent implements OnInit, OnChanges {
     return null; // déjà au max
   }
 
-  // ---------------------------------------
+  // -------------------------------------------------------------
   // Comptabilité (API + exports)
-  // ---------------------------------------
+  //
+  // ✅ IMPORTANT:
+  // Modèle "frais payés par le client" :
+  // - totalPrice = total payé par le client (prestation + frais + TVA sur frais)
+  // - totalShopEarnings = CA prestataire (prestation seule)
+  // - totalCommission / totalServiceFee / totalTva = données plateforme (IzyGlam)
+  //
+  // Pour le PRESTATAIRE, on exporte un RELEVÉ D’ACTIVITÉ :
+  // - CA Prestataire (= totalShopEarnings)
+  // - Total payé clients (info)
+  // -------------------------------------------------------------
 
   private getTodayISO(): string {
     const d = new Date();
@@ -283,7 +293,7 @@ export class FinanceComponent implements OnInit, OnChanges {
   }
 
   onAccountingParamsChange(): void {
-    // Option : on reset l’aperçu quand l’utilisateur change période/date
+    // Reset l’aperçu quand l’utilisateur change période/date
     this.accountingData = null;
     this.accountingError = null;
     this.accountingPeriodLabel = '';
@@ -291,13 +301,15 @@ export class FinanceComponent implements OnInit, OnChanges {
 
   loadAccounting(): void {
     if (!this.shop?._id) return;
+
+    // (comportement existant) si déjà chargé, re-click → reset
     if (this.accountingData) {
       this.accountingData = null;
       return;
     }
+
     const mode = this.accountingMode;
     const date = this.accountingDate;
-
 
     if (!mode || !date) return;
 
@@ -324,6 +336,9 @@ export class FinanceComponent implements OnInit, OnChanges {
     });
   }
 
+  // -------------------------------------------------------------
+  // ✅ Export CSV (RELEVÉ PRESTATAIRE)
+  // -------------------------------------------------------------
   downloadAccountingCSV(): void {
     if (!this.shop?._id) return;
 
@@ -346,53 +361,40 @@ export class FinanceComponent implements OnInit, OnChanges {
     lines.push(`Date;${date}`);
     lines.push(`Periode;${this.accountingPeriodLabel}`);
     lines.push('');
-    lines.push('TOTALS');
-    lines.push('Bookings;CA;ServiceFee;Commission;Net;TVA');
+    lines.push('TOTALS (PRESTATAIRE)');
+    lines.push('Bookings;CA_Prestataire;Total_Paye_Clients');
     lines.push([
       totals.bookingsCount ?? 0,
-      totals.totalPrice ?? 0,
-      totals.totalServiceFee ?? 0,
-      totals.totalCommission ?? 0,
-      totals.totalShopEarnings ?? 0,
-      totals.totalTva ?? 0
+      totals.totalShopEarnings ?? 0, // ✅ CA prestataire
+      totals.totalPrice ?? 0         // ℹ️ info
     ].join(';'));
 
     lines.push('');
-    lines.push('BREAKDOWN');
+    lines.push('BREAKDOWN (PRESTATAIRE)');
 
     if (mode === 'week') {
       lines.push([
         this.translate.instant('ACCOUNTING_EXPORT.DAY'),
         this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'),
-        this.translate.instant('ACCOUNTING_EXPORT.TURNOVER'),
-        this.translate.instant('ACCOUNTING_EXPORT.SERVICE_FEE'),
-        this.translate.instant('ACCOUNTING_EXPORT.COMMISSION'),
-        this.translate.instant('ACCOUNTING_EXPORT.NET'),
-        this.translate.instant('ACCOUNTING_EXPORT.VAT')
+        'CA_Prestataire',
+        'Total_Paye_Clients'
       ].join(';'));
 
       breakdown.forEach((b: any) => {
         lines.push([
           b.day ?? '',
           b.bookingsCount ?? 0,
-          b.totalPrice ?? 0,
-          b.totalServiceFee ?? 0,
-          b.totalCommission ?? 0,
-          b.totalShopEarnings ?? 0,
-          b.totalTva ?? 0
+          b.totalShopEarnings ?? 0, // ✅ CA prestataire
+          b.totalPrice ?? 0         // ℹ️ info
         ].join(';'));
       });
-    }
-    else {
+    } else {
       lines.push([
         this.translate.instant('ACCOUNTING_EXPORT.YEAR'),
         this.translate.instant('ACCOUNTING_EXPORT.ISO_WEEK'),
         this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'),
-        this.translate.instant('ACCOUNTING_EXPORT.TURNOVER'),
-        this.translate.instant('ACCOUNTING_EXPORT.SERVICE_FEE'),
-        this.translate.instant('ACCOUNTING_EXPORT.COMMISSION'),
-        this.translate.instant('ACCOUNTING_EXPORT.NET'),
-        this.translate.instant('ACCOUNTING_EXPORT.VAT')
+        'CA_Prestataire',
+        'Total_Paye_Clients'
       ].join(';'));
 
       breakdown.forEach((b: any) => {
@@ -400,11 +402,8 @@ export class FinanceComponent implements OnInit, OnChanges {
           b.year ?? '',
           b.isoWeek ?? '',
           b.bookingsCount ?? 0,
-          b.totalPrice ?? 0,
-          b.totalServiceFee ?? 0,
-          b.totalCommission ?? 0,
-          b.totalShopEarnings ?? 0,
-          b.totalTva ?? 0
+          b.totalShopEarnings ?? 0, // ✅ CA prestataire
+          b.totalPrice ?? 0         // ℹ️ info
         ].join(';'));
       });
     }
@@ -412,7 +411,7 @@ export class FinanceComponent implements OnInit, OnChanges {
     const csv = lines.join('\n');
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
 
-    const fileName = `izyglam_compta_${this.shop._id}_${mode}_${date}.csv`;
+    const fileName = `izyglam_releve_prestataire_${this.shop._id}_${mode}_${date}.csv`;
     const link = document.createElement('a');
     const url = URL.createObjectURL(blob);
 
@@ -423,6 +422,9 @@ export class FinanceComponent implements OnInit, OnChanges {
     URL.revokeObjectURL(url);
   }
 
+  // -------------------------------------------------------------
+  // ✅ Export PDF (RELEVÉ PRESTATAIRE)
+  // -------------------------------------------------------------
   downloadAccountingPDF(): void {
     if (!this.shop?._id) return;
 
@@ -449,8 +451,9 @@ export class FinanceComponent implements OnInit, OnChanges {
     const totals = this.accountingData?.totals || {};
     const breakdown = this.accountingData?.breakdown || [];
 
-    // Lignes du tableau
-    // Lignes du tableau
+    // -------------------------------------------------------------
+    // Table: PRESTATAIRE
+    // -------------------------------------------------------------
     const tableBody: any[] = [
       [
         {
@@ -460,14 +463,10 @@ export class FinanceComponent implements OnInit, OnChanges {
           style: 'th'
         },
         { text: this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'), style: 'th' },
-        { text: this.translate.instant('ACCOUNTING_EXPORT.TURNOVER_SHORT'), style: 'th' },
-        { text: this.translate.instant('ACCOUNTING_EXPORT.SERVICE_FEE_SHORT'), style: 'th' },
-        { text: this.translate.instant('ACCOUNTING_EXPORT.COMMISSION'), style: 'th' },
-        { text: this.translate.instant('ACCOUNTING_EXPORT.NET_PROVIDER'), style: 'th' },
-        { text: this.translate.instant('ACCOUNTING_EXPORT.VAT'), style: 'th' }
+        { text: 'CA Prestataire', style: 'th' },
+        { text: 'Total payé clients', style: 'th' }
       ]
     ];
-
 
     breakdown.forEach((b: any) => {
       const label = mode === 'week'
@@ -477,47 +476,22 @@ export class FinanceComponent implements OnInit, OnChanges {
       tableBody.push([
         { text: label, style: 'td' },
         { text: String(b.bookingsCount ?? 0), style: 'td' },
-        { text: this.formatMoney(b.totalPrice), style: 'tdRight' },
-        { text: this.formatMoney(b.totalServiceFee), style: 'tdRight' },
-        { text: this.formatMoney(b.totalCommission), style: 'tdRight' },
-        { text: this.formatMoney(b.totalShopEarnings), style: 'tdRight' },
-        { text: this.formatMoney(b.totalTva), style: 'tdRight' },
+        { text: this.formatMoney(b.totalShopEarnings), style: 'tdRight' }, // ✅ CA prestataire
+        { text: this.formatMoney(b.totalPrice), style: 'tdRight' },        // ℹ️ info
       ]);
     });
 
-    // Totaux
-    const totalsBlock = [
-      [
-        this.translate.instant('ACCOUNTING_EXPORT.TOTAL_TURNOVER'),
-        this.formatMoney(totals.totalPrice)
-      ],
-      [
-        this.translate.instant('ACCOUNTING_EXPORT.TOTAL_SERVICE_FEE'),
-        this.formatMoney(totals.totalServiceFee)
-      ],
-      [
-        this.translate.instant('ACCOUNTING_EXPORT.TOTAL_COMMISSION'),
-        this.formatMoney(totals.totalCommission)
-      ],
-      [
-        this.translate.instant('ACCOUNTING_EXPORT.TOTAL_NET_PROVIDER'),
-        this.formatMoney(totals.totalShopEarnings)
-      ],
-      [
-        this.translate.instant('ACCOUNTING_EXPORT.VAT'),
-        this.formatMoney(totals.totalTva)
-      ],
-      [
-        this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'),
-        String(totals.bookingsCount ?? 0)
-      ]
+    // Totaux PRESTATAIRE
+    const totalsBlock: Array<[string, string]> = [
+      ['CA Prestataire', this.formatMoney(totals.totalShopEarnings)],
+      ['Total payé par les clients', this.formatMoney(totals.totalPrice)],
+      [this.translate.instant('ACCOUNTING_EXPORT.BOOKINGS'), String(totals.bookingsCount ?? 0)]
     ];
-
 
     // Logo en base64 : on le charge via fetch (assets)
     const logoUrl = izy.logoPath;
-    const t = (key: string, params?: any) =>
-      this.translate.instant(key, params);
+    const t = (key: string, params?: any) => this.translate.instant(key, params);
+
     fetch(logoUrl)
       .then(r => r.blob())
       .then(blob => new Promise<string>((resolve) => {
@@ -548,7 +522,8 @@ export class FinanceComponent implements OnInit, OnChanges {
                 {
                   width: '*',
                   stack: [
-                    { text: t('ACCOUNTING_EXPORT.DOCUMENT_TITLE'), style: 'h1' },
+                    // ✅ titre explicite prestataire
+                    { text: 'Relevé d’activité (Prestataire)', style: 'h1' },
                     {
                       text: `${t('ACCOUNTING_EXPORT.PERIOD')} : ${fromDate?.toLocaleDateString('fr-FR')} → ${toDate?.toLocaleDateString('fr-FR')}`,
                       style: 'sub'
@@ -609,12 +584,11 @@ export class FinanceComponent implements OnInit, OnChanges {
             { text: t('ACCOUNTING_EXPORT.SUMMARY'), style: 'sectionTitle', margin: [0, 0, 0, 6] },
             {
               table: {
-                widths: ['*', 'auto', '*', 'auto'],
-                body: [
-                  [{ text: totalsBlock[0][0], style: 'td' }, { text: totalsBlock[0][1], style: 'tdRight' }, { text: totalsBlock[1][0], style: 'td' }, { text: totalsBlock[1][1], style: 'tdRight' }],
-                  [{ text: totalsBlock[2][0], style: 'td' }, { text: totalsBlock[2][1], style: 'tdRight' }, { text: totalsBlock[3][0], style: 'td' }, { text: totalsBlock[3][1], style: 'tdRight' }],
-                  [{ text: totalsBlock[4][0], style: 'td' }, { text: totalsBlock[4][1], style: 'tdRight' }, { text: totalsBlock[5][0], style: 'td' }, { text: totalsBlock[5][1], style: 'tdRight' }],
-                ]
+                widths: ['*', 'auto'],
+                body: totalsBlock.map(([k, v]) => ([
+                  { text: k, style: 'td' },
+                  { text: v, style: 'tdRight' }
+                ]))
               },
               layout: 'lightHorizontalLines'
             },
@@ -626,7 +600,7 @@ export class FinanceComponent implements OnInit, OnChanges {
             {
               table: {
                 headerRows: 1,
-                widths: ['auto', 'auto', 'auto', 'auto', 'auto', 'auto', 'auto'],
+                widths: ['auto', 'auto', '*', '*'],
                 body: tableBody
               },
               layout: {
@@ -642,13 +616,13 @@ export class FinanceComponent implements OnInit, OnChanges {
 
             { text: ' ', margin: [0, 10] },
 
-            // Mentions
+            // Mentions (⚠️ adaptées au relevé prestataire)
             {
               text:
-                `${t('ACCOUNTING_EXPORT.MENTIONS_TITLE')} :\n` +
-                `• ${t('ACCOUNTING_EXPORT.MENTION_1', { brand: izy.brandName })}\n` +
-                `• ${t('ACCOUNTING_EXPORT.MENTION_2')}\n` +
-                `• ${t('ACCOUNTING_EXPORT.MENTION_3')}`,
+                `Mentions :\n` +
+                `• Ce document est un relevé d’activité (prestations) basé sur les réservations réalisées via ${izy.brandName}.\n` +
+                `• Le “CA Prestataire” correspond au montant des prestations (hors frais de service IzyGlam).\n` +
+                `• Les frais de service et la TVA appliquée sur ces frais ne sont pas inclus dans le CA Prestataire.`,
               style: 'note'
             }
           ],
@@ -675,6 +649,7 @@ export class FinanceComponent implements OnInit, OnChanges {
             font: 'Roboto'
           }
         };
+
         const fileName = `${this.translate.instant('ACCOUNTING_EXPORT.FILE_NAME')}_${shop._id}_${fromISO}_${toISO}.pdf`;
         (pdfMake as any).createPdf(docDefinition).download(fileName);
       })
@@ -683,5 +658,4 @@ export class FinanceComponent implements OnInit, OnChanges {
         this.showCustomToast("Impossible de générer le PDF (logo/ressource introuvable).", true);
       });
   }
-
 }

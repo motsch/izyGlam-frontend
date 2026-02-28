@@ -19,6 +19,14 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { SeoService } from 'src/app/core/services/seo.service';
 
+type PaymentBreakdown = {
+  productCents: number;
+  serviceFeeCents: number;
+  feesHTCents: number;
+  feesTVACents: number;
+  totalCents: number;
+};
+
 @Component({
   selector: 'app-payement',
   templateUrl: './payement.component.html',
@@ -40,7 +48,6 @@ export class PayementComponent implements OnInit {
   paymentMode: 'card' | 'employee_credit' = 'card';
   employeeCreditAmount: number = 0; // à alimenter depuis ton backend
 
-
   // -----------------------------
   // Données métier
   // -----------------------------
@@ -57,8 +64,8 @@ export class PayementComponent implements OnInit {
   me: any = {};
 
   // ⚠️ Prix manipulés en number (plus en string)
-  price: number = 0;       // Prix "produit" (gains shop avant commission/TVA)
-  finalPrice: number = 0;  // Total TTC à payer
+  price: number = 0;       // Prix prestation (pro) - affiché "produit"
+  finalPrice: number = 0;  // Total TTC à payer (presta + frais + TVA sur frais)
 
   itemToBuy2: any | null;
   adminSettings: any = {};
@@ -76,6 +83,9 @@ export class PayementComponent implements OnInit {
   selectedCardId: string | null = null;
   showAddCardForm = false;
   defaultCardId = '';
+
+  // ✅ Source de vérité des montants (centimes) pour aligner UI / Stripe / Booking
+  private lastBreakdown: PaymentBreakdown | null = null;
 
   constructor(
     private router: Router,
@@ -99,7 +109,8 @@ export class PayementComponent implements OnInit {
   // ⏱️ ngOnInit : charge paramètres, shop, user, cartes Stripe
   // ---------------------------------------------------------
   ngOnInit(): void {
-        this.seoService.updateMeta('payement');
+    this.seoService.updateMeta('payement');
+
     this.adminService.getAdminSettings().subscribe({
       next: (data: any) => {
         // 1) Paramètres admin (commission, TVA, etc.)
@@ -118,22 +129,14 @@ export class PayementComponent implements OnInit {
 
           this.itemToBuy2 = JSON.parse(localStorage.getItem('productToBuy') || 'null');
 
-          // Init prix produit (gains shop "brut produit")
+          // Prix prestation (pro)
           this.price = Number(this.itemToBuy2?.price ?? 0);
 
-          if (this.itemToBuy2 && this.itemToBuy2.price != null) {
-            // Calcule le prix final avec commission + TVA (normalisés)
-            const commissionRate = this.toRate(this.adminSettings?.commissionRate);
-            const serviceFee = Number(this.adminSettings?.serviceFee ?? 0);
-            const taxRate = this.toRate(this.adminSettings?.taxRate);
+          // ✅ Total payé par le client = prestation + frais + TVA sur frais (centimes)
+          const productPrice = Number(this.itemToBuy2?.price ?? 0);
+          this.lastBreakdown = this.computePaymentBreakdownCents(productPrice);
+          this.finalPrice = this.centsToEuro(this.lastBreakdown.totalCents);
 
-            this.finalPrice = this.calculateFinalPrice(
-              Number(this.itemToBuy2.price),
-              commissionRate,
-              serviceFee,
-              taxRate
-            );
-          }
         } catch (err) {
           console.error('Erreur de parsing localStorage (panier) :', err);
           this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
@@ -218,14 +221,37 @@ export class PayementComponent implements OnInit {
     this.selectedCardId = null as any; // ou undefined, selon ton type
   }
 
+  // -------------------------------------------------------------
+  // 💶 Modèle "frais payés par le client"
+  // - productPrice = prix TTC de la prestation (pro)
+  // - commission + serviceFee = frais IzyGlam (HT)
+  // - TVA appliquée UNIQUEMENT sur les frais IzyGlam
+  // -------------------------------------------------------------
+  calculateFinalPrice(
+    productPrice: number,
+    commissionRate: number,
+    serviceFee: number,
+    taxRate: number
+  ): number {
+    const p = Number(productPrice);
+    const rate = Number(commissionRate);
+    const fee = Number(serviceFee ?? 0);
+    const tva = Number(taxRate);
 
-  // -------------------------------------------------------------
-  // 💶 Calcule le prix final (commission + TVA) arrondi à 2 déc.
-  // -------------------------------------------------------------
-  calculateFinalPrice(productPrice: number, commissionRate: number, serviceFee: number, taxRate: number): number {
-    const priceWithCommission = productPrice + (productPrice * commissionRate) + serviceFee;
-    const finalPrice = priceWithCommission + (priceWithCommission * taxRate);
-    return parseFloat(finalPrice.toFixed(2));
+    if ([p, rate, fee, tva].some((x) => isNaN(x)) || p < 0 || rate < 0 || fee < 0 || tva < 0) {
+      return 0;
+    }
+
+    // Frais IzyGlam (HT)
+    const feesHT = (p * rate) + fee;
+
+    // TVA uniquement sur les frais
+    const feesTVA = feesHT * tva;
+
+    // Total payé par le client
+    const total = p + feesHT + feesTVA;
+
+    return Number(total.toFixed(2));
   }
 
   // -------------------------------------------------------------
@@ -379,7 +405,10 @@ export class PayementComponent implements OnInit {
         console.log('Souscription Stripe créée :', response);
         // Stocke l’id de souscription dans le bill si besoin
         this.bill!.stripeSubscriptionId = response.subscription.id;
-        this.saveBill(); // enchaîne le flux habituel
+
+        // ✅ On enregistre aussi le booking si ton flow le veut
+        // (la breakdown sera recalculée si besoin)
+        this.saveBill(this.lastBreakdown ?? undefined);
       },
       error: (err) => {
         console.error('Erreur lors de la souscription :', err);
@@ -393,7 +422,12 @@ export class PayementComponent implements OnInit {
   // -------------------------------------------------------------
   async validate(): Promise<void> {
     this.loading = true;
-    const amount = Math.round(this.finalPrice * 100); // en centimes
+
+    // ✅ Source unique de vérité
+    const productPrice = Number(this.itemToBuy2?.price ?? 0);
+    this.lastBreakdown = this.computePaymentBreakdownCents(productPrice);
+
+    const amount = this.lastBreakdown.totalCents; // en centimes (doit matcher booking.price)
     const currency = 'eur';
 
     this.stripeService.createPaymentIntent(amount, currency, this.stripeCustomerID!).subscribe({
@@ -421,7 +455,7 @@ export class PayementComponent implements OnInit {
           } else if (paymentIntent.status === 'succeeded') {
             // Paiement OK → on poursuit le flux (création booking, etc.)
             this.bill!.paymentIntentId = paymentIntent.id;
-            this.saveBill();
+            this.saveBill(this.lastBreakdown!);
           } else {
             // Statut inattendu → safe toast
             console.warn('Statut PaymentIntent inattendu :', paymentIntent.status);
@@ -449,7 +483,7 @@ export class PayementComponent implements OnInit {
   // -------------------------------------------------------------
   // 🧾 Construit et sauvegarde la "bill" (Booking côté backend)
   // -------------------------------------------------------------
-  saveBill() {
+  saveBill(breakdown?: PaymentBreakdown) {
     try {
       this.bill!.clientId = this.bill!.client;
 
@@ -479,21 +513,30 @@ export class PayementComponent implements OnInit {
       this.bill!.end = this.convertToISO(this.endSlot!);
       this.bill!.date = this.dateSlot;
 
-      // --- Montants & métadonnées (calcul unique, pas de double-comptage) ---
-      const productPrice = Number(this.itemToBuy2?.price ?? 0); // prix "catalogue"
-      const commissionRate = this.toRate(this.adminSettings?.commissionRate);
-      const taxRate = this.toRate(this.adminSettings?.taxRate);
-      const serviceFee = Number(this.adminSettings?.serviceFee ?? 0);
+      // ✅ Breakdown unique (si non fourni, recalcul)
+      const productPriceEuro = Number(this.itemToBuy2?.price ?? 0);
+      const b = breakdown ?? this.computePaymentBreakdownCents(productPriceEuro);
 
-      const commission = productPrice * commissionRate;
-      const baseHT = productPrice + commission + serviceFee; // base taxable
-      const tva = baseHT * taxRate;
-      const totalTTC = parseFloat((baseHT + tva).toFixed(2));
+      // Montants en euros
+      const productEuro = this.centsToEuro(b.productCents);          // prix prestation (pro)
+      const serviceFeeEuro = this.centsToEuro(b.serviceFeeCents);    // frais fixes (optionnel)
+      const feesHTEuro = this.centsToEuro(b.feesHTCents);            // frais IzyGlam HT
+      const feesTVAEuro = this.centsToEuro(b.feesTVACents);          // TVA sur frais IzyGlam
+      const totalEuro = this.centsToEuro(b.totalCents);              // total payé par le client
 
-      // Ce que gagne la boutique (ajuste si besoin de net-versé)
-      this.bill!.shopEarnings = productPrice;
+      // ✅ Ce que gagne la boutique (dans ton modèle actuel) = prix prestation
+      // (tu peux garder ça pour tes stats, même si le vrai virement pro dépendra du flow Stripe Connect)
+      this.bill!.shopEarnings = productEuro.toFixed(2);
 
-      this.bill!.price = totalTTC;                 // TOTAL TTC (une seule fois)
+      // ✅ Ce que paie le client (DOIT matcher Stripe amount)
+      this.bill!.price = totalEuro.toFixed(2);
+
+      // Détails coûts (pour transparence/analytics)
+      this.bill!.serviceFee = serviceFeeEuro.toFixed(2);
+      this.bill!.commission = feesHTEuro.toFixed(2);
+      this.bill!.tva = feesTVAEuro.toFixed(2);
+
+      // Métadonnées
       this.bill!.orderDate = new Date();
       this.bill!.status = 'pending';
       this.bill!.color = this.itemToBuy2?.color;
@@ -505,10 +548,6 @@ export class PayementComponent implements OnInit {
       this.bill!.productName = this.itemToBuy2?.name;
       this.bill!.userProId = this.shop.idUser;
 
-      // Détails de coûts (pour transparence/analytics)
-      this.bill!.serviceFee = serviceFee;
-      this.bill!.commission = parseFloat(commission.toFixed(2));
-      this.bill!.tva = parseFloat(tva.toFixed(2));
     } catch (err) {
       console.error('Erreur lors de la préparation de la facture (bill) :', err);
       this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
@@ -591,5 +630,33 @@ export class PayementComponent implements OnInit {
   showCustomToast(message: string) {
     // Message générique : "✨ Oups… une erreur s’est glissée. Merci de réessayer ✨"
     this.toastr.error(message);
+  }
+
+  // -------------------------------------------------------------
+  // 💰 Breakdown unique (centimes) : évite les écarts d'arrondi
+  // -------------------------------------------------------------
+  private computePaymentBreakdownCents(productPriceEuro: number): PaymentBreakdown {
+    const commissionRate = this.toRate(this.adminSettings?.commissionRate);
+    const taxRate = this.toRate(this.adminSettings?.taxRate);
+    const serviceFeeEuro = Number(this.adminSettings?.serviceFee ?? 0);
+
+    const productCents = Math.round(Number(productPriceEuro) * 100);
+    const serviceFeeCents = Math.round(serviceFeeEuro * 100);
+
+    // Frais IzyGlam HT (centimes) = (presta * taux) + fixe
+    const feesHTCents = Math.round(productCents * commissionRate) + serviceFeeCents;
+
+    // TVA uniquement sur les frais
+    const feesTVACents = Math.round(feesHTCents * taxRate);
+
+    // Total payé par le client
+    const totalCents = productCents + feesHTCents + feesTVACents;
+
+    return { productCents, serviceFeeCents, feesHTCents, feesTVACents, totalCents };
+  }
+
+  // Helpers
+  private centsToEuro(cents: number): number {
+    return Number((cents / 100).toFixed(2));
   }
 }

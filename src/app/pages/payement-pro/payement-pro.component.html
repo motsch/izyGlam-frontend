@@ -27,7 +27,7 @@
             </div>
 
             <div class="price">
-                {{ displayPrice }} {{ currencySymbol }}
+                {{ getTVAPrice(displayPrice) }} {{ currencySymbol }}
                 <span>/{{ "PAYEMENT_PRO.MONTH" | translate }}</span>
             </div>
         </div>
@@ -122,7 +122,7 @@
 
         <div class="total">
             {{ "PAYEMENT_PRO.TOTAL" | translate }}
-            <strong>{{ displayPrice }} {{ currencySymbol }}</strong>
+            <strong>{{ getTVAPrice(displayPrice) }} {{ currencySymbol }}</strong>
         </div>
     </section>
 
