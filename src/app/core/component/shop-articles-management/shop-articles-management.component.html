@@ -141,6 +141,38 @@
             <input type="number" [(ngModel)]="modalService.duration" class="form-control" />
           </div>
 
+          <!-- Colonne gauche : image actuelle + nouveau preview -->
+          <div class="image-left">
+            <div class="image-wrapper" [class.loading]="isGeneratingImage">
+              <ng-container *ngIf="imageUsed; else noImage">
+                <img [src]="imgStorageUrl + imageUsed" alt="Aperçu de l'image" class="image-preview small-preview" />
+              </ng-container>
+              <ng-template #noImage>
+                <div class="image-placeholder">
+                  {{ "SHOP_ARTICLES_MANAGEMENT.NO_PICS" | translate }}
+                </div>
+              </ng-template>
+              <!-- overlay loader pendant génération -->
+              <div class="image-overlay" *ngIf="isGeneratingImage">
+                <span class="loader" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div *ngIf="imagePreview" class="margin-top-20">
+              <p class="preview-label">{{ "SHOP_ARTICLES_MANAGEMENT.NEW_PIC" | translate }}:</p>
+              <img [src]="imagePreview" alt="Aperçu de l'image" class="image-preview small-preview" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="button" class="btn-upload w-100" (click)="fileInput.click()" [disabled]="
+              isGeneratingImage ||
+              !modalService.name || !modalService.description || !modalService.price || !modalService.duration
+            ">
+              📷 {{ "SHOP_ARTICLES_MANAGEMENT.UPLOAD_IMAGE" | translate }}
+            </button>
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden />
+          </div>
+
           <!-- COLOR -->
           <div class="color-dots">
             <div *ngFor="let color of colors" class="color-dot-selection pointer"

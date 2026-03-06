@@ -68,41 +68,41 @@ export class ShopItemCardComponent implements OnInit {
       this.showCustomToast(this.t('ERROR.GENERIC_ERROR'), 'error');
     }
   }
-  
-  /**
+
+/**
  * Calcule un prix TTC affichable pour le client (modèle "frais client") :
  * - basePrice = prix TTC de la prestation (pro)
  * - frais IzyGlam = (basePrice * commissionRate) + serviceFee
  * - TVA (20%) appliquée UNIQUEMENT sur les frais IzyGlam
  * Retourne "12,34 € TTC".
  */
-calculateFinalPrice(basePrice: number): string {
-  try {
-    const numericBase = Number(basePrice);
-    if (isNaN(numericBase) || numericBase < 0) {
-      console.warn('[ShopItemCard] calculateFinalPrice: invalid base price =>', basePrice);
+  calculateFinalPrice(basePrice: number): string {
+    try {
+      const numericBase = Number(basePrice);
+      if (isNaN(numericBase) || numericBase < 0) {
+        console.warn('[ShopItemCard] calculateFinalPrice: invalid base price =>', basePrice);
+        return '0,00 € TTC';
+      }
+
+      const tvaRate = 0.20; // 20% TVA (sur les frais IzyGlam)
+      const commissionRate = Number(this.commissionRate ?? 0); // ex: 0.10
+      const serviceFee = Number(this.serviceFee ?? 0);
+
+      // Frais IzyGlam (HT)
+      const feesHT = (numericBase * commissionRate) + serviceFee;
+
+      // TVA uniquement sur les frais
+      const feesTVA = feesHT * tvaRate;
+
+      // Total payé par le client
+      const totalTTC = numericBase + feesHT + feesTVA;
+
+      return totalTTC.toFixed(2).replace('.', ',') + ' € TTC';
+    } catch (err) {
+      console.error('[ShopItemCard] calculateFinalPrice ERROR:', err);
       return '0,00 € TTC';
     }
-
-    const tvaRate = 0.20; // 20% TVA (sur les frais IzyGlam)
-    const commissionRate = Number(this.commissionRate ?? 0); // ex: 0.10
-    const serviceFee = Number(this.serviceFee ?? 0);
-
-    // Frais IzyGlam (HT)
-    const feesHT = (numericBase * commissionRate) + serviceFee;
-
-    // TVA uniquement sur les frais
-    const feesTVA = feesHT * tvaRate;
-
-    // Total payé par le client
-    const totalTTC = numericBase + feesHT + feesTVA;
-
-    return totalTTC.toFixed(2).replace('.', ',') + ' € TTC';
-  } catch (err) {
-    console.error('[ShopItemCard] calculateFinalPrice ERROR:', err);
-    return '0,00 € TTC';
   }
-}
 
   /**
    * Fallback d’image si l’URL échoue.
