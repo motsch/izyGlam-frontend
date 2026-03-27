@@ -30,11 +30,13 @@ import { IzyPhoneInfoComponent } from './izyPhone-info/izyPhone-info.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { IzyphoneBookingComponent } from './izyphone-booking/izyphone-booking.component';
 import { QrDownloadComponent } from './qr-download/qr-download.component';
+import { TermsPolicyComponent } from '../core/component/terms-policy/terms-policy.component';
+import { ConfidentialPolicyComponent } from '../core/component/confidential-policy/confidential-policy.component';
 
 const routes: Routes = [
     {
         path: 'main',
-        component: MainComponent, 
+        component: MainComponent,
         canActivate: [AuthGuard],
     },
     {
@@ -154,6 +156,16 @@ const routes: Routes = [
     {
         path: 'subscription',
         component: SubscriptionComponent,
+        canActivate: [],
+    },
+    {
+        path: 'terms-of-service',
+        component: TermsPolicyComponent,
+        canActivate: [],
+    },
+    {
+        path: 'privacy-policy',
+        component: ConfidentialPolicyComponent,
         canActivate: [],
     },
     { path: '', redirectTo: 'main', pathMatch: 'full' },
