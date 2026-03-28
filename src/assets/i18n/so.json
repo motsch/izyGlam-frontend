@@ -1987,6 +1987,20 @@
       "L2": "<strong>Qandaraasle hoose</strong>: hay’ad xog u habaysa magaca mas’uulka habaynta.",
       "L3": "<strong>Saldhig sharci</strong>: aasaaska oggolaanaya habaynta (heshiis, oggolaansho, waajibaad sharci, dano sharci ah).",
       "L4": "<strong>Cookies/SDK</strong>: raad-raacayaal ay adeegsadaan website/app si adeegga loo bixiyo, loo cabbiro, loona habeeyo."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Asturnaanta App-ka (Shuruudaha Apple)",
+      "L1": "Waxaan ururinaa oo isticmaalnaa xogta shakhsiga si aan u bixino astaamaha aasaasiga ah ee app-ka, oo ay ku jiraan abuurista akoon, ballansashada adeegyada, habaynta lacag-bixinta, iyo isgaarsiinta u dhaxaysa isticmaalayaasha.",
+      "L2": "Xogta la ururiyo waxay ka mid noqon kartaa:",
+      "L3": "- Macluumaadka xiriirka (magac, iimayl, lambarka telefoonka)",
+      "L4": "- Xogta goobta (kaliya oggolaanshaha isticmaalaha)",
+      "L5": "- Xogta isticmaalka (is-dhexgalka app-ka, diiwaannada)",
+      "L6": "- Xaaladda lacag-bixinta (si ammaan ah ayaa loo farsameeyaa iyadoo loo marayo bixiyeyaasha dhinac saddexaad sida Stripe)",
+      "L7": "Xogta waxay ku xiran tahay akoonka isticmaalaha mana loo isticmaalo raadraac ku saabsan app-yada ama mareegaha dhinac saddexaad.",
+      "L8": "Ma iibinno xogta shakhsiga.",
+      "L9": "Ma u isticmaalno xogta shakhsiga ujeeddooyin xayeysiis oo dhinac saddexaad ah.",
+      "L10": "Qaar ka mid ah xogta waxaa lala wadaagi karaa bixiyeyaasha adeegyada ee si adag lagama maarmaanka u ah hawlgalka madal (habaynta lacag-bixinta, martigelinta, falanqaynta, ka hortagga khiyaanada), iyadoo lagu hoos jiro heshiisyo adag oo ilaalinta xogta ah.",
+      "L11": "Isticmaalayaashu waxay codsan karaan in xogtooda la tirtiro wakhti kasta iyagoo la xiriiraya: privacy@izyglam.com"
     }
   },
   "TERMS": {

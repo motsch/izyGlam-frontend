@@ -1987,6 +1987,20 @@
       "L2": "<strong>Azpikontratista</strong>: arduradunaren izenean datuak tratatzen dituen entitatea.",
       "L3": "<strong>Oinarri legala</strong>: tratamendua baimentzen duen oinarria (kontratua, baimena, legezko betebeharra, interes legitimoa).",
       "L4": "<strong>Cookieak/SDKak</strong>: zerbitzua emateko, neurtzeko eta pertsonalizatzeko erabilitako trazatzaileak."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Aplikazioaren pribatutasuna (Apple-ren eskakizunak)",
+      "L1": "Datu pertsonalak biltzen eta erabiltzen ditugu aplikazioaren oinarrizko funtzioak eskaintzeko, besteak beste kontua sortzea, zerbitzuak erreserbatzea, ordainketak prozesatzea eta erabiltzaileen arteko komunikazioa.",
+      "L2": "Bildutako datuek honako hauek izan ditzakete:",
+      "L3": "- Harremanetarako informazioa (izena, posta elektronikoa, telefono zenbakia)",
+      "L4": "- Kokapen datuak (erabiltzailearen baimenarekin bakarrik)",
+      "L5": "- Erabilera datuak (aplikazioaren interakzioak, erregistroak)",
+      "L6": "- Ordainketa egoera (segurtasunez prozesatua hirugarrenen hornitzaileen bidez, hala nola Stripe)",
+      "L7": "Datuak erabiltzaile kontuari lotuta daude eta ez dira erabiltzen hirugarrenen aplikazio edo webguneetan jarraipena egiteko.",
+      "L8": "Ez dugu datu pertsonalik saltzen.",
+      "L9": "Ez ditugu datu pertsonalak erabiltzen hirugarrenen publizitate helburuetarako.",
+      "L10": "Datu batzuk plataformaren funtzionamendurako beharrezkoak diren zerbitzu hornitzaileekin parteka daitezke (ordainketen prozesamendua, ostalaritza, analitika, iruzurraren prebentzioa), datu-babeserako hitzarmen zorrotzen pean.",
+      "L11": "Erabiltzaileek edozein unetan eska dezakete beren datuak ezabatzea honako helbide honetara idatziz: privacy@izyglam.com"
     }
   },
   "TERMS": {

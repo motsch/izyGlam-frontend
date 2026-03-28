@@ -1987,6 +1987,20 @@
       "L2": "<strong>Sous-traitant</strong> : entité qui traite des données pour le compte du responsable.",
       "L3": "<strong>Base légale</strong> : fondement autorisant le traitement (contrat, consentement, obligation légale, intérêt légitime).",
       "L4": "<strong>Cookies/SDK</strong> : traceurs utilisés par le site/app pour fournir, mesurer et personnaliser le service."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Appens integritet (Apple-krav)",
+      "L1": "Vi samlar in och använder personuppgifter för att tillhandahålla appens kärnfunktioner, inklusive kontoskapande, bokning av tjänster, betalningshantering och kommunikation mellan användare.",
+      "L2": "Insamlade uppgifter kan inkludera:",
+      "L3": "- Kontaktuppgifter (namn, e-post, telefonnummer)",
+      "L4": "- Platsdata (endast med användarens samtycke)",
+      "L5": "- Användningsdata (appinteraktioner, loggar)",
+      "L6": "- Betalningsstatus (behandlas säkert via tredjepartsleverantörer såsom Stripe)",
+      "L7": "Uppgifterna är kopplade till användarkontot och används inte för spårning över tredjepartsappar eller webbplatser.",
+      "L8": "Vi säljer inte personuppgifter.",
+      "L9": "Vi använder inte personuppgifter för tredjepartsannonsering.",
+      "L10": "Vissa uppgifter kan delas med tjänsteleverantörer som är strikt nödvändiga för att driva plattformen (betalningshantering, hosting, analys, bedrägeriförebyggande), under strikta dataskyddsavtal.",
+      "L11": "Användare kan när som helst begära radering av sina uppgifter genom att kontakta: privacy@izyglam.com"
     }
   },
   "TERMS": {

@@ -1987,6 +1987,20 @@
       "L2": "<strong>Auftragsverarbeiter</strong>: Stelle, die Daten im Auftrag des Verantwortlichen verarbeitet.",
       "L3": "<strong>Rechtsgrundlage</strong>: Grundlage, die die Verarbeitung erlaubt (Vertrag, Einwilligung, gesetzliche Pflicht, berechtigtes Interesse).",
       "L4": "<strong>Cookies/SDK</strong>: Tracker, die Website/App nutzt, um den Dienst bereitzustellen, zu messen und zu personalisieren."
+    },
+    "APPPRIVACY": {
+      "TITLE": "App-Datenschutz (Apple-Anforderungen)",
+      "L1": "Wir erheben und verwenden personenbezogene Daten, um die Kernfunktionen der Anwendung bereitzustellen, einschließlich Kontoerstellung, Buchung von Dienstleistungen, Zahlungsabwicklung und Kommunikation zwischen Nutzern.",
+      "L2": "Erhobene Daten können Folgendes umfassen:",
+      "L3": "- Kontaktdaten (Name, E-Mail, Telefonnummer)",
+      "L4": "- Standortdaten (nur mit Zustimmung des Nutzers)",
+      "L5": "- Nutzungsdaten (App-Interaktionen, Protokolle)",
+      "L6": "- Zahlungsstatus (wird sicher über Drittanbieter wie Stripe verarbeitet)",
+      "L7": "Die Daten sind mit dem Benutzerkonto verknüpft und werden nicht zur Verfolgung über Drittanbieter-Apps oder -Websites hinweg verwendet.",
+      "L8": "Wir verkaufen keine personenbezogenen Daten.",
+      "L9": "Wir verwenden keine personenbezogenen Daten für Werbezwecke Dritter.",
+      "L10": "Einige Daten können an Dienstleister weitergegeben werden, die für den Betrieb der Plattform unbedingt erforderlich sind (Zahlungsabwicklung, Hosting, Analysen, Betrugsprävention), unter strengen Datenschutzvereinbarungen.",
+      "L11": "Nutzer können jederzeit die Löschung ihrer Daten beantragen, indem sie sich an folgende Adresse wenden: privacy@izyglam.com"
     }
   },
   "TERMS": {

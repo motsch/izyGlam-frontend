@@ -1987,6 +1987,20 @@
       "L2": "<strong>Pemproses</strong>: entiti yang memproses data bagi pihak pengawal.",
       "L3": "<strong>Asas undang-undang</strong>: asas yang membenarkan pemprosesan (kontrak, persetujuan, kewajipan undang-undang, kepentingan sah).",
       "L4": "<strong>Kuki/SDK</strong>: penjejak yang digunakan oleh laman/aplikasi untuk menyediakan, mengukur dan memperibadikan perkhidmatan."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Privasi Aplikasi (Keperluan Apple)",
+      "L1": "Kami mengumpul dan menggunakan data peribadi untuk menyediakan ciri teras aplikasi, termasuk penciptaan akaun, tempahan perkhidmatan, pemprosesan pembayaran dan komunikasi antara pengguna.",
+      "L2": "Data yang dikumpul mungkin termasuk:",
+      "L3": "- Maklumat hubungan (nama, e-mel, nombor telefon)",
+      "L4": "- Data lokasi (hanya dengan persetujuan pengguna)",
+      "L5": "- Data penggunaan (interaksi aplikasi, log)",
+      "L6": "- Status pembayaran (diproses dengan selamat melalui penyedia pihak ketiga seperti Stripe)",
+      "L7": "Data dikaitkan dengan akaun pengguna dan tidak digunakan untuk penjejakan merentasi aplikasi atau laman web pihak ketiga.",
+      "L8": "Kami tidak menjual data peribadi.",
+      "L9": "Kami tidak menggunakan data peribadi untuk tujuan pengiklanan pihak ketiga.",
+      "L10": "Sesetengah data mungkin dikongsi dengan penyedia perkhidmatan yang benar-benar diperlukan untuk mengendalikan platform (pemprosesan pembayaran, hosting, analitik, pencegahan penipuan), di bawah perjanjian perlindungan data yang ketat.",
+      "L11": "Pengguna boleh meminta penghapusan data mereka pada bila-bila masa dengan menghubungi: privacy@izyglam.com"
     }
   },
   "TERMS": {

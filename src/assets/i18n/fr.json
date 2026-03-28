@@ -1987,6 +1987,20 @@
       "L2": "<strong>Sous-traitant</strong> : entité qui traite des données pour le compte du responsable.",
       "L3": "<strong>Base légale</strong> : fondement autorisant le traitement (contrat, consentement, obligation légale, intérêt légitime).",
       "L4": "<strong>Cookies/SDK</strong> : traceurs utilisés par le site/app pour fournir, mesurer et personnaliser le service."
+    },
+    "APPPRIVACY": {
+      "TITLE": "App Privacy (Apple Requirements)",
+      "L1": "We collect and use personal data to provide core features of the application, including account creation, booking services, payment processing, and communication between users.",
+      "L2": "Data collected may include:",
+      "L3": "- Contact information (name, email, phone number)",
+      "L4": "- Location data (only with user consent)",
+      "L5": "- Usage data (app interactions, logs)",
+      "L6": "- Payment status (processed securely via third-party providers such as Stripe)",
+      "L7": "Data is linked to the user account and is not used for tracking across third-party apps or websites.",
+      "L8": "We do not sell personal data.",
+      "L9": "We do not use personal data for third-party advertising purposes.",
+      "L10": "Some data may be shared with service providers strictly necessary to operate the platform (payment processing, hosting, analytics, fraud prevention), under strict data protection agreements.",
+      "L11": "Users can request deletion of their data at any time by contacting: privacy@izyglam.com"
     }
   },
   "TERMS": {

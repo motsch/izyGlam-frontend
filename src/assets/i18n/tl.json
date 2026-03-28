@@ -1987,6 +1987,20 @@
       "L2": "<strong>Subprocessor</strong>: entity na nagpoproseso ng datos sa ngalan ng controller.",
       "L3": "<strong>Legal na basehan</strong>: pundasyong nagpapahintulot sa pagproseso (kontrata, pahintulot, legal na obligasyon, lehitimong interes).",
       "L4": "<strong>Cookies/SDK</strong>: mga tracker na ginagamit ng site/app para magbigay, magsukat at mag-personalize ng serbisyo."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Privacy ng App (Mga Kinakailangan ng Apple)",
+      "L1": "Kinokolekta at ginagamit namin ang personal na data upang maibigay ang mga pangunahing tampok ng application, kabilang ang paggawa ng account, pag-book ng mga serbisyo, pagproseso ng bayad, at komunikasyon sa pagitan ng mga user.",
+      "L2": "Maaaring kabilang sa nakolektang data ang:",
+      "L3": "- Impormasyon sa pakikipag-ugnayan (pangalan, email, numero ng telepono)",
+      "L4": "- Data ng lokasyon (tanging may pahintulot ng user)",
+      "L5": "- Data ng paggamit (mga interaksyon sa app, mga log)",
+      "L6": "- Katayuan ng bayad (ligtas na pinoproseso sa pamamagitan ng mga third-party na provider tulad ng Stripe)",
+      "L7": "Ang data ay naka-link sa user account at hindi ginagamit para sa pagsubaybay sa mga third-party na app o website.",
+      "L8": "Hindi kami nagbebenta ng personal na data.",
+      "L9": "Hindi namin ginagamit ang personal na data para sa layunin ng advertising ng third party.",
+      "L10": "Ang ilang data ay maaaring ibahagi sa mga service provider na mahigpit na kinakailangan upang mapatakbo ang platform (pagproseso ng bayad, hosting, analytics, pag-iwas sa pandaraya), sa ilalim ng mahigpit na kasunduan sa proteksyon ng data.",
+      "L11": "Maaaring humiling ang mga user ng pagbura ng kanilang data anumang oras sa pamamagitan ng pakikipag-ugnayan sa: privacy@izyglam.com"
     }
   },
   "TERMS": {

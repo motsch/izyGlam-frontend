@@ -1987,6 +1987,20 @@
       "L2": "<strong>Käsittelijä</strong>: taho, joka käsittelee tietoja rekisterinpitäjän puolesta.",
       "L3": "<strong>Oikeusperuste</strong>: käsittelyn salliva peruste (sopimus, suostumus, lakisääteinen velvoite, oikeutettu etu).",
       "L4": "<strong>Evästeet/SDK</strong>: sivuston/sovelluksen käyttämät tunnisteet palvelun tuottamiseen, mittaamiseen ja personointiin."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Sovelluksen tietosuoja (Applen vaatimukset)",
+      "L1": "Keräämme ja käytämme henkilötietoja tarjotaksemme sovelluksen keskeiset toiminnot, mukaan lukien tilin luominen, palveluiden varaaminen, maksujen käsittely ja käyttäjien välinen viestintä.",
+      "L2": "Kerätyt tiedot voivat sisältää:",
+      "L3": "- Yhteystiedot (nimi, sähköposti, puhelinnumero)",
+      "L4": "- Sijaintitiedot (vain käyttäjän suostumuksella)",
+      "L5": "- Käyttötiedot (sovelluksen käyttö, lokit)",
+      "L6": "- Maksun tila (käsitellään turvallisesti kolmannen osapuolen palveluntarjoajien, kuten Stripen, kautta)",
+      "L7": "Tiedot on liitetty käyttäjätiliin eikä niitä käytetä seurantaan kolmansien osapuolten sovelluksissa tai verkkosivustoilla.",
+      "L8": "Emme myy henkilötietoja.",
+      "L9": "Emme käytä henkilötietoja kolmansien osapuolten mainontatarkoituksiin.",
+      "L10": "Joissakin tapauksissa tietoja voidaan jakaa palveluntarjoajien kanssa, jotka ovat välttämättömiä alustan toiminnan kannalta (maksujen käsittely, hosting, analytiikka, petosten ehkäisy), tiukkojen tietosuojasopimusten mukaisesti.",
+      "L11": "Käyttäjät voivat pyytää tietojensa poistamista milloin tahansa ottamalla yhteyttä osoitteeseen: privacy@izyglam.com"
     }
   },
   "TERMS": {

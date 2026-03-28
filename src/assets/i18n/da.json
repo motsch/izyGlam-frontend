@@ -1987,6 +1987,20 @@
       "L2": "<strong>Databehandler</strong>: enhed, der behandler data på vegne af den dataansvarlige.",
       "L3": "<strong>Retsgrundlag</strong>: hjemmel, der tillader behandling (kontrakt, samtykke, retlig forpligtelse, legitim interesse).",
       "L4": "<strong>Cookies/SDK</strong>: trackere brugt af site/app til at levere, måle og personalisere tjenesten."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Appens privatliv (Apple-krav)",
+      "L1": "Vi indsamler og bruger personoplysninger for at levere appens kernefunktioner, herunder oprettelse af konto, booking af tjenester, betalingsbehandling og kommunikation mellem brugere.",
+      "L2": "Indsamlede data kan omfatte:",
+      "L3": "- Kontaktoplysninger (navn, e-mail, telefonnummer)",
+      "L4": "- Lokationsdata (kun med brugerens samtykke)",
+      "L5": "- Brugsdata (appinteraktioner, logs)",
+      "L6": "- Betalingsstatus (behandles sikkert via tredjepartsudbydere såsom Stripe)",
+      "L7": "Data er knyttet til brugerens konto og bruges ikke til sporing på tværs af tredjepartsapps eller -websteder.",
+      "L8": "Vi sælger ikke personoplysninger.",
+      "L9": "Vi bruger ikke personoplysninger til tredjeparts reklameformål.",
+      "L10": "Nogle data kan deles med tjenesteudbydere, der er strengt nødvendige for at drive platformen (betalingsbehandling, hosting, analyse, forebyggelse af svindel), under strenge databeskyttelsesaftaler.",
+      "L11": "Brugere kan til enhver tid anmode om sletning af deres data ved at kontakte: privacy@izyglam.com"
     }
   },
   "TERMS": {

@@ -1987,6 +1987,20 @@
       "L2": "<strong>Alltöövõtja</strong>: üksus, kes töötleb andmeid vastutava töötleja nimel.",
       "L3": "<strong>Õiguslik alus</strong>: töötlemise loa andmise alus (leping, nõusolek, seaduslik kohustus, õigustatud huvi).",
       "L4": "<strong>Küpsised/SDK</strong>: jälgijad, mida sait/rakendus teenuse pakkumiseks, mõõtmiseks ja isikupärastamiseks kasutavad."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Rakenduse privaatsus (Apple’i nõuded)",
+      "L1": "Kogume ja kasutame isikuandmeid, et pakkuda rakenduse põhifunktsioone, sealhulgas konto loomist, teenuste broneerimist, maksete töötlemist ja kasutajatevahelist suhtlust.",
+      "L2": "Kogutavad andmed võivad hõlmata:",
+      "L3": "- Kontaktandmed (nimi, e-post, telefoninumber)",
+      "L4": "- Asukohaandmed (ainult kasutaja nõusolekul)",
+      "L5": "- Kasutusandmed (rakenduse kasutamine, logid)",
+      "L6": "- Makse staatus (töödeldakse turvaliselt kolmandate osapoolte teenusepakkujate kaudu, nagu Stripe)",
+      "L7": "Andmed on seotud kasutajakontoga ega kasutata jälgimiseks kolmandate osapoolte rakendustes või veebisaitidel.",
+      "L8": "Me ei müü isikuandmeid.",
+      "L9": "Me ei kasuta isikuandmeid kolmandate osapoolte reklaamieesmärkidel.",
+      "L10": "Mõningaid andmeid võidakse jagada teenusepakkujatega, kes on rangelt vajalikud platvormi toimimiseks (maksete töötlemine, majutus, analüütika, pettuste ennetamine), rangete andmekaitselepingute alusel.",
+      "L11": "Kasutajad võivad igal ajal taotleda oma andmete kustutamist, võttes ühendust aadressil: privacy@izyglam.com"
     }
   },
   "TERMS": {

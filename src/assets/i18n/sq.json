@@ -1930,7 +1930,7 @@
       "NOTE": "Pas kësaj, të dhënat fshihen ose anonimizohen."
     },
     "COOKIES": {
-    "TITLE": "Cookies dhe SDK",
+      "TITLE": "Cookies dhe SDK",
       "TEXT": "Ne përdorim cookies/SDK për ta bërë Platformën funksionale, për të matur audiencën, për të parandaluar fraudën dhe, me pëlqimin tuaj, për të personalizuar përvojën.",
       "L1": "<strong>Të nevojshme</strong> : autentifikim, siguri, preferenca teknike.",
       "L2": "<strong>Matja e audiencës</strong> : statistika të agreguara përdorimi.",
@@ -1987,6 +1987,20 @@
       "L2": "<strong>Nënpërpunues</strong> : entiteti që përpunon të dhënat për llogari të kontrolluesit.",
       "L3": "<strong>Bazë ligjore</strong> : baza që autorizon përpunimin (kontratë, pëlqim, detyrim ligjor, interes legjitim).",
       "L4": "<strong>Cookies/SDK</strong> : gjurmues të përdorur nga sajti/aplikacioni për të ofruar, matur dhe personalizuar shërbimin."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Privatësia e aplikacionit (kërkesat e Apple)",
+      "L1": "Ne mbledhim dhe përdorim të dhëna personale për të ofruar funksionet kryesore të aplikacionit, duke përfshirë krijimin e llogarisë, rezervimin e shërbimeve, përpunimin e pagesave dhe komunikimin ndërmjet përdoruesve.",
+      "L2": "Të dhënat e mbledhura mund të përfshijnë:",
+      "L3": "- Informacion kontakti (emër, email, numër telefoni)",
+      "L4": "- Të dhëna të vendndodhjes (vetëm me pëlqimin e përdoruesit)",
+      "L5": "- Të dhëna përdorimi (ndërveprime në aplikacion, regjistra)",
+      "L6": "- Statusi i pagesës (përpunohet në mënyrë të sigurt përmes ofruesve të palëve të treta si Stripe)",
+      "L7": "Të dhënat janë të lidhura me llogarinë e përdoruesit dhe nuk përdoren për gjurmim në aplikacione ose faqe interneti të palëve të treta.",
+      "L8": "Ne nuk shesim të dhëna personale.",
+      "L9": "Ne nuk përdorim të dhëna personale për qëllime reklamimi të palëve të treta.",
+      "L10": "Disa të dhëna mund të ndahen me ofrues shërbimesh që janë rreptësisht të nevojshëm për funksionimin e platformës (përpunimi i pagesave, hosting, analitikë, parandalimi i mashtrimit), sipas marrëveshjeve të rrepta për mbrojtjen e të dhënave.",
+      "L11": "Përdoruesit mund të kërkojnë fshirjen e të dhënave të tyre në çdo kohë duke kontaktuar: privacy@izyglam.com"
     }
   },
   "TERMS": {

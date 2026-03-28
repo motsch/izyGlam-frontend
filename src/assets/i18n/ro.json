@@ -1987,6 +1987,20 @@
       "L2": "<strong>Persoană împuternicită</strong> : entitatea care prelucrează date în numele operatorului.",
       "L3": "<strong>Temei legal</strong> : baza care autorizează prelucrarea (contract, consimțământ, obligație legală, interes legitim).",
       "L4": "<strong>Cookies/SDK</strong> : trackere utilizate de site/aplicație pentru a furniza, măsura și personaliza serviciul."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Confidențialitatea aplicației (cerințele Apple)",
+      "L1": "Colectăm și utilizăm date personale pentru a oferi funcționalitățile de bază ale aplicației, inclusiv crearea contului, rezervarea serviciilor, procesarea plăților și comunicarea între utilizatori.",
+      "L2": "Datele colectate pot include:",
+      "L3": "- Informații de contact (nume, e-mail, număr de telefon)",
+      "L4": "- Date de localizare (doar cu consimțământul utilizatorului)",
+      "L5": "- Date de utilizare (interacțiuni în aplicație, jurnale)",
+      "L6": "- Starea plății (procesată în mod securizat prin furnizori terți, precum Stripe)",
+      "L7": "Datele sunt asociate contului utilizatorului și nu sunt utilizate pentru urmărire în aplicații sau site-uri web ale terților.",
+      "L8": "Nu vindem date personale.",
+      "L9": "Nu utilizăm date personale în scopuri publicitare ale terților.",
+      "L10": "Unele date pot fi partajate cu furnizori de servicii strict necesari pentru operarea platformei (procesarea plăților, găzduire, analize, prevenirea fraudelor), în baza unor acorduri stricte de protecție a datelor.",
+      "L11": "Utilizatorii pot solicita ștergerea datelor lor în orice moment contactând: privacy@izyglam.com"
     }
   },
   "TERMS": {

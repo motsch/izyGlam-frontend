@@ -1986,6 +1986,20 @@
       "L2": "<strong>Veri işleyen (alt yüklenici)</strong>: veri sorumlusu adına kişisel verileri işleyen kuruluş.",
       "L3": "<strong>Hukuki dayanak</strong>: işlemeyi mümkün kılan temel (sözleşme, rıza, hukuki yükümlülük, meşru menfaat).",
       "L4": "<strong>Çerezler/SDK</strong>: hizmeti sağlamak, ölçmek ve kişiselleştirmek için site/uygulama tarafından kullanılan izleyiciler."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Uygulama Gizliliği (Apple Gereksinimleri)",
+      "L1": "Hesap oluşturma, hizmet rezervasyonu, ödeme işlemleri ve kullanıcılar arası iletişim dahil olmak üzere uygulamanın temel özelliklerini sağlamak için kişisel verileri toplar ve kullanırız.",
+      "L2": "Toplanan veriler şunları içerebilir:",
+      "L3": "- İletişim bilgileri (ad, e-posta, telefon numarası)",
+      "L4": "- Konum verileri (yalnızca kullanıcının izniyle)",
+      "L5": "- Kullanım verileri (uygulama etkileşimleri, kayıtlar)",
+      "L6": "- Ödeme durumu (Stripe gibi üçüncü taraf sağlayıcılar aracılığıyla güvenli bir şekilde işlenir)",
+      "L7": "Veriler kullanıcı hesabına bağlıdır ve üçüncü taraf uygulamalar veya web siteleri arasında izleme için kullanılmaz.",
+      "L8": "Kişisel verileri satmayız.",
+      "L9": "Kişisel verileri üçüncü taraf reklam amaçları için kullanmayız.",
+      "L10": "Bazı veriler, platformun çalışması için kesinlikle gerekli olan hizmet sağlayıcılarla (ödeme işleme, barındırma, analiz, dolandırıcılık önleme) sıkı veri koruma anlaşmaları kapsamında paylaşılabilir.",
+      "L11": "Kullanıcılar, istedikleri zaman privacy@izyglam.com adresiyle iletişime geçerek verilerinin silinmesini talep edebilir."
     }
   },
   "TERMS": {

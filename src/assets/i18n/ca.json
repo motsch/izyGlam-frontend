@@ -1987,6 +1987,20 @@
       "L2": "<strong>Encarregat del tractament</strong>: entitat que tracta dades per compte del responsable.",
       "L3": "<strong>Base legal</strong>: fonament que autoritza el tractament (contracte, consentiment, obligació legal, interès legítim).",
       "L4": "<strong>Cookies/SDK</strong>: traçadors utilitzats pel web/app per oferir, mesurar i personalitzar el servei."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Privadesa de l'aplicació (requisits d’Apple)",
+      "L1": "Recollim i utilitzem dades personals per proporcionar les funcionalitats bàsiques de l'aplicació, incloent la creació de comptes, la reserva de serveis, el processament de pagaments i la comunicació entre usuaris.",
+      "L2": "Les dades recollides poden incloure:",
+      "L3": "- Informació de contacte (nom, correu electrònic, número de telèfon)",
+      "L4": "- Dades de localització (només amb el consentiment de l'usuari)",
+      "L5": "- Dades d'ús (interaccions amb l'aplicació, registres)",
+      "L6": "- Estat del pagament (processat de manera segura a través de proveïdors de tercers com Stripe)",
+      "L7": "Les dades estan vinculades al compte de l'usuari i no s'utilitzen per al seguiment en aplicacions o llocs web de tercers.",
+      "L8": "No venem dades personals.",
+      "L9": "No utilitzem dades personals amb finalitats publicitàries de tercers.",
+      "L10": "Algunes dades poden ser compartides amb proveïdors de serveis estrictament necessaris per operar la plataforma (processament de pagaments, allotjament, analítica, prevenció del frau), sota estrictes acords de protecció de dades.",
+      "L11": "Els usuaris poden sol·licitar l'eliminació de les seves dades en qualsevol moment contactant amb: privacy@izyglam.com"
     }
   },
   "TERMS": {

@@ -1987,6 +1987,20 @@
       "L2": "<strong>Verwerker</strong>: entiteit die gegevens verwerkt namens de verwerkingsverantwoordelijke.",
       "L3": "<strong>Rechtsgrondslag</strong>: basis die de verwerking toestaat (contract, toestemming, wettelijke verplichting, gerechtvaardigd belang).",
       "L4": "<strong>Cookies/SDK</strong>: trackers die door de site/app worden gebruikt om de dienst te leveren, te meten en te personaliseren."
+    },
+    "APPPRIVACY": {
+      "TITLE": "App-privacy (Apple-vereisten)",
+      "L1": "Wij verzamelen en gebruiken persoonsgegevens om de kernfunctionaliteiten van de applicatie te bieden, waaronder het aanmaken van een account, het boeken van diensten, de verwerking van betalingen en communicatie tussen gebruikers.",
+      "L2": "Verzamelde gegevens kunnen omvatten:",
+      "L3": "- Contactgegevens (naam, e-mail, telefoonnummer)",
+      "L4": "- Locatiegegevens (alleen met toestemming van de gebruiker)",
+      "L5": "- Gebruiksgegevens (app-interacties, logbestanden)",
+      "L6": "- Betalingsstatus (veilig verwerkt via externe aanbieders zoals Stripe)",
+      "L7": "Gegevens zijn gekoppeld aan het gebruikersaccount en worden niet gebruikt voor tracking over apps of websites van derden.",
+      "L8": "Wij verkopen geen persoonsgegevens.",
+      "L9": "Wij gebruiken geen persoonsgegevens voor advertentiedoeleinden van derden.",
+      "L10": "Sommige gegevens kunnen worden gedeeld met dienstverleners die strikt noodzakelijk zijn voor het functioneren van het platform (betalingsverwerking, hosting, analyse, fraudepreventie), onder strikte gegevensbeschermingsovereenkomsten.",
+      "L11": "Gebruikers kunnen op elk moment verzoeken om hun gegevens te laten verwijderen door contact op te nemen via: privacy@izyglam.com"
     }
   },
   "TERMS": {

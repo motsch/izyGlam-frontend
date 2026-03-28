@@ -1987,6 +1987,20 @@
       "L2": "<strong>Sous-traitant</strong> : entité qui traite des données pour le compte du responsable.",
       "L3": "<strong>Base légale</strong> : fondement autorisant le traitement (contrat, consentement, obligation légale, intérêt légitime).",
       "L4": "<strong>Cookies/SDK</strong> : traceurs utilisés par le site/app pour fournir, mesurer et personnaliser le service."
+    },
+    "APPPRIVACY": {
+      "TITLE": "Taybetmendiya Sepanê (Pêwîstiyên Apple)",
+      "L1": "Em daneyên kesane kom dikin û bikar tînin da ku taybetmendiyên bingehîn ên sepanê pêşkêş bikin, wekî çêkirina hesabê, rezervkirina xizmetan, pêvajoya dravdanê û ragihandina di navbera bikarhêneran de.",
+      "L2": "Daneyên komkirî dikarin vanan di nav xwe de bigirin:",
+      "L3": "- Agahdariya têkiliyê (nav, e-name, jimareya telefonê)",
+      "L4": "- Daneyên cîhê (tenê bi razîbûna bikarhêner)",
+      "L5": "- Daneyên bikaranînê (têkiliya bi sepanê re, log)",
+      "L6": "- Rewşa dravdanê (bi awayekî ewle tê pêvajoyê kirin bi rêya peydakêrên aliyê sêyem wek Stripe)",
+      "L7": "Daneyên bi hesabê bikarhêner ve girêdayî ne û ji bo şopandinê di nav sepan an malperên aliyê sêyem de nayên bikaranîn.",
+      "L8": "Em daneyên kesane nafiroşin.",
+      "L9": "Em daneyên kesane ji bo armancên reklamê yên aliyê sêyem nayên bikaranîn.",
+      "L10": "Hin dane dikarin bi peydakêrên xizmetê re bên parvekirin ku ji bo xebitandina platformê pêwîst in (pêvajoya dravdanê, hosting, analîz, pêşîlêgirtina xapandinê), di bin peymanên zexm ên parastina daneyan de.",
+      "L11": "Bikarhêner dikarin her dem daxwaza jêbirina daneyên xwe bikin bi têkiliya bi: privacy@izyglam.com"
     }
   },
   "TERMS": {
