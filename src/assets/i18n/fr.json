@@ -1989,18 +1989,18 @@
       "L4": "<strong>Cookies/SDK</strong> : traceurs utilisés par le site/app pour fournir, mesurer et personnaliser le service."
     },
     "APPPRIVACY": {
-      "TITLE": "App Privacy (Apple Requirements)",
-      "L1": "We collect and use personal data to provide core features of the application, including account creation, booking services, payment processing, and communication between users.",
-      "L2": "Data collected may include:",
-      "L3": "- Contact information (name, email, phone number)",
-      "L4": "- Location data (only with user consent)",
-      "L5": "- Usage data (app interactions, logs)",
-      "L6": "- Payment status (processed securely via third-party providers such as Stripe)",
-      "L7": "Data is linked to the user account and is not used for tracking across third-party apps or websites.",
-      "L8": "We do not sell personal data.",
-      "L9": "We do not use personal data for third-party advertising purposes.",
-      "L10": "Some data may be shared with service providers strictly necessary to operate the platform (payment processing, hosting, analytics, fraud prevention), under strict data protection agreements.",
-      "L11": "Users can request deletion of their data at any time by contacting: privacy@izyglam.com"
+      "TITLE": "Confidentialité de l'application (exigences Apple)",
+      "L1": "Nous collectons et utilisons des données personnelles afin de fournir les fonctionnalités principales de l'application, notamment la création de compte, la réservation de services, le traitement des paiements et la communication entre utilisateurs.",
+      "L2": "Les données collectées peuvent inclure :",
+      "L3": "- Informations de contact (nom, email, numéro de téléphone)",
+      "L4": "- Données de localisation (uniquement avec le consentement de l'utilisateur)",
+      "L5": "- Données d'utilisation (interactions avec l'application, journaux)",
+      "L6": "- Statut de paiement (traité de manière sécurisée via des prestataires tiers tels que Stripe)",
+      "L7": "Les données sont liées au compte utilisateur et ne sont pas utilisées à des fins de suivi sur des applications ou sites web tiers.",
+      "L8": "Nous ne vendons pas de données personnelles.",
+      "L9": "Nous n'utilisons pas de données personnelles à des fins publicitaires de tiers.",
+      "L10": "Certaines données peuvent être partagées avec des prestataires de services strictement nécessaires au fonctionnement de la plateforme (traitement des paiements, hébergement, analyse, prévention de la fraude), dans le cadre d'accords stricts de protection des données.",
+      "L11": "Les utilisateurs peuvent demander la suppression de leurs données à tout moment en contactant : privacy@izyglam.com"
     }
   },
   "TERMS": {
