@@ -46,6 +46,7 @@ export class ShopComponent {
 
     // Infos du shop (détails, note, images, etc.)
     shopInfo: any = {};
+    testoo: any = {};
 
     // Références pour scroll horizontal (UI)
     @ViewChild('scrollContainerCategory') private scrollContainerCategory: ElementRef | undefined;
@@ -114,6 +115,7 @@ export class ShopComponent {
 
         this.shopService.getShopByHandle(shopHandle).pipe(
             tap((shop: any) => {
+                console.log(shop);
                 this.izyPhone = shop.izyPhone;
                 localStorage.setItem('shopSelected', shop._id);
             }),
@@ -145,8 +147,9 @@ export class ShopComponent {
                     this.shopInfo.noteCount = 0;
                 }
 
-                this.userService.getById(this.shopInfo.userId).subscribe({
+                this.userService.getById(this.shopInfo.idUser).subscribe({
                     next: (data: any) => {
+                        this.testoo = data;
                         // TOTOTOTOOTOTOTOOT
                         let sub = data.subscription.plan;
                         if (data.subscription.plan === 'premium' || data.subscription.plan === 'pro') {
