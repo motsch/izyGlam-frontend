@@ -102,7 +102,7 @@
             </div>
 
             <div class="margin-top-20">
-              <div *ngIf="shopInfo.isPremium && izyPhone" class="izyPhone-box">
+              <div *ngIf="izyPhone" class="izyPhone-box">
                 <a class="izyPhone-call" [href]="'tel:' + izyPhone" aria-label="Appeler le salon">
                   <span class="icon">📞</span>
                   <span class="label">{{"SHOP.CALL" | translate}}</span>
