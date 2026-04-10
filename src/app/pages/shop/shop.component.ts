@@ -17,6 +17,7 @@ import { BookingCategoryService } from 'src/app/core/services/booking-category.s
 import { forkJoin, of } from 'rxjs';
 import { switchMap, tap, catchError } from 'rxjs/operators';
 import { ReviewsModalService } from 'src/app/core/services/reviews-modal.service';
+import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
     selector: 'app-shop',
@@ -40,6 +41,7 @@ export class ShopComponent {
     shareUrl = '';
     shareTitle = '';
     shareText = '';
+    izyPhoneSubscription = false;
 
 
     // Infos du shop (détails, note, images, etc.)
@@ -81,6 +83,7 @@ export class ShopComponent {
         @Inject(DOCUMENT) private document: Document,
         private seoService: SeoService,
         private drawerService: DrawerService,
+        private userService: UserService,
 
         // ✅ InjectionsizyGlam
         private toastr: ToastrService,
@@ -141,6 +144,20 @@ export class ShopComponent {
                     this.shopInfo.note = 5;
                     this.shopInfo.noteCount = 0;
                 }
+
+                this.userService.getById(this.shopInfo.userId).subscribe({
+                    next: (data: any) => {
+                        // TOTOTOTOOTOTOTOOT
+                        let sub = data.subscription.plan;
+                        if (data.subscription.plan === 'premium' || data.subscription.plan === 'pro') {
+                            this.izyPhoneSubscription = true;
+                        }
+                    },
+                    error: (err) => {
+                        console.error('Erreur lors du chargement des paramètres admin :', err);
+                        this.showCustomToast(this.translate.instant('ERROR.GENERIC_ERROR'));
+                    },
+                })
 
                 // 3) catégories
                 this.categories = categories || [];
